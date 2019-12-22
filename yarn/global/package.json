@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "create-react-app": "^3.0.1",
+    "ignite-cli": "^3.1.6",
+    "react-devtools": "^3.6.1"
+  }
+}
