@@ -9,18 +9,18 @@
     "coc-ultisnips": ">=1.2.3",
     "coc-neosnippet": ">=1.2.2",
     "coc-json": ">=1.2.4",
-    "coc-snippets": ">=2.1.14",
-    "coc-eslint": ">=1.2.3",
-    "coc-pairs": ">=1.2.19",
+    "coc-snippets": ">=2.1.17",
+    "coc-eslint": ">=1.2.4",
+    "coc-pairs": ">=1.2.20",
     "coc-git": ">=1.6.16",
     "coc-css": ">=1.2.2",
     "coc-sh": ">=0.4.0",
-    "coc-vimlsp": ">=0.4.3",
+    "coc-vimlsp": ">=0.4.4",
     "coc-tslint-plugin": ">=1.1.1",
     "coc-tsserver": ">=1.4.9",
     "coc-emmet": ">=1.1.4",
     "coc-prettier": ">=1.1.11",
-    "coc-python": ">=1.2.6",
+    "coc-python": ">=1.2.7",
     "coc-tslint": ">=1.0.17"
   }
 }
