@@ -24,6 +24,7 @@ alias dk="open -a 'Docker'"
 alias sdn="osascript -e 'tell app \"System Events\" to shut down'"
 alias nv='nvim'
 alias vimrc='nvim ~/.config/nvim/init.vim'
+alias vf='vifm'
 
 alias tm='tmux'
 alias tmn='tmux new -s XXXX'

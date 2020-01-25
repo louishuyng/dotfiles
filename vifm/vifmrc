@@ -12,7 +12,6 @@
 " you will need to change this setting.
 
 set vicmd=nvim
-fileview */ tree %c
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 

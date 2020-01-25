@@ -1,6 +1,10 @@
 # You can edit this file by hand, but it's recommended not to do that.
 
 # Marks:
+'M
+	/bin
+	cat
+1579949178
 'a
 	/usr
 	local
@@ -13,17 +17,28 @@
 	/Users/ziik/
 	..
 1579941046
+'k
+	/bin
+	[
+1579949177
+'m
+	/bin
+	cat
+1579949177
 
 # Bookmarks:
 b/Users/ziik/DevLife/
 	Dev
 	1579942057
+b/Users/ziik/Desktop/
+	Desktop
+	1579943826
 
 # TUI:
 al
 q1
 v2
-ov
+oh
 m-1
 l2
 r2
@@ -240,6 +255,75 @@ d/Users
 	ziik
 2
 d/Users/ziik/DevLife
+	..
+0
+d/Users/ziik
+	Desktop
+3
+d/Users/ziik/Desktop
+	..
+0
+d/Users/ziik/DevLife
+	Docs & Specs
+1
+d/Users/ziik/DevLife/Docs & Specs
+	AWS
+1
+d/Users/ziik/DevLife/Docs & Specs/AWS
+	The-Practitioners-Brief.pdf
+1
+d/Users/ziik/DevLife/Docs & Specs
+	NodeJS
+6
+d/Users/ziik/DevLife/Docs & Specs/NodeJS
+	Node.js_in_Action_(2014).pdf
+1
+d/Users/ziik/DevLife/Docs & Specs
+	Architecture
+3
+d/Users/ziik/DevLife
+	Project
+3
+d/Users/ziik/DevLife/Project
+	sg-uob-nxgweb
+2
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb
+	config
+2
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb/config
+	polyfills.js
+5
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb
+	scripts
+6
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb/scripts
+	editJSON.js
+4
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb
+	scripts
+6
+d/Users/ziik/DevLife/Project
+	sg-uob-nxgweb
+2
+d/Users/ziik/DevLife
+	Project
+3
+d/Users/ziik
+	Documents
+5
+d/Users
+	Shared
+1
+d/
+	bin
+5
+d/bin
+	dd
+9
+d/
+	bin
+5
+d/Users/ziik/DevLife
 	UbersichtConfig
 4
 d
@@ -255,8 +339,9 @@ D
 :bmgo
 :bmgo Dev
 :bmarks
-:bmark
 :bmark Dev
+:bmark Desktop
+:bmark
 :q
 
 # Search history (oldest to newest):
@@ -267,6 +352,7 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
+""/Users/ziik/.local/share/vifm/Trash/001_capture.jpg
 
 # Directory stack (oldest to newest):
 
@@ -275,6 +361,8 @@ t/Users/ziik/.local/share/vifm/Trash/000_capture.jpg
 	/Users/ziik/Desktop/capture.jpg
 t/Users/ziik/.local/share/vifm/Trash/000_81831071_2451408144956568_5444501991260684288_o.jpg
 	/Users/ziik/Desktop/81831071_2451408144956568_5444501991260684288_o.jpg
+t/Users/ziik/.local/share/vifm/Trash/000_1_NPIE1cX1ofWR-_46IYikYA.png
+	/Users/ziik/Desktop/1_NPIE1cX1ofWR-_46IYikYA.png
 
 # State:
 f
