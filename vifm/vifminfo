@@ -2,14 +2,287 @@
 
 # Marks:
 'a
-	/Users/ziik/.config
-	omf
-1579884217
+	/usr
+	local
+1579941574
+'b
+	/Users/ziik/bin/
+	..
+1579941790
+'h
+	/Users/ziik/
+	..
+1579941046
 
 # Bookmarks:
+b/Users/ziik/DevLife/
+	Dev
+	1579942057
+
+# TUI:
+al
+q1
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/Users/ziik/.config/vifm
+	colors
+1
+d/Users/ziik/.config/vifm/colors
+	lucius.vifm
+13
+d/Users/ziik/.config/vifm
+	vifmrc
+5
+d/Users/ziik/.config
+	oh-my-zsh
+10
+d/Users/ziik
+	PacketTracer7
+10
+d/Users/ziik/PacketTracer7
+	..
+0
+d/Users/ziik
+	Downloads
+6
+d/Users/ziik/Downloads
+	AggridCancan.pdf
+1
+d/Users/ziik
+	Downloads
+6
+d/Users/ziik/Downloads
+	AggridCancan.pdf
+1
+d/Users/ziik
+	Library
+7
+d/Users/ziik/Library
+	Developer
+20
+d/Users/ziik/Library/Developer
+	XCTestDevices
+2
+d/Users/ziik/Library/Developer/XCTestDevices
+	device_set.plist
+1
+d/Users/ziik/Library/Developer
+	XCTestDevices
+2
+d/Users/ziik/Library
+	Developer
+20
+d/Users/ziik/Library/Developer
+	Xcode
+3
+d/Users/ziik/Library/Developer/Xcode
+	iOS DeviceSupport
+3
+d/Users/ziik/Library/Developer/Xcode/iOS DeviceSupport
+	..
+0
+d/Users/ziik/Library/Developer/Xcode
+	UserData
+2
+d/Users/ziik/Library/Developer/Xcode/UserData
+	IB Support
+1
+d/Users/ziik/Library/Developer/Xcode/UserData/IB Support
+	Simulator Devices
+1
+d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices
+	D5697886-CD47-470E-BDEC-401D0D1F1919
+2
+d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919
+	data
+1
+d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919/data
+	Media
+2
+d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919/data/Media
+	PhotoData
+3
+d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919/data
+	Media
+2
+d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919
+	..
+0
+d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices
+	D5697886-CD47-470E-BDEC-401D0D1F1919
+2
+d/Users/ziik/Library/Developer/Xcode/UserData/IB Support
+	Simulator Devices
+1
+d/Users/ziik/Library/Developer/Xcode/UserData
+	IB Support
+1
+d/Users/ziik/Library/Developer/Xcode
+	UserData
+2
+d/Users/ziik/Library/Developer
+	Xcode
+3
+d/Users/ziik/Library
+	Developer
+20
+d/Users/ziik
+	Library
+7
+d/Users
+	Shared
+1
+d/
+	dev
+7
+d/dev
+	..
+0
+d/
+	usr
+14
+d/usr
+	share
+6
+d/
+	usr
+14
+d/usr
+	lib
+2
+d/
+	tmp
+13
+d/tmp
+	powerlog
+2
+d/
+	usr
+14
+d/usr
+	bin
+1
+d/
+	Users
+3
+d/Users
+	ziik
+2
+d/Users/ziik
+	DevLife
+4
+d/Users/ziik/DevLife
+	..
+0
+d/Users/ziik
+	Movies
+8
+d/Users
+	ziik
+2
+d/Users/ziik
+	Pictures
+11
+d/Users
+	ziik
+2
+d/Users/ziik
+	Public
+12
+d/Users
+	ziik
+2
+d/
+	Users
+3
+d/Users/ziik
+	Pictures
+11
+d/Users
+	ziik
+2
+d/
+	Users
+3
+d/Users/ziik
+	DevLife
+4
+d/Users/ziik/DevLife
+	Project
+3
+d/Users/ziik
+	DevLife
+4
+d/Users/ziik/DevLife
+	Project
+3
+d/Users/ziik
+	mycode
+18
+d/Users/ziik/mycode
+	sites
+3
+d/Users/ziik
+	DevLife
+4
+d/Users/ziik/DevLife
+	Practice
+2
+d/Users/ziik
+	Documents
+5
+d/Users
+	ziik
+2
+d/Users/ziik/DevLife
+	UbersichtConfig
+4
+d
+
+# Right window history (oldest to newest):
+D/Users/ziik/.config/vifm
+	..
+0
+D
+
+# Command line history (oldest to newest):
+:Bo
+:bmgo
+:bmgo Dev
+:bmarks
+:bmark
+:bmark Dev
+:q
+
+# Search history (oldest to newest):
+/usr
+
+# Prompt history (oldest to newest):
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
 
 # Trash content:
 t/Users/ziik/.local/share/vifm/Trash/000_capture.jpg
 	/Users/ziik/Desktop/capture.jpg
 t/Users/ziik/.local/share/vifm/Trash/000_81831071_2451408144956568_5444501991260684288_o.jpg
 	/Users/ziik/Desktop/81831071_2451408144956568_5444501991260684288_o.jpg
+
+# State:
+f
+i1
+[.1
+[F
+F
+I1
+].1
+]F
+s0
