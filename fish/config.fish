@@ -1,4 +1,5 @@
 ## ALIAS
+alias cat='bat'
 alias fuck="git"
 alias dcpd="docker-compose down"
 alias dcpu="docker-compose up"
@@ -44,3 +45,6 @@ alias wfon='networksetup -setairportpower en0 on'
 alias wfoff='networksetup -setairportpower en0 off'
 alias wfjoin='networksetup -setairportnetwork en0'
 alias wfi='networksetup -listallhardwareports'
+
+#Service
+alias rchunkwm='brew services restart chunkwm'

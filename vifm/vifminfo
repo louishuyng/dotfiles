@@ -6,9 +6,9 @@
 	cat
 1579949178
 'a
-	/usr
-	local
-1579941574
+	/Users/ziik/DevLife/Practice
+	..
+1580059813
 'b
 	/Users/ziik/bin/
 	..
@@ -18,13 +18,17 @@
 	..
 1579941046
 'k
-	/bin
-	[
-1579949177
+	/Users/ziik/DevLife/Project
+	red-ltr
+1579949289
 'm
-	/bin
-	cat
-1579949177
+	/Users/ziik/DevLife
+	UbersichtConfig
+1579949258
+'w
+	/Users/ziik/DevLife/Project
+	sg-uob-nxgweb
+1579949290
 
 # Bookmarks:
 b/Users/ziik/DevLife/
@@ -33,65 +37,20 @@ b/Users/ziik/DevLife/
 b/Users/ziik/Desktop/
 	Desktop
 	1579943826
+b/Users/ziik/DevLife/Practice/deno/
+	DenoPractice
+	1580059855
 
 # TUI:
 al
 q1
 v2
-oh
+ov
 m-1
 l2
 r2
 
 # Left window history (oldest to newest):
-d/Users/ziik/.config/vifm
-	colors
-1
-d/Users/ziik/.config/vifm/colors
-	lucius.vifm
-13
-d/Users/ziik/.config/vifm
-	vifmrc
-5
-d/Users/ziik/.config
-	oh-my-zsh
-10
-d/Users/ziik
-	PacketTracer7
-10
-d/Users/ziik/PacketTracer7
-	..
-0
-d/Users/ziik
-	Downloads
-6
-d/Users/ziik/Downloads
-	AggridCancan.pdf
-1
-d/Users/ziik
-	Downloads
-6
-d/Users/ziik/Downloads
-	AggridCancan.pdf
-1
-d/Users/ziik
-	Library
-7
-d/Users/ziik/Library
-	Developer
-20
-d/Users/ziik/Library/Developer
-	XCTestDevices
-2
-d/Users/ziik/Library/Developer/XCTestDevices
-	device_set.plist
-1
-d/Users/ziik/Library/Developer
-	XCTestDevices
-2
-d/Users/ziik/Library
-	Developer
-20
 d/Users/ziik/Library/Developer
 	Xcode
 3
@@ -326,12 +285,96 @@ d/
 d/Users/ziik/DevLife
 	UbersichtConfig
 4
+d/Users/ziik/DevLife/UbersichtConfig
+	übersicht-logo.png
+2
+d/Users/ziik/DevLife
+	UbersichtConfig
+4
+d/Users/ziik
+	anaconda3
+13
+d/Users/ziik/anaconda3
+	phrasebooks
+11
+d/Users/ziik/Desktop
+	..
+0
+d/Users/ziik
+	Music
+9
+d/Users/ziik/Music
+	Music
+1
+d/Users/ziik
+	Public
+12
+d/Users/ziik/Public
+	Drop Box
+1
+d/Users/ziik
+	Public
+12
+d/Users/ziik/DevLife
+	Project
+3
+d/Users/ziik/DevLife/Project
+	sg-uob-nxgweb
+2
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb
+	Jenkinsfile
+10
+d/Users/ziik/Desktop
+	..
+0
+d/Users/ziik
+	Downloads
+6
+d/Users
+	ziik
+2
+d/
+	Volumes
+4
+d/Users/ziik/DevLife
+	Project
+3
+d/Users/ziik/DevLife/Project
+	sg-uob-nxgweb
+2
+d/Users/ziik/DevLife
+	Practice
+2
+d/Users/ziik/DevLife/Practice
+	deno
+1
+d/Users/ziik/DevLife/Practice/deno
+	..
+0
 d
 
 # Right window history (oldest to newest):
 D/Users/ziik/.config/vifm
-	..
-0
+	scripts
+2
+D/Users/ziik/.config/vifm/scripts
+	README
+1
+D/Users/ziik/.config/vifm
+	vifm-help.txt
+3
+D/Users/ziik/DevLife
+	Project
+3
+D/Users/ziik/DevLife/Project
+	timtour-services
+3
+D/Users/ziik/DevLife
+	Practice
+2
+D/Users/ziik
+	Music
+9
 D
 
 # Command line history (oldest to newest):
@@ -342,6 +385,11 @@ D
 :bmark Dev
 :bmark Desktop
 :bmark
+:mkdir
+:mkdir deno
+:touch 
+:bmark DenoPractic
+:bmark DenoPractice
 :q
 
 # Search history (oldest to newest):
