@@ -22,16 +22,24 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 172
-    lines: 52
+    # columns: 172
+    # For Mobile Dev
+    columns: 150 
+    # lines: 52
+    # For Mobile Dev
+    lines: 55
 
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
   position:
-    x: 155
-    y: 153
+    # x: 155
+    # For Mobile Dev
+    x: 20
+    # y: 153
+    # For Mobile Dev
+    y: 67
 
   # Window padding (changes require restart)
   #

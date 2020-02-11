@@ -48,3 +48,5 @@ alias wfi='networksetup -listallhardwareports'
 
 #Service
 alias rchunkwm='brew services restart chunkwm'
+alias schunkwm='brew services stop chunkwm'
+

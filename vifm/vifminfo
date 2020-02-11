@@ -51,84 +51,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/Users/ziik/Library/Developer
-	Xcode
-3
-d/Users/ziik/Library/Developer/Xcode
-	iOS DeviceSupport
-3
-d/Users/ziik/Library/Developer/Xcode/iOS DeviceSupport
-	..
-0
-d/Users/ziik/Library/Developer/Xcode
-	UserData
-2
-d/Users/ziik/Library/Developer/Xcode/UserData
-	IB Support
-1
-d/Users/ziik/Library/Developer/Xcode/UserData/IB Support
-	Simulator Devices
-1
-d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices
-	D5697886-CD47-470E-BDEC-401D0D1F1919
-2
-d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919
-	data
-1
-d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919/data
-	Media
-2
-d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919/data/Media
-	PhotoData
-3
-d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919/data
-	Media
-2
-d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices/D5697886-CD47-470E-BDEC-401D0D1F1919
-	..
-0
-d/Users/ziik/Library/Developer/Xcode/UserData/IB Support/Simulator Devices
-	D5697886-CD47-470E-BDEC-401D0D1F1919
-2
-d/Users/ziik/Library/Developer/Xcode/UserData/IB Support
-	Simulator Devices
-1
-d/Users/ziik/Library/Developer/Xcode/UserData
-	IB Support
-1
-d/Users/ziik/Library/Developer/Xcode
-	UserData
-2
-d/Users/ziik/Library/Developer
-	Xcode
-3
-d/Users/ziik/Library
-	Developer
-20
-d/Users/ziik
-	Library
-7
-d/Users
-	Shared
-1
-d/
-	dev
-7
-d/dev
-	..
-0
-d/
-	usr
-14
-d/usr
-	share
-6
-d/
-	usr
-14
-d/usr
-	lib
-2
 d/
 	tmp
 13
@@ -351,6 +273,84 @@ d/Users/ziik/DevLife/Practice
 d/Users/ziik/DevLife/Practice/deno
 	..
 0
+d/Users/ziik/DevLife/Practice
+	deno
+1
+d/Users/ziik/DevLife/Practice/deno
+	..
+0
+d/Users/ziik/DevLife/Practice
+	deno
+1
+d/Users/ziik/DevLife
+	Practice
+2
+d/Users/ziik/DevLife/Practice
+	docker
+2
+d/Users/ziik/DevLife
+	Practice
+2
+d/Users/ziik/DevLife/Practice
+	golang
+3
+d/Users/ziik/DevLife/Practice/golang
+	main.go
+3
+d/Users/ziik/Desktop
+	..
+0
+d/Users/ziik
+	Desktop
+3
+d/Users
+	ziik
+2
+d/
+	Volumes
+4
+d/Users/ziik/DevLife
+	Practice
+2
+d/Users/ziik/DevLife/Practice
+	docker
+2
+d/Users/ziik/DevLife
+	Project
+3
+d/Users/ziik/DevLife/Project
+	sg-uob-nxgweb
+2
+d/Users/ziik/DevLife/Practice/deno
+	..
+0
+d/Users/ziik/DevLife/Practice
+	deno
+1
+d/Users/ziik/DevLife
+	Project
+3
+d/Users/ziik/DevLife/Project
+	sg-uob-nxgweb
+2
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb
+	wiremock
+9
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb/wiremock
+	mappings
+3
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb/wiremock/mappings
+	mapping-bulk-v1-details-collections-bankaccounts-mandatory.json
+21
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb/wiremock
+	mappings
+3
+d/Users/ziik/DevLife/Project/sg-uob-nxgweb
+	README.md
+11
+d/Users/ziik/DevLife/Project
+	sg-uob-nxgweb
+2
 d
 
 # Right window history (oldest to newest):
@@ -400,7 +400,7 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
-""/Users/ziik/.local/share/vifm/Trash/001_capture.jpg
+""/Users/ziik/.local/share/vifm/Trash/000_83803958_525568741647712_6652257897386344448_n.jpg
 
 # Directory stack (oldest to newest):
 
@@ -411,6 +411,10 @@ t/Users/ziik/.local/share/vifm/Trash/000_81831071_2451408144956568_5444501991260
 	/Users/ziik/Desktop/81831071_2451408144956568_5444501991260684288_o.jpg
 t/Users/ziik/.local/share/vifm/Trash/000_1_NPIE1cX1ofWR-_46IYikYA.png
 	/Users/ziik/Desktop/1_NPIE1cX1ofWR-_46IYikYA.png
+t/Users/ziik/.local/share/vifm/Trash/000_MSR.json
+	/Users/ziik/Desktop/MSR.json
+t/Users/ziik/.local/share/vifm/Trash/000_83803958_525568741647712_6652257897386344448_n.jpg
+	/Users/ziik/Desktop/83803958_525568741647712_6652257897386344448_n.jpg
 
 # State:
 f
