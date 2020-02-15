@@ -1,0 +1,8 @@
+alacritty
+amethyst
+font-fantasque-sans-mono
+font-hack-nerd-font
+iterm2
+java
+minikube
+ubersicht
