@@ -34,8 +34,8 @@ install_homebrew() {
 install_brew_list() {
   read -r -p "Do you want to install brew list? [y|N] " response
   if [[ $response =~ (y|yes|y) ]];then
-    brew install -r ./packages.txt 
-    brew cask install -r ./packages_cask.txt 
+    cat ./packages.txt | xagrs brew install
+    cat ./packages_cask.txt  | xagrs brew cask install
     success "Installed homebrew list"
   fi
 }
