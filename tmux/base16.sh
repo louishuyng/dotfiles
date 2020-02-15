@@ -1,0 +1,1 @@
+/Users/ziik/.tmux/base16.sh
