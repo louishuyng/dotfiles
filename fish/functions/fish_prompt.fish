@@ -48,3 +48,7 @@ function fish_prompt
 
   echo -n -s " "
 end
+
+function cssh
+  ssh-add -K ~/.ssh/id_rsa_$argv
+end

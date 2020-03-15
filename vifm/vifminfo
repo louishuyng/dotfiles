@@ -51,21 +51,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/
-	tmp
-13
-d/tmp
-	powerlog
-2
-d/
-	usr
-14
-d/usr
-	bin
-1
-d/
-	Users
-3
 d/Users
 	ziik
 2
@@ -349,8 +334,23 @@ d/Users/ziik/DevLife/Project/sg-uob-nxgweb
 	README.md
 11
 d/Users/ziik/DevLife/Project
-	sg-uob-nxgweb
+	th-mtl-phoenix_desktop
+4
+d/Users/ziik/DevLife/Project/th-mtl-phoenix_desktop
+	node_modules
 2
+d/Users/ziik/DevLife/Project
+	timtour-services
+5
+d/Users/ziik/DevLife
+	Docs & Specs
+1
+d/Users/ziik/DevLife/Docs & Specs
+	Architecture
+3
+d/Users/ziik/DevLife/Docs & Specs/Architecture
+	958168e6390a26493e2ba599f454de1dfdc2.pdf
+1
 d
 
 # Right window history (oldest to newest):

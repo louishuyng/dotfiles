@@ -1,0 +1,4 @@
+commands=( ${(Q)"${(z)$(<<\EO:commands
+'--cache' '--cellar' '--config' '--env' '--prefix' '--repo' '--repository' '--version' '-S' '-v' 'abv' 'analytics' 'aspell-dictionaries' 'audit' 'bottle' 'bump-formula-pr' 'bump-revision' 'cask' 'cat' 'cleanup' 'command' 'commands' 'config' 'configure' 'create' 'deps' 'desc' 'diy' 'doctor' 'dr' 'edit' 'environment' 'extract' 'fetch' 'formula' 'gist-logs' 'help' 'home' 'homepage' 'info' 'install' 'irb' 'leaves' 'link' 'linkage' 'list' 'ln' 'log' 'ls' 'man' 'migrate' 'mirror' 'missing' 'options' 'outdated' 'pin' 'postgresql-upgrade-database' 'postinstall' 'prof' 'pull' 'readall' 'reinstall' 'release-notes' 'remove' 'rm' 'ruby' 'search' 'services' 'sh' 'shellenv' 'style' 'switch' 'tap' 'tap-info' 'tap-new' 'tap-pin' 'tap-unpin' 'test' 'tests' 'uninstall' 'unlink' 'unpack' 'unpin' 'untap' 'up' 'update' 'update-report' 'update-reset' 'update-test' 'upgrade' 'uses' 'vendor-gems' 'vendor-install'
+EO:commands
+)}"} )

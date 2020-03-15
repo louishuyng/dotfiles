@@ -1,0 +1,4 @@
+_deb_packages_cache_installed=( ${(Q)"${(z)$(<<\EO:_deb_packages_cache_installed
+
+EO:_deb_packages_cache_installed
+)}"} )

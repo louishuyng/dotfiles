@@ -1,4 +1,5 @@
+prettier.open-output
+prettier.formatFile
 snippets.editSnippets
 snippets.
-prettier.formatFile
 git.chunkUndo
