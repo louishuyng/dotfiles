@@ -72,6 +72,12 @@ alias wfoff='networksetup -setairportpower en0 off'
 alias wfjoin='networksetup -setairportnetwork en0'
 alias wfi='networksetup -listallhardwareports'
 
+#Git
+alias gps='git push'
+alias gp='git pull'
+alias gc='git commit'
+alias gco='git checkout'
+
 function gg() {
   str="$*"
   open -a 'Brave Browser' 'https://www.google.com/search?q='$str

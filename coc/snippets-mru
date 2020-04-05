@@ -1,7 +1,12 @@
-scriptsrc
-html
-cl
 script
+scriptsrc
+if
+rfc
+for
+constn
+cl
+modeline
+html
 div#
 ex
 it
@@ -10,9 +15,7 @@ props
 prop
 style
 uuid
-rfc
 state
-for
 e
 children
 tog
@@ -28,7 +31,6 @@ act
 html5
 ntf
 reactF
-if
 import
 ifelse
 de

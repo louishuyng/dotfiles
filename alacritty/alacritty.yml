@@ -21,33 +21,33 @@ window:
   # Window dimensions (changes require restart)
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  dimensions:
+  # dimensions:
     # columns: 172
     # For Mobile Dev
-    columns: 145 
+    # columns: 145
     # lines: 52
     # For Mobile Dev
-    lines: 56
+    # lines: 56
 
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-  position:
+  # position:
     # x: 155
     # For Mobile Dev
-    x: 20
+    # x: 20
     # y: 153
     # For Mobile Dev
-    y: 67
+    # y: 67
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  padding:
-   x: 5
-   y: 0
+  # padding:
+   # x: 5
+   # y: 0
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
