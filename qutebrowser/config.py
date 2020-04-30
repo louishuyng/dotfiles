@@ -51,7 +51,8 @@ c.fonts.messages.warning = small_mono
 c.fonts.statusbar = mono
 c.fonts.tabs = mono
 
-
+## Bind Keys
 config.bind('po3', 'open -t http://localhost:3000')
 config.bind('po8', 'open -t http://localhost:8000')
 config.bind('gh', 'open -t http://github.com')
+config.bind('<ctrl+d>', 'wq')
