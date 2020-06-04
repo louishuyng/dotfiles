@@ -1,6 +1,7 @@
-# Recent settings file for Wireshark 3.0.2.
+# Common recent settings file for Wireshark 3.2.3.
 #
-# This file is regenerated each time Wireshark is quit.
+# This file is regenerated each time Wireshark is quit
+# and when changing configuration profile.
 # So be careful, if you want to make manual changes here.
 
 ######## Recent capture files (latest last), cannot be altered through command line ########
@@ -11,19 +12,24 @@
 
 ######## Recent display filters (latest last), cannot be altered through command line ########
 
+recent.display_filter: http2
 recent.display_filter: tcp
 recent.display_filter: http
 
 # Main window geometry.
 # Decimal numbers.
-gui.geometry_main_x: 0
-gui.geometry_main_y: 23
-gui.geometry_main_width: 1440
-gui.geometry_main_height: 802
+gui.geometry_main_x: 11
+gui.geometry_main_y: 32
+gui.geometry_main_width: 704
+gui.geometry_main_height: 835
 
 # Main window maximized.
 # TRUE or FALSE (case-insensitive).
-gui.geometry_main_maximized: TRUE
+gui.geometry_main_maximized: FALSE
+
+# Leftalign Action Buttons.
+# TRUE or FALSE (case-insensitive).
+gui.geometry_leftalign_actions: FALSE
 
 # Statusbar left pane size.
 # Decimal number.
@@ -48,6 +54,22 @@ privs.warn_if_elevated: TRUE
 # TRUE or FALSE (case-insensitive).
 privs.warn_if_no_npf: TRUE
 
+# Find packet search in.
+# One of: PACKET_LIST, PACKET_DETAILS, PACKET_BYTES
+gui.search_in: PACKET_LIST
+
+# Find packet character set.
+# One of: NARROW_AND_WIDE, NARROW, WIDE
+gui.search_char_set: NARROW_AND_WIDE
+
+# Find packet case sensitive search.
+# TRUE or FALSE (case-insensitive).
+gui.search_case_sensitive: FALSE
+
+# Find packet search type.
+# One of: DISPLAY_FILTER, HEX_VALUE, STRING, REGEX
+gui.search_type: DISPLAY_FILTER
+
 # Geometry and maximized state of PreferencesDialog window.
 # Decimal integers.
 gui.geom.PreferencesDialog.x: 380
@@ -56,6 +78,24 @@ gui.geom.PreferencesDialog.width: 680
 gui.geom.PreferencesDialog.height: 475
 # TRUE or FALSE (case-insensitive).
 gui.geom.PreferencesDialog.maximized: FALSE
+
+# Geometry and maximized state of ManageInterfacesDialog window.
+# Decimal integers.
+gui.geom.ManageInterfacesDialog.x: 335
+gui.geom.ManageInterfacesDialog.y: 227
+gui.geom.ManageInterfacesDialog.width: 750
+gui.geom.ManageInterfacesDialog.height: 425
+# TRUE or FALSE (case-insensitive).
+gui.geom.ManageInterfacesDialog.maximized: FALSE
+
+# Geometry and maximized state of PacketDialog window.
+# Decimal integers.
+gui.geom.PacketDialog.x: 143
+gui.geom.PacketDialog.y: 97
+gui.geom.PacketDialog.width: 1133
+gui.geom.PacketDialog.height: 668
+# TRUE or FALSE (case-insensitive).
+gui.geom.PacketDialog.maximized: FALSE
 
 # Custom colors.
 # List of custom colors selected in Qt color picker.

@@ -1,5 +1,5 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH=~/.config/oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh/
 
 plugins=(
   git
@@ -15,14 +15,16 @@ plugins=(
   zsh-syntax-highlighting
   docker
   zsh-autosuggestions
+  zsh-completions
   vi-mode
 )
+autoload -U compinit && compinit
 
-ZSH_THEME="oxide"
+ZSH_THEME="daivasmara"
 
 source $ZSH/oh-my-zsh.sh
 
-GIT_AUTHOR_NAME="nqhuyD"
+GIT_AUTHOR_NAME="Louis"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"
 GIT_AUTHOR_EMAIL="huynguyennbk@gmail.com"
@@ -63,7 +65,8 @@ alias gpj='cd ~/DevLife/Project/'
 alias typeracer='cli-typer'
 alias speedTest='speed-test'
 alias ra='ranger'
-alias tmn='tm new -s DEV'
+alias dev='tm new -s HACKER1 \; split-window -h -p 25 \;'
+alias matrix='source ~/.matrix.sh'
 
 #Wifi
 alias wfscan='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport scan'
@@ -71,12 +74,6 @@ alias wfon='networksetup -setairportpower en0 on'
 alias wfoff='networksetup -setairportpower en0 off'
 alias wfjoin='networksetup -setairportnetwork en0'
 alias wfi='networksetup -listallhardwareports'
-
-#Git
-alias gps='git push'
-alias gp='git pull'
-alias gc='git commit'
-alias gco='git checkout'
 
 function gg() {
   str="$*"
@@ -86,6 +83,10 @@ function gg() {
 function yt() {
   str="$*"
   open -a 'Brave Browser' 'https://www.youtube.com/results?search_query='$str
+}
+
+function sd() {
+  sudo shutdown -h +$*
 }
 
 
@@ -182,3 +183,6 @@ export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:/usr/local/mysql/bin
 alias python=/usr/local/bin/python3.7
 alias pip=/usr/local/bin/pip3
+
+export NVM_DIR="/Users/ziik/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -1,4 +1,4 @@
-# Configuration file for Wireshark 3.0.2.
+# Configuration file for Wireshark 3.2.3.
 #
 # This file is regenerated each time preferences are saved within
 # Wireshark. Making manual changes should be safe, however.
@@ -66,11 +66,11 @@
 # (case-insensitive).
 #gui.toolbar_main_style: ICONS
 
-# Check for updates (Windows only)
+# Check for updates (Windows and macOS only)
 # TRUE or FALSE (case-insensitive)
 #gui.update.enabled: TRUE
 
-# The type of update to fetch. You should probably leave this set to UPDATE_CHANNEL_STABLE.
+# The type of update to fetch. You should probably leave this set to STABLE.
 # One of: DEVELOPMENT, STABLE
 # (case-insensitive).
 #gui.update.channel: STABLE
@@ -103,6 +103,10 @@
 # One of: WELCOME, TITLE, BOTH, NEITHER
 # (case-insensitive).
 #gui.version_placement: BOTH
+
+# The maximum number of objects that can be exported
+# A decimal number
+#gui.max_export_objects: 1000
 
 # Enable Packet Editor (Experimental)
 # TRUE or FALSE (case-insensitive)
@@ -198,15 +202,15 @@
 
 # Valid color filter background
 # A six-digit hexadecimal RGB color triplet (e.g. fce94f)
-#gui.color_filter_bg.valid: afffaf
+#gui.color_filter_bg.valid: 006600
 
 # Invalid color filter background
 # A six-digit hexadecimal RGB color triplet (e.g. fce94f)
-#gui.color_filter_bg.invalid: ffafaf
+#gui.color_filter_bg.invalid: 660000
 
 # Deprecated color filter background
 # A six-digit hexadecimal RGB color triplet (e.g. fce94f)
-#gui.color_filter_bg.deprecated: ffffaf
+#gui.color_filter_bg.deprecated: 666600
 
 ####### User Interface: Columns ########
 
@@ -256,6 +260,10 @@ gui.qt.font_name: Menlo,13,-1,5,50,0,0,0,0,0
 # TRUE or FALSE (case-insensitive)
 #gui.packet_list_separator.enabled: FALSE
 
+# Show column definition in packet list header
+# TRUE or FALSE (case-insensitive)
+#gui.packet_header_column_definition.enabled: TRUE
+
 # Show selected packet in the Status Bar
 # TRUE or FALSE (case-insensitive)
 #gui.show_selected_packet.enabled: FALSE
@@ -280,7 +288,7 @@ capture.device: Wi-Fi: en0
 
 # Interface link-layer header types (Ex: en0(1),en1(143),...)
 # A string
-#capture.devices_linktypes: 
+capture.devices_linktypes: en0(1),bridge0(1),p2p0(12),awdl0(1),llw0(1),utun0(0),en1(1),utun1(0),en2(1),lo0(0),gif0(0),stf0(0),XHC0(266),XHC20(266),ciscodump(147),randpkt(147),sshdump(147),udpdump(252)
 
 # Interface descriptions (Ex: eth0(eth0 descr),eth1(eth1 descr),...)
 # A string
@@ -296,15 +304,15 @@ capture.device: Wi-Fi: en0
 
 # Interface buffer size (Ex: en0(1),en1(143),...)
 # A string
-#capture.devices_buffersize: 
+capture.devices_buffersize: en0(2),bridge0(2),p2p0(2),awdl0(2),llw0(2),utun0(2),en1(2),utun1(2),en2(2),lo0(2),gif0(2),stf0(2),XHC0(2),XHC20(2),ciscodump(2),randpkt(2),sshdump(2),udpdump(2)
 
 # Interface snap length (Ex: en0(65535),en1(1430),...)
 # A string
-#capture.devices_snaplen: 
+capture.devices_snaplen: en0:0(262144),bridge0:0(262144),p2p0:0(262144),awdl0:0(262144),llw0:0(262144),utun0:0(262144),en1:0(262144),utun1:0(262144),en2:0(262144),lo0:0(262144),gif0:0(262144),stf0:0(262144),XHC0:0(262144),XHC20:0(262144),ciscodump:0(262144),randpkt:0(262144),sshdump:0(262144),udpdump:0(262144)
 
 # Interface promiscuous mode (Ex: en0(0),en1(1),...)
 # A string
-#capture.devices_pmode: 
+capture.devices_pmode: en0(1),bridge0(1),p2p0(1),awdl0(1),llw0(1),utun0(1),en1(1),utun1(1),en2(1),lo0(1),gif0(1),stf0(1),XHC0(1),XHC20(1),ciscodump(1),randpkt(1),sshdump(1),udpdump(1)
 
 # Capture in promiscuous mode?
 # TRUE or FALSE (case-insensitive)
@@ -429,7 +437,7 @@ capture.device: Wi-Fi: en0
 
 # Remote capture filter
 # A string
-#extcap.ciscodump.remotefilter: deny tcp host 169.254.63.4 any eq 0, deny tcp any eq 0 host 169.254.63.4, deny tcp host fe80::4f8:b521:cf09:8c27 any eq 0, deny tcp any eq 0 host fe80::4f8:b521:cf09:8c27, deny tcp host fe80::8957:6631:ed4:af76 any eq 0, deny tcp any eq 0 host fe80::8957:6631:ed4:af76, deny tcp host fe80::68:3cff:fe01:2db5 any eq 0, deny tcp any eq 0 host fe80::68:3cff:fe01:2db5, deny tcp host 172.16.1.134 any eq 0, deny tcp any eq 0 host 172.16.1.134, deny tcp host fe80::f2:d052:d4be:d125 any eq 0, deny tcp any eq 0 host fe80::f2:d052:d4be:d125, deny tcp host fe80::1 any eq 0, deny tcp any eq 0 host fe80::1, permit ip any any
+#extcap.ciscodump.remotefilter: deny tcp host fe80::8cbe:bd9f:fcb1:b535 any eq 0, deny tcp any eq 0 host fe80::8cbe:bd9f:fcb1:b535, deny tcp host fe80::2e16:4bc8:9e47:9c0c any eq 0, deny tcp any eq 0 host fe80::2e16:4bc8:9e47:9c0c, deny tcp host fe80::c70:1eff:fe85:8a61 any eq 0, deny tcp any eq 0 host fe80::c70:1eff:fe85:8a61, deny tcp host fe80::c70:1eff:fe85:8a61 any eq 0, deny tcp any eq 0 host fe80::c70:1eff:fe85:8a61, deny tcp host 192.168.3.130 any eq 0, deny tcp any eq 0 host 192.168.3.130, deny tcp host fe80::871:bef0:328e:55c2 any eq 0, deny tcp any eq 0 host fe80::871:bef0:328e:55c2, deny tcp host fe80::1 any eq 0, deny tcp any eq 0 host fe80::1, permit ip any any
 
 # Packets to capture
 # A string
@@ -497,7 +505,7 @@ capture.device: Wi-Fi: en0
 
 # Remote capture filter
 # A string
-#extcap.sshdump.remotefilter: not ((host 169.254.63.4 or host fe80::4f8:b521:cf09:8c27 or host fe80::8957:6631:ed4:af76 or host fe80::68:3cff:fe01:2db5 or host 172.16.1.134 or host fe80::f2:d052:d4be:d125 or host fe80::1) and port 22)
+#extcap.sshdump.remotefilter: not ((host fe80::8cbe:bd9f:fcb1:b535 or host fe80::2e16:4bc8:9e47:9c0c or host fe80::c70:1eff:fe85:8a61 or host fe80::c70:1eff:fe85:8a61 or host 192.168.3.130 or host fe80::871:bef0:328e:55c2 or host fe80::1) and port 22)
 
 # Packets to capture
 # A string
@@ -532,6 +540,10 @@ capture.device: Wi-Fi: en0
 # Use your system's configured name resolver (usually DNS) to resolve network names. Only applies when network name resolution is enabled.
 # TRUE or FALSE (case-insensitive)
 #nameres.use_external_name_resolver: TRUE
+
+# Uses DNS Servers list to resolve network names if TRUE.  If FALSE, default information is used
+# TRUE or FALSE (case-insensitive)
+#nameres.use_custom_dns_servers: FALSE
 
 # The maximum number of DNS requests that may be active at any time. A large value (many thousands) might overload the network or make your DNS server behave badly.
 # A decimal number
@@ -1042,7 +1054,7 @@ capture.device: Wi-Fi: en0
 #asterix.i020_version: Version 1.9
 
 # Select the CAT021 version
-# One of: Version 2.3, Version 2.1
+# One of: Version 2.3, Version 2.1, Version 0.26, Version 0.23
 # (case-insensitive).
 #asterix.i021_version: Version 2.3
 
@@ -1185,7 +1197,7 @@ capture.device: Wi-Fi: en0
 #bta2dp.a2dp.content_protection.scms_t: FALSE
 
 # Force decoding stream as A2DP with specified codec
-# One of: Default, SBC, MPEG12 AUDIO, MPEG24 AAC, aptX, aptX HD
+# One of: Default, SBC, MPEG12 AUDIO, MPEG24 AAC, aptX, aptX HD, LDAC
 # (case-insensitive).
 #bta2dp.a2dp.codec: Default
 
@@ -1317,6 +1329,14 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #can.byte_swap: FALSE
 
+# Try to decode a packet using an heuristic sub-dissector before using a sub-dissector registered to "decode as"
+# TRUE or FALSE (case-insensitive)
+#can.try_heuristic_first: FALSE
+
+# Try to decode a packet using an heuristic sub-dissector before using a sub-dissector registered to "decode as"
+# TRUE or FALSE (case-insensitive)
+#acf-can.try_heuristic_first: FALSE
+
 # Enable support of Cisco Wireless Controller (based on old 8 draft revision).
 # TRUE or FALSE (case-insensitive)
 #capwap.draft_8_cisco: FALSE
@@ -1365,6 +1385,10 @@ capture.device: Wi-Fi: en0
 # Whether the Netflow/Ipfix dissector should reassemble messages spanning multiple TCP segments.  To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
 #cflow.desegment: TRUE
+
+# Whether to validate the Frame Check Sequence
+# TRUE or FALSE (case-insensitive)
+#cfp.check_fcs: FALSE
 
 # The type of CHDLC frame checksum (none, 16-bit, 32-bit)
 # One of: None, 16-Bit, 32-Bit
@@ -1580,7 +1604,7 @@ capture.device: Wi-Fi: en0
 # A decimal number
 #dicom.export_minsize: 4096
 
-# Create a node for sequences and items, and show children in a hierarchy. Deselect this option, if you prefer a flat display or e.g. when using TShark to create a text output.
+# Create a node for sequences and items, and show children in a hierarchy. De-select this option, if you prefer a flat display or e.g. when using TShark to create a text output.
 # TRUE or FALSE (case-insensitive)
 #dicom.seq_tree: TRUE
 
@@ -1592,7 +1616,7 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #dicom.cmd_details: TRUE
 
-# Decode all DICOM tags in the last PDV. This will ensure the proper reassembly. When not set, the decoding may fail and the exports may become corrupt.
+# Decode all DICOM tags in the last PDV. This will ensure the proper reassembly. De-select, to troubleshoot PDU length issues, or to understand PDV fragmentation. When not set, the decoding may fail and the exports may become corrupt.
 # TRUE or FALSE (case-insensitive)
 #dicom.pdv_reassemble: TRUE
 
@@ -1681,10 +1705,6 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #dsi.desegment: TRUE
 
-# Semicolon-separated list of private RSA keys used for DTLS decryption. Used by versions of Wireshark prior to 1.6
-# A string
-#dtls.keys_list: 
-
 # redirect dtls debug to file name; leave empty to disable debug, use "-" to redirect output to stderr
 # 
 # A path to a file
@@ -1713,6 +1733,10 @@ capture.device: Wi-Fi: en0
 # Allow only packets with Major=0x03//Minor=0xFF as DVMRP V3 packets
 # TRUE or FALSE (case-insensitive)
 #dvmrp.strict_v3: FALSE
+
+# Decode the Message Types according to eCPRI Specification V1.2
+# TRUE or FALSE (case-insensitive)
+#ecpri.ecpripref.msg.decoding: TRUE
 
 # Whether the eDonkey dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
@@ -1896,6 +1920,10 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #f5ethtrailer.rstcause_in_info: TRUE
 
+# If enabled, KEYLOG entires will be added to the TLS decode in the f5ethtrailer protocol tree.  It will populate the f5ethtrailer.tls.keylog field.
+# TRUE or FALSE (case-insensitive)
+#f5ethtrailer.generate_keylog: TRUE
+
 # If enabled, reassembly of multi-frame sequences is done
 # TRUE or FALSE (case-insensitive)
 #fc.reassemble: TRUE
@@ -1927,6 +1955,10 @@ capture.device: Wi-Fi: en0
 # Whether the FIX dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
 #fix.desegment: TRUE
+
+# Try to decode a packet using an heuristic sub-dissector before using a sub-dissector registered to "decode as"
+# TRUE or FALSE (case-insensitive)
+#flexray.try_heuristic_first: FALSE
 
 # With this option display filters for fmp fhandle a RPC call, even if the actual fhandle is only present in one of the packets
 # TRUE or FALSE (case-insensitive)
@@ -1973,7 +2005,7 @@ capture.device: Wi-Fi: en0
 #fp_mux.call_heur_fp: TRUE
 
 # Encapsulation
-# One of: FRF 3.2/Cisco HDLC, GPRS Network Service, Raw Ethernet
+# One of: FRF 3.2/Cisco HDLC, GPRS Network Service, Raw Ethernet, LAPB (T1.617a-1994 Annex G)
 # (case-insensitive).
 #fr.encap: FRF 3.2/Cisco HDLC
 
@@ -2073,6 +2105,14 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #grpc.detect_json_automaticlly: TRUE
 
+# If turned on, http2 will reassemble gRPC message as soon as possible. Or else the gRPC message will be reassembled at the end of each HTTP2 STREAM. If your .proto files contains streaming RPCs (declaring RPC operation input/output message type with 'stream' label), you need to keep this option on.
+# TRUE or FALSE (case-insensitive)
+#grpc.streaming_reassembly_mode: TRUE
+
+# Embed gRPC messages under HTTP2 protocol tree items.
+# TRUE or FALSE (case-insensitive)
+#grpc.embeded_under_http2: FALSE
+
 # Whether the Gryphon dissector should desegment all messages spanning multiple TCP segments
 # TRUE or FALSE (case-insensitive)
 #gryphon.desegment: TRUE
@@ -2133,6 +2173,10 @@ capture.device: Wi-Fi: en0
 # Whether or not to try reassembling GSSAPI blobs spanning multiple (SMB/SessionSetup) PDUs
 # TRUE or FALSE (case-insensitive)
 #gss-api.gssapi_reassembly: TRUE
+
+# Show GSUP Source/Destination names as text in the Packet Details pane
+# TRUE or FALSE (case-insensitive)
+#gsup.show_name_as_text: TRUE
 
 # GTPv0 and GTP' port (default 3386)
 # A decimal number
@@ -2309,6 +2353,21 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #icmp.favor_icmp_mpls: FALSE
 
+# Length of the Cause of Transmission Field, configurable in '101 and fixed at 2 octets with '104
+# One of: 1 octet, 2 octet
+# (case-insensitive).
+#iec60870_101.cot_len: 1 octet
+
+# Length of the Common ASDU Address Field, configurable in '101 and fixed at 2 octets with '104
+# One of: 1 octet, 2 octet
+# (case-insensitive).
+#iec60870_101.asdu_addr_len: 1 octet
+
+# Length of the Information Object Address Field, configurable in '101 and fixed at 3 octets with '104
+# One of: 2 octet, 3 octet
+# (case-insensitive).
+#iec60870_101.asdu_ioa_len: 2 octet
+
 # Whether fragmented 802.11 datagrams should be reassembled
 # TRUE or FALSE (case-insensitive)
 #wlan.defragment: TRUE
@@ -2363,6 +2422,10 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #wpan.802154_ack_tracking: FALSE
 
+# Parse assuming 802.15.4e quirks for compatibility
+# TRUE or FALSE (case-insensitive)
+#wpan.802154e_compatibility: FALSE
+
 # Specifies the security suite to use for 802.15.4-2003 secured frames (only supported suites are listed). Option ignored for 802.15.4-2006 and unsecured frames.
 # One of: AES-128 Encryption, 128-bit Integrity Protection, AES-128 Encryption, 64-bit Integrity Protection, AES-128 Encryption, 32-bit Integrity Protection
 # (case-insensitive).
@@ -2395,6 +2458,10 @@ capture.device: Wi-Fi: en0
 # Whether the IPDC dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
 #ipdc.desegment_ipdc_messages: TRUE
+
+# Range of session IDs to be decoded as SAMIS-TYPE-1 records
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#ipdr.sessions.samis_type_1: 
 
 # Dissect IPMB commands
 # TRUE or FALSE (case-insensitive)
@@ -2838,6 +2905,16 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #lmp.checksum: FALSE
 
+# There might be plugins corresponding to different version of the specification If they are present they should be listed here.
+# One of: FD1, Rel8 dec 2008
+# (case-insensitive).
+#log3gpp.rrc_release_version: Rel8 dec 2008
+
+# There might be plugins corresponding to different version of the specification If they are present they should be listed here.
+# One of: FD1, Rel8 dec 2008
+# (case-insensitive).
+#log3gpp.nas_eps_release_version: Rel8 dec 2008
+
 # Use oneline info column by replace all new line characters by spaces
 # TRUE or FALSE (case-insensitive)
 #logcat.oneline_info_column: TRUE
@@ -2935,6 +3012,15 @@ capture.device: Wi-Fi: en0
 # Attempt to decode BCCH, PCCH and CCCH data using NR RRC dissector
 # TRUE or FALSE (case-insensitive)
 #mac-nr.attempt_rrc_decode: TRUE
+
+# Will call NR RLC dissector with standard settings as per RRC spec
+# TRUE or FALSE (case-insensitive)
+#mac-nr.attempt_to_dissect_srb_sdus: TRUE
+
+# Set whether LCID -> drb Table is taken from static table (below) or from info learned from control protocol (i.e. RRC)
+# One of: From static table, From configuration protocol
+# (case-insensitive).
+#mac-nr.lcid_to_drb_mapping_source: From static table
 
 # The name of the file containing the mate module's configuration
 # A path to a file
@@ -3122,6 +3208,10 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #mtp2.use_extended_sequence_numbers: FALSE
 
+# Some SS7 capture hardware includes the FCS at the end of the packet, others do not.
+# TRUE or FALSE (case-insensitive)
+#mtp2.capture_contains_frame_check_sequence: FALSE
+
 # Reverse the bit order inside bytes specified in Q.703.
 # TRUE or FALSE (case-insensitive)
 #mtp2.reverse_bit_order_mtp2: FALSE
@@ -3174,7 +3264,7 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #mysql.show_sql_query: FALSE
 
-# This should work when the NAS ciphering algorithm is NULL (128-EEA0)
+# This should work when the NAS ciphering algorithm is NULL (5G-EEA0)
 # TRUE or FALSE (case-insensitive)
 #nas-5gs.null_decipher: FALSE
 
@@ -3404,6 +3494,18 @@ capture.device: Wi-Fi: en0
 # Range of NVMe Subsystem ports(default 4420)
 # A string denoting an positive integer range (e.g., "1-20,30-40")
 #nvme-rdma.subsystem_ports: 4420
+
+# Range of NVMe Subsystem ports(default 4420)
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#nvme-tcp.subsystem_ports: 4420
+
+# Whether to validate the PDU header digest or not.
+# TRUE or FALSE (case-insensitive)
+#nvme-tcp.check_hdgst: FALSE
+
+# Whether to validate the PDU data digest or not.
+# TRUE or FALSE (case-insensitive)
+#nvme-tcp.check_ddgst: FALSE
 
 # Whether the dissector should put the internal OER data in the tree or if it should hide it
 # TRUE or FALSE (case-insensitive)
@@ -3726,17 +3828,21 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #pppoed.show_tags_and_lengths: FALSE
 
-# Try to dissect all length-delimited field as string.
+# Show the names of message, field, enum and enum_value. Show the wire type and field number format of field. Show value nodes of field and enum_value.
 # TRUE or FALSE (case-insensitive)
-#protobuf.try_dissect_all_length_delimited_field_as_string: FALSE
+#protobuf.show_details: FALSE
 
-# Try to dissect length-delimited field as repeated.
+# Show all fields of bytes type as string. For example ETCD string
 # TRUE or FALSE (case-insensitive)
-#protobuf.try_dissect_length_delimited_field_as_repeated: FALSE
+#protobuf.bytes_as_string: FALSE
 
-# Try to show all possible field types for each field according to wire type.
+# Try to dissect all undefined length-delimited fields as string.
 # TRUE or FALSE (case-insensitive)
-#protobuf.show_all_possible_field_types: FALSE
+#protobuf.try_dissect_as_string: FALSE
+
+# Try to show all possible field types for each undefined field according to wire type.
+# TRUE or FALSE (case-insensitive)
+#protobuf.show_all_types: FALSE
 
 # Properly translates vendor specific opcodes
 # One of: Unknown vendor, Eastman Kodak, Canon, Nikon, Casio EX-F1, Microsoft / MTP, Olympus E series
@@ -3881,12 +3987,12 @@ capture.device: Wi-Fi: en0
 #rlc-nr.call_pdcp_for_srb: TRUE
 
 # Call PDCP dissector for UL user-plane PDUs.  Note that without reassembly, it canonly be called for complete PDUs (i.e. not segmented over RLC)
-# One of: Off, 12-bit SN, 18-bit SN
+# One of: Off, 12-bit SN, 18-bit SN, Use signalled value
 # (case-insensitive).
 #rlc-nr.call_pdcp_for_ul_drb: Off
 
 # Call PDCP dissector for DL user-plane PDUs.  Note that without reassembly, it canonly be called for complete PDUs (i.e. not segmented over RLC)
-# One of: Off, 12-bit SN, 18-bit SN
+# One of: Off, 12-bit SN, 18-bit SN, Use signalled value
 # (case-insensitive).
 #rlc-nr.call_pdcp_for_dl_drb: Off
 
@@ -3897,6 +4003,10 @@ capture.device: Wi-Fi: en0
 # When enabled, if data is not present, don't report as an error, but instead add expert info to indicate that headers were omitted
 # TRUE or FALSE (case-insensitive)
 #rlc-nr.header_only_mode: FALSE
+
+# N.B. This should be considered experimental/incomplete, in that it doesn't try to discard reassembled state when reestablishmenment happens, or in certain packet-loss cases
+# TRUE or FALSE (case-insensitive)
+#rlc-nr.reassemble_um_frames: FALSE
 
 # Whether the RPC dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
@@ -4147,6 +4257,10 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #sctp.tsn_analysis: TRUE
 
+# Match verification tags(CPU intense)
+# TRUE or FALSE (case-insensitive)
+#sctp.association_index: FALSE
+
 # Dissect upper layer protocols
 # TRUE or FALSE (case-insensitive)
 #sctp.ulp_dissection: TRUE
@@ -4309,6 +4423,11 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #smpp.reassemble_smpp_over_tcp: TRUE
 
+# Whether to decode the SMS contents when DCS is equal to 0 (zero).
+# One of: None, ASCII, IA5, ISO-8859-1, ISO-8859-5, ISO-8859-8, UCS2
+# (case-insensitive).
+#smpp.decode_sms_over_smpp: None
+
 # Whether the SMTP dissector should reassemble command and response lines spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
 #smtp.desegment_lines: TRUE
@@ -4369,6 +4488,30 @@ capture.device: Wi-Fi: en0
 # Inverter system encryption key
 # A string
 #solaredge.system_encryption_key: 
+
+# SOME/IP Port Ranges UDP.
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#someip.ports.udp: 
+
+# SOME/IP Port Ranges TCP.
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#someip.ports.tcp: 
+
+# Reassemble SOME/IP-TP segments
+# TRUE or FALSE (case-insensitive)
+#someip.reassemble_tp: TRUE
+
+# Should the SOME/IP Dissector use the payload dissector?
+# TRUE or FALSE (case-insensitive)
+#someip.payload_dissector_activated: FALSE
+
+# SOME/IP Ignore Port Ranges UDP. These ports are not automatically added by the SOME/IP-SD.
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#someipsd.ports.udp.ignore: 
+
+# SOME/IP Ignore Port Ranges TCP. These ports are not automatically added by the SOME/IP-SD.
+# A string denoting an positive integer range (e.g., "1-20,30-40")
+#someipsd.ports.tcp.ignore: 
 
 # Whether the SoulSeek dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
@@ -4678,10 +4821,6 @@ capture.device: Wi-Fi: en0
 # TRUE or FALSE (case-insensitive)
 #tipc.desegment: TRUE
 
-# Semicolon-separated list of private RSA keys used for TLS decryption. Used by versions of Wireshark prior to 1.6
-# A string
-#tls.keys_list: 
-
 # Redirect TLS debug to the file specified. Leave empty to disable debugging or use "-" to redirect output to stderr.
 # A path to a file
 #tls.debug_file: 
@@ -4940,6 +5079,16 @@ capture.device: Wi-Fi: en0
 # Whether the WINS-Replication dissector should reassemble messages spanning multiple TCP segments. To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
 #winsrepl.reassemble: TRUE
+
+# Whether the IP dissector should dissect decrypted transport data.
+# TRUE or FALSE (case-insensitive)
+#wg.dissect_packet: TRUE
+
+# The path to the file which contains a list of secrets in the following format:
+# "<key-type> = <base64-encoded-key>" (without quotes, leading spaces and spaces around '=' are ignored).
+# <key-type> is one of: LOCAL_STATIC_PRIVATE_KEY, REMOTE_STATIC_PUBLIC_KEY, LOCAL_EPHEMERAL_PRIVATE_KEY or PRESHARED_KEY.
+# A path to a file
+#wg.keylog_file: 
 
 # Whether the wow dissector should reassemble messages spanning multiple TCP segments.  To use this option, you must also enable "Allow subdissectors to reassemble TCP streams" in the TCP protocol settings.
 # TRUE or FALSE (case-insensitive)
