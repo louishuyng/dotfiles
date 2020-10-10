@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+spacebar -m config status_bar_text_font         "Hack:Bold:12.0"
+spacebar -m config status_bar_icon_font         "Font Awesome 5 Free:Regular:12.0"
+spacebar -m config status_bar_background_color  0xffff
+spacebar -m config status_bar_foreground_color  0xff20C20E
+spacebar -m config status_bar_space_icon_strip  " Code" " Staging" " Social" " Browser" " Chill" " Extra"    
+spacebar -m config status_bar_power_icon_strip   
+spacebar -m config status_bar_space_icon        
+spacebar -m config status_bar_clock_icon        
+spacebar -m config status_bar_clock_format      "%d/%m/%y %R"
+
+echo "spacebar configuration loaded.."

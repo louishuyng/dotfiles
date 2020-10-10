@@ -1,0 +1,4 @@
+_mac_apps=( ${(Q)"${(z)$(<<\EO:_mac_apps
+'/Applications/Alacritty.app' '/Applications/Brave Browser.app' '/Applications/CleanMyMac X.app' '/Applications/MySQLWorkbench.app' '/Applications/Notion.app' '/Applications/Robo 3T.app' '/Applications/Safari.app' '/Applications/Sketch.app' '/Applications/Skype.app' '/Applications/Slack.app' '/Applications/Sourcetree.app' '/Applications/Spotify.app' '/Applications/Visual Studio Code.app' '/Applications/zoom.us.app' '/Applications/Übersicht.app' '/Applications/Cisco Packet Tracer/Cisco Packet Tracer.app'
+EO:_mac_apps
+)}"} )
