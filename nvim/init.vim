@@ -23,7 +23,6 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'troydm/zoomwintab.vim'
 
 """"""""""""""""""""""""""SOURCE MANAGEMENT""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
