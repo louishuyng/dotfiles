@@ -4,16 +4,15 @@ let mapleader=','
 " ==================================================== Plugin
 call plug#begin(expand('~/.config/nvim/plugged'))
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
-Plug 'victorze/foo'
+Plug 'joshdick/onedark.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
+Plug 'sheerun/vim-polyglot'
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 Plug 'tpope/vim-commentary'
-Plug 'pechorin/any-jump.vim'
 Plug 'joequery/stupid-easymotion'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
@@ -34,25 +33,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 
-""""""""""""""""""""""""""JS""""""""""""""""""""""""""
-Plug 'tasn/vim-tsx'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'gorodinskiy/vim-coloresque'
-Plug 'tpope/vim-haml'
-Plug 'mattn/emmet-vim'
-Plug 'jelera/vim-javascript-syntax'
-
-""""""""""""""""""""""""""RAILS""""""""""""""""""""""""""
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-projectionist'
-Plug 'thoughtbot/vim-rspec'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-
 """"""""""""""""""""""""""OTHERS""""""""""""""""""""""""""
 Plug 'cohama/lexima.vim'
 Plug 'wincent/scalpel'
@@ -62,7 +42,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'kamykn/spelunker.vim'
 Plug 'majutsushi/tagbar'
 Plug 'benmills/vimux' "Vi + Tmux
-Plug 'pechorin/any-jump.vim'
 
 call plug#end()
 
@@ -135,9 +114,9 @@ set background=dark
 set termguicolors
 set t_Co=256
 
-colorscheme abyss
+colorscheme onedark
 
-" " ==================================================== Highlight
+" ==================================================== Highlight
 hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
 hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
 hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
