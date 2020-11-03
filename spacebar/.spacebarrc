@@ -7,7 +7,7 @@ spacebar -m config status_bar_foreground_color  0xffffffff
 spacebar -m config power_icon_color   0xffcd950c
 spacebar -m config battery_icon_color 0xffd75f5f
 spacebar -m config dnd_icon_color     0xffa8a8a8
-spacebar -m config status_bar_space_icon_strip  " code" " staging" " social" " browser" " chill" " extra"    
+spacebar -m config status_bar_space_icon_strip  " code" " staging" " social" " browser" " chill"    
 spacebar -m config status_bar_power_icon_strip   
 spacebar -m config status_bar_space_icon        
 spacebar -m config status_bar_clock_icon        

@@ -4,10 +4,15 @@ let mapleader=','
 " ==================================================== Plugin
 call plug#begin(expand('~/.config/nvim/plugged'))
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
-Plug 'joshdick/onedark.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'w0rp/ale'
-Plug 'sheerun/vim-polyglot'
+Plug 'ayu-theme/ayu-vim'
+Plug 'caksoylar/vim-mysticaltutor'
+Plug 'itchyny/lightline.vim'
+
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -24,6 +29,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 """"""""""""""""""""""""""SOURCE MANAGEMENT""""""""""""""""""""""""""
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 "Config Fugitive
 if exists("*fugitive#statusline")
@@ -48,7 +54,6 @@ call plug#end()
 " ==================================================== Config Plugin
 source ~/.config/nvim/config/ale.vim
 source ~/.config/nvim/config/anyjump.vim
-source ~/.config/nvim/config/lightline.vim
 source ~/.config/nvim/config/buffer.vim
 source ~/.config/nvim/config/coc.vim
 source ~/.config/nvim/config/fzf.vim
@@ -59,6 +64,7 @@ source ~/.config/nvim/config/ruby.vim
 source ~/.config/nvim/config/scalpel.vim
 source ~/.config/nvim/config/session.vim
 source ~/.config/nvim/config/spelunker.vim
+source ~/.config/nvim/config/lightline.vim
 source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 
@@ -87,6 +93,7 @@ set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
+set cursorline
 set guicursor=n:blinkon1        "Fix bug cursor of COC
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
@@ -110,43 +117,18 @@ endif
 set mouse=a
 
 " ==================================================== Theme
-set background=dark
 set termguicolors
-set t_Co=256
-
-colorscheme onedark
-
-" ==================================================== Highlight
-hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
-hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
-hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
-hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
-hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+colorscheme mysticaltutor
+hi Normal ctermbg=none
+hi Terminal ctermbg=none
+hi Terminal guibg=none
 hi Normal guibg=none
-hi EndOfBuffer guibg=none
-hi FloatermBorder guifg=#55E579
-hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
-hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
-hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
-hi CocExplorerFileDirectoryExpanded guifg=#C3526E
-hi CocExplorerFileDirectory guifg=#61CE91
-hi CocExplorerNormalFloat guibg=#0b0c0e
 
 " ==================================================== Turn Off Swap Files
 set noswapfile
 set nobackup
 set nowritebackup
 set nowb
-
-" ==================================================== Persistent Undo
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
-endif
 
 " ==================================================== Indentation
 set autoindent
@@ -202,9 +184,3 @@ set incsearch       " Find the next match as we type the search
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 set hlsearch
-
-"Insert Line with out go into insert mode
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
-
-" ==================================================== Rainbow

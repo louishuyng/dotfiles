@@ -37,7 +37,6 @@ let s:p.tabline.right = copy(s:p.normal.right)
 let s:p.normal.error = [ [ s:base02, s:yellow ] ]
 let s:p.normal.warning = [ [ s:yellow, s:base01 ] ]
 
-let g:lightline#colorscheme#nord#palette = lightline#colorscheme#flatten(s:p)
 
 set laststatus=2
 let g:lightline = {
