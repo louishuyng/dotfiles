@@ -1,5 +1,5 @@
-noremap <leader>z :bp<CR>
-noremap <leader>x :bn<CR>
+noremap <leader>z :bn<CR>
+noremap <leader>x :bp<CR>
 
 nnoremap <silent> <leader>b :Buffers<CR>
 

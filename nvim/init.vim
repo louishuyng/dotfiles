@@ -8,8 +8,12 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'w0rp/ale'
 Plug 'ayu-theme/ayu-vim'
 Plug 'caksoylar/vim-mysticaltutor'
-Plug 'itchyny/lightline.vim'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -54,7 +58,9 @@ call plug#end()
 
 " ==================================================== Config Plugin
 source ~/.config/nvim/config/ale.vim
+source ~/.config/nvim/config/airline.vim
 source ~/.config/nvim/config/anyjump.vim
+source ~/.config/nvim/config/barbar.vim
 source ~/.config/nvim/config/buffer.vim
 source ~/.config/nvim/config/coc.vim
 source ~/.config/nvim/config/fzf.vim
@@ -65,7 +71,6 @@ source ~/.config/nvim/config/ruby.vim
 source ~/.config/nvim/config/scalpel.vim
 source ~/.config/nvim/config/session.vim
 source ~/.config/nvim/config/spelunker.vim
-source ~/.config/nvim/config/lightline.vim
 source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 
