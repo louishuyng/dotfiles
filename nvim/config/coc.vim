@@ -1,20 +1,35 @@
 let g:coc_global_extensions = [
-\ 'coc-css',
-\ 'coc-json',
-\ 'coc-snippets',
-\ 'coc-pairs',
-\ 'coc-tsserver',
-\ 'coc-python',
-\ 'coc-git',
-\ 'coc-go',
-\ 'coc-eslint',
-\ 'coc-tslint',
-\ 'coc-pairs',
-\ 'coc-vimlsp',
-\ 'coc-emmet',
-\ 'coc-prettier',
-\ 'coc-ultisnips'
-\ ]
+  \ 'coc-snippets',
+  \ 'coc-actions',
+  \ 'coc-sh',
+  \ 'coc-java-debug',
+  \ 'coc-java',
+  \ 'coc-lists',
+  \ 'coc-emmet',
+  \ 'coc-tasks',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-floaterm',
+  \ 'coc-fzf-preview',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-cssmodules',
+  \ 'coc-stylelintplus',
+  \ 'coc-emoji',
+  \ 'coc-bookmark',
+  \ 'coc-yaml',
+  \ 'coc-python',
+  \ 'coc-pyright',
+  \ 'coc-explorer',
+  \ 'coc-svg',
+  \ 'coc-prettier',
+  \ 'coc-vimlsp',
+  \ 'coc-xml',
+  \ 'coc-yank',
+  \ 'coc-json',
+  \ 'coc-marketplace',
+  \ ]
+
 autocmd CursorHold * silent call CocActionAsync('highlight')
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
@@ -41,22 +56,22 @@ nnoremap <leader>rw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
 endfunction
-set updatetime=300
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-" always show signcolumns
-set signcolumn=yes
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -65,13 +80,16 @@ endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" use `:OR` for organize import of current buffer
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 augroup mygroup
@@ -82,5 +100,22 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Delay load coc config again, which fix the bug with coc completion does not work at first time start
-autocmd VimEnter * call timer_start(200, { tid -> execute('source ~/.config/nvim/config/coc.vim')})
+" Explorer
+let g:coc_explorer_global_presets = {
+\   'floating': {
+\      'position': 'floating',
+\   },
+\   'floatingLeftside': {
+\      'position': 'floating',
+\      'floating-position': 'left-center',
+\      'floating-width': 30,
+\   },
+\   'floatingRightside': {
+\      'position': 'floating',
+\      'floating-position': 'right-center',
+\      'floating-width': 30,
+\   },
+\   'simplify': {
+\     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }

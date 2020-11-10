@@ -1,6 +1,7 @@
+rn
+trycatch
 error
 ref
-rn
 rc
 import
 switch
@@ -12,7 +13,6 @@ throw
 while
 class
 public
-trycatch
 function
 set
 get

@@ -9,6 +9,7 @@ Plug 'w0rp/ale'
 Plug 'ayu-theme/ayu-vim'
 Plug 'caksoylar/vim-mysticaltutor'
 Plug 'itchyny/lightline.vim'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -117,12 +118,18 @@ endif
 set mouse=a
 
 " ==================================================== Theme
-set termguicolors
-colorscheme mysticaltutor
-hi Normal ctermbg=none
-hi Terminal ctermbg=none
-hi Terminal guibg=none
-hi Normal guibg=none
+hi Comment cterm=italic
+let g:nvcode_termcolors=256
+
+syntax on
+colorscheme nvcode
+
+
+" checks if your terminal has 24-bit color support
+if (has("termguicolors"))
+    set termguicolors
+    hi LineNr ctermbg=NONE guibg=NONE
+endif
 
 " ==================================================== Turn Off Swap Files
 set noswapfile
