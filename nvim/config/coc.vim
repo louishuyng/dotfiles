@@ -1,34 +1,21 @@
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-actions',
-  \ 'coc-sh',
-  \ 'coc-java-debug',
-  \ 'coc-java',
-  \ 'coc-lists',
-  \ 'coc-emmet',
-  \ 'coc-tasks',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-floaterm',
-  \ 'coc-fzf-preview',
-  \ 'coc-html',
-  \ 'coc-css',
-  \ 'coc-cssmodules',
-  \ 'coc-stylelintplus',
-  \ 'coc-emoji',
-  \ 'coc-bookmark',
-  \ 'coc-yaml',
-  \ 'coc-python',
-  \ 'coc-pyright',
-  \ 'coc-explorer',
-  \ 'coc-svg',
-  \ 'coc-prettier',
-  \ 'coc-vimlsp',
-  \ 'coc-xml',
-  \ 'coc-yank',
-  \ 'coc-json',
-  \ 'coc-marketplace',
-  \ ]
+let g:global_extensions = [
+  \'coc-fzf-preview',
+  \'coc-explorer',
+  \'coc-ultisnips',
+  \'coc-highlight',
+  \'coc-tabnine',
+  \'coc-phpls',
+  \'coc-json',
+  \'coc-tsserver',
+  \'coc-css',
+  \'coc-html',
+  \'coc-solargraph',
+  \'coc-yaml',
+  \'coc-python',
+  \'coc-svg',
+  \'coc-flow',
+  \'coc-go'
+  \]
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
@@ -62,9 +49,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -119,3 +103,6 @@ let g:coc_explorer_global_presets = {
 \     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
 \   }
 \ }
+
+" Delay load coc config again, which fix the bug with coc completion does not work at first time start
+autocmd VimEnter * call timer_start(200, { tid -> execute('source ~/.config/nvim/config/coc.vim')})

@@ -4,16 +4,12 @@ let mapleader=','
 " ==================================================== Plugin
 call plug#begin(expand('~/.config/nvim/plugged'))
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
-Plug 'ryanoasis/vim-devicons'
 Plug 'w0rp/ale'
-Plug 'ayu-theme/ayu-vim'
-Plug 'caksoylar/vim-mysticaltutor'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -33,7 +29,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-""""""""""""""""""""""""""SOURCE MANAGEMENT""""""""""""""""""""""""""
+""""""""""""""""""""""""""SOURCE MANAGEMENT"""""""""""""""""""""""""" Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 "Config Fugitive
@@ -58,9 +54,6 @@ call plug#end()
 
 " ==================================================== Config Plugin
 source ~/.config/nvim/config/ale.vim
-source ~/.config/nvim/config/airline.vim
-source ~/.config/nvim/config/anyjump.vim
-source ~/.config/nvim/config/barbar.vim
 source ~/.config/nvim/config/buffer.vim
 source ~/.config/nvim/config/coc.vim
 source ~/.config/nvim/config/fzf.vim
@@ -71,6 +64,7 @@ source ~/.config/nvim/config/ruby.vim
 source ~/.config/nvim/config/scalpel.vim
 source ~/.config/nvim/config/session.vim
 source ~/.config/nvim/config/spelunker.vim
+source ~/.config/nvim/config/lightline.vim
 source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 
@@ -99,7 +93,6 @@ set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
-set cursorline
 set guicursor=n:blinkon1        "Fix bug cursor of COC
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
@@ -123,18 +116,32 @@ endif
 set mouse=a
 
 " ==================================================== Theme
-hi Comment cterm=italic
-let g:nvcode_termcolors=256
+set background=dark
+set termguicolors
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 
-syntax on
-colorscheme nvcode
-
-
-" checks if your terminal has 24-bit color support
 if (has("termguicolors"))
-    set termguicolors
-    hi LineNr ctermbg=NONE guibg=NONE
+  set termguicolors
+  hi LineNr ctermbg=NONE guibg=NONE guifg=#5eacd3
 endif
+
+" ==================================================== Highlight
+hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
+hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
+hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
+hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+hi FloatermBorder guifg=#55E579
+hi netrwDir guifg=#5eacd3
+hi qfFileName guifg=#aed75f
+hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
+hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
+hi CocExplorerFileDirectoryExpanded guifg=#C3526E
+hi CocExplorerFileDirectory guifg=#61CE91
+hi CocExplorerNormalFloat guibg=#0b0c0e
 
 " ==================================================== Turn Off Swap Files
 set noswapfile

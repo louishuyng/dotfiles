@@ -60,7 +60,6 @@ call fzf#run({
       \ 'options': '-m ' . l:fzf_files_options,
       \ 'down':    '40%' })
 endfunction
-@annata83
 
 nnoremap <silent> <space>h :FZFMru<Cr>
 nnoremap <silent> <c-f> :call Fzf_dev()<CR>

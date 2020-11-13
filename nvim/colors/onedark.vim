@@ -22,7 +22,7 @@
 " |--------------+--------------------+---------|
 " | Dark Red     | rgb(190, 80, 70)   | #be5046 |
 " |--------------+--------------------+---------|
-" | Green        | rgb(152, 195, 121) | #98c379 |
+" | Green        | rgb152, 195, 121) | #98c379 |
 " |--------------+--------------------+---------|
 " | Light Yellow | rgb(229, 192, 123) | #e5c07b |
 " |--------------+--------------------+---------|
@@ -233,7 +233,7 @@ call s:h("SignColumn", {}) " column where signs are displayed
 call s:h("IncSearch", { "fg": s:yellow, "bg": s:comment_grey }) " 'incsearch' highlighting; also used for the text replaced with ":s///c"
 call s:h("LineNr", { "fg": s:gutter_fg_grey }) " Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 call s:h("CursorLineNr", {}) " Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-call s:h("MatchParen", { "fg": s:blue, "gui": "underline" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
+call s:h("MatchParen", { "fg": s:blue, "gui": "underline", "cterm": "underline" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
 call s:h("ModeMsg", {}) " 'showmode' message (e.g., "-- INSERT --")
 call s:h("MoreMsg", {}) " more-prompt
 call s:h("NonText", { "fg": s:special_grey }) " '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
@@ -314,16 +314,24 @@ call s:h("goTypeName", { "fg": s:yellow })
 call s:h("goDeclType", { "fg": s:cyan })
 call s:h("goTypeDecl", { "fg": s:purple })
 
-" HTML
-call s:h("htmlTitle", { "fg": s:white })
+" HTML (keep consistent with Markdown, below)
 call s:h("htmlArg", { "fg": s:dark_yellow })
+call s:h("htmlBold", { "fg": s:dark_yellow, "gui": "bold", "cterm": "bold" })
 call s:h("htmlEndTag", { "fg": s:white })
-call s:h("htmlH1", { "fg": s:white })
-call s:h("htmlLink", { "fg": s:purple })
+call s:h("htmlH1", { "fg": s:red })
+call s:h("htmlH2", { "fg": s:red })
+call s:h("htmlH3", { "fg": s:red })
+call s:h("htmlH4", { "fg": s:red })
+call s:h("htmlH5", { "fg": s:red })
+call s:h("htmlH6", { "fg": s:red })
+call s:h("htmlItalic", { "fg": s:purple, "gui": "italic", "cterm": "italic" })
+call s:h("htmlLink", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
 call s:h("htmlSpecialChar", { "fg": s:dark_yellow })
 call s:h("htmlSpecialTagName", { "fg": s:red })
 call s:h("htmlTag", { "fg": s:white })
+call s:h("htmlTagN", { "fg": s:red })
 call s:h("htmlTagName", { "fg": s:red })
+call s:h("htmlTitle", { "fg": s:white })
 
 " JavaScript
 call s:h("javaScriptBraces", { "fg": s:white })
@@ -398,30 +406,30 @@ call s:h("lessVariable", { "fg": s:purple })
 call s:h("lessAmpersandChar", { "fg": s:white })
 call s:h("lessClass", { "fg": s:dark_yellow })
 
-" Markdown
+" Markdown (keep consistent with HTML, above)
+call s:h("markdownBlockquote", { "fg": s:comment_grey })
+call s:h("markdownBold", { "fg": s:dark_yellow, "gui": "bold", "cterm": "bold" })
 call s:h("markdownCode", { "fg": s:green })
 call s:h("markdownCodeBlock", { "fg": s:green })
 call s:h("markdownCodeDelimiter", { "fg": s:green })
-call s:h("markdownHeadingDelimiter", { "fg": s:red })
-call s:h("markdownRule", { "fg": s:comment_grey })
-call s:h("markdownHeadingRule", { "fg": s:comment_grey })
 call s:h("markdownH1", { "fg": s:red })
 call s:h("markdownH2", { "fg": s:red })
 call s:h("markdownH3", { "fg": s:red })
 call s:h("markdownH4", { "fg": s:red })
 call s:h("markdownH5", { "fg": s:red })
 call s:h("markdownH6", { "fg": s:red })
-call s:h("markdownIdDelimiter", { "fg": s:purple })
+call s:h("markdownHeadingDelimiter", { "fg": s:red })
+call s:h("markdownHeadingRule", { "fg": s:comment_grey })
 call s:h("markdownId", { "fg": s:purple })
-call s:h("markdownBlockquote", { "fg": s:comment_grey })
+call s:h("markdownIdDeclaration", { "fg": s:blue })
+call s:h("markdownIdDelimiter", { "fg": s:purple })
 call s:h("markdownItalic", { "fg": s:purple, "gui": "italic", "cterm": "italic" })
-call s:h("markdownBold", { "fg": s:dark_yellow, "gui": "bold", "cterm": "bold" })
+call s:h("markdownLinkDelimiter", { "fg": s:purple })
+call s:h("markdownLinkText", { "fg": s:blue })
 call s:h("markdownListMarker", { "fg": s:red })
 call s:h("markdownOrderedListMarker", { "fg": s:red })
-call s:h("markdownIdDeclaration", { "fg": s:blue })
-call s:h("markdownLinkText", { "fg": s:blue })
-call s:h("markdownLinkDelimiter", { "fg": s:white })
-call s:h("markdownUrl", { "fg": s:purple })
+call s:h("markdownRule", { "fg": s:comment_grey })
+call s:h("markdownUrl", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
 
 " Perl
 call s:h("perlFiledescRead", { "fg": s:green })
@@ -552,6 +560,12 @@ call s:h("SignifySignDelete", { "fg": s:red })
 call s:h("NeomakeWarningSign", { "fg": s:yellow })
 call s:h("NeomakeErrorSign", { "fg": s:red })
 call s:h("NeomakeInfoSign", { "fg": s:blue })
+
+" plasticboy/vim-markdown (keep consistent with Markdown, above)
+call s:h("mkdDelimiter", { "fg": s:purple })
+call s:h("mkdHeading", { "fg": s:red })
+call s:h("mkdLink", { "fg": s:blue })
+call s:h("mkdURL", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
 
 " tpope/vim-fugitive
 call s:h("diffAdded", { "fg": s:green })
