@@ -10,6 +10,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'ajh17/Spacegray.vim'
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -27,6 +28,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+""""""""""""""""""""""""""LS-SERVER""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 """"""""""""""""""""""""""SOURCE MANAGEMENT"""""""""""""""""""""""""" Plug 'w0rp/ale'
@@ -118,12 +121,14 @@ set mouse=a
 " ==================================================== Theme
 set background=dark
 set termguicolors
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+packadd! dracula
+syntax enable
+colorscheme spacegray
 
 if (has("termguicolors"))
   set termguicolors
   hi LineNr ctermbg=NONE guibg=NONE guifg=#5eacd3
+  hi VertSplit guifg=#5eacd3 guibg=NONE ctermbg=NONE
 endif
 
 " ==================================================== Highlight
