@@ -1,11 +1,15 @@
-/Users/louis/.spacebarrc
+/Users/louis/.zshrc
+/Users/louis/.config/skhdrc/.skhdrc
+/Users/louis/.skhdrc
 /Users/louis/.yabairc
+/Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx
+/Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/auth-store.ts
+/Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts
+/Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useLocalCurrencyContext.ts
+/Users/louis/.spacebarrc
 /Users/louis/.shutdown
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx
-/Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/login-password-screen/login-password-screen.tsx
-/Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/auth-store.ts
-/Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-verify-screen/register-verify-screen.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/.env
 /Users/louis/Dev/Projects/komi/komi-mobile/package.json
@@ -70,7 +74,6 @@
 /Users/louis/Dev/Projects/komi/komi-mobile/app/utils/local-currency-provider.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/app/utils/local-currency-provider.ts
 /Users/louis/Dev/Projects/komi/komi-mobile/app/components/remote-config-provider/remote-config-provider.tsx
-/Users/louis/.skhdrc
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useRemoteConfig.ts
 /Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useVideoContext.ts
@@ -96,7 +99,6 @@
 /Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/PreviewStep/PreviewStep.tsx
 /Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/PreviewStep/PreviewStep.scss
 /Users/louis/.tmux.conf
-/Users/louis/.config/skhdrc/.skhdrc
 /Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-profile-screen/talent-profile-screen.tsx
 /Users/louis/Dev/Projects/komi/komi-talent/node_modules/@ant-design/icons/lib/icons/UserOutlined.d.ts
@@ -124,7 +126,6 @@
 /Users/louis/Dev/Projects/komi/komi-talent/src/pages/Profile/ProfileGallery/UploadPhotosAndVideos.tsx
 /Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx
 /Users/louis/.tmux.conf.local
-/Users/louis/.zshrc
 /Users/louis/.tmux/.tmux.conf.local
 /Users/louis/.tmux/.tmux.conf
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx

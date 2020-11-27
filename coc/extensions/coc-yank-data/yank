@@ -1,21 +1,3 @@
-62dfbe9c32ad10ac2a89f3bcbf9eff21|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|45|42|v|typescriptreact
-	 as string
-1af0389838508d7016a9841eb6273962|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|50|13|v|typescriptreact
-	currency
-2954e92a9b4d0e998fe4893f8141649a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|13|v|typescriptreact
-	else
-fdf09447c14127f9a517ee8fe839a485|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|65|11|V|typescriptreact
-	          {
-e70c4df10ef0983b9c8c31bd06b2a2c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|67|24|v|typescriptreact
-	return
-231de15c47d5af27e6b2dd38698fe929|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|72|24|v|typescriptreact
-	"can not get ip geo location")
-78e731027d8fd50ed642340b7c9a63b3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|72|26|v|typescriptreact
-	message
-db2ca93906fdc4ca06b575ebcc0548d7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|62|16|V|typescriptreact
-	          return
-2a5693cac2fa2efd304fbfcbfc08aec4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|65|25|V|typescriptreact
-	          console.log('hi')
 cfe05f3193028800174007cc548e2ce8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|25|v|typescriptreact
 	'hi'
 634db0e17140c1eb61cb993455399d04|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|1|V|typescriptreact
@@ -1978,3 +1960,23 @@ a0fe2d059e1d49ec883f7f32aa0aeea1|file:///Users/louis/.spacebarrc|6|53|v|sh
 	20C20E
 25d7b789ea6e14c18076f1a6971fa6e2|file:///Users/louis/.yabairc|12|23|v|sh
 	808080
+1cb7a95d554bc200f5ae2080e489c76d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|31|V|typescriptreact
+	          console.log(currency)
+2eb4ffc8abc30147a08b85e59c630cf4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|1806|26|V|typescript
+	      console.log(response)
+27f1d99d2a803a76910b232d06bc47f9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|59|12|V|typescriptreact
+	          co
+51c8d3a225213d9103dacfa30ddc01a4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|62|28|V|typescriptreact
+	        console.log(currency)
+52ffda1f936c98c3f2d068a786762d73|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|68|29|V|typescriptreact
+	          console.log(result)
+d8dcde8ab7a4602bed729e7666f7ff01|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|70|35|V|typescriptreact
+	          console.log(exchangeRate)
+9b0285f35f435d27ea835ebb4762afcf|file:///Users/louis/.yabairc|49|1|V|sh
+	sudo yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+bb5bf357fb93cf8f1f922573e11917bb|file:///Users/louis/.skhdrc|88|1|V|
+	    /usr/bin/env osascript <<< \
+	        "display notification \"Mother fucker restart\" with title \"Louis Yabai\""; \
+	    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+6c5b6214838ff084d5208dbfbd7b2339|file:///Users/louis/.skhdrc|90|5|v|
+	launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai
