@@ -1,921 +1,1980 @@
-9d7614c324e606b1944bf3a5ada28a9b|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|71|9|v|typescriptreact
-	setupPayoutForm.getFieldError(field)
-54a477d782e65cdd562aa0d2002ec3f4|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|73|36|V|typescriptreact
-	        setupPayoutForm.getFieldError(field).length > 0 || !values[field]
-256b8d1499d2421a028680e67a621728|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|70|55|V|typescriptreact
-	      console.log(setupPayoutForm.getFieldError(field));
-90e2dbec4453576f8199a6b60545c0ec|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|70|61|v|typescriptreact
-	 || !values[field];
-07821467083305e2f367eea502462fec|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|158|18|v|typescriptreact
-	isUSCitizen
-bd1df9c76b999681f2ea7debda6f8ce8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|125|1|V|typescriptreact
-	          {isLoading && (
-	            <ActivityIndicator
-	              color={color.themeColor.primary}
-	              style={styles.activityIndicator}
-	              size="large"
+62dfbe9c32ad10ac2a89f3bcbf9eff21|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|45|42|v|typescriptreact
+	 as string
+1af0389838508d7016a9841eb6273962|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|50|13|v|typescriptreact
+	currency
+2954e92a9b4d0e998fe4893f8141649a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|13|v|typescriptreact
+	else
+fdf09447c14127f9a517ee8fe839a485|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|65|11|V|typescriptreact
+	          {
+e70c4df10ef0983b9c8c31bd06b2a2c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|67|24|v|typescriptreact
+	return
+231de15c47d5af27e6b2dd38698fe929|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|72|24|v|typescriptreact
+	"can not get ip geo location")
+78e731027d8fd50ed642340b7c9a63b3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|72|26|v|typescriptreact
+	message
+db2ca93906fdc4ca06b575ebcc0548d7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|62|16|V|typescriptreact
+	          return
+2a5693cac2fa2efd304fbfcbfc08aec4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|65|25|V|typescriptreact
+	          console.log('hi')
+cfe05f3193028800174007cc548e2ce8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|25|v|typescriptreact
+	'hi'
+634db0e17140c1eb61cb993455399d04|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|1|V|typescriptreact
+	            console.log(ipGeoLocation)
+b5aadbd307baea6b8fb774addc61878a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|48|15|V|typescriptreact
+	          KEY_STORAGE + ipGeoLocation?.ip || "",
+a3c80f4418cd949de0727c7531d3f2fa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|112|1|V|typescript
+	  .actions((self) => ({
+	    getIpGeoLocation: flow(function* () {
+	      const result = yield self.environment.api.getIpGeoLocation()
+	      if (result.kind === "ok") {
+	        return result.data
+	      }
+	      return false
+	    }),
+	  }))
+68f3d698a80b81f3bd656efac90805d5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|39|7|v|typescriptreact
+	paymentStore
+efd1c61c9972c180f561a3da2c52b5cf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|21|11|v|typescriptreact
+	"USD"
+7f4f2dc080b65a70fdcc2636f639064f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|22|12|v|typescriptreact
+	US Dollar"
+add6756519f27a8d71ba67ed2309718e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|42|27|v|typescriptreact
+	setIpGeoLocation
+e44d2b8a3bae8694ddca2166db74ceae|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|1806|38|V|typescript
+	    console.log(CONFIG.API_KEY_IP_GEO_LOCATION)
+db5bfc425dd99f174878061765adcd2e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|1806|1|V|typescript
+	    const response: ApiResponse<any> = await this.apisaucePublic.get(
+	      `https://api.ipgeolocation.io/ipgeo?apiKey=${CONFIG.API_KEY_IP_GEO_LOCATION}`,
+	    )
+	
+	    try {
+	      return { kind: "ok", data: response.data }
+	    } catch {
+	      return { kind: "bad-data" }
+	    }
+d1ce318c8b7afdb254e5f199d0c6c5db|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|1819|8|v|typescript
+	https://api.ipgeolocation.io/ipgeo?apiKey=${CONFIG.API_KEY_IP_GEO_LOCATION}
+dc371436c8f00ca866c4e2b0cb2cb4e7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|96|1|V|typescript
+	  .actions((self) => ({
+	    removePaymentMethod: flow(function* (paymentToken: string, isRefresh: boolean) {
+	      const result = yield self.environment.api.deletePaymentMethod(paymentToken)
+	      if (result.kind === "ok") {
+	        const newData: any = self.savedMethods.filter((el) => el.token !== paymentToken)
+	
+	        if (!!newData.length && isRefresh) {
+	          const result = yield self.environment.api.updateDefaultPaymentMethod(newData[0].token)
+	          result.kind === "ok" && (newData[0].default = true)
+	          self.setSelectedPayment(0)
+	        }
+	        self.savedMethods = newData
+	      }
+	      notifications.showApiError(result)
+	    }),
+	  }))
+55f091c12221bd216534f4989ad87e83|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|113|5|v|typescript
+	removePaymentMethod
+ada8fe3400d214f9e8bb6660f53e2cc9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|113|38|v|typescript
+	paymentToken: string, isRefresh: boolean
+dc59441c9c8341863775960d97e2fe11|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|114|49|v|typescript
+	deletePaymentMethod
+026d546224267e62b084cda21eb18d4a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|116|1|V|typescript
+	        const newData: any = self.savedMethods.filter((el) => el.token !== paymentToken)
+	
+	        if (!!newData.length && isRefresh) {
+	          const result = yield self.environment.api.updateDefaultPaymentMethod(newData[0].token)
+	          result.kind === "ok" && (newData[0].default = true)
+	          self.setSelectedPayment(0)
+	        }
+	        self.savedMethods = newData
+e396790ce5f3626fc64bcc72c08ebbc1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|117|7|V|typescript
+	      notifications.showApiError(result)
+b77f2b366647fad9cd40e45591edb6f2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|114|65|v|typescript
+	paymentToken
+7c0c992bd3563cde9b70a48079ef6557|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|70|1|V|typescriptreact
+	          if (ipGeoLocation) {
+	            setIpGeoLocation(ipGeoLocation)
+	            return
+	          }
+992374d8e2e24f17bebc50a6e57becd6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|57|23|v|typescriptreact
+	Exchange
+675f0a5b390892022842daad85441a14|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|55|28|v|typescriptreact
+	KEY_STORAGE
+3b1fa4f018b2334d242861faed360843|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|59|13|v|typescriptreact
+	currencyExchange
+341c739da7c1378c7ec47974afb72238|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|59|24|v|typescriptreact
+	setLocalCurrencyExchange(localCurrencyExchange)
+60cb96d11efcbfd5943ff6172ecb4d01|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|61|1|V|typescriptreact
+	        else {
+	          console.log(currencyExchange)
+	        }
+4fe3d2c4c73340955c247529d81eced3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|20|V|typescriptreact
+	        if (result) 
+b12788ede385af7bb4cf7b5d9a3d3b63|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|62|47|v|typescriptreact
+	'USD'
+92af7269aab362b95c99b7fc6f2761d6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|34|v|typescriptreact
+	ipGeoLocation?.currency?.code
+90149a48eb91ac01e1dc415b911bfd97|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|107|1|V|typescriptreact
+	                    {
+	                      backgroundColor:
+	                        headerStatus === IN_LOWER ? color.themeColor.white : color.transparent,
+	                    },
+9ca781ddee447f3f7fdf8aa86800cdaa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|106|21|V|typescriptreact
+	                    styles.navbarBtn,
+586662de468d002b166b53a98d6c1ae5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|356|1|V|typescriptreact
+	            <Button
+	              onPress={goToBookingTime}
+	              tx="common.seeTimes"
+	              disabled={content?.creator?.id === user?.id}
+	            />
+38d2bf8d7ad288f83abbc5827d839c61|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|63|9|v|typescriptreact
+	_onPressSeeAllLive
+1f95312db58aef3645ec3865b5bd04d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|110|27|v|typescriptreact
+	linearGradient
+b0ba5e7c11b4cf0a316b9b8c8fc3c73d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|125|1|V|typescriptreact
+	                  <Text
+	                    numberOfLines={1}
+	                    style={styles.name}
+	                    preset="regularS"
+	                    text={`${item.creator?.talentProfile?.firstName} ${item.creator?.talentProfile?.lastName}`}
+	                  />
+eb6d4067b8083b138e877b03f783b917|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|118|1|V|typescriptreact
+	                  <Avatar
+	                    size={"small"}
+	                    source={{ uri: item.creator?.talentProfile?.avatar }}
+	                    title={`${item?.creator?.talentProfile?.firstName || ""} ${
+	                      item?.creator?.talentProfile?.lastName || ""
+	                    }`}
+	                  />
+47729d47adb7cf9f0caf770ffbe80f70|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|112|1|V|typescriptreact
+	            <Text numberOfLines={2} style={[styles.price, ML_3, MR_3, MB_1]}>
+	              {item.name}
+	            </Text>
+62b6272e0bca336e2600f1bf3f5083f1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|27|10|v|typescriptreact
+	FastImage
+fe29b4c67ea926e0da1ab86dcb2247a3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|56|13|V|typescriptreact
+	    return <FastImage style={styles.video} source={{ uri: getFirstImage(item) }} />
+a9e4f7e098ba45314ead394184671cc7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|413|36|v|typescriptreact
+	covers
+912b16a99a3775ce256edd638aaab01c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|583|59|V|typescriptreact
+	        <View style={styles.bottomBar}>{renderBottomDetail()}</View>
+1a3cb6c46550099e7b1e1f5da3d7374f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|581|32|V|typescriptreact
+	          leftIconPress={goBack}
+c7aee70f6a7a1595e02a180368d2c68f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|5|8|v|typescriptreact
+	ReactNativeParallaxHeader
+998daf56bd123e719198a0d183372799|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|238|28|v|javascript
+	sliderGradient
+24d860ade140d7632075127b7dc592f1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|238|59|v|javascript
+	getHeaderMaxHeight
+fbcb8c1c4f9bf2200dc9ec08a230f8f8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|87|13|v|javascript
+	DEFAULT_HEADER_MAX_HEIGHT
+ec765b8ff0dfc59bee1dc80d1193c1cb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|410|28|v|typescriptreact
+	MAX_HEIGHT
+1ffd9e753c8054cc61456ac7fac1ac89|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|239|38|v|javascript
+	black
+7aadf1fecd3425c1d690c1259f2e4320|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|239|21|V|javascript
+	            start={{}}
+48d6215903dff56238e52e8891380c8f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|241|38|v|javascript
+	blue
+f07685db57c6c07656deaf7253678960|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|241|37|v|javascript
+	"black"
+9b94ac0a368973e406420b7ca392cc06|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|241|37|v|javascript
+	rgbColor
+a268046e027da4d29e1c1c27c78907ef|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|240|1|V|javascript
+	            start={{ x: 1, y: 0.2 }}
+	            end={{ x: 1, y: 1 }}
+fdeea976c990e0c6455819b986497112|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|33|V|typescriptreact
+	        console.log(result.rates)
+b2a4ca8e10c74eb142694e861b484363|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|64|V|typescriptreact
+	        console.log(result.rates[ipGeoLocation?.currency?.code])
+9cba6e7edccfaaa659efa765b60e00ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|10|V|typescriptreact
+	        console.log(ipGeoLocation?.currency?.code)
+c042098f1067c57dcb3cd578ac42ab6f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|44|12|v|typescriptreact
+	localCurrencyExchange
+fe414a498414159ff55d704ba08d9573|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|11|V|typescriptreact
+	          save(combineKey, ipGeoLocation?.currency)
+083e839f47eaf120e4b3ba63322007bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|87|1|V|typescriptreact
+	        } catch (e) {
+	          console.warn("can not get ip geo location")
+	        }
+2fb3155fbb20609dfc4f9a39aef6dcb4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|70|25|v|typescriptreact
+	can not get ip geo location
+5045b042be1c6834f57b2afc2caba813|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|17|V|typescriptreact
+	          if  () 
+926e0a36dc967b199222b6abe23b9c7f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|11|13|V|typescriptreact
+	  currency: {
+bd935c85a9eeaa2e6a154a3e346ee351|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|43|1|V|typescriptreact
+	      currency: 
+e3f64bb27371a4eafce33abce052f6af|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|44|14|V|typescriptreact
+	      name: 'US'
+	      '
+e3b66e17fec267722c29430a1fa70ba5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|46|7|V|typescriptreact
+	      '
+b606e4c0d1d91a2779008b5893705f10|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|68|15|v|typescriptreact
+	result[ipGeoLocation?.currency?.code]
+43d6897afc993e681eed9fedac95f0ea|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|57|28|v|typescriptreact
+	LOCAL_CURRENCY_STORAGE
+f23ef78ed00edce7e0414cbaaf59a55f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|71|51|V|typescriptreact
+	          console.log(ipGeoLocation?.currency?.code)
+ff32a43e83c912924c3aacd71806df92|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|71|35|V|typescriptreact
+	          console.log(result.rates)
+0df67c8f1756c7974a06165e2224c258|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|71|35|V|typescriptreact
+	          console.log(result.rates[ipGeoLocation?.currency?.code])
+2c6b0ca6955da2909668f42296be89f0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|70|13|v|typescriptreact
+	setLocalCurrency
+5465e1c768db6a232dc473d9c4100769|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|10|5|V|typescript
+	const SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"]
+2398ff9086d8d301e33f6f4c5c77dbd1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|14|8|V|typescript
+	  // what tier? (determines SI symbol)
+5a195833329a9d35020df1c8aece83a0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|16|7|V|typescript
+	  // if zero, we don't need a suffix
+f5747ec94aee3807d65d6a95926f6d22|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|18|7|V|typescript
+	  // get suffix and determine scale
+d338878ec2fc6c96f1b81815a148f4d1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|21|7|V|typescript
+	  // scale the number
+004508c274685b3ec9c425901aa0ca5a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|21|6|V|typescript
+	  // format number and add suffix
+c4d2c4aa3d0e49f1be279b14c4c34dae|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|10|1|V|typescript
+	function abbreviateNumber(number) {
+	  const SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"]
+	  const tier = (Math.log10(number) / 3) | 0
+	
+	  if (tier == 0) return number
+	
+	  const suffix = SI_SYMBOL[tier]
+	  const scale = Math.pow(10, tier * 3)
+	
+	  const scaled = number / scale
+	
+	  return scaled.toFixed(2) + suffix
+	}
+51734b7021a436e4d57894eefea06c5c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|29|22|v|typescriptreact
+	Intl
+6856eee4be07c4f868b870bc420e3299|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|99|26|v|typescriptreact
+	useCallback
+b15f3764f864f997873269159a0bcda9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|99|11|v|typescriptreact
+	formatterUSD
+c1c425268e68385d1ab5074c17a94f14|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|10|8|v|typescript
+	function
+15fae926867cf70b419f890e073f5549|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|100|14|v|typescriptreact
+	abbreviateNumber
+a0b263368ec73704187c7350f30d5087|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|101|9|V|typescriptreact
+	      if 
+7298987eb04dab9e00f90341cc1bc4f4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|104|1|V|typescriptreact
+	        if 
+dd7e595e9aac208d6b3731705e21f314|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|4|1|V|typescript
+	  minimumfractiondigits: 0,
+	  maximumfractiondigits: 2,
+d7325af95e878fa6aebda8a69568e381|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|4|1|V|typescript
+	  minimumFractionDigits: 0,
+7efc9067000d7f3de5f410a253375a00|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|106|1|V|typescriptreact
+	            minimumfractiondigits: 0,
+8726b940f0f30cbc22eeceeab18d4a90|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|5|1|V|typescript
+	  maximumFractionDigits: 2,
+216a8c96f006488e4308356373985ebe|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|107|1|V|typescriptreact
+	            maximumfractiondigits: 2,
+a0c6375eb5993477404d75088c598d41|file:///Users/louis/Dev/Projects/komi/komi-mobile/package.json|106|19|V|json
+	    "react-native-network-info": "^5.2.1",
+5dd7ac3770aaf6a4c6944ab4ce95f50c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|2|67|v|typescriptreact
+	useState
+8ed40a93c5cd653c609019dbfa959219|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|4|34|V|typescriptreact
+	import { Api } from "services/api"
+ce2df25562ee9b0e7d84f7a8d9c87d7f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|99|11|v|typescriptreact
+	formatterCurrency
+79e363ab913c852ce22517bcee7fd78a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|101|34|V|typescriptreact
+	        console.log(localCurrency)
+858cc5561947b660a870bd5eed57bb54|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|104|42|v|typescriptreact
+	 || "USD",
+6b43a338ffe130fc486b9e1d08fc707b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|19|1|V|typescriptreact
+	    code: string
+	    name: string
+	    symbol: string
+686b9ee929882e1b7b543567d80e48bb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|75|14|v|typescriptreact
+	ipGeoLocation?.currency
+e4a7bf3cfeb30ccdbf9eb1d9c3c81d82|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|27|18|v|typescriptreact
+	IpGeoLocation
+949b04a4368d921b6190ce5557372246|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|109|32|v|typescriptreact
+	("en-US"
+6badbd1fafb25a5925c7b94395190318|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|46|25|V|typescriptreact
+	      languages: "en-GB",
+3bf6a2b8cd2ab8eec2251b63f0b3ccdf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|14|18|V|typescriptreact
+	  languages: string
+7a02613b19d6de5fccebcd4de5819164|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|105|1|V|typescriptreact
+	          new Intl.NumberFormat(localCurrency?.languages, {
+	            style: "currency",
+	            currency: localCurrency?.code,
+	            minimumFractionDigits: 0,
+	            maximumFractionDigits: 2,
+	          }).format(currency * exchangeRate),
+c8c9052788021c5b50876ec5123530fc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|134|46|v|typescriptreact
+	formatPrice
+6d333709bea3cf1bfa9e6d26e94a6db8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|226|44|v|typescriptreact
+	commingSoon
+c2bd647ffb43e7f6aa5ee0ab403b82f2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|226|37|v|typescriptreact
+	common.
+39135e736404c09cc23230bac180f0bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|224|27|V|typescriptreact
+	                      {category?.name?.toLowerCase() === "music" ? (
+e0c669361ace33f47e43d0bdd563feab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|242|1|V|typescriptreact
+	                          <View style={{ paddingHorizontal: spacing[9] }}>
+	                            <Text
+	                              style={{ textAlign: "center", marginTop: spacing[1] }}
+	                              tx="categoryDetailScreen.categoryEmptyDescription"
+	                              txOptions={{ category: category?.name }}
+	                              preset="regularR"
+	                            />
+	                          </View>
+10d93d61bfb4c57fbe9230f64110f780|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|246|1|V|typescriptreact
+	                        </>
+	                      ) : (
+	                        <>
+	                          <Text tx="categoryDetailScreen.getReady" preset="semiBoldM" />
+	                        </>
+	                      )}
+8cebc3831a61e9a3201f089c1567ab36|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|224|26|V|typescriptreact
+	                        <>
+60c24896234bf136519772162143a0e3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|530|1|V|typescriptreact
+	                    <Icon width={32} height={32} name="time" />
+	                    {(content.type === CONTENT_TYPE.oneToOne ||
+	                      content.type === CONTENT_TYPE.exclusiveContent) && (
+	                      <Text
+	                        tx="common.mins"
+	                        preset="semiBoldR"
+	                        style={MT_2}
+	                        txOptions={{ time: Math.ceil(content.duration / 60) }}
+	                      />
+	                    )}
+f8eca08f5adbca2fde473c8b58991f54|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|540|1|V|typescriptreact
+	                    {content.type === CONTENT_TYPE.liveClass && (
+	                      <>
+	                        <Text
+	                          preset="semiBoldR"
+	                          style={MT_2}
+	                          text={formatTime(content.scheduleTime)}
+	                        />
+	                        <Text
+	                          preset="regularS"
+	                          text={moment(content.scheduleTime).format("MMMM DD,YYYY")}
+	                        />
+	                      </>
+	                    )}
+5ae213d8f0ac8351488820febdfafa5a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|555|1|V|typescriptreact
+	                        <Text
+	                          preset="semiBoldR"
+	                          style={MT_2}
+	                          text={formatTime(content.scheduleTime)}
+	                        />
+5620be6aa99a48df58a7a703cca4d82d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|78|25|V|typescriptreact
+	      console.log(content)
+0a392884c6c8dd8a7ed0757188a80fbf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|558|62|v|typescriptreact
+	format("MMMM DD,YYYY"
+192685211a1ce9155d181d31e44c0bb2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|558|40|v|typescriptreact
+	content.scheduleTime
+81198a2399a8493f38a74d5bdb45fa0e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|558|41|v|typescriptreact
+	.zoneName()
+240a462d992c3d4ef2adea17de4540a5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|558|47|v|typescriptreact
+	zoneName
+07cc694b9b3fc636710fa08b6922c42b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/date.ts|142|3|v|typescript
+	time
+ef9a926d39af447c5491799d25d665f6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/date.ts|147|1|V|typescript
+	  const city = timzone.split('/')[1]
+4ed5d2eaed1a1fadcc41ad1d58ed603e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/date.ts|148|9|v|typescript
+	city
+715891043b36ff098205b4e6075f44d9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/date.ts|149|20|v|typescript
+	return `${city}${seperatorSymbol}${zone}`
+	
+a84e5f25e7f6d5de9b82ce3f64d1b8fa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/date.ts|151|40|v|typescript
+	zone
+27ed003d66430fbe3fb62130d8ef9b7a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|558|33|v|typescriptreact
+	timeZoneFormatter
+a76d4ef5f3f6a672bbfab2865563e530|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/date.ts|148|62|v|typescript
+	Time
+42e7675acb2942987a2cdc8d08de3113|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/date.ts|153|24|v|typescript
+	Time$
+ab7638d0789a44b6204ad2f518e9ab63|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/date.ts|149|64|v|typescript
+	translate("common.time")
+4f190e2d6f2b090ce7d07bf370f7ffb7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/root-navigator.tsx|54|20|v|typescriptreact
+	MainNavigator
+d631070e79afd681865256437799cb2d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|205|27|v|typescriptreact
+	renderCardItem
+7a50f3d3ebe3604f7abf5e277d69a004|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|115|35|v|typescriptreact
+	cardGroupWrapper
+60312572232ae42c23e5816fdccf3ec8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|123|37|v|typescriptreact
+	cardWrapper
+8be1fb3ac1390caae4affbcb44abecf6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|244|1|V|typescriptreact
+	    height: metrics.screenHeight * 0.088,
+57076d3ac9264b7bb085afef2109a1ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|240|1|V|typescriptreact
+	    height: metrics
+99682853dd4aa093555e007ff7d299ff|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|1|1|V|typescriptreact
+	import { ParamListBase, useNavigation } from "@react-navigation/native"
+	import { toJS } from "mobx"
+	import { Observer, observer } from "mobx-react-lite"
+	import { CategoryModelType } from "models/model-types"
+	import * as React from "react"
+	import LinearGradient from "react-native-linear-gradient"
+	import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native"
+	import {
+	  Button,
+	  FastImage,
+	  ProgressBar,
+	  Screen,
+	  Text,
+	  Icon,
+	  resetProgressBar,
+	} from "../../components"
+	import { useStores } from "../../models"
+	import { remove } from "utils/lodash"
+	import {
+	  color,
+	  FLEX,
+	  metrics,
+	  PX_5,
+	  spacing,
+	  CENTER,
+	  MT_4,
+	  MT_2,
+	  PX_6,
+	  MT_6,
+	  MB_4,
+	  ROW,
+	  MT_8,
+	} from "../../theme"
+	import { rgbColor } from "utils/color"
+	import { NativeStackNavigationProp } from "react-native-screens/lib/typescript"
+	import { NavigationRoutes } from "navigation/navigation-routes"
+	
+	const NUMBER_OF_ROWS = 2
+	const REQUIRED_ITEMS = 3
+	
+	interface YourInterestScreenProps {
+	  navigation: NativeStackNavigationProp<ParamListBase>
+	}
+	
+	export const YourInterestScreen = observer((props: YourInterestScreenProps) => {
+	  const {
+	    authStore: { registerStep, totalRegisterStep, setRegisterStep, updateConsumerProfile },
+	    categoryStore: { list, getCategoryList },
+	  } = useStores()
+	  const [loading, setLoading] = React.useState<boolean>(false)
+	  const [selectionList, setSelectionList] = React.useState([])
+	  const [canContinue, setCanContinue] = React.useState(false)
+	
+	  const navigation = useNavigation()
+	
+	  const _goBack = React.useCallback(() => {
+	    navigation.goBack()
+	  }, [])
+	
+	  React.useEffect(() => {
+	    getCategoryList({ page: 1 })
+	  }, [])
+	
+	  const _onHandleSubmit = React.useCallback(async () => {
+	    setLoading(true)
+	    const result = await updateConsumerProfile({ categories: selectionList })
+	    setLoading(false)
+	
+	    if (result) {
+	      setRegisterStep(1)
+	      resetProgressBar()
+	
+	      props.navigation.reset({
+	        index: 0,
+	        routes: [{ name: NavigationRoutes.MainStack }],
+	      })
+	    }
+	  }, [selectionList])
+	
+	  const groupDataByRow = React.useCallback((numberOfRow: number, data: Array<any>) => {
+	    const result = {}
+	
+	    data.map((item, index) => {
+	      const position = Math.floor(index / numberOfRow)
+	
+	      if (!result[position]) result[position] = [item]
+	      else result[position].push(item)
+	    })
+	
+	    return Object.keys(result).map((key) => {
+	      return result[key]
+	    })
+	  }, [])
+	
+	  const _onPressSelect = React.useCallback(
+	    (id) => {
+	      if (selectionList.includes(id)) {
+	        if (selectionList?.length === REQUIRED_ITEMS) setCanContinue(false)
+	        setSelectionList(
+	          remove(selectionList, (selectId: string) => {
+	            return selectId !== id
+	          }),
+	        )
+	      } else {
+	        if (selectionList?.length === REQUIRED_ITEMS - 1) setCanContinue(true)
+	        setSelectionList([...selectionList, id])
+	      }
+	    },
+	    [selectionList],
+	  )
+	
+	  const renderCardItem = React.useCallback(
+	    ({ item: data }: { item: CategoryModelType[] }) => {
+	      return (
+	        <View style={[ROW, styles.cardGroupWrapper]}>
+	          {data.map((item) => {
+	            return (
+	              <TouchableOpacity
+	                style={MB_4}
+	                key={item?.id}
+	                onPress={() => _onPressSelect(item?.id)}
+	              >
+	                <View style={styles.cardWrapper}>
+	                  <FastImage source={{ uri: item?.background }} style={styles.image} />
+	                  {selectionList.includes(item?.id) ? (
+	                    <LinearGradient
+	                      colors={[
+	                        color.transparent,
+	                        rgbColor(color.themeColor.green, 1),
+	                        rgbColor(color.themeColor.green, 0.8),
+	                      ]}
+	                      style={[styles.linearGradient, styles.linearGradientCheck]}
+	                      start={{ x: 0, y: 0 }}
+	                      locations={[0, 0, 1]}
+	                    >
+	                      <View style={styles.checkIcon}>
+	                        <Icon name="check-vector" />
+	                      </View>
+	                      <View style={[styles.titleImage, styles.titleImageCheck]}>
+	                        <Text
+	                          preset="semiBoldR"
+	                          style={{ color: color.themeColor.white }}
+	                          text={item?.name}
+	                        />
+	                      </View>
+	                    </LinearGradient>
+	                  ) : (
+	                    <LinearGradient
+	                      colors={[
+	                        color.transparent,
+	                        rgbColor(item?.color, 1),
+	                        rgbColor(item?.color, 0.18),
+	                      ]}
+	                      style={styles.linearGradient}
+	                      start={{ x: 0, y: 0 }}
+	                      locations={[0, 0, 1]}
+	                    >
+	                      <View style={styles.titleImage}>
+	                        <Text
+	                          preset="semiBoldR"
+	                          style={{ color: color.themeColor.white }}
+	                          text={item?.name}
+	                        />
+	                      </View>
+	                    </LinearGradient>
+	                  )}
+	                </View>
+	              </TouchableOpacity>
+	            )
+	          })}
+	        </View>
+	      )
+	    },
+	    [_onPressSelect, selectionList],
+	  )
+	
+	  return (
+	    <Screen
+	      header={{
+	        leftIcon: "sLeft",
+	        onLeftPress: _goBack,
+	        style: styles.header,
+	        centerComponent: (
+	          <ProgressBar style={styles.progress} total={totalRegisterStep} step={registerStep} />
+	        ),
+	        rightContainerStyle: FLEX,
+	        leftContainerStyle: FLEX,
+	        centerContainerStyle: styles.centerHeader,
+	      }}
+	      preset="scroll"
+	    >
+	      <View style={PX_5}>
+	        <Text style={[CENTER, MT_4]} tx="registerScreen.yourInterest" preset="semiBoldMP" />
+	        <Text
+	          style={[CENTER, MT_2, PX_6]}
+	          tx="registerScreen.yourInterestDescription"
+	          preset="regularR"
+	        />
+	        <Observer>
+	          {() => (
+	            <FlatList
+	              keyExtractor={(_item: any, index: number) => `${index}`}
+	              style={MT_6}
+	              data={groupDataByRow(NUMBER_OF_ROWS, toJS(list))}
+	              renderItem={renderCardItem}
 	            />
 	          )}
-f0177a6f43f510609b91905e6efe9f41|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|28|v|typescriptreact
-	contentTypeWebView
-eb6c5f6b604749c533823aad2dfebeda|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|28|v|typescriptreact
-	contentTypeWebView &&
-c51b9d010ed839c5ff2881f658f272a5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|106|39|V|typescriptreact
-	                "webviewScreen.noTitle"
-b2eabc5edb96552fd1afe51a08347df8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|102|1|V|typescriptreact
-	            <Text
-	              preset="semiBoldM"
-	              tx={
-	                EXPERIENCE_CONTENT_STEP_TITLE[contentTypeWebView][step]?.title || ""
-	              }
-	            />
-bc580d79211001865cf2420d0201666f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|110|13|V|typescriptreact
-	            <Text
-550ad2e103e21dc758e76ec0766baf7e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|110|20|v|typescriptreact
-	{EXPERIENCE_CONTENT_STEP_TITLE[contentTypeWebView][step]?.title || ""}
-b23d961d245e2f53f8a5744255903858|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|111|18|v|typescriptreact
-	isLoading ? styles.invisible : styles.header,
-3812519aeed64756e7bb77b6f765af6b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|102|14|v|typescriptreact
-	isLoading
-4631a834d85d75c56e607cd849ae0368|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|114|18|V|typescriptreact
-	          style: isLoading ? styles.invisible : styles.header,
-1b032e82847fac31ccd171a1d7483ba4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|114|19|v|typescriptreact
-	sLoading ? styles.invisible :
-374b28d22066a9b81c97c2d118a5b352|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|113|1|V|typescriptreact
-	    if (currentStep === 1) {
-	      requestBody = {
-	        ...requestBody,
-	        price: Number(parseCurrencyToInt(fieldsValue.price)),
-	      };
-	    }
-1589116621862e5aadf8de64252dc134|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|116|16|v|typescriptreact
-	Number(parseCurrencyToInt
-a15be98999ba0d83625be90cecde2a35|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|116|23|v|typescriptreact
-	parseCurrencyToInt
-b45cffe084dd3d20d928bee85e7b0f21|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|116|34|v|typescriptreact
-	string
-9fac86ce159aba0cd7cb1f4019d143e5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|49|33|V|typescriptreact
-	import { parseCurrencyToInt } from "utils/currency";
-0d248a6f5625024ef4f9657f6dd4dd68|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|115|1|V|typescriptreact
-	        price: Number(parseFloat(fieldsValue.price)),
-69e17e5e28d48a0410f48d045ae3d3f5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/CreateExperienceLiveClass.tsx|121|1|V|typescriptreact
-	          price: Number(parseCurrencyToInt(value.price)),
-a70be5118687374f671eb6a69512b579|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/CreateExperienceLiveClass.tsx|121|1|V|typescriptreact
-	          price: Number(parseFloat(fieldsValue.price)),
-e0b042e7f596c6de229233afd5d0f661|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/CreateExperienceLiveClass.tsx|45|43|V|typescriptreact
-	import { parseCurrencyToInt } from "utils";
-6797e2cfad7d4ed5d8f5401b3665e7d5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|34|23|V|typescriptreact
-	    const [isLoading, setIsLoading] = useState(true)
-5ba4990bd743042c079f9ddc8523a161|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|64|58|V|typescriptreact
-	      if (res.message === EVENT_WEBVIEW_MESSAGE.LOADING) setIsLoading(data.isLoading)
-bfafd813d7ea65ee4db1f09d7c8ffbf4|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|401|7|v|typescriptreact
-	console
-de4e7e1d5bf0fc85dd0c6a9fd3be6d77|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|401|30|V|typescriptreact
-	      if (experienceDetail?.id) alert("hello");
-77da0ba10ba23f83ff3f5351e1434750|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|421|21|V|typescriptreact
-	    experienceDetail,
-2cbc2dcd3fd512c57d2fce56c8d95b28|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|71|9|v|typescriptreact
-	getTimeRangesInMonthActions
-cbc8651215760dff14f3e6c4fd1407ae|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|66|10|v|typescriptreact
-	timeRangeLoading
-b994cc39d6e67fca341d28003d252ee4|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|66|9|v|typescriptreact
-	slotsInDates
-6872da0c4b4410bd20e2972030cf17eb|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|66|42|v|typescriptreact
-	alert(experienceDetail?.id);
-3a651ac35d6d166029674e4277985663|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/become-talent-web-view-screen.tsx|95|1|V|typescriptreact
-	        {isLoading && (
-	          <ActivityIndicator
-	            color={color.themeColor.primary}
-	            style={styles.activityIndicator}
-	            size="large"
-	          />
-	        )}
-1c0884ed710231cbac49404786e259cf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/become-talent-web-view-screen.tsx|60|8|V|typescriptreact
-	    if (res.message === EVENT_WEBVIEW_MESSAGE.LOADING) setIsLoading(data.isLoading)
-c9fa40a974b6577e86bbcaf7c52f5609|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/become-talent-web-view-screen.tsx|30|8|V|typescriptreact
-	  const [isLoading, setIsLoading] = useState(true)
-8cc8cff73f603cdaa9c9cb4065535e96|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/become-talent-web-view-screen.tsx|74|48|v|typescriptreact
-	 || isLoadin
-aff7f98f04991dbd894b21f44a909b1c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|84|9|v|typescriptreact
-	_onPressSeeAllTalent
-e0720cb2a587f67be2ec41eaf62a9bc7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|20|9|v|typescriptreact
-	onProgress
-a44359421a97c76c01b5dd673f421fdd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|34|5|v|typescriptreact
-	opacity
-334c4a4c42fdb79d7ebc3e73b517e6f8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|34|14|v|typescriptreact
-	none
-407fe415bd894b5829e000a50e477b9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|20|9|v|typescriptreact
-	onLoadStart
-e35726092aa28d6a785cd02b1ad12fa2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|34|15|V|typescriptreact
-	    display: 'none',
-a5a8ca1430ecd7dedd560b0e9a94b976|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|31|27|V|typescriptreact
-	    backgroundColor: 'red',
-81f4d1ba63795b2c25237a4ba6ef53da|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|20|9|v|typescriptreact
-	onLoad
-475b15a2ed5306311410516249c2c346|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|12|8|v|typescriptreact
-	isShowPlaceholder
-913f363475bce4c681275d8e38e0999e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|21|14|V|typescriptreact
-	        onLoadEnd={() => setIsShowPlaceholder(false)}
-08f917108557dda9124c838e76f85f95|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|2|28|v|typescriptreact
-	ActivityIndicator
-90486a37ca1cc5fca1c44486f06af271|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|66|31|V|typescriptreact
-	    if (experienceDetail?.bookingStatus)
-7dcd3a3a22750ec4d0354e9e0c0c8784|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|69|14|V|typescriptreact
-	      "You cannot update the Availability  this experience was booked by the Consumer."
-c3c60afc0b301a60dee2d8fc2769c57f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|80|1|V|typescriptreact
-	  const [isLoadingImage, setIsLoadingImage] = useState(false);
-7fa850964bd861fa735e4b6a410e2c37|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/CreateExperienceLiveClass.tsx|64|1|V|typescriptreact
-	  const [isSkipBtn, setIsSkipBtn] = useState(false);
-de2f40cf8f3e5b4d34b02988f19dc4ba|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/CreateExperienceLiveClass.tsx|553|1|V|typescriptreact
-	                {isSkipBtn ? "Skip" : "Next"}
-ca3d01964690ebf6b2128fc87eb9edcf|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|533|1|V|typescriptreact
-	                Next
-e7ebd2852a6550940e4bad2047dd2442|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|38|1|V|typescriptreact
-	  setIsSkipBtn(value: boolean): void;
-6b48e27e628dd1454c3c8f099b39a1df|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|63|7|v|typescriptreact
-	experienceDetai
-ef5aed84b2058a8268ed6c609ea3fbe6|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|44|45|v|typescriptreact
-	selectExperienceDetail
-f47456c33a8a8a591d6c2c896492ffd7|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|70|1|V|typescriptreact
-	    notification.warn({
-	      message:
-	        "You cannot update the Availability  this experience was booked by the Consumer.",
-	    });
-	    setIsSkipBtn(true);
-0cfd653d5d3e1e9fdbb644523d77971d|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|66|5|v|typescriptreact
-	notification
-6f9adf06c98326b15efa783a7dfa7ec0|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|146|16|v|typescriptreact
-	TimePickerMobile
-b173b80e7c2e88dc9b6b0e8f3e91cab4|file:///Users/louis/Dev/Projects/komi/komi-talent/src/components/TimePicker/TimePicker.tsx|66|19|v|typescriptreact
-	handleChangeTime
-c8d6f458274b1ef3e92a42622a1a8bbf|file:///Users/louis/Dev/Projects/komi/komi-talent/src/components/TimePicker/TimePicker.tsx|6|24|v|typescriptreact
-	rmc-date-picker/lib/Popup
-0aaa87422396fdd678498793b6d5250e|file:///Users/louis/Dev/Projects/komi/komi-talent/src/components/TimePicker/TimePicker.tsx|55|19|v|typescriptreact
-	disable
-90118e17fc23e5b892c0f96e133a169f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|131|15|v|typescriptreact
-	isMobile
-f5ebe41ace8d07feec857c8267f183bf|file:///Users/louis/Dev/Projects/komi/komi-talent/src/components/TimePicker/TimePicker.tsx|70|21|V|typescriptreact
-	        className="disabled"
-bb08474a1cddee1dddd306e0fb2ac2e8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|69|10|v|typescriptreact
-	You cannot update the Availability  this experience was booked by the Consumer.
-20b2e7a403df68d04c599ea0f0927ad5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ExclusiveContentStep/ExclusiveContentStep.tsx|25|1|V|typescriptreact
-	  setIsSkipBtn
-61df5482f731b5137e4326ebf10e6bec|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|66|1|V|typescriptreact
-	  React.useEffect(() => {
-	    notification.warn({
-	      message:
-	        "You cannot update the Schedule Class because this experience was booked by the Consumer.",
-	    });
-	    setIsSkipBtn(true);
-	  }, [experienceDetail]);
-c39ae3854efdad2fa67f8dfba7e3e287|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ExclusiveContentStep/ExclusiveContentStep.tsx|59|10|v|typescriptreact
-	You cannot update the Schedule Class because this experience was booked by the Consumer.
-3d3bb06b5e389106c90ec2cdc0be6b7e|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|209|9|V|typescriptreact
-	    if (currentStep === 4) {
-ea5a1cbe764918679997181a3ea281d3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|210|5|V|typescriptreact
-	    }
-10d0b07c05f9bb7ccabb12687e9b061a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|124|34|V|typescriptreact
-	            onLoad={() => setIsLoading(false)}
-673ffbd0dcb2f14eb871b0030b97c215|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|147|28|V|typescriptreact
-	                disabled={true}
-3662b6e18e3c2beadfdcc37da88e237c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|130|49|v|typescriptreact
-	checkCanJoin
-d3f5446113757a43e102ccb3ca30a822|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|260|28|v|typescriptreact
-	moment(booking?.date).fromNow() 
-6b5a420d1d243f620a98a2d4c5b8370c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|128|7|v|typescriptreact
-	setBookingTime
-74a73330ac1f90623417c7ca6297e2c9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|127|1|V|typescriptreact
-	              duration:
-	                Math.ceil(booking?.duration / 60) || Math.ceil(booking?.experience?.duration / 60),
-f77e372cda9c904922c6c49ce26a51c8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|127|25|v|typescriptreact
-	Math.ceil(booking?.duration / 60) ||
-db9225c8ba7983e499601a3f151c6112|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|74|9|v|typescriptreact
-	_onPressJoinRoom
-a14fa2166ed698f3d04061f57e5ab9b9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|206|3|v|typescriptreact
-	loading
-1ff765a69e5a3beb5c530d583553f498|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|145|9|v|typescriptreact
-	_onPressJoinNow
-df8d1c9479b24137a05e58a262621373|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|42|21|v|typescriptreact
-	getBookingById
-5c8438bef7c60cf62b4a0aee3b0becc4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|56|14|v|typescriptreact
-	booking
-c8b28d24d40eb5b2fa2241135a998350|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-detail-screen/consumer-purchase-detail-screen.tsx|57|1|V|typescriptreact
-	    React.useEffect(() => {
-	      const fetchData = async () => {
-	        if (!booking && bookingId) {
-	          const data = await fetchBookingById(bookingId)
-	          setBooking(data)
-	        }
-	      }
-	      fetchData()
-	    }, [])
-e70f0256e708bfd7a3986c78c4b87ca7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|68|5|V|typescriptreact
-	  const booking = getBookingById(bookingId)
-81f4001568aedc9cfcaba8f388579468|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-detail-screen/consumer-purchase-detail-screen.tsx|54|1|V|typescriptreact
-	    const { bookingId, nextScreen } = route.params
-717498b865714ebd5674c3a493cd6988|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-detail-screen/consumer-purchase-detail-screen.tsx|55|1|V|typescriptreact
-	    const [booking, setBooking] = React.useState()
-b9c5194e8b7b6cd276e26d9f32e05bd5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|56|16|V|typescriptreact
-	  const [] = ()
-e97107019ad2c14f84fca1ab934a378e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|57|48|v|typescriptreact
-	route?.params?.booking
-a5544c3b03369e0fe6fcb8706d95eded|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|291|36|v|typescriptreact
-	moment(booking.date).fromNow() 
-7300e8d0726d6cbc8ccca46091cd9f29|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-analytic-screen/talent-analytic-screen.tsx|235|1|V|typescriptreact
-	    top: "45%",
-	    left: "46.5%",
-d3a1b678a0b511514da05873c3cbb201|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|221|1|V|typescriptreact
-	    left: "45%",
-	    top: "46.5%",
-473148acc643ce9c12adb416b9d15c58|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|275|26|v|typescriptreact
-	isCheckCanJoin
-0ba4439ee9a46d9d9f14c60f88f45f87|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|279|27|v|typescriptreact
-	check
-afacaaaf3c9be5ec2b94cebaa7d226f2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|279|1|V|typescriptreact
-	                loading={!isCheckCanJoin}
-225484eacca0f680dd2337160be911c1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|127|1|V|typescriptreact
-	      !isCheckCanJoin && setIsCheckCanJoin(true)
-4625f364dddf2e44b8e8e2f1776c826a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|50|1|V|typescriptreact
-	  const [isCheckCanJoin, setIsCheckCanJoin] = React.useState(false)
-	  const navigation = useNavigation()
-42a8df9fc44fc8033de18d7f2f532864|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|50|1|V|typescriptreact
-	  const [isCheckCanJoin, setIsCheckCanJoin] = React.useState(false)
-0d1731eae123ddf11cd2bf83a4aed78e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|259|1|V|typescriptreact
-	        loading={!isCheckCanJoin}
-c0bc03f7a0d6673068dab4aa8d007b9c|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/Info.plist|177|10|v|xml
-	   loading={!isCheckCanJoin}
-b4813d48b223105d8f0ed8c5cd475555|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|46|44|v|typescriptreact
-	isBooked
-dcb321e8e1b2a911212f2e500b7e7cb2|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|76|19|V|typescriptreact
-	  React.useEffect()
-8e675725f8af263727c8f83facd1356a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|68|1|V|typescriptreact
-	    isBooked
-de9c63cb556e9be9706a2bc921ed39d0|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|113|23|v|typescriptreact
-	ctrue
-50584b7ce349efeef1f006d2e757ffe4|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|113|1|V|typescriptreact
-	            disabled={isBooked}
-17abedc1793be389e2106424a5715dc4|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|135|1|V|typescriptreact
-	                disable={isBooked}
-456c2a6476efda0cd4e8549db8773a3e|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|135|1|V|typescriptreact
-	                disabled={isBooked}
-4e92cb257a922eb62de1201fa49492c8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|46|1|V|typescriptreact
-	  const [isBooked, setIsBooked] = useState(false);
-f0696781f96af467354ef81f12f8df34|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ScheduleTimeStep/ScheduleTimeStep.tsx|73|1|V|typescriptreact
-	    setIsBooked(true);
-e4bd347abf3830d7e0a8f178b56c4697|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|181|18|v|typescriptreact
-	experienceDetail?.id
-c7c33b15ca3a86ae3c62eb9bd4a680b0|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ExclusiveContentStep/ExclusiveContentStep.tsx|176|1|V|typescriptreact
-	              {/* <Button className="preview-wrapper__btn-actions--change"> */}
-	              {/*   Change */}
-	              {/* </Button> */}
-3e80b8c5e2044908965de3011b57eecd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-profile-screen/consumer-profile-screen.tsx|185|15|V|typescriptreact
-	          loadi
-fcae3e72e3cdc4622a96b487f7a50d5d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|37|33|V|typescriptreact
-	    const webview = useRef(null)
-c0f16138d0d28e937f7065b44845cd4b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|20|14|V|typescriptreact
-	        onLoad={() => setIsShowPlaceholder(true)}
-68934a3e9455fa72420237eb05902327|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|8|77|v|typescriptreact
-	false
-e090c90b07161ced29572acf302b3604|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|285|11|v|typescriptreact
-	_onEndReachedExperience
-837faa12cd7cbb4e96990891afb4ea62|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|290|9|v|typescriptreact
-	isLoadingMoreExp, isRefreshingExp, totalExperience, listExperience, filterStatus
-fbaab20be33910d83c58830fc2a5ef31|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|290|25|v|typescriptreact
-	getMoreExp
-38859077288cbba97cbbbabb250f4632|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|327|19|v|typescriptreact
-	listExperience
-415ece355bdeb6b5dc29971def54613c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|346|10|V|typescriptreact
-	        )
-be9ca58daf09338d6ae06e7ec9ea7e89|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|20|9|v|typescriptreact
-	onLoadEnd
-d8cc549c1ab24e650dc7c05c82f30172|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|20|52|V|typescriptreact
-	        onLoadStart={() => setIsShowPlaceholder(true)}
-d631070e79afd681865256437799cb2d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|328|25|v|typescriptreact
-	renderCardItem
-b4a88417b3d0170d754c647c30b7216a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|300|37|v|typescriptreact
-	result
-27cf1e36682fb645e2f4943bbe54f7be|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|300|31|v|typescriptreact
-	pick
-6608d20d780b164b3fffa12b691ef6cb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|300|31|v|typescriptreact
-	pickAll
-19fcdcdc1cff5480a41156f90425d453|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|26|1|v|typescriptreact
-	improt
-aee0e3ac44b0c5c7278298759801c499|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/general.ts|16|1|V|typescript
-	export const getFirstImage = (experience: ContentModelType): string => {
-	  if (!experience) return ""
-	
-	  if (_.isArray(experience.covers)) {
-	    let result = ""
-	
-	    for (const val of experience.covers) {
-	      if (IMAGE_REG.test(val)) {
-	        result = val
-	        break
-	      }
-	    }
-	
-	    return result
-	  }
-	}
-d6e047923b2b0f63a7a03c66074a0151|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/general.ts|33|37|v|typescript
-	experience
-bf098927cfb6480cec710dc3a8ceaff0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/general.ts|33|45|v|typescript
-	ContentModelType
-6ed5a59479a127085cf6203251aa8131|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/general.ts|34|29|V|typescript
-	  if (!experience) return ""
-f9c7d2276fa5d9d418ae7cb496a33a78|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|216|20|v|typescriptreact
-	getFirstImage
-b3ffccc941fafd934978d9dcda83d8dc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|274|29|v|typescriptreact
-	restoreAction
-4054863d6fe9313ee70a613ebdde99d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|302|1|V|typescriptreact
-	              pick(result, [
-	                "type",
-	                "status",
-	                "duration",
-	                "experience",
-	                "rating",
-	                "totalRating",
-	                "id",
-	              ]),
-6e9147edd749941ba6d239f3383e57b8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|306|1|V|typescriptreact
-	                "type",
-	                "status",
-	                "duration",
-	                "experience",
-	                "rating",
-	                "totalRating",
-	                "id",
-7d1462b5d6091d4c48f0a34a371d5ed9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|312|17|V|typescriptreact
-	              pick(result, [
-4ecc5034e4adff6beadc44dcd687db8d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|312|17|V|typescriptreact
-	              ]),
-644d4a759c631935d1cc68ae9ad80810|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|302|1|V|typescriptreact
-	              result.map((item) =>
-	                pick(item, [
-	                  "type",
-	                  "status",
-	                  "duration",
-	                  "experience",
-	                  "rating",
-	                  "totalRating",
-	                  "id",
-	                ]),
-	              ),
-a8cf2bd4fd67d408fc247f0dbe7e77e3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|301|1|V|typescriptreact
-	            console.log(
-	              result.map((item) =>
-	                pick(item, [
-	                  "type",
-	                  "status",
-	                  "duration",
-	                  "experience",
-	                  "rating",
-	                  "totalRating",
-	                  "id",
-	                ]),
-	              ),
-	            )
-7c87f227869d1527cd33f91b877d005b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|308|24|V|typescriptreact
-	                  "experience",
-ef4c35a345952f58b1bd7cbd3344cd1a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|307|1|V|typescriptreact
-	                pick(item, [
-	                  "type",
-	                  "status",
-	                  "duration",
-	                  "rating",
-	                  "totalRating",
-	                  "price",
-	                  "id",
-	                ]),
-e51b03bf03f5e119b2cea729f08117b1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|307|17|V|typescriptreact
-	                         {
-456a7a06be5c7d6e52f26dcf2c80a042|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|316|16|V|typescriptreact
-	              }
-0fbe4fbebc47c8070ad24b04807a0f41|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|304|33|V|typescriptreact
-	                const price = ite
-900fc9453c77a5136cc976339c26b617|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|307|19|V|typescriptreact
-	                pick(item, ["type", "status", "duration", "rating", "totalRating", "price", "id"])
-4f3fdc3921dd4ecf768c00948e10b0c8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|308|17|V|typescriptreact
-	              pick(item, ["type", "status", "duration", "rating", "totalRating", "price", "id"])
-ec9128103b9afe1d4d49acdb4bcbea8c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|305|21|V|typescriptreact
-	                                                          
-411da086150a7e53ed63758baf15f8d8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|306|46|V|typescriptreact
-	                  price: item.experiencesStore
-a1dc3b666a8c6ec6e1b6896dfb1e1db5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|308|21|V|typescriptreact
-	                    price: item?.experience?.price,
-78a5eb43deef9a7b5b9ce157b9d52ac4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|308|21|v|typescriptreact
-	price
-1c3ceec3a946b1f63d6b6fa3a9238b96|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|311|29|V|typescriptreact
-	                    "price",
-e97a8b181b20cba4b4bbccb476e81552|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|315|1|V|typescriptreact
-	                    covers: item?.experience?.covers,
-a9e4f7e098ba45314ead394184671cc7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|316|21|v|typescriptreact
-	covers
-cf69b891bbd1ee4425fa9f329c5f965e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|307|1|V|typescriptreact
-	              result.map((item) => {
-	                return {
-	                  ...pick(item, [
-	                    "type",
-	                    "status",
-	                    "duration",
-	                    "rating",
-	                    "totalRating",
-	                    "price",
-	                    "id",
-	                    "name",
-	                  ]),
-	                  experience: {
-	                    covers: item?.experience?.covers,
-	                  },
-	                }
-2a61f45c6f66e60a989e7196a5540af4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|204|5|v|typescriptreact
-	cosnt
-2477e9c701e631560fb6e71bde9369f1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|323|14|V|typescriptreact
-	            )
-522900aab2fc69610bd31fd44d031c6c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|323|12|V|typescriptreact
-	          }
-4e1ddba1c31545ee09fb38ae1fd79346|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|323|10|V|typescriptreact
-	        }
-e12755e83aec5e723350af118020407d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|310|47|v|typescriptreact
-	lightWeigthData
-8d777f385d3dfec8815d20f7496026dc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|311|63|v|typescriptreact
-	data
-e70c4df10ef0983b9c8c31bd06b2a2c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|206|7|v|typescriptreact
-	return
-5d8cffa3854d9033136bd4541b4f8840|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|208|29|V|typescriptreact
-	          console.log(item?.covers)
-14d6b48ef2fb42a4497aabd35e660482|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|224|8|V|typescriptreact
-	      )
-40a7413b40d744d2bae9d102870efa15|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|219|1|V|typescriptreact
-	          experience: {
-	            covers: item?.covers,
-	          },
-53606f86b70128eb26b81a9cdb89a00c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|44|17|V|typescriptreact
-	          total: totalExperience,
-77a542b88fa03a8707d07f377fb113b3|file:///Users/louis/Dev/Projects/komi/komi-mobile/.env.production|2|16|v|
-	https://talent.komiapp.co
-412d93a8a8703fc5952f2dbe11936323|file:///Users/louis/Dev/Projects/komi/komi-mobile/.env.production|22|34|V|
-	BUNDLE_ID_ANDROID=co.komiapp.komi
-dfcf7fa01a2b0ad98ec8d7ef7451a2ed|file:///Users/louis/Dev/Projects/komi/komi-mobile/.env.production|1|9|v|
-	https://api.komiapp.co/api
-	
-70c8e7d5c3e831832b49f3b5828ab333|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/ExperienceDetailsOneToOneStep/ExperienceDetailsOneToOneStep.tsx|66|9|v|typescriptreact
-	fetchTag
-d2fe810c9807bddd5feb0c8cbcdc7016|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|81|21|v|typescriptreact
-	setIsSkipBtn
-d30b12dc2d931a4d62f812500856e39f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|79|25|v|typescriptreact
-	setIsBooked
-92c5dfdc82d264a61e729e79e87c7a96|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|216|22|V|typescriptreact
-	            "covers",
-19a26bf80a0043b80d91e4a70fc6a9af|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|351|13|v|typescriptreact
-	onTouchEndCapture
-c184a88b244f28e09a8dd44f4f4379e4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|301|8|v|typescriptreact
-	contentTypeBase
-ebbadc723a93b698d5824a842b1f5596|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|135|1|V|typescriptreact
-	              .test("invalidPhoneNumbers", translate("errors.invalidPhoneNumbers"), (value) => {
-	                return value?.match(/\d/g)?.join("").length >= 9
-	              }),
-acd86dec1fa9e70285b6e1ffe55a942f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|135|1|V|typescriptreact
-	              .test("invalidPhoneNumbers", translate("errors.invalidPhoneNumbers"), (value) => {
-	                return value?.match(/\d/g)?.join("").length >= 9
-3fe1b2a7afc7865ba680ce7135488f66|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|135|1|V|typescriptreact
-	              }),
-8940dec1a3483fb88643394bf59e3a6f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|120|21|v|typescriptreact
-	_handleSubmit
-068ca6b1bc212f36db697b368f5a9608|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|53|1|V|typescript
-	  EXPIRED = "expired",
-38afd7ae34bd5e3e6fc170d8b09178a3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|54|3|v|typescript
-	EXPIRED
-43fcef1a81c9d869408e7bdafa38ae27|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|54|11|V|typescript
-	  UNCOMPLET = "expired",
-265b381927d79862004807558e81e388|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|136|17|V|typescriptreact
-	            UNCOMPLET = "expired",
-e894b9f48e485a230b8d5acd8d3a0a0e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|135|1|V|typescriptreact
-	              .test("invalidPhoneNumbers", translate("errors.invalidPhoneNumbers"), (value) => {
-	                return value?.match(/\d/g)?.join("").length >= 8
-	              }),
-1cb251ec0d568de6a929b520c4aed8d1|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/ExperienceDetailsOneToOneStep/ExperienceDetailsOneToOneStep.tsx|235|22|v|typescriptreact
-	text
-f7a42fe7211f98ac7a60a285ac3a9e87|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/ExperienceDetailsOneToOneStep/ExperienceDetailsOneToOneStep.tsx|235|22|v|typescriptreact
-	phone
-b1bc248a7ff2b2e95569f56de68615df|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ExperienceDetailsLiveClass/ExperienceDetailLiveClass.tsx|232|22|v|typescriptreact
-	number
-37b19816109a32106d109e83bbb3c97d|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ExperienceDetailsLiveClass/ExperienceDetailLiveClass.tsx|232|22|v|typescriptreact
-	range
-e0626222614bdee31951d84c64e5e9ff|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|115|14|v|typescriptreact
-	Select
-df530da67a4fce91cba421c77675b1c6|file:///Users/louis/Dev/Projects/komi/komi-talent/index.d.ts|3|1|V|typescript
-	declare module "react-masked-text";
-df0e8458b5be20c2286923005b265129|file:///Users/louis/Dev/Projects/komi/komi-talent/index.d.ts|4|17|v|typescript
-	react-masked-text
-2cf5738863f02c6596efac934b7b44e9|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|22|35|V|typescriptreact
-	import SuperSelect from "antd-virtual-select";
-6c3b9b3a6c32d91e41e24efa6fd19bd9|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|25|1|V|typescriptreact
-	const { Option } = SuperSelect;
-054b4f3ea543c990f6b125f41af6ebf7|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|25|7|v|typescriptreact
-	Option
-e4ad60311f1e86e6b260ad1723282cb8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/redux/Experience/reducer.ts|118|4|v|typescript
-	updateExperience1To1Actions
-321c3cf486ed509164edec1e1981fec8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/redux/Experience/reducer.ts|123|23|v|typescript
-	payload
-eccc6a2e864423a407bcc7dc2458a7c3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/redux/Experience/reducer.ts|122|12|V|typescript
-	    console.log(state?.experienceDetail?.isBooked);
-4357355b7a2b895065ae05d3ba7cab77|file:///Users/louis/Dev/Projects/komi/komi-talent/src/redux/Experience/reducer.ts|123|1|V|typescript
-	    experienceDetail: {
-	      ...payload,
-	      isBooked: state?.experienceDetail?.isBooked || false,
-	    },
-6bc398d3f348c0052ebdffcdc7c796da|file:///Users/louis/Dev/Projects/komi/komi-talent/src/redux/Experience/reducer.ts|127|1|V|typescript
-	    fetchExperienceDetail: payload,
-19bfc8a1da493bf62cecec48f11a2ca2|file:///Users/louis/Dev/Projects/komi/komi-talent/src/redux/Experience/reducer.ts|127|5|v|typescript
-	experienceDetail
-6e9d1e61636a5ec9197f45050b3d2be6|file:///Users/louis/Dev/Projects/komi/komi-talent/src/redux/Experience/reducer.ts|123|1|V|typescript
-	    experienceDetail: {
-	      ...payload,
-	      isBooked: state?.experienceDetail?.isBooked || false,
-	    },
-	    fetchExperienceDetail: {
-	      ...payload,
-	      isBooked: state?.experienceDetail?.isBooked || false,
-	    },
-c8b1cb2b1420602488d9b752fef94367|file:///Users/louis/Dev/Projects/komi/komi-talent/src/redux/Experience/reducer.ts|182|1|V|typescript
-	    experienceDetail: payload,
-	    fetchExperienceDetail: payload,
-c62c00fb5833eb0c52599c690dd31a90|file:///Users/louis/Dev/Projects/komi/komi-talent/src/redux/Experience/reducer.ts|15|3|v|typescript
-	updateExclusiveContentActions
-f4a1d79c078d5daa62e818f7801ecb0c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|25|20|v|typescriptreact
-	SuperSelect
-8bc312c330295a38c6535f13e18cde7d|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|119|1|V|typescriptreact
-	              {countryData?.map((value, index) => {
-	                return (
-	                  <Option key={index} value={value?.abbreviation || ""}>
-	                    {value.country}
-	                  </Option>
-	                );
-	              })}
-4d6bb55d8f80f2dc7d5cc24daa2580c9|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|120|1|V|typescriptreact
-	                return (
-	                  countryData?.map((value, index) => {
-	                    return (
-	                      <Option key={index} value={value?.abbreviation || ""}>
-	                        {value.country}
-	                      </Option>
-	                    );
-	                  }) || []
-	                );
-9fb8427ac915ec9fe6cbccdde92d18ef|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|119|1|V|typescriptreact
-	              {(() => {
-	                const children = [];
-	
-	                for (let i = 0; i < 100; i++) {
-	                  children.push(
-	                    <Option value={i + "aab"} key={i}>
-	                      {i + "aab"}
-	                    </Option>
-	                  );
-	                }
-	
-	                return children
-	              })()}
-af9b6b7227f97e644f7b0897003f306f|file:///Users/louis/Dev/Projects/komi/komi-talent/package.json|34|1|V|json
-	    "antd-virtual-select": "^1.1.2",
-b7b219f0f76cef787242495f4df1a04d|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|116|1|V|typescriptreact
-	              {countryData.map((value, index) => {
-	                return (
-	                  <Option key={index} value={value?.abbreviation || ""}>
-	                    {value.country}
-	                  </Option>
-	                );
-	              })}
-bbd40c5ecfe710bbc4d0dfd8f4db6b29|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|119|1|V|typescriptreact
-	              {(() => {
-	                const children = [];
-	
-	                for (let i = 0; i < 100; i++) {
-	                  children.push(
-	                    <Option value={i + "ab"} key={i}>
-	                      {i + "ab"}
-	                    </Option>
-	                  );
-	                }
-	
-	                return children;
-	              })()}
-14cdc0101c62466a70ae36b03c5b6917|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|27|1|V|typescriptreact
-	{
-	  (() => {
-	    const children = [];
-	
-	    for (let i = 0; i < 100; i++) {
-	      children.push(
-	        <Option value={i + "ab"} key={i}>
-	          {i + "ab"}
-	        </Option>
-	      );
-	    }
-	
-	    return children;
-	  })();
-	}
-268184c12df027f536154d099d497b31|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|129|16|v|typescriptreact
-	children
-bb915a6b865f1ecf0a7ef2e8791c99cd|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|115|1|V|typescriptreact
-	            <SuperSelect
-	              className="ant-select-white-bg"
-	              style={{ background: "transparent" }}
-	            >
-	              {countryData.map((value, index) => {
-	                return (
-	                  <Option key={index} value={value?.abbreviation || ""}>
-	                    {value.country}
-	                  </Option>
-	                );
-	              })}
-	            </SuperSelect>
-d7b5bccd3b7a07e444ab8bb2c223ee76|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|155|5|V|typescriptreact
-	    setIsSkipBtn(false)
-a3317c771758c5a5c97f0262734e0a85|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|519|26|v|typescriptreact
-	handleSave
-a08b93612f709291f876bcd1bc9f3200|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|63|28|v|typescriptreact
-	initialValue
-f87f36c4886a15d41dbe70a8e4ff621c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/AvailabilityTimeStep/AvailabilityTimeStep.tsx|223|16|v|typescriptreact
-	selectRef
-4927cc5a66eec55206802a8531f18d69|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|130|30|v|typescriptreact
-	countryData
-031d6a6217c3c6f06dc55068da3894d7|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|44|23|v|typescriptreact
-	setCountryData
-753d210f28c04bd1e7af3336bbc51cf1|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|133|16|v|typescriptreact
-	setCountryList([...countryData]
-78a2522d6db2e9fec9a928386fe459eb|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|132|34|V|typescriptreact
-	                console.log("hi");
-	                setCountryList([...countryData]);
-9bef5623b32d1038172332b903e798c1|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|132|34|V|typescriptreact
-	                console.log("hi");
-e8a9d9cbd0ac300d1a922b94363f3486|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|132|16|V|typescriptreact
-	              }}
-c4bfb2a0bab0e91bc7dcfbe3bbec246e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|54|18|v|typescript
-	expired
-1aff7c1d2579375bdf853ce943753c53|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-detail-screen/consumer-purchase-detail-screen.tsx|162|1|V|typescriptreact
-	                tx="bookingHistory.requestExpired"
-097f9d4425989e263e28ea1d6a77e5b1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|432|1|V|json
-	    "requestExpired": "Requested Expired",
-24fe48030f7d3097d5882535b04c3fa8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|433|13|v|json
-	Expired
-aa45caf0d301951f738f3e205dfcf98d|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|131|30|v|typescriptreact
-	setCountryList([...countryData])
-bac6eb680642087c33f329737e3066ad|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|101|13|v|typescriptreact
-	bankAccountCountryCode
-b05a6823d77aca551bf18e1dfaaa3c66|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|131|24|V|typescriptreact
-	              onFocus={() => selectRef.current.po}
-8baf851266c188eb9ae6f77cea911ef8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|131|30|v|typescriptreact
-	console.log(
-91b579cb84e5ce3308ac0feaac1757fa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|12|5|v|typescriptreact
-	  {isShowPlaceholder && (
-	        <Placeholder Animation={(props) => <Fade {...props} duration={300} />} style={props.style}>
-	          <PlaceholderMedia style={[props.style, styles.container]} />
-	        </Placeholder>
-	      )}
-	
-a9bd17233ac2193a87900e3b066288c2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/fast-image/fast-image.tsx|8|5|V|typescriptreact
-	  const [isShowPlaceholder, setIsShowPlaceholder] = React.useState<boolean>(true)
-4247b4b811a65abfc4cb9b2a00808fef|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|133|16|v|typescriptreact
-	selectRef?.current && selectRef?.current?.focus()
-568549d0ef8251d11281e04dcdc18d2e|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|133|17|v|typescriptreact
-	selectRef?.current &&
-89b44a110ddbe9f68ec4bd492267033b|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|128|29|V|typescriptreact
-	              ref={selectRef}
-bb00ff93e0a17a4b1a0c65becf7d4176|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/DiscoveryList.ts|68|22|V|typescript
-	      console.log(slef)
-cb212e85587abea4484e80617a43ef4e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/DiscoveryList.ts|39|9|V|typescript
-	      self.isLoadingMore = true
-bb1ca97ec761fc37101737ba0aa2e7c5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|180|47|v|typescriptreact
-	ERROR
-40bea8d637cdf2c1b07fcf0630482b73|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|307|20|v|typescriptreact
-	reason
-76ec1ce2ed25d04a1f992d77d02e098d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|306|27|v|typescriptreact
-	handleChangeReason
-4fbe0d364a4f54d17f5c623615d11bba|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/BookingModel.ts|11|1|V|typescript
-	    notes: types.maybeNull(types.string),
-4358b5009c67d0e31d7fbf1663fcd3bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/BookingModel.ts|12|5|v|typescript
-	notes
-ab0ac0a87e6dd32258961dde5a0e2377|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|90|5|v|typescriptreact
-	_onChangeIsOpenModal
-4eaacace5626e6093badb267a5a518af|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|182|33|v|typescriptreact
-	rejectNotes
-4b7bca3d8ae818856c974c04b623e8f2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|182|24|v|typescriptreact
-	booking?.rejectNotes ? { color: color.themeColor.line2 } : 
-81c38e9b6bed3657af22252ff576554b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|105|7|v|typescriptreact
-	setIsRejectSuccesfully
-ab164a14a84a4c391ac612e961b9d49d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|45|1|V|typescriptreact
-	  const [reason, setReason] = React.useState("")
-a1b68a659a9cbf256d69cb89fe2af5b7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|46|34|v|typescriptreact
-	setReason
-2f694b8d530798d43d2f41a0dcb31ae4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|184|48|v|typescriptreact
-	isRejectBookingSuccess
-1e51b204b7b97872170c74fc373c5ec8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/AllExperienceList.ts|35|9|V|typescript
-	    asdas
-23090f4a123cf3ad912c37be64a41a20|file:///Users/louis/.config/nvim/config/coc.vim|54|1|V|vim
-	inoremap <silent><expr> <TAB>
-	      \ pumvisible() ? "\<C-n>" :
-	      \ <SID>check_back_space() ? "\<TAB>" :
-	      \ coc#refresh()
-	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-e278439c0bf74ac1c69d2e5659f2d0a2|file:///Users/louis/.config/nvim/config/coc.vim|53|1|V|vim
-	" Use tab for trigger completion with characters ahead and navigate.
-e1e82de8a4f7e9ed77bea1593cc9f829|file:///Users/louis/.config/nvim/config/coc.vim|58|1|V|vim
-	" Use <c-space> to trigger completion.
-	inoremap <silent><expr> <c-space> coc#refresh()
-	
-	" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-	" position. Coc only does snippet and additional edit on confirm.
-	if exists('*complete_info')
-	  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-	else
-	  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-	endif
-	
-44ebada9b2c724d50176357556148e2a|file:///Users/louis/.config/nvim/init.vim|15|5|V|vim
-	g:pur
-d05da96234894ff9188ed192527fb94c|file:///Users/louis/.config/nvim/init.vim|17|1|V|vim
-	
-	""""""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
-3fb26876eb6deee7bcdc821bb4c40296|file:///Users/louis/.config/nvim/init.vim|18|1|V|vim
-	""""""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
-9214daf8b47969933a7870dd68a26ef9|file:///Users/louis/.config/nvim/init.vim|33|1|V|vim
-	"::::
-d1ac07d8b2c7db4901fc68f9cb7a923a|file:///Users/louis/.config/nvim/init.vim|33|27|v|vim
-	MOVEMENT
-a1927a1fc265820a9301d1ce54a6ec82|file:///Users/louis/.config/nvim/init.vim|31|35|V|vim
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-cdcc34aa9ac1980f51cfe56154feedcb|file:///Users/louis/.config/nvim/config/coc.vim|53|1|V|vim
-	" Use tab for trigger completion with characters ahead and navigate.
-	inoremap <silent><expr> <TAB>
-	      \ pumvisible() ? "\<C-n>" :
-	      \ <SID>check_back_space() ? "\<TAB>" :
-	      \ coc#refresh()
-	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-081c509945a02ea8b1258deed0aea4b5|file:///Users/louis/.config/nvim/config/coc.vim|58|1|V|vim
-	" Use <c-space> to trigger completion.
-	inoremap <silent><expr> <c-space> coc#refresh()
-5cddc6a7bba62e422fc6d06511928080|file:///Users/louis/.config/nvim/config/coc.vim|57|1|V|vim
-	
-	" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-	" position. Coc only does snippet and additional edit on confirm.
-	if exists('*complete_info')
-	  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-	else
-	  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-	endif
-	
-f2c23e5ce1dc40601857b8d45c2bbc76|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
-	Plug 'Yggdroot/indentLine'
-	let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-e24e95f5dc44dd310d8e7cbc68389664|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|23|4|V|typescriptreact
-	  on
-3f9178c25b78ed8bed19091bcb62e266|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|40|9|v|typescriptreact
-	condition
-8d5850282d9690cdd6ab78b9362796f9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|40|8|V|typescriptreact
-	    if () {
-	      
-cacbf8bd572c0a99d08b90e355ae31b0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|40|8|V|typescriptreact
-	    } else {
-a127fd1f86e4ab650f2216f09992afa4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|40|6|V|typescriptreact
-	      
-68efb1c943bf37d2d8485c0854e5f00c|file:///Users/louis/.config/nvim/init.vim|33|1|V|vim
-	Plug 'nvim-lua/completion-nvim'
-9a125aac94dad1803bd0dfdb5785405d|file:///Users/louis/.config/nvim/init.vim|34|1|V|vim
-	Plug 'nvim-lua/lsp_extensions.nvim'
-	Plug 'tjdevries/nlua.nvim'
-	Plug 'euclidianAce/BetterLua.vim'
-	Plug 'tjdevries/manillua.nvim'
-5d1cdeec9b54ff96a6366c490c059011|file:///Users/louis/.config/nvim/init.vim|34|1|V|vim
-	" Install this plugin.
-04c8a3edf9cf9155e1193f9a8234958d|file:///Users/louis/.config/nvim/init.vim|35|1|V|vim
-	
-	" (OPTIONAL): If you want to use built-in LSP (requires Neovim HEAD)
-	"   Currently only supported LSP, but others could work in future if people send PRs :)
-0b1dfbae1ea10aa4014e01ed792e4e28|file:///Users/louis/.config/nvim/init.vim|36|1|V|vim
-	
-	" (OPTIONAL): This is recommended to get better auto-completion UX experience for builtin LSP.
-9301d29db62ed3d4f67361b289d758e0|file:///Users/louis/.config/nvim/init.vim|37|1|V|vim
-	
-	" (OPTIONAL): This is a suggested plugin to get better Lua syntax highlighting
-	"   but it's not currently required
-cf81574ef2aa94ae1dca8f36540edc30|file:///Users/louis/.config/nvim/init.vim|38|1|V|vim
-	
-	" (OPTIONAL): If you wish to have fancy lua folds, you can check this out.
-4bbc49c06658980eb9c353d71594b03b|file:///Users/louis/.config/nvim/init.vim|41|1|V|vim
-	
-	-- To get builtin LSP running, do something like:
-	-- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
-7b8342dc0b082cdead735d6ba72bf8bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|41|1|V|typescriptreact
-	    aa
-ec11024a055b04ebcff305367d6f1124|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|40|1|V|typescriptreact
-	    const a;
-	    a
-1863d03dc60da955d7d2c8810d7af6bf|file:///Users/louis/.config/nvim/init.vim|34|1|V|vim
-	Plug 'tjdevries/nlua.nvim'
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-lua/completion-nvim'
-	Plug 'euclidianAce/BetterLua.vim'
-	Plug 'tjdevries/manillua.nvim'
-	
-	local custom_nvim_lspconfig_attach = function(...) end
-	require('nlua.lsp.nvim').setup(require('lspconfig'), {
-	on_attach = custom_nvim_lspconfig_attach,
-	
-	-- Include globals you want to tell the LSP are real :)
-	globals = {
-	-- Colorbuddy
-	"Color", "c", "Group", "g", "s",
-	}
+	        </Observer>
+	        <Button
+	          loading={loading}
+	          onPress={_onHandleSubmit}
+	          tx="common.continue"
+	          containerStyle={MT_8}
+	          disabled={!canContinue}
+	        />
+	      </View>
+	    </Screen>
+	  )
 	})
-cf0ce722a5cbd956f79544cdca94db6a|file:///Users/louis/.config/nvim/init.vim|125|1|V|vim
-	colorscheme spacegray
-475722d7b132f98416e192927d2b9d96|file:///Users/louis/Dev/Projects/komi/komi-mobile/.circleci/config.yml|329|1|V|yaml
-	          context: 'komi-prod-ctx'
 	
-7ca5f891d21891f777f9241748f34a79|file:///Users/louis/.tmux.conf|19|6|V|tmux
-	bind C-a send-prefix -2
-69ef8fa81f6b801ee8eb0038884b553c|file:///Users/louis/.tmux.conf|20|5|V|tmux
-	set -q -g status-utf8 on                  # expect UTF-8 (tmux < 2.2)
-1af6b224385d12920464d90b04e4cd49|file:///Users/louis/.tmux.conf|31|1|V|tmux
-	# -- display -------------------------------------------------------------------
+	const styles = StyleSheet.create({
+	  header: {
+	    borderBottomWidth: 0,
+	  },
 	
-	set -g base-index 1           # start windows numbering at 1
-	setw -g pane-base-index 1     # make pane numbering consistent with windows
+	  progress: {
+	    width: "100%",
+	    marginLeft: spacing[6],
+	  },
 	
-	setw -g automatic-rename on   # rename window to reflect current program
-	set -g renumber-windows on    # renumber windows when a window is closed
+	  centerHeader: {
+	    flex: 6,
+	  },
 	
-	set -g set-titles on          # set terminal title
+	  cardGroupWrapper: {
+	    justifyContent: "space-between",
+	  },
+	  cardWrapper: {
+	    width: metrics.screenWidth * 0.413,
+	    height: metrics.screenHeight * 0.088,
+	  },
+	  image: {
+	    width: metrics.screenWidth * 0.413,
+	    height: metrics.screenHeight * 0.088,
+	    borderRadius: metrics.borderRadius,
+	  },
+	  titleImage: {
+	    width: "70%",
+	    paddingLeft: spacing[3],
+	  },
+	  titleImageCheck: {
+	    opacity: 0.3,
+	  },
+	  linearGradient: {
+	    width: "100%",
+	    height: "100%",
+	    justifyContent: "center",
+	    position: "absolute",
+	    borderRadius: metrics.borderRadius,
+	  },
+	  linearGradientCheck: {
+	    zIndex: 2,
+	  },
+	  checkIcon: {
+	    position: "absolute",
+	    width: "100%",
+	    justifyContent: "center",
+	    alignItems: "center",
+	  },
+	})
+aded8a0eeb2b08c8d52867528140bcf1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/index.ts|36|1|V|typescript
+	export * from "./your-interest-screen/your-interest-screen"
+b5e0554a2d71c84c3d35fac9d526245c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/index.ts|37|16|v|typescript
+	./your-interest-screen/your-interest-screen
+2c73e804fd23a40fe77a478401533456|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/navigation-routes.ts|31|1|V|typescript
+	  YourInterestScreen: <const>"YourInterestScreen",
+893fc9426e256285c63fd568e8c06e83|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/navigation-routes.ts|32|3|v|typescript
+	YourInterestScreen
+9429ca8a9c9600d4658e4611c4fd8ebb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/types.ts|89|1|V|typescript
+	  [Routes.YourInterestScreen]: undefined
+e2762b20eb1a8f0b9125bce617f60825|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/auth-navigator.tsx|44|1|V|typescriptreact
+	      <RegisterStack.Screen
+	        name={NavigationRoutes.YourInterestScreen}
+	        component={YourInterestScreen}
+	      />
+5284f46bb510559e7b0fcd9d279ef4be|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|603|1|V|json
+	    "yourInterest": "Your Interests (1/2)",
+5ebba5046aac0f76dc3a948ddc465a01|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|607|5|V|json
+	    "yourInterest": "Your Interests (1/2)",
+	  },
+0cf31b2c283ce3431794586df7b0996d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|608|4|V|json
+	    
+bbe5c5f431f14d7e3a077bed4a697bc2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|603|1|V|json
+	    "yourInterestsStep1": "Your Interests (1/2)",
+9c93410eb94aa8c5dedb3d8233c24c5d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|608|1|V|json
+	    "yourInterest": "Your Interests (2/2)"
+9210d252ec50c8ebd5eebc2f10fb979c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|608|1|V|json
+	  "yourSubInterestScreen": {
+	  },
+00615504dbb90aa76f1086bdf1051e77|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|605|1|V|json
+	    "yourInterestDescription": "Choose three or more categories that represent what you want to see",
+306a991bb72b31a0f99da2a54483e49c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|606|36|v|json
+	Choose three or more categories that represent what you want to see
+4819dc9f2283ad2dac18ec754438428b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/search-screen/search-screen.tsx|30|7|v|typescriptreact
+	TAGS
+9c131c120eb937e0ba0e9c686606778c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/search-screen/search-screen.tsx|93|9|v|typescriptreact
+	renderTags
+1c33a6756e18f7477aa3796dc8243035|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|248|9|v|typescriptreact
+	renderJoinButton
+c1813c313ea1ca9beeddc39b6cd2a9e7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|342|29|v|typescriptreact
+	bottomContainer
+b92e19c2afc1ca212261c3d0779bf3fd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|354|1|V|typescriptreact
+	  bottomContainer: {
+	    backgroundColor: color.background,
+	    elevation: 5,
+	    justifyContent: "center",
+	    paddingBottom: spacing[7] + spacing[1],
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    paddingTop: metrics.paddingVertical,
+	    shadowColor: color.themeColor.black,
+	    shadowOffset: {
+	      width: 0,
+	      height: -3,
+	    },
+	    shadowOpacity: 0.1,
 	
-	set -g display-panes-time 800 # slightly longer pane indicators display time
-	set -g display-time 1000      # slightly longer status messages display time
+	    shadowRadius: 3.84,
+	  },
+4351cfebe4b61d8aa5efa1d020710005|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|210|1|v|typescriptreact
+	View
+98a7401fae5a41c60d23a49ec1d77613|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|212|1|V|typescriptreact
+	        <Button
+	          loading={loading}
+	          onPress={_onHandleSubmit}
+	          tx="common.continue"
+	          containerStyle={MT_8}
+	          disabled={!canContinue}
+	        />
+1f9133f917af95f73d3cb1e7e82b492c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|178|6|V|typescriptreact
+	    <>
+0e9dd4f7a903aad28376f3a63ed5784e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|211|13|V|typescriptreact
+	      </View>
+c54bbcc2864e0007afa42b0a6bc20f2c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|216|29|V|typescriptreact
+	            containerStyle={MT_8}
+9a8f8f4982f731e5fb5551a9787b0090|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|233|20|V|typescriptreact
+	    paddingBottom: spacing[7] + spacing[1],
+10f5b2f08be52e9f5d72c12cfd2fa558|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|233|20|V|typescriptreact
+	    paddingHorizontal: metrics.paddingHorizontal,
+d16da5795fa46b9552b53b6b03422e6f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|234|20|V|typescriptreact
+	    paddingTop: metrics.paddingVertical,
+31afff184300c10a0c6a1d200da74870|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|232|20|V|typescriptreact
+	    justifyContent: "center",
+83f50a07500e83bf4aee3785ec463be7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|226|20|V|typescriptreact
+	    borderBottomWidth: 0,
+a5a8ca1430ecd7dedd560b0e9a94b976|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|227|27|V|typescriptreact
+	    backgroundColor: 'red',
+b843d83f6f4612671ebd1fdfcdc0d314|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|233|25|V|typescriptreact
+	    position: 'absolute',
+1b5da0bc2e27d6aa0b2511e4587c2deb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|232|14|V|typescriptreact
+	    bottom: 0,
+1fe8579afac2cdd27fdfcb20a73d9dc8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|231|17|V|typescriptreact
+	    elevation: 5,
+5b080f7011a2980d1b307433f77a8fa5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|188|38|v|typescriptreact
+	centerHeader
+659012b40faa6555fb66942344d2c51c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|230|12|V|typescriptreact
+	    flex: 1,
+91769b01de921563397b5225f4fc6360|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|229|19|V|typescriptreact
+	    backgroundColor: "red",
+da165f788d0ee4b8b83430c679254a8e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|355|1|V|typescriptreact
+	    backgroundColor: color.background,
+	    elevation: 5,
+	    justifyContent: "center",
+	    paddingBottom: spacing[7] + spacing[1],
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    paddingTop: metrics.paddingVertical,
+	    shadowColor: color.themeColor.black,
+	    shadowOffset: {
+	      width: 0,
+	      height: -3,
+	    },
+	    shadowOpacity: 0.1,
 	
-	set -g status-interval 10     # redraw status line every 10 seconds
+	    shadowRadius: 3.84,
+d0a570a5897f8f0ed0b15fd0971f5657|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|234|1|v|typescriptreact
+	    backgroundColor: color.background,
+	    elevation: 5,
+	    justifyContent: "center",
+	    paddingBottom: spacing[7] + spacing[1],
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    paddingTop: metrics.paddingVertical,
+	    shadowColor: color.themeColor.black,
+	    shadowOffset: {
+	      width: 0,
+	      height: -3,
+	    },
+	    shadowOpacity: 0.1,
 	
-	# clear both screen and history
-	bind -n C-l send-keys C-l \; run 'sleep 0.1' \; clear-history
+	    shadowRadius: 3.84,
 	
-	# activity
-	set -g monitor-activity on
-	set -g visual-activity off
-f503ee008baf44d7513e86abe766a8d9|file:///Users/louis/.tmux.conf|24|1|V|tmux
-	# edit configuration
-	bind e new-window -n "~/.tmux.conf.local" "EDITOR=\${EDITOR//mvim/vim} && EDITOR=\${EDITOR//gvim/vim} && \${EDITOR:-vim} ~/.tmux.conf.local && tmux source ~/.tmux.conf && tmux display \"~/.tmux.conf sourced\""
-53a981fb43b82f3da51b3a6d3404865f|file:///Users/louis/.tmux.conf|172|1|V|tmux
-	set -g @plugin 'dracula/tmux'
-f2b657a32639877dfe92bb059459de3c|file:///Users/louis/.tmux.conf|22|1|V|tmux
-	setw -q -g utf8 on
-d93c206d5cd63d942832238b194654a5|file:///Users/louis/.tmux.conf|13|1|V|tmux
-	setw -g xterm-keys on
-1a4bd725f590ff4ed2c160e0072aa515|file:///Users/louis/.tmux.conf|23|1|V|tmux
-	# edit configuration
-	bind e new-window -n "~/.tmux.conf.local" "EDITOR=\${EDITOR//mvim/vim} && EDITOR=\${EDITOR//gvim/vim} && \${EDITOR:-vim} ~/.tmux.conf.local && tmux source ~/.tmux.conf && tmux display \"~/.tmux.conf sourced\""
+e7f446ab7d0071186fcf25100aba5d7b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|228|1|V|typescriptreact
+	  container: {
+	    height: '100%',
+	  },
 	
-	# reload configuration
-	bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
+	  bottomContainer: {
+	    backgroundColor: color.background,
+	    elevation: 5,
+	    justifyContent: "center",
+	    paddingBottom: spacing[7] + spacing[1],
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    paddingTop: metrics.paddingVertical,
+	    shadowColor: color.themeColor.black,
+	    shadowOffset: {
+	      width: 0,
+	      height: -3,
+	    },
+	    shadowOpacity: 0.1,
 	
+	    shadowRadius: 3.84,
+	  },
 	
-6f8a8e17a0ad080b0a11f64bc5881ffc|file:///Users/louis/.tmux.conf|25|1|V|tmux
-	set -g base-index 1           # start windows numbering at 1
-	setw -g pane-base-index 1     # make pane numbering consistent with windows
+2689b4c3b6af22796c2e22e8b9d8d102|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|211|1|V|typescriptreact
+	        <View style={styles.bottomContainer}>
+	          <Button
+	            loading={loading}
+	            onPress={_onHandleSubmit}
+	            tx="common.continue"
+	            disabled={!canContinue}
+	          />
+	        </View>
+d49d4e818e88d475259bb3d8b6b08786|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|193|1|V|typescriptreact
+	        <View style={[PX_5, styles.container]}>
+646d43922824b9a2f391a67c674ff73b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|193|1|V|typescriptreact
+	      <View style={PX_5}>
+3229306635896de96876c3421f6c0581|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/search-screen/search-screen.tsx|82|1|V|typescriptreact
+	  const renderTag = (tag) => {
+	    return (
+	      <TouchableOpacity
+	        onPress={_onPressTag(tag.name)}
+	        key={`tag_${tag.id}`}
+	        style={styles.tagItem}
+	      >
+	        <Text text={tag.name} preset="mediumR" />
+	      </TouchableOpacity>
+	    )
+	  }
+26ad6aa37dda7db90893261f9f12bd3c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/search-screen/search-screen.tsx|82|1|V|typescriptreact
+	  const renderTag = (tag) => {
+	    return (
+	      <TouchableOpacity
+	        onPress={_onPressTag(tag.name)}
+	        key={`tag_${tag.id}`}
+	        style={styles.tagItem}
+	      >
+	        <Text text={tag.name} preset="mediumR" />
+	      </TouchableOpacity>
+	    )
+	  }
+	  const renderTags = () => {
+	    return TAGS.map(renderTag)
+	  }
+34f13e31a828527b994f02d090b2ad00|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/search-screen/search-screen.tsx|30|1|V|typescriptreact
+	const TAGS = [
+	  {
+	    id: 1,
+	    name: "Skin Care",
+	  },
+	  {
+	    id: 2,
+	    name: "Vegan",
+	  },
+	  {
+	    id: 3,
+	    name: "Parenthood",
+	  },
+	  {
+	    id: 4,
+	    name: "DJ",
+	  },
+	  {
+	    id: 5,
+	    name: "Sommelier",
+	  },
+	  {
+	    id: 6,
+	    name: "Breathwork",
+	  },
+	  {
+	    id: 7,
+	    name: "Beauty",
+	  },
+	  {
+	    id: 8,
+	    name: "Golf",
+	  },
+	  {
+	    id: 8,
+	    name: "Pilates",
+	  },
+	]
+91a340838ee2182d1a5fea648b1b9f43|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/search-screen/search-screen.tsx|214|1|V|typescriptreact
+	          <View style={styles.tagsContainer}>{renderTags()}</View>
+c4103370a8d5aa4990aa3f203d9da301|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|256|1|V|typescriptreact
+	              <FlatList
+	                keyExtractor={(_item: any, index: number) => `${index}`}
+	                style={MT_6}
+	                data={groupDataByRow(NUMBER_OF_ROWS, toJS(list))}
+	                renderItem={renderCardItem}
+	              />
+8a2e313adfc5d912696552d818755a5c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/search-screen/search-screen.tsx|214|31|v|typescriptreact
+	tagsContainer
+d538b13d18b061ca5007580de8306d1a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/search-screen/search-screen.tsx|271|1|V|typescriptreact
+	  tagsContainer: {
+	    flexDirection: "row",
+	    flexWrap: "wrap",
+	    alignItems: "flex-start",
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    marginBottom: spacing[4],
+	  },
+fec22fd1cff810a975d22da0de937e5a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|318|1|V|typescriptreact
+	  image: {
+	    width: metrics.screenWidth * 0.413,
+	    height: metrics.screenHeight * 0.088,
+	    borderRadius: metrics.borderRadius,
+	  },
+	  titleImage: {
+	    width: "70%",
+	    paddingLeft: spacing[3],
+	  },
+	  titleImageCheck: {
+	    opacity: 0.3,
+	  },
+	  linearGradient: {
+	    width: "100%",
+	    height: "100%",
+	    justifyContent: "center",
+	    position: "absolute",
+	    borderRadius: metrics.borderRadius,
+	  },
+	  linearGradientCheck: {
+	    zIndex: 2,
+	  },
+	  checkIcon: {
+	    position: "absolute",
+	    width: "100%",
+	    justifyContent: "center",
+	    alignItems: "center",
+	  },
+8f83437fba728115271f89d8c8ab7c6b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|311|1|V|typescriptreact
+	  cardGroupWrapper: {
+	    justifyContent: "space-between",
+	  },
+	  cardWrapper: {
+	    width: metrics.screenWidth * 0.413,
+	    height: metrics.screenHeight * 0.088,
+	  },
+7b606807b77491c6e774c8edddfc08ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|219|38|V|typescriptreact
+	        onPress={_onPressTag(tag.name)}
+63396a0d85b785df3940557f86fa50ad|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/search-screen/search-screen.tsx|278|1|V|typescriptreact
+	  tagItem: {
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    paddingVertical: metrics.paddingVertical / 2,
+	    justifyContent: "center",
+	    alignItems: "center",
+	    borderWidth: 1,
+	    borderColor: rgbColor(color.themeColor.dark, 0.1),
+	    borderRadius: metrics.borderRadiusMax,
+	    marginRight: metrics.marginHorizontal / 2,
+	    marginBottom: metrics.marginVertical / 2,
+	  },
+4f5d8f4a2bfbc67070b40695b0ab87ba|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|270|1|V|typescriptreact
+	    height: "100%",
+74f8dba45d59f0d216fbe1c3a68fad5c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|296|5|V|typescriptreact
+	    marginBottom: spacing[4],
+48dc1f44e5c4ca469eb2b84cf3126deb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|246|29|v|typescriptreact
+	MT_2
+adab7417eed197154c9c3d2161af1e53|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|300|24|v|typescriptreact
+	metrics.paddingHorizontal,
+b02f7ebc7c4fc95fdfa5abc6127c4e15|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|301|34|V|typescriptreact
+	    paddingVertical: metrics.paddingVertical / 2,
+facff6af203c435eeee380269bf9e281|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|294|26|V|typescriptreact
+	    paddingHorizontal: spacing[5],
+1c718dbbf8e4eeb16ec17a9dd5c6a6ea|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|293|26|V|typescriptreact
+	    alignItems: "flex-start",
+328cc646751e6e95dfbcf2542f8f579a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|292|21|V|typescriptreact
+	    flexWrap: "wrap",
+5f0b6ebc4bea10285ba2b8a6ce78b863|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|269|3|v|typescriptreact
+	container
+a2ca680b7850f872fe77c7b77371c34c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|270|19|V|typescriptreact
+	    display: 'flex'
+9c04ae3cc70f3d8187895609d1c43cb1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|291|7|V|typescriptreact
+	    hei
+9298c046e53429e54499efcc98eb15ed|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|29|7|V|typescriptreact
+	  MT_6,
+01949857067ce7de1ee7397fa4a80e40|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|31|7|V|typescriptreact
+	  MT_8,
+ac2b722fef4c6e30621f372e7fe6eada|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|7|10|v|typescriptreact
+	FlatList
+79cc2aa61981018af3ee9208310f3494|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|2|10|V|typescriptreact
+	import { toJS } from "mobx"
+c71a551dffbd3b3daff3be2f17837144|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|35|7|V|typescriptreact
+	const NUMBER_OF_ROWS = 2
+807aee55a8d8404c9dc65ae68df5436d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|35|7|v|typescriptreact
+	REQUIRED_ITEMS
+1c17a43d63d5a57481114c9b5a72c99b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|130|9|v|typescriptreact
+	_onPressSelect
+8c26beacd384eba3263bce52340897c8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|147|1|V|typescriptreact
+	  const renderCardItem = React.useCallback(
+	    ({ item: data }: { item: CategoryModelType[] }) => {
+	      return (
+	        <View style={[ROW, styles.cardGroupWrapper]}>
+	          {data.map((item) => {
+	            return (
+	              <TouchableOpacity
+	                style={MB_4}
+	                key={item?.id}
+	                onPress={() => _onPressSelect(item?.id)}
+	              >
+	                <View style={styles.cardWrapper}>
+	                  <FastImage source={{ uri: item?.background }} style={styles.image} />
+	                  {selectionList.includes(item?.id) ? (
+	                    <LinearGradient
+	                      colors={[
+	                        color.transparent,
+	                        rgbColor(color.themeColor.green, 1),
+	                        rgbColor(color.themeColor.green, 0.8),
+	                      ]}
+	                      style={[styles.linearGradient, styles.linearGradientCheck]}
+	                      start={{ x: 0, y: 0 }}
+	                      locations={[0, 0, 1]}
+	                    >
+	                      <View style={styles.checkIcon}>
+	                        <Icon name="check-vector" />
+	                      </View>
+	                      <View style={[styles.titleImage, styles.titleImageCheck]}>
+	                        <Text
+	                          preset="semiBoldR"
+	                          style={{ color: color.themeColor.white }}
+	                          text={item?.name}
+	                        />
+	                      </View>
+	                    </LinearGradient>
+	                  ) : (
+	                    <LinearGradient
+	                      colors={[
+	                        color.transparent,
+	                        rgbColor(item?.color, 1),
+	                        rgbColor(item?.color, 0.18),
+	                      ]}
+	                      style={styles.linearGradient}
+	                      start={{ x: 0, y: 0 }}
+	                      locations={[0, 0, 1]}
+	                    >
+	                      <View style={styles.titleImage}>
+	                        <Text
+	                          preset="semiBoldR"
+	                          style={{ color: color.themeColor.white }}
+	                          text={item?.name}
+	                        />
+	                      </View>
+	                    </LinearGradient>
+	                  )}
+	                </View>
+	              </TouchableOpacity>
+	            )
+	          })}
+	        </View>
+	      )
+	    },
+	    [_onPressSelect, selectionList],
+	  )
+fb8b55d0a4045689a224e2c71ccd25e8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|130|1|V|typescriptreact
+	  const _onPressSelect = React.useCallback(
+	    (id) => {
+	      if (selectionList.includes(id)) {
+	        if (selectionList?.length === REQUIRED_ITEMS) setCanContinue(false)
+	        setSelectionList(
+	          remove(selectionList, (selectId: string) => {
+	            return selectId !== id
+	          }),
+	        )
+	      } else {
+	        if (selectionList?.length === REQUIRED_ITEMS - 1) setCanContinue(true)
+	        setSelectionList([...selectionList, id])
+	      }
+	    },
+	    [selectionList],
+	  )
 	
-	setw -g automatic-rename on   # rename window to reflect current program
-	set -g renumber-windows on    # renumber windows when a window is closed
+f7effef35327793703c329696a352800|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|115|1|V|typescriptreact
+	  const groupDataByRow = React.useCallback((numberOfRow: number, data: Array<any>) => {
+	    const result = {}
 	
-	set -g set-titles on          # set terminal title
+	    data.map((item, index) => {
+	      const position = Math.floor(index / numberOfRow)
 	
-	set -g display-panes-time 800 # slightly longer pane indicators display time
-	set -g display-time 1000      # slightly longer status messages display time
+	      if (!result[position]) result[position] = [item]
+	      else result[position].push(item)
+	    })
 	
-	set -g status-interval 10     # redraw status line every 10 seconds
+	    return Object.keys(result).map((key) => {
+	      return result[key]
+	    })
+	  }, [])
 	
-	# clear both screen and history
-	bind -n C-l send-keys C-l \; run 'sleep 0.1' \; clear-history
+806340aa8aac66f69d80a5545d720924|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|204|17|v|typescriptreact
+	 metrics.marginHorizontal / 2,
+84c055927f543068e12d33796cfa4c94|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|204|18|v|typescriptreact
+	metrics.marginHorizontal / 2,
+2575d5a76333992bdcf9fdd8940c7338|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|205|19|v|typescriptreact
+	metrics.marginVertical / 2,
+d25cf0209fb12846d3a944e0e24bbe48|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|199|25|V|typescriptreact
+	    alignItems: "center",
+4cdbd13f607f3584d8b6e9faa7618650|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|192|18|v|typescriptreact
+	flex-start
+89c645b6c146c7780382bb69ebfe5e34|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|194|23|V|typescriptreact
+	    marginTop: spacing[8],
+adb115059e28d960fa8badfac5516667|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|192|18|v|typescriptreact
+	center
+3f28ccb367f76bb832848a3d64a00c5a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|141|8|V|typescriptreact
+	      <>
+df4618b8e1257e5e8204006701178a66|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|158|9|V|typescriptreact
+	      </>
+cb412781bb5024e8616f5c07707374f0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|1|1|V|typescriptreact
+	import { ParamListBase, useNavigation } from "@react-navigation/native"
+	import { toJS } from "mobx"
+	import { Observer, observer } from "mobx-react-lite"
+	import { CategoryModelType } from "models/model-types"
+	import * as React from "react"
+	import LinearGradient from "react-native-linear-gradient"
+	import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native"
+	import {
+	  Button,
+	  FastImage,
+	  ProgressBar,
+	  Screen,
+	  Text,
+	  Icon,
+	  resetProgressBar,
+	} from "../../components"
+	import { useStores } from "../../models"
+	import { remove } from "utils/lodash"
+	import {
+	  color,
+	  FLEX,
+	  metrics,
+	  PX_5,
+	  spacing,
+	  CENTER,
+	  MT_4,
+	  MT_2,
+	  PX_6,
+	  MT_6,
+	  MB_4,
+	  ROW,
+	  MT_8,
+	} from "../../theme"
+	import { rgbColor } from "utils/color"
+	import { NativeStackNavigationProp } from "react-native-screens/lib/typescript"
+	import { NavigationRoutes } from "navigation/navigation-routes"
 	
-	# activity
-	set -g monitor-activity on
-	set -g visual-activity off
-d783c2fff20f2310d83f6c91f9d5c0d6|file:///Users/louis/.tmux.conf|5|1|V|tmux
-	# Other examples:
-	# set -g @plugin 'github_username/plugin_name'
-	# set -g @plugin 'git@github.com:user/plugin'
-	# set -g @plugin 'git@bitbucket.com:user/plugin'
-972d8740cf9e2ae26bc3abf0b9f344fc|file:///Users/louis/.tmux.conf|5|1|V|tmux
-	# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-2d44d7655d446d192e2ec1a3e781d37b|file:///Users/louis/.tmux.conf|5|1|V|tmux
-	set -g prefix2 C-a                        # GNU-Screen compatible prefix
-09504d4623b641e650dab48a8bd7a146|file:///Users/louis/.config/nvim/init.vim|15|17|V|vim
-	Plug 'rockerBOO/boo-colorscheme-nvim'
-933839a8dbf678a0071f3c7d79d613a9|file:///Users/louis/.config/nvim/init.vim|14|17|V|vim
-	Plug 'tjdevries/colorbuddy.nvim'
-888d62b88139721428898ca734daf5f7|file:///Users/louis/.config/nvim/init.vim|125|13|V|vim
-	let g:gruvbox_contrast_dark='hard'
-e467ce2a67c62ce31a9ad352c09a5c80|file:///Users/louis/.config/nvim/init.vim|125|13|v|vim
-	gruvbox
-843539834f1a329ce2b49b64a9e25f0f|file:///Users/louis/.config/nvim/init.vim|127|13|v|vim
-	dracula
-adab20b98e999bf641872441c6631ef4|file:///Users/louis/.config/nvim/init.vim|14|18|V|vim
-	Plut 'dracula/vim'
+	const NUMBER_OF_ROWS = 2
+	const REQUIRED_ITEMS = 3
+	
+	interface YourInterestScreenProps {
+	  navigation: NativeStackNavigationProp<ParamListBase>
+	}
+	
+	export const YourInterestScreen = observer((props: YourInterestScreenProps) => {
+	  const {
+	    authStore: { registerStep, totalRegisterStep, setRegisterStep, updateConsumerProfile },
+	    categoryStore: { list, getCategoryList },
+	  } = useStores()
+	  const [loading, setLoading] = React.useState<boolean>(false)
+	  const [selectionList, setSelectionList] = React.useState([])
+	  const [canContinue, setCanContinue] = React.useState(false)
+	
+	  const navigation = useNavigation()
+	
+	  const _goBack = React.useCallback(() => {
+	    navigation.goBack()
+	  }, [])
+	
+	  React.useEffect(() => {
+	    getCategoryList({ page: 1 })
+	  }, [])
+	
+	  const _onHandleSubmit = React.useCallback(async () => {
+	    setLoading(true)
+	    const result = await updateConsumerProfile({ categories: selectionList })
+	    setLoading(false)
+	
+	    if (result) {
+	      setRegisterStep(1)
+	      resetProgressBar()
+	
+	      props.navigation.reset({
+	        index: 0,
+	        routes: [{ name: NavigationRoutes.MainStack }],
+	      })
+	    }
+	  }, [selectionList])
+	
+	  const groupDataByRow = React.useCallback((numberOfRow: number, data: Array<any>) => {
+	    const result = {}
+	
+	    data.map((item, index) => {
+	      const position = Math.floor(index / numberOfRow)
+	
+	      if (!result[position]) result[position] = [item]
+	      else result[position].push(item)
+	    })
+	
+	    return Object.keys(result).map((key) => {
+	      return result[key]
+	    })
+	  }, [])
+	
+	  const _onPressSelect = React.useCallback(
+	    (id) => {
+	      if (selectionList.includes(id)) {
+	        if (selectionList?.length === REQUIRED_ITEMS) setCanContinue(false)
+	        setSelectionList(
+	          remove(selectionList, (selectId: string) => {
+	            return selectId !== id
+	          }),
+	        )
+	      } else {
+	        if (selectionList?.length === REQUIRED_ITEMS - 1) setCanContinue(true)
+	        setSelectionList([...selectionList, id])
+	      }
+	    },
+	    [selectionList],
+	  )
+	
+	  const renderCardItem = React.useCallback(
+	    ({ item: data }: { item: CategoryModelType[] }) => {
+	      return (
+	        <View style={[ROW, styles.cardGroupWrapper]}>
+	          {data.map((item) => {
+	            return (
+	              <TouchableOpacity
+	                style={MB_4}
+	                key={item?.id}
+	                onPress={() => _onPressSelect(item?.id)}
+	              >
+	                <View style={styles.cardWrapper}>
+	                  <FastImage source={{ uri: item?.background }} style={styles.image} />
+	                  {selectionList.includes(item?.id) ? (
+	                    <LinearGradient
+	                      colors={[
+	                        color.transparent,
+	                        rgbColor(color.themeColor.green, 1),
+	                        rgbColor(color.themeColor.green, 0.8),
+	                      ]}
+	                      style={[styles.linearGradient, styles.linearGradientCheck]}
+	                      start={{ x: 0, y: 0 }}
+	                      locations={[0, 0, 1]}
+	                    >
+	                      <View style={styles.checkIcon}>
+	                        <Icon name="check-vector" />
+	                      </View>
+	                      <View style={[styles.titleImage, styles.titleImageCheck]}>
+	                        <Text
+	                          preset="semiBoldR"
+	                          style={{ color: color.themeColor.white }}
+	                          text={item?.name}
+	                        />
+	                      </View>
+	                    </LinearGradient>
+	                  ) : (
+	                    <LinearGradient
+	                      colors={[
+	                        color.transparent,
+	                        rgbColor(item?.color, 1),
+	                        rgbColor(item?.color, 0.18),
+	                      ]}
+	                      style={styles.linearGradient}
+	                      start={{ x: 0, y: 0 }}
+	                      locations={[0, 0, 1]}
+	                    >
+	                      <View style={styles.titleImage}>
+	                        <Text
+	                          preset="semiBoldR"
+	                          style={{ color: color.themeColor.white }}
+	                          text={item?.name}
+	                        />
+	                      </View>
+	                    </LinearGradient>
+	                  )}
+	                </View>
+	              </TouchableOpacity>
+	            )
+	          })}
+	        </View>
+	      )
+	    },
+	    [_onPressSelect, selectionList],
+	  )
+	
+	  return (
+	    <Screen
+	      header={{
+	        leftIcon: "sLeft",
+	        onLeftPress: _goBack,
+	        style: styles.header,
+	        centerComponent: (
+	          <ProgressBar style={styles.progress} total={totalRegisterStep} step={registerStep} />
+	        ),
+	        rightContainerStyle: FLEX,
+	        leftContainerStyle: FLEX,
+	        centerContainerStyle: styles.centerHeader,
+	      }}
+	      preset="scroll"
+	    >
+	      <View style={[PX_5, styles.container]}>
+	        <Text style={[CENTER, MT_4]} tx="registerScreen.yourInterestsStep1" preset="semiBoldMP" />
+	        <Text
+	          style={[CENTER, MT_2, PX_6]}
+	          tx="registerScreen.yourInterestDescription"
+	          preset="regularR"
+	        />
+	        <Observer>
+	          {() => (
+	            <FlatList
+	              keyExtractor={(_item: any, index: number) => `${index}`}
+	              style={MT_6}
+	              data={groupDataByRow(NUMBER_OF_ROWS, toJS(list))}
+	              renderItem={renderCardItem}
+	            />
+	          )}
+	        </Observer>
+	        <Button
+	          loading={loading}
+	          onPress={_onHandleSubmit}
+	          tx="common.continue"
+	          containerStyle={MT_8}
+	          disabled={!canContinue}
+	        />
+	      </View>
+	      <View style={styles.bottomContainer}>
+	        <Button
+	          loading={loading}
+	          onPress={_onHandleSubmit}
+	          tx="common.continue"
+	          disabled={!canContinue}
+	        />
+	      </View>
+	    </Screen>
+	  )
+	})
+	
+	const styles = StyleSheet.create({
+	  header: {
+	    borderBottomWidth: 0,
+	  },
+	
+	  container: {
+	    height: "100%",
+	  },
+	
+	  bottomContainer: {
+	    backgroundColor: color.background,
+	    elevation: 5,
+	    justifyContent: "center",
+	    paddingBottom: spacing[7] + spacing[1],
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    paddingTop: metrics.paddingVertical,
+	    shadowColor: color.themeColor.black,
+	    shadowOffset: {
+	      width: 0,
+	      height: -3,
+	    },
+	    shadowOpacity: 0.1,
+	
+	    shadowRadius: 3.84,
+	  },
+	
+	  progress: {
+	    width: "100%",
+	    marginLeft: spacing[6],
+	  },
+	
+	  centerHeader: {
+	    flex: 6,
+	  },
+	
+	  cardGroupWrapper: {
+	    justifyContent: "space-between",
+	  },
+	  cardWrapper: {
+	    width: metrics.screenWidth * 0.413,
+	    height: metrics.screenHeight * 0.088,
+	  },
+	  image: {
+	    width: metrics.screenWidth * 0.413,
+	    height: metrics.screenHeight * 0.088,
+	    borderRadius: metrics.borderRadius,
+	  },
+	  titleImage: {
+	    width: "70%",
+	    paddingLeft: spacing[3],
+	  },
+	  titleImageCheck: {
+	    opacity: 0.3,
+	  },
+	  linearGradient: {
+	    width: "100%",
+	    height: "100%",
+	    justifyContent: "center",
+	    position: "absolute",
+	    borderRadius: metrics.borderRadius,
+	  },
+	  linearGradientCheck: {
+	    zIndex: 2,
+	  },
+	  checkIcon: {
+	    position: "absolute",
+	    width: "100%",
+	    justifyContent: "center",
+	    alignItems: "center",
+	  },
+	})
+6c4c3d9163b2ebe2b22dc03411aa0264|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|1|1|V|typescriptreact
+	import { ParamListBase, useNavigation } from "@react-navigation/native"
+	import { Observer, observer } from "mobx-react-lite"
+	import { CategoryModelType } from "models/model-types"
+	import * as React from "react"
+	import LinearGradient from "react-native-linear-gradient"
+	import { StyleSheet, TouchableOpacity, View } from "react-native"
+	import {
+	  Button,
+	  FastImage,
+	  ProgressBar,
+	  Screen,
+	  Text,
+	  Icon,
+	  resetProgressBar,
+	} from "../../components"
+	import { useStores } from "../../models"
+	import { remove } from "utils/lodash"
+	import {
+	  color,
+	  FLEX,
+	  metrics,
+	  PX_5,
+	  spacing,
+	  CENTER,
+	  MT_4,
+	  MT_2,
+	  PX_6,
+	  MB_4,
+	  ROW,
+	} from "../../theme"
+	import { rgbColor } from "utils/color"
+	import { NativeStackNavigationProp } from "react-native-screens/lib/typescript"
+	import { NavigationRoutes } from "navigation/navigation-routes"
+	
+	const REQUIRED_ITEMS = 3
+	
+	interface YourSubInterestScreenProps {
+	  navigation: NativeStackNavigationProp<ParamListBase>
+	}
+	
+	const TAGS = [
+	  {
+	    id: 1,
+	    name: "Skin Care",
+	  },
+	  {
+	    id: 2,
+	    name: "Vegan",
+	  },
+	  {
+	    id: 3,
+	    name: "Parenthood",
+	  },
+	  {
+	    id: 4,
+	    name: "DJ",
+	  },
+	  {
+	    id: 5,
+	    name: "Sommelier",
+	  },
+	  {
+	    id: 6,
+	    name: "Breathwork",
+	  },
+	  {
+	    id: 7,
+	    name: "Beauty",
+	  },
+	  {
+	    id: 8,
+	    name: "Golf",
+	  },
+	  {
+	    id: 8,
+	    name: "Pilates",
+	  },
+	]
+	
+	export const YourSubInterestScreen = observer((props: YourSubInterestScreenProps) => {
+	  const {
+	    authStore: { registerStep, totalRegisterStep, setRegisterStep, updateConsumerProfile },
+	    categoryStore: { list, getCategoryList },
+	  } = useStores()
+	  const [loading, setLoading] = React.useState<boolean>(false)
+	  const [selectionList, setSelectionList] = React.useState([])
+	  const [canContinue, setCanContinue] = React.useState(false)
+	
+	  const navigation = useNavigation()
+	
+	  const _goBack = React.useCallback(() => {
+	    navigation.goBack()
+	  }, [])
+	
+	  React.useEffect(() => {
+	    getCategoryList({ page: 1 })
+	  }, [])
+	
+	  const _onHandleSubmit = React.useCallback(async () => {
+	    setLoading(true)
+	    const result = await updateConsumerProfile({ categories: selectionList })
+	    setLoading(false)
+	
+	    if (result) {
+	      setRegisterStep(1)
+	      resetProgressBar()
+	
+	      props.navigation.reset({
+	        index: 0,
+	        routes: [{ name: NavigationRoutes.MainStack }],
+	      })
+	    }
+	  }, [selectionList])
+	
+	  const renderTag = (tag) => {
+	    return (
+	      <TouchableOpacity key={`tag_${tag.id}`} style={styles.tagItem}>
+	        <Text text={tag.name} preset="mediumR" />
+	      </TouchableOpacity>
+	    )
+	  }
+	  const renderTags = () => {
+	    return TAGS.map(renderTag)
+	  }
+	
+	  return (
+	    <Screen
+	      header={{
+	        leftIcon: "sLeft",
+	        onLeftPress: _goBack,
+	        style: styles.header,
+	        centerComponent: (
+	          <ProgressBar style={styles.progress} total={totalRegisterStep} step={registerStep} />
+	        ),
+	        rightContainerStyle: FLEX,
+	        leftContainerStyle: FLEX,
+	        centerContainerStyle: styles.centerHeader,
+	      }}
+	      preset="scroll"
+	    >
+	      <View style={[PX_5, styles.container]}>
+	        <Text style={[CENTER, MT_4]} tx="registerScreen.yourInterestsStep2" preset="semiBoldMP" />
+	        <Text
+	          style={[CENTER, MT_2, PX_6]}
+	          tx="registerScreen.yourSubInterestDescription"
+	          preset="regularR"
+	        />
+	        <Observer>{() => <View style={styles.tagsContainer}>{renderTags()}</View>}</Observer>
+	      </View>
+	      <View style={styles.bottomContainer}>
+	        <Button
+	          loading={loading}
+	          onPress={_onHandleSubmit}
+	          tx="common.continue"
+	          disabled={!canContinue}
+	        />
+	      </View>
+	    </Screen>
+	  )
+	})
+	
+	const styles = StyleSheet.create({
+	  header: {
+	    borderBottomWidth: 0,
+	  },
+	  container: {
+	    height: "100%",
+	  },
+	
+	  bottomContainer: {
+	    backgroundColor: color.background,
+	    elevation: 5,
+	    justifyContent: "center",
+	    paddingBottom: spacing[7] + spacing[1],
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    paddingTop: metrics.paddingVertical,
+	    shadowColor: color.themeColor.black,
+	    shadowOffset: {
+	      width: 0,
+	      height: -3,
+	    },
+	    shadowOpacity: 0.1,
+	
+	    shadowRadius: 3.84,
+	  },
+	
+	  tagsContainer: {
+	    flexDirection: "row",
+	    flexWrap: "wrap",
+	    alignItems: "flex-start",
+	    justifyContent: "center",
+	    marginTop: spacing[8],
+	  },
+	  tagItem: {
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    paddingVertical: metrics.paddingVertical / 2,
+	    justifyContent: "center",
+	    alignItems: "center",
+	    borderWidth: 1,
+	    borderColor: rgbColor(color.themeColor.dark, 0.1),
+	    borderRadius: metrics.borderRadiusMax,
+	    marginRight: spacing[3],
+	    marginBottom: spacing[4],
+	  },
+	
+	  progress: {
+	    width: "100%",
+	    marginLeft: spacing[6],
+	  },
+	
+	  centerHeader: {
+	    flex: 6,
+	  },
+	})
+2991fb5ee75ef08bff68fa2a2d46d965|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/root-navigator.tsx|54|20|v|typescriptreact
+	YourSubInterestScreen
+e24d5949ff653ecb9f069f5083b7378e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|228|13|v|typescriptreact
+	"100%",
+583ae106210c8710532caf892c8509bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|228|13|v|typescriptreact
+	metrisc
+c2175f0afca089612a7f0d1884600edd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|228|13|v|typescriptreact
+	metrics.screenHeight * 0.77,
+f2d6615950cdccf52c8413aff663638b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|228|1|V|typescriptreact
+	    height: metrics.screenHeight * 0.77,
+7d692b4795ede23ed9be86dcc59bef46|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|17|5|V|typescriptreact
+	import { remove } from "utils/lodash"
+24698a598b112b21e916a704d6b483cb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|28|5|V|typescriptreact
+	  ROW,
+a3eeabe63ee2659f6b3b549f5039c310|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|27|5|V|typescriptreact
+	  MB_4,
+ed641903b14a5039b496dfaa4d2fb1ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|32|5|V|typescriptreact
+	const REQUIRED_ITEMS = 3
+f3a9dc2392aa2f2004a42598fce0906f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|13|1|V|typescriptreact
+	  Icon,
+a760daf1fb74e11c3cb0ea675d4558ad|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|9|1|V|typescriptreact
+	  FastImage,
+a877ba09263001fdfa356328ae30cfd4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|5|1|V|typescriptreact
+	import LinearGradient from "react-native-linear-gradient"
+d887c3132ec65bb88280b31642beb419|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|3|1|V|typescriptreact
+	import { CategoryModelType } from "models/model-types"
+10ae9fc7d453b0dd525d0edf2ede7961|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|58|22|v|typescriptreact
+	list
+207491700cf9911d5dece4320ddfea71|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|61|22|V|typescriptreact
+	  const [selectionList, setSelectionList] = React.useState([])
+aed8b0eeffc79ec3faf13cfb405ccc9a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|61|22|V|typescriptreact
+	  const [canContinue, setCanContinue] = React.useState(false)
+29e97363a89d7c7677d02b6660b7ade3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|128|22|V|typescriptreact
+	          disabled={!canContinue}
+556527bbc252f224f12f27ca5507cb85|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|241|1|V|typescriptreact
+	                            <Text
+	                              style={{ textAlign: "center", marginTop: spacing[1] }}
+	                              tx="categoryDetailScreen.categoryEmptyDescription"
+	                              txOptions={{ category: category?.name }}
+	                              preset="regularR"
+	                            />
+f4b29ef4f317284cafa0f7f3e55a4687|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|244|1|V|typescriptreact
+	                          <Text tx="categoryDetailScreen.getReady" preset="semiBoldM" />
+3d20415132dcc0c44bc04f441185d78f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|225|1|V|typescriptreact
+	                          <Text tx="common.commingSoon" preset="semiBoldM" />
+ffad32ac9d6c5f3a4ae0d6621f4c2c54|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|240|27|V|typescriptreact
+	                        </>
+5ebab7949035fb31bc825d1f63dce45c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|240|1|V|typescriptreact
+	                      ) : (
+	                        <>
+	                          <Text tx="categoryDetailScreen.getReady" preset="semiBoldM" />
+	                          <View style={{ paddingHorizontal: spacing[9] }}>
+	                          </View>
+	                        </>
+	                      )}
+7effb48526c2b75c17342c80e91e43ad|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|536|23|v|typescriptreact
+	handleNext
+06a1e941e8500f392c66ade2597bed19|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|236|15|V|typescriptreact
+	      debugger;
+8b300a8b87bf3fab3d953bf6b99444f1|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|534|19|v|typescriptreact
+	isSkipBtn
+aa2c433ab61e8f9f8c4ff66879dce3ae|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ECommerceStep/ECommerceStep.tsx|51|1|V|typescriptreact
+	    if (!initialValues?.products && initialValues?.products?.length === 0)
+	      setIsSkipBtn(true);
+	    else setIsSkipBtn(false);
+30c8cae5ab24cfe2cb877c9e13429ac1|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ECommerceStep/ECommerceStep.tsx|56|1|V|typescriptreact
+	      setIsSkipBtn(false);
+39b029f004a1749502727f99b2ce8de9|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ECommerceStep/ECommerceStep.tsx|54|1|V|typescriptreact
+	    setIsSkipBtn(true);
+	    return () => {
+	    };
+8e46a0cc0c1a4168bddc6e384dc663fe|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ECommerceStep/ECommerceStep.tsx|315|1|V|typescriptreact
+	                        if (form.getFieldValue("products").length === 0) {
+	                          setIsSkipBtn(true);
+	                        }
+bc13e9f24915b0787389fcb88db951ad|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ECommerceStep/ECommerceStep.tsx|315|1|V|typescriptreact
+	                        if (form.getFieldValue("products").length === 0) {
+46bb474f44fd5a3bd80e040d970baa2c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|388|1|V|typescriptreact
+	        setIsSubmit(false);
+aae9dba89f96c8b38c7dc2372d1c9459|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/CreateExperienceLiveClass.tsx|383|9|V|typescriptreact
+	    setIsSubmit(false);
+bdb0a38bcf3fb09d7668c6dc4a831e54|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ECommerceStep/ECommerceStep.tsx|270|1|V|typescriptreact
+	                        if (!parseFloat(value))
+	                          return value.slice(0, value.length - 1);
+	                        if (!value) return 0;
+	                        if (
+	                          value[value.length - 1] === "." &&
+	                          value.split(".").length === 2
+	                        )
+	                          return value;
+	                        if (
+	                          value.includes(".") &&
+	                          value.split(".")[1].length > 2
+	                        )
+	                          return value.slice(0, value.length - 1);
+	                        return parseFloat(value);
+5acd6904cc0699635493543e3accb161|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/ECommerceStep/ECommerceStep.tsx|26|5|v|typescriptreact
+	"name" | "description" | "duration" | "price" | 
+42318aabf79dbd482eb954adcc469dcf|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|51|8|v|typescriptreact
+	ExclusiveContentStep
+51c253c09b7ca68e6004d613ddbedae3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/CreateExperienceLiveClass.tsx|496|28|v|typescriptreact
+	initialDetailForm
+339cc492c232e5b3a1242dcbf6240e04|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/CreateExperienceLiveClass.tsx|120|36|v|typescriptreact
+	fieldsValue
+d706a2ca7772840c2c449d4fc9b8ff51|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ECommerceStep/ECommerceStep.tsx|216|1|V|typescriptreact
+	                      fieldKey={[field.fieldKey, "image"]}
+	                      initialValue={productImages[field.name + 1]}
+	                      rules={[
+	                        {
+	                          required: true,
+	                          message: "Please upload the image",
+	                        },
+	                      ]}
+6c6d0e62a2a5168f155804c47ea406c3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|401|1|V|typescriptreact
+	      setCanGoNext(true);
+101969a2ff92b6a24ed050e2494244fd|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|237|9|v|typescriptreact
+	handleUpdateAndCreateExperience
+7318a6253d084ec1200b0c6101d51e72|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceLiveClass/CreateExperienceLiveClass.tsx|411|1|V|typescriptreact
+	      if (isSubmit) {
+	        setCanGoNext(stepLeft === 0);
+	      }
+73c8ae6febbcaddf36b0726e9320f04e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|541|1|V|typescriptreact
+	                    {content.type === CONTENT_TYPE.liveClass && (
+	                      <>
+	                        <Text
+	                          preset="semiBoldR"
+	                          style={MT_2}
+	                          text={formatTime(content.scheduleTime)}
+	                        />
+	                        <Text
+	                          preset="regularS"
+	                          style={FONT_WEIGHT_400}
+	                          text={moment(content.scheduleTime).format("dddd • MMMM DD, YYYY")}
+	                        />
+	                      </>
+	                    )}
+c5f5e863a4e72ad54c4addfd6a2448af|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|551|70|v|typescriptreact
+	dddd • MMMM DD, YYYY
+a67bd8ea2504a9d71df2cd8256bcd179|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-analytic-screen/talent-analytic-screen.tsx|203|10|v|typescriptreact
+	_renderBreakDownInfo
+1c94a94be43c6ffec7165dad2565a86e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|478|48|v|json
+	Click the 'Follow' button above to be notified when {{name}} releases a new experience
+2d1fe970309cc08b6f6f0b18f501882d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|477|38|v|json
+	,
+	    "followToBeNotifiedNewReleaseExperience": "C
+d49b84bc64c0d1e9e75065b0e9c20385|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/components/talent-detail-experiences-tab.tsx|62|1|V|typescriptreact
+	          <View style={[ALIGN_CENTER, { marginTop: spacing[7] }]}>
+	            <Icon name="comming-soon" />
+	            <Text tx="common.commingSoon" preset="semiBoldM" />
+	            <Text
+	              style={{ textAlign: "center", marginTop: spacing[1], paddingHorizontal: spacing[9] }}
+	              preset="regularR"
+	              tx="talentDetailScreen.followToBeNotifiedNewReleaseExperience"
+	              txOptions={{ name: talentName || "" }}
+	            />
+	          </View>
+13f616cb76e8319399fa4c1a54ecfcb9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/components/talent-detail-experiences-tab.tsx|60|9|v|typescriptreact
+	exclusiveContentsData
+494aea56971efc6ad804d68a74eee59d|file:///Users/louis/Dev/Projects/komi/komi-mobile/.circleci/config.yml|7|22|v|yaml
+	ENVIRONMENT_VARIABLES
+1088ab6b00ad2314efb42562240ca9cb|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|272|1|V|typescriptreact
+	        experienceDetail: {},
+	        contentProcessStatus: EXPERIENCE_PROCESS_STATUS.DRAFTED,
+31cf395ea414f90c1a001649ef993ec8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|309|1|V|typescriptreact
+	      dispatch(
+	        createExperienceActions.REQUEST({
+	          experienceDetail: null,
+	          stagingCovers: null,
+	          fetchExperienceDetail: null,
+	          contentProcessStatus: EXPERIENCE_PROCESS_STATUS.EMPTY,
+	        })
+	      );
+847eb9bd939c6af9a04b63b7da5ce61a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|265|1|V|typescriptreact
+	  useEffect(() => {
+	    dispatch(
+	      createExperienceActions.REQUEST({
+	        stagingCovers: {},
+	        experienceDetail: {},
+	        fetchExperienceDetail: {},
+	        contentProcessStatus: EXPERIENCE_PROCESS_STATUS.DRAFTED,
+	      })
+	    );
+	  }, [dispatch]);
+ddb1c3b0028910343e8f20506f6d1fba|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/CreateExclusiveContent.tsx|299|1|V|typescriptreact
+	      createExperienceActions.REQUEST({
+	        stagingCovers: {},
+	        experienceDetail: {},
+	        fetchExperienceDetail: {},
+	        contentProcessStatus: EXPERIENCE_PROCESS_STATUS.DRAFTED,
+	      })
+f56075af9ff55b43e949c49779ae302f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|62|1|V|typescriptreact
+	  const dispatch = useDispatch();
+68541b0987aec216d23962b37583144b|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceContent/SelectContentType/SelectContentType.tsx|17|20|v|typescriptreact
+	useDispatch
+b159223f6914ffbc42bb7cdd12130424|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|303|1|V|typescriptreact
+	  useEffect(() => {
+	    return () => {
+	      dispatch(
+	        createExperienceActions.REQUEST({
+	          experienceDetail: null,
+	          stagingCovers: null,
+	          fetchExperienceDetail: null,
+	          contentProcessStatus: EXPERIENCE_PROCESS_STATUS.EMPTY,
+	        })
+	      );
+	    };
+	  }, [dispatch]);
+04d138ebe2251e51687f8e86ea86add8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceContent/SelectContentType/SelectContentType.tsx|26|16|V|typescriptreact
+	    return () => {
+799fc4686d3b158443fa44a792b1a2a5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceContent/SelectContentType/SelectContentType.tsx|33|9|V|typescriptreact
+	      );
+a635f48c8a1543ade7ef09415c826999|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceContent/SelectContentType/SelectContentType.tsx|33|7|V|typescriptreact
+	    };
+5fc1b308585b069655b38aecf364e694|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceContent/SelectContentType/SelectContentType.tsx|31|31|v|typescriptreact
+	EXPERIENCE_PROCESS_STATUS
+690d0c9ddbc31e9bf752b205ba6d205c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceContent/SelectContentType/SelectContentType.tsx|27|7|v|typescriptreact
+	createExperienceActions
+03271eef487b1d4004adc642ca862a06|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceContent/SelectContentType/SelectContentType.tsx|26|3|v|typescriptreact
+	useEffect
+bf5b17fac5c60d745a593b5920372235|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperienceContent/SelectContentType/SelectContentType.tsx|26|13|v|typescriptreact
+	effect
+ae66aa7208ee9219920cb4db6f421bc2|file:///Users/louis/Dev/Projects/komi/komi-mobile/.env|18|1|v|sh
+	API_KEY_IP_GEO_LOCATION
+644277296c357648b743a02aa39fdde1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|85|1|V|typescriptreact
+	          console.log(ipGeoLocation)
+d61c82959963ba552f979f7ec0b43623|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/login-password-screen/login-password-screen.tsx|115|28|v|typescriptreact
+	handleSubmit
+80ce38baad9533d41e3821ccd3d5a32e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|213|1|V|typescript
+	    const response: ApiResponse<any> = await this.apisaucePublic.post(
+	      `https://api.ipgeolocation.io/ipgeo?apiKey=API_KEY&`,
+	      {
+	        email,
+	        password,
+	      },
+	    )
+38859077288cbba97cbbbabb250f4632|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-experiences-screen/talent-experiences-list.tsx|153|8|v|typescriptreact
+	listExperience
+3bc0e73ce341d4ded72da061816e1c93|file:///Users/louis/.yabairc|1|1|V|sh
+	#!/usr/bin/env sh
+	
+	# global settings
+	
+	normal_border_color="010101"
+	focused_border_color="808080"
+	preselect_border_color="2d74da"
+	
+	# mouse
+	yabai -m config mouse_follows_focus          off
+	yabai -m config focus_follows_mouse          autofocus
+	yabai -m config mouse_modifier               fn
+	yabai -m config mouse_action1                move
+	yabai -m config mouse_action2                resize
+	
+	# opacity
+	yabai -m config window_opacity               off
+	yabai -m config window_opacity_duration      0.0
+	yabai -m config active_window_opacity        1.0
+	yabai -m config normal_window_opacity        0.95
+	
+	# spaces
+	yabai -m config layout                       bsp
+	yabai -m config top_padding                  35
+	yabai -m config bottom_padding               14
+	yabai -m config left_padding                 14
+	yabai -m config right_padding                14
+	yabai -m config window_gap                   10
+	
+	echo "yabai configuration loaded.."
+	sudo yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+	
+d99493b03fc09c98b8a0f05898e81b89|file:///Users/louis/.yabairc|31|81|V|sh
+	#!/usr/bin/env sh
+	
+	# global settings
+	
+	normal_border_color="010101"
+	focused_border_color="808080"
+	preselect_border_color="2d74da"
+	
+	# mouse
+	yabai -m config mouse_follows_focus          off
+	yabai -m config focus_follows_mouse          autofocus
+	yabai -m config mouse_modifier               fn
+	yabai -m config mouse_action1                move
+	yabai -m config mouse_action2                resize
+	
+	# opacity
+	yabai -m config window_opacity               off
+	yabai -m config window_opacity_duration      0.0
+	yabai -m config active_window_opacity        1.0
+	yabai -m config normal_window_opacity        0.95
+	
+	# spaces
+	yabai -m config layout                       bsp
+	yabai -m config top_padding                  35
+	yabai -m config bottom_padding               14
+	yabai -m config left_padding                 14
+	yabai -m config right_padding                14
+	yabai -m config window_gap                   10
+	
+	echo "yabai configuration loaded.."
+9ede34947385129ca1ac013691879e63|file:///Users/louis/.yabairc|1|1|V|sh
+	#!/usr/bin/env sh
+	
+	# global settings
+	
+	normal_border_color="010101"
+	focused_border_color="808080"
+	preselect_border_color="2d74da"
+	
+	# mouse
+	yabai -m config mouse_follows_focus          off
+	yabai -m config focus_follows_mouse          autofocus
+	yabai -m config mouse_modifier               fn
+	yabai -m config mouse_action1                move
+	yabai -m config mouse_action2                resize
+	
+	# opacity
+	yabai -m config window_opacity               off
+	yabai -m config window_opacity_duration      0.0
+	yabai -m config active_window_opacity        1.0
+	yabai -m config normal_window_opacity        0.95
+	
+	# spaces
+	yabai -m config layout                       bsp
+	yabai -m config top_padding                  35
+	yabai -m config bottom_padding               14
+	yabai -m config left_padding                 14
+	yabai -m config right_padding                14
+	yabai -m config window_gap                   10
+b3bc75e2291f09427be542ae32c1b02e|file:///Users/louis/.yabairc|49|1|V|sh
+	echo "yabai configuration loaded.."
+a0fe2d059e1d49ec883f7f32aa0aeea1|file:///Users/louis/.spacebarrc|6|53|v|sh
+	20C20E
+25d7b789ea6e14c18076f1a6971fa6e2|file:///Users/louis/.yabairc|12|23|v|sh
+	808080
