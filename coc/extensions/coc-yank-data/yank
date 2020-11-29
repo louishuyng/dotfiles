@@ -1,246 +1,3 @@
-cfe05f3193028800174007cc548e2ce8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|25|v|typescriptreact
-	'hi'
-634db0e17140c1eb61cb993455399d04|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|1|V|typescriptreact
-	            console.log(ipGeoLocation)
-b5aadbd307baea6b8fb774addc61878a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|48|15|V|typescriptreact
-	          KEY_STORAGE + ipGeoLocation?.ip || "",
-a3c80f4418cd949de0727c7531d3f2fa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|112|1|V|typescript
-	  .actions((self) => ({
-	    getIpGeoLocation: flow(function* () {
-	      const result = yield self.environment.api.getIpGeoLocation()
-	      if (result.kind === "ok") {
-	        return result.data
-	      }
-	      return false
-	    }),
-	  }))
-68f3d698a80b81f3bd656efac90805d5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|39|7|v|typescriptreact
-	paymentStore
-efd1c61c9972c180f561a3da2c52b5cf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|21|11|v|typescriptreact
-	"USD"
-7f4f2dc080b65a70fdcc2636f639064f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|22|12|v|typescriptreact
-	US Dollar"
-add6756519f27a8d71ba67ed2309718e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|42|27|v|typescriptreact
-	setIpGeoLocation
-e44d2b8a3bae8694ddca2166db74ceae|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|1806|38|V|typescript
-	    console.log(CONFIG.API_KEY_IP_GEO_LOCATION)
-db5bfc425dd99f174878061765adcd2e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|1806|1|V|typescript
-	    const response: ApiResponse<any> = await this.apisaucePublic.get(
-	      `https://api.ipgeolocation.io/ipgeo?apiKey=${CONFIG.API_KEY_IP_GEO_LOCATION}`,
-	    )
-	
-	    try {
-	      return { kind: "ok", data: response.data }
-	    } catch {
-	      return { kind: "bad-data" }
-	    }
-d1ce318c8b7afdb254e5f199d0c6c5db|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|1819|8|v|typescript
-	https://api.ipgeolocation.io/ipgeo?apiKey=${CONFIG.API_KEY_IP_GEO_LOCATION}
-dc371436c8f00ca866c4e2b0cb2cb4e7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|96|1|V|typescript
-	  .actions((self) => ({
-	    removePaymentMethod: flow(function* (paymentToken: string, isRefresh: boolean) {
-	      const result = yield self.environment.api.deletePaymentMethod(paymentToken)
-	      if (result.kind === "ok") {
-	        const newData: any = self.savedMethods.filter((el) => el.token !== paymentToken)
-	
-	        if (!!newData.length && isRefresh) {
-	          const result = yield self.environment.api.updateDefaultPaymentMethod(newData[0].token)
-	          result.kind === "ok" && (newData[0].default = true)
-	          self.setSelectedPayment(0)
-	        }
-	        self.savedMethods = newData
-	      }
-	      notifications.showApiError(result)
-	    }),
-	  }))
-55f091c12221bd216534f4989ad87e83|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|113|5|v|typescript
-	removePaymentMethod
-ada8fe3400d214f9e8bb6660f53e2cc9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|113|38|v|typescript
-	paymentToken: string, isRefresh: boolean
-dc59441c9c8341863775960d97e2fe11|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|114|49|v|typescript
-	deletePaymentMethod
-026d546224267e62b084cda21eb18d4a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|116|1|V|typescript
-	        const newData: any = self.savedMethods.filter((el) => el.token !== paymentToken)
-	
-	        if (!!newData.length && isRefresh) {
-	          const result = yield self.environment.api.updateDefaultPaymentMethod(newData[0].token)
-	          result.kind === "ok" && (newData[0].default = true)
-	          self.setSelectedPayment(0)
-	        }
-	        self.savedMethods = newData
-e396790ce5f3626fc64bcc72c08ebbc1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|117|7|V|typescript
-	      notifications.showApiError(result)
-b77f2b366647fad9cd40e45591edb6f2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/payment-store.ts|114|65|v|typescript
-	paymentToken
-7c0c992bd3563cde9b70a48079ef6557|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|70|1|V|typescriptreact
-	          if (ipGeoLocation) {
-	            setIpGeoLocation(ipGeoLocation)
-	            return
-	          }
-992374d8e2e24f17bebc50a6e57becd6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|57|23|v|typescriptreact
-	Exchange
-675f0a5b390892022842daad85441a14|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|55|28|v|typescriptreact
-	KEY_STORAGE
-3b1fa4f018b2334d242861faed360843|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|59|13|v|typescriptreact
-	currencyExchange
-341c739da7c1378c7ec47974afb72238|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|59|24|v|typescriptreact
-	setLocalCurrencyExchange(localCurrencyExchange)
-60cb96d11efcbfd5943ff6172ecb4d01|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|61|1|V|typescriptreact
-	        else {
-	          console.log(currencyExchange)
-	        }
-4fe3d2c4c73340955c247529d81eced3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|20|V|typescriptreact
-	        if (result) 
-b12788ede385af7bb4cf7b5d9a3d3b63|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|62|47|v|typescriptreact
-	'USD'
-92af7269aab362b95c99b7fc6f2761d6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|34|v|typescriptreact
-	ipGeoLocation?.currency?.code
-90149a48eb91ac01e1dc415b911bfd97|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|107|1|V|typescriptreact
-	                    {
-	                      backgroundColor:
-	                        headerStatus === IN_LOWER ? color.themeColor.white : color.transparent,
-	                    },
-9ca781ddee447f3f7fdf8aa86800cdaa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|106|21|V|typescriptreact
-	                    styles.navbarBtn,
-586662de468d002b166b53a98d6c1ae5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|356|1|V|typescriptreact
-	            <Button
-	              onPress={goToBookingTime}
-	              tx="common.seeTimes"
-	              disabled={content?.creator?.id === user?.id}
-	            />
-38d2bf8d7ad288f83abbc5827d839c61|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|63|9|v|typescriptreact
-	_onPressSeeAllLive
-1f95312db58aef3645ec3865b5bd04d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|110|27|v|typescriptreact
-	linearGradient
-b0ba5e7c11b4cf0a316b9b8c8fc3c73d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|125|1|V|typescriptreact
-	                  <Text
-	                    numberOfLines={1}
-	                    style={styles.name}
-	                    preset="regularS"
-	                    text={`${item.creator?.talentProfile?.firstName} ${item.creator?.talentProfile?.lastName}`}
-	                  />
-eb6d4067b8083b138e877b03f783b917|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|118|1|V|typescriptreact
-	                  <Avatar
-	                    size={"small"}
-	                    source={{ uri: item.creator?.talentProfile?.avatar }}
-	                    title={`${item?.creator?.talentProfile?.firstName || ""} ${
-	                      item?.creator?.talentProfile?.lastName || ""
-	                    }`}
-	                  />
-47729d47adb7cf9f0caf770ffbe80f70|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|112|1|V|typescriptreact
-	            <Text numberOfLines={2} style={[styles.price, ML_3, MR_3, MB_1]}>
-	              {item.name}
-	            </Text>
-62b6272e0bca336e2600f1bf3f5083f1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|27|10|v|typescriptreact
-	FastImage
-fe29b4c67ea926e0da1ab86dcb2247a3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/content-display-item/content-display-item.tsx|56|13|V|typescriptreact
-	    return <FastImage style={styles.video} source={{ uri: getFirstImage(item) }} />
-a9e4f7e098ba45314ead394184671cc7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|413|36|v|typescriptreact
-	covers
-912b16a99a3775ce256edd638aaab01c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|583|59|V|typescriptreact
-	        <View style={styles.bottomBar}>{renderBottomDetail()}</View>
-1a3cb6c46550099e7b1e1f5da3d7374f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|581|32|V|typescriptreact
-	          leftIconPress={goBack}
-c7aee70f6a7a1595e02a180368d2c68f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|5|8|v|typescriptreact
-	ReactNativeParallaxHeader
-998daf56bd123e719198a0d183372799|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|238|28|v|javascript
-	sliderGradient
-24d860ade140d7632075127b7dc592f1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|238|59|v|javascript
-	getHeaderMaxHeight
-fbcb8c1c4f9bf2200dc9ec08a230f8f8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|87|13|v|javascript
-	DEFAULT_HEADER_MAX_HEIGHT
-ec765b8ff0dfc59bee1dc80d1193c1cb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|410|28|v|typescriptreact
-	MAX_HEIGHT
-1ffd9e753c8054cc61456ac7fac1ac89|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|239|38|v|javascript
-	black
-7aadf1fecd3425c1d690c1259f2e4320|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|239|21|V|javascript
-	            start={{}}
-48d6215903dff56238e52e8891380c8f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|241|38|v|javascript
-	blue
-f07685db57c6c07656deaf7253678960|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|241|37|v|javascript
-	"black"
-9b94ac0a368973e406420b7ca392cc06|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|241|37|v|javascript
-	rgbColor
-a268046e027da4d29e1c1c27c78907ef|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|240|1|V|javascript
-	            start={{ x: 1, y: 0.2 }}
-	            end={{ x: 1, y: 1 }}
-fdeea976c990e0c6455819b986497112|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|33|V|typescriptreact
-	        console.log(result.rates)
-b2a4ca8e10c74eb142694e861b484363|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|64|V|typescriptreact
-	        console.log(result.rates[ipGeoLocation?.currency?.code])
-9cba6e7edccfaaa659efa765b60e00ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|63|10|V|typescriptreact
-	        console.log(ipGeoLocation?.currency?.code)
-c042098f1067c57dcb3cd578ac42ab6f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|44|12|v|typescriptreact
-	localCurrencyExchange
-fe414a498414159ff55d704ba08d9573|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|11|V|typescriptreact
-	          save(combineKey, ipGeoLocation?.currency)
-083e839f47eaf120e4b3ba63322007bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|87|1|V|typescriptreact
-	        } catch (e) {
-	          console.warn("can not get ip geo location")
-	        }
-2fb3155fbb20609dfc4f9a39aef6dcb4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|70|25|v|typescriptreact
-	can not get ip geo location
-5045b042be1c6834f57b2afc2caba813|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|64|17|V|typescriptreact
-	          if  () 
-926e0a36dc967b199222b6abe23b9c7f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|11|13|V|typescriptreact
-	  currency: {
-bd935c85a9eeaa2e6a154a3e346ee351|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|43|1|V|typescriptreact
-	      currency: 
-e3f64bb27371a4eafce33abce052f6af|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|44|14|V|typescriptreact
-	      name: 'US'
-	      '
-e3b66e17fec267722c29430a1fa70ba5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|46|7|V|typescriptreact
-	      '
-b606e4c0d1d91a2779008b5893705f10|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|68|15|v|typescriptreact
-	result[ipGeoLocation?.currency?.code]
-43d6897afc993e681eed9fedac95f0ea|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|57|28|v|typescriptreact
-	LOCAL_CURRENCY_STORAGE
-f23ef78ed00edce7e0414cbaaf59a55f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|71|51|V|typescriptreact
-	          console.log(ipGeoLocation?.currency?.code)
-ff32a43e83c912924c3aacd71806df92|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|71|35|V|typescriptreact
-	          console.log(result.rates)
-0df67c8f1756c7974a06165e2224c258|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|71|35|V|typescriptreact
-	          console.log(result.rates[ipGeoLocation?.currency?.code])
-2c6b0ca6955da2909668f42296be89f0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|70|13|v|typescriptreact
-	setLocalCurrency
-5465e1c768db6a232dc473d9c4100769|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|10|5|V|typescript
-	const SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"]
-2398ff9086d8d301e33f6f4c5c77dbd1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|14|8|V|typescript
-	  // what tier? (determines SI symbol)
-5a195833329a9d35020df1c8aece83a0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|16|7|V|typescript
-	  // if zero, we don't need a suffix
-f5747ec94aee3807d65d6a95926f6d22|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|18|7|V|typescript
-	  // get suffix and determine scale
-d338878ec2fc6c96f1b81815a148f4d1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|21|7|V|typescript
-	  // scale the number
-004508c274685b3ec9c425901aa0ca5a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|21|6|V|typescript
-	  // format number and add suffix
-c4d2c4aa3d0e49f1be279b14c4c34dae|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|10|1|V|typescript
-	function abbreviateNumber(number) {
-	  const SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"]
-	  const tier = (Math.log10(number) / 3) | 0
-	
-	  if (tier == 0) return number
-	
-	  const suffix = SI_SYMBOL[tier]
-	  const scale = Math.pow(10, tier * 3)
-	
-	  const scaled = number / scale
-	
-	  return scaled.toFixed(2) + suffix
-	}
-51734b7021a436e4d57894eefea06c5c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|29|22|v|typescriptreact
-	Intl
-6856eee4be07c4f868b870bc420e3299|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|99|26|v|typescriptreact
-	useCallback
-b15f3764f864f997873269159a0bcda9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|99|11|v|typescriptreact
-	formatterUSD
-c1c425268e68385d1ab5074c17a94f14|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|10|8|v|typescript
-	function
-15fae926867cf70b419f890e073f5549|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|100|14|v|typescriptreact
-	abbreviateNumber
-a0b263368ec73704187c7350f30d5087|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|101|9|V|typescriptreact
-	      if 
 7298987eb04dab9e00f90341cc1bc4f4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|104|1|V|typescriptreact
 	        if 
 dd7e595e9aac208d6b3731705e21f314|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/currency.ts|4|1|V|typescript
@@ -1980,3 +1737,885 @@ bb5bf357fb93cf8f1f922573e11917bb|file:///Users/louis/.skhdrc|88|1|V|
 	    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 6c5b6214838ff084d5208dbfbd7b2339|file:///Users/louis/.skhdrc|90|5|v|
 	launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai
+2cae9a13b2418feec90f9227190d9156|file:///Users/louis/.zshrc|231|1|V|zsh
+	sudo yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+	launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+e863270127ca6116fd30e708cdc582fc|file:///Users/louis/.bashrc|1|1|V|sh
+	neofetch
+7298a1964b946bcf18b5c0f9aceed995|file:///Users/louis/.config/oh-my-zsh/.zshrc|232|1|V|zsh
+	launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+1291c8dd551a15c9fb6c32216b4cb132|file:///Users/louis/Library/Startup.cmd|1|28|v|dosbatch
+	-m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+2a5e27425d884ad60c96ec867c2b03e3|file:///Users/louis/Library/Startup.cmd|3|1|v|dosbatch
+	sudo yabai --load-sa
+62caca315f1d2c293215aa794134ad31|file:///Users/louis/Library/LaunchAgents/com.user.loginscript.plist|8|29|v|
+	/path/to/executable/
+3205c0ded576131ea255ad2bd38b0fb2|file:///Users/louis/Library/LaunchAgents/com.user.loginscript.plist|8|31|v|
+	script
+bbd870f6c0fae03120070e4593e63659|file:///Users/louis/Library/LaunchAgents/com.user.loginscript.plist|8|29|v|xml
+	login.sh
+f830580952dc0c774086f4e2851a26ac|file:///Users/louis/Library/LaunchAgents/com.user.loginscript.plist|8|29|v|xml
+	~/Library/LaunchAgents/login.sh
+95287202450889e19bb7eabb686776c7|file:///Users/louis/Library/LaunchAgents/com.user.loginscript.plist|1|1|V|xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+	<plist version="1.0">
+	<dict>
+	   <key>Label</key>
+	   <string>com.user.loginscript</string>
+	   <key>ProgramArguments</key>
+	   <array><string>/Users/louis/login.sh</string></array>
+	   <key>RunAtLoad</key>
+	   <true/>
+	</dict>
+	</plist>
+a31405d272b94e5d12e9a52a665d3bfe|file:///Users/louis/Library/LaunchAgents/com.user.loginscript.plist|11|24|v|xml
+	jdoe
+0cbc6611f5540bd0809a388dc95a615b|file:///Users/louis/Library/LaunchAgents/com.user.loginscript.plist|11|30|v|xml
+	Test
+150b670eef385858ad86175dd723d1df|file:///Users/louis/login.sh|4|1|V|sh
+	sudo yabai --load-sasudo yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+808db172289084818c043fb14505f7db|file:///Users/louis/login.sh|3|1|V|sh
+	launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+	sudo yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+d338b3f0f405eb5e51c8cc1e5ca66f02|file:///Users/louis/.zshrc|5|1|v|zsh
+	sudo
+6c25de10ca620cf6971260bcd2ec04ad|file:///Users/louis/login.sh|4|1|V|sh
+	yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+786933b5a6ccd2b7a0e1f5af49b1d2f1|file:///Users/louis/.skhdrc|90|1|V|
+	    l
+ed5ec878592dc6b2aa1e17adc15b5f4a|file:///Users/louis/.skhdrc|89|76|v|
+	Yabai
+8a7ef1c3e82395341b7000b79c239eb4|file:///Users/louis/.skhdrc|89|47|v|
+	restart
+ecd3395a4609975690760cb1523bea83|file:///Users/louis/.zshrc|3|1|V|zsh
+	
+	launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+	yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+e43dac52b6c8f7747778f6eaa2e306b3|file:///Users/louis/.skhdrc|90|1|V|
+	    yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"; \
+	    brew services restart spacebar; \
+	    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+e263ee739295701b020ac83ac311c5ee|file:///Users/louis/.skhdrc|90|1|V|
+	    yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"; \
+95348a17c4986cae7d401debbf73d588|file:///Users/louis/.skhdrc|90|1|V|
+	    brew services restart spacebar; \
+1ecf59b36016b91f9af935263ca05662|file:///Users/louis/.zshrc|5|16|v|zsh
+	 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+9da3db59abb179c1ad9e32a0a3c52366|file:///Users/louis/.skhdrc|90|1|V|
+	    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+f48ab911985b2d746617898630835eaa|file:///Users/louis/.zshrc|4|1|V|zsh
+	brew services restart spacebar
+	sudo yabai --load-sa
+	launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+820fa3398202d458fdd2e1a536a6048e|file:///Users/louis/.zshrc|3|1|V|zsh
+	
+	brew services restart spacebar
+	sudo yabai --load-sa
+	launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+eb66fad5dad4e541c3a166736a0ab7bb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/talent-list/talent-list.tsx|70|36|v|typescriptreact
+	onPressSeeAll
+aff7f98f04991dbd894b21f44a909b1c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|141|30|v|typescriptreact
+	_onPressSeeAllTalent
+440018b71a3982ccd1cbad9b8c270a3f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|69|51|V|typescriptreact
+	            console.log(ipGeoLocation.currency.code)
+565a1d70cf89f23f1a873684c68267d4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|69|42|V|typescriptreact
+	          console.log(result.rates["EUR"])
+72f929d56b2b8173b4c6fcf9fb50ef43|file:///Users/louis/.config/nvim/init.vim|127|13|v|vim
+	spacegray
+5b679e09aa9478160626f079493950e3|file:///Users/louis/.config/nvim/init.vim|125|13|V|vim
+	packadd! dracula
+1f7494a3de46a5c7bb6fd9cf3edc7740|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
+	Plug 'ghifarit53/daycula-vim' , {'branch' : 'main'}
+843539834f1a329ce2b49b64a9e25f0f|file:///Users/louis/.config/nvim/init.vim|126|13|v|vim
+	dracula
+69bd9b64a34f08dae18e03166d496fc4|file:///Users/louis/.config/nvim/init.vim|131|22|v|vim
+	#5eacd3
+677d744e4948b650346374a96f831b93|file:///Users/louis/.config/nvim/init.vim|126|13|v|vim
+	daycula
+446498bcbc87c0638028ea3ed6a458af|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
+	Plug 'adrian5/oceanic-next-vim'
+69d0efccafb22176c276370482a429bd|file:///Users/louis/.config/nvim/init.vim|130|3|V|vim
+	  hi LineNr ctermbg=NONE guibg=NONE guifg=#5eacd3
+eca0b9ccf1601b4884e941e669d64ecf|file:///Users/louis/.config/nvim/init.vim|130|44|v|vim
+	5eacd3
+41db4685291f4293398c6e97594bcea4|file:///Users/louis/.spacebarrc|6|53|v|sh
+	20C20E
+	
+7188a364026c85c3192a6a47cb20edbe|file:///Users/louis/.config/nvim/init.vim|131|1|v|vim
+	3f3f3f
+265faa401df04d17a3f396ae64bafdfe|file:///Users/louis/.config/nvim/init.vim|130|44|v|vim
+	A67A93
+	
+6ecba39d30080fd20a81adaad5d89f30|file:///Users/louis/.config/nvim/init.vim|127|30|V|vim
+	let g:oceanic_transparent_bg=1
+6cc64794868a54ffb4beb0978813e282|file:///Users/louis/.config/nvim/init.vim|131|6|V|vim
+	  set termguicolors
+91505a66787916de0d00b3ba9b0548da|file:///Users/louis/.config/nvim/init.vim|125|6|V|vim
+	syntax enable
+889e3186ae97b55be3ff79cd10ea80cd|file:///Users/louis/.config/nvim/colors/darkest-space.vim|1|1|V|vim
+	Skip to content
+	Search or jump to�
+	
+	Pull requests
+	Issues
+	Marketplace
+	Explore
+	
+	@louis-nucleus 
+	chau-bao-long
+	/
+	dotfiles
+	2
+	7
+	2
+	Code
+	Issues
+	Pull requests
+	Actions
+	Projects
+	Wiki
+	Security
+	Insights
+	dotfiles/.vim/colors/darkest-space.vim
+	@chau-bao-long
+	chau-bao-long First commit.
+	Latest commit 9fbcc95 on Mar 5, 2018
+	History
+	1 contributor
+	206 lines (177 sloc)  7.59 KB
+	
+	" darkest-space.vim
+	" Darkest Space - Colorscheme
+	
+	" Author:  Szorfein <szorfein@gmail.com>
+	" Version: 1.0
+	" License: MIT
+	" Webpage: https://github.com/szorfein
+	
+	if version > 580
+	  hi clear
+	  if exists('syntax_on')
+	    syntax reset
+	  endif
+	endif
+	
+	set background=dark
+	set t_Co=256
+	let g:colors_name = 'darkest-space'
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Normal
+	
+	" Green
+	hi Delimiter ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi Statement ctermfg=010 ctermbg=none cterm=none guibg=NONE gui=NONE
+	hi Directory ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi Operator ctermfg=010 ctermbg=none cterm=none
+	hi Boolean ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi PreProc ctermfg=010 ctermbg=none cterm=none
+	hi Character ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi Keyword ctermfg=002 ctermbg=none cterm=none guibg=NONE gui=NONE
+	" Blue
+	hi Include ctermfg=012 ctermbg=none cterm=none
+	hi Function ctermfg=012 ctermbg=none cterm=none
+	" Yellow
+	hi Constant ctermfg=003 ctermbg=none cterm=none
+	hi Number ctermfg=011 ctermbg=none cterm=bold
+	" Orange (210,217)
+	" Red
+	hi Todo ctermfg=001 ctermbg=1 cterm=none
+	hi Exception ctermfg=009 ctermbg=none cterm=none
+	" Magenta
+	hi Normal ctermfg=253 ctermbg=none cterm=none
+	hi Identifier ctermfg=005 ctermbg=none cterm=none
+	hi Type ctermfg=013 cterm=none
+	" Grey (247,249,251)
+	"hi LineNr ctermfg=007 ctermbg=none cterm=none
+	hi LineNr ctermfg=007 ctermbg=none cterm=none guifg=#bdb8c1 guibg=NONE gui=NONE
+	hi Comment ctermfg=247 ctermbg=0 cterm=italic
+	hi String ctermfg=252 ctermbg=none cterm=none
+	hi Folded ctermfg=251 ctermbg=0 cterm=none
+	hi Visual ctermfg=007 ctermbg=000 cterm=none gui=none
+	" Brown (138,144,145)
+	hi Label ctermfg=138 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Shell Linux
+	
+	" Green
+	hi shOperator ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi shLoop ctermfg=010 ctermbg=none cterm=none guibg=NONE gui=NONE
+	hi shShellVariables ctermfg=010 ctermbg=none cterm=bold guibg=NONE gui=bold
+	" Yellow 
+	hi shStatement ctermfg=011 ctermbg=none cterm=none
+	" shDeref you can test -> 187,223,224,230
+	hi shDeref ctermfg=230 ctermbg=none cterm=none
+	" Magenta
+	hi shSetList ctermfg=013 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" VimL
+	
+	hi vimGroup ctermfg=247 ctermbg=none cterm=bold
+	" Blue
+	hi vimHiAttrib ctermfg=012 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Typescript
+	
+	" Green
+	hi typescriptBraces ctermfg=002 ctermbg=none cterm=bold guifg=#84ab7e guibg=NONE gui=bold
+	hi typescriptBracket ctermfg=010 ctermbg=none cterm=bold 
+	hi typescriptBlock ctermfg=010 ctermbg=none cterm=bold
+	
+	" Blue
+	hi typescriptPropietaryMethods ctermfg=012 ctermbg=none cterm=none
+	hi typescriptEventListenerMethods ctermfg=012 ctermbg=none cterm=none
+	hi typescriptHtmlEvents ctermfg=012 ctermbg=none cterm=none
+	
+	hi typescriptSource ctermfg=012 ctermbg=none cterm=none
+	hi typescriptFuncArg ctermfg=012 ctermbg=none cterm=none
+	
+	hi typescriptFunc ctermfg=012 ctermbg=none cterm=none
+	hi typescriptAjaxProperties ctermfg=012 ctermbg=none cterm=none
+	hi typescriptHtmlElemProperties ctermfg=012 ctermbg=none cterm=none
+	" Magenta
+	hi typescriptSpecial ctermfg=013 ctermbg=none cterm=none
+	hi typescriptDocTags ctermfg=013 ctermbg=none cterm=none
+	hi typescriptDecorators ctermfg=013 ctermbg=none cterm=none
+	hi typescriptDOMProperties ctermfg=013 ctermbg=none cterm=none
+	hi typescriptIdentifier ctermfg=013 ctermbg=none cterm=bold
+	hi typescriptVar ctermfg=013 ctermbg=none cterm=none
+	hi angularRxjsComponent ctermfg=013 ctermbg=none cterm=bold 
+	
+	" Yellow
+	hi typescriptInterface ctermfg=011 ctermfg=none cterm=none
+	hi typescriptNumber ctermfg=011 ctermfg=none cterm=bold
+	
+	hi typescriptCommentSkip ctermfg=001 ctermbg=1 cterm=none
+	" Cyan
+	hi typescriptRef ctermfg=014 ctermbg=none cterm=none
+	hi typescriptRefD ctermfg=014 ctermbg=none cterm=none
+	hi typescriptRefS ctermfg=014 ctermbg=none cterm=none
+	" White
+	hi typescriptStringD ctermfg=007 ctermbg=none cterm=italic
+	hi typescriptStringS ctermfg=007 ctermbg=none cterm=italic
+	hi typescriptStringB ctermfg=007 ctermbg=none cterm=italic
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" HTML
+	
+	" Green
+	hi Title ctermfg=012 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi htmlTag ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi htmlEndTag ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi htmlTagName ctermfg=004 ctermbg=none cterm=none
+	hi htmlLink ctermfg=009 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" SASS - CSS
+	
+	" Green
+	hi sassProperty ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi cssBraces ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi sassClass ctermfg=010 ctermbg=none cterm=none
+	hi cssNoise ctermfg=010 ctermbg=none cterm=bold guibg=NONE gui=bold
+	" Magenta
+	hi cssTagName ctermfg=013 ctermbg=none cterm=none
+	hi cssAttr ctermfg=224 ctermbg=none cterm=none
+	hi cssColor ctermfg=247 ctermbg=none cterm=bold
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" JSON
+	
+	" Green
+	hi jsonBraces ctermfg=002 ctermbg=none cterm=bold
+	hi jsonQuote ctermfg=006 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi jsonNoise ctermfg=015 ctermbg=none cterm=bold 
+	hi jsonKeywordMatch ctermfg=015 ctermbg=none cterm=none
+	hi jsonKeyword ctermfg=005 ctermbg=none cterm=bold
+	hi jsonString ctermfg=007 ctermbg=none cterm=italic
+	hi jsonNumber ctermfg=011 ctermbg=none cterm=bold
+	hi jsonBoolean ctermfg=002 ctermbg=none cterm=bold
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Xresource
+	
+	hi xdefaultsPunct ctermfg=247 ctermbg=none cterm=bold
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Python
+	
+	" Green
+	hi pythonOperator ctermfg=002 ctermbg=none cterm=none
+	" Yellow
+	hi pythonBuiltin ctermfg=003 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Markdown
+	hi markdownValid ctermfg=005 ctermbg=none cterm=none
+	hi markdownLineStart ctermfg=006 ctermbg=none cterm=none
+	hi markdownCodeBlock ctermfg=014 ctermbg=none cterm=none
+	hi htmlValue ctermfg=002 ctermbg=none cterm=none
+	hi htmlPreAttr ctermfg=004 ctermbg=none cterm=none 
+	hi htmlBold ctermfg=003 ctermbg=none cterm=bold
+	hi markdownItalic ctermfg=006 ctermbg=none cterm=italic
+	hi markdownLineBreak ctermfg=012 ctermbg=none cterm=italic
+	hi markdownCode ctermfg=005 ctermbg=none cterm=italic
+	hi markdownLinkText ctermfg=012 ctermbg=none cterm=bold
+	hi markdownH1 ctermfg=015 ctermbg=none cterm=bold
+	hi markdownH2 ctermfg=015 ctermbg=none cterm=bold
+	hi markdownH3 ctermfg=015 ctermbg=none cterm=bold
+	hi markdownBlockquote ctermfg=001 ctermbg=000 cterm=italic
+	hi markdownUrl ctermfg=012 ctermbg=000 cterm=none
+	" markdown symbol
+	hi markdownUrlDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownUrlTitleDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownBoldDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownBoldItalicDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownItalicDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownIdDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownCodeDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownListMarker ctermfg=002 ctermbg=none cterm=bold
+	hi markdownLinkTextDelimiter ctermbg=002 ctermbg=none cterm=bold
+	hi markdownLinkDelimiter ctermbg=002 ctermbg=none cterm=bold
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" NERDTree
+	
+	" Red
+	hi VertSplit ctermfg=001 ctermbg=none cterm=none
+	" Cyan
+	hi StatusLine ctermfg=014 ctermbg=000 cterm=none
+	hi StatusLineNC ctermfg=014 ctermbg=000 cterm=none
+	hi NERDTreeDir ctermfg=1 ctermbg=none cterm=bold
+	hi NERDTreeCWD ctermfg=011 ctermbg=none cterm=bold
+	� 2020 GitHub, Inc.
+	Terms
+	Privacy
+	Security
+	Status
+	Help
+	Contact GitHub
+	Pricing
+	API
+	Training
+	Blog
+	About
+34b76cdcf19fd610869be7f538d1be2b|file:///Users/louis/.config/nvim/colors/darkest-space.vim|238|1|V|vim
+	© 2020 GitHub, Inc.
+	Terms
+	Privacy
+	Security
+	Status
+	Help
+	Contact GitHub
+	Pricing
+	API
+	Training
+	Blog
+	About
+	=
+c282addc1df5b6a1dcc18108c0102943|file:///Users/louis/.config/nvim/colors/darkest-space.vim|1|1|V|vim
+	Skip to content
+	Search or jump to…
+	
+	Pull requests
+	Issues
+	Marketplace
+	Explore
+	 
+	@louis-nucleus 
+	chau-bao-long
+	/
+	dotfiles
+	2
+	7
+	2
+	Code
+	Issues
+	Pull requests
+	Actions
+	Projects
+	Wiki
+	Security
+	Insights
+	dotfiles/.vim/colors/darkest-space.vim
+	@chau-bao-long
+	chau-bao-long First commit.
+	Latest commit 9fbcc95 on Mar 5, 2018
+	 History
+	 1 contributor
+	206 lines (177 sloc)  7.59 KB
+	  
+	" darkest-space.vim
+	" Darkest Space - Colorscheme
+	
+	" Author:  Szorfein <szorfein@gmail.com>
+	" Version: 1.0
+	" License: MIT
+	" Webpage: https://github.com/szorfein
+	
+	if version > 580
+	    hi clear
+	    if exists('syntax_on')
+	        syntax reset
+	    endif
+	endif
+	
+	set background=dark
+	set t_Co=256
+	let g:colors_name = 'darkest-space'
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Normal
+	
+	" Green
+	hi Delimiter ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi Statement ctermfg=010 ctermbg=none cterm=none guibg=NONE gui=NONE
+	hi Directory ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi Operator ctermfg=010 ctermbgnone cterm=none
+	hi Boolean ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi PreProc ctermfg=010 ctermbg=none cterm=none
+	hi Character ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi Keyword ctermfg=002 ctermbg=none cterm=none guibg=NONE gui=NONE
+	" Blue
+	hi Include ctermfg=012 ctermbg=none cterm=none
+	hi Function ctermfg=012 ctermbg=none cterm=none
+	" Yellow
+	hi Constant ctermfg=003 ctermbg=none cterm=none
+	hi Number ctermfg=011 ctermbg=none cterm=bold
+	" Orange (210,217)
+	" Red
+	hi Todo ctermfg=001 ctermbg=1 cterm=none
+	hi Exception ctermfg=009 ctermbg=none cterm=none
+	" Magenta
+	hi Normal ctermfg=253 ctermbg=none cterm=none
+	hi Identifier ctermfg=005 ctermbg=none cterm=none
+	hi Type ctermfg=013 cterm=none
+	" Grey (247,249,251)
+	"hi LineNr ctermfg=007 ctermbg=none cterm=none
+	hi LineNr ctermfg=007 ctermbg=none cterm=none guifg=#bdb8c1 guibg=NONE gui=NONE
+	hi Comment ctermfg=247 ctermbg=0 cterm=italic
+	hi String ctermfg=252 ctermbg=none cterm=none
+	hi Folded ctermfg=251 ctermbg=0 cterm=none
+	hi Visual ctermfg=007 ctermbg=000 cterm=none gui=none
+	" Brown (138,144,145)
+	hi Label ctermfg=138 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Shell Linux
+	
+	" Green
+	hi shOperator ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi shLoop ctermfg=010 ctermbg=none cterm=none guibg=NONE gui=NONE
+	hi shShellVariables ctermfg=010 ctermbg=none cterm=bold guibg=NONE gui=bold
+	" Yellow 
+	hi shStatement ctermfg=011 ctermbg=none cterm=none
+	" shDeref you can test -> 187,223,224,230
+	hi shDeref ctermfg=230 ctermbg=none cterm=none
+	" Magenta
+	hi shSetList ctermfg=013 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" VimL
+	
+	hi vimGroup ctermfg=247 ctermbg=none cterm=bold
+	" Blue
+	hi vimHiAttrib ctermfg=012 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Typescript
+	
+	" Green
+	hi typescriptBraces ctermfg=002 ctermbg=none cterm=bold guifg=#84ab7e guibg=NONE gui=bold
+	hi typescriptBracket ctermfg=010 ctermbg=none cterm=bold 
+	hi typescriptBlock ctermfg=010 ctermbg=none cterm=bold
+	
+	" Blue
+	hi typescriptPropietaryMethods ctermfg=012 ctermbg=none cterm=none
+	hi typescriptEventListenerMethods ctermfg=012 ctermbg=none cterm=none
+	hi typescriptHtmlEvents ctermfg=012 ctermbg=none cterm=none
+	
+	hi typescriptSource ctermfg=012 ctermbg=none cterm=none
+	hi typescriptFuncArg ctermfg=012 ctermbg=none cterm=none
+	
+	hi typescriptFunc ctermfg=012 ctermbg=none cterm=none
+	hi typescriptAjaxProperties ctermfg=012 ctermbg=none cterm=none
+	hi typescriptHtmlElemProperties ctermfg=012 ctermbg=none cterm=none
+	" Magenta
+	hi typescriptSpecial ctermfg=013 ctermbg=none cterm=none
+	hi typescriptDocTags ctermfg=013 ctermbg=none cterm=none
+	hi typescriptDecorators ctermfg=013 ctermbg=none cterm=none
+	hi typescriptDOMProperties ctermfg=013 ctermbg=none cterm=none
+	hi typescriptIdentifier ctermfg=013 ctermbg=none cterm=bold
+	hi typescriptVar ctermfg=013 ctermbg=none cterm=none
+	hi angularRxjsComponent ctermfg=013 ctermbg=none cterm=bold 
+	
+	" Yellow
+	hi typescriptInterface ctermfg=011 ctermfg=none cterm=none
+	hi typescriptNumber ctermfg=011 ctermfg=none cterm=bold
+	
+	hi typescriptCommentSkip ctermfg=001 ctermbg=1 cterm=none
+	" Cyan
+	hi typescriptRef ctermfg=014 ctermbg=none cterm=none
+	hi typescriptRefD ctermfg=014 ctermbg=none cterm=none
+	hi typescriptRefS ctermfg=014 ctermbg=none cterm=none
+	" White
+	hi typescriptStringD ctermfg=007 ctermbg=none cterm=italic
+	hi typescriptStringS ctermfg=007 ctermbg=none cterm=italic
+	hi typescriptStringB ctermfg=007 ctermbg=none cterm=italic
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" HTML
+	
+	" Green
+	hi Title ctermfg=012 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi htmlTag ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi htmlEndTag ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi htmlTagName ctermfg=004 ctermbg=none cterm=none
+	hi htmlLink ctermfg=009 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" SASS - CSS
+	
+	" Green
+	hi sassProperty ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi cssBraces ctermfg=002 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi sassClass ctermfg=010 ctermbg=none cterm=none
+	hi cssNoise ctermfg=010 ctermbg=none cterm=bold guibg=NONE gui=bold
+	" Magenta
+	hi cssTagName ctermfg=013 ctermbg=none cterm=none
+	hi cssAttr ctermfg=224 ctermbg=none cterm=none
+	hi cssColor ctermfg=247 ctermbg=none cterm=bold
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" JSON
+	
+	" Green
+	hi jsonBraces ctermfg=002 ctermbg=none cterm=bold
+	hi jsonQuote ctermfg=006 ctermbg=none cterm=bold guibg=NONE gui=bold
+	hi jsonNoise ctermfg=015 ctermbg=none cterm=bold 
+	hi jsonKeywordMatch ctermfg=015 ctermbg=none cterm=none
+	hi jsonKeyword ctermfg=005 ctermbg=none cterm=bold
+	hi jsonString ctermfg=007 ctermbg=none cterm=italic
+	hi jsonNumber ctermfg=011 ctermbg=none cterm=bold
+	hi jsonBoolean ctermfg=002 ctermbg=none cterm=bold
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Xresource
+	
+	hi xdefaultsPunct ctermfg=247 ctermbg=none cterm=bold
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Python
+	
+	" Green
+	hi pythonOperator ctermfg=002 ctermbg=none cterm=none
+	" Yellow
+	hi pythonBuiltin ctermfg=003 ctermbg=none cterm=none
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Markdown
+	hi markdownValid ctermfg=005 ctermbg=none cterm=none
+	hi markdownLineStart ctermfg=006 ctermbg=none cterm=none
+	hi markdownCodeBlock ctermfg=014 ctermbg=none cterm=none
+	hi htmlValue ctermfg=002 ctermbg=none cterm=none
+	hi htmlPreAttr ctermfg=004 ctermbg=none cterm=none 
+	hi htmlBold ctermfg=003 ctermbg=none cterm=bold
+	hi markdownItalic ctermfg=006 ctermbg=none cterm=italic
+	hi markdownLineBreak ctermfg=012 ctermbg=none cterm=italic
+	hi markdownCode ctermfg=005 ctermbg=none cterm=italic
+	hi markdownLinkText ctermfg=012 ctermbg=none cterm=bold
+	hi markdownH1 ctermfg=015 ctermbg=none cterm=bold
+	hi markdownH2 ctermfg=015 ctermbg=none cterm=bold
+	hi markdownH3 ctermfg=015 ctermbg=none cterm=bold
+	hi markdownBlockquote ctermfg=001 ctermbg=000 cterm=italic
+	hi markdownUrl ctermfg=012 ctermbg=000 cterm=none
+	" markdown symbol
+	hi markdownUrlDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownUrlTitleDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownBoldDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownBoldItalicDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownItalicDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownIdDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownCodeDelimiter ctermfg=002 ctermbg=none cterm=bold
+	hi markdownListMarker ctermfg=002 ctermbg=none cterm=bold
+	hi markdownLinkTextDelimiter ctermbg=002 ctermbg=none cterm=bold
+	hi markdownLinkDelimiter ctermbg=002 ctermbg=none cterm=bold
+	
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" NERDTree
+	
+	" Red
+	hi VertSplit ctermfg=001 ctermbg=none cterm=none
+	" Cyan
+	hi StatusLine ctermfg=014 ctermbg=000 cterm=none
+	hi StatusLineNC ctermfg=014 ctermbg=000 cterm=none
+	hi NERDTreeDir ctermfg=1 ctermbg=none cterm=bold
+	hi NERDTreeCWD ctermfg=011 ctermbg=none cterm=bold
+c70c166867cfc319399d1b81d79486a8|file:///Users/louis/.config/nvim/init.vim|128|13|v|vim
+	oceanicnext
+05e44922ba5e0104fe42fbe4e0e89a7d|file:///Users/louis/.config/nvim/init.vim|127|13|v|vim
+	darkest-space
+58d41880cde6924b73ddf3343d126fd8|file:///Users/louis/.config/nvim/init.vim|124|3|V|vim
+	set termguicolors
+0aaeb63dbd70d4bbb66205cbad3618eb|file:///Users/louis/.config/nvim/init.vim|135|1|V|vim
+	hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+	hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
+	hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
+	hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
+	hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+	hi FloatermBorder guifg=#55E579
+	hi netrwDir guifg=#5eacd3
+	hi qfFileName guifg=#aed75f
+	hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+	hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+	hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
+	hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
+	hi CocExplorerFileDirectoryExpanded guifg=#C3526E
+	hi CocExplorerFileDirectory guifg=#61CE91
+	hi CocExplorerNormalFloat guibg=#0b0c0e
+9c79338ac4d2830bfee498220301e384|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
+	Plug 'joshdick/onedark.vim'
+45337f6c163016c1ee343c6677f675b5|file:///Users/louis/.config/nvim/init.vim|13|1|V|vim
+	Plug 'ajh17/Spacegray.vim'
+28a58281ed3a24ad93ed1e6ab2e6e524|file:///Users/louis/.config/nvim/init.vim|123|13|v|vim
+	space-vim-dark
+9b890b0bd9fb8fab85f3712357ebceac|file:///Users/louis/.config/nvim/init.vim|125|13|v|vim
+	challenger_deep
+e467ce2a67c62ce31a9ad352c09a5c80|file:///Users/louis/.config/nvim/init.vim|126|13|v|vim
+	gruvbox
+2a288121ef536b483481dde37db6e5de|file:///Users/louis/.config/nvim/init.vim|126|13|v|vim
+	embark
+a4c6e989698f253a890b9173e7f052e5|file:///Users/louis/.config/nvim/init.vim|126|13|v|vim
+	nord
+d1a4e979966b739ce9793932205cac32|file:///Users/louis/.config/nvim/init.vim|130|1|V|vim
+	  hi VertSplit guifg=#5eacd3 guibg=NONE ctermbg=NONE
+0f3d8dc2fc444dc7716b04ff4dc33b25|file:///Users/louis/.config/nvim/init.vim|127|13|v|vim
+	deep-space
+edbc9d04c0cbec3b052a0ed6d56f0698|file:///Users/louis/.config/nvim/init.vim|14|6|V|vim
+	Plug 'embark-theme/vim', { 'as': 'embark' }
+8bebbca153fd33f7d4a7a8ecf0f4df11|file:///Users/louis/.config/nvim/init.vim|14|7|V|vim
+	Plug 'liuchengxu/space-vim-dark'
+782cd58d34f6f99e6e85e6508a7b42cd|file:///Users/louis/.tmux.conf|16|22|v|tmux
+	"#{pane_current_path}"
+f7ad61278b9949cb7c48b189b143d0ad|file:///Users/louis/.tmux.conf|22|24|v|tmux
+	"#{pane_current_path}"
+	
+53786efee3e644040dab864ac5296830|file:///Users/louis/.tmux.conf|16|21|v|tmux
+	 "#{pane_current_path}"
+35b58fa744d49267a1f1f9351f479d59|file:///Users/louis/.tmux.conf|7|20|V|tmux
+	tmux set-option default-path "$PWD"
+47b43dd356f6d3cb38b663dcedfe3122|file:///Users/louis/.tmux.conf|48|1|V|tmux
+	# -- urlview -------------------------------------------------------------------
+	
+	bind U run "cut -c3- ~/.tmux.conf | sh -s _urlview #{pane_id}"
+	
+	
+	# -- facebook pathpicker -------------------------------------------------------
+	
+	bind F run "cut -c3- ~/.tmux.conf | sh -s _fpp #{pane_id}"
+	
+de548d29ad6cdb58ed0b6cd1e0c3f888|file:///Users/louis/.tmux.conf|32|1|V|tmux
+	# maximize current pane
+	bind + run 'cut -c3- ~/.tmux.conf | sh -s _maximize_pane "#{session_name}" #D'
+a5f471eedb4da6363bedeec0484c2bf5|file:///Users/louis/.tmux.conf|108|6|V|tmux
+	run 'cut -c3- ~/.tmux.conf | sh -s _apply_configuration'
+ee5c2b7296efd53c8bda368b7ccc2165|file:///Users/louis/.tmux.conf|20|1|V|tmux
+	bind - split-window -v "#{pane_current_path}"
+3fe4d3d8ad7203ac8ab8ae50cbc7d393|file:///Users/louis/.tmux.conf|22|1|V|tmux
+	bind | split-window -h "#{pane_current_path}"
+cbc9a536ce716c172997fa19c4fc7370|file:///Users/louis/.tmux.conf|23|8|v|tmux
+	set default-path "" \; split-window -h \; set -u default-path
+5c607970ed85b42814f51779b8775868|file:///Users/louis/.tmux.conf|20|12|v|tmux
+	run-shell 'tmux split-window -v "cd \"$(tmux show-environment $(echo "TMUXPWD_#D" | tr -d %) | sed -e "s/^.*=//")\"; exec $SHELL"'
+	
+75aa5f75415c162a11867d9b92f595f1|file:///Users/louis/.tmux.conf|22|12|v|tmux
+	run-shell 'tmux split-window -h "cd \"$(tmux show-environment $(echo "TMUXPWD_#D" | tr -d %) | sed -e "s/^.*=//")\"; exec $SHELL"
+	
+395a0a905b72839b73be09f93bc19ff4|file:///Users/louis/.tmux.conf|23|1|V|tmux
+	bind % set default-path "" \; split-window -h \; set -u default-path
+	bind '"' set default-path "" \; split-window -v \; set -u default-path
+b0803a7007ff3bf366f52da74d9bb1f7|file:///Users/louis/.tmux.conf|22|12|v|tmux
+	set default-path "" \; split-window -h \; set -u default-path
+	
+4f0ec6e532f8406cbb9d280b09b2cfb8|file:///Users/louis/.tmux.conf|22|12|v|tmux
+	split-window -h -c "#{pane_current_path}"
+d85c4ec17045cebe7367ebfa3d48709b|file:///Users/louis/.tmux.conf|20|12|v|tmux
+	set default-path "" \; split-window -v \; set -u default-path
+	
+5e6ed078408f99de0d0e39d7a2e688b7|file:///Users/louis/.tmux.conf|1|1|V|tmux
+	# List of plugins
+	set -g @plugin 'tmux-plugins/tpm'
+	set -g @plugin 'tmux-plugins/tmux-sensible'
+	
+	set -g @plugin 'dracula/tmux'
+	
+	set -g mouse on
+	set -g prefix C-a
+	bind C-a send-prefix -2
+	
+	# -- navigation ----------------------------------------------------------------
+	
+	# create session
+	bind C-c new-session
+	
+	# find session
+	bind C-f command-prompt -p find-session 'switch-client -t %%'
+	
+	# split current window horizontally
+	bind-key - split-window -v -c "#{pane_current_path}"
+	
+	# split current window vertically
+	bind-key | split-window -h -c "#{pane_current_path}"
+	
+	# pane navigation
+	bind -r h select-pane -L  # move left
+	bind -r j select-pane -D  # move down
+	bind -r k select-pane -U  # move up
+	bind -r l select-pane -R  # move right
+	bind > swap-pane -D       # swap current pane with the next one
+	bind < swap-pane -U       # swap current pane with the previous one
+	
+	# pane resizing
+	bind -r H resize-pane -L 2
+	bind -r J resize-pane -D 2
+	bind -r K resize-pane -U 2
+	bind -r L resize-pane -R 2
+	
+	# window navigation
+	unbind n
+	unbind p
+	bind -r C-h previous-window # select previous window
+	bind -r C-l next-window     # select next window
+	bind Tab last-window        # move to last active window
+	
+	# -- list choice (tmux < 2.4) --------------------------------------------------
+	
+	# vi-choice is gone in tmux >= 2.4
+	run -b 'tmux bind -t vi-choice h tree-collapse 2> /dev/null || true'
+	run -b 'tmux bind -t vi-choice l tree-expand 2> /dev/null || true'
+	run -b 'tmux bind -t vi-choice K start-of-list 2> /dev/null || true'
+	run -b 'tmux bind -t vi-choice J end-of-list 2> /dev/null || true'
+	run -b 'tmux bind -t vi-choice H tree-collapse-all 2> /dev/null || true'
+	run -b 'tmux bind -t vi-choice L tree-expand-all 2> /dev/null || true'
+	run -b 'tmux bind -t vi-choice Escape cancel 2> /dev/null || true'
+	
+	
+	# -- edit mode (tmux < 2.4) ----------------------------------------------------
+	
+	# vi-edit is gone in tmux >= 2.4
+	run -b 'tmux bind -ct vi-edit H start-of-line 2> /dev/null || true'
+	run -b 'tmux bind -ct vi-edit L end-of-line 2> /dev/null || true'
+	run -b 'tmux bind -ct vi-edit q cancel 2> /dev/null || true'
+	run -b 'tmux bind -ct vi-edit Escape cancel 2> /dev/null || true'
+	
+	
+	# -- copy mode -----------------------------------------------------------------
+	
+	bind Enter copy-mode # enter copy mode
+	
+	run -b 'tmux bind -t vi-copy v begin-selection 2> /dev/null || true'
+	run -b 'tmux bind -T copy-mode-vi v send -X begin-selection 2> /dev/null || true'
+	run -b 'tmux bind -t vi-copy C-v rectangle-toggle 2> /dev/null || true'
+	run -b 'tmux bind -T copy-mode-vi C-v send -X rectangle-toggle 2> /dev/null || true'
+	run -b 'tmux bind -t vi-copy y copy-selection 2> /dev/null || true'
+	run -b 'tmux bind -T copy-mode-vi y send -X copy-selection-and-cancel 2> /dev/null || true'
+	run -b 'tmux bind -t vi-copy Escape cancel 2> /dev/null || true'
+	run -b 'tmux bind -T copy-mode-vi Escape send -X cancel 2> /dev/null || true'
+	run -b 'tmux bind -t vi-copy H start-of-line 2> /dev/null || true'
+	run -b 'tmux bind -T copy-mode-vi H send -X start-of-line 2> /dev/null || true'
+	run -b 'tmux bind -t vi-copy L end-of-line 2> /dev/null || true'
+	run -b 'tmux bind -T copy-mode-vi L send -X end-of-line 2> /dev/null || true'
+	
+	# copy to macOS clipboard
+	if -b 'command -v pbcopy > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | pbcopy"'
+	if -b 'command -v reattach-to-user-namespace > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | reattach-to-user-namespace pbcopy"'
+	# copy to X11 clipboard
+	if -b 'command -v xsel > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xsel -i -b"'
+	if -b '! command -v xsel > /dev/null 2>&1 && command -v xclip > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | xclip -i -selection clipboard >/dev/null 2>&1"'
+	# copy to Windows clipboard
+	if -b 'command -v clip.exe > /dev/null 2>&1' 'bind y run -b "tmux save-buffer - | clip.exe"'
+	if -b '[ -c /dev/clipboard ]' 'bind y run -b "tmux save-buffer - > /dev/clipboard"'
+	
+	
+	# -- buffers -------------------------------------------------------------------
+	
+	bind b list-buffers  # list paste buffers
+	bind p paste-buffer  # paste from the top paste buffer
+	bind P choose-buffer # choose which buffer to paste from
+	
+	
+	# -- user defined overrides ----------------------------------------------------
+	
+	if '[ -f ~/.tmux.conf.local ]' 'source ~/.tmux.conf.local'
+	
+	
+	# -- 8< ------------------------------------------------------------------------
+	
+	run -b '[ -z "#{window_active}" ] && [ -z "#{version}" ] && tmux set display-time 3000 \; display "This configuration will soon require tmux >= 2.4" \; set -u display-time || true'
+	
+	run '~/.tmux/plugins/tpm/tpm'
+9ce824f9fcd473f412378b69f20150c9|file:///Users/louis/.config/tmux/.tmux.conf|1|1|V|tmux
+	# List of plugins
+	set -g @plugin 'tmux-plugins/tpm'
+	set -g @plugin 'tmux-plugins/tmux-sensible'
+	
+	set -g @plugin 'dracula/tmux'
+	
+	set -g prefix C-a
+	bind C-a send-prefix -2
+	
+	# -- navigation ----------------------------------------------------------------
+	
+	# create session
+	bind C-c new-session
+	
+	# find session
+	bind C-f command-prompt -p find-session 'switch-client -t %%'
+	
+	# split current window horizontally
+	bind - split-window -v
+	# split current window vertically
+	bind | split-window -h
+	
+	# pane navigation
+	bind -r h select-pane -L  # move left
+	bind -r j select-pane -D  # move down
+	bind -r k select-pane -U  # move up
+	bind -r l select-pane -R  # move right
+	bind > swap-pane -D       # swap current pane with the next one
+	bind < swap-pane -U       # swap current pane with the previous one
+	
+	# maximize current pane
+	bind + run 'cut -c3- ~/.tmux.conf | sh -s _maximize_pane "#{session_name}" #D'
+	
+	# pane resizing
+	bind -r H resize-pane -L 2
+	bind -r J resize-pane -D 2
+	bind -r K resize-pane -U 2
+	bind -r L resize-pane -R 2
+	
+	# window navigation
+	unbind n
+	unbind p
+	bind -r C-h previous-window # select previous window
+	bind -r C-l next-window     # select next window
+	bind Tab last-window        # move to last active window
+	
+	# toggle mouse
+	bind m run "cut -c3- ~/.tmux.conf | sh -s _toggle_mouse"
+	
+	
+	# -- urlview -------------------------------------------------------------------
+	
+	bind U run "cut -c3- ~/.tmux.conf | sh -s _urlview #{pane_id}"
+	
+	
+	# -- facebook pathpicker -------------------------------------------------------
+	
+	bind F run "cut -c3- ~/.tmux.conf | sh -s _fpp #{pane_id}"
+	
+	run '~/.tmux/plugins/tpm/tpm'

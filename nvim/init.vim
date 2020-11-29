@@ -11,6 +11,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'ajh17/Spacegray.vim'
+Plug 'liuchengxu/space-vim-dark'
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -112,7 +113,7 @@ set hidden
 
 " Turn on syntax highlighting
 if !exists('g:syntax_on')
-	syntax enable
+  syntax enable
 endif
 
 " ==================================================== Mouse
@@ -121,12 +122,10 @@ set mouse=a
 " ==================================================== Theme
 set background=dark
 set termguicolors
-packadd! dracula
 syntax enable
-colorscheme spacegray
+colorscheme space-vim-dark
 
 if (has("termguicolors"))
-  set termguicolors
   hi LineNr ctermbg=NONE guibg=NONE guifg=#5eacd3
   hi VertSplit guifg=#5eacd3 guibg=NONE ctermbg=NONE
 endif
@@ -137,9 +136,9 @@ hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
 hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
 hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+hi Normal guibg=NONE
+hi EndOfBuffer guibg=NONE
 hi FloatermBorder guifg=#55E579
-hi netrwDir guifg=#5eacd3
-hi qfFileName guifg=#aed75f
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
 hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
