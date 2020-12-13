@@ -20,3 +20,8 @@ noremap <Leader>gl :Glog<CR>
 nnoremap <Leader>o :.Gbrowse<CR>
 
 nnoremap <silent> <Leader>c  :Commits<CR>
+
+highlight Normal ctermbg=none guibg=none
+highlight SignColumn ctermbg=none guibg=none
+highlight LineNr ctermbg=none guibg=none
+let g:gitgutter_override_sign_column_highlight = 0

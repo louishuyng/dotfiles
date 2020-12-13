@@ -1,4 +1,7 @@
 prettier.formatFile
+snippets.editSnippets
+editor.action.organizeImport
+snippets.openSnippetFiles
 fzf-preview.Changes
 fzf-preview.GitStatus
 fzf-preview.DirectoryFiles

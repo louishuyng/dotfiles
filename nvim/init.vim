@@ -123,11 +123,12 @@ set mouse=a
 set background=dark
 set termguicolors
 syntax enable
-colorscheme space-vim-dark
+colorscheme spacegray
 
 if (has("termguicolors"))
   hi LineNr ctermbg=NONE guibg=NONE guifg=#5eacd3
   hi VertSplit guifg=#5eacd3 guibg=NONE ctermbg=NONE
+  hi SignColumn ctermbg=NONE guibg=NONE
 endif
 
 " ==================================================== Highlight
@@ -137,7 +138,7 @@ hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
 hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
 hi Normal guibg=NONE
-hi EndOfBuffer guibg=NONE
+hi EndBuffer guibg=NONE
 hi FloatermBorder guifg=#55E579
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
