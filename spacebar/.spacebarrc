@@ -1,16 +1,16 @@
 #!/usr/bin/env sh
 
-spacebar -m config status_bar_text_font         "helvetica neue:bold:12.0"
-spacebar -m config status_bar_icon_font         "font awesome 5 free:regular:12.0"
-spacebar -m config status_bar_background_color  0xff3e81be
-spacebar -m config status_bar_foreground_color  0xffffffff
+spacebar -m config status_bar_text_font         "Helvetica Neue:Bold:13.0"
+spacebar -m config status_bar_icon_font         "Font Awesome 5 Free:Regular:13.0"
+spacebar -m config status_bar_background_color  0xff111314
+spacebar -m config status_bar_foreground_color  0xff2E9F4B
 spacebar -m config power_icon_color   0xffcd950c
 spacebar -m config battery_icon_color 0xffd75f5f
 spacebar -m config dnd_icon_color     0xffa8a8a8
-spacebar -m config status_bar_space_icon_strip  " code" " staging" " social" " browser" " chill"    
+spacebar -m config status_bar_space_icon_strip  " Code" " Debug" "  Deploy" " Social" " Browser" " Settings"    
 spacebar -m config status_bar_power_icon_strip   
 spacebar -m config status_bar_space_icon        
 spacebar -m config status_bar_clock_icon        
-spacebar -m config status_bar_clock_format      "%d/%m/%y %r"
+spacebar -m config status_bar_clock_format      "%d/%m/%y %R"
 
 echo "spacebar configuration loaded.."

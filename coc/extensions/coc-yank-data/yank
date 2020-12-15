@@ -1,1847 +1,1250 @@
-8cdf873fdfaee0961b70c542b8b1518a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|64|21|V|typescriptreact
-	            contentType={EXPERIENCE_TYPE.ALL_CONTENT}
-c228d456c529c4a94ea79550353abdcc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/talent-purchase-history.tsx|104|1|V|typescriptreact
-	    useFocusEffect(
-	      React.useCallback(() => {
-	        canFetch &&
-	          getList(
-	            {
-	              page: 1,
-	              sort: "-createdAt",
-	            },
-	            contentType !== EXPERIENCE_TYPE.ALL_CONTENT && [contentType],
-	          )
-	      }, [canFetch]),
-700df0848a71786e29d47ea6d13cc755|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/talent-purchase-history.tsx|104|1|V|typescriptreact
-	    useFocusEffect(
-	      React.useCallback(() => {
-	        canFetch &&
-	          getList(
-	            {
-	              page: 1,
-	              sort: "-createdAt",
-	            },
-	            contentType !== EXPERIENCE_TYPE.ALL_CONTENT && [contentType],
-	          )
-	      }, [canFetch]),
-	    )
-d5b81a94f2a8173622ed29f794410677|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|103|1|V|typescriptreact
-	    useFocusEffect(
-	      Rea
-	    )
-86d382f53213dd547c33c8fd35100734|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|117|1|V|typescriptreact
-	      getList({
-	        page: 1,
-	        sort: "-createdAt",
-	      })
-ee73ee666e0df6f9f88c453d06409f78|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|106|1|V|typescriptreact
-	          getList(
-	            {
-	              page: 1,
-	              sort: "-createdAt",
-	            },
-	            contentType !== EXPERIENCE_TYPE.ALL_CONTENT && [contentType],
-	          )
-c1a8c25264bfd124de8ab21ed2b88ba6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|114|1|V|typescriptreact
-	    React.useEffect(() => {
-	      getList({
-	        page: 1,
-	        sort: "-createdAt",
-	      })
-	    }, [])
-f6bff4dcf4ada79768804bb71e638749|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|61|17|v|typescriptreact
-	ConsumerPurchaseHistoryScreen
-45e1100377ca90cc53cb72f72ca0c6ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|61|17|v|typescriptreact
-	ConsumerPurchaseScreen
-28cab96dd3fbc97dd76b3f257ed77ad4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|61|72|v|typescriptreact
-	 navigation={}
-fd9160bbd656f75ab74e8935e4330d9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|24|6|v|typescriptreact
-	navigation
-7e5fbdad8dd865ac643e6b42fa016a58|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|19|3|V|typescriptreact
-	  : NavigationProp<ParamListBase>
-c4e89d3aeb520b3e43f30088307acc5e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|2|1|V|typescriptreact
-	  NavigationProp,
-	  ParamListBase,
-90b200163cbbb9b1d207cc28436a0a64|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/index.ts|41|1|V|typescript
-	export * from "./consumer-purchase-detail-screen/consumer-purchase-detail-screen"
-593ca3e257cd26683ddf25eee3683cb4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/index.ts|42|16|v|typescript
-	./consumer-purchase-detail-screen/consumer-purchase-detail-screen
-8eaf5813e84ac015f2787964ef512917|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/navigation-routes.ts|19|1|V|typescript
-	  ConsumerPurchaseDetailScreen: <const>"ConsumerPurchaseDetailScreen",
-38d1553818558e33a463185d86ecce70|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/navigation-routes.ts|20|3|v|typescript
-	ConsumerPurchaseDetailScreen
-e125ce2d30abe6d66a1964e88c83b541|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/types.ts|108|1|V|typescript
-	  [Routes.ConsumerPurchaseHistoryScreen]: undefined
-83652483ea15d1eff1109becfd420f87|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/home-navigator.tsx|176|1|V|typescriptreact
-	      <HomeStack.Screen
-	        name={NavigationRoutes.ConsumerPurchaseHistoryScreen}
-	        component={ConsumerPurchaseHistoryScreen}
+1ec243951bfb9c3f977f05ca706d8b02|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|161|1|V|typescriptreact
+	            justifyContent: "center",
+4ce623366a1a23acb4cda97858810de7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|160|22|V|typescriptreact
+	            backgroundColor: "red",
+6db67832694fbd558859c0e1ce467946|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|30|14|v|javascript
+	DEFAULT_BACKGROUND_IMAGE_SCALE
+b33dddb174b255cb299e1b38345f0b32|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|487|3|v|javascript
+	backgroundImageScale
+d25692dc0541e8ca0f510a12bb5d6015|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|123|3|v|javascript
+	getBackgroundImageScale
+a41eb66917eba93bb809cbc8dcfcef63|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/index.js|183|3|v|javascript
+	getImageScale
+62d5e21ce71a8567d193a0496b75f9e3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/video-player/video-player.tsx|376|8|v|typescriptreact
+	BackgroundImage
+50ce2da63bea6a618e7578fa50690040|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|10|v|typescriptreact
+	React
+951d4dff3c22e9fcc4a2707009f45ea8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/video-player/video-player.tsx|376|39|v|typescriptreact
+	thumbnail
+5d58fd5e52b02db72b3c7c8f1409a24c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|47|V|typescriptreact
+	        <BackgroundImage width={400} source={{}}>
+1a7d071d7920b5c399ce2cefccaec1ff|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|179|26|V|typescriptreact
+	        </BackgroundImage>
+1b7b294c44b79e2c8b365dcf9f5840bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|14|V|typescriptreact
+	        <View>
+d5b9e8fb09181d6826309e83fe943c3f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|43|v|typescriptreact
+	style={FULL_WIDTH}
+8cf04a9734132302f96da8e113e80ce5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/bottom-navigator/tab-icon.tsx|3|10|v|typescriptreact
+	Home
+bd21190449b7e88db48fa0f580a8f666|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/bottom-navigator/tab-icon.tsx|43|9|v|typescriptreact
+	icons
+71f42d0f9d66f8905b61a623ee690039|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/bottom-navigator/icons/home-icon.tsx|1|1|V|typescriptreact
+	import React from "react"
+	import Svg, { Path } from "react-native-svg"
+	import { color } from "theme"
+	import { IconProps } from "./icon.props"
+	
+	export const Home: React.FC<IconProps> = (props: IconProps) => {
+	  const { active } = props
+	
+	  return active ? (
+	    <Svg width="32" height="32" viewBox="0 0 32 32" fill={color.primary}>
+	      <Path
+	        d="M5.33325 15.1011L14.918 5.76414C15.0601 5.62683 15.2285 5.51811 15.4137 5.4442C15.599 5.37028 15.7973 5.33261 15.9975 5.33335C16.1977 5.33408 16.3958 5.3732 16.5805 5.44848C16.7651 5.52375 16.9327 5.6337 17.0737 5.77205L26.6666 15.1011"
+	        stroke={color.primary}
+	        strokeWidth="2"
+	        strokeLinecap="round"
+	        strokeLinejoin="round"
 	      />
-b5b467352ff9720daf8566b2e193cfa4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|76|21|V|typescriptreact
-	        rightIcon: "filter",
-108a75e4237a3840fd14a36af7cf000e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|119|1|V|typescriptreact
-	      <Screen
-	        header={{
-	          leftIcon: "back",
-	          onLeftPress: () => navigation.goBack(),
-	          headerTx: "profileScreen.purchaseHistory",
-	          style: styles.headerStyle,
-	        }}
-	        preset="fixed"
-	      >
-178d21d083362c8433cd88d9cab60ccb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|155|14|V|typescriptreact
-	      </Screen>
-cf9aeda479f511fe6d784cbadbbb3105|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|166|1|V|typescriptreact
-	  headerStyle: {
-	    borderBottomWidth: 0,
-	  },
-2992bcb9028532f7dee71e84779bad06|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-home-screen/talent-home-screen.tsx|14|8|v|typescriptreact
-	TalentExperiencesTab
-04e4728f29f09f25b0f13e64377813c5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/experience-screen.tsx|120|1|V|typescriptreact
-	  tabBar: {
-	    backgroundColor: color.background,
-	  },
-	  tabBarContainer: {
-	    backgroundColor: color.background,
-	  },
-	  tabItem: {
-	    alignItems: "center",
-	    justifyContent: "center",
-	  },
-	  tabUnderline: {
-	    backgroundColor: color.themeColor.primary,
-	  },
-6a2ba29c3a9719475405f66463f12617|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|110|1|V|typescriptreact
-	  tabBar: {
-	    backgroundColor: color.background,
-	  },
-	  tabBarContainer: {
-	    backgroundColor: color.background,
-	  },
-	  tab: {
-	    width: "auto",
-	    paddingHorizontal: metrics.paddingHorizontal,
-	  },
-	  tabItem: {
-	    alignItems: "center",
-	    justifyContent: "center",
-	  },
-	  tabUnderline: {
-	    backgroundColor: color.themeColor.primary,
-	    borderTopLeftRadius: metrics.borderRadius / 2,
-	    borderTopRightRadius: metrics.borderRadius / 2,
-	  },
-d49102b8290960c8ec5b1ad4fb9a519e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|35|3|V|typescriptreact
-	        tabStyle={styles.tab}
-f8686c72c0d9e32843c63a9c55a19702|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|37|3|V|typescriptreact
-	        scrollEnabled={true}
-50bfc61d38af3305253f76e75114cbde|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/consumer-purchase-history-screen.tsx|1|1|V|typescriptreact
-	import { useFocusEffect, useNavigation } from "@react-navigation/native"
-	import { toJS } from "mobx"
-	import { observer } from "mobx-react-lite"
-	import { useStores } from "models"
-	import { BookingModelType, ContentModelType } from "models/model-types"
-	import moment from "moment"
-	import { NavigationRoutes } from "navigation/navigation-routes"
-	import * as React from "react"
-	import { RefreshControl, SectionList, StyleSheet, View } from "react-native"
-	import { rgbColor } from "utils/color"
-	import { getFirstImage } from "utils/general"
-	import { ListEmpty, PlaceHolderList, PLACE_HOLDER_TYPE, Screen, Text } from "../../components"
-	import { BOOKING_STATUS } from "../../constants"
-	import { BG_WHITE, color, MB_4, MB_5, metrics, PX_4, PY_6, spacing } from "../../theme"
-	import { PurchaseHistoryCard } from "./components/purchase-history-card"
-	import { useLocalCurrencyContext } from "hooks"
-	
-	interface ConsumerPurchaseHistoryScreenProps {
-	  canFetch: boolean
-	}
-	
-	export const ConsumerPurchaseHistoryScreen = observer(
-	  ({ canFetch }: ConsumerPurchaseHistoryScreenProps) => {
-	    const {
-	      bookingStore: {
-	        purchaseHistory: {
-	          total,
-	          list,
-	          isRefreshing,
-	          isLoadingMore,
-	          getMore,
-	          isLoading,
-	          getList,
-	          refreshList,
-	        },
-	      },
-	    } = useStores()
-	    const { formatterCurrency } = useLocalCurrencyContext()
-	    const [sections, setSections] = React.useState([])
-	    const navigation = useNavigation()
-	
-	    const _renderSectionHeader = ({ section }) => {
-	      return (
-	        <Text
-	          style={[PX_4, MB_4, BG_WHITE, styles.sectionHeaderTitle]}
-	          preset="regularR"
-	          text={section.title}
-	        />
-	      )
-	    }
-	    const _renderSectionItem = ({ item }) => {
-	      return (
-	        <PurchaseHistoryCard
-	          price={formatterCurrency(item?.price)}
-	          priceStyle={{ color: color.themeColor.dark }}
-	          fontSizePrice={16}
-	          name={item?.experience?.name}
-	          talentName={`${item?.talent?.talentProfile?.firstName} ${item?.talent?.talentProfile?.lastName}`}
-	          avatar={item?.talent?.talentProfile?.avatar}
-	          cover={getFirstImage(item?.experience as ContentModelType)}
-	          title={item?.id}
-	          status={item?.status as BOOKING_STATUS}
-	          style={MB_5}
-	          onPress={() =>
-	            navigation.navigate(NavigationRoutes.ConsumerPurchaseDetailScreen, {
-	              bookingId: item.id,
-	            })
-	          }
-	        />
-	      )
-	    }
-	
-	    const formatSection = React.useCallback(
-	      (bookings: BookingModelType[]) => {
-	        const sectionList = toJS(bookings).reduce((section, booking) => {
-	          const key = moment(booking?.createdAt).dayOfYear()
-	
-	          if (!section[key])
-	            section[key] = {
-	              key,
-	              title: moment(booking?.createdAt).format("MMM DD"),
-	              data: [booking],
-	            }
-	          else section[key].data.push(booking)
-	          return section
-	        }, {})
-	
-	        return Object.keys(sectionList)
-	          .map((key) => {
-	            return sectionList[key]
-	          })
-	          .reverse()
-	      },
-	      [list],
-	    )
-	
-	    const _onEndReachedCategories = React.useCallback(() => {
-	      const isContinue = list.length < total
-	      if (!isLoadingMore && !isRefreshing && isContinue) {
-	        getMore()
-	      }
-	    }, [isRefreshing, isLoadingMore, total, list])
-	
-	    useFocusEffect(
-	      React.useCallback(() => {
-	        canFetch &&
-	          getList({
-	            page: 1,
-	            sort: "-createdAt",
-	          })
-	      }, [canFetch]),
-	    )
-	
-	    React.useEffect(() => {
-	      setSections(formatSection(list))
-	    }, [list.length])
-	
-	    return (
-	      <View style={styles.container}>
-	        {isLoading && !isLoadingMore ? (
-	          <PlaceHolderList
-	            horizontal={false}
-	            elementStyle={[
-	              {
-	                height: metrics.screenHeight * 0.18,
-	                borderRadius: metrics.borderRadius,
-	              },
-	              MB_5,
-	            ]}
-	            style={PY_6}
-	            type={PLACE_HOLDER_TYPE.PURCHASE_HISTORY_LIST}
-	            total={3}
-	          />
-	        ) : (
-	          <SectionList
-	            sections={sections}
-	            stickySectionHeadersEnabled
-	            renderSectionHeader={_renderSectionHeader}
-	            ListEmptyComponent={<ListEmpty tx="common.noItem" />}
-	            renderItem={_renderSectionItem}
-	            showsVerticalScrollIndicator={false}
-	            keyExtractor={(item) => item.id}
-	            onEndReachedThreshold={0.6}
-	            onTouchEndCapture={_onEndReachedCategories}
-	            refreshControl={
-	              <RefreshControl
-	                refreshing={isRefreshing}
-	                onRefresh={() => refreshList()}
-	                tintColor={color.themeColor.primary}
-	              />
-	            }
-	          />
-	        )}
-	      </View>
-	    )
-	  },
-	)
-	
-	const styles = StyleSheet.create({
-	  container: {
-	    flex: 1,
-	    backgroundColor: color.background,
-	    padding: spacing[4],
-	    justifyContent: "center",
-	  },
-	  sectionHeaderTitle: {
-	    color: rgbColor(color.themeColor.dark, 0.7),
-	  },
-	})
-2675154d50bc54b2cadb10940cd5c645|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|1|1|V|typescriptreact
-	import * as React from "react"
-	import { View, StyleSheet, TouchableOpacity, ViewStyle } from "react-native"
-	import { FastImage } from "components"
-	import { color, spacing, MR_2, metrics, MB_1 } from "theme"
-	import { Divider } from "react-native-elements"
-	import { Text, Avatar } from "components"
-	import { rgbColor } from "utils/color"
-	import { startCase } from "utils/lodash"
-	import { BOOKING_STATUS } from "../../../constants"
-	
-	interface PurchaseHistoryCardProps {
-	  style?: ViewStyle
-	  cover?: string
-	  avatar?: string
-	  name?: string
-	  talentName?: string
-	  title?: string
-	  status?: BOOKING_STATUS
-	  price?: string
-	  priceStyle?: { color: string; fontSize?: number }
-	  fontSizePrice?: number
-	  onPress?: () => void
-	}
-	
-	export const PurchaseHistoryCard = ({
-	  style,
-	  cover,
-	  title,
-	  name,
-	  talentName,
-	  status,
-	  price,
-	  priceStyle,
-	  fontSizePrice,
-	  avatar,
-	  onPress,
-	}: PurchaseHistoryCardProps) => {
-	  const _statusStyle = (status: BOOKING_STATUS) => {
-	    let result = {}
-	
-	    switch (status) {
-	      case BOOKING_STATUS.ACCEPTED:
-	      case BOOKING_STATUS.COMPLETED:
-	        result = styles.successStatus
-	        break
-	      case BOOKING_STATUS.UNCOMPLETED:
-	      case BOOKING_STATUS.DECLINED:
-	        result = styles.rejectStatus
-	        break
-	      case BOOKING_STATUS.PENDING:
-	        result = styles.pendingStatus
-	        break
-	    }
-	
-	    return result
-	  }
-	  return (
-	    <TouchableOpacity onPress={onPress} style={[styles.container, style]}>
-	      <View style={styles.coverContainer}>
-	        <FastImage style={styles.cover} source={{ uri: cover }} />
-	      </View>
-	      <View style={styles.content}>
-	        <View style={styles.purchaseInfo}>
-	          <View style={styles.purchaseStatus}>
-	            <Text
-	              preset="regularS"
-	              tx="common.purchaseID"
-	              txOptions={{ number: title }}
-	              style={[MB_1, styles.title]}
-	            />
-	            {status && (
-	              <Text preset="regularS" style={_statusStyle(status)} text={startCase(status)} />
-	            )}
-	          </View>
-	          <Text preset="semiBoldS" style={[priceStyle, { fontSize: fontSizePrice }]} text={price} />
-	        </View>
-	        <Divider style={styles.divider} />
-	        <Text numberOfLines={1} ellipsizeMode="tail" text={name} preset="semiBoldR" style={MB_1} />
-	        <View style={styles.info}>
-	          <Avatar style={MR_2} source={{ uri: avatar }} title={talentName} />
-	          <Text text={talentName} preset="mediumS" />
-	        </View>
-	      </View>
-	    </TouchableOpacity>
+	      <Path
+	        d="M23.619 12.1378V26.6667H8.38086V12.1328"
+	        stroke={color.primary}
+	        strokeWidth="2"
+	        strokeLinecap="round"
+	        strokeLinejoin="round"
+	      />
+	    </Svg>
+	  ) : (
+	    <Svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+	      <Path
+	        d="M5.33325 15.1011L14.918 5.76414C15.0601 5.62683 15.2285 5.51811 15.4137 5.4442C15.599 5.37028 15.7973 5.33261 15.9975 5.33335C16.1977 5.33408 16.3958 5.3732 16.5805 5.44848C16.7651 5.52375 16.9327 5.6337 17.0737 5.77205L26.6666 15.1011"
+	        stroke="#020025"
+	        strokeWidth="2"
+	        strokeLinecap="round"
+	        strokeLinejoin="round"
+	      />
+	      <Path
+	        d="M23.619 12.1378V26.6667H8.38086V12.1328"
+	        stroke="#020025"
+	        strokeWidth="2"
+	        strokeLinecap="round"
+	        strokeLinejoin="round"
+	      />
+	    </Svg>
 	  )
 	}
+4a1da888968100a207a23aecd972b49b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|9|10|v|typescriptreact
+	active ? (
+f2df2ef390c956bea69bccf9a174381d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|27|4|V|typescriptreact
+	    : (
+	    <Svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+55b42c3caeb3e61d61262fef058ef342|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|27|1|V|typescriptreact
+	      <Path
+	        d="M5.33325 15.1011L14.918 5.76414C15.0601 5.62683 15.2285 5.51811 15.4137 5.4442C15.599 5.37028 15.7973 5.33261 15.9975 5.33335C16.1977 5.33408 16.3958 5.3732 16.5805 5.44848C16.7651 5.52375 16.9327 5.6337 17.0737 5.77205L26.6666 15.1011"
+	        stroke="#020025"
+	        strokeWidth="2"
+	        strokeLinecap="round"
+	        strokeLinejoin="round"
+	      />
+	      <Path
+	        d="M23.619 12.1378V26.6667H8.38086V12.1328"
+	        stroke="#020025"
+	        strokeWidth="2"
+	        strokeLinecap="round"
+	        strokeLinejoin="round"
+	      />
+	    </Svg>
+	  )
+4caefa85dc5f6101dfa7390a7799e247|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|7|9|V|typescriptreact
+	  const { active } = props
+2655485ece7570af7069efe6c66a76d7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|6|50|v|typescriptreact
+	IconProps
+1ccaeccdc15d73829fa18f68d8de0070|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|7|1|V|typescriptreact
+	  width?: number;
+eaae26a6fb20ed3ef54fb23bfa0b1fcc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|8|3|v|typescriptreact
+	width
+c4ec7be72023156185bf2b042ae59f71|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|4|40|V|typescriptreact
+	import { IconProps } from "./icon.props"
+b3a97c88486049bd7098443b45c1fdd9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/assets/icons/gift-card-background.svg|1|1|V|svg
+	<svg width="343" height="173" viewBox="0 0 343 173" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="343" height="173">
+	<rect width="343" height="173" rx="16" fill="#73E5FF"/>
+	</mask>
+	<g mask="url(#mask0)">
+	<rect width="343" height="173" rx="16" fill="#73E5FF"/>
+	<circle cx="27.0853" cy="-11.9148" r="58.715" transform="rotate(-60 27.0853 -11.9148)" stroke="#B2FCFF" stroke-width="13"/>
+	<circle cx="156.282" cy="-19.7176" r="72.0362" transform="rotate(-60 156.282 -19.7176)" stroke="#B2FCFF" stroke-width="13"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" d="M90.9527 -25.1068C90.4408 -18.8498 90.8376 -12.5848 92.0909 -6.5062C91.4699 1.01983 89.5276 8.53349 86.1724 15.6931C82.7339 8.8694 80.3099 1.5844 78.9674 -5.91201C79.6736 -12.0423 79.2763 -18.209 77.8529 -24.1236C78.2687 -31.6316 79.7706 -39.1513 82.4213 -46.4487C86.5182 -39.8712 89.3953 -32.633 90.9527 -25.1068Z" fill="#E8FFFF"/>
+	<circle cx="293.282" cy="-30.7176" r="72.0362" transform="rotate(-60 293.282 -30.7176)" stroke="#B2FCFF" stroke-width="13"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" d="M229.844 -47.2312C226.068 -32.7618 227.446 -17.6138 233.309 -4.28382C232.154 1.47578 230.334 7.17402 227.82 12.7034C224.509 7.70319 221.799 2.36121 219.721 -3.20407C223.496 -17.6735 222.118 -32.8215 216.256 -46.1515C217.411 -51.9111 219.23 -57.6093 221.744 -63.1387C225.055 -58.1385 227.766 -52.7965 229.844 -47.2312Z" fill="#E8FFFF"/>
+	<path d="M300.58 120.772L300.675 120.677C304.76 116.595 304.712 110.008 300.58 106C296.522 110.055 296.474 116.595 300.484 120.677L300.58 120.772Z" fill="white"/>
+	<path d="M326.904 132.636C322.82 128.554 316.228 128.602 312.218 132.732C316.276 136.787 322.82 136.835 326.904 132.827L327 132.732L326.904 132.636Z" fill="white"/>
+	<path d="M288.782 132.397L288.687 132.302C284.602 128.22 278.01 128.267 274 132.397C278.058 136.453 284.602 136.5 288.687 132.493L288.782 132.397Z" fill="white"/>
+	<path d="M319.468 113.76C313.742 113.829 309.147 118.495 309.147 124.217V124.334H309.264C315.033 124.265 319.606 119.504 319.468 113.76Z" fill="white"/>
+	<path d="M308.908 140.396H308.813V140.535C308.861 146.304 313.577 150.896 319.325 150.779C319.282 145.057 314.656 140.418 308.908 140.396Z" fill="white"/>
+	<path d="M281.904 150.593C287.63 150.641 292.32 146.071 292.416 140.349L292.437 140.205H292.325C286.552 140.158 281.883 144.823 281.904 150.593Z" fill="white"/>
+	<path d="M291.784 124.451H291.9V124.334C291.969 118.591 287.348 113.877 281.58 113.877C281.505 119.599 286.058 124.334 291.784 124.451Z" fill="white"/>
+	<path d="M305.955 132.562C305.955 129.595 303.549 127.195 300.585 127.195C297.616 127.195 295.215 129.6 295.215 132.562C295.215 134.717 296.484 136.564 298.317 137.424L295.544 152H305.891L302.922 137.397C304.712 136.527 305.955 134.69 305.955 132.562Z" fill="white"/>
+	</g>
+	<rect x="1" y="84" width="342" height="1" fill="white"/>
+	</svg>
+d1bfc5504e991c1aae5d3a57bfc754f9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|12|1|v|typescriptreact
+	    <Svg width="32" height="32" viewBox="0 0 32 32" fill={color.primary}>
+	      <Path
+	        d="M5.33325 15.1011L14.918 5.76414C15.0601 5.62683 15.2285 5.51811 15.4137 5.4442C15.599 5.37028 15.7973 5.33261 15.9975 5.33335C16.1977 5.33408 16.3958 5.3732 16.5805 5.44848C16.7651 5.52375 16.9327 5.6337 17.0737 5.77205L26.6666 15.1011"
+	        stroke={color.primary}
+	        strokeWidth="2"
+	        strokeLinecap="round"
+	        strokeLinejoin="round"
+	      />
+	      <Path
+	        d="M23.619 12.1378V26.6667H8.38086V12.1328"
+	        stroke={color.primary}
+	        strokeWidth="2"
+	        strokeLinecap="round"
+	        strokeLinejoin="round"
+	      />
+	    </Svg>
 	
-	const COVER_WIDTH = metrics.screenWidth * 0.213
-	const COVER_HEIGH = metrics.screenHeight * 0.135
+0a4c6e93cbde496c3f4cc6c17b9ec97d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|12|1|v|typescriptreact
+	    <svg
+	      width={343}
+	      height={173}
+	      viewBox="0 0 343 173"
+	      fill="none"
+	      xmlns="http://www.w3.org/2000/svg"
+	      {...props}
+	    >
+	      <mask id="prefix__a" maskUnits="userSpaceOnUse" x={0} y={0} width={343} height={173}>
+	        <rect width={343} height={173} rx={16} fill="#73E5FF" />
+	      </mask>
+	      <g mask="url(#prefix__a)">
+	        <rect width={343} height={173} rx={16} fill="#73E5FF" />
+	        <circle
+	          cx={27.085}
+	          cy={-11.915}
+	          r={58.715}
+	          transform="rotate(-60 27.085 -11.915)"
+	          stroke="#B2FCFF"
+	          strokeWidth={13}
+	        />
+	        <circle
+	          cx={156.282}
+	          cy={-19.718}
+	          r={72.036}
+	          transform="rotate(-60 156.282 -19.718)"
+	          stroke="#B2FCFF"
+	          strokeWidth={13}
+	        />
+	        <path
+	          fillRule="evenodd"
+	          clipRule="evenodd"
+	          d="M90.953-25.107a65.63 65.63 0 001.138 18.6 64.805 64.805 0 01-5.919 22.2 78.96 78.96 0 01-7.205-21.605 52.284 52.284 0 00-1.114-18.212 77.973 77.973 0 014.568-22.325 65.48 65.48 0 018.532 21.342z"
+	          fill="#E8FFFF"
+	        />
+	        <circle
+	          cx={293.282}
+	          cy={-30.718}
+	          r={72.036}
+	          transform="rotate(-60 293.282 -30.718)"
+	          stroke="#B2FCFF"
+	          strokeWidth={13}
+	        />
+	        <path
+	          fillRule="evenodd"
+	          clipRule="evenodd"
+	          d="M229.844-47.231c-3.776 14.47-2.398 29.617 3.465 42.947a78.135 78.135 0 01-5.489 16.987 78.63 78.63 0 01-8.099-15.907c3.775-14.47 2.397-29.617-3.465-42.947a78.132 78.132 0 015.488-16.988 78.634 78.634 0 018.1 15.908z"
+	          fill="#E8FFFF"
+	        />
+	        <path
+	          d="M300.58 120.772l.095-.095c4.085-4.082 4.037-10.669-.095-14.677-4.058 4.055-4.106 10.595-.096 14.677l.096.095zM326.904 132.636c-4.084-4.082-10.676-4.034-14.686.096 4.058 4.055 10.602 4.103 14.686.095l.096-.095-.096-.096zM288.782 132.397l-.095-.095c-4.085-4.082-10.677-4.035-14.687.095 4.058 4.056 10.602 4.103 14.687.096l.095-.096zM319.468 113.76c-5.726.069-10.321 4.735-10.321 10.457v.117h.117a10.323 10.323 0 0010.204-10.574zM308.908 140.396h-.095v.139c.048 5.769 4.764 10.361 10.512 10.244-.043-5.722-4.669-10.361-10.417-10.383zM281.904 150.593c5.726.048 10.416-4.522 10.512-10.244l.021-.144h-.112c-5.773-.047-10.442 4.618-10.421 10.388zM291.784 124.451h.116v-.117c.069-5.743-4.552-10.457-10.32-10.457-.075 5.722 4.478 10.457 10.204 10.574zM305.955 132.562a5.368 5.368 0 00-5.37-5.367 5.365 5.365 0 00-2.268 10.229L295.544 152h10.347l-2.969-14.603a5.379 5.379 0 003.033-4.835z"
+	          fill="#fff"
+	        />
+	      </g>
+	      <path fill="#fff" d="M1 84h342v1H1z" />
+	    </svg>
 	
-	const styles = StyleSheet.create({
-	  container: {
-	    flexDirection: "row",
-	    alignItems: "center",
-	    padding: spacing[4],
-	    borderWidth: 1,
-	    borderRadius: metrics.borderRadius,
-	    borderColor: rgbColor(color.line, 0.7),
-	  },
-	  content: {
-	    flex: 1,
-	    justifyContent: "center",
-	    flexDirection: "column",
-	  },
-	  purchaseInfo: {
-	    flexDirection: "row",
-	    alignItems: "flex-start",
-	    justifyContent: "space-between",
-	  },
-	  title: {
-	    color: rgbColor(color.themeColor.dark, 0.7),
-	  },
-	  purchaseStatus: {
-	    flex: 1,
-	    justifyContent: "flex-start",
-	  },
-	  divider: {
-	    width: "35%",
-	    height: 1,
-	    backgroundColor: color.line,
-	    opacity: 0.5,
-	    marginVertical: spacing[3],
-	  },
-	  info: {
-	    flexDirection: "row",
-	    alignItems: "center",
-	  },
-	  coverContainer: {
-	    width: COVER_WIDTH,
-	    height: COVER_HEIGH,
-	    marginRight: spacing[3] + 2,
-	  },
-	  cover: {
-	    width: COVER_WIDTH,
-	    aspectRatio: 126 / 173,
-	    borderRadius: metrics.borderRadius,
-	  },
-	  successStatus: {
-	    color: color.themeColor.green,
-	  },
-	  pendingStatus: {
-	    color: color.themeColor.yellow,
-	  },
-	  rejectStatus: {
-	    color: color.themeColor.red,
-	  },
-	})
-f0b27083b665e5bdb56eec5f7aeab87e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|15|10|v|typescriptreact
-	GiftPurchaseHistoryCard
-21e741b0f424b30a3375775033e4a54d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/index.ts|42|1|V|typescript
-	export * from "./consumer-purchase-screen/consumer-purchase-screen"
-a1a1ac4959b28dc1f09990ba91dfe126|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/index.ts|43|16|v|typescript
-	./consumer-purchase-screen/consumer-purchase-screen
-02b44381a105e7b83c0533cbb3b015a3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|64|39|V|typescriptreact
-	            contentType={EXPERIENCE_TYPE.ONE_TO_ONE}
-2fc3359e12b2a9104121dcf04246f6a0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|12|57|v|typescriptreact
-	Screen
-d588a8aa240aef7e77f6908a96b5f417|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|106|9|v|typescriptreact
-	canFetch
-d4e85e3e19bfa04e68951faf4cbef8c6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|17|9|v|typescriptreact
-	_onChangeTab
-fc616b4a4413047925e4c3c162b8ba63|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|106|22|V|typescriptreact
-	        console.log(canFetch)
-ba672fee5578963da7f043b37ec135be|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|24|23|V|typescriptreact
-	    console.log("test")
-1bddb1f07c0186c27e44b331d61dddf2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|71|1|V|typescriptreact
-	            {status && (
-	              <Text preset="regularS" style={_statusStyle(status)} text={startCase(status)} />
-	            )}
-6fdaeae2dac7f3b4e90fe75f6499d0a9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|59|1|V|typescriptreact
-	      <View style={styles.coverContainer}>
-	        <FastImage style={styles.cover} source={{ uri: cover }} />
-	      </View>
-423fab63eefa2d33a0290f1447ef4284|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|71|1|V|typescriptreact
-	        <Divider style={styles.divider} />
-	        <Text numberOfLines={1} ellipsizeMode="tail" text={name} preset="semiBoldR" style={MB_1} />
-	        <View style={styles.info}>
-	          <Avatar style={MR_2} source={{ uri: avatar }} title={talentName} />
-	          <Text text={talentName} preset="mediumS" />
-	        </View>
-4aa13e4442b3eced4119a01fa596e882|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|70|21|v|typescriptreact
-	semiBoldS
-564c29f0585817479869c37d03c4191e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|70|21|v|typescriptreact
-	semiBoldM
-a82fd95db10ff25dfad39f07372ebe37|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|55|49|v|typescriptreact
-	dark
-f21e72788ca0b9e9cdcaf11a7930043b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|71|58|v|typescriptreact
-	, color: color.themeColor.green 
-04dce234d328d11bab7bc00cd4dd42b3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|61|14|V|typescriptreact
-	          <View style={styles.purchaseStatus}>
-0e9dd4f7a903aad28376f3a63ed5784e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|74|13|V|typescriptreact
-	      </View>
-c3a3d647afe642ee8c1f9cd3814ba33c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|61|31|v|typescriptreact
-	purchaseStatus
-2ad79cdfbf0e9bfbdea2861fd2586b1f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|60|3|V|typescriptreact
-	        <View style={styles.purchaseInfo}>
-c9a8835515dda35aa7318f8238f80be5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|107|1|V|typescriptreact
-	  divider: {
-	    width: "35%",
-	    height: 1,
-	    backgroundColor: color.line,
-	    opacity: 0.5,
-	    marginVertical: spacing[3],
-	  },
-	  info: {
-	    flexDirection: "row",
-	    alignItems: "center",
-	  },
-	  coverContainer: {
-	    width: COVER_WIDTH,
-	    height: COVER_HEIGH,
-	    marginRight: spacing[3] + 2,
-	  },
-	  cover: {
-	    width: COVER_WIDTH,
-	    aspectRatio: 126 / 173,
-	    borderRadius: metrics.borderRadius,
-	  },
-0e9d35e8284bb9dbb36097a481ab1014|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|103|1|V|typescriptreact
-	  purchaseInfo: {
-	    flex: 1,
-	    justifyContent: "flex-start",
-	  },
-4351cfebe4b61d8aa5efa1d020710005|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|62|1|v|typescriptreact
-	View
-8224839b14896af1b00c2868a3141ab9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|62|1|V|typescriptreact
-	            <Text
-	              preset="regularS"
-	              tx="common.purchaseID"
-	              txOptions={{ number: title }}
-	              style={[MB_1, styles.title]}
-	            />
-7b9ad8a8d714ddf36fbac503b06ca710|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|38|1|V|typescriptreact
-	  const _statusStyle = (status: BOOKING_STATUS) => {
-	    let result = {}
-	
-	    switch (status) {
-	      case BOOKING_STATUS.ACCEPTED:
-	      case BOOKING_STATUS.COMPLETED:
-	        result = styles.successStatus
-	        break
-	      case BOOKING_STATUS.UNCOMPLETED:
-	      case BOOKING_STATUS.DECLINED:
-	        result = styles.rejectStatus
-	        break
-	      case BOOKING_STATUS.PENDING:
-	        result = styles.pendingStatus
-	        break
-	    }
-	
-	    return result
-	  }
-95f1d353d70aed4c11e64d9a76134c9f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|67|1|V|typescriptreact
-	const COVER_WIDTH = metrics.screenWidth * 0.213
-	const COVER_HEIGH = metrics.screenHeight * 0.135
-	
-6920a3f94c8b1af68cffb4415b85919f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|89|1|V|typescriptreact
-	  successStatus: {
-	    color: color.themeColor.green,
-	  },
-	  pendingStatus: {
-	    color: color.themeColor.yellow,
-	  },
-	  rejectStatus: {
-	    color: color.themeColor.red,
-	  },
-ebf11e39c3aa2a2b274f7b9b33ce3a76|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|45|15|V|typescriptreact
-	              tx="common.purchaseID"
-a61535eb00fae372b4c240f3d9ffd48e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|45|15|V|typescriptreact
-	              txOptions={{ number: title }}
-d1545d29174056cf7c7620dbabc3d7a1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|35|9|V|typescriptreact
-	  avatar,
-a8e859fb62147034b5910461e6824ebd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|31|9|V|typescriptreact
-	  status,
-41bd2fed559dc2fd90b705c9f9b3e1a5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|30|8|V|typescriptreact
-	  talentName,
-b58e5415dd1d99e4517d70597241a251|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|27|8|V|typescriptreact
-	  cover,
-fc3137e045dedc2999db2e4d533913e0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|8|8|V|typescriptreact
-	import { startCase } from "utils/lodash"
-afbebc7664954759df85b02319f30b7d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|5|8|V|typescriptreact
-	import { Divider } from "react-native-elements"
-83376a25d7e3ff351a18c4455dfb4eec|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|3|8|V|typescriptreact
-	import { FastImage } from "components"
-4339c5d301dcb40b6e4c8cedbc2d2752|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|36|63|v|typescriptreact
-	styles.title
-0eb34dd3f5daad422276aeaad65f8c24|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|36|27|v|typescriptreact
-	regularS
-d46fe59c9ed618f8a10cdafd221591f8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|34|29|v|typescriptreact
-	purchaseInfo
-4cdbd13f607f3584d8b6e9faa7618650|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|71|18|v|typescriptreact
-	flex-start
-3c0078346120ce54fa97cf16022b8019|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|36|V|typescriptreact
-	          talentName={`${item?.talent?.talentProfile?.firstName} ${item?.talent?.talentProfile?.lastName}`}
-96eb63a9d25bf6edcfa029bc131a3ebc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|36|V|typescriptreact
-	          avatar={item?.talent?.talentProfile?.avatar}
-eccfc7c5609842c9e31296336621ada6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|36|V|typescriptreact
-	          cover={getFirstImage(item?.experience as ContentModelType)}
-707e761423fe41f378cca50962a95566|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|26|V|typescriptreact
-	          title={item?.id}
-459032b8def7f3886a83b847a104f96f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|26|V|typescriptreact
-	          status={item?.status as BOOKING_STATUS}
-d3fbca5b30f36949dcfd1b025858b418|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderList.tsx|84|1|V|typescriptreact
-	        case PLACE_HOLDER_TYPE.NOTIFICATION_LIST:
-	          element = <PlaceHolderNotificationList style={elementStyle} />
-	          break
-110b305c041eca4cc08e86dfaefd53e3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderList.tsx|30|3|v|typescriptreact
-	CONSUMER_GIFT_PURCHASE_LIST
-6cd81f312814907e414714d9ac0cce3a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderList.tsx|88|32|v|typescriptreact
-	NOTIFICATION_LIST
-07e75af93d35223d27692fb705f21472|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderList.tsx|80|1|V|typescriptreact
-	          element = <PlaceHolderPurchaseHistoryList style={elementStyle} />
-23dc71289fa0142a20ad57a8fadf04be|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderList.tsx|89|1|V|typescriptreact
-	          element = <PlaceHolderNotificationList style={elementStyle} />
-b6ec34e026c23ba410eeccc8aec88817|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderPurchaseHistoryList.tsx|1|1|V|typescriptreact
-	import React from "react"
-	import { observer } from "mobx-react-lite"
-	import { StyleSheet, ViewStyle } from "react-native"
-	import { PlaceholderLine, PlaceholderMedia } from "rn-placeholder"
-	import { spacing, metrics } from "theme"
-	
-	interface PlaceHolderPurchaseHistoryListProps {
-	  style: ViewStyle | ViewStyle[]
-	}
-	
-	export const PlaceHolderPurchaseHistoryList = observer(
-	  ({ style }: PlaceHolderPurchaseHistoryListProps) => {
-	    return (
-	      <>
-	        <PlaceholderMedia style={[style, styles.container]} />
-	        <PlaceholderLine style={styles.badge} />
-	        <PlaceholderLine style={styles.contentTitle} />
-	        <PlaceholderMedia style={styles.cover} />
-	        <PlaceholderLine style={styles.nameTalent} />
-	        <PlaceholderMedia style={styles.avatar} />
-	        <PlaceholderLine style={styles.nameUser} />
-	        <PlaceholderLine style={styles.price} />
-	      </>
-	    )
-	  },
-	)
-	
-	const styles = StyleSheet.create({
-	  container: {
-	    width: "100%",
-	    height: "100%",
-	    opacity: 0.6,
-	  },
-	  badge: {
-	    top: metrics.screenHeight * 0.01,
-	    left: metrics.screenWidth * 0.3,
-	    height: 15,
-	    position: "absolute",
-	    width: "20%",
-	    borderRadius: metrics.borderRadius,
-	    opacity: 0.6,
-	  },
-	  contentTitle: {
-	    top: metrics.screenHeight * 0.05,
-	    left: metrics.screenWidth * 0.3,
-	    position: "absolute",
-	    width: "40%",
-	    borderRadius: metrics.borderRadius,
-	    opacity: 0.6,
-	  },
-	  cover: {
-	    top: spacing[4],
-	    height: "80%",
-	    width: "25%",
-	    left: spacing[3],
-	    position: "absolute",
-	    borderRadius: metrics.borderRadius,
-	    opacity: 0.6,
-	  },
-	  nameTalent: {
-	    top: metrics.screenHeight * 0.1,
-	    left: metrics.screenWidth * 0.3,
-	    position: "absolute",
-	    width: "25%",
-	    borderRadius: metrics.borderRadius,
-	    opacity: 0.6,
-	  },
-	  avatar: {
-	    top: metrics.screenHeight * 0.125,
-	    left: metrics.screenWidth * 0.3,
-	    position: "absolute",
-	    width: 24,
-	    height: 24,
-	    borderRadius: metrics.borderRadiusMax,
-	    opacity: 0.6,
-	  },
-	  nameUser: {
-	    top: metrics.screenHeight * 0.13,
-	    left: metrics.screenWidth * 0.38,
-	    position: "absolute",
-	    width: "20%",
-	    borderRadius: metrics.borderRadius,
-	    opacity: 0.6,
-	  },
-	  price: {
-	    top: metrics.screenHeight * 0.012,
-	    right: spacing[3],
-	    height: 20,
-	    position: "absolute",
-	    width: "15%",
-	    borderRadius: metrics.borderRadius,
-	    opacity: 0.6,
-	  },
-	})
-afb420b8992e5288c00a4408cae057b4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderList.tsx|89|22|v|typescriptreact
-	PlaceHolderPurchaseHistoryList
-f205bcea866e3675085be7e0151159d5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|116|10|v|typescriptreact
-	isLoading && !isLoadingMore
-4189bd5bd7954bf64adb2d5ccec04bba|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderConsumerGiftPurchaseList.tsx|15|16|V|typescriptreact
-	        <PlaceholderMedia style={[style, styles.container]} />
-acacaf1effaac5c433f6ae03f60d6ec5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderConsumerGiftPurchaseList.tsx|18|16|V|typescriptreact
-	        <PlaceholderMedia style={styles.cover} />
-71698b6217dd041a90b07cb57a4a957a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderConsumerGiftPurchaseList.tsx|19|16|V|typescriptreact
-	        <PlaceholderMedia style={styles.avatar} />
-4c94315a14943c921693367490a5b240|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderConsumerGiftPurchaseList.tsx|19|16|V|typescriptreact
-	        <PlaceholderLine style={styles.nameUser} />
-6ebc0105aa31062585165ba32df7bdcd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderConsumerGiftPurchaseList.tsx|18|16|V|typescriptreact
-	        <PlaceholderLine style={styles.nameTalent} />
-ff66cee4eb4d2c8aa9fa8dbfe1566457|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderConsumerGiftPurchaseList.tsx|17|16|V|typescriptreact
-	        <PlaceholderLine style={styles.contentTitle} />
-c16fa1db3baebe7ae5ecf32dd79de4e7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|127|37|v|typescriptreact
-	PURCHASE_HISTORY_LIST
-38d8332d06abce25ad7ea275df1f8ec7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderConsumerGiftPurchaseList.tsx|47|1|V|typescriptreact
-	  cover: {
-	    top: spacing[4],
-	    height: "80%",
-	    width: "25%",
-	    left: spacing[3],
-	    position: "absolute",
-	    borderRadius: metrics.borderRadius,
-	    opacity: 0.6,
-	  },
-	  nameTalent: {
-	    top: metrics.screenHeight * 0.1,
-	    left: metrics.screenWidth * 0.3,
-	    position: "absolute",
-	    width: "25%",
-	    borderRadius: metrics.borderRadius,
-	    opacity: 0.6,
-	  },
-	  avatar: {
-	    top: metrics.screenHeight * 0.125,
-	    left: metrics.screenWidth * 0.3,
-	    position: "absolute",
-	    width: 24,
-	    height: 24,
-	    borderRadius: metrics.borderRadiusMax,
-	    opacity: 0.6,
-	  },
-	  nameUser: {
-	    top: metrics.screenHeight * 0.13,
-	    left: metrics.screenWidth * 0.38,
-	    position: "absolute",
-	    width: "20%",
-	    borderRadius: metrics.borderRadius,
-	    opacity: 0.6,
-	  },
-d01550d0bca31a3d3fec47305b5d4034|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderConsumerGiftPurchaseList.tsx|32|1|V|typescriptreact
-	    left: metrics.screenWidth * 0.05,
-acfae9face451751f0a389e1b3813995|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderConsumerGiftPurchaseList.tsx|41|1|V|typescriptreact
-	    left: metrics.screenWidth * 0.3,
-cb81e7d42216838a6d361f8916960352|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|32|7|V|typescriptreact
-	  PY_6,
-7adaa348dfc605c8abb3ecd07e633ac8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|29|6|V|typescriptreact
-	  PX_4,
-9277642d8991c7888c9fb1a2c9fdb2f3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|28|6|V|typescriptreact
-	  PT_5,
-67090252f7d3a90a59854d64385c5d9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|18|6|V|typescriptreact
-	  JUSTIFY_END,
-61917f1def6e333e5e85d2163705e5f0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|12|6|V|typescriptreact
-	  ALIGN_SELF_END,
-c983077ca27977bb5cb4b6398f144166|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|9|19|v|typescriptreact
-	Tooltip
-23e5a7b7976e412ece233ceaf8257bc2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|8|10|v|typescriptreact
-	Clipboard
-a48e6ddd3d36f11b6c54c1a7245c9e05|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/index.ts|69|1|V|typescript
-	export * from "./gift-success-card-screen/gift-success-card-screen"
-19ba0725c02f5ea63bec6c2af4cf784d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/index.ts|68|16|v|typescript
-	./gift-success-card-screen/gift-success-card-screen
-6ad9a24f62a17bc7e8cab1d99521e3b6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/navigation-routes.ts|96|31|v|typescript
-	GiftedSuccessCardScreen
-4f190e2d6f2b090ce7d07bf370f7ffb7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/root-navigator.tsx|54|20|v|typescriptreact
-	MainNavigator
-1cb78cd88304c9b00aa57ba5e2ef2cf3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|62|52|V|typescriptreact
+1202fdabe21043250b7361b6e706aa8a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|2|1|V|typescriptreact
+	import Svg, { Path } from "react-native-svg"
+b5c21c5321ff3457bacca6f061291575|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|3|1|V|typescriptreact
+	import { color } from "theme"
+a0c3715ad6c9f3e1b217eacd6ccd7605|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|16|11|V|typescriptreact
+	      xmlns="http://www.w3.org/2000/svg"
+c233480d74641ba4bb907059d1a15c4a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|11|69|v|typescriptreact
+	{...props}
+0a2da0fd7649fbe47f6acefbb09311a5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|10|v|typescriptreact
+	GiftCard
+56259496ea74b1ca1a13c253058e2e7d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|1|V|typescriptreact
+	        <GiftCard />
+1cb78cd88304c9b00aa57ba5e2ef2cf3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|156|1|V|typescriptreact
 	        <Icon name="card-gift-successfull-effect" />
-84d97bf3c861faad8ad67745e53b7e8f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|187|25|V|typescriptreact
-	    position: "absolute",
-1c6e2cf8728335a556520827ee36c909|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|180|26|V|typescriptreact
-	    marginTop: spacing[7],
-74f8dba45d59f0d216fbe1c3a68fad5c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|179|26|V|typescriptreact
-	    marginBottom: spacing[4],
-f7831def7ffa8ae82c108dfb04056129|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|179|24|V|typescriptreact
-	    marginTop: spacing[5],
-3ffdc3ebd5b3afac6c0cb2a8ad37fdc8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|91|22|V|typescriptreact
-	        {renderCard()}
-8c91d87a809df0c7da8832dd804dc80e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|62|22|V|typescriptreact
-	        <Icon name="card-gift-successfull-effect" style={{ position: "absolute" }} />
-791868bd4a70056dc56177f4bfc1516b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|99|1|V|typescriptreact
-	        <View style={[ALIGN_CENTER, FLEX]}>
-	          <View style={[ALIGN_CENTER, JUSTIFY_CENTER, FULL_WIDTH]}>
-	            <View style={[ALIGN_CENTER, JUSTIFY_CENTER, FULL_WIDTH, styles.circleCheckMark]}>
-	              <Text
-	                preset="semiBoldMP"
-	                style={[MT_4, { color: color.themeColor.green }]}
-	                tx={"giftedSuccess.giftedSuccessfully"}
-	              />
-	              <Text
-	                style={[MT_1, styles.lightTextColor]}
-	                preset="regularR"
-	                tx={"giftedSuccess.sendTheCodeTo"}
-	                txOptions={{ name: giftedUser?.name }}
-	              />
-	            </View>
-	            <View style={[MT_5, MB_5, FULL_WIDTH, PX_7]}>
-	              <Divider style={styles.divider} />
-	
-	              <TouchableOpacity onPress={onMessagePress} style={[ROW, JUSTIFY_BETWEEN, PY_4]}>
-	                <View style={ROW}>
-	                  <Icon name="message-bubble" />
-	                  <Text style={ML_2} preset="regularM" tx={"giftedSuccess.textMessage"} />
-	                </View>
-	                <Icon strokeWidth={2} name="sRight" />
-	              </TouchableOpacity>
-	
-	              <Divider style={styles.divider} />
-	
-	              <TouchableOpacity onPress={onMailPress} style={[ROW, JUSTIFY_BETWEEN, PY_4]}>
-	                <View style={ROW}>
-	                  <Icon name="copy-link" />
-	                  <Text style={ML_2} preset="regularM" tx={"common.copyLink"} />
-	                </View>
-	                <Icon strokeWidth={2} name="sRight" />
-	              </TouchableOpacity>
-	              <Divider style={styles.divider} />
-	
-	              <TouchableOpacity onPress={onMailPress} style={[ROW, JUSTIFY_BETWEEN, PY_4]}>
-	                <View style={ROW}>
-	                  <Icon name="email" />
-	                  <Text style={ML_2} preset="regularM" tx={"common.email"} />
-	                </View>
-	                <Icon strokeWidth={2} name="sRight" />
-	              </TouchableOpacity>
-	              <Divider style={styles.divider} />
-	
-	              <View style={[ROW, JUSTIFY_BETWEEN, PY_4]}>
-	                <View style={ROW}>
-	                  <Icon name="more" />
-	                  <Text style={ML_2} preset="regularM" tx={"giftedSuccess.more"} />
-	                </View>
-	                <Icon strokeWidth={2} name="sRight" />
+6d79df1af1a705363c809e5d18b42d95|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|10|10|V|typescriptreact
+	  const {  }
+be628a7b80a2a01ceaff78fb17d80ebf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|10|26|v|typescriptreact
+	.width || 
+0839323cf956bfd048f0d1bed140254d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|13|45|v|typescriptreact
+	0 0 width 173
+e4cb6d6d23b6f8f0b75158eff2de048d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|14|28|v|typescriptreact
+	maskUnits="userSpaceOnUse"
+b435e227d5dd201e1768b2bcb2e0aa81|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|13|63|v|typescriptreact
+	height
+f29f3fb7f6c8fced9805e9f09d504d58|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|1|V|typescriptreact
+	        <GiftCard width={metrics.screenWidth - 2 * spacing[4]} />
+a9348a8468b6618fa3f401c86a289045|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|578|30|v|typescriptreact
+	 - 343
+4e05a0ed5d58a5ce559938930928ebe1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|578|11|v|typescriptreact
+	metrics.screenWidth - 343 - 
+c83c153c4d5e927e5309182788db427c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|55|1|V|typescriptreact
+	        <Path
+	          d="M300.58 120.772l.095-.095c4.085-4.082 4.037-10.669-.095-14.677-4.058 4.055-4.106 10.595-.096 14.677l.096.095zM326.904 132.636c-4.084-4.082-10.676-4.034-14.686.096 4.058 4.055 10.602 4.103 14.686.095l.096-.095-.096-.096zM288.782 132.397l-.095-.095c-4.085-4.082-10.677-4.035-14.687.095 4.058 4.056 10.602 4.103 14.687.096l.095-.096zM319.468 113.76c-5.726.069-10.321 4.735-10.321 10.457v.117h.117a10.323 10.323 0 0010.204-10.574zM308.908 140.396h-.095v.139c.048 5.769 4.764 10.361 10.512 10.244-.043-5.722-4.669-10.361-10.417-10.383zM281.904 150.593c5.726.048 10.416-4.522 10.512-10.244l.021-.144h-.112c-5.773-.047-10.442 4.618-10.421 10.388zM291.784 124.451h.116v-.117c.069-5.743-4.552-10.457-10.32-10.457-.075 5.722 4.478 10.457 10.204 10.574zM305.955 132.562a5.368 5.368 0 00-5.37-5.367 5.365 5.365 0 00-2.268 10.229L295.544 152h10.347l-2.969-14.603a5.379 5.379 0 003.033-4.835z"
+	          fill="#fff"
+	        />
+11831203e3bdcca4d9157fdc202ce11d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|49|1|V|typescriptreact
+	        <Path
+	          fillRule="evenodd"
+	          clipRule="evenodd"
+	          d="M229.844-47.231c-3.776 14.47-2.398 29.617 3.465 42.947a78.135 78.135 0 01-5.489 16.987 78.63 78.63 0 01-8.099-15.907c3.775-14.47 2.397-29.617-3.465-42.947a78.132 78.132 0 015.488-16.988 78.634 78.634 0 018.1 15.908z"
+	          fill="#E8FFFF"
+	        />
+1b836e8c72e6dc9ac8888d8b0a125821|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|41|1|V|typescriptreact
+	        <Circle
+	          cx={293.282}
+	          cy={-30.718}
+	          r={72.036}
+	          transform="rotate(-60 293.282 -30.718)"
+	          stroke="#B2FCFF"
+	          strokeWidth={13}
+	        />
+87d0151f79a11ad6f22c70f1ceac3806|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|42|15|v|typescriptreact
+	293.282
+0f9ab21227536c9cf5aebf0d8049dbae|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|42|15|v|typescriptreact
+	293.28
+76f6aa5de66e8608ffac6eb2378d65a5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|43|15|v|typescriptreact
+	-30.718
+ac8f0ddf76630b3868cfa360d71a72f2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|26|v|typescriptreact
+	metrics.screenWidth - 2 * spacing[4]
+e03e35197b60ba82ab6ba2de1ece66e7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|19|v|typescriptreact
+	width={metrics.screenWidth - 2 * spacing[4]} 
+68d4a34522a01a58e53ffe11158b7273|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|18|18|V|typescriptreact
+	  ImageBackground as BackgroundImage,
+4351cfebe4b61d8aa5efa1d020710005|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|1|v|typescriptreact
+	View
+99c9b73bbfe365ce621e622ce666bd30|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|17|13|V|typescriptreact
+	    <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none">
+	      <Mask id="prefix__a" x={0} y={0} width={width} height={height}>
+	        <Rect width={width} height={height} rx={16} fill="#73E5FF" />
+	      </Mask>
+	      <G mask="url(#prefix__a)">
+	        <Rect width={width} height={height} rx={16} fill="#73E5FF" />
+	        <Circle
+	          cx={27.085}
+	          cy={-11.915}
+	          r={58.715}
+	          transform="rotate(-60 27.085 -11.915)"
+	          stroke="#B2FCFF"
+	          strokeWidth={13}
+	        />
+	        <Circle
+	          cx={156.282}
+	          cy={-19.718}
+	          r={72.036}
+	          transform="rotate(-60 156.282 -19.718)"
+a780ca7082674db89b7b78936d5d76e9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|17|1|V|typescriptreact
+	    <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none">
+	      <Mask id="prefix__a" x={0} y={0} width={width} height={height}>
+	        <Rect width={width} height={height} rx={16} fill="#73E5FF" />
+	      </Mask>
+	      <G mask="url(#prefix__a)">
+	        <Rect width={width} height={height} rx={16} fill="#73E5FF" />
+	        <Circle
+	          cx={27.085}
+	          cy={-11.915}
+	          r={58.715}
+	          transform="rotate(-60 27.085 -11.915)"
+	          stroke="#B2FCFF"
+	          strokeWidth={13}
+	        />
+	        <Circle
+	          cx={156.282}
+	          cy={-19.718}
+	          r={72.036}
+	          transform="rotate(-60 156.282 -19.718)"
+	          stroke="#B2FCFF"
+	          strokeWidth={13}
+	        />
+	        <Path
+	          fillRule="evenodd"
+	          clipRule="evenodd"
+	          d="M90.953-25.107a65.63 65.63 0 001.138 18.6 64.805 64.805 0 01-5.919 22.2 78.96 78.96 0 01-7.205-21.605 52.284 52.284 0 00-1.114-18.212 77.973 77.973 0 014.568-22.325 65.48 65.48 0 018.532 21.342z"
+	          fill="#E8FFFF"
+	        />
+	        <Circle
+	          cx={293.282}
+	          cy={-30.718}
+	          r={72.036}
+	          transform="rotate(-60 293.282 -30.718)"
+	          stroke="#B2FCFF"
+	          strokeWidth={13}
+	        />
+	        <Path
+	          fillRule="evenodd"
+	          clipRule="evenodd"
+	          d="M229.844-47.231c-3.776 14.47-2.398 29.617 3.465 42.947a78.135 78.135 0 01-5.489 16.987 78.63 78.63 0 01-8.099-15.907c3.775-14.47 2.397-29.617-3.465-42.947a78.132 78.132 0 015.488-16.988 78.634 78.634 0 018.1 15.908z"
+	          fill="#E8FFFF"
+	        />
+	        <Path
+	          d="M300.58 120.772l.095-.095c4.085-4.082 4.037-10.669-.095-14.677-4.058 4.055-4.106 10.595-.096 14.677l.096.095zM326.904 132.636c-4.084-4.082-10.676-4.034-14.686.096 4.058 4.055 10.602 4.103 14.686.095l.096-.095-.096-.096zM288.782 132.397l-.095-.095c-4.085-4.082-10.677-4.035-14.687.095 4.058 4.056 10.602 4.103 14.687.096l.095-.096zM319.468 113.76c-5.726.069-10.321 4.735-10.321 10.457v.117h.117a10.323 10.323 0 0010.204-10.574zM308.908 140.396h-.095v.139c.048 5.769 4.764 10.361 10.512 10.244-.043-5.722-4.669-10.361-10.417-10.383zM281.904 150.593c5.726.048 10.416-4.522 10.512-10.244l.021-.144h-.112c-5.773-.047-10.442 4.618-10.421 10.388zM291.784 124.451h.116v-.117c.069-5.743-4.552-10.457-10.32-10.457-.075 5.722 4.478 10.457 10.204 10.574zM305.955 132.562a5.368 5.368 0 00-5.37-5.367 5.365 5.365 0 00-2.268 10.229L295.544 152h10.347l-2.969-14.603a5.379 5.379 0 003.033-4.835z"
+	          fill="#fff"
+	        />
+	      </G>
+	      <Path fill="#fff" d="M1 84h342v1H1z" />
+	    </Svg>
+cb4b097224cd034271cf10d300aed17e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|177|23|v|typescriptreact
+	 aspectRatio: 1 
+afd219170eb0c129451ac173d990c4b9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|177|22|V|typescriptreact
+	        <View style={}>
+145bd2dc400b8290e84fce0da7c6b77d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|178|15|V|typescriptreact
+	        </View>
+2dbe229de2454b5c4404dedf52207120|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|13|87|v|typescriptreact
+	preserveAspectRatio={}
+f0752a1681c7db3886ce28c39e1ea57d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|18|28|v|typescriptreact
+	xMaxYMid meet
+51e431bb20ed34c4455385a114250955|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/gift-card/gift-card.tsx|19|1|V|typescriptreact
+	      x="50"
+	      y="15"
+55cf7babb22806ae97a2e4fa5681191a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|156|29|v|typescriptreact
+	cardGiftSuccessfull
+c1335be21310cf8b2cd223ae2b494011|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|627|22|v|typescriptreact
+	color.themeColor.primary
+0d3a67eafcad8ef23edbec7198294410|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|31|41|v|typescriptreact
+	ConsumerPurchaseGiftDetailScreen
+a0ec3b461abf4bc16ad615481260140e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|48|15|v|typescriptreact
+	gift
+537a7ac0040dd8bd9e5838284fe81a5a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|161|31|V|typescriptreact
+	                  <Text text={gift?.additional?.receiver} />
+dec673102e8b0a7fb77989fdbb53e378|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|50|27|V|typescriptreact
+	          console.log(data)
+371a91e5c91e40f6212ab50995ccb0cd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|94|20|v|typescriptreact
+	isEmpty
+08ff08fbc11dde048015c6ecfa089333|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|50|31|V|typescriptreact
+	          console.log(data?.id)
+076118c2f4a9b86b741ce9004943a0bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|51|19|V|typescriptreact
+	          else setGift({})
+96e035d11ddba17c0fda27b6b24f3c11|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|98|1|V|typescriptreact
+	      <Screen preset="fixed">
+	        <View style={styles.container}>
+	          <View style={styles.header}>
+	            <TouchableOpacity style={[ABSOLUTE, { right: spacing[4] }]} onPress={onClose}>
+	              <Icon name="close" />
+	            </TouchableOpacity>
+	          </View>
+	          <View>{renderCard()}</View>
+	          <View style={[PX_4, ALIGN_CENTER, MB_5]}>
+	            <Text
+	              tx="bookingSuccess.giftedSuccessfully"
+	              preset="semiBoldMP"
+	              style={{ color: color.themeColor.green, marginBottom: spacing[1] }}
+	            />
+	            <Text
+	              tx="bookingSuccess.purchaseId"
+	              txOptions={{ id: gift?.id }}
+	              style={{ color: rgbColor(color.themeColor.dark, 0.7) }}
+	            />
+	          </View>
+	          <ScrollView style={FLEX} showsVerticalScrollIndicator={false}>
+	            <Divider style={styles.divider} />
+	            <View style={PX_4}>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.purchasedOn" style={styles.itemTitle} />
+	                <Text text={`${moment(gift?.createdAt).format("ddd, MMM D YYYY")}`} />
 	              </View>
-	
-	              <Divider style={styles.divider} />
-	            </View>
-9db832ce49e08909d8906eaedabffae5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|161|10|v|typescriptreact
-	/View>
-de9d3caea68363ff3c035f318d37acb4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|160|9|V|typescriptreact
-	          </View>
-a8b11ef86976cb2e397259fdc77c6308|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|160|1|V|typescriptreact
-	          </View>
-	        </View>
-2689b4c3b6af22796c2e22e8b9d8d102|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|125|1|V|typescriptreact
-	        <View style={styles.bottomContainer}>
-	          <Button
-	            loading={loading}
-	            onPress={_onHandleSubmit}
-	            tx="common.continue"
-	            disabled={!canContinue}
-	          />
-	        </View>
-b45b4b1bec41d001150731ce4f0ad3d6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|159|24|V|typescriptreact
-	            buttonStyle={[MX_3, MT_3, MB_3]}
-c9727e7a998c97d4a848500d7f3cf4c1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|158|24|V|typescriptreact
-	            containerStyle={FULL_WIDTH}
-50b118168172bae256d2952d06f64741|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|125|1|V|typescriptreact
-	        <View style={styles.bottomContainer}>
-1b7b294c44b79e2c8b365dcf9f5840bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|156|1|V|typescriptreact
-	        <View>
-b92e19c2afc1ca212261c3d0779bf3fd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-sub-interest-screen/your-sub-interest-screen.tsx|146|1|V|typescriptreact
-	  bottomContainer: {
-	    backgroundColor: color.background,
-	    elevation: 5,
-	    justifyContent: "center",
-	    paddingBottom: spacing[7] + spacing[1],
-	    paddingHorizontal: metrics.paddingHorizontal,
-	    paddingTop: metrics.paddingVertical,
-	    shadowColor: color.themeColor.black,
-	    shadowOffset: {
-	      width: 0,
-	      height: -3,
-	    },
-	    shadowOpacity: 0.1,
-	
-	    shadowRadius: 3.84,
-	  },
-fa17985bed6f1a4cc615a905d278f865|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|216|1|V|typescriptreact
-	    shadowOffset: {
-	      width: 0,
-	      height: -3,
-	    },
-	    shadowOpacity: 0.1,
-	
-	    shadowRadius: 3.84,
-40fb52929010f289a152ca1a4be9e90c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|208|1|V|typescriptreact
-	  bottomContainerWithShadow: {
-	    backgroundColor: color.background,
-	    elevation: 5,
-	    justifyContent: "center",
-	    paddingBottom: spacing[7] + spacing[1],
-	    paddingHorizontal: metrics.paddingHorizontal,
-	    paddingTop: metrics.paddingVertical,
-	    shadowColor: color.themeColor.black,
-	    shadowOffset: {
-	      width: 0,
-	      height: -3,
-	    },
-	    shadowOpacity: 0.1,
-	
-	    shadowRadius: 3.84,
-	  },
-9776bbfa4bcfdd96b2ed534b7cfb8081|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|232|1|V|typescriptreact
-	    shadowColor: color.themeColor.black,
-	    shadowOffset: {
-	      width: 0,
-	      height: -3,
-	    },
-	    shadowOpacity: 0.1,
-	
-	    shadowRadius: 3.84,
-cb113c1da3f85adb1ab320535895a4f6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|78|1|V|typescriptreact
-	      <View style={[ALIGN_CENTER, FLEX]}>
-	        <View style={[ALIGN_CENTER, JUSTIFY_CENTER, FULL_WIDTH]}>
-df0eac8c6be31e464f190cbb58603262|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|78|1|V|typescriptreact
-	      <View style={[ALIGN_CENTER, FLEX]}>
-75a4f121c0d7cc675f87495e36ab9776|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|159|11|V|typescriptreact
-	        {renderAction()}
-eef0e626ac1da17cb33a982747848636|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|159|11|V|typescriptreact
-	        {re}
-64a92df7745cc64afea412658a851d67|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|159|38|v|typescriptreact
-	renderS
-b843d83f6f4612671ebd1fdfcdc0d314|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|218|25|V|typescriptreact
-	    position: 'absolute',
-d4abc0711be001a3b174c8a32feeac8a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|168|25|V|typescriptreact
-	          <Button onPress={returnToHomeScreen} tx={"giftedSuccess.returnHome"} />
-cd3581cffb7fdd286e4616aa74f9a406|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|71|1|V|typescriptreact
-	        headerTx: "profileScreen.purchaseHistory",
-cbc2a5dc35e9227b67a8cabdd192dc4e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|71|1|V|typescriptreact
-	        headerTx: "profileScreen.purchaseHistory",
-	        style: styles.headerStyle,
-	        onLeftPress: () => navigation.goBack(),
-622789236ec3088d5cd498db5cabee93|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|148|11|v|typescriptreact
-	leftIcon
-b87d3a70fc0762f825c374db63914296|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|147|1|V|typescriptreact
-	        header={{
-	          leftIcon: flowStatus === "fillInfo" && "back",
-	          rightIcon: flowStatus === "successfull" && "close",
-	          headerTx: "profileScreen.purchaseHistory",
-	          style: styles.headerStyle,
-	          onLeftPress: () => navigation.goBack(),
-	        }}
-95a38ec15bc4bea3eb4b211c228dc732|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|14|1|V|typescriptreact
-	  FULL_WIDTH,
-	  JUSTIFY_BETWEEN,
-	  JUSTIFY_CENTER,
-	  MB_5,
-c9e09d5315ceb598f6466632b8226237|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|15|1|V|typescriptreact
-	  ML_2,
-	  MT_1,
-	  MT_4,
-	  MT_5,
-	  PX_7,
-	  PY_4,
-	  ROW,
-15f68c662dee72aca70f3c78f02816fc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|28|9|v|typescriptreact
-	onMailPres
-63b740e641325c63ff5818a4bf62595f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|28|9|v|typescriptreact
-	onMailPress
-6da07bfa073628c4c4b92c251be4ffc6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|73|9|v|typescriptreact
-	renderAction
-28c763c4eec77cc83226273926949bdd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|165|61|v|typescriptreact
-	renderCardSuccesfull
-b6ccd58891110b90d43b1edafceead19|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|147|23|v|typescriptreact
-	headerStyle
-8e15625d6c158ec48f374efb77bd2714|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|144|57|v|typescriptreact
-	blank
-3cb4a33fea92a311a5a95a667fe39ead|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|145|61|v|typescriptreact
-	"blank"
-c2f71f7d83b6e59f9e6847a1eb5bf8bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|162|31|V|typescriptreact
-	          <Icon name="close" />
-2eeda42b57d13dfa131700a284ca5bd3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|161|11|v|typescriptreact
-	</TouchableOpacity>
-ceb0d3b97ca03cb75ddc4fc41f10bc90|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|147|16|v|typescriptreact
-	flowStatus === "fillInfo" ?
-5b9acc028e76a460cd17f067e8aa5de7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|147|35|v|typescriptreact
-	 : { display: "none" },
-81be6049979a08f9dd92e21f6c49f836|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|145|31|V|typescriptreact
-	        rightIcon: flowStatus !== "successfull" ? "close" : null,
-b6dc3ad922c14c71f6c28a4ff3e14771|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|145|39|V|typescriptreact
-	        rightIcon: flowStatus === "successfull" ? "close" : null,
-89c645b6c146c7780382bb69ebfe5e34|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|201|23|V|typescriptreact
-	    marginTop: spacing[8],
-6231d4eebd34e7a64e0b0b54f1359599|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|163|10|V|typescriptreact
-	        {renderCardSuccesfull()}
-274e5afcde068dccbaf86b9aadbe6441|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|154|30|V|typescriptreact
-	            paddingTop: spacing[6],
-9a952932780aec144f57729cb21dead1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|156|30|V|typescriptreact
-	            position: "absolute",
-586685e6b5c66765f831c315f6020908|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|163|26|v|typescriptreact
-	fillInfo
-2e649235207bc51827bb3949622f2e3e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|165|42|v|typescriptreact
-	renderCardSuccesfull()
-718da4734dc11bc0a5c5b24f11c113cc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|167|13|V|typescriptreact
-	        {flowStatus === "successfull" && }
-adab3ef1833d5a927a519930b29c1c03|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|38|83|v|typescriptreact
-	successfull
-7039fe93a0ec3ebd7e71c3c9462ef56c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|145|48|v|typescriptreact
-	profileScreen
-a0b3a7962ae7595ad061552535932151|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|145|67|v|typescriptreact
-	purchaseHistory
-95d6c9e433fba37bb6a0a7a246963d3e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|140|1|V|typescriptreact
-	        <Text tx="sendGiftCardScreen.amount" />
-e9f40e1f1d1658681dad2dac4ae0971e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|141|38|v|typescriptreact
-	amount
-7ef33dd055d1863ee3617ebf9f29f22e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|778|6|v|json
-	receipien
-d6e41fc5d1bcfead1db3b6dc05774971|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|778|6|v|json
-	recipient
-87ec2a9d46a4185cd652bfaf0f224c00|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|778|19|v|json
-	Receipten
-ac04e07d3dd44d32ebcaba3b6e5d6dc0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|141|38|v|typescriptreact
-	receipten
-9c12299cf5be3e77aaa901bcd523c31e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|143|11|V|typescriptreact
-	        <Text tx="sendGiftCardScreen.amount" preset="semiBoldM" />
-949b712150628bcdcd3172785df63077|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|146|11|V|typescriptreact
-	        <Text tx="sendGiftCardScreen.recipient" preset="semiBoldM" />
-7b1624c70ca23cc7ae6598fc18f7bc5c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|34|1|V|typescriptreact
-	  const formRef = React.useRef()
-ceb9b8d1b0d3af1a8ce1e373c67a270c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|107|1|V|typescriptreact
-	        <Formik
-	          innerRef={formRef}
-	          initialValues={{
-	            firstName: firstName,
-	            lastName: lastName,
-	            dateOfBirth: undefined,
-	            country: undefined,
-	            countryName: "",
-	            callingCode: "",
-	            gender: GENDER.Male,
-	            phone: "",
-	            email: email,
-	          }}
-	          onSubmit={_handleSubmit}
-	          validationSchema={yup.object().shape({
-	            firstName: yup.string().required(translate("errors.fieldRequired")),
-	            lastName: yup.string().required(translate("errors.fieldRequired")),
-	            dateOfBirth: yup
-	              .string()
-	              .required(translate("errors.fieldRequired"))
-	              .test("ageNotOver16", translate("errors.registerAgeInvalid"), (value) => {
-	                return moment(value).diff(getMaxiumAgeDate(16)) < 0
-	              }),
-	            country: yup.string().required(translate("errors.fieldRequired")),
-	            gender: yup.string().required(translate("errors.fieldRequired")),
-	            phone: yup
-	              .string()
-	              .required(translate("errors.fieldRequired"))
-	              .test("invalidPhoneNumbers", translate("errors.invalidPhoneNumbers"), (value) => {
-	                return value?.match(/\d/g)?.join("").length >= 8
-	              }),
-	            email: isRegisterWithSocial
-	              ? yup.string().email().required(translate("errors.requiredEmail"))
-	              : yup.string(),
-	          })}
-	        >
-	          {({ values, handleChange, setFieldValue, touched, handleSubmit, errors }) => {
-	            return (
-	              <>
-	                <TextInput
-	                  value={values.firstName}
-	                  style={MB_4}
-	                  placeholderTx="registerScreen.firstName"
-	                  onChangeText={handleChange("firstName")}
-	                  errorMessage={touched.firstName && (errors?.firstName as string)}
-	                />
-	                <TextInput
-	                  value={values.lastName}
-	                  style={MB_4}
-	                  placeholderTx="registerScreen.lastName"
-	                  onChangeText={handleChange("lastName")}
-	                  errorMessage={touched.lastName && (errors?.lastName as string)}
-	                />
-	
-	                {isRegisterWithSocial && (
-	                  <TextInput
-	                    editable={!email}
-	                    style={MB_4}
-	                    placeholderTx="common.emailAddress"
-	                    autoCapitalize="none"
-	                    keyboardType="email-address"
-	                    autoCompleteType="off"
-	                    value={values.email}
-	                    onChangeText={handleChange("email")}
-	                    errorMessage={touched.email && (errors?.email as string)}
-	                    inputWrapStyle={!!email && { backgroundColor: color.themeColor.line }}
-	                  />
-	                )}
-	                <TextInputDatePicker
-	                  readonly
-	                  value={values.dateOfBirth}
-	                  style={MB_4}
-	                  placeholderTx="registerScreen.dateOfBirth"
-	                  rightIcon="calendar"
-	                  onChange={(selected) => setFieldValue("dateOfBirth", selected)}
-	                  errorMessage={touched.dateOfBirth && (errors?.dateOfBirth as string)}
-	                />
-	                <TouchableOpacity onPress={_onPressCountry}>
-	                  <View pointerEvents="none">
-	                    <TextInput
-	                      readonly
-	                      style={MB_4}
-	                      placeholderTx="registerScreen.country"
-	                      rightIcon="arrow-down"
-	                      onRightIconPress={_onPressCountry}
-	                      value={
-	                        values.callingCode ? `${values.countryName} (+${values.callingCode}) ` : ""
-	                      }
-	                      errorMessage={touched.country && (errors?.country as string)}
-	                      inputWrapStyle={{
-	                        borderWidth: 1,
-	                        borderColor: color.line,
-	                      }}
-	                    />
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.giftValue" style={styles.itemTitle} />
+	                <Text text={formatterCurrency(gift?.amount || 0)} />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.giftCode" style={styles.itemTitle} />
+	                <TouchableOpacity onPress={() => Clipboard.setString(gift?.id)}>
+	                  <View style={[ROW, { alignItems: "center" }]}>
+	                    <Text preset="semiBoldR" text={gift?.id} style={{ marginRight: spacing[1] }} />
+	                    <Icon name="copy" width={19} height={19} />
 	                  </View>
 	                </TouchableOpacity>
-	                <TextInput
-	                  value={values.phone}
-	                  maxLength={15}
-	                  style={MB_4}
-	                  keyboardType="phone-pad"
-	                  placeholderTx="registerScreen.phoneNumber"
-	                  onChangeText={(value) => {
-	                    const testNumber = new AsYouType(
-	                      selectCountry?.abbreviation || ("GB" as any),
-	                    ).input(selectCountry?.abbreviation === "GB" ? `+44 ${value}` : value)
-	
-	                    setFieldValue(
-	                      "phone",
-	                      selectCountry?.abbreviation === "GB"
-	                        ? testNumber === "+44"
-	                          ? ""
-	                          : testNumber.replace("+44 ", "")
-	                        : testNumber,
-	                    )
-	                  }}
-	                  errorMessage={touched.phone && (errors?.phone as string)}
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.message" style={styles.itemTitle} />
+	                <Text text={gift?.description} />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.paymentMethod" style={styles.itemTitle} />
+	                <Text
+	                  text={(() => {
+	                    const paymentType =
+	                      gift?.purchaseTransaction?.braintreeTransactions[0]?.paymentInstrumentType
+	                    if (paymentType) return startCase(paymentType?.split("_")?.join(" "))
+	                    return null
+	                  })()}
 	                />
-	                <View style={MB_4}>
-	                  <Text
-	                    tx="registerScreen.gender"
-	                    preset="regularR"
-	                    style={{ color: rgbColor(color.themeColor.dark, 0.7) }}
-	                  />
-	                  <View style={[MT_4, MB_4, styles.genderWrapper]}>
-	                    <Button
-	                      style={[
-	                        styles.buttonGender,
-	                        {
-	                          borderColor:
-	                            values.gender === GENDER.Male ? color.themeColor.primary : color.line,
-	                        },
-	                      ]}
-	                      onPress={() => handleChange("gender")(GENDER.Male)}
-	                    >
-	                      <Text preset="regularR" tx="registerScreen.male" />
-	                    </Button>
-	                    <Button
-	                      style={[
-	                        styles.buttonGender,
-	                        {
-	                          borderColor:
-	                            values.gender === GENDER.Female ? color.themeColor.primary : color.line,
-	                        },
-	                      ]}
-	                      onPress={() => handleChange("gender")(GENDER.Female)}
-	                    >
-	                      <Text preset="regularR" tx="registerScreen.female" />
-	                    </Button>
-	                    <Button
-	                      style={[
-	                        styles.buttonGender,
-	                        {
-	                          borderColor:
-	                            values.gender === GENDER.Other ? color.themeColor.primary : color.line,
-	                        },
-	                      ]}
-	                      onPress={() => handleChange("gender")(GENDER.Other)}
-	                    >
-	                      <Text preset="regularR" tx="registerScreen.other" />
-	                    </Button>
-	                  </View>
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.receiverName" style={styles.itemTitle} />
+	                <Text text={gift?.additional?.name} />
+	              </View>
+	              {gift?.additional?.receiver && (
+	                <View style={styles.item}>
+	                  <Text tx="bookingSuccess.receiverEmail" style={styles.itemTitle} />
+	                  <Text text={gift?.additional?.receiver} />
 	                </View>
+	              )}
+	              <View style={[styles.item, styles.emptyDividerBottom]}>
+	                <Text
+	                  tx="bookingSuccess.Total"
+	                  txOptions={{ unit: "USD" }}
+	                  style={styles.itemTitle}
+	                />
+	                <Text text={formatterCurrency(gift?.amount || 0)} preset="semiBoldR" />
+	              </View>
+	            </View>
+	            <Divider style={styles.divider} />
+	            <View style={{ height: spacing[8] }} />
+	          </ScrollView>
+	        </View>
+	      </Screen>
+e449827a85d84481896ee925f921bf2a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|106|1|V|typescriptreact
+	          <View style={[PX_4, ALIGN_CENTER, MB_5]}>
+	            <Text
+	              tx="bookingSuccess.giftedSuccessfully"
+	              preset="semiBoldMP"
+	              style={{ color: color.themeColor.green, marginBottom: spacing[1] }}
+	            />
+	            <Text
+	              tx="bookingSuccess.purchaseId"
+	              txOptions={{ id: gift?.id }}
+	              style={{ color: rgbColor(color.themeColor.dark, 0.7) }}
+	            />
+	          </View>
+	          <ScrollView style={FLEX} showsVerticalScrollIndicator={false}>
+	            <Divider style={styles.divider} />
+	            <View style={PX_4}>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.purchasedOn" style={styles.itemTitle} />
+	                <Text text={`${moment(gift?.createdAt).format("ddd, MMM D YYYY")}`} />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.giftValue" style={styles.itemTitle} />
+	                <Text text={formatterCurrency(gift?.amount || 0)} />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.giftCode" style={styles.itemTitle} />
+	                <TouchableOpacity onPress={() => Clipboard.setString(gift?.id)}>
+	                  <View style={[ROW, { alignItems: "center" }]}>
+	                    <Text preset="semiBoldR" text={gift?.id} style={{ marginRight: spacing[1] }} />
+	                    <Icon name="copy" width={19} height={19} />
+	                  </View>
+	                </TouchableOpacity>
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.message" style={styles.itemTitle} />
+	                <Text text={gift?.description} />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.paymentMethod" style={styles.itemTitle} />
+	                <Text
+	                  text={(() => {
+	                    const paymentType =
+	                      gift?.purchaseTransaction?.braintreeTransactions[0]?.paymentInstrumentType
+	                    if (paymentType) return startCase(paymentType?.split("_")?.join(" "))
+	                    return null
+	                  })()}
+	                />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.receiverName" style={styles.itemTitle} />
+	                <Text text={gift?.additional?.name} />
+	              </View>
+	              {gift?.additional?.receiver && (
+	                <View style={styles.item}>
+	                  <Text tx="bookingSuccess.receiverEmail" style={styles.itemTitle} />
+	                  <Text text={gift?.additional?.receiver} />
+	                </View>
+	              )}
+	              <View style={[styles.item, styles.emptyDividerBottom]}>
+	                <Text
+	                  tx="bookingSuccess.Total"
+	                  txOptions={{ unit: "USD" }}
+	                  style={styles.itemTitle}
+	                />
+	                <Text text={formatterCurrency(gift?.amount || 0)} preset="semiBoldR" />
+	              </View>
+	            </View>
+	            <Divider style={styles.divider} />
+	            <View style={{ height: spacing[8] }} />
+193010b967cd737119bee92213959332|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|106|1|V|typescriptreact
+	          <View style={[PX_4, ALIGN_CENTER, MB_5]}>
+	            <Text
+	              tx="bookingSuccess.giftedSuccessfully"
+	              preset="semiBoldMP"
+	              style={{ color: color.themeColor.green, marginBottom: spacing[1] }}
+	            />
+	            <Text
+	              tx="bookingSuccess.purchaseId"
+	              txOptions={{ id: gift?.id }}
+	              style={{ color: rgbColor(color.themeColor.dark, 0.7) }}
+	            />
+	          </View>
+	          <ScrollView style={FLEX} showsVerticalScrollIndicator={false}>
+	            <Divider style={styles.divider} />
+	            <View style={PX_4}>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.purchasedOn" style={styles.itemTitle} />
+	                <Text text={`${moment(gift?.createdAt).format("ddd, MMM D YYYY")}`} />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.giftValue" style={styles.itemTitle} />
+	                <Text text={formatterCurrency(gift?.amount || 0)} />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.giftCode" style={styles.itemTitle} />
+	                <TouchableOpacity onPress={() => Clipboard.setString(gift?.id)}>
+	                  <View style={[ROW, { alignItems: "center" }]}>
+	                    <Text preset="semiBoldR" text={gift?.id} style={{ marginRight: spacing[1] }} />
+	                    <Icon name="copy" width={19} height={19} />
+	                  </View>
+	                </TouchableOpacity>
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.message" style={styles.itemTitle} />
+	                <Text text={gift?.description} />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.paymentMethod" style={styles.itemTitle} />
+	                <Text
+	                  text={(() => {
+	                    const paymentType =
+	                      gift?.purchaseTransaction?.braintreeTransactions[0]?.paymentInstrumentType
+	                    if (paymentType) return startCase(paymentType?.split("_")?.join(" "))
+	                    return null
+	                  })()}
+	                />
+	              </View>
+	              <View style={styles.item}>
+	                <Text tx="bookingSuccess.receiverName" style={styles.itemTitle} />
+	                <Text text={gift?.additional?.name} />
+	              </View>
+	              {gift?.additional?.receiver && (
+	                <View style={styles.item}>
+	                  <Text tx="bookingSuccess.receiverEmail" style={styles.itemTitle} />
+	                  <Text text={gift?.additional?.receiver} />
+	                </View>
+	              )}
+	              <View style={[styles.item, styles.emptyDividerBottom]}>
+	                <Text
+	                  tx="bookingSuccess.Total"
+	                  txOptions={{ unit: "USD" }}
+	                  style={styles.itemTitle}
+	                />
+	                <Text text={formatterCurrency(gift?.amount || 0)} preset="semiBoldR" />
+	              </View>
+	            </View>
+f4f018e3d25d58c40400f1a5bdf0982c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|108|14|V|typescriptreact
+	          </ScrollView>
+37a6259cc0c1dae299a7866489dff0bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|149|28|v|typescriptreact
+	null
+7942c806fd9f6148c5948a6894623039|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|148|42|V|typescriptreact
+	                    console.log(paymentType)
+f7070b03d1169b0712117dfbf8725799|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|159|14|v|typescriptreact
+	View st
+846d6b6be41dc79b482c4b3bcc085915|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|18|3|v|typescriptreact
+	ImageBackground
+7406ca16fa9767456fe64e9579b311fb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|160|1|V|typescriptreact
+	            <ImageBackground source={require("../../assets/icons/three-rings-gift-card.png")} />
+6a42aadf84fe7b62962c580f8009c7d5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|195|25|V|typescriptreact
+	              width={400}
+b880c0f2fe2d32385614abfc4ae1f756|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|195|26|V|typescriptreact
+	              height={400}
+d2b0f573676c637df690eff11d882310|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|193|31|v|typescriptreact
+	cardGiftTop
+8211a4f1302237c8c6badba92c8f9da3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|194|1|V|typescriptreact
+	              style={{
+	                width: metrics.screenWidth - 2 * spacing[4],
+	                position: "absolute",
+	                height: "87%",
+	              }}
+2b50d7d66bdc86669db750ecc4ac82db|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|159|1|V|typescriptreact
+	            <ImageBackground
+	              style={{
+	                width: metrics.screenWidth - 2 * spacing[4],
+	                position: "absolute",
+	                height: "87%",
+	              }}
+	              source={require("../../assets/icons/three-rings-gift-card.png")}
+	            />
+e8a10e0f0865e83476408966272d74ab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|65|1|V|typescriptreact
+	              <Icon name="three-rings-gift-card" />
+552a26e046d78642cd37a9f169c9a3e4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|65|1|V|typescriptreact
+	              <ImageBackground
+	                style={{
+	                  width: metrics.screenWidth - 2 * spacing[4],
+	                  position: "absolute",
+	                  height: "87%",
+	                }}
+	                source={require("../../assets/icons/three-rings-gift-card.png")}
+	              />
+8bad38ccd3709cc9ea3411c8631621bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gifted-success-screen/gifted-success-screen.tsx|84|1|V|typescriptreact
+	                <Tooltip
+	                  popover={<Text tx={"giftedSuccess.copied"} />}
+	                  overlayColor={"transparent"}
+	                  onOpen={() => Clipboard.setString(code)}
+	                >
+c983077ca27977bb5cb4b6398f144166|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|250|20|v|typescriptreact
+	Tooltip
+c13367945d5d4c91047b3b50234aa7ab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|253|55|v|typescriptreact
+	code
+db468a2be57b3f48b0953383d7052a36|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|255|64|V|typescriptreact
+	                    <TouchableOpacity onPress={() => Clipboard.setString(result?.id)}>
+1b00f0130710252cd3d5fa24cca5ddf9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|260|27|V|typescriptreact
+	                    </TouchableOpacity>
+d0ec29c6cf23d48f488c4a35b382089e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|258|1|V|typescriptreact
+	                    <Text
+	                      preset="semiBoldR"
+	                      tx="common.copy"
+	                      style={{ color: color.themeColor.blue }}
+	                    />
+23e5a7b7976e412ece233ceaf8257bc2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gifted-success-screen/gifted-success-screen.tsx|87|33|v|typescriptreact
+	Clipboard
+1e3d58472b2e37f7ef891743c66e688f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|250|1|V|typescriptreact
+	                  <Tooltip
+	                    popover={<Text tx={"giftedSuccess.copied"} />}
+	                    overlayColor={"transparent"}
+	                    onOpen={() => Clipboard.setString(result?.id)}
+	                  >
+d9a8a7477583dfbcd6ce725c86a27689|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|138|1|V|typescriptreact
+	                  <TouchableOpacity onPress={() => Clipboard.setString(gift?.id)}>
+490ac161da15e150d4fcdf296eab4618|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|148|21|v|typescriptreact
+	TouchableOpacity
+b4a88417b3d0170d754c647c30b7216a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|141|55|v|typescriptreact
+	result
+4fdcf6cefa7f8a49cb840c592a9ea0ae|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|138|1|V|typescriptreact
+	                <TouchableOpacity onPress={() => Clipboard.setString(gift?.id)}>
+a2d6c05f5c1d663fcd3581640617b85a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|20|1|V|typescriptreact
+	import { Divider, ListItem, Tooltip } from "react-native-elements"
+685f3b4e007f027feeddfe1771fab0f6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|19|1|V|typescriptreact
+	} from "react-native"
+	import { Divider, ListItem, Tooltip } from "react-native-elements"
+5e543256c480ac577d30f76f9120eb74|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|425|19|v|typescriptreact
+	undefined
+5cbdcdfd1d84bb47986b55af78f69696|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|425|19|v|typescriptreact
+	requestData?.name
+b068931cc450442b63f5b3d276ea4297|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|426|36|v|typescriptreact
+	name
+be579a850a97252f923168786a91703e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|428|28|v|typescriptreact
+	requestData
+24c7b6ed4c47319f45b6e7d9dcac5493|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|77|23|v|typescriptreact
+	setRequestData
+89a28772ed71b9b18388ec754c41ae12|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|129|22|v|typescriptreact
+	currentForm
+690dd55ce412c1684ce875e248520e74|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|128|8|V|typescriptreact
+	    cons
+b2ee912b91d69b435159c7c3f6df7f5f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|429|21|v|typescriptreact
+	Number
+9f36a84dcd15acf93f410a40afea2919|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|445|40|v|typescriptreact
+	, index
+8fb99c950f4256be31c4b9990383f4b8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|130|22|v|typescriptreact
+	currentForm?.values
+ed80e1e537142be33b92b62ea7416657|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|131|35|v|typescriptreact
+	requst
+ebee3e103f2079b2b2ceb8ae0d9ea7f4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|131|53|V|typescriptreact
+	      currentForm?.setFieldValues(currentForm?.values)
+4ce969708ae2b50a3fb9ba81c3a7b711|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|421|5|v|typescriptreact
+	formRef.current
+c8ff66b3f7c28adb688dbaaf95c92edc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|422|5|V|typescriptreact
+	    k
+cedb1e0848aee2edcb13a39652954f55|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|421|5|V|typescriptreact
+	    i
+3f81f502ece2be1c4a7738a2367fe385|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|423|6|v|typescriptreact
+	currentForm?.setFieldValues(requestData)
+af319c018bb40d92d39644fc4a9b6369|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|422|1|V|typescriptreact
+	      currentForm?.setFieldValue("name", requestData?.name)
+a5d8809805f7f9400c1f19810b9a4e5c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|424|7|V|typescriptreact
+	      currentForm?.setFieldValue("receiver", requestData?.receiver)
+a2ae6cc9a7acfff494422585a43459c2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|424|35|v|typescriptreact
+	receiver
+ee9f9accef900a9f54285b18df08fa98|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|424|1|V|typescriptreact
+	      currentForm?.setFieldValue("note", requestData?.note)
+aad653ca3ee669635f2938b73098b6d7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|425|35|v|typescriptreact
+	note
+d6463ea30de355378ed3e820e2079e53|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|425|57|v|typescriptreact
+	ncote
+d49deeda23879c5278e8b0ade34bd87c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|429|9|v|typescriptreact
+	renderSendGiftForm
+147578522b221fa73f19d9f1c1bf86d8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|565|16|V|typescriptreact
+	              {renderSendGiftForm()}
+ec9c39a7bd84f19a34c67ae2c751a8f7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|562|29|V|typescriptreact
+	          {renderSendGiftForm()}
+f7109ecba02731670bb0302d0da6496b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|421|37|v|typescriptreact
+	FLEX
+aa801d0fb0f3cc70d177d9ad5addcd99|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|129|7|V|typescriptreact
+	      console.log(currentForm?.values)
+53d1c7430bc6960f3f248e2e5d72a9dc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|572|12|v|typescriptreact
+	(formRef?.current as any)?.handleSubmit
+170f265a5de58c47ead661d6c8ebc910|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|571|47|V|typescriptreact
+	                  console.log(formRef?.current)
+b887314e13075c1e710947ebb4d1be86|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|534|76|V|typescriptreact
+	        <ScrollView showsVerticalScrollIndicator={false} keyboardDismissMode>
+0731c216731b228889f25cec54e0be12|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|556|21|V|typescriptreact
+	        </ScrollView>
+73c691e08c946062cfe8c885e90ab1ba|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|533|1|V|typescriptreact
+	        keyboardAwareScrollViewProps={{
+	
+	        }}
+9033074e979ef961a435bd35b1554f9b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/screen/screen.tsx|56|18|v|typescriptreact
+	headerWithScroll
+c5279b8bc3fd26b8b42b6097bcd7b64d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|534|10|v|typescriptreact
+	ScrollView
+7aaa12e2a073625b837f83654f6e6464|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|34|3|v|typescriptreact
+	isGlobalGift
+cc9e10ce099b11f723675229dc289f9a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|35|15|V|typescriptreact
+	  isGlobalGift,
+771dacbe66fd7e680a83aac5a1ed9dc1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|23|18|V|typescriptreact
+	  isGlobalGift: boolean
+2fe520e468566488660774be80f74486|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|1|V|typescriptreact
+	          isGlobalGift={!item?.additional?.experienceid}
+	          name={
+61a2ce62372c4e0f5812f3353909cc87|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|72|1|V|typescriptreact
+	              isGlobalGift: 
+322919c8361f4dca42ac3d36b19d0940|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|56|V|typescriptreact
+	          isGlobalGift={!item?.additional?.experienceid}
+a638da3b3a94edebb9a02781df17c413|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|57|16|V|typescriptreact
+	          fontSizePrice={16}
+	          name={
+59f98cdca94acadf0ee0bf7b188bd562|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|60|11|v|typescriptreact
+	renderCard
+b80f781f281cb33422627be1815c5181|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|113|30|v|typescriptreact
+	firework
+b0269bad1d0b2956c243cacc131125ab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|113|25|v|typescriptreact
+	gift-firework
+260ca9dd8a4577fc00b7bd5810298076|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|113|25|v|typescriptreact
+	success
+f612a5d75b6590ef597518f475895602|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|112|25|v|typescriptreact
+	JUSTIFY_CENTER
+decda4882331277247710f2f9ac94866|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|71|30|v|typescriptreact
+	item?.additional?.experienceId
+bf5716ff2ef1c8ba3dff3e38dc8ccd88|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|72|1|V|typescriptreact
+	              experienceId: item?
+02f3896a9194ef829eb61874ea9c4f6a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|66|21|v|typescriptreact
+	fetchBookingById
+cf75136a4c80e6d72c4228b936f7386f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|103|1|V|typescriptreact
+	          const content = await experiencesStore.fetchExperienceById(contentId)
+6680dba00f3a88f66f8029a93d71d93c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|54|9|v|typescriptreact
+	const
+92bb5270e543bb793c6cea86f42a2efa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|56|62|v|typescriptreact
+	contentId
+bf098927cfb6480cec710dc3a8ceaff0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|47|50|v|typescriptreact
+	ContentModelType
+f1a6493566bdd51ef73b4d24aa7d8099|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|56|8|V|typescriptreact
+	      if
+2a8f09a68acd2bca26d5e85e5c59f64c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-detail-screen/consumer-purchase-detail-screen.tsx|225|1|V|typescriptreact
+	            <View style={[PX_5, MT_5, MB_6]}>
+	              <Text tx="bookingHistory.bookingDetails" preset="regularR" style={MB_2} />
+	              <BookingDetailCard
+	                avatar={booking?.talent?.talentProfile?.avatar}
+	                type={booking?.experience?.type as EXPERIENCE_TYPE}
+	                date={booking?.date}
+	                name={booking?.experience?.name}
+	                talentName={`${booking?.talent?.talentProfile?.firstName} ${booking?.talent?.talentProfile?.lastName}`}
+	                cover={getFirstImage(booking?.experience as ContentModelType)}
+	                onPress={() =>
+	                  booking?.experience?.type === EXPERIENCE_TYPE.EXCLUSIVE_CONTENT
+	                    ? goToExclusiveWatchScreen()
+	                    : goToBookingDetail()
+	                }
+	              />
+	              {booking?.experience?.type === CONTENT_TYPE.exclusiveContent && isValid && (
+	                <Button
+	                  buttonStyle={[FULL_WIDTH, MT_5]}
+	                  onPress={goToWatchScreen}
+	                  tx={"common.watch"}
+	                />
+	              )}
+	            </View>
+50b43364991ecc0b691905a1c88c9460|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|193|27|v|typescriptreact
+	PX_5
+e772b99f72386e29bc6cd553fcb8908d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|193|33|v|typescriptreact
+	MT_5
+524656f138083132a05b541f9b591211|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|194|39|v|typescriptreact
+	MB_6
+cba6fa1012920b978fa941ee5511d29f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|197|16|v|typescriptreact
+	BookingDetailCard
+c527a7135bff00b143bf9d76615e85f6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|199|25|v|typescriptreact
+	booking?.talent
+5c8438bef7c60cf62b4a0aee3b0becc4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|200|23|v|typescriptreact
+	booking
+b2fdbb4206965dd7ec7097c4ff840f98|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|200|32|v|typescriptreact
+	experience?
+fd88b58acb0def993ef9fa2ae44bb269|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|201|22|V|typescriptreact
+	                date={?.date}
+7b065502484263ada54ef1107ec47d40|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|202|23|v|typescriptreact
+	booking?.experience
+83d1be2ecf09b51405c28a10fa96ef56|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|203|40|v|typescriptreact
+	.talent?
+068279e2835919ba1c26a15639f88417|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|197|81|v|typescriptreact
+	MB_2
+668f947532159b571d43990c7b639ed2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|201|40|v|typescriptreact
+	EXPERIENCE_TYPE
+fc1394cd816cd581017b49abca03eae6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|208|20|v|typescriptreact
+	ooking?.experience
+69f4c5323778d9d6383109d492070656|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|213|34|v|typescriptreact
+	CONTENT_TYPE
+87b7760f14fbff78d8819291f36ab9a0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|214|18|v|typescriptreact
+	Button
+50fe03ab7bf37089a7e88da9b31ffb3b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|214|25|v|typescriptreact
+	props
+d81b384cdab56cef3bd398e84bc45e99|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|215|33|v|typescriptreact
+	FULL_WIDTH
+dfecbcd8ca2343336f5dec64b57662fe|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-detail-screen/consumer-purchase-detail-screen.tsx|53|21|v|typescriptreact
+	setIsValid
+ce74825b5a01c99b06af231de0bd667d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|214|70|v|typescriptreact
+	isValid
+cbac45382b1a15b3b7b8b1b3d9461e7f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|214|1|V|typescriptreact
+	              {content?.type === EXPERIENCE_TYPE.exclusiveContent && (
+40ea44543b8c7236b75b5dde14e8a9b4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|214|1|V|typescriptreact
 	
 	                <Button
-	                  disabled={isLoading}
-	                  containerStyle={styles.button}
-	                  testID="login-button"
-	                  tx="common.continue"
-	                  onPress={handleSubmit}
-	                  loading={isLoading}
+	                  buttonStyle={[FULL_WIDTH, MT_5]}
+	                  onPress={goToWatchScreen}
+	                  tx={"common.watch"}
 	                />
-	                <View style={{ height: spacing[7] }} />
-	              </>
-	            )
-	          }}
-	        </Formik>
-9b78e29e2432b37725d9981c0f140d33|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|146|12|v|typescriptreact
-	Formik
-50fe03ab7bf37089a7e88da9b31ffb3b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|147|19|v|typescriptreact
-	props
-ed89387bcd11937a7a92a99a2cbfb5d7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|150|15|v|typescriptreact
-	firstName
-ef21925fada6dfb684b5d8ec72114bb1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|151|15|v|typescriptreact
-	lastName
-a4c1a22b58f3056c2963045cca4d13b9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|152|15|v|typescriptreact
-	dateOfBirth
-e909c2d7067ea37437cf97fe11d91bd0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|153|15|v|typescriptreact
-	country
-131730091210d9a849cea9c80bca8751|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|150|1|V|typescriptreact
-	              name: '',
-	              email: '',
-f3512dd8d3cf816d7801b07c2360201e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|152|1|V|typescriptreact
-	              countryName: "",
-	              callingCode: "",
-	              gender: GENDER.Male,
-	              phone: "",
-	              email: email,
-a9f19810d01662c1bfb616095d95ce6e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|151|1|V|typescriptreact
-	              email: undefined,
-445fb0bf393609ffaff094edd2749c70|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|154|24|V|typescriptreact
-	            onSubmit={_handleSubmit}
-85a538885ee4cac0c405374d3265fa1c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|158|1|V|typescriptreact
-	              dateOfBirth: yup
-	                .string()
-	                .required(translate("errors.fieldRequired"))
-	                .test("ageNotOver16", translate("errors.registerAgeInvalid"), (value) => {
-	                  return moment(value).diff(getMaxiumAgeDate(16)) < 0
-	                }),
-	              country: yup.string().required(translate("errors.fieldRequired")),
-	              gender: yup.string().required(translate("errors.fieldRequired")),
-	              phone: yup
-	                .string()
-	                .required(translate("errors.fieldRequired"))
-	                .test("invalidPhoneNumbers", translate("errors.invalidPhoneNumbers"), (value) => {
-	                  return value?.match(/\d/g)?.join("").length >= 8
-	                }),
-	              email: isRegisterWithSocial
-	                ? yup.string().email().required(translate("errors.requiredEmail"))
-	                : yup.string(),
-eafc5b3aecb353282ef486fd4f7b8e1e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|158|1|V|typescriptreact
-	              dateOfBirth: yup
-	                .string()
-	                .required(translate("errors.fieldRequired"))
-	                .test("ageNotOver16", translate("errors.registerAgeInvalid"), (value) => {
-	                  return moment(value).diff(getMaxiumAgeDate(16)) < 0
-	                }),
-	              country: yup.string().required(translate("errors.fieldRequired")),
-	              gender: yup.string().required(translate("errors.fieldRequired")),
-	              phone: yup
-	                .string()
-	                .required(translate("errors.fieldRequired"))
-	                .test("invalidPhoneNumbers", translate("errors.invalidPhoneNumbers"), (value) => {
-	                  return value?.match(/\d/g)?.join("").length >= 8
-	                }),
-10a1c6854108ebc0d6d25c2df0d293d9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|158|22|v|typescriptreact
-	isRegisterWithSocial
-b27a5024e16a2b7c9a4e64837048ef58|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|159|22|V|typescriptreact
-	                : yup.string(),
-2f62273b1b6d374490403fa82249244c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|166|28|v|typescriptreact
-	MB_4
-05b687b22c98b51d34d11919660365cf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|172|1|V|typescriptreact
-	                  <TextInput
-	                    value={values.lastName}
-	                    style={MB_4}
-	                    placeholderTx="registerScreen.lastName"
-	                    onChangeText={handleChange("lastName")}
-	                    errorMessage={touched.lastName && (errors?.lastName as string)}
-	                  />
+	              )}
+4cddfa40bf9a2f8d18869b08b7332534|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|209|1|V|typescriptreact
+	                  content?.type === EXPERIENCE_TYPE.EXCLUSIVE_CONTENT
+	                    ? goToExclusiveWatchScreen()
+	                    : goToBookingDetail()
+b907f738560caf1f1a25fa3860456dea|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|207|24|v|typescriptreact
+	getFirstImaie
+672ca802a305ff48bfeaa3be73e4d205|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|201|30|v|typescriptreact
+	5, MT_
+e9c7c162aa4f571943d1481ad52f2f0b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|201|33|v|typescriptreact
+	MT_4
+4d2e7559ee61da3c39a41a5a89f80631|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|202|64|v|typescriptreact
+	regularR
+97d85a3e8538e4c4048a5ffe406e1453|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|206|36|V|typescriptreact
+	                date={content?.date}
+b6ea20c0bace2867a2cc1cd7dcd1e404|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|204|34|v|typescriptreact
+	talentProfile
+afca53f09753d0d45c2e627206693d67|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|206|23|v|typescriptreact
+	content?.date
+4c09aa78278ecb0d02ff7534ffa879b3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|203|16|v|typescriptreact
+	BookingDetailHeader
+599dcce2998a6b40b1e38e8c6006cb0a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|205|17|v|typescriptreact
+	type
+0f621301c14ef04f30648e8d83cca353|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|208|17|v|typescriptreact
+	talentName
+5b0d0542107689f92052f6409920e1b1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|207|20|V|typescriptreact
+	                name={content?.name}
+5fc732311905cb27e82d67f4f6511f7f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|206|32|v|typescriptreact
+	date
+17827abf80e47e49b6e638d2296839b4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-detail-screen/gift-detail-screen.tsx|124|1|V|typescriptreact
+	                cover={expItem.covers?.length && getFirstImage(expItem)}
+263fb244a2d0a6a88c1323f310c75fe1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|207|24|v|typescriptreact
+	expItem
+035145bd4ce905636bbadfec6d3f37db|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|210|32|V|typescriptreact
+	                cover={getFirstImage(content as ContentModelType)}
+4af402438775ee777689d4dd39993eed|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|203|82|v|typescriptreact
+	paddingHorizontal: spacing[4]
+810aa1743ea4a46497ba4626f9ff3a05|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-detail-screen/gift-detail-screen.tsx|120|26|v|typescriptreact
+	goToExpDetail
+37ed14dececfeb2b8fd8440a0a77c199|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-detail-screen/gift-detail-screen.tsx|51|1|V|typescriptreact
+	  const goToExpDetail = React.useCallback(() => {
+	    navigation.navigate(NavigationRoutes.BookingStack, {
+	      screen: NavigationRoutes.OneToOneExperienceDetail,
+	      params: { content: expItem },
+	    })
+	  }, [expItem])
+0a502bacb2550af07e3c6031cd885dd6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|76|17|v|typescriptreact
+	NavigationRoutes
+60ad66c1daa42eca8cd979c3ae4b5e8f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|227|28|v|typescriptreact
+	() => null
+444cf33755c911a0de7d522cbbb55ed7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|35|39|V|typescriptreact
+	import { BookingDetailCard } from "screens/consumer-purchase-detail-screen/components/booking-detail-card"
+d91f3357a3f83c861519ce54f55f95bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|26|7|V|typescriptreact
+	  PX_5,
+f36ddf91b8f3f2d556c7bd842ab1111d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|18|6|V|typescriptreact
+	  FULL_WIDTH,
+5cd1df18e7e4edaae369ba05d0a3759a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|316|9|v|typescriptreact
+	renderPaymentMethod
+a799e27db57c9f8a0a8daa6126cb7ccd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|317|11|v|typescriptreact
+	paymentMethodDefault
+a0069da36befe2f930e36a4fa48e8e9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|308|34|v|typescriptreact
+	savedMethods[selectedMethodIndex]
 	
-	                  {isRegisterWithSocial && (
-	                    <TextInput
-	                      editable={!email}
-	                      style={MB_4}
-	                      placeholderTx="common.emailAddress"
-	                      autoCapitalize="none"
-	                      keyboardType="email-address"
-	                      autoCompleteType="off"
-	                      value={values.email}
-	                      onChangeText={handleChange("email")}
-	                      errorMessage={touched.email && (errors?.email as string)}
-	                      inputWrapStyle={!!email && { backgroundColor: color.themeColor.line }}
-	                    />
-	                  )}
-	                  <TextInputDatePicker
-	                    readonly
-	                    value={values.dateOfBirth}
-	                    style={MB_4}
-	                    placeholderTx="registerScreen.dateOfBirth"
-	                    rightIcon="calendar"
-	                    onChange={(selected) => setFieldValue("dateOfBirth", selected)}
-	                    errorMessage={touched.dateOfBirth && (errors?.dateOfBirth as string)}
-	                  />
-	                  <TouchableOpacity onPress={_onPressCountry}>
-	                    <View pointerEvents="none">
-	                      <TextInput
-	                        readonly
-	                        style={MB_4}
-	                        placeholderTx="registerScreen.country"
-	                        rightIcon="arrow-down"
-	                        onRightIconPress={_onPressCountry}
-	                        value={
-	                          values.callingCode
-	                            ? `${values.countryName} (+${values.callingCode}) `
-	                            : ""
-	                        }
-	                        errorMessage={touched.country && (errors?.country as string)}
-	                        inputWrapStyle={{
-	                          borderWidth: 1,
-	                          borderColor: color.line,
-	                        }}
-	                      />
-	                    </View>
-	                  </TouchableOpacity>
-	                  <TextInput
-	                    value={values.phone}
-	                    maxLength={15}
-	                    style={MB_4}
-	                    keyboardType="phone-pad"
-	                    placeholderTx="registerScreen.phoneNumber"
-	                    onChangeText={(value) => {
-	                      const testNumber = new AsYouType(
-	                        selectCountry?.abbreviation || ("GB" as any),
-	                      ).input(selectCountry?.abbreviation === "GB" ? `+44 ${value}` : value)
-	
-	                      setFieldValue(
-	                        "phone",
-	                        selectCountry?.abbreviation === "GB"
-	                          ? testNumber === "+44"
-	                            ? ""
-	                            : testNumber.replace("+44 ", "")
-	                          : testNumber,
-	                      )
-	                    }}
-	                    errorMessage={touched.phone && (errors?.phone as string)}
-	                  />
-	                  <View style={MB_4}>
-	                    <Text
-	                      tx="registerScreen.gender"
-	                      preset="regularR"
-	                      style={{ color: rgbColor(color.themeColor.dark, 0.7) }}
-	                    />
-	                    <View style={[MT_4, MB_4, styles.genderWrapper]}>
-	                      <Button
-	                        style={[
-	                          styles.buttonGender,
-	                          {
-	                            borderColor:
-	                              values.gender === GENDER.Male ? color.themeColor.primary : color.line,
-	                          },
-	                        ]}
-	                        onPress={() => handleChange("gender")(GENDER.Male)}
-	                      >
-	                        <Text preset="regularR" tx="registerScreen.male" />
-	                      </Button>
-	                      <Button
-	                        style={[
-	                          styles.buttonGender,
-	                          {
-	                            borderColor:
-	                              values.gender === GENDER.Female
-	                                ? color.themeColor.primary
-	                                : color.line,
-	                          },
-	                        ]}
-	                        onPress={() => handleChange("gender")(GENDER.Female)}
-	                      >
-	                        <Text preset="regularR" tx="registerScreen.female" />
-	                      </Button>
-	                      <Button
-	                        style={[
-	                          styles.buttonGender,
-	                          {
-	                            borderColor:
-	                              values.gender === GENDER.Other
-	                                ? color.themeColor.primary
-	                                : color.line,
-	                          },
-	                        ]}
-	                        onPress={() => handleChange("gender")(GENDER.Other)}
-	                      >
-	                        <Text preset="regularR" tx="registerScreen.other" />
-	                      </Button>
-	                    </View>
-	                  </View>
-	
-	                  <Button
-	                    disabled={isLoading}
-	                    containerStyle={styles.button}
-	                    testID="login-button"
-	                    tx="common.continue"
-	                    onPress={handleSubmit}
-	                    loading={isLoading}
-	                  />
-	                  <View style={{ height: spacing[7] }} />
-c852755f85e80bfa21ab754f8dde93dc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|165|20|v|typescriptreact
-	TextInput
-96bae54e2f54155fece2cc1e02c1ea75|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|779|1|V|json
-	    "name": "Name"
-b068931cc450442b63f5b3d276ea4297|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|780|6|v|json
-	name
-49ee3087348e8d44e1feda1917443987|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|780|22|v|json
+68934a3e9455fa72420237eb05902327|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/payment-provider/payment-provider.tsx|36|23|v|typescriptreact
+	false
+9224d8c8e2abd2f9b732193a64adf95a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|391|24|v|typescriptreact
+	_onPressDefault
+24972b4d157dafc09cfa10d214f2c64a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|352|9|v|typescriptreact
+	renderReviewPurchaseContent
+2e78c97ee094abc6da33b4ad8d418fe1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|57|69|v|typescriptreact
+	SignInRequiredHoc
+dfda0d32069b96bf6c4ea352feffd1b2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|59|3|v|typescriptreact
+	observer
+91b07cdbe5a7b29e8d761aa306f564b0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|558|12|v|typescriptreact
+	flowStatus === "review" && 
+2b1002f1b832043d32e82c9b5f5f1e9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|365|12|V|typescriptreact
+	        {()}
+0f87d35269a9d12b832b3c73d5caac39|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|355|54|v|typescriptreact
+	reivew
+0df4c11bc6836ca25cbd554853f08f13|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|418|29|v|typescriptreact
+	savedMethods
+c6527c9233a3809d4e9a371bc5775a9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|570|35|v|typescriptreact
+	selectedMethodIndex
+b14a5398a1e7247f2b0d384259811b35|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|419|34|V|typescriptreact
+	  console.log(selectedMethodIndex)
+83d694b8b98b155b8817ac412c4d3e9c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hoc/SignInRequiredHoc.tsx|31|28|v|typescriptreact
+	Observer
+68abb99a31c225d89807ce4ad122ee6d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hoc/SignInRequiredHoc.tsx|31|45|v|typescriptreact
+	<Component {...props} />
+0161989c8335937139ee1d13ba742395|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hoc/SignInRequiredHoc.tsx|2|1|V|typescriptreact
+	import { observer, Observer } from "mobx-react-lite"
+c404448d43fdd6a86f727a72890d3ff5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|13|7|V|typescriptreact
+	  ScrollView,
+1f7f5814381a077ef1b35f5ba3ea0f78|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|50|10|v|typescriptreact
+	KeyboardAwareScrollView
+f508bd4027a48bcab3c15c42907024ad|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|542|25|V|typescriptreact
+	          <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+c871e861ac9af69df8e4ee594e40b7fa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|564|25|V|typescriptreact
+	          </KeyboardAwareScrollView>
+8fd09c445416d17c30c927dac0f2a854|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|50|17|V|typescriptreact
+	import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
+a6ded8fef936e22a1a3f14d76c439255|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|136|7|v|typescriptreact
+	isOverTimeBooking
+1ff765a69e5a3beb5c530d583553f498|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|160|9|v|typescriptreact
+	_onPressJoinNow
+098f6bcd4621d373cade4e832627b4f6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|26|4|V|typescriptreact
+	test
+fc943deca913ddccad1b96a824184dcd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/your-interest-screen/your-interest-screen.tsx|41|51|v|typescriptreact
+	setRegisterStep
+9a998a39e0df4b90918a965f7d127774|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|47|11|v|typescriptreact
+	triggerNotificationEvent
+db59f75a99fe5d06fcd396d52ec1aae2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|609|22|V|typescript
+	  if (item.clickAction)
+930bcb63fbded80f64ffac13bef368b6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|49|33|v|typescriptreact
+	notificationEvent
+d34e27d97064ee4b3b72c326be14c8a2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|304|21|v|typescriptreact
+	isOverTime || !canJoin
+3b19b6807f7662d6618dfcf63bf7451b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|299|9|v|typescriptreact
+	canJoin || isOverTime
+9e32481b957d3417472edfa70c44d084|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|304|36|v|typescriptreact
+	canJoin
+49ee3087348e8d44e1feda1917443987|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|137|21|v|typescriptreact
 	Name
-e3354db8560df7d16e2d5276955529c0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|780|1|V|json
-	    "emailAddress": "Email address (Optional)",
-f42e09e6128719369ab41e465ed7e92a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|781|6|v|json
-	emailAddress
-615c29eeab0f3409611ee31984c7813a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|781|1|V|json
-	    "iurMessage": "Email address (Optional)",
-	  }
-50b570367ac0396d29e21fb6433a5a4e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|781|20|v|json
-	Email address (Optional)
-db72179c04397f488d2d4365381038b1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|168|36|v|typescriptreact
-	registerScreen
-0170044364bb2e8229eff535e1474672|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|165|1|V|typescriptreact
-	                  <TextInput
-	                    value={values.name}
-	                    style={MB_4}
-	                    placeholderTx="sendGiftCardScreen.name"
-	                    onChangeText={handleChange("name")}
-	                    errorMessage={touched.name && (errors?.name as string)}
-	                  />
-dd7bf230fde8d4836917806aff6a6b27|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|780|11|v|json
-	Address
-3d244c1eb5c586fb43a6a226178252be|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|172|1|V|typescriptreact
-	                  <TextInput
-	                    value={values.email}
-	                    style={MB_4}
-	                    placeholderTx="sendGiftCardScreen.email"
-	                    onChangeText={handleChange("email")}
-	                    errorMessage={touched.email && (errors?.email as string)}
-	                  />
-78e731027d8fd50ed642340b7c9a63b3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|182|55|v|typescriptreact
-	message
-b60d548d4b5e0ac0f111a8a69e6828f4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|162|39|v|typescriptreact
-	setFieldValue
-d61c82959963ba552f979f7ec0b43623|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|162|48|v|typescriptreact
-	handleSubmit
-49691655a85958fe4fcb07b028b58b2b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|231|1|V|typescriptreact
-	                  <View style={[MT_4, MB_4, styles.genderWrapper]}>
-	                    <Button
-	                      style={[
-	                        styles.buttonGender,
-	                        {
-	                          borderColor:
-	                            values.gender === GENDER.Male ? color.themeColor.primary : color.line,
-	                        },
-	                      ]}
-	                      onPress={() => handleChange("gender")(GENDER.Male)}
-	                    >
-	                      <Text preset="regularR" tx="registerScreen.male" />
-	                    </Button>
-	                    <Button
-	                      style={[
-	                        styles.buttonGender,
-	                        {
-	                          borderColor:
-	                            values.gender === GENDER.Female ? color.themeColor.primary : color.line,
-	                        },
-	                      ]}
-	                      onPress={() => handleChange("gender")(GENDER.Female)}
-	                    >
-	                      <Text preset="regularR" tx="registerScreen.female" />
-	                    </Button>
-	                    <Button
-	                      style={[
-	                        styles.buttonGender,
-	                        {
-	                          borderColor:
-	                            values.gender === GENDER.Other ? color.themeColor.primary : color.line,
-	                        },
-	                      ]}
-	                      onPress={() => handleChange("gender")(GENDER.Other)}
-	                    >
-	                      <Text preset="regularR" tx="registerScreen.other" />
-	                    </Button>
+18f20e9ada397b529cfb43926aa8055e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|254|29|V|typescriptreact
+	                      overlayColor={"transparent"}
+844e84cbd6bb8d388bbcac23286749d7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|254|39|v|typescriptreact
+	'transparent'
+d0c841a4a4d24d468b179e2b6dee7631|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-screen/components/currentBalanceCard.tsx|35|1|V|typescriptreact
+	                backgroundColor={color.themeColor.dark}
+4545a9a3c28312faa4d01efe0157c553|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|254|1|V|typescriptreact
+	                      backgroundColor={color.themeColor.white}
+2704703dc232821e2b701dad4226af2b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|142|37|v|typescriptreact
+	"transparent"
+dac1ca3a08ab98cf7b3719e5d18c4341|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|141|48|V|typescriptreact
+	                    overlayColor={"transparent"}
+87be4ce302ee5b4f350bb2d27504749b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|142|1|V|typescriptreact
+	                    backgroundColor={color.themeColor.white}
+8e193d8139fe2114393866042081a5e2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-screen/components/currentBalanceCard.tsx|34|1|V|typescriptreact
+	                pointerColor={color.themeColor.dark}
+ffc7359cc209192ff9e9843ecbbc420a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-screen/components/currentBalanceCard.tsx|42|1|V|typescriptreact
+	                popover={
+	                  <View style={styles.tooltipContent}>
+	                    <Text
+	                      preset="mediumS"
+	                      tx="payoutScreen.toolTipAvailableBalance"
+	                      style={{ color: color.themeColor.white }}
+	                    />
 	                  </View>
-a196c7bcbd857b5f3d52f76dd0172aa0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|159|1|V|typescriptreact
-	            <Button
-	              style={[
-	                styles.buttonGender,
-	                {
-	                  borderColor:
-	                    values.gender === GENDER.Female ? color.themeColor.primary : color.line,
-	                },
-	              ]}
-	              onPress={() => handleChange("gender")(GENDER.Female)}
-	            >
-	              <Text preset="regularR" tx="registerScreen.female" />
-	            </Button>
-	            <Button
-	              style={[
-	                styles.buttonGender,
-	                {
-	                  borderColor:
-	                    values.gender === GENDER.Other ? color.themeColor.primary : color.line,
-	                },
-	              ]}
-	              onPress={() => handleChange("gender")(GENDER.Other)}
-	            >
-	              <Text preset="regularR" tx="registerScreen.other" />
-	            </Button>
-74ef713b7889d5ddf39253667e5503b0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|144|1|V|typescriptreact
-	        <View>
-	          <Text tx="sendGiftCardScreen.amount" preset="semiBoldM" />
-	          <View style={[MT_4, MB_4, styles.genderWrapper]}>
-	            <Button
-	              style={[
-	                styles.buttonGender,
-	                {
-	                  borderColor:
-	                    values.gender === GENDER.Male ? color.themeColor.primary : color.line,
-	                },
-	              ]}
-	              onPress={() => handleChange("gender")(GENDER.Male)}
-	            >
-	              <Text preset="regularR" tx="registerScreen.male" />
-	            </Button>
+	                }
+bc006d591bf2cb05c58741fe61d08224|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|144|1|V|typescriptreact
+	                    popover={
+	                      <View style={styles.tooltipContent}>
+	                        <Text
+	                          preset="mediumS"
+	                          tx="payoutScreen.toolTipAvailableBalance"
+	                          style={{ color: color.themeColor.white }}
+	                        />
+	                      </View>
+	                    }
+48d6215903dff56238e52e8891380c8f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|149|58|v|typescriptreact
+	blue
+72b8cade9fad051ea72bcffced4c40ab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|143|27|V|typescriptreact
+	                    onClose
+46d214fe1e7372054bcd64ad3543cd6f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|143|25|V|typescriptreact
+	                    delay
+a08b93612f709291f876bcd1bc9f3200|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|37|29|v|typescriptreact
+	initialValue
+741d10a3c3b71ca479eeac98923b6c90|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|37|9|v|typescriptreact
+	toolTipRef
+d00854240f8b0035b07c24c61b94054a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|149|22|v|typescriptreact
+	Clipboard.setString(gift?.id)
+f25fc0a1f708221ac8172a1a2579247c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|149|37|V|typescriptreact
+	                      toolTipRef?.tog
+1a0e0fcaed6ab5b05f31d4a715798d83|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|149|1|V|typescriptreact
+	                      console.log(toolTipRef.current)
+1b04a8fb657f99d6470baa201d2b2cb3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|150|27|v|typescriptreact
+	tooltipRef
+04ed9827505c9b64e707f4aa89b50191|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|141|1|V|typescriptreact
+	                    popover={
+	                      <Text tx={"giftedSuccess.copied"} style={{ color: color.themeColor.white }} />
+	                    }
+	                    ref={toolTipRef}
+	                    overlayColor={"transparent"}
+	                    backgroundColor={color.themeColor.dark}
+	                    onOpen={() => {
+	                      Clipboard.setString(gift?.id)
+	                      setTimeout(function () {
+	                        ;(toolTipRef?.current as any)?.toggleTooltip()
+	                      }, 1000)
+	                    }}
+d8fa3f78f922411b3a545c1aa4771c42|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|253|1|V|typescriptreact
+	                      popover={<Text tx={"giftedSuccess.copied"} />}
+	                      overlayColor={"transparent"}
+	                      onOpen={() => Clipboard.setString(result?.id)}
+70a597d73c39b479ff63725b27901db2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|263|45|v|typescriptreact
+	reuslt
+85ef7c29926c37cf44c73c73eb356ade|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|254|1|V|typescriptreact
+	                      popover={
+	                        <Text
+	                          tx={"giftedSuccess.copied"}
+	                          style={{ color: color.themeColor.white }}
+	                        />
+	                      }
+	                      ref={toolTipRef}
+	                      overlayColor={"transparent"}
+	                      backgroundColor={color.themeColor.dark}
+	                      onOpen={() => {
+	                        Clipboard.setString(result?.id)
+	                        setTimeout(function () {
+	                          ;(toolTipRef?.current as any)?.toggleTooltip()
+	                        }, 1000)
+	                      }}
+fe677347601bce694d64d2c165d1236f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|160|1|V|typescriptreact
+	                  popover={<Text tx={"giftedSuccess.copied"} />}
+	                  overlayColor={"transparent"}
+	                  onOpen={() => Clipboard.setString(gift?.id)}
+5a0e1d68c8a79f79ff13d9e934de6e58|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|650|34|v|typescriptreact
+	* 0.11
+629a2413e6045c7404bcc1ad6cebb1d4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|647|13|v|typescriptreact
+	metrics.screenHeight * 0.1
+c0060671e9a2ee3e758001efbb21ae3c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|177|13|v|typescriptreact
+	metrics.screenHeight * 0.11,
+3f0d758a0e2ef073a54f7a8434ac6c25|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|177|1|V|typescriptreact
+	    height: 88,
+ec799869b93834e9ae3953b693ccc0fe|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/gift-purchase-detail-screen/gift-purchase-detail-screen.tsx|180|1|V|typescriptreact
+	    height: metrics.screenHeight * 0.11,
+030b9b4dfde6157e20d6c6c3480eacc5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|321|13|v|typescriptreact
+	metrics.screenHeight * 0.1,
+5f0b6ebc4bea10285ba2b8a6ce78b863|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|126|29|v|typescriptreact
+	container
+e74c6b284e30fab310a944208f8eb436|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|132|25|v|typescriptreact
+	ALIGN_CENTER
+11299f110a3326a2eea2ee6ba24bfbfc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|132|17|v|typescriptreact
+	style={[]}
+2a0cbafff68825c419056ceafc230144|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|133|1|V|typescriptreact
+	            {isGlobalGift ? renderCard() : <Icon name="gift-successfull" />}
+65ef5260b4060f57b2f424a5b2fbb16c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|134|10|V|typescriptreact
+	          <View style={[JUSTIFY_CENTER, ALIGN_CENTER]}>
+a05cf02a60d735898521a27866520a26|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|136|1|V|typescriptreact
+	            {isGlobalGift ? renderCard() : <Icon name="gift-successfull" />}
 	          </View>
-90fc4eb11d3430a4a794b115cab934ae|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|146|1|V|typescriptreact
-	          <View style={[MT_4, MB_4, styles.genderWrapper]}>
-	            <Button
-	              style={[
-	                styles.buttonGender,
-	                {
-	                  borderColor:
-	                    values.gender === GENDER.Male ? color.themeColor.primary : color.line,
-	                },
-	              ]}
-	              onPress={() => handleChange("gender")(GENDER.Male)}
-	            >
-	              <Text preset="regularR" tx="registerScreen.male" />
-	            </Button>
-	          </View>
-2e4ff771a63fa84f8954203841cec83d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|144|1|V|typescriptreact
-	        <View>
-	          <Text tx="sendGiftCardScreen.amount" preset="semiBoldM" />
-	          <View style={[MT_4, MB_4, styles.genderWrapper]}>
-	            <Button
-	              style={[
-	                styles.buttonGender,
-	                {
-	                  borderColor:
-	                    values.gender === GENDER.Male ? color.themeColor.primary : color.line,
-	                },
-	              ]}
-	              onPress={() => handleChange("gender")(GENDER.Male)}
-	            >
-	              <Text preset="regularR" tx="registerScreen.male" />
-	            </Button>
-	          </View>
-	        </View>
-34a066259258da2788714448fb2720f6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|144|1|V|typescriptreact
-	        <View style={MT_5}>
-	          <Text tx="sendGiftCardScreen.recipient" preset="semiBoldM" style={MB_4} />
-4b63d69d4524780b48db09238f2ffb99|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|304|1|V|typescriptreact
-	  genderWrapper: {
-	    flexDirection: "row",
-	    justifyContent: "space-between",
+447b7147e84be512208dcc0995d67ebc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|185|37|v|typescriptreact
+	item
+1953c1178d8ec8ce7e1d8d7d705d19da|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-submit-screen/payout-submit-screen.tsx|85|35|v|typescriptreact
+	textInformation
+935d37869538e7c6156d34e6152b8671|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-submit-screen/payout-submit-screen.tsx|221|1|V|typescriptreact
+	  textInformation: {
+	    width: metrics.screenWidth * 0.5,
+	    alignItems: "flex-end",
 	  },
-	  buttonGender: {
-	    borderWidth: 1,
-	    width: metrics.screenWidth * 0.26,
-	    justifyContent: "center",
-	    paddingVertical: spacing[2],
-	    borderRadius: metrics.screenWidth * 0.02,
-	  },
-a3e6a4d9aaa8fb3b0fe23a35ca4370b0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|299|3|v|typescriptreact
-	amountWrapper
-5e543256c480ac577d30f76f9120eb74|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|150|21|v|typescriptreact
-	undefined
-cc90f1913b83d255b95be0e0fea6d576|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|169|36|v|typescriptreact
-	gender
-cd85fc4d1b2315017067546091b5582b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|169|47|v|typescriptreact
-	GENDER.Male ? color.themeColor.primary : color.line,
-b67eb69c7221d8016249ee6513663150|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|169|47|v|typescriptreact
-	GENDER.Male
-2bf003066fd3e7d3a31cf2671f613ba8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|173|29|v|typescriptreact
-	preset="regularR" tx="registerScreen.male"
-76c751f2fd5d83b0d25f9db1761645ed|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|166|32|v|typescriptreact
-	buttonAmount
-e0e2a11178a8366c915eb29cd924c02d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|307|32|V|typescriptreact
-	    paddingHorizontal: spacing[2],
-d6002c12d9931a33b808de9632626769|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|305|37|V|typescriptreact
-	    width: metrics.screenWidth * 0.14,
-254d09ccb74a751bee5665189b07c221|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|163|19|V|typescriptreact
-	                  []
-6084862792b8e01fd9fd86307dabda01|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|166|55|v|typescriptreact
-	MR_4
-936d9df0637523b7f7663954b2217cd5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|151|20|V|typescriptreact
-	            amount: 10,
-4eebc145bce8413e8b5b895283788da1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|152|13|V|typescriptreact
-	          amount: 10,
-b45cffe084dd3d20d928bee85e7b0f21|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|177|74|v|typescriptreact
-	string
-98e8410fe7c87263ac0423b8711e3925|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|148|19|v|typescriptreact
-	'huy',
-66313476be05b3d5a8dd904560b1baf9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|160|31|V|typescriptreact
-	            console.log(values)
-bc5d6429975cd38148808c95077b5da8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|63|1|V|typescriptreact
-	    return (
-	      <View style={styles.cardGiftWrapper}>
-	        <Icon name="card-gift-successfull-effect" />
-	        <View style={styles.cardGift}>
-	          <View style={styles.cardGiftBottom}>
-	            <View>
-	              <Text text="$10" preset="semiBoldLR" />
-	              <Text text="Happy Birthday !" preset="regularS" />
+6ceede156aa75d08007f440c2c8054f1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|159|19|V|typescriptreact
+	                <Text text={`${moment(gift?.createdAt).format("ddd, MMM D YYYY")}`} />
+8f3ca3b774224575648ba8c554c93052|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|156|1|V|typescriptreact
+	                <View style={styles.textInformation}>
+5e970642c846ea315acd3c36482fb401|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|191|1|V|typescriptreact
+	                  <View style={styles.textInformation}>
+2eecac7126ccf3ea392c914506cb0efd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|217|1|V|typescriptreact
+	                  <Text tx="bookingSuccess.receiverEmail" style={styles.itemTitle} />
+	                  <View style={styles.textInformation}>
+a0b263368ec73704187c7350f30d5087|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|81|9|V|typescriptreact
+	      if 
+b5e69f313bf57c6ecd68465022f8cb4f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|134|15|v|typescriptreact
+	(
+	            <View style={[JUSTIFY_CENTER, ALIGN_CENTER]}>
+	              <Icon name="gift-successfull" />
 	            </View>
-	            <Icon name="white-logo" />
-	          </View>
-	        </View>
-	      </View>
-	    )
-26a18d7aadda3f17e1fcd13b34875d1a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|302|3|v|typescriptreact
-	cardGiftSuccessfullWrapper
-e406ff007322228fae266e10e97b0290|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|81|35|v|typescriptreact
-	Successfull
-1ad3aaeb7086c83c2e6735d6cb66442a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|82|36|v|typescriptreact
-	tSuccessfull
-04413a518c034b92ecbf3a1f70837170|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|83|39|v|typescriptreact
-	SuccessfullBottom
-d6175e8e940131ad4d8ab874db6d30a1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|302|18|V|typescriptreact
-	        cardGift: 
-c9968b2d196bfb5302067594eb8fc8e3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|302|1|V|typescriptreact
-	  cardGiftSuccessfullWrapper: {
-	    marginBottom: spacing[4],
-	    marginTop: spacing[9],
-	    justifyContent: "center",
-	    alignItems: "center",
-	    paddingHorizontal: spacing[4],
-	  },
-	  cardGiftSuccessfull: {
-	    borderRadius: metrics.borderRadius,
-	    position: "absolute",
-	    backgroundColor: color.themeColor.primary,
-	    paddingHorizontal: spacing[4],
-	    paddingVertical: spacing[4],
-	    width: "100%",
-	  },
-	  cardGiftSuccessfullBottom: {
-	    borderTopWidth: 1,
-	    flexDirection: "row",
-	    justifyContent: "space-between",
-	    alignItems: "center",
-	    paddingTop: spacing[4],
-	    borderTopColor: color.themeColor.white,
-	  },
-5ac721465f3e3d268dc2b361ed7f86d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|305|17|V|typescriptreact
-	    marginTop: spacing[9],
-e96873a3877658548d5270ecef8e49b6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/icon-svg/icons.ts|156|35|v|typescript
-	require("assets/icons/card-gift-successfull-effect.svg").default,
-e2807c50cace08198aa0d0246aa60932|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|67|1|V|typescriptreact
-	          <Icon name="three-rings-gift-card" />
-ec7e98b0c446d5e56a7fa5c8254502d2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|83|11|V|typescriptreact
-	        <Icon name="three-rings-gift-card" />
-b8deaff3aa804f6ae6756b5a69ebb8f5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|315|1|V|typescriptreact
-	    paddingHorizontal: spacing[4],
-	    paddingVertical: spacing[4],
-1d48c0f256ab3e47e7cd5270c474a4c9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|322|5|V|typescriptreact
-	    paddingTop: spacing[4],
-334c4a4c42fdb79d7ebc3e73b517e6f8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/assets/icons/three-rings-gift-card.svg|1|57|v|svg
-	none
-f0258771601bbb01edd49d289d184304|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/assets/icons/three-rings-gift-card.svg|1|57|v|svg
-	nnee
-d508fe45cecaf653904a0e774084bb5c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/assets/icons/three-rings-gift-card.svg|3|98|v|svg
-	white
-7aa26963384b92f96c3c00c2f7d07b97|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/assets/icons/three-rings-gift-card.svg|3|98|v|svg
-	#b2fcff
-2599d14fab1c45050623599eab3d7c74|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/assets/icons/three-rings-gift-card.svg|6|100|v|svg
-	b2fcff
-ec799869b93834e9ae3953b693ccc0fe|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|321|1|V|typescriptreact
-	    height: metrics.screenHeight * 0.11,
-eec6c4bdbd339edf8cbea68becb85244|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|317|7|v|typescriptreact
-	Height
-2ad9d63b69c4a10a5cc9cad923133bc4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|317|11|v|typescriptreact
-	Bottom
-b068707221892c2375fa156adabfa203|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|317|1|V|typescriptreact
-	  cardGiftTop: {
-	    height: metrics.screenHeight * 0.11,
-	  },
-725ae8d404096ee70b8851cb02eb2cf0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|68|31|v|typescriptreact
-	cardGiftSuccessfullBottom
-55cf7babb22806ae97a2e4fa5681191a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|66|29|v|typescriptreact
-	cardGiftSuccessfull
-c2968cff82291dc17183185e5d0113bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|347|1|V|typescriptreact
-	  cardGiftSuccessfullBottom: {
-	    borderTopWidth: 1,
-	    flexDirection: "row",
-	    justifyContent: "space-between",
-	    alignItems: "center",
-	    paddingHorizontal: spacing[4],
-	    paddingVertical: spacing[4],
-	    borderTopColor: color.themeColor.white,
-	  },
+	          )}
 	
-d8d82591b9c734a047e09de751229b63|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|318|1|V|typescriptreact
-	    overflow: 'hidden',
-811882fecd5c7618d7099ebbd39ea254|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|74|17|v|typescriptreact
-	left
-583ae106210c8710532caf892c8509bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|75|31|v|typescriptreact
-	metrisc
-54fc4ff11594ff03707d8ba105853a34|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|44|83|v|typescriptreact
-	flowStatus
-32036005d1f6ed59803ba3e13c80993e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|4|16|v|typescriptreact
-	Avatar
-bb4073078b7ab28d922699cb9896a4d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|3|26|v|typescriptreact
-	MR_2
-bf29ea096cf741b4cd6db318dc6747ea|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|11|10|V|typescriptreact
-	import { getFirstImage } from "utils/general"
-4916d447cba1df96c8a9dbbeccd95695|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|12|10|V|typescriptreact
-	import { BOOKING_STATUS } from "../../constants"
-bf098927cfb6480cec710dc3a8ceaff0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|5|28|v|typescriptreact
-	ContentModelType
-3c91d1902d729d8813f4c4396ff9910d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|8|10|V|typescriptreact
-	import { TalentPurchaseHistoryScreen } from "screens"
-13564234b896c59865b84c8518d7f565|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/consumer-purchase-screen.tsx|1|25|V|typescriptreact
-	import { EXPERIENCE_TYPE, mappingTypeTranslate } from "../../constants"
-bee55bbbe2a51c004ee0095bf7ec9e37|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|294|20|v|typescriptreact
-	returnToHomeScreen
-dbf0610985bb24e7c4a34cdee84fb142|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|58|1|V|typescriptreact
-	  const returnToHomeScreen = React.useCallback(() => {
-	    navigation.navigate(NavigationRoutes.Home)
-	  }, [])
-37f06a29da99c43fb4a587d56ee6bf90|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|65|3|V|typescriptreact
-	  const
-c8c14c918524dcc716f566f5d7aea24a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|63|16|V|typescriptreact
-	    navigation.navigate(NavigationRoutes.Home)
-5bd4903b1bedc0154138aa3f9edf8724|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|62|9|V|typescriptreact
-	  const onSubmit = React.useCallback(() => {
-	    setFl
-8750270f7291852edbfbedc5ce9a8288|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|63|13|v|typescriptreact
-	current.vali
-8940dec1a3483fb88643394bf59e3a6f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-info-screen/register-info-screen.tsx|59|9|v|typescriptreact
-	_handleSubmit
-f2b1e87a8d5d88b13fe42c04a1c74dc0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|64|12|V|typescriptreact
-	    form.val
-169cd5323c5d30422516052f957a4b6b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|64|25|V|typescriptreact
-	    form.validateAllField
-74fe8a8d3d4dd8b8a43b94be3587bbf1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|63|8|V|typescriptreact
-	    const form = formRef.current
-b03fd4fc125153db643a39420bbb5d9b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|291|1|V|typescriptreact
-	      <View
-	        style={
-	          flowStatus === "fillInfo"
-	            ? styles.bottomContainerWithShadow
-	            : styles.bottomContainerWithOutShadow
-	        }
-	      >
-	        <Button
-	          onPress={onSubmit}
-	          tx={flowStatus === "successfull" ? "giftedSuccess.returnHome" : "common.continue"}
-	        />
-	      </View>
-e7f332a88955d3c0540bb7639f463e74|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|299|20|v|typescriptreact
-	onSubmit
-e70c4df10ef0983b9c8c31bd06b2a2c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|299|74|v|typescriptreact
-	return
-774f894dbc7e6827a2f78195c1484e9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|300|78|v|typescriptreact
-	as any
-a54810c6cfb8b0782a873aa6c195f93a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|301|49|v|typescriptreact
-	(formRef?.current as any)?.onSubmit 
-bf7f8ff749922f11438da92a81e3bd2e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|63|21|V|typescriptreact
-	    console.log("ji")
-4c2c12cae6e7f72a2641f4aece72c3d8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|63|7|V|typescriptreact
-	    if 
-e3c7692b78ec5549dd76b57d50f2f97e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|39|15|V|typescriptreact
-	            <Text preset="semiBoldR" text={name} style={MB_1} />
-ccf8854449acee033b73c09d639cc6d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|49|1|V|typescriptreact
-	          <Text
-	            preset="semiBoldR"
-	            style={[priceStyle, { fontSize: fontSizePrice }]}
-	            text={`-${price}`}
-	          />
-aebc96f5d3c0567cfef4c0b212ea5275|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|35|13|V|typescriptreact
-	          <View>
-1a91b279cb20c2273f95e7c45177d813|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|74|19|V|typescriptreact
-	    flexDirection: "row",
-d25cf0209fb12846d3a944e0e24bbe48|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|74|19|V|typescriptreact
-	    alignItems: "center",
-145bd2dc400b8290e84fce0da7c6b77d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|52|15|V|typescriptreact
-	        </View>
-81f25cf3cb12e2ce2115ea93b645d0d9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|41|25|v|typescriptreact
-	semiBoli
-2efce3b744b845c84229eafe09a78142|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|48|11|V|typescriptreact
-	          <
-2908050e771fb91a3afbb7809972e90c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|49|10|v|typescriptreact
-	Divider
-bf9d95ef88c8d3df408f7b99d2b80e58|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|50|25|v|typescriptreact
-	PX_4
-c22bbcbcc360213426a91d2895388a48|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/components/gift-purchase-history-card.tsx|50|25|v|typescriptreact
-	PX_2
-5b2afe6338ab7fb7508f070800ed3481|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|38|9|v|typescriptreact
-	_statusStyle
-9f27410725ab8cc8854a2769c7a516b8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|53|49|v|typescriptreact
-	green
-1558b84f8fe7b9960c7f304102c3e402|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|11|v|typescriptreact
-	satus
-8eab03433ed398b226deee87469a27c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|1|V|typescriptreact
-	          status={item.status}
-6380e5c1c6c665470fdca59f8fc9c816|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|58|35|v|typescriptreact
-	BOOKING_STATUS
-26b13fc608af1c0596e80a1b7734e28c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/purchase-history-screen/components/purchase-history-card.tsx|72|74|v|typescriptreact
-	startCase
-fa5fc195222e299f97bf79a22903282b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-history-screen/consumer-purchase-gift-history-screen.tsx|50|11|v|typescriptreact
-	_renderSectionItem
-b8b22deb1f424d77dea898a825d1f483|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/icon-svg/icons.ts|157|1|V|typescript
-	=======
-c4e82bb870c22795af5e0e8d05f0ba0c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/icon-svg/icons.ts|161|1|V|typescript
-	>>>>>>> feat: gift card
-697dfb9b235783676b63d2f1ed07cad5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/icon-svg/icons.ts|154|1|V|typescript
-	<<<<<<< HEAD
-deabc41594f657c4652213c7ef27bf5a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|56|7|v|typescriptreact
-	setHomeScreenBannerUri
-dc6c5512d929f9942821f680224f6296|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|50|10|v|typescriptreact
-	homeScreenBannerUri
+242bea7b140843f5c7c5d053f134d164|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|134|20|v|typescriptreact
+	{" "}
+5a99f761816a19405a17c2d858b3f8b1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|132|1|V|typescriptreact
+	          {isGlobalGift ? (
+	            <View style={{ paddingHorizontal: spacing[4] }}>renderCard()</View>
+	          ) : null}
+d9a389f4ee25fb3d8add6f343044d32a|fugitive:/Users/louis/Dev/Projects/komi/komi-mobile/.git//0/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|132|1|V|typescriptreact
+	          <View style={[JUSTIFY_CENTER, ALIGN_CENTER]}>
+	            {isGlobalGift ? renderCard() : <Icon name="gift-successfull" />}
+	          </View>
+4bb1b3fe862484985249d4f340ca93bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|124|8|v|typescriptreact
+	isGlobalGift ? renderCard() : 
+f3f9f5b3aa6f766eaf6e6d66dd1b8fac|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|121|1|V|typescriptreact
+	      if (isGlobalGift) return <View style={{ paddingHorizontal: spacing[4] }}>renderCard()</View>
+	      else
+415ece355bdeb6b5dc29971def54613c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|125|9|V|typescriptreact
+	        )
+489d8162dcf4054ed3453242e3e7ebe8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-gift-detail-screen/consumer-purchase-gift-detail-screen.tsx|125|16|V|typescriptreact
+	      return null
+e230480fc8ff18f44a572f728e1efe03|file:///Users/louis/.config/nvim/init.vim|126|1|V|vim
+	colorscheme spacegray
+	
+	if (has("termguicolors"))
+	  hi LineNr ctermbg=NONE guibg=NONE guifg=#5eacd3
+	  hi VertSplit guifg=#5eacd3 guibg=NONE ctermbg=NONE
+	  hi SignColumn ctermbg=NONE guibg=NONE
+	endif
+	
+	" ==================================================== Highlight
+	hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+	hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
+	hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
+	hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
+	hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+	hi Normal guibg=NONE
+	hi EndBuffer guibg=NONE
+	hi FloatermBorder guifg=#55E579
+	hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+	hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+	hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
+	hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
+	hi CocExplorerFileDirectoryExpanded guifg=#C3526E
+	hi CocExplorerFileDirectory guifg=#61CE91
+	hi CocExplorerNormalFloat guibg=#0b0c0e
+72f929d56b2b8173b4c6fcf9fb50ef43|file:///Users/louis/.config/nvim/init.vim|127|13|v|vim
+	spacegray
+492948f3718df09b38b2f8adb475565b|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
+	Plug 'liuchengxu/space-vim-dark'
+	Plug 'dracula/vim', { 'name': 'dracula' }
+843539834f1a329ce2b49b64a9e25f0f|file:///Users/louis/.config/nvim/init.vim|125|13|v|vim
+	dracula
+1aa3ca988cd6f94ff9fd9b758f69aa8b|file:///Users/louis/.config/nvim/init.vim|127|1|V|vim
+	if (has("termguicolors"))
+	  hi LineNr ctermbg=NONE guibg=NONE guifg=#5eacd3
+	  hi VertSplit guifg=#5eacd3 guibg=NONE ctermbg=NONE
+	  hi SignColumn ctermbg=NONE guibg=NONE
+	endif
+	
+	" ==================================================== Highlight
+	hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+	hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
+	hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
+	hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
+	hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+	hi Normal guibg=NONE
+	hi EndBuffer guibg=NONE
+	hi FloatermBorder guifg=#55E579
+	hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+	hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+	hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
+	hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
+	hi CocExplorerFileDirectoryExpanded guifg=#C3526E
+	hi CocExplorerFileDirectory guifg=#61CE91
+	hi CocExplorerNormalFloat guibg=#0b0c0e
+eca0b9ccf1601b4884e941e669d64ecf|file:///Users/louis/.config/nvim/init.vim|128|44|v|vim
+	5eacd3
+eb920d8689aff8aadb106a07dd747ee0|file:///Users/louis/.config/nvim/init.vim|128|44|v|vim
+	2E9F4B
+69bd9b64a34f08dae18e03166d496fc4|file:///Users/louis/.config/nvim/init.vim|129|22|v|vim
+	#5eacd3
+0f3d8dc2fc444dc7716b04ff4dc33b25|file:///Users/louis/.config/nvim/init.vim|125|13|v|vim
+	deep-space
+9b890b0bd9fb8fab85f3712357ebceac|file:///Users/louis/.config/nvim/init.vim|125|13|v|vim
+	challenger_deep
+21717a24c4907aee9191d29125c7d5e9|file:///Users/louis/.config/nvim/plugged/Spacegray.vim/colors/spacegray.vim|53|54|v|vim
+	#111314
+dcddb75469b4b4875094e14561e573d8|file:///Users/louis/.config/alacritty/alacritty.yml|177|21|v|yaml
+	00000
+4a7d1ed414474e4033ac29ccb8653d9b|file:///Users/louis/.spacebarrc|5|53|v|sh
+	0000
+eed8cdc400dfd4ec85dff70a170066b7|file:///Users/louis/.spacebarrc|6|53|v|sh
+	ffffff
+9072ee04f0175e01272a2f33e2f0c92e|file:///Users/louis/.spacebarrc|1|1|V|sh
+	#!/usr/bin/env sh
+	
+	spacebar -m config status_bar_text_font         "Helvetica Neue:Bold:13.0"
+	spacebar -m config status_bar_icon_font         "Font Awesome 5 Free:Regular:13.0"
+	spacebar -m config status_bar_background_color  0xff111314
+	spacebar -m config status_bar_foreground_color  0xff2E9F4B
+	spacebar -m config power_icon_color   0xffcd950c
+	spacebar -m config battery_icon_color 0xffd75f5f
+	spacebar -m config dnd_icon_color     0xffa8a8a8
+	spacebar -m config status_bar_space_icon_strip  " Code" " Debug" "  Deploy" " Social" " Browser" " Settings"    
+	spacebar -m config status_bar_power_icon_strip   
+	spacebar -m config status_bar_space_icon        
+	spacebar -m config status_bar_clock_icon        
+	spacebar -m config status_bar_clock_format      "%d/%m/%y %R"
+	
+	echo "spacebar configuration loaded.."
+9fae612de58d892a549c4acdf889a56a|file:///Users/louis/.config/spacebar/.spacebarrc|1|1|V|sh
+	#!/usr/bin/env sh
+	
+	spacebar -m config status_bar_text_font         "helvetica neue:bold:12.0"
+	spacebar -m config status_bar_icon_font         "font awesome 5 free:regular:12.0"
+	spacebar -m config status_bar_background_color  0xff3e81be
+	spacebar -m config status_bar_foreground_color  0xffffffff
+	spacebar -m config power_icon_color   0xffcd950c
+	spacebar -m config battery_icon_color 0xffd75f5f
+	spacebar -m config dnd_icon_color     0xffa8a8a8
+	spacebar -m config status_bar_space_icon_strip  " code" " staging" " social" " browser" " chill"    
+	spacebar -m config status_bar_power_icon_strip   
+	spacebar -m config status_bar_space_icon        
+	spacebar -m config status_bar_clock_icon        
+	spacebar -m config status_bar_clock_format      "%d/%m/%y %r"
+	
+	echo "spacebar configuration loaded.."

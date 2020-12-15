@@ -11,7 +11,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'ajh17/Spacegray.vim'
-Plug 'liuchengxu/space-vim-dark'
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -126,8 +125,8 @@ syntax enable
 colorscheme spacegray
 
 if (has("termguicolors"))
-  hi LineNr ctermbg=NONE guibg=NONE guifg=#5eacd3
-  hi VertSplit guifg=#5eacd3 guibg=NONE ctermbg=NONE
+  hi LineNr ctermbg=NONE guibg=NONE guifg=#2E9F4B
+  hi VertSplit guifg=#2E9F4B guibg=NONE ctermbg=NONE
   hi SignColumn ctermbg=NONE guibg=NONE
 endif
 
