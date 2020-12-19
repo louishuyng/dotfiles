@@ -20,7 +20,25 @@ plugins=(
 
 autoload -U compinit && compinit
 
-ZSH_THEME="daivasmara"
+ZSH_THEME="spaceship"
+SPACESHIP_PROMPT_ADD_NEWLINE="true"
+SPACESHIP_CHAR_PREFIX='\ufbdf '
+SPACESHIP_CHAR_PREFIX_COLOR='yellow'
+SPACESHIP_CHAR_SUFFIX=(" ")
+SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
+SPACESHIP_CHAR_SYMBOL='~'
+SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
+SPACESHIP_VENV_COLOR="magenta"
+SPACESHIP_VENV_PREFIX="("
+SPACESHIP_VENV_SUFFIX=")"
+SPACESHIP_VENV_SYMBOL='\uf985'
+SPACESHIP_USER_SHOW="true"
+SPACESHIP_DOCKER_SYMBOL='\ue7b0'
+SPACESHIP_DOCKER_VERBOSE='false'
+SPACESHIP_BATTERY_SHOW='always'
+SPACESHIP_BATTERY_SYMBOL_DISCHARGING='\uf57d'
+SPACESHIP_BATTERY_SYMBOL_FULL='\uf583'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -32,6 +50,7 @@ GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 ## ALIAS
+alias cat='bat'
 alias fuck="git"
 alias dcpd="docker-compose down"
 alias dcpu="docker-compose up"
@@ -170,43 +189,7 @@ export ANDROID_HOME=/Users/ziik/Library/Android/sdk
 alias vim="stty stop '' -ixoff ; vim"
 # `Frozing' tty, so after any command terminal settings will be restored
 ttyctl -f
-SPACESHIP_PROMPT_ORDER=(
-  time          # Time stamps section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  package       # Package version
-  node          # Node.js section
-  ruby          # Ruby section
-  elixir        # Elixir section
-  xcode         # Xcode section
-  swift         # Swift section
-  golang        # Go section
-  php           # PHP section
-  rust          # Rust section
-  haskell       # Haskell Stack section
-  julia         # Julia section
-  docker        # Docker section
-  aws           # Amazon Web Services section
-  venv          # virtualenv section
-  conda         # conda virtualenv section
-  pyenv         # Pyenv section
-  dotnet        # .NET section
-  ember         # Ember.js section
-  kubecontext   # Kubectl context section
-  terraform     # Terraform workspace section
-  exec_time     # Execution time
-  line_sep      # Line break
-  battery       # Battery level and status
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
 
-SPACESHIP_DOCKER_SHOW=true
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -228,5 +211,19 @@ if [ -f '/Users/louis/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/louis/goo
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/louis/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/louis/google-cloud-sdk/completion.zsh.inc'; fi
 
-sudo yabai --load-sa yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+# KUBECONTEXT
+# Show current context in kubectl.
+spaceship_kubecontext() {
+  [[ $SPACESHIP_KUBECONTEXT_SHOW == false ]] && return
+
+  # Show KUBECONTEXT status only for folders with .kube and file config inside.
+  [[ -f .kube/config ]] || return
+
+  local kube_context=$(awk -F' *: *' '$1 == "current-context" {print $2}' ~/.kube/config)
+
+  _prompt_section \
+    "$SPACESHIP_KUBECONTEXT_COLOR" \
+    "$SPACESHIP_KUBECONTEXT_PREFIX" \
+    "${SPACESHIP_KUBECONTEXT_SYMBOL}${kube_context}" \
+    "$SPACESHIP_KUBECONTEXT_SUFFIX"
+}
