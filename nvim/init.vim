@@ -5,35 +5,19 @@ let mapleader=','
 call plug#begin(expand('~/.config/nvim/plugged'))
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
 Plug 'w0rp/ale'
-Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'ajh17/Spacegray.vim'
-Plug 'rakr/vim-one'
 
-Plug 'Yggdroot/indentLine'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-""""""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
+""""""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
-Plug 'tpope/vim-commentary'
-Plug 'joequery/stupid-easymotion'
-Plug 'easymotion/vim-easymotion'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'yuki-ycino/fzf-preview.vim'
-Plug 'scrooloose/nerdcommenter'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-""""""""""""""""""""""""""LS-SERVER""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-""""""""""""""""""""""""""SOURCE MANAGEMENT"""""""""""""""""""""""""" Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 "Config Fugitive
@@ -43,16 +27,31 @@ endif
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+""""""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
+Plug 'tpope/vim-commentary'
+Plug 'joequery/stupid-easymotion'
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdcommenter'
+
+""""""""""""""""""""""""""LS-SERVER""""""""""""""""""""""""""
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+""""""""""""""""""""""""""PYTHON""""""""""""""""""""""""""
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+let python_highlight_all=1
 
 """"""""""""""""""""""""""OTHERS""""""""""""""""""""""""""
 Plug 'cohama/lexima.vim'
 Plug 'wincent/scalpel'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
-Plug 'Yggdroot/indentLine'
 Plug 'kamykn/spelunker.vim'
 Plug 'majutsushi/tagbar'
 Plug 'benmills/vimux' "Vi + Tmux
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 call plug#end()
 
@@ -104,7 +103,7 @@ set encoding=utf-8
 set lazyredraw
 set ttimeout
 set ttimeoutlen=2
-set relativenumber
+set number relativenumber
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -126,8 +125,8 @@ syntax enable
 colorscheme spacegray
 
 if (has("termguicolors"))
-  hi LineNr ctermbg=NONE guibg=NONE guifg=#2E9F4B
-  hi VertSplit guifg=#2E9F4B guibg=NONE ctermbg=NONE
+  hi LineNr ctermbg=NONE guibg=NONE
+  hi VertSplit guifg=#79a3b1 guibg=NONE ctermbg=NONE
   hi SignColumn ctermbg=NONE guibg=NONE
 endif
 
@@ -138,6 +137,8 @@ hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
 hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
 hi FloatermBorder guifg=#55E579
+hi Normal guibg=NONE
+hi EndBuffer guibg=NONE
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
 hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
@@ -159,11 +160,13 @@ set smarttab
 set softtabstop=2
 set tabstop=2
 set expandtab ts=2 sw=2 ai
+set textwidth=70
 
 autocmd Filetype php setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype kotlin setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype java setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype xml setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
 
 autocmd BufWritePre * %s/\s\+$//e
 
@@ -206,3 +209,6 @@ set incsearch       " Find the next match as we type the search
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 set hlsearch
+
+" ==================================================== Clipboard
+set clipboard=unnamed
