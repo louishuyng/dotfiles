@@ -36,9 +36,7 @@ SPACESHIP_VENV_SYMBOL='\uf985'
 SPACESHIP_USER_SHOW="true"
 SPACESHIP_DOCKER_SYMBOL='\ue7b0'
 SPACESHIP_DOCKER_VERBOSE='false'
-SPACESHIP_BATTERY_SHOW='always'
-SPACESHIP_BATTERY_SYMBOL_DISCHARGING='\uf57d'
-SPACESHIP_BATTERY_SYMBOL_FULL='\uf583'
+SPACESHIP_BATTERY_SHOW='false'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,6 +85,7 @@ alias ra='ranger'
 alias matrix='source ~/.matrix.sh'
 alias letwork='~/.letwork.sh'
 alias rni='rm  -rf node_modules && yarn && npx pod-install'
+alias python='python3'
 
 
 #Wifi
@@ -199,7 +198,6 @@ export PATH=$PATH:$HOME/.pub-cache/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=$PATH:/usr/local/mysql/bin
-alias python=/usr/local/bin/python3.7
 alias pip=/usr/local/bin/pip3
 
 export NVM_DIR="/Users/ziik/.nvm"
