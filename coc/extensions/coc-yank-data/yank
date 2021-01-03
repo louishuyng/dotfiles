@@ -1,708 +1,899 @@
-5d70d4077ff64cc5c6fe1576d4cbc990|file:///Users/louis/.config/nvim/init.vim|47|1|V|vim
-	""""""""""""""""""""""""""SOURCE MANAGEMENT"""""""""""""""""""""""""" Plug 'w0rp/ale'
-27719616ef451248c657af8133dded6c|file:///Users/louis/.config/nvim/init.vim|44|1|V|vim
-	""""""""""""""""""""""""""LS-SERVER""""""""""""""""""""""""""
-9b2a5909da8c579940c69d4a460b6521|file:///Users/louis/.config/nvim/init.vim|47|27|v|vim
-	LS-SERVER
-f2b1cc3cf32231f8b5e1fb2ac5513115|file:///Users/louis/.config/nvim/init.vim|50|1|V|vim
-	let python_highlight_all=1
-47f655d9fa527c3eb41684e76090cfc2|file:///Users/louis/.config/nvim/init.vim|170|1|V|vim
-	set clipboard=unnamed
-06cb570f09c5d2af4ba6de85eb7214a5|file:///Users/louis/.config/nvim/init.vim|213|1|V|vim
-	" ==================================================== Search
-13348442cc6a27032d2b4aa28b75a5d3|file:///Users/louis/.config/nvim/init.vim|219|56|v|vim
-	Search
-a4c1456f8ce0a94a79c462bfad338c39|file:///Users/louis/.spacebarrc|6|53|v|sh
-	20c20e
-eb920d8689aff8aadb106a07dd747ee0|file:///Users/louis/.config/nvim/init.vim|134|44|v|vim
-	2E9F4B
-02aad090ec38d6d7691a347ef6910108|file:///Users/louis/.config/nvim/init.vim|112|1|V|vim
-	set relativenumber
-8606ac74fd2decc1899004c49b226fae|file:///Users/louis/.config/nvim/init.vim|51|27|v|vim
-	OTHERS
-5c482783990effb718a2999233d02580|file:///Users/louis/.config/nvim/init.vim|57|26|V|vim
-	Plug 'Yggdroot/indentLine'
-100d19bec3073a6234e47fdddcd67125|file:///Users/louis/.config/nvim/init.vim|78|1|V|vim
-	source ~/.config/nvim/config/tmux.vim
-96714c9d36de9b638d9efd4e60f38bfe|file:///Users/louis/.config/nvim/init.vim|79|30|v|vim
-	tmux
-f64a581854ed7e03afe6195bcf7af6b6|file:///Users/louis/.config/nvim/init.vim|36|25|v|vim
-	 " required by fugitive to :Gbrowse
-bf4d0a745ea95ec25eae003e7095f5fb|file:///Users/louis/.config/nvim/init.vim|53|1|V|vim
-	Plug 'nathanaelkane/vim-indent-guides'
-f2c23e5ce1dc40601857b8d45c2bbc76|file:///Users/louis/.config/nvim/init.vim|17|1|V|vim
-	Plug 'Yggdroot/indentLine'
-	let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-2a513f8f5a8313533cd59b3a4c663f33|file:///Users/louis/.config/nvim/init.vim|51|1|V|vim
-	Plug 'thiagoalessio/rainbow_levels.vim'
-6f30a87d28e54d72e9d3c593474125a0|file:///Users/louis/.config/nvim/init.vim|15|1|V|vim
-	Plug 'rakr/vim-one'
-66b43dcf022a459b2d3f71dea7568c72|file:///Users/louis/.config/nvim/init.vim|12|7|V|vim
-	Plug 'morhetz/gruvbox'
-bce53ecdae5463c179534c1ae9c92098|file:///Users/louis/.config/nvim/init.vim|9|15|V|vim
-	Plug 'christianchiarulli/nvcode-color-schemes.vim'
-66f11bd9b6cbedb22a44475d772d85e8|file:///Users/louis/.config/nvim/init.vim|76|1|V|vim
-	source ~/.config/nvim/config/indent-guides.vim
-10127d0e5585917c351372ed39539d50|file:///Users/louis/.config/nvim/init.vim|53|1|V|vim
-	Plug 'thiagoalessio/rainbow_levels.vim'
-	au FileType javascript,python,php,xml,yaml :RainbowLevelsOn
-256c26901e663ce587dda081efcd8e6c|file:///Users/louis/.config/nvim/init.vim|127|44|v|vim
-	20c20e
-	
-ea58dffea99b4acaf09b0ce3e4b525ef|file:///Users/louis/.config/nvim/init.vim|127|44|v|vim
-	AEB5C2
-57b433a032e2cb6e9d039fe102742e6f|file:///Users/louis/.config/nvim/init.vim|127|44|v|vim
-	55FFFF
-e7cc30d4e7cd2b341a326f565f578e3b|file:///Users/louis/.config/nvim/init.vim|128|22|v|vim
-	#55FFFF
-6d4bd8a24c0157a1ac22d4bd0b2cced5|file:///Users/louis/.config/nvim/init.vim|128|22|v|vim
-	#20c20e
-ce59afcadaf97b0bf2300dc3eb0e10c3|file:///Users/louis/.config/nvim/init.vim|128|23|v|vim
-	583d72
-e6dfe52939b870198b15779f90697f04|file:///Users/louis/.config/nvim/init.vim|127|23|v|vim
-	bedcfa
-2bc2f0651a4738cca9cc9f9669e02dec|file:///Users/louis/.config/nvim/init.vim|126|28|V|vim
-	  hi LineNr ctermbg=NONE guibg=NONE guifg=#20c20e
-6003475339dc20a08870436484dc3529|fugitive:/Users/louis/.config/.git//0/nvim/init.vim|127|1|V|vim
-	if (has("termguicolors"))
-	  hi LineNr ctermbg=NONE guibg=NONE guifg=#20c20e
-b5fe36860b08c8ea0d77f18f7fe6906b|file:///Users/louis/.config/nvim/init.vim|128|22|v|vim
-	#79a3b1
-148e79ff651fd27593d283d3716d7b76|file:///Users/louis/.config/nvim/init.vim|50|2|V|vim
-	Plug 'kamykn/spelunker.vim'
-	Plug 'majutsushi/tagbar'
-d379f16b15cb1c102b3026f1e08a537a|file:///Users/louis/.config/nvim/init.vim|52|2|V|vim
-	Plug 'benmills/vimux' "Vi + Tmux
-	Plug 'Yggdroot/indentLine'
-ca50000a180a293de0b27acb67a695cb|file:///Users/louis/.config/nvim/init.vim|129|21|v|vim
-	grey
-be72fd8ffa23f086840970fad599288f|file:///Users/louis/.config/nvim/init.vim|129|18|V|vim
-	  hi Folded ctermbg=NONE
-51ce57eae04208f57edaeeb33b998110|file:///Users/louis/.config/nvim/init.vim|128|18|V|vim
-	  set foldcolumn=1
-4e2210c0e51832cd9d6dc8728ef2f458|file:///Users/louis/.config/nvim/init.vim|128|30|V|vim
-	  highlight Folded ctermbg=red
-7e2a4fd35da68dd8e8453dcba5dd60f2|file:///Users/louis/.config/nvim/init.vim|106|5|v|vim
-	relativenumber
-31a91a5818373619072af28916d3ff25|file:///Users/louis/.config/nvim/init.vim|128|1|V|vim
-	  hi LineNr ctermbg=NONE guibg=NONE guifg=NONE
-4dd429acbc6ba3433af7f9bf5b4791c9|file:///Users/louis/.config/nvim/init.vim|128|3|v|vim
-	highlight
-227f6261e7321054cc8b68d65db6306f|file:///Users/louis/.config/nvim/init.vim|128|42|v|vim
-	DarkGrey
-31e10ee165b9e314cb7907bba6612307|file:///Users/louis/.config/nvim/init.vim|129|1|V|vim
-	  set foldcolumn=1
-	  highlight Folded ctermbg=red
-b50339a10e1de285ac99d4c3990b8693|file:///Users/louis/.config/nvim/init.vim|128|43|v|vim
-	NONE
-f91b14197bb9b9ed7300eacd79b60046|file:///Users/louis/.config/nvim/init.vim|128|1|V|vim
-	  hi LineNr ctermbg=NONE guibg=NONE guifg=#0000
-b1bc248a7ff2b2e95569f56de68615df|file:///Users/louis/Dev/Practice/Python/test.py|2|5|v|python
+6c563dfab512f775f8710a8be449fb41|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/request-payout-screen/request-payout-screen.tsx|62|32|v|typescriptreact
+	 : formatterCurrency(amount as number)
+544db959b315a4718629a11d0c6387c4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/request-payout-screen/request-payout-screen.tsx|77|28|v|typescriptreact
+	currentBalance
+247617253e45e9669037616d7a89abb5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|242|54|V|typescriptreact
+	                      let amount = baseText.replace(/,/g, ".")
+a25d3348a6871c59ca0ff848c385b3c4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|242|45|v|typescriptreact
+	replace(/,/g, ".")
+f4d1b9d67c59e969edb6538d70d00e3c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-rating-screen/booking-rating-screen.tsx|9|10|v|typescriptreact
+	TextInputMask
+8c7d3534622e9bb94adb7f9a6b094b4e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|263|9|v|typescriptreact
+	renderRating
+f3de78f963ef515dcc4371c86e04397a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|321|22|v|typescriptreact
+	_goBack
+fc69e556fbf20bb6bf3f19a254df841d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|85|56|v|typescriptreact
+	goBack
+8aa930762deb0f140e2514dfc17d3ba3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|85|45|v|typescriptreact
+	navigation.navigate(NavigationRoutes.Upcoming
+b7c13915dd05a3a8878238a3944b607f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|86|1|v|typescriptreact
+	navigation.navigate(NavigationRoutes.Upcoming)
+f1e842c839b428d4f7a6887b77fb86db|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|899|1|V|json
+	    "yourRequestAcceptedBy": "Your request ID {{id}} has been accepted by {{name}}. Please process the payment",
+	    "yourRequestHasBeenAccepted": "Your request ID {{id}} has been accepted",
+	    "yourRequestHasBeenCompleted": "Your request ID {{id}} has been completed",
+	    "yourRequestHasBeenRejected": "Your request ID {{id}} has been rejected",
+	    "yourRequestHasBeenCancelled": "Your request ID {{id}} has been cancelled",
+	    "yourRequestIdHasBeenPaidSuccessfully": "Your request ID {{id}} has been paid successfully.",
+edf68f3567af32f44da8edc426db36a4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|905|6|^v|json
+	your
+	your
+	your
+	your
+	your
+	your
+0375c5b0ee7565cf55257555c0d7dadf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|905|27|v|json
+	Your 
+62cc0b4ebb0b57b40778179234246c38|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-history-special-request-detail-screen/talent-history-special-request-detail-screen.tsx|160|51|v|typescriptreact
+	your
+da7f85971e7bb2d5fbc333a698a46264|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-history-special-request-detail-screen/talent-history-special-request-detail-screen.tsx|162|51|v|typescriptreact
+	yourR
+0df4195e2085ea69dea76501c017a585|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-history-special-request-detail-screen/talent-history-special-request-detail-screen.tsx|140|1|V|typescriptreact
+	                <Icon
+	                  style={{ position: "absolute", right: spacing[1], bottom: spacing[0] }}
+	                  name={
+	                    mappingSpecialRequestStatus[booking?.status || BOOKING_STATUS.COMPLETED]?.icon
+	                  }
+	                />
+b45cffe084dd3d20d928bee85e7b0f21|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/NotificationModel.ts|20|44|v|typescript
+	string
+b1bc248a7ff2b2e95569f56de68615df|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/NotificationModel.ts|20|44|v|typescript
 	number
-777cadc280bb23ebea268ded98338c39|file:///Users/louis/Dev/Practice/Python/test.py|3|26|v|python
-	louis
-5fa844999cf65a1e23cce1a7ec930ad7|file:///Users/louis/Dev/Practice/Python/test.py|4|1|V|python
-	    print(f'hello world {name}')
-edde2a7553bed78bc707179be40bd393|file:///Users/louis/Dev/Practice/Python/test.py|1|1|V|python
-	from math import pi
-b05b247b38ef4bf6a7c40c37a1e511f1|file:///Users/louis/Dev/Practice/Python/test.py|2|17|V|python
-	from math import 
-f44ab5f5a910a28e75156af9eb8b05d2|file:///Users/louis/Dev/Practice/Python/test.py|16|1|V|python
-	hello_world()
-	print_pi()
-a470a23326b3831dd974dfc1116119c2|file:///Users/louis/Dev/Practice/Python/test.py|14|8|v|python
-	Utils
-590f53e8699817c6fa498cc11a4cbe63|file:///Users/louis/Dev/Practice/Python/test.py|7|21|v|python
-	self
-4e28dd9566d8e800079497c39ec95b51|file:///Users/louis/Dev/Practice/Python/test.py|5|24|v|python
-	-> None:
-f5e3c6c878b21742a8a25da8443e0c51|file:///Users/louis/Dev/Practice/Python/test.py|12|1|V|python
-	    def print_pi():
-	        print(pi)
-35f781a4ee639681eac0f48b27f76a1b|file:///Users/louis/Dev/Practice/Python/test.py|9|19|V|python
-	        name = 'louis'
-99b1ff8f11781541f7f89f9bd41c4a17|file:///Users/louis/Dev/Practice/Python/test.py|5|9|v|python
-	hello_world
-b71b4a01947eec00654c8584efd6ccf5|file:///Users/louis/Dev/Practice/Python/test.py|10|1|V|python
-	util.say_hello()
-5ffa18b5a23fb85d6dcc11e9f7dfd2b1|file:///Users/louis/Dev/Practice/Python/test.py|8|1|V|python
-	util = Utils('louis')
-	
-	util.say_hello()
-ad62c4e6ea24a67408b1a853dde1f606|file:///Users/louis/Dev/Practice/Python/modules/util.py|8|14|V|python
-	util = Utils()
-23e8a4b4f7cc1898ef12b4e6e48852bb|file:///Users/louis/Dev/Practice/Python/modules/util.py|1|7|v|python
-	Util
-5041ebc388fa4ece43167a00151a6401|file:///Users/louis/Dev/Practice/Python/main.py|1|8|v|python
-	modules/util
-da67c950b73f0e2f1ef5ec06b1a3f8fc|file:///Users/louis/Dev/Practice/Python/main.py|1|9|V|python
-	import mo
-	
-31a4429c948c08a2a89736b1374da191|file:///Users/louis/Dev/Practice/Python/main.py|3|13|v|python
-	PrintTool
-05c7e24700502a079cdd88012b5a76d3|file:///Users/louis/Dev/Practice/Python/main.py|1|16|v|python
-	util
-3a62bc24723c0b44cf2eeb29c26d3788|file:///Users/louis/Dev/Practice/Python/main.py|1|8|V|python
-	import modules.util as Util
-39cb9295984ec03ede3474da15198c99|file:///Users/louis/Dev/Practice/Python/modules/util.py|6|15|v|python
-	f'hello world {self.name}'
-9f6436c3c534498712d286268221b696|file:///Users/louis/Dev/Practice/Python/modules/util.py|6|30|v|python
-	self.name
-787369dbe34d6dcf0e0d8f0a6272c16b|file:///Users/louis/Dev/Practice/Python/modules/util.py|6|16|v|python
-	hello world {self}
-67524210524b62ad06b8fc7c6dc7135e|file:///Users/louis/Dev/Practice/Python/main.py|3|18|v|python
-	Louis
-14809b14c932e7e8a17275b007f19117|file:///Users/louis/Dev/Practice/Python/modules/util.py|6|11|V|python
-	        name = self.name
-	        print(f"hello world {self.name}")
-d421fd439cd14456726791338b3b397e|file:///Users/louis/Dev/Practice/Python/main.py|1|31|v|python
-	Tool
-026f22ce3439945a6e4f345a73aac3c5|file:///Users/louis/Dev/Practice/Python/modules/util.py|5|1|V|python
-	    def say_hello(self):
-	        print(f"hello world {self.name}")
-6b1764ec4cf3dc96dfe48940306de630|file:///Users/louis/Dev/Practice/Python/modules/util.py|3|1|V|python
-	today = datetime.datetime.today() 
-	print(f"{today:%B %d, %Y}") 
-a0e184de422e6304c7817dd44fef7b90|file:///Users/louis/Dev/Practice/Python/modules/util.py|8|1|V|python
-	        print(f'hello world {self.name}')
-ed0e950f4d2c8024c1a36a468c50c553|file:///Users/louis/Dev/Practice/Python/modules/util.py|7|9|v|python
-	say_hello
-34aa46d8bb8871ef3c050e277e332555|file:///Users/louis/Dev/Practice/Python/modules/util.py|9|15|v|python
-	f"{today:%B %d, %Y}"
-82df09050fa4b13f348a9a40a06af75c|file:///Users/louis/Dev/Practice/Python/main.py|5|11|V|python
-	print(util.name)
-c5e7dfaf771d423ecf59b008369021e8|file:///Users/louis/Dev/Practice/Python/modules/util.py|9|15|v|python
-	today
-07c73021a68b1918f4240d11157092cb|file:///Users/louis/Dev/Practice/Python/modules/util.py|9|1|V|python
-	        print()
-11dd9b71354596b0fe14c2f228ee1095|file:///Users/louis/Dev/Practice/Python/modules/util.py|9|1|V|python
-	        p
-	        p        print()
-e9b9094fa4753ab25879d80909b5d1fb|file:///Users/louis/Dev/Practice/Python/modules/util.py|10|1|V|python
-	rint()
-	kk
-998909f16b5dd4371ea132d6189c4856|file:///Users/louis/Dev/Practice/Python/modules/util.py|8|38|V|python
-	        today = datetime.datetime.today()
-2ff8eaac31f16df51dfd20cc1461df4c|file:///Users/louis/Dev/Practice/Python/modules/util.py|1|15|V|python
-	import datetime
-0e8bfebb61ad9a744c9a445a8c5df5f6|file:///Users/louis/Dev/Projects/komi/komi-talent/src/routes/index.tsx|64|7|V|typescriptreact
-	NavLink
-09d8b1958dfc3825c4a2933561d70dc2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|22|v|typescriptreact
-	sLeft
-716f6b30598ba30945d84485e61c1027|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|22|v|typescriptreact
-	close
-f5faf9d3fb978ce4cf95de5fdb51b27c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|22|v|typescriptreact
-	close-circle-outline
-3175afdd043c9a416edc83e09f698705|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|22|v|typescriptreact
-	close-grey
-9b6ddeba5b33e577c07c35d8505c6072|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|28|v|typescriptreact
-	circle
-cd0cf4b0740893c7c8b0ee89d535ba3e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|22|v|typescriptreact
-	close-
-83049f1208851a53e901d6d3b9354cce|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|22|v|typescriptreact
-	close-inline
-7734780e8a40ba6d5021c1dfa3b74098|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|22|v|typescriptreact
-	close-circle-outline-dark
-0ca1cfb9d67a17495cebd0bef4733f62|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|22|v|typescriptreact
-	close-light
-71448a6a237b5a78912c064c152a72ec|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/icon-svg/icons.ts|20|1|V|typescript
-	  "close-circle": require("assets/icons/close-circle.svg").default,
-95e4fcd6b491a9a0eefe11c8a241128f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|104|27|v|typescriptreact
-	styep
-e6e8ce825fb7671e5f1fc17b893579fb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|104|1|V|typescriptreact
-	          rightComponent: step !== 0 && <Text tx="common.save" preset="semiBoldM" />,
-4ecb8bbdaaa841263fa2e8e764464a57|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|1|V|typescriptreact
-	          leftIcon: step !== 0 ? "close-no-out-line" : "sLeft",
-28db7e9d6cc11fd6cd89913546d4891b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|103|1|V|typescriptreact
-	          leftIcon: "close-no-out-line",
-f17c9c2b862d96461eb7253961317763|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|94|1|V|typescriptreact
-	    const _goBack = React.useCallback(() => {
-	      navigation.goBack()
-	    }, [])
-	
-7f185f5ea3558e21efc83e840f352fa5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|70|1|V|typescriptreact
-	        Alert.alert(data?.alert?.title || "", data?.alert?.subTitle, [
-	          {
-	            text: data?.alert?.button1 || "",
-	            onPress: () => {
-	              webview?.current &&
-	                webview?.current?.injectJavaScript(
-	                  `window.location="${CONFIG.TALENT_APP_URL}/${WebViewRoutes.EditExperienceContent}/${data?.alert?.data?.experienceType}/${data?.alert?.data?.experienceId}?token=${authStore.accessToken}&step=3"`,
-	                )
-	            },
-	          },
-	          {
-	            text: data?.alert?.button2 || "",
-	            onPress: () => {
-	              notifications.show({
-	                type: "success",
-	                text1: translate("webviewScreen.experience.saveSuccessfully"),
-	              })
-	              route.params.callback(navigation, contentTypeWebView || contentType)
-	            },
-	          },
-	        ])
-4a238e9f11141d202f5b0a2dfa3e5f65|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|99|1|V|typescriptreact
-	      navigation.goBack()
-06a78715d47006331452dd17afd2920f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|103|1|V|typescriptreact
-	            webview?.current &&
-	              webview?.current?.injectJavaScript(
-	                `window.location="${CONFIG.TALENT_APP_URL}/${WebViewRoutes.EditExperienceContent}/${data?.alert?.data?.experienceType}/${data?.alert?.data?.experienceId}?token=${authStore.accessToken}&step=3"`,
-	              )
-	          },
-4429326cdd894e189f03e2bff6078751|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|107|1|V|typescriptreact
-	            notifications.show({
-	              type: "success",
-	              text1: translate("webviewScreen.experience.saveSuccessfully"),
-	            })
-	            route.params.callback(navigation, contentTypeWebView || contentType)
-202ea42a055038a54f54dfabf456c09f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|106|20|v|typescriptreact
-	() => {
-8e66ae7aff2de9e8bf380c2f769c11e3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|99|19|v|typescriptreact
-	data?.alert?.title || "",
-747bd279290078851a0a940281d44ed8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|99|20|v|typescriptreact
-	 data?.alert?.subTitle
-879a92850809d731ca9f4e4144fa6582|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|101|17|v|typescriptreact
-	data?.alert?.button1 || ""
-e225df5c5246a5dcd45b9c3c5b62ab81|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|105|17|v|typescriptreact
-	data?.alert?.button2 |
-d6ef40945ac8ead63de1a4ed1112bd8b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|697|5|V|json
-	    ""
-ca10439b2bccbb42f7ed404a633852ff|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|697|1|V|json
-	    "areYouSureYouWantToQuit": "Are you sure you want to quit",
-dccc5984589f688575016c5aa742d8b5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|698|6|v|json
-	areYouSureYouWantToQuit
-32dbd7a14ace41b0d9ba93f64b7df2a3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|698|34|v|json
-	Are you sure you want to quit
-212b55020536d1e01658ce0d54d030b3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|699|1|V|json
-	    "cancel": "Cancel",
-10aec35353f9c4096a71c38654c3d402|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|700|6|v|json
-	cancel
-ea4788705e6873b424c65e91c2846b19|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|700|14|v|json
-	Cancel
-fc46e26a907870744758b76166150f62|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|99|19|v|typescriptreact
-	translate
-8526855ece2171a8d41be6383db0b941|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|104|1|V|typescriptreact
-	            text: translate("webviewScreen.cancel"),
-dee0c5ede68320dc99d087425499816b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|108|1|V|typescriptreact
-	            text: "",
-5bb6048861e8c7cab297ffb2d28888c1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|98|1|V|typescriptreact
-	    const _save = React.useCallback(() => {
-	      Alert.alert(
-	        translate("webviewScreen.areYouSureYouWantToQuit"),
-	        translate("webviewScreen.allInformationWillBeLost"),
-	        [
-	          {
-	            text: translate("webviewScreen.cancel"),
-	            onPress: null,
-	          },
-	          {
-	            text: translate("webviewScreen.quit"),
-	            onPress: null,
-	          },
-	        ],
-	      )
-	    }, [])
-bc5cee5bc5d2e33882bad07c6c6e3377|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|119|1|V|typescriptreact
-	          onLeftPress: step !== 0 ? _goBack : _save,
-83326af7a254c4248b34b2fd35a361b4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|121|1|V|typescriptreact
-	          onLeftPress: _goBack,
-ddc991f58b95a3984cc8f81c26060904|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|119|45|v|typescriptreact
-	_save
-b20803a6e10dd985116c342ab8b1d0c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|119|1|V|typescriptreact
-	          onLeftPress: step !== 0 ? _save : _goBack,
-564c29f0585817479869c37d03c4191e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|121|72|v|typescriptreact
-	semiBoldM
-470f8f0dfa13fc6d4f4341cb0720db1b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|121|1|V|typescriptreact
-	          rightComponent: step !== 0 && <Text tx="common.save" preset="mediumM" />,
-a3317c771758c5a5c97f0262734e0a85|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|246|5|v|typescriptreact
-	handleSave
-a14fa2166ed698f3d04061f57e5ab9b9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|180|42|v|typescriptreact
+78a5eb43deef9a7b5b9ce157b9d52ac4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-rating-screen/booking-rating-screen.tsx|267|34|v|typescriptreact
+	price
+29ac026d29c538244f7b8a7505213750|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-rating-screen/booking-rating-screen.tsx|43|7|v|typescriptreact
+	TIPS
+8f68d128f5fb5b319e827bea147add42|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-rating-screen/booking-rating-screen.tsx|127|21|v|typescriptreact
+	renderTip
+c845f980236e5003bf1456100a526eea|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|111|18|v|typescriptreact
+	isConverted
+23b24202973b7f37d8ec29cc9e245137|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-rating-screen/booking-rating-screen.tsx|115|35|V|typescriptreact
+	                booking.experience.type !== CONTENT_TYPE.oneToOne,
+284ea52448f824ef121bd4920e036b64|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-rating-screen/booking-rating-screen.tsx|73|30|v|typescriptreact
+	exchangeRate
+69f4c5323778d9d6383109d492070656|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-rating-screen/booking-rating-screen.tsx|40|10|v|typescriptreact
+	CONTENT_TYPE
+81445a9d97686e28250dd67e2464628d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-rating-screen/booking-rating-screen.tsx|40|10|V|typescriptreact
+	import { CONTENT_TYPE } from "../../constants"
+15fae926867cf70b419f890e073f5549|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|124|65|v|typescriptreact
+	abbreviateNumber
+525f9f2759be425911e86278d2c748c7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|49|10|v|typescriptreact
+	useRemoteConfigContext
+453081b1d3a61346e84a8a520a3daf76|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|68|11|v|typescriptreact
+	readValue
+a3e6a4d9aaa8fb3b0fe23a35ca4370b0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-gift-card-screen/send-gift-card-screen.tsx|475|73|v|typescriptreact
+	amountWrapper
+cf55c2a005e1d37c5bd684e4cea66216|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/auth-store.ts|325|1|V|typescript
+	  .actions((self) => ({
+	    updateConsumerProfile: flow(function* updateConsumerProfile(data: UserType) {
+	      const result = yield self.environment.api.updateConsumerProfile(data)
+	      if (result.kind === "ok") {
+	        self.user = result.user
+	        return result.user
+	      }
+	      if (result.kind === "bad-request") return "bad-request"
+	      else return false
+	    }),
+	  }))
+6f8b0ed724e6c38f2d11d1b9fa127ae1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/auth-store.ts|365|5|V|typescript
+	      return false
+	    }),
+d9a17c1c9e8ef6866e4dbeef41c741b2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/auth-store.ts|377|22|v|typescript
+	Instance
+927ed6a7e574945f843030efdaffc9d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/experience-screen.tsx|2|36|v|typescriptreact
+	useFocusEffect
+ac3bd97bd844a588aa05ff6955dcdff8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/experience-screen.tsx|86|11|v|typescriptreact
+	tabIndex
+3b0caa265823fd924b8c3f2a9e27c752|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|125|11|v|typescriptreact
+	onMessageRecevied
+99ffd510529842890196c10c3b2ac070|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|34|9|v|typescriptreact
+	getCountNotifications
+f37bd2f66651e7d46f6d38440f2bc5dd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-notifications-screen/components/TalentNotificationList.tsx|27|28|v|typescriptreact
+	notifications
+827288328dabb7ae1d14eca8ff32067e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|700|20|v|typescript
+	mapNotificationAction
+93077be952cd0a4e610469bf4be75fcc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-notifications-screen/talent-notifications-screen.tsx|41|1|V|typescriptreact
+	    {
+	      key: EXPERIENCE_TYPE.EXCLUSIVE_CONTENT,
+	      title: "talentNotificationScreen.onDemandContent",
+	    },
+9cdec173f50cead638c90f9672dfb8ac|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-notifications-screen/talent-notifications-screen.tsx|47|40|v|typescriptreact
+	onDemandContent
+093abf6302ee0e1814081e5459ccdabf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-notifications-screen/talent-notifications-screen.tsx|98|9|v|typescriptreact
+	retrurn
+c995de18301e74ff5edb2523e2d1600c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-notifications-screen/talent-notifications-screen.tsx|96|1|V|typescriptreact
+	        return <TalentNotificationList canFetch={tabIndex === 3} contentType={contentType} />
+3517dae56570c20291d93e0048205919|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-notifications-screen/talent-notifications-screen.tsx|98|1|V|typescriptreact
+	        return <>
+5cd1df18e7e4edaae369ba05d0a3759a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|170|12|v|typescriptreact
+	renderPaymentMethod
+05ddd57fd5601ef3585cb2471e08358d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|121|46|v|typescriptreact
+	MB_5
+e74c6b284e30fab310a944208f8eb436|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|147|97|v|typescriptreact
+	ALIGN_CENTER
+39d1d7e8afa9372916e6736d6ff865bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|188|22|v|typescriptreact
+	goToSuccess
+1ce2cce9913b0caa18bf017a14b0940d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|63|1|V|typescriptreact
+	      const paymentMethodDefault = savedMethods[selectedMethodIndex]
+f3f577058798e7c016de4599c5999073|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|111|1|V|typescriptreact
+	        notifications.show({
+	          type: "error",
+	          text1: error.message,
+	        })
+6d412af61749d23b38c260936a80ea4c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|97|18|v|typescriptreact
+	error.messag
+679348fd6db8ab1e8f9b97a9fc70e120|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|97|18|v|typescriptreact
+	"Error"
+c63ecfd2bf1c652a0960a04572c382f2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|199|34|v|typescriptreact
+	paymentLoading
+a14fa2166ed698f3d04061f57e5ab9b9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|199|23|v|typescriptreact
 	loading
-945d5e233cf7d6240f6b783b36a374ff|file:///Users/louis/.tmux.conf|26|15|v|tmux
-	Left
-92b09c7c48c520c3c55e497875da437c|file:///Users/louis/.tmux.conf|27|15|v|tmux
-	Right
-59a76522a0625f5843d5dd65fb8b53b5|file:///Users/louis/.tmux.conf|26|1|V|tmux
-	bind-key -n S-h  previous-window
-	bind-key -n S-l next-window
-e0cc6c327ec5e10c7856ce36972f54ff|file:///Users/louis/.tmux.conf|26|1|V|tmux
-	bind-key -r S-h swap-window -t -1 \; previous-window
-	bind-key -r S-l swap-window -t +1 \; next-window
-7258489c92cc4e430c9c8051114abcf8|file:///Users/louis/.tmux.conf|25|1|V|tmux
-	# Shift arrow to switch windows
-	bind-key -r < swap-window -t -1 \; previous-window
-	bind-key -r > swap-window -t +1 \; next-window
-e2a74b78a38de7e6061d2fbbf1c0551d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-consumer-live-stream-room/waiting-consumer-live-stream-room.tsx|7|9|v|typescriptreact
-	 color, metrics, MT_5, spacing, MT_2 
-946bf082b728d21812a03d98ae812be1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-consumer-live-stream-room/waiting-consumer-live-stream-room.tsx|7|9|V|typescriptreact
-	import { color, metrics, MT_5, spacing, MT_2 } from "theme"
-	import { rgbColor } from "utils/color"
-	import { getDiffCountDown } from "utils/date"
-	import { Button, Icon, Text } from "components"
-	import { BookingStackParamList } from "navigation/types"
+40a42aa5aed6dbf86ea4c9822e8e321a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-payment-success/special-request-payment-success.tsx|94|24|v|typescriptreact
+	"Als
+98acf23d934a480263174f6bfd911709|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|892|41|v|json
+	 - Waiting for payment
+a6c2099db8f918bd0a7caed020d9454a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|85|31|v|typescript
+	paymentAcceptedA
+3adcfa82c0ebf66d7b48f5127fe888f7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/special-request-purchase-history-card/special-request-purchase-history-card.tsx|60|68|v|typescriptreact
+	APP_MODE
+ae6348e46a18662ad0589c2e6354a296|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/special-request-purchase-history-card/special-request-purchase-history-card.tsx|60|49|v|typescriptreact
+	COMPLE
+e8acbd3758c30438684100945d5dcad4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-history-special-request-detail-screen/talent-history-special-request-detail-screen.tsx|3|10|v|typescriptreact
+	Avatar,
+32036005d1f6ed59803ba3e13c80993e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-history-special-request-detail-screen/talent-history-special-request-detail-screen.tsx|3|10|v|typescriptreact
+	Avatar
+714138c6b786675769d0ca78c2d4b31c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|185|1|V|typescriptreact
+	                  <Text
+	                    tx={mappingSpecialRequestStatus[booking?.status]?.tx}
+	                    style={{
+	                      color:
+	                        booking?.status === BOOKING_STATUS.ACCEPTED
+	                          ? color.themeColor.dark
+	                          : mappingSpecialRequestStatus[booking?.status]?.color,
+	                    }}
+	                  />
+1ba5e6d6c59c2d3c865f051c04f63b72|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|189|1|V|typescriptreact
+	                          booking?.status === BOOKING_STATUS.ACCEPTED
+	                            ? color.themeColor.dark
+	                            : mappingSpecialRequestStatus[booking?.status]?.color,
+f52e51a8caeee9f9a525a45e1ffaf92b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|184|1|V|typescriptreact
+	                  {booking.status === BOOKING_STATUS.ACCEPTED ? (
+	                    <Text
+	                      tx="specialRequestStatus.paymentAccepted"
+	                      style={{
+	                        color: color.themeColor.green,
+	                      }}
+	                    />
+	                  ) : null}
+	                  <Text
+	                    tx={mappingSpecialRequestStatus[booking?.status]?.tx}
+	                    style={{
+	                      color:
+	                        booking?.status === BOOKING_STATUS.ACCEPTED
+	                          ? color.themeColor.dark
+	                          : mappingSpecialRequestStatus[booking?.status]?.color,
+	                    }}
+c1fc7b4583b075069b523bdcb3cfa015|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|184|1|V|typescriptreact
+	                  {booking.status === BOOKING_STATUS.ACCEPTED ? (
+	                    <Text
+	                      tx="specialRequestStatus.paymentAccepted"
+	                      style={{
+	                        color: color.themeColor.green,
+	                      }}
+	                    />
+	                  ) : null}
+	                  <Text
+	                    tx={mappingSpecialRequestStatus[booking?.status]?.tx}
+	                    style={{
+	                      color:
+	                        booking?.status === BOOKING_STATUS.ACCEPTED
+	                          ? color.themeColor.dark
+	                          : mappingSpecialRequestStatus[booking?.status]?.color,
+	                    }}
+	                  />
+1edf830bea159470ff215eef69511b59|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-history-special-request-detail-screen/talent-history-special-request-detail-screen.tsx|211|1|V|typescriptreact
+	                  <Text
+	                    tx={mappingSpecialRequestStatus[booking?.status]?.tx}
+	                    style={{ color: mappingSpecialRequestStatus[booking?.status]?.color }}
+	                  />
+4225c84b6ca7b516bf59b274d7f939ac|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|24|1|V|typescriptreact
+	  MB_2,
+2de819a7e298f72d8d7634f30eff286b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|35|15|V|typescriptreact
+	  ALIGN_CENTER,
+58d41880cde6924b73ddf3343d126fd8|file:///Users/louis/.config/nvim/init.vim|123|6|V|vim
+	set termguicolors
+91505a66787916de0d00b3ba9b0548da|file:///Users/louis/.config/nvim/init.vim|123|6|V|vim
+	syntax enable
+fb429e4746744d8bd2b2eeba7ddebb8a|file:///Users/louis/.config/nvim/init.vim|122|1|V|vim
+	set background=dark
+72ea325b60808cbd6f6c7db11e241d0d|file:///Users/louis/.config/nvim/init.vim|125|1|V|vim
+	colorscheme oceanic_material
+0a10165a48290b54490ab46d5d247d22|file:///Users/louis/.config/nvim/init.vim|133|1|V|vim
+	" ==================================================== Highlight
+	hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+	hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
+	hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
+	hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
+	hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+	hi FloatermBorder guifg=#55E579
+	hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+	hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+	hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
+	hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
+	hi CocExplorerFileDirectoryExpanded guifg=#C3526E
+	hi CocExplorerFileDirectory guifg=#61CE91
+	hi CocExplorerNormalFloat guibg=#0b0c0e
+aa113adaedb5f30f2da703473b5bf544|file:///Users/louis/.config/nvim/init.vim|125|1|V|vim
+	let g:oceanic_material_background='ocean'
+21b58299a812de070cbae518bacad52a|file:///Users/louis/.config/nvim/init.vim|124|1|V|vim
+	" let g:oceanic_material_transparent_background=1
+179488767acf9a017c6694c158b8be44|file:///Users/louis/.config/nvim/init.vim|127|1|V|vim
+	" if (has("termguicolors"))
+	"   hi LineNr ctermbg=NONE guibg=NONE
+	"   hi VertSplit guifg=#79a3b1 guibg=NONE ctermbg=NONE
+	"   hi SignColumn ctermbg=NONE guibg=NONE
+	" endif
+45d20b1d2cc2d52e74b3cbf1750a2e31|file:///Users/louis/.config/nvim/init.vim|122|36|v|vim
+	ocean
+44bf018e6bc7c7588f2bab4d29a06380|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|30|18|v|typescriptreact
+	setClient
+091defb0fcd2f2c1e4f61d4c4ddd34d3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|118|13|v|typescriptreact
+	tokenPair
+33884a368f4fe459d54150a9eb658138|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|31|15|v|typescriptreact
+	setUID
+45365ea5741f0470d6aabd79e3112de3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/video-call-store.ts|12|1|V|typescript
+	  , {
+	    lastCallRoomId: types.maybeNull(types.string),
+	  })
+b02831ad1c45f3d3a7e41de8dd1a0dcd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/video-call-store.ts|46|1|V|typescript
+	  .actions((self) => ({
+	    updateLastCallRoomId: flow(function* (bookingId) {
+	      self.lastCallRoomId = bookingId
+	    }),
+	  }))
+2d3d0127a9c9085d5ea9564bd29c7cb6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|54|36|v|typescriptreact
+	updateLastCallRoomId
+795fa42dde2d97c22f817d2fee00b252|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|162|13|V|typescriptreact
+	      await updateLastCallRoomId(videoBooking?.room?.id)
+729e79e42f7df549fd77f11b721cdea7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-consumer-live-stream-room/waiting-consumer-live-stream-room.tsx|28|45|v|typescriptreact
+	lastCallRoomId
+d5b3c8201623cfab8963735d4b738ad3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-consumer-live-stream-room/waiting-consumer-live-stream-room.tsx|52|1|V|typescriptreact
+	      if (lastCallRoomId === booking?.room?.id) {
+	        navigation.navigate(NavigationRoutes.LiveStreamRoom, {
+	          bookingId: booking?.id,
+	        })
+	      } else {
+e82f3e56d2a6718da3f068e5e6f91343|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-consumer-live-stream-room/waiting-consumer-live-stream-room.tsx|61|7|V|typescriptreact
+	      }
+adddb84cb4b15542e2d0bfa909bc8d3c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/review-special-request-screen/review-special-request-screen.tsx|193|88|v|typescriptreact
+	, backgroundColor: 'red' 
+6b210d22532b21780bb7ee49ea84b16f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|157|19|v|typescriptreact
+	formatSection
+b7ddcd559ba87c4d7c9e9dbf115ded41|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|85|21|v|typescriptreact
+	moment(booking?.createdAt).dayOfYear()
+9229ca79d70f7e6768790795959d68fd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|85|89|v|typescriptreact
+	dayOfYear
+068cbdbc2aa0b7ae2229c47cb28393cf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|85|1|V|typescriptreact
+	        const key = moment(booking?.createdAt).dayOfYear() + moment(booking?.createdAt).year()
+512b403ff3827144068f0f9abb30d1ec|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|85|1|V|typescriptreact
+	          const key = moment(booking?.createdAt).dayOfYear()
+2692706c55893c66b5c338b13de83382|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-gift-history.tsx|103|20|V|typescriptreact
+	          .reverse()
+7d344f59d0dac85819a0cd9817daab48|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|97|23|V|typescriptreact
+	        console.log(sec)
+a9cbe067ef617027caea68fdfafa5af4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|98|20|V|typescriptreact
+	          console.lo
+0e92c64905d379f126eff3993fa04ead|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|97|31|V|typescriptreact
+	        console.log(sectionList)
+0153ae11828e1246096ea7f3bc32ae67|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|84|21|v|typescriptreact
+	sectionList
+041cc81d775405907d194ea3b28bcd04|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|84|28|V|typescriptreact
+	        console.log(bookings)
+4ef976dc922d6e206f3898b9c2c1d9ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|85|40|V|typescriptreact
+	          console.log(booking?.createdAt)
+2f44602c792e8a6c088186f785802567|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|86|23|v|typescriptreact
+	booking?.createdAt
+beee84de4b3ab58f59f282fbd3733c36|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|86|25|V|typescriptreact
+	          console.log(key)
+7ebfebd0bc4915fefa559f35507be124|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|87|32|V|typescriptreact
+	          if (!section[key].push)
+6680dba00f3a88f66f8029a93d71d93c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|87|11|v|typescriptreact
+	const
+55136425fe38f9b5c92e3fdefaad9796|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|103|1|V|typescriptreact
+	        return Object.keys(sectionList).map((key) => {
+	          return sectionList[key]
+	        })
+21af31bf34b017c3022e63ec1a650476|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|98|29|V|typescriptreact
+	        console.log(orderKey)
+dddfc6d2679490bfae9042b71ebdef8b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|84|1|V|typescriptreact
+	        const orderKey = []
+277407714aa302ff5cc25ddcc6746777|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|87|1|V|typescriptreact
+	          if (!orderKey.includes(key)) orderKey.push(key)
+dd8416531f9daa7e2f1a343a98748514|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|99|1|V|typescriptreact
+	        return orderKey.map((key) => {
+	          return sectionList[key]
+	        })
+b90cd4e2b1ea595f94e2d59b7cdf270d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|99|1|V|typescriptreact
+	        return orderKey.map((key) => ({
+	          return sectionList[key]
+	        })
+2d95b19b24f71bcabbc68e31afaff694|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/review-special-request-screen/review-special-request-screen.tsx|116|90|v|typescriptreact
+	cent
+9dffbf69ffba8bc38bc4e01abf4b1675|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-input/text-input-date-picker.tsx|166|14|v|typescriptreact
+	Text
+ad9d31489092e23a79779166f1afbdfe|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-input/text-input-date-picker.tsx|57|5|v|typescriptreact
+	headerTx
+03708148abe9a27a4df5e2ca32d1cf87|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|100|39|v|typescriptreact
+	(() => {
+	                const date = new Date()
+	                date.setDate(date.getDate() + 8)
+	                return date
+	              })()
+fee2fb41b889608c487bd06df8667134|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-review-payment-screen/special-request-review-payment-screen.tsx|163|5|V|typescriptreact
+	    console.log(loading)
+cb35de694b79efb68cb515c7cc2023bb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|658|8|v|typescript
+	NOTIFICATION_EVENT
+66ed9ebc735cfa59914cf7209324e00c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|621|1|V|typescript
+	  NOTIFICATION_EVENT
+890c6b53fdfd450dfcefc78be6edfdeb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|684|1|V|typescript
+	            bookingId: item?.data?.bookingId
+ff2ccda79a081d4bdee9dfe3c790854a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|17|5|v|typescriptreact
+	placeholderTx
+20106f6115def641d4d2ab4b02f1312e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|152|21|V|typescriptreact
+	                    placeholderTx="specialRequestFormScreen.requestDetails"
+ad51942eff9bba37e701f7a023799aad|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.props.ts|12|1|V|typescript
+	  /**
+	   * The placeholder i18n key.
+	   */
+	  placeholderTx?: string
+	
+a091273fa319b6bc1cfd02c6745c3b6f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.props.ts|17|1|V|typescript
+	  /**
+	   * The Placeholder text if no placeholderTx is provided.
+	   */
+	  placeholder?: string
+	
+e8abcd1ac410eddfaf0ac6f72fc109ed|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.props.ts|23|39|v|typescript
+	 if no placeholderTx is provided.
+103933271c75fcfe55830da3ba89abac|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|152|9|v|typescriptreact
+	inputLabel
+f623e457450593f885abb5e00978139d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|180|12|V|typescriptreact
+	          pl
+d193020b03e30a4a694d1c63bea1c7bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|177|24|v|typescriptreact
+	fieldFocused || !showPlaceholderWhileFocused ? "" : actualPlaceholder
+c852755f85e80bfa21ab754f8dde93dc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|175|10|v|typescriptreact
+	TextInput
+f7669a1a9374fb732181078ef43bada0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-success/booking-success.tsx|62|18|v|typescriptreact
+	navig
+4567961116bd98d90bd14e8918b8f0a0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|153|57|v|typescriptreact
+	labelContainerStyle
+cff9ac281cc4570bd029e53e03ac9342|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|153|45|v|typescriptreact
+	LABEL_WRAP
+b7fc2c5811a8590367e68183ff0bee70|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/styles.ts|8|1|V|typescript
+	export const LABEL_WRAP: ViewStyle = {
+	  position: "absolute",
+	  zIndex: 1,
+	  backgroundColor: color.themeColor.white,
+	  top: -8,
+	  left: 4,
+	  paddingHorizontal: spacing[1],
+	}
+fb96d42f1704971e8c19912023029dc1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|153|1|V|typescriptreact
+	    <View style={StyleSheet.flatten([styles.LABEL_WRAP, labelContainerStyle])}>
+	      <Text style={[styles.LABEL, labelStyle]} text={actualPlaceholder} tx={labelTx} />
+	    </View>
+1767885908cebc5ebb9c47f2c77e23a9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|164|77|v|typescriptreact
+	labelTx
+b0dbe7b197f9129e8d1e07d1185f515b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/text-field.tsx|164|48|v|typescriptreact
+	text={actualPlaceholder}
+ca96fe903949b30371326ff0d1133a89|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/styles.ts|16|1|V|typescript
+	export const LABEL_INSIDE_WRAP: ViewStyle = {
+	  position: "absolute",
+	  zIndex: 1,
+	  backgroundColor: color.themeColor.white,
+	  top: spacing[2],
+	  left: spacing[3],
+	  paddingHorizontal: spacing[1],
+	}
+54412124b8e3a9275f479a427bfcf131|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/styles.ts|24|1|V|typescript
+	export const LABEL: TextStyle = {
+	  fontFamily: typography.fontFamily.primary.regular,
+	  color: color.placeholder,
+	  fontSize: 12,
+	  lineHeight: 14,
+	}
+1450781f63743b7540479a705b024112|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/styles.ts|24|14|v|typescript
+	INPUT_WRAP_LABEL_INSIDE
+a84b98614e3d5fd892772942d5345a4c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/styles.ts|25|1|V|typescript
+	  fontFamily: typography.fontFamily.primary.regular,
+	  color: color.placeholder,
+	  fontSize: 12,
+	  lineHeight: 14,
+1d7f14972d3b63b74ded17129dadf6d6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/styles.ts|25|16|V|typescript
+	  top: spacing[2],
+6f49d095e5d7819b7a0a89b70d4f1864|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-field/styles.ts|26|25|V|typescript
+	  paddingTop: spacing[2],
+44518576bfb270f0f53ba3ebef1cefb3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|156|1|V|typescriptreact
+	                      fontFamily: typography.fontFamily.primary.regular,
+af37d08ae228a87dc6b265fd1019c97d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|177|67|v|typescriptreact
+	regular
+fe5f33b9be1f8b782117824b2e21eaa3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|177|67|v|typescriptreact
+	medj
+3851254fdc2778cd65627f5895b1312d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|177|1|V|typescriptreact
+	                        fontFamily: typography.fontFamily.primary.medium,
+22ff3e7a182db90db86a35aff36119c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|156|64|V|typescriptreact
+	                      fontFamily: typography.fontFamily.primary.medium,
+40a239ab096eb281510d68efb335050c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|161|1|V|typescriptreact
+	                      focusElement?.["requestDetails"]
+	                        ? values?.requestDetails
+075a3e36a0a52dcbc568c05788e8a713|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|179|59|v|typescriptreact
+	medium
+990118fb0e5189f97c746b2fbe554fed|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-form-screen/special-request-form-screen.tsx|176|37|v|typescriptreact
+	focusElement?.["requestDetails"]
+eccc50ab391e22181ae28a84d43d70b7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|130|9|v|typescriptreact
+	PushNotification
+94dad1efddf52ad4e9a7ccb667e68f18|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|134|17|V|typescriptreact
+	          bigText
+7b7c3e0bcce5f07a68215404f384225d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|130|1|V|typescriptreact
+	        PushNotification.localNotification({
+	          autoCancel: true,
+	          message: remoteMessage.notification?.body,
+	          title: remoteMessage.notification?.title,
+	          userInfo: {
+	            clickAction: remoteMessage?.data?.clickAction,
+	            data: remoteMessage?.data,
+	          },
+	          vibrate: true,
+	          vibration: 300,
+	          playSound: true,
+	          soundName: "default",
+	        })
+6dcb3121f0b83d5a8477ec1ca0407f69|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|160|16|v|typescriptreact
+	remoteMessage.notification?.body
+6d5d1b37b0b66a39e7c9b7f59e8f1e41|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|162|1|V|typescriptreact
+	      userInfo: {
+	        clickAction: remoteMessage?.data?.clickAction,
+	        data: remoteMessage?.data,
+	      },
+81040304bfeba3acb2797bd692bdc70b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|161|14|v|typescriptreact
+	remoteMessage.notification?.title
+a961bfbc09a3c32fe14c546ebbb5afc4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|161|7|V|typescriptreact
+	      ``
+f8f4ec56e1fbff089c4348855aabd148|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|162|6|v|typescriptreact
+	 <p>UPdate on <strong>1 to 1 - fight to win</strong>...
+	Unfortunately, <strong>Chrissy Costanza</strong> is unable to complete <strong>1 to 1 - fight to win</strong> with you on <strong>15:40</strong> on <strong>Tuesday, January 5th 2021</strong>.
+	
+	If you have any issue, please email us directly at [help@komiapp.co] and we will get back to you as quick as we can.
+	
+	Have a great day!</p>
+d5d3db1765287eef77d7927cc956f50a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|161|7|v|typescriptreact
+	title
+78e731027d8fd50ed642340b7c9a63b3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|160|7|v|typescriptreact
+	message
+4e423d7d62bbdbb36ce654709a4a2f53|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|161|17|v|typescriptreact
+	<p>Update on <strong>1 to 1 - fight to win</strong>...
+	        Unfortunately, <strong>Chrissy Costanza</strong> is unable to complete <strong>1 to 1 - fight to win</strong> with you on <strong>15:40</strong> on <strong>Tuesday, January 5th 2021</strong>.
+	        If you have any issue, please email us directly at [help@komiapp.co] and we will get back to you as quick as we can.
+	
+	        Have a great day!</p>
+afba7875925099337ec53947e191b13d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/NotificationModel.ts|20|28|v|typescript
+	maybeNull(types.number),
+72858d1af3c55029d5dc0bf1a77b6d9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/NotificationModel.ts|21|31|v|typescript
+	frozen
+8f04fc13906638587f273c1ef132c0a2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|161|20|v|typescriptreact
+	Update on <strong>1 to 1 - fight to win</strong>...\
+	Unfortunately, <strong>Chrissy Costanza</strong> is unable to complete <strong>1 to 1 - fight to win</strong> with you on <strong>15:40</strong> on <strong>Tuesday, January 5th 2021</strong>.\
+	If you have any issue, pleas
+600c4b4d8cdc7c80c1c963bb3eaac5cd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|161|1|V|typescriptreact
+	      message: "<p>Update on <strong>1 to 1 - fight to win</strong>...\
+	Unfortunately, <strong>Chrissy Costanza</strong> is unable to complete <strong>1 to 1 - fight to win</strong> with you on <strong>15:40</strong> on <strong>Tuesday, January 5th 2021</strong>.\
+	If you have any issue, please email us directly at [help@komiapp.co] and we will get back to you as quick as we can.\
+	Have a great day!</p>",
+fe9f735df66c244bca50d51faf413a1c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|130|23|V|typescriptreact
+	          console.log()
+7f962e2711d3685ff594c67277d6e6ae|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|158|1|V|typescriptreact
+	    PushNotification.localNotification({
+	      autoCancel: true,
+	      title: "test",
+	      message:
+	        "<p>Confirmed! You have booked in for <strong>Test 1-1 14/12</strong> with <strong>Martin 1 Garrix 1</strong> at <strong>18:00</strong> on <strong>Tuesday, December 15th 2020 (UTC)</strong>.</p>",
+	      vibrate: true,
+	      vibration: 300,
+	      playSound: true,
+	      soundName: "default",
+	    })
+4f7b3a751ff146ee5a5babdefa73b2e8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|122|28|v|typescriptreact
+	handleUpdateAndCreateExp
+573ce23cac51e19ceca501cd145c9c29|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|33|1|V|typescriptreact
+	      experiencesStore: { handleUpdateAndCreateExp },
+36d477d05492599b1b20ef7460d9736d|file:///Users/louis/.config/nvim/init.vim|70|30|V|vim
+	source ~/.config/nvim/config/lightline.vim
+784894ddae0239e14281b87f1f213a88|file:///Users/louis/.config/nvim/init.vim|10|15|V|vim
+	Plug 'itchyny/lightline.vim'
+f2b51b4815cd810b60afe843554d4ca7|file:///Users/louis/.config/nvim/init.vim|126|1|V|vim
+	if (has("termguicolors"))
+	  hi LineNr ctermbg=NONE guibg=NONE
+	  hi VertSplit guifg=#79a3b1 guibg=NONE ctermbg=NONE
+	  hi SignColumn ctermbg=NONE guibg=NONE
+	endif
+	
+	" ==================================================== Highlight
+	hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+	hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
+	hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
+	hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
+	hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+	hi FloatermBorder guifg=#55E579
+	hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+	hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+	hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
+	hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
+	hi CocExplorerFileDirectoryExpanded guifg=#C3526E
+	hi CocExplorerFileDirectory guifg=#61CE91
+	hi CocExplorerNormalFloat guibg=#0b0c0e
+23849d7033378c2d14f049d4b0e2a9ce|file:///Users/louis/.config/nvim/init.vim|123|1|V|vim
+	let g:oceanic_material_transparent_background=1
+7a21d0de187ae893cf471e66e835e082|file:///Users/louis/.config/nvim/init.vim|10|1|V|vim
+	Plug 'glepnir/oceanic-material'
+7dde31bf066c200ff01c598e2c82bd5f|file:///Users/louis/.config/alacritty/alacritty.yml|111|13|v|yaml
+	Hack Nerd Font
+ca0dbad92a874b2f69b549293387925e|file:///Users/louis/.config/alacritty/alacritty.yml|111|17|v|yaml
+	Code
+135cba292ffff2e230c4994a4a329264|file:///Users/louis/.config/alacritty/alacritty.yml|133|12|v|yaml
+	 Hack Nerd Font
+7c62717a940ca17890e7598571ae3ad6|file:///Users/louis/.config/nvim/init.vim|12|3|V|vim
+	let g:spaceline_seperate_style = 'arrow-fade'
+611e1c788ef94994cbae314e869b9c84|file:///Users/louis/.config/nvim/init.vim|11|1|V|vim
+	Plug 'glepnir/spaceline.vim'
+	j
+c343113d6a9ce3a17e97656a398821cf|file:///Users/louis/.config/alacritty/alacritty.yml|111|13|v|yaml
+	FiraCode
+752682822b299f7d852a3693d1abd599|file:///Users/louis/.config/alacritty/alacritty.yml|111|5|V|yaml
+	    family: Menlo
+73a6052cb11da2706b72657fbad0bd7c|file:///Users/louis/.config/alacritty/alacritty.yml|111|13|v|yaml
+	Menlo
+6911b3d63299e1c297b85baeeda5fb16|file:///Users/louis/.config/alacritty/alacritty.yml|122|13|v|yaml
+	Fira
+d59347cf63a12bf7c581bae77387363b|file:///Users/louis/.config/alacritty/alacritty.yml|122|13|v|yaml
+	Hack
+d3e94f7a68e2548fb04317071e1c0dae|file:///Users/louis/.config/alacritty/alacritty.yml|111|16|V|yaml
+	    family: Hack
+bc3577cf03383c9c00ca5e3e60438337|file:///Users/louis/.config/alacritty/alacritty.yml|111|1|V|yaml
+	    family: Hack Nerd Font
+9022a153e6190f10d9b57aa4232b8aea|file:///Users/louis/.config/nvim/init.vim|12|35|v|vim
+	arrow
+4efa264f5ef3e1a5c95736e07544ebf0|file:///Users/louis/.config/nvim/init.vim|12|35|v|vim
+	curve
+6bd62814f59d5139964b5a3f43562618|file:///Users/louis/.config/nvim/init.vim|122|23|v|vim
+	oceanic
+81229c6db0c9cbeeb5611b86ba4dd120|file:///Users/louis/.config/nvim/init.vim|122|1|V|vim
+	let g:material_style='palenight'
+72f044745dd868396320481cf1c4bd7a|file:///Users/louis/.config/nvim/init.vim|113|1|V|vim
+	" Turn on syntax highlighting
+	if !exists('g:syntax_on')
+	  syntax enable
+	endif
+3888b6ecd66a0cacee8f1cf604f418b1|file:///Users/louis/.config/nvim/init.vim|113|1|V|vim
+	" ==================================================== Mouse
+63c94539937b664dafbc776638a0f4a7|file:///Users/louis/.config/nvim/init.vim|113|1|V|vim
+	set mouse=a
+efe411ebecebd340c52bf74c241431e5|file:///Users/louis/.config/nvim/init.vim|10|1|V|vim
+	Plug 'hzchirs/vim-material'
+e326cf89bcc98bacf8bb526da0dc0087|file:///Users/louis/.config/nvim/init.vim|117|1|V|vim
+	colorscheme vim-material
+334c4a4c42fdb79d7ebc3e73b517e6f8|file:///Users/louis/.config/nvim/init.vim|12|35|v|vim
+	none
+ba5fba34300a243cba0a38dea779a36e|file:///Users/louis/.config/nvim/init.vim|11|1|V|vim
+	Plug 'mhartington/oceanic-next'
+242aee5bb0609fa6ba85eff2d9aab445|file:///Users/louis/.config/nvim/init.vim|118|1|V|vim
+	colorscheme OceanicNext
+ce594f97f83de3083844aaad4bc3aa47|file:///Users/louis/.config/nvim/init.vim|13|1|V|vim
+	let g:lightline = { 'colorscheme': 'oceanicnext' }
+446498bcbc87c0638028ea3ed6a458af|file:///Users/louis/.config/nvim/init.vim|11|1|V|vim
+	Plug 'adrian5/oceanic-next-vim'
+c70c166867cfc319399d1b81d79486a8|file:///Users/louis/.config/nvim/init.vim|118|13|v|vim
+	oceanicnext
+5deb805061bc6d3c6cc007056408a31f|file:///Users/louis/.config/nvim/init.vim|18|6|V|vim
+	let g:spaceline_seperate_style = 'none'
+48bc4279cc038c0fa423f829575da2f3|file:///Users/louis/.config/nvim/init.vim|16|1|V|vim
+	Plug 'glepnir/spaceline.vim'
+	let g:spaceline_seperate_style = 'none'
+6bc64ce39cb06cba976ebff8cb8e7e7e|file:///Users/louis/.config/nvim/init.vim|16|1|V|vim
+	" Plug 'glepnir/spaceline.vim'
+	" let g:spaceline_seperate_style = 'none'
+	
+baa585b272c4300ccc72863dd6a95f48|file:///Users/louis/.config/nvim/init.vim|15|9|V|vim
+	Plug 'pineapplegiant/spaceduck'
+d672a4211e5751a8e80068aa1b1a85a8|file:///Users/louis/.config/nvim/init.vim|119|1|V|vim
+	syntax enable
+	set termguicolors
+61dcd8db67ced6f20882bde164ab36b8|fugitive:/Users/louis/.config/.git//0/nvim/init.vim|123|1|V|vim
+	set termguicolors
+	syntax enable
+b6fa5378af2bbb564f3d14e048b2b712|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-completed-tab.tsx|25|1|V|typescriptreact
+	      sort: "-createdAt",
+e6e460317b157de74eb3b21ab02f39fb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-upcoming-tab.tsx|25|7|V|typescriptreact
+	        sort: "-createdAt",
+d7dc08e0779fa493b6ff741e615a054e|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
+	let g:lightline = {
+	      \ 'colorscheme': 'spaceduck',
+	      \ }
+772548c2788c77825da7d5df333970f6|file:///Users/louis/.config/nvim/init.vim|121|1|V|vim
+	colorscheme spaceduck
+cc3e66e0512700e90ff710f35496fec0|file:///Users/louis/.config/nvim/init.vim|121|13|v|vim
+	spaceduck
+97defd20a4830b556e53934f53e6b736|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-completed-tab.tsx|25|15|v|typescriptreact
+	createdAt
+5fc732311905cb27e82d67f4f6511f7f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-completed-tab.tsx|25|15|v|typescriptreact
+	date
+00d144f0b8869d4b1d95b9266a848e69|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-completed-tab.tsx|26|1|V|typescriptreact
+	        sort: "-updatedAt",
+93a04b066fd81a1017825f2dcda313b2|file:///Users/louis/.config/nvim/init.vim|121|27|v|vim
+	night
+b94b465e09335be642dd75aaec60cb56|file:///Users/louis/.config/nvim/init.vim|12|1|V|vim
+	Plug 'ghifarit53/tokyonight-vim'
+eb065b405c256e399ee50184db0eec62|file:///Users/louis/.config/nvim/init.vim|122|13|v|vim
+	tokyonight
+9eb4b875cf7ff64c7d50471846b39b2f|file:///Users/louis/.config/nvim/init.vim|121|1|V|vim
+	let g:tokyonight_style = 'storm'
+62bba1c7ef4efa515c32d6a0d1ea9164|file:///Users/louis/.tmux.conf|7|1|V|tmux
+	set -g default-terminal "screen-256color"
+	set t_Co=256
+	set t_AB=m
+	set t_AF=m
+	if &term =~ '256color'
+	  set t_ut=
+	endif
+3d4b9bffe578b26182688f5622d34ae0|file:///Users/louis/.config/nvim/init.vim|119|1|V|vim
+	set t_Co=256
+e114d67f6c17a814152bd397a44f69d5|file:///Users/louis/.config/nvim/init.vim|121|13|v|vim
+	onedark
+00d6f7d7d23dff5aef80b7aeba36b0d7|file:///Users/louis/.config/nvim/init.vim|123|1|V|vim
+	if (has("termguicolors"))
+	  hi LineNr ctermbg=NONE guibg=NONE
+	  hi VertSplit guifg=#79a3b1 guibg=NONE ctermbg=NONE
+	  hi SignColumn ctermbg=NONE guibg=NONE
+	endif
+07d45f070b5fd3be9e6edfb0b2105616|file:///Users/louis/.config/nvim/init.vim|124|1|V|vim
+	" ==================================================== Highlight
+202f4e583680db52215229c08df3fc63|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|43|23|v|typescriptreact
+	discoveryList
+e75ab17a550f46adbbe891b819cf951d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|33|7|v|typescriptreact
+	FILTER
+1cadc3b43016a99afc8c97fbe8905cfe|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|17|5|v|typescriptreact
+	setIsActiveCategories
+10ae9fc7d453b0dd525d0edf2ede7961|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/categories-filter.tsx|20|24|v|typescriptreact
+	list
+7b17ee10a02b8e147ca91980897d13b6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/categories-filter.tsx|53|20|v|typescriptreact
+	_onPressCheck
+3caccc0cad12c12eee37695ead0aea03|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/categories-filter.tsx|28|11|v|typescriptreact
+	setSelected
+1da5f985a5e585838f998df622c8591a|file:///Users/louis/.config/nvim/init.vim|117|1|V|vim
+	set background=dark
+	set termguicolors
+	syntax enable
+b9eda8fd2f949095b6dadb7e4352fbfb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|79|1|V|typescriptreact
+	    discoveryList.updateSort(null)
+	    discoveryList.updateFilters()
+	    discoveryList.refreshList()
+a7924d6d215c164cbbc3e81053e73d56|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-sent-screen/special-request-sent-screen.tsx|54|18|v|typescriptreact
+	_goToRequestDetail
+51e791b563245e6912de55dbef9a46b9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|80|1|V|typescriptreact
+	    discoveryList.updateSort(null)
+	    discoveryList.refreshList()
+5a8192cbfdd29842aaf7a84db90dbf64|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-sent-screen/special-request-sent-screen.tsx|37|1|V|typescriptreact
+	    discoveryList.
+fd6bcb93107be6b42f09dd92d3b31993|file:///Users/louis/.config/nvim/init.vim|17|15|V|vim
+	Plug 'glepnir/spaceline.vim'
+b50339a10e1de285ac99d4c3990b8693|file:///Users/louis/.config/nvim/init.vim|154|17|v|vim
+	NONE
+77e774e6cc4d94d6a32f6256f02d9552|file:///Users/louis/.config/nvim/init.vim|154|17|v|vim
+	#000000
+f7eced49b0a0f19022d56073aa094fd9|fugitive:/Users/louis/.config/.git//0/nvim/init.vim|129|1|V|vim
+	  hi LineNr ctermbg=NONE guibg=NONE
+	  hi VertSplit guifg=#79a3b1 guibg=NONE ctermbg=NONE
+	  hi SignColumn ctermbg=NONE guibg=NONE
+2718e28f7a5c8fd5654c9575252c7f35|file:///Users/louis/.config/nvim/init.vim|145|1|V|vim
+	  hi LineNr ctermbg=NONE guibg=NONE
+371a8c0a1e821c28b5e20fbf53c7ab66|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|121|13|v|typescriptreact
+	filterExperience
+3d424dad57b35f63a6609a739e856294|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|53|14|v|typescriptreact
+	omit(BOOKING_STATUS, "PENDING")
+5d83993918cf537e72434e618f2cc032|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-purchase-experience-history.tsx|22|35|V|typescriptreact
+	import { omit } from "utils/lodash"
+11fd1eaa40206824c5afb534f9948b60|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/BookingList.ts|12|14|V|typescript
+	    total: types.optional(types.number, 0),
+acee940d7468704ce13cb54adafdecd9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|79|1|V|typescriptreact
+	    discoveryList.updateSort(null)
+ff791cc1da473c61d1c3737b9602bc8d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|64|1|V|typescriptreact
+	    discoveryList.updateSort("+firstName")
+27cf5b72fe2e34a4851edc233e09aa79|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|80|1|V|typescriptreact
+	    discoveryList.updateFilters()
+a6fd25239dc966750ea68f279541fe14|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|80|17|V|typescriptreact
+	    // discoveryList.updateFilters()
+a43af1afc2b2172bbe1096042b6b7498|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-sent-screen/special-request-sent-screen.tsx|32|27|V|typescriptreact
+	  const { discoveryList } = useStores()
+ccc7001b4e8a29ac88c48541aa995e19|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-sent-screen/special-request-sent-screen.tsx|23|1|V|typescriptreact
 	import { useStores } from "models"
-	import { useChatContext, useVideoContext } from "hooks"
-	import { NavigationRoutes } from "navigation/navigation-routes"
-db1142c800c1f763903271e0a5586b8f|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|3|1|v|markdown.mdx
-	I'm creating noice web experiences for the next generation of consumer-facing companies
-e70b984f398f1a493d4b1d545ed6d304|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/README.md|76|1|V|markdown
-	<ProjectCard title="Freiheit" link="https://www.behance.net/gallery/58937147/Freiheit" bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)">
-	This project is my entry to Adobe's #ChallengeYourPerspective contest.
-	</ProjectCard>
-4b0c5089239919ef20a837c412a8f35b|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|2|38|v|markdown.mdx
-	ChallengeYourPerspective
-c258b147768f1bbade07c14423807fa6|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|1|1|V|markdown.mdx
-	<ProjectCard title="Freiheit" link="https://www.behance.net/gallery/58937147/Freiheit" bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)">
-	This project is my entry to Adobe's contest.
-	</ProjectCard>
-279254b4f9bafeaeaff7dae09f92e0d6|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|2|6|v|markdown.mdx
-	project is my entry to Adobe's contest.
-1c60f1eae15faaa492dcca2b555d4292|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|4|21|v|markdown.mdx
-	Freiheit
-dfd2b89f25274a72dfcfc0ece6f3123e|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|4|1|V|markdown.mdx
-	<ProjectCard title="UOB Web" link="https://www.behance.net/gallery/58937147/Freiheit" bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)">
-	This is UOB Banking Project
-	</ProjectCard>
-c6411bfeb9de64ab0c53ee3d8e3e290b|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|7|21|v|markdown.mdx
-	UOB Web
-b3baad127a10e1fb8ce24842782d3e4f|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|7|1|V|markdown.mdx
-	<ProjectCard title="MTL App" link="https://www.behance.net/gallery/58937147/Freiheit" bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)">
-	This is MTL Banking Application Project
-	</ProjectCard>
-ecf7bc2d6755c578cb9cc7b64514b442|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|10|21|v|markdown.mdx
-	MTL App
-9b439ebf99738e824103758e031eb240|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|11|9|v|markdown.mdx
-	MTL Banking Application Project
-b49d11cb7796cf8065ec3b370bce6dec|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|11|20|v|markdown.mdx
-	Prokect
-6c38a71a20767230981dd499326edc0e|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|11|1|v|markdown.mdx
-	This is C
-8b50059a924637835f2a8973b5b39925|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|8|1|v|markdown.mdx
-	This is 
-d42363dd822de332479e4fe2ca6a8b6b|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|10|1|V|markdown.mdx
-	<ProjectCard title="Co-Lift" link="https://www.behance.net/gallery/58937147/Freiheit" bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)">
-	Colift SDK Including Backend SDK, Front End SDK and Web Components Project
-	</ProjectCard>
-e32624d2bec59ba4ed756a7101407b60|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|13|21|v|markdown.mdx
-	Co-Lift
-94c244a308ffb59f0821a8e3a30bd0c6|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|14|22|V|markdown.mdx
-	Colift SDK Including Backend SDK, Front End SDK and Web Components Project
-518804f881ed95b1c2f052fbbbbb8cb9|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|7|1|V|markdown.mdx
-	using two main stacks React and React-Native
-e9dc924f238fa6cc29465942875fe8f0|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|3|8|v|markdown.mdx
-	full
-724cee31b3c2fcd46488fcb3f4bef385|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|3|8|v|markdown.mdx
-	Full Stack
-672caf27f5363dc833bda5099775e891|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|3|15|v|markdown.mdx
-	Developer
-9c253bcacecb783b4375f60f8212ce95|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|6|1|V|markdown.mdx
-	My dream is to become a great technical leader who can bring the best and
-	approriate solutions for the team and help ever
-9e13b69d1d2da927102acaaaf7154a37|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|6|19|v|markdown.mdx
-	Javascript
-fac2a47adace059aff113283a03f6760|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|6|9|v|markdown.mdx
-	stack
-126bcbd34a06d3142256c2ffe821dfdb|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|3|36|v|markdown.mdx
-	 addicted to
-142faae3b2034ad81108764f7caf0499|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|6|9|v|markdown.mdx
-	programing
-9e727fdd3aec8274f46685441900280d|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|2|42|v|markdown.mdx
-	Project
-3812ad2b0d5f1c9ea405ff3c79686953|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|14|2|V|markdown.mdx
-	Funxeed Project For Japanese Customer
-f32ced6a9ba164c4b3c047fd1d7c882e|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|14|17|v|markdown.mdx
-	Japanese
-ce26601dac0dea138b7295f02b7620a7|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|14|23|v|markdown.mdx
-	Customer
-d58d136e7f0611960e0790c588d9a9f4|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|1|37|v|markdown.mdx
-	https://www.behance.net/gallery/58937147/Freiheit
-020987b49393cd640f499dcc0b29908a|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|4|106|v|markdown.mdx
-	FBB03B
-3e5428ba821e53678eee124f51631556|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|4|94|v|markdown.mdx
-	D4145A
-29b231adcab462923e2d6bccc9eff5fb|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|4|106|v|markdown.mdx
-	11387B
-f59b7efafd800e27b47a488d30615c73|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|1|89|v|markdown.mdx
-	FFFFFF
-2d8b36b0a417ba422afbcd07adeaadf2|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|2|3|V|markdown.mdx
-	<di>
-c3992706d4ae9ba21682ddef146bfcc9|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|5|5|V|markdown.mdx
-	Komi App Streaming Services with Experts Web and Hybird App Platform
-dcddb75469b4b4875094e14561e573d8|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|1|89|v|markdown.mdx
-	00000
-0e9562e342ffbc87eec434150ccdf26f|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|7|133|v|markdown.mdx
-	 #B90170 0%)
-b0fafbcbc2e391d03bd0d6882c7faccc|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|10|120|v|markdown.mdx
-	2C6DFA
-b4b3be80cf75b8065a619b91830c84ea|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|10|132|v|markdown.mdx
-	FwpkFFFFF
-b073beb46472389e88bcb6cd753c2c6a|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|10|132|v|markdown.mdx
-	2C6DFA 100
-d176e105e5cf0e3375c03e582c99cec5|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|1|100|v|markdown.mdx
-	73E5FF
-825bfe5f61265318f5467744c84d57d7|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|1|92|v|markdown.mdx
-	FFF 0
-b9915bdb5342679f81934d98543fb698|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|4|106|v|markdown.mdx
-	1E5D9F
-c0816817cbaa6e83fbe352b682795184|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|4|94|v|markdown.mdx
-	ED1A2D
-a804912bc3a727466ae8846311dc2259|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|15|21|v|markdown.mdx
-	Funxeed
-22d4755eb8ce8b995ad1200a0dee4a54|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|15|101|v|markdown.mdx
-	2A8A8D
-6cc817e6a0e49c364e884baddab6eb35|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|15|89|v|markdown.mdx
-	F9BC0D
-670b14728ad9902aecba32e22fa4f6bd|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|1|89|v|markdown.mdx
-	000000
-58a136c9587a94046b72139508ab1444|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|1|3|v|markdown.mdx
-	Bout
-71bfa82e05271735cdf6fa334b297fef|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|5|32|v|markdown.mdx
-	tech industry
-97d964594025346b2a7a16e10a9f4c41|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|5|10|v|markdown.mdx
-	apviwpprov3
-cb5480c32e71778852b08ae1e8712775|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|9|18|v|markdown.mdx
-	Spanish
-13b2c7e3b76b29ed75e8cca2bc9b6c25|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|6|1|V|markdown.mdx
-	- I have worked for 4 companies
-	      - Sun* (Japanese Company)
-	      - Aleph Labs (Singapore Company)
-	      - Co-Lift (Global Team)
-	      - Nucleus Studios (US Team)
-8b36e9207c24c76e6719268e49201d94|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|9|31|v|markdown.mdx
-	Google
-4d70254b3a8e2bc38b6147fa6ee813be|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|18|26|v|markdown.mdx
-	Library
-63454eb12b22380f073402a983d9faca|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|7|v|markdown.mdx
-	 on Rails
-8b7decb35920a7931c79bf97769418ab|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|20|3|v|markdown.mdx
-	React and React Native Frameworks
-18e1b0bd51230f06e22277d353f4c835|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|22|8|V|markdown.mdx
-	- NodeJS
-d67f9d2bec531e9e42cb51138cafe0d8|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|23|7|v|markdown.mdx
-	(Just littile bit)
-8f23e794a14d5923d60752c7ea893ca4|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|28|1|V|markdown.mdx
-	  - React
-50ce2da63bea6a618e7578fa50690040|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|30|5|v|markdown.mdx
-	React
-0ae6f49d34e474ae8179b1c3106bd0e2|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|14|v|markdown.mdx
-	Langugaes
-21304efa4d2fd30f1c8c87338c289dd2|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|46|v|markdown.mdx
-	> Python
-c2218519495a6b47ab6568fba51a786f|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|17|1|V|markdown.mdx
-	
-	  - Javascript
-	
-	  - C++
-b9fa5e29897d3589136981148d3ef32f|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|25|v|markdown.mdx
-	<strong>Ruby</strong>
-9916d1fc59fe22cc046a2fe1615bc764|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|80|v|markdown.mdx
-	Ruby
-6a8863781fa48915de65efda393bb17c|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|20|1|V|markdown.mdx
-	  - React
-	
-	  - React Native
-cbbaef313fff32a8cc08550430a2c7c9|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|18|23|v|markdown.mdx
-	Ruby On Rails
-6a5beac888b3ca945e8c0de95eb71a31|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|18|15|v|markdown.mdx
-	<strong>ROR</strong>
-6f7f9432d35dea629c8384dab312259a|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|19|1|v|markdown.mdx
-	strong
-7171c88edc5afc7695ba07636a0f036b|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|37|v|markdown.mdx
-	</strong>, <strong>
-0d4bd06c5dbdba37685c1b9510c27162|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|45|v|markdown.mdx
-	</strong>,<strong>
-5da743ac084d86cf1f899cca4128b717|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|64|v|markdown.mdx
-	/strong>, <strong
-cb1eac7605afda7f042217a95d500609|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|7|3|v|markdown.mdx
-	I have more than
-817b28f33afe213a3fb4e460a62c703a|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|10|3|v|markdown.mdx
-	I also have experience 
-78cdeac478e1ba62b564cfc57b945f87|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|10|15|v|markdown.mdx
-	using
-03d59e663c1af9ac33a9949d1193505a|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|10|19|v|markdown.mdx
-	some
-02a048690ba283e399247f7fad7710d3|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|10|5|v|markdown.mdx
-	prefer
-f332fc9d58f469fc13002d4c11fe4190|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|14|3|v|markdown.mdx
-	I have more than 1 year using AWS  to develop product
-2959f1aea8db0f7fbba61f0f8474d0ef|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/projects.mdx|1|101|v|markdown.mdx
-	000011
-6c733a0e30accf32047a34fb26ab23aa|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|18|3|V|markdown.mdx
-	#### Develop Stacks
-db81a8cd61dbd2430108c120e166d537|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|19|1|V|markdown.mdx
-	  - <strong>Ruby, Python, Javascript, Java, C++</strong>
-45f8fa8a11137be28e1a6509c9d9d226|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|19|17|v|markdown.mdx
-	, Python, Javascript, Java, C++
-625f3f09e2dcf319d0c2f665b21ee0d0|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|20|20|v|markdown.mdx
-	, Javascript, Java, C++
-9fca0a22c5e4e30332b1097f52991a78|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|21|13|v|markdown.mdx
-	Ruby, Python, 
-0ca5125c34cc4c054db0cf1ddd4f1bd8|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|21|23|v|markdown.mdx
-	, Java, C++
-c7f1c310140abb92598f1dc390113a50|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|22|13|v|markdown.mdx
-	Ruby, Python, Javascript,
-9c9459a9bc839a27dd95aab444a0fc8d|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|22|17|v|markdown.mdx
-	, C++
-0f09ac2923bd1d45bed43c45b8ed77b7|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|23|13|v|markdown.mdx
-	Ruby, Python, Javascript, 
-f4bf45c39e2e3ffd5cf62c86b95191d3|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|26|1|V|markdown.mdx
-	  - <strong>ROR, Flask, React, React Native, NodeJS, Spring </strong>
-8abdebba3ef7dc6b117b8cfdfe0646dc|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|26|16|v|markdown.mdx
-	, Flask, React, React Native, NodeJS, Spring </strong>
-569f22abc2bd2e48c251ea31901262d4|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|26|16|v|markdown.mdx
-	, Flask, React, React Native, NodeJS, Spring 
-8d8e08e85e30fd464e828a60f27ac898|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|27|13|v|markdown.mdx
-	ROR,
-4924477efba2e4c943422748e666d2de|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|27|18|v|markdown.mdx
-	, React, React Native, NodeJS, Spring 
-c1cfb5eca1f4cc3ddce7e603b4da9826|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|28|13|v|markdown.mdx
-	ROR, Flask, 
-53767550984a63f9ef97cb6c03e17af9|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|28|18|v|markdown.mdx
-	, React Native, NodeJS, Spring 
-b45d6802dc375f316d0188fdef6adc88|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|29|13|v|markdown.mdx
-	ROR, Flask, React, 
-e70102c4d2e0d0293423c80b17003810|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|29|25|v|markdown.mdx
-	, NodeJS, Spring 
-4d41931f3a2acbe778be8fbf62084de4|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|30|13|v|markdown.mdx
-	ROR, Flask, React, React Native, 
-5442ab284f90b43511a4d40a511acd26|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|30|19|v|markdown.mdx
-	, Spring 
-030188271e38f93951d7be9ffb263202|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|33|1|V|markdown.mdx
-	  - <strong>Docker, AWS, K8s</strong>
-659279257d2d303aac85e5205380fe31|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|33|19|v|markdown.mdx
-	, AWS, K8s
-3852671b50140c80aee66a612af8b91d|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|34|13|v|markdown.mdx
-	Docker,
-5e63801f9f300fe5c2a1ee3de26b0eda|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|34|17|v|markdown.mdx
-	 K8s
-54acad7f3589587d65e9860145ba7b23|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|35|13|v|markdown.mdx
-	Docker, AWS, 
-94c32232a4ea6770adf2229c26aa5471|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|38|1|V|markdown.mdx
-	 - <strong>Neo Vim, VS Code</strong>
-50560db09307d81884956376fd9f5eab|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|38|20|v|markdown.mdx
-	 VS Code
-54fd014b133549a704cff4669bf909df|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|39|12|v|markdown.mdx
-	Neo Vim, 
-63f864853461a698d234f07c14966648|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/contact.mdx|1|1|V|markdown.mdx
-	## ?? **Reach out to me:**
-	
-	[<img align="left" alt="huy-nguy?n-4b0717108 | LinkedIn" height="30px" src="https://www.flaticon.com/svg/static/icons/svg/725/725337.svg"/>][linkedin]
-	[<img align="left" alt="hyhycode | Instagram" height="30px" src="https://image.flaticon.com/icons/svg/725/725278.svg" />][instagram]
-	[<img align="left" alt="hyhycode | DevProfile" height="30px" src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" />][devProfile]
-	
-	<br />
-	
-	[instagram]: https://www.instagram.com/hyhycode
-	[linkedin]: https://www.linkedin.com/in/huy-nguy%E1%BB%85n-4b0717108/
-	[devProfile]: https://dev.to/nqhuyd
-ad97dd7b0e9cd4123a3602b618b78559|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/contact.mdx|3|66|v|markdown.mdx
-	30px
-9e58e5d65cdc4745264918c378682c9c|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/contact.mdx|3|20|v|markdown.mdx
-	style={{ marginRight: '20px' }} 
-c57ef2125d71df7e1c611a92ec21ece8|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|20|7|V|markdown.mdx
-	  - <strong>Python</strong>
-85bbf92b1953c5fa9e06818272eac3ee|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|20|7|V|markdown.mdx
-	  - <strong>Javascript</strong>
-d52387880e1ea22817a72d3759213819|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|21|13|v|markdown.mdx
-	Java
-77b289e5db3d1c158df49afaa1472635|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|21|21|V|markdown.mdx
-	  - <strong>C++</strong>
-3fef9615fc76ca09021032220e08b9aa|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|23|1|V|markdown.mdx
-	  - <strong>Flask</strong>
-583e1ba3279b7481d60a1d40e8a45d35|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|24|1|V|markdown.mdx
-	  - <strong>React Native</strong>
-	  - <strong>NodeJS</strong>
-7b3b1a563f24bda8c095bf8ace77fe5f|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|27|20|V|markdown.mdx
-	  - <strong>K8s</strong>
-0d9ed3d686d447dc55f2cd49ecc206a6|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|7|8|v|markdown.mdx
-	</strong>
-ad8d8496f2cd9c77fc43ee397a844193|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|4|17|V|markdown.mdx
-	##### Experiences
-b67f58216dd3750139f5c6d99824bbf8|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|15|30|V|markdown.mdx
-	  - <strong>Java, C++</strong>
-cea8de3082d9ad251e0a03996c101af1|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|19|39|V|markdown.mdx
-	  - <strong>React, ReactNative</strong>
-48cdc58d3c4f68203c5eb63d073b5cb5|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|18|73|v|markdown.mdx
-	 Vue
-be8edbd89dc84ab26dc1797c8a6bc70b|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|18|26|v|markdown.mdx
-	NodeJS, 
-ac75551db6f3680be3ab24df663e5cb1|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|18|74|v|markdown.mdx
-	 Next, Nest
-efdbb1733f216ade996a768fb818e45a|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|23|29|V|markdown.mdx
-	  - <strong>AWS, K8s</strong>
-198c14ad98e7156f904e23f11d4dc978|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|27|27|V|markdown.mdx
-	 - <strong>VS Code</strong>
-cab05c7db8b8a7eb59fe0aeed91a788d|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|14|1|v|markdown.mdx
-	##### F
-f2ad1a25ad318501a232d6da4d92ff89|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|14|23|v|markdown.mdx
-	storng
-672c0bfb1e25fb08d90b7bf1c7d51105|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|14|1|V|markdown.mdx
-	- <strong>Frameworks</strong>: <strong>ROR, Flaska, Next, Nest, NodeJs, React, VuewJS, React Native</strong>
-fd880b9421e991e309d859fc9e6e81ec|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|17|7|v|markdown.mdx
-	Cloud Tools
-04fb5df59766a9852e5dd2d0430ca27e|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|15|11|v|markdown.mdx
-	Frameworks
-0c4c8ee464e10ec00d5095e945573415|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|18|13|v|markdown.mdx
-	Docker, AWS, K8s
-f00f5ac44369362066c1517c7fd7a54f|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|15|41|v|markdown.mdx
-	ROR, Flaska, Next, Nest, NodeJs, React, VuewJS, React Native
-b9a58f7c52ca0c8f2df73990b29e8cd5|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|1|V|markdown.mdx
-	- <strong>Cloud Tools</strong>: <strong>Docker, AWS, K8s</strong>
-7265d6402b771f294795a6bcb4462756|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|20|1|V|markdown.mdx
-	##### Cloud Tools
-	  - <strong>Docker, AWS, K8s</strong>
-	
-0159a655ca5c554933ca26a2984b1161|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|21|12|v|markdown.mdx
-	Neo Vim, VS Code
-da7cb39678917ba2e3aacedb9457dd3b|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|20|1|V|markdown.mdx
-	##### Editors
-	 - <strong>keo Vim, VS Code</strong>
-05588a7a841e0040a3b825176d196a0e|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|2|3|v|markdown.mdx
-	<strong>
-babc087ed385460d28e489618f3eb73d|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|5|3|v|markdown.mdx
-	<strong> 
-48d6215903dff56238e52e8891380c8f|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|12|37|v|markdown.mdx
-	blue
-e56743cfd20659ff2492ae9aadc1db08|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|16|6|v|markdown.mdx
-	style={{ fontSize: 22, color: '#698885' }}
-43223ed92650bc9181cfb88c7f0345e9|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|19|38|v|markdown.mdx
-	69888wpk5
-fa6594910985bc4dec8d18aea4efa0d0|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|13|28|v|markdown.mdx
-	 color: '#D09839', 
-65f0ff35c131ba284abdd3517d2d48f1|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|14|3|v|markdown.mdx
-	<div style={{ color: '#D09839', fontWeight: 700 }}>
-7cbd8440b7d5ff430456ce275faed945|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|18|29|v|markdown.mdx
-	color: '#2E9BD8', 
-661a104efd611194d20fda456c2d5601|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|19|17|v|markdown.mdx
-	color: '#D09839',
-b03c111c5a9dfef9fa066c87ea3a1bd2|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|26|21|v|markdown.mdx
-	stronh
-208802fcadd2cb5d4cd42effda654793|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|25|36|v|markdown.mdx
-	'#199985'
-0a55a30ea4f404efb1f5e0467e546039|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|25|29|v|markdown.mdx
-	color: ,
-76910e52e557f5acdfa89559ed8f477b|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|30|29|v|markdown.mdx
-	color: '#809AD5'
-c96405ea57072e418838adcdc37683b7|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|30|27|v|markdown.mdx
-	, color: '#809AD5' 
-96454bc680b420a1f724cd1749a5551c|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|31|17|v|markdown.mdx
-	color,
-2281fd603f6531486930532b46907af6|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|15|31|v|markdown.mdx
-	mariginLeft
-81e33bd4d9a2c244103ddae16d26f673|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|15|8|v|markdown.mdx
-	style={{ fontSize: 20, marginLeft: 10 }}
-31f4a108612213f1bd791223cb9b48af|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|2|3|v|markdown.mdx
-	<div style={{ fontSize: 22 }}>
-87c1de749aa1df69be61bb96c77aa95a|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/gatsby-config.js|30|22|v|javascript
-	Cara
-299208682d1c4558a565307229b233bd|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/gatsby-config.js|29|16|v|javascript
-	Cara - @lekoarts/gatsby-theme-cara
-f9b9823665cc73ef6458ef8650ce8986|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/gatsby-config.js|31|23|v|javascript
-	Playful and Colorful One-Page portfolio featuring Parallax effects and animations
-8e42301f939974c513d1b1cf43bb3be6|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/gatsby-config.js|12|20|v|javascript
-	Cara - Gatsby Starter Portfolio
-e8cdb964fb869d42981e6ac512177523|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/intro.mdx|3|7|v|markdown.mdx
-	Senior
-9784e91c7b2657917226bc82afdd6789|file:///Users/louis/Dev/Projects/profilo/my-gatsby-project/src/%40lekoarts/gatsby-theme-cara/sections/about.mdx|21|8|v|markdown.mdx
-	Flask
+cf0de5f42b0f7f7da38b3b7845d4ba51|file:///Users/louis/.tmux.conf|7|1|V|tmux
+	set -g default-terminal "screen-256color"
+	set -g default-terminal "xterm-256color"
+	set -g default-terminal "screen.xterm-256color"
+	set -g default-terminal "tmux-256color"
+eb3514aef46deda4e0eb5c07e714b1cc|file:///Users/louis/.config/nvim/init.vim|128|1|V|vim
+	set term=screen-256color
+fc113882617df5c2df4637a49d32b1d4|file:///Users/louis/.config/nvim/init.vim|128|1|V|vim
+	if exists('+termguicolors')
+	  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	  set termguicolors
+	endif
+d8c8496b2b86bdae0063d433eeb0d807|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|135|9|v|typescriptreact
+	filterStatusForTalent
+d6e0da59956b75757b5e91e424d055a3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|148|1|V|typescriptreact
+	                  BOOKING_STATUS.TALENT_APPROVAL_PENDING,
+	                  BOOKING_STATUS.PENDING,
+	                  BOOKING_STATUS.ACCEPTED,
+	                  BOOKING_STATUS.COMPLETED,
+	                  BOOKING_STATUS.DECLINED,
+ab08971185cb5660d0601e5c52913f2b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|153|17|v|typescriptreact
+	[
+	                  BOOKING_STATUS.TALENT_APPROVAL_PENDING,
+	                  BOOKING_STATUS.PENDING,
+	                  BOOKING_STATUS.ACCEPTED,
+	                  BOOKING_STATUS.COMPLETED,
+	                  BOOKING_STATUS.DECLINED,
+	                ]
+33bde1c128b3e081a002702af850969f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|177|23|v|typescriptreact
+	[
+	                        BOOKING_STATUS.TALENT_APPROVAL_PENDING,
+	                        BOOKING_STATUS.PENDING,
+	                        BOOKING_STATUS.ACCEPTED,
+	                        BOOKING_STATUS.COMPLETED,
+	                        BOOKING_STATUS.DECLINED,
+	                      ]
+90f88e95dd96b5d7044173b815b63c8d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|112|15|v|typescriptreact
+	[
+	                BOOKING_STATUS.TALENT_APPROVAL_PENDING,
+	                BOOKING_STATUS.PENDING,
+	                BOOKING_STATUS.ACCEPTED,
+	                BOOKING_STATUS.COMPLETED,
+	                BOOKING_STATUS.DECLINED,
+	              ]
+fb82bafedae6b8af11bbd873bd94853c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|116|49|v|typescriptreact
+	filterStatusForTalentApp
+7eb431f621f1155a3804dc3811766383|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|129|1|V|typescriptreact
+	  const filterStatusForTalentApp = React.useMemo(() => {
+	    return [
+	      BOOKING_STATUS.TALENT_APPROVAL_PENDING,
+	      BOOKING_STATUS.PENDING,
+	      BOOKING_STATUS.ACCEPTED,
+	      BOOKING_STATUS.COMPLETED,
+	      BOOKING_STATUS.DECLINED,
+	    ]
+	  }, [])
+0f3d8dc2fc444dc7716b04ff4dc33b25|file:///Users/louis/.config/nvim/init.vim|126|13|v|vim
+	deep-space
+9c79338ac4d2830bfee498220301e384|file:///Users/louis/.config/nvim/init.vim|15|21|V|vim
+	Plug 'joshdick/onedark.vim'
+85bd71ef7663b92f459fc90366b28d6b|file:///Users/louis/.config/nvim/init.vim|114|1|V|vim
+	set hidden
+21a361d96e3e13f5f109748c2a9d2434|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-payment-success/special-request-payment-success.tsx|37|18|v|typescriptreact
+	push
+d3427c30c47e75e01bde5b8e6d21b2f2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-payment-success/special-request-payment-success.tsx|37|18|v|typescriptreact
+	navigate
+3d68d7d4807dd7202448ebb683324035|file:///Users/louis/.config/nvim/init.vim|119|1|V|vim
+	colorscheme oc
+31f7aa2cac1e4d89e7830bdbb4dcf783|file:///Users/louis/.config/nvim/init.vim|151|1|V|vim
+	if (has("termguicolors"))
+	  set termguicolors
+	  hi LineNr ctermbg=NONE guibg=NONE
+	  hi VertSplit guifg=#79a3b1 guibg=NONE ctermbg=NONE
+	  hi SignColumn ctermbg=NONE guibg=NONE
+	endif
+ee1422a602acfc99050c11147759db03|file:///Users/louis/.config/nvim/init.vim|15|7|v|vim
+	glepnir/oceanic-material
+41afaea1aa867401dacc2267832ca4d7|file:///Users/louis/.config/nvim/init.vim|15|7|v|vim
+	Plug
+9b890b0bd9fb8fab85f3712357ebceac|file:///Users/louis/.config/nvim/init.vim|119|13|v|vim
+	challenger_deep
+2732bb2794854c08490675b91504496a|file:///Users/louis/.tmux.conf|8|6|V|tmux
+	set -ga terminal-overrides ",*256col*:Tc"
+f990a0630e79250434950d70e369e577|file:///Users/louis/.config/nvim/init.vim|124|1|V|vim
+	let g:onedark_termcolors=256
+3972792f71ab931fba13aac70465e75f|file:///Users/louis/.config/nvim/init.vim|147|7|v|vim
+	nvcode_termcolors
+73c31d0532095c8638ff1a7c5f1a69da|file:///Users/louis/.config/nvim/init.vim|147|7|V|vim
+	let g:nvcode_termcolors=256
+bce53ecdae5463c179534c1ae9c92098|file:///Users/louis/.config/nvim/init.vim|12|26|V|vim
+	Plug 'christianchiarulli/nvcode-color-schemes.vim'
+7b5c898e0c5e4748b1aaae74fb2d3a57|file:///Users/louis/.config/nvim/init.vim|9|24|V|vim
+	Plug 'ayu-theme/ayu-vim'
+6970ccd3e4e59efca97ca64687f14890|file:///Users/louis/.config/nvim/init.vim|121|5|V|vim
+	let ayucolor="dark"
+c34a353e65fa2dd7d0e9ba41ca31ed29|file:///Users/louis/.config/nvim/init.vim|14|6|V|vim
+	Plug ''
+d49ed05eea074e678a7bd1fd05a123ff|file:///Users/louis/.config/nvim/init.vim|13|1|V|vim
+	Plug 'challenger-deep-theme/vim'
+da31225022b1eb664477c716085cf113|file:///Users/louis/.config/nvim/init.vim|117|13|v|vim
+	ocean-material
+acb22916c4720943eb9ca9a826b0b78e|file:///Users/louis/.config/nvim/init.vim|118|13|v|vim
+	oceanic_material
+b5d14326a1d40a6169b551548c3fcd58|file:///Users/louis/.config/nvim/init.vim|151|1|V|vim
+	hi Normal guibg=NONE
+	hi EndOfBuffer guibg=NONE
+0db487f5bab6e1648ca2967d28b1ad54|file:///Users/louis/.tmux.conf|7|1|V|tmux
+	# set -g default-terminal "screen-256color"
+1d5eec1b44d3def8045084403145d022|file:///Users/louis/.config/nvim/init.vim|124|1|V|vim
+	if &term =~# '256color' && ( &term =~# '^screen'  || &term =~# '^tmux' )
+	  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	  set termguicolors
+	endif
+70e08fa221f5a242b2b3f21dd4d1a83c|file:///Users/louis/.tmux.conf|5|1|V|tmux
+	set -g default-terminal "screen-256color"
+3f79a3f69a25f735dd6b51bbdc42783b|file:///Users/louis/.config/nvim/init.vim|15|7|v|vim
+	kaicataldo/material.vim
+131b161d2a0528813650547f080f569e|file:///Users/louis/.config/nvim/init.vim|15|32|v|vim
+	, { 'branch': 'main' }
+daa2dae1da20f34fc3827253ba2fdf8c|file:///Users/louis/.config/nvim/init.vim|118|1|V|vim
+	colorscheme neotrix
+61a486812bee16cf8a9f12583dabbaca|file:///Users/louis/.config/nvim/init.vim|119|4|V|vim
+	set 
+1babed38892ee49719b48d34a561f917|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
+	Plug 'senran101604/neotrix.vim'
+81bd839c680fa92124b268e1e32cfd11|file:///Users/louis/.config/nvim/init.vim|10|1|V|vim
+	Plug 'kyazdani42/nvim-web-devicons'
+79ab37a2578c993d12c373637423b0ca|file:///Users/louis/.config/nvim/init.vim|117|13|v|vim
+	neotrix
+0f6f8d24fb50cd3af15c9a055f9e2b9a|file:///Users/louis/.config/nvim/init.vim|8|1|V|vim
+	Plug 'w0rp/ale'
+	Plug 'itchyny/lightline.vim'
+6a2ae38fbcf72b6988b6346edbe67234|file:///Users/louis/.config/nvim/init.vim|117|13|V|vim
+	let g:neotrix_dark_contrast = "galaxy"
+41227458fea5de49a4d613e46e493ed0|file:///Users/louis/.config/nvim/init.vim|14|1|v|vim
+	joshdick/onedark.vim
+72f929d56b2b8173b4c6fcf9fb50ef43|file:///Users/louis/.config/nvim/init.vim|117|13|v|vim
+	spacegray
+8a34d8af56772463c0e5fa8d3802f8ba|file:///Users/louis/.config/nvim/init.vim|153|1|V|vim
+	hi Normal guibg=NONE
+1232194e3fbbb41fd090e4077019d81c|file:///Users/louis/.config/nvim/init.vim|147|1|V|vim
+	" hi Normal guibg=NONE
+	" hi EndOfBuffer guibg=NONE
+d508fe45cecaf653904a0e774084bb5c|file:///Users/louis/.config/nvim/init.vim|142|19|v|vim
+	white
+c7ad25f174eefcfd0992df6fd7700a71|file:///Users/louis/.config/nvim/init.vim|142|44|v|vim
+	ABB2BF
+c67d3d8dc0ca307cc87faa2a9f93ab19|file:///Users/louis/.config/nvim/init.vim|139|1|V|vim
+	if (has("autocmd") && !has("gui_running"))
+	      augroup colorset
+	            autocmd!
+	            let s:transparent = { "gui": "#0000", "cterm": "145", "cterm16" : "7" }
+	            autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:transparent }) " `bg` will not be styled since there is no `bg` setting
+	      augroup END
+	endif
+fe8ea954e16d7060cb4d30b024f3610c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-notification-screen/consumer-notification-screen.tsx|40|1|V|typescriptreact
+	            relativeTime: {
+	              s: "Just now",
+	              past: "%s",
+	              m: "1m",
+	              mm: "%dm",
+	              h: "1h",
+	              hh: "%dh",
+	              d: "1d",
+	              dd: "%dd",
+	              M: "1mth",
+	              MM: "%dmth",
+	              y: "1y",
+	              yy: "%dy",
+	            },

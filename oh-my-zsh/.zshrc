@@ -85,8 +85,6 @@ alias ra='ranger'
 alias matrix='source ~/.matrix.sh'
 alias letwork='~/.letwork.sh'
 alias rni='rm  -rf node_modules && yarn && npx pod-install'
-alias python='python3'
-
 
 #Wifi
 alias wfscan='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport scan'
@@ -195,6 +193,7 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.pub-cache/bin
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=$PATH:/usr/local/mysql/bin

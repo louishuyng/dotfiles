@@ -3,12 +3,15 @@ let mapleader=','
 
 " ==================================================== Plugin
 call plug#begin(expand('~/.config/nvim/plugged'))
+
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
 Plug 'w0rp/ale'
+Plug 'ayu-theme/ayu-vim'
+Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
-Plug 'ajh17/Spacegray.vim'
+Plug 'joshdick/onedark.vim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug '/usr/local/opt/fzf'
@@ -67,7 +70,6 @@ source ~/.config/nvim/config/ruby.vim
 source ~/.config/nvim/config/scalpel.vim
 source ~/.config/nvim/config/session.vim
 source ~/.config/nvim/config/spelunker.vim
-source ~/.config/nvim/config/lightline.vim
 source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 
@@ -104,31 +106,36 @@ set lazyredraw
 set ttimeout
 set ttimeoutlen=2
 set number relativenumber
+set hidden
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
 " http://items.sjbach.com/319/configuring-vim-right
-set hidden
-
-" Turn on syntax highlighting
-if !exists('g:syntax_on')
-  syntax enable
-endif
-
 " ==================================================== Mouse
 set mouse=a
 
 " ==================================================== Theme
+colorscheme onedark
+
 set background=dark
 set termguicolors
-syntax enable
-colorscheme spacegray
+set t_Co=256
 
-if (has("termguicolors"))
-  hi LineNr ctermbg=NONE guibg=NONE
-  hi VertSplit guifg=#79a3b1 guibg=NONE ctermbg=NONE
-  hi SignColumn ctermbg=NONE guibg=NONE
-endif
+let g:lightline = {
+      \ 'colorscheme': 'ayu',
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ }
+      \ }
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 " ==================================================== Highlight
 hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
@@ -138,7 +145,7 @@ hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
 hi FloatermBorder guifg=#55E579
 hi Normal guibg=NONE
-hi EndBuffer guibg=NONE
+hi EndOfBuffer guibg=NONE
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
 hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
