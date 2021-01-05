@@ -1,4 +1,5 @@
-" ==================================================== Init Configure
+"" ==================================================== Init Configure
+
 let mapleader=','
 
 " ==================================================== Plugin
@@ -6,12 +7,12 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
 Plug 'w0rp/ale'
-Plug 'ayu-theme/ayu-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
+Plug 'embark-theme/vim', { 'as': 'embark' }
+Plug 'co1ncidence/monokai-pro.vim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug '/usr/local/opt/fzf'
@@ -115,14 +116,13 @@ set hidden
 set mouse=a
 
 " ==================================================== Theme
-colorscheme onedark
-
 set background=dark
 set termguicolors
 set t_Co=256
+colorscheme monokai-pro
 
 let g:lightline = {
-      \ 'colorscheme': 'ayu',
+      \ 'colorscheme': 'embark',
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \ }
@@ -137,6 +137,13 @@ function! LightlineFilename()
   return expand('%')
 endfunction
 
+if (has("termguicolors"))
+  set termguicolors
+  hi LineNr ctermbg=NONE guibg=NONE
+  hi VertSplit guifg=#79a3b1 guibg=NONE ctermbg=NONE
+  hi SignColumn ctermbg=NONE guibg=NONE
+endif
+
 " ==================================================== Highlight
 hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
 hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
@@ -144,8 +151,6 @@ hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
 hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
 hi FloatermBorder guifg=#55E579
-hi Normal guibg=NONE
-hi EndOfBuffer guibg=NONE
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
 hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
