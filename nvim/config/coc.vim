@@ -84,6 +84,8 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+nmap <space>e :CocCommand explorer<CR>
+
 " Explorer
 let g:coc_explorer_global_presets = {
 \   'floating': {

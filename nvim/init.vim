@@ -1,18 +1,19 @@
 "" ==================================================== Init Configure
 
 let mapleader=','
+let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading -w'
 
 " ==================================================== Plugin
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
 Plug 'w0rp/ale'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'itchyny/lightline.vim'
-Plug 'embark-theme/vim', { 'as': 'embark' }
-Plug 'co1ncidence/monokai-pro.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'joshdick/onedark.vim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug '/usr/local/opt/fzf'
@@ -60,6 +61,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 call plug#end()
 
 " ==================================================== Config Plugin
+source ~/.config/nvim/config/airline.vim
 source ~/.config/nvim/config/ale.vim
 source ~/.config/nvim/config/buffer.vim
 source ~/.config/nvim/config/coc.vim
@@ -119,29 +121,11 @@ set mouse=a
 set background=dark
 set termguicolors
 set t_Co=256
-colorscheme monokai-pro
-
-let g:lightline = {
-      \ 'colorscheme': 'embark',
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \ }
-      \ }
-
-function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
-endfunction
+colorscheme onedark
 
 if (has("termguicolors"))
   set termguicolors
   hi LineNr ctermbg=NONE guibg=NONE
-  hi VertSplit guifg=#79a3b1 guibg=NONE ctermbg=NONE
-  hi SignColumn ctermbg=NONE guibg=NONE
 endif
 
 " ==================================================== Highlight
@@ -151,6 +135,8 @@ hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
 hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
 hi FloatermBorder guifg=#55E579
+hi Normal guibg=#000000
+hi EndOfBuffer guibg=#000000
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
 hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE

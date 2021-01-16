@@ -1,5 +1,6 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh/
+export TERM=xterm-256color
 
 plugins=(
   git
@@ -74,7 +75,7 @@ alias dk="open -a 'Docker'"
 alias sdn="osascript -e 'tell app \"System Events\" to shut down'"
 alias nv='~/.nvim/bin/nvim'
 alias vimrc='nvim ~/.config/nvim/init.vim'
-alias tm='tmux'
+alias tm='tmux  -2'
 alias rf='rm -rf'
 alias spotify='/usr/local/lib/node_modules/spotify-cli-mac/./index.js'
 alias sp='/usr/local/lib/node_modules/spotify-cli-mac/./index.js'
@@ -124,7 +125,7 @@ function sd() {
   sudo shutdown -h +$*
 }
 
-function dev() {
+function Dev() {
   str="$*"
   tm new -s $str
 }
@@ -135,7 +136,6 @@ function dev() {
 
 # Make zsh know about hosts already accessed by SSH
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
-
 
 ## CUSTOM FUNCTIONS
 

@@ -1,67 +1,45 @@
-nnoremap <silent> <leader>e :call Fzf_dev()<CR>
-
-
 " ripgrep
 if executable('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea'"
   set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+  command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
 endif
 
-let g:fzf_colors =
-  \ { 'fg':    ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+" files in fzf
+command! -bang -nargs=? -complete=dir Files
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
 
-let g:fzf_preview_command = 'bat --color=always --style=grid --theme=ansi-dark {-1}'
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
 
-let g:fzf_preview_split_key_map = 'ctrl-h'
-let g:fzf_preview_vsplit_key_map = 'ctrl-v'
-let g:fzf_preview_tabedit_key_map = 'ctrl-t'
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
+let g:fzf_tags_command = 'ctags -R'
 
-function! Fzf_dev()
-let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
+let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 
-function! s:files()
-  let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-  return s:prepend_icon(l:files)
+" fzf if passed argument is a folder
+augroup folderarg
+    " change working directory to passed directory
+    autocmd VimEnter * if argc() != 0 && isdirectory(argv()[0]) | execute 'cd' fnameescape(argv()[0])  | endif
+
+    " start fzf on passed directory
+    autocmd VimEnter * if argc() != 0 && isdirectory(argv()[0]) | execute 'Files ' fnameescape(argv()[0]) | endif
+augroup END
+
+
+" advanced grep(faster with preview)
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
-function! s:prepend_icon(candidates)
-  let l:result = []
-  for l:candidate in a:candidates
-    let l:filename = fnamemodify(l:candidate, ':p:t')
-    let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-    call add(l:result, printf('%s %s', l:icon, l:candidate))
-  endfor
-
-  return l:result
-endfunction
-
-function! s:edit_file(item)
-  let l:pos = stridx(a:item, ' ')
-  let l:file_path = a:item[pos+1:-1]
-  execute 'silent e' l:file_path
-endfunction
-
-call fzf#run({
-      \ 'source': <sid>files(),
-      \ 'sink':   function('s:edit_file'),
-      \ 'options': '-m ' . l:fzf_files_options,
-      \ 'down':    '40%' })
-endfunction
 
 nnoremap <silent> <space>h :FZFMru<Cr>
-nnoremap <silent> <c-f> :call Fzf_dev()<CR>
-nnoremap <silent> <leader>f :Find<CR>
-nnoremap <silent> <leader>fc :FzfPreviewGitStatus<CR>
+nnoremap <silent> <c-f> :Files<CR>
+nnoremap <silent> <leader>f :Rg<CR>
+nnoremap <silent> <leader>fs :GFiles?<CR>
