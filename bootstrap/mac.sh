@@ -31,20 +31,11 @@ install_homebrew() {
   fi
 }
 
-install_brew_list() {
-  read -r -p "Do you want to install brew list? [y|N] " response
-  if [[ $response =~ (y|yes|y) ]];then
-    cat ./packages.txt | xagrs brew install
-    cat ./packages_cask.txt  | xagrs brew cask install
-    success "Installed homebrew list"
-  fi
-}
-
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     git config --global user.email"huynguyennbk@gmail.com"
-    git config --global user.name "Huy Nguyen"
+    git config --global user.name "Louis Nguyen"
     git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
     git config --global color.ui true
     git config --global color.diff-highlight.oldNormal "red bold"
@@ -60,13 +51,20 @@ setup_git() {
     success "Setup Git Successfully"
   fi
 }
-
-install_ubersicht() {
-  read -r -p "Do you want to install ubersicht status bar? [y|N] " response
+install_zsh() {
+  read -r -p "Do you want to install zsh? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew cask install ubersicht
-    cp -r ../../Ubersicht/* ~/Library/Application Support/Übersicht
-    success "Installed ubersicht status bar"
+    brew install zsh
+    sudo chsh -s $(which zsh)
+
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    mkdir -p ~/.oh-my-zsh
+
+    ln -s ../suckless/zsh/.zshrc ~/.zshrc
+    ln -s ../suckless/oh-my-zsh/* ~/.oh-my-zsh
+
+    success "Installed zsh"
   fi
 }
 
@@ -78,26 +76,85 @@ install_font() {
     ./install.sh
     cd ..
     rm -rf fonts
-    success "Installed font powerline!"
+
+    brew tap homebrew/cask-fonts
+    brew cask install font-hack-nerd-font
+
+    success "Installed font!"
   fi
 }
 
-map_hot_keys_config() {
-  read -r -p "Do you want to map hot keys? [y|N] " response
+install_nvim() {
+  read -r -p "Do you want to install neovim? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    touch ~/.chunkwmrc
-    touch ~/.skhdrc
-    cd ../../skhdrcConfig
-    ln -s /.chunkwmrc ~/.chunkwmrc
-    ln -s /.skhdrc ~/.chunkwmrc
-    success "Mapped hot keys!"
+    info "Installing neovim"
+    brew install neovim
+
+    # reduce keyrepeat for faster typing in vim
+    defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+
+    success "Installed neovim"
+  fi
+}
+
+install_terminal() {
+  read -r -p "Do you want to install terminal? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew cask install alacritty
+
+    ln -s ../suckless/mac_os/alacritty/alacritty.yml ~/.alacritty.yml
+    success "Installed terminal"
+  fi
+}
+
+install_window_manager() {
+  read -r -p "Do you want to install window manager? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install koekeishiya/formulae/yabai
+    sudo yabai --install-sa
+    brew services start yabai
+    killall Dock
+    brew install somdoron/formulae/spacebar
+    brew services start spacebar
+    brew install koekeishiya/formulae/skhd
+    brew services start skhd
+
+    ln -s ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+    ln -s ../suckless/mac_os/yabai/.yabai ~/.yabai
+    ln -s ../suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
+
+    success "Installed window manager! Remember to disable System Integrity Protection (SIP)"
+  fi
+}
+
+install_tool() {
+  read -r -p "Do you want to install some fancy tools ? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install ripgrep
+    brew install neofetch
+    brew install pgcli
+    brew install mycli
+    brew install bat
+    brew install httpie
+    brew install diff-so-fancy
+    brew install terminal-notifier
+    brew install bluetoothconnector
+    brew install exa
+    brew install fzf
+    $(brew --prefix)/opt/fzf/install
+    success "Installed some fancy tools"
   fi
 }
 
 install_homebrew
-install_brew_list
 setup_git
-install_ubersicht
+install_zsh
+install_terminal
+install_nvim
+install_window_manager
+install_tool
+map_hot_keys_config
 
 echo "---"
 

@@ -62,29 +62,31 @@ cmd - 9 : yabai -m space --focus 9
 
 # Resize windows
 shift + alt - h : \
-        yabai -m window --resize left:-20:0 ; \
-        yabai -m window --resize right:-20:0
+    yabai -m window --resize left:-20:0 ; \
+    yabai -m window --resize right:-20:0
 
-        shift + alt - j : \
-          yabai -m window --resize bottom:0:20 ; \
-          yabai -m window --resize top:0:20
+shift + alt - j : \
+    yabai -m window --resize bottom:0:20 ; \
+    yabai -m window --resize top:0:20
 
-          shift + alt - k : \
-            yabai -m window --resize top:0:-20 ; \
-            yabai -m window --resize bottom:0:-20
+shift + alt - k : \
+    yabai -m window --resize top:0:-20 ; \
+    yabai -m window --resize bottom:0:-20
 
-            shift + alt - l : \
-              yabai -m window --resize right:20:0 ; \
-              yabai -m window --resize left:20:0
+shift + alt - l : \
+    yabai -m window --resize right:20:0 ; \
+    yabai -m window --resize left:20:0
 
 # equalize size of windows
-              shift + alt - 0 : yabai -m space --balance
+shift + alt - 0 : yabai -m space --balance
 
 # destroy desktop
-              cmd + alt - w : chunkc tiling::desktop --annihilate
+cmd + alt - w : chunkc tiling::desktop --annihilate
 
 # Restart Yabai
-              shift + lctrl + alt - r :
-              /usr/bin/env osascript <<< \
-                "display notification \"Mother fucker restart\" with title \"Louis Yabai\""; \
-                launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+shift + lctrl + alt - r :
+    /usr/bin/env osascript <<< \
+        "display notification \"Mother fucker rock it now\" with title \"Louis Hacker\""; \
+        brew services restart spacebar; \
+        sudo yabai --load-sa; \
+        launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"; \

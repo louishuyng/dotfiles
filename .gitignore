@@ -14,3 +14,8 @@ yarn
 
 pgcli/history
 pgcli/log
+
+suckless/oh-my-zsh/cache
+suckless/oh-my-zsh/log
+suckless/pgcli/log
+

@@ -1,4 +1,5 @@
 prettier.formatFile
+explorer
 fzf-preview.ProjectFiles
 fzf-preview.ProjectGrep
 fzf-preview.GitActions
@@ -6,7 +7,6 @@ fzf-preview.GitStatus
 fzf-preview.GitLogs
 fzf-preview.GitBranches
 fzf-preview.GitFiles
-explorer
 snippets.editSnippets
 editor.action.organizeImport
 snippets.openSnippetFiles

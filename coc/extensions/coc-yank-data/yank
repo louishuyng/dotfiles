@@ -1,1229 +1,1071 @@
-268184c12df027f536154d099d497b31|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/network-connection/network-connection.tsx|13|44|v|typescriptreact
-	children
-02b2da5dca6419d86f5f674b18ece765|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/network-connection/network-connection.tsx|17|26|V|typescriptreact
-	  const [checkNetwork, isLoading] = useConnectionCheck()
-f2cb97f00831fcece42ead8a13d77071|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|51|18|V|typescriptreact
-	    checkNetwork()
-93c6ab83d78122d0b088683c670c6264|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|48|11|V|typescriptreact
-	      setIs
-6d80e9d40aefd305b56c3702b25313bb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|41|24|V|typescriptreact
-	      setIsOffline(true)
-ac286891e35bbb0919afe109b346a533|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|48|12|V|typescriptreact
-	      clearI
-18eedc62cb8c714bef7ae8593767c631|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|47|28|V|typescriptreact
-	      clearTimeout(setStatus)
-d6b0d13735009b046d176413e9637686|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|41|7|v|typescriptreact
-	const setStatus = 
-671b6c97ce0930c8b5429e0d0ee3a712|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|46|7|V|typescriptreact
-	      setStatus
-ce0e317a2d696d9cce549be9dc635460|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useConnectionCheck.ts|1|1|V|typescript
-	import React from "react"
-	import NetInfo from "@react-native-community/netinfo"
-	
-	export const useConnectionCheck = (): [
-	  isOffline: boolean,
-	  checkNetwork: () => void,
-	  isLoading: boolean,
-	] => {
-	  const [isOffline, setIsOffline] = React.useState<boolean>(false)
-	  const [isLoading, setIsLoading] = React.useState<boolean>(false)
-	
-	  const checkNetwork = React.useCallback(() => {
-	    setIsLoading(true)
-	
-	    NetInfo.fetch().then((state) => {
-	      setIsOffline(true)
-	    })
-	  }, [])
-	
-	  React.useEffect(() => {
-	    const unsubscribe = NetInfo.addEventListener((state) => {
-	      setIsOffline(!state.isConnected)
-	    })
-	
-	    checkNetwork()
-	
-	    return () => unsubscribe()
-	  }, [])
-	
-	  return [isOffline, checkNetwork, isLoading]
-	}
-dc81aa459a3a058fe64dcad6879ff7ab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|64|7|v|typescriptreact
-	joinChannel
-cf67901a260b5783d494d50d2c9485a3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|120|1|V|typescriptreact
-	        console.log("error", error)
-df49f67586d2cb3dddb4ddff5544a2c1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|119|1|V|typescriptreact
-	      } catch (error) {
-	        console.log("error", error)
-22782ed9ee8da3ad54232646845524df|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|135|1|V|typescriptreact
-	      disconnect()
-	      disconnectChat(videoBooking?.room?.name)
-fad58de7366495db4650cfefac2fcd61|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|112|5|v|typescriptreact
-	main
-386fa923a5cd6d4b66d3fd6857b039f5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|112|1|V|typescriptreact
-	    main.updateFilters({})
-9198772355376bee2a48a1180e9dd886|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|111|1|V|typescriptreact
-	  const goBack = useCallback(() => {
-	    main.updateFilters({})
-f6a6818e08a895b98af307e87f96f101|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|85|11|V|typescriptreact
-	      main.updateFilters({})
-0b401c6be6428bfe21c94f63592cfceb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/search-bar/search-bar.tsx|30|19|v|typescriptreact
-	metrics.borderRadiusMax
-1e9f50193668a7c797ba5a65d54e3e46|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/exclusive-watch-screen/exclusive-watch-screen.tsx|367|19|v|typescriptreact
-	metrics.borderRadius
-6e44d1224f5a1488626d98689440e88f|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|109|48|v|typescript
-	createInAppNotification
-a2296a239bf1a1110b1e9b86efa90967|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|95|66|v|typescript
-	talentBooking
-eff812645650fde80ba6560e568a878e|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|113|1|V|typescript
-	            const notificationData = notification?.data;
-	            const talentBooking = {
-	              booking_count: notificationData?.bookingCount,
-	              talent_id: notificationData?.receiverId,
-	              id: notification?.id,
-	            };
-	            pushNotifications.push(createTalentPushNotification(fcm, talentBooking));
-a55b1b0a3b58a6f8ae2614299eeeb398|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|34|18|V|typescript
-	    booking_count,
-84acc37194ef15e62731bd45348a7430|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|112|9|V|typescript
-	            console.log(notification);
-0cfd653d5d3e1e9fdbb644523d77971d|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|110|21|v|typescript
-	notification
-08f11b6549ea94e7e0b1cfd99a11a7aa|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|109|80|v|typescript
-	talentInAppNotificationInput
-f85448a962bf53a437477ddeb64d61dc|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|92|43|v|typescript
-	createTalentInAppNotificationInput
-b3e47ae5a5e5fdd659a3d91547781640|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|110|41|V|typescript
-	        console.log(talentNotifications);
-ea95a2589fc5529d6b398c0599d0f15d|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|109|21|v|typescript
-	talentNotifications
-c7039b66d71283290d7596c5289efd47|file:///Users/louis/Dev/Projects/komi/komi-serverless/services/notifications.ts|17|5|V|typescript
-	  con
-d2006e42fc8c861b874f2cedca8432f8|file:///Users/louis/Dev/Projects/komi/komi-serverless/repositories/notification.ts|11|1|V|typescript
-	export const getInsertQuery = (data: InsertQuery | InsertQuery[]) => {
-	  const values = [];
-	  if (Array.isArray(data)) {
-	    data.forEach((d) => values.push(getValuesText(d)));
-	  } else {
-	    values.push(getValuesText(data as InsertQuery));
-	  }
-	
-	  const valuesSql = `VALUES ${values.join(',')}`;
-	  const insertSql = `INSERT INTO notifications (${Object.keys(Array.isArray(data) ? data[0] : data)})`;
-	  return `
-	    ${insertSql}
-	    ${valuesSql}
-	    RETURNING id
-	  `;
-	};
-442b0ee61544480eb581ebe0ff7e361c|file:///Users/louis/Dev/Projects/komi/komi-serverless/services/notifications.ts|16|17|v|typescript
-	getInsertQuery
-b651c5d72f4bfcad30afe4809b1bf808|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|109|9|V|typescript
-	        console.log(talentInAppNotificationInput);
-1a4284d2008229b209b0b352a0c36c98|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|26|19|v|typescript
-	notifyDailyTalentTemplate
-735bace2b8d33e1b34408a96db60f81f|file:///Users/louis/Dev/Projects/komi/komi-serverless/repositories/notification.ts|41|28|v|typescript
-	, booking_count
-8ab4db2b107e22af7ec68ee67957c089|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|94|32|v|typescript
-	createTalentPushNotification
-d35830f60b198834694926ab364fb343|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|20|22|v|typescript
-	booking_count
-62831339b8145564b992f890b8b7e762|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|26|28|V|typescript
-	  const content = notifyDailyTalentTemplate(templateContext);
-f9b2aa64594e51849f0f5bda33283d86|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|22|1|V|typescript
-	  const templateContext = {
-	    totalBookings: booking_count,
-	    plural: booking_count > 1,
-	  };
-475fd5ecade884082cf1363d2dc46ab4|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|88|32|V|typescript
-	        pushNotifications.push(createTalentPushNotification(fcm, talentBooking));
-3219566b4dd7155b4b7abfbced32a84b|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|106|20|V|typescript
-	            const {} = notification
-d04f97edf86b13d438e22ef7659cd115|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|20|11|v|typescript
-	talent_id
-021e2d28443ff8a88b1b2a58525f683d|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|11|34|V|typescript
-	const notifyDailyTalentTemplate = require('../../templates/daily-notification-talent.hbs');
-ca86954a032e4976a7c88d77be9a2eb8|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|86|11|V|typescript
-	        // console.log(talentBooking);
-5261bbca4dc623804cf6bdb3825efbd5|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|22|1|V|typescript
-	  const templateContext = {
-	    totalBookings: booking_count,
-	    plural: booking_count > 1,
-	  };
-	  const content = notifyDailyTalentTemplate(templateContext);
-2488a81aec4a330a0a597fae88a9a948|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|7|10|v|typescript
-	BookingStatusType
-863c3cffcb74d3e74d389bb39ac84e72|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|29|13|v|typescript
-	htmlToText(content)
-d41c2251064ece56409803ab55d6e103|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|16|11|v|typescript
-	receiver_id
-59f2b1de8c5af230bb2dee281a56fc19|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|130|13|V|typescript
-	            pushNotifications.push(createTalentPushNotification(fcm, talentBooking));
-70ef8928f0df443423b86bbb887a76f5|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|112|35|V|typescript
-	        console.log(talentBooking);
-73a4ef9b6ced0f09c700abd7a40cfcb9|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|111|35|V|typescript
-	      const pushNotifications = [];
-16f837f152759dd0e4df6f434519a4ce|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|134|30|v|typescript
-	.push(
-21a361d96e3e13f5f109748c2a9d2434|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|134|33|v|typescript
+5e43c0dfe4acfa3b960d48203a848ffd|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|151|1|V|typescript
+	      index === keys.length - 1
+21a361d96e3e13f5f109748c2a9d2434|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|154|16|v|typescript
 	push
-a5a3f0f287a448982aac520cffe4779a|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|141|17|v|typescript
-	Promise
-941f6ec0fdefdacae0d6f9d2b8a73fde|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|134|13|v|typescript
-	pushNotifications
-a5129ffe476c6ace366c610a5f361ee6|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|114|28|v|typescript
-	 = new Promise()
-5e543256c480ac577d30f76f9120eb74|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|114|30|v|typescript
-	undefined
-cafd1361a5fedd90d5a86e58a0f17633|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|95|1|V|typescript
-	      notification_log: {
-	        user_id: 'IS NULL',
-	      },
-	      status: `= '${BookingStatusType.ACCEPTED}'`,
-83b5396424c69553c33c00847bb36aa6|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|97|6|V|typescript
-	    having: `date(now()) = date(now() AT TIME ZONE talent.timezone) and date_trunc('hour', now() AT TIME ZONE talent.timezone) = date_trunc('day', now() AT TIME ZONE talent.timezone) + interval '8 hour'`,
-b72aab32dd5d5a50dd3ec6272a1d1291|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|93|9|v|typescript
-	'= 253'
-1160b0bd7a2c22b78075847fa6373c2d|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|70|1|V|typescript
-	    where: {
-	      type: `IN ('${BookingType.ONE_TO_ONE}', '${BookingType.LIVE_CLASS}')`,
-	      booking: {
-	        talent_id: '= 253',
-	      },
-	    },
-14343114e1f2366fe75e21c5285a768e|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|89|1|V|typescript
-	    where: {
-	      type: `IN ('${BookingType.ONE_TO_ONE}', '${BookingType.LIVE_CLASS}')`,
-	      user: {
-	        id: '= 253',
-	      },
-	      talent: {
-	        timezone: 'IS NOT NULL',
-	      },
-	    },
-9ae8c74b3574b6dba7d2cdab4f58a57f|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|105|1|V|typescript
-	  const sendAndLogNotification = () => {
-	
-	  }
-91e037ae49a17974bcecc546693343fd|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|133|1|V|typescript
-	      // Prepare insert data
-	      try {
-	        await client.query('BEGIN');
-	
-	        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	        const talentNotifications: any = await createInAppNotification(client, talentInAppNotificationInput);
-	        if (talentNotifications?.rows.length) {
-	          talentNotifications.rows.forEach((notification, idx) => {
-	            pushNotification = createTalentPushNotification(fcm, notification);
-	            talentNotificationLogs[idx].notification_id = notification.id;
-	          });
-	
-	          await createNotificationLog(client, talentNotificationLogs);
-	
-	          // Sent notification
-	          pushNotification && (await pushNotification);
-	        }
-	
-	        await client.query('COMMIT');
-	      } catch (e) {
-	        await client.query('ROLLBACK');
-	        throw e;
-	      }
-6ed30f83d415a3950eb2f935e36f0ae4|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|72|9|v|typescript
-	pushNotification = 
-e35febcc00fc906cefd1f4a1ccc38088|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|76|43|v|typescript
-	talentNotificationLogs
-a43d8ed4a1480b99c6ce84b5387520eb|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|73|70|V|typescript
-	        talentNotificationLogs[idx].notification_id = notification.id;
-b753ec4c4855b371892d609aade561ee|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|139|1|V|typescript
-	      let pushNotification: Promise<void>;
-5f9602a430fce0b2ec38f8575ed04118|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|65|7|V|typescript
-	  // Prepare insert data
-326e06b3335bd9f33f385349a244fe74|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|76|13|v|typescript
-	createNotificationLog(client, { notification_id: notification.id })
-3482f2ab100df7ed42a5189b5f181cf3|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|65|3|V|typescript
-	  let pushNotification: Promise<void>;
-7a997b07d0af9d40065132625dd48ecf|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|65|7|v|typescript
-	pushNotification
-a44d1b9ecc0eb2b4b69789c76e28758c|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|78|13|v|typescript
-	createNotificationLog(client, { notification_id: notification.id });
-64c83f0c43a026670bc78c4f6107b244|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|78|12|V|typescript
-	      await 
-d12d4aeb076428794d7bae596e6790c6|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|78|14|V|typescript
-	      Promise.
-8ee6c28f33437e3b5102e4a7fe5eff8a|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|82|1|V|typescript
-	      // Sent notification
-	      pushNotification && (await pushNotification);
-116f73a482c5f455420430671a20db99|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|79|1|V|typescript
-	          notification_id: notification.id,
-	          user_id: notification?.receiver_id,
-	          was_notified: true,
-	          type: NotificationLogType.TALENT_DAILY,
-687670422ca20fa3298136329226cf47|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|82|57|v|typescript
-	{
-	          notification_id: notification.id,
-	          user_id: notification?.receiver_id,
-	          was_notified: true,
-	          type: NotificationLogType.TALENT_DAILY,
-	        }
-b12e1388f9ce1513912e6e705d7151ec|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|154|1|V|typescript
-	        talentNotificationLogs.push({
-	          type: NotificationLogType.TALENT_DAILY,
-	          was_notified: true,
-	          user_id: talentBooking.talent_id,
-	          notification_id: null,
-	        });
-01fb72afdea80b804a0f8e4d9783e176|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|152|9|v|typescript
-	talentInAppNotificationInput.push(
-ead76dd7dfbbc35a740b8dea02611be7|fugitive:/Users/louis/Dev/Projects/komi/komi-serverless/.git//0/handlers/notifications/notify_daily_talent.ts|118|1|V|typescript
-	        talentInAppNotificationInput.push(createTalentInAppNotificationInput(talentBooking));
-fef732bb0ff58dce352006c9e5c753b9|fugitive:/Users/louis/Dev/Projects/komi/komi-serverless/.git//0/handlers/notifications/notify_daily_talent.ts|133|1|V|typescript
-	        const talentNotifications: any = await createInAppNotification(client, talentInAppNotificationInput);
-91bab4753e1845dde6becb5fbde7b189|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|67|3|V|typescript
-	  const talentInAppNotificationInput = createTalentInAppNotificationInput(talentBooking);
-ad5e9672581accacd32b1577b4813703|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|146|1|V|typescript
-	      const talentNotificationLogs = [];
-	      const talentInAppNotificationInput = [];
-	
-	      let pushNotification: Promise<void>;
-d24a8a9a8e75a129067d9835b21a57e6|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|145|10|V|typescript
-	      // Prepare send notification data
-3691df873f200db80166b66832f3f89a|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|129|1|V|typescript
-	      talent: {
-	        timezone: 'IS NOT NULL',
-	      },
-	      notification_log: {
-	        user_id: 'IS NULL',
-	      },
-	      status: `= '${BookingStatusType.ACCEPTED}'`,
-c520ed32e258585f013b5daaa8f06317|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|89|47|v|typescript
-	notificationLog
-7e6efcc50d0877e78d3720cee58e2e9c|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|146|15|v|typescript
-	sendAndLogNotification
-dfb5f27bca8f4b837b80eb4fc9596d3a|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|97|12|V|typescript
-	    throw e;
-97a4e3b581ea70dc86102502736955e7|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|77|11|V|typescript
-	        return
-8f6c997d4f5a9b6d7fb4101898b854cb|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|89|23|v|typescript
-	allSettled
-5f5122e9b495ac7cfe360e4708f02350|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|76|40|V|typescript
-	      talentNotifications.rows.forEach((notification) => {
-1bb30a5f7f98ce320e2a3591ccd01716|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|86|9|V|typescript
-	      });
-99b63d0d77b9572edf59678dd5fc36cd|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|125|1|V|typescript
-	    where: {
-	      type: `IN ('${BookingType.ONE_TO_ONE}', '${BookingType.LIVE_CLASS}')`,
-	      booking: {
-	        talent_id: `= 253`,
-	      },
-	    },
-2bfc8443dda6c6d9d4abba86bead8090|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|99|7|v|typescript
-	sendDailyNotificationTalent
-9b69eb4db02da0b7c1f855bf3b6860b5|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|85|22|v|typescript
-	createTalentPushNotification(fcm, notification);
-da20a8ce2dae44513408b928bb3913cc|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|86|25|v|typescript
-	createNotificationLog(client, notificationLogData)
-0b37281f1ccce92af3d78545bbcd0c93|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|86|1|V|typescript
-	      notificationLog = ;
-	
-	
-	      if (notificationLog && pushNotification) {
-	        await Promise.all([pushNotification,  notificationLog]);
-	      }
-673ef72cf1307ce25b5bf4711f977b63|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|64|1|V|typescript
-	  let pushNotification: Promise<void>;
-	  let notificationLog: Promise<void>;
-a7164a7c58910b3365f9f6fde67514bc|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|65|1|V|typescript
-	  console.log(talentInAppNotificationInput);
-2b0513850fa1e5c7ebc853f2df6af7ca|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|138|9|v|typescript
-	await
-0df93e34273b367bb63bad28c94c78d5|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|137|35|v|typescript
-	async
-f8b3871f7e5224716b91f49208b36a97|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|64|9|V|typescript
-	  return 
-0a5f8aa19d65e7278c35a13acf1ffdb5|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|141|7|V|typescript
-	      console.log(sendAndLogNotification)
-f2ea72f61aec434215bf86677a96203c|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|121|1|V|typescript
-	      booking: {
-	        talent_id: '= 253',
-	      },
-01441662d89af6a954fb2f28795551d7|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|70|8|V|typescript
-	    // console.log(talentNotifications);
-d0af615b590415b34826d564970fac68|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|63|7|v|typescript
-	createNotification
-020a886f8d73aeec9a097742e478601e|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|63|7|v|typescript
-	createAndPushNotification
-049b58705776f481209be5fa775718f9|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|138|11|v|typescript
-	sendAndLogNotifications
-4e476ab9b284f3de3888a5bfb2f98ff3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|303|23|v|typescriptreact
-	bebasBoldLR
-03f60669ebff50980256c05dee92769d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|303|23|v|typescriptreact
-	bebasRegularH
-b46dde072b75b4c74966983258ee0bf6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|303|23|v|typescriptreact
-	bebasRegularLargeL
-08c7ca99604875bc15acbc04f93325c0|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|138|11|v|typescript
-	createAndPushNotifications
-87b36b354daf7a532f699d131a5bfa76|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|146|34|v|typescript
-	ogNotifications);
-	
-67e408ddfbf19761c2ac4b8475f064a2|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|82|14|V|typescript
-	        createNotificationLog(client, notificationLogData),
-248721f47ea861bf2055281caa9ebced|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|82|1|V|typescript
-	        createTalentPushNotification(fcm, notification),
-b46af7eb8124e9d9916e49f610e2111f|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|82|1|V|typescript
-	      Promise.all([
-	        createTalentPushNotification(fcm, notification),
-	      ]);
-590c5de3f53b83d84c6f3898a524960b|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|70|63|V|typescript
-	  const content = reminderTalent1hourTemplate(templateContext);
-dea2b9db2c570cd759c0e9631fee61a2|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|63|1|V|typescript
-	  const templateContext = {
-	    consumerName: `${requestor_first_name} ${requestor_last_name}`,
-	    bookingTime,
-	    placeholderText: `${requestor_last_name[0]}${requestor_last_name[0]}`.toUpperCase(),
-	  };
-a97689b1dbe7c5df2bd356befdb76fa6|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|59|1|V|typescript
-	  const bookingTime = talent_timezone
-	    ? moment(new Date(booking_date)).tz(talent_timezone).format('hh:mm:ss YYYY-MM-DD')
-	    : `${booking_date} (UTC)`;
-b3d0d8a8d07446679fa0b266cb238226|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|63|9|V|typescript
-	    talent_timezone,
-7ce3405631c02ab63656eb87bd9b6b31|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|59|1|V|typescript
-	    requestor_first_name,
-	    requestor_last_name,
-	    booking_date,
-a14fb7f9bd55500f88290207b641bd75|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|63|1|V|typescript
-	const createAndPushNotification = async (client, talentBooking) => {
-	  const talentInAppNotificationInput = createTalentInAppNotificationInput(talentBooking);
-	  try {
-	    await client.query('BEGIN');
-	
-	    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	    const talentNotifications: any = await createInAppNotification(client, talentInAppNotificationInput);
-	
-	    if (talentNotifications?.rows.length) {
-	      const notification = talentNotifications.rows[0];
-	      const notificationLogData = {
-	        notification_id: notification?.id,
-	        user_id: notification?.receiver_id,
-	        was_notified: true,
-	        type: NotificationLogType.TALENT_DAILY,
-	      };
-	
-	      await createNotificationLog(client, notificationLogData);
-	      await createTalentPushNotification(fcm, notification);
+a635f48c8a1543ade7ef09415c826999|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|145|6|V|typescript
+	    };
+20cc93f9a3d345c86766912df25b581a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|145|30|V|typescript
+	    console.log(index === keys.length - 1);
+79eccec10100224f361848e4c2d0da4d|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|118|26|V|typescript
+	    let bunldeResult: Array<any> = [];
+c622dee84ddb1c7f7b7b18236cfb0869|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|114|19|v|typescript
+	: Array<any>
+fb09b74619594965f3c2da1434ab2d0a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|147|1|V|typescript
+	    if (bunldeResult.length < MAXIMUM_CONCURRENT) {
+	      bunldeResult.push(uploadPart);
+	    } else if (
+	      bunldeResult.length === MAXIMUM_CONCURRENT ||
+	      index === keys.length - 1
+	    ) {
+	      console.log(bunldeResult);
+	      resParts.push([...(await Promise.all(bunldeResult))]);
+	      bunldeResult = [];
 	    }
+1c74c2528a8b74d6b10e7372bba38bc5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|149|18|v|typescript
+	Math.ceil((index + 1) / MAXIMUM_CONCURRENT)
+a8416255f06abeb30a8c50b0863820c0|fugitive:/Users/louis/Dev/Projects/komi/komi-talent/.git//0/src/utils/photo.ts|146|1|V|typescript
+	    const result = await uploadPart();
+	    resParts.push(result);
+b4541d05866eea9a8a71438002ea8864|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|160|1|V|typescript
+	  const 
+9e764587718131b38ca0dac174506c4e|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|161|24|V|typescript
+	  resParts.push(result);
+3f50d21a4aa8cb37090a32587d6d2818|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|148|28|V|typescript
+	    console.log(bundleIndex)
+286c4110a3b46cda58ea695ac218b289|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|156|24|V|typescript
+	    console.log(result);
+377f19aeb2de2882a6d51b26aac3bcce|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|5|v|typescript
+	const result =
+f5712b6fdcc399a05f4ca7438ac60f7b|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|156|10|V|typescript
+	    resParts.push(...result);
+4bb4acd443df98c1a8bb612660dbb44f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|157|5|V|typescript
+	  console.log(resParts)
+ff02c335f69128be1b53074abc88e1dd|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|112|19|V|typescript
+	  const resParts: any = [];
+a00caba4ec6f3dc4e04a974f72ccbcf8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|104|1|V|typescript
+	  // eslint-disable-next-line no-var
+400446d891b9f2ab3a2eacaffe997892|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|152|3|V|typescript
+	  console.log(bunldeResult);
+b10f68464214260f6479968d2c73fac3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|158|5|V|typescript
+	    const result = await Promise.all(bunldeResult[key]);
+226110d751667afae83d89d351c50369|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
+	bunldeResult
+87e4836c5ffb6ae49a0f508b18c406bc|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
+	[key]
+e4dea06e72c364fdd561af41ffa3b8a6|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|158|1|V|typescript
+	  .map(async (key) => {
+	  });
+05c06de8742210592c8fa5984e5ac261|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|159|9|V|typescript
+	  console
+94377c156735b39dfa4ac607234cb87c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
+	bundle
+eb7d453d62c1896391074e16f2abe9af|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|51|v|typescript
+	bunlde
+af7d81b5bacdae171394ac7fc5e6033e|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
+	bundleResult
+09b9870e225218b3e007a72ee6b5c64c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
+	bundleIndex
+8956e1cda345e2a103fd858ff312b3f0|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|146|5|V|typescript
+	    c
+4bbced4680a81da8fc947603c80dfca5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|113|22|V|typescript
+	  console.log(keys.length === file.length);
+53f0c39a6e477649157fdf194249749f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|145|5|v|typescript
+	const result = 
+0bba951af98c5ef6010dde60d6713d1a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|152|9|V|typescript
+	    console.log(index);
+a2335483e983eafb09e3f92eef38d28a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|147|31|v|typescript
+	 index === keys.length - 1
+7b5029e0149464b3ecca56f991ad6893|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|148|28|V|typescript
+	      console.log(promises);
+6cc0393261ee2eddfbb06e8b4bfecde5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|148|49|V|typescript
+	      const result = await Promise.all(promises);
+e0a496b3ba40f2be2c60974f0b5ac2ec|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|148|1|V|typescript
+	      resParts.push(...(await Promise.all(promises)));
+2954e92a9b4d0e998fe4893f8141649a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|150|7|v|typescript
+	else
+77263490ea61f3b82ab6ba903406e911|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|131|50|V|typescript
+	          if (numberUploaded === 0) clearInterval(runCallbackInterval);
+ef73d52bd9ae14c21f25b3d372e5f9fd|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|114|9|v|typescript
+	MAXIMUM_CONCURRENT
+3d1be60a1fb5a49d92cfea9c3d9e7b64|file:///Users/louis/Dev/Projects/komi/komi-talent/src/services/api/api.config.ts|22|8|v|typescript
+	API_URL
+5c1dc53d4b5e87d2cf7797632e1a6e5f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/services/api/api.config.ts|22|9|v|typescript
+	https://e9c85f33a5b8.ngrok.io/api
+37bbae14ff8ec87bf3bf7dfb1995c2e3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/services/api/api.config.ts|22|9|v|typescript
+	https://e9c85f33a5b8.ngrok.io
+29e0d0eb93effb0d0522f77034811c9c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/services/api/api.config.ts|22|9|v|typescript
+	https://d7d942abd211.ngrok.io/api
+948ff44f37302bc747db7affbde123e7|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/AppCenter-Config.plist|1|1|V|xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+	<plist version="1.0">
+	<dict>
+		<key>CLIENT_ID</key>
+		<string>112605877971-gk4ikps0iirco6ejfevbr7oo54rm2hkc.apps.googleusercontent.com</string>
+		<key>REVERSED_CLIENT_ID</key>
+		<string>com.googleusercontent.apps.112605877971-gk4ikps0iirco6ejfevbr7oo54rm2hkc</string>
+		<key>API_KEY</key>
+		<string>AIzaSyAzokcInwKNvV5XHErrceGpgx8ETl6rWfI</string>
+		<key>GCM_SENDER_ID</key>
+		<string>112605877971</string>
+		<key>PLIST_VERSION</key>
+		<string>1</string>
+		<key>BUNDLE_ID</key>
+		<string>co.komiapp.komi</string>
+		<key>PROJECT_ID</key>
+		<string>komi-mobile</string>
+		<key>STORAGE_BUCKET</key>
+		<string>komi-mobile.appspot.com</string>
+		<key>IS_ADS_ENABLED</key>
+		<false></false>
+		<key>IS_ANALYTICS_ENABLED</key>
+		<false></false>
+		<key>IS_APPINVITE_ENABLED</key>
+		<true></true>
+		<key>IS_GCM_ENABLED</key>
+		<true></true>
+		<key>IS_SIGNIN_ENABLED</key>
+		<true></true>
+		<key>GOOGLE_APP_ID</key>
+		<string>1:112605877971:ios:bec6f27767c12e2e1b2626</string>
+		<key>DATABASE_URL</key>
+		<string>https://komi-mobile.firebaseio.com</string>
+	</dict>
+	</plist>
+1487d4f222b9f307153f80517015da14|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/Info.plist|1|1|V|xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+db097540f1ed532e4be3111fb39d31ff|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/AppCenter-Config.plist|1|1|V|xml
+	<?xml version=“1.0” encoding=“UTF-8"?>
+	<!DOCTYPE plist PUBLIC “-//Apple//DTD PLIST 1.0//EN” “https://www.apple.com/DTDs/PropertyList-1.0.dtd”>
+8c20badfbbd6ddbd4d9fb2e023b305fa|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/Info.plist|3|1|V|xml
+	<plist version="1.0">
+cbe811db0496cd70dde0d009d6ab3fcf|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/AppCenter-Config.plist|3|1|V|xml
+	<plist version=“1.0”>
+cd6fc9e9181bd91d11747d4a0d88351a|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/Info.plist|2|1|V|xml
+	<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+7bec47af13fa964c7c67807fd292296a|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/AppCenter-Config.plist|2|1|V|xml
+	<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN” “https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+c5613a5a91579972fbae451acabeb080|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|112|21|v|typescriptreact
+	currencySymbol
+4407a5752809720c30d0a5018b31aecc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|125|30|v|typescriptreact
+	localCurrency
+2c6b0ca6955da2909668f42296be89f0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|49|27|v|typescriptreact
+	setLocalCurrency
+add6756519f27a8d71ba67ed2309718e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|48|27|v|typescriptreact
+	setIpGeoLocation
+2fedbaebb38b842c2932035dd0f9fd06|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|99|32|v|typescriptreact
+	getIpGeoLocation
+f1d8895e38bd6159c69e56fbb4aca643|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|125|1|V|typescriptreact
+	          edtLocalCurrency = localCurrency
+9cab02ba0df4f3839fb01f06f456c88f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|112|35|V|typescriptreact
+	        console.log(currencySymbol)
+3d8ff27067f2e33f8774a96102f40f73|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|90|1|V|typescriptreact
+	    useEffect(() => {
+	      ;(async () => {
+	        const ipGeoLocation = (await load(IP_GEO_LOCATION_STORAGE)) as IpGeoLocation
 	
-	    await client.query('COMMIT');
-	  } catch (e) {
-	    await client.query('ROLLBACK');
+	        if (ipGeoLocation) {
+	          setIpGeoLocation(ipGeoLocation)
+	          return
+	        }
+	        try {
+	          const result = await getIpGeoLocation()
+	          if (!result) throw new Error()
+	
+	          save(IP_GEO_LOCATION_STORAGE, result)
+	          setIpGeoLocation(result)
+	        } catch (e) {
+	          console.warn("can not get ip geo location")
+	        }
+	      })()
+	    }, [])
+369ed968c2a4f06c80e01a93346f028b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|58|17|V|typescriptreact
+	      authStore: { getIpGeoLocation },
+7269377d403366625f805d551adf68b8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|48|31|V|typescriptreact
+	    const [ipGeoLocation, setIpGeoLocation] = React.useState<IpGeoLocation>()
+9e75257eed5491d38094575b81da5753|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|86|9|v|typescriptreact
+	ipGeoLocation
+92af7269aab362b95c99b7fc6f2761d6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|71|43|v|typescriptreact
+	ipGeoLocation?.currency?.code
+f150590fbce067cba487908ee119332f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|73|28|v|typescriptreact
+	?.currency
+df9fb2f879cdeb8b4cde1772242c0675|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|96|21|V|typescriptreact
+	          name: 'US Dollar"',
+2bf314ab61bfa471d4fca63c612cd55b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|3|3|V|typescriptreact
+	import { load, save } from "utils/storage"
+ff7350107cee7b743759cef2c9754acb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|28|3|V|typescriptreact
+	  ipGeoLocation: IpGeoLocation
+ce1e304b288b23a10ee54e982fad8549|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|17|1|V|typescriptreact
+	interface IpGeoLocation {
+	  ip: string
+	  languages: string
+	  currency: {
+	    code: string
+	    name: string
+	    symbol: string
 	  }
-	};
-e82e2252978cfc018fea436a7a49ceaa|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|140|1|V|typescript
-	const createAndPushNotificationConsumer = asny
-7abf5da740d8918c0e41ffdeac193fb2|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|140|36|v|typescript
-	aumer
-1b39923cc541e06f22f4ef85a5a87490|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|141|9|v|typescript
-	consumerInAppNotifications
-f9520254500cc03314118c138e641a42|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|257|1|V|typescript
-	          type: NotificationLogType.CONSUMER_ONE_HOUR,
-	          was_notified: true,
-	          user_id: booking.requestor_id,
-	          notification_id: null,
-	          booking_id: booking.booking_id,
-b22b57324fa276cc248a6754168cc6c3|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|151|1|V|typescript
-	        notification_id: notification?.id,
-	        user_id: notification?.receiver_id,
-	        was_notified: true,
-	        type: NotificationLogType.TALENT_DAILY,
-b95e8be871b968ea6337058a995eb2e6|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|140|1|V|typescript
-	const createAndPushNotificationConsumer = async (client, booking) => {
-	  const consumerInAppNotificationInput = createCustomerInAppNotificationInput(booking);
-	  try {
-	    await client.query('BEGIN');
-	
-	    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	    const consumerInAppNotifications: any = await createInAppNotification(client, consumerInAppNotificationInput);
-	
-	    if (consumerInAppNotifications?.rows.length) {
-	      const notification = consumerInAppNotifications.rows[0];
-	      const notificationLogData = {
-	        type: NotificationLogType.CONSUMER_ONE_HOUR,
-	        was_notified: true,
-	        user_id: booking.requestor_id,
-	        notification_id: null,
-	        booking_id: booking.booking_id,
-	      };
-	
-	      await createNotificationLog(client, notificationLogData);
-	      await createCustomerPushNotification(fcm, notification);
-	    }
-	
-	    await client.query('COMMIT');
-	  } catch (e) {
-	    await client.query('ROLLBACK');
-	  }
-	};
-f8afcf8657de570a0369d438894eed5b|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|168|32|v|typescript
-	Consumer
-16dadc351c41ad0555e241ed8045e34e|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|169|42|v|typescript
-	createCustomerInAppNotificationInput
-2a01982d85fbce4a1aba6a7de0e0612f|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|169|9|v|typescript
-	consumerInAppNotificationInput
-f2cab41f78be686bf0e503738f05d8ea|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|294|1|V|typescript
-	          type: NotificationLogType.TALENT_ONE_HOUR,
-	          was_notified: true,
-	          user_id: booking.talent_id,
-	          notification_id: null,
-	          booking_id: booking.booking_id,
-683b9f8e83127664e01e5600de3e401d|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|179|1|V|typescript
-	        type: NotificationLogType.CONSUMER_ONE_HOUR,
-	        was_notified: true,
-	        user_id: booking.requestor_id,
-	        notification_id: null,
-	        booking_id: booking.booking_id,
-e4a306d97db00ad35187a731a5f07184|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|187|13|v|typescript
-	createCustomerPushNotification
-c63f45f67e9931f43318e0b91db6031c|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|302|1|V|typescript
-	      // Prepare insert data
-	      try {
-	        await client.query('BEGIN');
-	
-	        // Sent notification
-	        await Promise.all(pushNotifications);
-	
-	        // For consumer
-	        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	        const consumerInAppNotifications: any = await createInAppNotification(client, consumerInAppNotificationInput);
-	        if (consumerInAppNotifications?.rows.length) {
-	          consumerInAppNotifications.rows.forEach((notification, idx) => {
-	            consumerNotificationLogs[idx].notification_id = notification.id;
-	          });
-	          await createNotificationLog(client, consumerNotificationLogs);
-	        }
-	
-	        // For talent
-	        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	        const talentNotifications: any = await createInAppNotification(client, talentInAppNotificationInput);
-	        if (talentNotifications?.rows.length) {
-	          talentNotifications.rows.forEach((notification, idx) => {
-	            talentNotificationLogs[idx].notification_id = notification.id;
-	          });
-	          await createNotificationLog(client, talentNotificationLogs);
-	        }
-	
-	        await client.query('COMMIT');
-	      } catch (e) {
-	        await client.query('ROLLBACK');
-	        throw e;
-	      }
-6952058c9915d551ccd458c8ceac1666|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|277|1|V|typescript
-	        pushNotifications.push(
-	          createCustomerPushNotification(fcm, booking),
-	          createTalentPushNotification(fcm, booking),
-	        );
-	
-	        consumerInAppNotificationInput.push(createCustomerInAppNotificationInput(booking));
-	        talentInAppNotificationInput.push(createTalentInAppNotificationInput(booking));
-	
-	        consumerNotificationLogs.push({
-	          type: NotificationLogType.CONSUMER_ONE_HOUR,
-	          was_notified: true,
-	          user_id: booking.requestor_id,
-	          notification_id: null,
-	          booking_id: booking.booking_id,
-	        });
-	
-	        talentNotificationLogs.push({
-	          type: NotificationLogType.TALENT_ONE_HOUR,
-	          was_notified: true,
-	          user_id: booking.talent_id,
-	          notification_id: null,
-	          booking_id: booking.booking_id,
-	        });
-334c18c61eebb79040afea34b4512acf|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|269|1|V|typescript
-	      const createAndPushNotificationsTalent = [];
-6d43c13d7ff6e837002c976f99c9f449|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|270|39|v|typescript
-	Talent
-348c50b10decf9fecb3b048719d13832|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|271|1|V|typescript
-	      const consumerNotificationLogs = [];
-	      const talentNotificationLogs = [];
-	      const consumerInAppNotificationInput = [];
-	      const talentInAppNotificationInput = [];
-5de4944e790d6f52ce23fb4685e898fc|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|274|1|V|typescript
-	        createAndPushNotificationsConsumer(booking)
-f9747106488c6caae5da8361c51fccd8|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|275|9|v|typescript
-	createAndPushNotificationsConsumer
-599dcce2998a6b40b1e38e8c6006cb0a|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|71|21|v|typescript
-	type
-75c69981ab7ed52a1290b30370605b12|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|71|11|v|typescript
-	: booking_h
-110614f6e560daefce9dacce4302b330|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|58|33|v|typescript
-	booking_type
-7a3e57763ba059bd9b3069b667d30814|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|258|1|V|typescript
-	      type: `IN ('${BookingType.ONE_TO_ONE}', '${BookingType.LIVE_CLASS}')`,
-	      status: `IN ('${BookingStatusType.ACCEPTED}')`,
-	      date: [`<= (now() + interval '1 hour' + interval '30 minutes')`, `>= (now() + interval '1 hour')`],
-d75ad26f19250457032e8bda109e31d7|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|252|1|V|typescript
-	      notification_log: {
-	        booking_id: 'IS NULL',
-	      },
-dec5fa7915b39c7a022d2f51f2a417a9|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|9|6|V|typescript
-	import { BookingStatusType, BookingType } from '../../constants/bookings';
-a5a6d2bc044b698f844c84f236fbf154|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|258|3|V|typescript
-	  console.log('bookings', bookings?.rows);
-781e5bb57dabb0eeafccae69fd1d789b|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|58|1|V|typescript
-	  const { receiver_id, content, type } = booking;
-fb71e739932ece6c6a3b379bfcc0c5ba|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|57|1|V|typescript
-	const createTalentPushNotification = (fcm, booking) => {
-	  const { receiver_id, content, type } = booking;
-65f1f0635be5cec066fd1186c5192ee3|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|18|1|V|typescript
-	  const {
-	    talent_first_name,
-	    talent_last_name,
-	    experience_name,
-	    booking_date,
-	    requestor_id,
-	    requestor_timezone,
-	  } = booking;
-72579a652607e77e58c460e5c9a7c865|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|38|9|V|typescript
-	  const content = reminderConsumer1hourTemplate(templateContext);
-38d16f3a112554ad32d3658e06775cd8|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|30|1|V|typescript
-	  const templateContext = {
-	    talentName: `${talent_first_name} ${talent_last_name}`,
-	    experienceName: experience_name,
-	    bookingTime,
-	    placeholderText: `${talent_first_name[0]}${talent_last_name[0]}`.toUpperCase(),
-	  };
-acd792f45ce9b4ba7f110146597a9f92|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|26|1|V|typescript
-	  const bookingTime = requestor_timezone
-	    ? moment(new Date(booking_date)).tz(requestor_timezone).format('hh:mm:ss YYYY-MM-DD')
-	    : `${booking_date} (UTC)`;
-9cf0a9aa942171018f01867399b5f7f0|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|33|11|v|typescript
-	requestor_id
-2ce740d4be22cdb843106c2042486658|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|59|31|V|typescript
-	  console.log(pushNotification)
-1b16c0fcfc788f9d07ebb18ceac249a7|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|36|32|V|typescript
-	  console.log(pushNotification);
-aab65a0356823d508c08cbf8a4c39154|fugitive:/Users/louis/Dev/Projects/komi/komi-serverless/.git//0/serverless.yml|128|1|V|yaml
-	<<<<<<< Updated upstream
-	  reminderEmail24HBeforeExpStart:
-	    handler: ./handlers/notifications/reminder_email_24h_before_exp_start.handler
-	    events:
-	      - schedule: rate(15 minutes)
-	  reminderSMS24HBeforeExpStart:
-	    handler: ./handlers/notifications/reminder_sms_24h_before_exp_start.handler
-	    events:
-	      - schedule: rate(15 minutes)
-	=======
-a0e2e9aa7e15b5afe36d4aeba35e4a6f|fugitive:/Users/louis/Dev/Projects/komi/komi-serverless/.git//0/serverless.yml|133|1|V|yaml
-	>>>>>>> Stashed changes
-4f8634e02949de1625837076486bd077|file:///Users/louis/Dev/Projects/komi/komi-serverless/serverless.yml|138|27|V|yaml
-	  # reminderEmail24HBeforeExpStart:
-bf3a60c6936afd387835654d35e140c6|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|239|7|V|typescript
-	  conso
-24c3083a72cc6df6ed9c0ea05186dec1|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|239|23|V|typescript
-	  console.log(bookings)
-d111fd46c8283eb3fd6a15bf4c1aa901|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|123|45|V|typescript
-	  console.log(consumerInAppNotificationInput)
-5c8438bef7c60cf62b4a0aee3b0becc4|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|233|7|v|typescript
-	booking
-9bc65c2abec141778ffaa729489f3e87|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|233|7|v|typescript
-	users
-eec218bd468eb4fb9e4ecd5391d14243|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|128|9|V|typescript
-	    console.log(consumerInAppNotificationInput)
-0185113c7aedcb4c940193d540397a21|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|50|1|V|typescript
-	      id,
-c444388f1ebcddd283f48041654ac2db|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|225|17|v|typescript
-	createNotificationLog
-af3ae6f290c4bc3097d6a9bf648e363e|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|203|1|V|typescript
-	          type: NotificationLogType.CONSUMER_TWENTY_FOUR_HOURS,
-	          was_notified: true,
-	          user_id: booking.requestor_id,
-	          notification_id: null,
-	          booking_id: booking.booking_id,
-0d08a2a61cb5a52eff533bf8201ffb1b|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|94|50|v|typescript
-	wtalentBooking
-ee2b65716a38ff7c2b8b15b0751aeafd|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|110|21|V|typescript
-	        notification_id: notification?.id,
-81adc50367f085dfb0d39a5208bdc7ed|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_1h_before_exp_start.ts|166|1|V|typescript
-	        notification_id: null,
-e0af756114992e8b73a47edeea2ca39b|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|38|5|V|typescript
-	  const content = reminderConsumer24hourTemplate(templateContext);
-4f95239dc162f6829a577b35e80cb2ad|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|24|17|V|typescript
-	    requestor_timezone,
-82f9fa003a3f084f7330462d56d804bf|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|19|1|V|typescript
-	    talent_first_name,
-	    talent_last_name,
-	    experience_name,
-	    booking_date,
-d9e4a093fc77e645275141914fa04a3e|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|182|1|V|typescript
-	        pushNotifications.push(createCustomerPushNotification(fcm, booking));
-	
-	        consumerInAppNotificationInput.push(createCustomerInAppNotificationInput(booking));
-	
-	        consumerNotificationLogs.push({
-	          type: NotificationLogType.CONSUMER_TWENTY_FOUR_HOURS,
-	          was_notified: true,
-	          user_id: booking.requestor_id,
-	          notification_id: null,
-	          booking_id: booking.booking_id,
-	        });
-d94e0090b63117de498a9d1b7bb16117|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|185|1|V|typescript
-	      // Prepare insert data
-	      try {
-	        await client.query('BEGIN');
-	
-	        // Sent notification
-	        await Promise.all(pushNotifications);
-	
-	        // For consumer
-	        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	        const consumerInAppNotifications: any = await createInAppNotification(client, consumerInAppNotificationInput);
-	        if (consumerInAppNotifications?.rows.length) {
-	          consumerInAppNotifications.rows.forEach((notification, idx) => {
-	            consumerNotificationLogs[idx].notification_id = notification.id;
-	          });
-	          await createNotificationLog(client, consumerNotificationLogs);
-	        }
-	
-	        await client.query('COMMIT');
-	      } catch (e) {
-	        await client.query('ROLLBACK');
-	        throw e;
-	      }
-aeda93a9376096044b632381443f66b2|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|178|48|V|typescript
-	      const consumerInAppNotificationInput = [];
-2b9878a67a7b71cfa4b6ecf0771060eb|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|177|1|V|typescript
-	      const consumerNotificationLogs = [];
-95ce8eca95b1e2c6c1e5f17ef4c5e14d|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|162|1|V|typescript
-	      type: `IN ('${BookingType.ONE_TO_ONE}', '${BookingType.LIVE_CLASS}')`,
-	      status: `IN ('${BookingStatusType.ACCEPTED}')`,
-	      date: [`<= (now() + interval '1 day' + interval '30 minutes')`, `>= (now() + interval '1 day')`],
-064f4eb03109992f4c969f14d98d4546|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/reminder_24h_before_exp_start.ts|77|1|V|typescript
-	const createAndPushNotification = async (client, booking) => {
-	  const consumerInAppNotificationInput = createCustomerInAppNotificationInput(booking);
-	  try {
-	    await client.query('BEGIN');
-	
-	    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	    const consumerNotifications: any = await createInAppNotification(client, consumerInAppNotificationInput);
-	
-	    if (consumerNotifications?.rows.length) {
-	      const notification = consumerNotifications.rows[0];
-	      const notificationLogData = {
-	        type: NotificationLogType.CONSUMER_TWENTY_FOUR_HOURS,
-	        was_notified: true,
-	        user_id: booking.requestor_id,
-	        notification_id: notification?.id,
-	        booking_id: booking.booking_id,
-	      };
-	
-	      await createNotificationLog(client, notificationLogData);
-	      await createCustomerPushNotification(fcm, notification);
-	    }
-	
-	    await client.query('COMMIT');
-	  } catch (e) {
-	    await client.query('ROLLBACK');
-	  }
-	};
-e0d35dcce55c245c947426d338a6280c|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|160|1|V|typescript
-	          type: NotificationLogType.TALENT_DAILY,
-	          was_notified: true,
-	          user_id: talentBooking.talent_id,
-	          notification_id: null,
-	        });
-0ea9f17681829c679c991084b747c14e|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|160|1|V|typescript
-	          type: NotificationLogType.TALENT_DAILY,
-	          was_notified: true,
-	          user_id: talentBooking.talent_id,
-52bf8a9dcbe58107b606f508e3ef0bb4|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|160|1|V|typescript
-	          type: NotificationLogType.TALENT_DAILY,
-	          was_notified: true,
-	          user_id: talentBooking.talent_id,
-	          notification_id: null,
-10fd81b03d1e0d854b3b1e308e2e941e|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|79|1|V|typescript
-	        type: NotificationLogType.CONSUMER_TWENTY_FOUR_HOURS,
-	        was_notified: true,
-	        user_id: booking.requestor_id,
-	        notification_id: notification?.id,
-	        booking_id: booking.booking_id,
-2d5caf795d8633cf00c42ddfa62cc13b|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|82|26|v|typescript
-	notificaion
-11328db2aede95fddf61debcb6e40946|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|74|11|v|typescript
-	consumerNotifications
-e1b6c409247167ab3bd69d8572db3b08|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|17|24|v|typescript
-	conteant
-c4eaf6ef8ede4fd22142b316754b98f3|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|149|1|V|typescript
-	        pushNotifications.push(createTalentPushNotification(fcm, talentBooking));
-	
-	        talentInAppNotificationInput.push(createTalentInAppNotificationInput(talentBooking));
-	
-	        talentNotificationLogs.push({
-	          type: NotificationLogType.TALENT_DAILY,
-	          was_notified: true,
-	          user_id: talentBooking.talent_id,
-	          notification_id: null,
-	        });
-f066e5edc0bde71d1a4e9cf7ac10db13|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|144|40|V|typescript
-	      const talentNotificationLogs = [];
-697f0105804151178dee5cad52b012a8|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|144|46|V|typescript
-	      const talentInAppNotificationInput = [];
-99ac5fc0022522b803de189871554fc8|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_weekly_consumer.ts|150|1|V|typescript
-	      // Prepare insert data
-	      try {
-	        await client.query('BEGIN');
-	
-	        // Sent notification
-	        await Promise.all(pushNotifications);
-	
-	        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-	        const talentNotifications: any = await createInAppNotification(client, talentInAppNotificationInput);
-	        if (talentNotifications?.rows.length) {
-	          talentNotifications.rows.forEach((notification, idx) => {
-	            talentNotificationLogs[idx].notification_id = notification.id;
-	          });
-	          await createNotificationLog(client, talentNotificationLogs);
-	        }
-	
-	        await client.query('COMMIT');
-	      } catch (e) {
-	        await client.query('ROLLBACK');
-	        throw e;
-	      }
-b75af4530c02981ee97c14e86736155c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|34|1|V|typescriptreact
-	  const [isOffline, setIsOffline] = React.useState<boolean>(false)
-	  const [isLoading, setIsLoading] = React.useState<boolean>(false)
-	
-	  const checkNetwork = React.useCallback(() => {
-	    setIsLoading(true)
-	
-	    NetInfo.fetch().then((state) => {
-	      setTimeout(() => {
-	        setIsOffline(!state.isConnected)
-	        setIsLoading(false)
-	      }, 1000)
-	    })
-	  }, [])
-	
-	  React.useEffect(() => {
-	    const unsubscribe = NetInfo.addEventListener((state) => {
-	      setIsOffline(!state.isConnected)
-	    })
-	
-	    return () => unsubscribe()
-	  }, [])
-c2e19f443de7c294ad9a5a2c1f0d1314|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|14|1|V|typescriptreact
-	import NetInfo from "@react-native-community/netinfo"
-4489690c8b2d8a09eff6aef2edfd208d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|34|1|V|typescriptreact
-	  const [isOffline, setIsOffline] = React.useState<boolean>(false)
-	  const [isLoading, setIsLoading] = React.useState<boolean>(false)
-	
-	  const checkNetwork = React.useCallback(() => {
-	    setIsLoading(true)
-	
-	    NetInfo.fetch().then((state) => {
-	      setTimeout(() => {
-	        setIsOffline(!state.isConnected)
-	        setIsLoading(false)
-	      }, 1000)
-	    })
-	  }, [])
-	
-	  React.useEffect(() => {
-	    const unsubscribe = NetInfo.addEventListener((state) => {
-	      setIsOffline(!state.isConnected)
-	    })
-	
-	    return () => unsubscribe()
-	  }, [])
-	
-	  if (isOffline) return <NetworkConnection isLoading={isLoading} onPress={checkNetwork} />
-2d7e6e7288a184445d8d936716fa7112|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|14|1|V|typescriptreact
-	import NetInfo from "@react-native-community/netinfo"
-	import { NetworkConnection } from "components"
-3812519aeed64756e7bb77b6f765af6b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|60|38|v|typescriptreact
+	}
+32f20401700b6a9f9356042616be89f1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|124|74|v|typescriptreact
+	gothamBoldLL
+e358cd522998b29110a06b19712c4c3e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|112|23|v|typescriptreact
+	gothamBoldL
+d233b7f508d74d3edb4f6fd372015ff0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|112|23|v|typescriptreact
+	gothamBoldM
+df05fb4ce459965165fd98138b532621|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|124|74|v|typescriptreact
+	mediumM
+564c29f0585817479869c37d03c4191e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|124|74|v|typescriptreact
+	semiBoldM
+3aac13e8cc0af6c2e5c67f99fe215cf2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|128|23|v|typescriptreact
+	regularM
+f20c3f309bc2edf140128efd7cdc35a1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|139|31|V|typescriptreact
+	              style={UPPERCASE}
+d631070e79afd681865256437799cb2d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|164|33|v|typescriptreact
+	renderCardItem
+4d2e7559ee61da3c39a41a5a89f80631|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|101|27|v|typescriptreact
+	regularR
+97386a4dc1a74ae3b4eb469a5e295df7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|122|61|v|typescriptreact
+	?.toUpperCase()
+78805a221a988e79ef3f42d7c5bfd418|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|96|77|v|typescriptreact
+	image
+f205bcea866e3675085be7e0151159d5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|147|17|v|typescriptreact
+	isLoading && !isLoadingMore
+02836aefa858ae98a02998142b228ac9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|236|29|v|json
+	Coaching
+a9c4b6c9fbd990849d1f128dfc4ed3e7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|236|29|v|json
+	Sessions
+ad24d56a2973dc1cdeb33e5234f6432e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|465|69|v|typescriptreact
+	1to1Coaching
+3812519aeed64756e7bb77b6f765af6b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-screen/components/payoutHistory.tsx|139|34|v|typescriptreact
 	isLoading
-f463bf580fa2afd81e1def8767a53c43|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|64|22|v|typescriptreact
-	connectChat
-b640a0ce465fa2a4150c36b305c1c11b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|56|7|v|typescriptreact
-	connect
-9102f530661ddc0d6eb78ef2fae7c96a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useCheckConnection.ts|17|1|V|typescript
-	        // setIsOffline(!state.isConnected)
-9ed39e2ea931586b6a985a6942ef573e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useCheckConnection.ts|18|24|v|typescript
-	state
-ec1329e7be1783e912ef13ffcdff759c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useCheckConnection.ts|18|23|v|typescript
-	!.isConnected
-68934a3e9455fa72420237eb05902327|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useCheckConnection.ts|18|22|v|typescript
-	false
-e348efc6e14625f93078618d21c5861e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|68|1|V|typescriptreact
-	    const { isOffline, checkNetwork, isLoading: isLoadingNetwork } = useCheckConnection()
-ca953b996494c286800333a960afef30|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|203|1|V|typescriptreact
-	    if (isOffline) return <NetworkConnection onPress={checkNetwork} isLoading={isLoadingNetwork} />
-21736e12cc0a7292accbada2531fa8e1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-consumer-live-stream-room/waiting-consumer-live-stream-room.tsx|77|1|V|typescriptreact
-	    if (isOffline) return 
-3deb8bdcfe75a4deb1b6e06dcf0fb443|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-consumer-live-stream-room/waiting-consumer-live-stream-room.tsx|77|28|v|typescriptreact
-	NetworkConnection
-019f60164283c27f5f45b671c523c3d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-consumer-live-stream-room/waiting-consumer-live-stream-room.tsx|26|70|v|typescriptreact
-	useCheckConnection
-748cba9ebf6dafe7c12a884efcd7cb66|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|280|1|V|typescriptreact
-	    const { isLoading,  } = useCheckConnection()
-432c69d9e630b7d4d9dc3183e4bf0251|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|280|1|V|typescriptreact
-	    pk
-f040abfeac68db1cab30c9bb65221bf6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|280|1|V|typescriptreact
-	    const { isLoading } = useCheckConnection()
-61fc80b0d66bc202050596f8a8c6e239|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|282|1|V|typescriptreact
-	    if ()
-1a7c6f9b9fff6e3572a56a5a1bffe1f0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|287|1|V|typescriptreact
-	    const { isOffline, checkNetwork, isLoading: isLoadingNetwork } = useCheckConnection()
+f1652572580156a61553c1803daf6d53|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-screen/components/payoutHistory.tsx|139|33|v|typescriptreact
+	!isLoading
+10ae9fc7d453b0dd525d0edf2ede7961|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-screen/components/payoutHistory.tsx|133|19|v|typescriptreact
+	list
+82007ed8152f280f2d53ca2495a26f76|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-screen/components/payoutHistory.tsx|142|68|v|typescriptreact
+	margintop
+a787480b273e871b9fc25621fbd0f413|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-screen/components/payoutHistory.tsx|142|52|v|typescriptreact
+	height: "100%"
+5cf9f5dba82e818b11420edf8f3568cc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-screen/components/payoutHistory.tsx|142|28|v|typescriptreact
+	backgroundColor: "red",
+4aef640f7032aa14e589c1a11a98d766|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|174|1|V|typescriptreact
+	            <Text
+	              preset="semiBoldM"
+	              tx={
+	                EXPERIENCE_CONTENT_STEP_TITLE[contentTypeWebView][step]?.title ||
+	                "webviewScreen.noTitle"
+	              }
+d133b0163241e60da9e580e58aa44ba1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/setup-payout-web-view-screen.tsx|69|1|V|typescriptreact
+	              EXPERIENCE_CONTENT_STEP_TITLE[contentTypeWebView][step]?.title ||
+	              "webviewScreen.noTitle"
+9dffbf69ffba8bc38bc4e01abf4b1675|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/setup-payout-web-view-screen.tsx|66|12|v|typescriptreact
+	Text
+e97f96ca3fbee70b6651d8ae65d55d53|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/list-empty/list-empty.tsx|17|40|v|typescriptreact
+	marginRight: metrics.screenWidth * 0.05
+1c78f310552baaa3b8b718bf07ad733c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/list-empty/list-empty.tsx|17|31|v|typescriptreact
+	style={{  }} 
+e772b99f72386e29bc6cd553fcb8908d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/list-empty/list-empty.tsx|18|46|v|typescriptreact
+	MT_5
+6059f01e70a5517fa9853f26ff31128f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|126|28|V|typescript
+	      if (stopUpload) return
+6620f41b3548690ea94fa26071928afc|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|124|7|V|typescript
+	    if (stopUpload) return
+37a6259cc0c1dae299a7866489dff0bd|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|122|28|v|typescript
+	null
+4c7e45b134eb86b51e3a3a7cec315a86|file:///Users/louis/Dev/Projects/komi/komi-mobile/.env|1|1|V|sh
+	API_URL=https://api-dev.komiapp.co/api
+	TALENT_APP_URL=https://talent-dev.komiapp.co
+	ONESIGNAL_ID=97fcd159-04dd-414d-bdde-8ba18f888542
+	TERM_AND_CONDITION=https://www.komiapp.co/terms
+	PRIVACY_AND_COOKIE_POLICY=https://komiapp.co/privacy-policy
+	AGORA_APP_ID=936e1d9766504bd4918563d3fb1bbf99
+	APPLE_PAY_MERCHANT_ID=merchant.io.nucleusstudio.komistaging
+	APPLE_PAY_MERCHANT_NAME=komi
+	APPLE_PAY_COUNTRY_CODE=US
+	APPLE_PAY_CURRENCY_CODE=USD
+	APPLE_PAY_MERCHANT_NAME=Komi
+	MESSAGE_ENCRYPTION_KEY=XM8ad9XsjEWOvEwJDCBC7sqTFRqORZyU
+	GOOGLE_SIGNIN_WEB_CLIENT_ID=112605877971-03k3na2ko25m6771p6f6uj1k4p5jtfbg.apps.googleusercontent.com
+	GOOGLE_SIGNIN_IOS_CLIENT_ID=112605877971-gk4ikps0iirco6ejfevbr7oo54rm2hkc.apps.googleusercontent.com
+	GOOGLE_SIGNIN_IOS_URL_SCHEME=com.googleusercontent.apps.112605877971-gk4ikps0iirco6ejfevbr7oo54rm2hkc
+	FACEBOOK_APP_ID=1595052117218993
+	FACEBOOK_LOGIN_PROTOCOL_SCHEME=fb1595052117218993
+	API_KEY_IP_GEO_LOCATION=0baf96a79c08478388ecc35af7eee8f8
+	BUNDLE_ID_IOS=co.komiapp.komi
+	APP_STORE_ID=1534125764
+	DOMAIN_URI_PREFIX=https://komiapp.page.link
+	DOMAIN_WEB=https://consumer-dev.komiapp.co
+	BUNDLE_ID_ANDROID=co.komiapp.komi
+	FIREBASE_DATABASE_URL=https://komi-mobile.firebaseio.com
+	KOMI_HELP_EMAIL=support@komiapp.co
+	SENTRY_DNS=https://449b7b27717447a788cb2a360605eb6f@o512989.ingest.sentry.io/5614140
+	SENTRY_ENVIRONMENT=develop
+	APP_CENTER_DEPLOYMENT_KEY=
+58bd4f79f5ad1672d4aa41e4f6c0be06|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|122|30|V|typescript
+	    if (stopUpload) return [];
+2f31be51e0aec73718d7eb56cd26eba8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.tsx|63|9|v|typescriptreact
+	routingNumber
+75509cccda07b9ca5d09baaa2755841a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.scss|23|25|v|scss
+	100px
+19fecf44ba51213b0331bf01d33dcd89|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|163|10|V|typescript
+	    console.log(promises)
+5b56795f6b29b0cacc8a491f06f68dbc|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|132|26|V|typescript
+	          if (index === 5) {
+24c4c10c06ba514f8eabc508824ed9fe|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|133|18|V|typescript
+	          } else {
+522900aab2fc69610bd31fd44d031c6c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|134|11|V|typescript
+	          }
+82abb977486dfdc4b58f344b212bf655|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|133|1|V|typescript
+	            result = await axios.put(urls[index + 1], blob);
+74459f77975ac0920737efa7bcc230be|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|131|1|V|typescript
+	          let result;
+	            result = await axios.put("test", blob);
+39d1d7e8afa9372916e6736d6ff865bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|677|22|v|typescriptreact
+	goToSuccess
+bf788b183ee494ecec0a7e3ac229b40e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|263|23|V|typescriptreact
+	      console.log('hi')
+8384c3fc6d3fe66f49a5c1e87fb04642|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|263|1|V|typescriptreact
+	      console.log('hi')
+	      console.log('hi')
+0df4c11bc6836ca25cbd554853f08f13|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|115|36|v|typescriptreact
+	savedMethods
+c6527c9233a3809d4e9a371bc5775a9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|115|49|v|typescriptreact
+	selectedMethodIndex
+1ce2cce9913b0caa18bf017a14b0940d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|115|1|V|typescriptreact
+	      const paymentMethodDefault = savedMethods[selectedMethodIndex]
+0e7894561947c0927a3815199ceaa416|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|263|1|V|typescriptreact
+	      if (!savedMethods[])
+f3f577058798e7c016de4599c5999073|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|326|1|V|typescriptreact
+	        notifications.show({
+	          type: "error",
+	          text1: error.message,
+	        })
+7d016a475d1564ddf265bda19b7ee2b7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|265|1|V|typescriptreact
+	        notifications.show({
 	
-	    if (isOffline) return <NetworkConnection onPress={checkNetwork} isLoading={isLoadingNetwork} />
-f316f13afbd5bf512d298908a907fc9b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|66|5|V|typescriptreact
-	  if (isOffline) return <NetworkConnection onPress={checkNetwork} isLoading={isLoadingNetwork} />
-4002db32f6d9889a4108a357374a186f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|279|7|v|typescriptreact
-	isOffline
-8374b5cc7388b2f61884f490563ca54e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|64|1|V|typescriptreact
-	  const { isOffline, checkNetwork, isLoading: isLoadingNetwork } = useCheckConnection()
-741cedb932cc60659cfbf0c620449aa2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/exclusive-watch-screen/exclusive-watch-screen.tsx|327|1|V|typescriptreact
-	  if ()
-8b5f7478d6fc79667242507463cbd2ef|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/course-content-watch-screen/course-content-watch-screen.tsx|27|68|v|typescriptreact
-	useCheckConncection
-df31f2015f0c1395e1181efcb9f72d47|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useCheckConnection.ts|18|9|V|typescript
-	        setIsOffline(true)
-7effb48526c2b75c17342c80e91e43ad|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/BecomeATalent/BecomeATalent.tsx|394|25|v|typescriptreact
-	handleNext
-1d545f8cf8228f3c2642e4cb38e3087b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|107|1|V|typescript
-	  [BOOKING_STATUS.CANCELED]: {
-	    tx: "specialRequestStatus.cancelled",
-	    color: color.themeColor.red,
-	    icon: "special-request-fail",
+	        })
+fa04828bde0a6be2692cb14014d4fca0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|267|18|v|typescriptreact
+	error.message
+06e3bddcab65c151a1fab0f94f372da5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|267|18|v|typescriptreact
+	"Wrong"
+fdc4140b75d660a0be7caffd46ed7d51|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|697|23|v|typescriptreact
+	loading || paymentLoading || isDisabled
+e7aadc2862dc38fe9ab6af931fa0b6ed|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/review-special-request-screen/review-special-request-screen.tsx|148|22|v|typescriptreact
+	fontSize: 32,
+3b55bf21d9ccce3ed26e9869f5ee3479|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/review-special-request-screen/review-special-request-screen.tsx|147|21|v|typescriptreact
+	semiBoldL
+4aba245cb37e021e2ef494b2aa137dbb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|7|3|v|typescriptreact
+	FilterList
+25cce6864b2a711036eb9e93e763a2a2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|174|1|V|typescriptreact
+	                <FilterList filters={FILTER} activeFilters={main.filters} list={main} />
+33a12f1d9049d3723a5c553183d187cd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|317|1|V|typescriptreact
+	                  {/* <FilterBySeperator */}
+	                  {/*   data={[ */}
+	                  {/*     { */}
+	                  {/*       text: translate("categoryDetailScreen.all"), */}
+	                  {/*       onPress: () => setShowMode(SHOW_MODE.ALL), */}
+	                  {/*       tagSeperator: 0, */}
+	                  {/*     }, */}
+	                  {/*     { */}
+	                  {/*       text: translate("categoryDetailScreen.experience"), */}
+	                  {/*       isSeperator: category?.subCategories?.length > 0, */}
+	                  {/*       onPress: () => setShowMode(SHOW_MODE.EXPERIENCE_ONLY), */}
+	                  {/*       tagSeperator: 0, */}
+	                  {/*       isSeperator: true, */}
+	                  {/*     }, */}
+	                  {/*     ...category?.subCategories?.map((sub) => { */}
+	                  {/*       return { */}
+	                  {/*         text: sub?.name, */}
+	                  {/*         onPress: () => console.log(sub.id), */}
+	                  {/*         tagSeperator: 1, */}
+	                  {/*       } */}
+	                  {/*     }), */}
+	                  {/*   ]} */}
+	                  {/* /> */}
+1ad417bb6e4a9712359441e90538d048|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|42|1|V|typescriptreact
+	const FILTER = [
+	  // {
+	  //   key: "price",
+	  //   name: "common.price",
+	  // },
+	  {
+	    key: "categories",
+	    name: "common.category",
 	  },
-d4539bffb6062bdcbd7e7cc1b1228926|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|112|19|v|typescript
-	CANCELED
-38881e0a24039dc2621e1d6f86cb71f7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|113|31|v|typescript
-	cancelled
-6470ad568e125a6ef34f9c48c6d38e79|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|49|35|V|typescriptreact
-	    console.log(metrics.screenWidth)
-69563cb0787ae1a7f768c504bc80186f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|216|30|v|typescriptreact
-	metrics.screenWidth * 0.7
-583ae106210c8710532caf892c8509bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|215|30|v|typescriptreact
-	metrisc
-b58cc4c7c965788b6586c8dd9fe3feca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|215|56|v|typescriptreact
-	 backgroundColor: "red" 
-fb2ac0d620b47ef1f0065e1404fbd491|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|212|1|V|typescriptreact
-	                <View style={[styles.textInformation, { width: metrics.screenWidth * 0.6 }]}>
-7bfdfe5faffb1829ed7a6d3af4bb2983|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-history-special-request-detail-screen/talent-history-special-request-detail-screen.tsx|238|1|V|typescriptreact
-	                <View style={[styles.textInformation, { width: metrics.screenWidth * 0.5 }]}>
-3acdce9fd447febaff4edcdbab100837|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|949|5|V|json
-	    "yourRequestIdHasBeenPaidSuccessfully": "Your request ID {{id}} has been paid successfully.",
-36ce2129e04d8540c1bf39b2cafa4712|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|949|26|v|json
-	PaidSuccessfully
-afc8781485f2a79a99264fcc65f30c31|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|949|6|v|json
-	yourRequestIdHasBeenPaymentFailed
-1de6f89da6730a3e16702828b94c6c72|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|950|1|v|json
-	Your request ID {{id}} has been paid successfully.
-364692ac64a2ebcabeecf9f4cfc0ce6e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|949|6|v|json
-	yourPaymentTermExpired
-37affaabb324c7d43a63926c4d7768c8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-history-special-request-detail-screen/consumer-history-special-request-detail-screen.tsx|132|1|V|typescriptreact
-	                    : booking?.status === BOOKING_STATUS.PAYMENT_FAILED
-	                    ? "specialRequestDetailScreen.yourPaymentTermExpired"
-	                    : ""
-4bf01c493e5260632adbceb027704845|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-history-special-request-detail-screen/talent-history-special-request-detail-screen.tsx|161|1|V|typescriptreact
-	                    : ""
-7e0aa6449f34b1c58c7827798698b3e3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|949|1|V|json
-	    "yourPaymentTermExpired": "The payment term has expired. Your request ID {{id}} has been cancelled.",
-5fb9435a8f5f697881170cb7d47fef18|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|950|6|v|json
-	yourP
-4ff70f7b2e5a74415de360150a6e59d3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|950|58|v|json
-	Your
-ebcb5d5bfa4db1b2c2f67a071719452c|file:///Users/louis/.config/nvim/init.vim|21|1|V|vim
-	Plug 'yuki-ycino/fzf-preview.vim'
-f6d87c5f9068bba15a437f3f300106ba|file:///Users/louis/.config/nvim/init.vim|23|22|V|vim
-	Plug 'ojroques/nvim-lspfuzzy'
-210424da9021fb7d52d8119ee5fbaad9|file:///Users/louis/.config/nvim/config/coc.vim|17|1|V|vim
-	  \'coc-go'
-528867d77b8d2d08f5ff85a2a35b57b0|file:///Users/louis/.config/nvim/config/coc.vim|18|5|v|vim
-	coc-go
-4ece767a6ce0b5c61f771f150461f3fc|file:///Users/louis/.config/nvim/init.vim|21|25|V|vim
-	Plug 'pbogut/fzf-mru.vim'
-40a303828e39688e4dc1bf5e0c7f18af|file:///Users/louis/.config/nvim/config/coc.vim|18|16|V|vim
-	  \'coc-fzf-preview'
-58292ba0e35a77c4381fd01d3cda0c47|file:///Users/louis/.config/nvim/config/fzf.vim|64|1|V|vim
-	nnoremap <silent> <space>h :FZFMru<Cr>
-	nnoremap <silent> <c-f> :call Fzf_dev()<CR>
-	nnoremap <silent> <leader>f :Find<CR>
-	nnoremap <silent> <leader>fc :FzfPreviewGitStatus<CR>
-af04a313466674622e93af5f61de5593|file:///Users/louis/.config/nvim/config/coc.vim|113|29|v|vim
-	FZFMru
-c41978efb6911e1d6b8b1b7e84edc9b9|file:///Users/louis/.config/nvim/config/coc.vim|114|26|v|vim
-	call Fzf_dev
-79581cd236b80541d24bb65f8361d540|file:///Users/louis/.config/nvim/config/coc.vim|117|1|v|vim
-	FzfPreviewGitStatus
-4cfa6c981549e990fe2344e4c805405e|file:///Users/louis/.config/nvim/config/coc.vim|115|30|v|vim
-	Find
-560a76d4f454e8fff71fa21d6cd96b12|file:///Users/louis/.config/nvim/config/coc.vim|116|32|v|vim
-	CocCommand fzf-preview.GitFiles
-20e752725051b86d0755735fa1792c5b|file:///Users/louis/.config/nvim/config/git.vim|15|17|V|vim
-	noremap <Leader>gs :Gstatus<CR>
-84d5015d3634ce9dd115900f3a8b5fac|file:///Users/louis/.config/nvim/init.vim|65|30|V|vim
-	source ~/.config/nvim/config/fzf.vim
-939f3f3ee0ee88dcf6438c3f6f8c0410|file:///Users/louis/.config/nvim/init.vim|19|1|V|vim
-	Plug '/usr/local/opt/fzf'
-	Plug 'junegunn/fzf.vim'
-df2c81b6ac305c95957b5fc3d2bc349d|file:///Users/louis/.config/nvim/config/git.vim|15|1|V|vim
-	noremap <Leader>ge :Gedit<CR>
-7043823fba9880ff41ec158e2a61a5e1|file:///Users/louis/.config/nvim/config/git.vim|15|21|v|vim
-	Gedit
-e4b39673fc6b91324716c54251acab9f|file:///Users/louis/.config/nvim/config/coc.vim|116|1|V|vim
-	nnoremap <silent> <leader>gs :CocCommand fzf-preview.GitActions<CR>
-f1d2e08b63da4e5c4e1a0c8c8ed1ce48|file:///Users/louis/.config/nvim/config/fzf.vim|57|1|V|vim
-	call fzf#run({
-	      \ 'source': <sid>files(),
-	      \ 'sink':   function('s:edit_file'),
-	      \ 'options': '-m ' . l:fzf_files_options,
-	      \ 'down':    '40%' })
-	endfunction
-657a50fdbc3a33a6ba0ccefe6189f605|file:///Users/louis/.config/nvim/config/fzf.vim|32|1|V|vim
-	function! Fzf_dev()
-	let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
+	  // { key: "rating", name: "common.rating" },
+	]
+e75ab17a550f46adbbe891b819cf951d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|317|40|v|typescriptreact
+	FILTER
+4cb9ba241ba437a0f100022bab8aae84|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|319|36|v|typescriptreact
+	main.filters
+fad58de7366495db4650cfefac2fcd61|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|320|27|v|typescriptreact
+	main
+f78b7cfe957d932a8d3340a6d1a7e180|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|75|5|V|json
+	    "category": "Category",
+c4ef352f74e502ef5e7bc98e6f4e493d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|75|6|v|json
+	category
+3adbdb3ac060038aa0e6e6c138ef9873|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|75|21|v|json
+	Category
+b2ccae59a7c62d25a281ce1ab70ec47c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/categories-filter.tsx|18|25|v|typescriptreact
+	listItem
+1cadc3b43016a99afc8c97fbe8905cfe|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|24|9|v|typescriptreact
+	setIsActiveCategories
+273a962ca6f43ca5f5b22f484b84fd96|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|17|10|v|typescriptreact
+	isActiveCategories
+44b57096b98a02747c1056ba0f60ed50|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|17|1|V|typescriptreact
+	  const [isActiveCategories, setIsActiveCategories] = React.useState(false)
+9a4534921d708ace876af7e0fb792a98|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|25|1|V|typescriptreact
+	        setIsActiveCategories(true)
+8c8d42f6c6f3d174a84398c575151f29|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|56|1|V|typescriptreact
+	      <CategoriesFilter
+	        onClose={onCloseCategoriesFilter}
+	        isActive={isActiveCategories}
+	        listItem={list}
+	        values={activeFilters.categories}
+	      />
+e48ba4e0d39373d125d19bbfeccca4c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|16|19|V|typescriptreact
+	  console.log(list)
+62bf5881c13eb4a7fa0b366b8fdf0f06|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|62|18|v|typescriptreact
+	onCloseCategoriesFilter
+0b682315b1630cf3b9f420e15f64b3e0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|18|1|V|typescriptreact
+	  const onCloseCategoriesFilter = React.useCallback(() => {
+	    setIsActiveCategories(false)
+	  }, [])
+851d031d437cd5f5fbf1630834fe42d4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|21|28|v|typescriptreact
+	ilter
+3c33dda838ade17f76acbb0b7dd90e38|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|21|9|v|typescriptreact
+	onCloseSubCategoryFilter
+1b56765d9105d640eec921780ca2ae75|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|69|17|v|typescriptreact
+	activeFilters
+03b78c751afce9f7b237a658fd96644c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/OneToOneList.ts|20|1|V|typescript
+	        categories: types.maybeNull(types.array(types.number)),
+b0b5ccb4a195a07fd3eed14affb8695f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/OneToOneList.ts|21|9|v|typescript
+	categories
+12634baae28628f4bfb6cc2e81844f65|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/OneToOneList.ts|21|1|V|typescript
+	        subCategory: types.maybeNull(types.array(types.number)),
+07e528ffd1d0e1a768d288620bf06231|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|16|20|V|typescriptreact
+	  console.log(activeFilters)
+8d777f385d3dfec8815d20f7496026dc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/categories-filter.tsx|72|19|v|typescriptreact
+	data
+34602ef1b0c97b9f770516959aa7a2b7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/categories-filter.tsx|1|1|V|typescriptreact
+	import * as React from "react"
+	import { View, StyleSheet, FlatList, TouchableOpacity } from "react-native"
+	import { Checkbox, Modal, Button, Text } from "components"
+	import { rgbColor } from "utils/color"
+	import { metrics, color } from "theme"
+	import { observer } from "mobx-react-lite"
+	import { getSnapshot } from "mobx-state-tree"
+	import { useStores } from "../../models"
 	
-	function! s:files()
-	  let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-	  return s:prepend_icon(l:files)
-	endfunction
-	
-	function! s:prepend_icon(candidates)
-	  let l:result = []
-	  for l:candidate in a:candidates
-	    let l:filename = fnamemodify(l:candidate, ':p:t')
-	    let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-	    call add(l:result, printf('%s %s', l:icon, l:candidate))
-	  endfor
-	
-	  return l:result
-	endfunction
-	
-	function! s:edit_file(item)
-	  let l:pos = stridx(a:item, ' ')
-	  let l:file_path = a:item[pos+1:-1]
-	  execute 'silent e' l:file_path
-	endfunction
-e70cbd58cc09c409a96d95abe9ca0cd6|file:///Users/louis/.config/nvim/config/fzf.vim|26|1|V|vim
-	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=ansi-dark {-1}'
-4c58cfa75cd5672ff465d029061d905f|file:///Users/louis/.config/nvim/config/fzf.vim|1|1|V|vim
-	nnoremap <silent> <leader>e :call Fzf_dev()<CR>
-	
-	
-	" ripgrep
-	if executable('rg')
-	  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-	  set grepprg=rg\ --vimgrep
-	  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-	endif
-	
-	let g:fzf_colors =
-	  \ { 'fg':    ['fg', 'Normal'],
-	  \ 'bg':      ['bg', 'Normal'],
-	  \ 'hl':      ['fg', 'Comment'],
-	  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-	  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-	  \ 'hl+':     ['fg', 'Statement'],
-	  \ 'info':    ['fg', 'PreProc'],
-	  \ 'border':  ['fg', 'Ignore'],
-	  \ 'prompt':  ['fg', 'Conditional'],
-	  \ 'pointer': ['fg', 'Exception'],
-	  \ 'marker':  ['fg', 'Keyword'],
-	  \ 'spinner': ['fg', 'Label'],
-	  \ 'header':  ['fg', 'Comment'] }
-75b277825bc4a9bc4a1fb918416fea12|file:///Users/louis/.config/nvim/config/fzf.vim|7|26|v|vim
-	call Fzf_dev()
-c0f990c4f9f012deb9754e0101c5a1ec|file:///Users/louis/.config/nvim/config/fzf.vim|1|1|V|vim
-	let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading -w'
-2eb2381d10711db7727264d488555cda|file:///Users/louis/.config/nvim/init.vim|6|5|V|vim
-	lua require('lspfuzzy').setup {}
-0b09f14c24e0713eadb2eab12f88c7a3|file:///Users/louis/.config/nvim/config/fzf.vim|6|1|V|vim
-	nnoremap <silent> <space>h :FzfPreviewProjectMruFiles<Cr>
-	nnoremap <silent> <c-f> :FzfPreviewProjectFiles<CR>
-	nnoremap <silent> <leader>f :FzfPreviewProjectGrep<CR>
-	nnoremap <silent> <leader>fs :FzfPreviewGitActions<CR>
-fdf35991586507c48e8ae7fff5c7bf08|file:///Users/louis/.config/nvim/config/fzf.vim|29|1|V|vim
-	function! Fzf_dev()
-617a9b62c80f10967e7ac80947d12426|file:///Users/louis/.config/nvim/config/fzf.vim|1|1|V|vim
-	nnoremap <silent> <leader>e :call Fzf_dev()<CR>
-a8aa4b5986f7a182f45aaedbaf62d0ab|file:///Users/louis/.config/nvim/config/fzf.vim|57|30|v|vim
-	fzf_files_options
-009a7b325116c53d9bd4c08e840dcd79|file:///Users/louis/.config/nvim/config/fzf.vim|57|9|V|vim
-	      \ 'options': '-m ' . l:fzf_files_options,
-1edc92b5c9c4b27c4226e578c353013f|file:///Users/louis/.config/nvim/config/fzf.vim|30|5|v|vim
-	l:fzf_files_options
-301720a85fcf050ad7064283ee79f84e|file:///Users/louis/.config/nvim/config/fzf.vim|29|1|V|vim
-	function! Fzf_dev()
-	let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
-	
-	function! s:files()
-	  let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-	  return s:prepend_icon(l:files)
-	endfunction
-	
-	function! s:prepend_icon(candidates)
-	  let l:result = []
-	  for l:candidate in a:candidates
-	    let l:filename = fnamemodify(l:candidate, ':p:t')
-	    let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-	    call add(l:result, printf('%s %s', l:icon, l:candidate))
-	  endfor
-	
-	  return l:result
-	endfunction
-	
-	function! s:edit_file(item)
-	  let l:pos = stridx(a:item, ' ')
-	  let l:file_path = a:item[pos+1:-1]
-	  execute 'silent e' l:file_path
-	endfunction
-	
-	call fzf#run({
-	      \ 'source': <sid>files(),
-	      \ 'sink':   function('s:edit_file'),
-	      \ 'down':    '40%' })
-	endfunction
-abc9b3b8f3d206f5616378d698d407d6|file:///Users/louis/.config/nvim/config/fzf.vim|29|11|v|vim
-	FzfFilePreview
-d5d91e0eae4f62bbbdea12381a2e3f8b|file:///Users/louis/.config/nvim/config/fzf.vim|115|31|v|vim
-	Fzf_dev
-ccf50f6a6474b128f8c1b959dcd11f20|file:///Users/louis/.config/nvim/config/fzf.vim|8|1|V|vim
-	let g:fzf_colors =
-	  \ { 'fg':    ['fg', 'Normal'],
-	  \ 'bg':      ['bg', 'Normal'],
-	  \ 'hl':      ['fg', 'Comment'],
-	  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-	  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-	  \ 'hl+':     ['fg', 'Statement'],
-	  \ 'info':    ['fg', 'PreProc'],
-	  \ 'border':  ['fg', 'Ignore'],
-	  \ 'prompt':  ['fg', 'Conditional'],
-	  \ 'pointer': ['fg', 'Exception'],
-	  \ 'marker':  ['fg', 'Keyword'],
-	  \ 'spinner': ['fg', 'Label'],
-	  \ 'header':  ['fg', 'Comment'] }
-	
-	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=ansi-dark {-1}'
-	
-	let g:fzf_preview_split_key_map = 'ctrl-h'
-	let g:fzf_preview_vsplit_key_map = 'ctrl-v'
-	let g:fzf_preview_tabedit_key_map = 'ctrl-t'
-a3d1a3994cdb097f7a86769da4849f82|file:///Users/louis/.config/nvim/config/fzf.vim|110|23|V|vim
-	        \ 'window': 'call FloatingFZF()'})
-26f139910e46789ef082c04444d26ce7|file:///Users/louis/.config/nvim/config/fzf.vim|3|1|V|vim
-	  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-b46f4efd5d33b2476b665e257931eaca|file:///Users/louis/.config/nvim/config/fzf.vim|26|1|V|vim
-	
-	let g:fzf_preview_split_key_map = 'ctrl-h'
-	let g:fzf_preview_vsplit_key_map = 'ctrl-v'
-	let g:fzf_preview_tabedit_key_map = 'ctrl-t'
-fe36166d3a1f7b6f52cbe4f8bf19de3a|file:///Users/louis/.config/nvim/config/fzf.vim|8|1|V|vim
-	let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
-	
-	let g:fzf_colors =
-	  \ { 'fg':    ['fg', 'Normal'],
-	  \ 'bg':      ['bg', 'Normal'],
-	  \ 'hl':      ['fg', 'Comment'],
-	  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-	  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-	  \ 'hl+':     ['fg', 'Statement'],
-	  \ 'info':    ['fg', 'PreProc'],
-	  \ 'border':  ['fg', 'Ignore'],
-	  \ 'prompt':  ['fg', 'Conditional'],
-	  \ 'pointer': ['fg', 'Exception'],
-	  \ 'marker':  ['fg', 'Keyword'],
-	  \ 'spinner': ['fg', 'Label'],
-	  \ 'header':  ['fg', 'Comment'] }
-	
-d2b538263c92436ed84acdceafddcc44|file:///Users/louis/.config/nvim/config/fzf.vim|37|1|V|vim
-	" advanced grep(faster with preview)
-	function! RipgrepFzf(query, fullscreen)
-	  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-	  let initial_command = printf(command_fmt, shellescape(a:query))
-	  let reload_command = printf(command_fmt, '{q}')
-	  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-	  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-	endfunction
-3b25f0b9fde2d73449eb4f07c0f66aca|file:///Users/louis/.config/nvim/config/fzf.vim|36|1|V|vim
-	let g:fzf_action = {
-	      \ 'ctrl-t': 'tab split',
-	      \ 'ctrl-x': 'split',
-	      \ 'ctrl-v': 'vsplit' }
-	
-	let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
-	let g:fzf_tags_command = 'ctags -R'
-	
-	let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
-	
-af60a29f32bb4b6b7fa4ef7a3e6a2619|file:///Users/louis/.config/nvim/config/fzf.vim|35|5|V|vim
-	command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
-573cfb130f7bb1cb853a2404910b1430|file:///Users/louis/.config/nvim/config/fzf.vim|5|1|V|vim
-	  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-8b3ce0615ea748df41417fbb2234511b|file:///Users/louis/.config/nvim/config/fzf.vim|34|1|V|vim
-	" advanced grep
-5294d362ed98ccc704646a47e6734de9|file:///Users/louis/.config/nvim/config/fzf.vim|27|1|V|vim
-	    " start startify (fallback if fzf is closed)
-	    autocmd VimEnter * if argc() != 0 && isdirectory(argv()[0]) | Startify  | endif
-ff2364a0be3d20e46cc69efb36afe9a5|file:///Users/louis/.config/nvim/init.vim|16|32|v|vim
-	space
-e3d34d22dbce27fad3b5bed20b759fe4|file:///Users/louis/.config/nvim/init.vim|15|1|V|vim
-	Plug 'glepnir/spaceline.vim'
-	let g:spaceline_colorscheme = 'one'
-784894ddae0239e14281b87f1f213a88|file:///Users/louis/.config/nvim/init.vim|11|1|V|vim
-	Plug 'itchyny/lightline.vim'
-b2dbe6449064bdc68620af9b7e64b786|file:///Users/louis/.config/nvim/init.vim|125|1|V|vim
-	let g:lightline = {
-	      \ 'colorscheme': 'ayu',
-	      \ 'component_function': {
-	      \   'filename': 'LightlineFilename',
-	      \ }
-	      \ }
-c91b93a631e3891874f9cb738ffbf7c7|file:///Users/louis/.config/nvim/init.vim|125|1|V|vim
-	
-	function! LightlineFilename()
-	  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-	  let path = expand('%:p')
-	  if path[:len(root)-1] ==# root
-	    return path[len(root)+1:]
-	  endif
-	  return expand('%')
-	endfunction
-70ee12af96403e152f431f8988ed10f7|file:///Users/louis/.config/nvim/init.vim|64|1|V|vim
-	source ~/.config/nvim/config/ale.vim
-ec861550cd655329ad661586d44e3c92|file:///Users/louis/.config/nvim/config/airline.vim|24|29|V|vim
-	let g:airline_solarized_bg='dark'
-28537cea6728dcd8a7ec8f34b9cb4312|file:///Users/louis/.config/nvim/config/airline.vim|24|22|v|vim
-	<theme>
-f468998a6fbf358a77988caa5fca7e1a|file:///Users/louis/.config/nvim/config/airline.vim|14|7|v|vim
-	airline_left_sep
-86aab784e23d94de4d8291afe83f89e9|file:///Users/louis/.config/nvim/config/airline.vim|14|27|v|vim
-	\uE0C0
-a82fd95db10ff25dfad39f07372ebe37|file:///Users/louis/.config/nvim/config/airline.vim|24|22|v|vim
-	dark
-286aa592ce016fec108ab2edb12d647e|file:///Users/louis/.config/nvim/config/airline.vim|14|1|V|vim
-	let g:airline_left_sep = "\uE0CE"
-	let g:airline_right_sep = "\uE0CE"
-86948cbd9d0869819fe68bb2e3e19224|file:///Users/louis/.config/nvim/config/airline.vim|24|22|v|vim
-	ayu_dark
-6ba70856358c747e47fddc9b00d8c9ab|file:///Users/louis/.zshrc|5|1|V|zsh
-	function powerline_precmd() {
-	  PS1="$(powerline-shell --shell zsh $?)"
+	interface CategoriesFilterProps {
+	  isActive?: boolean
+	  onClose?: () => void
+	  listItem: any
+	  values: any
 	}
 	
-	function install_powerline_precmd() {
-	  for s in "${precmd_functions[@]}"; do
-	    if [ "$s" = "powerline_precmd" ]; then
-	      return
+	const CategoriesFilter = observer(
+	  ({ isActive, onClose, listItem, values }: CategoriesFilterProps) => {
+	    const {
+	      categoryStore: { list },
+	    } = useStores()
+	    const [selected, setSelected] = React.useState([])
+	    const data = getSnapshot(list)
+	    const _onPressCheck = React.useCallback(
+	      (item, isChecked: boolean) => () => {
+	        if (isChecked) {
+	          const data = selected.filter((id) => id != item.id)
+	          setSelected(data)
+	          return
+	        }
+	        const data = [...selected, item.id]
+	        setSelected(data)
+	      },
+	      [selected],
+	    )
+	
+	    React.useEffect(() => {
+	      !!values && setSelected([values])
+	    }, [])
+	
+	    const _onPressApply = React.useCallback(() => {
+	      const params = { page: 1 }
+	      const filters = { categories: selected?.length > 0 ? selected : null }
+	      listItem.getList(params, filters)
+	      console.log("selected", selected)
+	      onClose()
+	    }, [selected])
+	    const _renderItem = ({ item }) => {
+	      const isChecked = !!selected.find((id) => parseInt(id, 10) === parseInt(item.id, 10))
+	      return (
+	        <TouchableOpacity
+	          activeOpacity={0.9}
+	          onPress={_onPressCheck(item, isChecked)}
+	          style={styles.categoryItem}
+	        >
+	          <Text text={item.name} preset="regularR" />
+	          <Checkbox value={isChecked} />
+	        </TouchableOpacity>
+	      )
+	    }
+	    return (
+	      <Modal
+	        isVisible={isActive}
+	        onClosePress={onClose}
+	        onBackdropPress={onClose}
+	        titleTx="common.category"
+	      >
+	        <View style={styles.container}>
+	          <FlatList
+	            showsVerticalScrollIndicator={false}
+	            style={styles.categories}
+	            data={data}
+	            renderItem={_renderItem}
+	            keyExtractor={(item) => `${item.id}`}
+	          />
+	          <View style={styles.footer}>
+	            <Button onPress={_onPressApply} tx="common.apply" />
+	          </View>
+	        </View>
+	      </Modal>
+	    )
+	  },
+	)
+	
+	export default CategoriesFilter
+	
+	const styles = StyleSheet.create({
+	  container: {
+	    flex: 1,
+	  },
+	  footer: {
+	    paddingHorizontal: metrics.paddingHorizontal,
+	    paddingVertical: metrics.paddingVertical,
+	    borderTopWidth: 1,
+	    borderTopColor: rgbColor(color.themeColor.dark, 0.05),
+	  },
+	  categories: {
+	    paddingHorizontal: metrics.paddingHorizontal,
+	  },
+	  categoryItem: {
+	    flexDirection: "row",
+	    alignItems: "center",
+	    justifyContent: "space-between",
+	    paddingVertical: metrics.paddingVertical,
+	    borderBottomWidth: 1,
+	    borderBottomColor: rgbColor(color.line, 0.5),
+	  },
+	})
+cbecdfc6b8e8ea8e57ba6256bb37b764|file:///Users/louis/.config/nvim/coc-settings.json|36|1|V|jsonc
+	    "i": "open:vsplit",
+642af2d303c2c0bb6b68acd5d47b3baf|file:///Users/louis/.config/nvim/config/nerdtree.vim|19|1|V|vim
+	" open a NERDTree automatically when vim starts up
+	autocmd StdinReadPre * let s:std_in=1
+	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+c50cd0b0b4cf5d800691a5b708ea276b|file:///Users/louis/.config/nvim/config/coc.vim|110|84|v|vim
+	NERDTree
+37795841dbbc6b5e0be052fc5523644e|file:///Users/louis/.config/nvim/config/coc.vim|110|1|V|vim
+	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | CocCommand explorer | endif
+62aa64a0ac8fd9b9e254c87b4cb2e7ce|file:///Users/louis/.config/nvim/config/coc.vim|109|1|V|vim
+	autocmd StdinReadPre * let s:std_in=1
+583296636930f84ab6279f3a981df985|file:///Users/louis/.config/nvim/config/coc.vim|109|1|V|vim
+	" open a CocCommand Explorer automatically when vim starts up
+	" autocmd User CocNvimInit :CocCommand explorer
+73d0e7264a8573c4b1a8e522e27e5ad8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|85|16|v|typescriptreact
+	CategoriesFilter
+c2e6bd178492b9e7c72fd6b913c689b6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|97|17|v|typescriptreact
+	${edtLocalCurrency?.symbol}
+ce2df25562ee9b0e7d84f7a8d9c87d7f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|76|11|v|typescriptreact
+	formatterCurrency
+8a18704eb8e2c489b72065b3a99b0f1c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|74|25|v|typescriptreact
+	_renderItem
+5bd9f7df006e4d5ff0f0cdfd59b11684|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|23|36|v|typescriptreact
+	subCategory
+d514e098c25d94583ed281bdf23bfce3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|23|35|v|typescriptreact
+	 || []
+88be62ccbc2801ce90084c1356d22820|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|91|19|v|typescriptreact
+	categoryId
+b110fd74fe45aadbcb7a8f11ab17435e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|38|1|V|typescript
+	    isRefreshing: types.optional(types.boolean, false).create(),
+dc6ef60524a5ef5ba65fc084150a5c5c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|39|5|v|typescript
+	isRefreshing
+1d7d3292691978dfc3ae53b1b920d66a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|39|5|v|typescript
+	filterCategory
+84e2c64f38f78ba3ea5c905ab5a2da27|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|39|49|v|typescript
+	boolean
+278707183de7701d100d0498da8cf7c6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|39|49|v|typescript
+	numbecr
+d57c24f3fe52d16e7169b912dd647f0d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|39|34|v|typescript
+	optional
+d14a8022b085f9ef19d479cbdd581127|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|39|28|v|typescript
+	types
+79500b5199c62121956c3be9f935fe60|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|39|57|v|typescript
+	.(types.string, false)
+e879984488eef50cd3c91844570c6f23|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|77|1|V|typescript
+	  .actions((self) => ({
+	    getMore: flow(function* () {
+	      if (self.pagingParams.page * self.pagingParams.limit <= self.total && !self.isLoadingMore) {
+	        self.getCategoryList({ page: self.pagingParams.page + 1 })
+	      }
+	    }),
+	  }))
+c45efe45ecbd99e845a031c58cc2ac37|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|85|5|v|typescript
+	getMore
+da261162c9cb18635c6263272d9201d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|86|22|V|typescript
+	      if (self.pagingParams.page * self.pagingParams.limit <= self.total && !self.isLoadingMore) {
+39e290d6ac96a5c3b18fd2c9df739f15|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|86|22|V|typescript
+	        self.getCategoryList({ page: self.pagingParams.page + 1 })
+e82f3e56d2a6718da3f068e5e6f91343|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|86|7|V|typescript
+	      }
+1a54631bf5fb32bcc8bb2f2eafcb8049|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|85|5|v|typescript
+	updateCurrentFilter
+decf1054249978edc10a99dc0b4f7f61|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|71|70|v|typescriptreact
+	updateCurrentFiler
+8540d0d7e1d8111279b63983697e2e37|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|102|7|v|typescriptreact
+	cate
+eb24340a242ffbee26aca57c9aeee0ee|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|84|1|V|typescript
+	  .actions((self) => ({
+	    updateCurrentFilter: flow(function* (value) {
+	      self.currentFilterCategory = value
+	    }),
+09966c73614952fe89d7c3ca23324506|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|84|1|V|typescript
+	  .actions((self) => ({
+	    updateCurrentFilter: flow(function* (value) {
+	      self.currentFilterCategory = value
+	    }),
+	  }))
+5f7c927d877d37996d974b222308c153|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|91|12|v|typescript
+	currentFilterCategory
+97c392457a5528cd83b9783a2bd2cde6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|91|25|v|typescript
+	= value
+ff336dc47d1d2e6665c739a9d0b996f0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|20|30|v|typescriptreact
+	findCategoryById
+f0455c3b3e1963d55b4e4e1ec7d1645d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|24|21|V|typescriptreact
+	    console.log(data)
+c551cc3f76c05fcc1f45a360ae514e15|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|23|18|v|typescriptreact
+	getSnapshot(list)
+fc5d9af95f82d9513f3b2266fcd03ea4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|7|45|V|typescriptreact
+	import { getSnapshot } from "mobx-state-tree"
+a598c7ba592879f1e44ee2efeac070f5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|92|15|v|typescript
+	self.list.filter((value) => value.id) as any)
+d562a634526fe4467c80fa9543fb2621|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|91|67|v|typescript
+	subCategories
+bd3756019616d0e8c6bb421af0edd63e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|91|64|V|typescript
+	      console.log((self.list.filter((value) => value.id) as any))
+4b9cb10a182211254e40861b94365b12|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|91|15|v|typescript
+	self.list.filter((value) => value.id) as any)?.[0].subCategories
+60f6586713862fda2eb675537c16fcf2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|91|85|V|typescript
+	      console.log((self.list.filter((value) => value.id) as any)?.[0].subCategories[0])
+a280f8db9df8e025bbe83747c17be096|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|23|45|V|typescriptreact
+	    const data = findSubCategoryById(currentFilterCategory) || []
+7c7eec0f9068ae9e9c71ab7e86e17e82|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|39|9|v|typescriptreact
+	const data = 
+b7001cda936dcb5d4329f4d5525b03aa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|90|5|v|typescript
+	findSubCategoriesById
+14081f7ce097ce60b69bbdf04ec4cb56|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|19|24|v|typescriptreact
+	findSubCategoryById
+002b140a71d3d8f9d987dd3c215bb311|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|39|20|V|typescriptreact
+	        console.log()
+0e81a51a0ec983d5b3974c3e8607fa1b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|91|13|v|typescript
+	 (self.list.filter((value) => value.id === id) as any)?.[0].subCategories || []
+	
+c438106292603b2ae173c524af5a8abe|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|91|48|V|typescript
+	      console.log((self.list.filter((value) => value.id === id) as any)?.[0].subCategories || [])
+d6abfa08d1eba587fd6d2740c72e1774|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|40|34|V|typescriptreact
+	        console.log(subCategories)
+436663c160971c8adae42b578762f087|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|61|28|v|typescriptreact
+	isChecked
+3caccc0cad12c12eee37695ead0aea03|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|21|22|v|typescriptreact
+	setSelected
+2c9885d2b0c7e26971f60a90f33cf718|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|17|15|v|typescriptreact
+	filters
+689bec9394ae0849ebeaf587ec22d231|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/OneToOneList.ts|22|1|V|typescript
+	      {},
+	    ),
+e8ab1e62d8e8724b235e5a1d3e214df8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/OneToOneList.ts|18|1|V|typescript
+	    filters: types.optional(
+	      types.model({
+	        categories: types.maybeNull(types.array(types.number)),
+	      }),
+	      {},
+	    ),
+54b0e7bf11cb04424cded2d1818b4ac6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|320|36|v|typescriptreact
+	cater
+7aa63f35a36bd348426d8607f4fa48d3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|320|36|v|typescriptreact
+	categor
+f5691088cd2c2a255746643bed4ac4da|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|320|36|v|typescriptreact
+	categor.filters
+7b5f44cee302f7fb4ca5c95d4592c636|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|76|7|v|typescriptreact
+	updateCurrentCategory
+96715957ac22f2d758c2bf453ef80373|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|90|1|V|typescript
+	  .actions((self) => ({
+	    updateCurrentCategory: flow(function* (value) {
+	      self.currentCategory = value
+	    }),
+	  }))
+7010922f343fb041cdbee40a239e7bbd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|102|12|v|typescript
+	currentCategory
+df12cfc3d0e1f6fe39217cb47600ebad|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|101|5|v|typescript
+	updateFilterSubCategories
+cb0d315b2990571bad576d2f0fb1a738|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|101|5|v|typescript
+	updateFiltes
+e70c4df10ef0983b9c8c31bd06b2a2c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|97|7|v|typescript
+	return
+af32af645c1d255a949fb42526e3b066|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|55|7|V|typescriptreact
+	      console.log(item)
+a0ceb2f171fea3610a603c156caafc34|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|38|26|V|typescriptreact
+	        console.log(values)
+9d4efde341080157db59e48c843c3268|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|39|27|V|typescriptreact
+	        setSelected(values)
+6a832f17fb9af2359db17b492463770d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|97|14|V|typescript
+	      const subCategories =
+cad8f14f387caeadd3c8c35547ffbdef|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|99|1|V|typescript
+	      const listId = subCategories.map((value) => value.id)
+	      self.filters.subCategories = listId
+	
+	      return subCategories
+f040dca580784b7c9a0c62c8b670ce00|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|97|7|v|typescript
+	retgurn
+367e854225a0810977297b3bedb2f309|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|17|6|v|typescriptreact
+	isActive
+f09cc7ee3a9a93273f4b80601cafb00c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|17|35|v|typescriptreact
+	values
+78a9d0d1fb1d2be3d75521ad7cf8afe5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|100|1|V|typescript
+	  .actions((self) => ({
+	    updateFilters: flow(function* (value) {
+	      self.filters = value
+	    }),
+	  }))
+af0f80b6d7360b7573d4b178640ed7bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|33|1|V|typescript
+	    filters: types.optional(
+	      types.model({
+	        subCategories: types.maybeNull(types.array(types.number)),
+	      }),
+	      {},
+	    ),
+188a166da33c9c649bae25fdc2843f99|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|48|11|V|typescriptreact
+	      updateFilters(filters)
+b931c95939372d796d06c3f4dd2cef64|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|19|64|v|typescriptreact
+	updateFilters
+8a6ef7809ec51961a4f5cef35c4104d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|38|33|V|typescriptreact
+	        !!values && setSelected([values])
+ebe8be1edc6f8ce3576928ca5912d8ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|13|5|V|typescriptreact
+	  values: any
+01646a26c9a116f73d9eece2dcdde7ee|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|71|3|V|typescriptreact
+	        values={activeFilters.subCategories}
+d84c5f2d0707107f277644197f53f0d1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|327|33|V|typescriptreact
+	                    activeFilters={filters}
+41209fef790df7f39f1270bfc303232f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|102|1|V|typescript
+	      self.filters = value
+	    }),
+cc256745f184a965aaf8194e8bfde780|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/category-store.ts|100|1|V|typescript
+	  .actions((self) => ({
+	    updateFilters: flow(function* (value) {
+	  }))
+b8bff00fc9e9f95da5df1127609a5ad2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|110|27|V|typescriptreact
+	      updateFilters({ subCategories: null })
+fa97a0fcb161b83f999266f6132065da|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|77|7|V|typescriptreact
+	      filters,
+	      updateFilters,
+20273fc7d1ae03b522277e2ba0ebe4b7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|81|1|V|typescriptreact
+	    return () => main.updateFilters({})
+96815c93cce4d995bf47c65c3b4920ef|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|113|18|v|typescriptreact
+	categoryStore
+adabd0017ff91d8ac7e09162ac891cd8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|7|3|v|typescriptreact
+	ExperienceFilter
+b7139ef341582e3acb4d8071e5ba5357|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|437|12|v|typescriptreact
+	filterExpType
+45731d490d669f25c79eb41c3c8427d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|91|25|v|typescriptreact
+	setFilterExpType
+c28fc373796534034f9cf9ed0293f88f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|438|13|v|typescriptreact
+	contentList
+d069534949a9c43ba326d3bc8f068c86|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|183|1|V|typescript
+	  @ApiTags('experiences')
+	  @PublicAuth()
+	  @Get('experiences/:id')
+	  async getExperience(@Param('id') id: string, @UserRequest() user: User) {
+	    return this.experiencesService.getExperience({
+	      id,
+	      user,
+	    });
+	  }
+cca51ef8e01a596e9536523d3f47730a|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|205|23|v|typescript
+	check-available-experiences
+472e368bcd442af87a24c0f74ea89111|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|196|9|v|typescript
+	getExperience
+efe5567f47e2883543b12a01945b9a46|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.service.ts|1222|1|V|typescript
+	  async checkIsAvailableExperiencesByUserId(id: number, filterOptions: Record<string, any>) {
+	    const userExperiences = await this.experienceRepository.findExperiencesByUserId(
+	      id,
+	      filterOptions,
+	    );
+	
+	    const result: { [key in ExperienceType]?: boolean } = {};
+	
+	    Object.keys(ExperienceType).map((key) => {
+	      result[ExperienceType[key]] = false;
+	      return null;
+	    });
+	
+	    userExperiences.map((value) => {
+	      result[value.type] = !!value.count;
+	    });
+	
+	    return result;
+	  }
+a506a386716c0988bce79eaaf3309114|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.service.ts|1222|36|v|typescript
+	ByUserId
+7640452f786e151dac75bb1081e44127|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|207|1|V|typescript
+	    const filter = {
+	      status: ExperienceStatusType.PUBLISHED,
+	      talentProfile: {
+	        accountStatus: TalentAccountStatusType.ACTIVE,
+	      },
+	      scheduleTime: 'upcoming',
+	    };
+	
+	    return this.experiencesService.checkIsAvailableExperiencesByUserId(userId, filter);
+2b86822562d62add4ff2adfaa4064143|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|197|1|V|typescript
+	    return this.experiencesService.getExperience({
+	      id,
+	      user,
+	    });
+faaf02942a58167864e5b279c2a8d75f|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|196|37|v|typescript
+	@Param('id') id: string, 
+a70d7a23ab0ed5ac3c165bd1c7146503|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|171|1|V|typescript
+	      scheduleTime: user && hasRole(user.roles, [UserRoleType.ADMIN]) ? 'all' : 'upcoming',
+5bf710f18d219ad6625d9a0f4201982e|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|164|1|V|typescript
+	      status:
+	        user && hasRole(user.roles, [UserRoleType.ADMIN])
+	          ? undefined
+	          : ExperienceStatusType.PUBLISHED,
+	      talentProfile: {
+	        accountStatus: TalentAccountStatusType.ACTIVE,
+	      },
+	      scheduleTime: user && hasRole(user.roles, [UserRoleType.ADMIN]) ? 'all' : 'upcoming',
+8e44f0089b076e18a718eb9ca3d94674|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|205|72|v|typescript
+	userId
+8bb4dde39797cee2419027b941f565d3|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|205|36|v|typescript
+	checkIsAvailableExperiencesByUserId
+bd1d9dec5cd1bc46fc5af3806888d4a2|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.service.ts|1222|37|v|typescript
+	id: number, 
+0185113c7aedcb4c940193d540397a21|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.service.ts|1224|9|V|typescript
+	      id,
+dc2fc315d4a4b4e2ad2f09c5243074ac|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|601|1|V|typescript
+	  async findExperiencesByUserId(id: number, filterOptions: Record<string, any>) {
+	    const { status, talentProfile, scheduleTime } = filterOptions;
+	
+	    const query = this.createQueryBuilder('e')
+	      .select(['e.type AS type', 'COUNT(DISTINCT("e"."type"))::INTEGER'])
+	      .groupBy('e.type')
+	      .leftJoin('time_ranges', 'tr', 'tr.experience_id = e.id')
+	      .innerJoin('talent_profiles', 'tl', 'tl.userId = :id', { id })
+	      .where(`e.creator_id = :id`, { id });
+	
+	    if (status) {
+	      query.andWhere(`e.status IN (:...status)`, {
+	        status: Array.isArray(status) ? status : [status],
+	      });
+	    }
+	
+	    if (talentProfile) {
+	      const { accountStatus } = talentProfile;
+	      if (accountStatus) {
+	        query.andWhere(`tl.accountStatus = :accountStatus`, {
+	          accountStatus: talentProfile.accountStatus,
+	        });
+	      }
+	    }
+	
+	    if (scheduleTime === 'upcoming') {
+	      query.andWhere(
+	        `((e.type = :experienceType1 AND e.scheduleTime >= now())
+	          OR (e.type = :experienceType2
+	              AND (tr.end_time >= now()
+	                   OR tr.repeatable = :isRepeat))
+	                   OR e.type IN (:experienceType3, :experienceType4))`,
+	        {
+	          experienceType1: ExperienceType.LIVE_CLASS,
+	          experienceType2: ExperienceType.ONE_TO_ONE,
+	          experienceType3: ExperienceType.EXCLUSIVE_CONTENT,
+	          experienceType4: ExperienceType.COURSE,
+	          isRepeat: true,
+	        },
+	      );
+	    }
+	
+	    return query.getRawMany();
+	  }
+310bc6af1f525e29e0a48435114d20d3|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|601|9|v|typescript
+	findExperiences
+28b8fbd921483fc7291ad2f0cb9907e4|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.service.ts|1223|61|v|typescript
+	findExperiencesByUserId
+3639b5b581334f78014996b22870351e|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|608|1|V|typescript
+	    .innerJoin('talent_profiles', 'tl', 'tl.userId = :id', { id })
+	    .where(`e.creator_id = :id`, { id });
+030886f81b82dbc88d7ce7eaef7d332b|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|196|9|v|typescript
+	checkIsAvailableExperiences
+9d935a7cadd22c4b287699bead072976|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|196|37|v|typescript
+	@UserRequest() user: User
+3df22215642aa9fa89db3a4dd6c158e3|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|195|9|v|typescript
+	experiences/check-available-experiences
+b6ea20c0bace2867a2cc1cd7dcd1e404|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|615|9|v|typescript
+	talentProfile
+d9120a79b3b8db54201321a0c1f650b6|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|646|1|V|typescript
+	
+	    const query = this.createQueryBuilder('e')
+	      .select(['e.type AS type', 'COUNT(DISTINCT("e"."type"))::INTEGER'])
+	      .groupBy('e.type')
+	      .leftJoin('time_ranges', 'tr', 'tr.experience_id = e.id')
+cbeac7b01a66bbd2f5397af173be1723|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|604|1|V|typescript
+	    const query = this.createQueryBuilder('e')
+	      .select(['e.type AS type', 'COUNT(DISTINCT("e"."type"))::INTEGER'])
+	      .groupBy('e.type')
+	      .leftJoin('time_ranges', 'tr', 'tr.experience_id = e.id');
+71df210ad5e28264557f10c663572933|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.service.ts|1223|11|v|typescript
+	experiences
+b114d4bdae26f04126d5c618a4d5c93e|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|225|9|v|typescript
+	categories/:categoryId/check-available-experiences-by-type
+9f9dfcead1d20ff53cb759d0d8c29f8b|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|645|21|V|typescript
+	    console.log('test')
+e976d17d6c5182ad10e1ea9086093f30|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|195|21|v|typescript
+	check-available-experiences'
+2a91acfea7dab99ad3720107fdf2608d|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|195|27|v|typescript
+	check-
+7ec7bbe903f334a4f6822f2c5d5b0f24|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|608|1|V|typescript
+	      .leftJoin('time_ranges', 'tr', 'tr.experience_id = e.id');
+3e3fdebcbfa737c939c3a5be3ec861c6|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|697|1|V|typescript
+	      .leftJoin('talent_profiles', 'tl', 'u.talent_profile_id = tl.id')
+848ad4d1e22487fc2e7d11642acb92a1|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|696|1|V|typescript
+	      .leftJoin('users', 'u', 'u.id = e.creator_id')
+	      .leftJoin('talent_profiles', 'tl', 'u.talent_profile_id = tl.id')
+ff2de7d2ae80e69ce74e721897c21aed|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.service.ts|1236|12|v|typescript
+	filterOptions
+195786de0b29e84ed8444932c836def9|file:///Users/louis/.config/bootstrap/mac.sh|88|1|V|sh
+	    touch ~/.chunkwmrc
+	    touch ~/.skhdrc
+	    cd ../../skhdrcConfig
+c35c9482d5adc7e6bbeb06e8fec6fdef|file:///Users/louis/.config/bootstrap/mac.sh|86|44|v|sh
+	[y|N] " response
+	  if [[ $response =~ (y|yes|Y) ]];then
+	    ln -s ../suckless/mac_os/skhdrc/.chunkwmrc ~/.chunkwmrc
+	    ln -s /.skhdrc ~/.chunkwmrc
+	    success "Mapped hot keys!"
+a3a988b8b9f650b108cbcd8ad056e356|file:///Users/louis/.config/bootstrap/mac.sh|88|38|v|sh
+	chunkwmrc
+75e7e1899396921fafe63ace6ff59800|file:///Users/louis/.config/bootstrap/mac.sh|88|38|v|sh
+	cchunkwmrchunkwmrc
+7511170a0ba5c8a739b918592e14e550|file:///Users/louis/.config/bootstrap/mac.sh|88|1|V|sh
+	    ln -s ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+f4b1636d35c8097077744eef1114aa75|file:///Users/louis/.config/bootstrap/mac.sh|89|30|v|sh
+	skhdrc/.skhdrc
+b5df1a0bfa2ccbd37e15680486a7a26b|file:///Users/louis/.config/bootstrap/mac.sh|89|46|v|sh
+	skhdrc
+952f4302d174a7e3f34b839d100156eb|file:///Users/louis/.config/bootstrap/mac.sh|89|1|V|sh
+	    ln -s ../suckless/mac_os/yabai/.yabai ~/.yabai
+c743326ccf98079a0829fd105b87b1df|file:///Users/louis/.config/bootstrap/mac.sh|91|5|V|sh
+	    ln -s /.skhdrc ~/.chunkwmrc
+4d397b2c009e659c84d9239ed347f2df|file:///Users/louis/.config/bootstrap/mac.sh|90|30|v|sh
+	yabai
+bf36cdfe948ea948858133cd8cfa819b|file:///Users/louis/.config/bootstrap/mac.sh|90|40|v|sh
+	spacebar
+5fb4da6201fa032d94dfc906f7fb75a8|file:///Users/louis/.config/bootstrap/mac.sh|86|30|v|sh
+	map hot keys
+58c3f824cf0b0834f3fbd1e92321d088|file:///Users/louis/.config/bootstrap/mac.sh|95|1|V|sh
+	    sudo yabai --load-sa
+9c850cc29646bb5dc4ff4dbb606bc35d|file:///Users/louis/.config/bootstrap/mac.sh|111|1|V|sh
+	install_ubersicht
+5762577e282f8aaa8e8893bc64ba4933|file:///Users/louis/.config/bootstrap/mac.sh|73|1|V|sh
+	install_font() {
+	  read -r -p "Do you want to install font? [y|N] " response
+	  if [[ $response =~ (y|yes|Y) ]];then
+	    git clone https://github.com/powerline/fonts.git --depth=1
+	    cd fonts
+	    ./install.sh
+	    cd ..
+	    rm -rf fonts
+	    success "Installed font powerline!"
+	  fi
+	}
+c2688d5a9e5ffdcdd3568de1d4168ea3|file:///Users/louis/.config/bootstrap/mac.sh|134|1|V|sh
+	    ln -s ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+	    ln -s ../suckless/mac_os/yabai/.yabai ~/.yabai
+	    ln -s ../suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
+	
+	    success "Mapped hot keys!"
+c5b8ac40f7f7368a5346a83b7802260b|file:///Users/louis/.config/bootstrap/mac.sh|133|1|V|sh
+	
+	    ln -s ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+	    ln -s ../suckless/mac_os/yabai/.yabai ~/.yabai
+	    ln -s ../suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
+98d770e5bff189ff73a7cfb8dc5df1ff|file:///Users/louis/.config/bootstrap/mac.sh|123|1|V|sh
+	map_hot_keys_config() {
+	  read -r -p "Do you want to map hot keys? [y|N] " response
+	  if [[ $response =~ (y|yes|Y) ]];then
+	
+	    brew install koekeishiya/formulae/skhd
+	    brew services start skhd
+	
+	    brew install koekeishiya/formulae/yabai --HEAD
+	    codesign -fs 'yabai-cert' $(which yabai)
+	    sudo yabai --install-sa
+	    brew services start yabai
+	
+	    brew install cmacrae/formulae/spacebar
+	    brew services start spacebar
+	
+	    ln -s ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+	    ln -s ../suckless/mac_os/yabai/.yabai ~/.yabai
+	    ln -s ../suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
+	
+	    success "Mapped hot keys!"
+	  fi
+	}
+2c81c582c40596ec3f65b01e8f6d98e9|file:///Users/louis/.config/bootstrap/mac.sh|125|1|v|sh
+	install_brew_list
+61173b17a10beb436c2267bf7f676a92|file:///Users/louis/.config/bootstrap/mac.sh|34|1|V|sh
+	install_brew_list() {
+	  read -r -p "Do you want to install brew list? [y|N] " response
+	  if [[ $response =~ (y|yes|y) ]];then
+	    cat ./packages.txt | xagrs brew install
+	    cat ./packages_cask.txt  | xagrs brew cask install
+	    success "Installed homebrew list"
+	  fi
+	}
+5bb699ecc2c896f30537d0c586f4b7e0|file:///Users/louis/.config/bootstrap/mac.sh|117|1|V|sh
+	setup_git
+57534e7b4a13a8ae71e3a5ba176f8938|file:///Users/louis/.config/bootstrap/mac.sh|75|1|V|sh
+	install_ubersicht() {
+	  read -r -p "Do you want to install ubersicht status bar? [y|N] " response
+	  if [[ $response =~ (y|yes|Y) ]];then
+	    brew cask install ubersicht
+	    cp -r ../../Ubersicht/* ~/Library/Application Support/Übersicht
+	    success "Installed ubersicht status bar"
+	  fi
+	}
+de4edd0cadf954b770d26d87d196e8d2|file:///Users/louis/.config/bootstrap/mac.sh|62|1|V|sh
+	    if [ ! -d ~/.zsh-defer ]; then
+	      git clone https://github.com/romkatv/zsh-defer.git ~/.zsh-defer
 	    fi
-	  done
-	  precmd_functions+=(powerline_precmd)
+	    if [ ! -d ~/.zsh/zsh-autosuggestions ]; then
+	      git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+	    fi
+	    if [ ! -d ~/.zsh/zsh-syntax-highlighting ]; then
+	      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+	    fi
+	    if [ ! -d ~/.zsh/zsh-completions ]; then
+	      git clone git://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
+	    fi
+adcf2880c8eeea485baf0e5e89526f86|file:///Users/louis/.config/bootstrap/mac.sh|62|1|V|sh
+	    $path='img/uploads/projects' . $project->id;
+	    if (!file_exists($path)) {
+	      mkdir($path, 0777, true);
 	}
-	
-	if [ "$TERM" != "linux" ]; then
-	  install_powerline_precmd
-	fi
+90615ad97b41bbedbedb26609b77a45c|file:///Users/louis/.config/.gitignore|18|1|V|gitignore
+	suckless/oh-my-zsh/cache
+0fea6a13c52b4d4725368f24b045ca84|file:///Users/louis/.config/.gitignore|19|20|v|gitignore
+	cache
+2c69ec1f23c4b5f10939c3b338b3dae6|file:///Users/louis/.config/.gitignore|19|1|V|gitignore
+	suckless/oh-my-zsh/log
+97353793d07a1119b2b30e89442d923d|file:///Users/louis/.config/.gitignore|20|10|v|gitignore
+	oh-my-zsh

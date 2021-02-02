@@ -33,7 +33,8 @@
   "explorer.floating.width": 120,
   "explorer.floating.height": 0,
   "explorer.keyMappings": {
-    "v": "open:vsplit",
+    "s": "open:vsplit",
+    "i": "open:split",
     "o": ["expandable?", "expand", "open"]
   }
 }
