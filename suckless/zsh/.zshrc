@@ -224,3 +224,4 @@ spaceship_kubecontext() {
     "${SPACESHIP_KUBECONTEXT_SYMBOL}${kube_context}" \
     "$SPACESHIP_KUBECONTEXT_SUFFIX"
 }
+export PATH="/usr/local/sbin:$PATH"

@@ -12,7 +12,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'ayu-theme/ayu-vim'
 Plug 'joshdick/onedark.vim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
