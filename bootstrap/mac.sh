@@ -154,7 +154,6 @@ install_terminal
 install_nvim
 install_window_manager
 install_tool
-map_hot_keys_config
 
 echo "---"
 

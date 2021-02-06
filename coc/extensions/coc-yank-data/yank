@@ -1,78 +1,3 @@
-5e43c0dfe4acfa3b960d48203a848ffd|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|151|1|V|typescript
-	      index === keys.length - 1
-21a361d96e3e13f5f109748c2a9d2434|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|154|16|v|typescript
-	push
-a635f48c8a1543ade7ef09415c826999|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|145|6|V|typescript
-	    };
-20cc93f9a3d345c86766912df25b581a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|145|30|V|typescript
-	    console.log(index === keys.length - 1);
-79eccec10100224f361848e4c2d0da4d|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|118|26|V|typescript
-	    let bunldeResult: Array<any> = [];
-c622dee84ddb1c7f7b7b18236cfb0869|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|114|19|v|typescript
-	: Array<any>
-fb09b74619594965f3c2da1434ab2d0a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|147|1|V|typescript
-	    if (bunldeResult.length < MAXIMUM_CONCURRENT) {
-	      bunldeResult.push(uploadPart);
-	    } else if (
-	      bunldeResult.length === MAXIMUM_CONCURRENT ||
-	      index === keys.length - 1
-	    ) {
-	      console.log(bunldeResult);
-	      resParts.push([...(await Promise.all(bunldeResult))]);
-	      bunldeResult = [];
-	    }
-1c74c2528a8b74d6b10e7372bba38bc5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|149|18|v|typescript
-	Math.ceil((index + 1) / MAXIMUM_CONCURRENT)
-a8416255f06abeb30a8c50b0863820c0|fugitive:/Users/louis/Dev/Projects/komi/komi-talent/.git//0/src/utils/photo.ts|146|1|V|typescript
-	    const result = await uploadPart();
-	    resParts.push(result);
-b4541d05866eea9a8a71438002ea8864|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|160|1|V|typescript
-	  const 
-9e764587718131b38ca0dac174506c4e|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|161|24|V|typescript
-	  resParts.push(result);
-3f50d21a4aa8cb37090a32587d6d2818|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|148|28|V|typescript
-	    console.log(bundleIndex)
-286c4110a3b46cda58ea695ac218b289|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|156|24|V|typescript
-	    console.log(result);
-377f19aeb2de2882a6d51b26aac3bcce|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|5|v|typescript
-	const result =
-f5712b6fdcc399a05f4ca7438ac60f7b|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|156|10|V|typescript
-	    resParts.push(...result);
-4bb4acd443df98c1a8bb612660dbb44f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|157|5|V|typescript
-	  console.log(resParts)
-ff02c335f69128be1b53074abc88e1dd|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|112|19|V|typescript
-	  const resParts: any = [];
-a00caba4ec6f3dc4e04a974f72ccbcf8|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|104|1|V|typescript
-	  // eslint-disable-next-line no-var
-400446d891b9f2ab3a2eacaffe997892|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|152|3|V|typescript
-	  console.log(bunldeResult);
-b10f68464214260f6479968d2c73fac3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|158|5|V|typescript
-	    const result = await Promise.all(bunldeResult[key]);
-226110d751667afae83d89d351c50369|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
-	bunldeResult
-87e4836c5ffb6ae49a0f508b18c406bc|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
-	[key]
-e4dea06e72c364fdd561af41ffa3b8a6|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|158|1|V|typescript
-	  .map(async (key) => {
-	  });
-05c06de8742210592c8fa5984e5ac261|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|159|9|V|typescript
-	  console
-94377c156735b39dfa4ac607234cb87c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
-	bundle
-eb7d453d62c1896391074e16f2abe9af|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|51|v|typescript
-	bunlde
-af7d81b5bacdae171394ac7fc5e6033e|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
-	bundleResult
-09b9870e225218b3e007a72ee6b5c64c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|155|38|v|typescript
-	bundleIndex
-8956e1cda345e2a103fd858ff312b3f0|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|146|5|V|typescript
-	    c
-4bbced4680a81da8fc947603c80dfca5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|113|22|V|typescript
-	  console.log(keys.length === file.length);
-53f0c39a6e477649157fdf194249749f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|145|5|v|typescript
-	const result = 
-0bba951af98c5ef6010dde60d6713d1a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|152|9|V|typescript
-	    console.log(index);
 a2335483e983eafb09e3f92eef38d28a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|147|31|v|typescript
 	 index === keys.length - 1
 7b5029e0149464b3ecca56f991ad6893|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|148|28|V|typescript
@@ -1069,3 +994,254 @@ adcf2880c8eeea485baf0e5e89526f86|file:///Users/louis/.config/bootstrap/mac.sh|62
 	suckless/oh-my-zsh/log
 97353793d07a1119b2b30e89442d923d|file:///Users/louis/.config/.gitignore|20|10|v|gitignore
 	oh-my-zsh
+c444388f1ebcddd283f48041654ac2db|file:///Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts|58|7|v|typescript
+	createNotificationLog
+6931f633a9a258be6f0e96ee0b522bb5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/experiences-store.ts|42|5|v|typescript
+	availableExperiences
+5710abbac719a67f495d3e01a0793d95|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/experiences-store.ts|43|5|v|typescript
+	homeAvailableE
+cd8900f0e79e4f32c1df876a85cb531c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/experiences-store.ts|42|27|v|typescript
+	types.optional(types.frozen()
+c4b636054269adf0ce7cb6ed1e234338|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/experiences-store.ts|42|27|v|typescript
+	types.optional(types.frozen(), {}),
+59e0aa0b372d95cdd22d5ba8619156c6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/experiences-store.ts|43|26|V|typescript
+	    homeAvailableExperiences: types.optional(types.frozen(), {}),
+8121eeb916a0dba656bf426bffc39646|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/experiences-store.ts|126|1|V|typescript
+	  .actions((self) => ({
+	    checkIsAvailableExperienceByCategoryId: flow(function* (userId: number) {
+	      self.loading = true
+	      const result = yield self.environment.api.checkIsAvailableExperienceByCategoryId(userId)
+	      if (result.kind === "ok") {
+	        self.loading = false
+	        return result.data
+	      }
+	      self.loading = false
+	
+	      return false
+	    }),
+	  }))
+8f0da404ffb47c45df8162811e4cb353|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/experiences-store.ts|140|30|v|typescript
+	eByCategoryId
+bf19af65cd9df53212692298e57ce7cd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|86|1|V|typescriptreact
+	  const [availableExperiences, setAvailableExperiences] = React.useState([])
+a17db81bb085086d2da42de7abe33d14|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|116|1|V|typescriptreact
+	  const filterItems = React.useMemo(() => {
+	    if (isEmpty(availableExperiences)) return []
+	    const isAvailableExperience = Object.keys(availableExperiences).filter(
+	      (key) => key !== EXPERIENCE_TYPE.ONE_TO_ONE && availableExperiences[key],
+	    )
+	    if (isEmpty(isAvailableExperience)) return []
+	
+	    return [
+	      {
+	        text: "experienceFilter.all",
+	        value: null,
+	      },
+	      ...Object.keys(availableExperiences)
+	        .filter((key) => key !== EXPERIENCE_TYPE.ONE_TO_ONE && availableExperiences[key])
+	        .map((key) => ({
+	          text: mappingFilterTranslate[key],
+	          value: key,
+	        })),
+	    ]
+	  }, [availableExperiences])
+	
+427a27038cc9e54a160e7ef7d9b09081|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|126|9|v|typescriptreact
+	filterItems
+668f947532159b571d43990c7b639ed2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|129|24|v|typescriptreact
+	EXPERIENCE_TYPE
+ea084354b1c486bf91a117b6158260ee|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|141|17|v|typescriptreact
+	mappingFilterTranslate
+af43e7d4d3bdd609d59989c62af15bd5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|2092|1|V|typescript
+	  async checkIsAvailableExperienceByUserId(userId: number): Promise<any> {
+	    const response: ApiResponse<any> = await this.apisauceSecure.get(
+	      `/users/${userId}/check-available-experiences-by-type`,
+	    )
+	
+	    // the typical ways to die when calling an api
+	    if (!response.ok) {
+	      const problem = getGeneralApiProblem(response)
+	      if (problem) return problem
+	    }
+	
+	    try {
+	      return { kind: "ok", data: response.data }
+	    } catch {
+	      return { kind: "bad-data" }
+	    }
+	  }
+978d18864c379f27e6773f09bd27c15b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|2110|1|V|typescript
+	  async checkIsAvailableExperienceByCategoryId(categoryId: number): Promise<any> {
+	    const response: ApiResponse<any> = await this.apisauceSecure.get(
+	      `/categories/${categoryId}/check-available-experiences-by-type`,
+	    )
+	
+	    // the typical ways to die when calling an api
+	    if (!response.ok) {
+	      const problem = getGeneralApiProblem(response)
+	      if (problem) return problem
+	    }
+	
+	    try {
+	      return { kind: "ok", data: response.data }
+	    } catch {
+	      return { kind: "bad-data" }
+	    }
+	  }
+7fe021745465a9ad2504df10c3b77a1f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|2128|35|v|typescript
+	ByCategoryId
+ba7bb07ebee398e583d10edec9f5e838|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|2128|37|v|typescript
+	: number
+32694a1714cc2b4c80ffe22bcda3cdb6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|2130|21|v|typescript
+	${categoryId}/
+2f6f25e1a7d5bd3ff59260f7f24cbaff|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|2130|8|v|typescript
+	/experiences/check-available-experiences-by-type
+046a9c0e794d0de151058291630abfd8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/experiences-store.ts|140|50|v|typescript
+	userId: number
+3dbebc027721280e12c7b8b8a0ce75bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/experiences-store.ts|142|49|v|typescript
+	checkIsAvailableExperienceByCategoryId
+fb44ad05cccedbaca78ad759af3414ad|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|82|25|v|typescriptreact
+	checkIsAvailableExperience
+3ca21149ce8494e3ab6880f50a6225a2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|44|28|V|typescriptreact
+	    console.log(currencyCode)
+3f4d9ac950dfb473bc6a0bb61b5d51ec|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|78|21|v|typescriptreact
+	currencyCode
+71fd20b53a68001b4cc44c9b60b89d1e|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|602|5|V|typescript
+	    console.log('test');
+0b369d4827a9272e74082d73a7a6aa9b|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|703|1|V|typescript
+	    if (status) {
+	      query.andWhere(`e.status IN (:...status)`, {
+	        status: Array.isArray(status) ? status : [status],
+	      });
+	    }
+	
+	    if (talentProfile) {
+	      const { accountStatus } = talentProfile;
+	      if (accountStatus) {
+	        query.andWhere(`tl.account_status = :accountStatus`, {
+	          accountStatus: talentProfile.accountStatus,
+	        });
+	      }
+	    }
+	
+	    if (scheduleTime === 'upcoming') {
+	      query.andWhere(
+	        `((e.type = :experienceType1 AND e.schedule_time >= now())
+	          OR (e.type = :experienceType2
+	              AND (tr.end_time >= now()
+	                   OR tr.repeatable = :isRepeat))
+	                   OR e.type IN (:experienceType3, :experienceType4))`,
+	        {
+	          experienceType1: ExperienceType.LIVE_CLASS,
+	          experienceType2: ExperienceType.ONE_TO_ONE,
+	          experienceType3: ExperienceType.EXCLUSIVE_CONTENT,
+	          experienceType4: ExperienceType.COURSE,
+	          isRepeat: true,
+	        },
+	      );
+	    }
+769173c747e6155b3f3e972f876a70f7|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|656|1|V|typescript
+	    if (status) {
+	      query.andWhere(`e.status IN (:...status)`, {
+	        status: Array.isArray(status) ? status : [status],
+	      });
+	    }
+	
+	    if (talentProfile) {
+	      const { accountStatus } = talentProfile;
+	      if (accountStatus) {
+	        query.andWhere(`tl.accountStatus = :accountStatus`, {
+	          accountStatus: talentProfile.accountStatus,
+	        });
+	      }
+	    }
+	
+	    if (scheduleTime === 'upcoming') {
+	      query.andWhere(
+	        `((e.type = :experienceType1 AND e.scheduleTime >= now())
+	          OR (e.type = :experienceType2
+	              AND (tr.end_time >= now()
+	                   OR tr.repeatable = :isRepeat))
+	                   OR e.type IN (:experienceType3, :experienceType4))`,
+	        {
+	          experienceType1: ExperienceType.LIVE_CLASS,
+	          experienceType2: ExperienceType.ONE_TO_ONE,
+	          experienceType3: ExperienceType.EXCLUSIVE_CONTENT,
+	          experienceType4: ExperienceType.COURSE,
+	          isRepeat: true,
+	        },
+	      );
+	    }
+	
+	    return query.getRawMany();
+deaf0823958337ac6d4bd762da08af2d|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|703|1|V|typescript
+	    if (status) {
+	      query.andWhere(`e.status IN (:...status)`, {
+	        status: Array.isArray(status) ? status : [status],
+	      });
+	    }
+	
+	    if (talentProfile) {
+	      const { accountStatus } = talentProfile;
+	      if (accountStatus) {
+	        query.andWhere(`tl.account_status = :accountStatus`, {
+	          accountStatus: talentProfile.accountStatus,
+	        });
+	      }
+	    }
+	
+	    if (scheduleTime === 'upcoming') {
+	      query.andWhere(
+	        `((e.type = :experienceType1 AND e.schedule_time >= now())
+	          OR (e.type = :experienceType2
+	              AND (tr.end_time >= now()
+	                   OR tr.repeatable = :isRepeat))
+	                   OR e.type IN (:experienceType3, :experienceType4))`,
+	        {
+	          experienceType1: ExperienceType.LIVE_CLASS,
+	          experienceType2: ExperienceType.ONE_TO_ONE,
+	          experienceType3: ExperienceType.EXCLUSIVE_CONTENT,
+	          experienceType4: ExperienceType.COURSE,
+	          isRepeat: true,
+	        },
+	      );
+	    }
+	
+98c5efea787f04e7d1f8e5d2e93a631f|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|611|1|V|typescript
+	    if (status) {
+	      query.andWhere(`e.status IN (:...status)`, {
+	        status: Array.isArray(status) ? status : [status],
+	      });
+	    }
+	
+	    if (talentProfile) {
+	      const { accountStatus } = talentProfile;
+	      if (accountStatus) {
+	        query.andWhere(`tl.accountStatus = :accountStatus`, {
+	          accountStatus: talentProfile.accountStatus,
+	        });
+	      }
+	    }
+	
+	    if (scheduleTime === 'upcoming') {
+	      query.andWhere(
+	        `((e.type = :experienceType1 AND e.scheduleTime >= now())
+	          OR (e.type = :experienceType2
+	              AND (tr.end_time >= now()
+	                   OR tr.repeatable = :isRepeat))
+	                   OR e.type IN (:experienceType3, :experienceType4))`,
+	        {
+	          experienceType1: ExperienceType.LIVE_CLASS,
+	          experienceType2: ExperienceType.ONE_TO_ONE,
+	          experienceType3: ExperienceType.EXCLUSIVE_CONTENT,
+	          experienceType4: ExperienceType.COURSE,
+	          isRepeat: true,
+	        },
+	      );
+	    }
+948ed8f3b57240e53e5eb117717824be|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|407|14|V|typescriptreact
+	        {!isEmpty(filterExpItems) && (
+4e1ddba1c31545ee09fb38ae1fd79346|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|475|1|V|typescriptreact
+	        }
+8bd0fb5f29a465352991c8ae58970853|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/home-screen/home-screen.tsx|418|28|v|typescriptreact
+	filterExpItems
