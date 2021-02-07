@@ -1,5 +1,6 @@
-/Users/louis/.alacritty.yml
+/Users/louis/.zshrc
 /Users/louis/.spacebarrc
+/Users/louis/.alacritty.yml
 /usr/local/Homebrew/Library/Taps/cmacrae/homebrew-formulae/spacebar.rb
 /Users/louis/.config/bootstrap/mac.sh
 /Users/louis/.tmux.conf
@@ -94,7 +95,6 @@
 /Users/louis/Dev/Projects/komi/komi-talent/node_modules/antd/lib/notification/index.d.ts
 /Users/louis/Dev/Projects/komi/komi-server/src/guards/auth.guard.ts
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/components/talent-detail-experiences-tab.tsx
-/Users/louis/.zshrc
 /Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts
 /Users/louis/Dev/Projects/komi/komi-serverless/templates/daily-notification-talent.hbs
 /Users/louis/Dev/Projects/komi/komi-servererless

@@ -1,44 +1,3 @@
-ba6d3b3623d2fcf94eb465ca6aab4d7f|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experiences.controller.ts|198|1|V|typescript
-	  @ApiTags('experiences')
-a21432616665f065471f4801d5b1265f|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|20|14|V|typescript
-	    @InjectRepository(ExperienceRepository)
-843ce1413b78b3fec4a2dafac6aa2d6d|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|8|16|v|typescript
-	number[]
-eb022fee7c216411faae1eaf7c4a00c0|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|2|10|v|typescript
-	IsNumber
-4d50dc20ad36516e6d91b2b1288da964|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|8|16|V|typescript
-	  @ArrayUnique()
-7f25eb7a5b93d5b8439b5ab465783d39|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/users/dto/update-consumer-profile.dto.ts|76|1|V|typescript
-	  @ApiPropertyOptional({ type: 'number', isArray: true })
-	  @IsOptional()
-	  @IsArray()
-	  @IsInt({ each: true })
-	  @ArrayUnique()
-	  @ArrayMinSize(3)
-	  categories: number[];
-53b2730ff4fe7b9ce86d8cc6960b76cf|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|5|1|V|typescript
-	  @ApiPropertyOptional({ isArray: true, type: 'number' })
-	  @IsOptional()
-	  @IsArray()
-	  categories?: number[];
-8834444385ee2070c607b5f2f6245cfd|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|8|4|v|typescript
-	IsInt
-1efdc55d39c313310e2a5bb6b45bf019|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|10|9|V|typescript
-	  @ArrayMinSize(3)
-e6bae2de39f3297c9ce893cd58c8c0cf|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|7|1|V|typescript
-	  @IsArray()
-	  @IsInt({ each: true })
-	  @ArrayUnique()
-c5ea90b8d30b171a49bbe12dd3a42846|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|5|40|v|typescript
-	, isArray: true 
-a74ba0022b77176c4112507633c36041|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|2|8|v|typescript
-	{ ArrayUnique, IsArray, IsInt
-11390f83efc4f1ac593ff5be4f62989c|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|2|9|v|typescript
-	 ArrayUnique, IsArray, IsInt, 
-d837bfd6d76311ddb7a52f87a063bbfa|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|45|28|V|typescript
-	    console.log(categories);
-44b396cde717e497bdfcf3e7c6429a53|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|19|14|v|typescript
-	getVideoDuration
 f24954ea3c38a330c2ed117960df8554|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|697|52|v|typescriptreact
 	isDisabled
 c6527c9233a3809d4e9a371bc5775a9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|497|35|v|typescriptreact
@@ -920,3 +879,33 @@ cb4a26254b3b99d06c01835d7f43cbde|file:///Users/louis/.spacebarrc|13|1|V|sh
 	spacebar -m config clock_icon_color  0xff98d8d0
 0a3c5a850e1d315327734941a7cbb983|file:///Users/louis/.alacritty.yml|167|14|v|yaml
 	5c6370
+eb5aa4fa4b4f7c041b90b06b704a520b|file:///Users/louis/.spacebarrc|3|39|V|sh
+	spacebar -m config position           left
+4171d05585c1aeb73e30e2be93770db4|file:///Users/louis/.zshrc|87|29|V|zsh
+	alias letwork='~/.letwork.sh'
+0ba48e07b0c01ab1718c0786c5136bcb|file:///Users/louis/.zshrc|101|1|V|zsh
+	alias gitpm='git push origin master'
+d6b5b440a04e720190f7f597576ff4c1|file:///Users/louis/.zshrc|103|1|V|zsh
+	alias gitpmf='git push origin master --force'
+8ecbebe31360571dcc96baec0513d951|file:///Users/louis/.zshrc|103|7|v|zsh
+	gitpmf
+ae0e3d736f666f740d72a5ba32408502|file:///Users/louis/.zshrc|103|9|V|zsh
+	alias gpd='git push origin master --force'
+f0d5cf15912b151e4300898343dda758|file:///Users/louis/.zshrc|101|7|v|zsh
+	gitpm
+862c36541426a74aeb2515568017028d|file:///Users/louis/.zshrc|102|9|V|zsh
+	alias gps='git push origin master --force'
+ea708d69767dde1968cad5a29643341a|file:///Users/louis/.zshrc|101|20|v|zsh
+	 origin master
+1af9b7061c05d84d36df6fa8e70b649b|file:///Users/louis/.zshrc|102|1|V|zsh
+	alias gps='git push'
+21a361d96e3e13f5f109748c2a9d2434|file:///Users/louis/.zshrc|102|15|v|zsh
+	push
+deba93458b6842281badb0d1bb91eb39|file:///Users/louis/.zshrc|103|1|V|zsh
+	alias gp='git pull'
+f43dff9a0dc54f0643d0c6d7971635f0|file:///Users/louis/.zshrc|103|16|v|zsh
+	pull
+17413be72eb62f444d3387628c1d85dd|file:///Users/louis/.zshrc|103|1|V|zsh
+	alias gco='git checkout'
+ed0aa990bbd616852d5fdfe6bc159a04|file:///Users/louis/.zshrc|104|25|V|zsh
+	alias gcob='git checkout'

@@ -94,6 +94,14 @@ alias wfoff='networksetup -setairportpower en0 off'
 alias wfjoin='networksetup -setairportnetwork en0'
 alias wfi='networksetup -listallhardwareports'
 
+#Network
+alias localip='ifconfig | grep inet | grep broadcast | cut -d " " -f 2'
+
+#GIT
+alias gps='git push'
+alias gp='git pull'
+alias gco='git checkout'
+
 #Mac
 #
 function b64() {

@@ -5,12 +5,14 @@ spacebar -m config icon_font         "Font Awesome 5 Free:Solid:12.5"
 
 spacebar -m config space_icon_strip  "terminal" "globe" "cube" "comments" "fire"    
 spacebar -m config power_icon_strip   
-spacebar -m config clock_icon         
+spacebar -m config clock_icon        "clock"
+spacebar -m config dnd_icon          
 spacebar -m config clock_format      "%d/%m/%y %R"
 
 spacebar -m config background_color  0xff000000
 spacebar -m config foreground_color  0xffa8a8a8
 spacebar -m config clock_icon_color  0xff98d8d0
 spacebar -m config space_icon_color  0xff98c379
+spacebar -m config dnd_icon_color    0xff98c379
 
 echo "spacebar configuration loaded.."
