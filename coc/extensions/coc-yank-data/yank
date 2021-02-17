@@ -1,699 +1,3 @@
-f24954ea3c38a330c2ed117960df8554|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|697|52|v|typescriptreact
-	isDisabled
-c6527c9233a3809d4e9a371bc5775a9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|497|35|v|typescriptreact
-	selectedMethodIndex
-cf8e562c812a1728fec6f867053cfa1d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|497|32|v|typescriptreact
-	&& selectedMethodIndex === -1
-fb8b53aead97480bdd7c9f59a30ab9ab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|497|31|v|typescriptreact
-	 && selectedMethodIndex === -1
-c63ecfd2bf1c652a0960a04572c382f2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|697|34|v|typescriptreact
-	paymentLoading
-d16cb1440d52ff1e278bea4c465341cf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|89|21|v|typescriptreact
-	setLoading
-471109e2c3c7cb47535e0246c29d2171|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|694|45|v|typescriptreact
-	iapLoading
-708bedc87a9663b9d1da3c50ef48d0ab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|497|25|v|typescriptreact
-	useIAP
-df6102a2ae0e0a95cff2dc466ec8fe60|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|112|20|v|typescriptreact
-	setUseIAP
-16fe4688bce7b773c9debe486b3a1bd1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|497|11|V|typescriptreact
-	    const isDisabled = !useIAP && selectedMethodIndex === -1
-39d1d7e8afa9372916e6736d6ff865bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|683|22|v|typescriptreact
-	goToSuccess
-3e93fed1127e4e3f45a445b2d0dbd716|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|272|1|V|typescriptreact
-	        setLoading(true)
-d631070e79afd681865256437799cb2d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|164|33|v|typescriptreact
-	renderCardItem
-05ddd57fd5601ef3585cb2471e08358d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|87|51|v|typescriptreact
-	MB_5
-2f62273b1b6d374490403fa82249244c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|87|51|v|typescriptreact
-	MB_4
-effa1940168f99b4f4124ed7fa428ae6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|24|3|V|typescriptreact
-	  MB_5,
-7a50f3d3ebe3604f7abf5e277d69a004|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|86|33|v|typescriptreact
-	cardGroupWrapper
-f05417dcd43ab862dcfb6b5cc3746e5e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/see-all-category-screen/see-all-category-screen.tsx|86|49|v|typescriptreact
-	, { marginBottom: 0 }
-c21030ff6bed5ef37b49cfbb6f548f24|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderAllCategoryList.tsx|14|1|V|typescriptreact
-	        <PlaceholderLine style={styles.subTitle} />
-02ac800b2307cc3cc42f52855e26d9ae|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderAllCategoryList.tsx|45|13|v|typescriptreact
-	'20%'
-7091f9e0e414b18560c63d1f85c11052|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/placeholder-list/placeholderAllCategoryList.tsx|45|1|V|typescriptreact
-	    height:  15,
-698070d0c8257a8d009f7f7ed6579e85|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/get-many-experiences.dto.ts|46|1|V|typescript
-	  @ApiPropertyOptional({ type: 'number', isArray: true })
-	  @IsOptional()
-	  categories?: number[];
-	}
-72a9d4793c961c61adb9c19fd348a86b|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/get-many-experiences.dto.ts|46|1|V|typescript
-	  @ApiPropertyOptional({ type: 'number', isArray: true })
-	  @IsOptional()
-	  categories?: number[];
-3f484c474989d048296fc7de44044afa|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/dto/check-is-available-experiences-dto.ts|5|1|V|typescript
-	  @ApiPropertyOptional({ type: 'string' })
-	  @IsOptional()
-	  @IsString()
-	  categories: string;
-b5bdf6bf9135523ef8cb3b688e22ea01|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|44|41|v|typescript
-	?.split(',').map((value) => Number(value));
-49652b7ceab7614d811d269730245d74|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api.ts|2112|20|v|typescript
-	${categoryId}
-338442c7b877b627b8e2ae09becb5758|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|113|5|V|typescriptreact
-	      updateCurrentCategory(categoryId)
-3acd49712417166b6f7cd1b8819f9049|file:///Users/louis/.tmux.conf|5|1|V|tmux
-	set -g default-terminal "screen-256color"
-	# tell Tmux that outside terminal supports true color
-	set -ga terminal-overrides ",xterm-256color*:Tc"
-66aed9d70b09f434646ab41771a04292|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|116|22|V|typescriptreact
-	    return () => updateFilters({})
-29b065a562142d0a09c11cbeff0de0be|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|108|9|V|typescriptreact
-	      console.log(filters)
-07e528ffd1d0e1a768d288620bf06231|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/filter-list.tsx|17|3|V|typescriptreact
-	  console.log(activeFilters)
-df216d2c75ff9bdf6cf3700a2a404913|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|107|1|V|typescriptreact
-	    ;(async () => {
-	      const result = await experiencesStore.checkIsAvailableExperienceByCategoryId(
-	        filters.subCategories || categoryId,
-	      )
-	
-	      setAvailableExperiences(result)
-	    })()
-89fe10bcde2f46935e91fc0aa89deb76|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|119|8|v|typescriptreact
-	 filters.subCategories ||
-2d8fd5fb90a7524e3738c103cfe2afaa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|117|1|V|typescriptreact
-	    ;(async () => {
-	      const result = await experiencesStore.checkIsAvailableExperienceByCategoryId(categoryId)
-	
-	      setAvailableExperiences(result)
-2a60d18eb47a0b212162706415de65f4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|117|1|V|typescriptreact
-	    ;(async () => {
-	      const result = await experiencesStore.checkIsAvailableExperienceByCategoryId(categoryId)
-	
-	      setAvailableExperiences(result)
-	    })()
-88be62ccbc2801ce90084c1356d22820|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|108|84|v|typescriptreact
-	categoryId
-9ba05188bedd6e80d23cbd9f5b143a5e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|107|25|V|typescriptreact
-	    console.log(filters?.subCategories)
-9119c736a8e099e448d75e65659387d6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|107|1|V|typescriptreact
-	    ;(async () => {
-	      const result = await experiencesStore.checkIsAvailableExperienceByCategoryId(
-	        filters || categoryId,
-	      )
-	
-	      setAvailableExperiences(result)
-	    })()
-ca6e7847849b6493881673bbc9f1eced|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|106|1|V|typescriptreact
-	  React.useEffect(() => {
-	    ;(async () => {
-	      const result = await experiencesStore.checkIsAvailableExperienceByCategoryId(
-	        filters || categoryId,
-	      )
-	
-	      setAvailableExperiences(result)
-	    })()
-	
-	    return () => updateFilters({})
-	  }, [categoryId, filters])
-	
-2063c1608d6e0baf80249c42e2be5804|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|337|41|v|typescriptreact
-	value
-7b5c898e0c5e4748b1aaae74fb2d3a57|file:///Users/louis/.config/nvim/init.vim|15|14|V|vim
-	Plug 'ayu-theme/ayu-vim'
-e114d67f6c17a814152bd397a44f69d5|file:///Users/louis/.config/nvim/init.vim|124|13|v|vim
-	onedark
-36ab58eaff6c232522d67529445d58f6|file:///Users/louis/.config/nvim/init.vim|124|1|V|vim
-	colorscheme oceanic
-ea225ae75583177eba676db77e3af75d|file:///Users/louis/.config/nvim/init.vim|124|36|v|vim
-	darker
-075a3e36a0a52dcbc568c05788e8a713|file:///Users/louis/.config/nvim/init.vim|124|36|v|vim
-	medium
-45d20b1d2cc2d52e74b3cbf1750a2e31|file:///Users/louis/.config/nvim/init.vim|124|36|v|vim
-	ocean
-59e443ba4127d7e3563ac63f9e52559c|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|19|1|V|typescript
-	    @InjectRepository(ExperienceRepository)
-	    private readonly experienceRepository: ExperienceRepository,
-7d843a68c98445bb822c0768ed4ab044|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.service.ts|16|23|v|typescript
-	ExperienceRepository
-a03c313c10ea262543be57909ba58d22|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|12|1|V|typescript
-	import { InjectRepository } from '@nestjs/typeorm';
-	import { ExperienceRepository } from '../experiences/experience.repository';
-7c6c3b5fcda82539b39d9802037011c4|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|40|1|V|typescript
-	    const filter = {
-	      status: ExperienceStatusType.PUBLISHED,
-	      talentProfile: {
-	        accountStatus: TalentAccountStatusType.ACTIVE,
-	      },
-	      scheduleTime: 'upcoming',
-	    };
-4dae2c947f48c7551b05cd060e9eafb6|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|48|1|V|typescript
-	    return this.experienceRepository.checkIsAvailableExperiencesByCategoryId(categories, filter);
-b48ca60af5fb730703e694222e5d996e|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|38|1|V|typescript
-	    const categories = query?.categories;
-22c2b66e05c79139ec687a3203031644|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.service.ts|61|31|v|typescript
-	query: CheckIsAvailableExperiencesDto
-629497fd35a42c925b3375033a12b3bb|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|41|1|V|typescript
-	      status: ExperienceStatusType.PUBLISHED,
-	      talentProfile: {
-	        accountStatus: TalentAccountStatusType.ACTIVE,
-	      },
-	      scheduleTime: 'upcoming',
-	    };
-5b510af78f10dbc091acf60c95179c51|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|40|1|V|typescript
-	    const filter = {
-0b6685d3d533bb8ec5d49d78085c097b|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|40|35|v|typescript
-	checkIsAvailableExperiencesByCategoryId
-b2c97ae425dd751b0e48a3acae79cf4a|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|40|75|v|typescript
-	filter
-8738ff98ffc333df6dd41b1207422818|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|11|37|V|typescript
-	import { TalentAccountStatusType } from '../talent-profiles/interfaces/talent-profile.interface';
-e96a3354b0098802feec7eef15490a32|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.controller.ts|10|1|V|typescript
-	import { ExperienceStatusType } from '../experiences/interfaces/experiences.interface';
-135b31bff3a4c26bb92fcd25e27c50ae|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/categories/categories.service.ts|10|35|V|typescript
-	import { CheckIsAvailableExperiencesDto } from '../experiences/dto/check-is-available-experiences-dto';
-7c24995b23516a0fbb9f1a3a7b514fc6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|86|32|v|typescriptreact
-	setAvailableExperiences
-81082f005c44473bf9502b949b8929f4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|138|1|V|typescriptreact
-	  console.log(filterItems)
-b4a88417b3d0170d754c647c30b7216a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|344|39|v|typescriptreact
-	result
-0d144c45a04e7d766ff6ea8de2bf2aa5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|138|1|V|typescriptreact
-	  console.log("---")
-	  console.log(availableExperiences)
-e29ff074c89ca19a2b05a58440e97a38|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|341|1|V|typescriptreact
-	                          console.log(result)
-6af30cd6aa0e3974525ef4a93a60ff0e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|341|42|V|typescriptreact
-	                          console.log('---')
-67cfc90083d5b08fbd1fe9df3fb53375|file:///Users/louis/.config/nvim/plugged/oceanic-material/colors/oceanic_material.vim|68|21|v|vim
-	1d1f21
-7a21d0de187ae893cf471e66e835e082|file:///Users/louis/.config/nvim/init.vim|16|1|V|vim
-	Plug 'glepnir/oceanic-material'
-d876315b52e5286427fec6504fb5979d|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|242|19|V|typescript
-	  console.log(file)
-350a6e26b9ca04d38e360c160fca720b|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|222|28|v|typescript
-	FileReader
-3a6aec5c34c3aa0ad22aab0be3a6f01a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|242|1|V|typescript
-	  if (file.size > 30000 * 1024 * 1024 && isVideo(file.name)) {
-	    try {
-	      const result = await handleCreateInitiateMultipartUpload(file);
-	      alert(result);
-	
-	      const files = await blobToString(file?.originFileObj, result);
-	
-	      const uploadResult = await uploadParts(files, result, callbackFn);
-	
-	      if (uploadResult.filter((value) => value.ETag).length === result.parts) {
-	        const data: any = await photoService.getCompleteMultipartUpload(
-	          result?.objectKey,
-	          result.uploadId,
-	          uploadResult
-	        );
-	
-	        return data.ok && data?.response && data.response?.url;
-	      }
-	    } catch {
-	      notification.error({
-	        message:
-	          "Highly unstable network connection. Please check your network connect again.",
-	        duration: 0,
-	        isOffDuration: true,
-	      });
-	      return;
-	    }
-	  } else {
-b86bee112a8017647fddc83ae690c6f0|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|242|1|V|typescript
-	  if (file.size > 50 * 1024 * 1024 && isVideo(file.name)) {
-	    try {
-	      const result = await handleCreateInitiateMultipartUpload(file);
-	      alert(result);
-	
-	      // const files = await blobToString(file?.originFileObj, result);
-	
-	      // const uploadResult = await uploadParts(files, result, callbackFn);
-	
-	      // if (uploadResult.filter((value) => value.ETag).length === result.parts) {
-	      //   const data: any = await photoService.getCompleteMultipartUpload(
-	      //     result?.objectKey,
-	      //     result.uploadId,
-	      //     uploadResult
-	      //   );
-	
-	      //   return data.ok && data?.response && data.response?.url;
-	      // }
-	    } catch {
-	      notification.error({
-	        message:
-	          "Highly unstable network connection. Please check your network connect again.",
-	        duration: 0,
-	        isOffDuration: true,
-	      });
-	      return;
-	    }
-	  } else {
-2ed1ed1ba950da4e6d63b8127b852d65|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|242|1|V|typescript
-	  if (file.size > 50 * 1024 * 1024 && isVideo(file.name)) {
-	    try {
-	      const result = await handleCreateInitiateMultipartUpload(file);
-	      alert(result);
-	
-	      const files = await blobToString(file?.originFileObj, result);
-	
-	      const uploadResult = await uploadParts(files, result, callbackFn);
-	
-	      if (uploadResult.filter((value) => value.ETag).length === result.parts) {
-	        const data: any = await photoService.getCompleteMultipartUpload(
-	          result?.objectKey,
-	          result.uploadId,
-	          uploadResult
-	        );
-	
-	        return data.ok && data?.response && data.response?.url;
-	      }
-	    } catch {
-	      notification.error({
-	        message:
-	          "Highly unstable network connection. Please check your network connect again.",
-	        duration: 0,
-	        isOffDuration: true,
-	      });
-	      return;
-	    }
-	  } else {
-ed1822b9881bfe34123a9f449ab71732|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|209|3|v|typescriptreact
-	activityIndicator
-10d0b07c05f9bb7ccabb12687e9b061a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|200|46|V|typescriptreact
-	            onLoad={() => setIsLoading(false)}
-607f193838e33d9c0644cddc5ccda5c2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|200|35|v|typescriptreact
-	setIsLoading
-b326b5062b2f0e69046810717534cb09|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|38|54|v|typescriptreact
-	true
-af12da27e4e399169180605b64db1ee0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|208|13|v|typescriptreact
-	onLoadProgress
-31a25eb058993173c8b99ac50071bada|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|208|18|V|typescriptreact
-	            onLoad={() => setIsLoading(true)}
-68934a3e9455fa72420237eb05902327|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|38|54|v|typescriptreact
-	false
-be9ca58daf09338d6ae06e7ec9ea7e89|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|210|13|v|typescriptreact
-	onLoadEnd
-d232ca57202c9240180d94de229bf1c1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|209|13|v|typescriptreact
-	onLoacdProgress
-b038286fa00f266fad52945a933806e7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|211|18|V|typescriptreact
-	            onLoad
-0ce2d2c41c2a1736da3e6f1a5623fc11|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|210|32|V|typescriptreact
-	            onLoadStart={() => setIsLoading(true)}
-5ecf6748f793f1e613389e751673d729|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|209|46|V|typescriptreact
-	            renderLoading={() => <ActivityIndicator color={color.themeColor.primary} />}
-be2876c96f3e677e0f6180ff61718ead|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|165|1|V|typescriptreact
-	    if (isLoading)
-	      return (
-	        <ActivityIndicator
-	          style={styles.activityIndicator}
-	          color={color.themeColor.primary}
-	          size="large"
-	        />
-	      )
-e70c4df10ef0983b9c8c31bd06b2a2c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|192|26|v|typescriptreact
-	return
-407fe415bd894b5829e000a50e477b9e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|207|13|v|typescriptreact
-	onLoadStart
-42584b91f4a8035f2d344ee213d40277|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|237|14|v|typescript
-	pushImageToS3
-f27cf4dfaf374bcd3a8c6304a8d68e67|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|191|1|V|typescriptreact
-	        {isLoading && (
-	          <ActivityIndicator
-	            style={styles.activityIndicator}
-	            color={color.themeColor.primary}
-	            size="large"
-	          />
-	        )}
-50575620b035a09429c7cf5b25d0ace4|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/BecomeATalent/components/UploadPhotosAndVideos.tsx|145|13|v|typescriptreact
-	handleChange
-2b580e49c7e08804860a9ce0a17b4db2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|35|10|v|typescriptreact
-	formatInstagramLink
-90a0a8e10c3abf90749e6c7adaeaf5e7|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/BecomeATalent/BecomeATalent.tsx|39|10|v|typescriptreact
-	addingHttpsPrefix
-1544cc96e749a273c9c64d7c99d2c573|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|114|11|v|typescriptreact
-	_onExit
-6a93c9eae91329f3cb903f4a17184075|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|167|24|v|typescriptreact
-	enableSaveFeature
-b92071d61c88498171928745ca53078b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|195|3|v|typescriptreact
-	Alert
-05089bd821fce732d8226e1950d3686a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|195|3|V|typescriptreact
-	  Alert.alert("test", "test", [{ text: "cancel" }, { text: "" }])
-3dbd985ff6a26fa6a6a1a332cd963652|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|243|19|v|typescript
-	50 * 1024 * 1024
-d5d3db1765287eef77d7927cc956f50a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|245|7|v|typescript
-	title
-b3ac136a1ceca15610d219094d11c4db|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|243|19|v|typescriptreact
-	ALERT_TYPE_WEBVIE
-38814a50b5faaea4697818313a859740|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/CreateExperience1To1.tsx|244|1|V|typescriptreact
-	            type: ALERT_TYPE_WEBVIEW.NOT_FILL_TIME_SLOT,
-93087599b2d5bf077f9266c82a08a5fb|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|247|32|v|typescript
-	NOT_FILL_TIME_SLOT
-65b681e5ac9b98a6112ad10a65cf6ff4|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|247|13|v|typescript
-	ALERT_TYPE_WEBVIEW
-777a8f9a9cd5d3d07f8ca2a0a89a2437|file:///Users/louis/Dev/Projects/komi/komi-talent/src/constants/webview.ts|40|1|V|typescript
-	export enum ALERT_TYPE_WEBVIEW {
-	  NOT_FILL_TIME_SLOT = "NOT_FILL_TIME_SLOT",
-	  UPLOAD_VIDEO_SIZE_BIG = "UPLOAD_VIDEO_SIZE_BIG",
-	}
-003143dfd7683f72b648cd354622ae7c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|86|1|V|typescriptreact
-	      if (
-	        res.message === EVENT_WEBVIEW_MESSAGE.ALERT &&
-	        data.alert.type === ALERT_TYPE_WEBVIEW.NOT_FILL_TIME_SLOT
-	      ) {
-	        Alert.alert(data?.alert?.title || "", data?.alert?.subTitle, [
-	          {
-	            text: data?.alert?.button1 || "",
-	            onPress: () => {
-	              webview?.current &&
-	                webview?.current?.injectJavaScript(
-	                  `window.location="${CONFIG.TALENT_APP_URL}/${WebViewRoutes.EditExperienceContent}/${data?.alert?.data?.experienceType}/${data?.alert?.data?.experienceId}?token=${authStore.accessToken}&step=3"`,
-	                )
-	            },
-	          },
-	          {
-	            text: data?.alert?.button2 || "",
-	            onPress: () => {
-	              notifications.show({
-	                type: "success",
-	                text1: translate("webviewScreen.experience.savedAsDraft"),
-	              })
-	              route.params.callback(navigation, contentTypeWebView || contentType)
-	            },
-	          },
-	        ])
-	      }
-9b33568c09dcba8be4d5eb70093e61f9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|117|21|v|typescriptreact
-	data?.alert?.title || 
-f5a625848c7ce87ebdf4f21b0f77bbbb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|120|1|V|typescriptreact
-	            onPress: () => {
-	              webview?.current &&
-	                webview?.current?.injectJavaScript(
-	                  `window.location="${CONFIG.TALENT_APP_URL}/${WebViewRoutes.EditExperienceContent}/${data?.alert?.data?.experienceType}/${data?.alert?.data?.experienceId}?token=${authStore.accessToken}&step=3"`,
-	                )
-	            },
-e729d2d4cd751c7502ecad66352a114b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|121|1|V|typescriptreact
-	          {
-	            text: data?.alert?.button2 || "",
-	            onPress: () => {
-	              notifications.show({
-	                type: "success",
-	                text1: translate("webviewScreen.experience.savedAsDraft"),
-	              })
-	              route.params.callback(navigation, contentTypeWebView || contentType)
-	            },
-	          },
-f45d6cab5925b38ca79d4172fbb634f3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|113|1|V|typescriptreact
-	      if (
-	        res.message === EVENT_WEBVIEW_MESSAGE.ALERT &&
-	        data.alert.type === ALERT_TYPE_WEBVIEW.UPLOAD_VIDEO_SIZE_BIG
-	      ) {
-	        Alert.alert("", data?.alert?.subTitle, [
-	          {
-	            text: data?.alert?.button1 || "",
-	          },
-	        ])
-	      }
-4d4e80a56233196d3903bf702042cfd5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|249|67|v|typescript
-	{{Maximum File Supported}}
-f8286aecd32433e737ed3cddac639d6c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|249|9|v|typescript
-	Sorry, we cannot support the Video file size larger than ${MAXIMUM_FILE_SUPPORTED_WEBVIEW}. Please try again on the Desktop version
-9a51b54c157f0dd180e3eda52ceb5a1a|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|244|1|V|typescript
-	  const MAXIMUM_FILE_SUPPORTED_WEBVIEW = 400;
-	
-	  if (file.size > MAXIMUM_FILE_SUPPORTED_WEBVIEW * 1024 * 1024) {
-	    webviewMessage.alert({
-	      subTitle: `Sorry, we cannot support the Video file size larger than ${MAXIMUM_FILE_SUPPORTED_WEBVIEW} MB. Please try again on the Desktop version`,
-	      button1: "Close",
-	      type: ALERT_TYPE_WEBVIEW.UPLOAD_VIDEO_SIZE_BIG,
-	    });
-	  }
-40199c7382aa2a1275bb4250a0493b7c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|11|1|V|typescript
-	  isSoundFile,
-	} from "./file";
-	import { webviewMessage } from "./webviewMessage";
-	import { ALERT_TYPE_WEBVIEW } from "constants/webview";
-	
-	interface Part {
-	  ETag: string;
-	  PartNumber: number;
-	}
-d8cda3a1bb8af4e6e0df5fc696b0c1a1|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|42|7|v|typescript
-	file.size > MAXIMUM_FILE_SUPPORTED_WEBVIEW * 1024 * 1024
-096d6f99e0670e2867336821ae4b0eb3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|43|1|V|typescript
-	    webviewMessage.alert({
-	      subTitle: `Sorry, we cannot support the Video file size larger than ${MAXIMUM_FILE_SUPPORTED_WEBVIEW} MB. Please try again on the Desktop version`,
-	      button1: "Close",
-	      type: ALERT_TYPE_WEBVIEW.UPLOAD_VIDEO_SIZE_BIG,
-	    });
-eeae7f38ae70e4f57677aeaf0767cc13|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|41|1|V|typescript
-	  if (file.size > MAXIMUM_FILE_SUPPORTED_WEBVIEW * 1024 * 1024) {
-	    webviewMessage.alert({
-	      subTitle: `Sorry, we cannot support the Video file size larger than ${MAXIMUM_FILE_SUPPORTED_WEBVIEW} MB. Please try again on the Desktop version`,
-	      button1: "Close",
-	      type: ALERT_TYPE_WEBVIEW.UPLOAD_VIDEO_SIZE_BIG,
-	    });
-	  }
-c5613a5a91579972fbae451acabeb080|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|92|21|v|typescriptreact
-	currencySymbol
-0648fc3b65c71613adb22bd7943ab002|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|41|26|v|typescriptreact
-	setExchangeRate
-c2e6bd178492b9e7c72fd6b913c689b6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx|97|17|v|typescriptreact
-	${edtLocalCurrency?.symbol}
-81f4d1ba63795b2c25237a4ba6ef53da|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|212|13|v|typescriptreact
-	onLoad
-a6122a65eaa676f700ae68d393054a37|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|213|19|v|typescriptreact
-	Start
-a0400c95cedf994a293d596f964f1b18|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|43|1|V|typescriptreact
-	    const [errorMessageTx, setErrorMessageTx] = useState<any>()
-ffa1a1ea73567bf305b8a29eb708ac0e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|44|12|v|typescriptreact
-	errorMessageTx
-18b02d033f7fafdef9119c2f778b5da7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|44|23|v|typescriptreact
-	setErrorMessageTx
-82674564a1bb9ee3ff9aef6af70c6236|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|44|47|v|typescriptreact
-	<any>
-26722e8f7da5382710b4ec4b50a839bb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|72|5|v|typescriptreact
-	allDiscoveryList
-ca4f1519849e936fbf7caba07416d8fc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|90|1|V|typescriptreact
-	    allDiscoveryList.updateFilters()
-396140da62a2c7cfe7614836fb21f2bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|79|1|v|typescriptreact
-	allDiscoveryList.updateFilters({})
-5db90662e46d4af0bb97ee1935634e7d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|181|9|v|typescriptreact
-	<ActivityIndicator
-	          style={styles.activityIndicator}
-	          color={color.themeColor.primary}
-	          size="large"
-	        /
-74080a1cb3105587879768068a805929|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|225|10|V|typescriptreact
-	        )}
-3023fb45837be45154133ed7fbb20b3e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|221|1|V|typescriptreact
-	            onLoadStart={() => setIsLoading(true)}
-	            onLoadEnd={() => setIsLoading(false)}
-d86e5ca240de4f0b312818fe24ef1dd3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|45|1|V|typescriptreact
-	    const [isLoading, setIsLoading] = useState(false)
-3812519aeed64756e7bb77b6f765af6b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/become-talent-web-view-screen.tsx|96|10|v|typescriptreact
-	isLoading
-bae23cf3c40fd0b4c971af40145c55cb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|212|1|V|typescriptreact
-	        <View style={[styles.container, { opacity: isLoading ? 0 : 1 }]}>
-c47eeeb483e08efa008b81f84078368b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|209|1|V|typescriptreact
-	        <View style={styles.container}>
-bc95dfc14146aa23e43f2ea7af04d310|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/create-experience-content-web-view.tsx|218|12|V|typescriptreact
-	            
-8689da828dd015c059479ba8c483e538|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/web-view-screen/edit-experience-content-web-view-screen.tsx|1|1|V|typescriptreact
-	/* eslint-disable react-native/no-inline-styles */
-05ea1f36e2b3225110994f6a7f19d5c3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/components/Loading/Loading.scss|10|1|V|scss
-	  &--full {
-	    width: 100%;
-	    height: 100%;
-	    transform: translate(0, 0);
-	    left: 0;
-	    top: 0;
-	    background-color: $white;
-	  }
-d508fe45cecaf653904a0e774084bb5c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/components/Loading/Loading.scss|16|24|v|scss
-	white
-ab6688db7d1533297cf7f1b399c39f9f|file:///Users/louis/Dev/Projects/komi/komi-talent/src/components/Loading/Loading.scss|5|1|V|scss
-	  top: 50%;
-cb5e100e5a9a3e7f6d1fd97512215282|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|266|18|v|typescriptreact
-	error
-ff4b47a53d0261068ac45030d7bf8b0b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/notification.ts|12|6|V|typescript
-	    type: config.type,
-c32f60c10b0da358b8db31da29f980f3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hoc/SignInRequiredHoc.tsx|20|1|V|typescriptreact
-	        type: "warning",
-40a75dc87d04e1b269d443563bddcbd8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|266|1|V|typescriptreact
-	          type: "warn",
-f37bd2f66651e7d46f6d38440f2bc5dd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hoc/SignInRequiredHoc.tsx|19|7|v|typescriptreact
-	notifications
-1158be8f66fa9b2a742a87f0f9aa5385|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/PhotosAndVideosStep/UploadPhotosAndVideos.tsx|153|9|V|typescriptreact
-	        o
-6b0bbe3a2675637924326045f5c69e80|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/PhotosAndVideosStep/UploadPhotosAndVideos.tsx|90|16|V|typescriptreact
-	    alert(file);
-5bbfd4f00903ec901359833b88e1654b|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ExclusiveContentStep/ExclusiveContentStep.tsx|96|14|V|typescriptreact
-	    if (file.s)
-fd03106bc105f163620e865b40e071b3|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ExclusiveContentStep/ExclusiveContentStep.tsx|148|15|V|typescriptreact
-	        type=""
-82bfb4b71e994dafae5e100dcbc060e1|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ExclusiveContentStep/ExclusiveContentStep.tsx|147|25|V|typescriptreact
-	        accept="video/mp4"
-c1c425268e68385d1ab5074c17a94f14|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ExclusiveContentStep/ExclusiveContentStep.tsx|138|3|v|typescriptreact
-	function
-85824de2ddcbac40e643761e7a9bbea1|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ExclusiveContentStep/ExclusiveContentStep.tsx|144|22|v|typescriptreact
-	ActiveXObject
-cc26575c7621f0fb9d6adecf9e95f9a5|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|246|1|V|typescript
-	  if (
-	    file.size > MAXIMUM_FILE_SUPPORTED_WEBVIEW * 1024 * 1024 &&
-	    webviewMessage.isWebView()
-	  ) {
-	    webviewMessage.alert({
-	      subTitle: `Sorry, we cannot support the Video file size larger than ${MAXIMUM_FILE_SUPPORTED_WEBVIEW}MB. Please try again on the Desktop version`,
-	      button1: "Close",
-	      type: ALERT_TYPE_WEBVIEW.UPLOAD_VIDEO_SIZE_BIG,
-	    });
-	
-	    return;
-	  }
-342457a56071f1d51fb7b84591242aca|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|54|17|v|typescript
-	MAXIMUM_FILE_SUPPORTED_WEBVIEW
-dde77deaf6dba3685265bddbba5266fa|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExclusiveContent/ExclusiveContentStep/ExclusiveContentStep.tsx|88|19|V|typescriptreact
-	    alert(JSON.stringify(file, null, 4));
-a86c2fbfa492047b0ebb4c088547ee23|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|329|27|V|typescriptreact
-	                  {filters }
-b2ccae59a7c62d25a281ce1ab70ec47c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|17|33|v|typescriptreact
-	listItem
-7010922f343fb041cdbee40a239e7bbd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|19|47|v|typescriptreact
-	currentCategory
-c15c4ee7c79d932e1616ba36571f26c5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|39|1|V|typescriptreact
-	        const subCategories = (await findSubCategoriesById(currentCategory)) || []
-b7001cda936dcb5d4329f4d5525b03aa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|39|38|v|typescriptreact
-	findSubCategoriesById
-514447cb7eee714543862fea6d7ba495|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|87|60|V|typescriptreact
-	  const [subCategories, setSubCategories] = React.useState([])
-29c52f8b5ea0df524e871b5317b2cf0c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|58|18|V|typescript
-	    alert('hello')
-a00fd7d405b250ef7b8b4a065fb6984c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|55|62|v|typescript
-	* 1024 * 1024 
-cf3c032cd33aa732b22919f9b1fcf251|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.scss|31|12|v|scss
-	16px
-3978863b4bd84b79748ce140e1fd9306|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.scss|41|1|V|scss
-	  .ant-btn {
-	    width: 100%;
-	    height: 36px !important;
-f362465fbf50ffd3bd7611eda11da007|file:///Users/louis/Dev/Projects/komi/komi-talent/src/pages/SetupPayout/SetupPayout.scss|41|1|V|scss
-	  .ant-btn {
-	    width: 100%;
-	    height: 36px !important;
-	  }
-315531a6e45c241128afbebe381625fa|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|54|1|V|typescript
-	  if (
-	    file.size / 1024 / 1024 > MAXIMUM_FILE_SUPPORTED_WEBVIEW &&
-	    webviewMessage.isWebView()
-	  ) {
-	    webviewMessage.alert({
-	      subTitle: `Sorry, we cannot support the Video file size larger than ${MAXIMUM_FILE_SUPPORTED_WEBVIEW}MB. Please try again on the Desktop version`,
-	      button1: "Close",
-	      type: ALERT_TYPE_WEBVIEW.UPLOAD_VIDEO_SIZE_BIG,
-	    });
-	
-	    return false;
-	  }
-8fb805a943d5c7c96579f7739960651d|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|39|1|V|typescript
-	  const MAXIMUM_FILE_SUPPORTED_WEBVIEW = 250;
-371a91e5c91e40f6212ab50995ccb0cd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|51|45|v|typescriptreact
-	isEmpty
-27eae9d2919e7ab0ee8a661b2412a51b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|57|33|V|typescriptreact
-	      console.log("selected", selected)
-9a8e98e9d1d45bebd4db75fd4ee388fa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|50|41|V|typescriptreact
-	      console.log(filters?.subCategories)
-b9a1b80f5efe538916e7f479e3bdb637|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|8|1|V|typescriptreact
-	import { isEmpty } from "ramda"
-682d6180eb2509bd10c0e1a818f3c7f8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/filter-list/sub-category-filter.tsx|52|46|v|typescriptreact
-	? filters?.subCategories :
-bc39bc746d5c3887ef94df313f86960a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|448|33|v|typescriptreact
-	emptyDescription
-2c9885d2b0c7e26971f60a90f33cf718|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|448|33|v|typescriptreact
-	filters
-35277f167f0315e5b12b3c86090a06d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|448|33|v|typescriptreact
-	filters?.subCategories?.[0]
-c01c5def83abb653b3a961458d4138d2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|293|10|V|typescriptreact
-	    if (fi)
-6473b169c9172522459614696049520f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|293|33|v|typescriptreact
-	sufilters
-5428a82593e66d961a1ca500fe7e9eac|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|298|7|V|typescriptreact
-	    category?.subCategories[idFirstSub]?.name 
-baf6dbc8b233a14d2429edb7f5100a7b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|296|94|v|typescriptreact
-	[idFirstSub]?.name 
-e8139ab9f7dbc708c825b01ba83e34ed|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|460|1|V|typescriptreact
-	                            emptyDescription[category?.name?.toLowerCase()]
-117fca49720f83b5006efa374511a1e2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|459|1|V|typescriptreact
-	                            filters?.subCategories?.[0].name ||
-	                            emptyDescription[category?.name?.toLowerCase()]
-d215057164d6b99bec5a9398dd37693c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|290|3|V|typescriptreact
-	  console.log(filters?.subCategories?.[0])
-fe08ac736462767a0ea8daea37b86b69|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|354|51|V|typescriptreact
-	                            setCurrentSubCategories
-d562a634526fe4467c80fa9543fb2621|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|300|16|v|typescriptreact
-	subCategories
-78c1eaa5e7d88db974bd2a6177000874|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|293|24|v|typescriptreact
-	filters?.subCategories?.
-81fae4e488f0a9f371022277b4cc28bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|295|9|v|typescriptreact
-	filters?.subCategories
-16a7c9741c8c7ddad838a8c5010befaf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|296|27|v|typescriptreact
-	category?.subCategories
-b0b5ccb4a195a07fd3eed14affb8695f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|352|39|v|typescriptreact
-	categories
-4f892524d940060561e60e18343a9d90|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|298|38|V|typescriptreact
-	      console.log(subCategory[0]?.name)
-1d1cc1e38a67ef060cbbcceb4cde3945|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|292|9|v|typescriptreact
-	formatTextEmpty
-86000955b44e4f8640a21bd77aff6aa6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|292|33|v|typescriptreact
-	useMemo
-b02da1fdc8fed8dbda4530ca24499394|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|295|38|V|typescriptreact
-	    console.log("hi", currentSubCategories)
-279883e840961386328172c8f8dba34a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|299|34|v|typescriptreact
-	.toLowerCase()]
-5601fd8871055e90f97875013313322f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|470|50|v|typescriptreact
-	category?.name
-6856eee4be07c4f868b870bc420e3299|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|292|33|v|typescriptreact
-	useCallback
-987beb9c1d4e0250e4a9337ed0d814b2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|301|12|v|typescriptreact
-	return category?.name
-a57628c9d5862f708997a6632ec6abe7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|292|33|v|typescriptreact
-	cuseMemo
-4f3e28b623f5317218ef1bdc6ff20932|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|452|63|v|typescriptreact
-	isLoadingMore
-9abe4c0f7b5e2224f1cbcd36f68ac7e9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|296|29|V|typescriptreact
-	    let text = category?.name
-13cebaa0a7ae120fcfda2c93c071ffe2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|298|1|V|typescriptreact
-	      setIsLoading(false)
-aadc0bee29f1b1befd294fe7dc3779ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|307|6|v|typescriptreact
-	return translate("categoryDetailScreen.yourSelectedCategories")
-45d71a1e46a6e536e5be0bc87fa46ad2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|297|12|v|typescriptreact
-	rentSubCategories?.length === 0 || !currentSubCategories) {
-	      return
-a3bed4b96d6e272104fdf5c2c33a319c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|297|6|V|typescriptreact
-	    if (cur category?.name
-84230bfff8fba8a79e0a8f1cf0c5c709|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|297|5|v|typescriptreact
-	} else
-567f249f878473e6079868029e4ef73a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|293|9|v|typescriptreact
-	formatTextEmlllllty
-6680dba00f3a88f66f8029a93d71d93c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|293|3|v|typescriptreact
-	const
-50274a9e917663e8f37c5f15d698a8de|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|474|60|v|typescriptreact
-	|| category?.name 
-ed83e9b2e82cb6661b210a0809380b8f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|465|33|v|typescriptreact
-	emptyDescription[category?.name?.toLowerCase()
-72e5c4b7fae8e255ab2e6d67540aa077|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|295|4|V|typescriptreact
-	    if emptyDescription[category?.name?.toLowerCase()
-ede8c597938cf799d2f0d5c23682f9af|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|461|1|V|typescriptreact
-	                    {category?.name?.toLowerCase() === "music" ? (
-	                      <View style={{ paddingHorizontal: spacing[9] }}>
-	                        <Text
-	                          style={{ textAlign: "center", marginTop: spacing[1] }}
-	                          text={emptyDescription[category?.name?.toLowerCase()]}
-	                          preset="regularR"
-	                        />
-	                      </View>
-	                    ) : (
 c752f3f40ea3e2ad05f03204c4309fdf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|469|22|V|typescriptreact
 	                    )}
 5be22f51c370f854fd9f769928d0dbec|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|469|57|v|typescriptreact
@@ -909,3 +213,489 @@ f43dff9a0dc54f0643d0c6d7971635f0|file:///Users/louis/.zshrc|103|16|v|zsh
 	alias gco='git checkout'
 ed0aa990bbd616852d5fdfe6bc159a04|file:///Users/louis/.zshrc|104|25|V|zsh
 	alias gcob='git checkout'
+8ee17b3017ff8b3428772032128fbc3e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|11|10|v|typescriptreact
+	TabBar
+1755347e5f6a762b84a3f6512a3e4e53|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|221|11|v|typescriptreact
+	routes
+9dd56c1fea943bfe981e869f7973dd02|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|111|1|V|typescriptreact
+	    {
+	      key: "experiences",
+	      title: "talentDetailScreen.experiences",
+	    },
+9c997cffae0859b4a15c0927db85cfc6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|117|15|v|typescriptreact
+	talentDetailScreen.experiences
+71df210ad5e28264557f10c663572933|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|117|34|v|typescriptreact
+	experiences
+e3afc1b025a3aaee26972e8d0a015156|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|115|1|V|typescriptreact
+	    {
+	      key: "experiences",
+	      title: "talentDetailScreen.selectPlan",
+	    },
+8d5da6a302235157e44ea6505db2cf50|file:///Users/louis/.spacebarrc|6|57|v|sh
+	"cube"
+fb520cb9564933d20bca7adea7cab990|file:///Users/louis/.config/nvim/init.vim|124|1|V|vim
+	colorscheme ocean
+55095ba31be8dcbb0f40652c1e352b39|file:///Users/louis/.yabairc|4|1|V|sh
+	SPACEBAR_HEIGHT=$(spacebar -m config height)
+	yabai -m config external_bar all:0:$SPACEBAR_HEIGHT
+a0436d9c449367eed1b9d35cdc67cddf|file:///Users/louis/.yabairc|3|1|V|sh
+	# global settings
+23849d7033378c2d14f049d4b0e2a9ce|file:///Users/louis/.config/nvim/init.vim|124|32|V|vim
+	let g:oceanic_material_transparent_background=1
+86408a7377a7685f1b1318b81263b596|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api-config.ts|22|8|v|typescript
+	CONFIG.API_URL || "https://localhost.local/api"
+4355a1975aa21ac291439c61cdda7baa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|460|25|v|typescriptreact
+	addingHttpsPrefix(talentDetail?.talentProfile?.website?.toLowerCase())
+71d23de0ca5d33f2aa8bcf7ae5c8a4ea|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|461|29|v|typescriptreact
+	webLink
+5fa9a82adaeb67da4bd45029cfc3e4ed|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|458|1|V|typescriptreact
+	                      console.log(
+	                        ,
+	                      )
+2cff3a78d50c2de2625144255829a64b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|460|1|V|typescriptreact
+	                        addingHttpsPrefix(talentDetail?.talentProfile?.website?.toLowerCase()),
+70ee6cecbd9fb5a0804b21374422693a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|461|50|V|typescriptreact
+	                      console.log(webLinkFormatted)
+2963aeea91cf89ecea785a86a324ee88|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|72|7|v|typescriptreact
+	oneToOneSessions
+8956e1cda345e2a103fd858ff312b3f0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|211|5|V|typescriptreact
+	    c
+af79185a388e75a422a843e00948d5df|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/DiscoveryList.ts|19|27|v|typescript
+	maybeNull(types.array(types.number))
+b7139ef341582e3acb4d8071e5ba5357|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|454|20|v|typescriptreact
+	filterExpType
+168b70fc04168230dbfdab937372f355|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|296|23|V|typescriptreact
+	  console.log(filterExpType)
+fad58de7366495db4650cfefac2fcd61|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|174|61|v|typescriptreact
+	main
+d13eb64446662cc000c3f5fa31f08c2c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|255|1|V|typescriptreact
+	        subCategories: filters?.subCategories,
+d69859e428d6d2c54b8cec17140a0510|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|61|1|V|typescriptreact
+	  const type = props.route.params.type
+599dcce2998a6b40b1e38e8c6006cb0a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|62|9|v|typescriptreact
+	type
+d9780de607586be8b2ff6c5a59606424|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/talent-list/talent-list.tsx|73|57|v|typescriptreact
+	PY_4
+e3d34ced7dc51c6b25613fce1015d612|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|372|22|V|typescriptreact
+	                  <View>{/* <TagList /> */}</View>
+5f0b6ebc4bea10285ba2b8a6ce78b863|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|350|37|v|typescriptreact
+	container
+696794dbc984165f38e67c373bf54af7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|527|5|v|typescriptreact
+	paddingVertical
+e9c7c162aa4f571943d1481ad52f2f0b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/talent-list/talent-list.tsx|74|57|v|typescriptreact
+	MT_4
+b6cbefac775621ed0b31d2fb3c2cc0f4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/talent-list/talent-list.tsx|14|3|V|typescriptreact
+	  PY_4,
+4351cfebe4b61d8aa5efa1d020710005|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|353|1|v|typescriptreact
+	View
+4aba245cb37e021e2ef494b2aa137dbb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|8|3|v|typescriptreact
+	FilterList
+6313febfe9c1dacf47ea8f40628a0d3c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|360|27|v|typescriptreact
+	allContents
+6478070ad27ee47b12f46cfdd9765d00|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|100|1|V|typescriptreact
+	    allContents.getList({
+	      page: 1,
+	      categories: filters?.subCategories || categoryId,
+	      type: !!filterExpType
+	        ? [filterExpType]
+	        : [CONTENT_TYPE.course, CONTENT_TYPE.exclusiveContent, CONTENT_TYPE.liveClass],
+	    })
+17fa8f6bc93ee6c1c5f1891f5b5351ce|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|360|38|V|typescriptreact
+	                          allContents,
+408b346d58ce6307992fa68350e69790|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|379|36|V|typescriptreact
+	                              setAvailableExperiences(result)
+3dbebc027721280e12c7b8b8a0ce75bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|111|45|v|typescriptreact
+	checkIsAvailableExperienceByCategoryId
+2a37dd00d733f5253cc2d772f1672168|file:///Users/louis/Dev/Projects/komi/komi-server/src/modules/experiences/experience.repository.ts|695|9|v|typescript
+	findExperiencesByCategoryId
+6a8b783cc438f27bc9b524519a170812|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api-config.ts|21|1|V|typescript
+	export const DEFAULT_API_CONFIG: ApiConfig = {
+	  url: 'https://api.komiapp.co/api',
+	  timeout: 10000,
+	}
+54818b05d116eadc7f67517a3a6e4b33|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|352|59|v|typescriptreact
+	discovery
+48b2e1371d9e5a15a9c48a43eff3db82|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|352|22|v|typescriptreact
+	category?.subCategories?.length > 0 &&
+	
+c0bf60cc8644d0ce7b05126c95566444|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|355|22|v|typescriptreact
+	category?.subCategories?.length > 0 &&
+c913f05de0872270dfff35f4007a3ed9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|721|5|v|json
+	Payouts are processed on the first of every month and will arrive in your account
+c0a49567608e6e4d527554cfee868a4e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|720|18|v|json
+	Your payout will arrive in
+0023d45b9d2b602c8c06bac367e3b35f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|721|100|V|json
+	    Payouts are processed on the first of every month and will arrive in your account 5-7 days later
+4890fbd169f931483dc1efddae907402|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|167|7|v|typescriptreact
+	disconnectChat
+c061f7fa8b608df45296e4fb6b2bddcd|file:///Users/louis/Dev/Projects/komi/komi-mobile/.circleci/config.yml|4|20|v|yaml
+	&decode_env_file
+9e32481b957d3417472edfa70c44d084|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|52|10|v|typescriptreact
+	canJoin
+406fec1b97cd2c70819e4f6138425bc4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|321|36|v|typescriptreact
+	bookingTime
+6b5a420d1d243f620a98a2d4c5b8370c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-purchase-detail-screen/talent-purchase-detail-screen.tsx|53|23|v|typescriptreact
+	setBookingTime
+f34598802af64fb90167f7af5c31f12c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|113|8|V|typescriptreact
+	    rese
+633ed6939dbd71c17bed3dc85d8aaa83|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/date.ts|117|14|v|typescript
+	resetDefaultLocale
+4c09aa78278ecb0d02ff7534ffa879b3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-booking-detail-screen/consumer-booking-detail-screen.tsx|28|3|v|typescriptreact
+	BookingDetailHeader
+37e622c921b5e43f9427d28a43399390|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/booking-detail-header/booking-detail-header.tsx|27|1|V|typescriptreact
+	  showDate?: boolean
+8adf8cb2655610bd4226929daf79be18|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/booking-detail-header/booking-detail-header.tsx|28|3|v|typescriptreact
+	showDate
+f7fb58cfd94eaa6d98fdc5683cc04aee|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|77|25|V|typescriptreact
+	      console.log("Fetch Again")
+4002db32f6d9889a4108a357374a186f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|78|9|v|typescriptreact
+	isOffline
+9b3871edcb2616f2c9459f6eaa49fbd5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|23|1|V|typescriptreact
+	console.log('check')
+dd7a18c42f751bb426331c7c163f635f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|96|1|V|typescriptreact
+	    console.log('check')
+dc81aa459a3a058fe64dcad6879ff7ab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|73|7|v|typescriptreact
+	joinChannel
+a308573737b39e4d4b5ccd62e2ffd788|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|256|36|v|typescriptreact
+	setCurrentMessage
+a19b7bd47329affb3b3a2f12b1c83dbb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|52|29|v|typescriptreact
+	setInitialMessages
+d6e3b341f7dbc0349b5ad4c469654560|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|52|12|v|typescriptreact
+	initialMessages
+0e9897b56c8bc3b62f18b80f31b86bac|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|118|9|v|typescriptreact
+	googleAnalytics
+8ce1cc259c9c4938e91ea2eb9db54684|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|120|15|v|typescriptreact
+	ANALYTIC_EVENT
+8e1b96879b8848c63080b82c10bd35aa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|50|8|v|typescriptreact
+	codePush
+f4041bcc861b129b5ab86bf87a416751|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-upcoming-tab.tsx|56|42|v|typescriptreact
+	BookingStack
+642eef438810d95844b6a1aebd2cfc0e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-upcoming-tab.tsx|6|10|v|typescriptreact
+	BookingItem
+8275e8800f378a9c34d16fdf7c9fb115|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|418|22|v|typescriptreact
+	${talentDetail?.talentProfile?.firstName}
+3fa16819ed61cd9edb59770402c2bb6e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|418|24|v|typescriptreact
+	talentDetail?.talentProfile?.firstName
+aa7ea50fcc1714c472c5b82b25157c93|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|340|15|v|typescriptreact
+	talentDetail
+2e5f3143ebe5757bd948d01fbdd927de|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|67|24|v|typescriptreact
+	setTalentDetail
+9aa1f0f14c6f1c235a9179f96740182a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|113|3|V|typescriptreact
+	  console.log('test')
+4d806e7a2c5ed0bb818867a93a5138df|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|115|7|v|typescriptreact
+	videoBooking
+4e9efeafb5b7abe338eb55711bc031bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|114|1|V|typescriptreact
+	    console.log(isOffline)
+f6d2c158609fbc7434c3328e62b8df03|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|114|1|V|typescriptreact
+	    console.log('-----------------')
+28a6ba275b4c01dabce49538bcfa53b0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|114|1|V|typescriptreact
+	    console.log('-----------------')
+	    console.log(isOffline)
+	    console.log('-----------------')
+f1c8b2d76d538cc922bace18529780f8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|115|1|V|typescriptreact
+	    console.log('---')
+699c6df67827dcd3411b3debdbe8d16f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|119|6|v|typescriptreact
+	joinChannel(videoBooking.room?.name)
+0c7dbd05fdc4c9564fd43f0608096a80|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|114|1|V|typescriptreact
+	    console.log('---')
+	    console.log(isOffline)
+	    console.log('---')
+ee0571d7815646317f4cfced2d7f1a7d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|115|1|V|typescriptreact
+	      console.log("---")
+	      console.log(isOffline)
+	      console.log("---")
+6a9b1c622d19cc10784199d9a040accb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|114|7|V|typescriptreact
+	    if (isOffline !== null) {
+ea5a1cbe764918679997181a3ea281d3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|115|5|V|typescriptreact
+	    }
+de64463cd8d8c05c04f4d4f700a0fb8d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|74|9|v|typescriptreact
+	isOffline, videoBooking
+43ee720b20383c774426914ac7f44471|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|73|7|v|typescriptreact
+	if (isOffline !== null)
+db9225c8ba7983e499601a3f151c6112|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|96|11|v|typescriptreact
+	_onPressJoinRoom
+3cdaff2f2b20a8881675b877cebeabc7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|114|7|v|typescriptreact
+	 (isOffline !== null) {
+	      joinChannel(videoBooking.room?.name)
+	    }
+	
+3d727360a8c23bd6b96bb5250e1a51a2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|114|1|V|typescriptreact
+	    if (isOffline !== null) {
+	      joinChannel(videoBooking.room?.name)
+	    }
+654aca244f59282d7402b681c267a36f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|73|1|V|typescriptreact
+	      joinChannel(videoBooking?.room?.name)
+75febc30172b84b303c722514689ed49|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|130|26|V|typescriptreact
+	        setIsLoading(false)
+dca2fc5bc0b5d33665a0388e590e6bcc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|98|24|V|typescriptreact
+	      setIsLoading(true)
+f463bf580fa2afd81e1def8767a53c43|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-consumer-live-stream-room/waiting-consumer-live-stream-room.tsx|62|15|v|typescriptreact
+	connectChat
+0cd1f52e787cd483e5ec7b6763a34dea|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|73|27|V|typescriptreact
+	      console.log(isOffline)
+40ecc92c1533523de6ef46e832b12c98|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|74|30|V|typescriptreact
+	        console.log(isOffline)
+6134be8b79a8b5e2cb41ca7e47800410|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|118|21|V|typescriptreact
+	        console.log(tokenPair.token)
+edc799477ed0d55e482b911f577f8f8a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|118|30|V|typescriptreact
+	        console.log(tokenPair)
+69dfce7628435d935e79adc59e87727f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|115|7|V|typescriptreact
+	      joinChannel(videoBooking.room?.name)
+10096039fe90c4d651af1d5b888fff07|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/rtm-adapter.ts|58|28|V|typescript
+	    this.client.leaveChannel
+6c374e70334072aeeb62ed46ea987838|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/rtm-adapter.ts|60|9|v|typescript
+	leave
+90a6429f2497dca5f0978ddc4c1efadd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|86|5|v|typescriptreact
+	joinCharnel
+b326b5062b2f0e69046810717534cb09|file:///Users/louis/Dev/Projects/komi/komi-mobile/package.json|4|14|v|json
+	true
+ddf5003650b4b03248314517ac187915|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/rtm-adapter.ts|1|24|v|typescript
+	agora-react-native-rtm
+6d9e241052196bf06a9f597abf0579f7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|146|50|v|typescriptreact
+	rtmToken
+76b2216c77bc52f7b8d5593507424f8b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|245|16|v|typescriptreact
+	codePush(codePushOptions)
+cf3a1c4dc8b671820c4353e316f572f9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|243|7|V|typescriptreact
+	const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME }
+20527614d3d99db12867630c839f30cd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|33|10|v|typescriptreact
+	initialWindowSafeAreaInsets
+bb8c8675039b1bf1a0338f12bfe0b62a|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/Info.plist|158|1|V|xml
+			<key>CodePushDeploymentKey</key>
+			<string>$(APP_CENTER_DEPLOYMENT_KEY)</string>
+62d8ebebfe0dcf131c90b6d83cc02430|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|50|8|V|typescriptreact
+	import codePush from "react-native-code-push"
+3e2c905b7286640043769bfce4ba1e2a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|78|1|V|typescriptreact
+	      setInitialMessages(RESET_MESSAGES)
+697dfb9b235783676b63d2f1ed07cad5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|73|7|V|typescriptreact
+	<<<<<<< HEAD
+93ef1d3c9098534351c4f5610bbeab4f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|77|1|V|typescriptreact
+	=======
+	      setInitialMessages(RESET_MESSAGES)
+	      joinChannel(videoBooking?.room?.name)
+	>>>>>>> fix: reset message after reconnect
+3fefecaf8dc2a816932799dde0d67259|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-submit-screen/payout-submit-screen.tsx|77|31|v|typescriptreact
+	informationWrapper
+1953c1178d8ec8ce7e1d8d7d705d19da|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-submit-screen/payout-submit-screen.tsx|103|35|v|typescriptreact
+	textInformation
+bb3ccd5881d651448ded1dac904054ac|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-submit-screen/payout-submit-screen.tsx|83|33|v|typescriptreact
+	information
+1f34e71fa8db0d934b06fef2cb08c1ad|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/payout-submit-screen/payout-submit-screen.tsx|78|33|V|typescriptreact
+	                backgroundColor: "red",
+463f39065e34839f6e78b57673a78728|file:///Users/louis/Dev/Projects/komi/komi-mobile/ios/KomiMobile/Info.plist|159|1|V|xml
+			<string>$(APP_CENTER_DEPLOYMENT_KEY)</string>
+914831b74cfc8d5d5fa1c9d50507b292|file:///Users/louis/Dev/Projects/komi/komi-mobile/.env|28|1|V|sh
+	APP_CENTER_DEPLOYMENT_KEY=
+0a3f6b3a941bd12fcf0f1b31eee6a546|file:///Users/louis/Dev/Projects/komi/komi-mobile/.env|28|1|V|sh
+	APP_CENTER_DEPLOYMENT_KEY=HINxMBXXXuAbMXnm56npl-HxBePMlfqzJLqG1
+b764643d58558a20df81dc4f2f4f9ff7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|52|1|V|typescriptreact
+	if (!__DEV__) {
+3243923fcef57460e049755abb178d6f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|67|12|V|typescriptreact
+	        cons
+9a2864f600e695c257393707d38b717e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|64|22|v|typescriptreact
+	checkNetwork
+c2e19f443de7c294ad9a5a2c1f0d1314|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useCheckConnection.ts|2|19|V|typescript
+	import NetInfo from "@react-native-community/netinfo"
+28b36117f5cd133843c6d57cbb602c0a|file:///Users/louis/Dev/Projects/komi/komi-mobile/package.json|36|30|V|json
+	    "@react-native-community/netinfo": "^5.9.10",
+89085db2f4f20a79122aff1179cb0e40|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useCheckConnection.ts|3|11|v|typescript
+	AccessibilityInfo
+35aa1757cb5fad120a62365fea669d49|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useCheckConnection.ts|3|10|V|typescript
+	import  {  } from 'react-native'
+e981b3e61a555645ba5e718ec731aa1c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hooks/useCheckConnection.ts|3|10|V|typescript
+	AccessibilityInfo.
+e71d92572a8c6daf62b3452cb5068aa8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/rtm-adapter.ts|18|23|v|typescript
+	RtmEngine
+392759c6c6a77da0c4bd44cde5ae7fc4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|116|1|V|typescriptreact
+	              disconnect()
+	              disconnectChat(videoBooking?.room?.name)
+91984a1f7441cee2a73a596426b38902|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|109|1|V|typescriptreact
+	      deactivateKeepAwake()
+	      disconnect()
+913576214c697630835a92d303b099da|fugitive:/Users/louis/Dev/Projects/komi/komi-mobile/.git//0/app/screens/video-call-room-screen/video-call-room-screen.tsx|109|1|V|typescriptreact
+	      deactivateKeepAwake()
+b32cf78bb8b3e54f6abe759ccc663ebd|file:///Users/louis/.config/bootstrap/mac.sh|115|10|v|sh
+	yabai --install-sa
+5239380c3c600113d7e1b840839ec361|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|18|1|V|typescriptreact
+	  joinChannel: (channel: string) => Promise<any>
+91c1bb40e240a7e308c087593a164d43|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|19|12|v|typescriptreact
+	channel: string
+4236a440a662cc8253d7536e5aa17942|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|99|15|v|typescriptreact
+	logout
+89aa3d9124ee38c7f3f9ac28893c1037|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|99|26|V|typescriptreact
+	        await logoutChat()
+9d634e1a156dc0c1611eb4c3cff57276|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|69|9|v|typescriptreact
+	disconnect
+6173f5fe851a324972ea8c6f4d78ed16|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|69|1|V|typescriptreact
+	        disconnect()
+	        disconnectChat(videoBooking?.room?.name)
+0958af5d159e58644776c130cb1834ed|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|69|1|V|typescriptreact
+	        disconnect()
+cb120d2fcd88950e5939cba30f82d954|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|69|1|V|typescriptreact
+	        disconnect()
+	        disconnectChat(videoBooking.room?.name)
+22782ed9ee8da3ad54232646845524df|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|110|1|V|typescriptreact
+	      disconnect()
+	      disconnectChat(videoBooking?.room?.name)
+8fc4a13fcc2cbf49ce1548fe0d2cc289|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|20|12|V|typescriptreact
+	  logout:  ()
+7ab1be29b0e77dbda2f48c488c191196|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|70|9|V|typescriptreact
+	        disconnectChat()
+421e8fa3b1dd55144b2a5335ea174743|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|69|1|V|typescriptreact
+	        disconnectChat(videoBooking?.room?.name)
+2ea0667048fffebe16b7d3f90928f01c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|69|10|V|typescriptreact
+	        di
+0a9a88c145feee29d5790c09f820203e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|90|1|V|typescriptreact
+	  const disconnect = React.useCallback(
+	    async (channelId) => {
+	      await client.logout()
+	      await client.leave(channelId)
+	    },
+	    [client],
+	  )
+16b9df1b350675f2011d87a8cc038812|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|101|14|V|typescriptreact
+	      await client.leave(channelId)
+33dfe0a42d2e756d645d6779e9f952ba|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat-provider/chat-provider.tsx|99|12|v|typescriptreact
+	channelId
+f7c3ce832316204347158733a5dd9432|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/waiting-room-screen/waiting-room-screen.tsx|64|35|v|typescriptreact
+	logout: logoutChat 
+f37bd2f66651e7d46f6d38440f2bc5dd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|24|10|v|typescriptreact
+	notifications
+97a4e3b581ea70dc86102502736955e7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|269|14|V|typescriptreact
+	        return
+43d2a3d45a828a4d8c42863c0eb2d5b8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|271|14|V|typescriptreact
+	      if (!paymentMethodDefault && !useIAP) return
+5958a604ed3dce988ff600b265cd08c3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|296|9|v|typescriptreact
+	participants
+a99545a74e361a0df123a6fe5bf0d817|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/video-provider/video-provider.tsx|46|24|v|typescriptreact
+	setParticipants
+b3b5b6aa873699efb39a492b950a12e8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/video-provider/video-provider.tsx|80|9|v|typescriptreact
+	onParticipantOnline
+b7e788a0207537b57a8438035d572765|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|142|5|v|typescriptreact
+	disconnectchat
+e7ed87e03319629b7676472577b8a4bc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/waiting-for-talent.tsx|42|1|V|typescriptreact
+	            <Text
+	              text={`${booking?.talent?.talentProfile?.firstName} ${booking?.talent?.talentProfile?.lastName}`}
+	              preset="semiBoldM"
+	              style={[{ color: color.themeColor.white }, MT_5]}
+	            />
+8d7a0666ca9b584682f3480f095667c1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/root-navigator.tsx|64|1|V|typescriptreact
+	          gestureEnabled: false,
+a2229fa13185162f3073be88a0c0bc4f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/home-navigator.tsx|253|11|V|typescriptreact
+	        gestureEnabled: false,
+91a017c6b3db005d47d4a157803cdc71|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|31|17|v|typescriptreact
+	PrimaryNavigator
+fde9098fcf2d22ef7c1cb2b7198c79f5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|29|7|v|typescriptreact
+	BottomTab
+4daf2721ede8eaef14b0822a42cbfc27|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/home-navigator.tsx|128|91|v|typescriptreact
+	screenOptions
+20c60d741d94664bea533d8877f6aad0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/primary-navigator.tsx|37|1|V|typescriptreact
+	      screenOptions={{
+	        gestureEnabled: false,
+	      }}
+d3e7b35376672cd85e874e2cf7ecbba3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/types.ts|90|37|v|typescript
+	subCategories: Array<any>
+31123bca539ede5059929efb5e744986|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|62|1|V|typescriptreact
+	  const subCategories = props.route.params.subCategories
+51f14490bdade015d17d28f93580aba7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|207|19|v|typescriptreact
+	filters?.subCategories || [
+23e24c9344d4ba057d231d7407487af0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|73|125|v|typescriptreact
+	route.params
+26722e8f7da5382710b4ec4b50a839bb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|177|34|v|typescriptreact
+	allDiscoveryList
+abd266dfcb5e995e4bc869462aa70a3c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|73|22|v|typescriptreact
+	refreshList
+c4ef352f74e502ef5e7bc98e6f4e493d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/all-talent-screen/all-talent-screen.tsx|73|45|v|typescriptreact
+	category
+9c965dac90151ead8c7b5566013a49de|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/DiscoveryList.ts|19|27|v|typescript
+	maybeNull(types.array(types.number)),
+584690af62b99db88ea140153004de0c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|81|29|v|typescriptreact
+	categories: subCategories || main.filters?.categories 
+a26f5481078f76296bd864d08e1c2f16|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|170|55|v|typescriptreact
+	categories: subCategories || main?.filters?.categories
+1519645cda8d1dfbc9ec83e039dfa929|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|81|30|V|typescriptreact
+	    console.log(subCategories)
+29b065a562142d0a09c11cbeff0de0be|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/OneToOneList.ts|58|12|V|typescript
+	      console.log(filters)
+529511401972bf6a9cd4c869b38c83f9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/ExclusiveContentList.ts|59|17|V|typescript
+	      console.log(filterFill)
+bb3a385cbbb6eae3692c5622f90508bb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|247|9|v|typescriptreact
+	_onPressSeeAllExclusiveContent
+8356a6202e73ab1641111f92e7ea5f61|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|230|9|v|typescriptreact
+	_onPressSeeAllOneToOne
+4a50f7d82bcb8188a74852ecc413da9b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|280|9|v|typescriptreact
+	goToSeeAll
+c6df9c01ff08575ba5c63593f3becabc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|88|10|v|typescriptreact
+	currentSubCategories
+641b051867d4e439c982b5f6d732049b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|248|32|V|typescriptreact
+	    console.log(currentSubCategories)
+708fa2e834f37769421f6cd92bf06497|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|242|1|V|typescriptreact
+	        subCategories: currentSubCategories,
+2dc8ff7b21cf189ddd31c3a26b2d7b79|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|75|16|v|typescriptreact
+	getSnapshot
+7cff540bc021f76561813d74dcec133b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/CourseListModel.ts|32|60|v|typescript
+	filterFill
+0f9bf47fb6896f8a098d4b90d2950eb2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/LiveClassList.ts|32|5|v|typescript
+	mergeListResult
+2a534243aa1301102969904edee13bc5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/OneToOneList.ts|58|1|V|typescript
+	      const filterFill = isRefresh ? {} : { ...self.filters, ...filters }
+cf12700a9b81c960ee6ad901c212d9bf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/OneToOneList.ts|58|1|V|typescript
+	      const filterFill = isRefresh ? {} : { ...self.filters, ...filters }
+	      const result = yield self.environment.api.getOneToOneSessions({
+a6413948a3500ff655db521cdf750cc3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/ExclusiveContentList.ts|58|1|V|typescript
+	      const filterFill = { ...self.filters, ...filters }
+cde39f734168487ac5a74087d4fcb5ca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/ExclusiveContentList.ts|59|40|V|typescript
+	      const result = yield self.environment.api.getOneToOneSessions({
+aff7f98f04991dbd894b21f44a909b1c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|205|9|v|typescriptreact
+	_onPressSeeAllTalent
+ea472d3cd9b471dccf9c7a3acf644ba7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|266|58|v|typescriptreact
+	filters?.subCategories ||
+39d1d7e8afa9372916e6736d6ff865bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|684|22|v|typescriptreact
+	goToSuccess
+df6102a2ae0e0a95cff2dc466ec8fe60|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|112|20|v|typescriptreact
+	setUseIAP
+708bedc87a9663b9d1da3c50ef48d0ab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|112|12|v|typescriptreact
+	useIAP
+6d0286b82f21264bfad7bd1206c8b8df|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|114|5|V|typescriptreact
+	    console.log('hi')
+2bb05bffb81fe4627dbbe585902eb200|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|81|5|v|typescriptreact
+	consoel
+1faed6f2fe5d9a6c0133c005c73a1063|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|81|1|V|typescriptreact
+	    console..log('hi')
+cfe05f3193028800174007cc548e2ce8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|82|17|v|typescriptreact
+	'hi'
+babbeb27faf812da56f8d57ca71b772f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experiences-screen/experiences-screen.tsx|81|21|V|typescriptreact
+	    console.log("hi")
+2c936af8c492e4e46fa139a28a98883a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/link.ts|33|1|V|typescript
+	  console.log(val[val.length - 1])
+33c049b52a5a092942779370df0dd68c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/link.ts|19|13|v|typescript
+	InAppBrowser.open(addingHttpsPrefix(url))
+bab605df8de61ccc935b2c23c6e87aa0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/link.ts|18|13|v|typescript
+	oldStyle
+f93e1d0cafe7b3b9c34f8fac9497e858|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/link.ts|18|24|v|typescript
+	StatusBar
+8c357a51aa63d799eefec452132ade1f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/link.ts|18|1|v|typescript
+	      const oldStyle = StatusBar.pushStackEntry({ barStyle: "dark-content", animated: false })
+	      await InAppBrowser.open(addingHttpsPrefix(url))
+	      StatusBar.popStackEntry(oldStyle)
+	
+3aca08b2d37ce9ee3515bd19a23cc898|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/link.ts|5|1|V|typescript
+	export const addingHttpsPrefix = (str: string) => {
+	  let result = str
+2693c2e7c539230ed458591bdf573bab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/link.ts|15|1|V|typescript
+	export const addingHttpsPrefix = (str: string) => {
+	  let result = str
+	
+	  if (result?.length === 0 || !result) return result
+	
+	    if (str.substring(0, 7) === "http://") result = "https://" + str.slice(7, str.length)
+	      else if (str.substring(0, 8) !== "https://") result = "https://" + str
+	        return result
+	}
+7a21d0de187ae893cf471e66e835e082|file:///Users/louis/.config/nvim/init.vim|16|24|V|vim
+	Plug 'glepnir/oceanic-material'
+e114d67f6c17a814152bd397a44f69d5|file:///Users/louis/.config/nvim/init.vim|124|13|v|vim
+	onedark
+f24aa0754a4ce686b2e58bef4346220e|file:///Users/louis/.config/nvim/init.vim|124|1|V|vim
+	colorscheme 
+d25c00d074ba4bcad785c264f737dbca|file:///Users/louis/.config/nvim/init.vim|16|1|V|vim
+	Plug 'ajmwagar/vim-deus'

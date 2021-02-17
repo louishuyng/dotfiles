@@ -86,6 +86,7 @@ alias ra='ranger'
 alias matrix='source ~/.matrix.sh'
 alias letwork='~/.letwork.sh'
 alias rni='rm  -rf node_modules && yarn && npx pod-install'
+alias nvconf="cd ~/.config/nvim && nv"
 
 #Wifi
 alias wfscan='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport scan'
