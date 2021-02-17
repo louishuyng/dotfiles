@@ -1,3 +1,4 @@
+/Users/louis/.config/.gitignore
 /Users/louis/.config/nvim/init.vim
 /Users/louis/Dev/Projects/komi/komi-mobile/app/utils/link.ts
 /Users/louis/Dev/Projects/komi/komi-mobile/node_modules/react-native-inappbrowser-reborn/index.d.ts
@@ -158,7 +159,6 @@
 /Users/louis/Dev/Projects/komi/komi-serverless/handlers/notifications/notify_daily_talent.ts
 /Users/louis/Dev/Projects/komi/komi-serverless/templates/daily-notification-talent.hbs
 /Users/louis/Dev/Projects/komi/komi-servererless
-/Users/louis/.config/.gitignore
 /Users/louis/.oh-my-zsh
 /Users/louis/.config/suckless/mac_os/spacebar/.spacebarrc
 /Users/louis/alacritty.yml
