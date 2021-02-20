@@ -11,8 +11,8 @@ if !exists('g:airline_symbols')
      let g:airline_symbols = {}
 endif
 " Airline symbols
-let g:airline_left_sep = "\uE0C0"
-let g:airline_right_sep = "\uE0C2"
+let g:airline_left_sep = "\uE0Ce"
+let g:airline_right_sep = "\uE0C7"
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
@@ -21,4 +21,4 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " Airline theme
-let g:airline_theme='atomic'
+let g:airline_theme='kolor'

@@ -60,7 +60,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Windowed
+  startup_mode: Fullscreen
 
   # Window title
   title: Alacritty
@@ -161,7 +161,7 @@ draw_bold_text_with_bright_colors: true
 colors:
   primary:
     background: '0x000000'
-    foreground: '0x98c379'
+    foreground: '0xffffff'
 
   cursor:
     text: '0x5c6370'

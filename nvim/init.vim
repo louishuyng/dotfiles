@@ -1,5 +1,4 @@
 "" ==================================================== Init Configure
-
 let mapleader=','
 let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading -w'
 
@@ -10,9 +9,8 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'joshdick/onedark.vim'
+Plug 'KeitaNakamura/neodark.vim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug '/usr/local/opt/fzf'
@@ -31,12 +29,12 @@ endif
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
 Plug 'tpope/vim-commentary'
 Plug 'joequery/stupid-easymotion'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'scrooloose/nerdcommenter'
 
 """"""""""""""""""""""""""LS-SERVER""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -120,11 +118,14 @@ set mouse=a
 set background=dark
 set termguicolors
 set t_Co=256
-colorscheme onedark
+let g:neodark#background = '#202020'
+colorscheme neodark
 
 if (has("termguicolors"))
   set termguicolors
   hi LineNr ctermbg=NONE guibg=NONE
+  hi VertSplit guifg=#6A68FE guibg=#0000 gui=NONE cterm=NONE
+  hi SignColumn guifg=#0000 guibg=#0000
 endif
 
 " ==================================================== Highlight
@@ -142,7 +143,8 @@ hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#0000
 hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
 hi CocExplorerFileDirectoryExpanded guifg=#C3526E
 hi CocExplorerFileDirectory guifg=#61CE91
-hi CocExplorerNormalFloat guibg=#0b0c0e
+hi CocExplorerNormalFloat guibg=#000000
+hi CursorLine guibg=#323232 guifg=NONE
 
 " ==================================================== Turn Off Swap Files
 set noswapfile
