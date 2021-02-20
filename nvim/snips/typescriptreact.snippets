@@ -45,16 +45,16 @@ import { FormInstance } from "antd/lib/form/Form";
 import { Form } from "antd";
 
 interface IProps {
-	form: FormInstance;
+form: FormInstance;
 }
 
 const ${1} = ({ form }: IProps): ReactElement => {
 	const validateFields = useCallback(() => {
-		const values = form.getFieldsValue();
-		const errorsFields = Object.keys(values).filter(
-			(field) => form.getFieldError(field).length > 0 || !values[field]
-		).length;
-	}, [form]);
+			const values = form.getFieldsValue();
+			const errorsFields = Object.keys(values).filter(
+					(field) => form.getFieldError(field).length > 0 || !values[field]
+					).length;
+			}, [form]);
 
 	return <Form form={form} onBlur={validateFields}></Form>;
 };
@@ -72,11 +72,11 @@ interface $1Props {
 }
 
 export const $1 = observer(({}: $1Props) => {
-	return <View style={styles.container}></View>
-})
+		return <View style={styles.container}></View>
+		})
 
 const styles = StyleSheet.create({
-	container: {},
+container: {},
 })
 
 endsnippet

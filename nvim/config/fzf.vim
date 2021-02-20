@@ -11,7 +11,7 @@ command! -bang -nargs=? -complete=dir Files
 
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
-      \ 'ctrl-x': 'split',
+      \ 'ctrl-h': 'split',
       \ 'ctrl-v': 'vsplit' }
 
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }

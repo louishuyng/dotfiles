@@ -3,6 +3,11 @@ nvim/plugged/
 gcloud
 
 coc/extensions/node_modules
+coc/mru
+coc/snippets-mru
+coc/*.json
+coc/commands
+coc/explorer-actions
 
 pgcli/history
 pgcli/log

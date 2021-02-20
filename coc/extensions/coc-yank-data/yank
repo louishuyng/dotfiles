@@ -1,15 +1,3 @@
-c752f3f40ea3e2ad05f03204c4309fdf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|469|22|V|typescriptreact
-	                    )}
-5be22f51c370f854fd9f769928d0dbec|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|469|57|v|typescriptreact
-	 || category?.name 
-c40c84a4c14f852de617fd8d824fead1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|469|33|v|typescriptreact
-	emptyDescription[category?.name?.toLowerCase()]
-5c1891f5b917a1ca394a56f15ecd0527|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|142|40|v|typescriptreact
-	translate("categoryDetailScreen.musicEmptyDescription")
-74de778ab96f46b4dc4210e87d7aa1d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|297|45|V|typescriptreact
-	      category?.name?.toLowerCase() === "music"
-7425210e7dc35d9d9325d00118bfed71|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/category-detail-screen/category-detail-screen.tsx|297|45|V|typescriptreact
-	        ? emptyDescription[category?.name?.toLowerCase()]
 bf52b8329b2ee1ea06190ed76b8afeae|file:///Users/louis/Dev/Projects/komi/komi-talent/src/utils/photo.ts|251|18|v|typescript
 	Sorry, we cannot support the Video file size larger than ${MAXIMUM_FILE_SUPPORTED_WEBVIEW}MB. Please try again on the Desktop version
 b4622502731ad719fb041e22188e8f7a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|260|61|v|typescriptreact
@@ -699,3 +687,72 @@ f24aa0754a4ce686b2e58bef4346220e|file:///Users/louis/.config/nvim/init.vim|124|1
 	colorscheme 
 d25c00d074ba4bcad785c264f737dbca|file:///Users/louis/.config/nvim/init.vim|16|1|V|vim
 	Plug 'ajmwagar/vim-deus'
+3cd15f8f2940aff879df34df4e5c2cd1|file:///Users/louis/.config/.gitignore|8|5|v|gitignore
+	history
+3f9178c25b78ed8bed19091bcb62e266|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/slider-video.tsx|11|5|v|typescriptreact
+	condition
+05f0fb8ab30f5799387da1eee4678b1c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/slider-video.tsx|11|1|V|typescriptreact
+	if () {
+	  
+	}
+152dfb33cb08ecca19d0c51e5b66f5c2|file:///Users/louis/.config/nvim/coc-settings.json|21|4|V|jsonc
+	  rn
+50ce2da63bea6a618e7578fa50690040|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/parallax-header/slider-video.tsx|31|5|V|typescriptreact
+	React
+d882e029603d559a38e96cfcfdd30c29|file:///Users/louis/.config/nvim/snips/typescript.snippets|39|1|V|snippets
+	snippet rc "React Component" b
+	import React, { ReactElement } from "react";
+	import {} from "antd";
+	
+	interface ${1}Props {
+	
+	}
+	
+	export const ${1} = (props: ${1}Props): ReactElement => {
+		return <h1>Test</h1>;
+	};
+	
+	endsnippet
+	
+	
+	snippet rf "React Form" b
+	import React, { ReactElement, useCallback } from "react";
+	import { FormInstance } from "antd/lib/form/Form";
+	import { Form } from "antd";
+	
+	interface IProps {
+	form: FormInstance;
+	}
+	
+	const ${1} = ({ form }: IProps): ReactElement => {
+		const validateFields = useCallback(() => {
+				const values = form.getFieldsValue();
+				const errorsFields = Object.keys(values).filter(
+						(field) => form.getFieldError(field).length > 0 || !values[field]
+						).length;
+				}, [form]);
+	
+		return <Form form={form} onBlur={validateFields}></Form>;
+	};
+	
+	export default ${1};
+	endsnippet
+	
+	snippet rn "React Native Component" b
+	import React from "react"
+	import { observer } from "mobx-react-lite"
+	import { StyleSheet, View } from "react-native"
+	
+	interface $1Props {
+	
+	}
+	
+	export const $1 = observer(({}: $1Props) => {
+			return <View style={styles.container}></View>
+			})
+	
+	const styles = StyleSheet.create({
+	container: {},
+	})
+	
+	endsnippet

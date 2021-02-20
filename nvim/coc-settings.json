@@ -1,6 +1,8 @@
 {
   "python.jediPath": "/Users/topcbl/.pyenv/versions/3.7.2/lib/python3.7/site-packages/",
 
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
+
   "languageserver": {
     "terraform": {
       "command": "terraform-lsp",
@@ -36,5 +38,5 @@
     "s": "open:vsplit",
     "i": "open:split",
     "o": ["expandable?", "expand", "open"]
-  }
+  },
 }
