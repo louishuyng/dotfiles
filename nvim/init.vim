@@ -11,7 +11,6 @@ Plug 'KeitaNakamura/neodark.vim'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'nvim-treesitter/nvim-treesitter'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug '/usr/local/opt/fzf'
@@ -73,8 +72,6 @@ source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 
 luafile ~/.config/nvim/lua/plugins/galaxyline-config.lua
-
-lua require 'treesitter'
 
 "*****************************************************************************
 "" Abbreviations

@@ -39,4 +39,8 @@
     "i": "open:split",
     "o": ["expandable?", "expand", "open"]
   },
+
+  "codeLens.enable": true,
+
+  "solargraph.useBundler": true
 }
