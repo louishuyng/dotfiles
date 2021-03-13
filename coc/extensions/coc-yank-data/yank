@@ -1,1153 +1,2139 @@
-c6f672f459ab06ad609a9a26a31f8a85|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/FormPayment/FormPaymentBraintree.tsx|96|9|v|typescriptreact
-	checkDisabled
-aa8c25bc42e92749d14d2d2f134e1b7e|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/FormPayment/FormPaymentBraintree.tsx|122|9|V|typescriptreact
-	    conso
-c6327ed55ee029f912c45a1fa161c650|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/FormPayment/FormPaymentBraintree.tsx|98|8|v|typescriptreact
-	form.getFieldValue("cardName") 
-e93817511d46b7f9428a936ff689b0fe|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/FormPayment/FormPaymentBraintree.tsx|97|39|V|typescriptreact
-	    console.log(form.getFieldValue("cardName"));
-2759a674531f2ca2acb0d852150c25db|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|274|38|V|typescriptreact
-	                showSubmitButton={false}
-35ed8bfa9c73171a7b417f13ab07d57a|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|189|52|v|typescriptreact
-	customPrice
-4c408ff1ab4ad5a703c6549383b71178|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|259|20|v|typescriptreact
-	renderSavedPaymentMethod
-4a548addbfb239bbd12f5afe11a4b6dc|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|154|21|v|typescriptreact
-	middle
-3ca5ca4d977f71e2cd72c460a9f57309|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|146|38|V|typescriptreact
-	    console.log(paymentMethod.cardType)
-d56b699830e77ba53855679cb1d252da|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|320|20|v|typescriptreact
-	login
-356b14b40080bdef916e01cb03d4e17a|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/SendTipModal.scss|4|1|V|scss
-	.send-tip-price-button {
-	  width: 101px;
-	  margin-bottom: 0 !important;
-	  display: flex !important;
-	  justify-content: center !important;
-	  align-content: center !important;
+e71f20c97befd0f082050d458d63e92b|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|254|1|V|typescriptreact
+	                    <Form.Item name="custom" className="send-tip-price-button">
+	                      <Input
+	                        placeholder="Custom"
+	                        className={`${index === selectedPrice && "active-tip-price-btn"}`}
+	                        onClick={() => setSelectedPrice(index)}
+	                        onChange={(val) => {
+	                          setCustomPrice(Number(val?.currentTarget?.value));
+	                        }}
+	                      />
+	                    </Form.Item>
+6a992d5529f459a44fee58c733255e86|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|297|35|v|typescriptreact
+	index
+f0e0de2b46be81c50c653b764df47bed|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|297|35|v|typescriptreact
+	supportPrices
+25e8d01938e6d682a4890ab6328dbc90|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|294|42|v|typescriptreact
+	className="send-tip-price-button"
+d965f60a1a5b8e919461307e0c9c8fb5|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|299|42|v|typescriptreact
+	 full-width
+a0e2e9aa7e15b5afe36d4aeba35e4a6f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|36|22|V|typescriptreact
+	>>>>>>> Stashed changes
+b8b22deb1f424d77dea898a825d1f483|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|33|1|V|typescriptreact
+	=======
+f04b1e917b489a15c58993333718a370|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|31|1|V|typescriptreact
+	<<<<<<< Updated upstream
+cf0a55f7db2b9d69a1b15236f1c5c28f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|32|37|V|typescriptreact
+	import { formatCurrencyNonExchange, getCurrentCurrency } from "utils/currency";
+6e00c0f6c1d4d06c1b850bf95d0cc5bf|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|252|1|V|typescriptreact
+	                        {formatCurrencyNonExchange(currency).format(price)}
+4664306da79bb02f9295bac564b58e57|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|261|1|V|typescriptreact
+	                      formatter={(value) =>
+	                        value ? formatCurrency(currency, exchangeRates).format(Number(value) || 0) : ""
+	                      }
+1de2c75b4327b70a230f5e47cd338f99|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|261|1|V|typescriptreact
+	                      formatter={(value) =>
+	                        value ? formatCurrency(currency, exchangeRates).format(Number(value) || 0) : ""
+	                      }
+	                      onClick={() => setSelectedPrice(index)}
+	                      onChange={(val) => {
+	                        setCustomPrice(Number(val));
+	                      }}
+d5bab37d4042ec1746f43b402dd62886|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|299|1|V|typescriptreact
+	                        onClick={() => setSelectedPrice(index)}
+	                        onChange={(val) => {
+	                          setCustomPrice(Number(val?.currentTarget?.value));
+	                        }}
+340e173fd306c185cbec84ed2692e41d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|344|1|V|typescriptreact
+	                    onClick={() => setSelectedPrice(supportPrices.length)}
+	                    onChange={(val) => {
+	                      setCustomPrice(Number(val?.currentTarget?.value));
+	                    }}
+0f363b9de2ec2ba07d25e43d20e67119|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|237|23|V|typescriptreact
+	<<<<<<< Updated upstream
+	          <Row align="middle" justify="space-between">
+	            {supportPrices.map((price, index) => (
+	              <Col key={index}>
+	                {price ? (
+	                  <Button
+	                    className={`m__r--12  p__x--32 p__y--12 send-tip-price-button ${
+	                      index === selectedPrice && "active-tip-price-btn"
+	                    }`}
+	                    onClick={() => setSelectedPrice(index)}
+	                    onMouseEnter={() => null}
+	                    onMouseLeave={() => null}
+	                  >
+	                    <Row align="middle">
+	                      <Text className="m__l--4" preset="medium16">
+	                        {formatCurrencyNonExchange(currency).format(price)}
+	                      </Text>
+	                    </Row>
+	                  </Button>
+	                ) : (
+	                  <Form.Item name="custom" className="send-tip-price-button">
+	                    <InputNumber
+	                      placeholder="Custom"
+	                      className={`${index === selectedPrice && "active-tip-price-btn"}`}
+	                      formatter={(value) =>
+	                        value ? formatCurrency(currency, exchangeRates).format(Number(value) || 0) : ""
+	                      }
+	                      onClick={() => setSelectedPrice(index)}
+	                      onChange={(val) => {
+	                        setCustomPrice(Number(val));
+	                      }}
+	                    />
+	                  </Form.Item>
+	                )}
+	              </Col>
+	            ))}
+	          </Row>
+	=======
+ec943ac2b6e3ab3a31f56e4ee8fbeb7a|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|3|35|V|typescriptreact
+	import Input from "antd/lib/input";
+324118a6721dd6b8a9b9f4e327df2bf5|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|257|24|v|typescriptreact
+	Input
+ce17e1c6c3cf9269580297f5fba7a6ea|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|265|1|V|typescriptreact
+	                          setCustomPrice(Number(val));
+e9850f0b38904823bc877d54ebf7660f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|4|1|V|typescriptreact
+	import InputNumber from "antd/lib/input-number";
+5c050ace4124d765262c4a40aaa05bc7|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|4|8|v|typescriptreact
+	InputNumber
+c6896735174c0068a9c1e2a30fd075e8|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|305|23|v|typescriptreact
+	text__align--center 
+7bc1be694e088fb0bd327c16548c09ef|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|303|20|V|typescriptreact
+	                    
+63e43eb5bdf6b03e66cf3843a6629edd|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|440|22|v|typescriptreact
+	renderGiftCode
+a0cc74115a14d5c1f0fe62011b591529|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|305|33|v|typescriptreact
+	handleApplyCounpon
+810ba59546a67e6aefa59d755d7b186f|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|167|1|V|typescriptreact
+	      notification.error({
+	        message: "Payment verification failed. Please contact your payment provider.",
+	      });
+f05d5b76e6a21ca473e82a2ab39b5b71|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/GiftsCode/selector.ts|15|1|V|typescript
+	export const selectGiftCodeDiscountAmount = (rootState: RootState) => rootState.giftCodesState?.discountAmount;
+b2f40690858b404ed10e62bdf422c704|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/GiftsCode/selector.ts|17|36|v|typescript
+	Amount
+340e8f29ab80b214201b52d7a1b430dc|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/GiftsCode/selector.ts|17|95|v|typescript
+	discountAmount
+55c90ecec4e1e09265282deb27a91bcd|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|76|1|V|typescriptreact
+	  const giftCodeDiscountAmount = useTypedSelector(selectGiftCodeDiscountAmount);
+1cb2cc96a7bcfcee256717782dc316f1|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|77|9|v|typescriptreact
+	giftCodeDiscountAmount
+4e32c32c0bd65549bd95b22d91d528ad|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|77|49|v|typescriptreact
+	selectGiftCodeDiscountAmount
+81588ec8b445018b1f1929ba59f128d3|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|81|49|v|typescriptreact
+	selectGiftCodeDiscountType
+f8da6d91fed399a87569e1cf3ccb4a23|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|187|9|v|typescriptreact
+	discountType
+e0f6a18cc6e1b48cba684e0453fea66b|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|187|34|v|typescriptreact
+	DISCOUNT_TYPE
+ddeb7f639840500f14711e343a2ab9b3|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|189|24|v|typescriptreact
+	giftCodeDiscountAmount  
+d6e047923b2b0f63a7a03c66074a0151|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|189|42|v|typescriptreact
+	experience
+b3eb4fb3bb1cdda3b8888bc2b214b507|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|14|10|v|typescriptreact
+	getPrice
+cd890c4c15552563fdba42475f57efa1|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|17|19|V|typescriptreact
+	console.log('test')
 	
-	  @include mobile {
-	    width: 70px;
-	  }
+7c2aa85ececce4f9be586eb3d76fd100|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|17|1|V|typescriptreact
+	console.log('test')
+a2f3537a2ee360a8b30f8f546cebf8cb|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|15|10|V|typescriptreact
+	import { selectUserCurrency } from "redux/User/selector";
+213affbc4908244706f57aae6fe4b9d7|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|83|72|v|typescriptreact
+	exchangeRates
+ce156a07e9721386e101f1e4c33856fa|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|47|16|v|typescriptreact
+	>
+	          <Col>
+	            <Text preset="medium16">{format
+dde97cdc408a10b587cb71a3c6c613e7|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|50|13|V|typescriptreact
+	            <Text preset="medium16">{formatCurrencyNonExchange("USD").format(data?.amount || 0)}</Text>
+45d22575fe0ed5f4c23482101b12c517|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|50|38|v|typescriptreact
+	formatCurrencyNonExchange
+8b2a6c4cf41a852f832b39dfe05e2e79|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|50|46|v|typescriptreact
+	("USD")
+25bcf1f781a17e59c75da9e156385a7e|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|30|1|V|typescriptreact
+	  const exchangeRates = useTypedSelector(selectExchangeRates);
+aa84d2a3701ce375dfc0944554b7fa10|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|21|25|v|typescriptreact
+	useTypedSelector
+817bac478c9dd48f82c7d54e9a718a8b|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|22|42|v|typescriptreact
+	selectExchangeRates
+9fdb9394a4e1bc0d72d7ddac7ecd8ac2|file:///Users/louis/.alacritty.yml|162|1|V|yaml
+	  primary:
+	    background: '0x000000'
+	    foreground: '0xffffff'
 	
-	  .ant-input {
-	    text-align: center !important;
-	  }
-	}
+	  cursor:
+	    text: '0x5c6370'
+	    cursor: '0xabb2bf'
+5bef10ff8cee7b2597e57b37eb1ea2d7|file:///Users/louis/.zshrc|23|1|V|zsh
+	ZSH_THEME="spaceship"
+f232b3f696df28cd3dfa65bbef85ff69|file:///Users/louis/.zshrc|29|1|V|zsh
+	# SPACESHIP_PROMPT_ADD_NEWLINE="true"
+	# SPACESHIP_CHAR_PREFIX='\ufbdf '
+	# SPACESHIP_CHAR_PREFIX_COLOR='yellow'
+	# SPACESHIP_CHAR_SUFFIX=(" ")
+	# SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
+	# SPACESHIP_CHAR_SYMBOL='~'
+	# SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
+	# SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
+	# SPACESHIP_VENV_COLOR="magenta"
+	# SPACESHIP_VENV_PREFIX="("
+	# SPACESHIP_VENV_SUFFIX=")"
+	# SPACESHIP_VENV_SYMBOL='\uf985'
+	# SPACESHIP_USER_SHOW="true"
+	# SPACESHIP_DOCKER_SYMBOL='\ue7b0'
+	# SPACESHIP_DOCKER_VERBOSE='false'
+	# SPACESHIP_BATTERY_SHOW='false'
+262bb3d36ed644c29aa96a3d382d5ee8|file:///Users/louis/.zshrc|25|25|v|zsh
+	npm install --global pure-prompt
+54793bb333d5f6f8afd856eab5f308e1|file:///Users/louis/.zshrc|25|1|V|zsh
+	SPACESHIP_PROMPT_ADD_NEWLINE="true"
+	SPACESHIP_CHAR_PREFIX='\ufbdf '
+	SPACESHIP_CHAR_PREFIX_COLOR='yellow'
+	SPACESHIP_CHAR_SUFFIX=(" ")
+	SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
+	SPACESHIP_CHAR_SYMBOL='~'
+	SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
+	SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
+	SPACESHIP_VENV_COLOR="magenta"
+	SPACESHIP_VENV_PREFIX="("
+	SPACESHIP_VENV_SUFFIX=")"
+	SPACESHIP_VENV_SYMBOL='\uf985'
+	SPACESHIP_USER_SHOW="true"
+	SPACESHIP_DOCKER_SYMBOL='\ue7b0'
+	SPACESHIP_DOCKER_VERBOSE='false'
+	SPACESHIP_BATTERY_SHOW='false'
+37ca5c77f7cc5a478d4e5a8c472020e7|file:///Users/louis/.zshrc|24|1|V|zsh
+	ZSH_THEME="dracula".
+fd418aae6e49d4ed83235ad08e9dda31|file:///Users/louis/.zshrc|24|8|v|zsh
+	dracula/zsh
+e00f506342484dde2b3660e025fd3582|file:///Users/louis/.zshrc|21|1|V|zsh
+	export ZPLUG_HOME=/usr/local/opt/zplug
+	source $ZPLUG_HOME/init.zsh
+82848df1f842e231c18fe83e89f00c3b|file:///Users/louis/.zshrc|26|1|V|zsh
+	zplug "0i0/0i0.zsh-theme", as:theme
+733c20175b70a3720ef5e18b0565893f|file:///Users/louis/.zshrc|33|1|V|zsh
 	
-	.ant-form-item-label label {
-	  font-weight: 400 !important;
-	}
+	ZSH_THEME="spaceship"
+	SPACESHIP_PROMPT_ADD_NEWLINE="true"
+	SPACESHIP_CHAR_PREFIX='\ufbdf '
+	SPACESHIP_CHAR_PREFIX_COLOR='yellow'
+	SPACESHIP_CHAR_SUFFIX=(" ")
+	SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
+	SPACESHIP_CHAR_SYMBOL='~'
+	SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
+	SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
+	SPACESHIP_VENV_COLOR="magenta"
+	SPACESHIP_VENV_PREFIX="("
+	SPACESHIP_VENV_SUFFIX=")"
+	SPACESHIP_VENV_SYMBOL='\uf985'
+	SPACESHIP_USER_SHOW="true"
+	SPACESHIP_DOCKER_SYMBOL='\ue7b0'
+	SPACESHIP_DOCKER_VERBOSE='false'
+	SPACESHIP_BATTERY_SHOW='false'
+310cd08e3fff0f3e0848806418ce4e3c|file:///Users/louis/.zshrc|34|1|V|zsh
+	source $ZSH/oh-my-zsh.sh
+ec4a389f3171a3d20111fc38379a1d1a|file:///Users/louis/.zshrc|26|1|V|zsh
+	zplug "plugins/git", from:oh-my-zsh
+	zplug "plugins/git", from:oh-my-zsh
+	zplug "plugins/sudo", from:oh-my-zsh
+	zplug "plugins/command-not-found", from:oh-my-zsh
+	zplug "zsh-users/zsh-syntax-highlighting"
+	zplug "zsh-users/zsh-history-substring-search"
+	zplug "zsh-users/zsh-completions"
+13a9c44315c1d3726941181555ebd506|file:///Users/louis/.zshrc|26|8|v|zsh
+	themes/robbyrussell
+9c0a4a9ef4ee163ba56141ae6941ecb0|file:///Users/louis/.zshrc|26|28|v|zsh
+	from:oh-my-zsh
+16c00f815d64195cb333fc9a23d59b96|file:///Users/louis/.zshrc|26|22|v|zsh
+	as:theme
 	
-	.ant-select {
-	  flex: 1;
-	}
-	
-	.ant-select-selector {
-	  height: 60px !important;
-	
-	  .ant-row-middle {
-	    margin-top: 5px !important;
-	  }
-	}
-	
-	.ant-select-arrow {
-	  right: 30px !important;
-	  top: 25px !important;
-	}
-	
-	.ant-btn-primary {
-	  width: 100% !important;
-	  margin-top: 12px !important;
-	}
-	
-	.active-tip-price-btn {
-	  border-width: 2px !important;
-	  border-color: $primary !important;
-	}
-	
-	textarea {
-	  padding-top: 12px !important;
-	}
-	
-	.ant-modal-header {
-	  border-bottom-width: 0 !important;
-	  padding-bottom: 0 !important;
-	}
-	
-	.ant-modal-title {
-	  font-size: 18px !important;
-	  margin-top: 56px !important;
-	}
-	
-	.ant-avatar {
-	  border: 2px solid $white !important;
-	  position: absolute !important;
-	  top: -56px !important;
-	  left: calc(50% - 56px) !important;
-	}
-	
-	.ant-modal-body {
-	  padding-top: 0 !important;
-	}
-1def5221ade79f7711a467427e6b1bfd|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|322|25|v|typescriptreact
-	"Support"
-c011adc86ea14006f8c63c3acb6149b2|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|1|1|V|typescriptreact
-	import Button from "antd/lib/button";
-	import Col from "antd/lib/col";
-	import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-	import Row from "antd/lib/row";
-	import Paragraph from "antd/lib/typography/Paragraph";
-	import ExperienceTypeTag from "components/ExperienceTypeTag";
-	import ImageSkeleton from "components/ImageSkeleton";
-	import { Text } from "components/Typography";
-	import moment from "moment";
-	import { useRouter } from "next/router";
-	import { ReactComponent as CheckIcon } from "public/static/assets/icons/check.svg";
-	import React, { useCallback, useMemo } from "react";
-	import { Booking } from "redux/Booking/types";
-	import { EXPERIENCE_TYPE } from "redux/Experience/types";
-	import { getFirstAvatar } from "utils/experience";
-	
-	interface IProps {
-	  booking: Booking;
-	}
-	
-	const RequestSuccessful = ({ booking }: IProps) => {
-	  const router = useRouter();
-	  const screens = useBreakpoint();
-	  const creator = useMemo(() => booking?.talent?.talentProfile, [booking]);
-	
-	  const handleViewResult = useCallback(() => {
-	    if (booking.experience?.type === EXPERIENCE_TYPE.ON_DEMAND_CONTENT) {
-	      router.push("/user/my-experiences/completed");
-	    } else if (booking.experience?.type === EXPERIENCE_TYPE.COURSE) {
-	      router.push(`/course/${booking?.id}`);
-	    } else {
-	      router.push("/user/my-experiences/upcoming");
-	    }
-	  }, [router, booking]);
-	
-	  const experienceImageWidth = screens["xs"] ? 95 : 109;
-	  const experienceImageHeight = (experienceImageWidth * 150) / 109;
-	
-	  return (
-	    <div className="request-successful">
-	      <div className="request-successful__icon__wrapper">
-	        <img src="/static/assets/images/booking-complete.png" alt="complete" />
-	        <span className="request-successful__icon">
-	          <CheckIcon />
-	        </span>
-	      </div>
-	
-	      <Text className="request-successful__title m__t--24" preset={screens["xs"] ? "medium20" : "medium24"}>
-	        Booking Complete
-	      </Text>
-	
-	      <Text className="request-successful__desc d--block m__b--48 text--default80">
-	        Your booking has been completed
-	      </Text>
-	
-	      <div className="experience-section">
-	        <Row justify="space-between" gutter={12}>
-	          <Col className="d--flex flex__direction--column flex--1">
-	            <span className="text__align--left">
-	              <ExperienceTypeTag experience={booking?.experience} />
-	            </span>
-	
-	            <Paragraph className="experience-section__title m__t--8 m__b--16 text__align--left" ellipsis={{ rows: 2 }}>
-	              {booking?.experience?.name?.toUpperCase() || ""}
-	            </Paragraph>
-	
-	            <span className="divider" />
-	
-	            {booking?.experience?.type === EXPERIENCE_TYPE.COURSE && (
-	              <Text className="m__t--8 text__align--left text--default70">
-	                {booking?.experience?.lessons?.length || 0} video lesson(s)
-	              </Text>
-	            )}
-	
+bad4792fb4f8e704b4a491a53033e9bd|file:///Users/louis/.zshrc|26|20|v|zsh
+	, from:oh-my-zsh
+43d467c9e357f61efe556b019cfd4236|file:///Users/louis/.zshrc|24|20|V|zsh
+	autoload -U compinit && compinit
+914d95a0436cdb3cc366dc53b6d47d9f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|529|1|V|json
+	    "congrats": "Congrats!",
+571b4ba928ae62e103b54727721ebe56|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|530|6|v|json
+	congrats
+3dbbff638cc490e8f970adbc8cfd0e4b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|530|49|v|json
+	Congrats!
+e5f8694c9e0c72402cf0b672ddd5d53f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/ContentModel.ts|47|1|V|typescript
+	    prerequisites: types.maybeNull(types.optional(types.array(types.string), [])),
+accb6ef56f0748e205f5e6cd838e9e23|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/ContentModel.ts|46|1|V|typescript
+	    isFreeExperience: types.maybeNull(types.optional(types.boolean, false)),
+8fbffef7b1f4e6a8993164be524b93c1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-success/booking-success.tsx|100|71|V|typescriptreact
+	                  booking?.price === 0 || booking?.experience?.isFreeExperience
+83440621259eb2d32f8f06e326dad079|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-success/booking-success.tsx|79|5|v|typescriptreact
+	reurn
+4a5ade1dec9001eb3bcd392a6b823aa6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|530|6|v|json
+	weAddThisExperienceToYourExperiences
+3752766248ed7999f7a3ed405f89330b|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|12|8|v|typescriptreact
+	RequestSuccessful
+7b63656a9e585e2b1a62a21e5e9211ee|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|469|61|v|typescriptreact
+	bookingCreated
+3b3c637d6cafccc40379e9db48609520|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|28|v|typescriptreact
+	Booking Complete :
+a085f7a87478099a35fb2a69f0c41a68|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|10|v|typescriptreact
+	isFreeExperience
+e55dea30cc178bf1a41e48f8eaef3506|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|29|v|typescriptreact
+	:Booking
+ae94f80b3ce82062a5dd7815daa04f9d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|32|v|typescriptreact
+	Complete
+ec3696fa18291d30c1cf1b78203ee9d4|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|39|9|v|typescriptreact
+	isFreeExeprience
+189e368a53b0241ff2d101af140b9148|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|57|30|v|typescriptreact
+	Your booking has been completed
+7252d0a0645dde92866d1c9df5d4a7e4|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|57|30|v|typescriptreact
+	'Your booking has been completed'
+0c9cec70b2cf2eb3d2004759573f4001|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|113|1|V|typescriptreact
+	          : booking?.experience?.type === EXPERIENCE_TYPE.ON_DEMAND_CONTENT && !isFreeExperience
+8a06d2622befd9504887cf0e84d69112|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|115|1|V|typescriptreact
+	          : bookingService
+af918f1a38de4a147bc5e3ad88277dab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-success/booking-success.tsx|127|1|V|typescriptreact
+	                    booking.experience.type === CONTENT_TYPE.exclusiveContent && !isFreeExperience
+3e9fbcf2539deee771d809d88f6c2033|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|101|5|V|json
+	    "watch": "Watch",
+d2974c96dc96b3f30a6168bcc4b25b02|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|101|6|v|json
+	watch
+f20658650d987d31063b593c05980397|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|101|24|v|json
+	Watch
+5b79c893beb022fc9f1d8fa90e345e66|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|101|6|v|json
+	viewExperience
+9efab2399c7c560b34de477b9aa0a465|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-success/booking-success.tsx|128|26|v|typescriptreact
+	common
+531da67b8641866ef43ff7b3d75b3f17|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|81|1|V|typescriptreact
 	            {(booking?.experience?.type === EXPERIENCE_TYPE.ONE_TO_ONE ||
 	              booking?.experience?.type === EXPERIENCE_TYPE.LIVE_CLASS) && (
 	              <Text className="m__t--8 text__align--left text--default70">
 	                {moment(booking?.date).format(screens["xs"] ? "h:mm A [•] MMM D, YYYY" : "h:mm A [•] ddd, MMM D, YYYY")}
 	              </Text>
 	            )}
-	
-	            <Row className="m__t--8" align="middle" gutter={8}>
-	              <Col>
-	                <ImageSkeleton src={creator?.avatar as string} shape="circle" width={24} height={24} />
-	              </Col>
-	              <Col>
-	                <Text preset="medium14">
-	                  {creator?.firstName || ""} {creator?.lastName || ""}
-	                </Text>
-	              </Col>
-	            </Row>
-	          </Col>
-	
-	          <Col className="experience-section__image">
-	            {booking?.experience && (
-	              <ImageSkeleton
-	                src={getFirstAvatar(booking?.experience)}
-	                width={experienceImageWidth}
-	                height={experienceImageHeight}
-	              />
-	            )}
-	          </Col>
-	        </Row>
-	      </div>
-	
-	      <Button type="primary" className="m__t--48" onClick={handleViewResult} block size="large">
-	        {booking?.experience?.type === EXPERIENCE_TYPE.COURSE ? "Start Learning" : "View Upcoming Experiences"}
-	      </Button>
-	    </div>
-	  );
-	};
-	export default RequestSuccessful;
-68cd7ab0055a429569adbc6034838eb3|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|96|5|v|typescriptreact
-	handleFinish &&
-63aaf1f8c0088f2336d29eff99868980|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|345|1|V|typescriptreact
-	            <div className="talent-detail">
-	              <TalentProfileMobile />
-	
-	              <div className="text__align--center">
-	                <Title preset="bold20">
-	                  {talent?.talentProfile?.firstName?.toUpperCase() || ""}{" "}
-	                  {talent?.talentProfile?.lastName?.toUpperCase() || ""}
-	                </Title>
-	
-	                <Text preset="regular14" className="letter__spacing--1">
-	                  {talent?.talentProfile?.categories?.map((category) => category.name.toUpperCase()).join(" · ")}
-	                </Text>
-	
-	                <Row className="m__t--12" justify="center">
-	                  <Col className="m__x--12">
-	                    <a href={formatInstagramUrl(talent?.talentProfile?.instagram)} target="_blank" rel="noreferrer">
-	                      <img src="/static/assets/icons/instagram.svg" alt="instagram" />
-	                    </a>
-	                  </Col>
-	
-	                  {talent?.talentProfile?.youtube && (
-	                    <Col className="m__x--12">
-	                      <a href={formatUrl(talent?.talentProfile?.youtube)} target="_blank" rel="noreferrer">
-	                        <img src="/static/assets/icons/youtube.svg" alt="instagram" />
-	                      </a>
-	                    </Col>
-	                  )}
-	
-	                  <Button
-	                    className="btn-send-support m__t--18 m__b--10 m__x--16"
-	                    size="large"
-	                    block
-	                    onClick={handleSendTip}
-	                    onMouseEnter={() => setIsHoverSupport(true)}
-	                    onMouseLeave={() => setIsHoverSupport(false)}
-	                  >
-	                    <Row align="middle">
-	                      {isHoverSupport ? <TipIconHover /> : <TipIcon />}
-	                      <Text className="m__l--6" preset="medium16">
-	                        Support
-	                      </Text>
-	                    </Row>
-	                  </Button>
-	                  {talent?.talentProfile?.website && (
-	                    <Col className="m__x--12">
-	                      <a href={formatUrl(talent?.talentProfile?.website)} target="_blank" rel="noreferrer">
-	                        <img src="/static/assets/icons/globe.svg" alt="instagram" />
-	                      </a>
-	                    </Col>
-	                  )}
-	                </Row>
-	              </div>
-	
-	              <div className="p__x--16">
-	                <Divider className="m__t--16 m__b--0" />
-	                <TalentIntro />
-	              </div>
-	              <Divider className="m__y--32" />
-	              <Title className="text__align--center" preset="bold18">
-	                {`${talent?.talentProfile?.firstName}’s Experiences`?.toUpperCase()}
-	              </Title>
-	              <div className="m__t--8">{tabs}</div>
-	              <div className="p__x--16">
-	                <SpecialRequestBanner talent={talent} className="m__t--64" />
-	              </div>
-	              {products}
-	            </div>
-	          </div>
-	        </MainLayout>
-	
-	        {!!sendTipModalStatus && (
-	          <SendTipModal
-	            handleFinish={() => setShowSendTipCompleted(true)}
-	            show={!!sendTipModalStatus}
-	            onOk={() => toggleModalSendTip(true)}
-	            onCancel={() => toggleModalSendTip(false)}
-	            title={`Support ${talent?.talentProfile?.firstName}`}
-	            talent={talent}
-	          />
-	        )}
-	      </>
-bba5d0d46445895b52a502da07bd4f4c|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|419|14|v|typescriptreact
-	setShowSendTipCompleted(true)
-7d5555ecb36a7227151e4c7c51afcdd1|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|419|34|V|typescriptreact
-	              setSendTipResult(val)
-aa1e78ac35464da0e3c58a2d182de0bd|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|68|3|V|typescriptreact
-	  const [showSendTipCompleted, setShowSendTipCompleted] = useState(false);
-f11d6a2e01e8d6f733b8a012b84e49f1|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|68|10|v|typescriptreact
-	showSendTipCompleted
-dc7de4fe079e44718ea7f148354e04e6|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|68|25|v|typescriptreact
-	setShowSendTipCompleted
-097cf8a732a175d9aaf165bab935a97f|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|343|13|V|typescriptreact
-	            <SendExpertTipSuccessful booking={sendTipResult}/>
-5da0495d8c83e4545061042fe2b79614|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/Payment/reducer.ts|34|1|V|typescript
-	      sendTipResult: null,
-bd7185d0e6106d95e04e8b983c15b417|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/Payment/reducer.ts|43|1|V|typescript
-	      sendTipResult: payload,
-540d9ec509cde6a99768074877518354|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/Payment/selectors.ts|11|1|V|typescript
-	export const selectCheckoutResult = (rootState: RootState) => rootState.paymentState?.checkoutResult;
-6ff063fbc860a79759a7369ac32cee22|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/Payment/selectors.ts|13|20|v|typescript
-	Checkout
-31027d479d737a73d84e13f4cce15fb0|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|70|1|V|typescriptreact
-	  const talentProducts: Pagination<ProductType[]> | null = useTypedSelector(selectTalentProducts);
-5893b3c9552ebdf7dc80da7c96959c39|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|71|24|v|typescriptreact
-	 Pagination<ProductType[]> | null 
-7b1b48deb99598e4262f18a8b36cd594|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|71|9|v|typescriptreact
-	talentProducts
-cdcbee016b546887877a9f7ef6f8f98b|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|71|41|v|typescriptreact
-	selectTalentProducts
-d9b7dfd2c263c9cfd0a2a36f8ac49a04|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|428|1|V|typescriptreact
-	                <TalentProfileMobile />
-	
-	            <div className="text__align--center">
-	            <Title preset="bold20">
-	            {talent?.talentProfile?.firstName?.toUpperCase() || ""}{" "}
-	            {talent?.talentProfile?.lastName?.toUpperCase() || ""}
-	            </Title>
-	
-	              <Text preset="regular14" className="letter__spacing--1">
-	              {talent?.talentProfile?.categories?.map((category) => category.name.toUpperCase()).join(" · ")}
+39606efcfece40a2e9b9b8b1a09c502d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|75|1|V|typescriptreact
+	            {booking?.experience?.type === EXPERIENCE_TYPE.COURSE && (
+	              <Text className="m__t--8 text__align--left text--default70">
+	                {booking?.experience?.lessons?.length || 0} video lesson(s)
 	              </Text>
-	
-	                <Row className="m__t--12" justify="center">
-	                  <Col className="m__x--12">
-	                  <a href={formatInstagramUrl(talent?.talentProfile?.instagram)} target="_blank" rel="noreferrer">
-	                <img src="/static/assets/icons/instagram.svg" alt="instagram" />
-	                  </a>
-	                  </Col>
-	
-	                {talent?.talentProfile?.youtube && (
-	                <Col className="m__x--12">
-	              <a href={formatUrl(talent?.talentProfile?.youtube)} target="_blank" rel="noreferrer">
-	              <img src="/static/assets/icons/youtube.svg" alt="instagram" />
-	              </a>
-	                </Col>
 	            )}
-	
-	            <Button
-	              className="btn-send-support m__t--18 m__b--10 m__x--16"
-	              size="large"
-	              block
-	              onClick={handleSendTip}
-	              onMouseEnter={() => setIsHoverSupport(true)}
-	              onMouseLeave={() => setIsHoverSupport(false)}
-	            >
-	              <Row align="middle">
-	                {isHoverSupport ? <TipIconHover /> : <TipIcon />}
-	                <Text className="m__l--6" preset="medium16">
-	                  Support
-	                </Text>
-	              </Row>
-	            </Button>
-	            {talent?.talentProfile?.website && (
-	              <Col className="m__x--12">
-	                <a href={formatUrl(talent?.talentProfile?.website)} target="_blank" rel="noreferrer">
-	                  <img src="/static/assets/icons/globe.svg" alt="instagram" />
-	                </a>
-	              </Col>
-	            )}
-	                </Row>
-	            </div>
-	
-	          <div className="p__x--16">
-	            <Divider className="m__t--16 m__b--0" />
-	            <TalentIntro />
-	          </div>
-	          <Divider className="m__y--32" />
-	          <Title className="text__align--center" preset="bold18">
-	            {`${talent?.talentProfile?.firstName}’s Experiences`?.toUpperCase()}
-	          </Title>
-	          <div className="m__t--8">{tabs}</div>
-	          <div className="p__x--16">
-	            <SpecialRequestBanner talent={talent} className="m__t--64" />
-	          </div>
-	          {products}
-	              </div>
-	          </div>
-	        </MainLayout>
-	
-	        {!!sendTipModalStatus && (
-	          <SendTipModal
-	            handleFinish={() => setShowSendTipCompleted(true)}
-	            show={!!sendTipModalStatus}
-	            onOk={() => toggleModalSendTip(true)}
-	            onCancel={() => toggleModalSendTip(false)}
-	            title={`Support ${talent?.talentProfile?.firstName}`}
-	            talent={talent}
-	          />
-	        )}
-	      </>
-a361062d65683ea4f43f0799044683cf|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|427|13|V|typescriptreact
-	          </>
-c3f447e947ae0ba1d2b3a85ecd5356ea|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|415|20|V|typescriptreact
-	                  </MainLayout>
-90b850ed484c734585fefeaca25bd91b|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|342|14|v|typescriptreact
-	showSendTipCompleted && sendTipResult
-7e5b5a37cd5fe2c09573a69adaee9734|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|49|9|v|typescriptreact
-	Booking Complete
-8bb02920ea4e0e5b55c51375166a414b|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|107|9|V|typescriptreact
-	        {booking?.experience?.type === EXPERIENCE_TYPE.COURSE ? "Start Learning" : "View Upcoming Experiences"}
-ede1ce30f12e06d36482fef0617c3d9f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|53|22|V|typescriptreact
-	        Your booking has been completed
-b70dd27aa4b0aaf3ab16685d52c972d1|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|53|83|v|typescriptreact
-	 || ""`
-c2af04a1edf9694206ca73a05cc1957c|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|53|83|v|typescriptreact
-	 || ""
-0421bbd72ecdf96591342458b0d6905d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|18|9|v|typescriptreact
-	Booking
-5c8438bef7c60cf62b4a0aee3b0becc4|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|21|42|v|typescriptreact
+e7485c8a32641ab89816149290c5c215|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|88|60|v|typescriptreact
+	COURSE
+03acd92d15bd4b1954c0146b4d1e4d08|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/booking-item/booking-item.tsx|93|1|V|typescriptreact
+	              {moment.duration({ seconds: duration || 0 }).humanize()}
+d7af19ee516eb71a0fb5e8a61b82bab1|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|90|1|V|typescriptreact
+	                {booking?.experience?.lessons?.length || 0} video lesson(s)
+b85ec314bf443b797ef8a66b3b03f8a4|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|90|45|v|typescriptreact
+	duration
+5c8438bef7c60cf62b4a0aee3b0becc4|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|90|45|v|typescriptreact
 	booking
-c8961050ab9c877ccf929ac6880727c1|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|22|23|V|typescriptreact
-	  console.log(booking);
-ee8fa5e8a0657997a3724ff71bb1bad3|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|13|1|V|typescriptreact
-	import { data } from "redux/data/types";
-94637fcf4f751da8cea2ed36dccc590f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|13|1|V|typescriptreact
-	import { Booking } from "redux/Booking/types";
-8e219d4fd0a90b194079a3c8436ac917|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|26|1|V|typescriptreact
-	    if (data?.experience?.type === EXPERIENCE_TYPE.ON_DEMAND_CONTENT) {
-	      router.push("/user/my-experiences/completed");
-	    } else if (data.experience?.type === EXPERIENCE_TYPE.COURSE) {
-	      router.push(`/course/${data?.id}`);
-	    } else {
-	      router.push("/user/my-experiences/upcoming");
+36e87876cf8f3d6e6a9a9f793dcad719|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|350|9|V|typescriptreact
+	        console.log(error)
+fa04828bde0a6be2692cb14014d4fca0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|352|18|v|typescriptreact
+	error.message
+5e0084c6238950d252b0c930e8350bfb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|192|15|V|typescriptreact
+	      console.l
+4e18bda303cd9c71422a9117d20f9e16|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|289|1|V|typescriptreact
+	          text1: translate("errors.pleaseAddPaymentMethod"),
+99ee843301b290a05ec496c31e06f212|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|196|1|V|typescriptreact
+	          messageTx: "errors.somethingWentWrong",
+d748101f075c35e253ef856ac481e4d4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|194|11|V|typescriptreact
+	          titleTx: "errors.error",
+81821f256e2acf3ed9b86eda6847ea27|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|195|18|v|typescriptreact
+	translate("errors.pleaseAddPaymentMethod")
+098f6bcd4621d373cade4e832627b4f6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|195|18|v|typescriptreact
+	test
+6ea4781efced617c98c73767c020af03|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|352|1|V|typescriptreact
+	          text1: error.message,
+20a304713f8e9cbf09289e23fb9ae65d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|383|1|V|typescriptreact
+	          text1
+f3f577058798e7c016de4599c5999073|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|382|1|V|typescriptreact
+	        notifications.show({
+	          type: "error",
+	          text1: error.message,
+	        })
+cb5e100e5a9a3e7f6d1fd97512215282|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|373|20|v|typescriptreact
+	error
+6b733ca2d15407ed77a5909148b9f70f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|364|1|V|typescriptreact
+	          setIsLoadingBooking(false)
+b646e83179edf235fc7dd43e08de1bdf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/booking-store.ts|115|24|V|typescript
+	      console.log(result)
+e84b0ddd303c520ccfeec5b83e962500|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|370|1|V|typescriptreact
+	        } else if (booking?.message) {
+	          setIsLoadingBooking(false)
+	          notifications.show({
+	            type: "error",
+	            text1: booking.message,
+	          })
+	        } else {
+b4394ac52d8ae995723b29312b46abfd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|205|1|V|typescriptreact
+	      } else if () {
+	
+	      }else {
+d43e7830ac4b339a5844c6377ca470e5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|206|9|V|typescriptreact
+	        setIsLoadingBooking(false)
+652915b4fddef800a4834ba4eb260986|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|166|13|v|typescriptreact
+	isPreviousMessageFromSender
+fc77aeebbd6847e398a178083d1906bb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|165|15|V|typescriptreact
+	      console.log(props.previousMessage)
+4243255525f3a00a82e2e2994a5956d0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|168|1|V|typescriptreact
+	        props?.previousMessage?.type !== MessageType.Tip
+34419aa3f6ddf889e1634335ae8b4d09|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|312|9|v|typescriptreact
+	copyDynamicLink
+fbf5d1c5093663277a5cdf904275eafc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|412|42|v|typescriptreact
+	followToggle
+4f0957fc21bdc40f6c06a8106bdb65f8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|335|1|V|typescriptreact
+	    if (!accessToken) {
+	      navigation.reset({
+	        index: 0,
+	        routes: [{ name: NavigationRoutes.AuthStack }],
+	      })
+	      notifications.show({
+	        type: "warning",
+	        text1: translate("errors.pleaseLoginToContinue"),
+	      })
+	      return
 	    }
-e12d91d92449056a8a9e35b2f6c9b9dd|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|343|46|v|typescriptreact
-	sendTipResult
-3a0aa9f5415068629c9bc47e85e8e93e|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|438|13|V|typescriptreact
-	          <SendExpertTipSuccessful data={{ ...sendTipResult, talent }} />
-e3b27b806fafbb62cd0b784992691516|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|435|46|v|typescriptreact
-	__wrapper
-264d066a96863929cfe51ee9096c939a|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/pages/TalentDetail.scss|276|1|V|scss
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-dd0a004464ffcaafd4d49954d452891d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|60|1|V|typescriptreact
-	            <span className="text__align--left">
-	              <ExperienceTypeTag experience={data?.experience} />
-	            </span>
-b2fdbb4206965dd7ec7097c4ff840f98|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|61|33|v|typescriptreact
-	experience?
-2e35dde387dee3e2720850103d47394c|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|61|36|v|typescriptreact
-	name?.
-b830df464e0e0f71207544341ce8b397|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|67|58|v|typescriptreact
-	text--default70
-55803d87020a2f41f6c8cb04b138aef9|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|60|35|v|typescriptreact
-	experience-section__title
-44854349f614a3445018f43f45bc239e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/support-success/support-success.tsx|77|42|v|typescriptreact
-	.substr(transaction?.id?.length - 6)?.toUpperCase()
-973fa55606ad9191c217aaaf9e3bc6e4|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|61|35|v|typescriptreact
-	.toUpperCase()
-f4d5b76a2418eba4baeabc1ed9142b54|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|61|43|v|typescriptreact
-	transaction
-d1683effac9bdc31e30354d92be2a9cb|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|66|1|V|typescriptreact
-	            {data?.experience?.type === EXPERIENCE_TYPE.COURSE && (
-	              <Text className="m__t--8 text__align--left text--default70">
-	                {data?.experience?.lessons?.length || 0} video lesson(s)
-	              </Text>
-	            )}
-	
-	            {(data?.experience?.type === EXPERIENCE_TYPE.ONE_TO_ONE ||
-	              data?.experience?.type === EXPERIENCE_TYPE.LIVE_CLASS) && (
-	              <Text className="m__t--8 text__align--left text--default70">
-	                {moment(data?.date).format(screens["xs"] ? "h:mm A [•] MMM D, YYYY" : "h:mm A [•] ddd, MMM D, YYYY")}
-	              </Text>
-	            )}
-bd0ff4a2ec3f9ea890b3a54a7291b1d3|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/GiftCard/GiftCard.tsx|26|1|V|typescriptreact
-	          <Text className="d--block gift-card__content__price text__align--left">{amount}</Text>
-e9f40e1f1d1658681dad2dac4ae0971e|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|64|85|v|typescriptreact
-	amount
-debb205e223dec97dba221f349d9746b|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|65|41|v|typescriptreact
-	gift-card__content__price
-1d74a3fe5838e2baa4e1cb24e7b20f78|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/GiftCardIntro.scss|121|1|V|scss
-	    .gift-card__content {
-	      padding: 16px;
-	
-	      &__price {
-	        font-size: 24px !important;
-	        line-height: 36px;
+9f41cc9274e9553eab067496851fc39e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/hoc/SignInRequiredHoc.tsx|17|1|V|typescriptreact
+	      navigation.navigate(NavigationRoutes.AuthStack)
+6d99b80d7bd77051fc5f5500e974bd2d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|346|1|V|typescriptreact
+	        navigation.reset({
+	          index: 0,
+	          routes: [{ name: NavigationRoutes.AuthStack }],
+	        })
+0b74b7b3292341fb4b5330f94edf823b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|96|1|V|typescriptreact
+	        await segmentAnalytics.init(CONFIG.SEGMENT_WRITE_KEY)
+49c11b871dbe86279e401ff073a90e12|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|93|33|v|typescriptreact
+	CONFIG.SEGMENT_WRITE_KEY
+1d177db89bc443b0b00f78b753a5d4c9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|93|33|v|typescriptreact
+	g6cKQQ4HXXB6rG9bOsMG348tcUdDJfUR
+c9b45d3f03b94c23c9f500c015b47b21|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/app.tsx|94|5|V|typescriptreact
+	    await segmentAnalytics.init("g6cKQQ4HXXB6rG9bOsMG348tcUdDJfUR")
+1af0389838508d7016a9841eb6273962|file:///Users/louis/Dev/Projects/komi/komi-client/src/utils/currency.ts|55|41|v|typescript
+	currency
+87d707fef3748a92ebc06e083019e622|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|1110|21|V|typescriptreact
+	                  : content?.isFull
+be4b1111dd971a64fea3bb849a98119d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|1110|21|V|typescriptreact
+	                  ? translate("common.soldOut")
+53a761288a8234c36de3d0618f3dc2bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|1096|19|v|typescriptreact
+	content.isFull
+6151f0dcdb0797a1b5ec04c3a5e7f473|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|1106|17|v|typescriptreact
+	content?.isFull
+0a855c2224926aeceb60515b48f0d232|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|468|23|v|json
+	The replay of this live available to watch in your booking details shortly.
+8debae00dbf49e18d73b7ed06385e818|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-support-screen/send-support-screen.tsx|270|15|v|typescriptreact
+	rightComponent
+c852755f85e80bfa21ab754f8dde93dc|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-support-screen/send-support-screen.tsx|253|14|v|typescriptreact
+	TextInput
+788d641c83da63335e9e448407f49e07|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-input/text-input.tsx|117|9|v|typescriptreact
+	renderLeftIcon
+9c0653459884edbd9c822bdab3084d8a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-input/text-input.tsx|187|29|v|typescriptreact
+	inputContent
+08fc13dee06cd01beb4bd367efceb830|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-input/text-input.tsx|190|18|v|typescriptreact
+	inputRef
+682b299e0b98ba8581b63dda579c57bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-input/text-input.tsx|176|29|v|typescriptreact
+	focusedAnim
+d8d86578aa4d5afff64c0b98a9a7bb8f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-input/text-input.tsx|23|17|v|typescriptreact
+	setValue
+2063c1608d6e0baf80249c42e2be5804|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-input/text-input.tsx|188|12|v|typescriptreact
+	value
+367e854225a0810977297b3bedb2f309|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/text-input/text-input.tsx|188|22|v|typescriptreact
+	isActive
+6f1b73535fbec49b2d9fc514d454eeff|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/Price/Price.tsx|16|54|v|typescriptreact
+	isExperiencePrice
+bd04dda888cfc032573f2407b8a13cc2|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/Price/Price.tsx|13|1|V|typescriptreact
+	  const exchangeRates = useTypedSelector(selectExchangeRates);
+	  const currency = useTypedSelector(selectUserCurrency);
+67ee349676ffc19f32774d83cecccff3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/consumer-purchase-screen/components/consumer-support-history.tsx|59|62|v|typescriptreact
+	item?.currency
+72726f5b60185e2da6b444110b118d1f|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|195|42|v|typescriptreact
+	getPrice(experience?.price || 0, currency, exchangeRates, true
+3b749b7b013728dd62088b3c1259af46|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|205|13|V|typescriptreact
+	    currency,
+9d750ad0e89901ab8dccafab4628e3d2|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|205|18|V|typescriptreact
+	    exchangeRates,
+548f4eee82f91b8e6a0484b1cc934c5f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|30|1|V|typescriptreact
+	    let experiencePriceExchange = exchangeRates[getCurrentCurrency(currency, exchangeRates)] * (experience?.price || 0);
+	    if (currency !== "USD") {
+	      experiencePriceExchange = Math.floor(experiencePriceExchange) + 0.99;
+	    }
+1bac85ca3fe7aa6b2bedbeab9443be05|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|34|11|v|typescriptreact
+	discountPriceExchange
+e61ac2e45592fa3b20a1178394f975e3|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|194|23|v|typescriptreact
+	getCurrentCurrency
+d9a449a0042f289f2aa26aa4445e7d9b|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|199|42|v|typescriptreact
+	experience?.localPrice || 0
+5d3210c2838109c05e4b33378dc9cf23|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|53|1|V|typescriptreact
+	import { SEGMENT_EVENT } from "constants/segment";
+15fcbb60dc5e2961eb2534501a94d2a2|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|50|1|V|typescriptreact
+	<<<<<<< Updated upstream
+	import { selectUserData, selectUserCurrency } from "redux/User/selector";
+	import { DISCOUNT_TYPE } from "redux/GiftsCode/types";
+	import { SEGMENT_EVENT } from "constants/segment";
+	import { getPrice } from "utils/currency";
+	=======
+458d87954d497eaec6094505a7042807|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|43|22|V|typescriptreact
+	  selectExchangeRates,
+8b22e9081b584dbca20e0ca5f3672fb5|file:///Users/louis/Dev/Projects/komi/komi-client/src/utils/container.tsx|55|18|v|typescriptreact
+	{
+	      const result = await userService.getLocation();
+	      console.log(result);
+	      if (result?.ok) {
+	        const country = result?.response?.country;
+	        const countryName: string = CountriesCurrency[country];
+	        const currencies = CurrencyCodes.country(countryName?.toLowerCase());
+	        if (currencies?.length > 0) {
+	          const currency = ["GBP", "EUR", "USD"].includes(currencies[0]?.code) ? currencies[0]?.code : "USD";
+	          Cookies.set(KOMI_CURRENCY, currency, { expires: 999999 });
+	          dispatchRedux(
+	            setUserValueAction({
+	              currency: currency,
+	            }),
+	          );
+	        }
 	      }
-e5f751b47dea7619ecbe8783301862eb|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/SendTipModal.scss|75|2|v|scss
-	gift-
-d76b35cd0a6e15bd71bbef778939a59f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|65|41|v|typescriptreact
-	gift-card
-dd5b54c9fc8ff5542e7a6806b70ccecd|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/SendTipModal.scss|19|1|V|scss
-	    font-weight: 400 !important;
-81b447311c350726f13da80589f2186e|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|77|1|V|typescriptreact
-	                <Text preset="medium14">
-	                  {creator?.firstName || ""} {creator?.lastName || ""}
-	                </Text>
-05316c186975f59ee95f0fd1f2c4cbcc|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|65|31|v|typescriptreact
-	medium14
-b50a96bd7c2b42879cffa0dc8231934f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|66|39|V|typescriptreact
-	                  {creator?.firstName || ""} {creator?.lastName || ""}
-9bf9bb4155e91ed5a7b219ce9705a424|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|68|41|v|typescriptreact
-	send-tip-card__content__price
-666a7d6c149a4fe2001994ab6284678c|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|68|32|v|typescriptreact
-	d--block  text__align--left
-04dda795e0a8e7d579e6251f2b8735ef|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|68|21|v|typescriptreact
-	className=""
-68907645f7cc9b6d32a5e18c3d90950d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|65|42|v|typescriptreact
-	className="m__b--8"
-9f27410725ab8cc8854a2769c7a516b8|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|65|53|v|typescriptreact
-	green
-8d2495ce8108188799d62f1a632c72fa|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|73|30|v|typescriptreact
-	divider
-d965f60a1a5b8e919461307e0c9c8fb5|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|73|37|v|typescriptreact
-	 full-width
-bb5dc65fc896f3ae9d511e759e96c4d8|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|9|28|V|typescriptreact
-	import moment from "moment";
-03bbf11ad606382317506bac8a651be2|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|6|40|V|typescriptreact
-	import ExperienceTypeTag from "components/ExperienceTypeTag";
-e24e95f5dc44dd310d8e7cbc68389664|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|16|4|V|typescriptreact
-	  on
-0fb56aa04b0c6f6ca2daab7dda09ce92|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|96|60|v|typescriptreact
-	handleViewResult
-5cae1ee23639e3a832077338699a8738|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|25|1|V|typescriptreact
-	  const handleViewResult = useCallback(() => {
-	    if (data.experience?.type === EXPERIENCE_TYPE.ON_DEMAND_CONTENT) {
-	      router.push("/user/my-experiences/completed");
-	    } else if (data.experience?.type === EXPERIENCE_TYPE.COURSE) {
-	      router.push(`/course/${data?.id}`);
-	    } else {
-	      router.push("/user/my-experiences/upcoming");
-	    }
-	  }, [router, data]);
-a093a9507e459b22a5720f841d31686b|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|438|1|V|typescriptreact
-	              handleBack={() => setShowSendTipCompleted(false)}
-bede9e3dbfc3f255fb1bd209bec2cecd|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|35|3|v|typescriptreact
-	handleFinish
-0389d7f634a905316470462614b8feb2|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|443|16|v|typescriptreact
-	setShowSendTipCompleted(false)
-1f070955d491c0749aec81ddfb080ee9|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|443|25|V|typescriptreact
-	                dispatch()
-d0749aaba8b833466dfcbb0428e4f89c|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|444|53|v|typescriptreact
-	SUCCESS
-944151ff253a8e0d433a2ef4ec4d97d8|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|444|53|V|typescriptreact
-	                dispatch(checkoutExpertSupportTypes.SUCCESS())
-6928e996f86e8a484b8ff0bcca7ad754|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|219|8|V|typescriptreact
-	      se
-39b0c3495d212f0269397725f24840b8|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/Footer/Footer.tsx|86|1|V|typescriptreact
-	              <Col>
-	                <img src="/static/assets/images/google-play.svg" height={42} alt="google play" className="disabled" />
-	              </Col>
-b24ce0cd392a5b0b8dedc66c25213594|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/WishlistCard/WishlistCard.tsx|70|89|v|typescriptreact
-	Free
-8acde30219b000e682d0223b7f85f448|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SearchBox/SearchBox.tsx|114|23|V|typescriptreact
-	                      <Price price={experience.price} isExperiencePrice />
-21bac755d6b25a41a40a2a792cab892d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/WishlistCard/WishlistCard.tsx|70|45|v|typescriptreact
-	 || wishlist
-a4d3db60fbe1fcb26c4a4dd24b92382a|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/WishlistCard/WishlistCard.tsx|70|46|v|typescriptreact
-	|| wishlist?.experience?.price === 0
-55cd8684bf7406f4e6d561415ab96162|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/WishlistCard/WishlistCard.tsx|70|18|v|typescriptreact
-	wishlist?.experience?.price ? (
-7cec785396c9b5487dea547d33bf06ab|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/WishlistCard/WishlistCard.tsx|76|16|v|typescriptreact
-	 : (
-	                  ""
-	                )
-4086d5574e9e24005d16cdc7e02700b0|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/SendTipModal.scss|5|17|V|scss
-	    margin-bottom: 0 !important;
-b761b15fe3f965cc9731751e0610313c|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/SendTipModal.scss|4|17|V|scss
-	    height: 40px;
-f6207f8d985e0b5ab554ba4ebb0ce676|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|273|57|v|typescriptreact
-	renderPaymentItem
-f1e9dd9e5ead77846992b1699ca6e13e|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentProfileDesktop/TalentActions/TalentActions.tsx|79|17|V|typescriptreact
-	      dispatch(
-	        toggleModalActions({
-	          modal: MODAL_SEND_TIP,
-	          status: status,
-	        }),
-	      );
-1515e09b5104809be7bdd28535e918cf|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|79|1|V|typescriptreact
-	      dispatch()
-9acb44549b41563697bb490144ec6258|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|83|19|v|typescriptreact
-	status
-8573510de12bc194075334bcf6eb148b|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|79|17|V|typescriptreact
-	      onCancel();
-6ccc22f494da56ce99f1602b6ba62685|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|86|24|V|typescriptreact
-	      console.log("hi");
-62e5e29fe0039252a89f4ee86bb45083|file:///Users/louis/Dev/Projects/komi/komi-client/src/layout/MainLayout/MainLayout.tsx|304|1|V|typescriptreact
-	      {createAccountModalStatus && (
-	        <CreateAccountModal
-	          show={createAccountModalStatus}
-	          onOk={() => toggleModalCreateAccount(false)}
-	          onCancel={() => toggleModalCreateAccount(false)}
-	          showLoginModal={() => {
-	            toggleModalCreateAccount(false);
-	            toggleModalLogin(true);
-	          }}
-	        />
-	      )}
-3936463197392bc33911279477da5c74|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|357|17|v|typescriptreact
-	createAccountModalStatus
-e8d463a8b321db0677500280995e0213|file:///Users/louis/Dev/Projects/komi/komi-client/src/layout/MainLayout/MainLayout.tsx|357|17|V|typescriptreact
-	      {!!loginModalStatus && (
-	        <LoginModal
-	          show={!!loginModalStatus}
-	          onOk={() => toggleModalLogin(false)}
-	          onCancel={() => toggleModalLogin(false)}
-	          showCreateAccountModal={() => {
-	            toggleModalLogin(false);
-	            toggleModalCreateAccount(true);
-	          }}
-	        />
-	      )}
-fa20501780181fc780085417267b4f7b|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|342|1|V|typescriptreact
-	      <Modal
-	        className="send-tip-modal"
-	        maskClosable={false}
-	        title={title || `Support ${talent?.talentProfile?.firstName}`}
-	        visible={show}
-	        onOk={onOk}
-	        onCancel={handleCancel}
-	        footer={false}
-	      >
-	        <Avatar
-	          size={112}
-	          src={user?.talentProfile?.avatar || ""}
-	          alt={`${user?.talentProfile?.firstName} ${user?.talentProfile?.lastName}`}
-	        />
-	        {sendTipContent}
-	      </Modal>
-a104b5d638f322a8f97ec01fd82bc747|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|361|23|v|typescriptreact
-	toggleModalCreateAccount
-0936d17076223a173230d2612209642c|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|362|27|v|typescriptreact
-	toggleModalCreateAccount(false)
-0b80d6dc1440d4ba894015080878de42|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|365|33|V|typescriptreact
-	            toggleModalLogin(true);
-5be4c7718119d0abc39eed8b9615f874|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|359|10|v|typescriptreact
-	CreateAccountModal
-1150c467b10a68abac2549622a9d482f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|372|17|v|typescriptreact
-	!!loginModalStatus
-f8bf6ec54879b31d9bd41bc9cfcb7f30|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|371|10|v|typescriptreact
-	LoginModal
-9882ac9057f7df6a137a93fbb5be13b9|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|366|1|V|typescriptreact
-	            setActiveModal("login");
-adfd9857191582c444fdd44f1d084e11|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|377|1|V|typescriptreact
-	            toggleModalLogin(false);
-	            toggleModalCreateAccount(true);
-693cbd72ada55616342e89ff2622945a|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|81|1|V|typescriptreact
-	    if (!user) {
-	      dispatch(
-	        toggleModalActions({
-	          modal: MODAL_CREATE_ACCOUNT,
-	          status: true,
-	        }),
-	      );
-b0238c1bc5c7aee3a50d1618816cfb98|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|82|1|V|typescriptreact
-	      dispatch(
-	        toggleModalActions({
-	          modal: MODAL_CREATE_ACCOUNT,
-	          status: true,
-	        }),
-	      );
-d7ee99a1d7adf1393fb01280706b5bb8|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|105|7|v|typescriptreact
-	onCancel
-5f8d08c7b381b9ac2f3e223a6cd5c234|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|83|6|v|typescriptreact
-	 else if (user) {
-c16f64a565e0245c6b2b14e7b88f4d85|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|84|5|V|typescriptreact
-	      onOk();
-ea5a1cbe764918679997181a3ea281d3|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|84|5|V|typescriptreact
-	    }
-4ee65713b2dfd1a92d6bc163a1d811ff|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|333|13|V|typescriptreact
-	             )
-7810f956eb111b4073fec51971db0e33|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SignUp/SignUp.tsx|90|55|v|typescriptreact
-	showSignInModal
-44e11e4a6569290439a80a3b83a3a807|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|354|1|V|typescriptreact
-	      {activeModal === "createAccount" && (
-	        <CreateAccountModal
-	          show={true}
-	          onOk={() => setActiveModal("sendTip")}
-	          onCancel={() => onCancel()}
-	          showLoginModal={() => {
-	            setActiveModal("login");
-	          }}
-	        />
-	      )}
+	    })();
+	  }, [dispatchRedux]);
 	
-	      {activeModal === "login" && (
-	        <LoginModal
-	          show={true}
-	          onOk={() => setActiveModal("sendTip")}
-	          onCancel={() => onCancel()}
-	          showCreateAccountModal={() => {
-	            setActiveModal("createAccount");
-	          }}
-	        />
-	      )}
-cc70cc0cd49c468a70744dc771589f10|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|335|7|V|typescriptreact
-	      {activeModal === "sendTip" && (
-da3f69eb162d1d33703fce0d158f989f|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentProfileDesktop/TalentActions/TalentActions.tsx|38|10|v|typescriptreact
-	isHoverSupport
-c00586437d9d04240ee6abb9fb4f32ba|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentProfileDesktop/TalentActions/TalentActions.tsx|38|24|v|typescriptreact
-	setIsHoverSupport
-75dd93d343ae7206f36786544fd3f550|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentProfileDesktop/TalentActions/TalentActions.tsx|153|8|v|typescriptreact
-	showSendTipModal
-9b9f4b0ea61c5a653113ab8cc47b0e93|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentProfileDesktop/TalentActions/TalentActions.tsx|40|1|V|typescriptreact
-	  const toggleModalSendTip = React.useCallback(
-	    (status: boolean) => {
-	      dispatch(
-	        setUserValueAction({
-	          error: null,
-	        }),
-	      );
-	      dispatch(
-	        toggleModalActions({
-	          modal: MODAL_SEND_TIP,
-	          status: status,
-	        }),
-	      );
+	  const methods = {
+	    startLoading() {
+	      dispatch({ type: "loading", payload: true });
 	    },
-	    [dispatch],
-	  );
-45ab1ef443d6b74dca9b3c6f5cb5ee88|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentProfileDesktop/TalentActions/TalentActions.tsx|23|26|V|typescriptreact
-	import { setUserValueAction } from "redux/User/actions";
-93c3ce633edbe2ae7e27b86d90afb8e5|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|332|11|V|typescriptreact
-	  console.log(activeModal);
-ac4cbf2ea1e6ddb84df3191fa1e6955e|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentProfileDesktop/TalentActions/TalentActions.tsx|135|8|v|typescriptreact
-	showTipModal
-a6fe0f73ecf16093fa880dc5e3fff9b9|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentProfileDesktop/TalentActions/TalentActions.tsx|141|1|V|typescriptreact
-	          onOk={() => setShowTipModal(false)}
-	          onCancel={() => setShowTipModal(false)}
-2ed33e729d783727d06b08e841571cb9|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|422|1|V|typescriptreact
-	                onOk={() => toggleModalSendTip(true)}
-	                onCancel={() => toggleModalSendTip(false)}
-7bdda004905037a035a4705d4e547916|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|421|23|v|typescriptreact
-	!!sendTipModalStatus
-c3bdb308cf213c460861f260864e35d3|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentProfileDesktop/TalentActions/TalentActions.tsx|36|1|V|typescriptreact
-	  const [showTipModal, setShowTipModal] = useState(false);
-d5caaa07e588ce9d6ff0c80228ad3211|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|56|30|V|typescriptreact
-	import { selectModalStatus } from "redux/Modal/selectors";
-eacde52db846f11660eee4c6ac2adda9|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|54|12|V|typescriptreact
-	import { , toggleModalActions } from "redux/Modal/actions";
-8ef2f97af4e09940e9bcd5364369c0b5|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|27|10|V|typescriptreact
-	import { MODAL_CREATE_ACCOUNT, toggleModalActions } from "redux/Modal/actions";
-bc95dfc14146aa23e43f2ea7af04d310|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|266|12|V|typescriptreact
-	            
-376637200fdc1fc23475a0f06305b272|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|289|32|V|typescriptreact
-	                hideLabel={true}
-8fbc78dab58bb5b82cc36eb940f8b7a7|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|20|20|V|typescriptreact
-	  console.log(data);
-88627d1fe4d5ef9e8b341f0dbf0370b5|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|225|19|v|typescriptreact
-	talent
-9dddf2a4f7d94594ec2ea98407a410e1|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|225|12|v|typescriptreact
-	dispatch
-6e6a4ff2648c607480e9add7b779746c|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|225|78|v|typescriptreact
-	tlaent
-e114d67f6c17a814152bd397a44f69d5|file:///Users/louis/.config/nvim/init.vim|123|13|v|vim
-	onedark
-efe411ebecebd340c52bf74c241431e5|file:///Users/louis/.config/nvim/init.vim|15|1|V|vim
-	Plug 'hzchirs/vim-material'
-e326cf89bcc98bacf8bb526da0dc0087|file:///Users/louis/.config/nvim/init.vim|125|1|V|vim
-	colorscheme vim-material
-bc6b3d78628c21f60798a882e40e95eb|file:///Users/louis/.config/nvim/init.vim|123|1|V|vim
-	let g:material_style='oceanic'
-230a091930a82c5ae47e29610ee98ceb|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|98|1|v|typescriptreact
 	
-	    
-c26ad783a4b66fa2f5346597e4e6432a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|98|1|V|typescriptreact
-	const createCredentialFcm = React.useCallback(
-	      async (fcmToken) => {
-	        if (accessToken) await postCredentialFcmToken(fcmToken)
-	      },
-	      [accessToken],
-	    )
-34147edc3dd9ff35e42f5a4bd614d236|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/_app/index.tsx|32|3|v|typescriptreact
-	useNotificationRequest
-fb82bafedae6b8af11bbd873bd94853c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|142|46|v|typescriptreact
-	filterStatusForTalentApp
-973568c612a83d1c8d87805f6f0c7523|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/special-request-purchase-history-screen/special-request-purchase-history-screen.tsx|113|42|V|typescriptreact
-	            BOOKING_STATUS.PAYMENT_FAILED,
-90118e17fc23e5b892c0f96e133a169f|file:///Users/louis/Dev/Projects/komi/komi-client/node_modules/react-device-detect/index.d.ts|127|16|v|typescript
-	isMobile
-60ada1255ab1e9ea75356d58fa712d92|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-saved-tab.tsx|41|33|v|typescriptreact
-	isFree
-accb6ef56f0748e205f5e6cd838e9e23|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/ContentModel.ts|46|1|V|typescript
-	    isFreeExperience: types.maybeNull(types.optional(types.boolean, false)),
-3c2bb01268723e90252faeedd4866ab9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/WishtlistModel.ts|16|1|V|typescript
-	      isF
-d92f858a88983197d078c4c0578cbc36|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-saved-tab.tsx|41|33|v|typescriptreact
-	isFreeExper
-5aa2e8fe5900443aa3c15ea29e0b9c23|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-saved-tab.tsx|41|83|v|typescriptreact
-	item?.experience?.price
-726f5357b310b2e6ff963e8f690a033b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-saved-tab.tsx|41|83|v|typescriptreact
-	 === 0
-fc46e26a907870744758b76166150f62|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/experience-screen/components/experience-saved-tab.tsx|43|15|v|typescriptreact
-	translate
-a7f493642bc532a7bab24b5a31b7fde3|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/LiveClassSection/LiveClassSection.tsx|81|46|v|typescriptreact
-	processBooking
-2b580e49c7e08804860a9ce0a17b4db2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|32|29|v|typescriptreact
-	formatInstagramLink
-b4f69b65550da931701b2b2742a9ed46|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|521|24|v|typescriptreact
-	renderContent
-1c9511b51f50ca5be008b5ac1853d4c9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/talent-detail-screen/talent-detail-screen.tsx|235|22|v|typescriptreact
-	goToSendSupport
-0df4c11bc6836ca25cbd554853f08f13|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-support-screen/send-support-screen.tsx|191|77|v|typescriptreact
-	savedMethods
-15dfaa35f9fe15ea1d4b46fe31d6292e|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|139|1|V|typescriptreact
+a26ed4fd25fcfdbc1142b43d3389f286|file:///Users/louis/Dev/Projects/komi/komi-client/.env|18|1|V|sh
+	NEXT_PUBLIC_IP_GEO_LOCATION=9429f3f83e8c471d924e9226a6ce295f
+cc234e82d29831d19da7ebc681d70bbf|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/user/User.tsx|130|14|v|typescriptreact
+	MyExperiences
+dfb9be853d931add81f27e5e831265e7|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/user/BookingHistory/SupportDetail/SupportDetail.tsx|149|21|v|typescriptreact
+	iapTransaction
+4ae59f9d6e940df29dffa1bffd396a05|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/LiveClassSection/LiveClassSection.tsx|27|1|V|typescriptreact
+	  const currency = useTypedSelector(selectUserCurrency);
+8d777f385d3dfec8815d20f7496026dc|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|55|66|v|typescriptreact
+	data
+980aa4c48549710a7a7c8aef27bcb71c|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/user/BookingHistory/SupportDetail/SupportDetail.tsx|152|56|v|typescriptreact
+	transaction?.currencyCode as string
+7684cee7a95d48a136a30425f1eb0054|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/constants/index.ts|12|14|v|typescript
+	ALLOW_CURRENCY
+e90cfc5a99e26ea9f94d6a1a5580f9da|file:///Users/louis/Dev/Projects/komi/komi-admin/src/pages/CreateExperience1To1/index.ts|1|26|v|typescript
+	./CreateExperience1To1
+79e316648573f88418e4a1d07563bce4|file:///Users/louis/Dev/Projects/komi/komi-admin/src/routes/index.tsx|41|49|v|typescriptreact
+	pages/CreateExperience1To1
+800b5175f0832a0e721e0b062e7ed111|file:///Users/louis/Dev/Projects/komi/komi-admin/src/routes/index.tsx|42|17|v|typescriptreact
+	../../
+e54debd65d8142e7785275aab411fd8f|file:///Users/louis/Dev/Projects/komi/komi-admin/tsconfig.json|20|8|v|jsonc
+	dependency
+7c3613dba5171cb6027c67835dd3b9d4|file:///Users/louis/Dev/Projects/komi/komi-admin/tsconfig.json|20|32|v|jsonc
+	vendor
+f9b2a59bdff6425cc6ebe21ea15841d1|file:///Users/louis/Dev/Projects/komi/komi-admin/tsconfig.json|20|32|v|jsonc
+	/dependency/source/index.ts
+b3b32a2d422265cd25c3323ed0157f81|file:///Users/louis/Dev/Projects/komi/komi-admin/src/routes/index.tsx|41|49|v|typescriptreact
+	pages
+b45ab149b0e0dd296ac12c2c0d3ea2bf|file:///Users/louis/Dev/Projects/komi/komi-admin/src/routes/index.tsx|42|17|v|typescriptreact
+	./share-components-web/CreateExperience1To1
+6787992d141ff42663b6e68e7a884d4d|file:///Users/louis/Dev/Projects/komi/komi-admin/src/hooks/index.ts|1|1|V|typescript
+	export * from './useQuery'
+5357f6af41335af11b6649fe4fe227e2|file:///Users/louis/Dev/Projects/komi/komi-admin/src/hooks/index.ts|2|18|v|typescript
+	useQuery
+0e6f473d6e00c9bab56f537ac8347d0c|file:///Users/louis/Dev/Projects/komi/komi-talent/src/hooks/useNotification.ts|1|1|V|typescript
+	import { useEffect } from "react";
+	
+	import { useTypedSelector } from "redux/rootReducer";
+	import {
+	  selectResponseType,
+	  selectResponseData,
+	} from "redux/LogRequest/selector";
+	import { RESPONSE_TYPE } from "redux/LogRequest/types";
+	import notification from "utils/notification";
+	
+	export const useNotificationRequest = (): void => {
+	  const responseType = useTypedSelector(selectResponseType);
+	  const responseData = useTypedSelector(selectResponseData);
+	
 	  useEffect(() => {
-	    if (bookingError && !bookingErrorData) {
-	      notification.error({
-	        message: bookingError,
+	    const { message, code, type, statusCode } = responseData;
+	
+	    if (!message && !type) return;
+	
+	    const notificationData = {
+	      message: type?.toUpperCase() || "Error",
+	    };
+	
+	    if (responseType === RESPONSE_TYPE.SUCCESS) {
+	      notification.success({
+	        ...notificationData,
+	        description: "",
 	      });
 	    }
-	    if (bookingError && bookingErrorData) {
-	      setIsVisibleModal(true);
+	    if (responseType === RESPONSE_TYPE.ERROR) {
+	      notification.error({
+	        ...notificationData,
+	        description: `${statusCode || code}: ${message}`,
+	      });
 	    }
-	  }, [bookingError, bookingErrorData]);
-7c52a5f41d8bba79d3173e61bb9ebd40|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|76|10|v|typescriptreact
-	experienceData
-6d378deda69a2de2e7ab2ff67e5c1b38|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|140|9|v|typescriptreact
-	bookingError
-56d09a10d30ed8d16ac1778d328090b2|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|71|1|V|typescriptreact
-	  const bookingError = useTypedSelector(selectBookingError);
-e1fcbd3a42b931a605b9b423a3b5414d|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|72|1|V|typescriptreact
-	  const bookingErrorData = useTypedSelector(selectBookingErrorData);
-ee0dbf7562e056c637f277abefad31bd|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|40|41|v|typescriptreact
-	selectBookingError
-eb6760318843b6510d0b71ace888b84e|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|41|45|v|typescriptreact
-	selectBookingErrorData
-a590406edb680c4995066da5c8ba44f2|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|58|1|V|typescriptreact
-	  const [isVisibleModal, setIsVisibleModal] = useState(false);
-64e6f7a6e2639b8c0d598e17c668df15|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|463|1|V|typescriptreact
-	      <Modal
-	        closable={false}
-	        className="login-modal"
-	        maskClosable
-	        visible={isVisibleModal}
-	        onCancel={() => setIsVisibleModal(false)}
-	        footer={false}
-	        style={{ marginTop: 170 }}
-	      >
-	        <Row className="m__b--24">
-	          <Text style={{ textAlign: "center", fontSize: 14 }}>{bookingError}</Text>
-	        </Row>
-	
-	        <Button
-	          style={{ width: "100%" }}
-	          size="large"
-	          type="primary"
-	          className="btn-next"
-	          onClick={() => {
-	            if (experience?.type === EXPERIENCE_TYPE.ON_DEMAND_CONTENT) {
-	              router.push("/user/my-experiences/completed");
-	            } else if (experience?.type === EXPERIENCE_TYPE.COURSE) {
-	              router.push(`/course/${bookingErrorData?.bookingId}`);
-	            } else {
-	              router.push("/user/my-experiences/upcoming");
-	            }
-	          }}
-	        >
-	          {experience?.type === EXPERIENCE_TYPE.COURSE ? "Start Learning" : "View Your Experience"}
-	        </Button>
-	      </Modal>
-c59d6df802c32f037c2a15ff75faec17|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|145|8|v|typescriptreact
-	Modal
-9dffbf69ffba8bc38bc4e01abf4b1675|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|156|12|v|typescriptreact
-	Text
-668f947532159b571d43990c7b639ed2|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|166|38|v|typescriptreact
-	EXPERIENCE_TYPE
-89bfdf78f43b12630849a1ea768cc7b9|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|2|1|V|typescriptreact
-	import Button from "antd/lib/button";
-d6e047923b2b0f63a7a03c66074a0151|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|108|24|v|typescriptreact
-	experience
-aa7cfd07d8faa1c24588b217c3f2842c|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|32|21|v|typescriptreact
-	useRef
-b4fe84d4516f1e7b7540abcee6656f06|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|32|21|v|typescriptreact
-	createRef
-93752ebfa45a46ecfeb3eb2efda39cc7|file:///Users/louis/Dev/Projects/komi/komi-client/node_modules/%40types/react/index.d.ts|901|15|v|typescript
-	MutableRefObject
-a8e83ee464d365f9f9737b791cec4ab9|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|32|28|v|typescriptreact
-	MainLayout
-51f310a1fe92c2f1b2df7d9b44a34b48|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|124|73|v|typescriptreact
-	ref={ref}
-7255db101cb957ee324865ea9ed4b229|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|32|28|v|typescriptreact
-	typeof MainLayout
-234c9572a3583f626072a3617f7af403|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|32|28|v|typescriptreact
-	HTMLDivElement
-5e543256c480ac577d30f76f9120eb74|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|32|44|v|typescriptreact
-	undefined
-89d89eb05495f9b93336a52d9c3ba430|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|33|14|V|typescriptreact
-	  ref.current.
-3d25fa8c7ba0886626e027dc34d3f390|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/%5Bid%5D/ExperienceDetail.tsx|33|12|V|typescriptreact
-	  MutableRefObject<any>
-ab7c1fa358b2b88c2e28867b8b1b0717|file:///Users/louis/Dev/Projects/komi/komi-client/node_modules/%40types/react/index.d.ts|1031|42|v|typescript
-	MutableRefObject<T>
-e8a71bc3e3d6691f410c6bc7e72805c4|file:///Users/louis/Dev/Projects/komi/komi-client/node_modules/%40types/react/index.d.ts|901|1|V|typescript
-	    interface MutableRefObject<T> {
-	        current: T;
+	  }, [responseType, responseData]);
+	};
+15484190bcea026f2b95f22575040fb8|file:///Users/louis/Dev/Projects/komi/komi-admin/src/hooks/useNotification.ts|4|1|V|typescript
+	import {
+	  selectResponseType,
+	  selectResponseData,
+	} from "redux/LogRequest/selector";
+bf982020a8075940ef83eb8811b58b75|file:///Users/louis/Dev/Projects/komi/komi-admin/src/hooks/useNotification.ts|4|31|V|typescript
+	import { RESPONSE_TYPE } from "redux/LogRequest/types";
+d08c4bf5c780e843a3a94c38ba304af4|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|70|25|v|typescriptreact
+	setDiscountPrice
+7ae6056878510def2cd256e190ca3b9f|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|194|25|V|typescriptreact
+	      let experiencePriceExchange =
+	        exchangeRates[getCurrentCurrency(currency, exchangeRates)] * (experience?.price || 0);
+	      if (currency !== "USD") {
+	        experiencePriceExchange = Math.floor(experiencePriceExchange) + 0.99;
+	      }
+	      console.log(experiencePriceExchange);
+44b31a6cf0319b2b1ee5ba8271b1c552|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|194|42|v|typescriptreact
+	experiencePriceExchange
+7ce1d558fd827e574e374492de60b159|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|209|1|V|typescriptreact
+	    exchangeRates,
+	    currency,
+b972fdba9048d5006454765525508d96|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|49|30|v|typescriptreact
+	selectUserData
+6680dba00f3a88f66f8029a93d71d93c|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|31|5|v|typescriptreact
+	const
+81755395087cdddd40b1f379d2fc17a3|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|23|54|v|typescriptreact
+	discountPercentage
+73a65452cdd916bf2ad5953a677e77d8|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|40|7|V|typescriptreact
+	    const discountPriceExchange = exchangeRates[getCurrentCurrency(currency, exchangeRates)] * (discountPrice || 0);
+c970961066a75f105fd9ff5c3cc5ac16|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|39|7|v|typescriptreact
+	const discountPriceExchange
+3c748cb7c0dc80ca87b82aadff05dcaa|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|31|36|v|typescriptreact
+	xchangeRates[getCurrentCurrency(currency, exchangeRates)] * (experience?.price || 0)
+b914ddf46737b430f24dc2b9c8c47737|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|70|1|V|typescriptreact
+	  const [discountPrice, setDiscountPrice] = React.useState(0);
+6196b66edbb416ecf62d81dd258d0530|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|71|10|v|typescriptreact
+	discountPrice
+d333a8c7592e9fff87d411578f8da30c|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|136|1|V|typescriptreact
+	      setDiscountPrice(0);
+1d8adad813efbf5de11cbbbf05e8530f|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|204|6|v|typescriptreact
+	setDiscountPrice(discountAmount);
+b5adc2476cab12c7143b02a76ac602ae|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|195|1|V|typescriptreact
+	    if (giftCodeDiscountType === DISCOUNT_TYPE.PERCENTAGE) {
+	      discountAmount = (discountAmount * (experience?.price || 0)) / 100;
 	    }
-8465ad9a487bc37aa5252fa3625d5279|file:///Users/louis/.config/nvim/init.vim|137|1|V|vim
-	hi Normal guibg=#000000
-	hi EndOfBuffer guibg=#000000
-7a21d0de187ae893cf471e66e835e082|file:///Users/louis/.config/nvim/init.vim|15|1|V|vim
-	Plug 'glepnir/oceanic-material'
-9c79338ac4d2830bfee498220301e384|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
-	Plug 'joshdick/onedark.vim'
-72ea325b60808cbd6f6c7db11e241d0d|file:///Users/louis/.config/nvim/init.vim|123|1|V|vim
-	colorscheme oceanic_material
-4ee21c96bb8424ba8a3643d261a3d9bb|file:///Users/louis/.config/nvim/init.vim|131|1|V|vim
-	hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
-	hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
-	hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
-	hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
-	hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
-	hi FloatermBorder guifg=#55E579
-	hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-	hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
-	hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
-	hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
-	hi CocExplorerFileDirectoryExpanded guifg=#C3526E
-	hi CocExplorerFileDirectory guifg=#61CE91
-	hi CocExplorerNormalFloat guibg=#0b0c0e
-d43d1650be007c2e7da6df94e39ce168|file:///Users/louis/.config/nvim/config/airline.vim|24|1|V|vim
-	let g:airline_theme='atomic'
-6d97db0159c979ded3aac6578d234f33|file:///Users/louis/.config/nvim/init.vim|120|1|V|vim
-	set background=dark
-	set termguicolors
-	set t_Co=256
-	colorscheme darcula
-f3c6b90f6b31ddd8e97fcd5ed09f546e|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
-	Plug 'doums/darcula'
-bb7ebff8ac441c4fe113a06ecd2036e6|file:///Users/louis/.config/nvim/init.vim|120|1|V|vim
-	colorscheme darcula
-8bebbca153fd33f7d4a7a8ecf0f4df11|file:///Users/louis/.config/nvim/init.vim|14|1|V|vim
-	Plug 'liuchengxu/space-vim-dark'
-7b5c898e0c5e4748b1aaae74fb2d3a57|file:///Users/louis/.config/nvim/init.vim|15|1|V|vim
-	Plug 'ayu-theme/ayu-vim'
-28a58281ed3a24ad93ed1e6ab2e6e524|file:///Users/louis/.config/nvim/init.vim|119|13|v|vim
-	space-vim-dark
-f24aa0754a4ce686b2e58bef4346220e|file:///Users/louis/.config/nvim/init.vim|119|1|V|vim
-	colorscheme 
-ae076527d3c070b018d25d1b503a06b1|file:///Users/louis/.config/nvim/init.vim|120|33|V|vim
-	let g:neodark#solid_vertsplit = 1
-23d33884d600e542d097cd3933df2ae4|file:///Users/louis/.config/nvim/config/airline.vim|24|22|v|vim
-	atomic
-692044a41b2af8c6b3e916e4de7536ea|file:///Users/louis/.config/nvim/init.vim|127|19|v|vim
-	auto:[1]
-7f7a302454b48cdf8ed8813e319d810f|file:///Users/louis/.config/nvim/init.vim|127|1|V|vim
-	  set signcolumn=no
-69167133cbab9fd8e204057818ad90c3|file:///Users/louis/.config/nvim/config/airline.vim|24|22|v|vim
-	neodark
-5dcd49db29c899c854795f383e29357b|file:///Users/louis/.config/nvim/init.vim|139|1|v|vim
-	hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
-3f79a3f69a25f735dd6b51bbdc42783b|file:///Users/louis/.config/nvim/init.vim|15|7|v|vim
-	kaicataldo/material.vim
-131b161d2a0528813650547f080f569e|file:///Users/louis/.config/nvim/init.vim|15|29|v|vim
-	, { 'branch': 'main' }
-eec34d804c9ce6c89cff596be555e6a4|file:///Users/louis/.config/nvim/init.vim|123|13|v|vim
-	material
-dd462070f357cf86ab149b18753c4b9f|file:///Users/louis/.config/nvim/init.vim|15|1|V|vim
-	Plug 'itchyny/landscape.vim'
-992763c3260eacff8cdc4c8bba147554|file:///Users/louis/.config/nvim/init.vim|123|13|v|vim
-	landscape
-b57dcf1acb84d2cfa1b7dfd88c8a461d|file:///Users/louis/.config/nvim/config/airline.vim|24|1|V|vim
-	let g:airline_theme='onedark'
-c25f010f6f1e683bae4d396138563ffe|file:///Users/louis/.config/nvim/init.vim|123|13|v|vim
-	hyper
-ba4a17b794c113f5cd8783235babedf5|file:///Users/louis/.config/nvim/init.vim|1|1|V|vim
-	Plug 'crusoexia/vim-dracula'
-843539834f1a329ce2b49b64a9e25f0f|file:///Users/louis/.config/nvim/init.vim|123|13|v|vim
-	dracula
-4fdaee0e8e8c99dd191b2bab5fe4996d|file:///Users/louis/.config/nvim/init.vim|15|7|v|vim
-	mrkn/mrkn256.vim
-5cb8827080af1bf200e3887b5cd583c8|file:///Users/louis/.config/nvim/init.vim|123|13|v|vim
-	mrkn256
-157f25ff8000f75c57919e36863d8dc8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/NotificationModel.ts|1|13|V|typescript
-	import { types, Instance, getParent } from "mobx-state-tree"
-	import { RootStore } from "models"
-7d43ffcfde241b82d1a33b2902d7df2c|file:///Users/louis/.config/nvim/init.vim|32|7|v|vim
-	tpope/vim-rhubarb
-75a190576dfad6c725ec87232beeb630|file:///Users/louis/.config/nvim/init.vim|38|7|v|vim
-	terryma/vim-multiple-cursors
-75ffccbbcb2507b04617efaf97bba012|file:///Users/louis/.config/nvim/init.vim|35|7|v|vim
-	tpope/vim-commentary
-8604dfbdbc77ecb794fabeab6d76a903|file:///Users/louis/.config/nvim/init.vim|39|7|v|vim
-	scrooloose/nerdcommenter
-ae98dffb4e61776d09c1216a44130f80|file:///Users/louis/.config/nvim/init.vim|36|32|V|vim
-	Plug 'joequery/stupid-easymotion'
-	Plug 'easymotion/vim-easymotion'
-a01e892101fb39b14287b1b9028a52d2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/utils/notification.ts|11|1|V|typescript
-	  // Toast.show({
-	  //   type: config.type,
-d41a310e225f0f6466f8a3f16dbe2de7|file:///Users/louis/.config/nvim/init.vim|39|7|V|vim
-	Plug 'scrooloose/nerdcommenter'
-677b4f1a6940624cf0db4d9128e5169e|file:///Users/louis/.config/nvim/init.vim|36|7|v|vim
-	joequery/stupid-easymotion
-ff3420905f2b6d121b1018c106718fdc|file:///Users/louis/.config/nvim/init.vim|37|7|V|vim
-	Plug 'easymotion/vim-easymotion'
-0ed39538991bace0fed2ed4b18f9f2d4|file:///Users/louis/.config/nvim/init.vim|123|1|V|vim
-	colorscheme louis-dev
-ea225ae75583177eba676db77e3af75d|file:///Users/louis/.config/nvim/init.vim|123|38|v|vim
-	darker
-6627415e807ee33c7302917216e7da68|file:///Users/louis/.config/nvim/init.vim|123|38|v|vim
-	deep
-e1a6448ed25ccdcb8d22930d1495d069|file:///Users/louis/.config/nvim/plugged/oceanic-material/colors/oceanic_material.vim|159|1|V|vim
-	    exec 'hi VertSplit' . s:fg_black . s:bg_none . 'gui=NONE cterm=NONE'
-f49543fb9f2f6c8aff923d1f21823e04|file:///Users/louis/.config/nvim/init.vim|129|3|v|vim
-	exec '
-afb2fbc71b2539d4125cd1f128599be2|file:///Users/louis/.config/nvim/init.vim|129|1|V|vim
-	  hi VertSplit #000000 #000000 gui=NONE cterm=NONE
-e1598c106a247a032127cfb5b2cfa545|file:///Users/louis/.config/nvim/init.vim|129|16|v|vim
-	#000000 #00000
-b50339a10e1de285ac99d4c3990b8693|file:///Users/louis/.config/nvim/init.vim|129|22|v|vim
-	NONE
-3c9ce0be1346c689350c151423ccb152|file:///Users/louis/.config/nvim/init.vim|124|19|V|vim
-	let g:oceanic_material_background	= 'darker'
-635344b0787b85917bd51e5e011a691e|file:///Users/louis/.config/nvim/init.vim|16|19|V|vim
-	Plug 'KeitaNakamura/neodark.vim'
-655747467dc2126a9990fc8049e427a4|file:///Users/louis/.config/nvim/init.vim|128|1|V|vim
-	  hi VertSplit guifg=#000000 guibg=#0000 gui=NONE cterm=NONE
-79d3c2aa13bb74e2f2edd1058c312801|file:///Users/louis/.config/nvim/init.vim|129|1|V|vim
-	  hi VertSplit guifg=#0000 guibg=#0000 gui=NONE cterm=NONE
-075a3e36a0a52dcbc568c05788e8a713|file:///Users/louis/.config/nvim/init.vim|123|37|v|vim
-	medium
-5e96bf62b9b2c18fdb65564b4a18fd1f|file:///Users/louis/.config/nvim/config/airline.vim|24|22|v|vim
-	transparent
-acb22916c4720943eb9ca9a826b0b78e|file:///Users/louis/.config/nvim/init.vim|124|13|v|vim
-	oceanic_material
-618ae2c7de7d2e8795c27830f40e0922|file:///Users/louis/.config/nvim/init.vim|123|34|V|vim
-	let g:oceanic_material_background= "darker"
-d6a6bc0db10694a2d90e3a69648f3a03|file:///Users/louis/.config/nvim/init.vim|124|13|v|vim
-	hacker
-a01a04068953f013161e442ed7d96971|file:///Users/louis/.config/nvim/init.vim|124|13|v|vim
-	mr-robot
-7321a0a60f5809733b8a12a55bb0845c|file:///Users/louis/.config/nvim/init.vim|124|13|v|vim
-	abyss
-4bed0534bd606b686f7d56845b9ff001|file:///Users/louis/.config/nvim/init.vim|124|11|V|vim
-	colorscheme mr-robot
-eebb56d2ed113c59e3b05b855651076f|file:///Users/louis/.config/nvim/init.vim|16|14|V|vim
-	Plug 'victorze/foo'
-b238fe7aa1c8a9264b0e34913f40a979|file:///Users/louis/.config/nvim/init.vim|123|13|v|vim
-	louis-dev
-0829ea6734059d66e6bf87096b215dc1|file:///Users/louis/.alacritty.yml|63|17|v|yaml
-	Fullscreen
-04d6b4ebe955762a0dd2090bd986169b|file:///Users/louis/.config/nvim/init.vim|137|22|v|vim
-	#0000
-b0968925c817f1ece0b617d50ec52f85|file:///Users/louis/.tmux.conf|14|1|V|tmux
-	set-option -g status-position bottom
-71f262d796bed1ab30e8a2d5a8ddee6f|file:///Users/louis/.tmux.conf|60|31|v|tmux
-	bottom
-5b04487a9d4478dc15e26edbb35c511f|file:///Users/louis/.tmux.conf|60|1|V|tmux
-	set-option -g status-position right
-7c4f29407893c334a6cb7a87bf045c0d|file:///Users/louis/.tmux.conf|60|33|v|tmux
-	right
-8e390e2b47849fbea577e54de65b5b89|file:///Users/louis/.tmux.conf|56|1|V|tmux
-	# set -g @plugin 'KeitaNakamura/tmux-statusbar'
-	# set -g @plugin 'KeitaNakamura/neodark.vim'
-96dd9afe4ad6a5a523b5857604bf8b83|file:///Users/louis/.tmux.conf|59|1|V|tmux
-	# set-option -g status-position bottom
-5ee92f0f5eb94a498d9eab29ecf7ffb6|file:///Users/louis/.tmux.conf|59|1|V|tmux
-	set -g @dracula-show-powerline true
-f93f70da9e1970575ec504890304aa61|file:///Users/louis/.tmux.conf|50|1|v|tmux
-	bind -r C-h previous-window # select previous window
-eed8cdc400dfd4ec85dff70a170066b7|file:///Users/louis/.config/nvim/init.vim|126|23|v|vim
-	ffffff
-81bd839c680fa92124b268e1e32cfd11|file:///Users/louis/.config/nvim/init.vim|12|7|V|vim
-	Plug 'kyazdani42/nvim-web-devicons'
-fd6bcb93107be6b42f09dd92d3b31993|file:///Users/louis/.config/nvim/init.vim|13|1|V|vim
-	Plug 'glepnir/spaceline.vim'
-c4c8ee4f5531ad9352f02b7d38398b69|file:///Users/louis/.config/nvim/init.vim|1|1|V|vim
-	"" ==================================================== Init Configure
-	let mapleader=','
-52d9fe285b66eaada0363d11f4d66479|file:///Users/louis/.alacritty.yml|164|20|v|yaml
-	98c379
-2467d3744600858cc9026d5ac6005305|file:///Users/louis/.alacritty.yml|164|20|v|yaml
-	232323
-e3ffbfde0fc155c278d18ab08e2ee4d5|file:///Users/louis/.alacritty.yml|164|21|v|yaml
-	0AE00
-8fa48f2ea41fecd178725698c7289dc9|file:///Users/louis/.alacritty.yml|164|20|v|yaml
-	0fffff
-8ce1cc259c9c4938e91ea2eb9db54684|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx|9|10|v|typescriptreact
-	ANALYTIC_EVENT
-50a4db7a2f33964f03c929f11ce98214|file:///Users/louis/.alacritty.yml|168|16|v|yaml
-	abb2bf
-0a3c5a850e1d315327734941a7cbb983|file:///Users/louis/.alacritty.yml|167|14|v|yaml
-	5c6370
-b13311ab51c4c34757f67f26580018dd|file:///Users/louis/.alacritty.yml|63|17|v|yaml
-	Windowed
-8bd1d467ab4ae5ef2de26f8680d44ba4|file:///Users/louis/.tmux.conf|59|1|V|tmux
-	set -g @dracula-show-time false
-ee567cd73d80e804670d047c7ff2ab47|file:///Users/louis/.tmux.conf|59|34|V|tmux
-	set -g @dracula-show-weather false
-efbcaa916c35887eab0ce16eb2c9fec5|file:///Users/louis/.tmux.conf|58|1|V|tmux
-	set -g @dracula-show-battery false
-	set -g @dracula-show-weather false
-	set -g @dracula-border-contrast true
-	set -g @dracula-cpu-usage true
-	set -g @dracula-ram-usage true
-5b6e4b71001bffa5099d1d55ec5099db|file:///Users/louis/.tmux.conf|60|1|V|tmux
-	set -g @dracula-border-contrast true
-	set -g @dracula-cpu-usage true
-	set -g @dracula-ram-usage true
-b4bbb32269e4fdbd7976e2cfcdb84087|file:///Users/louis/.tmux.conf|60|1|V|tmux
-	set -g @dracula-show-battery false
-f33259c3e93f901900878d135f01b9d4|file:///Users/louis/.tmux.conf|65|1|V|tmux
-	set-option -g status-position top
-be0b5eeaaa3f85585e69913ea2e1ead1|file:///Users/louis/.tmux.conf|58|6|V|tmux
-	set -g @dracula-show-battery false
-	set -g @dracula-show-time false
-	set -g @dracula-show-weather false
-	set -g @dracula-border-contrast true
-	set -g @dracula-cpu-usage true
-	set -g @dracula-ram-usage true
-386e2c2892f4700be5bfedd0929b236e|file:///Users/louis/.tmux.conf|57|1|V|tmux
+78bf8fe6a5c762a51c4a30d9be36b7db|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|195|9|v|typescriptreact
+	giftCodeDiscountType === DISCOUNT_TYPE.PERCENTAGE
+00404af4a9ea35e1dc7cbc4fc5399769|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|41|38|V|typescriptreact
+	    console.log(discountPriceExchange)
+016ac241c6ad515f0aac954fab66cdac|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|87|18|v|typescriptreact
+	getPrice(experience?.price || 0, currency, exchangeRates, true)
+e0daf5243b6d6909673af3d555902596|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingSummary/BookingSummary.tsx|98|17|v|typescriptreact
+	getPrice(
+	                  (exchangeRates[getCurrentCurrency(currency, exchangeRates)] *
+	                    (experience?.price || 0) *
+	                    discountPercentage) /
+	                    100,
+	                  currency,
+	                  exchangeRates,
+	                  true,
+	                )
+abcc388363adbfd39091b693a3a4d8ac|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/%5Busername%5D/TalentDetail.tsx|424|14|v|typescriptreact
+	SendExpertTipSuccessful
+517605a281e5d60bfd82a0962b319ea3|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|22|9|v|typescriptreact
+	experienceImageWidth
+90b26f96721d77a95ccd144962c6caf8|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|3|1|V|scss
+	  min-width: 459px;
+26c7ec4755c8d51c825435146b217ddd|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendExpertTipSuccessful/SendExpertTipSuccessful.tsx|26|49|v|typescriptreact
+	send-tip-request-successful
+12c875fd7865e89bf8e9a15f21660a00|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|3|1|V|scss
+	  max-width: 459px;
+88c2f49353e096839743ebde55df5505|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|12|19|V|scss
+	      max-width: 459px;
+b492bb4155014c897b740052e83f652b|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|6|1|V|scss
+	  .send-tip-request-successful {
+	    min-width: 459px;
+	    max-width: 459px;
 	
-	set -g @plugin 'KeitaNakamura/tmux-statusbar'
-53a981fb43b82f3da51b3a6d3404865f|file:///Users/louis/.tmux.conf|56|17|V|tmux
-	set -g @plugin 'dracula/tmux'
-c21f969b5f03d33d43e04f8f136e7682|file:///Users/louis/.config/nvim/init.vim|121|13|v|vim
-	default
-49d3efb25d738819acebadae46ba6901|file:///Users/louis/.config/nvim/config/airline.vim|24|22|v|vim
-	kolor
-b727e081050165ff80c8a12c328a5b78|file:///Users/louis/.config/nvim/init.vim|121|29|v|vim
-	#202020
-1232194e3fbbb41fd090e4077019d81c|file:///Users/louis/.config/nvim/init.vim|137|1|V|vim
-	" hi Normal guibg=NONE
-	" hi EndOfBuffer guibg=NONE
-ca6ac24759216a01bb07f25c5120039f|file:///Users/louis/.config/nvim/init.vim|138|1|V|vim
-	hi Noraml
-7a6bf173810012efa461b8090d734a15|file:///Users/louis/.config/nvim/init.vim|121|1|V|vim
-	let g:neodark#background = '#00000'
-6eed3086eb0147260ca0a073769af7c4|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|27|19|v|typescriptreact
-	CreateBookingRequest
-194534de1912ade9191dd98f33823475|file:///Users/louis/.config/nvim/init.vim|123|1|V|vim
-	colorscheme neodark
-3f7ab2da9ec11a09fc0fda518e30fe54|file:///Users/louis/.config/nvim/init.vim|122|36|V|vim
-	let g:neodark#background = '#202020'
-7f4f674758da747bbb7d8f224263ac5f|file:///Users/louis/.config/nvim/init.vim|122|21|V|vim
-	let g:oceanic_material_background	 = 'darker'
-2331527c578644126626985e2942582f|file:///Users/louis/.config/nvim/init.vim|13|1|V|vim
-	Plug 'KeitaNakamura/neodark.vim'
-	Plug 'glepnir/oceanic-material'
-c35d18be4981f23d50aa73ca8b0b0be7|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|17|10|v|typescriptreact
-	useRouter
-7b63656a9e585e2b1a62a21e5e9211ee|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|453|61|v|typescriptreact
-	bookingCreated
-e2f821b4c388d0feab68c5a4ade65baa|file:///Users/louis/.tmux.conf|56|1|V|tmux
-	set -g @plugin 'KeitaNakamura/tmux-statusbar'
-	set -g @plugin 'KeitaNakamura/neodark.vim'
-96714c9d36de9b638d9efd4e60f38bfe|file:///Users/louis/.tmux.conf|61|1|v|tmux
-	tmux
-86807c844a7abd86bb65a569931bad0d|file:///Users/louis/.tmux.conf|61|4|v|tmux
-	-option
+	    @include mobile {
+	      min-width: 500px;
+	    }
+	  }
+297ac9cef0a7fe9e1c80e67b1dac0028|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|12|18|v|scss
+	459px
+7705340b6fe9b63eeb69c4a1801fe0e5|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|11|7|v|scss
+	min-width: 343px;
+a127fd1f86e4ab650f2216f09992afa4|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|12|6|V|scss
+	      
+58d78f1c3039da60bb8b529de7e5fad4|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|12|23|V|scss
+	      max-width: 343px;
+9892bcc8bdd7e26dc6275e271878bdae|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|6|1|V|scss
+	  .send-tip-request-successful {
+	    min-width: 459px;
+	    max-width: 459px;
+	
+	    @include mobile {
+	      width: calc(100% - 32px) px;
+	    }
+	  }
+e233148a6ade807e0de1beafc5318c78|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|115|19|V|scss
+	    min-width: none
+a5611c290512958b2eef179dd7013b4f|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|116|5|V|scss
+	    min-width: calc(100% - 32px) !important;
+53d93567c4612422210273a2960cea23|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|111|3|v|scss
+	min-
+a573ecb521f6c61c7efd747f41148c7f|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|112|3|v|scss
+	max-
+caaa8225fcf923d1d95466c1426443cb|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|112|5|V|scss
+	  width: 459px;
+c0ab74c47e5303aceb646ec3887fd99f|file:///Users/louis/Dev/Projects/komi/komi-client/src/styles/components/RequestSuccessful.scss|115|25|V|scss
+	    width: calc(100% - 32px) !important;
+c2020aedd539a9b3429ae1f4db86efb5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|143|9|v|typescriptreact
+	updateMessage
+a308573737b39e4d4b5ccd62e2ffd788|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|152|9|v|typescriptreact
+	setCurrentMessage
+ef2103a741c1c9720ac7665acd807be3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|176|36|V|typescriptreact
+	          setCurrentMessage(message)
+697856892a02f2a67cfebcc31eb670bd|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|174|29|v|typescriptreact
+	updateChatMessage
+32c8ff2a8c7dbc47d94610834bfeeaa3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|143|9|v|typescriptreact
+	updatcweMessage
+66b60f2c151bdef3571ef0c31b1a9bcf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|174|29|v|typescriptreact
+	onSendChannelMessage
+121dccd7f3c7d52103474d7af35398b2|fugitive:/Users/louis/Dev/Projects/komi/komi-mobile/.git//0/app/components/chat/chat.tsx|142|1|V|typescriptreact
+	      updateChatMessage: (message) => {
+	        updateMessage(message)
+	      },
+793e4f8b8f944b185d01468990383ff4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|157|7|V|typescriptreact
+	      updateChatMessage: (message) => {
+f0a63600f73d4c29285584c85684eab4|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|142|1|V|typescriptreact
+	        setCurrentMessage(message)
+	        updateMessage(message)
+f3e30541f75c2120a96ec86e60b1a8f5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|154|1|V|typescriptreact
+	        console.log(message)
+	        await onSend(message)
+0df93e34273b367bb63bad28c94c78d5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|153|26|v|typescriptreact
+	async
+14285c6701119dadd397b2ffea9a1a98|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|174|29|v|typescriptreact
+	onSendChatMessage
+0ac64e289d3872bc88315f0ca274aeca|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/components/chat/chat.tsx|158|16|V|typescriptreact
+	        console.
+8fefd67e2e1b444cf9c58eb6da448d9b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/send-support-screen/send-support-screen.tsx|50|30|v|typescriptreact
+	successCallback
+0254509f496314951176bdf1c6bf43d7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|375|13|v|typescriptreact
+	LiveStreamRoom
+4ca5026a5ce00acfeb07c3f602f9eeb3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|28|5|v|typescriptreact
+	 // onFinish,
+ff3e4d5b953c931a0bb6ec643fe79429|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|27|13|V|typescriptreact
+	    onFinish,
+bcfd9236d846811f5e16b6c389e865e3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|16|21|V|typescriptreact
+	  onFinish: () => any
+4e78ffc229ac1632a404bd43bc748f10|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/live-stream-header.tsx|144|24|V|typescriptreact
+	            onFinish={onClose}
+7ff04211bcd63da2a1c6a3a1ec61b553|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-consumer.tsx|8|1|V|typescriptreact
+	  onClose: () => any
+ffe3da9b5df847e9445577bb9e762182|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|312|24|v|typescriptreact
+	showAlert
+f33540a09ceb8e9bd9a4c4860e66a2f8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/video-call-room-screen/video-call-room-screen.tsx|307|1|V|typescriptreact
+	            <TouchableOpacity
+	              style={[
+	                styles.actionButton,
+	                { backgroundColor: rgbColor(color.themeColor.red, 0.8) },
+	              ]}
+	              onPress={showAlert}
+	            >
+	              <Icon stroke={color.themeColor.white} name={"hangup-outline-white"} />
+	            </TouchableOpacity>
+8821245a43b5894d7cf16ec093fb1cc2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/live-stream-header.tsx|144|13|v|typescriptreact
+	onFinish
+1deaa6d1c6e09bd8035ae78e57093898|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/live-stream-header.tsx|144|13|v|typescriptreact
+	onFinsh
+c834fe74a14982b40dfb9fc652019b5e|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/live-stream-header.tsx|135|46|v|typescriptreact
+	actionContainer
+cf68ca24980513ea9c7dfceaef94b000|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|30|27|v|typescriptreact
+	actionButtonGroup
+895a135c545a92c0310762f5d6ef2ae9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-consumer.tsx|22|43|v|typescriptreact
+	actionButtonNested
+8d2495ce8108188799d62f1a632c72fa|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-consumer.tsx|21|34|v|typescriptreact
+	divider
+e935c0b78cbf9d7e97fc2febcbdf5250|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-consumer.tsx|21|1|V|typescriptreact
+	          <Divider style={styles.divider} />
+2908050e771fb91a3afbb7809972e90c|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|60|10|v|typescriptreact
+	Divider
+1a60835db780b4c26406766484040474|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|6|15|V|typescriptreact
+	import {Divider} from "react-native-elements"
+511ec70ffc5d412049bbb583ef4626b8|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-consumer.tsx|63|1|V|typescriptreact
+	  divider: {
+	    width: 1,
+	    height: 24,
+	  },
+a36559ac4de6b249d79b206b19e647e9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|105|3|V|typescriptreact
+	    marginTop: spacing[4],
+b4f69b65550da931701b2b2742a9ed46|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|251|11|v|typescriptreact
+	renderContent
+d5da25307f8c1c0082e17d0ea823d484|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|1|1|V|typescriptreact
+	    height: 10,
+53ea3d38a1c5c446ecf043612a2baebf|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|117|1|V|typescriptreact
+	  divider: {
+	    width: 1,
+	  },
+684c836e8b57247afe0194dc802f6d33|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/components/action-group-talent.tsx|60|1|V|typescriptreact
+	        <Divider style={styles.divider} />
+8b5f555e5cd482f652dab69eb540f76f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|341|9|v|typescriptreact
+	participants.length === 0
+7bf1de9ee496edecf22dd106b418c082|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|341|9|v|typescriptreact
+	participants.length === 0 && !isTalent
+f703dffd2d39c020e0afc0ef744d9ff0|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|105|1|V|typescriptreact
+	        setInitialMessages(RESET_MESSAGES)
+f62d13d70f4fd098b6b9c2feb5f8134a|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|40|57|V|typescriptreact
+	    return booking?.price === 0 || booking?.experience?.isFreeExperience;
+4dc36f92367fe10ee80c1c5a8983435f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|40|12|v|typescriptreact
+	booking?.price === 0 ||
+8f61723144f1bf7b17c43245598582e5|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-success/booking-success.tsx|79|11|v|typescriptreact
+	 booking?.price === 0 ||
+b20c995b4ffd385cdfaccfef439a5a02|file:///Users/louis/Dev/Projects/komi/komi-client/src/utils/currency.ts|56|31|V|typescript
+	  if (price === 0) return symbols + 0;
+c8c9052788021c5b50876ec5123530fc|file:///Users/louis/Dev/Projects/komi/komi-client/src/utils/currency.ts|61|19|v|typescript
+	formatPrice
+e5ad03d87be5eaafa6f882aa16b905a7|file:///Users/louis/Dev/Projects/komi/komi-mobile/.env.production|1|9|v|
+	https://api.komiapp.co/api
+86408a7377a7685f1b1318b81263b596|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/services/api/api-config.ts|22|8|v|typescript
+	CONFIG.API_URL || "https://localhost.local/api"
+d9c4237758ac68a17ca49c2ef1f102ea|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|215|11|v|typescriptreact
+	goBackHomeWithoutFinishCall
+f21b106b9a36ac902fe7f6b5be541a6a|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-room-screen/live-stream-room-screen.tsx|230|59|v|typescriptreact
+	confirmClose
+b6467628fa115e6b9229e123100d0883|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-end-screen/live-stream-end-screen.tsx|150|1|V|typescriptreact
+	              <Text
+	                style={[MB_5, CENTER, styles.descriptionText]}
+	                preset="regularR"
+	                tx="liveStreamEndScreen.talent.description"
+	              />
+4f190e2d6f2b090ce7d07bf370f7ffb7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/navigation/root-navigator.tsx|54|20|v|typescriptreact
+	MainNavigator
+dc90b2839602581a2fb34a84cb3dadba|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-end-screen/live-stream-end-screen.tsx|106|18|v|typescriptreact
+	participantChunks
+24ebc9a7e7d0509ca6b4d93a9fc1a2a3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-end-screen/live-stream-end-screen.tsx|95|46|v|typescriptreact
+	descriptionText
+e772b99f72386e29bc6cd553fcb8908d|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-end-screen/live-stream-end-screen.tsx|95|25|v|typescriptreact
+	MT_5
+4d2e7559ee61da3c39a41a5a89f80631|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-end-screen/live-stream-end-screen.tsx|96|25|v|typescriptreact
+	regularR
+fafe07413f3c51559722db305c2811d7|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-end-screen/live-stream-end-screen.tsx|1|1|V|typescriptreact
+	              <Text
+	                style={[CENTER, styles.descriptionText]}
+	                preset="regularR"
+	                tx="liveStreamEndScreen.talent.description"
+	              />
+2b552991382189ca12d268c5b5397622|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-end-screen/live-stream-end-screen.tsx|174|1|V|typescriptreact
+	            <Text
+	              style={[MT_2, CENTER, styles.descriptionText]}
+	              preset="regularR"
+	              tx="liveStreamEndScreen.consumer.description"
+	            />
+effa1940168f99b4f4124ed7fa428ae6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-end-screen/live-stream-end-screen.tsx|29|3|V|typescriptreact
+	  MB_5,
+1005b14bd29466723ace30d26f602f5b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/live-stream-end-screen/live-stream-end-screen.tsx|96|41|v|typescriptreact
+	consumer
+57e5caa263cacd91d571ffc83f4f6ac2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|472|1|V|json
+	      "description": "The replay of your live class will be available soon for your viewer.",
+eb7fe8b9df6744f65b1870ff63873ee9|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|469|7|V|json
+	      "description": "We look forward to seeing you again next time."
+a153c3f72f6ccb2d4791b28e4e0b8bf2|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|242|11|v|typescriptreact
+	processIAP
+c5a8edc6c579ae26c483314f8ffbbe36|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|205|9|v|typescriptreact
+	else if (booking?.message) {
+59c9e5b5f922aa60a4a19a6be843dbad|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|206|1|V|typescriptreact
+	        notifications.show({
+	          type: "error",
+	          text1: booking.message,
+	        })
+a1d7d45c556259ce2761f088bbe7a957|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|379|10|v|typescriptreact
+	 else if (booking?.message) {
+2e6e9f01af73ae657b09e4a506d63a28|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/1-to-1-experience-detail/1-to-1-experience-detail.tsx|380|1|V|typescriptreact
+	          setIsLoadingBooking(false)
+	          notifications.show({
+	            type: "error",
+	            text1: booking.message,
+	          })
+8f6b8d61c8260dfda072aed1f9177f28|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|325|34|V|typescriptreact
+	        console.log(currentBooking)
+2477e9c701e631560fb6e71bde9369f1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|335|13|V|typescriptreact
+	            )
+43bafe36f4b08c1a45f36b795cbf58f3|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx|1|1|V|typescriptreact
+	            console.log(receipt)
+48289d93cf481c15c71ed9068a7c0a71|file:///Users/louis/.config/nvim/init.vim|10|1|V|vim
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+b86b47e4613f20fdfa651dbf90581535|file:///Users/louis/.config/bootstrap/mac.sh|112|1|V|sh
+	  read -r -p "Do you want to install window manager? [y|N] " response
+	  if [[ $response =~ (y|yes|Y) ]];then
+d24bc844e0968b894299d64f0fd0345d|file:///Users/louis/.config/bootstrap/mac.sh|151|38|v|sh
+	window manager
+704016651320b240cdb2f52dd61a367a|file:///Users/louis/.config/nvim/init.vim|10|1|V|vim
+	" Plug 'vim-airline/vim-airline'
+	" Plug 'vim-airline/vim-airline-themes'
+7331ec6af30baeb1c0e488b157c971fe|file:///Users/louis/.config/nvim/init.vim|62|32|V|vim
+	" source ~/.config/nvim/config/airline.vim
+52fa64da80f5e6d3dc2a44a29eec2636|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|1|1|V|lua
+	-- require'nvim-web-devicons'.setup()
+	
+	local gl = require('galaxyline')
+	local gls = gl.section
+	gl.short_line_list = {'LuaTree','vista','dbui'}
+	
+	local colors = {
+	  bg = '#282c34',
+	  yellow = '#fabd2f',
+	  cyan = '#008080',
+	  darkblue = '#081633',
+	  green = '#608B4E',
+	  orange = '#FF8800',
+	  purple = '#5d4d7a',
+	  magenta = '#d16d9e',
+	  grey = '#c0c0c0',
+	  blue = '#569CD6',
+	  red = '#D16969'
+	}
+	
+	local buffer_not_empty = function()
+	  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+	    return true
+	  end
+	  return false
+	end
+	
+	-- gls.left[1] = {
+	--   FirstElement = {
+	--     -- provider = function() return '?' end,
+	--     provider = function() return ' ' end,
+	--     highlight = {colors.bg,colors.bg}
+	--   },
+	-- }
+	-- gls.left[2] = {
+	--   ViMode = {
+	--     provider = function()
+	--       local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',V= 'VISUAL', [''] = 'VISUAL'}
+	--       return alias[vim.fn.mode()]
+	--     end,
+	--     separator = ' ',
+	--     separator_highlight = {colors.yellow,function()
+	--       if not buffer_not_empty() then
+	--         return colors.purple
+	--       end
+	--       return colors.purple
+	--     end},
+	--     highlight = {colors.grey,colors.purple,'bold'},
+	--   },
+	-- }
+	gls.left[2] = {
+	  ViMode = {
+	    provider = function()
+	      -- auto change color according the vim mode
+	      local mode_color = {n = colors.purple,
+	        i = colors.green,
+	        v = colors.blue,
+	        [''] = colors.blue,
+	        V = colors.blue,
+	        c = colors.purple,
+	        no = colors.magenta,
+	        s = colors.orange,
+	        S = colors.orange,
+	        [''] = colors.orange,
+	        ic = colors.yellow,
+	        R = colors.red,
+	        Rv = colors.red,
+	        cv = colors.red,
+	        ce=colors.red,
+	        r = colors.cyan,
+	        rm = colors.cyan,
+	        ['r?'] = colors.cyan,
+	        ['!']  = colors.red,
+	      t = colors.red}
+	      vim.api.nvim_command('hi GalaxyViMode guibg='..mode_color[vim.fn.mode()])
+	      return '  NVCode '
+	    end,
+	    separator = ' ',
+	    separator_highlight = {colors.yellow,function()
+	      if not buffer_not_empty() then
+	        return colors.bg
+	      end
+	      return colors.bg
+	    end},
+	    highlight = {colors.grey,colors.bg,'bold'},
+	  },
+	}
+	-- gls.left[3] ={
+	--   FileIcon = {
+	--     separator = ' ',
+	--     provider = 'FileIcon',
+	--     condition = buffer_not_empty,
+	--     highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+	--   },
+	-- }
+	-- gls.left[4] = {
+	--   FileName = {
+	--     provider = {'FileSize'},
+	--     condition = buffer_not_empty,
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.magenta,colors.bg}
+	--   }
+	-- }
+	
+	gls.left[3] = {
+	  GitIcon = {
+	    provider = function() return '? ' end,
+	    condition = buffer_not_empty,
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.left[4] = {
+	  GitBranch = {
+	    provider = 'GitBranch',
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    condition = buffer_not_empty,
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	
+	local checkwidth = function()
+	  local squeeze_width  = vim.fn.winwidth(0) / 2
+	  if squeeze_width > 40 then
+	    return true
+	  end
+	  return false
+	end
+	
+	gls.left[5] = {
+	  DiffAdd = {
+	    provider = 'DiffAdd',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = ' ? ',
+	    highlight = {colors.green,colors.bg},
+	  }
+	}
+	gls.left[6] = {
+	  DiffModified = {
+	    provider = 'DiffModified',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = ' ? ',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[7] = {
+	  DiffRemove = {
+	    provider = 'DiffRemove',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = ' ? ',
+	    highlight = {colors.red,colors.bg},
+	  }
+	}
+	gls.left[8] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	gls.left[9] = {
+	  DiagnosticError = {
+	    provider = 'DiagnosticError',
+	    icon = ' ? ',
+	    highlight = {colors.red,colors.bg}
+	  }
+	}
+	gls.left[10] = {
+	  Space = {
+	    provider = function () return '' end
+	  }
+	}
+	gls.left[11] = {
+	  DiagnosticWarn = {
+	    provider = 'DiagnosticWarn',
+	    icon = ' ? ',
+	    highlight = {colors.yellow,colors.bg},
+	  }
+	}
+	gls.left[12] = {
+	  DiagnosticHint = {
+	    provider = 'DiagnosticHint',
+	    icon = '  ? ',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[13] = {
+	  DiagnosticInfo = {
+	    provider = 'DiagnosticInfo',
+	    icon = '  ? ',
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.right[1]= {
+	  FileFormat = {
+	    provider = 'FileFormat',
+	    separator = ' ',
+	    separator_highlight = {colors.bg,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[2] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    separator = ' | ',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  },
+	}
+	gls.right[3] = {
+	  PerCent = {
+	    provider = 'LinePercent',
+	    separator = ' |',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[4] = {
+	  ScrollBar = {
+	    provider = 'ScrollBar',
+	    highlight = {colors.yellow,colors.purple},
+	  }
+	}
+	
+	-- gls.short_line_left[1] = {
+	--   BufferType = {
+	--     provider = 'FileTypeName',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	
+	gls.short_line_left[1] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	
+	-- gls.short_line_right[1] = {
+	--   BufferIcon = {
+	--     provider= 'BufferIcon',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	-- function! s:my_bookmark_color() abort
+	--   let s:scl_guibg = matchstr(execute('hi SignColumn'), 'guibg=\zs\S*')
+	--   if empty(s:scl_guibg)
+	--     let s:scl_guibg = 'NONE'
+	--   endif
+	--   exe 'hi MyBookmarkSign guifg=' . s:scl_guibg
+	-- endfunction
+	-- call s:my_bookmark_color() " don't remove this line!
+	
+	-- augroup UserGitSignColumnColor
+	--   autocmd!
+	--   autocmd ColorScheme * call s:my_bookmark_color()
+	-- augroup END
+92f7fa3d430d2105446f37876c19b797|file:///Users/louis/.config/nvim/init.vim|15|1|V|vim
+	Plug "Iron-E/nvim-highlite"
+68165ed8f11f28f21ab49c14864c2591|file:///Users/louis/.config/nvim/init.vim|15|1|V|vim
+	Plug "iron-E/nvim-highlite"
+695843a6e4efd9b6a1741947ca666a5e|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|1|1|V|lua
+	local gl = require('galaxyline')
+	local utils = require('utils')
+	
+	local gls = gl.section
+	gl.short_line_list = { 'defx', 'packager', 'vista' }
+	
+	-- Colors
+	local colors = {
+	  bg = '#282a36',
+	  fg = '#f8f8f2',
+	  section_bg = '#38393f',
+	  yellow = '#f1fa8c',
+	  cyan = '#8be9fd',
+	  green = '#50fa7b',
+	  orange = '#ffb86c',
+	  magenta = '#ff79c6',
+	  blue = '#8be9fd',
+	  red = '#ff5555'
+	}
+	
+	-- Local helper functions
+	local buffer_not_empty = function()
+	  return not utils.is_buffer_empty()
+	end
+	
+	local checkwidth = function()
+	  return utils.has_width_gt(40) and buffer_not_empty()
+	end
+	
+	local mode_color = function()
+	  local mode_colors = {
+	    n = colors.cyan,
+	    i = colors.green,
+	    c = colors.orange,
+	    V = colors.magenta,
+	    [''] = colors.magenta,
+	    v = colors.magenta,
+	    R = colors.red,
+	  }
+	
+	  return mode_colors[vim.fn.mode()]
+	end
+	
+	-- Left side
+	gls.left[1] = {
+	  FirstElement = {
+	    provider = function() return '?' end,
+	    highlight = { colors.cyan, colors.section_bg }
+	  },
+	}
+	gls.left[2] = {
+	  ViMode = {
+	    provider = function()
+	      local alias = {
+	        n = 'NORMAL',
+	        i = 'INSERT',
+	        c = 'COMMAND',
+	        V = 'VISUAL',
+	        [''] = 'VISUAL',
+	        v = 'VISUAL',
+	        R = 'REPLACE',
+	      }
+	      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color())
+	      return alias[vim.fn.mode()]..' '
+	    end,
+	    highlight = { colors.bg, colors.bg },
+	    separator = "?  ",
+	    separator_highlight = {colors.bg, colors.section_bg},
+	  },
+	}
+	gls.left[3] ={
+	  FileIcon = {
+	    provider = 'FileIcon',
+	    condition = buffer_not_empty,
+	    highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.section_bg },
+	  },
+	}
+	gls.left[4] = {
+	  FileName = {
+	    provider = { 'FileName', 'FileSize' },
+	    condition = buffer_not_empty,
+	    highlight = { colors.fg, colors.section_bg },
+	    separator = "? ",
+	    separator_highlight = {colors.section_bg, colors.bg},
+	  }
+	}
+	gls.left[5] = {
+	  GitIcon = {
+	    provider = function() return ' ? ' end,
+	    condition = buffer_not_empty,
+	    highlight = {colors.red,colors.bg},
+	  }
+	}
+	gls.left[6] = {
+	  GitBranch = {
+	    provider = 'GitBranch',
+	    condition = buffer_not_empty,
+	    highlight = {colors.fg,colors.bg},
+	  }
+	}
+	gls.left[7] = {
+	  DiffAdd = {
+	    provider = 'DiffAdd',
+	    condition = checkwidth,
+	    icon = '? ',
+	    highlight = { colors.green, colors.bg },
+	  }
+	}
+	gls.left[8] = {
+	  DiffModified = {
+	    provider = 'DiffModified',
+	    condition = checkwidth,
+	    icon = '? ',
+	    highlight = { colors.orange, colors.bg },
+	  }
+	}
+	gls.left[9] = {
+	  DiffRemove = {
+	    provider = 'DiffRemove',
+	    condition = checkwidth,
+	    icon = '? ',
+	    highlight = { colors.red,colors.bg },
+	  }
+	}
+	gls.left[10] = {
+	  LeftEnd = {
+	    provider = function() return '? ' end,
+	    condition = buffer_not_empty,
+	    highlight = {colors.section_bg,colors.bg}
+	  }
+	}
+	gls.left[11] = {
+	  DiagnosticError = {
+	    provider = 'DiagnosticError',
+	    icon = ' ? ',
+	    highlight = {colors.red,colors.section_bg}
+	  }
+	}
+	gls.left[12] = {
+	  Space = {
+	    provider = function () return ' ' end,
+	    highlight = {colors.section_bg,colors.section_bg},
+	  }
+	}
+	gls.left[13] = {
+	  DiagnosticWarn = {
+	    provider = 'DiagnosticWarn',
+	    icon = ' ? ',
+	    highlight = {colors.orange,colors.section_bg},
+	  }
+	}
+	gls.left[14] = {
+	  Space = {
+	    provider = function () return ' ' end,
+	    highlight = {colors.section_bg,colors.section_bg},
+	  }
+	}
+	gls.left[15] = {
+	  DiagnosticInfo = {
+	    provider = 'DiagnosticInfo',
+	    icon = ' ? ',
+	    highlight = {colors.blue,colors.section_bg},
+	    separator = '? ',
+	    separator_highlight = { colors.section_bg, colors.bg },
+	  }
+	}
+	
+	-- Right side
+	gls.right[1]= {
+	  FileFormat = {
+	    provider = function() return vim.bo.filetype end,
+	    highlight = { colors.fg,colors.section_bg },
+	    separator = '? ',
+	    separator_highlight = { colors.section_bg,colors.bg },
+	  }
+	}
+	gls.right[2] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    highlight = { colors.fg, colors.section_bg },
+	    separator = ' | ',
+	    separator_highlight = { colors.bg, colors.section_bg },
+	  },
+	}
+	gls.right[3] = {
+	  Heart = {
+	    provider = function() return '? ' end,
+	    highlight = { colors.red, colors.section_bg },
+	    separator = ' | ',
+	    separator_highlight = { colors.bg, colors.section_bg },
+	  }
+	}
+	
+	-- Short status line
+	gls.short_line_left[1] = {
+	  BufferType = {
+	    provider = 'FileTypeName',
+	    highlight = { colors.fg, colors.section_bg },
+	    separator = '? ',
+	    separator_highlight = { colors.section_bg, colors.bg },
+	  }
+	}
+	
+	gls.short_line_right[1] = {
+	  BufferIcon = {
+	    provider= 'BufferIcon',
+	    highlight = { colors.yellow, colors.section_bg },
+	    separator = '? ',
+	    separator_highlight = { colors.section_bg, colors.bg },
+	  }
+	}
+	
+	-- Force manual load so that nvim boots with a status line
+	gl.load_galaxyline()
+0a19c0aa5ca211511ad1c835ad478088|file:///Users/louis/.config/nvim/init.vim|12|7|V|vim
+	Plug 'glepnir/galaxyline.nvim'
+42db6877d38c90743d9265bff4b5bc2d|file:///Users/louis/.config/nvim/init.vim|14|7|V|vim
+	Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+d37e5701bb6211742ab55289f5eb5fcf|file:///Users/louis/.config/nvim/init.vim|76|1|V|vim
+	luafile ~/.config/nvim/lua/plugins/galaxyline-config.lua
+5fb6e7c96ad58488d850b350bfe3a829|file:///Users/louis/.config/nvim/init.vim|8|1|V|vim
+	if has('nvim-0.5') " Source packer.nvim configuration
+	  lua require 'dump'
+447abbc025b46db8819d51c83cc5480b|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|1|1|V|lua
+	-- require'nvim-web-devicons'.setup()
+	--
+	local gl = require('galaxyline')
+	local utils = require('utils')
+	
+	local gls = gl.section
+	gl.short_line_list = { 'defx', 'packager', 'vista' }
+	
+	-- Colors
+	local colors = {
+	  bg = '#282a36',
+	  fg = '#f8f8f2',
+	  section_bg = '#38393f',
+	  yellow = '#f1fa8c',
+	  cyan = '#8be9fd',
+	  green = '#50fa7b',
+	  orange = '#ffb86c',
+	  magenta = '#ff79c6',
+	  blue = '#8be9fd',
+	  red = '#ff5555'
+	}
+	
+	-- Local helper functions
+	local buffer_not_empty = function()
+	  return not utils.is_buffer_empty()
+	end
+	
+	local checkwidth = function()
+	  return utils.has_width_gt(40) and buffer_not_empty()
+	end
+	
+	local mode_color = function()
+	  local mode_colors = {
+	    n = colors.cyan,
+	    i = colors.green,
+	    c = colors.orange,
+	    V = colors.magenta,
+	    [''] = colors.magenta,
+	    v = colors.magenta,
+	    R = colors.red,
+	  }
+	
+	  return mode_colors[vim.fn.mode()]
+	end
+	
+	-- Left side
+	gls.left[1] = {
+	  FirstElement = {
+	    provider = function() return '▋' end,
+	    highlight = { colors.cyan, colors.section_bg }
+	  },
+	}
+	gls.left[2] = {
+	  ViMode = {
+	    provider = function()
+	      local alias = {
+	        n = 'NORMAL',
+	        i = 'INSERT',
+	        c = 'COMMAND',
+	        V = 'VISUAL',
+	        [''] = 'VISUAL',
+	        v = 'VISUAL',
+	        R = 'REPLACE',
+	      }
+	      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color())
+	      return alias[vim.fn.mode()]..' '
+	    end,
+	    highlight = { colors.bg, colors.bg },
+	    separator = "  ",
+	    separator_highlight = {colors.bg, colors.section_bg},
+	  },
+	}
+	gls.left[3] ={
+	  FileIcon = {
+	    provider = 'FileIcon',
+	    condition = buffer_not_empty,
+	    highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.section_bg },
+	  },
+	}
+	gls.left[4] = {
+	  FileName = {
+	    provider = { 'FileName', 'FileSize' },
+	    condition = buffer_not_empty,
+	    highlight = { colors.fg, colors.section_bg },
+	    separator = " ",
+	    separator_highlight = {colors.section_bg, colors.bg},
+	  }
+	}
+	gls.left[5] = {
+	  GitIcon = {
+	    provider = function() return '  ' end,
+	    condition = buffer_not_empty,
+	    highlight = {colors.red,colors.bg},
+	  }
+	}
+	gls.left[6] = {
+	  GitBranch = {
+	    provider = 'GitBranch',
+	    condition = buffer_not_empty,
+	    highlight = {colors.fg,colors.bg},
+	  }
+	}
+	gls.left[7] = {
+	  DiffAdd = {
+	    provider = 'DiffAdd',
+	    condition = checkwidth,
+	    icon = ' ',
+	    highlight = { colors.green, colors.bg },
+	  }
+	}
+	gls.left[8] = {
+	  DiffModified = {
+	    provider = 'DiffModified',
+	    condition = checkwidth,
+	    icon = ' ',
+	    highlight = { colors.orange, colors.bg },
+	  }
+	}
+	gls.left[9] = {
+	  DiffRemove = {
+	    provider = 'DiffRemove',
+	    condition = checkwidth,
+	    icon = ' ',
+	    highlight = { colors.red,colors.bg },
+	  }
+	}
+	gls.left[10] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    condition = buffer_not_empty,
+	    highlight = {colors.section_bg,colors.bg}
+	  }
+	}
+	gls.left[11] = {
+	  DiagnosticError = {
+	    provider = 'DiagnosticError',
+	    icon = '  ',
+	    highlight = {colors.red,colors.section_bg}
+	  }
+	}
+	gls.left[12] = {
+	  Space = {
+	    provider = function () return ' ' end,
+	    highlight = {colors.section_bg,colors.section_bg},
+	  }
+	}
+	gls.left[13] = {
+	  DiagnosticWarn = {
+	    provider = 'DiagnosticWarn',
+	    icon = '  ',
+	    highlight = {colors.orange,colors.section_bg},
+	  }
+	}
+	gls.left[14] = {
+	  Space = {
+	    provider = function () return ' ' end,
+	    highlight = {colors.section_bg,colors.section_bg},
+	  }
+	}
+	gls.left[15] = {
+	  DiagnosticInfo = {
+	    provider = 'DiagnosticInfo',
+	    icon = '  ',
+	    highlight = {colors.blue,colors.section_bg},
+	    separator = ' ',
+	    separator_highlight = { colors.section_bg, colors.bg },
+	  }
+	}
+	
+	-- Right side
+	gls.right[1]= {
+	  FileFormat = {
+	    provider = function() return vim.bo.filetype end,
+	    highlight = { colors.fg,colors.section_bg },
+	    separator = ' ',
+	    separator_highlight = { colors.section_bg,colors.bg },
+	  }
+	}
+	gls.right[2] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    highlight = { colors.fg, colors.section_bg },
+	    separator = ' | ',
+	    separator_highlight = { colors.bg, colors.section_bg },
+	  },
+	}
+	gls.right[3] = {
+	  Heart = {
+	    provider = function() return ' ' end,
+	    highlight = { colors.red, colors.section_bg },
+	    separator = ' | ',
+	    separator_highlight = { colors.bg, colors.section_bg },
+	  }
+	}
+	
+	-- Short status line
+	gls.short_line_left[1] = {
+	  BufferType = {
+	    provider = 'FileTypeName',
+	    highlight = { colors.fg, colors.section_bg },
+	    separator = ' ',
+	    separator_highlight = { colors.section_bg, colors.bg },
+	  }
+	}
+	
+	gls.short_line_right[1] = {
+	  BufferIcon = {
+	    provider= 'BufferIcon',
+	    highlight = { colors.yellow, colors.section_bg },
+	    separator = ' ',
+	    separator_highlight = { colors.section_bg, colors.bg },
+	  }
+	}
+	
+	-- Force manual load so that nvim boots with a status line
+	gl.load_galaxyline()
+69cf7ad870dc9a19528058904bbaaddd|file:///Users/louis/.config/nvim/init.vim|10|24|V|vim
+	Plug 'ryanoasis/vim-devicons'
+5120e5d1252cca3c6695b71713b1687f|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|43|18|V|lua
+	-- require'nvim-web-devicons'.setup()
+	
+	local gl = require('galaxyline')
+	local gls = gl.section
+	gl.short_line_list = {'LuaTree','vista','dbui'}
+	
+	local colors = {
+	  bg = '#282c34',
+	  yellow = '#fabd2f',
+	  cyan = '#008080',
+	  darkblue = '#081633',
+	  green = '#608B4E',
+	  orange = '#FF8800',
+	  purple = '#5d4d7a',
+	  magenta = '#d16d9e',
+	  grey = '#c0c0c0',
+	  blue = '#569CD6',
+	  red = '#D16969'
+	}
+	
+	local buffer_not_empty = function()
+	  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+	    return true
+	  end
+	  return false
+	end
+	
+	-- gls.left[1] = {
+	--   FirstElement = {
+	--     -- provider = function() return '?' end,
+	--     provider = function() return ' ' end,
+	--     highlight = {colors.bg,colors.bg}
+	--   },
+	-- }
+	-- gls.left[2] = {
+	--   ViMode = {
+	--     provider = function()
+	--       local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',V= 'VISUAL', [''] = 'VISUAL'}
+	--       return alias[vim.fn.mode()]
+	--     end,
+	--     separator = ' ',
+	--     separator_highlight = {colors.yellow,function()
+	--       if not buffer_not_empty() then
+	--         return colors.purple
+	--       end
+	--       return colors.purple
+	--     end},
+	--     highlight = {colors.grey,colors.purple,'bold'},
+	--   },
+	-- }
+	gls.left[2] = {
+	  ViMode = {
+	    provider = function()
+	      -- auto change color according the vim mode
+	      local mode_color = {n = colors.purple,
+	                          i = colors.green,
+	                          v = colors.blue,
+	                          [''] = colors.blue,
+	                          V = colors.blue,
+	                          c = colors.purple,
+	                          no = colors.magenta,
+	                          s = colors.orange,
+	                          S = colors.orange,
+	                          [''] = colors.orange,
+	                          ic = colors.yellow,
+	                          R = colors.red,
+	                          Rv = colors.red,
+	                          cv = colors.red,
+	                          ce=colors.red,
+	                          r = colors.cyan,
+	                          rm = colors.cyan,
+	                          ['r?'] = colors.cyan,
+	                          ['!']  = colors.red,
+	                          t = colors.red}
+	      vim.api.nvim_command('hi GalaxyViMode guibg='..mode_color[vim.fn.mode()])
+	      return '  NVCode '
+	    end,
+	    separator = ' ',
+	    separator_highlight = {colors.yellow,function()
+	      if not buffer_not_empty() then
+	        return colors.bg
+	      end
+	      return colors.bg
+	    end},
+	    highlight = {colors.grey,colors.bg,'bold'},
+	  },
+	}
+	-- gls.left[3] ={
+	--   FileIcon = {
+	--     separator = ' ',
+	--     provider = 'FileIcon',
+	--     condition = buffer_not_empty,
+	--     highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+	--   },
+	-- }
+	-- gls.left[4] = {
+	--   FileName = {
+	--     provider = {'FileSize'},
+	--     condition = buffer_not_empty,
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.magenta,colors.bg}
+	--   }
+	-- }
+	
+	gls.left[3] = {
+	  GitIcon = {
+	    provider = function() return '? ' end,
+	    condition = buffer_not_empty,
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.left[4] = {
+	  GitBranch = {
+	    provider = 'GitBranch',
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    condition = buffer_not_empty,
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	
+	local checkwidth = function()
+	  local squeeze_width  = vim.fn.winwidth(0) / 2
+	  if squeeze_width > 40 then
+	    return true
+	  end
+	  return false
+	end
+	
+	gls.left[5] = {
+	  DiffAdd = {
+	    provider = 'DiffAdd',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = ' ? ',
+	    highlight = {colors.green,colors.bg},
+	  }
+	}
+	gls.left[6] = {
+	  DiffModified = {
+	    provider = 'DiffModified',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = ' ? ',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[7] = {
+	  DiffRemove = {
+	    provider = 'DiffRemove',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = ' ? ',
+	    highlight = {colors.red,colors.bg},
+	  }
+	}
+	gls.left[8] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	gls.left[9] = {
+	  DiagnosticError = {
+	    provider = 'DiagnosticError',
+	    icon = ' ? ',
+	    highlight = {colors.red,colors.bg}
+	  }
+	}
+	gls.left[10] = {
+	  Space = {
+	    provider = function () return '' end
+	  }
+	}
+	gls.left[11] = {
+	  DiagnosticWarn = {
+	    provider = 'DiagnosticWarn',
+	    icon = ' ? ',
+	    highlight = {colors.yellow,colors.bg},
+	  }
+	}
+	gls.left[12] = {
+	  DiagnosticHint = {
+	    provider = 'DiagnosticHint',
+	    icon = '  ? ',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[13] = {
+	  DiagnosticInfo = {
+	    provider = 'DiagnosticInfo',
+	    icon = '  ? ',
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.right[1]= {
+	  FileFormat = {
+	    provider = 'FileFormat',
+	    separator = ' ',
+	    separator_highlight = {colors.bg,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[2] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    separator = ' | ',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  },
+	}
+	gls.right[3] = {
+	  PerCent = {
+	    provider = 'LinePercent',
+	    separator = ' |',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[4] = {
+	  ScrollBar = {
+	    provider = 'ScrollBar',
+	    highlight = {colors.yellow,colors.purple},
+	  }
+	}
+	
+	-- gls.short_line_left[1] = {
+	--   BufferType = {
+	--     provider = 'FileTypeName',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	
+	gls.short_line_left[1] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	
+	-- gls.short_line_right[1] = {
+	--   BufferIcon = {
+	--     provider= 'BufferIcon',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	-- function! s:my_bookmark_color() abort
+	--   let s:scl_guibg = matchstr(execute('hi SignColumn'), 'guibg=\zs\S*')
+	--   if empty(s:scl_guibg)
+	--     let s:scl_guibg = 'NONE'
+	--   endif
+	--   exe 'hi MyBookmarkSign guifg=' . s:scl_guibg
+	-- endfunction
+	-- call s:my_bookmark_color() " don't remove this line!
+	
+	-- augroup UserGitSignColumnColor
+	--   autocmd!
+	--   autocmd ColorScheme * call s:my_bookmark_color()
+	-- augroup END
+8e5de80b5f030b3a08667d63d1e1de25|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|1|1|V|lua
+	-- require'nvim-web-devicons'.setup()
+	
+	local gl = require('galaxyline')
+	local gls = gl.section
+	gl.short_line_list = {'LuaTree','vista','dbui'}
+	
+	local colors = {
+	  bg = '#282c34',
+	  yellow = '#fabd2f',
+	  cyan = '#008080',
+	  darkblue = '#081633',
+	  green = '#608B4E',
+	  orange = '#FF8800',
+	  purple = '#5d4d7a',
+	  magenta = '#d16d9e',
+	  grey = '#c0c0c0',
+	  blue = '#569CD6',
+	  red = '#D16969'
+	}
+	
+	local buffer_not_empty = function()
+	  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+	    return true
+	  end
+	  return false
+	end
+	
+	-- gls.left[1] = {
+	--   FirstElement = {
+	--     -- provider = function() return '▋' end,
+	--     provider = function() return ' ' end,
+	--     highlight = {colors.bg,colors.bg}
+	--   },
+	-- }
+	-- gls.left[2] = {
+	--   ViMode = {
+	--     provider = function()
+	--       local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',V= 'VISUAL', [''] = 'VISUAL'}
+	--       return alias[vim.fn.mode()]
+	--     end,
+	--     separator = ' ',
+	--     separator_highlight = {colors.yellow,function()
+	--       if not bffer_not_empty() then
+	--         return colors.purple
+	--       end
+	--       return colors.purple
+	--     end},
+	--     highlight = {colors.grey,colors.purple,'bold'},
+	--   },
+	-- }
+	gls.left[2] = {
+	  ViMode = {
+	    provider = function()
+	      -- auto change color according the vim mode
+	      local mode_color = {n = colors.purple,
+	                          i = colors.green,
+	                          v = colors.blue,
+	                          [''] = colors.blue,
+	                          V = colors.blue,
+	                          c = colors.purple,
+	                          no = colors.magenta,
+	                          s = colors.orange,
+	                          S = colors.orange,
+	                          [''] = colors.orange,
+	                          ic = colors.yellow,
+	                          R = colors.red,
+	                          Rv = colors.red,
+	                          cv = colors.red,
+	                          ce=colors.red,
+	                          r = colors.cyan,
+	                          rm = colors.cyan,
+	                          ['r?'] = colors.cyan,
+	                          ['!']  = colors.red,
+	                          t = colors.red}
+	      vim.api.nvim_command('hi GalaxyViMode guibg='..mode_color[vim.fn.mode()])
+	      return '  NVCode '
+	    end,
+	    separator = ' ',
+	    separator_highlight = {colors.yellow,function()
+	      if not buffer_not_empty() then
+	        return colors.bg
+	      end
+	      return colors.bg
+	    end},
+	    highlight = {colors.grey,colors.bg,'bold'},
+	  },
+	}
+	-- gls.left[3] ={
+	--   FileIcon = {
+	--     separator = ' ',
+	--     provider = 'FileIcon',
+	--     condition = buffer_not_empty,
+	--     highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+	--   },
+	-- }
+	-- gls.left[4] = {
+	--   FileName = {
+	--     provider = {'FileSize'},
+	--     condition = buffer_not_empty,
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.magenta,colors.bg}
+	--   }
+	-- }
+	
+	gls.left[3] = {
+	  GitIcon = {
+	    provider = function() return ' ' end,
+	    condition = buffer_not_empty,
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.left[4] = {
+	  GitBranch = {
+	    provider = 'GitBranch',
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    condition = buffer_not_empty,
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	
+	local checkwidth = function()
+	  local squeeze_width  = vim.fn.winwidth(0) / 2
+	  if squeeze_width > 40 then
+	    return true
+	  end
+	  return false
+	end
+	
+	gls.left[5] = {
+	  DiffAdd = {
+	    provider = 'DiffAdd',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = '  ',
+	    highlight = {colors.green,colors.bg},
+	  }
+	}
+	gls.left[6] = {
+	  DiffModified = {
+	    provider = 'DiffModified',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = '  ',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[7] = {
+	  DiffRemove = {
+	    provider = 'DiffRemove',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = '  ',
+	    highlight = {colors.red,colors.bg},
+	  }
+	}
+	gls.left[8] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	gls.left[9] = {
+	  DiagnosticError = {
+	    provider = 'DiagnosticError',
+	    icon = '  ',
+	    highlight = {colors.red,colors.bg}
+	  }
+	}
+	gls.left[10] = {
+	  Space = {
+	    provider = function () return '' end
+	  }
+	}
+	gls.left[11] = {
+	  DiagnosticWarn = {
+	    provider = 'DiagnosticWarn',
+	    icon = '  ',
+	    highlight = {colors.yellow,colors.bg},
+	  }
+	}
+	gls.left[12] = {
+	  DiagnosticHint = {
+	    provider = 'DiagnosticHint',
+	    icon = '   ',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[13] = {
+	  DiagnosticInfo = {
+	    provider = 'DiagnosticInfo',
+	    icon = '   ',
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.right[1]= {
+	  FileFormat = {
+	    provider = 'FileFormat',
+	    separator = ' ',
+	    separator_highlight = {colors.bg,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[2] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    separator = ' | ',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  },
+	}
+	gls.right[3] = {
+	  PerCent = {
+	    provider = 'LinePercent',
+	    separator = ' |',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[4] = {
+	  ScrollBar = {
+	    provider = 'ScrollBar',
+	    highlight = {colors.yellow,colors.purple},
+	  }
+	}
+	
+	-- gls.short_line_left[1] = {
+	--   BufferType = {
+	--     provider = 'FileTypeName',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	
+	gls.short_line_left[1] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	
+	-- gls.short_line_right[1] = {
+	--   BufferIcon = {
+	--     provider= 'BufferIcon',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	-- function! s:my_bookmark_color() abort
+	--   let s:scl_guibg = matchstr(execute('hi SignColumn'), 'guibg=\zs\S*')
+	--   if empty(s:scl_guibg)
+	--     let s:scl_guibg = 'NONE'
+	--   endif
+	--   exe 'hi MyBookmarkSign guifg=' . s:scl_guibg
+	-- endfunction
+	-- call s:my_bookmark_color() " don't remove this line!
+	
+	-- augroup UserGitSignColumnColor
+	--   autocmd!
+	--   autocmd ColorScheme * call s:my_bookmark_color()
+	-- augroup ENDu
+e34db09629a2bcec5602b4b20281aa20|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|76|17|v|lua
+	NVCode
+90b0429e960557227f474e9e6a835935|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|8|10|v|lua
+	282c34

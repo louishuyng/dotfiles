@@ -147,6 +147,13 @@ install_tool() {
   fi
 }
 
+install_lua() {
+  read -r -p "Do you want to install lua? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install lua
+  fi
+}
+
 install_homebrew
 setup_git
 install_zsh
@@ -154,6 +161,7 @@ install_terminal
 install_nvim
 install_window_manager
 install_tool
+install_lua
 
 echo "---"
 
