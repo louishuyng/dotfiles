@@ -1,7 +1,9 @@
-/Users/louis/.config/.gitignore
-/Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh
-/Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/dracula.tmux
+/Users/louis/.config/bootstrap/mac.sh
+/Users/louis/.tmux/plugins/tmux/scripts/dracula.sh
 /Users/louis/.tmux.conf
+/Users/louis/.config/.gitignore
+/Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/dracula.tmux
+/Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh
 /Users/louis/.config/nvim/init.vim
 /Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua
 /Users/louis/Dev/Projects/komi/komi-client/src/hooks/index.ts
@@ -12,7 +14,6 @@
 /Users/louis/.alacritty.yml
 /Users/louis/Dev/Projects/komi/komi-client/server/index.ts
 /Users/louis/.config/nvim/config/airline.vim
-/Users/louis/.config/bootstrap/mac.sh
 /Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx
 /Users/louis/Dev/Projects/komi/komi-client/src/pages/user/BookingHistory/BookingHistory.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx

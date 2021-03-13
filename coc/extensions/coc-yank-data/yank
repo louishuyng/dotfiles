@@ -1,23 +1,3 @@
-e55dea30cc178bf1a41e48f8eaef3506|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|29|v|typescriptreact
-	:Booking
-ae94f80b3ce82062a5dd7815daa04f9d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|32|v|typescriptreact
-	Complete
-ec3696fa18291d30c1cf1b78203ee9d4|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|39|9|v|typescriptreact
-	isFreeExeprience
-189e368a53b0241ff2d101af140b9148|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|57|30|v|typescriptreact
-	Your booking has been completed
-7252d0a0645dde92866d1c9df5d4a7e4|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|57|30|v|typescriptreact
-	'Your booking has been completed'
-0c9cec70b2cf2eb3d2004759573f4001|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|113|1|V|typescriptreact
-	          : booking?.experience?.type === EXPERIENCE_TYPE.ON_DEMAND_CONTENT && !isFreeExperience
-8a06d2622befd9504887cf0e84d69112|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|115|1|V|typescriptreact
-	          : bookingService
-af918f1a38de4a147bc5e3ad88277dab|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-success/booking-success.tsx|127|1|V|typescriptreact
-	                    booking.experience.type === CONTENT_TYPE.exclusiveContent && !isFreeExperience
-3e9fbcf2539deee771d809d88f6c2033|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|101|5|V|json
-	    "watch": "Watch",
-d2974c96dc96b3f30a6168bcc4b25b02|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|101|6|v|json
-	watch
 f20658650d987d31063b593c05980397|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|101|24|v|json
 	Watch
 5b79c893beb022fc9f1d8fa90e345e66|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|101|6|v|json
@@ -4215,3 +4195,44 @@ d508fe45cecaf653904a0e774084bb5c|file:///Users/louis/.config/suckless/tmux/.tmux
 	#6272a4
 f43dd60a2a69c836aa4eb172a48d6e1e|file:///Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh|93|17|v|sh
 	window_flags
+baa7a52965b99778f38ef37f235e9053|file:///Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/dracula.tmux|10|4|V|sh
+	asas
+6332f3e11fc9d6bdcd534d63a2b4774a|file:///Users/louis/.config/bootstrap/mac.sh|150|1|V|sh
+	install_lua() {
+	  read -r -p "Do you want to install lua? [y|N] " response
+	  if [[ $response =~ (y|yes|Y) ]];then
+	    brew install lua
+	  fi
+	}
+90686a597ab0987509a444e7f9844b2d|file:///Users/louis/.config/bootstrap/mac.sh|160|1|V|sh
+	    brew install lua
+7511170a0ba5c8a739b918592e14e550|file:///Users/louis/.config/bootstrap/mac.sh|123|1|V|sh
+	    ln -s ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+9b8c8ba69a89656aa35e61355ac02590|file:///Users/louis/.config/bootstrap/mac.sh|161|23|v|sh
+	mac_os/skhdrc/.skhdrc
+b5df1a0bfa2ccbd37e15680486a7a26b|file:///Users/louis/.config/bootstrap/mac.sh|161|42|v|sh
+	skhdrc
+135f000b04d4a3a8599f1a2d9f78716d|file:///Users/louis/.config/bootstrap/mac.sh|175|12|V|sh
+	install_tmux
+55ca71c6270629607edbc9b4087812d1|file:///Users/louis/.config/bootstrap/mac.sh|157|1|V|sh
+	install_tmux() {
+	  read -r -p "Do you want to install tmux? [y|N] " response
+	  if [[ $response =~ (y|yes|Y) ]];then
+	    brew install tmux
+	    ln -s ../suckless/tmux/.tmux.conf ~/.tmux.conf
+	
+	    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	  fi
+	}
+43479858dce6b77fa6410faece9b2bed|file:///Users/louis/.config/bootstrap/mac.sh|111|1|V|sh
+	install_terminal() {
+	  read -r -p "Do you want to install terminal? [y|N] " response
+	  if [[ $response =~ (y|yes|Y) ]];then
+	    brew cask install alacritty
+	
+	    ln -s ../suckless/mac_os/alacritty/alacritty.yml ~/.alacritty.yml
+	    success "Installed terminal"
+	  fi
+	}
+e5265e8327c509762364a7741a173d18|file:///Users/louis/.config/bootstrap/mac.sh|171|1|V|sh
+	install_terminal

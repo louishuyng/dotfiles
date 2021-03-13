@@ -84,6 +84,16 @@ install_font() {
   fi
 }
 
+install_terminal() {
+  read -r -p "Do you want to install terminal? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew cask install alacritty
+
+    ln -s ../suckless/mac_os/alacritty/alacritty.yml ~/.alacritty.yml
+    success "Installed terminal"
+  fi
+}
+
 install_nvim() {
   read -r -p "Do you want to install neovim? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -98,13 +108,13 @@ install_nvim() {
   fi
 }
 
-install_terminal() {
-  read -r -p "Do you want to install terminal? [y|N] " response
+install_tmux() {
+  read -r -p "Do you want to install tmux? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew cask install alacritty
+    brew install tmux
+    ln -s ../suckless/tmux/.tmux.conf ~/.tmux.conf
 
-    ln -s ../suckless/mac_os/alacritty/alacritty.yml ~/.alacritty.yml
-    success "Installed terminal"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 }
 
@@ -159,6 +169,7 @@ setup_git
 install_zsh
 install_terminal
 install_nvim
+install_tmux
 install_window_manager
 install_tool
 install_lua
