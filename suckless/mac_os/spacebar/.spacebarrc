@@ -3,7 +3,7 @@
 spacebar -m config text_font         "Hack:Bold:12.5"
 spacebar -m config icon_font         "Font Awesome 5 Free:Solid:12.5"
 
-spacebar -m config space_icon_strip  "cube" "code" "globe" "comments" "fire"    
+spacebar -m config space_icon_strip  "cube" "code" "comments" "book"    
 spacebar -m config power_icon_strip   
 spacebar -m config clock_icon        "clock"
 spacebar -m config dnd_icon          

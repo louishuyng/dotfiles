@@ -31,7 +31,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
-Plug 'tpope/vim-commentary'
 Plug 'joequery/stupid-easymotion'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'

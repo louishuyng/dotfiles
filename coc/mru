@@ -1,8 +1,18 @@
+/Users/louis/.config/.gitignore
+/Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh
+/Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/dracula.tmux
+/Users/louis/.tmux.conf
 /Users/louis/.config/nvim/init.vim
 /Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua
+/Users/louis/Dev/Projects/komi/komi-client/src/hooks/index.ts
+/Users/louis/.config/nvim/coc-settings.json
+/Users/louis/Dev/Projects/komi/komi-client/src/pages/_app/index.tsx
+/Users/louis/.spacebarrc
+/Users/louis/.yabairc
+/Users/louis/.alacritty.yml
+/Users/louis/Dev/Projects/komi/komi-client/server/index.ts
 /Users/louis/.config/nvim/config/airline.vim
 /Users/louis/.config/bootstrap/mac.sh
-/Users/louis/Dev/Projects/komi/komi-client/src/pages/_app/index.tsx
 /Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx
 /Users/louis/Dev/Projects/komi/komi-client/src/pages/user/BookingHistory/BookingHistory.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-payment-screen/booking-payment-screen.tsx
@@ -63,14 +73,12 @@
 /Users/louis/Dev/Projects/komi/komi-admin/share-components-web/src/routes/index.tsx
 /Users/louis/Dev/Projects/komi/komi-admin/src/pages/CreateExperience1To1/index.ts
 /Users/louis/Dev/Projects/komi/komi-admin/komi-talent/package.json
-/Users/louis/.yabairc
 /Users/louis/Dev/Projects/komi/komi-talent/src/pages/CreateExperience1To1/index.ts
 /Users/louis/Dev/Projects/komi/komi-client/src/pages/user/BookingHistory/SupportDetail/SupportDetail.tsx
 /Users/louis/Dev/Projects/komi/komi-client/src/pages/experience/[id]/LiveClassSection/LiveClassSection.tsx
 /Users/louis/Dev/Projects/komi/komi-client/src/pages/user/User.tsx
 /Users/louis/Dev/Projects/komi/komi-client/.env
 /Users/louis/Dev/Projects/komi/komi-client/src/utils/container.tsx
-/Users/louis/Dev/Projects/komi/komi-client/server/index.ts
 /Users/louis/Dev/Projects/komi/komi-client/src/components/Price/Price.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/support-purchase-detail-screen/support-purchase-detail-screen.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/app/components/local-currency-provider/local-currency-provider.tsx
@@ -86,7 +94,6 @@
 /Users/louis/.zshrc
 /Users/louis/Dev/Projects/komi/komi-client/src/components/CheckoutSpecialRequestSuccessful/CheckoutSpecialRequestSuccessful.tsx
 /Users/louis/.config/suckless/oh-my-zsh/oh-my-zsh.sh
-/Users/louis/.alacritty.yml
 /Users/louis/Dev/Projects/komi/komi-client/src/pages/user/BookingHistory/SupportDetail/SupportSection.tsx
 /Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx
 /Users/louis/Dev/Projects/komi/komi-client/src/redux/GiftsCode/types.ts
@@ -136,7 +143,6 @@
 /Users/louis/Dev/Projects/komi/komi-client/src/rtc-client.ts
 /Users/louis/Dev/Projects/komi/komi-mobile/app/models/stores/auth-store.ts
 /Users/louis/Dev/Projects/komi/komi-mobile/app/screens/register-verify-screen/register-verify-screen.tsx
-/Users/louis/.tmux.conf
 /Users/louis/Dev/Projects/komi/komi-mobile/app/components/notification-provider/notification-provider.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/NotificationModel.ts
 /Users/louis/Dev/Projects/komi/komi-client/src/hooks/useNotification.ts
@@ -152,7 +158,6 @@
 /Users/louis/.skhdrc
 /Users/louis/Dev/Projects/komi/komi-mobile/app/components/index.ts
 /Users/louis/Dev/Projects/komi/komi-mobile/app/assets/icons/notification.svg
-/Users/louis/.config/nvim/coc-settings.json
 /Users/louis/.config/nvim/plugged/oceanic-material/colors/oceanic_material.vim
 /Users/louis/Dev/Projects/komi/komi-mobile/app/components/screen/screen.tsx
 /Users/louis/Dev/Projects/komi/komi-mobile/Gemfile
@@ -444,4 +449,3 @@
 /Users/louis/Dev/Interview/HackerNewsReaderUI/src/client/Services/Post.ts
 /Users/louis/Dev/Interview/HackerNewsReaderUI/src/client/Services/index.ts
 /Users/louis/.config/suckless/tmux/.tmux.conf
-/Users/louis/.config/.gitignore

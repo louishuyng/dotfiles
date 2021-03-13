@@ -1,283 +1,3 @@
-e71f20c97befd0f082050d458d63e92b|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|254|1|V|typescriptreact
-	                    <Form.Item name="custom" className="send-tip-price-button">
-	                      <Input
-	                        placeholder="Custom"
-	                        className={`${index === selectedPrice && "active-tip-price-btn"}`}
-	                        onClick={() => setSelectedPrice(index)}
-	                        onChange={(val) => {
-	                          setCustomPrice(Number(val?.currentTarget?.value));
-	                        }}
-	                      />
-	                    </Form.Item>
-6a992d5529f459a44fee58c733255e86|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|297|35|v|typescriptreact
-	index
-f0e0de2b46be81c50c653b764df47bed|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|297|35|v|typescriptreact
-	supportPrices
-25e8d01938e6d682a4890ab6328dbc90|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|294|42|v|typescriptreact
-	className="send-tip-price-button"
-d965f60a1a5b8e919461307e0c9c8fb5|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|299|42|v|typescriptreact
-	 full-width
-a0e2e9aa7e15b5afe36d4aeba35e4a6f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|36|22|V|typescriptreact
-	>>>>>>> Stashed changes
-b8b22deb1f424d77dea898a825d1f483|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|33|1|V|typescriptreact
-	=======
-f04b1e917b489a15c58993333718a370|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|31|1|V|typescriptreact
-	<<<<<<< Updated upstream
-cf0a55f7db2b9d69a1b15236f1c5c28f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|32|37|V|typescriptreact
-	import { formatCurrencyNonExchange, getCurrentCurrency } from "utils/currency";
-6e00c0f6c1d4d06c1b850bf95d0cc5bf|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|252|1|V|typescriptreact
-	                        {formatCurrencyNonExchange(currency).format(price)}
-4664306da79bb02f9295bac564b58e57|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|261|1|V|typescriptreact
-	                      formatter={(value) =>
-	                        value ? formatCurrency(currency, exchangeRates).format(Number(value) || 0) : ""
-	                      }
-1de2c75b4327b70a230f5e47cd338f99|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|261|1|V|typescriptreact
-	                      formatter={(value) =>
-	                        value ? formatCurrency(currency, exchangeRates).format(Number(value) || 0) : ""
-	                      }
-	                      onClick={() => setSelectedPrice(index)}
-	                      onChange={(val) => {
-	                        setCustomPrice(Number(val));
-	                      }}
-d5bab37d4042ec1746f43b402dd62886|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|299|1|V|typescriptreact
-	                        onClick={() => setSelectedPrice(index)}
-	                        onChange={(val) => {
-	                          setCustomPrice(Number(val?.currentTarget?.value));
-	                        }}
-340e173fd306c185cbec84ed2692e41d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|344|1|V|typescriptreact
-	                    onClick={() => setSelectedPrice(supportPrices.length)}
-	                    onChange={(val) => {
-	                      setCustomPrice(Number(val?.currentTarget?.value));
-	                    }}
-0f363b9de2ec2ba07d25e43d20e67119|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|237|23|V|typescriptreact
-	<<<<<<< Updated upstream
-	          <Row align="middle" justify="space-between">
-	            {supportPrices.map((price, index) => (
-	              <Col key={index}>
-	                {price ? (
-	                  <Button
-	                    className={`m__r--12  p__x--32 p__y--12 send-tip-price-button ${
-	                      index === selectedPrice && "active-tip-price-btn"
-	                    }`}
-	                    onClick={() => setSelectedPrice(index)}
-	                    onMouseEnter={() => null}
-	                    onMouseLeave={() => null}
-	                  >
-	                    <Row align="middle">
-	                      <Text className="m__l--4" preset="medium16">
-	                        {formatCurrencyNonExchange(currency).format(price)}
-	                      </Text>
-	                    </Row>
-	                  </Button>
-	                ) : (
-	                  <Form.Item name="custom" className="send-tip-price-button">
-	                    <InputNumber
-	                      placeholder="Custom"
-	                      className={`${index === selectedPrice && "active-tip-price-btn"}`}
-	                      formatter={(value) =>
-	                        value ? formatCurrency(currency, exchangeRates).format(Number(value) || 0) : ""
-	                      }
-	                      onClick={() => setSelectedPrice(index)}
-	                      onChange={(val) => {
-	                        setCustomPrice(Number(val));
-	                      }}
-	                    />
-	                  </Form.Item>
-	                )}
-	              </Col>
-	            ))}
-	          </Row>
-	=======
-ec943ac2b6e3ab3a31f56e4ee8fbeb7a|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|3|35|V|typescriptreact
-	import Input from "antd/lib/input";
-324118a6721dd6b8a9b9f4e327df2bf5|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|257|24|v|typescriptreact
-	Input
-ce17e1c6c3cf9269580297f5fba7a6ea|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|265|1|V|typescriptreact
-	                          setCustomPrice(Number(val));
-e9850f0b38904823bc877d54ebf7660f|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|4|1|V|typescriptreact
-	import InputNumber from "antd/lib/input-number";
-5c050ace4124d765262c4a40aaa05bc7|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|4|8|v|typescriptreact
-	InputNumber
-c6896735174c0068a9c1e2a30fd075e8|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|305|23|v|typescriptreact
-	text__align--center 
-7bc1be694e088fb0bd327c16548c09ef|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/SendTipModal/SendTipModal.tsx|303|20|V|typescriptreact
-	                    
-63e43eb5bdf6b03e66cf3843a6629edd|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|440|22|v|typescriptreact
-	renderGiftCode
-a0cc74115a14d5c1f0fe62011b591529|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|305|33|v|typescriptreact
-	handleApplyCounpon
-810ba59546a67e6aefa59d755d7b186f|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|167|1|V|typescriptreact
-	      notification.error({
-	        message: "Payment verification failed. Please contact your payment provider.",
-	      });
-f05d5b76e6a21ca473e82a2ab39b5b71|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/GiftsCode/selector.ts|15|1|V|typescript
-	export const selectGiftCodeDiscountAmount = (rootState: RootState) => rootState.giftCodesState?.discountAmount;
-b2f40690858b404ed10e62bdf422c704|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/GiftsCode/selector.ts|17|36|v|typescript
-	Amount
-340e8f29ab80b214201b52d7a1b430dc|file:///Users/louis/Dev/Projects/komi/komi-client/src/redux/GiftsCode/selector.ts|17|95|v|typescript
-	discountAmount
-55c90ecec4e1e09265282deb27a91bcd|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|76|1|V|typescriptreact
-	  const giftCodeDiscountAmount = useTypedSelector(selectGiftCodeDiscountAmount);
-1cb2cc96a7bcfcee256717782dc316f1|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|77|9|v|typescriptreact
-	giftCodeDiscountAmount
-4e32c32c0bd65549bd95b22d91d528ad|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|77|49|v|typescriptreact
-	selectGiftCodeDiscountAmount
-81588ec8b445018b1f1929ba59f128d3|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|81|49|v|typescriptreact
-	selectGiftCodeDiscountType
-f8da6d91fed399a87569e1cf3ccb4a23|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|187|9|v|typescriptreact
-	discountType
-e0f6a18cc6e1b48cba684e0453fea66b|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|187|34|v|typescriptreact
-	DISCOUNT_TYPE
-ddeb7f639840500f14711e343a2ab9b3|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|189|24|v|typescriptreact
-	giftCodeDiscountAmount  
-d6e047923b2b0f63a7a03c66074a0151|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|189|42|v|typescriptreact
-	experience
-b3eb4fb3bb1cdda3b8888bc2b214b507|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|14|10|v|typescriptreact
-	getPrice
-cd890c4c15552563fdba42475f57efa1|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|17|19|V|typescriptreact
-	console.log('test')
-	
-7c2aa85ececce4f9be586eb3d76fd100|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|17|1|V|typescriptreact
-	console.log('test')
-a2f3537a2ee360a8b30f8f546cebf8cb|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|15|10|V|typescriptreact
-	import { selectUserCurrency } from "redux/User/selector";
-213affbc4908244706f57aae6fe4b9d7|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|83|72|v|typescriptreact
-	exchangeRates
-ce156a07e9721386e101f1e4c33856fa|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|47|16|v|typescriptreact
-	>
-	          <Col>
-	            <Text preset="medium16">{format
-dde97cdc408a10b587cb71a3c6c613e7|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|50|13|V|typescriptreact
-	            <Text preset="medium16">{formatCurrencyNonExchange("USD").format(data?.amount || 0)}</Text>
-45d22575fe0ed5f4c23482101b12c517|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|50|38|v|typescriptreact
-	formatCurrencyNonExchange
-8b2a6c4cf41a852f832b39dfe05e2e79|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|50|46|v|typescriptreact
-	("USD")
-25bcf1f781a17e59c75da9e156385a7e|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/BookingHistoryCard/BookingHistoryCard.tsx|30|1|V|typescriptreact
-	  const exchangeRates = useTypedSelector(selectExchangeRates);
-aa84d2a3701ce375dfc0944554b7fa10|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|21|25|v|typescriptreact
-	useTypedSelector
-817bac478c9dd48f82c7d54e9a718a8b|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/TransactionHistoryCard/TransactionHistoryCard.tsx|22|42|v|typescriptreact
-	selectExchangeRates
-9fdb9394a4e1bc0d72d7ddac7ecd8ac2|file:///Users/louis/.alacritty.yml|162|1|V|yaml
-	  primary:
-	    background: '0x000000'
-	    foreground: '0xffffff'
-	
-	  cursor:
-	    text: '0x5c6370'
-	    cursor: '0xabb2bf'
-5bef10ff8cee7b2597e57b37eb1ea2d7|file:///Users/louis/.zshrc|23|1|V|zsh
-	ZSH_THEME="spaceship"
-f232b3f696df28cd3dfa65bbef85ff69|file:///Users/louis/.zshrc|29|1|V|zsh
-	# SPACESHIP_PROMPT_ADD_NEWLINE="true"
-	# SPACESHIP_CHAR_PREFIX='\ufbdf '
-	# SPACESHIP_CHAR_PREFIX_COLOR='yellow'
-	# SPACESHIP_CHAR_SUFFIX=(" ")
-	# SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
-	# SPACESHIP_CHAR_SYMBOL='~'
-	# SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
-	# SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
-	# SPACESHIP_VENV_COLOR="magenta"
-	# SPACESHIP_VENV_PREFIX="("
-	# SPACESHIP_VENV_SUFFIX=")"
-	# SPACESHIP_VENV_SYMBOL='\uf985'
-	# SPACESHIP_USER_SHOW="true"
-	# SPACESHIP_DOCKER_SYMBOL='\ue7b0'
-	# SPACESHIP_DOCKER_VERBOSE='false'
-	# SPACESHIP_BATTERY_SHOW='false'
-262bb3d36ed644c29aa96a3d382d5ee8|file:///Users/louis/.zshrc|25|25|v|zsh
-	npm install --global pure-prompt
-54793bb333d5f6f8afd856eab5f308e1|file:///Users/louis/.zshrc|25|1|V|zsh
-	SPACESHIP_PROMPT_ADD_NEWLINE="true"
-	SPACESHIP_CHAR_PREFIX='\ufbdf '
-	SPACESHIP_CHAR_PREFIX_COLOR='yellow'
-	SPACESHIP_CHAR_SUFFIX=(" ")
-	SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
-	SPACESHIP_CHAR_SYMBOL='~'
-	SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
-	SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
-	SPACESHIP_VENV_COLOR="magenta"
-	SPACESHIP_VENV_PREFIX="("
-	SPACESHIP_VENV_SUFFIX=")"
-	SPACESHIP_VENV_SYMBOL='\uf985'
-	SPACESHIP_USER_SHOW="true"
-	SPACESHIP_DOCKER_SYMBOL='\ue7b0'
-	SPACESHIP_DOCKER_VERBOSE='false'
-	SPACESHIP_BATTERY_SHOW='false'
-37ca5c77f7cc5a478d4e5a8c472020e7|file:///Users/louis/.zshrc|24|1|V|zsh
-	ZSH_THEME="dracula".
-fd418aae6e49d4ed83235ad08e9dda31|file:///Users/louis/.zshrc|24|8|v|zsh
-	dracula/zsh
-e00f506342484dde2b3660e025fd3582|file:///Users/louis/.zshrc|21|1|V|zsh
-	export ZPLUG_HOME=/usr/local/opt/zplug
-	source $ZPLUG_HOME/init.zsh
-82848df1f842e231c18fe83e89f00c3b|file:///Users/louis/.zshrc|26|1|V|zsh
-	zplug "0i0/0i0.zsh-theme", as:theme
-733c20175b70a3720ef5e18b0565893f|file:///Users/louis/.zshrc|33|1|V|zsh
-	
-	ZSH_THEME="spaceship"
-	SPACESHIP_PROMPT_ADD_NEWLINE="true"
-	SPACESHIP_CHAR_PREFIX='\ufbdf '
-	SPACESHIP_CHAR_PREFIX_COLOR='yellow'
-	SPACESHIP_CHAR_SUFFIX=(" ")
-	SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
-	SPACESHIP_CHAR_SYMBOL='~'
-	SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
-	SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
-	SPACESHIP_VENV_COLOR="magenta"
-	SPACESHIP_VENV_PREFIX="("
-	SPACESHIP_VENV_SUFFIX=")"
-	SPACESHIP_VENV_SYMBOL='\uf985'
-	SPACESHIP_USER_SHOW="true"
-	SPACESHIP_DOCKER_SYMBOL='\ue7b0'
-	SPACESHIP_DOCKER_VERBOSE='false'
-	SPACESHIP_BATTERY_SHOW='false'
-310cd08e3fff0f3e0848806418ce4e3c|file:///Users/louis/.zshrc|34|1|V|zsh
-	source $ZSH/oh-my-zsh.sh
-ec4a389f3171a3d20111fc38379a1d1a|file:///Users/louis/.zshrc|26|1|V|zsh
-	zplug "plugins/git", from:oh-my-zsh
-	zplug "plugins/git", from:oh-my-zsh
-	zplug "plugins/sudo", from:oh-my-zsh
-	zplug "plugins/command-not-found", from:oh-my-zsh
-	zplug "zsh-users/zsh-syntax-highlighting"
-	zplug "zsh-users/zsh-history-substring-search"
-	zplug "zsh-users/zsh-completions"
-13a9c44315c1d3726941181555ebd506|file:///Users/louis/.zshrc|26|8|v|zsh
-	themes/robbyrussell
-9c0a4a9ef4ee163ba56141ae6941ecb0|file:///Users/louis/.zshrc|26|28|v|zsh
-	from:oh-my-zsh
-16c00f815d64195cb333fc9a23d59b96|file:///Users/louis/.zshrc|26|22|v|zsh
-	as:theme
-	
-bad4792fb4f8e704b4a491a53033e9bd|file:///Users/louis/.zshrc|26|20|v|zsh
-	, from:oh-my-zsh
-43d467c9e357f61efe556b019cfd4236|file:///Users/louis/.zshrc|24|20|V|zsh
-	autoload -U compinit && compinit
-914d95a0436cdb3cc366dc53b6d47d9f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|529|1|V|json
-	    "congrats": "Congrats!",
-571b4ba928ae62e103b54727721ebe56|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|530|6|v|json
-	congrats
-3dbbff638cc490e8f970adbc8cfd0e4b|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|530|49|v|json
-	Congrats!
-e5f8694c9e0c72402cf0b672ddd5d53f|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/ContentModel.ts|47|1|V|typescript
-	    prerequisites: types.maybeNull(types.optional(types.array(types.string), [])),
-accb6ef56f0748e205f5e6cd838e9e23|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/models/model-types/ContentModel.ts|46|1|V|typescript
-	    isFreeExperience: types.maybeNull(types.optional(types.boolean, false)),
-8fbffef7b1f4e6a8993164be524b93c1|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-success/booking-success.tsx|100|71|V|typescriptreact
-	                  booking?.price === 0 || booking?.experience?.isFreeExperience
-83440621259eb2d32f8f06e326dad079|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/screens/booking-success/booking-success.tsx|79|5|v|typescriptreact
-	reurn
-4a5ade1dec9001eb3bcd392a6b823aa6|file:///Users/louis/Dev/Projects/komi/komi-mobile/app/i18n/en.json|530|6|v|json
-	weAddThisExperienceToYourExperiences
-3752766248ed7999f7a3ed405f89330b|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|12|8|v|typescriptreact
-	RequestSuccessful
-7b63656a9e585e2b1a62a21e5e9211ee|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/checkout/%5Bid%5D/Checkout.tsx|469|61|v|typescriptreact
-	bookingCreated
-3b3c637d6cafccc40379e9db48609520|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|28|v|typescriptreact
-	Booking Complete :
-a085f7a87478099a35fb2a69f0c41a68|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|10|v|typescriptreact
-	isFreeExperience
 e55dea30cc178bf1a41e48f8eaef3506|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|29|v|typescriptreact
 	:Booking
 ae94f80b3ce82062a5dd7815daa04f9d|file:///Users/louis/Dev/Projects/komi/komi-client/src/components/RequestSuccessful/RequestSuccessful.tsx|53|32|v|typescriptreact
@@ -2137,3 +1857,2361 @@ e34db09629a2bcec5602b4b20281aa20|file:///Users/louis/.config/nvim/lua/plugins/ga
 	NVCode
 90b0429e960557227f474e9e6a835935|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|8|10|v|lua
 	282c34
+70ba371a7dfacadb642916d26156fc70|file:///Users/louis/Dev/Projects/komi/komi-client/server/index.ts|37|1|V|typescript
+	    server.listen(port);
+0829ea6734059d66e6bf87096b215dc1|file:///Users/louis/.alacritty.yml|63|17|v|yaml
+	Fullscreen
+9bac6483dc1a3a1f92aa6c28b02ea67e|file:///Users/louis/.yabairc|10|48|V|sh
+	yabai -m config window_opacity_duration      0.3
+d9c6046706f8d68dd426b18308c8d602|file:///Users/louis/.spacebarrc|6|52|v|sh
+	"globe"
+015f28b9df1bdd36427dd976fb73b29d|file:///Users/louis/.spacebarrc|6|64|v|sh
+	fire
+053fcf3bf4e62c5fb88d4e1a71c1c996|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/_app/index.tsx|50|14|V|typescriptreact
+	        <Component {...pageProps} />
+b9d0afed286c45e11d581a283fcdf28e|file:///Users/louis/Dev/Projects/komi/komi-client/src/pages/_app/index.tsx|47|9|V|typescriptreact
+	      </Head>
+054cac3912d6133cef31e4cb764cbe9b|file:///Users/louis/.config/nvim/init.vim|14|7|v|vim
+	Iron-E/nvim-highlite
+fc8c8fe84c14d7a6ffb8684c8cc1630d|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|5|1|V|lua
+	local gl = require('galaxyline')
+	local gls = gl.section
+	gl.short_line_list = {'LuaTree','vista','dbui'}
+	
+	local colors = {
+	  bg = '#0000',
+	  yellow = '#fabd2f',
+	  cyan = '#008080',
+	  darkblue = '#081633',
+	  green = '#608B4E',
+	  orange = '#FF8800',
+	  purple = '#5d4d7a',
+	  magenta = '#d16d9e',
+	  grey = '#c0c0c0',
+	  blue = '#569CD6',
+	  red = '#D16969'
+	}
+	
+	local buffer_not_empty = function()
+	  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+	    return true
+	  end
+	  return false
+	end
+	
+	-- gls.left[1] = {
+	--   FirstElement = {
+	--     -- provider = function() return '▋' end,
+	--     provider = function() return ' ' end,
+	--     highlight = {colors.bg,colors.bg}
+	--   },
+	-- }
+	-- gls.left[2] = {
+	--   ViMode = {
+	--     provider = function()
+	--       local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',V= 'VISUAL', [''] = 'VISUAL'}
+	--       return alias[vim.fn.mode()]
+	--     end,
+	--     separator = ' ',
+	--     separator_highlight = {colors.yellow,function()
+	--       if not bffer_not_empty() then
+	--         return colors.purple
+	--       end
+	--       return colors.purple
+	--     end},
+	--     highlight = {colors.grey,colors.purple,'bold'},
+	--   },
+	-- }
+	gls.left[2] = {
+	  ViMode = {
+	    provider = function()
+	      -- auto change color according the vim mode
+	      local mode_color = {n = colors.purple,
+	                          i = colors.green,
+	                          v = colors.blue,
+	                          [''] = colors.blue,
+	                          V = colors.blue,
+	                          c = colors.purple,
+	                          no = colors.magenta,
+	                          s = colors.orange,
+	                          S = colors.orange,
+	                          [''] = colors.orange,
+	                          ic = colors.yellow,
+	                          R = colors.red,
+	                          Rv = colors.red,
+	                          cv = colors.red,
+	                          ce=colors.red,
+	                          r = colors.cyan,
+	                          rm = colors.cyan,
+	                          ['r?'] = colors.cyan,
+	                          ['!']  = colors.red,
+	                          t = colors.red}
+	      vim.api.nvim_command('hi GalaxyViMode guibg='..mode_color[vim.fn.mode()])
+	      return '  Louis '
+	    end,
+	    separator = ' ',
+	    separator_highlight = {colors.yellow,function()
+	      if not buffer_not_empty() then
+	        return colors.bg
+	      end
+	      return colors.bg
+	    end},
+	    highlight = {colors.grey,colors.bg,'bold'},
+	  },
+	}
+	-- gls.left[3] ={
+	--   FileIcon = {
+	--     separator = ' ',
+	--     provider = 'FileIcon',
+	--     condition = buffer_not_empty,
+	--     highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+	--   },
+	-- }
+	-- gls.left[4] = {
+	--   FileName = {
+	--     provider = {'FileSize'},
+	--     condition = buffer_not_empty,
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.magenta,colors.bg}
+	--   }
+	-- }
+	
+	gls.left[3] = {
+	  GitIcon = {
+	    provider = function() return ' ' end,
+	    condition = buffer_not_empty,
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.left[4] = {
+	  GitBranch = {
+	    provider = 'GitBranch',
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    condition = buffer_not_empty,
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	
+	local checkwidth = function()
+	  local squeeze_width  = vim.fn.winwidth(0) / 2
+	  if squeeze_width > 40 then
+	    return true
+	  end
+	  return false
+	end
+	
+	gls.left[5] = {
+	  DiffAdd = {
+	    provider = 'DiffAdd',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = '  ',
+	    highlight = {colors.green,colors.bg},
+	  }
+	}
+	gls.left[6] = {
+	  DiffModified = {
+	    provider = 'DiffModified',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = '  ',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[7] = {
+	  DiffRemove = {
+	    provider = 'DiffRemove',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = '  ',
+	    highlight = {colors.red,colors.bg},
+	  }
+	}
+	gls.left[8] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	gls.left[9] = {
+	  DiagnosticError = {
+	    provider = 'DiagnosticError',
+	    icon = '  ',
+	    highlight = {colors.red,colors.bg}
+	  }
+	}
+	gls.left[10] = {
+	  Space = {
+	    provider = function () return '' end
+	  }
+	}
+	gls.left[11] = {
+	  DiagnosticWarn = {
+	    provider = 'DiagnosticWarn',
+	    icon = '  ',
+	    highlight = {colors.yellow,colors.bg},
+	  }
+	}
+	gls.left[12] = {
+	  DiagnosticHint = {
+	    provider = 'DiagnosticHint',
+	    icon = '   ',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[13] = {
+	  DiagnosticInfo = {
+	    provider = 'DiagnosticInfo',
+	    icon = '   ',
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.right[1]= {
+	  FileFormat = {
+	    provider = 'FileFormat',
+	    separator = ' ',
+	    separator_highlight = {colors.bg,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[2] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    separator = ' | ',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  },
+	}
+	gls.right[3] = {
+	  PerCent = {
+	    provider = 'LinePercent',
+	    separator = ' |',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[4] = {
+	  ScrollBar = {
+	    provider = 'ScrollBar',
+	    highlight = {colors.yellow,colors.purple},
+	  }
+	}
+	
+	-- gls.short_line_left[1] = {
+	--   BufferType = {
+	--     provider = 'FileTypeName',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	
+	gls.short_line_left[1] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	
+	-- gls.short_line_right[1] = {
+	--   BufferIcon = {
+	--     provider= 'BufferIcon',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	-- function! s:my_bookmark_color() abort
+	--   let s:scl_guibg = matchstr(execute('hi SignColumn'), 'guibg=\zs\S*')
+	--   if empty(s:scl_guibg)
+	--     let s:scl_guibg = 'NONE'
+	--   endif
+	--   exe 'hi MyBookmarkSign guifg=' . s:scl_guibg
+	-- endfunction
+	-- call s:my_bookmark_color() " don't remove this line!
+	
+	-- augroup UserGitSignColumnColor
+	--   autocmd!
+	--   autocmd ColorScheme * call s:my_bookmark_color()
+	-- augroup END
+3aa0453533bd24961e97d1d3ed8ce61c|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|49|14|V|lua
+	--[[
+		/*
+		 * IMPORTS
+		 */
+	--]]
+	
+	local vim  = vim
+	local mode = vim.fn.mode
+	local galaxyline = require('galaxyline')
+	local section = galaxyline.section
+	
+	--[[
+		/*
+		 * CONSTANTS
+		 */
+	--]]
+	
+	-- Defined in https://github.com/Iron-E/nvim-highlite
+	local _COLORS =
+	{
+		black = {'#202020', 0,   'black'},
+		gray  = {'#808080', 244, 'gray'},
+		gray_dark   = {'#353535', 236, 'darkgrey'},
+		gray_darker = {'#505050', 244, 'gray'},
+		gray_light  = {'#c0c0c0', 251, 'gray'},
+		white       = {'#ffffff', 15,  'white'},
+	
+		tan = {'#f4c069', 180, 'darkyellow'},
+	
+		red = {'#ee4a59', 196, 'red'},
+		red_dark  = {'#a80000', 124, 'darkred'},
+		red_light = {'#ff4090', 203, 'red'},
+	
+		orange = {'#ff8900', 208, 'darkyellow'},
+		orange_light = {'#f0af00', 214, 'yellow'},
+	
+		yellow = {'#f0df33', 220, 'yellow'},
+	
+		green = {'#77ff00', 72, 'green'},
+		green_dark  = {'#35de60', 83, 'darkgreen'},
+		green_light = {'#a0ff70', 72, 'green'},
+	
+		blue = {'#7090ff', 63, 'darkblue'},
+		cyan = {'#33efff', 87, 'cyan'},
+		ice  = {'#49a0f0', 63, 'cyan'},
+		teal = {'#00d0c0', 38, 'cyan'},
+		turqoise = {'#2bff99', 33, 'blue'},
+	
+		magenta = {'#cc0099', 126, 'magenta'},
+		pink    = {'#ffa6ff', 162, 'magenta'},
+		purple  = {'#cf55f0', 129, 'magenta'},
+	
+		magenta_dark = {'#bb0099', 126, 'darkmagenta'},
+		pink_light   = {'#ffb7b7', 38,  'white'},
+		purple_light = {'#af60af', 63,  'magenta'},
+	
+	}
+	
+	_COLORS.bar = {middle=_COLORS.gray_dark, side=_COLORS.black}
+	_COLORS.text = _COLORS.gray_light
+	
+	-- hex color subtable
+	local _HEX_COLORS = setmetatable(
+		{['bar'] = setmetatable({}, {['__index'] = function(_, key) return _COLORS.bar[key] and _COLORS.bar[key][1] or nil end})},
+		{['__index'] = function(_, key) local color = _COLORS[key] return color and color[1] or nil end}
+	)
+	
+	local _MODES =
+	{
+		['c']  = {'COMMAND-LINE',      _COLORS.red},
+		['ce'] = {'NORMAL EX',         _COLORS.red_dark},
+		['cv'] = {'EX',                _COLORS.red_light},
+		['i']  = {'INSERT',            _COLORS.green},
+		['ic'] = {'INS-COMPLETE',      _COLORS.green_light},
+		['n']  = {'NORMAL',            _COLORS.purple_light},
+		['no'] = {'OPERATOR-PENDING',  _COLORS.purple},
+		['r']  = {'HIT-ENTER',         _COLORS.cyan},
+		['r?'] = {':CONFIRM',          _COLORS.cyan},
+		['rm'] = {'--MORE',            _COLORS.cyan},
+		['R']  = {'REPLACE',           _COLORS.pink},
+		['Rv'] = {'VIRTUAL',           _COLORS.pink},
+		['s']  = {'SELECT',            _COLORS.turqoise},
+		['S']  = {'SELECT',            _COLORS.turqoise},
+		[''] = {'SELECT',            _COLORS.turqoise},
+		['t']  = {'TERMINAL',          _COLORS.orange},
+		['v']  = {'VISUAL',            _COLORS.blue},
+		['V']  = {'VISUAL LINE',       _COLORS.blue},
+		[''] = {'VISUAL BLOCK',      _COLORS.blue},
+		['!']  = {'SHELL',             _COLORS.yellow},
+	
+		-- libmodal
+		['TABS']    = _COLORS.tan,
+		['BUFFERS'] = _COLORS.teal,
+		['TABLES']  = _COLORS.orange_light,
+	}
+	
+	local _SEPARATORS =
+	{
+		left = '?',
+		right = '?'
+	}
+	
+	--[[
+		/*
+		 * PROVIDERS
+		 */
+	--]]
+	
+	local function all(...)
+		local args = {...}
+		return function()
+			for _, fn in ipairs(args) do
+				if not fn() then return false end
+			end
+			return true
+		end
+	end
+	
+	local function buffer_not_empty()
+		return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+	end
+	
+	local function checkwidth()
+		return (vim.fn.winwidth(0) / 2) > 40
+	end
+	
+	local function find_git_root()
+		return require('galaxyline/provider_vcs').get_git_dir(vim.fn.expand('%:p:h'))
+	end
+	
+	local function get_file_icon_color()
+		return require('galaxyline/provider_fileinfo').get_file_icon_color()
+	end
+	
+	local function printer(str)
+		return function() return str end
+	end
+	
+	local function negated(fn)
+		return function() return not fn() end
+	end
+	
+	local space = printer(' ')
+	
+	--[[
+		/*
+		 * GALAXYLINE CONFIG
+		 */
+	--]]
+	
+	galaxyline.short_line_list =
+	{
+		'dbui',
+		'diff',
+		'peekaboo',
+		'undotree',
+		'vista',
+		'vista_markdown'
+	}
+	
+	section.left =
+	{
+		{ViMode = {
+			provider = function() -- auto change color according the vim mode
+				local mode_color = nil
+				local mode_name = nil
+	
+				if vim.g.libmodalActiveModeName then
+					mode_name = vim.g.libmodalActiveModeName
+					mode_color = _MODES[mode_name]
+				else
+					local current_mode = _MODES[mode(true)] or _MODES[mode(false)]
+	
+					mode_name = current_mode[1]
+					mode_color = current_mode[2]
+				end
+	
+				require('highlite').highlight('GalaxyViMode', {fg=mode_color, style='bold'})
+	
+				return mode_name..' '
+			end,
+			icon = '? ',
+			highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+			separator = _SEPARATORS.right,
+			separator_highlight = {_HEX_COLORS.bar.side, get_file_icon_color}
+		}},
+	
+		{FileIcon = {
+			provider  = {space, 'FileIcon'},
+			highlight = {_HEX_COLORS.bar.side, get_file_icon_color},
+			separator = _SEPARATORS.left,
+			separator_highlight = {_HEX_COLORS.bar.side, get_file_icon_color}
+		}},
+	
+		{FileName = {
+			provider  = {space, 'FileName', 'FileSize'},
+			condition = buffer_not_empty,
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side, 'bold'}
+		}},
+	
+		{GitSeparator = {
+			provider = printer(_SEPARATORS.right),
+			condition = find_git_root,
+			highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.green_dark},
+		}},
+	
+		{GitBranch = {
+			provider = 'GitBranch',
+			icon = '  ? ',
+			condition = find_git_root,
+			highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.green_dark, 'bold'},
+			separator = _SEPARATORS.left,
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.green_dark},
+		}},
+	
+		{LeftEnd = {
+			provider = printer(_SEPARATORS.left),
+			condition = negated(find_git_root),
+			highlight = {_HEX_COLORS.bar.middle, find_git_root() and _HEX_COLORS.green_dark or _HEX_COLORS.bar.side}
+		}},
+	
+		{DiffAdd = {
+			provider = 'DiffAdd',
+			condition = all(checkwidth, find_git_root),
+			icon = '+',
+			highlight = {_HEX_COLORS.green_light, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiffModified = {
+			provider = 'DiffModified',
+			condition = checkwidth,
+			icon = '~',
+			highlight = {_HEX_COLORS.orange_light, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiffRemove = {
+			provider = 'DiffRemove',
+			condition = checkwidth,
+			icon = '-',
+			highlight = {_HEX_COLORS.red_light, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticError = {
+			provider = 'DiagnosticError',
+			icon = '? ',
+			highlight = {_HEX_COLORS.red, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticWarn = {
+			provider = 'DiagnosticWarn',
+			icon = '?? ',
+			highlight = {_HEX_COLORS.yellow, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticHint = {
+			provider = 'DiagnosticHint',
+			icon = '??',
+			highlight = {_HEX_COLORS.magenta, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticInfo = {
+			provider = 'DiagnosticInfo',
+			icon = '? ',
+			highlight = {_HEX_COLORS.white, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	} -- section.left
+	
+	section.right =
+	{
+		{Vista = {
+			provider = 'VistaPlugin',
+			condition = function() return vim.fn.exists(':Vista') ~= 0 end,
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.middle},
+		}},
+	
+		{RightBegin = {
+			provider = space,
+			highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.side},
+			separator = _SEPARATORS.right,
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.side}
+		}},
+	
+		{FileFormat = {
+			provider = {'FileFormat', space},
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+		}},
+	
+		{FileType = {
+			provider = 'FileTypeName',
+			highlight = {_HEX_COLORS.black, get_file_icon_color, 'bold'},
+			separator = _SEPARATORS.left,
+			separator_highlight = {get_file_icon_color, _HEX_COLORS.bar.side},
+		}},
+	
+		{FileSep = {
+			provider = printer(_SEPARATORS.right),
+			highlight = {get_file_icon_color, _HEX_COLORS.bar.side},
+		}},
+	
+		{
+			LineNumber =
+			{
+				provider = function() return vim.fn.line('.') end,
+				icon = '? ',
+				condition = buffer_not_empty,
+				highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+				separator = ' ',
+				separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+			},
+			ColumnNumber =
+			{
+				provider = function() return vim.fn.col('.') end,
+				icon = '? ',
+				condition = buffer_not_empty,
+				highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+				separator = ' ',
+				separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+			}
+		},
+	
+		{PerCentSeparator = {
+			provider = printer(_SEPARATORS.left),
+			highlight = {_HEX_COLORS.magenta_dark, _HEX_COLORS.bar.side},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+		}},
+	
+		{PerCent = {
+			provider = 'LinePercent',
+			highlight = {_HEX_COLORS.white, _HEX_COLORS.magenta_dark},
+		}},
+	
+		{ScrollBar = {
+			provider = 'ScrollBar',
+			highlight = {_HEX_COLORS.gray, _HEX_COLORS.magenta_dark},
+		}}
+	} -- section.right
+	
+	section.short_line_left =
+	{
+		{BufferType = {
+			provider = {space, space, 'FileTypeName', space},
+			highlight = {_HEX_COLORS.black, _HEX_COLORS.purple, 'bold'},
+			separator = _SEPARATORS.right,
+			separator_highlight = {_HEX_COLORS.purple, _HEX_COLORS.bar.middle}
+		}}
+	}
+	
+	section.short_line_right =
+	{
+		{BufferIcon = {
+			provider = 'BufferIcon',
+			highlight = {_HEX_COLORS.black, _HEX_COLORS.purple, 'bold'},
+			separator = _SEPARATORS.left,
+			separator_highlight = {_HEX_COLORS.purple, _HEX_COLORS.bar.middle}
+		}}
+	}
+24c2f3918d864195a126a7d6b0cd9448|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|79|4|V|lua
+	--[[
+		/*
+		 * IMPORTS
+		 */
+	--]]
+	
+	local vim  = vim
+	local mode = vim.fn.mode
+	local galaxyline = require('galaxyline')
+	local section = galaxyline.section
+	
+	--[[
+		/*
+		 * CONSTANTS
+		 */
+	--]]
+	
+	-- Defined in https://github.com/Iron-E/nvim-highlite
+	local _COLORS =
+	{
+		black = {'#202020', 0,   'black'},
+		gray  = {'#808080', 244, 'gray'},
+		gray_dark   = {'#353535', 236, 'darkgrey'},
+		gray_darker = {'#505050', 244, 'gray'},
+		gray_light  = {'#c0c0c0', 251, 'gray'},
+		white       = {'#ffffff', 15,  'white'},
+	
+		tan = {'#f4c069', 180, 'darkyellow'},
+	
+		red = {'#ee4a59', 196, 'red'},
+		red_dark  = {'#a80000', 124, 'darkred'},
+		red_light = {'#ff4090', 203, 'red'},
+	
+		orange = {'#ff8900', 208, 'darkyellow'},
+		orange_light = {'#f0af00', 214, 'yellow'},
+	
+		yellow = {'#f0df33', 220, 'yellow'},
+	
+		green = {'#77ff00', 72, 'green'},
+		green_dark  = {'#35de60', 83, 'darkgreen'},
+		green_light = {'#a0ff70', 72, 'green'},
+	
+		blue = {'#7090ff', 63, 'darkblue'},
+		cyan = {'#33efff', 87, 'cyan'},
+		ice  = {'#49a0f0', 63, 'cyan'},
+		teal = {'#000c0', 38, 'cyan'},
+		turqoise = {'#2bff99', 33, 'blue'},
+	
+		magenta = {'#cc0099', 126, 'magenta'},
+		pink    = {'#ffa6ff', 162, 'magenta'},
+		purple  = {'#cf55f0', 129, 'magenta'},
+	
+		magenta_dark = {'#bb0099', 126, 'darkmagenta'},
+		pink_light   = {'#ffb7b7', 38,  'white'},
+		purple_light = {'#af60af', 63,  'magenta'},
+	
+	}
+	
+	_COLORS.bar = {middle=_COLORS.gray_dark, side=_COLORS.black}
+	_COLORS.text = _COLORS.gray_light
+	
+	-- hex color subtable
+	local _HEX_COLORS = setmetatable(
+		{['bar'] = setmetatable({}, {['__index'] = function(_, key) return _COLORS.bar[key] and _COLORS.bar[key][1] or nil end})},
+		{['__index'] = function(_, key) local color = _COLORS[key] return color and color[1] or nil end}
+	)
+	
+	local _MODES =
+	{
+		['c']  = {'COMMAND-LINE',      _COLORS.red},
+		['ce'] = {'NORMAL EX',         _COLORS.red_dark},
+		['cv'] = {'EX',                _COLORS.red_light},
+		['i']  = {'INSERT',            _COLORS.green},
+		['ic'] = {'INS-COMPLETE',      _COLORS.green_light},
+		['n']  = {'NORMAL',            _COLORS.purple_light},
+		['no'] = {'OPERATOR-PENDING',  _COLORS.purple},
+		['r']  = {'HIT-ENTER',         _COLORS.cyan},
+		['r?'] = {':CONFIRM',          _COLORS.cyan},
+		['rm'] = {'--MORE',            _COLORS.cyan},
+		['R']  = {'REPLACE',           _COLORS.pink},
+		['Rv'] = {'VIRTUAL',           _COLORS.pink},
+		['s']  = {'SELECT',            _COLORS.turqoise},
+		['S']  = {'SELECT',            _COLORS.turqoise},
+		[''] = {'SELECT',            _COLORS.turqoise},
+		['t']  = {'TERMINAL',          _COLORS.orange},
+		['v']  = {'VISUAL',            _COLORS.blue},
+		['V']  = {'VISUAL LINE',       _COLORS.blue},
+		[''] = {'VISUAL BLOCK',      _COLORS.blue},
+		['!']  = {'SHELL',             _COLORS.yellow},
+	
+		-- libmodal
+		['TABS']    = _COLORS.tan,
+		['BUFFERS'] = _COLORS.teal,
+		['TABLES']  = _COLORS.orange_light,
+	}
+	
+	local _SEPARATORS =
+	{
+		left = '',
+		right = ''
+	}
+	
+	--[[
+		/*
+		 * PROVIDERS
+		 */
+	--]]
+	
+	local function all(...)
+		local args = {...}
+		return function()
+			for _, fn in ipairs(args) do
+				if not fn() then return false end
+			end
+			return true
+		end
+	end
+	
+	local function buffer_not_empty()
+		return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+	end
+	
+	local function checkwidth()
+		return (vim.fn.winwidth(0) / 2) > 40
+	end
+	
+	local function find_git_root()
+		return require('galaxyline/provider_vcs').get_git_dir(vim.fn.expand('%:p:h'))
+	end
+	
+	local function get_file_icon_color()
+		return require('galaxyline/provider_fileinfo').get_file_icon_color()
+	end
+	
+	local function printer(str)
+		return function() return str end
+	end
+	
+	local function negated(fn)
+		return function() return not fn() end
+	end
+	
+	local space = printer(' ')
+	
+	--[[
+		/*
+		 * GALAXYLINE CONFIG
+		 */
+	--]]
+	
+	galaxyline.short_line_list =
+	{
+		'dbui',
+		'diff',
+		'peekaboo',
+		'undotree',
+		'vista',
+		'vista_markdown'
+	}
+	
+	section.left =
+	{
+		{ViMode = {
+			provider = function() -- auto change color according the vim mode
+				local mode_color = nil
+				local mode_name = nil
+	
+				if vim.g.libmodalActiveModeName then
+					mode_name = vim.g.libmodalActiveModeName
+					mode_color = _MODES[mode_name]
+				else
+					local current_mode = _MODES[mode(true)] or _MODES[mode(false)]
+	
+					mode_name = current_mode[1]
+					mode_color = current_mode[2]
+				end
+	
+				require('highlite').highlight('GalaxyViMode', {fg=mode_color, style='bold'})
+	
+				return mode_name..' '
+			end,
+			icon = '▊ ',
+			highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+			separator = _SEPARATORS.right,
+			separator_highlight = {_HEX_COLORS.bar.side, get_file_icon_color}
+		}},
+	
+		{FileIcon = {
+			provider  = {space, 'FileIcon'},
+			highlight = {_HEX_COLORS.bar.side, get_file_icon_color},
+			separator = _SEPARATORS.left,
+			separator_highlight = {_HEX_COLORS.bar.side, get_file_icon_color}
+		}},
+	
+		{FileName = {
+			provider  = {space, 'FileName', 'FileSize'},
+			condition = buffer_not_empty,
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side, 'bold'}
+		}},
+	
+		{GitSeparator = {
+			provider = printer(_SEPARATORS.right),
+			condition = find_git_root,
+			highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.green_dark},
+		}},
+	
+		{GitBranch = {
+			provider = 'GitBranch',
+			icon = '   ',
+			condition = find_git_root,
+			highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.green_dark, 'bold'},
+			separator = _SEPARATORS.left,
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.green_dark},
+		}},
+	
+		{LeftEnd = {
+			provider = printer(_SEPARATORS.left),
+			condition = negated(find_git_root),
+			highlight = {_HEX_COLORS.bar.middle, find_git_root() and _HEX_COLORS.green_dark or _HEX_COLORS.bar.side}
+		}},
+	
+		{DiffAdd = {
+			provider = 'DiffAdd',
+			condition = all(checkwidth, find_git_root),
+			icon = '+',
+			highlight = {_HEX_COLORS.green_light, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiffModified = {
+			provider = 'DiffModified',
+			condition = checkwidth,
+			icon = '~',
+			highlight = {_HEX_COLORS.orange_light, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiffRemove = {
+			provider = 'DiffRemove',
+			condition = checkwidth,
+			icon = '-',
+			highlight = {_HEX_COLORS.red_light, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticError = {
+			provider = 'DiagnosticError',
+			icon = 'Ⓧ ',
+			highlight = {_HEX_COLORS.red, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticWarn = {
+			provider = 'DiagnosticWarn',
+			icon = '⚠️ ',
+			highlight = {_HEX_COLORS.yellow, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticHint = {
+			provider = 'DiagnosticHint',
+			icon = '💡',
+			highlight = {_HEX_COLORS.magenta, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticInfo = {
+			provider = 'DiagnosticInfo',
+			icon = 'ⓘ ',
+			highlight = {_HEX_COLORS.white, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	} -- section.left
+	
+	section.right =
+	{
+		{Vista = {
+			provider = 'VistaPlugin',
+			condition = function() return vim.fn.exists(':Vista') ~= 0 end,
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.middle},
+		}},
+	
+		{RightBegin = {
+			provider = space,
+			highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.side},
+			separator = _SEPARATORS.right,
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.side}
+		}},
+	
+		{FileFormat = {
+			provider = {'FileFormat', space},
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+		}},
+	
+		{FileType = {
+			provider = 'FileTypeName',
+			highlight = {_HEX_COLORS.black, get_file_icon_color, 'bold'},
+			separator = _SEPARATORS.left,
+			separator_highlight = {get_file_icon_color, _HEX_COLORS.bar.side},
+		}},
+	
+		{FileSep = {
+			provider = printer(_SEPARATORS.right),
+			highlight = {get_file_icon_color, _HEX_COLORS.bar.side},
+		}},
+	
+		{
+			LineNumber =
+			{
+				provider = function() return vim.fn.line('.') end,
+				icon = ' ',
+				condition = buffer_not_empty,
+				highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+				separator = ' ',
+				separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+			},
+			ColumnNumber =
+			{
+				provider = function() return vim.fn.col('.') end,
+				icon = ' ',
+				condition = buffer_not_empty,
+				highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+				separator = ' ',
+				separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+			}
+		},
+	
+		{PerCentSeparator = {
+			provider = printer(_SEPARATORS.left),
+			highlight = {_HEX_COLORS.magenta_dark, _HEX_COLORS.bar.side},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+		}},
+	
+		{PerCent = {
+			provider = 'LinePercent',
+			highlight = {_HEX_COLORS.white, _HEX_COLORS.magenta_dark},
+		}},
+	
+		{ScrollBar = {
+			provider = 'ScrollBar',
+			highlight = {_HEX_COLORS.gray, _HEX_COLORS.magenta_dark},
+		}}
+	} -- section.right
+	
+	section.short_line_left =
+	{
+		{BufferType = {
+			provider = {space, space, 'FileTypeName', space},
+			highlight = {_HEX_COLORS.black, _HEX_COLORS.purple, 'bold'},
+			separator = _SEPARATORS.right,
+			separator_highlight = {_HEX_COLORS.purple, _HEX_COLORS.bar.middle}
+		}}
+	}
+	
+	section.short_line_right =
+	{
+		{BufferIcon = {
+			provider = 'BufferIcon',
+			highlight = {_HEX_COLORS.black, _HEX_COLORS.purple, 'bold'},
+			separator = _SEPARATORS.left,
+			separator_highlight = {_HEX_COLORS.purple, _HEX_COLORS.bar.middle}
+		}}
+	}
+544ee6ae285f5b19e5a4fdfb9aee9e9b|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|1|31|V|lua
+	-- require'nvim-web-devicons'.setup()
+dbb948813a175d8e1fb501e488957b7f|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|191|13|v|lua
+	   
+5502c8a01edf7761fcebb2448fb3035c|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|198|13|v|lua
+	   
+dad3a9c29c437656394497a13795f37f|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|73|55|V|lua
+	-- require'nvim-web-devicons'.setup()
+	
+	local gl = require('galaxyline')
+	local gls = gl.section
+	gl.short_line_list = {'LuaTree','vista','dbui'}
+	
+	local colors = {
+	  bg = '#0000',
+	  yellow = '#fabd2f',
+	  cyan = '#008080',
+	  darkblue = '#081633',
+	  green = '#608B4E',
+	  orange = '#FF8800',
+	  purple = '#5d4d7a',
+	  magenta = '#d16d9e',
+	  grey = '#c0c0c0',
+	  blue = '#569CD6',
+	  red = '#D16969'
+	}
+	
+	local buffer_not_empty = function()
+	  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+	    return true
+	  end
+	  return false
+	end
+	
+	-- gls.left[1] = {
+	--   FirstElement = {
+	--     -- provider = function() return '▋' end,
+	--     provider = function() return ' ' end,
+	--     highlight = {colors.bg,colors.bg}
+	--   },
+	-- }
+	-- gls.left[2] = {
+	--   ViMode = {
+	--     provider = function()
+	--       local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',V= 'VISUAL', [''] = 'VISUAL'}
+	--       return alias[vim.fn.mode()]
+	--     end,
+	--     separator = ' ',
+	--     separator_highlight = {colors.yellow,function()
+	--       if not bffer_not_empty() then
+	--         return colors.purple
+	--       end
+	--       return colors.purple
+	--     end},
+	--     highlight = {colors.grey,colors.purple,'bold'},
+	--   },
+	-- }
+	gls.left[2] = {
+	  ViMode = {
+	    provider = function()
+	      -- auto change color according the vim mode
+	      local mode_color = {n = colors.purple,
+	                          i = colors.green,
+	                          v = colors.blue,
+	                          [''] = colors.blue,
+	                          V = colors.blue,
+	                          c = colors.purple,
+	                          no = colors.magenta,
+	                          s = colors.orange,
+	                          S = colors.orange,
+	                          [''] = colors.orange,
+	                          ic = colors.yellow,
+	                          R = colors.red,
+	                          Rv = colors.red,
+	                          cv = colors.red,
+	                          ce=colors.red,
+	                          r = colors.cyan,
+	                          rm = colors.cyan,
+	                          ['r?'] = colors.cyan,
+	                          ['!']  = colors.red,
+	                          t = colors.red}
+	      vim.api.nvim_command('hi GalaxyViMode guibg='..mode_color[vim.fn.mode()])
+	      return '  Louis '
+	    end,
+	    separator = ' ',
+	    separator_highlight = {colors.yellow,function()
+	      if not buffer_not_empty() then
+	        return colors.bg
+	      end
+	      return colors.bg
+	    end},
+	    highlight = {colors.grey,colors.bg,'bold'},
+	  },
+	}
+	-- gls.left[3] ={
+	--   FileIcon = {
+	--     separator = ' ',
+	--     provider = 'FileIcon',
+	--     condition = buffer_not_empty,
+	--     highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+	--   },
+	-- }
+	-- gls.left[4] = {
+	--   FileName = {
+	--     provider = {'FileSize'},
+	--     condition = buffer_not_empty,
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.magenta,colors.bg}
+	--   }
+	-- }
+	
+	gls.left[3] = {
+	  GitIcon = {
+	    provider = function() return ' ' end,
+	    condition = buffer_not_empty,
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.left[4] = {
+	  GitBranch = {
+	    provider = 'GitBranch',
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    condition = buffer_not_empty,
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	
+	local checkwidth = function()
+	  local squeeze_width  = vim.fn.winwidth(0) / 2
+	  if squeeze_width > 40 then
+	    return true
+	  end
+	  return false
+	end
+	
+	gls.left[5] = {
+	  DiffAdd = {
+	    provider = 'DiffAdd',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = '  ',
+	    highlight = {colors.green,colors.bg},
+	  }
+	}
+	gls.left[6] = {
+	  DiffModified = {
+	    provider = 'DiffModified',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = '  ',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[7] = {
+	  DiffRemove = {
+	    provider = 'DiffRemove',
+	    condition = checkwidth,
+	    -- separator = ' ',
+	    -- separator_highlight = {colors.purple,colors.bg},
+	    icon = '  ',
+	    highlight = {colors.red,colors.bg},
+	  }
+	}
+	gls.left[8] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	gls.left[9] = {
+	  DiagnosticError = {
+	    provider = 'DiagnosticError',
+	    icon = ' Ⓧ ',
+	    highlight = {colors.red,colors.bg}
+	  }
+	}
+	gls.left[10] = {
+	  Space = {
+	    provider = function () return '' end
+	  }
+	}
+	gls.left[11] = {
+	  DiagnosticWarn = {
+	    provider = 'DiagnosticWarn',
+	    icon = '⚠️ ',
+	    highlight = {colors.yellow,colors.bg},
+	  }
+	}
+	gls.left[12] = {
+	  DiagnosticHint = {
+	    provider = 'DiagnosticHint',
+	    icon = '💡',
+	    highlight = {colors.blue,colors.bg},
+	  }
+	}
+	gls.left[13] = {
+	  DiagnosticInfo = {
+	    provider = 'DiagnosticInfo',
+	    icon = 'ⓘ ',
+	    highlight = {colors.orange,colors.bg},
+	  }
+	}
+	gls.right[1]= {
+	  FileFormat = {
+	    provider = 'FileFormat',
+	    separator = ' ',
+	    separator_highlight = {colors.bg,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[2] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    separator = ' | ',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  },
+	}
+	gls.right[3] = {
+	  PerCent = {
+	    provider = 'LinePercent',
+	    separator = ' |',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+	gls.right[4] = {
+	  ScrollBar = {
+	    provider = 'ScrollBar',
+	    highlight = {colors.yellow,colors.purple},
+	  }
+	}
+	
+	-- gls.short_line_left[1] = {
+	--   BufferType = {
+	--     provider = 'FileTypeName',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	
+	gls.short_line_left[1] = {
+	  LeftEnd = {
+	    provider = function() return ' ' end,
+	    separator = ' ',
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.purple,colors.bg}
+	  }
+	}
+	
+	-- gls.short_line_right[1] = {
+	--   BufferIcon = {
+	--     provider= 'BufferIcon',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	-- function! s:my_bookmark_color() abort
+	--   let s:scl_guibg = matchstr(execute('hi SignColumn'), 'guibg=\zs\S*')
+	--   if empty(s:scl_guibg)
+	--     let s:scl_guibg = 'NONE'
+	--   endif
+	--   exe 'hi MyBookmarkSign guifg=' . s:scl_guibg
+	-- endfunction
+	-- call s:my_bookmark_color() " don't remove this line!
+	
+	-- augroup UserGitSignColumnColor
+	--   autocmd!
+	--   autocmd ColorScheme * call s:my_bookmark_color()
+	-- augroup END
+2e5d605913027f385621f7515ee31e7c|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|18|1|V|lua
+				require('highlite').highlight('GalaxyViMode', {fg=mode_color, style='bold'})
+53dde3d02d4449e483a588e22c141f6f|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|171|29|V|lua
+	ection.left =
+	{
+		{ViMode = {
+			provider = function() -- auto change color according the vim mode
+				local mode_color = nil
+				local mode_name = nil
+	
+				if vim.g.libmodalActiveModeName then
+					mode_name = vim.g.libmodalActiveModeName
+					mode_color = _MODES[mode_name]
+				else
+					local current_mode = _MODES[mode(true)] or _MODES[mode(false)]
+	
+					mode_name = current_mode[1]
+					mode_color = current_mode[2]
+				end
+	
+				return mode_name..' '
+			end,
+			icon = '▊ ',
+			highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+			separator = _SEPARATORS.right,
+			separator_highlight = {_HEX_COLORS.bar.side, get_file_icon_color}
+		}},
+	
+		{FileIcon = {
+			provider  = {space, 'FileIcon'},
+			highlight = {_HEX_COLORS.bar.side, get_file_icon_color},
+			separator = _SEPARATORS.left,
+			separator_highlight = {_HEX_COLORS.bar.side, get_file_icon_color}
+		}},
+	
+		{FileName = {
+			provider  = {space, 'FileName', 'FileSize'},
+			condition = buffer_no_empty,
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side, 'bold'}
+		}},
+	
+		{GitSeparator = {
+			provider = printer(_SEPARATORS.right),
+			condition = find_git_root,
+			highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.green_dark},
+		}},
+	
+		{GitBranch = {
+			provider = 'GitBranch',
+			icon = '   ',
+			condition = find_git_root,
+			highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.green_dark, 'bold'},
+			separator = _SEPARATORS.left,
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.green_dark},
+		}},
+	
+		{LeftEnd = {
+			provider = printer(_SEPARATORS.left),
+			condition = negated(find_git_root),
+			highlight = {_HEX_COLORS.bar.middle, find_git_root() and _HEX_COLORS.green_dark or _HEX_COLORS.bar.side}
+		}},
+	
+		{DiffAdd = {
+			provider = 'DiffAdd',
+			condition = all(checkwidth, find_git_root),
+			icon = '+',
+			highlight = {_HEX_COLORS.green_light, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiffModified = {
+			provider = 'DiffModified',
+			condition = checkwidth,
+			icon = '~',
+			highlight = {_HEX_COLORS.orange_light, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiffRemove = {
+			provider = 'DiffRemove',
+			condition = checkwidth,
+			icon = '-',
+			highlight = {_HEX_COLORS.red_light, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticError = {
+			provider = 'DiagnosticError',
+			icon = 'Ⓧ ',
+			highlight = {_HEX_COLORS.red, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticWarn = {
+			provider = 'DiagnosticWarn',
+			icon = '⚠️ ',
+			highlight = {_HEX_COLORS.yellow, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticHint = {
+			provider = 'DiagnosticHint',
+			icon = '💡',
+			highlight = {_HEX_COLORS.magenta, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	
+		{DiagnosticInfo = {
+			provider = 'DiagnosticInfo',
+			icon = 'ⓘ ',
+			highlight = {_HEX_COLORS.white, _HEX_COLORS.bar.middle},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.middle},
+		}},
+	} -- section.left
+	
+	section.right =
+	{
+		{Vista = {
+			provider = 'VistaPlugin',
+			condition = function() return vim.fn.exists(':Vista') ~= 0 end,
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.middle},
+		}},
+	
+		{RightBegin = {
+			provider = space,
+			highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.side},
+			separator = _SEPARATORS.right,
+			separator_highlight = {_HEX_COLORS.bar.middle, _HEX_COLORS.bar.side}
+		}},
+	
+		{FileFormat = {
+			provider = {'FileFormat', space},
+			highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+		}},
+	
+		{FileType = {
+			provider = 'FileTypeName',
+			highlight = {_HEX_COLORS.black, get_file_icon_color, 'bold'},
+			separator = _SEPARATORS.left,
+			separator_highlight = {get_file_icon_color, _HEX_COLORS.bar.side},
+		}},
+	
+		{FileSep = {
+			provider = printer(_SEPARATORS.right),
+			highlight = {get_file_icon_color, _HEX_COLORS.bar.side},
+		}},
+	
+		{
+			LineNumber =
+			{
+				provider = function() return vim.fn.line('.') end,
+				icon = ' ',
+				condition = buffer_not_empty,
+				highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+				separator = ' ',
+				separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+			},
+			ColumnNumber =
+			{
+				provider = function() return vim.fn.col('.') end,
+				icon = ' ',
+				condition = buffer_not_empty,
+				highlight = {_HEX_COLORS.text, _HEX_COLORS.bar.side},
+				separator = ' ',
+				separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+			}
+		},
+	
+		{PerCentSeparator = {
+			provider = printer(_SEPARATORS.left),
+			highlight = {_HEX_COLORS.magenta_dark, _HEX_COLORS.bar.side},
+			separator = ' ',
+			separator_highlight = {_HEX_COLORS.bar.side, _HEX_COLORS.bar.side},
+		}},
+	
+		{PerCent = {
+			provider = 'LinePercent',
+			highlight = {_HEX_COLORS.white, _HEX_COLORS.magenta_dark},
+		}},
+	
+		{ScrollBar = {
+			provider = 'ScrollBar',
+			highlight = {_HEX_COLORS.gray, _HEX_COLORS.magenta_dark},
+		}}
+	} -- section.right
+	
+	section.short_line_left =
+	{
+		{BufferType = {
+			provider = {space, space, 'FileTypeName', space},
+			highlight = {_HEX_COLORS.black, _HEX_COLORS.purple, 'bold'},
+			separator = _SEPARATORS.right,
+			separator_highlight = {_HEX_COLORS.purple, _HEX_COLORS.bar.middle}
+		}}
+	}
+	
+	section.short_line_right =
+	{
+		{BufferIcon = {
+			provider = 'BufferIcon',
+			highlight = {_HEX_COLORS.black, _HEX_COLORS.purple, 'bold'},
+			separator = _SEPARATORS.left,
+			separator_highlight = {_HEX_COLORS.purple, _HEX_COLORS.bar.middle}
+		}}
+	}t
+fcc2c50027bfd25a32f4fe11a97390bc|file:///Users/louis/.config/nvim/init.vim|49|6|V|vim
+	Plug 'wincent/scalpel'
+f2b1cc3cf32231f8b5e1fb2ac5513115|file:///Users/louis/.config/nvim/init.vim|45|1|V|vim
+	let python_highlight_all=1
+6fc53945fcfcdb6bd305894e871def6b|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|22|12|v|lua
+	8FBCBB
+8f7dcc38b330ccf175a393e54aca8274|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|21|17|v|lua
+	353644
+ff91ed7017f320d247c9dc191e1d207e|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|23|18|v|lua
+	65a380
+5880a47f0d5ff6a83838a0bfaccd443b|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|311|1|V|lua
+	gls.short_line_left[1] = {
+	  BufferType = {
+	    provider = 'FileTypeName',
+	    separator = '',
+	    condition = has_file_type,
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.fg,colors.purple}
+	  }
+	}
+	
+	
+	gls.short_line_right[1] = {
+	  BufferIcon = {
+	    provider= 'BufferIcon',
+	    separator = '',
+	    condition = has_file_type,
+	    separator_highlight = {colors.purple,colors.bg},
+	    highlight = {colors.fg,colors.purple}
+	  }
+	}
+09cf5c18cbc9c14b606cef4a6772761d|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|269|1|V|lua
+	
+	gls.right[1]= {
+	  FileFormat = {
+	    provider = 'FileFormat',
+	    separator = ' ',
+	    separator_highlight = {colors.bg,colors.line_bg},
+	    highlight = {colors.fg,colors.line_bg,'bold'},
+	  }
+	}
+761f0129a5cd6306c2ac300c77d4620f|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|216|1|V|lua
+	gls.left[10] = {
+	  LeftEnd = {
+	    provider = function() return '' end,
+	    separator = '',
+	    separator_highlight = {colors.bg,colors.line_bg},
+	    highlight = {colors.line_bg,colors.line_bg}
+	  }
+	}
+ed04cf2b8f986800ef394c934fa02099|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|262|1|V|lua
+	gls.right[1]= {
+	  FileFormat = {
+	    provider = 'FileFormat',
+	    separator = ' ',
+	    separator_highlight = {colors.bg,colors.line_bg},
+	    highlight = {colors.fg,colors.line_bg,'bold'},
+	  }
+	}
+fac0c0ef830a3cb7219eec39e0ec9eb6|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|26|13|v|lua
+	#008080
+7a17aa1ef3dac1b5d190d353c77b0424|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|1|1|V|lua
+	local gl = require('galaxyline')
+	local gls = gl.section
+	local extension = require('galaxyline.provider_extensions')
+	
+	gl.short_line_list = {
+	    'LuaTree',
+	    'vista',
+	    'dbui',
+	    'startify',
+	    'term',
+	    'nerdtree',
+	    'fugitive',
+	    'fugitiveblame',
+	    'plug'
+	}
+	
+	-- VistaPlugin = extension.vista_nearest
+	
+	local colors = {
+	    bg = '#0000',
+	    line_bg = '#0000',
+	    fg = '#0000',
+	    fg_green = '#0000',
+	
+	    yellow = '#fabd2f',
+	    cyan = '#008080',
+	    darkblue = '#081633',
+	    green = '#afd700',
+	    orange = '#FF8800',
+	    purple = '#5d4d7a',
+	    magenta = '#c678dd',
+	    blue = '#51afef';
+	    red = '#ec5f67'
+	}
+	
+	local function lsp_status(status)
+	    shorter_stat = ''
+	    for match in string.gmatch(status, "[^%s]+")  do
+	        err_warn = string.find(match, "^[WE]%d+", 0)
+	        if not err_warn then
+	            shorter_stat = shorter_stat .. ' ' .. match
+	        end
+	    end
+	    return shorter_stat
+	end
+	
+	
+	local function get_coc_lsp()
+	  local status = vim.fn['coc#status']()
+	  if not satus or status == '' then
+	      return ''
+	  end
+	  return lsp_status(status)
+	end
+	
+	function get_diagnostic_info()
+	  if vim.fn.exists('*coc#rpc#start_server') == 1 then
+	    return get_coc_lsp()
+	    end
+	  return ''
+	end
+	
+	local function get_current_func()
+	  local has_func, func_name = pcall(vim.fn.nvim_buf_get_var,0,'coc_current_function')
+	  if not has_func then return end
+	      return func_name
+	  end
+	
+	function get_function_info()
+	  if vim.fn.exists('*coc#rpc#start_server') == 1 then
+	    return get_current_func()
+	    end
+	  return ''
+	end
+	
+	local function trailing_whitespace()
+	    local trail = vim.fn.search("\\s$", "nw")
+	    if trail ~= 0 then
+	        return ' '
+	    else
+	        return nil
+	    end
+	end
+	
+	CocStatus = get_diagnostic_info
+	CocFunc = get_current_func
+	TrailingWhiteSpace = trailing_whitespace
+	
+	function has_file_type()
+	    local f_type = vim.bo.filetype
+	    if not f_type or f_type == '' then
+	        return false
+	    end
+	    return true
+	end
+	
+	local buffer_not_empty = function()
+	  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+	    return true
+	  end
+	  return false
+	end
+	
+	gls.left[1] = {
+	  FirstElement = {
+	    provider = function() return ' ' end,
+	    highlight = {colors.blue,colors.line_bg}
+	  },
+	}
+	gls.left[2] = {
+	  ViMode = {
+	    provider = function()
+	      -- auto change color according the vim mode
+	      local alias = {
+	          n = 'NORMAL',
+	          i = 'INSERT',
+	          c= 'COMMAND',
+	          V= 'VISUAL',
+	          [''] = 'VISUAL',
+	          v ='VISUAL',
+	          c  = 'COMMAND-LINE',
+	          ['r?'] = ':CONFIRM',
+	          rm = '--MORE',
+	          R  = 'REPLACE',
+	          Rv = 'VIRTUAL',
+	          s  = 'SELECT',
+	          S  = 'SELECT',
+	          ['r']  = 'HIT-ENTER',
+	          [''] = 'SELECT',
+	          t  = 'TERMINAL',
+	          ['!']  = 'SHELL',
+	      }
+	      local mode_color = {
+	          n = colors.green,
+	          i = colors.blue,v=colors.magenta,[''] = colors.blue,V=colors.blue,
+	          c = colors.red,no = colors.magenta,s = colors.orange,S=colors.orange,
+	          [''] = colors.orange,ic = colors.yellow,R = colors.purple,Rv = colors.purple,
+	          cv = colors.red,ce=colors.red, r = colors.cyan,rm = colors.cyan, ['r?'] = colors.cyan,
+	          ['!']  = colors.green,t = colors.green,
+	          c  = colors.purple,
+	          ['r?'] = colors.red,
+	          ['r']  = colors.red,
+	          rm = colors.red,
+	          R  = colors.yellow,
+	          Rv = colors.magenta,
+	      }
+	      local vim_mode = vim.fn.mode()
+	      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim_mode])
+	      return alias[vim_mode] .. '   Louis  '
+	    end,
+	    highlight = {colors.red,colors.line_bg,'bold'},
+	  },
+	}
+	gls.left[3] ={
+	  FileIcon = {
+	    provider = 'FileIcon',
+	    condition = buffer_not_empty,
+	    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
+	  },
+	}
+	gls.left[4] = {
+	  FileName = {
+	    provider = {'FileName','FileSize'},
+	    condition = buffer_not_empty,
+	    highlight = {colors.fg,colors.line_bg,'bold'}
+	  }
+	}
+	
+	gls.left[5] = {
+	  GitIcon = {
+	    provider = function() return '  ' end,
+	    condition = require('galaxyline.provider_vcs').check_git_workspace,
+	    highlight = {colors.orange,colors.line_bg},
+	  }
+	}
+	gls.left[6] = {
+	  GitBranch = {
+	    provider = 'GitBranch',
+	    condition = require('galaxyline.provider_vcs').check_git_workspace,
+	    highlight = {'#8FBCBB',colors.line_bg,'bold'},
+	  }
+	}
+	
+	local checkwidth = function()
+	  local squeeze_width  = vim.fn.winwidth(0) / 2
+	  if squeeze_width > 40 then
+	    return true
+	  end
+	  return false
+	end
+	
+	gls.left[7] = {
+	  DiffAdd = {
+	    provider = 'DiffAdd',
+	    condition = checkwidth,
+	    icon = ' ',
+	    highlight = {colors.green,colors.line_bg},
+	  }
+	}
+	gls.left[8] = {
+	  DiffModified = {
+	    provider = 'DiffModified',
+	    condition = checkwidth,
+	    icon = ' ',
+	    highlight = {colors.orange,colors.line_bg},
+	  }
+	}
+	gls.left[9] = {
+	  DiffRemove = {
+	    provider = 'DiffRemove',
+	    condition = checkwidth,
+	    icon = ' ',
+	    highlight = {colors.red,colors.line_bg},
+	  }
+	}
+	
+	gls.left[11] = {
+	    TrailingWhiteSpace = {
+	     provider = TrailingWhiteSpace,
+	     icon = '  ',
+	     highlight = {colors.yellow,colors.bg},
+	    }
+	}
+	
+	gls.left[12] = {
+	  DiagnosticError = {
+	    provider = 'DiagnosticError',
+	    icon = '  ',
+	    highlight = {colors.red,colors.bg}
+	  }
+	}
+	gls.left[13] = {
+	  Space = {
+	    provider = function () return ' ' end
+	  }
+	}
+	gls.left[14] = {
+	  DiagnosticWarn = {
+	    provider = 'DiagnosticWarn',
+	    icon = '  ',
+	    highlight = {colors.yellow,colors.bg},
+	  }
+	}
+	
+	
+	gls.left[15] = {
+	    CocStatus = {
+	     provider = CocStatus,
+	     highlight = {colors.green,colors.bg},
+	     icon = '  🗱'
+	    }
+	}
+	
+	gls.left[16] = {
+	  CocFunc = {
+	    provider = CocFunc,
+	    icon = '  λ ',
+	    highlight = {colors.yellow,colors.bg},
+	  }
+	}
+	
+	gls.right[4] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    separator = ' | ',
+	    separator_highlight = {colors.blue,colors.line_bg},
+	    highlight = {colors.fg,colors.line_bg},
+	  },
+	}
+	gls.right[5] = {
+	  PerCent = {
+	    provider = 'LinePercent',
+	    separator = ' ',
+	    separator_highlight = {colors.line_bg,colors.line_bg},
+	    highlight = {colors.cyan,colors.darkblue,'bold'},
+	  }
+	}
+	
+	-- gls.right[4] = {
+	--   ScrollBar = {
+	--     provider = 'ScrollBar',
+	--     highlight = {colors.blue,colors.purple},
+	--   }
+	-- }
+	--
+	-- gls.right[3] = {
+	--   Vista = {
+	--     provider = VistaPlugin,
+	--     separator = ' ',
+	--     separator_highlight = {colors.bg,colors.line_bg},
+	--     highlight = {colors.fg,colors.line_bg,'bold'},
+	--   }
+	-- }
+5e8ace6481e11a49fe56002429412515|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|97|7|v|lua
+	buffer_not_empty
+bb7aedfa61007447dd6efaf9f37641e3|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|284|25|v|lua
+	purple
+62848e3ce5804aa985513a7922ff87b2|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|284|18|v|lua
+	colors
+9306d36e7037e0a9244c761921c8d60e|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|283|28|v|lua
+	colors.purple,
+31899f76f5c02bf53f68e6f236392675|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|288|1|V|lua
+	-- gls.short_line_right[1] = {
+	--   BufferIcon = {
+	--     provider= 'BufferIcon',
+	--     separator = ' ',
+	--     separator_highlight = {colors.purple,colors.bg},
+	--     highlight = {colors.grey,colors.purple}
+	--   }
+	-- }
+	
+74b87337454200d4d33f80c4663dc5e5|file:///Users/louis/Dev/Projects/komi/komi-client/src/hooks/index.ts|14|4|V|typescript
+	aaaa
+8ed822bb165dd5633c71862ed4ff7b30|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|1|1|V|lua
+	local gl = require('galaxyline')
+f6e695e24ad42d08fc397bbabc2b136d|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|1|1|V|lua
+	local gl = require('galaxyline')
+	local gls = gl.section
+	local extension = require('galaxyline.provider_extensions')
+	
+	gl.short_line_list = {
+	    'LuaTree',
+	    'vista',
+	    'dbui',
+	    'startify',
+	    'term',
+	    'nerdtree',
+	    'fugitive',
+	    'fugitiveblame',
+	    'plug'
+	}
+	
+	-- VistaPlugin = extension.vista_nearest
+	
+	local colors = {
+	    bg = '#0000',
+	    line_bg = '#0000',
+	    fg = '#0000',
+	    fg_green = '#0000',
+	
+	    yellow = '#fabd2f',
+	    cyan = '#008080',
+	    darkblue = '#081633',
+	    green = '#afd700',
+	    orange = '#FF8800',
+	    purple = '#5d4d7a',
+	    magenta = '#c678dd',
+	    blue = '#51afef';
+	    red = '#ec5f67'
+	}
+	
+	local function lsp_status(status)
+	    shorter_stat = ''
+	    for match in string.gmatch(status, "[^%s]+")  do
+	        err_warn = string.find(match, "^[WE]%d+", 0)
+	        if not err_warn then
+	            shorter_stat = shorter_stat .. ' ' .. match
+	        end
+	    end
+	    return shorter_stat
+	end
+	
+	
+	local function get_coc_lsp()
+	  local status = vim.fn['coc#status']()
+	  if not satus or status == '' then
+	      return ''
+	  end
+	  return lsp_status(status)
+	end
+	
+	function get_diagnostic_info()
+	  if vim.fn.exists('*coc#rpc#start_server') == 1 then
+	    return get_coc_lsp()
+	    end
+	  return ''
+	end
+	
+	local function get_current_func()
+	  local has_func, func_name = pcall(vim.fn.nvim_buf_get_var,0,'coc_current_function')
+	  if not has_func then return end
+	      return func_name
+	  end
+	
+	function get_function_info()
+	  if vim.fn.exists('*coc#rpc#start_server') == 1 then
+	    return get_current_func()
+	    end
+	  return ''
+	end
+	
+	local function trailing_whitespace()
+	    local trail = vim.fn.search("\\s$", "nw")
+	    if trail ~= 0 then
+	        return ' '
+	    else
+	        return nil
+	    end
+	end
+	
+	CocStatus = get_diagnostic_info
+	CocFunc = get_current_func
+	TrailingWhiteSpace = trailing_whitespace
+	
+	function has_file_type()
+	    local f_type = vim.bo.filetype
+	    if not f_type or f_type == '' then
+	        return false
+	    end
+	    return true
+	end
+	
+	local buffer_not_empty = function()
+	  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+	    return true
+	  end
+	  return false
+	end
+	
+	gls.left[1] = {
+	  FirstElement = {
+	    provider = function() return ' ' end,
+	    highlight = {colors.blue,colors.line_bg}
+	  },
+	}
+	gls.left[2] = {
+	  ViMode = {
+	    provider = function()
+	      -- auto change color according the vim mode
+	      local alias = {
+	          n = 'NORMAL',
+	          i = 'INSERT',
+	          c= 'COMMAND',
+	          V= 'VISUAL',
+	          [''] = 'VISUAL',
+	          v ='VISUAL',
+	          c  = 'COMMAND-LINE',
+	          ['r?'] = ':CONFIRM',
+	          rm = '--MORE',
+	          R  = 'REPLACE',
+	          Rv = 'VIRTUAL',
+	          s  = 'SELECT',
+	          S  = 'SELECT',
+	          ['r']  = 'HIT-ENTER',
+	          [''] = 'SELECT',
+	          t  = 'TERMINAL',
+	          ['!']  = 'SHELL',
+	      }
+	      local mode_color = {
+	          n = colors.green,
+	          i = colors.blue,v=colors.magenta,[''] = colors.blue,V=colors.blue,
+	          c = colors.red,no = colors.magenta,s = colors.orange,S=colors.orange,
+	          [''] = colors.orange,ic = colors.yellow,R = colors.purple,Rv = colors.purple,
+	          cv = colors.red,ce=colors.red, r = colors.cyan,rm = colors.cyan, ['r?'] = colors.cyan,
+	          ['!']  = colors.green,t = colors.green,
+	          c  = colors.purple,
+	          ['r?'] = colors.red,
+	          ['r']  = colors.red,
+	          rm = colors.red,
+	          R  = colors.yellow,
+	          Rv = colors.magenta,
+	      }
+	      local vim_mode = vim.fn.mode()
+	      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim_mode])
+	      return alias[vim_mode] .. '   Louis  '
+	    end,
+	    separator = '',
+	    separator_highlight = {colors.yellow,function()
+	      if not buffer_not_empty() then
+	        return colors.bg
+	      end
+	      return colors.bg
+	    end},
+	    highlight = {colors.red,colors.line_bg,'bold'},
+	  },
+	}
+	gls.left[3] ={
+	  FileIcon = {
+	    provider = 'FileIcon',
+	    condition = buffer_not_empty,
+	    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
+	  },
+	}
+	gls.left[4] = {
+	  FileName = {
+	    provider = {'FileName','FileSize'},
+	    condition = buffer_not_empty,
+	    highlight = {colors.fg,colors.line_bg,'bold'}
+	  }
+	}
+	
+	gls.left[5] = {
+	  GitIcon = {
+	    provider = function() return '  ' end,
+	    condition = require('galaxyline.provider_vcs').check_git_workspace,
+	    highlight = {colors.orange,colors.line_bg},
+	  }
+	}
+	gls.left[6] = {
+	  GitBranch = {
+	    provider = 'GitBranch',
+	    condition = require('galaxyline.provider_vcs').check_git_workspace,
+	    highlight = {'#8FBCBB',colors.line_bg,'bold'},
+	  }
+	}
+	
+	local checkwidth = function()
+	  local squeeze_width  = vim.fn.winwidth(0) / 2
+	  if squeeze_width > 40 then
+	    return true
+	  end
+	  return false
+	end
+	
+	gls.left[7] = {
+	  DiffAdd = {
+	    provider = 'DiffAdd',
+	    condition = checkwidth,
+	    icon = ' ',
+	    highlight = {colors.green,colors.line_bg},
+	  }
+	}
+	gls.left[8] = {
+	  DiffModified = {
+	    provider = 'DiffModified',
+	    condition = checkwidth,
+	    icon = ' ',
+	    highlight = {colors.orange,colors.line_bg},
+	  }
+	}
+	gls.left[9] = {
+	  DiffRemove = {
+	    provider = 'DiffRemove',
+	    condition = checkwidth,
+	    icon = ' ',
+	    highlight = {colors.red,colors.line_bg},
+	  }
+	}
+	
+	gls.left[11] = {
+	    TrailingWhiteSpace = {
+	     provider = TrailingWhiteSpace,
+	     icon = '  ',
+	     highlight = {colors.yellow,colors.bg},
+	    }
+	}
+	
+	gls.left[12] = {
+	  DiagnosticError = {
+	    provider = 'DiagnosticError',
+	    icon = '  ',
+	    highlight = {colors.red,colors.bg}
+	  }
+	}
+	gls.left[13] = {
+	  Space = {
+	    provider = function () return ' ' end
+	  }
+	}
+	gls.left[14] = {
+	  DiagnosticWarn = {
+	    provider = 'DiagnosticWarn',
+	    icon = '  ',
+	    highlight = {colors.yellow,colors.bg},
+	  }
+	}
+	
+	
+	gls.left[15] = {
+	    CocStatus = {
+	     provider = CocStatus,
+	     highlight = {colors.green,colors.bg},
+	     icon = '  🗱'
+	    }
+	}
+	
+	gls.left[16] = {
+	  CocFunc = {
+	    provider = CocFunc,
+	    icon = '  λ ',
+	    highlight = {colors.yellow,colors.bg},
+	  }
+	}
+	
+	gls.right[4] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    separator = ' | ',
+	    separator_highlight = {colors.blue,colors.line_bg},
+	    highlight = {colors.fg,colors.line_bg},
+	  },
+	}
+	gls.right[5] = {
+	  PerCent = {
+	    provider = 'LinePercent',
+	    separator = ' ',
+	    separator_highlight = {colors.line_bg,colors.line_bg},
+	    highlight = {colors.cyan,colors.darkblue,'bold'},
+	  }
+	}
+	
+	gls.short_line_left[1] = {
+	  LeftEnd = {
+	    provider = function() return '' end,
+	    separator = '',
+	    separator_highlight = {colors.bg},
+	    highlight = {colors.bg}
+	  }
+	}
+	
+	-- gls.right[4] = {
+	--   ScrollBar = {
+	--     provider = 'ScrollBar',
+	--     highlight = {colors.blue,colors.purple},
+	--   }
+	-- }
+	--
+	-- gls.right[3] = {
+	--   Vista = {
+	--     provider = VistaPlugin,
+	--     separator = ' ',
+	--     separator_highlight = {colors.bg,colors.line_bg},
+	--     highlight = {colors.fg,colors.line_bg,'bold'},
+	--   }
+	-- }
+68d8eca64725c17b0e57a7d07e6c4cf2|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|26|14|v|lua
+	008080
+4a7d1ed414474e4033ac29ccb8653d9b|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|20|12|v|lua
+	0000
+56af022d804538a82b2c7a1f25369c8e|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|20|1|V|lua
+	    bg = '#0000',
+	    line_bg = '#0000',
+	    fg = '#0000',
+	    fg_green = '#0000',
+3dc87f44f78f38645319a183e07832a4|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|151|1|V|lua
+	    separator = '',
+	    separator_highlight = {colors.yellow,function()
+	      if not buffer_not_empty() then
+	        return colors.bg
+	      end
+	      return colors.bg
+	    end},
+d517ac1d318ce37ff2b568658f1b6f2b|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|262|1|V|lua
+	gls.right[4] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    separator = ' | ',
+	    separator_highlight = {colors.blue,colors.line_bg},
+	    highlight = {colors.fg,colors.line_bg},
+	  },
+	}
+0e5073a0f49f2c356d3e0cf7b8549579|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|262|1|V|lua
+	gls.right[4] = {
+	  ScrollBar = {
+	    provider = 'ScrollBar',
+	    highlight = {colors.yellow,colors.purple},
+	  }
+	}
+	gls.right[5] = {
+	  PerCent = {
+	    provider = 'LinePercent',
+	    separator = ' ',
+	    separator_highlight = {colors.line_bg,colors.line_bg},
+	    highlight = {colors.cyan,colors.darkblue,'bold'},
+	  }
+	}
+6904f3c79d2d4c3b6b1b15b8d195e4d3|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|19|1|V|lua
+	local colors = {
+	    bg = '#0000',
+	    line_bg = '#0000',
+	    fg = '#0000',
+	    fg_green = '#0000',
+	
+	    yellow = '#fabd2f',
+	    cyan = '#008080',
+	    darkblue = '#081633',
+	    green = '#afd700',
+	    orange = '#FF8800',
+	    purple = '#5d4d7a',
+	    magenta = '#c678dd',
+	    blue = '#51afef';
+	    red = '#ec5f67'
+	}
+a4fcfb291479adb375074f4b6ab20001|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|28|15|v|lua
+	afd700
+c52ba05d22d998270763dddf51808e2a|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|19|1|V|lua
+	local colors = {
+	    bg = '#0000',
+	    line_bg = '#0000',
+	    fg = '#0000',
+	    fg_green = '#0000',
+	
+	    yellow = '#fabd2f',
+	    cyan = '#008080',
+	    darkblue = '#081633',
+	    green = '#608B4E',
+	    orange = '#FF8800',
+	    purple = '#5d4d7a',
+	    magenta = '#c678dd',
+	    blue = '#51afef';
+	    red = '#ec5f67'
+	}
+db14b0681cee93434d85816572ad9fc0|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|28|1|V|lua
+	    green = '#AB47BC',
+60f7c740263acbc0fc86e7f98f275905|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|149|35|v|lua
+	 Louis
+9e79429f8d47c38f8d8183bc8a43f1c4|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|285|16|V|lua
+	gls.right[3] = {
+	  PerCent = {
+	    provider = 'LinePercent',
+	    separator = ' |',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+9f54ba30799f9bfaf5ac7ff92d75e116|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|302|1|V|lua
+	gls.right[4] = {
+	  ScrollBar = {
+	    provider = 'ScrollBar',
+	    highlight = {colors.yellow,colors.purple},
+	  }
+	}
+c793b306b5fab05de3df744db4a28917|file:///Users/louis/.config/nvim/init.vim|34|1|V|vim
+	Plug 'tpope/vim-commentary'
+c0290482094b28aa2812504f3005d019|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|277|1|V|lua
+	gls.right[2] = {
+	  LineInfo = {
+	    provider = 'LineColumn',
+	    separator = ' | ',
+	    separator_highlight = {colors.darkblue,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  },
+	}
+4578ab38cc62cfa3537b60c7da9ef738|file:///Users/louis/.config/nvim/lua/plugins/galaxyline-config.lua|269|1|V|lua
+	gls.right[3]= {
+	  FileFormat = {
+	    provider = 'FileFormat',
+	    separator = ' ',
+	    separator_highlight = {colors.bg,colors.bg},
+	    highlight = {colors.grey,colors.bg},
+	  }
+	}
+4373271e72b7dae0d52f527fef94d929|file:///Users/louis/.config/nvim/init.vim|24|1|V|vim
+	Plug 'tpope/vim-fugitive'
+96714c9d36de9b638d9efd4e60f38bfe|file:///Users/louis/.tmux.conf|63|1|v|tmux
+	tmux
+86807c844a7abd86bb65a569931bad0d|file:///Users/louis/.tmux.conf|63|4|v|tmux
+	-option
+5a49510c756a1f82bf3a75efcc963e13|file:///Users/louis/.tmux.conf|63|25|v|tmux
+	${gray}
+2e25fa5f0913fa5ce9c988ab7f838239|file:///Users/louis/.tmux.conf|63|34|v|tmux
+	${white}
+e1a8bf80efc41d860ec05ea18cfc2d90|file:///Users/louis/.tmux.conf|65|25|v|tmux
+	#00000
+dcddb75469b4b4875094e14561e573d8|file:///Users/louis/.tmux.conf|65|44|v|tmux
+	00000
+5e96bf62b9b2c18fdb65564b4a18fd1f|file:///Users/louis/.tmux.conf|9|1|v|tmux
+	transparent
+a292cf681d24ce485542e442839910a0|file:///Users/louis/.tmux.conf|65|9|v|tmux
+	tatus
+8581a1e078f5969c0a6d2a6701579075|file:///Users/louis/.tmux.conf|65|9|V|tmux
+	set -g status-style "bg=${black},fg=${black}"
+662fd9481b9b2c108061fccbbdd5b223|file:///Users/louis/.tmux.conf|64|39|v|tmux
+	dark_purple
+ef3e30e070f70244fd6578d88a6b77ac|file:///Users/louis/.tmux.conf|66|5|v|tmux
+	option
+cda7a650c5856cf2f6738072447d7825|file:///Users/louis/.tmux.conf|66|32|v|tmux
+	gray
+5b1a01167872fe25d9f1eb7d275b9d49|file:///Users/louis/.tmux.conf|57|9|V|tmux
+	set -g @plugin 'tmux-plugins/tpm'
+	set -g @plugin 'dracula/tmux'
+1d5eb249eba1e82127bd975273bda1a1|file:///Users/louis/.tmux.conf|58|9|V|tmux
+	set -g @plugin 'dracula/tmux'
+	set -g @dracula-show-weather false
+53a981fb43b82f3da51b3a6d3404865f|file:///Users/louis/.tmux.conf|58|9|V|tmux
+	set -g @plugin 'dracula/tmux'
+40c8f82f349fe3051770a3f698f36ec1|file:///Users/louis/.tmux.conf|63|14|V|tmux
+	set -g pane-active-border-style "fg=${black}"
+d75e74cc2d7b10dbbc1c9ad0fd2ce44b|file:///Users/louis/.tmux.conf|64|14|V|tmux
+	set -g pane-border-style "fg=${black}"
+5c9cf0b00c9dd241a6787546ec425698|file:///Users/louis/.tmux.conf|9|13|V|tmux
+	black='#0000'
+e0d2a3d88f8a326a63ebd5d0200b9558|file:///Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh|45|1|V|sh
+	  black="#00000"
+d508fe45cecaf653904a0e774084bb5c|file:///Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh|123|53|v|sh
+	white
+6423c858368906738d7b040b430049da|file:///Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh|47|3|v|sh
+	light_purple
+52f7d6eb653d1f97c07ecedd44af4592|file:///Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh|47|18|v|sh
+	bd93f9
+441b0863c72cbd4c3844ca9f7fb03f26|file:///Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh|48|16|v|sh
+	#6272a4
+f43dd60a2a69c836aa4eb172a48d6e1e|file:///Users/louis/.config/suckless/tmux/.tmux/plugins/tmux/scripts/dracula.sh|93|17|v|sh
+	window_flags
