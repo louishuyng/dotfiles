@@ -92,7 +92,6 @@ cnoreabbrev Qall qall
 filetype plugin indent on
 
 set nocompatible              " be iMproved, required filetype off
-" set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -107,6 +106,7 @@ set ttimeout
 set ttimeoutlen=2
 set number relativenumber
 set hidden
+set cursorline
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.

@@ -17,10 +17,10 @@ gl.short_line_list = {
 -- VistaPlugin = extension.vista_nearest
 
 local colors = {
-    bg = '#0000',
-    line_bg = '#0000',
+    bg = '#0D1117',
+    line_bg = '#0D1117',
     fg = '#0000',
-    fg_green = '#0000',
+    fg_green = '#0D1117',
 
     yellow = '#fabd2f',
     cyan = '#008080',
@@ -237,11 +237,6 @@ gls.left[12] = {
   }
 }
 gls.left[13] = {
-  Space = {
-    provider = function () return ' ' end
-  }
-}
-gls.left[14] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
@@ -249,8 +244,7 @@ gls.left[14] = {
   }
 }
 
-
-gls.left[15] = {
+gls.left[14] = {
     CocStatus = {
      provider = CocStatus,
      highlight = {colors.green,colors.bg},
@@ -258,7 +252,7 @@ gls.left[15] = {
     }
 }
 
-gls.left[16] = {
+gls.left[15] = {
   CocFunc = {
     provider = CocFunc,
     icon = '  λ ',
@@ -266,7 +260,7 @@ gls.left[16] = {
   }
 }
 
-gls.right[4] = {
+gls.right[3] = {
   LineInfo = {
     provider = 'LineColumn',
     separator = ' | ',
@@ -274,12 +268,12 @@ gls.right[4] = {
     highlight = {colors.fg,colors.line_bg},
   },
 }
-gls.right[5] = {
+gls.right[4] = {
   PerCent = {
     provider = 'LinePercent',
     separator = ' ',
     separator_highlight = {colors.line_bg,colors.line_bg},
-    highlight = {colors.cyan,colors.darkblue,'bold'},
+    highlight = {colors.cyan,colors.bg,'bold'},
   }
 }
 

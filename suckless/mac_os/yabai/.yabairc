@@ -1,37 +1,59 @@
 #!/usr/bin/env sh
 
-# global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          on
-yabai -m config window_topmost on
-yabai -m config window_placement             first_child
-yabai -m config window_topmost               off
-yabai -m config window_opacity               on
-yabai -m config window_shadow                float
-yabai -m config insert_feedback_color        0xaad75f5f
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        1.0
-yabai -m config split_ratio                  0.50
-yabai -m config auto_balance                 off
-yabai -m config mouse_modifier               fn
-yabai -m config mouse_action1                move
-yabai -m config mouse_action2                resize
+gaps_top="30"
+gaps_bottom="10"
+gaps_left="12"
+gaps_right="12"
+gaps_inner="7"
 
-# general space settings
-yabai -m config layout                       bsp
-yabai -m config top_padding                  30
-yabai -m config bottom_padding               10
-yabai -m config left_padding                 12
-yabai -m config right_padding                12
-yabai -m config window_gap                   7
+normal_border_color="010101"
+focused_border_color="808080"
+preselect_border_color="2d74da"
 
-# float system preferences
-yabai -m rule --add app="^System Preferences$" manage=off
+# ====== Tiling settings =======================
 
-# float alacritty, to use it as dmenu
-yabai -m rule --add app="^AlacrittyPopup$" manage=off
+yabai -m config layout                      bsp
 
-# show digital colour meter topmost and on all spaces
-yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
+yabai -m config top_padding                 "${gaps_top}"
+yabai -m config bottom_padding              "${gaps_bottom}"
+yabai -m config left_padding                "${gaps_left}"
+yabai -m config right_padding               "${gaps_right}"
+yabai -m config window_gap                  "${gaps_inner}"
 
-echo "yabai configuration loaded.."
+yabai -m config mouse_follows_focus         off
+yabai -m config focus_follows_mouse         off
+
+yabai -m config mouse_modifier              fn
+yabai -m config mouse_action1               move
+yabai -m config mouse_action2               resize
+
+yabai -m config window_topmost              off
+yabai -m config window_opacity              off
+yabai -m config window_shadow               float
+
+yabai -m config active_window_opacity       1.0
+yabai -m config normal_window_opacity       0.9
+yabai -m config split_ratio                 0.5
+yabai -m config auto_balance                off
+
+# ====== Border settings =======================
+yabai -m config window_border               on
+yabai -m config window_border_width         3
+yabai -m config active_window_border_color  "0xE0${focused_border_color}"
+yabai -m config insert_window_border_color  "0xE0${preselect_border_color}"
+yabai -m config normal_window_border_color  "0xE0${normal_border_color}"
+
+
+# ====== List of rules =========================
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="System Preferences" app="^System Preferences$" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+yabai -m rule --add label="KeePassXC" app="^KeePassXC$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="mpv" app="^mpv$" manage=off
+yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
+yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
+yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
