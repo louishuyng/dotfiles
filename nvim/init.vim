@@ -160,6 +160,7 @@ hi CocExplorerFileDirectoryExpanded guifg=#C3526E
 hi CocExplorerFileDirectory guifg=#61CE91
 hi CocExplorerNormalFloat guibg=#000000
 hi CursorLine guibg=#323232 guifg=NONE
+hi NERDTreeDir guifg=#50fa7b guibg=#041404 gui=NONE
 
 " ==================================================== Turn Off Swap Files
 set noswapfile
