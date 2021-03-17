@@ -11,7 +11,6 @@ Plug 'w0rp/ale'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'glepnir/zephyr-nvim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
@@ -33,6 +32,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 Plug 'yuki-ycino/fzf-preview.vim'
+Plug 'kevinhwang91/rnvimr'
 
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
 Plug 'joequery/stupid-easymotion'
@@ -75,6 +75,7 @@ source ~/.config/nvim/config/session.vim
 source ~/.config/nvim/config/spelunker.vim
 source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
+source ~/.config/nvim/config/rnvimr.vim
 
 luafile ~/.config/nvim/lua/plugins/galaxyline-config.lua
 
@@ -120,16 +121,6 @@ set cursorline
 set mouse=a
 
 " ==================================================== Theme
-" configure treesitter
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-  },
-}
-EOF
-
 set background=dark
 set termguicolors
 set t_Co=256
@@ -150,8 +141,8 @@ hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
 hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
 hi FloatermBorder guifg=#55E579
-hi Normal guibg=NONE
-hi EndOfBuffer guibg=NONE
+hi Normal guibg=#000000
+hi EndOfBuffer guibg=#000000
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
 hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE

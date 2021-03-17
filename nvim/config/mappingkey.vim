@@ -79,8 +79,8 @@ map <leader>` <ESC>:changes<CR>
 "" Check Erro
 map <leader>lo :lopen<CR>
 
-inoremap jj <esc>
-tnoremap jj <C-\><C-n>
+imap jj <esc>
+imap jj <C-\><C-n>
 
 " Use CTRL-S for saving, also in Insert mode
 noremap <Cmd-S> :update<CR>
