@@ -1,6 +1,7 @@
 "" ==================================================== Init Configure
 let mapleader=','
 let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading -w'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " ==================================================== Plugin
 call plug#begin(expand('~/.config/nvim/plugged'))
@@ -13,10 +14,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'pbogut/fzf-mru.vim'
-Plug 'yuki-ycino/fzf-preview.vim'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -29,6 +26,12 @@ endif
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+
+""""""""""""""""""""""""""FILE SYSTEM""""""""""""""""""""""""""
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'pbogut/fzf-mru.vim'
+Plug 'yuki-ycino/fzf-preview.vim'
 
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
 Plug 'joequery/stupid-easymotion'
@@ -136,8 +139,8 @@ hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
 hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
 hi FloatermBorder guifg=#55E579
-hi Normal guibg=#000000
-hi EndOfBuffer guibg=#000000
+hi Normal guibg=NONE
+hi EndOfBuffer guibg=NONE
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
 hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
@@ -145,7 +148,7 @@ hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
 hi CocExplorerFileDirectoryExpanded guifg=#C3526E
 hi CocExplorerFileDirectory guifg=#61CE91
 hi CocExplorerNormalFloat guibg=#000000
-hi CursorLine guibg=#323232 guifg=NONE
+hi CursorLine guibg=#3B4251 guifg=NONE
 
 " ==================================================== Turn Off Swap Files
 set noswapfile

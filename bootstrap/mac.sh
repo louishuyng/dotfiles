@@ -157,6 +157,14 @@ install_tool() {
   fi
 }
 
+install_ranger() {
+  read -r -p "Do you want to install ranger ? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install ranger
+  fi
+}
+
+
 install_lua() {
   read -r -p "Do you want to install lua? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -168,11 +176,12 @@ install_homebrew
 setup_git
 install_zsh
 install_terminal
+install_lua
 install_nvim
 install_tmux
 install_window_manager
 install_tool
-install_lua
+install_ranger
 
 echo "---"
 
