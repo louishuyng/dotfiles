@@ -8,10 +8,11 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
 Plug 'w0rp/ale'
-Plug 'KeitaNakamura/neodark.vim'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'glepnir/zephyr-nvim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'jistr/vim-nerdtree-tabs'
@@ -119,11 +120,21 @@ set cursorline
 set mouse=a
 
 " ==================================================== Theme
+" configure treesitter
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
+
 set background=dark
 set termguicolors
 set t_Co=256
-let g:neodark#background = '#202020'
-colorscheme neodark
+
+lua require('zephyr')
 
 if (has("termguicolors"))
   set termguicolors
@@ -148,7 +159,7 @@ hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
 hi CocExplorerFileDirectoryExpanded guifg=#C3526E
 hi CocExplorerFileDirectory guifg=#61CE91
 hi CocExplorerNormalFloat guibg=#000000
-hi CursorLine guibg=#3B4251 guifg=NONE
+hi CursorLine guibg=#323232 guifg=NONE
 
 " ==================================================== Turn Off Swap Files
 set noswapfile
