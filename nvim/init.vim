@@ -52,6 +52,7 @@ Plug 'kamykn/spelunker.vim'
 Plug 'majutsushi/tagbar'
 Plug 'benmills/vimux' "Vi + Tmux
 Plug 'Yggdroot/indentLine'
+Plug 'preservim/nerdcommenter'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 call plug#end()
