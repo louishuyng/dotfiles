@@ -4,10 +4,11 @@ ctrl + alt - g : open -na /Applications/Brave\ Browser.app
 ctrl + alt - p : screencapture ~/Desktop/capture.jpg
 ctrl + alt - n : open -na /Applications/Notion.app
 ctrl + alt - v : open -na /Applications/Visual\ Studio\ Code.app
-ctrl + alt - c : open -na /Applications/CleanMyMac\ X.app
-ctrl + alt - m : open -na /Applications/Brave\ Browser.app https://www.messenger.com
+ctrl + alt - c : open -na /Applications/Messenger.app
 ctrl + alt - b : open -na /Applications/coconutBattery.app
-ctrl + alt - s : open -na /Applications/Spotify.app
+ctrl + alt - d : open -na /Applications/DataGrip.app
+ctrl + alt - s : open -na /Applications/Slack.app
+ctrl + alt - m : open -na /Applications/Spotify.app
 ctrl + alt - q : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
 
 shift + alt - space : yabai -m window --toggle float
@@ -86,7 +87,7 @@ cmd + alt - w : chunkc tiling::desktop --annihilate
 # Restart Yabai
 shift + lctrl + alt - r :
     /usr/bin/env osascript <<< \
-        "display notification \"Mother fucker rock it now\" with title \"Louis Hacker\""; \
-        brew services restart spacebar; \
-        sudo yabai --load-sa; \
+        "display notification \"Mother fucker rock it now\" with title \"Louis Hacker\"";\
+        brew services restart spacebar;\
+        sudo yabai --load-sa;\
         launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"; \
