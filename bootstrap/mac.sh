@@ -26,7 +26,7 @@ install_homebrew() {
   read -r -p "Do you want to install homebrew? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew tap caskroom/cask
+    brew tap homebrew/cask
     success "Installed homebrew"
   fi
 }
@@ -61,8 +61,12 @@ install_zsh() {
 
     mkdir -p ~/.oh-my-zsh
 
-    ln -s ../suckless/zsh/.zshrc ~/.zshrc
-    ln -s ../suckless/oh-my-zsh/* ~/.oh-my-zsh
+    rm -rf ~/.zshrc
+    cp ../suckless/zsh/.zshrc ~/.zshrc
+
+    rm -rf ~/.oh-my-zsh
+    mkdir ~/.oh-my-zsh
+    cp -rf ../suckless/oh-my-zsh/* ~/.oh-my-zsh/
 
     success "Installed zsh"
   fi
@@ -78,7 +82,7 @@ install_font() {
     rm -rf fonts
 
     brew tap homebrew/cask-fonts
-    brew cask install font-hack-nerd-font
+    brew install font-hack-nerd-font
 
     success "Installed font!"
   fi
@@ -87,9 +91,10 @@ install_font() {
 install_terminal() {
   read -r -p "Do you want to install terminal? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew cask install alacritty
+    brew install alacritty
 
-    ln -s ../suckless/mac_os/alacritty/alacritty.yml ~/.alacritty.yml
+    rm -rf ~/.alacritty.yml
+    cp ../suckless/mac_os/alacritty/alacritty.yml ~/.alacritty.yml
     success "Installed terminal"
   fi
 }
@@ -98,7 +103,7 @@ install_nvim() {
   read -r -p "Do you want to install neovim? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     info "Installing neovim"
-    brew install neovim
+    brew install --HEAD neovim
 
     # reduce keyrepeat for faster typing in vim
     defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
@@ -112,8 +117,10 @@ install_tmux() {
   read -r -p "Do you want to install tmux? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install tmux
-    ln -s ../suckless/tmux/.tmux.conf ~/.tmux.conf
+    rm ~/.tmux.conf
+    cp ../suckless/tmux/.tmux.conf ~/.tmux.conf
 
+    rm -rf ~/.tmux/plugins/tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 }
@@ -130,9 +137,14 @@ install_window_manager() {
     brew install koekeishiya/formulae/skhd
     brew services start skhd
 
-    ln -s ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
-    ln -s ../suckless/mac_os/yabai/.yabai ~/.yabai
-    ln -s ../suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
+    rm -rf ~/.skhdrc
+    cp ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+
+    rm -rf ~/.yabairc
+    cp ../suckless/mac_os/yabai/.yabairc ~/.yabairc
+
+    rm -rf ~/.spacebarrc
+    cp ../suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
 
     success "Installed window manager! Remember to disable System Integrity Protection (SIP)"
   fi
@@ -152,6 +164,7 @@ install_tool() {
     brew install bluetoothconnector
     brew install exa
     brew install fzf
+
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"
   fi
