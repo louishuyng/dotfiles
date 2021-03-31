@@ -7,7 +7,7 @@ gaps_right="12"
 gaps_inner="7"
 
 normal_border_color="010101"
-focused_border_color="808080"
+focused_border_color="f8f8f2"
 preselect_border_color="2d74da"
 
 # ====== Tiling settings =======================

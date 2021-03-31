@@ -62,11 +62,11 @@ install_zsh() {
     mkdir -p ~/.oh-my-zsh
 
     rm -rf ~/.zshrc
-    cp ../suckless/zsh/.zshrc ~/.zshrc
+    ln ../suckless/zsh/.zshrc ~/.zshrc
 
     rm -rf ~/.oh-my-zsh
     mkdir ~/.oh-my-zsh
-    cp -rf ../suckless/oh-my-zsh/* ~/.oh-my-zsh/
+    ln -rf ../suckless/oh-my-zsh/* ~/.oh-my-zsh/
 
     success "Installed zsh"
   fi
@@ -94,7 +94,7 @@ install_terminal() {
     brew install alacritty
 
     rm -rf ~/.alacritty.yml
-    cp ../suckless/mac_os/alacritty/alacritty.yml ~/.alacritty.yml
+    ln ../suckless/mac_os/alacritty/alacritty.yml ~/.alacritty.yml
     success "Installed terminal"
   fi
 }
@@ -118,7 +118,7 @@ install_tmux() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install tmux
     rm ~/.tmux.conf
-    cp ../suckless/tmux/.tmux.conf ~/.tmux.conf
+    ln ../suckless/tmux/.tmux.conf ~/.tmux.conf
 
     rm -rf ~/.tmux/plugins/tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -138,13 +138,13 @@ install_window_manager() {
     brew services start skhd
 
     rm -rf ~/.skhdrc
-    cp ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+    ln ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
 
     rm -rf ~/.yabairc
-    cp ../suckless/mac_os/yabai/.yabairc ~/.yabairc
+    ln ../suckless/mac_os/yabai/.yabairc ~/.yabairc
 
     rm -rf ~/.spacebarrc
-    cp ../suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
+    ln ../suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
 
     success "Installed window manager! Remember to disable System Integrity Protection (SIP)"
   fi
@@ -164,6 +164,8 @@ install_tool() {
     brew install bluetoothconnector
     brew install exa
     brew install fzf
+    brew install pidof
+    brew install watch
 
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"
