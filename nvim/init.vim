@@ -10,11 +10,12 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
 Plug 'w0rp/ale'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'akinsho/nvim-bufferline.lua'
 Plug 'ayu-theme/ayu-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
-Plug 'sainnhe/edge'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'jistr/vim-nerdtree-tabs'
@@ -80,7 +81,9 @@ source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/rnvimr.vim
 
-luafile ~/.config/nvim/lua/plugins/galaxyline-config.lua
+lua require 'treesitter'
+lua require 'statusline'
+lua require 'tabline'
 
 "*****************************************************************************
 "" Abbreviations
@@ -131,16 +134,30 @@ set t_Co=256
 
 colorscheme koehler
 
-let g:lightline = {
-  \ 'colorscheme': 'ayu',
-  \ }
-
 if (has("termguicolors"))
   set termguicolors
   hi LineNr ctermbg=NONE guibg=NONE
   hi VertSplit guifg=#6A68FE guibg=#0000 gui=NONE cterm=NONE
   hi SignColumn guifg=#0000 guibg=#0000
 endif
+
+" ==================================================== Highlight
+hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
+hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
+hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
+hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+hi Normal guibg=#000000
+hi EndOfBuffer guibg=#000000
+hi FloatermBorder guifg=#55E579
+hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
+hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
+hi CocExplorerFileDirectoryExpanded guifg=#C3526E
+hi CocExplorerFileDirectory guifg=#61CE91
+hi CocExplorerNormalFloat guibg=#000000
+hi CursorLine guibg=#323232 guifg=NONE
 
 " ==================================================== Turn Off Swap Files
 set noswapfile

@@ -2,44 +2,41 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh/
 export TERM=xterm-256color
 
-plugins=(
-  git
-  colorize
-  github
-  jira
-  vagrant
-  virtualenv
-  pip
-  python
-  brew
-  osx
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  zsh-completions
-  vi-mode
-)
+# lazyload zsh - boost zsh startup time
+source ~/.zsh-defer/zsh-defer.plugin.zsh
+PS1="%F{12}%~%f "
+RPS1="%F{240}Loading...%f"
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
-autoload -U compinit && compinit
+# Current theme         https://github.com/sindresorhus/pure
+# How to install        npm install --global pure-prompt
+zstyle :prompt:pure:path color white
+zstyle ':prompt:pure:prompt:*' color green
+zstyle :prompt:pure:git:stash show yes
 
-ZSH_THEME="spaceship"
-SPACESHIP_PROMPT_ADD_NEWLINE="true"
-SPACESHIP_CHAR_PREFIX='\ufbdf '
-SPACESHIP_CHAR_PREFIX_COLOR='yellow'
-SPACESHIP_CHAR_SUFFIX=(" ")
-SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
-SPACESHIP_CHAR_SYMBOL='~'
-SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
-SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
-SPACESHIP_VENV_COLOR="magenta"
-SPACESHIP_VENV_PREFIX="("
-SPACESHIP_VENV_SUFFIX=")"
-SPACESHIP_VENV_SYMBOL='\uf985'
-SPACESHIP_USER_SHOW="true"
-SPACESHIP_DOCKER_SYMBOL='\ue7b0'
-SPACESHIP_DOCKER_VERBOSE='false'
-SPACESHIP_BATTERY_SHOW='false'
+# Hightlight syntax for manual page
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
 
-source $ZSH/oh-my-zsh.sh
+export LC_ALL=en_US.UTF-8
+zsh-defer source ~/.config/suckless/zsh/z.sh
+zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+zsh-defer source ~/.zsh/zsh-completions/zsh-completions.plugin.zs
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 GIT_AUTHOR_NAME="Louis"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
@@ -51,6 +48,7 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 ## ALIAS
 alias cat='bat'
 alias fuck="git"
+alias nv="nvim"
 alias dcpd="docker-compose down"
 alias dcpu="docker-compose up"
 alias c="clear"
@@ -73,7 +71,6 @@ alias chatwork="open -a 'Google Chrome' http://www.chatwork.com "
 alias youtube="open -a 'Google Chrome' http://www.youtube.com "
 alias dk="open -a 'Docker'"
 alias sdn="osascript -e 'tell app \"System Events\" to shut down'"
-alias nv='~/.nvim/bin/nvim'
 alias vimrc='nvim ~/.config/nvim/init.vim'
 alias tm='tmux  -2'
 alias rf='rm -rf'
@@ -204,33 +201,14 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=$PATH:/usr/local/mysql/bin
 alias pip=/usr/local/bin/pip3
 
 export NVM_DIR="/Users/ziik/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/louis/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/louis/google-cloud-sdk/path.zsh.inc'; fi
+# Load pure theme afterward
+autoload -U promptinit; promptinit
+prompt pure
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/louis/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/louis/google-cloud-sdk/completion.zsh.inc'; fi
-
-# KUBECONTEXT
-# Show current context in kubectl.
-spaceship_kubecontext() {
-  [[ $SPACESHIP_KUBECONTEXT_SHOW == false ]] && return
-
-  # Show KUBECONTEXT status only for folders with .kube and file config inside.
-  [[ -f .kube/config ]] || return
-
-  local kube_context=$(awk -F' *: *' '$1 == "current-context" {print $2}' ~/.kube/config)
-
-  _prompt_section \
-    "$SPACESHIP_KUBECONTEXT_COLOR" \
-    "$SPACESHIP_KUBECONTEXT_PREFIX" \
-    "${SPACESHIP_KUBECONTEXT_SYMBOL}${kube_context}" \
-    "$SPACESHIP_KUBECONTEXT_SUFFIX"
-}
-export PATH="/usr/local/sbin:$PATH"
+zsh-defer -c 'RPS1="%F{240}%f"'

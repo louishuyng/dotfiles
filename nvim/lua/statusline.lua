@@ -17,20 +17,21 @@ gl.short_line_list = {
 -- VistaPlugin = extension.vista_nearest
 
 local colors = {
-    bg = '#0D1117',
-    line_bg = '#0D1117',
-    fg = '#0000',
-    fg_green = '#0D1117',
-
-    yellow = '#fabd2f',
-    cyan = '#008080',
-    darkblue = '#081633',
-    green = '#608B4E',
-    orange = '#FF8800',
-    purple = '#5d4d7a',
-    magenta = '#c678dd',
-    blue = '#51afef';
-    red = '#ec5f67'
+    bg = "#000000",
+    line_bg = "#000000",
+    fg = "#D8DEE9",
+    fg_green = "#65a380",
+    yellow = "#A3BE8C",
+    cyan = "#00FFFF",
+    darkblue = "#61afef",
+    green = "#BBE67E",
+    orange = "#FF8800",
+    purple = "#252930",
+    magenta = "#c678dd",
+    blue = "#51afef",
+    red = "#DF8890",
+    nord = "#81A1C1",
+    greenYel = "#EBCB8B"
 }
 
 local function lsp_status(status)
@@ -104,7 +105,7 @@ end
 gls.left[1] = {
   FirstElement = {
     provider = function() return ' ' end,
-    highlight = {colors.blue,colors.line_bg}
+    highlight = {colors.nord,colors.bg}
   },
 }
 gls.left[2] = {
@@ -146,7 +147,7 @@ gls.left[2] = {
       }
       local vim_mode = vim.fn.mode()
       vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim_mode])
-      return alias[vim_mode] .. '  '
+      return alias[vim_mode] .. '   '
     end,
     separator = ' ',
     separator_highlight = {colors.yellow,function()
@@ -200,8 +201,8 @@ gls.left[7] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = checkwidth,
-    icon = ' ',
-    highlight = {colors.green,colors.line_bg},
+    icon = "   ",
+    highlight = {colors.greenYel,colors.line_bg},
   }
 }
 gls.left[8] = {
@@ -273,7 +274,7 @@ gls.right[4] = {
     provider = 'LinePercent',
     separator = ' ',
     separator_highlight = {colors.line_bg,colors.line_bg},
-    highlight = {colors.cyan,colors.bg,'bold'},
+    highlight = {colors.green,colors.bg,'bold'},
   }
 }
 

@@ -64,9 +64,8 @@ install_zsh() {
     rm -rf ~/.zshrc
     ln ../suckless/zsh/.zshrc ~/.zshrc
 
-    rm -rf ~/.oh-my-zsh
-    mkdir ~/.oh-my-zsh
-    ln -rf ../suckless/oh-my-zsh/* ~/.oh-my-zsh/
+    rm -rf ~/.zsh-defer
+    git clone https://github.com/romkatv/zsh-defer.git ~/.zsh-defer
 
     success "Installed zsh"
   fi
