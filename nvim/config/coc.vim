@@ -14,8 +14,9 @@ let g:global_extensions = [
   \'coc-python',
   \'coc-svg',
   \'coc-flow',
-  \'coc-go'
-  \'coc-marketplace'
+  \'coc-go',
+  \'coc-marketplace',
+  \'coc-angular'
   \]
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
