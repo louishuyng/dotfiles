@@ -1,6 +1,4 @@
 {
-  "python.jediPath": "/Users/topcbl/.pyenv/versions/3.7.2/lib/python3.7/site-packages/",
-
   "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
 
   "languageserver": {
@@ -19,13 +17,13 @@
     }
   },
 
-  "diagnostic.warningSign": "?",
-  "diagnostic.errorSign": "?",
-  "diagnostic.infoSign": "?",
-  "diagnostic.hintSign": "?",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.errorSign": "⛄",
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.hintSign": "✏",
   "diagnostic.displayByAle": true,
 
-  "clangd.path": "/Users/topcbl/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
+  "clangd.path": "/Users/admin/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
 
   "explorer.width": 45,
   "explorer.icon.enableNerdfont": true,
@@ -34,11 +32,6 @@
   "explorer.floating.hideOnCocList": false,
   "explorer.floating.width": 120,
   "explorer.floating.height": 0,
-  "explorer.keyMappings": {
-    "s": "open:vsplit",
-    "i": "open:split",
-    "o": ["expandable?", "expand", "open"]
-  },
 
   "codeLens.enable": true,
 

@@ -51,6 +51,11 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
 let python_highlight_all=1
 
+""""""""""""""""""""""""""RUBY""""""""""""""""""""""""""
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'thoughtbot/vim-rspec'
+
 """"""""""""""""""""""""""OTHERS""""""""""""""""""""""""""
 Plug 'cohama/lexima.vim'
 Plug 'wincent/scalpel'
@@ -73,7 +78,7 @@ source ~/.config/nvim/config/fzf.vim
 source ~/.config/nvim/config/git.vim
 source ~/.config/nvim/config/mappingkey.vim
 source ~/.config/nvim/config/nerdtree.vim
-source ~/.config/nvim/config/ruby.vim
+source ~/.config/nvim/config/rails.vim
 source ~/.config/nvim/config/scalpel.vim
 source ~/.config/nvim/config/session.vim
 source ~/.config/nvim/config/spelunker.vim
@@ -179,6 +184,7 @@ autocmd Filetype kotlin setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype java setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype xml setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
+autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2
 
 autocmd BufWritePre * %s/\s\+$//e
 
