@@ -20,7 +20,6 @@ let g:global_extensions = [
   \]
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " Restart Coc
 nmap <leader>cr :CocRestart<CR>

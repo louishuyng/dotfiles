@@ -1,9 +1,21 @@
 let g:ale_linters = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\  'javascript': ['standardrb', 'rubocop'],
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  'javascript': ['eslint', 'prettier', 'flow'],
+\  'typescript': ['tslint', 'eslint'],
 \  'ruby': ['rubocop'],
 \  'python': ['flake8', 'pylint'],
-\  'kotlin': ['ktlint'],
+\}
+
+let g:ale_fixers = {
+\   'typescript': [
+\       'tslint',
+\       'eslint',
+\   ],
+\   'javascript': [
+\       'prettier',
+\       'flow',
+\       'eslint',
+\   ],
 \}
 
 let g:ale_enabled = 1
