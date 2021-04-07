@@ -16,6 +16,9 @@ let g:ale_fixers = {
 \       'flow',
 \       'eslint',
 \   ],
+\   'ruby': [
+\       'rubocop',
+\   ],
 \}
 
 let g:ale_enabled = 1

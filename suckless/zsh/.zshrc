@@ -212,3 +212,4 @@ autoload -U promptinit; promptinit
 prompt pure
 
 zsh-defer -c 'RPS1="%F{240}%f"'
+export PATH="/usr/local/opt/openssl/bin:$PATH"

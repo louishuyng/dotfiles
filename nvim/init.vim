@@ -3,12 +3,13 @@
 let mapleader=','
 let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading -w'
 let g:python3_host_prog = '/usr/bin/python3'
+let g:netrw_keepdir= 0
 
 " ==================================================== Plugin
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'ayu-theme/ayu-vim'
