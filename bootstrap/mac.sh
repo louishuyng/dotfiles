@@ -71,6 +71,27 @@ install_zsh() {
   fi
 }
 
+install_fish() {
+  read -r -p "Do you want to install fish? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install fish
+    chsh -s /usr/local/bin/fish
+
+    curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+    curl -L https://get.oh-my.fish | fish
+
+    fisher install jethrokuan/z
+
+    brew install peco
+    brew install ghq
+    brew install exa
+
+    fisher install jethrokuan/z
+
+    success "Installed fish"
+  fi
+}
+
 install_font() {
   read -r -p "Do you want to install font? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -189,6 +210,7 @@ install_lua() {
 install_homebrew
 setup_git
 install_zsh
+install_fish
 install_terminal
 install_lua
 install_nvim

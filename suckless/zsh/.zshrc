@@ -170,7 +170,7 @@ function mdb() {
     markdown "$*" > $TMPFILE && ( xdg-open $TMPFILE > /dev/null 2>&1 & )
 }
 # Git clone + npm install
-function gcn {
+function gcn() {
     url=$1;
     if [ -n "${1}" ]; then
         echo 'OK'
