@@ -49,15 +49,10 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 alias cat='bat'
 alias fuck="git"
 alias nv="nvim"
-alias dcpd="docker-compose down"
-alias dcpu="docker-compose up"
 alias c="clear"
 alias ez="vi $HOME/.zshrc"
 alias server="python -m SimpleHTTPServer"
 alias socks="ssh -vND 8888 kim"
-alias dpsa="docker ps -a"
-alias dcup="docker-compose up"
-alias dcupd="docker-compose up -d"
 alias brave="open -a 'Brave Browser'"
 alias facebook="open -a 'Brave Browser' http://www.facebook.com "
 alias netflix="open -a 'Brave Browser' http://www.netflix.com "
@@ -69,7 +64,6 @@ alias slack="open -a 'Slack'"
 alias postman="open -a 'Postman'"
 alias chatwork="open -a 'Google Chrome' http://www.chatwork.com "
 alias youtube="open -a 'Google Chrome' http://www.youtube.com "
-alias dk="open -a 'Docker'"
 alias sdn="osascript -e 'tell app \"System Events\" to shut down'"
 alias vimrc='nvim ~/.config/nvim/init.vim'
 alias tm='tmux  -2'
@@ -84,6 +78,14 @@ alias matrix='source ~/.matrix.sh'
 alias letwork='~/.letwork.sh'
 alias rni='rm  -rf node_modules && yarn && npx pod-install'
 alias nvconf="cd ~/.config/nvim && nv"
+
+#Docker
+alias dkcd="docker-compose down"
+alias dkcu="docker-compose up"
+alias dkcud="docker-compose up -d"
+alias dpsa="docker ps -a"
+alias dks="open -a 'Docker'"
+alias dkc="killall Docker"
 
 #Wifi
 alias wfscan='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport scan'
