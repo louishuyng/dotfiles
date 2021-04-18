@@ -55,6 +55,8 @@ install_zsh() {
   read -r -p "Do you want to install zsh? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install zsh
+    brew install peco
+
     sudo chsh -s $(which zsh)
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
