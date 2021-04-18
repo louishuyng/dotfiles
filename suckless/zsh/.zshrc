@@ -94,8 +94,8 @@ alias rnm='rm  -rf node_modules'
 alias npmi='npm install'
 alias rnmai='rm -rf node_modules && yarn'
 # RAILS
-alias bdi='bunlde install'
-alias bdu='bunlde update --bundler'
+alias bdi='bundle install'
+alias bdu='bundle update --bundler'
 
 # DOCKER
 alias dkcd="docker-compose down"

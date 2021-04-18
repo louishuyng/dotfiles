@@ -188,6 +188,7 @@ install_tool() {
     brew install fzf
     brew install pidof
     brew install watch
+    brew install brightness
 
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"
