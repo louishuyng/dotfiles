@@ -1,4 +1,8 @@
 #--------------------------------------------------
+## THEME
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+#--------------------------------------------------
 ## EXPORTS
 # Main PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -21,23 +25,6 @@ export ANDROID_HOME=/Users/ziik/Library/Android/sdk
 # OPEN SSL
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-# Hightlight syntax for manual page
-export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
-export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
-export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
-export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
-export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
-export LESS_TERMCAP_mr=$(tput rev)
-export LESS_TERMCAP_mh=$(tput dim)
-export LESS_TERMCAP_ZN=$(tput ssubm)
-export LESS_TERMCAP_ZV=$(tput rsubm)
-export LESS_TERMCAP_ZO=$(tput ssupm)
-export LESS_TERMCAP_ZW=$(tput rsupm)
-export LC_ALL=en_US.UTF-8
-
-
 #--------------------------------------------------
 ## ZSH-DEFER
 source ~/.zsh-defer/zsh-defer.plugin.zsh
@@ -47,6 +34,9 @@ zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 zsh-defer source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
 zsh-defer -c 'RPS1="%F{240}%f"'
+
+## OH-MY_ZSH
+source $ZSH/oh-my-zsh.sh
 
 #--------------------------------------------------
 ## GIT CONFIG
@@ -67,6 +57,8 @@ alias c="clear"
 alias rf='rm -rf'
 alias sdn="osascript -e 'tell app \"System Events\" to shut down'"
 alias conf='nv ~/.config'
+alias ll="ls -l"
+alias lla="ll -A"
 
 # TOOLS
 alias typeracer='cli-typer'
@@ -198,17 +190,12 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-# Current theme
-zstyle :prompt:pure:path color white
-zstyle ':prompt:pure:prompt:*' color green
-zstyle :prompt:pure:git:stash show yes
-
-# Load pure theme afterward
-autoload -U promptinit; promptinit
-prompt pure
-
 # Peco History
 source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
 
 # Zplug
 source ~/.zplug/init.zsh
+
+# Init pure
+autoload -U promptinit; promptinit
+prompt pure
