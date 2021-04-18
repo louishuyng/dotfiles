@@ -40,12 +40,12 @@ export LC_ALL=en_US.UTF-8
 
 #--------------------------------------------------
 ## ZSH-DEFER
+source ~/.zsh-defer/zsh-defer.plugin.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 zsh-defer source ~/.config/suckless/zsh/z.sh
 zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 zsh-defer source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/.zsh-defer/zsh-defer.plugin.zsh
 zsh-defer -c 'RPS1="%F{240}%f"'
 
 #--------------------------------------------------
@@ -66,6 +66,7 @@ alias nv="nvim"
 alias c="clear"
 alias rf='rm -rf'
 alias sdn="osascript -e 'tell app \"System Events\" to shut down'"
+alias conf='nv ~/.config'
 
 # TOOLS
 alias typeracer='cli-typer'
@@ -208,3 +209,6 @@ prompt pure
 
 # Peco History
 source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
+
+# Zplug
+source ~/.zplug/init.zsh
