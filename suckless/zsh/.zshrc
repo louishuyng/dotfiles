@@ -137,10 +137,18 @@ function sd() {
   sudo shutdown -h +$*
 }
 
+## DEV TOOLS
 function Dev() {
   str="$*"
   tm new -s $str
 }
+
+function prettierGitDiff() {
+  extension=$1;
+
+  prettier --write '$(git diff --name-only | grep '.$extension' | xargs)'
+}
+
 
 # Create a new directory and enter it
 function mkd() {
@@ -192,10 +200,3 @@ SAVEHIST=10000
 
 # Peco History
 source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
-
-# Zplug
-source ~/.zplug/init.zsh
-
-# Init pure
-autoload -U promptinit; promptinit
-prompt pure
