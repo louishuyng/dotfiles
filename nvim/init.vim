@@ -8,11 +8,8 @@ let g:netrw_keepdir= 0
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
-Plug 'dense-analysis/ale'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'akinsho/nvim-bufferline.lua'
-Plug 'ayu-theme/ayu-vim'
-Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -71,7 +68,6 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 call plug#end()
 
 " ==================================================== Config Plugin
-source ~/.config/nvim/config/ale.vim
 source ~/.config/nvim/config/buffer.vim
 source ~/.config/nvim/config/coc.vim
 source ~/.config/nvim/config/fzf.vim
@@ -86,9 +82,9 @@ source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/rnvimr.vim
 
+lua require 'tabline'
 lua require 'treesitter'
 lua require 'statusline'
-lua require 'tabline'
 
 "*****************************************************************************
 "" Abbreviations
@@ -126,15 +122,11 @@ set hidden
 set cursorline
 set visualbell
 
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
 " ==================================================== Mouse
 set mouse=a
 
 " ==================================================== Theme
 set background=dark
-set termguicolors
 set t_Co=256
 
 colorscheme koehler

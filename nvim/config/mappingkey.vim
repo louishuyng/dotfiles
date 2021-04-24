@@ -2,14 +2,6 @@
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-"" Tabs
-nnoremap <silent> <S-t> :tabnew<CR>
-nnoremap <silent> <leader>w :tabnext<CR>
-nnoremap <silent> <leader>q :tabprevious<CR>
-nnoremap <silent> 1<Tab> 1gt
-nnoremap <silent> 2<Tab> 2gt
-nnoremap <silent> 3<Tab> 3gt
-
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
@@ -20,6 +12,7 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 "" Copy/Paste/Cut
+
 if has('unnamedplus')
 set clipboard=unnamed,unnamedplus
 endif
