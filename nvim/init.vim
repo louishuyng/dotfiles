@@ -8,6 +8,7 @@ let g:netrw_keepdir= 0
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
+Plug 'dense-analysis/ale'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -68,6 +69,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 call plug#end()
 
 " ==================================================== Config Plugin
+source ~/.config/nvim/config/ale.vim
 source ~/.config/nvim/config/buffer.vim
 source ~/.config/nvim/config/coc.vim
 source ~/.config/nvim/config/fzf.vim
