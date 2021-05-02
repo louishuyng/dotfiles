@@ -172,6 +172,16 @@ install_window_manager() {
   fi
 }
 
+install_qutebrowser() {
+  read -r -p "Do you want to install qutebrowser? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install qutebrowser --cask
+    rm -rf ~/.qutebrowser
+    mkdir ~/.qutebrowser
+    cp -rf ../suckless/qutebrowser/* ~/.qutebrowser
+  fi
+}
+
 install_tool() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -219,6 +229,7 @@ install_lua
 install_nvim
 install_tmux
 install_window_manager
+install_qutebrowser
 install_tool
 install_ranger
 
