@@ -14,6 +14,7 @@ Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'KeitaNakamura/neodark.vim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'jistr/vim-nerdtree-tabs'
@@ -131,7 +132,7 @@ set mouse=a
 set background=dark
 set t_Co=256
 
-colorscheme koehler
+colorscheme neodark
 
 if (has("termguicolors"))
   set termguicolors

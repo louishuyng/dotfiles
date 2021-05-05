@@ -3,7 +3,7 @@
 spacebar -m config text_font         "Helvetica Neue:Bold:12.5"
 spacebar -m config icon_font         "Font Awesome 5 Free:Solid:12.5"
 
-spacebar -m config space_icon_strip  "cube" "code" "globe" "comments"     
+spacebar -m config space_icon_strip  "cube" "terminal" "globe" "comments" "sticky-note"    
 
 spacebar -m config position           top
 spacebar -m config height             26
