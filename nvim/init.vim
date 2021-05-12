@@ -14,7 +14,7 @@ Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'KeitaNakamura/neodark.vim'
+Plug 'rktjmp/lush.nvim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'jistr/vim-nerdtree-tabs'
@@ -132,7 +132,8 @@ set mouse=a
 set background=dark
 set t_Co=256
 
-colorscheme neodark
+lua package.loaded['lush_theme.onedark_nvim'] = nil
+lua require('lush')(require('lush_theme.onedark_nvim'))
 
 if (has("termguicolors"))
   set termguicolors
