@@ -14,7 +14,7 @@ Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'rktjmp/lush.nvim'
+Plug 'ghifarit53/tokyonight-vim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'jistr/vim-nerdtree-tabs'
@@ -29,6 +29,11 @@ endif
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+Plug 'brooth/far.vim'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/0.x'
+  \ }
 
 """"""""""""""""""""""""""FILE SYSTEM""""""""""""""""""""""""""
 Plug '/usr/local/opt/fzf'
@@ -131,25 +136,24 @@ set mouse=a
 " ==================================================== Theme
 set background=dark
 set t_Co=256
+set termguicolors
 
-lua package.loaded['lush_theme.onedark_nvim'] = nil
-lua require('lush')(require('lush_theme.onedark_nvim'))
-
-if (has("termguicolors"))
-  set termguicolors
-  hi LineNr ctermbg=NONE guibg=NONE
-  hi VertSplit guifg=#6A68FE guibg=#0000 gui=NONE cterm=NONE
-  hi SignColumn guifg=#0000 guibg=#0000
-endif
+let g:tokyonight_enable_italic=1
+let g:tokyonight_transparent_background=1
+let g:tokyonight_cursor='green'
+colorscheme tokyonight
 
 " ==================================================== Highlight
+hi LineNr ctermbg=NONE guibg=NONE
+hi VertSplit guifg=#6A68FE guibg=#000000 gui=NONE cterm=NONE
+hi SignColumn guifg=#000000 guibg=#000000
 hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
 hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
 hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
 hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
-hi Normal guibg=NONE
-hi EndOfBuffer guibg=NONE
+"hi Normal guibg=NONE
+"hi EndOfBuffer guibg=NONE
 hi FloatermBorder guifg=#55E579
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE

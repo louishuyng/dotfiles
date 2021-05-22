@@ -16,10 +16,14 @@ let g:global_extensions = [
   \'coc-flow',
   \'coc-go',
   \'coc-marketplace',
-  \'coc-angular'
+  \'coc-angular',
+  \'coc-prettier'
   \]
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Pretter Format
+noremap <leader>p :Prettier<CR>
 
 " Restart Coc
 nmap <leader>cr :CocRestart<CR>
