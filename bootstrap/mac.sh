@@ -187,6 +187,7 @@ install_tool() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install ripgrep
     brew install neofetch
+    brew install languagetool
     brew install pgcli
     brew install mycli
     brew install bat

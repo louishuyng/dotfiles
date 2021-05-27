@@ -1,10 +1,10 @@
-"" ==================================================== Init Configure
+"" ==================================================== Initialize
 let mapleader=','
 let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading -w'
 let g:python3_host_prog = '/usr/bin/python3'
 let g:netrw_keepdir= 0
 
-" ==================================================== Plugin
+" ==================================================== Plug-in
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
@@ -22,7 +22,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-"Config Fugitive
+"Fugitive Configuration
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
@@ -74,7 +74,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 call plug#end()
 
-" ==================================================== Config Plugin
+" ==================================================== Plug-in Configuration
 source ~/.config/nvim/config/ale.vim
 source ~/.config/nvim/config/buffer.vim
 source ~/.config/nvim/config/coc.vim
@@ -109,10 +109,10 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-" ==================================================== General Config
+" ==================================================== General Configuration
 filetype plugin indent on
 
-set nocompatible              " be iMproved, required filetype off
+set nocompatible              " be improved, required file type off
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -129,6 +129,7 @@ set number relativenumber
 set hidden
 set cursorline
 set visualbell
+set spell
 
 " ==================================================== Mouse
 set mouse=a
@@ -152,8 +153,6 @@ hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
 hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
 hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
 hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
-"hi Normal guibg=NONE
-"hi EndOfBuffer guibg=NONE
 hi FloatermBorder guifg=#55E579
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
@@ -201,7 +200,7 @@ set linebreak    "Wrap lines at convenient points
 " ==================================================== Folds
 set foldmethod=indent   "fold based on indent
 set foldnestmax=5       "deepest fold is 5 levels
-set nofoldenable        "dont fold by default
+set nofoldenable        "don't fold by default
 
 " ==================================================== Completion
 set wildmenu
