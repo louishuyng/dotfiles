@@ -14,7 +14,7 @@ Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'norcalli/nvim-base16.lua'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'jistr/vim-nerdtree-tabs'
@@ -90,9 +90,10 @@ source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/rnvimr.vim
 
-lua require 'tabline'
-lua require 'treesitter'
 lua require 'statusline'
+lua require 'tabline'
+lua require 'treesitter-nvim'
+lua require 'theme'
 
 "*****************************************************************************
 "" Abbreviations
@@ -143,25 +144,6 @@ let g:tokyonight_enable_italic=1
 let g:tokyonight_transparent_background=1
 let g:tokyonight_cursor='green'
 colorscheme tokyonight
-
-" ==================================================== Highlight
-hi LineNr ctermbg=NONE guibg=NONE
-hi VertSplit guifg=#6A68FE guibg=#000000 gui=NONE cterm=NONE
-hi SignColumn guifg=#000000 guibg=#000000
-hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
-hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
-hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
-hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
-hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
-hi FloatermBorder guifg=#55E579
-hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
-hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
-hi CocExplorerFileDirectoryCollapsed guifg=#C3526E
-hi CocExplorerFileDirectoryExpanded guifg=#C3526E
-hi CocExplorerFileDirectory guifg=#61CE91
-hi CocExplorerNormalFloat guibg=#000000
-hi CursorLine guibg=#323232 guifg=NONE
 
 " ==================================================== Turn Off Swap Files
 set noswapfile
