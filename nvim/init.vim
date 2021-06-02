@@ -1,6 +1,5 @@
 "" ==================================================== Initialize
 let mapleader=','
-let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading -w'
 let g:python3_host_prog = '/usr/bin/python3'
 let g:netrw_keepdir= 0
 
@@ -36,10 +35,9 @@ Plug 'prettier/vim-prettier', {
   \ }
 
 """"""""""""""""""""""""""FILE SYSTEM""""""""""""""""""""""""""
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'pbogut/fzf-mru.vim'
-Plug 'yuki-ycino/fzf-preview.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'kevinhwang91/rnvimr'
 
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
@@ -78,7 +76,6 @@ call plug#end()
 source ~/.config/nvim/config/ale.vim
 source ~/.config/nvim/config/buffer.vim
 source ~/.config/nvim/config/coc.vim
-source ~/.config/nvim/config/fzf.vim
 source ~/.config/nvim/config/git.vim
 source ~/.config/nvim/config/mappingkey.vim
 source ~/.config/nvim/config/nerdtree.vim
@@ -89,10 +86,12 @@ source ~/.config/nvim/config/spelunker.vim
 source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/rnvimr.vim
+source ~/.config/nvim/config/telescope.vim
 
 lua require 'statusline'
 lua require 'tabline'
 lua require 'treesitter-nvim'
+lua require 'telescope-nvim'
 lua require 'theme'
 
 "*****************************************************************************
