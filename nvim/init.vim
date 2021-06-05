@@ -19,15 +19,13 @@ Plug 'norcalli/nvim-base16.lua'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 "Fugitive Configuration
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'brooth/far.vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -41,17 +39,10 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'kevinhwang91/rnvimr'
 
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
-Plug 'joequery/stupid-easymotion'
-Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 
 """"""""""""""""""""""""""LS-SERVER""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-""""""""""""""""""""""""""PYTHON""""""""""""""""""""""""""
-Plug 'vim-scripts/indentpython.vim'
-Plug 'nvie/vim-flake8'
-let python_highlight_all=1
 
 """"""""""""""""""""""""""RUBY""""""""""""""""""""""""""
 Plug 'tpope/vim-rails'
@@ -64,11 +55,9 @@ Plug 'wincent/scalpel'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'kamykn/spelunker.vim'
-Plug 'majutsushi/tagbar'
 Plug 'benmills/vimux' "Vi + Tmux
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'preservim/nerdcommenter'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 call plug#end()
 
@@ -93,6 +82,8 @@ lua require 'tabline'
 lua require 'treesitter-nvim'
 lua require 'telescope-nvim'
 lua require 'theme'
+lua require 'gitsigns-nvim'
+lua require 'ident-blankline-nvim'
 
 "*****************************************************************************
 "" Abbreviations
