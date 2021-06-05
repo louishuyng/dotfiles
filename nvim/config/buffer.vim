@@ -2,7 +2,6 @@ noremap <leader>q :bp<CR>
 noremap <leader>w :bn<CR>
 
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <space> :b
 
 "" Close buffer
 nnoremap <leader>bda :w <bar> %bd <bar> e# <bar> bd# <CR>
