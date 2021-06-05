@@ -37,7 +37,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kevinhwang91/rnvimr'
-Plug 'hrsh7th/nvim-compe'
 
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
 Plug 'terryma/vim-multiple-cursors'
@@ -45,6 +44,7 @@ Plug 'terryma/vim-multiple-cursors'
 """"""""""""""""""""""""""LS-SERVER""""""""""""""""""""""""""
 Plug 'neovim/nvim-lspconfig'
 Plug 'onsails/lspkind-nvim'
+Plug 'hrsh7th/nvim-compe'
 
 """"""""""""""""""""""""""RUBY""""""""""""""""""""""""""
 Plug 'tpope/vim-rails'
