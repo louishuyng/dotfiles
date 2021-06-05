@@ -37,12 +37,14 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kevinhwang91/rnvimr'
+Plug 'hrsh7th/nvim-compe'
 
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
 Plug 'terryma/vim-multiple-cursors'
 
 """"""""""""""""""""""""""LS-SERVER""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'onsails/lspkind-nvim'
 
 """"""""""""""""""""""""""RUBY""""""""""""""""""""""""""
 Plug 'tpope/vim-rails'
@@ -50,9 +52,10 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'thoughtbot/vim-rspec'
 
 """"""""""""""""""""""""""OTHERS""""""""""""""""""""""""""
-Plug 'cohama/lexima.vim'
-Plug 'wincent/scalpel'
+Plug 'Pocco81/TrueZen.nvim' "Focus Tool
 Plug 'tpope/vim-endwise'
+Plug 'windwp/nvim-autopairs'
+Plug 'wincent/scalpel'
 Plug 'tpope/vim-surround'
 Plug 'kamykn/spelunker.vim'
 Plug 'benmills/vimux' "Vi + Tmux
@@ -64,7 +67,7 @@ call plug#end()
 " ==================================================== Plug-in Configuration
 source ~/.config/nvim/config/ale.vim
 source ~/.config/nvim/config/buffer.vim
-source ~/.config/nvim/config/coc.vim
+source ~/.config/nvim/config/lsp.vim
 source ~/.config/nvim/config/git.vim
 source ~/.config/nvim/config/mappingkey.vim
 source ~/.config/nvim/config/nerdtree.vim
@@ -76,7 +79,9 @@ source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/rnvimr.vim
 source ~/.config/nvim/config/telescope.vim
+source ~/.config/nvim/config/truezen.vim
 
+lua require 'lsp-nvim'
 lua require 'statusline'
 lua require 'tabline'
 lua require 'treesitter-nvim'
@@ -84,6 +89,8 @@ lua require 'telescope-nvim'
 lua require 'theme'
 lua require 'gitsigns-nvim'
 lua require 'ident-blankline-nvim'
+lua require 'autopairs-nvim'
+lua require 'compe-completion-nvim'
 
 "*****************************************************************************
 "" Abbreviations
