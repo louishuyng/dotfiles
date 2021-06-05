@@ -91,6 +91,7 @@ lua require 'gitsigns-nvim'
 lua require 'ident-blankline-nvim'
 lua require 'autopairs-nvim'
 lua require 'compe-completion-nvim'
+lua require 'file-icons'
 
 "*****************************************************************************
 "" Abbreviations
@@ -136,11 +137,6 @@ set mouse=a
 set background=dark
 set t_Co=256
 set termguicolors
-
-let g:tokyonight_enable_italic=1
-let g:tokyonight_transparent_background=1
-let g:tokyonight_cursor='green'
-colorscheme tokyonight
 
 " ==================================================== Turn Off Swap Files
 set noswapfile

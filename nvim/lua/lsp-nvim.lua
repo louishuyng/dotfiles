@@ -39,7 +39,17 @@ function on_attach(client, bufnr)
     end
 end
 
-local servers = { "tsserver", "solargraph" }
+local servers = {
+  "tsserver",
+  "solargraph",
+  "cssls",
+  "html",
+  "dockerls",
+  "svelte",
+  "jsonls",
+  "bashls",
+  "angularls"
+}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
