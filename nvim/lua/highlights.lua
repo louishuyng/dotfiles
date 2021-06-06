@@ -7,6 +7,8 @@ cmd "hi LineNr ctermbg=NONE guibg=NONE"
 cmd "hi VertSplit guifg=NONE guibg=#000000 gui=NONE cterm=NONE"
 cmd "hi NvimInternalError guifg=#f9929b"
 cmd "hi SignColumn guifg=#000000 guibg=NONE"
+cmd "hi Normal guibg=#000000"
+cmd "hi EndOfBuffer guibg=#000000"
 
 -- Pmenu
 cmd "hi PmenuSel guibg=#98c379"
