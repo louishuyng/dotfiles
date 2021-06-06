@@ -1,4 +1,4 @@
-noremap gff :<C-u>vsplit<CR>gf
-noremap gfF :<C-u>split<CR>gf
+nmap gff :vsplit<CR>gf
+nmap gfF :split<CR>gf
 
 inoremap <C-space> <c-x><c-o>
