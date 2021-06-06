@@ -75,9 +75,7 @@ source ~/.config/nvim/config/mappingkey.vim
 source ~/.config/nvim/config/nerdtree.vim
 source ~/.config/nvim/config/rails.vim
 source ~/.config/nvim/config/scalpel.vim
-source ~/.config/nvim/config/session.vim
 source ~/.config/nvim/config/spelunker.vim
-source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/rnvimr.vim
 source ~/.config/nvim/config/telescope.vim
