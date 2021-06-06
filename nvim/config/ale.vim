@@ -28,6 +28,4 @@ let g:ale_sign_warning = ''
 let g:ale_statusline_format = ['⛄ %d', '⚠ %d', '']
 let g:ale_echo_msg_format = '%linter%: %s'
 
-nnoremap ]a :ALENextWrap<cr>
-nnoremap [a :ALEPreviousWrap<cr>
 nmap <leader>at :ALEToggle<CR>

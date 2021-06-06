@@ -45,6 +45,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'onsails/lspkind-nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'kabouzeid/nvim-lspinstall'
+Plug 'glepnir/lspsaga.nvim'
 
 """"""""""""""""""""""""""RUBY""""""""""""""""""""""""""
 Plug 'tpope/vim-rails'
@@ -82,8 +83,11 @@ source ~/.config/nvim/config/telescope.vim
 source ~/.config/nvim/config/truezen.vim
 source ~/.config/nvim/config/wildmenu.vim
 source ~/.config/nvim/config/folds.vim
+source ~/.config/nvim/config/lspsaga.vim
+source ~/.config/nvim/config/theme.vim
 
 lua require 'lsp-nvim'
+lua require 'lsp-saga-nvim'
 lua require 'statusline'
 lua require 'tabline'
 lua require 'file-icons'

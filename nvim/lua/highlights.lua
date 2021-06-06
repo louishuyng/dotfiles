@@ -20,8 +20,7 @@ cmd "hi PmenuThumb guibg =#81A1C1"
 cmd("highlight! StatusLineNC gui=underline guifg=#383c44")
 
 -- line n.o
-cmd "hi clear CursorLine"
-cmd "hi cursorlinenr guifg=#abb2bf"
+cmd "hi CursorLine guibg=#323232 guifg=NONE"
 
 -- git signs ---
 cmd "hi DiffAdd guifg=#81A1C1 guibg = none"
