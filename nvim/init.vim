@@ -51,9 +51,8 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'thoughtbot/vim-rspec'
 
-""""""""""""""""""""""""""OTHERS""""""""""""""""""""""""""
+""""""""""""""""""""""""""TOOLS""""""""""""""""""""""""""
 Plug 'Pocco81/TrueZen.nvim' "Focus Tool
-Plug 'tpope/vim-endwise' "Automatically Structural Language
 Plug 'windwp/nvim-autopairs'
 Plug 'wincent/scalpel' "Replace Text in Buffer
 Plug 'tpope/vim-surround'
@@ -62,6 +61,8 @@ Plug 'benmills/vimux' "Vi + Tmux
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'preservim/nerdcommenter' "Comment Support
 Plug 'norcalli/nvim-colorizer.lua' "Colorizer text
+Plug 'hrsh7th/vim-vsnip' "Snippets
+Plug 'rafamadriz/friendly-snippets' "Collection Snippets
 
 call plug#end()
 

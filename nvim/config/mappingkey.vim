@@ -63,9 +63,6 @@ nnoremap <esc> :noh<return><esc>
 "Auto close Tag
 inoremap ><Tab> ><Esc>?<[a-z]<CR>lyiwo</<C-r>"><Esc>O
 
-"" New Line
-nmap <CR> :a<CR><CR>.<CR>
-
 "" Show Changes
 map <leader>` <ESC>:changes<CR>
 
