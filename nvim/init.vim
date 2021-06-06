@@ -35,6 +35,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'kevinhwang91/rnvimr'
 
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
@@ -81,6 +82,7 @@ source ~/.config/nvim/config/rnvimr.vim
 source ~/.config/nvim/config/telescope.vim
 source ~/.config/nvim/config/truezen.vim
 source ~/.config/nvim/config/wildmenu.vim
+source ~/.config/nvim/config/folds.vim
 
 lua require 'lsp-nvim'
 lua require 'statusline'

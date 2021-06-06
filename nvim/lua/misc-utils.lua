@@ -37,17 +37,6 @@ opt("o", "timeoutlen", 500)
 opt("b", "expandtab", true)
 opt("b", "shiftwidth", 2)
 
--- for swap file
-opt("o", "noswapfile", true)
-opt("o", "nobackup", true)
-opt("o", "nowritebackup", true)
-opt("o", "nowb", true)
-
--- for fold
-opt("o", "foldmethod", "ident")
-opt("o", "foldnestmax", 5)
-opt("o", "nofoldenable", true)
-
 -- for scroll
 opt("o", "scrolloff", 3)
 opt("o", "sidescrolloff", 15)
