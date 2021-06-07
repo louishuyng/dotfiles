@@ -59,7 +59,6 @@ Plug 'wincent/scalpel' "Replace Text in Buffer
 Plug 'tpope/vim-surround'
 Plug 'kamykn/spelunker.vim' "Check Spell
 Plug 'benmills/vimux' "Vi + Tmux
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'preservim/nerdcommenter' "Comment Support
 Plug 'norcalli/nvim-colorizer.lua' "Colorizer text
 Plug 'hrsh7th/vim-vsnip' "Snippets
@@ -94,7 +93,6 @@ lua require 'file-icons'
 lua require 'treesitter-nvim'
 lua require 'telescope-nvim'
 lua require 'gitsigns-nvim'
-lua require 'ident-blankline-nvim'
 lua require 'compe-completion-nvim'
 lua require 'autopairs-nvim'
 lua require 'misc-utils'
