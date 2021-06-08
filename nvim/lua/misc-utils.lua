@@ -18,7 +18,6 @@ opt("o", "ignorecase", true)
 opt("o", "incsearch", true)
 opt("o", "smartcase", true)
 opt("o", "hlsearch", true)
-opt("o", "termguicolors", true)
 opt('w', 'relativenumber', true)  -- Numbers starting at cursor line
 opt('w', 'number', true)    
 opt("o", "numberwidth", 2)
