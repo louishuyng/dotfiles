@@ -1,7 +1,7 @@
 "" ==================================================== Initialize
-let mapleader=','
-let g:auto_save = 1
 let g:python3_host_prog = '/usr/bin/python3'
+let mapleader=','
+
 set termguicolors
 
 " ==================================================== Plug-in
@@ -54,6 +54,7 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 
 """"""""""""""""""""""""""TOOLS""""""""""""""""""""""""""
+Plug '907th/vim-auto-save'
 Plug 'Pocco81/TrueZen.nvim' "Focus Tool
 Plug 'benmills/vimux' "Vi + Tmux
 Plug 'hrsh7th/vim-vsnip' "Snippets
@@ -64,7 +65,6 @@ Plug 'rafamadriz/friendly-snippets' "Collection Snippets
 Plug 'tpope/vim-surround'
 Plug 'wincent/scalpel' "Replace Text in Buffer
 Plug 'windwp/nvim-autopairs'
-Plug '907th/vim-auto-save'
 
 call plug#end()
 
@@ -72,6 +72,7 @@ call plug#end()
 source ~/.config/nvim/config/abbreviations.vim
 source ~/.config/nvim/config/ale.vim
 source ~/.config/nvim/config/buffer.vim
+source ~/.config/nvim/config/dashboard.vim
 source ~/.config/nvim/config/folds.vim
 source ~/.config/nvim/config/git.vim
 source ~/.config/nvim/config/lsp.vim
@@ -80,6 +81,7 @@ source ~/.config/nvim/config/mappingkey.vim
 source ~/.config/nvim/config/rails.vim
 source ~/.config/nvim/config/rnvimr.vim
 source ~/.config/nvim/config/scalpel.vim
+source ~/.config/nvim/config/session.vim
 source ~/.config/nvim/config/spelunker.vim
 source ~/.config/nvim/config/telescope.vim
 source ~/.config/nvim/config/theme.vim
@@ -87,11 +89,11 @@ source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/tree.vim
 source ~/.config/nvim/config/truezen.vim
 source ~/.config/nvim/config/wildmenu.vim
-source ~/.config/nvim/config/dashboard.vim
 
 lua require 'autopairs-nvim'
 lua require 'colorizer-nvim'
 lua require 'compe-completion-nvim'
+lua require 'dashboard-nvim'
 lua require 'file-icons'
 lua require 'gitsigns-nvim'
 lua require 'lsp-nvim'
@@ -103,4 +105,3 @@ lua require 'telescope-nvim'
 lua require 'theme'
 lua require 'tree-nvim'
 lua require 'treesitter-nvim'
-lua require 'dashboard-nvim'
