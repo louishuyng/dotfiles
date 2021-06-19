@@ -1,5 +1,6 @@
 "" ==================================================== Initialize
 let mapleader=','
+let g:auto_save = 1
 let g:python3_host_prog = '/usr/bin/python3'
 set termguicolors
 
@@ -14,6 +15,7 @@ Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'ryanoasis/vim-devicons'
+Plug 'glepnir/dashboard-nvim'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'brooth/far.vim'
@@ -62,6 +64,7 @@ Plug 'rafamadriz/friendly-snippets' "Collection Snippets
 Plug 'tpope/vim-surround'
 Plug 'wincent/scalpel' "Replace Text in Buffer
 Plug 'windwp/nvim-autopairs'
+Plug '907th/vim-auto-save'
 
 call plug#end()
 
@@ -84,6 +87,7 @@ source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/tree.vim
 source ~/.config/nvim/config/truezen.vim
 source ~/.config/nvim/config/wildmenu.vim
+source ~/.config/nvim/config/dashboard.vim
 
 lua require 'autopairs-nvim'
 lua require 'colorizer-nvim'
@@ -99,3 +103,4 @@ lua require 'telescope-nvim'
 lua require 'theme'
 lua require 'tree-nvim'
 lua require 'treesitter-nvim'
+lua require 'dashboard-nvim'
