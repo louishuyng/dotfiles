@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #--------------------------------------------------
 ## THEME
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -15,10 +22,10 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
-export PATH=$PATH:/usr/local/mysql/bin
+export PATH=$PATH:/usr/loca/mysql/bin
+export PATH="$PATH:$HOME/development/flutter/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/development/flutter/bin"
 export JAVA_HOME=$(/usr/libexec/java_home)
 export ANDROID_HOME=/Users/ziik/Library/Android/sdk
 
@@ -30,6 +37,7 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 source ~/.zsh-defer/zsh-defer.plugin.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 zsh-defer source ~/.config/suckless/zsh/z.sh
+zsh-defer source ~/.oh-my-zsh/plugins/autojump/autojump.plugin.zsh
 zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 zsh-defer source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
@@ -96,6 +104,10 @@ alias dkcud="docker-compose up -d"
 alias dpsa="docker ps -a"
 alias dks="open -a 'Docker'"
 alias dkc="killall Docker"
+
+# REDIS
+alias rds='brew services start redis'
+alias rdc='brew services stop redis'
 
 # NETWORK
 alias wfscan='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport scan'
@@ -200,3 +212,6 @@ SAVEHIST=10000
 
 # Peco History
 source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
