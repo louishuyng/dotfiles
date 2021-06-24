@@ -1,3 +1,3 @@
-vim.cmd('colorscheme neodark')
+vim.cmd('colorscheme edge')
 
 require 'highlights'

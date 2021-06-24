@@ -8,7 +8,6 @@ set termguicolors
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
-Plug 'KeitaNakamura/neodark.vim'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'dense-analysis/ale'
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
@@ -16,18 +15,17 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'glepnir/dashboard-nvim'
+Plug 'sainnhe/edge'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'brooth/far.vim'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'lewis6991/gitsigns.nvim'
+Plug 'airblade/vim-gitgutter'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'branch': 'release/0.x',
   \ }
-
 Plug 'tpope/vim-fugitive'
-"Fugitive Configuration
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
@@ -95,7 +93,6 @@ lua require 'colorizer-nvim'
 lua require 'compe-completion-nvim'
 lua require 'dashboard-nvim'
 lua require 'file-icons'
-lua require 'gitsigns-nvim'
 lua require 'lsp-nvim'
 lua require 'lsp-saga-nvim'
 lua require 'misc-utils'

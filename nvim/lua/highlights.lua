@@ -22,11 +22,6 @@ cmd("highlight! StatusLineNC gui=underline guifg=#383c44")
 -- line n.o
 cmd "hi CursorLine guibg=#323232 guifg=NONE"
 
--- git signs ---
-cmd "hi DiffAdd guifg=#81A1C1 guibg = none"
-cmd "hi DiffChange guifg =#3A3E44 guibg = none"
-cmd "hi DiffModified guifg = #81A1C1 guibg = none"
-
 -- telescope
 cmd "hi TelescopeBorder   guifg=#2a2e36"
 cmd "hi TelescopePromptBorder   guifg=#2a2e36"

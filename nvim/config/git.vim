@@ -1,3 +1,11 @@
+  """""""Git Gutter Config"""""
+" Jump between hunks
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+" Hunk-add and hunk-revert for chunk staging
+nmap ga <Plug>(GitGutterStageHunk)
+nmap gu <Plug>(GitGutterUndoHunk)
+
 noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gsh :Gpush<CR>
@@ -11,3 +19,5 @@ noremap <Leader>gl :Glog<CR>
 nnoremap <Leader>o :.Gbrowse<CR>
 
 nnoremap <silent> <Leader>c  :Commits<CR>
+
+set statusline+=%{get(b:,'gitsigns_status','')}
