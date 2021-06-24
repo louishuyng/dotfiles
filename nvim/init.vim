@@ -21,6 +21,7 @@ Plug 'sainnhe/edge'
 Plug 'brooth/far.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'airblade/vim-gitgutter'
+Plug 'tveskag/nvim-blame-line'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'branch': 'release/0.x',

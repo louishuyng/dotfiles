@@ -13,6 +13,7 @@ noremap <Leader>gll :Gpull<CR>
 noremap <Leader>ge :Gedit<CR>
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
+noremap gb :SingleBlameLine<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gl :Glog<CR>
