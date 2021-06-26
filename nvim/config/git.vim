@@ -11,7 +11,7 @@ noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gsh :Gpush<CR>
 noremap <Leader>gll :Gpull<CR>
 noremap <Leader>ge :Gedit<CR>
-noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gs :LazyGit<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap gb :SingleBlameLine<CR>
 noremap <Leader>gd :Gvdiff<CR>

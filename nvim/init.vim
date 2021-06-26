@@ -19,6 +19,7 @@ Plug 'sainnhe/edge'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'brooth/far.vim'
+Plug 'kdheepak/lazygit.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'airblade/vim-gitgutter'
 Plug 'tveskag/nvim-blame-line'
