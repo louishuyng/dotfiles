@@ -21,16 +21,13 @@ Plug 'sainnhe/edge'
 Plug 'brooth/far.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'airblade/vim-gitgutter'
-Plug 'tveskag/nvim-blame-line'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
   \ 'branch': 'release/0.x',
+  \ 'do': 'yarn install',
   \ }
 Plug 'tpope/vim-fugitive'
-if exists("*fugitive#statusline")
-  set statusline+=%{fugitive#statusline()}
-endif
 
 """"""""""""""""""""""""""FILE SYSTEM""""""""""""""""""""""""""
 Plug 'kevinhwang91/rnvimr'
@@ -95,6 +92,7 @@ lua require 'colorizer-nvim'
 lua require 'compe-completion-nvim'
 lua require 'dashboard-nvim'
 lua require 'file-icons'
+lua require 'git-signs-nvim'
 lua require 'lsp-nvim'
 lua require 'lsp-saga-nvim'
 lua require 'misc-utils'

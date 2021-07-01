@@ -16,5 +16,3 @@ noremap <Leader>gb :Gblame<CR>
 noremap gb :SingleBlameLine<CR>
 noremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>o :.Gbrowse<CR>
-
-set statusline+=%{get(b:,'gitsigns_status','')}
