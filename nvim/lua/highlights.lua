@@ -1,5 +1,6 @@
 local cmd = vim.cmd
 
+vim.g.nvchad_theme = "tommorow-night"
 local global_theme = "themes/" .. vim.g.nvchad_theme
 local colors = require(global_theme)
 
@@ -42,42 +43,26 @@ fg("IndentBlanklineChar", line)
 -- misc --
 fg("LineNr", grey)
 fg("Comment", grey)
-fg("vimInternalError", red)
+fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
 
 -- Pmenu
 bg("Pmenu", one_bg)
-bg("PmenuSbar", one_bg2)
+bg("PmenuSar", one_bg2)
 bg("PmenuSel", green)
 bg("PmenuThumb", nord_blue)
 
 -- inactive statuslines as thin splitlines
-cmd("hi! StatusLineNC gui=underline guifg=" .. line)
+cmd("highlight! StatusLineNC gui=underline guifg=#383c44")
 
 -- line n.o
-cmd "hi clear CursorLine"
-fg("cursorlinenr", white)
+cmd "hi CursorLine guibg=#323232 guifg=NONE"
 
 -- git signs ---
 fg_bg("DiffAdd", nord_blue, "none")
 fg_bg("DiffChange", one_bg2, "none")
 fg_bg("DiffModified", nord_blue, "none")
-
--- NvimTree
-fg("NvimTreeFolderIcon", blue)
-fg("NvimTreeFolderName", blue)
-fg("NvimTreeOpenedFolderName", blue)
-fg("NvimTreeEmptyFolderName", blue)
-fg("NvimTreeIndentMarker", one_bg2)
-fg("NvimTreeVertSplit", darker_black)
-bg("NvimTreeVertSplit", darker_black)
-fg("NvimTreeEndOfBuffer", darker_black)
-
-fg("NvimTreeRootFolder", darker_black)
-bg("NvimTreeNormal", darker_black)
-fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
-fg_bg("NvimTreeWindowPicker", red, black2)
 
 -- telescope
 fg("TelescopeBorder", line)
@@ -143,3 +128,5 @@ fg("DashboardFooter", grey_fg)
 
 -- Default nvim bg (based on terminal bg)
 -- cmd "hi Normal guibg=#1e222a"
+
+bg("Normal", "#000000")
