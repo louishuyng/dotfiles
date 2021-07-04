@@ -36,9 +36,11 @@ require("telescope").setup {
         selection_strategy = "reset",
         sorting_strategy = "ascending",
         layout_strategy = "horizontal",
+        layout_config = {
+          prompt_position = "top",
+          preview_cutoff = 120,
+        },
         layout_configs = {
-            prompt_position = "top",
-             preview_cutoff = 120,
             horizontal = {
                 mirror = false,
                 preview_width = 0.5

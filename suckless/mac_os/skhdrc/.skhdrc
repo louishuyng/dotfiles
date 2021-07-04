@@ -1,5 +1,5 @@
 # terminal - like Linux
-ctrl + alt - t : open -na /Applications/Alacritty.app
+ctrl + alt - t : open -na /Applications/Kitty.app
 ctrl + alt - b : open -na /Applications/Brave\ Browser.app
 ctrl + alt - d : open -na /Applications/Discord.app
 ctrl + alt - s : open -na /Applications/Slack.app

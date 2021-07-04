@@ -15,14 +15,14 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'glepnir/dashboard-nvim'
-Plug 'sainnhe/edge'
+Plug 'siduck76/nvim-base16.lua'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'brooth/far.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'lewis6991/gitsigns.nvim'
+Plug 'airblade/vim-gitgutter'
 Plug 'prettier/vim-prettier', {
   \ 'branch': 'release/0.x',
   \ 'do': 'yarn install',
@@ -92,7 +92,6 @@ lua require 'colorizer-nvim'
 lua require 'compe-completion-nvim'
 lua require 'dashboard-nvim'
 lua require 'file-icons'
-lua require 'git-signs-nvim'
 lua require 'lsp-nvim'
 lua require 'lsp-saga-nvim'
 lua require 'misc-utils'

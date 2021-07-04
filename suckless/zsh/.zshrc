@@ -72,7 +72,7 @@ alias lla="ll -A"
 alias typeracer='cli-typer'
 alias speedTest='speed-test'
 alias ra='ranger'
-alias tm='tmux  -2'
+alias tm='tmux  -u'
 
 # GIT
 alias gps='git push'
