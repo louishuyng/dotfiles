@@ -201,6 +201,7 @@ install_tool() {
     brew install watch
     brew install brightness
     brew install autojump
+    brew install --cask burp-suite
 
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"
