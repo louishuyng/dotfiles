@@ -1,20 +1,31 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# lazyload zsh - boost zsh startup time
+source ~/.zsh-defer/zsh-defer.plugin.zsh
+PS1="%F{12}%~%f "
+RPS1="%F{240}Loading...%f"
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
-#--------------------------------------------------
-## THEME
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# Current theme         https://github.com/sindresorhus/pure
+# How to install        npm install --global pure-prompt
+zstyle :prompt:pure:path color white
+zstyle ':prompt:pure:prompt:*' color green
+zstyle :prompt:pure:git:stash show yes
+
+export LC_ALL=en_US.UTF-8
+zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+zsh-defer source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
+zsh-defer source ~/.zsh/zsh-z/zsh-z.plugin.zsh
+[ -f ~/.fzf.zsh ] && zsh-defer source ~/.fzf.zsh
 
 #--------------------------------------------------
 ## EXPORTS
 # Main PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh/
-export TERM=xterm-256color
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -22,7 +33,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
-export PATH=$PATH:/usr/loca/mysql/bin
+export PATH=$PATH:/usr/local/mysql/bin
 export PATH="$PATH:$HOME/development/flutter/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -32,16 +43,6 @@ export ANDROID_HOME=/Users/ziik/Library/Android/sdk
 # OPEN SSL
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-#--------------------------------------------------
-## ZSH-DEFER
-source ~/.zsh-defer/zsh-defer.plugin.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-zsh-defer source ~/.config/suckless/zsh/z.sh
-zsh-defer source ~/.oh-my-zsh/plugins/autojump/autojump.plugin.zsh
-zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-zsh-defer source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
-zsh-defer -c 'RPS1="%F{240}%f"'
 
 ## OH-MY_ZSH
 source $ZSH/oh-my-zsh.sh
@@ -59,7 +60,6 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 ## ALIAS
 # GNU
 alias cat='bat'
-alias fuck="git"
 alias nv="nvim"
 alias c="clear"
 alias rf='rm -rf'
@@ -215,3 +215,12 @@ source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval $(thefuck --alias)
+
+
+# Load pure theme afterward
+autoload -U promptinit; promptinit
+prompt pure
+
+zsh-defer -c 'RPS1="%F{240}%f"'
