@@ -7,7 +7,6 @@ opt.ignorecase = true
 opt.splitbelow = false
 opt.splitright = true
 opt.termguicolors = true
-opt.cursorline = true
 opt.cul = true
 opt.mouse = "a"
 opt.signcolumn = "yes"

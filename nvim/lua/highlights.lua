@@ -56,7 +56,8 @@ bg("PmenuThumb", nord_blue)
 cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 
 -- line n.o
-cmd "hi CursorLine guibg=#323232 guifg=NONE"
+cmd "hi clear CursorLine"
+fg("cursorlinenr", white)
 
 -- git signs ---
 fg_bg("DiffAdd", nord_blue, "none")

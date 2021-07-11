@@ -52,14 +52,6 @@ return packer.startup(
         }
 
         use {
-            "onsails/lspkind-nvim",
-            event = "BufRead",
-            config = function()
-                require("lspkind").init()
-            end
-        }
-
-        use {
             "neovim/nvim-lspconfig",
             event = "BufRead",
             config = function()
@@ -72,6 +64,14 @@ return packer.startup(
             event = "BufRead",
             config = function()
                 require("plugins.lspsaga").config()
+            end
+        }
+
+        use {
+            "onsails/lspkind-nvim",
+            event = "BufRead",
+            config = function()
+                require("lspkind").init()
             end
         }
 
@@ -92,7 +92,10 @@ return packer.startup(
                         require("plugins.compe").snippets()
                     end
                 },
-                "rafamadriz/friendly-snippets"
+                {
+                    "rafamadriz/friendly-snippets",
+                    event = "InsertCharPre"
+                }
             }
         }
 
@@ -118,9 +121,7 @@ return packer.startup(
             "nvim-telescope/telescope.nvim",
             requires = {
                 {"nvim-lua/popup.nvim"},
-                {"nvim-lua/plenary.nvim"},
-                {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
-                {"nvim-telescope/telescope-media-files.nvim"}
+                {"nvim-lua/plenary.nvim"}
             },
             cmd = "Telescope",
             config = function()
@@ -142,6 +143,8 @@ return packer.startup(
                 )
             end
         }
+
+        use {"andymass/vim-matchup", event = "CursorMoved"}
 
         use {
             "terrortylor/nvim-comment",

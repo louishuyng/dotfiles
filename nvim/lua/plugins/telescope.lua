@@ -81,9 +81,6 @@ M.config = function()
           }
       }
     }
-
-    require("telescope").load_extension("fzf")
-    require("telescope").load_extension("media_files")
 end
 
 return M
