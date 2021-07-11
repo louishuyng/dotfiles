@@ -1,8 +1,5 @@
 "" ==================================================== Initialize
-let g:python3_host_prog = '/usr/bin/python3'
 let mapleader=','
-
-set termguicolors
 
 " ==================================================== Plug-in
 call plug#begin(expand('~/.config/nvim/plugged'))

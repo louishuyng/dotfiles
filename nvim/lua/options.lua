@@ -1,48 +1,42 @@
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
-local function opt(scope, key, value)
-    scopes[scope][key] = value
-    if scope ~= "o" then
-        scopes["o"][key] = value
-    end
-end
+local opt = vim.opt
 
-opt("o", "gcr", "a:blinkon0")
-opt("o", "cursorline", true)
-opt("o", "autoread", true)
-opt("o", "showcmd", true)
-opt("o", "spell", true)
+opt.ruler = false
+opt.hidden = true
+opt.ignorecase = true
+opt.splitbelow = false
+opt.splitright = true
+opt.termguicolors = true
+opt.cursorline = true
+opt.cul = true
+opt.mouse = "a"
+opt.signcolumn = "yes"
+opt.cmdheight = 1
+opt.updatetime = 250 -- update interval for gitsigns
+opt.timeoutlen = 200
+opt.clipboard = "unnamedplus"
 
-opt("o", "hidden", true)
-opt("o", "ignorecase", true)
-opt("o", "incsearch", true)
-opt("o", "smartcase", true)
-opt("o", "hlsearch", true)
-opt('w', 'relativenumber', true)  -- Numbers starting at cursor line
-opt('w', 'number', true)    
-opt("o", "numberwidth", 2)
-opt("w", "cul", true)
-
-opt("o", "mouse", "a")
-
-opt("w", "signcolumn", "yes")
-opt("o", "cmdheight", 1)
-
-opt("o", "updatetime", 250) -- update interval for gitsigns
-opt("o", "clipboard", "unnamedplus")
-opt("o", "timeoutlen", 500)
+-- Numbers
+opt.number = true
+opt.numberwidth = 2
+-- opt.relativenumber = true
 
 -- for indenline
-opt("b", "expandtab", true)
-opt("b", "shiftwidth", 2)
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.smartindent = true
 
--- for scroll
-opt("o", "scrolloff", 3)
-opt("o", "sidescrolloff", 15)
-opt("o", "sidescroll", 1)
-
--- for clipboard
-opt("o", "clipboard", 'unnamed')
+-- disable builtin vim plugins
+vim.g.loaded_gzip = 0
+vim.g.loaded_tar = 0
+vim.g.loaded_tarPlugin = 0
+vim.g.loaded_zipPlugin = 0
+vim.g.loaded_2html_plugin = 0
+vim.g.loaded_netrw = 0
+vim.g.loaded_netrwPlugin = 0
+vim.g.loaded_matchit = 0
+vim.g.loaded_matchparen = 0
+vim.g.loaded_spec = 0
 
 local M = {}
 
@@ -52,9 +46,11 @@ function M.is_buffer_empty()
 end
 
 function M.has_width_gt(cols)
-    -- Check if the windows width is greater than a given number of columns
+    -- Check if the windows width is greater than a given number f columns
     return vim.fn.winwidth(0) / 2 > cols
 end
+
 -- file extension specific tabbing
-vim.cmd([[autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
+-- vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
+
 return M

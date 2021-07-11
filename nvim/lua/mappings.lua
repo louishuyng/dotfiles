@@ -71,8 +71,8 @@ map("i", "<CR>", "v:lua.completions()", {expr = true})
 map("n", "<Leader>p", [[<Cmd> Neoformat<CR>]], opt)
 
 -- dashboard stuff
-map("n", "<space>l", [[<Cmd> SessionLoad<CR>]], opt)
-map("n", "<space>s", [[<Cmd> SessionSave<CR>]], opt)
+map("n", "<space>sl", [[<Cmd> SessionLoad<CR>]], opt)
+map("n", "<space>ss", [[<Cmd> SessionSave<CR>]], opt)
 
 -- Truezen.nvim
 map("n", "<C-w>o", ":TZFocus<CR>", opt)
