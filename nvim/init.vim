@@ -8,42 +8,19 @@ set termguicolors
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""THEME""""""""""""""""""""""""""
-Plug 'akinsho/nvim-bufferline.lua'
 Plug 'dense-analysis/ale'
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'ryanoasis/vim-devicons'
-Plug 'glepnir/dashboard-nvim'
-Plug 'siduck76/nvim-base16.lua'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'brooth/far.vim'
 Plug 'kdheepak/lazygit.nvim'
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'airblade/vim-gitgutter'
-Plug 'prettier/vim-prettier', {
-  \ 'branch': 'release/0.x',
-  \ 'do': 'yarn install',
-  \ }
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-""""""""""""""""""""""""""FILE SYSTEM""""""""""""""""""""""""""
+""""""""""""""""""""""""""file system""""""""""""""""""""""""""
 Plug 'kevinhwang91/rnvimr'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 
 """"""""""""""""""""""""""MOVEMENT""""""""""""""""""""""""""
 Plug 'terryma/vim-multiple-cursors'
-
-""""""""""""""""""""""""""LS-SERVER""""""""""""""""""""""""""
-Plug 'glepnir/lspsaga.nvim'
-Plug 'hrsh7th/nvim-compe'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'neovim/nvim-lspconfig'
-Plug 'onsails/lspkind-nvim'
 
 """"""""""""""""""""""""""RUBY""""""""""""""""""""""""""
 Plug 'thoughtbot/vim-rspec'
@@ -51,17 +28,9 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 
 """"""""""""""""""""""""""TOOLS""""""""""""""""""""""""""
-Plug '907th/vim-auto-save'
-Plug 'Pocco81/TrueZen.nvim' "Focus Tool
 Plug 'benmills/vimux' "Vi + Tmux
-Plug 'hrsh7th/vim-vsnip' "Snippets
 Plug 'kamykn/spelunker.vim' "Check Spell
-Plug 'norcalli/nvim-colorizer.lua' "Colorizer text
-Plug 'preservim/nerdcommenter' "Comment Support
-Plug 'rafamadriz/friendly-snippets' "Collection Snippets
-Plug 'tpope/vim-surround'
 Plug 'wincent/scalpel' "Replace Text in Buffer
-Plug 'windwp/nvim-autopairs'
 
 call plug#end()
 
@@ -78,26 +47,10 @@ source ~/.config/nvim/config/mappingkey.vim
 source ~/.config/nvim/config/rails.vim
 source ~/.config/nvim/config/rnvimr.vim
 source ~/.config/nvim/config/scalpel.vim
-source ~/.config/nvim/config/session.vim
 source ~/.config/nvim/config/spelunker.vim
 source ~/.config/nvim/config/telescope.vim
-source ~/.config/nvim/config/theme.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/tree.vim
-source ~/.config/nvim/config/truezen.vim
 source ~/.config/nvim/config/wildmenu.vim
 
-lua require 'autopairs-nvim'
-lua require 'colorizer-nvim'
-lua require 'compe-completion-nvim'
-lua require 'dashboard-nvim'
-lua require 'file-icons'
-lua require 'lsp-nvim'
-lua require 'lsp-saga-nvim'
-lua require 'misc-utils'
-lua require 'statusline'
-lua require 'tabline'
-lua require 'telescope-nvim'
-lua require 'theme'
-lua require 'tree-nvim'
-lua require 'treesitter-nvim'
+lua require 'init'
