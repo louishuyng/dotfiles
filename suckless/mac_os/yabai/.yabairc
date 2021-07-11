@@ -21,19 +21,63 @@ yabai -m config mouse_modifier               fn
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 
+yabai -m config active_window_border_color  "0xE0${focused_border_color}"
+yabai -m config insert_window_border_color  "0xE0${preselect_border_color}"
+yabai -m config normal_window_border_color  "0xE0${normal_border_color}"
+
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  26
-yabai -m config bottom_padding               0
-yabai -m config left_padding                 0
-yabai -m config right_padding                0
+yabai -m config top_padding                  35
+yabai -m config bottom_padding               10
+yabai -m config left_padding                 12
+yabai -m config right_padding                12
 yabai -m config window_gap                   06
 
-# float system preferences
-yabai -m rule --add app="^System Preferences$" manage=off
+# Rules
 
-# float alacritty, to use it as dmenu
-yabai -m rule --add app="^AlacrittyPopup$" manage=off
+# Data & Cloud
+yabai -m rule --add app="^Docker$" manage=off                  space=1
+yabai -m rule --add app="^DataGrip$" manage=off                space=1
+yabai -m rule --add app="^pgAdmin$" manage=off                 space=1
+
+# Coding
+yabai -m rule --add app="kitty" title="Kitty"                  space=2
+yabai -m rule --add app="Simulator"                            space=2
+yabai -m rule --add app="^Xcode$" manage=off                   space=2
+yabai -m rule --add app="^Postman$" manage=off                 space=2
+yabai -m rule --add app="^Burp$" manage=off                    space=2
+yabai -m rule --add app="Visual Studio Code"                   space=2
+
+# Information
+yabai -m rule --add app="Brave Browser"                opacity=1   space=3
+yabai -m rule --add app="Preview"                                   space=3
+yabai -m rule --add app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off space=3
+
+# Communication
+yabai -m rule --add app="Slack" title="Slack"                  space=4
+yabai -m rule --add app="^zoom$" manage=off                    space=4
+yabai -m rule --add app="Skype" manage=off                     space=4
+yabai -m rule --add app="Telegram" manage=off                  space=4
+yabai -m rule --add app="Discord"                              space=4
+yabai -m rule --add app="Microsoft Outlook"                    space=4
+yabai -m rule --add app="^Microsoft Teams$" manage=off         space=4
+
+# Music and Notes
+yabai -m rule --add app="Notion"                               space=5
+yabai -m rule --add app="Spotify"                              space=5
+yabai -m rule --add app="Music"                                space=5
+yabai -m rule --add app="QuickTime Player"                     space=5
+yabai -m rule --add app="VLC"                                  space=5
+
+# Others
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add label="Alfred Preferences" app="^Alfred Preferences$" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
+
 
 # show digital colour meter topmost and on all spaces
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
