@@ -15,6 +15,10 @@ opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 200
 opt.clipboard = "unnamedplus"
 
+-- Center cursor
+opt.scrolloff = 999
+opt.sidescrolloff = 999
+
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
