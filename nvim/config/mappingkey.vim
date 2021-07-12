@@ -38,12 +38,12 @@ noremap <C-h> <C-w>h
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-noremap <C-s>          :update<CR>
-vnoremap <C-s>         <C-C>:update<CR>
-inoremap <C-s>         <C-O>:update<CR>
-inoremap <C-d> <esc>:q!<cr>               " save and exit
-vnoremap <C-d> <esc>:q!<cr>
-nnoremap <c-d> :q!<cr>
+noremap  <silent> <C-s>          :w<CR>
+vnoremap <silent> <C-s>         <C-C>:w<CR>
+inoremap <silent> <C-s>         <C-O>:w<CR>
+inoremap <silent> <C-d> <esc>:q!<cr>               " save and exit
+vnoremap <silent> <C-d> <esc>:q!<cr>
+nnoremap <silent> <c-d> :q!<cr>
 
 "Apply Macro
 vnoremap <leader>m :normal @

@@ -67,9 +67,6 @@ map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
 
--- format code
-map("n", "<space>p", [[<Cmd> Neoformat<CR>]], opt)
-
 -- dashboard stuff
 map("n", "<space>sl", [[<Cmd> SessionLoad<CR>]], opt)
 map("n", "<space>ss", [[<Cmd> SessionSave<CR>]], opt)

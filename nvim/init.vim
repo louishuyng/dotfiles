@@ -28,6 +28,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'benmills/vimux' "Vi + Tmux
 Plug 'kamykn/spelunker.vim' "Check Spell
 Plug 'wincent/scalpel' "Replace Text in Buffer
+Plug 'tpope/vim-surround'
 
 call plug#end()
 

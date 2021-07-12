@@ -99,8 +99,6 @@ return packer.startup(
             }
         }
 
-        use {"sbdchd/neoformat", cmd = "Neoformat"}
-
         -- file managing , picker etc
         use {
             "kyazdani42/nvim-tree.lua",
