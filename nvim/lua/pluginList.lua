@@ -16,15 +16,6 @@ return packer.startup(
     function()
         use "wbthomason/packer.nvim"
 
-        use "akinsho/nvim-bufferline.lua"
-
-        use {
-            "glepnir/galaxyline.nvim",
-            config = function()
-                require("plugins.statusline").config()
-            end
-        }
-
         -- color related stuff
         use "siduck76/nvim-base16.lua"
 

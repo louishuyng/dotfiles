@@ -1,8 +1,3 @@
-noremap <leader>q :bp<CR>
-noremap <leader>w :bn<CR>
-
-nnoremap <silent> <leader>b :Buffers<CR>
-
 "" Close buffer
 nnoremap <leader>bda :w <bar> %bd <bar> e# <bar> bd# <CR>
 noremap <leader>bd :bd<CR>

@@ -12,6 +12,7 @@ Plug 'brooth/far.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'sainnhe/edge'
 
 """"""""""""""""""""""""""file system""""""""""""""""""""""""""
 Plug 'kevinhwang91/rnvimr'
@@ -39,6 +40,7 @@ source ~/.config/nvim/config/buffer.vim
 source ~/.config/nvim/config/dashboard.vim
 source ~/.config/nvim/config/folds.vim
 source ~/.config/nvim/config/git.vim
+source ~/.config/nvim/config/theme.vim
 source ~/.config/nvim/config/lsp.vim
 source ~/.config/nvim/config/lspsaga.vim
 source ~/.config/nvim/config/mappingkey.vim
@@ -52,3 +54,5 @@ source ~/.config/nvim/config/tree.vim
 source ~/.config/nvim/config/wildmenu.vim
 
 lua require 'init'
+
+set statusline=%#StatusLineMode#\ %{toupper(mode())}\ %#StatusLine#\ %t\ %m " Custom status line
