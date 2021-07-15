@@ -55,3 +55,6 @@ source ~/.config/nvim/config/wildmenu.vim
 lua require 'init'
 
 set statusline=%#StatusLineMode#\ %{toupper(mode())}\ %#StatusLine#\ %t\ %m " Custom status line
+set gcr=a:blinkon0  
+set visualbell 
+set autoread 

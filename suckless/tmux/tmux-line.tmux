@@ -49,7 +49,7 @@ set -g status-left-length 80
 # Options -> ⧉ ❐
 set -g status-left "#{?client_prefix,#[fg=#ffffff bg=#22252B],#[fg=#e5c07b]} ❐ #S $separator"
 set -g status-right-length 70
-set -g status-right "$prefix $cpu $separator $ram $separator $battery $separator $time"
+set -g status-right "$prefix $cpu $separator $ram"
 
 set-window-option -g window-status-current-style "fg=#9ed11d"
 set-window-option -g window-status-current-format " #I: #[bold]#W $status_items"

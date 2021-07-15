@@ -3,6 +3,9 @@ colorscheme koehler
 hi CursorLine NONE
 highlight! link Visual CursorLine
 
+hi Normal guibg=NONE
+hi EndOfBuffer guibg=NONE
+
 hi LineNr ctermbg=NONE guibg=NONE"
 hi VertSplit guifg=NONE guibg=#000000 gui=NONE cterm=NONE"
 hi NvimInternalError guifg=#f9929b"
