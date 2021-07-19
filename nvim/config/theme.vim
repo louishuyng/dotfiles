@@ -1,16 +1,13 @@
-colorscheme koehler
+hi Normal guibg=#000000
+hi EndOfBuffer guibg=#000000
 
-hi CursorLine NONE
-highlight! link Visual CursorLine
-
-hi Normal guibg=NONE
-hi EndOfBuffer guibg=NONE
-
-hi LineNr ctermbg=NONE guibg=NONE"
-hi VertSplit guifg=NONE guibg=#000000 gui=NONE cterm=NONE"
-hi NvimInternalError guifg=#f9929b"
-hi SignColumn guifg=#000000 guibg=NONE"
+hi LineNr ctermbg=NONE guibg=NONE
+hi VertSplit guifg=NONE guibg=#000000 gui=NONE cterm=NONE
+hi NvimInternalError guifg=#f9929b
+hi SignColumn guifg=#000000 guibg=NONE
 hi Visual term=reverse cterm=reverse
+hi LineNr         ctermfg=DarkMagenta guifg=#2b506e guibg=#000000 
+hi CursorLine     guibg=#222222 gui=none
 
 " Status Line
 hi StatusLineMode guifg=#ffffff guibg=#ffffff guisp=#5A7CD8 gui=bold ctermfg=NONE ctermbg=77 cterm=bold

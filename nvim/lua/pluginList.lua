@@ -16,15 +16,21 @@ return packer.startup(
     function()
         use "wbthomason/packer.nvim"
 
-        -- color related stuff
-        use "siduck76/nvim-base16.lua"
-
         use {
             "norcalli/nvim-colorizer.lua",
             event = "BufRead",
             config = function()
                 require("colorizer").setup()
                 vim.cmd("ColorizerReloadAllBuffers")
+            end
+        }
+
+        use "akinsho/nvim-bufferline.lua"
+
+        use {
+            "glepnir/galaxyline.nvim",
+            config = function()
+                require "plugins.statusline"
             end
         }
 

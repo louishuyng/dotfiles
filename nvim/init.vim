@@ -1,6 +1,10 @@
 "" ==================================================== Initialize
 let mapleader=','
 
+set gcr=a:blinkon0  
+set visualbell 
+set autoread 
+
 " ==================================================== Plug-in
 call plug#begin(expand('~/.config/nvim/plugged'))
 
@@ -12,6 +16,7 @@ Plug 'brooth/far.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'sainnhe/edge'
 
 """"""""""""""""""""""""""file system""""""""""""""""""""""""""
 Plug 'kevinhwang91/rnvimr'
@@ -32,6 +37,8 @@ Plug 'tpope/vim-surround'
 
 call plug#end()
 
+lua require 'init'
+
 " ==================================================== Plug-in Configuration
 source ~/.config/nvim/config/abbreviations.vim
 source ~/.config/nvim/config/ale.vim
@@ -51,10 +58,3 @@ source ~/.config/nvim/config/telescope.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/tree.vim
 source ~/.config/nvim/config/wildmenu.vim
-
-lua require 'init'
-
-set statusline=%#StatusLineMode#\ %{toupper(mode())}\ %#StatusLine#\ %t\ %m " Custom status line
-set gcr=a:blinkon0  
-set visualbell 
-set autoread 

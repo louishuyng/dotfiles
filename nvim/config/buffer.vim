@@ -1,3 +1,5 @@
+nnoremap <leader>w :bnext<CR>
+nnoremap <leader>q :bprevious<CR>
 "" Close buffer
 nnoremap <leader>bda :w <bar> %bd <bar> e# <bar> bd# <CR>
 noremap <leader>bd :bd<CR>
