@@ -25,6 +25,8 @@ return packer.startup(
             end
         }
 
+        use "siduck76/nvim-base16.lua"
+
         use "akinsho/nvim-bufferline.lua"
 
         use {

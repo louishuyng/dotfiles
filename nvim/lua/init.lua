@@ -5,11 +5,13 @@ require "options"
 
 local g = vim.g
 
-vim.cmd('colorscheme edge')
+local base16 = require "base16"
+base16(base16.themes["onedark"], true)
+
 
 g.auto_save = true
 g.nvchad_theme = "onedark"
 
 require "mappings"
-
+require "highlights"
 require("utils").hideStuff()
