@@ -14,7 +14,6 @@ Plug 'brooth/far.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'sainnhe/edge'
 
 """"""""""""""""""""""""""file system""""""""""""""""""""""""""
 Plug 'kevinhwang91/rnvimr'

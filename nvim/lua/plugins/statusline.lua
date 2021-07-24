@@ -1,352 +1,414 @@
--- if not package.loaded['galaxyline'] then
---   return
--- end
-local status_ok, gl = pcall(require, "galaxyline")
-if not status_ok then
-  return
-end
-
-local colors = {
-  fg = "#c8c9d1",
-  bg = "#212121",
-  alt_bg = "#2a2a2a",
-  accent = "#383d45",
-  white = "#c8c9d1",
-  gray = "#858585",
-  light_gray = "#c8c9c1",
-  blue = "#5486c0",
-  gray_blue = "#66899d",
-  cyan = "#65a7c5",
-  red = "#b04b57",
-  green = "#87b379",
-  light_green = "#b2d77c",
-  yellow = "#eeba5a",
-  orange = "#c6735a",
-  purple = "#bf83c1",
-  pale_purple = "#7199ee",
-  magenta = "#D16D9E",
-  cursor_fg = "#515052",
-  cursor_bg = "#AEAFAD",
-  sign_add = "#587c0c",
-  sign_change = "#0c7d9d",
-  sign_delete = "#94151b",
-  error_red = "#F44747",
-  warning_orange = "#ff8800",
-  info_yellow = "#FFCC66",
-  hint_blue = "#4FC1FF",
-  purple_test = "#ff00ff",
-  cyan_test = "#00ffff",
+local utils = require('config.utils')
+local gl = require('galaxyline')
+local condition = require('galaxyline.condition')
+local gls = gl.section
+local cur_section
+gl.short_line_list = {
+  'NvimTree',
+  'vista',
+  'dbui',
+  'packer',
+  'fugitiveblame',
+  'LspTrouble',
+  'DiffviewFiles',
+  'Outline'
 }
 
-local condition = require "galaxyline.condition"
-local gls = gl.section
-gl.short_line_list = { "NvimTree", "vista", "dbui", "packer" }
+local colors = {
+  bg = '#000000',
+  fg = utils.get_fg("StatusLine") or '#bbc2cf',
+  yellow = '#ECBE7B',
+  cyan = '#008080',
+  darkblue = '#081633',
+  green = '#98be65',
+  orange = '#FF8800',
+  violet = '#a9a1e1',
+  magenta = '#c678dd',
+  blue = '#51afef';
+  red = '#ec5f67';
+}
 
-table.insert(gls.left, {
+local function mode_color()
+  local mode_colors = {
+    n = colors.blue,
+    no = colors.blue,
+    nov = colors.blue,
+    noV = colors.blue,
+    ['no'] = colors.blue,
+    niI = colors.blue,
+    niR = colors.blue,
+    niV = colors.blue,
+    v = colors.magenta,
+    V = colors.magenta,
+    [''] = colors.magenta,
+    s = colors.magenta,
+    S = colors.magenta,
+    [''] = colors.magenta,
+    i = colors.green,
+    ic = colors.green,
+    ix = colors.green,
+    R = colors.red,
+    Rc = colors.red,
+    Rv = colors.red,
+    Rx = colors.red,
+    c = colors.orange,
+    cv = colors.orange,
+    ce = colors.orange,
+    r = colors.cyan,
+    rm = colors.cyan,
+    ['r?'] = colors.cyan,
+    ['!'] = colors.cyan,
+    t = colors.orange,
+  }
+
+  return mode_colors[vim.fn.mode()]
+end
+
+local function filler_section(size)
+  return {
+    FillerSection = {
+      provider = function ()
+        local result = ""
+        while #result < size do
+          result = result .. " "
+        end
+        return result
+      end,
+      highlight = {"NONE", colors.bg}
+    }
+  }
+end
+
+local function width_condition(min_width)
+  return function()
+    return vim.fn.winwidth(0) > min_width
+  end
+end
+
+-- RESET
+gls.left = {}
+gls.mid = {}
+gls.right = {}
+gls.short_line_left = {}
+gls.short_line_right = {}
+
+-- LEFT
+
+cur_section = gls.left
+
+table.insert(cur_section, {
+  RainbowRed = {
+    provider = function() return '▊ ' end,
+    highlight = {colors.blue,colors.bg}
+  },
+})
+
+table.insert(cur_section, {
   ViMode = {
     provider = function()
-      -- auto change color according the vim mode
-      local mode_color = {
-        n = colors.blue,
-        i = colors.green,
-        v = colors.purple,
-        [""] = colors.purple,
-        V = colors.purple,
-        c = colors.magenta,
-        no = colors.blue,
-        s = colors.orange,
-        S = colors.orange,
-        [""] = colors.orange,
-        ic = colors.yellow,
-        R = colors.red,
-        Rv = colors.red,
-        cv = colors.blue,
-        ce = colors.blue,
-        r = colors.cyan,
-        rm = colors.cyan,
-        ["r?"] = colors.cyan,
-        ["!"] = colors.blue,
-        t = colors.blue,
+      local alias = {
+        n = 'NORMAL',
+        no = 'NORMAL',
+        nov = 'NORMAL',
+        noV = 'NORMAL',
+        ['no'] = 'NORMAL',
+        niI = 'NORMAL',
+        niR = 'NORMAL',
+        niV = 'NORMAL',
+        v = 'VISUAL',
+        V = 'VISUAL LINE',
+        [''] = 'VISUAL BLOCK',
+        s = 'SELECT',
+        S = 'SELECT LINE',
+        [''] = 'SELECT BLOCK',
+        i = 'INSERT',
+        ic = 'COMPLETION',
+        ix = 'COMPLETION',
+        R = 'REPLACE',
+        Rc = 'REPLACE',
+        Rv = 'REPLACE',
+        Rx = 'REPLACE',
+        c = 'COMMAND',
+        cv = 'EX',
+        ce = 'NORMAL EX',
+        r = 'PROMPT',
+        rm = 'PROMPT',
+        ['r?'] = 'CONFIRM',
+        ['!'] = 'SHELL',
+        t = 'TERMINAL'
       }
-      vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
-      return "  Losuis "
+      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color())
+      return alias[vim.fn.mode()]..' '
     end,
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { "NONE", colors.alt_bg },
-  },
-})
--- print(vim.fn.getbufvar(0, 'ts'))
-vim.fn.getbufvar(0, "ts")
-
-table.insert(gls.left, {
-  GitIcon = {
-    provider = function()
-      return "  "
-    end,
-    condition = condition.check_git_workspace,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.orange, colors.alt_bg },
+    highlight = {colors.red,colors.bg,'bold'},
   },
 })
 
-table.insert(gls.left, {
-  GitBranch = {
-    provider = "GitBranch",
-    condition = condition.check_git_workspace,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
+table.insert(cur_section, {
+  FileSize = {
+    provider = 'FileSize',
+    condition = condition.buffer_not_empty,
+    highlight = {colors.fg,colors.bg}
+  }
+})
+
+table.insert(cur_section, {
+  FileIcon = {
+    provider = 'FileIcon',
+    condition = condition.buffer_not_empty,
+    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
   },
 })
 
-table.insert(gls.left, {
+table.insert(cur_section, {
+  FileName = {
+    provider = 'FileName',
+    condition = condition.buffer_not_empty,
+    highlight = {colors.magenta,colors.bg,'bold'}
+  }
+})
+
+table.insert(cur_section, {
   DiffAdd = {
-    provider = "DiffAdd",
+    provider = 'DiffAdd',
     condition = condition.hide_in_width,
-    icon = "  ",
-    highlight = { colors.green, colors.alt_bg },
-  },
+    icon = ' ',
+    separator = '',
+    highlight = {colors.green,colors.bg},
+  }
 })
 
-table.insert(gls.left, {
+table.insert(cur_section, {
   DiffModified = {
-    provider = "DiffModified",
+    provider = 'DiffModified',
     condition = condition.hide_in_width,
-    icon = " 柳",
-    highlight = { colors.blue, colors.alt_bg },
-  },
+    icon = ' ',
+    separator = '',
+    highlight = {colors.blue, colors.bg},
+  }
 })
 
-table.insert(gls.left, {
+table.insert(cur_section, {
   DiffRemove = {
-    provider = "DiffRemove",
+    provider = 'DiffRemove',
     condition = condition.hide_in_width,
-    icon = "  ",
-    highlight = { colors.red, colors.alt_bg },
-  },
+    icon = ' ',
+    separator = '',
+    highlight = {colors.red,colors.bg},
+  }
 })
 
-table.insert(gls.left, {
-  Filler = {
-    provider = function()
-      return " "
-    end,
-    highlight = { colors.grey, colors.alt_bg },
-  },
-})
--- get output from shell command
-function os.capture(cmd, raw)
-  local f = assert(io.popen(cmd, "r"))
-  local s = assert(f:read "*a")
-  f:close()
-  if raw then
-    return s
-  end
-  s = string.gsub(s, "^%s+", "")
-  s = string.gsub(s, "%s+$", "")
-  s = string.gsub(s, "[\n\r]+", " ")
-  return s
-end
--- cleanup virtual env
-local function env_cleanup(venv)
-  if string.find(venv, "/") then
-    local final_venv = venv
-    for w in venv:gmatch "([^/]+)" do
-      final_venv = w
-    end
-    venv = final_venv
-  end
-  return venv
-end
-local PythonEnv = function()
-  if vim.bo.filetype == "python" then
-    local venv = os.getenv "CONDA_DEFAULT_ENV"
-    if venv ~= nil then
-      return "  (" .. env_cleanup(venv) .. ")"
-    end
-    venv = os.getenv "VIRTUAL_ENV"
-    if venv ~= nil then
-      return "  (" .. env_cleanup(venv) .. ")"
-    end
-    return ""
-  end
-  return ""
-end
-table.insert(gls.left, {
-  VirtualEnv = {
-    provider = PythonEnv,
-    event = "BufEnter",
-    highlight = { colors.green, colors.alt_bg },
-  },
-})
+-- MID
 
-table.insert(gls.right, {
-  DiagnosticError = {
-    provider = "DiagnosticError",
-    icon = "  ",
-    highlight = { colors.red, colors.alt_bg },
-  },
-})
-table.insert(gls.right, {
-  DiagnosticWarn = {
-    provider = "DiagnosticWarn",
-    icon = "  ",
-    highlight = { colors.orange, colors.alt_bg },
-  },
-})
+cur_section = gls.mid
 
-table.insert(gls.right, {
-  DiagnosticInfo = {
-    provider = "DiagnosticInfo",
-    icon = "  ",
-    highlight = { colors.yellow, colors.alt_bg },
-  },
-})
-
-table.insert(gls.right, {
-  DiagnosticHint = {
-    provider = "DiagnosticHint",
-    icon = "  ",
-    highlight = { colors.blue, colors.alt_bg },
-  },
-})
-
-table.insert(gls.right, {
-  TreesitterIcon = {
-    provider = function()
-      if next(vim.treesitter.highlighter.active) ~= nil then
-        return "  "
-      end
-      return ""
-    end,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.green, colors.alt_bg },
-  },
-})
-
-local get_lsp_client = function(msg)
-  msg = msg or "LSP"
-  local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-  local clients = vim.lsp.get_active_clients()
-  if next(clients) == nil then
-    return msg
-  end
-  local lsps = ""
-  for _, client in ipairs(clients) do
-    local filetypes = client.config.filetypes
-    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      -- print(client.name)
-      if lsps == "" then
-        -- print("first", lsps)
-        lsps = client.name
-      else
-        if not string.find(lsps, client.name) then
-          lsps = lsps .. ", " .. client.name
-        end
-        -- print("more", lsps)
-      end
-    end
-  end
-  if lsps == "" then
-    return msg
-  else
-    return lsps
-  end
-end
-
-table.insert(gls.right, {
+table.insert(cur_section, {
   ShowLspClient = {
-    provider = get_lsp_client,
-    condition = function()
-      local tbl = { ["dashboard"] = true, [" "] = true }
+    provider = 'GetLspClient',
+    condition = function ()
+      local tbl = {['dashboard'] = true,['']=true}
       if tbl[vim.bo.filetype] then
         return false
       end
-      return true
+      return vim.fn.winwidth(0) > 150
     end,
-    icon = "  ",
-    highlight = { colors.grey, colors.alt_bg },
-  },
+    icon = ' LSP:',
+    highlight = {colors.cyan,colors.bg,'bold'}
+  }
 })
 
-table.insert(gls.right, {
+-- RIGHT
+
+cur_section = gls.right
+
+table.insert(cur_section, {
+  DiagnosticError = {
+    provider = 'DiagnosticError',
+    icon = '  ',
+    highlight = {colors.red,colors.bg,'bold'}
+  }
+})
+
+table.insert(cur_section, {
+  DiagnosticWarn = {
+    provider = 'DiagnosticWarn',
+    icon = '  ',
+    highlight = {colors.yellow,colors.bg,'bold'},
+  }
+})
+
+table.insert(cur_section, {
+  DiagnosticHint = {
+    provider = 'DiagnosticHint',
+    icon = '  ',
+    highlight = {colors.cyan,colors.bg,'bold'},
+  }
+})
+
+table.insert(cur_section, {
+  DiagnosticInfo = {
+    provider = 'DiagnosticInfo',
+    icon = '  ',
+    highlight = {colors.blue,colors.bg,'bold'},
+  }
+})
+
+table.insert(cur_section, {
   LineInfo = {
-    provider = "LineColumn",
-    separator = "  ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
-  },
-})
+    provider = function ()
+      local line = tostring(vim.fn.line("."))
+      if #line % 2 ~= 0 then
+        line = utils.str_left_pad(line, #line + (2 - #line % 2))
+      end
 
-table.insert(gls.right, {
-  PerCent = {
-    provider = "LinePercent",
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
-  },
-})
+      local col = tostring(vim.fn.col("."))
+      if #col % 2 ~= 0 then
+        col = utils.str_right_pad(col, #col + (2 - #col % 2))
+      end
 
-table.insert(gls.right, {
-  Tabstop = {
-    provider = function()
-      return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+      local result = line .. ":" .. col
+      local min_size = #result
+      if min_size % 4 ~= 0 then min_size = #result + (4 - #result % 4) end
+
+      if #result < min_size then
+        result = utils.str_center_pad(result, min_size)
+      end
+
+      return result
     end,
-    condition = condition.hide_in_width,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.fg,colors.bg},
   },
 })
 
-table.insert(gls.right, {
-  BufferType = {
-    provider = "FileTypeName",
-    condition = condition.hide_in_width,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.alt_bg, colors.alt_bg },
+table.insert(cur_section, {
+  Percent = {
+    provider = function ()
+      local current_line = vim.fn.line('.')
+      local total_line = vim.fn.line('$')
+      local result,_ = math.modf((current_line/total_line)*100)
+      return ' '.. result .. '% '
+    end,
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.fg,colors.bg,'bold'},
+  }
+})
+
+table.insert(cur_section, {
+  NumLines = {
+    provider = function ()
+      return '  '.. vim.fn.line("$") .. " "
+    end,
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.fg,colors.bg},
+  }
+})
+
+table.insert(cur_section, {
+  IndentInfo = {
+    provider = function ()
+      if vim.bo.expandtab then
+        return "SPACES " .. vim.bo.shiftwidth
+      else
+        return "TABS " .. vim.bo.tabstop
+      end
+    end,
+    condition = width_condition(110),
+    icon = " ",
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.cyan, colors.bg, 'bold'},
   },
 })
 
-table.insert(gls.right, {
+table.insert(cur_section, {
+  FileFormat = {
+    provider = function ()
+      local format = vim.bo.fileformat
+      if format == "unix" then
+        return "  "
+      elseif format == "dos" then
+        return "  "
+      elseif format == "mac" then
+        return "  "
+      end
+      return " " .. format:upper()
+    end,
+    condition = width_condition(100),
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.green,colors.bg,'bold'}
+  }
+})
+
+table.insert(cur_section, {
   FileEncode = {
     provider = "FileEncode",
     condition = condition.hide_in_width,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.green,colors.bg,'bold'}
+  }
+})
+
+table.insert(cur_section, {
+  GitIcon = {
+    provider = function() return '  ' end,
+    condition = condition.check_git_workspace,
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.violet,colors.bg,'bold'},
+  }
+})
+
+table.insert(cur_section, {
+  GitBranch = {
+    provider = "GitBranch",
+    condition = condition.check_git_workspace,
+    highlight = {colors.violet,colors.bg,'bold'},
+  }
+})
+
+table.insert(cur_section, filler_section(3))
+
+-- SHORT LINE LEFT
+
+cur_section = gls.short_line_left
+
+table.insert(cur_section, {
+  RainbowRed = {
+    provider = function() return '▊ ' end,
+    highlight = {colors.blue,colors.bg}
   },
 })
 
-table.insert(gls.right, {
-  Space = {
-    provider = function()
-      return " "
-    end,
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.grey, colors.alt_bg },
-  },
-})
-
-table.insert(gls.short_line_left, {
+table.insert(cur_section, {
   BufferType = {
-    provider = "FileTypeName",
-    separator = " ",
-    separator_highlight = { "NONE", colors.alt_bg },
-    highlight = { colors.alt_bg, colors.alt_bg },
-  },
+    provider = 'FileTypeName',
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.blue,colors.bg,'bold'}
+  }
 })
 
-table.insert(gls.short_line_left, {
+table.insert(cur_section, {
   SFileName = {
-    provider = "SFileName",
+    provider =  'SFileName',
     condition = condition.buffer_not_empty,
-    highlight = { colors.alt_bg, colors.alt_bg },
-  },
+    highlight = {colors.fg,colors.bg,'bold'}
+  }
 })
 
---table.insert(gls.short_line_right[1] = {BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.alt_bg}}})
+-- SHORT LINE RIGHT
+
+cur_section = gls.short_line_right
+
+table.insert(cur_section, {
+  BufferIcon = {
+    provider= 'BufferIcon',
+    highlight = {colors.fg,colors.bg}
+  }
+})
+
+vim.api.nvim_command([[hi! link StatusLine GalaxySFileName]])
