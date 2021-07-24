@@ -8,10 +8,8 @@ set autoread
 " ==================================================== Plug-in
 call plug#begin(expand('~/.config/nvim/plugged'))
 
-""""""""""""""""""""""""""THEME""""""""""""""""""""""""""
-Plug 'dense-analysis/ale'
-
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
+Plug 'dense-analysis/ale'
 Plug 'brooth/far.vim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-fugitive'

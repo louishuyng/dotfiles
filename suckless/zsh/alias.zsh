@@ -6,6 +6,7 @@ alias sdn="osascript -e 'tell app \"System Events\" to shut down'"
 alias conf='nv ~/.config'
 alias ll="ls -l"
 alias lla="ll -A"
+alias z="j"
 
 # TOOLS
 alias typeracer='cli-typer'
