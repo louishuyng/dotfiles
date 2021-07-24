@@ -1,25 +1,86 @@
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# lazyload zsh - boost zsh startup time
-source ~/.zsh-defer/zsh-defer.plugin.zsh
-PS1="%F{12}%~%f "
-RPS1="%F{240}Loading...%f"
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+	print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+	command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+	command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+		print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+		print -P "%F{160}▓▒░ The clone has failed.%f"
+fi
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Current theme         https://github.com/sindresorhus/pure
-# How to install        npm install --global pure-prompt
-zstyle :prompt:pure:path color white
-zstyle ':prompt:pure:prompt:*' color green
-zstyle :prompt:pure:git:stash show yes
+# if [ -z "$TMUX" ]
+# then
+#     tmux attach -t work || tmux new -s work
+# fi
 
-export LC_ALL=en_US.UTF-8
-zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-zsh-defer source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
-zsh-defer source ~/.zsh/zsh-z/zsh-z.plugin.zsh
-[ -f ~/.fzf.zsh ] && zsh-defer source ~/.fzf.zsh
+zinit ice depth=1 atload"!source ~/.config/suckless/zsh/.p10k-evilball.zsh" lucid nocd
+zinit light romkatv/powerlevel10k
+
+# Oh-my-zsh plugins
+zinit snippet OMZ::lib/history.zsh
+
+zinit snippet OMZ::lib/key-bindings.zsh
+
+zinit ice wait lucid
+zinit snippet OMZ::lib/completion.zsh
+
+zinit ice wait lucid
+zinit snippet OMZ::lib/grep.zsh
+
+# Oh-my-zsh plugins
+zinit ice wait lucid atload"unalias grv"
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+
+zinit ice wait lucid
+zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
+
+zinit ice wait lucid
+zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+
+zinit ice wait lucid
+zinit snippet OMZ::plugins/extract/extract.plugin.zsh
+
+zinit ice wait lucid
+zinit snippet OMZ::plugins/golang/golang.plugin.zsh
+
+zinit ice wait lucid
+zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
+
+zinit ice wait lucid
+zinit snippet OMZ::plugins/autojump/autojump.plugin.zsh
+
+# Plugins
+zinit ice depth=1 lucid
+zinit light trystan2k/zsh-tab-title
+
+zinit ice depth=1 wait lucid
+zinit light Aloxaf/fzf-tab
+
+zinit ice depth=1 wait blockf lucid atpull"zinit creinstall -q ."
+zinit light clarketm/zsh-completions
+
+zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice depth=1 wait"1" lucid atinit"zstyle ':history-search-multi-word' page-size '20'"
+zinit light zdharma/history-search-multi-word
+
+zinit ice depth=1 wait"2" lucid
+zinit light wfxr/forgit
+
+zinit ice depth=1 wait"2" lucid
+zinit light hlissner/zsh-autopair
+
+zinit ice depth=1 wait"2" lucid
+zinit light peterhurford/up.zsh
+
+zinit ice depth=1 wait"2" lucid
+zinit light MichaelAquilina/zsh-you-should-use
 
 #--------------------------------------------------
 ## EXPORTS
@@ -194,33 +255,3 @@ function gcn() {
   cd $reponame;
   npm install;
 }
-
-#--------------------------------------------------
-## OTHERS
-# Make zsh know about hosts already accessed by SSH
-zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
-
-# `Frozing' tty, so after any command terminal settings will be restored
-ttyctl -f
-
-# lazyload zsh - boost zsh startup time
-PS1="%F{12}%~%f "
-RPS1="%F{240}Loading...%f"
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-
-# Peco History
-source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-eval $(thefuck --alias)
-
-
-# Load pure theme afterward
-autoload -U promptinit; promptinit
-prompt pure
-
-zsh-defer -c 'RPS1="%F{240}%f"'
