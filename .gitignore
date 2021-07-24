@@ -25,3 +25,5 @@ suckless/oh-my-zsh/log
 suckless/pgcli/log
 
 .DS_Store
+swap-pane
+nvim/spell/**
