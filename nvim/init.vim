@@ -32,6 +32,7 @@ Plug 'benmills/vimux' "Vi + Tmux
 Plug 'kamykn/spelunker.vim' "Check Spell
 Plug 'wincent/scalpel' "Replace Text in Buffer
 Plug 'tpope/vim-surround'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } "Markdown Preview
 
 call plug#end()
 
