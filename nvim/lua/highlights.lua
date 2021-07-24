@@ -22,6 +22,7 @@ local nord_blue = colors.nord_blue
 local blue = colors.blue
 local yellow = colors.yellow
 local purple = colors.purple
+local cursor = colors.cursor
 
 -- for guifg , bg
 
@@ -58,8 +59,7 @@ bg("PmenuThumb", nord_blue)
 cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 
 -- line n.o
-cmd "hi clear CursorLine"
-fg("cursorlinenr", white)
+fg("cursorlinenr", cursor)
 
 -- git signs ---
 fg_bg("DiffAdd", nord_blue, "none")
