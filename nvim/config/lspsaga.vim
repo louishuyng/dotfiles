@@ -6,4 +6,4 @@ nnoremap <silent><leader>rr :Lspsaga rename<CR>
 nnoremap <silent> [d :Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> ]d :Lspsaga diagnostic_jump_prev<CR>
 
-highlight default LspSagaFinderSelection guifg=#323232 guibg=NONE gui=bold
+highlight default LspSagaFinderSelection guifg=#0000 guibg=NONE gui=NONE
