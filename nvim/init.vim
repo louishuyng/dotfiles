@@ -4,6 +4,7 @@ let mapleader=','
 set gcr=a:blinkon0  
 set visualbell 
 set autoread 
+set spell
 
 " ==================================================== Plug-in
 call plug#begin(expand('~/.config/nvim/plugged'))
