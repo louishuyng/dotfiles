@@ -22,7 +22,7 @@ autoload -Uz _zinit
 zinit ice depth=1 atload"!source ~/.config/suckless/zsh/.p10k-evilball.zsh" lucid nocd
 zinit light romkatv/powerlevel10k
 
-# Oh-my-zsh plugins
+# Oh-my-zsh lib
 zinit snippet OMZ::lib/history.zsh
 
 zinit snippet OMZ::lib/key-bindings.zsh
@@ -30,6 +30,10 @@ zinit snippet OMZ::lib/key-bindings.zsh
 zinit ice wait lucid
 zinit snippet OMZ::lib/grep.zsh
 
+zinit ice wait lucid
+zinit snippet OMZ::lib/completion.zsh
+
+# Oh-my-zsh plugins
 zinit ice wait lucid atload"unalias grv"
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
@@ -57,9 +61,6 @@ zinit light trystan2k/zsh-tab-title
 
 zinit ice depth=1 wait lucid
 zinit light Aloxaf/fzf-tab
-
-zinit ice depth=1 wait blockf lucid atpull"antigen bundle zsh-users/zsh-completions"
-zinit light zsh-users/zsh-completions
 
 zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
