@@ -28,12 +28,8 @@ zinit snippet OMZ::lib/history.zsh
 zinit snippet OMZ::lib/key-bindings.zsh
 
 zinit ice wait lucid
-zinit snippet OMZ::lib/completion.zsh
-
-zinit ice wait lucid
 zinit snippet OMZ::lib/grep.zsh
 
-# Oh-my-zsh plugins
 zinit ice wait lucid atload"unalias grv"
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
@@ -62,8 +58,8 @@ zinit light trystan2k/zsh-tab-title
 zinit ice depth=1 wait lucid
 zinit light Aloxaf/fzf-tab
 
-zinit ice depth=1 wait blockf lucid atpull"zinit creinstall -q ."
-zinit light clarketm/zsh-completions
+zinit ice depth=1 wait blockf lucid atpull"antigen bundle zsh-users/zsh-completions"
+zinit light zsh-users/zsh-completions
 
 zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
