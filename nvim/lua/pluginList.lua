@@ -25,8 +25,6 @@ return packer.startup(
             end
         }
 
-        use "siduck76/nvim-base16.lua"
-
         use "akinsho/nvim-bufferline.lua"
 
         use {
@@ -140,8 +138,6 @@ return packer.startup(
                 )
             end
         }
-
-        use {"andymass/vim-matchup", event = "CursorMoved"}
 
         use {
             "terrortylor/nvim-comment",

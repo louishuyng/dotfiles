@@ -1,4 +1,4 @@
-OneDark='#000000'
+OneDark='#232527'
 NightOwl='#0F1D2A'
 Material='#263238'
 
@@ -9,7 +9,7 @@ ACTIVE_FG_COLOR='#fac863'
 set-option -g status-style "bg=$BACKGROUND_COLOR"
 
 # Status setup
-set -g status-position top
+set -g status-position bottom
 set-option -g status on
 set-option -g status-fg default
 set -g status-justify left
@@ -49,7 +49,7 @@ set -g status-left-length 80
 # Options -> ⧉ ❐
 set -g status-left "#{?client_prefix,#[fg=#ffffff bg=#22252B],#[fg=#e5c07b]} ❐ #S $separator"
 set -g status-right-length 70
-set -g status-right "$prefix $cpu $separator $ram $separator $battery $separator $time"
+set -g status-right "$prefix $cpu $separator $ram"
 
 set-window-option -g window-status-current-style "fg=#9ed11d"
 set-window-option -g window-status-current-format " #I: #[bold]#W $status_items"

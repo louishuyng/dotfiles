@@ -1,13 +1,11 @@
 "" ==================================================== Initialize
 let mapleader=','
 
-set gcr=a:blinkon0  
-set visualbell 
-set autoread 
-set spell
-
 " ==================================================== Plug-in
 call plug#begin(expand('~/.config/nvim/plugged'))
+
+""""""""""""""""""""""""""THEME""""""""""""""""""""""""""
+Plug 'sainnhe/edge'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'dense-analysis/ale'
@@ -49,12 +47,12 @@ source ~/.config/nvim/config/git.vim
 source ~/.config/nvim/config/lsp.vim
 source ~/.config/nvim/config/lspsaga.vim
 source ~/.config/nvim/config/mappingkey.vim
+source ~/.config/nvim/config/options.vim
 source ~/.config/nvim/config/rails.vim
 source ~/.config/nvim/config/rnvimr.vim
 source ~/.config/nvim/config/scalpel.vim
 source ~/.config/nvim/config/spelunker.vim
 source ~/.config/nvim/config/telescope.vim
-source ~/.config/nvim/config/theme.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/tree.vim
 source ~/.config/nvim/config/wildmenu.vim
