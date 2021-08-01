@@ -45,14 +45,14 @@ return packer.startup(
 
         use {
             "kabouzeid/nvim-lspinstall",
-            event = "VimEnter"
+            event = "BufEnter"
         }
 
         use {
             "neovim/nvim-lspconfig",
-            event = "BufRead",
+            after = "nvim-lspinstall",
             config = function()
-                require("plugins.lspconfig").config()
+                require "plugins.lspconfig"
             end
         }
 
@@ -66,7 +66,7 @@ return packer.startup(
 
         use {
             "onsails/lspkind-nvim",
-            event = "BufRead",
+            event = "BufEnter",
             config = function()
                 require("lspkind").init()
             end
