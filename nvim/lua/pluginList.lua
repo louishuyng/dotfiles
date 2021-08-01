@@ -20,12 +20,14 @@ return packer.startup(
             "norcalli/nvim-colorizer.lua",
             event = "BufRead",
             config = function()
-                require("colorizer").setup()
-                vim.cmd("ColorizerReloadAllBuffers")
+                require("plugins.others").colorizer()
             end
         }
 
-        use "akinsho/nvim-bufferline.lua"
+        use {
+          "akinsho/nvim-bufferline.lua",
+          event = "BufRead"
+        }
 
         use {
             "glepnir/galaxyline.nvim",
@@ -68,7 +70,7 @@ return packer.startup(
             "onsails/lspkind-nvim",
             event = "BufEnter",
             config = function()
-                require("lspkind").init()
+                require("plugins.others").lspkind()
             end
         }
 
@@ -143,7 +145,7 @@ return packer.startup(
             "terrortylor/nvim-comment",
             cmd = "CommentToggle",
             config = function()
-                require("nvim_comment").setup()
+                require("plugins.others").comment()
             end
         }
 
@@ -188,7 +190,7 @@ return packer.startup(
             "lukas-reineke/indent-blankline.nvim",
             event = "BufRead",
             setup = function()
-                require("utils").blankline()
+                require("plugins.others").blankline()
             end
         }
 
@@ -201,7 +203,10 @@ return packer.startup(
 
          use {
             "jdhao/better-escape.vim",
-            event = 'InsertEnter'
+            event = 'InsertEnter',
+            config = function()
+                require "plugins.others".escape()
+            end
         }
     end
 )
