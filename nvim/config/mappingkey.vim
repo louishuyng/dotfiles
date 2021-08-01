@@ -54,9 +54,6 @@ nnoremap <esc> :noh<return><esc>
 "Auto close Tag
 inoremap ><Tab> ><Esc>?<[a-z]<CR>lyiwo</<C-r>"><Esc>O
 
-imap jj <esc>
-imap jj <C-\><C-n>
-
 " Use CTRL-S for saving, also in Insert mode
 noremap <Cmd-S> :update<CR>
 vnoremap <Cmd-S> <C-C>:update<CR>

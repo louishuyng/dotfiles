@@ -13,3 +13,4 @@ g.nvchad_theme = "onedark"
 require "mappings"
 require "highlights"
 require("utils").hideStuff()
+require("utils").escape()

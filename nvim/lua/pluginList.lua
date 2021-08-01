@@ -198,5 +198,10 @@ return packer.startup(
                 "Git"
             }
         }
+
+         use {
+            "jdhao/better-escape.vim",
+            event = 'InsertEnter'
+        }
     end
 )

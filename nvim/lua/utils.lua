@@ -23,4 +23,9 @@ M.hideStuff = function()
     )
 end
 
+M.escape = function()
+    vim.g.better_escape_interval = 300
+    vim.g.better_escape_shortcut = {"jj"}
+end
+
 return M
