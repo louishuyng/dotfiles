@@ -12,7 +12,7 @@ noremap <space>gp :Gpush
 noremap <space>gf :Gpull
 noremap <Leader>gs :Git<CR>
 noremap <space>gs :LazyGit<CR>
-noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gb :Git blame<CR>
 noremap gb :SingleBlameLine<CR>
 noremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>o :.Gbrowse<CR>

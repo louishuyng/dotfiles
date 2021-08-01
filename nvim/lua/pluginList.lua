@@ -1,20 +1,20 @@
-local packer = require("packer")
-local use = packer.use
+local present, _ = pcall(require, "packerInit")
+local packer
 
-packer.init {
-    display = {
-        open_fn = function()
-            return require("packer.util").float {border = "single"}
-        end
-    },
-    git = {
-        clone_timeout = 600 -- Timeout, in seconds, for git clones
-    }
-}
+if present then
+    packer = require "packer"
+else
+    return false
+end
+
+local use = packer.use
 
 return packer.startup(
     function()
-        use "wbthomason/packer.nvim"
+        use {
+            "wbthomason/packer.nvim",
+            event = "VimEnter"
+        }
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -25,8 +25,10 @@ return packer.startup(
         }
 
         use {
-          "akinsho/nvim-bufferline.lua",
-          event = "BufRead"
+            "akinsho/nvim-bufferline.lua",
+            config = function()
+                require "plugins.bufferline"
+            end
         }
 
         use {
@@ -41,7 +43,7 @@ return packer.startup(
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             config = function()
-                require("plugins.treesitter").config()
+                require "plugins.treesitter"
             end
         }
 
@@ -62,7 +64,7 @@ return packer.startup(
             "glepnir/lspsaga.nvim",
             event = "BufRead",
             config = function()
-                require("plugins.lspsaga").config()
+                require "plugins.lspsaga"
             end
         }
 
@@ -98,19 +100,33 @@ return packer.startup(
             }
         }
 
+        use {
+            "windwp/nvim-autopairs",
+            after = "nvim-compe",
+            config = function()
+                require("nvim-autopairs").setup()
+                require("nvim-autopairs.completion.compe").setup(
+                    {
+                        map_cr = true,
+                        map_complete = true -- insert () func completion
+                    }
+                )
+            end
+        }
+
         -- file managing , picker etc
         use {
             "kyazdani42/nvim-tree.lua",
             cmd = "NvimTreeToggle",
             config = function()
-                require("plugins.nvimtree").config()
+                require "plugins.nvimtree"
             end
         }
 
         use {
             "kyazdani42/nvim-web-devicons",
             config = function()
-                require("plugins.icons").config()
+                require "plugins.icons"
             end
         }
 
@@ -126,20 +142,6 @@ return packer.startup(
             end
         }
 
-        -- misc plugins
-        use {
-            "windwp/nvim-autopairs",
-            after = "nvim-compe",
-            config = function()
-                require("nvim-autopairs").setup()
-                require("nvim-autopairs.completion.compe").setup(
-                    {
-                        map_cr = true,
-                        map_complete = true -- insert () func completion
-                    }
-                )
-            end
-        }
 
         use {
             "terrortylor/nvim-comment",
@@ -159,7 +161,7 @@ return packer.startup(
                 "SessionSave"
             },
             setup = function()
-                require("plugins.dashboard").config()
+                require "plugins.dashboard"
             end
         }
 
@@ -169,7 +171,7 @@ return packer.startup(
         use {
             "Pocco81/AutoSave.nvim",
             config = function()
-                require("plugins.zenmode").autoSave()
+                require "plugins.autosave"
             end,
             cond = function()
                 return vim.g.auto_save == true
@@ -180,7 +182,7 @@ return packer.startup(
             "Pocco81/TrueZen.nvim",
             cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()
-                require("plugins.zenmode").config()
+                require "plugins.zenmode"
             end
         }
 
@@ -197,16 +199,21 @@ return packer.startup(
          use {
             "tpope/vim-fugitive",
             cmd = {
-                "Git"
+                "Git",
+                "Gwrite",
+                "Gcommit",
+                "Gpush",
+                "Gpull",
+                "Gblame",
+                "Gvdiff",
+                "Gbrowse",
             }
         }
 
-         use {
+        use {
             "jdhao/better-escape.vim",
-            event = 'InsertEnter',
-            config = function()
-                require "plugins.others".escape()
-            end
+            event = 'InsertEnter'
         }
+
     end
 )

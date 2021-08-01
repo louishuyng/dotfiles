@@ -1,5 +1,5 @@
 -- load all plugins
-require "plugins.bufferline"
+require "mappings"
 require "pluginList"
 require "options"
 
@@ -10,7 +10,6 @@ vim.cmd('colorscheme edge')
 g.auto_save = true
 g.nvchad_theme = "onedark"
 
-require "mappings"
 require "highlights"
 require("utils").hideStuff()
-require("utils").escape()
+require("plugins.others").escape()
