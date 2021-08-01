@@ -11,7 +11,6 @@ Plug 'sainnhe/edge'
 Plug 'dense-analysis/ale'
 Plug 'brooth/far.vim'
 Plug 'kdheepak/lazygit.nvim'
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 """"""""""""""""""""""""""file system""""""""""""""""""""""""""

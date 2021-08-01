@@ -191,5 +191,12 @@ return packer.startup(
                 require("utils").blankline()
             end
         }
+
+         use {
+            "tpope/vim-fugitive",
+            cmd = {
+                "Git"
+            }
+        }
     end
 )
