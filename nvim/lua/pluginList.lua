@@ -215,5 +215,9 @@ return packer.startup(
             event = 'InsertEnter'
         }
 
+        use {
+            "andymass/vim-matchup",
+            event = "CursorMoved"
+        }
     end
 )
