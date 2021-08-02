@@ -6,15 +6,17 @@ nmap [h <Plug>(GitGutterPrevHunk)
 nmap ga <Plug>(GitGutterStageHunk)
 nmap gu <Plug>(GitGutterUndoHunk)
 
-noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>ga :Gwrite!<CR>
 noremap <Leader>gc :Gcommit<CR>   
 noremap <space>gp :Gpush
 noremap <space>gf :Gpull
-noremap <Leader>gs :Git<CR>
+noremap <Leader>gs :Gstatus<CR>:17wincmd_<CR>
 noremap <space>gs :LazyGit<CR>
 noremap <Leader>gb :Git blame<CR>
 noremap gb :SingleBlameLine<CR>
-noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gd :Gvdiff!<CR>
+nnoremap <space>dh :diffget //2<CR>
+nnoremap <space>dl :diffget //3<CR>
 nnoremap <Leader>o :.Gbrowse<CR>
 
 let g:gitgutter_diff_args = ' '

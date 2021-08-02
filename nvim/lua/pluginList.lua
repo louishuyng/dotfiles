@@ -200,6 +200,7 @@ return packer.startup(
             "tpope/vim-fugitive",
             cmd = {
                 "Git",
+                "Gstatus",
                 "Gwrite",
                 "Gcommit",
                 "Gpush",
