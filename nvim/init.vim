@@ -8,10 +8,14 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'sainnhe/edge'
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
-Plug 'dense-analysis/ale'
-Plug 'brooth/far.vim'
-Plug 'kdheepak/lazygit.nvim'
 Plug 'airblade/vim-gitgutter'
+Plug 'brooth/far.vim'
+Plug 'dense-analysis/ale'
+Plug 'kdheepak/lazygit.nvim'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/0.x'
+  \ }
 
 """"""""""""""""""""""""""file system""""""""""""""""""""""""""
 Plug 'kevinhwang91/rnvimr'
