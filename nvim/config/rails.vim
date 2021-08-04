@@ -1,5 +1,3 @@
-nnoremap <SID>: :<C-U><C-R>=v:count ? v:count : ''<CR>
-
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
