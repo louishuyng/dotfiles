@@ -34,6 +34,7 @@ Plug 'kamykn/spelunker.vim' "Check Spell
 Plug 'wincent/scalpel' "Replace Text in Buffer
 Plug 'tpope/vim-surround'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } "Markdown Preview
+Plug 'glepnir/dashboard-nvim'
 
 call plug#end()
 
