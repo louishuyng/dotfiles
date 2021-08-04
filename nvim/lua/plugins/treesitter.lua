@@ -6,12 +6,16 @@ end
 ts_config.setup {
     ensure_installed = {
         "javascript",
+        "typescript",
+        "tsx",
         "html",
         "css",
         "bash",
         "lua",
         "json",
         "ruby",
+        "bash",
+        "regex",
         -- "python"
         -- "rust",
         -- "go"
