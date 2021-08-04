@@ -48,9 +48,6 @@ nnoremap <silent> <c-d> :q!<cr>
 "Apply Macro
 vnoremap <leader>m :normal @
 
-"Clear HightLigh Text
-nnoremap <esc> :noh<return><esc>
-
 "Auto close Tag
 inoremap ><Tab> ><Esc>?<[a-z]<CR>lyiwo</<C-r>"><Esc>O
 

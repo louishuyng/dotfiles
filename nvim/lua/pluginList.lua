@@ -203,5 +203,8 @@ return packer.startup(
 
         -- Show match number for incsearch
         use 'osyo-manga/vim-anzu'
+
+        -- Clear highlight search automatically for you
+        use 'romainl/vim-cool'
     end
 )
