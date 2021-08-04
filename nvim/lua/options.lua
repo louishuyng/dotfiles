@@ -1,4 +1,3 @@
-
 local opt = vim.opt
 
 opt.ruler = false

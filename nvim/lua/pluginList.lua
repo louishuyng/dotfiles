@@ -188,15 +188,9 @@ return packer.startup(
 
         --   use "alvan/vim-closetag" -- for html autoclosing tag
 
-        use {
-            "lukas-reineke/indent-blankline.nvim",
-            event = "BufRead",
-            setup = function()
-                require("plugins.others").blankline()
-            end
-        }
+        use "lukas-reineke/indent-blankline.nvim"
 
-         use {
+        use {
             "tpope/vim-fugitive",
             cmd = {
                 "Git",

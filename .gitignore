@@ -27,3 +27,4 @@ suckless/pgcli/log
 .DS_Store
 swap-pane
 nvim/spell/**
+nvim/plugin/packer_compiled.lua
