@@ -151,20 +151,6 @@ return packer.startup(
             end
         }
 
-        use {
-            "glepnir/dashboard-nvim",
-            cmd = {
-                "Dashboard",
-                "DashboardNewFile",
-                "DashboardJumpMarks",
-                "SessionLoad",
-                "SessionSave"
-            },
-            setup = function()
-                require "plugins.dashboard"
-            end
-        }
-
         use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
         -- load autosave only if its globally enabled
