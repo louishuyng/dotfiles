@@ -200,5 +200,8 @@ return packer.startup(
             "andymass/vim-matchup",
             event = "CursorMoved"
         }
+
+        -- Show match number for incsearch
+        use 'osyo-manga/vim-anzu'
     end
 )

@@ -41,6 +41,7 @@ call plug#end()
 lua require 'init'
 
 " ==================================================== Plug-in Configuration
+source ~/.config/nvim/config/anzu.vim
 source ~/.config/nvim/config/abbreviations.vim
 source ~/.config/nvim/config/ale.vim
 source ~/.config/nvim/config/buffer.vim
