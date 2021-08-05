@@ -38,9 +38,9 @@ yabai -m rule --add app="^pgAdmin$" manage=off                 space=1
 
 # Coding
 yabai -m rule --add app="kitty" title="Kitty"                  space=2
-yabai -m rule --add app="Simulator"                            space=2
+yabai -m rule --add app="Simulator" manage=off                 space=2
 yabai -m rule --add app="^Xcode$" manage=off                   space=2
-yabai -m rule --add app="^Postman$" manage=off                 space=2
+yabai -m rule --add app="^Postman$" manage=off                 space=3
 yabai -m rule --add app="^Burp$" manage=off                    space=2
 yabai -m rule --add app="Visual Studio Code"                   space=2
 
