@@ -6,6 +6,10 @@ export LANG=en_US.UTF-8
 #Homebrew's sbin
 export PATH="/usr/local/sbin:$PATH"
 
+
+#Fluter
+export PATH=$PATH:$HOME/development/flutter/bin
+
 #Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
