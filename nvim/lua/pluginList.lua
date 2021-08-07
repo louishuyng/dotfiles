@@ -206,5 +206,8 @@ return packer.startup(
 
         -- Clear highlight search automatically for you
         use 'romainl/vim-cool'
+        
+        -- Swap Argument
+        use 'machakann/vim-swap'
     end
 )
