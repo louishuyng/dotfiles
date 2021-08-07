@@ -25,8 +25,6 @@ Plug 'terryma/vim-multiple-cursors'
 
 """"""""""""""""""""""""""RUBY""""""""""""""""""""""""""
 Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
 
 """"""""""""""""""""""""""TOOLS""""""""""""""""""""""""""
 Plug 'benmills/vimux' "Vi + Tmux
