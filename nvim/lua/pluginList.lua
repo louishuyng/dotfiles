@@ -212,5 +212,8 @@ return packer.startup(
 
         -- Handy unix command inside Vim (Rename, Move etc.)
         use 'tpope/vim-eunuch'
+
+        -- notification plugin
+        use 'rcarriga/nvim-notify'
     end
 )

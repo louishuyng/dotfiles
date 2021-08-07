@@ -14,3 +14,5 @@ g.nvchad_theme = "onedark"
 require "highlights"
 require("utils").hideStuff()
 require("plugins.others").escape()
+
+vim.notify = require("notify")
