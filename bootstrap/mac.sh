@@ -31,6 +31,14 @@ install_homebrew() {
   fi
 }
 
+install_python() {
+  read -r -p "Do you want to install python? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install python
+    success "Installed python"
+  fi
+}
+
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -224,6 +232,7 @@ install_lua() {
 }
 
 install_homebrew
+install_python
 setup_git
 install_zsh
 install_fish
