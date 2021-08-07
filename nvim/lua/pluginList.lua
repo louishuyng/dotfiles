@@ -206,8 +206,11 @@ return packer.startup(
 
         -- Clear highlight search automatically for you
         use 'romainl/vim-cool'
-        
+
         -- Swap Argument
         use 'machakann/vim-swap'
+
+        -- Handy unix command inside Vim (Rename, Move etc.)
+        use 'tpope/vim-eunuch'
     end
 )
