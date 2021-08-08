@@ -28,3 +28,5 @@ suckless/pgcli/log
 swap-pane
 nvim/spell/**
 nvim/plugin/packer_compiled.lua
+
+flutter
