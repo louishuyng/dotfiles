@@ -40,13 +40,13 @@ yabai -m rule --add app="^pgAdmin$" manage=off                 space=1
 yabai -m rule --add app="kitty" title="Kitty"                  space=2
 yabai -m rule --add app="Simulator" manage=off                 space=2
 yabai -m rule --add app="^Xcode$" manage=off                   space=2
-yabai -m rule --add app="^Postman$" manage=off                 space=3
+yabai -m rule --add app="^Postman$" manage=off                 space=2
 yabai -m rule --add app="^Burp$" manage=off                    space=2
-yabai -m rule --add app="Visual Studio Code"                   space=2
+yabai -m rule --add app="Visual Studio Code" manage=off        space=2
 
 # Information
-yabai -m rule --add app="Brave Browser"                opacity=1   space=3
-yabai -m rule --add app="Preview"                                   space=3
+yabai -m rule --add app="Brave Browser"         opacity=1      space=3
+yabai -m rule --add app="Preview" manage=off                   space=3
 yabai -m rule --add app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off space=3
 
 # Communication
@@ -59,11 +59,10 @@ yabai -m rule --add app="Microsoft Outlook"                    space=4
 yabai -m rule --add app="^Microsoft Teams$" manage=off         space=4
 
 # Music and Notes
-yabai -m rule --add app="Notion"                               space=5
-yabai -m rule --add app="Spotify"                              space=5
-yabai -m rule --add app="Music"                                space=5
-yabai -m rule --add app="QuickTime Player"                     space=5
-yabai -m rule --add app="VLC"                                  space=5
+yabai -m rule --add app="Notion"           manage=off          space=5
+yabai -m rule --add app="Spotify"          manage=off          space=5
+yabai -m rule --add app="QuickTime Player" manage=off          space=5
+yabai -m rule --add app="VLC"              mange=off           space=5
 
 # Others
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
