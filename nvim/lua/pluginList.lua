@@ -215,5 +215,8 @@ return packer.startup(
 
         -- notification plugin
         use 'rcarriga/nvim-notify'
+        
+        -- Show undo history visually
+        use 'simnalamburt/vim-mundo'
     end
 )
