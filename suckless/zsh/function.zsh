@@ -72,3 +72,16 @@ function gcn() {
   cd $reponame;
   npm install;
 }
+
+function devLife () {
+    DEV_DIR="~/Dev/Projects"
+    SESSION=$1
+
+    tmux kill-session -t $SESSION
+    tmux new-session -d -s $SESSION
+    tmux split-window -h -t $SESSION
+    tmux send-keys -t $SESSION:1.1 "cd $DEV_DIR/$SESSION" Enter
+    tmux send-keys -t $SESSION:1.2 "cd $DEV_DIR/$SESSION" Enter
+    tmux send-keys -t $SESSION:1.2 "ll" Enter
+    tmux attach-session -t $SESSION
+}
