@@ -218,5 +218,8 @@ return packer.startup(
         
         -- Show undo history visually
         use 'simnalamburt/vim-mundo'
+        
+        -- Single blame line
+        use 'tveskag/nvim-blame-line'
     end
 )
