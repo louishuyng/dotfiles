@@ -34,7 +34,9 @@ install_homebrew() {
 install_python() {
   read -r -p "Do you want to install python? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew install python
+    brew install pyenv
+    pyenv install 3.7.3
+    pyenv global 3.7.3
     success "Installed python"
   fi
 }
