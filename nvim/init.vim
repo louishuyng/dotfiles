@@ -4,9 +4,6 @@ let mapleader=','
 " ==================================================== Plug-in
 call plug#begin(expand('~/.config/nvim/plugged'))
 
-""""""""""""""""""""""""""THEME""""""""""""""""""""""""""
-Plug 'sainnhe/edge'
-
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
 Plug 'airblade/vim-gitgutter'
 Plug 'brooth/far.vim'

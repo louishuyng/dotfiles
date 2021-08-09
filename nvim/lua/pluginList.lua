@@ -16,6 +16,10 @@ return packer.startup(
             event = "VimEnter"
         }
 
+        use 'nightsense/cosmic_latte'
+
+        use 'zeis/vim-kolor'
+
         use {
             "norcalli/nvim-colorizer.lua",
             event = "BufRead",
