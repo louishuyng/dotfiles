@@ -219,11 +219,14 @@ return packer.startup(
 
         -- notification plugin
         use 'rcarriga/nvim-notify'
-        
+
         -- Show undo history visually
         use 'simnalamburt/vim-mundo'
-        
+
         -- Single blame line
         use 'tveskag/nvim-blame-line'
+
+        -- Super fast movement with vim-sneak
+        use 'justinmk/vim-sneak'
     end
 )
