@@ -211,6 +211,9 @@ return packer.startup(
         -- Clear highlight search automatically for you
         use 'romainl/vim-cool'
 
+        -- Show current search term in different color
+        use 'PeterRincker/vim-searchlight'
+
         -- Swap Argument
         use 'machakann/vim-swap'
 
