@@ -231,5 +231,8 @@ return packer.startup(
 
         -- Super fast movement with vim-sneak
         use 'justinmk/vim-sneak'
+       
+        -- Move lines up/down/left/right
+        use 'matze/vim-move'
     end
 )
