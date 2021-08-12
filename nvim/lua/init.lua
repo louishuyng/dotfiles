@@ -10,7 +10,6 @@ vim.cmd('colorscheme kolor')
 
 g.auto_save = true
 g.nvchad_theme = "onedark"
-g.move_key_modifier = 'C'
 
 require "highlights"
 require("utils").hideStuff()

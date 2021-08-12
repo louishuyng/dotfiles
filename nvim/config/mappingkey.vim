@@ -40,3 +40,11 @@ vnoremap <Leader>m :normal @
 
 "Auto close Tag
 inoremap ><Tab> ><Esc>?<[a-z]<CR>lyiwo</<C-r>"><Esc>O
+
+
+"Move block
+let g:move_map_keys = 0
+vmap <S-j> <Plug>MoveBlockDown
+vmap <S-k> <Plug>MoveBlockUp
+vmap <S-h> <Plug>MoveBlockLeft
+vmap <S-l> <Plug>MoveBlockRight
