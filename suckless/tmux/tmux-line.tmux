@@ -9,10 +9,10 @@ ACTIVE_FG_COLOR='#fac863'
 set-option -g status-style "bg=$BACKGROUND_COLOR"
 
 # Status setup
-set -g status-position bottom
+set -g status-position top
 set-option -g status on
 set-option -g status-fg default
-set -g status-justify centre
+set -g status-justify left
 set -g status-interval 1
 
 # ------------------------------------------------------------------------------
@@ -41,15 +41,17 @@ cpu="#[fg=#b8cc1d,bold]CPU: #[default]#{cpu_fg_color}#{cpu_icon} #{cpu_percentag
 ram="#[fg=#884ad4,bold] RAM: #{ram_fg_color}#{ram_icon}#[default]"
 spotify="#{music_status} #{artist}: #{track}"
 network="#{network_bandwidth}"
+battery="🔋 Batt: 🔌 #{battery_remain}#[default]"
+time="⏰ #[fg=#12b6db]%a %d %b %H:%M"
 
 # prefix
 prefix="#{?client_prefix,🐠,}"
 
 set -g status-left-length 80
 # Options -> ⧉ ❐
-set -g status-left "#{?client_prefix,#[fg=#ffffff bg=#22252B],#[fg=#e5c07b]} ❐ #S $separator $spotify"
-set -g status-right-length 70
-set -g status-right "$prefix $network $separator $cpu $separator $ram"
+set -g status-left "#{?client_prefix,#[fg=#ffffff bg=#22252B],#[fg=#e5c07b]} ❐ #S $separator $spotify $separator"
+set -g status-right-length 100
+set -g status-right "$prefix $network $separator $cpu $separator $ram $separator $battery $separator $time"
 
 set-window-option -g window-status-current-style "fg=#9ed11d"
 set-window-option -g window-status-current-format " #I: #[bold]#W $status_items"
