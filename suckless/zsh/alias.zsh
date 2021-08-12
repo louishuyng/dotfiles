@@ -12,6 +12,9 @@ alias cdes="rm ~/Desktop/*"
 alias speedTest='speed-test'
 alias ra='ranger'
 
+# TMUX
+alias tm='tmux  -u'
+
 # GIT
 alias gm='git merge'
 alias gs='git status'

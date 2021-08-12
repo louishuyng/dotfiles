@@ -7,12 +7,6 @@ function br() {
   brightness $str
 }
 
-function work() {
-  name="$1"
-
-  nv ~/Dev/Projects/$1
-}
-
 function gg() {
   str="$*"
   open -a 'Brave Browser' 'https://www.google.com/search?q='$str
@@ -21,10 +15,6 @@ function gg() {
 function yt() {
   str="$*"
   open -a 'Brave Browser' 'https://www.youtube.com/results?search_query='$str
-}
-
-function sd() {
-  sudo shutdown -h +$*
 }
 
 ## DEV TOOLS
