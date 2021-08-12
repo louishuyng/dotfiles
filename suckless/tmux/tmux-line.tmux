@@ -40,15 +40,16 @@ status_items="#{?window_bell_flag,#[fg=red] ,}$search_icon $pane_count"
 cpu="#[fg=#b8cc1d,bold]CPU: #[default]#{cpu_fg_color}#{cpu_icon} #{cpu_percentage}#[default]"
 ram="#[fg=#884ad4,bold] RAM: #{ram_fg_color}#{ram_icon}#[default]"
 spotify="#{music_status} #{artist}: #{track}"
+network="#{network_bandwidth}"
 
 # prefix
 prefix="#{?client_prefix,🐠,}"
 
 set -g status-left-length 80
 # Options -> ⧉ ❐
-set -g status-left "#{?client_prefix,#[fg=#ffffff bg=#22252B],#[fg=#e5c07b]} ❐ #S $separator $spotify  $separator"
+set -g status-left "#{?client_prefix,#[fg=#ffffff bg=#22252B],#[fg=#e5c07b]} ❐ #S $separator $spotify"
 set -g status-right-length 70
-set -g status-right "$prefix $cpu $separator $ram"
+set -g status-right "$prefix $network $separator $cpu $separator $ram"
 
 set-window-option -g window-status-current-style "fg=#9ed11d"
 set-window-option -g window-status-current-format " #I: #[bold]#W $status_items"
