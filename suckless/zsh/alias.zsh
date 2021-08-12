@@ -3,17 +3,14 @@ alias nv="nvim"
 alias c="clear"
 alias rf='rm -rf'
 alias sdn="osascript -e 'tell app \"System Events\" to shut down'"
-alias conf='nv ~/.config'
 alias ll="ls -l"
 alias lla="ll -A"
 alias z="j"
 alias cdes="rm ~/Desktop/*"
 
 # TOOLS
-alias typeracer='cli-typer'
 alias speedTest='speed-test'
 alias ra='ranger'
-alias tm='tmux  -u'
 
 # GIT
 alias gm='git merge'
@@ -29,12 +26,9 @@ alias grh='git reset --hard'
 alias gd='git diff'
 
 # APP OR WEB SHORTCUT
-alias brave="open -a 'Brave Browser'"
 alias facebook="open -a 'Brave Browser' http://www.facebook.com "
-alias youtube="open -a 'Google Chrome' http://www.youtube.com "
+alias youtube="open -a 'Brave Browser' http://www.youtube.com "
 alias netflix="open -a 'Brave Browser' http://www.netflix.com "
-alias trello="open -a 'Trello'"
-alias postman="open -a 'Postman'"
 
 # LANGUAGES
 # JS
