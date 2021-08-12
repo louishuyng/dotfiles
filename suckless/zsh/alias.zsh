@@ -16,10 +16,17 @@ alias ra='ranger'
 alias tm='tmux  -u'
 
 # GIT
+alias gm='git merge'
+alias gs='git status'
+alias gst='git stash'
 alias gps='git push'
 alias gp='git pull'
 alias gpo='git pull origin'
 alias gco='git checkout'
+alias gci='git commit'
+alias grs='git reset --soft'
+alias grh='git reset --hard'
+alias gd='git diff'
 
 # APP OR WEB SHORTCUT
 alias brave="open -a 'Brave Browser'"
