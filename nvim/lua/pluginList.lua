@@ -231,8 +231,11 @@ return packer.startup(
 
         -- Super fast movement with vim-sneak
         use 'justinmk/vim-sneak'
-       
+
         -- Move lines up/down/left/right
         use 'matze/vim-move'
+
+        -- Edit text area in browser using nvim
+        use {'glacambre/firenvim', run = function() fn['firenvim#install'](1) end}
     end
 )
