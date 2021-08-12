@@ -7,6 +7,7 @@ alias conf='nv ~/.config'
 alias ll="ls -l"
 alias lla="ll -A"
 alias z="j"
+alias cdes="rm ~/Desktop/*"
 
 # TOOLS
 alias typeracer='cli-typer'
