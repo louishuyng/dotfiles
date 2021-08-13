@@ -128,10 +128,8 @@ return packer.startup(
         }
 
         use {
-            "kyazdani42/nvim-web-devicons",
-            config = function()
-                require "plugins.icons"
-            end
+          'yamatsum/nvim-nonicons',
+          requires = {'kyazdani42/nvim-web-devicons'}
         }
 
         use {
