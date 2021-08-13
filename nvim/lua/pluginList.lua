@@ -16,9 +16,7 @@ return packer.startup(
             event = "VimEnter"
         }
 
-        use 'nightsense/cosmic_latte'
-
-        use 'zeis/vim-kolor'
+         use "Th3Whit3Wolf/one-nvim"
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -37,6 +35,7 @@ return packer.startup(
 
         use {
             "glepnir/galaxyline.nvim",
+            branch = "main",
             config = function()
                 require "plugins.statusline"
             end
