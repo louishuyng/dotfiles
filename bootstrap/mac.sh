@@ -123,10 +123,8 @@ install_font() {
 install_terminal() {
   read -r -p "Do you want to install terminal? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew install alacritty
+    brew install --cask kitty
 
-    rm -rf ~/.alacritty.yml
-    ln ../suckless/mac_os/alacritty/alacritty.yml ~/.alacritty.yml
     success "Installed terminal"
   fi
 }
