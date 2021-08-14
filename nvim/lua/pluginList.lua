@@ -173,10 +173,6 @@ return packer.startup(
             end
         }
 
-        --   use "alvan/vim-closetag" -- for html autoclosing tag
-
-        use "lukas-reineke/indent-blankline.nvim"
-
         use {
             "tpope/vim-fugitive",
             cmd = {

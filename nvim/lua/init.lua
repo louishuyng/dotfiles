@@ -2,7 +2,6 @@
 require "mappings"
 require "pluginList"
 require "options"
-require "plugins.indent"
 
 local g = vim.g
 
