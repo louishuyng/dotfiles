@@ -6,7 +6,7 @@ require "plugins.indent"
 
 local g = vim.g
 
-vim.cmd('colorscheme one-nvim')
+vim.cmd('colorscheme kolor')
 
 g.auto_save = true
 g.nvchad_theme = "onedark"

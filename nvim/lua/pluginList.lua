@@ -16,7 +16,7 @@ return packer.startup(
             event = "VimEnter"
         }
 
-         use "Th3Whit3Wolf/one-nvim"
+         use "zeis/vim-kolor"
 
         use {
             "norcalli/nvim-colorizer.lua",
