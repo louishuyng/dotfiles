@@ -148,7 +148,7 @@ table.insert(cur_section, {
   FileSize = {
     provider = 'FileSize',
     condition = condition.buffer_not_empty,
-    highlight = {colors.fg,colors.bg}
+    highlight = {colors.green,colors.bg}
   }
 })
 

@@ -10,7 +10,7 @@ noremap <Leader>ga :Gwrite!<CR>
 noremap <Leader>gc :Gcommit<CR>   
 noremap <space>gp :Gpush
 noremap <space>gf :Gpull
-nnoremap <silent> <Leader>gs :Git<CR>:20wincmd_<CR>
+nnoremap <silent> <Leader>gs :Gstatus<CR>:20wincmd_<CR>
 noremap <space>gs :LazyGit<CR>
 noremap <Leader>gb :Git blame<CR>
 noremap gb :SingleBlameLine<CR>
