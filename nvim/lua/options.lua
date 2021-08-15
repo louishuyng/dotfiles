@@ -53,6 +53,15 @@ vim.g.loaded_spec = 0
 -- autosave
 vim.g.auto_save = false
 
+-- fold
+opt.foldmethod ='indent'
+opt.foldnestmax = 5
+vim.api.nvim_command("set nofoldenable")
+
+-- mundo
+vim.api.nvim_command("set undofile")
+vim.api.nvim_command("set undodir=~/.vim/undo")
+
 local M = {}
 
 function M.is_buffer_empty()

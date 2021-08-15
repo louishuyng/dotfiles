@@ -21,7 +21,12 @@ return packer.startup{
 
         use 'Th3Whit3Wolf/one-nvim'
 
-        use 'dense-analysis/ale'
+        use {
+          'dense-analysis/ale',
+          config = function()
+            require "plugins.ale"
+          end
+        }
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -198,9 +203,9 @@ return packer.startup{
                 "Gcommit",
                 "Gpush",
                 "Gpull",
-                "Gblame",
+                "Git blame",
                 "Gvdiff",
-                "Gbrowse",
+                "GBrowse",
             }
         }
         -----------------------------------------------------------------
@@ -213,8 +218,6 @@ return packer.startup{
         -- OTHERS PLUGS
 
         use 'kdheepak/lazygit.nvim'
-
-        use 'kevinhwang91/rnvimr'
 
         use {
             "jdhao/better-escape.vim",
@@ -255,7 +258,18 @@ return packer.startup{
 
 
         -- Tracking task using vim wiki
-        use 'vimwiki/vimwiki'
+        use {
+            'vimwiki/vimwiki',
+            config = function()
+                vim.g.vimwiki_list = {
+                    {
+                        path = '~/vimwiki/',
+                        syntax = 'markdown',
+                        ext = '.md',
+                    }
+                }
+            end
+        }
 
         -- Replace all text with Far
         use 'brooth/far.vim'
@@ -275,8 +289,8 @@ return packer.startup{
         -- Prettier
         use 'prettier/vim-prettier'
 
-        -- Check Spelling
-        use 'kamykn/spelunker.vim'
+        -- ViTmux
+        use 'preservim/vimux'
     end,
     config = {
       display = {

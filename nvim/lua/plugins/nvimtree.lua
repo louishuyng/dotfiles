@@ -58,7 +58,7 @@ g.nvim_tree_bindings = {
   { key = "t",                        cb = tree_cb("tabnew") },
   { key = "<",                            cb = tree_cb("prev_sibling") },
   { key = ">",                            cb = tree_cb("next_sibling") },
-  { key = "p",                            cb = tree_cb("parent_node") },
+  { key = "u",                            cb = tree_cb("parent_node") },
   { key = "<BS>",                         cb = tree_cb("close_node") },
   { key = "<S-CR>",                       cb = tree_cb("close_node") },
   { key = "<Tab>",                        cb = tree_cb("preview") },
