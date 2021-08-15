@@ -5,7 +5,6 @@ let mapleader=','
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 """"""""""""""""""""""""""SOURCE CONTROL""""""""""""""""""""""""""
-Plug 'airblade/vim-gitgutter'
 Plug 'brooth/far.vim'
 Plug 'dense-analysis/ale'
 Plug 'kdheepak/lazygit.nvim'

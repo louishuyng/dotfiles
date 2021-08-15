@@ -172,6 +172,15 @@ return packer.startup(
                 require "plugins.zenmode"
             end
         }
+         use {
+            "lewis6991/gitsigns.nvim",
+            requires = {
+              "nvim-lua/plenary.nvim"
+            },
+            config = function()
+              require 'plugins.gitsigns'
+            end
+        }
 
         use {
             "tpope/vim-fugitive",
@@ -215,9 +224,6 @@ return packer.startup(
 
         -- Show undo history visually
         use 'simnalamburt/vim-mundo'
-
-        -- Single blame line
-        use 'tveskag/nvim-blame-line'
 
         -- Super fast movement with vim-sneak
         use 'justinmk/vim-sneak'
