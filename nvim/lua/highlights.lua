@@ -18,3 +18,5 @@ cmd("highlight GitGutterChange guifg=#bbbb00 ctermfg=3 guibg=NONE")
 cmd("highlight GitGutterDelete guifg=#ff2222 ctermfg= 1 guibg=NONE")
 cmd("hi LineNr guibg=#000000")
 cmd("hi CursorLine guibg=#323232 guifg=NONE")
+cmd("hi! CursorWord cterm=NONE gui=bold")
+

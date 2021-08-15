@@ -9,7 +9,7 @@ ACTIVE_FG_COLOR='#fac863'
 set-option -g status-style "bg=$BACKGROUND_COLOR"
 
 # Status setup
-set -g status-position top
+set -g status-position bottom
 set-option -g status on
 set-option -g status-fg default
 set -g status-justify left
@@ -39,9 +39,6 @@ status_items="#{?window_bell_flag,#[fg=red] ,}$search_icon $pane_count"
 
 cpu="#[fg=#b8cc1d,bold]CPU: #[default]#{cpu_fg_color}#{cpu_icon} #{cpu_percentage}#[default]"
 ram="#[fg=#884ad4,bold] RAM: #{ram_fg_color}#{ram_icon}#[default]"
-spotify="#{music_status} #{artist}: #{track}"
-battery="🔋 Batt: 🔌 #{battery_remain}#[default]"
-time="⏰ #[fg=#12b6db]%a %d %b %H:%M"
 
 # prefix
 prefix="#{?client_prefix,🐠,}"
@@ -50,7 +47,7 @@ set -g status-left-length 80
 # Options -> ⧉ ❐
 set -g status-left "#{?client_prefix,#[fg=#ffffff bg=#22252B],#[fg=#e5c07b]} ❐ #S $separator"
 set -g status-right-length 130
-set -g status-right "$prefix $spotify $separator#{vpn}$separator $cpu $separator $ram $separator $battery $separator $time"
+set -g status-right "$prefix $cpu $separator $ram"
 
 set-window-option -g window-status-current-style "fg=#9ed11d"
 set-window-option -g window-status-current-format " #I: #[bold]#W $status_items"

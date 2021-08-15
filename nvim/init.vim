@@ -47,7 +47,6 @@ source ~/.config/nvim/config/git.vim
 source ~/.config/nvim/config/lsp.vim
 source ~/.config/nvim/config/lspsaga.vim
 source ~/.config/nvim/config/mappingkey.vim
-source ~/.config/nvim/config/markdown.vim
 source ~/.config/nvim/config/mundo.vim
 source ~/.config/nvim/config/options.vim
 source ~/.config/nvim/config/rails.vim
@@ -57,4 +56,5 @@ source ~/.config/nvim/config/spelunker.vim
 source ~/.config/nvim/config/telescope.vim
 source ~/.config/nvim/config/tmux.vim
 source ~/.config/nvim/config/tree.vim
+source ~/.config/nvim/config/wiki.vim
 source ~/.config/nvim/config/wildmenu.vim

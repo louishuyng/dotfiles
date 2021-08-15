@@ -16,7 +16,7 @@ return packer.startup(
             event = "VimEnter"
         }
 
-         use "zeis/vim-kolor"
+        use "zeis/vim-kolor"
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -213,9 +213,6 @@ return packer.startup(
         -- Handy unix command inside Vim (Rename, Move etc.)
         use 'tpope/vim-eunuch'
 
-        -- notification plugin
-        use 'rcarriga/nvim-notify'
-
         -- Show undo history visually
         use 'simnalamburt/vim-mundo'
 
@@ -230,5 +227,9 @@ return packer.startup(
 
         -- Edit text area in browser using nvim
         use {'glacambre/firenvim', run = function() fn['firenvim#install'](1) end}
+
+
+        -- Tracking task using vim wiki
+        use 'vimwiki/vimwiki'
     end
 )
