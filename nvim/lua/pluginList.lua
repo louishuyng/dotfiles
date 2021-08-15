@@ -9,14 +9,19 @@ end
 
 local use = packer.use
 
-return packer.startup(
+return packer.startup{
     function()
         use {
             "wbthomason/packer.nvim",
             event = "VimEnter"
         }
 
-        use "zeis/vim-kolor"
+        -----------------------------------------------------------------
+        -- MAIN PLUGS
+
+        use 'Th3Whit3Wolf/one-nvim'
+
+        use 'dense-analysis/ale'
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -172,7 +177,9 @@ return packer.startup(
                 require "plugins.zenmode"
             end
         }
-         use {
+
+
+        use {
             "lewis6991/gitsigns.nvim",
             requires = {
               "nvim-lua/plenary.nvim"
@@ -196,6 +203,18 @@ return packer.startup(
                 "Gbrowse",
             }
         }
+        -----------------------------------------------------------------
+        -- PROGRAMING LANGUAGE SUPPORT
+
+        -- ROR
+        use 'thoughtbot/vim-rspec'
+
+        -----------------------------------------------------------------
+        -- OTHERS PLUGS
+
+        use 'kdheepak/lazygit.nvim'
+
+        use 'kevinhwang91/rnvimr'
 
         use {
             "jdhao/better-escape.vim",
@@ -237,5 +256,37 @@ return packer.startup(
 
         -- Tracking task using vim wiki
         use 'vimwiki/vimwiki'
-    end
-)
+
+        -- Replace all text with Far
+        use 'brooth/far.vim'
+
+        -- Multiple Cursor
+        use 'terryma/vim-multiple-cursors'
+
+        -- Support surround
+        use 'tpope/vim-surround'
+
+        -- Markdown Preview
+        use 'iamcco/markdown-preview.nvim'
+
+        -- Dashboard vim
+        use 'glepnir/dashboard-nvim'
+
+        -- Prettier
+        use 'prettier/vim-prettier'
+
+        -- Check Spelling
+        use 'kamykn/spelunker.vim'
+    end,
+    config = {
+      display = {
+        open_fn = function()
+          return require("packer.util").float({border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}})
+        end,
+        working_sym = "",
+        error_sym = "",
+        done_sym = "",
+        moved_sym = ""
+      }
+    }
+}

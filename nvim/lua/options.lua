@@ -3,6 +3,8 @@ local opt = vim.opt
 opt.ruler = false
 opt.hidden = true
 opt.ignorecase = true
+opt.autoread = true
+opt.spell = true
 opt.splitbelow = false
 opt.splitright = true
 opt.termguicolors = true
@@ -16,6 +18,15 @@ opt.clipboard = "unnamedplus"
 -- Center cursor
 opt.scrolloff = 999
 opt.sidescrolloff = 999
+
+-- Cursor
+opt.gcr='a:blinkon0'
+
+-- SwapFile
+vim.g.noswapfile = true
+vim.g.nobackup = true
+vim.g.nowritebackup = true
+vim.g.nowb = true
 
 -- Numbers
 opt.number = true
@@ -38,6 +49,9 @@ vim.g.loaded_netrwPlugin = 0
 vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
+
+-- autosave
+vim.g.auto_save = false
 
 local M = {}
 

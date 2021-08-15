@@ -28,9 +28,9 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
-noremap  <silent> <C-s> :w<CR>
-vnoremap <silent> <C-s> <C-C>:w<CR>
-inoremap <silent> <C-s> <C-O>:w<CR>
+noremap  <silent> <C-s> :w!<CR>
+vnoremap <silent> <C-s> <C-C>:w!<CR>
+inoremap <silent> <C-s> <C-O>:w!<CR>
 inoremap <silent> <C-d> <esc>:q!<cr>
 vnoremap <silent> <C-d> <esc>:q!<cr>
 nnoremap <silent> <c-d> :q!<cr>
