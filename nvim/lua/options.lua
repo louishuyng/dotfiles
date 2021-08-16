@@ -12,7 +12,8 @@ opt.cul = true
 opt.mouse = "a"
 opt.cmdheight = 1
 opt.updatetime = 250 -- update interval for gitsigns
-opt.timeoutlen = 200
+opt.timeoutlen = 1000
+opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
 
 -- Center cursor
