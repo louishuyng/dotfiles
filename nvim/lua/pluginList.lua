@@ -281,7 +281,11 @@ return packer.startup{
         use 'tpope/vim-surround'
 
         -- Markdown Preview
-        use 'iamcco/markdown-preview.nvim'
+        use {
+            'iamcco/markdown-preview.nvim',
+            run = function() vim.fn['mkdp#util#install']() end,
+            ft = {'markdown'}
+        }
 
         -- Dashboard vim
         use 'glepnir/dashboard-nvim'

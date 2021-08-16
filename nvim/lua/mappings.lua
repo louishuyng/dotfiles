@@ -188,3 +188,6 @@ map("n", "<space>bm", ":DashboardJumpMark<CR>", opt, {silent = true})
 
 -- prettier
 map("n", ",p", ":Prettier<CR>", opt, {silent = true})
+
+-- markdow
+map("n", "<space>md", ":MarkdownPreview<CR>", opt, {silent = true})
