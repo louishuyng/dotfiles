@@ -86,22 +86,15 @@ _G.s_tab_complete = function()
     end
 end
 
-function _G.completions()
-    local npairs = require("nvim-autopairs")
-    if vim.fn.pumvisible() == 1 then
-        if vim.fn.complete_info()["selected"] ~= -1 then
-            return vim.fn["compe#confirm"]("<CR>")
-        end
-    end
-    return npairs.check_break_line_char()
-end
-
 --  compe mappings
 map("i", "<Tab>", "v:lua.tab_complete()", {expr = true}, {noremap = true, silent = true})
 map("s", "<Tab>", "v:lua.tab_complete()", {expr = true}, {noremap = true, silent = true})
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true}, {noremap = true, silent = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true}, {noremap = true, silent = true})
-map("i", "<CR>", "v:lua.completions()", {expr = true}, {noremap = true, silent = true})
+
+map("i", "<C-Space>", "compe#complete()", {expr = true}, {noremap = true, silent = true})
+map("i", "<CR>", "compe#confirm('<CR>')", {expr = true}, {noremap = true, silent = true})
+map("i", "<C-d>", "compe#close('<C-e>')", {expr = true}, {noremap = true, silent = true})
 
 -- dashboard stuff
 map("n", "<space>sl", [[<Cmd> SessionLoad<CR>]], opt)
@@ -150,7 +143,6 @@ map("n", ",go", ":.Gbrowse<CR>", opt)
 -- lsp
 map("n", "gff", ":vsplit<CR>gf", opt)
 map("n", "gfh", ":split<CR>gf", opt)
-map("i", "<C-space>", ":split<CR>gf", opt)
 
 -- lsp saga
 map("n", "gr", ":Lspsaga lsp_finder<CR>", opt, {silent = true})
