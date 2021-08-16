@@ -4,24 +4,28 @@ if not present then
 end
 
 ts_config.setup {
-    ensure_installed = {
-        "javascript",
-        "typescript",
-        "tsx",
-        "html",
-        "css",
-        "bash",
-        "lua",
-        "json",
-        "ruby",
-        "bash",
-        "regex",
-        -- "python"
-        -- "rust",
-        -- "go"
-    },
-    highlight = {
-        enable = true,
-        use_languagetree = true
-    }
+  ensure_installed = {
+    "go",
+    "graphql",
+    "javascript",
+    "jsdoc",
+    "json",
+    "jsonc",
+    "lua",
+    "python",
+    "ruby",
+    "tsx",
+    "typescript",
+    "yaml",
+    "html"
+  },
+  highlight = {
+    enable = true
+  },
+  indent = {
+    enable = true
+  },
+  context_commentstring = {
+    enable = true
+  }
 }
