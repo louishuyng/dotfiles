@@ -61,20 +61,3 @@ vim.api.nvim_command("set nofoldenable")
 -- mundo
 vim.api.nvim_command("set undofile")
 vim.api.nvim_command("set undodir=~/.vim/undo")
-
-local M = {}
-
-function M.is_buffer_empty()
-    -- Check whether the current buffer is empty
-    return vim.fn.empty(vim.fn.expand("%:t")) == 1
-end
-
-function M.has_width_gt(cols)
-    -- Check if the windows width is greater than a given number f columns
-    return vim.fn.winwidth(0) / 2 > cols
-end
-
--- file extension specific tabbing
--- vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
-
-return M
