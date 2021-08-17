@@ -163,7 +163,7 @@ map("n", ",l", ":call RunLastSpec()<CR>", opt)
 map("n", ",a", ":call RunAllSpecs()<CR>", opt)
 
 -- telescope
-map("n", "<c-p>", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,-g,!.git<cr>", opt, {silent = true})
+map("n", "<c-p>", "<cmd>Telescope git_files<cr>", opt, {silent = true})
 map("n", "<space>f", "<cmd>Telescope live_grep<CR>", opt, {silent = true})
 map("n", "<space>t", "<cmd>Telescope treesitter<CR>", opt, {silent = true})
 map("n", "<space>b", "<cmd>Telescope buffers<CR>", opt, {silent = true})

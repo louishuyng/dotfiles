@@ -10,8 +10,9 @@ M.config = function()
       prompt_prefix = "  " .. icons.get("telescope") .. "  ",
       selection_caret = " ❯ ",
       entry_prefix = "   ",
-      sorting_strategy = "ascending",
-      winblend = 20,
+      scroll_strategy = nil,
+      sorting_strategy = 'ascending',
+      winblend = 0,
       mappings = {
           i = {
               ["<C-d>"] = actions.close,
@@ -30,28 +31,14 @@ M.config = function()
               ["<C-i>"] = actions.select_horizontal,
           }
       },
-      vimgrep_arguments = {
-        "rg",
-        "--color=never",
-        "--no-heading",
-        "--with-filename",
-        "--line-number",
-        "--column",
-        "--smart-case"
+      layout_config = {
+        preview_height = 20,
+        vertical = { width = 0.4, height = 0.7, mirror = true }
       },
       initial_mode = "insert",
-      selection_strategy = "reset",
-      layout_strategy = "horizontal",
-      layout_config = {
-          horizontal = {
-            prompt_position = "top",
-          },
-          vertical = {
-            mirror = false
-          },
-        },
-      },
-    }
+      layout_strategy = "vertical",
+    },
+  }
 end
 
 return M
