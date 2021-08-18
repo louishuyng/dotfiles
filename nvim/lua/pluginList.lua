@@ -295,6 +295,9 @@ return packer.startup{
 
         -- ViTmux
         use 'preservim/vimux'
+
+        -- Vim wordmotion
+        use 'chaoren/vim-wordmotion'
     end,
     config = {
       display = {
