@@ -19,7 +19,21 @@ autoload -Uz _zinit
 #     tmux attach -t work || tmux new -s work
 # fi
 
+### Alias
+source "$HOME/.config/suckless/zsh/alias/git.zsh"
+source "$HOME/.config/suckless/zsh/alias/js.zsh"
+source "$HOME/.config/suckless/zsh/alias/network.zsh"
+source "$HOME/.config/suckless/zsh/alias/redis.zsh"
+source "$HOME/.config/suckless/zsh/alias/ror.zsh"
+source "$HOME/.config/suckless/zsh/alias/tmux.zsh"
+source "$HOME/.config/suckless/zsh/alias/tools.zsh"
+source "$HOME/.config/suckless/zsh/alias/app.zsh"
+source "$HOME/.config/suckless/zsh/alias/docker.zsh"
+source "$HOME/.config/suckless/zsh/alias/general.zsh"
+
+# Theme
 zinit ice depth=1 atload"!source ~/.config/suckless/zsh/.p10k-evilball.zsh" lucid nocd
+
 zinit light romkatv/powerlevel10k
 
 # Oh-my-zsh lib
