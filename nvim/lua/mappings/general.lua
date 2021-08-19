@@ -24,7 +24,7 @@ map("v", "<C-d>", "<ESC>:q!<CR>", opt)
 map("i", "<C-d>", "<ESC>:q!<CR>", opt)
 
 -- Macro Apply Visual
-map("v", ",m", "normal @", opt)
+map("v", ",m", ":normal @", opt)
 
 -- HTML SUPPORT Close Tag
 map("i", "><Tab>", "><Esc>?<[a-z]<CR>lyiwo</<C-r>\"><Esc>O", opt)
