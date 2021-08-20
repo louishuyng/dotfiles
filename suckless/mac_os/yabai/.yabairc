@@ -64,6 +64,7 @@ yabai -m rule --add app="Notion"           manage=off          space=5
 yabai -m rule --add app="Spotify"          manage=off          space=5
 yabai -m rule --add app="QuickTime Player" manage=off          space=5
 yabai -m rule --add app="VLC"              mange=off           space=5
+yabai -m rule --add app="Tandem"           mange=off           space=5
 
 # Others
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
