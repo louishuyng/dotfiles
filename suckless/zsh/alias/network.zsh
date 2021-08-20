@@ -1,0 +1,7 @@
+alias wfscan='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport scan'	
+alias wfon='networksetup -setairportpower en0 on'	
+alias wfoff='networksetup -setairportpower en0 off'	
+alias wfjoin='networksetup -setairportnetwork en0'	
+alias wfi='networksetup -listallhardwareports'	
+alias localip='ifconfig | grep inet | grep broadcast | cut -d " " -f 2'	
+alias renewip='sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP'	
