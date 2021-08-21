@@ -62,3 +62,6 @@ vim.api.nvim_command("set nofoldenable")
 -- mundo
 vim.api.nvim_command("set undofile")
 vim.api.nvim_command("set undodir=~/.vim/undo")
+
+-- rust
+vim.g.rust_recommended_style = 0

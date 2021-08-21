@@ -14,10 +14,13 @@ ts_config.setup {
     "lua",
     "python",
     "ruby",
+    "rust",
     "tsx",
     "typescript",
     "yaml",
-    "html"
+    "html",
+    "toml",
+    "vim"
   },
   highlight = {
     enable = true
