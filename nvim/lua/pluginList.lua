@@ -298,6 +298,20 @@ return packer.startup{
 
         -- Vim wordmotion
         use 'chaoren/vim-wordmotion'
+
+        -- Rest NVim
+        use {
+          'NTBBloodbath/rest.nvim',
+          requires = { 'nvim-lua/plenary.nvim' },
+          config = function()
+            require("rest-nvim").setup({
+              -- Open request results in a horizontal split
+              result_split_horizontal = false,
+              -- Skip SSL verification, useful for unknown certificates
+              skip_ssl_verification = false,
+            })
+          end
+        }
     end,
     config = {
       display = {
