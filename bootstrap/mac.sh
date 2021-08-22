@@ -41,6 +41,15 @@ install_python() {
   fi
 }
 
+install_rust() {
+  read -r -p "Do you want to install rust? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    success "Installed rust"
+  fi
+  
+}
+
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
