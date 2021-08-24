@@ -113,6 +113,9 @@ return packer.startup{
             }
         }
 
+        use 'hrsh7th/vim-vsnip'
+        use 'hrsh7th/vim-vsnip-integ'
+
         use {
             "windwp/nvim-autopairs",
             after = "nvim-compe",
@@ -143,10 +146,7 @@ return packer.startup{
 
         use {
             "nvim-telescope/telescope.nvim",
-            requires = {
-                {"nvim-lua/popup.nvim"},
-                {"nvim-lua/plenary.nvim"}
-            },
+            requires = { {"nvim-lua/plenary.nvim"} },
             cmd = "Telescope",
             config = function()
                 require("plugins.telescope").config()

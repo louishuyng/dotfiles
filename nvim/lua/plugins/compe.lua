@@ -24,6 +24,7 @@ M.config = function()
             spell = true;
             tags = true;
             snippets_nvim = true;
+            vsnip = true;
             treesitter = true;
         }
     }
