@@ -15,7 +15,7 @@ gl.short_line_list = {
 }
 
 local colors = {
-  bg = '#000000',
+  bg = '#282A36',
   fg = utils.get_fg("StatusLine") or '#bbc2cf',
   yellow = '#ECBE7B',
   cyan = '#008080',

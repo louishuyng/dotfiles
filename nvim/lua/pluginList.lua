@@ -19,7 +19,7 @@ return packer.startup{
         -----------------------------------------------------------------
         -- MAIN PLUGS
 
-        use 'Th3Whit3Wolf/one-nvim'
+        use 'dracula/vim'
 
         use {
           'dense-analysis/ale',
