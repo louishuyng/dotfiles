@@ -1,0 +1,46 @@
+{
+  "rpost": {
+    "prefix": ["rpost"],
+    "body": [
+      "POST http://$1",
+      "",
+      "{",
+      "$2",
+      "}"
+    ],
+    "description": "Test POST API"
+  },
+  "rget": {
+    "prefix": ["rget"],
+    "body": [
+      "GET http://$1",
+      "",
+      "{",
+      "$2",
+      "}"
+    ],
+    "description": "Test GET API"
+  },
+  "rput": {
+    "prefix": ["rput"],
+    "body": [
+      "PUT http://$1",
+      "",
+      "{",
+      "$2",
+      "}"
+    ],
+    "description": "Test PUT API"
+  },
+  "rdel": {
+    "prefix": ["rdel"],
+    "body": [
+      "DELETE http://$1",
+      "",
+      "{",
+      "$2",
+      "}"
+    ],
+    "description": "Test DELETE API"
+  }
+}
