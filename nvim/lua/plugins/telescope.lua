@@ -21,6 +21,7 @@ M.config = function()
               ["<C-k>"] = actions.move_selection_previous,
               ["<C-s>"] = actions.select_vertical,
               ["<C-i>"] = actions.select_horizontal,
+              ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           },
           n = {
               ["<C-d>"] = actions.close,
@@ -29,6 +30,7 @@ M.config = function()
               ["<C-k>"] = actions.move_selection_previous,
               ["<C-s>"] = actions.select_vertical,
               ["<C-i>"] = actions.select_horizontal,
+              ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           }
       },
       layout_config = {
