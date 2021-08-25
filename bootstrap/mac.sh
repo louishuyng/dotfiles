@@ -220,6 +220,7 @@ install_tool() {
     brew install autojump
     brew install --cask burp-suite
     brew install mas
+    brew install pass
 
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"
