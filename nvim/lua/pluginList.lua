@@ -256,21 +256,6 @@ return packer.startup{
         -- Edit text area in browser using nvim
         use {'glacambre/firenvim', run = function() fn['firenvim#install'](1) end}
 
-
-        -- Tracking task using vim wiki
-        use {
-            'vimwiki/vimwiki',
-            config = function()
-                vim.g.vimwiki_list = {
-                    {
-                        path = '~/vimwiki/',
-                        syntax = 'markdown',
-                        ext = '.md',
-                    }
-                }
-            end
-        }
-
         -- Replace all text with Far
         use 'brooth/far.vim'
 
