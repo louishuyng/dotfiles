@@ -48,3 +48,6 @@ export FZF_DEFAULT_OPTS='--height 90% --layout reverse --border --color "border:
 
 #Rust
 export PATH=$PATH:$HOME/.cargo/bin
+
+#GO
+export PATH=$PATH:/usr/local/go/bin
