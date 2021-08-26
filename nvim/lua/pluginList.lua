@@ -297,6 +297,9 @@ return packer.startup{
             })
           end
         }
+
+        -- Narrow Code Space
+        use 'chrisbra/NrrwRgn'
     end,
     config = {
       display = {

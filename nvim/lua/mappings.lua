@@ -18,5 +18,6 @@ require("mapping_config.editor.fold")
 require("mapping_config.editor.markdown")
 require("mapping_config.editor.prettier")
 require("mapping_config.editor.wordmotion")
+require("mapping_config.editor.nrrwrgn")
 
 require("mapping_config.languages.rails")
