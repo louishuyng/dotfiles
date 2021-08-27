@@ -221,6 +221,7 @@ install_tool() {
     brew install --cask burp-suite
     brew install mas
     brew install pass
+    brew install asciinema
 
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"

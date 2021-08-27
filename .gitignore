@@ -32,3 +32,5 @@ nvim/plugin/packer_compiled.lua
 flutter
 
 wireshark/recent_common
+thefuck
+asciinema
