@@ -123,8 +123,36 @@ components.left.active[2] = {
   end,
   right_sep = ' '
 }
--- gitBranch
+-- filename
 components.left.active[3] = {
+  provider = function()
+      local filename = vim.fn.expand "%:t"
+      local extension = vim.fn.expand "%:e"
+      local icon = require("nvim-web-devicons").get_icon(filename, extension)
+      if icon == nil then
+         icon = ""
+         return icon
+      end
+      return icon .. " " .. filename .. " "
+  end,
+  hl = function()
+    local val = {}
+    local filename = vim.fn.expand('%:t')
+    local extension = vim.fn.expand('%:e')
+    local icon, name  = require'nvim-web-devicons'.get_icon(filename, extension)
+    if icon ~= nil then
+      val.fg = vim.fn.synIDattr(vim.fn.hlID(name), 'fg')
+    else
+      val.fg = 'white'
+    end
+    val.bg = 'bg'
+    val.style = 'bold'
+    return val
+  end,
+  right_sep = ' '
+}
+-- gitBranch
+components.left.active[4] = {
   provider = 'git_branch',
   hl = {
     fg = 'yellow',
@@ -133,7 +161,7 @@ components.left.active[3] = {
   }
 }
 -- diffAdd
-components.left.active[4] = {
+components.left.active[5] = {
   provider = 'git_diff_added',
   hl = {
     fg = 'green',
@@ -142,7 +170,7 @@ components.left.active[4] = {
   }
 }
 -- diffModfified
-components.left.active[5] = {
+components.left.active[6] = {
   provider = 'git_diff_changed',
   hl = {
     fg = 'orange',
@@ -151,7 +179,7 @@ components.left.active[5] = {
   }
 }
 -- diffRemove
-components.left.active[6] = {
+components.left.active[7] = {
   provider = 'git_diff_removed',
   hl = {
     fg = 'red',
@@ -211,54 +239,8 @@ components.mid.active[5] = {
 
 -- RIGHT
 
--- fileIcon
-components.right.active[1] = {
-  provider = function()
-    local filename = vim.fn.expand('%:t')
-    local extension = vim.fn.expand('%:e')
-    local icon  = require'nvim-web-devicons'.get_icon(filename, extension)
-    if icon == nil then
-      icon = ''
-    end
-    return icon
-  end,
-  hl = function()
-    local val = {}
-    local filename = vim.fn.expand('%:t')
-    local extension = vim.fn.expand('%:e')
-    local icon, name  = require'nvim-web-devicons'.get_icon(filename, extension)
-    if icon ~= nil then
-      val.fg = vim.fn.synIDattr(vim.fn.hlID(name), 'fg')
-    else
-      val.fg = 'white'
-    end
-    val.bg = 'bg'
-    val.style = 'bold'
-    return val
-  end,
-  right_sep = ' '
-}
--- fileType
-components.right.active[2] = {
-  provider = 'file_type',
-  hl = function()
-    local val = {}
-    local filename = vim.fn.expand('%:t')
-    local extension = vim.fn.expand('%:e')
-    local icon, name  = require'nvim-web-devicons'.get_icon(filename, extension)
-    if icon ~= nil then
-      val.fg = vim.fn.synIDattr(vim.fn.hlID(name), 'fg')
-    else
-      val.fg = 'white'
-    end
-    val.bg = 'bg'
-    val.style = 'bold'
-    return val
-  end,
-  right_sep = ' '
-}
 -- fileSize
-components.right.active[3] = {
+components.right.active[1] = {
   provider = 'file_size',
   enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
   hl = {
@@ -269,7 +251,7 @@ components.right.active[3] = {
   right_sep = ' '
 }
 -- fileFormat
-components.right.active[4] = {
+components.right.active[2] = {
   provider = function() return '' .. vim.bo.fileformat:upper() .. '' end,
   hl = {
     fg = 'white',
@@ -279,7 +261,7 @@ components.right.active[4] = {
   right_sep = ' '
 }
 -- fileEncode
-components.right.active[5] = {
+components.right.active[3] = {
   provider = 'file_encoding',
   hl = {
     fg = 'white',
@@ -289,7 +271,7 @@ components.right.active[5] = {
   right_sep = ' '
 }
 -- lineInfo
-components.right.active[7] = {
+components.right.active[4] = {
   provider = 'position',
   hl = {
     fg = 'white',
@@ -299,7 +281,7 @@ components.right.active[7] = {
   right_sep = ' '
 }
 -- linePercent
-components.right.active[8] = {
+components.right.active[5] = {
   provider = 'line_percentage',
   hl = {
     fg = 'white',
@@ -309,7 +291,7 @@ components.right.active[8] = {
   right_sep = ' '
 }
 -- scrollBar
-components.right.active[9] = {
+components.right.active[6] = {
   provider = 'scroll_bar',
   hl = {
     fg = 'yellow',
