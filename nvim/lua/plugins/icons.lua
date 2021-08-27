@@ -3,7 +3,7 @@ if not present then
     return
 end
 
-local global_theme = "themes/" .. vim.g.nvchad_theme
+local global_theme = "themes/dracula"
 local colors = require(global_theme)
 
 icons.setup {

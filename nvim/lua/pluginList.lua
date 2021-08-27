@@ -51,11 +51,10 @@ return packer.startup{
         }
 
         use {
-            "glepnir/galaxyline.nvim",
-            branch = "main",
-            config = function()
-                require "plugins.statusline"
-            end
+           'famiu/feline.nvim',
+           config = function()
+              require "plugins.statusline"
+           end
         }
 
         -- language related plugins
