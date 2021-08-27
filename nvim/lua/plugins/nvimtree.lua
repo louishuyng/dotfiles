@@ -1,5 +1,3 @@
-local icons = require "nvim-nonicons"
-
 local present, tree_c = pcall(require, "nvim-tree.config")
 if not present then
     return
@@ -35,19 +33,6 @@ g.nvim_tree_show_icons = {
     folders = 1,
     files = 1
     -- folder_arrows= 1
-}
-g.nvim_tree_icons = {
-  default = icons.get("file"),
-  folder = {
-    default = icons.get("file-directory"),
-    open = icons.get("file-directory-outline"),
-    symlink = icons.get("file-directory"),
-    symlink_open = icons.get("file-directory-outline"),
-    empty = icons.get("file-directory-outline"),
-    empty_open = icons.get("file-directory-outline"),
-    arrow_open = icons.get("chevron-down"),
-    arrow_closed = icons.get("chevron-right"),
-  }
 }
 
 g.nvim_tree_bindings = {

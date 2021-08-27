@@ -22,6 +22,13 @@ return packer.startup{
         use 'dracula/vim'
 
         use {
+            "kyazdani42/nvim-web-devicons",
+            config = function()
+               require "plugins.icons"
+            end,
+         }
+
+        use {
           'dense-analysis/ale',
           config = function()
             require "plugins.ale"
@@ -137,11 +144,6 @@ return packer.startup{
             config = function()
                 require "plugins.nvimtree"
             end
-        }
-
-        use {
-          'yamatsum/nvim-nonicons',
-          requires = {'kyazdani42/nvim-web-devicons'}
         }
 
         use {

@@ -1,13 +1,12 @@
 local M = {}
 
 local opts = {noremap = true, silent = true}
-local icons = require "nvim-nonicons"
 
 M.config = function()
   local actions = require('telescope.actions')
   require("telescope").setup {
     defaults = {
-      prompt_prefix = "  " .. icons.get("telescope") .. "  ",
+      prompt_prefix = "   ",
       selection_caret = " ❯ ",
       entry_prefix = "   ",
       scroll_strategy = nil,
