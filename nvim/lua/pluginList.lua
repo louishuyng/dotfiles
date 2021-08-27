@@ -301,6 +301,12 @@ return packer.startup{
 
         -- Narrow Code Space
         use 'chrisbra/NrrwRgn'
+
+        -- AutoTag
+        use {
+          'windwp/nvim-ts-autotag',
+          after = "nvim-treesitter",
+        }
     end,
     config = {
       display = {

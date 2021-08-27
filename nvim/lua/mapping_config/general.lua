@@ -26,9 +26,6 @@ map("i", "<C-d>", "<ESC>:q!<CR>", opt)
 -- Macro Apply Visual
 map("v", ",m", ":normal @", opt)
 
--- HTML SUPPORT Close Tag
-map("i", "><Tab>", "><Esc>?<[a-z]<CR>lyiwo</<C-r>\"><Esc>O", opt)
-
 -- Move Block
 vim.g.move_map_keys = 0
 map("v", "<S-j>", "<Plug>MoveBlockDown", opt)
