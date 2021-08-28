@@ -7,6 +7,7 @@ alias railsm='bundle exec rails db:migrate'
 alias railsg='bundle exec rails generate'
 
 # RUST
+alias cargn='cargo new'
 alias cargr='cargo run'
 alias cargc='cargo check'
 alias cargb='cargo build'
