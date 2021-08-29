@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 require("mapping_config.anzu")
 require("mapping_config.buffer")
 require("mapping_config.compe")
