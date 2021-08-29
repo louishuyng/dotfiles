@@ -184,16 +184,9 @@ return packer.startup{
             end
         }
 
+        use 'airblade/vim-gitgutter'
 
-        use {
-            "lewis6991/gitsigns.nvim",
-            requires = {
-              "nvim-lua/plenary.nvim"
-            },
-            config = function()
-              require 'plugins.gitsigns'
-            end
-        }
+        use 'tveskag/nvim-blame-line'
 
         use {
             "tpope/vim-fugitive",

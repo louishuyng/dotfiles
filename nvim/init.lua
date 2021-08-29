@@ -8,5 +8,6 @@ require("plugins.far")
 require("plugins.nrrwrgn")
 require("plugins.others").escape()
 require("plugins.wordmotion")
+require("plugins.gitgutter")
 
-require('theme')
+require('themes.schema')
