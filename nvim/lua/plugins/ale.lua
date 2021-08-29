@@ -7,7 +7,7 @@ vim.g.ale_linters = {
 
 vim.g.ale_fixers = {
  typescript = {"tslint","eslint"},
- javascript = {"prettier","flow","eslint"},
+ javascript = {"prettier","eslint"},
  ruby = {"rubocop"}
 }
 
