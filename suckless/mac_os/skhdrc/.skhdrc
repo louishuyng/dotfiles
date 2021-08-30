@@ -9,6 +9,7 @@ ctrl + alt - q : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
 ctrl + alt - s : open -na /Applications/Slack.app
 ctrl + alt - t : open -na /Applications/Alacritty.app
 ctrl + alt - w : open -na /Applications/Wireshark.app
+ctrl + alt - z : open -na /Applications/OWASP\ ZAP.app
 
 shift + alt - space : yabai -m window --toggle float
 

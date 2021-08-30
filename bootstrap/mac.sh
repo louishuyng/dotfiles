@@ -59,6 +59,15 @@ install_docker() {
   fi
 }
 
+setup_penetration_tools() {
+  read -r -p "Do you want to install some fancy tools ? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install owasp-zap
+    
+    success "Installed penetration tools"
+  fi
+}
+
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -257,6 +266,7 @@ install_python
 install_rust
 install_docker
 setup_git
+setup_penetration_tools
 install_zsh
 install_fish
 install_terminal
