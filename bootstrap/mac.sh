@@ -50,6 +50,15 @@ install_rust() {
   
 }
 
+install_docker() {
+  read -r -p "Do you want to install docker? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew cask install docker
+    brew install lazydocker
+    success "Installed docker"
+  fi
+}
+
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -245,6 +254,8 @@ install_lua() {
 
 install_homebrew
 install_python
+install_rust
+install_docker
 setup_git
 install_zsh
 install_fish
