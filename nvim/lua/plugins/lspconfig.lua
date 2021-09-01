@@ -18,6 +18,7 @@ local function on_attach(client, bufnr)
     buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "gf", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    buf_set_keymap('n', ',rr', "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
