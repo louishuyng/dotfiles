@@ -63,6 +63,7 @@ setup_penetration_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install owasp-zap
+    brew install nmap
     
     success "Installed penetration tools"
   fi
