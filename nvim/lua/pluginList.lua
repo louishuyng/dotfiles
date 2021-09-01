@@ -214,11 +214,6 @@ return packer.startup{
         use 'kdheepak/lazygit.nvim'
 
         use {
-            "jdhao/better-escape.vim",
-            event = 'InsertEnter'
-        }
-
-        use {
             "andymass/vim-matchup",
             event = "CursorMoved"
         }
