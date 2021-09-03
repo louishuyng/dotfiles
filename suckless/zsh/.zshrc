@@ -9,7 +9,6 @@ fi
 source "$HOME/.zinit/bin/zinit.zsh"
 source "$HOME/.config/suckless/zsh/.zshenv"
 source "$HOME/.config/suckless/zsh/config.zsh"
-source "$HOME/.config/suckless/zsh/alias.zsh"
 source "$HOME/.config/suckless/zsh/function.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
@@ -24,8 +23,9 @@ source "$HOME/.config/suckless/zsh/alias/app.zsh"
 source "$HOME/.config/suckless/zsh/alias/docker.zsh"
 source "$HOME/.config/suckless/zsh/alias/general.zsh"
 source "$HOME/.config/suckless/zsh/alias/git.zsh"
-source "$HOME/.config/suckless/zsh/alias/languages.zsh.zsh"
+source "$HOME/.config/suckless/zsh/alias/languages.zsh"
 source "$HOME/.config/suckless/zsh/alias/network.zsh"
+source "$HOME/.config/suckless/zsh/alias/os.zsh"
 source "$HOME/.config/suckless/zsh/alias/redis.zsh"
 source "$HOME/.config/suckless/zsh/alias/tmux.zsh"
 source "$HOME/.config/suckless/zsh/alias/tools.zsh"

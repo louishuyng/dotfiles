@@ -4,7 +4,6 @@ alias nv="nvim"
 
 # History
 alias h='history'
-alias j='jobs -l'
 
 # Listing
 alias ll="ls -l"
