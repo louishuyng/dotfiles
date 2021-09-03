@@ -62,10 +62,23 @@ c.fonts.messages.warning = small_mono
 c.fonts.statusbar = mono
 
 ## Bind Keys
+# Ports
 config.bind('po3', 'open -t http://localhost:3000')
 config.bind('po4', 'open -t http://localhost:4200')
 config.bind('po8', 'open -t http://localhost:8000')
-config.bind('po88', 'open -t http://localhost:8080')
+
+# Daily
+config.bind('yt', 'open -t https://youtube.com')
+config.bind('14', 'open -t https://kenh14.vn')
+config.bind('gm', 'open -t https://gmail.com')
+
+# Social config.bind('scf', 'open -t https://facebook.com')
+config.bind('scm', 'open -t https://messenger.com')
+config.bind('scf', 'open -t https://facebook.com')
+config.bind('scr', 'open -t https://reddit.com')
+
+# Git
 config.bind('gh', 'open -t http://github.com')
-config.bind('po14', 'open -t http://kenh14.com')
+
+# Browser handler
 config.bind('<ctrl+d>', 'wq')

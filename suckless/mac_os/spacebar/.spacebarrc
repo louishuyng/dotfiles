@@ -14,7 +14,7 @@ spacebar -m config power              on
 spacebar -m config spacing_left       25
 spacebar -m config spacing_right      15
 
-spacebar -m config background_color   0xff14151b
+spacebar -m config background_color   0xff0000
 spacebar -m config foreground_color   0xff1ef956
 spacebar -m config space_icon_color   0xffff92d0
 spacebar -m config battery_icon_color 0xffd75f5f
