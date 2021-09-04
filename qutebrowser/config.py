@@ -71,6 +71,7 @@ config.bind('po8', 'open -t http://localhost:8000')
 config.bind('yt', 'open -t https://youtube.com')
 config.bind('14', 'open -t https://kenh14.vn')
 config.bind('gm', 'open -t https://gmail.com')
+config.bind('ct', 'open -t https://www.youtube.com/watch?v=v-wm4xQnWQE&list=PLB5OyPOzUS5r6E7L1IhcM0dw1aEDbZEBk')
 
 # Social config.bind('scf', 'open -t https://facebook.com')
 config.bind('scm', 'open -t https://messenger.com')
