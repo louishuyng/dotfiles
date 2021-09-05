@@ -241,6 +241,7 @@ install_tool() {
     brew install mas
     brew install pass
     brew install asciinema
+    brew install khanhas/tap/spicetify-cli
 
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"
