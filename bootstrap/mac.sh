@@ -213,8 +213,16 @@ install_qutebrowser() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install qutebrowser --cask
     rm -rf ~/.qutebrowser
-    mkdir ~/.qutebrowser
-    cp -rf ../suckless/qutebrowser/* ~/.qutebrowser
+    ln -s ~/.config/suckless/qutebrowser ~/.qutebrowser
+  fi
+}
+
+install_spicetify() {
+  read -r -p "Do you want to install spicetify? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install khanhas/tap/spicetify-cli
+    ln -s ~/.config/suckless/spicetify ~/spicetify_data
+    spicetify apply
   fi
 }
 
@@ -241,7 +249,6 @@ install_tool() {
     brew install mas
     brew install pass
     brew install asciinema
-    brew install khanhas/tap/spicetify-cli
 
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"
@@ -277,6 +284,7 @@ install_nvim
 install_tmux
 install_window_manager
 install_qutebrowser
+install_spicetify
 install_tool
 install_ranger
 
