@@ -149,11 +149,23 @@ install_font() {
 }
 
 install_terminal() {
-  read -r -p "Do you want to install terminal? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
+    read -r -p "Do you want to install kitty? [y|N] " response
     brew install --cask kitty
+    rm -rf ~/.config/kitty
 
-    success "Installed terminal"
+    ln -s ~/.config/terminals/kitty ~/.config/kitty
+
+    success "Installed kitty terminal"
+  fi
+
+  read -r -p "Do you want to install allacrity? [y|N] " response
+    brew install --cask alacritty
+    rm -rf ~/.config/alacritty
+
+    ln -s ~/.config/terminals/alacritty ~/.config/alacritty
+
+    success "Installed alacritty terminal"
   fi
 }
 
