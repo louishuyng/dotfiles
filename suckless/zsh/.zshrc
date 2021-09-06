@@ -31,6 +31,7 @@ source "$HOME/.config/suckless/zsh/alias/tools.zsh"
 
 ### Functions
 source "$HOME/.config/suckless/zsh/functions/general.zsh"
+source "$HOME/.config/suckless/zsh/functions/vpn.zsh"
 
 # Theme
 zinit ice depth=1 atload"!source ~/.config/suckless/zsh/.p10k-evilball.zsh" lucid nocd

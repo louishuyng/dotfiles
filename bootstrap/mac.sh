@@ -69,6 +69,16 @@ setup_penetration_tools() {
   fi
 }
 
+setup_vpn() {
+  read -r -p "Do you want to setup vpn ? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install openconnect
+    brew install openvpn
+    
+    success "Setup finished"
+  fi
+}
+
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -288,6 +298,7 @@ install_rust
 install_docker
 setup_git
 setup_penetration_tools
+setup_vpn
 install_zsh
 install_fish
 install_terminal
