@@ -9,7 +9,6 @@ fi
 source "$HOME/.zinit/bin/zinit.zsh"
 source "$HOME/.config/suckless/zsh/.zshenv"
 source "$HOME/.config/suckless/zsh/config.zsh"
-source "$HOME/.config/suckless/zsh/function.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -29,6 +28,9 @@ source "$HOME/.config/suckless/zsh/alias/os.zsh"
 source "$HOME/.config/suckless/zsh/alias/redis.zsh"
 source "$HOME/.config/suckless/zsh/alias/tmux.zsh"
 source "$HOME/.config/suckless/zsh/alias/tools.zsh"
+
+### Functions
+source "$HOME/.config/suckless/zsh/functions/general.zsh"
 
 # Theme
 zinit ice depth=1 atload"!source ~/.config/suckless/zsh/.p10k-evilball.zsh" lucid nocd
