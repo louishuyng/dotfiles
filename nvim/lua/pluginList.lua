@@ -202,6 +202,10 @@ return packer.startup{
                 "GBrowse",
             }
         }
+
+        -- TERM
+        use "voldikss/vim-floaterm"
+
         -----------------------------------------------------------------
         -- PROGRAMING LANGUAGE SUPPORT
 
