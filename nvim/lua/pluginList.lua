@@ -271,9 +271,6 @@ return packer.startup{
         -- Prettier
         use 'prettier/vim-prettier'
 
-        -- ViTmux
-        use 'preservim/vimux'
-
         -- Vim wordmotion
         use 'chaoren/vim-wordmotion'
 

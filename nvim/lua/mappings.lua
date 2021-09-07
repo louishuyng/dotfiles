@@ -13,7 +13,6 @@ require("mapping_config.rest")
 require("mapping_config.telescope")
 require("mapping_config.tree")
 require("mapping_config.truezen")
-require("mapping_config.vimux")
 
 require("mapping_config.editor.block")
 require("mapping_config.editor.commenter")
