@@ -296,6 +296,10 @@ return packer.startup{
           'windwp/nvim-ts-autotag',
           after = "nvim-treesitter",
         }
+
+        -- Range Highlight
+        use 'winston0410/cmd-parser.nvim'
+        use 'winston0410/range-highlight.nvim'
     end,
     config = {
       display = {
