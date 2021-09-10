@@ -59,6 +59,15 @@ install_docker() {
   fi
 }
 
+install_k8s() {
+  read -r -p "Do you want to install k8s tools? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install minikube
+    brew install hyperkit
+    success "Installed k8s"
+  fi
+}
+
 setup_penetration_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -296,6 +305,7 @@ install_homebrew
 install_python
 install_rust
 install_docker
+install_k8s
 setup_git
 setup_penetration_tools
 setup_vpn
