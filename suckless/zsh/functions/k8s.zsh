@@ -8,3 +8,13 @@ function minikd() {
   fi
   minikube start --driver=$DRIVER
 }
+
+function k8sgw() {
+  COMPONENT=$1
+  if [[ -z $COMPONENT ]]
+  then
+    echo "Please set Component"
+    return
+  fi
+  kubectl get $COMPONENT --watch
+}
