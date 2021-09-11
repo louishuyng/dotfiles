@@ -31,6 +31,7 @@ source "$HOME/.config/suckless/zsh/alias/tools.zsh"
 
 ### Functions
 source "$HOME/.config/suckless/zsh/functions/general.zsh"
+source "$HOME/.config/suckless/zsh/functions/k8s.zsh"
 source "$HOME/.config/suckless/zsh/functions/vpn.zsh"
 
 # Theme
