@@ -64,6 +64,7 @@ install_k8s() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install minikube
     brew install hyperkit
+    brew install kubectx
     success "Installed k8s"
   fi
 }

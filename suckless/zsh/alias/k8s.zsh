@@ -10,3 +10,6 @@ alias k8sed='kubectl edit'
 alias k8sex='kubectl exec'
 alias k8sg='kubectl get'
 alias k8sl='kubectl logs'
+
+# Kubectx
+alias k8sns='kubens'
