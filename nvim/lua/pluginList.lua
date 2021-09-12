@@ -19,7 +19,7 @@ return packer.startup{
         -----------------------------------------------------------------
         -- MAIN PLUGS
 
-        use 'dracula/vim'
+        use 'sainnhe/edge'
 
         use {
             "kyazdani42/nvim-web-devicons",
@@ -245,9 +245,6 @@ return packer.startup{
 
         -- Move lines up/down/left/right
         use 'matze/vim-move'
-
-        -- Edit text area in browser using nvim
-        use {'glacambre/firenvim', run = function() fn['firenvim#install'](1) end}
 
         -- Replace all text with Far
         use 'brooth/far.vim'

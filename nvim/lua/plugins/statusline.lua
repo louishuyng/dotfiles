@@ -83,14 +83,30 @@ components.active[1][2] = {
 -- filename
 components.active[1][3] = {
   provider = function()
-    return vim.fn.expand("%:F")
+  local filename = vim.fn.expand "%:t"
+      local extension = vim.fn.expand "%:e"
+      local icon = require("nvim-web-devicons").get_icon(filename, extension)
+      if icon == nil then
+         icon = ""
+         return icon
+      end
+      return icon .. " " .. filename .. " "
   end,
-  hl = {
-    fg = 'white',
-    bg = 'bg',
-    style = 'bold'
-  },
-  right_sep = ''
+  hl = function()
+    local val = {}
+    local filename = vim.fn.expand('%:t')
+    local extension = vim.fn.expand('%:e')
+    local icon, name  = require'nvim-web-devicons'.get_icon(filename, extension)
+    if icon ~= nil then
+      val.fg = vim.fn.synIDattr(vim.fn.hlID(name), 'fg')
+    else
+      val.fg = 'white'
+    end
+    val.bg = 'bg'
+    val.style = 'bold'
+    return val
+  end,
+  right_sep = ' '
 }
 -- gitBranch
 components.active[1][4] = {
