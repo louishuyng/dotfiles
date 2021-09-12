@@ -63,6 +63,7 @@ install_k8s() {
   read -r -p "Do you want to install k8s tools? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install minikube
+    brew install helm
     brew install hyperkit
     brew install kubectx
     success "Installed k8s"
