@@ -70,6 +70,18 @@ install_k8s() {
   fi
 }
 
+install_pdfreader() {
+  read -r -p "Do you want to install pdf reader? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    sudo port install zathura
+    sudo port install zathura-docs
+    sudo port install zathura-plugin-pdf-mupdf
+
+    ln -s ~/.config/suckless/zathura ~/.config/
+    success "Installed pdf reader"
+  fi
+}
+
 setup_penetration_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -175,7 +187,7 @@ install_terminal() {
     brew install --cask kitty
     rm -rf ~/.config/kitty
 
-    ln -s ~/.config/terminals/kitty ~/.config/kitty
+    ln -s ~/.config/terminals/kitty ~/.config
 
     success "Installed kitty terminal"
   fi
@@ -184,7 +196,7 @@ install_terminal() {
     brew install --cask alacritty
     rm -rf ~/.config/alacritty
 
-    ln -s ~/.config/terminals/alacritty ~/.config/alacritty
+    ln -s ~/.config/terminals/alacritty ~/.config
 
     success "Installed alacritty terminal"
   fi
@@ -308,6 +320,7 @@ install_python
 install_rust
 install_docker
 install_k8s
+install_pdfreader
 setup_git
 setup_penetration_tools
 setup_vpn

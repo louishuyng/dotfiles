@@ -51,3 +51,6 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 #GO
 export PATH=$PATH:/usr/local/go/bin
+
+#Zathura
+export LC_ALL=C   
