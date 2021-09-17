@@ -88,6 +88,9 @@ setup_penetration_tools() {
     brew install owasp-zap
     brew install nmap
     
+    chmod +x ./tools/beef/install
+    ./tools/beef/install
+    
     success "Installed penetration tools"
   fi
 }

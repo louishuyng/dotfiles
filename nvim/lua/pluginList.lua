@@ -21,6 +21,7 @@ return packer.startup{
 
         use 'aryansh-s/fastdark.vim'
 
+        use 'nvim-lua/popup.nvim'
         use {
             'ThePrimeagen/harpoon',
             opt = true,
