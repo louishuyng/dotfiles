@@ -19,7 +19,7 @@ return packer.startup{
         -----------------------------------------------------------------
         -- MAIN PLUGS
 
-        use 'sainnhe/edge'
+        use 'Aryansh-S/fastdark.vim'
 
         use {
             "kyazdani42/nvim-web-devicons",
