@@ -19,7 +19,15 @@ return packer.startup{
         -----------------------------------------------------------------
         -- MAIN PLUGS
 
-        use 'Aryansh-S/fastdark.vim'
+        use 'aryansh-s/fastdark.vim'
+
+        use {
+            'ThePrimeagen/harpoon',
+            opt = true,
+            event = { 'VimEnter' },
+            setup = require('plugins.harpoon').setup,
+            config = require('plugins.harpoon').config,
+        }
 
         use {
             "kyazdani42/nvim-web-devicons",
@@ -51,10 +59,10 @@ return packer.startup{
         }
 
         use {
-           'famiu/feline.nvim',
+           'glepnir/galaxyline.nvim',
            config = function()
               require "plugins.statusline"
-           end
+           end,
         }
 
         -- language related plugins
