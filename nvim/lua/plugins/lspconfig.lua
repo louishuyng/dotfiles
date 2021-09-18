@@ -13,24 +13,64 @@ local function on_attach(client, bufnr)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
-    local ts_utils = require("nvim-lsp-ts-utils")
-
-    ts_utils.setup {
-      -- update imports on file move
-      update_imports_on_move = true,
-      require_confirmation_on_move = false,
-      watch_dir = nil,
-    }
-
-    -- required to fix code action ranges and filter diagnostics
-   ts_utils.setup_client(client)
-
     -- Mappings.
 
     buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "gf", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     buf_set_keymap('n', ',rr', "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+end
+
+local function on_attach_ts(client, bufnr)
+  local ts_utils = require("nvim-lsp-ts-utils")
+
+  ts_utils.setup {
+    debug = false,
+    disable_commands = false,
+    enable_import_on_completion = false,
+
+    -- import all
+    import_all_timeout = 5000, -- ms
+    import_all_priorities = {
+        buffers = 4, -- loaded buffer names
+        buffer_content = 3, -- loaded buffer content
+        local_files = 2, -- git files or files with relative path markers
+        same_file = 1, -- add to existing import statement
+    },
+    import_all_scan_buffers = 100,
+    import_all_select_source = false,
+
+    -- eslint
+    eslint_enable_code_actions = true,
+    eslint_enable_disable_comments = true,
+    eslint_bin = "eslint",
+    eslint_enable_diagnostics = false,
+    eslint_opts = {},
+
+    -- formatting
+    enable_formatting = false,
+    formatter = "prettier",
+    formatter_opts = {},
+    -- update imports on file move
+    update_imports_on_move = true,
+    require_confirmation_on_move = false,
+    watch_dir = nil,
+
+    -- filter diagnostics
+    filter_out_diagnostics_by_severity = {},
+    filter_out_diagnostics_by_code = {},
+  }
+
+  -- required to fix code action ranges and filter diagnostics
+  ts_utils.setup_client(client)
+
+  local function buf_set_keymap(...)
+      vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
+
+  local opts = {noremap = true, silent = true}
+
+  buf_set_keymap("n", ",rf", ":TSLspRenameFile<CR>", opts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -43,7 +83,13 @@ local function setup_servers()
     local servers = lspinstall.installed_servers()
 
     for _, lang in pairs(servers) do
-        if lang ~= "lua" then
+        if lang == "typescript" then
+            lspconfig[lang].setup {
+                on_attach = on_attach_ts,
+                capabilities = capabilities,
+                root_dir = vim.loop.cwd
+            }
+        elseif lang ~= "lua" then
             lspconfig[lang].setup {
                 on_attach = on_attach,
                 capabilities = capabilities,
