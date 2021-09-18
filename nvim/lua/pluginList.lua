@@ -88,6 +88,7 @@ return packer.startup{
         }
 
         use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+        use 'jose-elias-alvarez/null-ls.nvim'
         use {
             "neovim/nvim-lspconfig",
             after = "nvim-lspinstall",

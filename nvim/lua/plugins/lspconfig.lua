@@ -4,6 +4,10 @@ if not (present1 or present2) then
     return
 end
 
+-- enable null-ls integration
+require("null-ls").config {}
+require("lspconfig")["null-ls"].setup {}
+
 local function on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -22,6 +26,10 @@ local function on_attach(client, bufnr)
 end
 
 local function on_attach_ts(client, bufnr)
+  -- disable tsserver formatting if you plan on formatting via null-ls
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
+
   local ts_utils = require("nvim-lsp-ts-utils")
 
   ts_utils.setup {
@@ -44,7 +52,7 @@ local function on_attach_ts(client, bufnr)
     eslint_enable_code_actions = true,
     eslint_enable_disable_comments = true,
     eslint_bin = "eslint",
-    eslint_enable_diagnostics = false,
+    eslint_enable_diagnostics = true,
     eslint_opts = {},
 
     -- formatting
