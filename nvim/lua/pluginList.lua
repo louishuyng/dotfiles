@@ -80,6 +80,7 @@ return packer.startup{
             event = "BufEnter"
         }
 
+        use 'jose-elias-alvarez/nvim-lsp-ts-utils'
         use {
             "neovim/nvim-lspconfig",
             after = "nvim-lspinstall",

@@ -13,6 +13,18 @@ local function on_attach(client, bufnr)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
+    local ts_utils = require("nvim-lsp-ts-utils")
+
+    ts_utils.setup {
+      -- update imports on file move
+      update_imports_on_move = true,
+      require_confirmation_on_move = false,
+      watch_dir = nil,
+    }
+
+    -- required to fix code action ranges and filter diagnostics
+   ts_utils.setup_client(client)
+
     -- Mappings.
 
     buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
