@@ -23,6 +23,10 @@ local function on_attach(client, bufnr)
     buf_set_keymap("n", "gf", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     buf_set_keymap('n', ',rr', "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', 'ac', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
 local function on_attach_ts(client, bufnr)

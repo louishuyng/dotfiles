@@ -98,14 +98,6 @@ return packer.startup{
         }
 
         use {
-            "glepnir/lspsaga.nvim",
-            event = "BufRead",
-            config = function()
-                require "plugins.lspsaga"
-            end
-        }
-
-        use {
             "onsails/lspkind-nvim",
             event = "BufEnter",
             config = function()
