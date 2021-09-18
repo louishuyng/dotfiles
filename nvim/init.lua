@@ -11,6 +11,7 @@ require("plugins.fterm")
 require("plugins.gitgutter")
 require("plugins.nrrwrgn")
 require("plugins.rangeHighlight")
+require("plugins.sneak")
 require("plugins.wordmotion")
 
 -- Themes

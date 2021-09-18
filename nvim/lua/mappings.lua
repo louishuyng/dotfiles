@@ -20,6 +20,7 @@ require("mapping_config.editor.fold")
 require("mapping_config.editor.markdown")
 require("mapping_config.editor.nrrwrgn")
 require("mapping_config.editor.prettier")
+require("mapping_config.editor.sneak")
 require("mapping_config.editor.trouble")
 require("mapping_config.editor.wordmotion")
 
