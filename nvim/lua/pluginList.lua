@@ -97,14 +97,6 @@ return packer.startup{
             end
         }
 
-        use {
-            "onsails/lspkind-nvim",
-            event = "BufEnter",
-            config = function()
-                require("plugins.others").lspkind()
-            end
-        }
-
         -- load compe in insert mode only
         use {
             "hrsh7th/nvim-compe",
