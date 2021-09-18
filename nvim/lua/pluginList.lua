@@ -79,6 +79,13 @@ return packer.startup{
             "kabouzeid/nvim-lspinstall",
             event = "BufEnter"
         }
+        use {
+          "folke/trouble.nvim",
+          requires = "kyazdani42/nvim-web-devicons",
+          config = function()
+            require "plugins.trouble"
+          end
+        }
 
         use 'jose-elias-alvarez/nvim-lsp-ts-utils'
         use {
