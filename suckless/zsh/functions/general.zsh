@@ -75,3 +75,15 @@ function devLife () {
     tmux send-keys -t $SESSION:1.2 "ll" Enter
     tmux attach-session -t $SESSION
 }
+
+function countdown() {
+  secs=$1
+  shift
+  msg=$@
+  while [ $secs -gt 0 ]
+  do
+    printf "\r\033[KWaiting %.d seconds $msg" $((secs--))
+    sleep 1
+  done
+  echo
+}
