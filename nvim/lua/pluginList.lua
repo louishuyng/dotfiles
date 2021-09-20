@@ -153,9 +153,16 @@ return packer.startup{
             cmd = "Telescope",
             config = function()
                 require("plugins.telescope").config()
+                require('telescope').load_extension('projects')
             end
         }
 
+        use {
+          "ahmedkhalf/project.nvim",
+          config = function()
+            require("plugins.project_nvim")
+          end
+        }
 
         use {
             "terrortylor/nvim-comment",
