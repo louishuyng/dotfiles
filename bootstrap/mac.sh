@@ -31,15 +31,25 @@ install_homebrew() {
   fi
 }
 
+install_asdf() {
+  read -r -p "Do you want to install asdf? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install asdf
+    success "Installed asdf"
+  fi
+}
+
 install_languages() {
   read -r -p "Do you want to install languages? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    asdf plugin-add rust
+    asdf install rust 1.55.0
+    asdf global rust 1.55.0
     success "Installed rust"
 
-    brew install pyenv
-    pyenv install 3.7.3
-    pyenv global 3.7.3
+    asdf plugin-add python
+    asdf install python 3.7.3
+    asdf global python 3.7.3
     success "Installed python"
   fi
   
@@ -279,6 +289,7 @@ install_tools() {
 }
 
 install_homebrew
+install_asdf
 install_languages
 install_devops
 setup_penetration_tools
