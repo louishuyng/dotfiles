@@ -31,37 +31,27 @@ install_homebrew() {
   fi
 }
 
-install_python() {
-  read -r -p "Do you want to install python? [y|N] " response
+install_languages() {
+  read -r -p "Do you want to install languages? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    success "Installed rust"
+
     brew install pyenv
     pyenv install 3.7.3
     pyenv global 3.7.3
     success "Installed python"
   fi
-}
-
-install_rust() {
-  read -r -p "Do you want to install rust? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    success "Installed rust"
-  fi
   
 }
 
-install_docker() {
-  read -r -p "Do you want to install docker? [y|N] " response
+install_devops() {
+  read -r -p "Do you want to install devops tools? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew cask install docker
     brew install lazydocker
     success "Installed docker"
-  fi
-}
 
-install_k8s() {
-  read -r -p "Do you want to install k8s tools? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
     brew install minikube
     brew install helm
     brew install hyperkit
@@ -70,38 +60,18 @@ install_k8s() {
   fi
 }
 
-install_pdfreader() {
-  read -r -p "Do you want to install pdf reader? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    sudo port install zathura
-    sudo port install zathura-docs
-    sudo port install zathura-plugin-pdf-mupdf
-
-    ln -s ~/.config/suckless/zathura ~/.config/
-    success "Installed pdf reader"
-  fi
-}
-
 setup_penetration_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install owasp-zap
     brew install nmap
+    brew install openconnect
+    brew install openvpn
     
     chmod +x ./tools/beef/install
     ./tools/beef/install
     
     success "Installed penetration tools"
-  fi
-}
-
-setup_vpn() {
-  read -r -p "Do you want to setup vpn ? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install openconnect
-    brew install openvpn
-    
-    success "Setup finished"
   fi
 }
 
@@ -125,6 +95,7 @@ setup_git() {
     success "Setup Git Successfully"
   fi
 }
+
 install_zsh() {
   read -r -p "Do you want to install zsh? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -209,6 +180,7 @@ install_nvim() {
   read -r -p "Do you want to install neovim? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     info "Installing neovim"
+    brew install lua
     brew install --HEAD neovim
 
     # reduce keyrepeat for faster typing in vim
@@ -265,16 +237,7 @@ install_qutebrowser() {
   fi
 }
 
-install_spicetify() {
-  read -r -p "Do you want to install spicetify? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install khanhas/tap/spicetify-cli
-    ln -s ~/.config/suckless/spicetify ~/spicetify_data
-    spicetify apply
-  fi
-}
-
-install_tool() {
+install_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install ripgrep
@@ -297,47 +260,38 @@ install_tool() {
     brew install mas
     brew install pass
     brew install asciinema
+    brew install asdf
+    brew install ranger
 
+    brew install khanhas/tap/spicetify-cli
+    ln -s ~/.config/suckless/spicetify ~/spicetify_data
+    spicetify apply
+
+
+    sudo port install zathura
+    sudo port install zathura-docs
+    sudo port install zathura-plugin-pdf-mupdf
+
+    ln -s ~/.config/suckless/zathura ~/.config/
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"
   fi
 }
 
-install_ranger() {
-  read -r -p "Do you want to install ranger ? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install ranger
-  fi
-}
-
-
-install_lua() {
-  read -r -p "Do you want to install lua? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install lua
-  fi
-}
-
 install_homebrew
-install_python
-install_rust
-install_docker
-install_k8s
-install_pdfreader
-setup_git
+install_languages
+install_devops
 setup_penetration_tools
-setup_vpn
+setup_git
 install_zsh
+install_font
 install_fish
 install_terminal
-install_lua
 install_nvim
 install_tmux
 install_window_manager
 install_qutebrowser
-install_spicetify
-install_tool
-install_ranger
+install_tools
 
 echo "---"
 
