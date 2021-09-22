@@ -160,7 +160,7 @@ return packer.startup{
         use {
           "ahmedkhalf/project.nvim",
           config = function()
-            require("plugins.project_nvim")
+            require("plugins.projects_nvim")
           end
         }
 
