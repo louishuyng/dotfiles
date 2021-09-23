@@ -19,7 +19,7 @@ return packer.startup{
         -----------------------------------------------------------------
         -- MAIN PLUGS
 
-        use 'aryansh-s/fastdark.vim'
+        use 'pacokwon/onedarkhc.vim'
 
         use 'nvim-lua/popup.nvim'
         use {
@@ -40,7 +40,7 @@ return packer.startup{
         use {
           'dense-analysis/ale',
           config = function()
-            require "plugins.ale"
+            require "cores.ale"
           end
         }
 
@@ -55,14 +55,14 @@ return packer.startup{
         use {
             "akinsho/nvim-bufferline.lua",
             config = function()
-                require "plugins.bufferline"
+                require "cores.bufferline"
             end
         }
 
         use {
            'glepnir/galaxyline.nvim',
            config = function()
-              require "plugins.statusline"
+              require "cores.statusline"
            end,
         }
 
@@ -71,7 +71,7 @@ return packer.startup{
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             config = function()
-                require "plugins.treesitter"
+                require "cores.treesitter"
             end
         }
 
@@ -108,7 +108,7 @@ return packer.startup{
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require("plugins.compe").config()
+                require("cores.compe").config()
             end,
             wants = {"LuaSnip"},
             requires = {
@@ -117,7 +117,7 @@ return packer.startup{
                     wants = "friendly-snippets",
                     event = "InsertCharPre",
                     config = function()
-                        require("plugins.compe").snippets()
+                        require("cores.compe").snippets()
                     end
                 },
                 {
@@ -149,7 +149,7 @@ return packer.startup{
             "kyazdani42/nvim-tree.lua",
             cmd = "NvimTreeToggle",
             config = function()
-                require "plugins.nvimtree"
+                require "cores.nvimtree"
             end
         }
 
@@ -158,7 +158,7 @@ return packer.startup{
             requires = { {"nvim-lua/plenary.nvim"} },
             cmd = "Telescope",
             config = function()
-                require("plugins.telescope").config()
+                require("cores.telescope").config()
                 require('telescope').load_extension('projects')
             end
         }
