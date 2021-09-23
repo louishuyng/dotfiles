@@ -75,26 +75,32 @@ return packer.startup{
             end
         }
 
+       -- configuration for language servers
         use {
-            "kabouzeid/nvim-lspinstall",
-            event = "BufEnter"
+          "neovim/nvim-lspconfig",
+          config = function()
+            require "lsp"
+          end,
         }
+
+        -- linter and formatter
+        use {
+          "jose-elias-alvarez/null-ls.nvim",
+          requires = {
+            "nvim-lua/plenary.nvim",
+            "neovim/nvim-lspconfig",
+          },
+          config = function()
+            require "plugins/null"
+          end,
+        }
+
         use {
           "folke/trouble.nvim",
           requires = "kyazdani42/nvim-web-devicons",
           config = function()
             require "plugins.trouble"
           end
-        }
-
-        use 'jose-elias-alvarez/nvim-lsp-ts-utils'
-        use 'jose-elias-alvarez/null-ls.nvim'
-        use {
-            "neovim/nvim-lspconfig",
-            after = "nvim-lspinstall",
-            config = function()
-                require "plugins.lspconfig"
-            end
         }
 
         -- load compe in insert mode only
