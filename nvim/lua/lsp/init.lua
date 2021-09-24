@@ -31,6 +31,7 @@ vim.fn.sign_define("LspDiagnosticsSignHint", {
 -- require('lsp/deno')
 require "lsp/bash"
 require "lsp/css"
+require "lsp/dart"
 require "lsp/efm"
 require "lsp/html"
 require "lsp/json"
@@ -39,4 +40,4 @@ require "lsp/rust"
 require "lsp/sql"
 require "lsp/typescript"
 require "lsp/vim"
-require('lsp/lua')
+require "lsp/lua"
