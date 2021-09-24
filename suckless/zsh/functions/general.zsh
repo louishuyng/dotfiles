@@ -87,3 +87,7 @@ function countdown() {
   done
   echo
 }
+
+function lowercase_allfiles() {
+  for i in * ; do j=$(tr '[:upper:]' '[:lower:]' <<< "$i") ; mv "$i" "$j" ; done
+}
