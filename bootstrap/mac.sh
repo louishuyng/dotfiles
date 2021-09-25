@@ -67,6 +67,9 @@ install_devops() {
     brew install hyperkit
     brew install kubectx
     success "Installed k8s"
+
+    brew install pstree
+    success "Installed pstree"
   fi
 }
 
