@@ -38,7 +38,10 @@ alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 
-# confirmation
+# Confirmation
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
+
+# No sleep
+alias nosleep='caffeinate'
