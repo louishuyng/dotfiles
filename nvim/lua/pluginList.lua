@@ -102,45 +102,65 @@ return packer.startup{
             require "plugins.trouble"
           end
         }
-
-        -- load compe in insert mode only
+        
+        -- luasnips + cmp
         use {
-            "hrsh7th/nvim-compe",
+            "rafamadriz/friendly-snippets",
             event = "InsertEnter",
-            config = function()
-                require("cores.compe").config()
-            end,
-            wants = {"LuaSnip"},
-            requires = {
-                {
-                    "L3MON4D3/LuaSnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function()
-                        require("cores.compe").snippets()
-                    end
-                },
-                {
-                    "rafamadriz/friendly-snippets",
-                    event = "InsertCharPre"
-                }
-            }
         }
 
-        use 'hrsh7th/vim-vsnip'
-        use 'hrsh7th/vim-vsnip-integ'
+        use {
+            "hrsh7th/nvim-cmp",
+            after = "friendly-snippets",
+            config = function()
+	 	require "cores.cmp"
+	    end
+        }
+
+        use {
+            "L3MON4D3/LuaSnip",
+            wants = "friendly-snippets",
+            after = "nvim-cmp",
+            config = function()
+                require("plugins.others").luasnip()
+	    end
+        }
+
+        use {
+            "saadparwaiz1/cmp_luasnip",
+            after = "LuaSnip",
+        }
+
+        use {
+           "hrsh7th/cmp-nvim-lua",
+            after = "cmp_luasnip",
+        }
+
+        use {
+            "hrsh7th/cmp-nvim-lsp",
+            after = "cmp-nvim-lua",
+        }
+
+        use {
+            "hrsh7th/cmp-buffer",
+            after = "cmp-nvim-lsp",
+        }
 
         use {
             "windwp/nvim-autopairs",
-            after = "nvim-compe",
+            after="nvim-cmp",
             config = function()
                 require("nvim-autopairs").setup()
-                require("nvim-autopairs.completion.compe").setup(
-                    {
-                        map_cr = true,
-                        map_complete = true -- insert () func completion
-                    }
-                )
+                require("nvim-autopairs.completion.cmp").setup({
+                  map_cr = true, --  map <CR> on insert mode
+                  map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
+                  auto_select = true, -- automatically select the first item
+                  insert = false, -- use insert confirm behavior instead of replace
+                  map_char = { -- modifies the function or method delimiter by filetypes
+                    all = '(',
+                    tex = '{'
+                  }
+                })
             end
         }
 

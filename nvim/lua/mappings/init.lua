@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 
 require("mappings.anzu")
 require("mappings.buffer")
-require("mappings.compe")
 require("mappings.dashboard")
 require("mappings.fterm")
 require("mappings.general")
