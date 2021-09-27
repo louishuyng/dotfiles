@@ -19,7 +19,7 @@ return packer.startup{
         -----------------------------------------------------------------
         -- MAIN PLUGS
 
-        use 'pacokwon/onedarkhc.vim'
+        use 'zeis/vim-kolor'
 
         use 'nvim-lua/popup.nvim'
         use {
