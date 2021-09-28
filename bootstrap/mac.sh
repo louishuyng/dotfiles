@@ -204,6 +204,16 @@ install_nvim() {
   fi
 }
 
+install_emacs() {
+  read -r -p "Do you want to install emacs? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    info "Installing emacs"
+    brew install --cask emacs
+
+    success "Installed emacs"
+  fi
+}
+
 install_tmux() {
   read -r -p "Do you want to install tmux? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -294,7 +304,7 @@ install_tools() {
 install_homebrew
 install_asdf
 install_languages
-install_devops
+enstall_devops
 setup_penetration_tools
 setup_git
 install_zsh
@@ -302,6 +312,7 @@ install_font
 install_fish
 install_terminal
 install_nvim
+install_emacs
 install_tmux
 install_window_manager
 install_qutebrowser

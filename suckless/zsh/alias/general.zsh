@@ -1,6 +1,7 @@
 # Text Editor
 alias cat='bat'
 alias nv="nvim"
+alias em="emacs -Q -nw"
 
 # History
 alias h='history'
