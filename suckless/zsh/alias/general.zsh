@@ -1,7 +1,7 @@
 # Text Editor
 alias cat='bat'
 alias nv="nvim"
-alias em="emacs -Q -nw"
+alias em="emacs -Q -nw -l ~/.config/emacs/init.el"
 
 # History
 alias h='history'
