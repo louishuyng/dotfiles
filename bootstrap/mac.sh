@@ -122,7 +122,7 @@ install_zsh() {
     mkdir -p ~/.oh-my-zsh
 
     rm -rf ~/.zshrc
-    ln ../suckless/zsh/.zshrc ~/.zshrc
+    ln ~/.config/suckless/zsh/.zshrc ~/.zshrc
 
     rm -rf ~/.zsh-defer
     git clone https://github.com/romkatv/zsh-defer.git ~/.zsh-defer
@@ -210,6 +210,8 @@ install_emacs() {
     info "Installing emacs"
     brew install --cask emacs
 
+    ln ~/.config/emacs/init.el ~/.emacs.d/init.el
+
     success "Installed emacs"
   fi
 }
@@ -219,7 +221,7 @@ install_tmux() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install tmux
     rm ~/.tmux.conf
-    ln ../suckless/tmux/.tmux.conf ~/.tmux.conf
+    ln ~/.config/suckless/tmux/.tmux.conf ~/.tmux.conf
 
     rm -rf ~/.tmux/plugins/tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -239,13 +241,13 @@ install_window_manager() {
     brew services start skhd
 
     rm -rf ~/.skhdrc
-    ln ../suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+    ln ~/.config/suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
 
     rm -rf ~/.yabairc
-    ln ../suckless/mac_os/yabai/.yabairc ~/.yabairc
+    ln ~/.config/suckless/mac_os/yabai/.yabairc ~/.yabairc
 
     rm -rf ~/.spacebarrc
-    ln ../suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
+    ln ~/.config/suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
 
     success "Installed window manager! Remember to disable System Integrity Protection (SIP)"
   fi
