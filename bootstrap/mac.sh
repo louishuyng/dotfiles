@@ -209,6 +209,8 @@ install_emacs() {
   if [[ $response =~ (y|yes|Y) ]];then
     info "Installing emacs"
     brew install --cask emacs
+    brew tap d12frosted/emacs-plus
+    brew install emacs-plus --with-no-titlebar
 
     ln ~/.config/emacs/init.el ~/.emacs.d/init.el
 

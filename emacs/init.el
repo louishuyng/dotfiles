@@ -10,7 +10,7 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
-(set-face-attribute 'default nil :font "Fira Code Retina" :height 280)
+(set-face-attribute 'default nil :font "Hack Nerd Font")
 
 (load-theme 'wombat)
 
@@ -37,8 +37,6 @@
 
 (use-package command-log-mode)
 
-(use-package counsel :ensure t)
-
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -48,7 +46,7 @@
          ("C-j" . ivy-next-line)
          ("C-k" . ivy-previous-line)
          :map ivy-switch-buffer-map
-         ("C-k" . ivy-previous-line)
+	 ("C-k" . ivy-previous-line)
          ("C-l" . ivy-done)
          ("C-d" . ivy-switch-buffer-kill)
          :map ivy-reverse-i-search-map
@@ -60,3 +58,4 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))

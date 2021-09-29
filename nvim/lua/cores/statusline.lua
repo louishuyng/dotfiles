@@ -17,9 +17,9 @@ local gls = gl.section
 gl.short_line_list = { 'packer', 'NvimTree', 'Outline', 'LspTrouble' }
 
 local colors = {
-    bg = '#282c34',
+    bg = '#000000',
     fg = '#abb2bf',
-    section_bg = '#38393f',
+    section_bg = '#000000',
     blue = '#61afef',
     green = '#98c379',
     purple = '#c678dd',
