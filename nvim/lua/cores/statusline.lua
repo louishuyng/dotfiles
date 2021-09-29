@@ -156,36 +156,27 @@ end
 
 -- Left side
 gls.left[1] = {
-    ViMode = {
-        provider = function()
-            local aliases = {
-                [110] = 'NORMAL',
-                [105] = 'INSERT',
-                [99] = 'COMMAND',
-                [116] = 'TERMINAL',
-                [118] = 'VISUAL',
-                [22] = 'V-BLOCK',
-                [86] = 'V-LINE',
-                [82] = 'REPLACE',
-                [115] = 'SELECT',
-                [83] = 'S-LINE',
-            }
-            vim.api.nvim_command('hi GalaxyViMode guibg=' .. mode_color())
-            local alias = aliases[vim.fn.mode():byte()]
-            local mode
-            if alias ~= nil then
-                if utils.has_width_gt(35) then
-                    mode = alias
-                else
-                    mode = alias:sub(1, 1)
-                end
-            else
-                mode = vim.fn.mode():byte()
-            end
-            return '  ' .. mode .. ' '
-        end,
-        highlight = { colors.bg, colors.bg, 'bold' },
-    },
+  ViMode = {
+    provider = function()
+      local mode = {
+        n = {color = "String", icon = ""},
+        i = {color = "Function", icon = ""},
+        v = {color = "Conditional", icon = ""},
+        V = {color = "Conditional", icon = ""},
+        [""] = {color = "Conditional", icon = ""},
+        c = {color = "Keyword", icon = ""},
+        ['!'] = {color = "Keyword", icon = ""},
+        R = {color = "Keyword", icon = "﯒"},
+        r = {color = "Keyword", icon = "﯒"},
+      }
+      vim.api.nvim_command("hi link GalaxyViMode " .. mode[vim.fn.mode()].color)
+      if mode[vim.fn.mode()].icon ~= nil then
+        return "    " .. mode[vim.fn.mode()].icon
+      end
+    end,
+    separator = " ",
+    condition = condition.hide_in_width
+  }
 }
 gls.left[2] = {
     FileIcon = {
@@ -200,36 +191,15 @@ gls.left[2] = {
     },
 }
 gls.left[3] = {
-    FilePath = {
-        provider = function()
-            local fp = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.:h')
-            local tbl = split(fp, '/')
-            local len = #tbl
-
-            if len > 2 and not len == 3 and not tbl[0] == '~' then
-                return '…/' .. table.concat(tbl, '/', len - 1) .. '/' -- shorten filepath to last 2 folders
-                -- alternative: only 1 containing folder using vim builtin function
-                -- return '…/' .. vim.fn.fnamemodify(vim.fn.expand '%', ':p:h:t') .. '/'
-            else
-                return fp .. '/'
-            end
-        end,
-        condition = function()
-            return is_file() and checkwidth()
-        end,
-        highlight = { colors.middlegrey, colors.section_bg },
-    },
-}
-gls.left[4] = {
     FileName = {
         provider = get_current_file_name,
         condition = buffer_not_empty,
         highlight = { colors.fg, colors.section_bg },
-        separator = '  ',
+        separator = ' ',
         separator_highlight = { colors.section_bg, colors.bg },
     },
 }
-gls.left[5] = {
+gls.left[4] = {
     ShowLspClient = {
         provider = 'GetLspClient',
         condition = function()
@@ -237,7 +207,7 @@ gls.left[5] = {
             if tbl[vim.bo.filetype] then return false end
             return true
         end,
-        icon = ' ',
+        icon = '  ',
         highlight = {colors.middlegrey, colors.bg},
         separator = ' ',
         separator_highlight = {colors.section_bg, colors.bg}
@@ -257,7 +227,7 @@ gls.left[5] = {
 --         highlight = {colors.fg, colors.bg}
 --     }
 -- }
-gls.left[6] = {
+gls.left[5] = {
     DiagnosticError = {
         provider = { 'DiagnosticError' },
         icon = '  ',
@@ -272,7 +242,7 @@ gls.left[6] = {
 --         highlight = {colors.section_bg, colors.bg}
 --     }
 -- }
-gls.left[7] = {
+gls.left[6] = {
     DiagnosticWarn = {
         provider = { 'DiagnosticWarn' },
         icon = '  ',
@@ -287,7 +257,7 @@ gls.left[7] = {
 --         highlight = {colors.section_bg, colors.bg}
 --     }
 -- }
-gls.left[8] = {
+gls.left[7] = {
     DiagnosticInfo = {
         provider = { 'DiagnosticInfo' },
         icon = '  ',
