@@ -332,6 +332,9 @@ return packer.startup{
         -- Range Highlight
         use 'winston0410/cmd-parser.nvim'
         use 'winston0410/range-highlight.nvim'
+
+        -- Cursor world highlight
+        use 'itchyny/vim-cursorword'
     end,
     config = {
       display = {
