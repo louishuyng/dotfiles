@@ -1,6 +1,4 @@
-local M = {}
-
-M.map =  function (mode, lhs, rhs, opts, options)
+return function (mode, lhs, rhs, opts, options)
     options = options or {}
 
     if opts then
@@ -8,5 +6,3 @@ M.map =  function (mode, lhs, rhs, opts, options)
     end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
-
-return M

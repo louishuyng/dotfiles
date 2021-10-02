@@ -1,4 +1,4 @@
-local map = require('utils.map').map
+local map = require('utils.map')
 
 local opts = {silent = true}
 
