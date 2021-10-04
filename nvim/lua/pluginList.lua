@@ -149,6 +149,7 @@ return packer.startup{
         use {
             "windwp/nvim-autopairs",
             after="nvim-cmp",
+            requires = { "nvim-treesitter/nvim-treesitter" },
             config = function()
                 require("nvim-autopairs").setup()
                 require("nvim-autopairs.completion.cmp").setup({
@@ -335,6 +336,17 @@ return packer.startup{
 
         -- Cursor world highlight
         use 'itchyny/vim-cursorword'
+
+        -- Annotation
+        use { 
+            "danymat/neogen", 
+            config = function()
+                require('neogen').setup {
+                    enabled = true
+                }
+            end,
+            after = "nvim-treesitter",
+        }
     end,
     config = {
       display = {
