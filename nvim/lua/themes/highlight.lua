@@ -9,3 +9,4 @@ cmd[[au VimEnter * highlight SneakScope guifg=red guibg=yellow ctermfg=red cterm
 cmd[[au VimEnter * highlight SignColumn guifg=NONE guibg=NONE]]
 cmd[[au VimEnter * highlight LineNr guifg=NONE guibg=NONE]]
 cmd[[au VimEnter * highlight MatchParen guifg=#C6C6C6 guibg=NONE]]
+cmd[[au VimEnter * hi SpellBad ctermfg=015 ctermbg=009 cterm=bold guibg=#ff0000 guifg=#000000 gui=bold]]
