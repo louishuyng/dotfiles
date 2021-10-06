@@ -21,6 +21,7 @@ require("mappings.editor.neogen")
 require("mappings.editor.nrrwrgn")
 require("mappings.editor.prettier")
 require("mappings.editor.sneak")
+require("mappings.editor.speller")
 require("mappings.editor.trouble")
 require("mappings.editor.wordmotion")
 

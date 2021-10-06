@@ -4,7 +4,6 @@ opt.ruler = false
 opt.hidden = true
 opt.ignorecase = true
 opt.autoread = true
-opt.spell = true
 opt.splitbelow = false
 opt.splitright = true
 opt.termguicolors = true
