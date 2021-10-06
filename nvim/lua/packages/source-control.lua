@@ -1,7 +1,7 @@
 local use = packer.use
 
 use 'airblade/vim-gitgutter'
-use 'tveskag/nvim-blame-line'
+use 'f-person/git-blame.nvim'
 use {
   "tpope/vim-fugitive",
   cmd = {
@@ -17,4 +17,3 @@ use {
   }
 }
 use 'kdheepak/lazygit.nvim'
-
