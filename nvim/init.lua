@@ -5,7 +5,7 @@ require "mappings"
 require "options"
 
 -- Cores Config
-require("cores.gitgutter")
+require("cores.git")
 require("cores.sneak")
 
 -- Plugins Config
