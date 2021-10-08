@@ -7,9 +7,9 @@ use {
     require "cores.ale"
   end
 }
-use {
-  "nvim-treesitter/nvim-treesitter",
-  event = "BufRead",
+use { 
+  'nvim-treesitter/nvim-treesitter', 
+  run = ':TSUpdate', 
   config = function()
       require "cores.treesitter"
   end
