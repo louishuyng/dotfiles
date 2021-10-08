@@ -17,18 +17,20 @@ M.config = function()
               ["<Esc>"] = actions.close,
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
+              ["<C-b>"] = actions.preview_scrolling_up,
+              ["<C-f>"] = actions.preview_scrolling_down,
               ["<C-s>"] = actions.select_vertical,
               ["<C-i>"] = actions.select_horizontal,
-              ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           },
           n = {
               ["<C-d>"] = actions.close,
               ["<Esc>"] = actions.close,
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
+              ["<C-b>"] = actions.preview_scrolling_up,
+              ["<C-f>"] = actions.preview_scrolling_down,
               ["<C-s>"] = actions.select_vertical,
               ["<C-i>"] = actions.select_horizontal,
-              ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           }
       },
       layout_config = {

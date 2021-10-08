@@ -4,12 +4,12 @@ if not present then
 end
 
 neoscroll.setup({
-  mappings = {'zj', 'zk'},
+  mappings = {'<C-f>', '<C-b>'},
 })
 
 local t = {}
 
-t['zk'] = {'scroll', {'-vim.wo.scroll', 'true', '150'}}
-t['zj'] = {'scroll', { 'vim.wo.scroll', 'true', '150'}}
+t['<C-f>'] = {'scroll', {'-vim.wo.scroll', 'true', '150'}}
+t['<C-b>'] = {'scroll', { 'vim.wo.scroll', 'true', '150'}}
 
 require('neoscroll.config').set_mappings(t)
