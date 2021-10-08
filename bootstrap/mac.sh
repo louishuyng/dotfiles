@@ -289,6 +289,7 @@ install_tools() {
     brew install asciinema
     brew install asdf
     brew install ranger
+    brew install efm-langserver
 
     brew install khanhas/tap/spicetify-cli
     ln -s ~/.config/suckless/spicetify ~/spicetify_data
