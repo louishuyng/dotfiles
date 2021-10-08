@@ -13,6 +13,7 @@ M.config = function()
       winblend = 0,
       mappings = {
           i = {
+              ["<C-d>"] = actions.close,
               ["<Esc>"] = actions.close,
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
@@ -21,6 +22,7 @@ M.config = function()
               ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           },
           n = {
+              ["<C-d>"] = actions.close,
               ["<Esc>"] = actions.close,
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,

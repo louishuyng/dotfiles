@@ -58,3 +58,4 @@ use {
 }
 use 'chaoren/vim-wordmotion'
 use 'kamykn/spelunker.vim'
+use 'karb94/neoscroll.nvim'
