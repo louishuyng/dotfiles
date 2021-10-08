@@ -35,7 +35,7 @@ M.config = function()
       },
       layout_config = {
         height = 0.7,
-        width = 0.5,
+        width = 0.7,
       },
       initial_mode = "insert",
       layout_strategy = "flex",
