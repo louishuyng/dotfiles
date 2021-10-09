@@ -3,7 +3,7 @@
 This is Louis dotfiles Who loves using nvim + lua  🚀 
 
 #### Neovim Lua Main Packages
-- **dracula/vim** (theme)
+- **kolor/vim** (theme)
 - **kyazdani42/nvim-web-devicons** (icons)
 - **dense-analysis/ale** (auto format and linting)
 - **akinsho/nvim-bufferline.lua** (buffer styling)
