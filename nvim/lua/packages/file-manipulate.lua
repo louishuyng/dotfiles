@@ -24,6 +24,9 @@ use {
 }
 use {
   'ThePrimeagen/harpoon',
+  requires = {
+    'nvim-lua/popup.nvim'
+  },
   opt = true,
   event = { 'VimEnter' },
   setup = require('plugins.harpoon').setup,
