@@ -1,2 +1,2 @@
-require('themes.schema')
-require('themes.highlight')
+require 'themes.schema'
+require 'themes.highlight'

@@ -15,13 +15,13 @@ return packer.startup{
             "wbthomason/packer.nvim",
             event = "VimEnter"
         }
-        require('packages.ui')
-        require('packages.editor-utils')
-        require('packages.language-analyze')
-        require('packages.file-manipulate')
-        require('packages.others')
-        require('packages.snip')
-        require('packages.source-control')
+        require 'packages.ui'
+        require 'packages.editor-utils'
+        require 'packages.language-analyze'
+        require 'packages.file-manipulate'
+        require 'packages.others'
+        require 'packages.snip'
+        require 'packages.source-control'
     end,
     config = {
       display = {

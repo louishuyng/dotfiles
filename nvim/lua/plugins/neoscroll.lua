@@ -9,7 +9,7 @@ neoscroll.setup({
 
 local t = {}
 
-t['<C-f>'] = {'scroll', {'-vim.wo.scroll', 'true', '150'}}
-t['<C-b>'] = {'scroll', { 'vim.wo.scroll', 'true', '150'}}
+t['<C-f>'] = {'scroll', { 'vim.wo.scroll', 'true', '150'}}
+t['<C-b>'] = {'scroll', {'-vim.wo.scroll', 'true', '150'}}
 
 require('neoscroll.config').set_mappings(t)

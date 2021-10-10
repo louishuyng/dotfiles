@@ -1,5 +1,5 @@
 local present, nvimtree = pcall(require, "nvim-tree")
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
 if not present then
    return

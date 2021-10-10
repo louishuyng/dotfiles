@@ -1,5 +1,5 @@
 local present, cmp = pcall(require, "cmp")
-local neogen = require('neogen')
+local neogen = require 'neogen'
 
 if not present then
    return

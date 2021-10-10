@@ -1,4 +1,4 @@
-local colors = require("themes.dracula")
+local colors = require "themes.dracula"
 
 local present, bufferline = pcall(require, "bufferline")
 if not present then

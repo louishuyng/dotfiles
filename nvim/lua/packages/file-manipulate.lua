@@ -13,13 +13,13 @@ use {
   cmd = "Telescope",
   config = function()
       require("cores.telescope").config()
-      require('telescope').load_extension('projects')
+      require("telescope").load_extension('projects')
   end
 }
 use {
   "ahmedkhalf/project.nvim",
   config = function()
-    require("plugins.projects_nvim")
+    require 'plugins.projects_nvim'
   end
 }
 use {
