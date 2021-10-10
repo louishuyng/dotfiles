@@ -1,3 +1,3 @@
-require "pluginList"
+require "plugins"
 require('config')
 require('themes')
