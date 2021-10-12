@@ -22,6 +22,9 @@ ts_config.setup {
     "toml",
     "vim"
   },
+  matchup = {
+    enable = true
+  },
   highlight = {
     enable = true
   },
