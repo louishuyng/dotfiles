@@ -1,6 +1,5 @@
 local use = packer.use
 
-use 'prettier/vim-prettier'
 use {
   'dense-analysis/ale',
   config = function()
