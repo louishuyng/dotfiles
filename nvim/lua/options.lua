@@ -15,7 +15,7 @@ opt.timeoutlen = 1000
 opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
 
--- set fillchars=eob:~
+-- set fillchars
 opt.fillchars = { eob = "x" }
 
 -- Center cursor

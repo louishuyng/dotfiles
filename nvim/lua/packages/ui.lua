@@ -5,26 +5,26 @@ use 'zeis/vim-kolor'
 use {
   "kyazdani42/nvim-web-devicons",
   config = function()
-     require "plugins.icons"
+    require "plugins.icons"
   end,
 }
 use {
   "norcalli/nvim-colorizer.lua",
   event = "BufRead",
   config = function()
-      require("plugins.others").colorizer()
+    require("plugins.others").colorizer()
   end
 }
 use {
  'glepnir/galaxyline.nvim',
- config = function()
+  config = function()
     require "cores.statusline"
- end,
+  end,
 }
 use {
   "akinsho/nvim-bufferline.lua",
   config = function()
-      require "cores.bufferline"
+    require "cores.bufferline"
   end
 }
 use 'osyo-manga/vim-anzu'
@@ -33,7 +33,7 @@ use 'PeterRincker/vim-searchlight'
 use 'glepnir/dashboard-nvim'
 use 'itchyny/vim-cursorword'
 use {
-    "andymass/vim-matchup",
-    event = "CursorMoved"
+  "andymass/vim-matchup",
+  event = "CursorMoved"
 }
 use "voldikss/vim-floaterm"

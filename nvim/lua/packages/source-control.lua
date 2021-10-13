@@ -5,15 +5,15 @@ use 'f-person/git-blame.nvim'
 use {
   "tpope/vim-fugitive",
   cmd = {
-      "Git",
-      "Gstatus",
-      "Gwrite",
-      "Gcommit",
-      "Gpush",
-      "Gpull",
-      "Git blame",
-      "Gvdiff",
-      "GBrowse",
+    "Git",
+    "Gstatus",
+    "Gwrite",
+    "Gcommit",
+    "Gpush",
+    "Gpull",
+    "Git blame",
+    "Gvdiff",
+    "GBrowse",
   }
 }
 use 'kdheepak/lazygit.nvim'

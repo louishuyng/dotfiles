@@ -1,6 +1,6 @@
 local present, neoscroll = pcall(require, "neoscroll")
 if not present then
-    return
+  return
 end
 
 neoscroll.setup({

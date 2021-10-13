@@ -4,10 +4,10 @@ use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 use {
   "Pocco81/AutoSave.nvim",
   config = function()
-      require "plugins.autosave"
+    require "plugins.autosave"
   end,
   cond = function()
-      return vim.g.auto_save == true
+    return vim.g.auto_save == true
   end
 }
 use {
