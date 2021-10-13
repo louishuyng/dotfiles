@@ -25,12 +25,11 @@ bufferline.setup {
     always_show_bufferline = true,
     diagnostics = false, -- "or nvim-lsp"
     custom_filter = function(buf_number)
-       -- Func to filter out our managed/persistent split terms
-     local present_type, type = pcall(function()
+      local present_type, type = pcall(function()
         return vim.api.nvim_buf_get_var(buf_number, "term_type")
-     end)
+      end)
 
-     if present_type then
+      if present_type then
         if type == "vert" then
            return false
         elseif type == "hori" then
@@ -38,9 +37,9 @@ bufferline.setup {
         else
            return true
         end
-     else
+      else
         return true
-     end
+      end
     end,
   },
 }

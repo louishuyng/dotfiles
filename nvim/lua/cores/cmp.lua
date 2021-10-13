@@ -7,7 +7,6 @@ end
 
 vim.opt.completeopt = "menuone,noselect"
 
--- nvim-cmp setup
 cmp.setup {
   snippet = {
     expand = function(args)

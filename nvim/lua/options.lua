@@ -14,34 +14,32 @@ opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 1000
 opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
-
--- set fillchars
 opt.fillchars = { eob = "x" }
 
--- Center cursor
+-- CENTER CURSOR
 opt.scrolloff = 999
 opt.sidescrolloff = 999
 
--- Cursor
+-- CURSOR
 opt.gcr='a:blinkon0'
 
--- SwapFile
+-- SWAPFILE
 vim.g.noswapfile = true
 vim.g.nobackup = true
 vim.g.nowritebackup = true
 vim.g.nowb = true
 
--- Numbers
+-- NUMBERS
 opt.number = true
 opt.numberwidth = 2
 opt.relativenumber = true
 
--- for indenline
+-- INDENLINE
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 
--- disable builtin vim plugins
+-- DISABLE BUILTIN VIM PLUGINS
 vim.g.loaded_gzip = 0
 vim.g.loaded_tar = 0
 vim.g.loaded_tarPlugin = 0
@@ -53,17 +51,17 @@ vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
 
--- autosave
+-- AUTOSAVE
 vim.g.auto_save = false
 
--- fold
+-- FOLD
 opt.foldmethod ='indent'
 opt.foldnestmax = 5
 vim.api.nvim_command("set nofoldenable")
 
--- mundo
+-- MUNDO
 vim.api.nvim_command("set undofile")
 vim.api.nvim_command("set undodir=~/.vim/undo")
 
--- rust
+-- RUST
 vim.g.rust_recommended_style = 0

@@ -104,10 +104,10 @@ local function split(str, sep)
   local res = {}
   local n = 1
   for w in str:gmatch('([^' .. sep .. ']*)') do
-    res[n] = res[n] or w -- only set once (so the blank after a string is ignored)
+    res[n] = res[n] or w
     if w == '' then
         n = n + 1
-    end -- step forwards on a blank but not a string
+    end
   end
   return res
 end
@@ -126,7 +126,6 @@ local GetGitRoot = function()
   return get_basename(git_root)
 end
 
--- Left side
 gls.left[1] = {
   ViMode = {
     provider = function()
@@ -190,8 +189,6 @@ gls.left[5] = {
     provider = { 'DiagnosticError' },
     icon = '  ',
     highlight = { colors.red, colors.bg },
-    -- separator = ' ',
-    -- separator_highlight = {colors.bg, colors.bg}
   },
 }
 gls.left[6] = {
@@ -199,8 +196,6 @@ gls.left[6] = {
     provider = { 'DiagnosticWarn' },
     icon = '  ',
     highlight = { colors.orange, colors.bg },
-    -- separator = ' ',
-    -- separator_highlight = {colors.bg, colors.bg}
   },
 }
 gls.left[7] = {
@@ -208,12 +203,9 @@ gls.left[7] = {
     provider = { 'DiagnosticInfo' },
     icon = '  ',
     highlight = { colors.blue, colors.bg },
-    -- separator = ' ',
-    -- separator_highlight = {colors.section_bg, colors.bg}
   },
 }
 
--- Right side
 gls.right[0] = {
   DiffAdd = {
     provider = 'DiffAdd',
@@ -289,7 +281,6 @@ gls.right[7] = {
   },
 }
 
--- Short status line
 gls.short_line_left[1] = {
   FileIcon = {
     provider = { function()

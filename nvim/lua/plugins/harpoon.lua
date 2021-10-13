@@ -9,12 +9,6 @@ function M.setup()
     opts
   )
   vim.cmd [[ autocmd FileType harpoon nnoremap <buffer> q :q<cr> ]]
-
-  -- vim.api.nvim_buf_set_keymap(buf, 'n', 'q', ':q', {
-  --     silent = true,
-  --     noremap = true,
-  --     nowait = true,
-  -- })
 end
 
 function M.config()
