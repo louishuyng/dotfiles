@@ -32,6 +32,7 @@ source "$HOME/.config/suckless/zsh/alias/languages.zsh"
 source "$HOME/.config/suckless/zsh/alias/network.zsh"
 source "$HOME/.config/suckless/zsh/alias/os.zsh"
 source "$HOME/.config/suckless/zsh/alias/redis.zsh"
+source "$HOME/.config/suckless/zsh/alias/spotify.zsh"
 source "$HOME/.config/suckless/zsh/alias/tmux.zsh"
 source "$HOME/.config/suckless/zsh/alias/tools.zsh"
 

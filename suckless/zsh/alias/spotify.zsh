@@ -1,0 +1,8 @@
+alias sppl='spotify play'
+alias sppa='spotify pause'
+alias spn='spotify next'
+alias sps='spotify search'
+alias spm='spotify mute'
+alias spu='spotify unmute'
+alias sp+='spotify +'
+alias sp-='spotify -'
