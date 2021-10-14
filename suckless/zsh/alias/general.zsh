@@ -46,3 +46,6 @@ alias ln='ln -i'
 
 # No sleep
 alias nosleep='caffeinate'
+
+# Restart zsh
+alias reset='exec zsh'
