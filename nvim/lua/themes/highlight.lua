@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-cmd[[au VimEnter * highlight Normal guibg=NONE guifg=#ABB2BF]]
+cmd[[au VimEnter * highlight Normal guibg=#000000 guifg=#ABB2BF]]
 cmd[[au VimEnter * highlight EndOfBuffer guibg=NONE]]
 cmd[[au VimEnter * highlight FloatermBorder guifg=#55E579]]
 cmd[[au VimEnter * highlight VertSplit gui=NONE guibg=NONE guifg=#202023]]
