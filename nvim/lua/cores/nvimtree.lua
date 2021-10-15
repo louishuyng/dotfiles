@@ -48,10 +48,16 @@ g.nvim_tree_icons = {
     symlink = "",
     symlink_open = "",
   },
+  lsp = {
+    error = " ",
+    warning = " ",
+    hint = " ",
+    info = " "
+  }
 }
 
 nvimtree.setup {
-  lsp_diagnostics = false,
+  lsp_diagnostics = true,
   disable_netrw = true,
   hijack_netrw = true,
   ignore_ft_on_setup = { "dashboard" },
@@ -62,6 +68,15 @@ nvimtree.setup {
   update_focused_file = {
     enable = true,
     update_cwd = true,
+  },
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    }  
   },
   view = {
     allow_resize = true,
