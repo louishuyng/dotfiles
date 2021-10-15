@@ -140,6 +140,9 @@ gls.left[1] = {
         R = {color = "Keyword", icon = "﯒"},
         r = {color = "Keyword", icon = "﯒"},
       }
+      if mode[vim.fn.mode()] == nil then
+        return
+      end
       vim.api.nvim_command("hi link GalaxyViMode " .. mode[vim.fn.mode()].color)
       if mode[vim.fn.mode()].icon ~= nil then
         return "    " .. mode[vim.fn.mode()].icon
