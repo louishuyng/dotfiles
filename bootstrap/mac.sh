@@ -22,11 +22,14 @@ fail () {
   exit
 }
 
+chmod +x ~/.config/commands
+
 install_homebrew() {
   read -r -p "Do you want to install homebrew? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew tap homebrew/cask
+    
     success "Installed homebrew"
   fi
 }

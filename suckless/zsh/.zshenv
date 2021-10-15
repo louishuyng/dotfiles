@@ -54,3 +54,6 @@ export PATH=$PATH:/usr/local/go/bin
 
 #Zathura
 export LC_ALL=C   
+
+#Commands
+export PATH="$HOME/.config/commands:$PATH"
