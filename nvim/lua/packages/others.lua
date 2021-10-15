@@ -25,3 +25,4 @@ use {
     })
   end
 }
+use 'rcarriga/nvim-notify'

@@ -17,3 +17,4 @@ use {
   }
 }
 use 'kdheepak/lazygit.nvim'
+use 'ThePrimeagen/git-worktree.nvim'
