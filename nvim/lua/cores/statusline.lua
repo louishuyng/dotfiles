@@ -244,14 +244,6 @@ gls.right[3] = {
   },
 }
 gls.right[4] = {
-  Harpoon = {
-    provider = function()
-        return require('harpoon.mark').status()
-    end,
-    highlight = { colors.middlegrey, colors.bg },
-  },
-}
-gls.right[5] = {
   GitBranch = {
     provider = {
         function()
@@ -263,7 +255,7 @@ gls.right[5] = {
     highlight = { colors.middlegrey, colors.bg },
   },
 }
-gls.right[6] = {
+gls.right[5] = {
   GitRoot = {
     provider = { GetGitRoot },
     condition = function()
@@ -275,7 +267,7 @@ gls.right[6] = {
     separator = '  ',
   },
 }
-gls.right[7] = {
+gls.right[6] = {
   PerCent = {
     provider = 'LinePercent',
     separator = ' ',

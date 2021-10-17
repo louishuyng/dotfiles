@@ -27,9 +27,9 @@ use {
 }
 use {
   "Pocco81/TrueZen.nvim",
-  cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
-  config = function()
-    require "plugins.zenmode"
+  cmd = {"TZAtaraxis", "TZFocus", "TZMinimalist"},
+    config = function()                     
+      require "plugins.zenmode"             
   end
 }
 use 'machakann/vim-swap'
@@ -43,17 +43,6 @@ use 'tpope/vim-surround'
 use 'chrisbra/NrrwRgn'
 use {
   'windwp/nvim-ts-autotag',
-  after = "nvim-treesitter",
-}
-use 'winston0410/cmd-parser.nvim'
-use 'winston0410/range-highlight.nvim'
-use { 
-  "danymat/neogen", 
-  config = function()
-    require('neogen').setup {
-      enabled = true
-    }
-  end,
   after = "nvim-treesitter",
 }
 use 'chaoren/vim-wordmotion'

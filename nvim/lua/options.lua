@@ -51,9 +51,6 @@ vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
 
--- AUTOSAVE
-vim.g.auto_save = false
-
 -- FOLD
 opt.foldmethod ='indent'
 opt.foldnestmax = 5

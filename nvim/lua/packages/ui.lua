@@ -29,9 +29,7 @@ use {
 }
 use 'osyo-manga/vim-anzu'
 use 'romainl/vim-cool'
-use 'PeterRincker/vim-searchlight'
 use 'glepnir/dashboard-nvim'
-use 'itchyny/vim-cursorword'
 use {
   "andymass/vim-matchup",
   event = "CursorMoved"

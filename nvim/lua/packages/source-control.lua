@@ -16,5 +16,3 @@ use {
     "GBrowse",
   }
 }
-use 'kdheepak/lazygit.nvim'
-use 'ThePrimeagen/git-worktree.nvim'
