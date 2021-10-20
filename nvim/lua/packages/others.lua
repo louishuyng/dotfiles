@@ -7,3 +7,4 @@ use {
   ft = {'markdown'}
 }
 use 'rcarriga/nvim-notify'
+use 'vimwiki/vimwiki'
