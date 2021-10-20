@@ -37,3 +37,6 @@ use {
     require "plugins.trouble"
   end
 }
+
+-- RAILS --
+use 'thoughtbot/vim-rspec'
