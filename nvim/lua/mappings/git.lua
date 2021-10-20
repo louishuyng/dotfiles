@@ -4,6 +4,7 @@ local opt = {}
 
 map("n", ",ga", ":Gwrite!<CR>", opt)
 map("n", ",gc", ":Git commit<CR>", opt)
+map("n", ",gl", ":Git log<CR>", opt)
 map("n", ",gs", ":Git<CR>:20wincmd_<CR>", opt, {silent = true})
 map("n", "<space>gs", ":LazyGit<CR>", opt, {silent = true})
 map("n", ",gd", ":Gvdiff!<CR>", opt)

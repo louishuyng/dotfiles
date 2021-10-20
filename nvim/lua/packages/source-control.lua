@@ -16,3 +16,4 @@ use {
     "GBrowse",
   }
 }
+use 'AndrewRadev/diffurcate.vim'
