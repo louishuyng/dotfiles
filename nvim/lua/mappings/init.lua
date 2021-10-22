@@ -24,4 +24,4 @@ require 'mappings.editor.speller'
 require 'mappings.editor.trouble'
 require 'mappings.editor.wordmotion'
 
-require 'mappings.languages.rails'
+require 'mappings.languages.test'

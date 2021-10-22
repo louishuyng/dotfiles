@@ -8,3 +8,4 @@ use {
 }
 use 'rcarriga/nvim-notify'
 use 'vimwiki/vimwiki'
+use 'preservim/vimux'

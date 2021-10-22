@@ -29,7 +29,6 @@ use {
     require "plugins/null"
   end,
 }
-
 use {
   "folke/trouble.nvim",
   requires = "kyazdani42/nvim-web-devicons",
@@ -37,6 +36,4 @@ use {
     require "plugins.trouble"
   end
 }
-
--- RAILS --
-use 'thoughtbot/vim-rspec'
+use 'vim-test/vim-test'
