@@ -25,3 +25,5 @@ require 'mappings.editor.trouble'
 require 'mappings.editor.wordmotion'
 
 require 'mappings.languages.test'
+
+require 'mappings.term.vimux'
