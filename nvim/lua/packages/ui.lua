@@ -1,4 +1,4 @@
-packer = require "packer"
+local packer = require "packer"
 local use = packer.use
 
 use 'zeis/vim-kolor'
