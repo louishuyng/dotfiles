@@ -34,3 +34,6 @@ map("v", "<S-h>", "<Plug>MoveBlockLeft", opt)
 map("v", "<S-l>", "<Plug>MoveBlockRight", opt)
 
 map("v", "<space>ex", ":w !", opt)
+
+-- Sorting
+map("v", "<space>so", ":sort<CR>", opt)
