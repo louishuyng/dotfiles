@@ -24,6 +24,8 @@ cmp.setup {
         nvim_lsp = "[LSP]",
         nvim_lua = "[Lua]",
         buffer = "[BUF]",
+        calc = "[Calc]",
+        luasnip = "[Snip]",
       })[entry.source.name]
 
       return vim_item
@@ -62,5 +64,6 @@ cmp.setup {
     { name = "luasnip" },
     { name = "buffer" },
     { name = "nvim_lua" },
+    { name = "calc" },
   },
 }
