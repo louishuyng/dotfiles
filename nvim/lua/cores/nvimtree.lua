@@ -58,7 +58,6 @@ g.nvim_tree_icons = {
 }
 
 nvimtree.setup {
-  lsp_diagnostics = true,
   disable_netrw = true,
   hijack_netrw = true,
   ignore_ft_on_setup = { "dashboard" },
@@ -77,7 +76,7 @@ nvimtree.setup {
       info = "",
       warning = "",
       error = "",
-    }  
+    }
   },
   view = {
     allow_resize = true,
