@@ -62,3 +62,9 @@ vim.api.nvim_command("set undodir=~/.vim/undo")
 
 -- RUST
 vim.g.rust_recommended_style = 0
+
+-- Golang
+vim.cmd [[au FileType go set noexpandtab]]
+vim.cmd [[au FileType go set shiftwidth=2]]
+vim.cmd [[au FileType go set softtabstop=2]]
+vim.cmd [[au FileType go set tabstop=2]]
