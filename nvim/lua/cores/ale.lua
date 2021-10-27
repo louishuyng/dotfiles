@@ -2,13 +2,15 @@ vim.g.ale_linters = {
   javascript = {"eslint","prettier","flow"},
   typescript = {"tslint","eslint"},
   ruby = {"rubocop"},
-  python = {"flake8","pylint"}
+  python = {"flake8","pylint"},
+  go = {"gofmt", "golps", "golint"},
 }
 
 vim.g.ale_fixers = {
   typescript = {"tslint","eslint"},
   javascript = {"prettier","eslint"},
-  ruby = {"rubocop"}
+  ruby = {"rubocop"},
+  go = {"gofmt", "goimports", "golines"},
 }
 
 vim.g.ale_enabled = 1
