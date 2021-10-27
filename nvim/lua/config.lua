@@ -1,3 +1,4 @@
+require "cmds"
 require "mappings"
 require "options"
 
