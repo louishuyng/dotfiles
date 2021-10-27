@@ -27,6 +27,11 @@ export PATH=/usr/local/opt/python/libexec/bin:$PATH
 #JAVA
 export JAVA_HOME=$(/usr/libexec/java_home)
 
+#Golang
+export GOPATH=$HOME/development/golib
+export PATH=$PATH:$GOPATH/bin
+export GOPATH=$GOPATH:$HOME/Dev/Practice/Golang
+
 # OPEN SSL
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
