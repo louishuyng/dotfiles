@@ -34,6 +34,26 @@ install_homebrew() {
   fi
 }
 
+install_ninja() {
+  read -r -p "Do you want to install ninja and lua lsp? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install ninja
+
+    cd ~/.config/nvim
+    
+    git clone https://github.com/sumneko/lua-language-server
+    cd lua-language-server
+    git submodule update --init --recursive
+
+    cd 3rd/luamake
+    compile/install.sh
+    cd ../..
+    ./3rd/luamake/luamake rebuild
+    
+    success "Installed nija and setup lua lsp"
+  fi
+}
+
 install_asdf() {
   read -r -p "Do you want to install asdf? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -310,6 +330,7 @@ install_tools() {
 }
 
 install_homebrew
+install_ninja
 install_asdf
 install_languages
 enstall_devops
