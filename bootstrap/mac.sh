@@ -54,17 +54,12 @@ install_ninja() {
   fi
 }
 
-install_asdf() {
-  read -r -p "Do you want to install asdf? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install asdf
-    success "Installed asdf"
-  fi
-}
-
 install_languages() {
   read -r -p "Do you want to install languages? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
+    brew install asdf
+    success "Installed asdf"
+
     asdf plugin-add rust
     asdf install rust 1.55.0
     asdf global rust 1.55.0
@@ -74,6 +69,10 @@ install_languages() {
     asdf install python 3.7.3
     asdf global python 3.7.3
     success "Installed python"
+
+    asdf plugin-add golang
+    asdf install golang latest
+    success "Installed golang"
   fi
   
 }
@@ -331,9 +330,8 @@ install_tools() {
 
 install_homebrew
 install_ninja
-install_asdf
 install_languages
-enstall_devops
+install_devops
 setup_penetration_tools
 setup_git
 install_zsh
