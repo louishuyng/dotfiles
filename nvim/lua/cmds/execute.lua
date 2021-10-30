@@ -1,1 +1,1 @@
-vim.cmd("autocmd BufEnter *.go nnoremap <space>r :call VimuxRunCommand('clear; go run ' . bufname('%'))<CR>")
+vim.cmd("autocmd BufEnter *.go nnoremap <leader>r :call VimuxRunCommand('clear; go run ' . bufname('%'))<CR>")
