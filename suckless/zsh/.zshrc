@@ -17,25 +17,6 @@ autoload -Uz _zinit
 #     tmux attach -t work || tmux new -s work
 # fi
 
-### Functions
-source "$HOME/.config/suckless/zsh/functions/general.zsh"
-source "$HOME/.config/suckless/zsh/functions/k8s.zsh"
-source "$HOME/.config/suckless/zsh/functions/vpn.zsh"
-
-### Alias
-source "$HOME/.config/suckless/zsh/alias/app.zsh"
-source "$HOME/.config/suckless/zsh/alias/docker.zsh"
-source "$HOME/.config/suckless/zsh/alias/general.zsh"
-source "$HOME/.config/suckless/zsh/alias/git.zsh"
-source "$HOME/.config/suckless/zsh/alias/k8s.zsh"
-source "$HOME/.config/suckless/zsh/alias/languages.zsh"
-source "$HOME/.config/suckless/zsh/alias/network.zsh"
-source "$HOME/.config/suckless/zsh/alias/os.zsh"
-source "$HOME/.config/suckless/zsh/alias/redis.zsh"
-source "$HOME/.config/suckless/zsh/alias/spotify.zsh"
-source "$HOME/.config/suckless/zsh/alias/tmux.zsh"
-source "$HOME/.config/suckless/zsh/alias/tools.zsh"
-
 # Theme
 zinit ice depth=1 atload"!source ~/.config/suckless/zsh/.p10k-evilball.zsh" lucid nocd
 
@@ -106,3 +87,24 @@ zinit light MichaelAquilina/zsh-you-should-use
 export PATH="$PATH:$HOME/.rvm/bin"
 
 alias luamake=/Users/admin/.config/nvim/lua-language-server/3rd/luamake/luamake
+
+### Alias
+source "$HOME/.config/suckless/zsh/alias/app.zsh"
+source "$HOME/.config/suckless/zsh/alias/docker.zsh"
+source "$HOME/.config/suckless/zsh/alias/general.zsh"
+source "$HOME/.config/suckless/zsh/alias/git.zsh"
+source "$HOME/.config/suckless/zsh/alias/k8s.zsh"
+source "$HOME/.config/suckless/zsh/alias/languages.zsh"
+source "$HOME/.config/suckless/zsh/alias/network.zsh"
+source "$HOME/.config/suckless/zsh/alias/os.zsh"
+source "$HOME/.config/suckless/zsh/alias/redis.zsh"
+source "$HOME/.config/suckless/zsh/alias/spotify.zsh"
+source "$HOME/.config/suckless/zsh/alias/tmux.zsh"
+source "$HOME/.config/suckless/zsh/alias/tools.zsh"
+
+### Functions
+source "$HOME/.config/suckless/zsh/functions/general.zsh"
+source "$HOME/.config/suckless/zsh/functions/git.zsh"
+source "$HOME/.config/suckless/zsh/functions/k8s.zsh"
+source "$HOME/.config/suckless/zsh/functions/tmux.zsh"
+source "$HOME/.config/suckless/zsh/functions/vpn.zsh"
