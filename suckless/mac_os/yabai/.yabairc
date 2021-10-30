@@ -73,7 +73,7 @@ yabai -m rule --add app="VLC"              mange=off           space=4
 yabai -m rule --add app="Tandem"           mange=off           space=4
 
 # Notes
-yabai -m rule --add app="Notion"           manage=off          space=5
+yabai -m rule --add app="Notion"           manage=off          space=4
 
 # Others
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
