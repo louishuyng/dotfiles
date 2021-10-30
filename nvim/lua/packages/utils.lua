@@ -26,13 +26,7 @@ use {
     require("plugins.others").comment()
   end
 }
-use {
-  "Pocco81/TrueZen.nvim",
-  cmd = {"TZAtaraxis", "TZFocus", "TZMinimalist"},
-    config = function()                     
-      require "plugins.zenmode"             
-  end
-}
+use 'szw/vim-maximizer'
 use 'machakann/vim-swap'
 use 'tpope/vim-eunuch'
 use 'simnalamburt/vim-mundo'
