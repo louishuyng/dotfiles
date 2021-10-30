@@ -10,4 +10,4 @@ map('t', '<F7>', '<C-\\><C-n>:FloatermNew<CR>', opts)
 map('t', '<Tab>', '<C-\\><C-n>:FloatermNext<CR>', opts)
 map('t', '<S-Tab>', '<C-\\><C-n>:FloatermPrev<CR>', opts)
 
-map('n', '<space>ra', ':FloatermNew ranger<CR>', opts)
+map('n', '<leader>ra', ':FloatermNew ranger<CR>', opts)
