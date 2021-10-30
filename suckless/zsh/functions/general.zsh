@@ -91,3 +91,8 @@ function countdown() {
 function lowercase_allfiles() {
   for i in * ; do j=$(tr '[:upper:]' '[:lower:]' <<< "$i") ; mv "$i" "$j" ; done
 }
+
+function nosleep () {
+  TIME=$1
+  caffeinate -t $TIME &
+}

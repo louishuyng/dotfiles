@@ -44,8 +44,5 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
 
-# No sleep
-alias nosleep='caffeinate'
-
 # Restart zsh
 alias reset='exec zsh'
