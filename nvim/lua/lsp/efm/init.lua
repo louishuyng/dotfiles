@@ -8,7 +8,6 @@ local efm_log_dir = '/tmp/'
 local efm_root_markers = { 'package.json', '.git/', '.zshrc' }
 local efm_languages = {
   yaml = { prettier },
-  json = { prettier },
   markdown = { prettier },
   javascript = { eslint, prettier },
   javascriptreact = { eslint, prettier },
