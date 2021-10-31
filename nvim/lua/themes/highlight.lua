@@ -9,3 +9,6 @@ cmd[[au VimEnter * highlight SneakScope guifg=red guibg=yellow ctermfg=red cterm
 cmd[[au VimEnter * highlight SignColumn guifg=NONE guibg=NONE]]
 cmd[[au VimEnter * highlight LineNr guifg=NONE guibg=NONE]]
 cmd[[au VimEnter * highlight MatchParen guifg=#C6C6C6 guibg=NONE]]
+cmd[[au VimEnter * highlight GitGutterAdd    guifg=#98c379 ctermfg=2 ]]
+cmd[[au VimEnter * highlight GitGutterChange guifg=#e5c07b ctermfg=3 ]]
+cmd[[au VimEnter * highlight GitGutterDelete guifg=#e88388 ctermfg=1 ]]
