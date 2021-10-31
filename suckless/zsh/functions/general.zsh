@@ -29,9 +29,9 @@ function sshadd() {
   ssh-add -D
 
   if [ -z "${name}" ]; then
-    ssh-add -K ~/.ssh/id_rsa
+    ssh-add --apple-use-keychain  ~/.ssh/id_rsa
   else
-    ssh-add -K ~/.ssh/id_rsa_$name
+    ssh-add --apple-use-keychain ~/.ssh/id_rsa_$name
   fi
 }
 
