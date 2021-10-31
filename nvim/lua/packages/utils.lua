@@ -27,11 +27,8 @@ use {
   end
 }
 use 'szw/vim-maximizer'
-use 'machakann/vim-swap'
 use 'tpope/vim-eunuch'
-use 'simnalamburt/vim-mundo'
 use 'justinmk/vim-sneak'
-use 'matze/vim-move'
 use 'brooth/far.vim'
 use 'terryma/vim-multiple-cursors'
 use 'tpope/vim-surround'
@@ -42,5 +39,4 @@ use {
 }
 use 'chaoren/vim-wordmotion'
 use 'kamykn/spelunker.vim'
-use 'karb94/neoscroll.nvim'
 use 'sbdchd/neoformat'

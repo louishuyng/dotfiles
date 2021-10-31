@@ -7,10 +7,10 @@ vim.g.ale_linters = {
 }
 
 vim.g.ale_fixers = {
-  typescript = {"tslint","eslint"},
   javascript = {"prettier","eslint"},
   ruby = {"rubocop"},
   go = {"gofmt", "goimports", "golines"},
+  typescript = {"tslint","eslint"},
 }
 
 vim.g.ale_enabled = 1

@@ -27,11 +27,8 @@ map("i", "<C-d>", "<ESC>:q!<CR>", opt)
 map("v", ",m", ":normal @", opt)
 
 -- Move Block
-vim.g.move_map_keys = 0
-map("v", "<S-j>", "<Plug>MoveBlockDown", opt)
-map("v", "<S-k>", "<Plug>MoveBlockUp", opt)
-map("v", "<S-h>", "<Plug>MoveBlockLeft", opt)
-map("v", "<S-l>", "<Plug>MoveBlockRight", opt)
+map("v", "<S-j>", ":m'>+<CR>gv=gv", opt)
+map("v", "<S-k>", ":m-2<CR>gv=gv", opt)
 
 map("v", "<leader>ex", ":w !", opt)
 
