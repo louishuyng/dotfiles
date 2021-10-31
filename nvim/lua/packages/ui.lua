@@ -2,7 +2,12 @@ local packer = require "packer"
 local use = packer.use
 
 use 'zeis/vim-kolor'
-use 'yamatsum/nvim-nonicons'
+use {
+  "kyazdani42/nvim-web-devicons",
+  config = function()
+    require "plugins.icons"
+  end,
+}
 use {
   "norcalli/nvim-colorizer.lua",
   event = "BufRead",
