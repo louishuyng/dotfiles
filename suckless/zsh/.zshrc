@@ -1,4 +1,5 @@
 source ~/.zsh-defer/zsh-defer.plugin.zsh
+
 PS1="%F{12}%~%f "
 RPS1="%F{240}Loading...%f"
 HISTFILE=~/.zsh_history
@@ -32,8 +33,10 @@ zsh-defer source ~/.zsh/zsh-peco-history/zsh-peco-history.plugin.zsh
 zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 zsh-defer source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# Load Env
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=/usr/local/sbin:$PATH
+source ~/.zshenv
 
 alias luamake=/Users/admin/.config/nvim/lua-language-server/3rd/luamake/luamake
 
