@@ -1,87 +1,36 @@
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-	print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-	command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-	command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-		print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
-		print -P "%F{160}▓▒░ The clone has failed.%f"
-fi
-source "$HOME/.zinit/bin/zinit.zsh"
-source "$HOME/.config/suckless/zsh/.zshenv"
-source "$HOME/.config/suckless/zsh/config.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+source ~/.zsh-defer/zsh-defer.plugin.zsh
+PS1="%F{12}%~%f "
+RPS1="%F{240}Loading...%f"
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
-# if [ -z "$TMUX" ]
-# then
-#     tmux attach -t work || tmux new -s work
-# fi
+### Theme
+zstyle :prompt:pure:path color white
+zstyle ':prompt:pure:prompt:*' color green
+zstyle :prompt:pure:git:stash show yes
 
-# Theme
-zinit ice depth=1 atload"!source ~/.config/suckless/zsh/.p10k-evilball.zsh" lucid nocd
+### Hightlight 
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
 
-zinit light romkatv/powerlevel10k
-
-# Oh-my-zsh lib
-zinit snippet OMZ::lib/history.zsh
-
-zinit snippet OMZ::lib/key-bindings.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::lib/grep.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::lib/completion.zsh
-
-# Oh-my-zsh plugins
-zinit ice wait lucid atload"unalias grv"
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/extract/extract.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/golang/golang.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/autojump/autojump.plugin.zsh
-
-# Plugins
-zinit ice depth=1 lucid
-zinit light trystan2k/zsh-tab-title
-
-zinit ice depth=1 wait lucid
-zinit light Aloxaf/fzf-tab
-
-zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
-zinit light zdharma/fast-syntax-highlighting
-
-zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_zsh_autosuggest_start"
-zinit light zsh-users/zsh-autosuggestions
-
-zinit ice depth=1 wait"1" lucid atinit"zstyle ':history-search-multi-word' page-size '20'"
-zinit light zdharma/history-search-multi-word
-
-zinit ice depth=1 wait"2" lucid
-zinit light wfxr/forgit
-
-zinit ice depth=1 wait"2" lucid
-zinit light hlissner/zsh-autopair
-
-zinit ice depth=1 wait"2" lucid
-zinit light peterhurford/up.zsh
-
-zinit ice depth=1 wait"2" lucid
-zinit light MichaelAquilina/zsh-you-should-use
+export LC_ALL=en_US.UTF-8
+zsh-defer source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+zsh-defer source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
+zsh-defer source ~/.zsh/zsh-peco-history/zsh-peco-history.plugin.zsh
+zsh-defer source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+zsh-defer source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -108,3 +57,9 @@ source "$HOME/.config/suckless/zsh/functions/git.zsh"
 source "$HOME/.config/suckless/zsh/functions/k8s.zsh"
 source "$HOME/.config/suckless/zsh/functions/tmux.zsh"
 source "$HOME/.config/suckless/zsh/functions/vpn.zsh"
+
+### Load pure theme afterward
+autoload -U promptinit; promptinit
+autoload -Uz compinit && compinit
+prompt pure
+zsh-defer -c 'RPS1="%F{240}%f"'
