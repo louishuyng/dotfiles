@@ -19,3 +19,9 @@ function gcn() {
   cd $reponame;
   npm install;
 }
+
+# Git lab merge requests Oivan
+function gmr_oivan() {
+  repo=$(basename -s .git `git config --get remote.origin.url`)
+  open "http://gitlab.iwa.fi/moho/$repo/-/merge_requests"
+}
