@@ -19,13 +19,7 @@ use {
     })
   end
 }
-use {
-  "terrortylor/nvim-comment",
-  cmd = "CommentToggle",
-  config = function()
-    require("plugins.others").comment()
-  end
-}
+use 'numToStr/Comment.nvim'
 use 'szw/vim-maximizer'
 use 'tpope/vim-eunuch'
 use 'justinmk/vim-sneak'

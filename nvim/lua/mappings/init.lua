@@ -11,7 +11,6 @@ require 'mappings.maximizer'
 require 'mappings.telescope'
 require 'mappings.tree'
 
-require 'mappings.editor.commenter'
 require 'mappings.editor.fold'
 require 'mappings.editor.neoformat'
 require 'mappings.editor.nrrwrgn'

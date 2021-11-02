@@ -5,6 +5,7 @@ require "options"
 require "cores.git"
 require "cores.sneak"
 
+require "plugins.comment"
 require "plugins.dashboard"
 require "plugins.far"
 require "plugins.fterm"
