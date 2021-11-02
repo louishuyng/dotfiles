@@ -8,29 +8,45 @@ function codeSpace () {
 
     OIVAN_PROJECT="$DEV_DIR/Oivan/sakani-workspace"
     ELXR_PROJECT="$DEV_DIR/ELXR"
+    JHMSU_PROJECT="$DEV_DIR/Jhmsu"
 
-    SESSION_CODE='Code'
+    SESSION_OIVAN='Oivan'
+    SESSION_ELXR='Elxr'
+    SESSION_JHMSU='Jhmsu'
     SESSION_DEVOPS='Devops'
     SESSION_SANDBOX='Sandbox'
 
-    # CODE
-    tmux kill-session -t $SESSION_CODE
-    tmux new -d -s $SESSION_CODE -n "market"
+    # OIVAN
+    tmux kill-session -t $SESSION_OIVAN
+    tmux new -d -s $SESSION_OIVAN -n "market"
     tmux new-window -n "v3-fe"
     tmux new-window -n "admin-fe"
     tmux new-window -n "sapa-fe"
-    tmux new-window -n "elxr"
 
-    tmux send-keys -t $SESSION_CODE:1 "cd $OIVAN_PROJECT/sakani-market-units-service" Enter
-    tmux send-keys -t $SESSION_CODE:1 "nvim" Enter
-    tmux send-keys -t $SESSION_CODE:2 "cd $OIVAN_PROJECT/sakani-v3-frontend" Enter
-    tmux send-keys -t $SESSION_CODE:2 "nvim" Enter
-    tmux send-keys -t $SESSION_CODE:3 "cd $OIVAN_PROJECT/sakani-admin" Enter
-    tmux send-keys -t $SESSION_CODE:3 "nvim" Enter
-    tmux send-keys -t $SESSION_CODE:4 "cd $OIVAN_PROJECT/sakani-partners-frontend" Enter
-    tmux send-keys -t $SESSION_CODE:4 "nvim" Enter
-    tmux send-keys -t $SESSION_CODE:5 "cd $ELXR_PROJECT/elxr_backend" Enter
-    tmux send-keys -t $SESSION_CODE:5 "nvim" Enter
+    tmux send-keys -t $SESSION_OIVAN:1 "cd $OIVAN_PROJECT/sakani-market-units-service" Enter
+    tmux send-keys -t $SESSION_OIVAN:1 "nvim" Enter
+    tmux send-keys -t $SESSION_OIVAN:2 "cd $OIVAN_PROJECT/sakani-v3-frontend" Enter
+    tmux send-keys -t $SESSION_OIVAN:2 "nvim" Enter
+    tmux send-keys -t $SESSION_OIVAN:3 "cd $OIVAN_PROJECT/sakani-admin" Enter
+    tmux send-keys -t $SESSION_OIVAN:3 "nvim" Enter
+    tmux send-keys -t $SESSION_OIVAN:4 "cd $OIVAN_PROJECT/sakani-partners-frontend" Enter
+    tmux send-keys -t $SESSION_OIVAN:4 "nvim" Enter
+
+    # ELXR
+    tmux kill-session -t $SESSION_ELXR
+    tmux new -d -s $SESSION_ELXR -n "backend"
+    tmux send-keys -t $SESSION_ELXR:1 "cd $ELXR_PROJECT/elxr_backend" Enter
+    tmux send-keys -t $SESSION_ELXR:1 "nvim" Enter
+
+    # JHMSU
+    tmux kill-session -t $SESSION_JHMSU
+    tmux new -d -s $SESSION_JHMSU -n "dentist-be"
+    tmux new-window -n "dentist-fe"
+
+    tmux send-keys -t $SESSION_JHMSU:1 "cd $JHMSU_PROJECT/dentist-backend" Enter
+    tmux send-keys -t $SESSION_JHMSU:1 "nvim" Enter
+    tmux send-keys -t $SESSION_JHMSU:2 "cd $JHMSU_PROJECT/dentist" Enter
+    tmux send-keys -t $SESSION_JHMSU:2 "nvim" Enter
 
     # SANDBOX
     tmux kill-session -t $SESSION_SANDBOX
