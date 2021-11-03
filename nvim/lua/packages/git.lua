@@ -2,7 +2,7 @@ local packer = require "packer"
 local use = packer.use
 
 use 'airblade/vim-gitgutter'
-use 'f-person/git-blame.nvim'
+use 'rhysd/git-messenger.vim'
 use {
   "tpope/vim-fugitive",
   cmd = {

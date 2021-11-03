@@ -5,4 +5,6 @@ vim.g.gitgutter_sign_removed_first_line = "▌"
 vim.g.gitgutter_sign_removed_above_and_below = "▌"
 vim.g.gitgutter_sign_modified_removed = "▌"
 
-vim.g.gitblame_enabled = 0
+-- Git Messenger
+vim.g.git_messenger_always_into_popup = true
+vim.g.git_messenger_include_diff = "current"

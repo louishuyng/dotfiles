@@ -36,7 +36,7 @@ zsh-defer source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 # Load Env
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH=/usr/local/sbin:$PATH
-source ~/.zshenv
+source "$HOME/.config/suckless/zsh/.zshenv"
 
 alias luamake=/Users/admin/.config/nvim/lua-language-server/3rd/luamake/luamake
 
