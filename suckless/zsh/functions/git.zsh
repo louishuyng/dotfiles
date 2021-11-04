@@ -25,3 +25,8 @@ function gmr_oivan() {
   repo=$(basename -s .git `git config --get remote.origin.url`)
   open "http://gitlab.iwa.fi/moho/$repo/-/merge_requests"
 }
+
+# Git hub merge requests
+function gmr() {
+  open https://github.$(git config remote.origin.url | cut -f2 -d. | tr ':' /)/pulls
+}
