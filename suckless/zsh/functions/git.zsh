@@ -21,12 +21,11 @@ function gcn() {
 }
 
 # Git lab merge requests Oivan
-function gmr_oivan() {
-  repo=$(basename -s .git `git config --get remote.origin.url`)
-  open "http://gitlab.iwa.fi/moho/$repo/-/merge_requests"
+function glm() {
+  open https://gitlab.iwa.fi/moho/$(basename -s .git `git config --get remote.origin.url`)/-/merge_requests
 }
 
 # Git hub merge requests
-function gmr() {
+function ghm() {
   open https://github.$(git config remote.origin.url | cut -f2 -d. | tr ':' /)/pulls
 }
