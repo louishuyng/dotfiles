@@ -57,6 +57,6 @@ function nosleep () {
 }
 
 function app() {
-  local app=$((ls /Applications & ls /System/Applications) | sed 's/.app//g' | fzf)
+  local app=$((ls /Applications & ls /System/Applications) | sed 's/.app//g' | fzf --preview-window right,0%)
   open -a $app
 }
