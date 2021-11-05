@@ -14,7 +14,10 @@ use {
     "Gpull",
     "Git blame",
     "Gvdiff",
-    "GBrowse",
   }
 }
 use 'AndrewRadev/diffurcate.vim'
+use {
+  'ruifm/gitlinker.nvim',
+  requires = 'nvim-lua/plenary.nvim',
+}

@@ -8,3 +8,11 @@ vim.g.gitgutter_sign_modified_removed = "▌"
 -- Git Messenger
 vim.g.git_messenger_always_into_popup = true
 vim.g.git_messenger_include_diff = "current"
+
+-- Git Linker
+local present, gitlinker = pcall(require, "gitlinker")
+if not present then
+  return
+end
+
+gitlinker.setup({})
