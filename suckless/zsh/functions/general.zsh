@@ -55,3 +55,8 @@ function nosleep () {
   TIME=$1
   caffeinate -t $TIME &
 }
+
+function app() {
+  local app=$((ls /Applications & ls /System/Applications) | sed 's/.app//g' | fzf)
+  open -a $app
+}
