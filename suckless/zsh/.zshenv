@@ -2,6 +2,7 @@
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 #Homebrew's sbin
 export PATH="/usr/local/sbin:$PATH"
@@ -61,9 +62,6 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 #GO
 export PATH=$PATH:/usr/local/go/bin
-
-#Zathura
-export LC_ALL=C   
 
 #Commands
 export PATH="$HOME/.config/commands:$PATH"
