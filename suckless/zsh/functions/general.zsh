@@ -60,3 +60,8 @@ function app() {
   local app=$((ls /Applications & ls /System/Applications) | sed 's/.app//g' | fzf --preview-window right,0%)
   open -a $app
 }
+
+function goto() {
+  local path=$(realpath $(which $1) | awk 'sub( /\/[a-z]*$/,"",$0 )')
+  cd $path
+}
