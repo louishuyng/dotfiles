@@ -7,7 +7,6 @@ export LC_ALL=en_US.UTF-8
 #Homebrew's sbin
 export PATH="/usr/local/sbin:$PATH"
 
-
 #Fluter
 export PATH=$PATH:$HOME/development/flutter/bin
 
@@ -63,5 +62,5 @@ export PATH=$PATH:$HOME/.cargo/bin
 #GO
 export PATH=$PATH:/usr/local/go/bin
 
-#Commands
-export PATH="$HOME/.config/commands:$PATH"
+#Scripts
+export PATH="$HOME/.config/scripts:$PATH"
