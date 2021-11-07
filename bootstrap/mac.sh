@@ -250,8 +250,20 @@ install_window_manager() {
     sudo yabai --install-sa
     brew services start yabai
     killall Dock
+
     brew install somdoron/formulae/spacebar
-    brew services start spacebar
+
+    brew tap FelixKratz/formulae
+    brew install sketchybar
+    chmod +x ~/.config/scripts/*
+
+    ln -s ~/.config/suckless/mac_os/sketchybar/ ~/.config
+    ln -s ~/.config/suckless/mac_os/wal/ ~/.config
+
+    chmod +x ~/.config/sketchybar/plugins/*
+
+    brew services start sketchybar
+
     brew install koekeishiya/formulae/skhd
     brew services start skhd
 

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/Volumes/Wallpapers/Wallpapers/Abstract/Wallpaper-2560x1440l1.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#1d2938",
+        "foreground": "#AE81FF",
+        "cursor": "#fafaff"
+    },
+    "colors": {
+        "color0": "#65dfe7",
+        "color1": "#fcc048",
+        "color2": "#73e286",
+        "color3": "#1dbfa2",
+        "color4": "#66D9EF",
+        "color5": "#ff624a",
+        "color6": "#ff6d54",
+        "color7": "#ffaaaa",
+        "color8": "#74b8f9",
+        "color9": "#7ee691",
+        "color10": "#1fc6ab",
+        "color11": "#1dbfa2",
+        "color12": "#ff785f",
+        "color13": "#F92672",
+        "color14": "#3f8d92",
+        "color15": "#0F5E78"
+    }
+}

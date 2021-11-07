@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/Volumes/Wallpapers/Wallpapers/Fantasy/dragon.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0C0E3B",
+        "foreground": "#efcfb9",
+        "cursor": "#efcfb9"
+    },
+    "colors": {
+        "color0": "#0C0E3B",
+        "color1": "#E52F67",
+        "color2": "#A05B59",
+        "color3": "#F15A65",
+        "color4": "#F09B6F",
+        "color5": "#CEB36C",
+        "color6": "#B11F8A",
+        "color7": "#efcfb9",
+        "color8": "#a79081",
+        "color9": "#E52F67",
+        "color10": "#A05B59",
+        "color11": "#F15A65",
+        "color12": "#F09B6F",
+        "color13": "#CEB36C",
+        "color14": "#B11F8A",
+        "color15": "#efcfb9"
+    }
+}

@@ -88,3 +88,5 @@ zinit light-mode for \
     zdharma-continuum/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
+
+(wal -r &)

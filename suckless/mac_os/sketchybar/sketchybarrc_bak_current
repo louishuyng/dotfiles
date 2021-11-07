@@ -1,0 +1,242 @@
+#!/bin/sh
+# S K E T C H Y  B A R
+# TODO: Create Defualts with global variables and functions
+
+# Pywal
+. $HOME/.cache/wal/colors.sh
+
+# Functions 
+function seperator() {
+  SPACE_SEPERATOR=sperator_"$1"
+  sketchybar -m add item $SPACE_SEPERATOR left
+  sketchybar -m set $SPACE_SEPERATOR associated_display 1
+  sketchybar -m set $SPACE_SEPERATOR icon_font "Hack Nerd Font:Bold:16.0"
+  sketchybar -m set $SPACE_SEPERATOR icon_padding_right 8
+  sketchybar -m set $SPACE_SEPERATOR icon_padding_left 8
+  sketchybar -m set $SPACE_SEPERATOR icon 
+}
+
+# B A R  O P T S
+sketchybar -m config height                     26
+sketchybar -m config padding_left               10
+sketchybar -m config padding_right              10
+sketchybar -m config bar_color                  0xF0${background:1}
+
+# L E F T
+# HOME
+sketchybar -m add component space home left
+sketchybar -m set home associated_display 1
+sketchybar -m set home associated_space 1
+sketchybar -m set home icon_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set home icon ﮟ # # #
+sketchybar -m set home icon_color 0xff${color3:1}
+sketchybar -m set home icon_highlight_color 0xff${color1:1}
+sketchybar -m set home icon_padding_left 3
+sketchybar -m set home click_script "yabai -m space --focus 1"
+# sketchybar -m set home label_font "Hack Nerd Font:Mono:16.0"
+# sketchybar -m set home label home
+
+seperator 1
+
+# Communication
+sketchybar -m add component space comms left
+sketchybar -m set comms associated_display 1
+sketchybar -m set comms associated_space 2
+sketchybar -m set comms icon_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set comms icon 
+sketchybar -m set comms icon_color 0xff${color3:1}
+sketchybar -m set comms icon_highlight_color 0xff${color1:1}
+sketchybar -m set comms icon_padding_left 3
+sketchybar -m set comms click_script "yabai -m space --focus 2"
+# sketchybar -m set comms label_font "Hack Nerd Font:Mono:16.0"
+# sketchybar -m set comms label home
+
+seperator 2
+
+# Music
+sketchybar -m add component space music left
+sketchybar -m set music associated_display 1
+sketchybar -m set music associated_space 3
+sketchybar -m set music icon_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set music icon 
+sketchybar -m set music icon_color 0xff${color3:1}
+sketchybar -m set music icon_highlight_color 0xff${color1:1}
+sketchybar -m set music icon_padding_left 3
+sketchybar -m set music click_script "yabai -m space --focus 3"
+# sketchybar -m set music label_font "Hack Nerd Font:Mono:16.0"
+# sketchybar -m set music label home
+
+seperator 3
+
+# Investments
+sketchybar -m add component space investments left
+sketchybar -m set investments associated_display 1
+sketchybar -m set investments associated_space 4
+sketchybar -m set investments icon_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set investments icon 
+sketchybar -m set investments icon_color 0xff${color3:1}
+sketchybar -m set investments icon_highlight_color 0xff${color1:1}
+sketchybar -m set investments icon_padding_left 3
+sketchybar -m set investments click_script "yabai -m space --focus 4"
+# sketchybar -m set investments label_font "Hack Nerd Font:Mono:16.0"
+# sketchybar -m set investments label home
+
+seperator 4
+
+# Misc
+sketchybar -m add component space misc left
+sketchybar -m set misc associated_display 1
+sketchybar -m set misc associated_space 5
+sketchybar -m set misc icon_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set misc icon 
+sketchybar -m set misc icon_color 0xff${color3:1}
+sketchybar -m set misc icon_highlight_color 0xff${color1:1}
+sketchybar -m set misc icon_padding_left 3
+sketchybar -m set misc click_script "yabai -m space --focus 5"
+# sketchybar -m set misc label_font "Hack Nerd Font:Mono:16.0"
+# sketchybar -m set misc label home
+
+seperator 12
+
+sketchybar -m add item title_sep left
+sketchybar -m set title_sep associated_display 1
+sketchybar -m set title_sep icon_font "Hack Nerd Font:Bold:16.0"
+sketchybar -m set title_sep label_font "Hack Nerd Font:Bold:16.0"
+sketchybar -m set title_sep label_padding_right 5
+sketchybar -m set title_sep label_padding_left 0
+# sketchybar -m set title_sep icon_padding_right 8
+# sketchybar -m set title_sep icon_padding_left 8
+sketchybar -m set title_sep label_color 0xF0${color3:1}
+sketchybar -m set title_sep label "[N]"
+# sketchybar -m set title_sep icon "│"
+sketchybar -m set title_sep icon_color 0xff${color3:1}
+
+seperator 13
+
+# Can Set to center
+# TODO: Set color
+sketchybar -m add component item window_title left
+sketchybar -m set window_title label_font "Hack Nerd Font:Mono:16.0"
+# sketchybar -m set window_title label_color 0xff${color3:1}
+sketchybar -m subscribe window_title window_focus
+sketchybar -m subscribe window_title front_app_switched
+sketchybar -m subscribe window_title space_change
+sketchybar -m subscribe window_title title_change
+sketchybar -m set window_title script "~/.config/sketchybar/plugins/windowTitle.sh"
+
+# R I G H T
+sketchybar -m add item battery right
+sketchybar -m set battery update_freq 3
+sketchybar -m set battery script "~/.config/sketchybar/plugins/power.sh"
+sketchybar -m set battery icon_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set battery label_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set battery icon 
+sketchybar -m set battery icon_color 0xff${color3:1}
+# sketchybar -m set battery label_color 0xff${color3:1}
+sketchybar -m set battery label_padding_left 4
+sketchybar -m set battery icon_padding_left 4
+sketchybar -m set battery label_padding_right 6
+# sketchybar -m set battery icon_padding_left 
+sketchybar -m set battery icon_padding_right 4
+
+seperator 5
+
+sketchybar -m add item clock right
+sketchybar -m set clock update_freq 10
+sketchybar -m set clock script "~/.config/sketchybar/plugins/clock.sh"
+sketchybar -m set clock icon_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set clock label_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set clock icon 
+sketchybar -m set clock icon_color 0xff${color3:1}
+# sketchybar -m set clock label_color 0xff${color3:1}
+sketchybar -m set clock label_padding_left 4
+sketchybar -m set clock icon_padding_left 4
+sketchybar -m set clock label_padding_right 6
+# sketchybar -m set clock icon_padding_left 
+sketchybar -m set clock icon_padding_right 4
+
+seperator 6
+
+sketchybar -m add item btc right
+sketchybar -m set btc icon_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set btc label_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set btc icon 
+sketchybar -m set btc update_freq 20
+sketchybar -m set btc icon_color 0xff${color3:1}
+sketchybar -m set btc icon_padding_left 4
+sketchybar -m set btc label_padding_left 4
+sketchybar -m set eth icon_padding_right 4
+sketchybar -m set btc label_padding_right 6
+sketchybar -m set btc script "~/.config/sketchybar/plugins/btc.sh"
+
+seperator 7
+
+sketchybar -m add item eth right
+sketchybar -m set eth icon_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set eth label_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set eth icon ﲹ
+sketchybar -m set eth update_freq 20
+sketchybar -m set eth icon_color 0xff${color3:1}
+sketchybar -m set eth label_padding_left 2
+sketchybar -m set eth icon_padding_left 4
+sketchybar -m set eth icon_padding_right 2
+sketchybar -m set eth label_padding_right 6
+sketchybar -m set eth script "~/.config/sketchybar/plugins/eth.sh"
+
+seperator 8
+
+sketchybar -m add item vti right
+sketchybar -m set vti icon_font "Hack Nerd Font:Bold:16.0"
+sketchybar -m set vti label_font "Hack Nerd Font:Mono:16.0"
+sketchybar -m set vti icon VTI
+sketchybar -m set vti update_freq 20
+sketchybar -m set vti icon_color 0xff${color3:1}
+sketchybar -m set vti label_padding_left 4
+sketchybar -m set vti icon_padding_left 4
+sketchybar -m set vti icon_padding_right 4
+sketchybar -m set vti label_padding_right 6
+sketchybar -m set vti script "~/.config/sketchybar/plugins/vti.sh"
+
+seperator 9
+
+sketchybar -m add item music_info right
+sketchybar -m set music_info icon_font "Hack nerd font:bold:16.0"
+sketchybar -m set music_info label_font "Hack nerd font:mono:16.0"
+sketchybar -m set music_info icon 
+sketchybar -m set music_info update_freq 5
+sketchybar -m set music_info icon_color 0xff${color3:1}
+sketchybar -m set music_info label_padding_left 4
+sketchybar -m set music_info icon_padding_left 4
+sketchybar -m set music_info icon_padding_right 4
+sketchybar -m set music_info label_padding_right 6
+sketchybar -m set music_info script "~/.config/sketchybar/plugins/music.sh"
+
+# seperator 10
+
+# sketchybar -m add item vpn right
+# sketchybar -m set vpn icon_font "Hack nerd font:bold:16.0"
+# sketchybar -m set vpn label_font "Hack nerd font:mono:16.0"
+# sketchybar -m set vpn icon 
+# sketchybar -m set vpn update_freq 5
+# sketchybar -m set vpn icon_color 0xff${color3:1}
+# sketchybar -m set vpn label_padding_left 4
+# sketchybar -m set vpn icon_padding_left 4
+# sketchybar -m set vpn icon_padding_right 4
+# sketchybar -m set vpn label_padding_right 6
+# sketchybar -m set vpn script "~/.config/sketchybar/plugins/vpn.sh"
+
+# sketchybar -m add item mic right
+# sketchybar -m set mic icon_font "Hack nerd font:bold:16.0"
+# sketchybar -m set mic label_font "Hack nerd font:mono:16.0"
+# sketchybar -m set mic update_freq 3
+# sketchybar -m set mic icon_color 0xff${color3:1}
+# sketchybar -m set mic label_padding_left 4
+# sketchybar -m set mic icon_padding_left 4
+# sketchybar -m set mic icon_padding_right 4
+# sketchybar -m set mic label_padding_right 6
+# sketchybar -m set mic script "~/.config/sketchybar/plugins/mic.sh"
+# sketchybar -m set mic click_script "~/.config/sketchybar/plugins/mic_click.sh"
+
+# D O N E
+sketchybar -m update
+echo "sketchybar configuration loaded.."
