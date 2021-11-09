@@ -22,3 +22,5 @@ require 'mappings.editor.wordmotion'
 require 'mappings.languages.test'
 
 require 'mappings.term.vimux'
+
+require 'mappings.network.rest'

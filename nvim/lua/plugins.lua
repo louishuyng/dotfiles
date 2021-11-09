@@ -20,6 +20,7 @@ return packer.startup{
     require 'packages.lang'
     require 'packages.lsp'
     require 'packages.navigator'
+    require 'packages.network'
     require 'packages.others'
     require 'packages.ui'
     require 'packages.utils'
