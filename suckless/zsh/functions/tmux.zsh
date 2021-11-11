@@ -44,13 +44,15 @@ function codeSpace () {
 
     # JHMSU
     tmux kill-session -t $SESSION_JHMSU
-    tmux new -d -s $SESSION_JHMSU -n "dentist-be"
+    tmux new -d -s $SESSION_JHMSU -n "api"
+    tmux new-window -n "dentist-be"
     tmux new-window -n "dentist-fe"
 
-    tmux send-keys -t $SESSION_JHMSU:1 "cd $JHMSU_PROJECT/dentist-backend" Enter
-    tmux send-keys -t $SESSION_JHMSU:1 "nvim" Enter
-    tmux send-keys -t $SESSION_JHMSU:2 "cd $JHMSU_PROJECT/dentist" Enter
+    tmux send-keys -t $SESSION_JHMSU:1 "nvim ~/vimwiki/Dentist-API.wiki" Enter
+    tmux send-keys -t $SESSION_JHMSU:2 "cd $JHMSU_PROJECT/dentist-backend" Enter
     tmux send-keys -t $SESSION_JHMSU:2 "nvim" Enter
+    tmux send-keys -t $SESSION_JHMSU:3 "cd $JHMSU_PROJECT/dentist" Enter
+    tmux send-keys -t $SESSION_JHMSU:3 "nvim" Enter
 
     # SANDBOX
     tmux kill-session -t $SESSION_SANDBOX
