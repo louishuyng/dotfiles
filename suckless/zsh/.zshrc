@@ -55,6 +55,7 @@ source "$HOME/.config/suckless/zsh/alias/tmux.zsh"
 source "$HOME/.config/suckless/zsh/alias/tools.zsh"
 
 ### Functions
+source "$HOME/.config/suckless/zsh/functions/aws.zsh"
 source "$HOME/.config/suckless/zsh/functions/general.zsh"
 source "$HOME/.config/suckless/zsh/functions/git.zsh"
 source "$HOME/.config/suckless/zsh/functions/k8s.zsh"
