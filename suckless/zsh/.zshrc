@@ -32,7 +32,6 @@ zinit wait lucid for \
       OMZP::cp \
       OMZP::extract \
       OMZP::fancy-ctrl-z \
-      OMZP::git \
       OMZP::sudo
 
 zinit light-mode for \
