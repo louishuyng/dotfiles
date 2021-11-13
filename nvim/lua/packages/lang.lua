@@ -7,9 +7,9 @@ use {
     require "cores.ale"
   end
 }
-use { 
-  'nvim-treesitter/nvim-treesitter', 
-  run = ':TSUpdate', 
+use {
+  'nvim-treesitter/nvim-treesitter',
+  run = ':TSUpdate',
   config = function()
       require "cores.treesitter"
   end
@@ -22,3 +22,4 @@ use {
   end
 }
 use 'vim-test/vim-test'
+use 'puremourning/vimspector'
