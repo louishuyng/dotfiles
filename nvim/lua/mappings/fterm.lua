@@ -11,3 +11,4 @@ map('t', '<Tab>', '<C-\\><C-n>:FloatermNext<CR>', opts)
 map('t', '<S-Tab>', '<C-\\><C-n>:FloatermPrev<CR>', opts)
 
 map('n', '<leader>ra', ':FloatermNew ranger<CR>', opts)
+map('n', '<leader>rt', ':FloatermNew bpytop<CR>', opts)

@@ -64,9 +64,9 @@ function codeSpace () {
     # DEVOPS
     tmux kill-session -t $SESSION_DEVOPS
     tmux new -d -s $SESSION_DEVOPS -n "oivan"
-    tmux split-window -h -t $SESSION_DEVOPS
 
-    tmux send-keys -t $SESSION_DEVOPS:1.1 "ovpn-up oivan" Enter
+    tmux send-keys -t $SESSION_DEVOPS:1 "sshadd oivan" Enter
+    tmux send-keys -t $SESSION_DEVOPS:1 "ssh dev" Enter
 
     tmux new-window -n "dna"
     tmux send-keys -t $SESSION_DEVOPS:2 "sshadd open_source" Enter
@@ -75,9 +75,6 @@ function codeSpace () {
     tmux new-window -n "nvim"
     tmux send-keys -t $SESSION_DEVOPS:3 "cd ~/.config/nvim" Enter
     tmux send-keys -t $SESSION_DEVOPS:3 "nvim" Enter
-
-    tmux new-window -n "top"
-    tmux send-keys -t $SESSION_DEVOPS:4 "top" Enter
 
     tmux -u attach-session -t $SESSION_DEVOPS:1
 }
