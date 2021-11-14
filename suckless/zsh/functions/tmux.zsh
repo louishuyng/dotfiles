@@ -76,5 +76,8 @@ function codeSpace () {
     tmux send-keys -t $SESSION_DEVOPS:3 "cd ~/.config/nvim" Enter
     tmux send-keys -t $SESSION_DEVOPS:3 "nvim" Enter
 
+    tmux new-window -n "top"
+    tmux send-keys -t $SESSION_DEVOPS:4 "top" Enter
+
     tmux -u attach-session -t $SESSION_DEVOPS:1
 }

@@ -319,6 +319,7 @@ install_tools() {
 
     brew install ack
     brew install nnn
+    brew install bpytop
 
     pip install pydf
 
