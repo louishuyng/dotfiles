@@ -317,6 +317,11 @@ install_tools() {
     brew install efm-langserver
     brew install --cask unnaturalscrollwheels
 
+    brew install ack
+    brew install nnn
+
+    pip install pydf
+
     brew install khanhas/tap/spicetify-cli
     ln -s ~/.config/suckless/spicetify ~/spicetify_data
     spicetify apply
