@@ -317,8 +317,12 @@ install_tools() {
     brew install --cask unnaturalscrollwheels
 
     brew install ack
+
     brew install nnn
+    ln -s ~/.config/suckless/nnn ~/.config
+
     brew install bpytop
+    ln -s ~/.config/suckless/mac_os/bpytop ~/.config
 
     pip install pydf
 
