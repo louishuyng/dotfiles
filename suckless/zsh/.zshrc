@@ -101,3 +101,6 @@ source "$HOME/.config/suckless/zsh/functions/git.zsh"
 source "$HOME/.config/suckless/zsh/functions/k8s.zsh"
 source "$HOME/.config/suckless/zsh/functions/tmux.zsh"
 source "$HOME/.config/suckless/zsh/functions/vpn.zsh"
+
+### ENV
+source "$HOME/.config/suckless/zsh/env/nnn.zsh"

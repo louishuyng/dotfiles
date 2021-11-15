@@ -313,7 +313,6 @@ install_tools() {
     brew install pass
     brew install asciinema
     brew install asdf
-    brew install ranger
     brew install efm-langserver
     brew install --cask unnaturalscrollwheels
 

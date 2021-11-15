@@ -1,3 +1,4 @@
 alias df=pydf
-alias ls='nnn -de'
+alias ll='nnn -de'
+alias ls='nnn -e'
 alias top='bpytop'
