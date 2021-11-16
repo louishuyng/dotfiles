@@ -315,6 +315,7 @@ install_tools() {
     brew install asdf
     brew install efm-langserver
     brew install --cask unnaturalscrollwheels
+    brew install adr-tools
 
     brew install ack
 
@@ -329,7 +330,6 @@ install_tools() {
     brew install khanhas/tap/spicetify-cli
     ln -s ~/.config/suckless/spicetify ~/spicetify_data
     spicetify apply
-
 
     sudo port install zathura
     sudo port install zathura-docs
