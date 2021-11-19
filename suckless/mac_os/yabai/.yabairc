@@ -54,6 +54,7 @@ yabai -m rule --add app="^OWASP$" manage=off                   space=1
 
 # Information
 yabai -m rule --add app="Brave Browser"         opacity=1      space=2
+yabai -m rule --add app="qutebrowser"                          space=2
 yabai -m rule --add app="Preview" manage=off                   space=2
 yabai -m rule --add app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off space=3
 
