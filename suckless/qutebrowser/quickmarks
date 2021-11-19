@@ -20,3 +20,11 @@ typeracer https://play.typeracer.com/
 Oreilyy https://learning.oreilly.com/home/
 Helm Charts https://artifacthub.io/
 HackerRank https://www.hackerrank.com/dashboard
+Oivan MR Partner FE https://gitlab.iwa.fi/moho/sakani-partners-frontend/-/merge_requests
+Oivan Jira  My Issues https://oivan.atlassian.net/jira/software/c/projects/ALE/issues/?jql=assignee%20IN%20(currentUser())%20AND%20statusCategory%20in%20(%22New%22%2C%20%22In%20Progress%22)%20ORDER%20BY%20created%20DESC
+Oivan MR Market Unit BE https://gitlab.iwa.fi/moho/sakani-market-units-service/-/merge_requests
+Oivan MR Admin UI https://gitlab.iwa.fi/moho/sakani-admin/-/merge_requests
+Dentist FE https://github.com/Marco1130/dentist
+Dentist BE https://github.com/Marco1130/dentist-backend
+Dentist Trello https://trello.com/b/tkK2wgfh/schuster
+Airtable https://airtable.com/appfo6M4aIsjhn7e8/tblGI0QAmO0QSl0NQ
