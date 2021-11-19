@@ -66,8 +66,11 @@ c.fonts.statusbar = mono
 config.bind('po3', 'open -t http://localhost:3000')
 config.bind('po4', 'open -t http://localhost:4200')
 config.bind('po8', 'open -t http://localhost:8000')
+
 config.bind('<shift+j>', 'tab-prev')
 config.bind('<shift+k>', 'tab-next')
+config.bind('gk' ,'tab-move +')
+config.bind('gj' ,'tab-move -')
 
 # Daily
 config.bind('yt', 'open -t https://youtube.com')
@@ -75,9 +78,9 @@ config.bind('cc', 'open -t https://netflix.com')
 config.bind('14', 'open -t https://kenh14.vn')
 config.bind('gm', 'open -t https://gmail.com')
 config.bind('ct', 'open -t https://www.youtube.com/watch?v=v-wm4xQnWQE&list=PLB5OyPOzUS5r6E7L1IhcM0dw1aEDbZEBk')
+config.bind('gh', 'open -t http://github.com')
 
 # Work
-config.bind('wgh', 'open -t http://github.com')
 config.bind('wtl', 'open -t https://trello.com')
 config.bind('wjr', 'open -t https://oivan.atlassian.net/jira/software/c/projects/ALE/issues/?jql=assignee%20IN%20(currentUser())%20AND%20statusCategory%20in%20(%22New%22%2C%20%22In%20Progress%22)%20ORDER%20BY%20created%20DESC')
 config.bind('wat', 'open -t https://airtable.com')
