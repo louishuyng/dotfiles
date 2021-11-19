@@ -83,3 +83,6 @@ config.bind('gh', 'open -t http://github.com')
 
 # Browser handler
 config.bind('<ctrl+d>', 'wq')
+
+config.bind('<shift+j>', 'tab-prev')
+config.bind('<shift+k>', 'tab-next')
