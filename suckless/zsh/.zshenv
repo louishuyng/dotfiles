@@ -7,6 +7,9 @@ export LC_ALL=en_US.UTF-8
 #Homebrew's sbin
 export PATH="/usr/local/sbin:$PATH"
 
+#Qutebrowser
+export PATH=$PATH:/Applications/qutebrowser.app/Contents/MacOS
+
 #Fluter
 export PATH=$PATH:$HOME/development/flutter/bin
 
