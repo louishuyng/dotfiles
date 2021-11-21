@@ -10,3 +10,8 @@ map gp togglePinTab
 map b Vomnibar.activateBookmarks
 map B Vomnibar.activateBookmarksInNewTab
 map gi focusInput
+
+gm: https://www.google.com/maps?q=%s Google maps
+yt: https://www.youtube.com/results?search_query=%s YouTube
+so: https://stackoverflow.com/search?q=%s StackOverflow
+tl: https://translate.google.com/?source=osdd#auto|auto|%s Google Translator
