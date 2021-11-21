@@ -1,0 +1,12 @@
+map K nextTab
+map J previousTab    
+map gk nextTab
+map gj previousTab    
+map g- moveTabLeft
+map g= moveTabRight
+map ga createTab
+map gd removeTab
+map gp togglePinTab
+map b Vomnibar.activateBookmarks
+map B Vomnibar.activateBookmarksInNewTab
+map gi focusInput
