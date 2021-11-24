@@ -34,3 +34,6 @@ map("v", "<leader>ex", ":w !", opt)
 
 -- Sorting
 map("v", "<leader>so", ":sort<CR>", opt)
+
+-- Open URL
+map("n", "<leader>o", ":call OpenUrlUnderCursor()<CR>", opt)
