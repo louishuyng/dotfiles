@@ -1,11 +1,11 @@
 vim.g.mapleader = " "
 
-require 'mappings.anzu'
 require 'mappings.buffer'
 require 'mappings.dashboard'
 require 'mappings.fterm'
 require 'mappings.general'
 require 'mappings.git'
+require 'mappings.hlslens'
 require 'mappings.lsp'
 require 'mappings.maximizer'
 require 'mappings.telescope'

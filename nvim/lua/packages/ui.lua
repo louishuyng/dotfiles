@@ -27,7 +27,7 @@ use {
     require "cores.bufferline"
   end
 }
-use 'osyo-manga/vim-anzu'
+use 'kevinhwang91/nvim-hlslens'
 use 'romainl/vim-cool'
 use 'glepnir/dashboard-nvim'
 use {
