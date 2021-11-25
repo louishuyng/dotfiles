@@ -21,3 +21,7 @@ map("n", "<leader>gb",  ":Git blame<CR>", opt)
 map("n", "<leader>gm",  ":GitMessenger<CR>", opt)
 map("n", "<leader>;",  ":lua require('plugins.git_worktree').pull()<CR>", opt)
 map("n", "<leader>gp", ":lua require('plugins.git_worktree').push()<CR>", opt)
+
+map("n", "<leader>1", ":!ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_oivan <CR><CR>", opt)
+map("n", "<leader>2", ":!ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_elxr <CR><CR>", opt)
+map("n", "<leader>3", ":!ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_open_source <CR><CR>", opt)
