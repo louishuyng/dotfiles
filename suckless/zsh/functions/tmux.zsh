@@ -38,9 +38,12 @@ function codeSpace () {
     tmux kill-session -t $SESSION_ELXR
     tmux new -d -s $SESSION_ELXR -n "api"
     tmux new-window -n "backend"
+    tmux new-window -n "mobile"
     tmux send-keys -t $SESSION_ELXR:1 "nvim ~/vimwiki/Elxr-API.wiki" Enter
     tmux send-keys -t $SESSION_ELXR:2 "cd $ELXR_PROJECT/elxr_backend" Enter
     tmux send-keys -t $SESSION_ELXR:2 "nvim" Enter
+    tmux send-keys -t $SESSION_ELXR:3 "cd $ELXR_PROJECT/elxr_mobile" Enter
+    tmux send-keys -t $SESSION_ELXR:3 "nvim" Enter
 
     # JHMSU
     tmux kill-session -t $SESSION_JHMSU
