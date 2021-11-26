@@ -8,6 +8,12 @@ use {
   end
 }
 use {
+  "neovim/nvim-lspconfig",
+  config = function()
+    require "lsp"
+  end,
+}
+use {
   'nvim-treesitter/nvim-treesitter',
   run = ':TSUpdate',
   config = function()

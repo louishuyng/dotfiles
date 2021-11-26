@@ -18,7 +18,6 @@ return packer.startup{
     require 'packages.cmp'
     require 'packages.git'
     require 'packages.lang'
-    require 'packages.lsp'
     require 'packages.navigator'
     require 'packages.network'
     require 'packages.others'

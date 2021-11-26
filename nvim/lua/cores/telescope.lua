@@ -1,7 +1,5 @@
 local M = {}
 
-local opts = {noremap = true, silent = true}
-
 M.config = function()
   local actions = require 'telescope.actions'
   require("telescope").setup {
