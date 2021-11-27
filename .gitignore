@@ -17,6 +17,8 @@ suckless/oh-my-zsh/cache
 suckless/oh-my-zsh/log
 suckless/pgcli/log
 
+suckless/bpytop/error.log
+
 .DS_Store
 swap-pane
 nvim/spell/**
@@ -33,12 +35,5 @@ neofetch
 ranger
 kitty
 zathura
-
-bpytop/error.log
-
-wal
-sketchybar
-nnn
-bpytop
 
 scripts/crawl-data/node_modules

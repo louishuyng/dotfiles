@@ -22,8 +22,6 @@ fail () {
   exit
 }
 
-chmod +x ~/.config/commands
-
 install_homebrew() {
   read -r -p "Do you want to install homebrew? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -39,7 +37,8 @@ install_ninja() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install ninja
 
-    cd ~/.config/nvim
+    cd ~/.dotfiles/nvim
+    ln -s ~/.dotfiles/nvim ~/.config
     
     git clone https://github.com/sumneko/lua-language-server
     cd lua-language-server
@@ -80,7 +79,7 @@ install_languages() {
 install_devops() {
   read -r -p "Do you want to install devops tools? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew cask install docker
+    brew install docker --cask
     brew install lazydocker
     success "Installed docker"
 
@@ -96,7 +95,7 @@ install_devops() {
 }
 
 setup_penetration_tools() {
-  read -r -p "Do you want to install some fancy tools ? [y|N] " response
+  read -r -p "Do you want to install some penetration tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install owasp-zap
     brew install nmap
@@ -144,7 +143,7 @@ install_zsh() {
     mkdir -p ~/.oh-my-zsh
 
     rm -rf ~/.zshrc
-    ln ~/.config/suckless/zsh/.zshrc ~/.zshrc
+    ln -s ~/.dotfiles/suckless/zsh/.zshrc ~/.zshrc
 
     rm -rf ~/.zsh-defer
     git clone https://github.com/romkatv/zsh-defer.git ~/.zsh-defer
@@ -159,7 +158,7 @@ install_fish() {
     brew install fish
     chsh -s /usr/local/bin/fish
 
-    curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+    curl https://git.io/fisher --create-dirs -sLo ~/.dotfiles/fish/functions/fisher.fish
     curl -L https://get.oh-my.fish | fish
 
     fisher install jethrokuan/z
@@ -194,9 +193,9 @@ install_terminal() {
   read -r -p "Do you want to install allacrity? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install --cask alacritty
-    rm -rf ~/.config/alacritty
+    rm -rf ~/.dotfiles/alacritty
 
-    ln -s ~/.config/terminals/alacritty ~/.config
+    ln -s ~/.dotfiles/terminals/alacritty ~/.config
 
     success "Installed alacritty terminal"
   fi
@@ -225,7 +224,7 @@ install_emacs() {
     brew tap d12frosted/emacs-plus
     brew install emacs-plus --with-no-titlebar
 
-    ln ~/.config/emacs/init.el ~/.emacs.d/init.el
+    ln -s ~/.dotfiles/emacs/init.el ~/.emacs.d/init.el
 
     success "Installed emacs"
   fi
@@ -236,7 +235,7 @@ install_tmux() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install tmux
     rm ~/.tmux.conf
-    ln ~/.config/suckless/tmux/.tmux.conf ~/.tmux.conf
+    ln -s ~/.dotfiles/suckless/tmux/.tmux.conf ~/.tmux.conf
 
     rm -rf ~/.tmux/plugins/tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -256,27 +255,19 @@ install_window_manager() {
     brew install somdoron/formulae/spacebar
 
     brew tap FelixKratz/formulae
-    brew install sketchybar
-    chmod +x ~/.config/scripts/*
-
-    ln -s ~/.config/suckless/mac_os/sketchybar/ ~/.config
-    ln -s ~/.config/suckless/mac_os/wal/ ~/.config
-
-    chmod +x ~/.config/sketchybar/plugins/*
-
-    brew services start sketchybar
+    chmod +x ~/.dotfiles/scripts/*
 
     brew install koekeishiya/formulae/skhd
     brew services start skhd
 
     rm -rf ~/.skhdrc
-    ln ~/.config/suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
+    ln -s ~/.dotfiles/suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
 
     rm -rf ~/.yabairc
-    ln ~/.config/suckless/mac_os/yabai/.yabairc ~/.yabairc
+    ln -s ~/.dotfiles/suckless/mac_os/yabai/.yabairc ~/.yabairc
 
     rm -rf ~/.spacebarrc
-    ln ~/.config/suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
+    ln -s ~/.dotfiles/suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
 
     success "Installed window manager! Remember to disable System Integrity Protection (SIP)"
   fi
@@ -287,7 +278,7 @@ install_qutebrowser() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install qutebrowser --cask
     rm -rf ~/.qutebrowser
-    ln -s ~/.config/suckless/qutebrowser ~/.qutebrowser
+    ln -s ~/.dotfiles/suckless/qutebrowser ~/.qutebrowser
   fi
 }
 
@@ -322,22 +313,22 @@ install_tools() {
     brew install ack
 
     brew install nnn
-    ln -s ~/.config/suckless/nnn ~/.config
+    ln -s ~/.dotfiles/suckless/nnn ~/.config
 
     brew install bpytop
-    ln -s ~/.config/suckless/mac_os/bpytop ~/.config
+    ln -s ~/.dotfiles/suckless/bpytop ~/.config
 
     pip install pydf
 
     brew install khanhas/tap/spicetify-cli
-    ln -s ~/.config/suckless/spicetify ~/spicetify_data
+    ln -s ~/.dotfiles/suckless/spicetify ~/spicetify_data
     spicetify apply
 
     sudo port install zathura
     sudo port install zathura-docs
     sudo port install zathura-plugin-pdf-mupdf
 
-    ln -s ~/.config/suckless/zathura ~/.config/
+    ln -s ~/.dotfiles/suckless/zathura ~/.config/
     $(brew --prefix)/opt/fzf/install
     success "Installed some fancy tools"
   fi
