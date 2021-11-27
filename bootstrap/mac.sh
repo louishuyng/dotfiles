@@ -36,9 +36,6 @@ install_ninja() {
   read -r -p "Do you want to install ninja and lua lsp? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install ninja
-
-    cd ~/.dotfiles/nvim
-    ln -s ~/.dotfiles/nvim ~/.config
     
     git clone https://github.com/sumneko/lua-language-server
     cd lua-language-server
@@ -135,15 +132,7 @@ install_zsh() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install zsh
     brew install peco
-
     sudo chsh -s $(which zsh)
-
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-    mkdir -p ~/.oh-my-zsh
-
-    rm -rf ~/.zshrc
-    ln -s ~/.dotfiles/suckless/zsh/.zshrc ~/.zshrc
 
     rm -rf ~/.zsh-defer
     git clone https://github.com/romkatv/zsh-defer.git ~/.zsh-defer
@@ -172,9 +161,6 @@ install_terminal() {
   read -r -p "Do you want to install allacrity? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install --cask alacritty
-    rm -rf ~/.dotfiles/alacritty
-
-    ln -s ~/.dotfiles/terminals/alacritty ~/.config
 
     success "Installed alacritty terminal"
   fi
@@ -203,8 +189,6 @@ install_emacs() {
     brew tap d12frosted/emacs-plus
     brew install emacs-plus --with-no-titlebar
 
-    ln -s ~/.dotfiles/emacs/init.el ~/.emacs.d/init.el
-
     success "Installed emacs"
   fi
 }
@@ -214,7 +198,7 @@ install_tmux() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install tmux
     rm ~/.tmux.conf
-    ln -s ~/.dotfiles/suckless/tmux/.tmux.conf ~/.tmux.conf
+    cd ~/.dotfiles/terminals && stow tmux -t ~/
 
     rm -rf ~/.tmux/plugins/tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -239,15 +223,6 @@ install_window_manager() {
     brew install koekeishiya/formulae/skhd
     brew services start skhd
 
-    rm -rf ~/.skhdrc
-    ln -s ~/.dotfiles/suckless/mac_os/skhdrc/.skhdrc ~/.skhdrc
-
-    rm -rf ~/.yabairc
-    ln -s ~/.dotfiles/suckless/mac_os/yabai/.yabairc ~/.yabairc
-
-    rm -rf ~/.spacebarrc
-    ln -s ~/.dotfiles/suckless/mac_os/spacebar/.spacebarrc ~/.spacebarrc
-
     success "Installed window manager! Remember to disable System Integrity Protection (SIP)"
   fi
 }
@@ -256,8 +231,6 @@ install_qutebrowser() {
   read -r -p "Do you want to install qutebrowser? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install qutebrowser --cask
-    rm -rf ~/.qutebrowser
-    ln -s ~/.dotfiles/suckless/qutebrowser ~/.qutebrowser
   fi
 }
 
@@ -288,20 +261,12 @@ install_tools() {
     brew install efm-langserver
     brew install --cask unnaturalscrollwheels
     brew install adr-tools
-
     brew install ack
-
     brew install nnn
-    ln -s ~/.dotfiles/suckless/nnn ~/.config
-
     brew install bpytop
-    ln -s ~/.dotfiles/suckless/bpytop ~/.config
+    brew install khanhas/tap/spicetify-cli
 
     pip install pydf
-
-    brew install khanhas/tap/spicetify-cli
-    ln -s ~/.dotfiles/suckless/spicetify ~/spicetify_data
-    spicetify apply
 
     sudo port install zathura
     sudo port install zathura-docs
@@ -313,7 +278,47 @@ install_tools() {
   fi
 }
 
+link_all_dotfiles() {
+  brew install stow
+
+  rm -rf ~/.config/alacritty
+  rm ~/.tmux.conf
+  rm -rf ~/.zshrc
+
+  cd ~/.dotfiles/terminals && \
+    stow alacritty -t ~/.config && \
+    stow tmux -t ~/ && \
+    stow zsh -t ~/
+  success "Linked terminals"
+
+  mkdir -p ~/.config/nvim
+  cd ~/.dotfiles && stow nvim -t ~/.config/nvim
+  success "Linked neovim"
+
+  cd ~/.dotfiles && stow emacs -t ~/
+  success "Linked emacs"
+
+  rm -rf ~/.skhdrc
+  rm -rf ~/.yabairc
+  rm -rf ~/.spacebarrc
+  cd ~/.dotfiles/suckless/mac_os && stow spacebar -t ~/ && stow yabai -t ~/ && stow skhdrc -t ~/
+
+  success "Linked window manager"
+
+  rm -rf ~/.qutebrowser
+  ln -s ~/.dotfiles/suckless/qutebrowser ~/.qutebrowser
+
+  success "Linked qutebrowser"
+
+  cd ~/.dotfiles/suckless && stow nnn -t ~/.config && stow bpytop -t ~/.config
+  ln -s ~/.dotfiles/suckless/spicetify ~/spicetify_data
+  spicetify apply
+
+  success "Linked other tools"
+}
+
 install_homebrew
+install_manage_tools
 install_ninja
 install_languages
 install_devops
@@ -328,6 +333,7 @@ install_tmux
 install_window_manager
 install_qutebrowser
 install_tools
+link_all_dotfiles
 
 echo "---"
 

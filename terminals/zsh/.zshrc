@@ -13,7 +13,7 @@ autoload -Uz _zinit
 
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH=/usr/local/sbin:$PATH
-source "$HOME/.dotfiles/terminals/zsh/.zshenv"
+source "$HOME/.dotfiles/terminals/zsh/env/.zshenv"
 
 alias luamake=/Users/admin/.dotfiles/nvim/lua-language-server/3rd/luamake/luamake
 
