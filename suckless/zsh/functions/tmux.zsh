@@ -71,9 +71,9 @@ function codeSpace () {
     tmux send-keys -t $SESSION_DEVOPS:1 "sshadd oivan" Enter
     tmux send-keys -t $SESSION_DEVOPS:1 "ssh dev" Enter
 
-    tmux new-window -n "dna"
+    tmux new-window -n "louis-server"
     tmux send-keys -t $SESSION_DEVOPS:2 "sshadd open_source" Enter
-    tmux send-keys -t $SESSION_DEVOPS:2 "ssh dna" Enter
+    tmux send-keys -t $SESSION_DEVOPS:2 "ssh louis" Enter
 
     tmux new-window -n "nvim"
     tmux send-keys -t $SESSION_DEVOPS:3 "cd ~/.config/nvim" Enter

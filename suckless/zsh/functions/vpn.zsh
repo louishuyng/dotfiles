@@ -13,7 +13,7 @@ function vpn-down() {
   sudo kill -2 `pgrep openconnect`
 }
 
-function ovpn-up() {
+function vpnup() {
   VPN_CONFIG=$1
 
   if [[ -z $VPN_CONFIG ]]
@@ -25,6 +25,10 @@ function ovpn-up() {
   sudo openvpn --config ~/Documents/pass/$VPN_CONFIG.ovpn --auth-user-pass ~/Documents/pass/$VPN_CONFIG-ovpn-pass.txt
 }
 
-function ovpn-down() {
+function vpndown() {
   sudo kill -2 `pgrep openvpn`
+}
+
+function myvpn() {
+  sudo openvpn --config ~/Dev/Keychain/louis-vpn.ovpn
 }
