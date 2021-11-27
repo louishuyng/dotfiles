@@ -13,7 +13,7 @@ autoload -Uz _zinit
 
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH=/usr/local/sbin:$PATH
-source "$HOME/.dotfiles/suckless/zsh/.zshenv"
+source "$HOME/.dotfiles/terminals/zsh/.zshenv"
 
 alias luamake=/Users/admin/.dotfiles/nvim/lua-language-server/3rd/luamake/luamake
 
@@ -79,27 +79,27 @@ zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 
 ### Alias
-source "$HOME/.dotfiles/suckless/zsh/alias/app.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/docker.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/general.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/git.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/k8s.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/languages.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/linux.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/network.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/os.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/redis.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/spotify.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/tmux.zsh"
-source "$HOME/.dotfiles/suckless/zsh/alias/tools.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/app.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/docker.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/general.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/git.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/k8s.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/languages.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/linux.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/network.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/os.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/redis.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/spotify.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/tmux.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/tools.zsh"
 
 ### Functions
-source "$HOME/.dotfiles/suckless/zsh/functions/aws.zsh"
-source "$HOME/.dotfiles/suckless/zsh/functions/general.zsh"
-source "$HOME/.dotfiles/suckless/zsh/functions/git.zsh"
-source "$HOME/.dotfiles/suckless/zsh/functions/k8s.zsh"
-source "$HOME/.dotfiles/suckless/zsh/functions/tmux.zsh"
-source "$HOME/.dotfiles/suckless/zsh/functions/vpn.zsh"
+source "$HOME/.dotfiles/terminals/zsh/functions/aws.zsh"
+source "$HOME/.dotfiles/terminals/zsh/functions/general.zsh"
+source "$HOME/.dotfiles/terminals/zsh/functions/git.zsh"
+source "$HOME/.dotfiles/terminals/zsh/functions/k8s.zsh"
+source "$HOME/.dotfiles/terminals/zsh/functions/tmux.zsh"
+source "$HOME/.dotfiles/terminals/zsh/functions/vpn.zsh"
 
 ### ENV
-source "$HOME/.dotfiles/suckless/zsh/env/nnn.zsh"
+source "$HOME/.dotfiles/terminals/zsh/env/nnn.zsh"
