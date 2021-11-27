@@ -37,6 +37,7 @@ install_ninja() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install ninja
     
+    cd ~/.dotfiles/nvim
     git clone https://github.com/sumneko/lua-language-server
     cd lua-language-server
     git submodule update --init --recursive
@@ -109,8 +110,8 @@ setup_penetration_tools() {
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    git config --global user.email"huynguyennbk@gmail.com"
-    git config --global user.name "Louis Nguyen"
+    git config --global user.email "huynguyennbk@gmail.com"
+    git config --global user.name  "Louis Nguyen"
     git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
     git config --global color.ui true
     git config --global color.diff-highlight.oldNormal "red bold"
@@ -122,6 +123,11 @@ setup_git() {
     git config --global color.diff.old "red bold"
     git config --global color.diff.new "green bold"
     git config --global color.diff.whitespace "red reverse"
+
+    git config --global alias.co checkout
+    git config --global alias.br branch
+    git config --global alias.ci commit
+    git config --global alias.st status
 
     success "Setup Git Successfully"
   fi
