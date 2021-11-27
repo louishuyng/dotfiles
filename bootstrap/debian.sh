@@ -146,7 +146,8 @@ link_all_dotfiles() {
   cd ~/.dotfiles && stow emacs -t ~/
   success "Linked emacs"
 
-  cd ~/.dotfiles/suckless && stow nnn -t ~/.config && stow bpytop -t ~/.config
+  mkdir -p ~/.config/bpytop
+  cd ~/.dotfiles/suckless && stow nnn -t ~/.config && stow bpytop -t ~/.config/bpytop
 
   success "Linked other tools"
 }

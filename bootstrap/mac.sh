@@ -316,7 +316,9 @@ link_all_dotfiles() {
 
   success "Linked qutebrowser"
 
-  cd ~/.dotfiles/suckless && stow nnn -t ~/.config && stow bpytop -t ~/.config
+  mkdir -p ~/.config/bpytop
+  cd ~/.dotfiles/suckless && stow nnn -t ~/.config && stow bpytop -t ~/.config/bpytop
+
   ln -s ~/.dotfiles/suckless/spicetify ~/spicetify_data
   spicetify apply
 
