@@ -319,7 +319,8 @@ link_all_dotfiles() {
   mkdir -p ~/.config/bpytop
   cd ~/.dotfiles/suckless && stow nnn -t ~/.config && stow bpytop -t ~/.config/bpytop
 
-  ln -s ~/.dotfiles/suckless/spicetify ~/spicetify_data
+  mkdir -p ~/.config/spicetify
+  ln -s ~/.dotfiles/suckless/spicetify ~/.config/spicetify
   spicetify apply
 
   success "Linked other tools"
