@@ -40,7 +40,6 @@ yabai -m rule --add app="^DataGrip$" manage=off                space=4
 yabai -m rule --add app="^pgAdmin$" manage=off                 space=4
 
 # Coding
-yabai -m rule --add app="kitty" title="Kitty"                  space=1
 yabai -m rule --add app="Simulator" manage=off                 space=1
 yabai -m rule --add app=Emacs manage=on space=2
 yabai -m rule --add app="^Xcode$" manage=off                   space=1
@@ -53,6 +52,7 @@ yabai -m rule --add app="Visual Studio Code" manage=off        space=1
 yabai -m rule --add app="^OWASP$" manage=off                   space=1
 
 # Information
+yabai -m rule --add app="^Alacritty$" title="Alacritty"          space=2
 yabai -m rule --add app="Brave Browser"         opacity=1      space=2
 yabai -m rule --add app="qutebrowser"                          space=2
 yabai -m rule --add app="Preview" manage=off                   space=2

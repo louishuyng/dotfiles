@@ -81,7 +81,7 @@ function codeSpace () {
 
     tmux new-window -n "louis-server"
     tmux send-keys -t $SESSION_DEVOPS:2 "sshadd open_source" Enter
-    tmux send-keys -t $SESSION_DEVOPS:2 "ssh louis" Enter
+    tmux send-keys -t $SESSION_DEVOPS:2 "ssh dgo-sg" Enter
 
     tmux new-window -n "dotfiles"
     tmux send-keys -t $SESSION_DEVOPS:3 "cd ~/.dotfiles" Enter

@@ -5,7 +5,7 @@ ctrl + alt - e : open -na /System/Volumes/Data/usr/local/Cellar/emacs-plus@27/27
 ctrl + alt - g : open -na /Applications/Brave\ Browser.app
 ctrl + alt - m : open -na /Applications/Spotify.app.app
 ctrl + alt - n : open -na /Applications/Notion.app
-ctrl + alt - p : screencapture ~/Desktop/capture.jpg
+ctrl + alt - p : open -na /Applications/Postman.app
 ctrl + alt - q : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
 ctrl + alt - s : open -na /Applications/Slack.app
 ctrl + alt - t : open -na /Applications/Alacritty.app
