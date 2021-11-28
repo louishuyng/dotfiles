@@ -74,12 +74,16 @@ function codeSpace () {
 
     # DEVOPS
     tmux kill-session -t $SESSION_DEVOPS
-    tmux new -d -s $SESSION_DEVOPS -n "oivan"
 
-    tmux send-keys -t $SESSION_DEVOPS:1 "sshadd oivan" Enter
-    tmux send-keys -t $SESSION_DEVOPS:1 "ssh dev" Enter
+    tmux new -d -s $SESSION_DEVOPS -n "oivan servers"
+    tmux split-window -h
 
-    tmux new-window -n "louis-server"
+    tmux send-keys -t $SESSION_DEVOPS:1.1 "sshadd oivan" Enter
+    tmux send-keys -t $SESSION_DEVOPS:1.1 "ssh dev" Enter
+    tmux send-keys -t $SESSION_DEVOPS:1.2 "sshadd oivan" Enter
+    tmux send-keys -t $SESSION_DEVOPS:1.2 "ssh test" Enter
+
+    tmux new-window -n "dgo-sg server"
     tmux send-keys -t $SESSION_DEVOPS:2 "sshadd open_source" Enter
     tmux send-keys -t $SESSION_DEVOPS:2 "ssh dgo-sg" Enter
 

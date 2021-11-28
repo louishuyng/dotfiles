@@ -36,7 +36,7 @@ yabai -m config normal_window_border_color  0xffa8a8a8
 
 # Data & Cloud
 yabai -m rule --add app="^Docker$" manage=off                  space=4
-yabai -m rule --add app="^DataGrip$" manage=off                space=4
+yabai -m rule --add app="^DataGrip$"                           space=4
 yabai -m rule --add app="^pgAdmin$" manage=off                 space=4
 
 # Coding
