@@ -15,7 +15,6 @@ alias lla="ll -A"
 alias z="j"
 
 # Clear & Remove
-alias c="clear"
 alias rf='rm -rf'
 alias cdes="rm ~/Desktop/*"
 alias cfdes="rm -rf ~/Desktop/*"
