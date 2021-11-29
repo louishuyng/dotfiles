@@ -51,6 +51,10 @@ function codeSpace () {
     tmux send-keys -t $SESSION_ELXR:3 "cd $ELXR_PROJECT/elxr_mobile" Enter
     tmux send-keys -t $SESSION_ELXR:3 "nvim" Enter
 
+    tmux new-window -n "staging"
+    tmux send-keys -t $SESSION_ELXR:4 "cd ~/Dev/Keychain" Enter
+    tmux send-keys -t $SESSION_ELXR:4 "ssh elxr-staging-admin@bastion.the-elxr.com -i bastion.pem" Enter
+
     # JHMSU
     tmux kill-session -t $SESSION_JHMSU
 
@@ -75,7 +79,7 @@ function codeSpace () {
     # DEVOPS
     tmux kill-session -t $SESSION_DEVOPS
 
-    tmux new -d -s $SESSION_DEVOPS -n "oivan servers"
+    tmux new -d -s $SESSION_DEVOPS -n "oivan"
     tmux split-window -h
 
     tmux send-keys -t $SESSION_DEVOPS:1.1 "sshadd oivan" Enter
@@ -83,7 +87,7 @@ function codeSpace () {
     tmux send-keys -t $SESSION_DEVOPS:1.2 "sshadd oivan" Enter
     tmux send-keys -t $SESSION_DEVOPS:1.2 "ssh test" Enter
 
-    tmux new-window -n "dgo-sg server"
+    tmux new-window -n "dgo-sg"
     tmux send-keys -t $SESSION_DEVOPS:2 "sshadd open_source" Enter
     tmux send-keys -t $SESSION_DEVOPS:2 "ssh dgo-sg" Enter
 
