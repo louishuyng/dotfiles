@@ -21,6 +21,7 @@ require 'mappings.editor.wordmotion'
 
 require 'mappings.languages.test'
 require 'mappings.languages.spector'
+require 'mappings.languages.rails'
 
 require 'mappings.term.vimux'
 

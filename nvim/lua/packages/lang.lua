@@ -29,3 +29,4 @@ use {
 }
 use 'vim-test/vim-test'
 use 'puremourning/vimspector'
+use 'tpope/vim-rails'

@@ -1,3 +1,3 @@
 local cmd = vim.cmd
 
-cmd('colorscheme kolor')
+cmd('colorscheme dracula')
