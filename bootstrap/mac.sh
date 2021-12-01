@@ -280,6 +280,9 @@ install_tools() {
 
     ln -s ~/.dotfiles/suckless/zathura ~/.config/
     $(brew --prefix)/opt/fzf/install
+
+    brew install isacikgoz/taps/tldr
+
     success "Installed some fancy tools"
   fi
 }

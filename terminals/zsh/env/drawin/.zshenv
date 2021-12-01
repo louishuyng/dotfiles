@@ -67,3 +67,6 @@ export PATH=$PATH:/usr/local/go/bin
 
 #Scripts
 export PATH="$HOME/.config/scripts:$PATH"
+
+#TLDR
+export TLDR_OS=osx

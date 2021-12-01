@@ -7,6 +7,10 @@ export LC_ALL=en_US.UTF-8
 #Python
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
+# GOLANG
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
+
 # OPEN SSL
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
@@ -25,3 +29,6 @@ export FZF_DEFAULT_OPTS='--height 90% --layout reverse --border --color "border:
 
 #Scripts
 export PATH="$HOME/.config/scripts:$PATH"
+
+#TLDR
+export TLDR_OS=linux

@@ -119,6 +119,31 @@ install_nvim() {
   fi
 }
 
+install_languages() {
+  read -r -p "Do you want to install languages? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+    success "Installed asdf"
+
+    asdf plugin-add rust
+    asdf install rust 1.55.0
+    asdf global rust 1.55.0
+    success "Installed rust"
+
+    asdf plugin-add python
+    asdf install python 3.7.3
+    asdf global python 3.7.3
+    success "Installed python"
+
+    asdf plugin-add golang
+    asdf install golang 1.17.3
+    asdf global golang 1.17.3
+    mkdir $HOME/go
+    success "Installed golang"
+  fi
+  
+}
+
 install_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -128,6 +153,8 @@ install_tools() {
     wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
     sudo apt install bpytop
     sudo apt install fzf
+
+    go get github.com/isacikgoz/tldr/cmd/tldr
 
     success "Installed some fancy tools"
   fi
@@ -161,6 +188,9 @@ setup_git
 install_zsh
 install_font
 install_nvim
+install_languages
+install_tools
+link_all_dotfiles
 
 echo "---"
 
