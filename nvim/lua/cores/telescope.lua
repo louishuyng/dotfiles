@@ -38,7 +38,17 @@ M.config = function()
       initial_mode = "insert",
       layout_strategy = "flex",
     },
+    extensions = {
+      project = {
+        base_dirs = {
+          '~/Dev/Projects',
+          '~/.dotfiles'
+        }
+      }
+    }
   }
+
+  require'telescope'.load_extension('project')
 end
 
 return M
