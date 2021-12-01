@@ -14,4 +14,11 @@ function M.push()
   require("notify")("You just command to push code", "trace")
 end
 
+function M.push_force()
+  local command = vim.cmd(":Git push -f")
+  vim.cmd(command)
+
+  require("notify")("You just command to push force code", "trace")
+end
+
 return M

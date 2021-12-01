@@ -95,5 +95,5 @@ function codeSpace () {
     tmux send-keys -t $SESSION_DEVOPS:3 "cd ~/.dotfiles" Enter
     tmux send-keys -t $SESSION_DEVOPS:3 "nvim" Enter
 
-    tmux -u attach-session -t $SESSION_DEVOPS:1
+    tmux -u attach-session -t $SESSION_DEVOPS:3
 }

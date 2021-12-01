@@ -24,5 +24,3 @@ require 'mappings.languages.spector'
 require 'mappings.languages.rails'
 
 require 'mappings.term.vimux'
-
-require 'mappings.network.rest'

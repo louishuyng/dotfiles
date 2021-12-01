@@ -28,7 +28,6 @@ use {
   end
 }
 use 'kevinhwang91/nvim-hlslens'
-use 'romainl/vim-cool'
 use 'glepnir/dashboard-nvim'
 use {
   "andymass/vim-matchup",

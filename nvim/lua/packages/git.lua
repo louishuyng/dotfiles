@@ -16,7 +16,6 @@ use {
     "Gvdiff",
   }
 }
-use 'AndrewRadev/diffurcate.vim'
 use {
   'ruifm/gitlinker.nvim',
   requires = 'nvim-lua/plenary.nvim',

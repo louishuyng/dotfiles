@@ -1,6 +1,7 @@
 local packer = require "packer"
 local use = packer.use
 
+-- Analyze and Diagnostic
 use {
   'dense-analysis/ale',
   config = function()
@@ -27,6 +28,8 @@ use {
     require "plugins.trouble"
   end
 }
+
+-- ROR
 use 'vim-test/vim-test'
 use 'puremourning/vimspector'
 use 'tpope/vim-rails'
