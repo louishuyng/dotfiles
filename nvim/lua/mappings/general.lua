@@ -10,7 +10,7 @@ map("n", ",e", ":e <C-R>=expand(\"%:p:h\") . \"/\" <CR>", opt)
 map("v", "<C-x>", ":!pbcopy<CR>", opt)
 map("v", "<C-c>", ":w !pbcopy<CR><CR>", opt)
 
-map("v", "/", "y/<C-R>\"<CR>", opt)
+map("v", "/", "*", opt)
 map("n", "<C-j>", "<C-w>j", opt)
 map("n", "<C-k>", "<C-w>k", opt)
 map("n", "<C-l>", "<C-w>l", opt)
@@ -37,3 +37,9 @@ map("v", "<leader>so", ":sort<CR>", opt)
 
 -- Open URL
 map("n", "<leader>o", ":call OpenUrlUnderCursor()<CR>", opt)
+
+-- Replace
+map("n", "r;", "yiw:%s/<C-R>\"/", opt)
+
+-- Restart Service
+map("n", "sr;", ":silent !brew services restart ", opt)
