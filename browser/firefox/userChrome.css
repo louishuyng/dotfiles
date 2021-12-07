@@ -348,15 +348,6 @@ toolbarseparator {
   display: none;
 }
 
-/* hide navbar */
-#nav-bar:not([customizing]){
-	visibility: visible;
-	margin-top: -47px;
-   	transition-delay: 1s;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    transition: visibility, ease 0.5s, margin-top, ease 0.5s, opacity, ease 0.5s !important;
-}
 /* 
 keep visible when urlbar is focused
 navbar is hovered
