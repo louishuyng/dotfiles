@@ -11,22 +11,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-vim.fn.sign_define("LspDiagnosticsSignError", {
-  text = "✖",
-  numhl = "LspDiagnosticsDefaultError",
-})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {
-  text = "▲",
-  numhl = "LspDiagnosticsDefaultWarning",
-})
-vim.fn.sign_define("LspDiagnosticsSignInformation", {
-  text = "●",
-  numhl = "LspDiagnosticsDefaultInformation",
-})
-vim.fn.sign_define("LspDiagnosticsSignHint", {
-  text = "✱",
-  numhl = "LspDiagnosticsDefaultHint",
-})
+local signs = {
+    Error = " ",
+    Warning = " ",
+    Hint = " ",
+    Information = " "
+}
+
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+end
 
 -- require('lsp/deno')
 require "lsp/angular"
