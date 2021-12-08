@@ -13,7 +13,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 local signs = {
     Error = " ",
-    Warning = " ",
+    Warn = " ",
     Hint = " ",
     Information = " "
 }

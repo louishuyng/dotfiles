@@ -2,7 +2,6 @@ require "cmds"
 require "mappings"
 require "options"
 
-require "cores.ale"
 require "cores.git"
 require "cores.sneak"
 

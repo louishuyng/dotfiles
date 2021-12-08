@@ -1,13 +1,6 @@
 local packer = require "packer"
 local use = packer.use
 
--- Analyze and Diagnostic
-use {
-  'dense-analysis/ale',
-  config = function()
-    require "cores.ale"
-  end
-}
 use {
   "neovim/nvim-lspconfig",
   config = function()
