@@ -42,6 +42,7 @@ M.config = function()
       project = {
         base_dirs = {
           '~/Dev/Projects',
+          '~/Dev/Projects/Oivan/sakani-workspace',
           '~/.dotfiles'
         }
       }
