@@ -43,17 +43,21 @@ function codeSpace () {
     tmux new -d -s $SESSION_ELXR -n "api"
     tmux send-keys -t $SESSION_ELXR:1 "nvim ~/vimwiki/Elxr-API.wiki" Enter
 
-    tmux new-window -n "backend"
+    tmux new-window -n "ror-backend"
     tmux send-keys -t $SESSION_ELXR:2 "cd $ELXR_PROJECT/elxr_backend" Enter
     tmux send-keys -t $SESSION_ELXR:2 "nvim" Enter
 
-    tmux new-window -n "mobile"
-    tmux send-keys -t $SESSION_ELXR:3 "cd $ELXR_PROJECT/elxr_mobile" Enter
+    tmux new-window -n "nest-be"
+    tmux send-keys -t $SESSION_ELXR:3 "cd $ELXR_PROJECT/elxr_nest_backend" Enter
     tmux send-keys -t $SESSION_ELXR:3 "nvim" Enter
 
+    tmux new-window -n "mobile"
+    tmux send-keys -t $SESSION_ELXR:4 "cd $ELXR_PROJECT/elxr_mobile" Enter
+    tmux send-keys -t $SESSION_ELXR:4 "nvim" Enter
+
     tmux new-window -n "staging"
-    tmux send-keys -t $SESSION_ELXR:4 "cd ~/Dev/Keychain" Enter
-    tmux send-keys -t $SESSION_ELXR:4 "ssh elxr-staging-admin@bastion.the-elxr.com -i bastion.pem" Enter
+    tmux send-keys -t $SESSION_ELXR:5 "cd ~/Dev/Keychain" Enter
+    tmux send-keys -t $SESSION_ELXR:5 "ssh elxr-staging-admin@bastion.the-elxr.com -i bastion.pem" Enter
 
     # JHMSU
     tmux kill-session -t $SESSION_JHMSU
