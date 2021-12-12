@@ -30,8 +30,10 @@ function sshadd() {
 
   if [ -z "${name}" ]; then
     ssh-add --apple-use-keychain  ~/.ssh/id_rsa
-  else
+  elif [ -f "$HOME/.ssh/id_rsa_$name" ]; then
     ssh-add --apple-use-keychain ~/.ssh/id_rsa_$name
+  else
+    ssh-add --apple-use-keychain ~/.ssh/$name
   fi
 }
 
