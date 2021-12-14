@@ -1,7 +1,7 @@
 local packer = require "packer"
 local use = packer.use
 
-use 'dracula/vim'
+use 'zeis/vim-kolor'
 use {
   "kyazdani42/nvim-web-devicons",
   config = function()

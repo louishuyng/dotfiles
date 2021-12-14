@@ -12,6 +12,7 @@ map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
 
 map("n", "<leader>dc", ":call GotoWindow(g:vimspector_session_windows.code)<CR>", opt)
 map("n", "<leader>do", ":call GotoWindow(g:vimspector_session_windows.output)<CR>", opt)
+map("n", "<leader>dt", ":call GotoWindow(g:vimspector_session_windows.terminal)<CR>", opt)
 
 map("n", "<leader>de", ":call vimspector#Reset()<CR>", opt)
 

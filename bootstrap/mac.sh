@@ -164,11 +164,11 @@ install_font() {
 }
 
 install_terminal() {
-  read -r -p "Do you want to install allacrity? [y|N] " response
+  read -r -p "Do you want to install kitty? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew install --cask alacritty
+    brew install --cask kitty
 
-    success "Installed alacritty terminal"
+    success "Installed kitty terminal"
   fi
 }
 
@@ -294,8 +294,10 @@ link_all_dotfiles() {
   rm ~/.tmux.conf
   rm -rf ~/.zshrc
 
+  mkdir -p ~/.config/kitty
+
   cd ~/.dotfiles/terminals && \
-    stow alacritty -t ~/.config && \
+    stow kitty -t ~/.config/kitty && \
     stow tmux -t ~/ && \
     stow zsh -t ~/
   success "Linked terminals"
