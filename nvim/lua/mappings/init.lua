@@ -19,8 +19,9 @@ require 'mappings.editor.speller'
 require 'mappings.editor.trouble'
 require 'mappings.editor.wordmotion'
 
-require 'mappings.languages.test'
-require 'mappings.languages.spector'
 require 'mappings.languages.rails'
+require 'mappings.languages.spector'
+require 'mappings.languages.test'
+require 'mappings.languages.vista'
 
 require 'mappings.term.vimux'

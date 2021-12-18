@@ -25,6 +25,9 @@ use {
   end
 }
 
+-- TAGS
+use 'liuchengxu/vista.vim'
+
 -- ROR
 use "vim-test/vim-test"
 use "puremourning/vimspector"
