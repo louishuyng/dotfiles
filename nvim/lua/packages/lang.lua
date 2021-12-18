@@ -8,8 +8,10 @@ use {
   end,
 }
 use "jose-elias-alvarez/nvim-lsp-ts-utils"
+use "jose-elias-alvarez/null-ls.nvim"
+
 use {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   run = ':TSUpdate',
   config = function()
       require "cores.treesitter"
@@ -24,6 +26,6 @@ use {
 }
 
 -- ROR
-use 'vim-test/vim-test'
-use 'puremourning/vimspector'
-use 'tpope/vim-rails'
+use "vim-test/vim-test"
+use "puremourning/vimspector"
+use "tpope/vim-rails"
