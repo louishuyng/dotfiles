@@ -7,6 +7,7 @@ use {
     require "lsp"
   end,
 }
+use "jose-elias-alvarez/nvim-lsp-ts-utils"
 use {
   'nvim-treesitter/nvim-treesitter',
   run = ':TSUpdate',
