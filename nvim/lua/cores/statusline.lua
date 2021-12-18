@@ -1,4 +1,3 @@
-vim.cmd [[packadd nvim-web-devicons]]
 local gl = require 'galaxyline'
 local condition = require 'galaxyline.condition'
 local diagnostic = require 'galaxyline.provider_diagnostic'

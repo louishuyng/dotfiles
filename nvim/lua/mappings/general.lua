@@ -46,5 +46,5 @@ map("n", "sr;", ":silent !brew services restart ", opt)
 
 -- Packer
 map("n", "<space>pi", ":PackerInstall<CR>", opt)
-map("n", "<space>pr", ":PackerCompile<CR>", opt)
+map("n", "<space>pc", ":PackerCompile<CR>", opt)
 map("n", "<space>pr", ":PackerClean<CR>", opt)
