@@ -40,6 +40,7 @@ map("n", "<leader>o", ":call OpenUrlUnderCursor()<CR>", opt)
 
 -- Replace
 map("n", "r;", "yiw:%s/<C-R>\"/", opt)
+map("n", ",ra", "yiw:Far <C-R>\" ", opt)
 
 -- Restart Service
 map("n", "sr;", ":silent !brew services restart ", opt)
