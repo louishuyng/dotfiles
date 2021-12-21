@@ -51,6 +51,10 @@ vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
 
+-- LIST
+vim.api.nvim_command("set list")
+vim.api.nvim_command("set list listchars=tab:▸\\ ,trail:·,precedes:←,extends:→,eol:↲,nbsp:␣")
+
 -- FOLD
 opt.foldmethod ='indent'
 opt.foldnestmax = 5
@@ -68,3 +72,4 @@ vim.cmd [[au FileType go set noexpandtab]]
 vim.cmd [[au FileType go set shiftwidth=2]]
 vim.cmd [[au FileType go set softtabstop=2]]
 vim.cmd [[au FileType go set tabstop=2]]
+
