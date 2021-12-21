@@ -26,17 +26,21 @@ function codeSpace () {
     tmux send-keys -t $SESSION_OIVAN:2 "cd $OIVAN_PROJECT/sakani-market-units-service" Enter
     tmux send-keys -t $SESSION_OIVAN:2 "nvim" Enter
 
-    tmux new-window -n "v3-fe"
-    tmux send-keys -t $SESSION_OIVAN:3 "cd $OIVAN_PROJECT/sakani-v3-frontend" Enter
+    tmux new-window -n "tenancies"
+    tmux send-keys -t $SESSION_OIVAN:3 "cd $OIVAN_PROJECT/sakani-tenancies-service" Enter
     tmux send-keys -t $SESSION_OIVAN:3 "nvim" Enter
 
-    tmux new-window -n "admin-fe"
-    tmux send-keys -t $SESSION_OIVAN:4 "cd $OIVAN_PROJECT/sakani-admin" Enter
+    tmux new-window -n "v3-fe"
+    tmux send-keys -t $SESSION_OIVAN:4 "cd $OIVAN_PROJECT/sakani-v3-frontend" Enter
     tmux send-keys -t $SESSION_OIVAN:4 "nvim" Enter
 
-    tmux new-window -n "sapa-fe"
-    tmux send-keys -t $SESSION_OIVAN:5 "cd $OIVAN_PROJECT/sakani-partners-frontend" Enter
+    tmux new-window -n "admin-fe"
+    tmux send-keys -t $SESSION_OIVAN:5 "cd $OIVAN_PROJECT/sakani-admin" Enter
     tmux send-keys -t $SESSION_OIVAN:5 "nvim" Enter
+
+    tmux new-window -n "sapa-fe"
+    tmux send-keys -t $SESSION_OIVAN:6 "cd $OIVAN_PROJECT/sakani-partners-frontend" Enter
+    tmux send-keys -t $SESSION_OIVAN:6 "nvim" Enter
 
     # ELXR
     tmux kill-session -t $SESSION_ELXR
