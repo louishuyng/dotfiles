@@ -271,6 +271,7 @@ install_tools() {
     brew install nnn
     brew install bpytop
     brew install khanhas/tap/spicetify-cli
+    brew install dos2unix
 
     pip install pydf
 
