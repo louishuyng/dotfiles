@@ -9,6 +9,7 @@ M.config = function()
       selection_caret = " ❯ ",
       entry_prefix = "   ",
       sorting_strategy = 'ascending',
+      file_sorter = require("telescope.sorters").get_fzy_sorter,
       winblend = 0,
       mappings = {
         i = {
@@ -40,6 +41,10 @@ M.config = function()
       layout_strategy = "flex",
     },
     extensions = {
+      fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+      },
       project = {
         base_dirs = {
           '~/Dev/Projects',
@@ -51,6 +56,7 @@ M.config = function()
   }
 
   require'telescope'.load_extension('project')
+  require'telescope'.load_extension('fzy_native')
 end
 
 return M
