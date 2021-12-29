@@ -22,7 +22,7 @@ suckless/bpytop/error.log
 .DS_Store
 swap-pane
 nvim/spell/**
-nvim/plugin/packer_compiled.lua
+nvim/lua/packer_compiled.lua
 
 flutter
 
