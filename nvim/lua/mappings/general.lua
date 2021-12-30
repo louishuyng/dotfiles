@@ -49,3 +49,6 @@ map("n", "sr;", ":silent !brew services restart ", opt)
 map("n", "<space>pi", ":PackerInstall<CR>", opt)
 map("n", "<space>pc", ":PackerCompile<CR>", opt)
 map("n", "<space>pr", ":PackerClean<CR>", opt)
+
+-- Theme
+map("n", "<F7>", ":lua require('nebulous.functions').toggle_variant()<CR>", opt) -- Toggle Theme Style

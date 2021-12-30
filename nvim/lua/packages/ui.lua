@@ -1,7 +1,7 @@
 local packer = require "packer"
 local use = packer.use
 
-use 'zeis/vim-kolor'
+use 'Yagua/nebulous.nvim'
 use 'yamatsum/nvim-nonicons'
 use "kyazdani42/nvim-web-devicons"
 use {
