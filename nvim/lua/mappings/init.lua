@@ -17,6 +17,7 @@ require 'mappings.editor.nrrwrgn'
 require 'mappings.editor.sneak'
 require 'mappings.editor.speller'
 require 'mappings.editor.trouble'
+require 'mappings.editor.todo'
 require 'mappings.editor.wordmotion'
 
 require 'mappings.languages.rails'
