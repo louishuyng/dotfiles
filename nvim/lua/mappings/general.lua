@@ -42,9 +42,6 @@ map("n", "<leader>o", ":call OpenUrlUnderCursor()<CR>", opt)
 map("n", "r;", "yiw:%s/<C-R>\"/", opt)
 map("n", ",ra", "yiw:Far <C-R>\" ", opt)
 
--- Restart Service
-map("n", "sr;", ":silent !brew services restart ", opt)
-
 -- Packer
 map("n", "<space>pi", ":PackerInstall<CR>", opt)
 map("n", "<space>pc", ":PackerCompile<CR>", opt)
