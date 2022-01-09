@@ -22,6 +22,11 @@ fail () {
   exit
 }
 
+load_pre_script() {
+  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+  success "Built Locate Database"
+}
+
 install_homebrew() {
   read -r -p "Do you want to install homebrew? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -331,6 +336,8 @@ link_all_dotfiles() {
 
   success "Linked other tools"
 }
+
+load_pre_script
 
 install_homebrew
 install_manage_tools
