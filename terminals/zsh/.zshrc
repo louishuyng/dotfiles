@@ -101,6 +101,7 @@ source "$HOME/.dotfiles/terminals/zsh/functions/aws.zsh"
 source "$HOME/.dotfiles/terminals/zsh/functions/general.zsh"
 source "$HOME/.dotfiles/terminals/zsh/functions/git.zsh"
 source "$HOME/.dotfiles/terminals/zsh/functions/k8s.zsh"
+source "$HOME/.dotfiles/terminals/zsh/functions/ssh.zsh"
 source "$HOME/.dotfiles/terminals/zsh/functions/tmux.zsh"
 source "$HOME/.dotfiles/terminals/zsh/functions/vpn.zsh"
 
