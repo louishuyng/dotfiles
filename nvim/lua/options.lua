@@ -51,6 +51,9 @@ vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
 
+-- COLOR COLUMN
+vim.api.nvim_command("set colorcolumn=80")
+
 -- LIST
 vim.api.nvim_command("set list")
 vim.api.nvim_command("set list listchars=tab:▸\\ ,trail:·,precedes:←,extends:→,eol:↲,nbsp:␣")
