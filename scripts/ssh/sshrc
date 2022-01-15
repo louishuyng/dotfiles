@@ -1,0 +1,19 @@
+SUBNET="192.168.0"
+
+IP=`echo $SSH_CONNECTION | cut -d " " -f 1`
+CURRENT_SUBNET="$(echo $IP|cut -d'.' -f1-3)"
+
+mkdir -p /var/log/attacker.log
+touch ~/Dev/log/attacker.log
+
+if [ "$CURRENT_SUBNET" = "$SUBNET" ]; then
+        msg="This message comes from same subnet! User $USER just logged in from $IP"
+        $msg >> ~/sys_log/attacker.log
+        echo $msg | terminal-notifier -title "Danger" -message
+else
+        msg="This message comes from different subnet! User $USER just logged in from $IP"
+        $msg >> ~/sys_log/attacker.log
+        echo $msg | terminal-notifier -title "Danger" -message
+fi
+
+logger -t ssh-wrapper $USER login from $IP

@@ -11,3 +11,4 @@ function ssh_join() {
 
   ssh $host_name -i ~/.ssh/$host_key[$host_name]
 }
+

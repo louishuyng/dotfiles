@@ -25,6 +25,14 @@ fail () {
 load_pre_script() {
   sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
   success "Built Locate Database"
+
+  mkdir -p ~/sys_log/
+  touch ~/sys_log/attacker.log
+
+  cd ~/.dotfiles/scripts/ssh && \
+    yes | cp sshrc  ~/.ssh/
+
+  success "Setup sshrc config"
 }
 
 install_homebrew() {

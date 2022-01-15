@@ -67,3 +67,7 @@ function goto() {
   local path=$(realpath $(which $1) | awk 'sub( /\/[a-z]*$/,"",$0 )')
   cd $path
 }
+
+function sys_log() {
+  tail -f ~/sys_log/$1.log
+}
