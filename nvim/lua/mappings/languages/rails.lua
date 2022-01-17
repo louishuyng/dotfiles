@@ -15,3 +15,6 @@ map("n", "<leader>es", ":Espec ", opt)
 map("n", "<leader>et", ":Etask ", opt)
 
 map("n", "<leader>eg", ":Generate ", opt)
+
+vim.cmd("autocmd BufEnter *.rb nnoremap <leader>mu :Rails db:migrate<CR>")
+vim.cmd("autocmd BufEnter *.rb nnoremap <leader>md :Rails db:rollback<CR>")
