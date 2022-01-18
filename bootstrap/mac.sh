@@ -94,6 +94,10 @@ install_devops() {
     brew install lazydocker
     success "Installed docker"
 
+    brew install vagrant
+    yes | cp ~/.dotfiles/scripts/vagrant/VAGRANTFILE  ~/Dev/VM
+    success "Installed vagrant"
+
     brew install minikube
     brew install helm
     brew install hyperkit
