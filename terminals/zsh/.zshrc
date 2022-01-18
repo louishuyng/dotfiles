@@ -83,6 +83,7 @@ zinit light sindresorhus/pure
 
 ### Alias
 source "$HOME/.dotfiles/terminals/zsh/alias/app.zsh"
+source "$HOME/.dotfiles/terminals/zsh/alias/database.zsh"
 source "$HOME/.dotfiles/terminals/zsh/alias/docker.zsh"
 source "$HOME/.dotfiles/terminals/zsh/alias/general.zsh"
 source "$HOME/.dotfiles/terminals/zsh/alias/git.zsh"
