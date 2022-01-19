@@ -35,7 +35,7 @@ install_libs() {
 install_ninja() {
   read -r -p "Do you want to install ninja and lua lsp? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    sudo pacman -S ninja-build
+    sudo pacman -S ninja
     
     cd ~/.dotfiles/nvim
     git clone https://github.com/sumneko/lua-language-server
@@ -80,10 +80,10 @@ setup_git() {
 install_zsh() {
   read -r -p "Do you want to install zsh? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    sudo pacman -S zsh -y
+    sudo pacman -S zsh
 
     sudo pacman -S peco
-    sudo chsh -s $(which zsh)
+    chsh -s /bin/zsh
     zsh
 
     rm -rf ~/.zsh-defer
@@ -111,11 +111,8 @@ install_nvim() {
   if [[ $response =~ (y|yes|Y) ]];then
     info "Installing neovim"
     sudo pacman -S neovim
-
-    sudo pacman -S python-dev
     sudo pacman -S python-pip
-    sudo pacman -S python3-dev
-    sudo pacman -S python3-pip
+
     success "Installed neovim"
   fi
 }
@@ -149,11 +146,8 @@ install_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     sudo pacman -S nnn
-
-    echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
-    wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
-    sudo apt install bpytop
-    sudo apt install fzf
+    sudo pacman -S bpytop
+    sudo pacman -S fzf
 
     go get github.com/isacikgoz/tldr/cmd/tldr
 
@@ -162,8 +156,7 @@ install_tools() {
 }
 
 link_all_dotfiles() {
-  sudo apt-get update -y
-  sudo apt-get install -y stow
+  sudo pacman -S stow
 
   rm -rf ~/.zshrc
 
@@ -189,9 +182,9 @@ install_ninja
 install_zsh
 install_font
 install_nvim
-install_languages
-install_tools
 link_all_dotfiles
+install_tools
+install_languages
 
 echo "---"
 

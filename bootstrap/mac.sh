@@ -366,8 +366,8 @@ install_emacs
 install_tmux
 install_window_manager
 install_qutebrowser
-install_tools
 link_all_dotfiles
+install_tools
 
 echo "---"
 

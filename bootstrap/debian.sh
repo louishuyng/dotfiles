@@ -188,9 +188,9 @@ install_ninja
 install_zsh
 install_font
 install_nvim
+link_all_dotfiles
 install_languages
 install_tools
-link_all_dotfiles
 
 echo "---"
 
