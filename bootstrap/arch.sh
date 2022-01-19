@@ -25,7 +25,12 @@ fail () {
 install_libs() {
   read -r -p "Do you want to upgrade lib? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    sudo pacman -Syy
+    sudo pacman -S base-devel fakeroot jshon expac git wget
+    wget 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=packer'
+    mv PKGBUILD\?h\=packer PKGBUILD
+    makepkg
+    sudo pacman -U packer-*.pkg.tar.zst
+
     sudo pacman -S base-devel
     
     success "Upgrade Lib"
@@ -35,7 +40,7 @@ install_libs() {
 install_ninja() {
   read -r -p "Do you want to install ninja and lua lsp? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    sudo pacman -S ninja
+    sudo pacman -S lua
     
     cd ~/.dotfiles/nvim
     git clone https://github.com/sumneko/lua-language-server
@@ -111,6 +116,10 @@ install_nvim() {
   if [[ $response =~ (y|yes|Y) ]];then
     info "Installing neovim"
     sudo pacman -S neovim
+
+    packer -S nvim-packer-git
+
+    git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
     sudo pacman -S python-pip
 
     success "Installed neovim"
