@@ -25,6 +25,7 @@ fail () {
 install_libs() {
   read -r -p "Do you want to upgrade lib? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
+    sudo pacman -Syu
     sudo pacman -S base-devel fakeroot jshon expac git wget
     wget 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=packer'
     mv PKGBUILD\?h\=packer PKGBUILD
@@ -41,6 +42,7 @@ install_ninja() {
   read -r -p "Do you want to install ninja and lua lsp? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     sudo pacman -S lua
+    packer -S ninja
     
     cd ~/.dotfiles/nvim
     git clone https://github.com/sumneko/lua-language-server
@@ -157,6 +159,7 @@ install_tools() {
     sudo pacman -S nnn
     sudo pacman -S bpytop
     sudo pacman -S fzf
+    sudo pacman -S neofetch
 
     go get github.com/isacikgoz/tldr/cmd/tldr
 
@@ -192,8 +195,8 @@ install_zsh
 install_font
 install_nvim
 link_all_dotfiles
-install_tools
 install_languages
+install_tools
 
 echo "---"
 

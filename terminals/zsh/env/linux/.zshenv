@@ -1,3 +1,5 @@
+neofetch
+
 # Enviroment variables
 
 # You may need to manually set your language environment

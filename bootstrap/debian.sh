@@ -153,6 +153,7 @@ install_tools() {
     wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
     sudo apt install bpytop
     sudo apt install fzf
+    sudo apt install neofetch
 
     go get github.com/isacikgoz/tldr/cmd/tldr
 
