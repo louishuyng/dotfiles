@@ -352,12 +352,12 @@ link_all_dotfiles() {
 load_pre_script
 
 install_homebrew
+setup_git
 install_manage_tools
 install_ninja
 install_languages
 install_devops
 setup_penetration_tools
-setup_git
 install_zsh
 install_font
 install_terminal

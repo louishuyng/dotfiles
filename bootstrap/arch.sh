@@ -25,8 +25,8 @@ fail () {
 install_libs() {
   read -r -p "Do you want to upgrade lib? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    sudo apt-get install && sudo apt-get upgrade
-    sudo apt-get install build-essential
+    sudo pacman -Syy
+    sudo pacman -S base-devel
     
     success "Upgrade Lib"
   fi
@@ -35,7 +35,7 @@ install_libs() {
 install_ninja() {
   read -r -p "Do you want to install ninja and lua lsp? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    sudo apt install ninja-build
+    sudo pacman -S ninja-build
     
     cd ~/.dotfiles/nvim
     git clone https://github.com/sumneko/lua-language-server
@@ -80,9 +80,9 @@ setup_git() {
 install_zsh() {
   read -r -p "Do you want to install zsh? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    sudo apt-get install zsh -y
+    sudo pacman -S zsh -y
 
-    sudo apt install peco
+    sudo pacman -S peco
     sudo chsh -s $(which zsh)
     zsh
 
@@ -110,11 +110,12 @@ install_nvim() {
   read -r -p "Do you want to install neovim? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     info "Installing neovim"
-    sudo add-apt-repository ppa:neovim-ppa/unstable
-    sudo apt-get update
-    sudo apt-get install neovim
+    sudo pacman -S neovim
 
-    sudo apt-get install -y python-dev python-pip python3-dev python3-pip
+    sudo pacman -S python-dev
+    sudo pacman -S python-pip
+    sudo pacman -S python3-dev
+    sudo pacman -S python3-pip
     success "Installed neovim"
   fi
 }
@@ -147,7 +148,7 @@ install_languages() {
 install_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    sudo apt-get install -y nnn
+    sudo pacman -S nnn
 
     echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
     wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
