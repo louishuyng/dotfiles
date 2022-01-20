@@ -131,7 +131,7 @@ install_nvim() {
 install_languages() {
   read -r -p "Do you want to install languages? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+    git clone https://aur.archlinux.org/asdf-vm.git && cd asdf-vm && makepkg -si
     success "Installed asdf"
 
     asdf plugin-add rust
