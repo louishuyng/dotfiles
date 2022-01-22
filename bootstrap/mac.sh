@@ -38,6 +38,12 @@ load_pre_script() {
 install_homebrew() {
   read -r -p "Do you want to install homebrew? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
+    git clone https://github.com/Homebrew/brew homebrew
+    brew update --force --quiet
+    eval "$(homebrew/bin/brew shellenv)"
+
+    chmod -R go-w "$(brew --prefix)/share/zsh"
+
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew tap homebrew/cask
     

@@ -6,7 +6,7 @@ spacebar -m config background_color   0xAA000000
 spacebar -m config foreground_color   0xffa8a8a8
 spacebar -m config position           top
 spacebar -m config height             26
-spacebar -m config title              on
+spacebar -m config title              off
 spacebar -m config spaces             on
 spacebar -m config clock              on
 spacebar -m config power              on
