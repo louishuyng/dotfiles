@@ -34,48 +34,54 @@ yabai -m config normal_window_border_color  0xffa8a8a8
 
 # Rules
 
+# Labels
+yabai -m space 1 --label code
+yabai -m space 2 --label info
+yabai -m space 3 --label social
+yabai -m space 4 --label others
+
 # Coding
-yabai -m rule --add app="Simulator" manage=off                 space=1
-yabai -m rule --add app="^Xcode$" manage=off                   space=1
-yabai -m rule --add app="^Postman$" manage=off                 space=1
-yabai -m rule --add app="^Burp$" manage=off                    space=1
-yabai -m rule --add app="^Wireshark$" manage=off               space=1
-yabai -m rule --add app="Visual Studio Code" manage=off        space=1
+yabai -m rule --add app="Simulator" manage=off                 space=code
+yabai -m rule --add app="^Xcode$" manage=off                   space=code
+yabai -m rule --add app="^Postman$" manage=off                 space=code
+yabai -m rule --add app="^Burp$" manage=off                    space=code
+yabai -m rule --add app="^Wireshark$" manage=off               space=code
+yabai -m rule --add app="Visual Studio Code" manage=off        space=code
 
 # Penetration Tools
-yabai -m rule --add app="^OWASP$" manage=off                   space=1
+yabai -m rule --add app="^OWASP$" manage=off                   space=code
 
 # Information
-yabai -m rule --add app="kitty"                                space=2
-yabai -m rule --add app="Brave Browser"          opacity=1     space=2
-yabai -m rule --add app="^Firefox$"              opacity=1     space=2
-yabai -m rule --add app="qutebrowser"                          space=2
-yabai -m rule --add app="Preview" manage=off                   space=2
-yabai -m rule --add app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off space=3
+yabai -m rule --add app="kitty"                                space=info
+yabai -m rule --add app="Brave Browser"          opacity=1     space=info
+yabai -m rule --add app="^Firefox$"              opacity=1     space=info
+yabai -m rule --add app="qutebrowser"                          space=info
+yabai -m rule --add app="Preview" manage=off                   space=info
+yabai -m rule --add app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off space=info
 
 # Communication
-yabai -m rule --add app="Slack" title="Slack"                  space=3
-yabai -m rule --add app="zoom.us" manage=off                   space=3
-yabai -m rule --add app="Skype" manage=off                     space=3
-yabai -m rule --add app="Telegram" manage=off                  space=3
-yabai -m rule --add app="Discord"                              space=3
-yabai -m rule --add app="Microsoft Outlook" manage=off         space=3
-yabai -m rule --add app="^Microsoft Teams$" manage=off         space=3
+yabai -m rule --add app="Slack" title="Slack"                  space=social
+yabai -m rule --add app="zoom.us" manage=off                   space=social
+yabai -m rule --add app="Skype" manage=off                     space=social
+yabai -m rule --add app="Telegram" manage=off                  space=social
+yabai -m rule --add app="Discord"                              space=social
+yabai -m rule --add app="Microsoft Outlook" manage=off         space=social
+yabai -m rule --add app="^Microsoft Teams$" manage=off         space=social
 
 # Data & Cloud
-yabai -m rule --add app="^Docker$" manage=off                  space=4
-yabai -m rule --add app="^DataGrip$" manage=off                space=4
-yabai -m rule --add app="^pgAdmin$" manage=off                 space=4
+yabai -m rule --add app="^Docker$" manage=off                  space=others
+yabai -m rule --add app="^DataGrip$" manage=off                space=others
+yabai -m rule --add app="^pgAdmin$" manage=off                 space=others
 
 # Music
-yabai -m rule --add app="Spotify"          manage=off          space=4
-yabai -m rule --add app="QuickTime Player" manage=off          space=4
-yabai -m rule --add app="VLC"              mange=off           space=4
-yabai -m rule --add app="Tandem"           mange=off           space=4
-yabai -m rule --add app="Pages"            manage=off          space=4
+yabai -m rule --add app="Spotify"          manage=off          space=others
+yabai -m rule --add app="QuickTime Player" manage=off          space=others
+yabai -m rule --add app="VLC"              mange=off           space=others
+yabai -m rule --add app="Tandem"           mange=off           space=others
+yabai -m rule --add app="Pages"            manage=off          space=others
 
 # Notes
-yabai -m rule --add app="Notion"           manage=off          space=4
+yabai -m rule --add app="Notion"           manage=off          space=others
 
 # Others
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
