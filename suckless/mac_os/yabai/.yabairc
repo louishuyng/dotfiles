@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
 sudo yabai --load-sa
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # global settings
 yabai -m config mouse_follows_focus          off
@@ -22,15 +21,38 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config external_bar all:0:5
-yabai -m config bottom_padding               10
-yabai -m config left_padding                 18
-yabai -m config right_padding                18
 yabai -m config window_gap                   15
 yabai -m config window_border                on
 yabai -m config window_border_width          2
 yabai -m config active_window_border_color  0xff48e566
 yabai -m config normal_window_border_color  0xffa8a8a8
+
+# padding signals
+padding_refresh_command="space_info=\$(yabai -m query --windows --space | jq)
+number_of_windows=\$(yabai -m query --windows --space | jq 'length')
+top=30
+bot=10
+side=18
+
+echo \"space_info: \$space_info, number_of_windows: \$number_of_windows\" >> \"\$HOME/sys_log/yabailogs.txt\"
+
+[ \$number_of_windows -eq 1 ] && top=0
+[ \$number_of_windows -eq 1 ] && bot=0
+[ \$number_of_windows -eq 1 ] && side=18
+
+yabai -m config --space mouse top_padding \$top
+yabai -m config --space mouse bottom_padding \$bot
+yabai -m config --space mouse left_padding \$side
+yabai -m config --space mouse right_padding \$side"
+
+yabai -m signal --add event=window_created action="$padding_refresh_command"
+yabai -m signal --add event=window_destroyed action="$padding_refresh_command"
+yabai -m signal --add event=application_launched action="$padding_refresh_command"
+yabai -m signal --add event=application_terminated action="$padding_refresh_command"
+
+# signals
+yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 
 # Rules
 

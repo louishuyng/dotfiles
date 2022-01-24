@@ -241,6 +241,8 @@ install_window_manager() {
     codesign -fs 'yabai-cert' $(which yabai)
 
     sudo yabai --install-sa
+    touch ~/sys_log/yabailogs.txt # create log file
+
     brew services start yabai
     killall Dock
 
@@ -295,6 +297,7 @@ install_tools() {
     brew install bpytop
     brew install khanhas/tap/spicetify-cli
     brew install dos2unix
+    brew install jq
 
     pip install pydf
 
