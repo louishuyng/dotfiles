@@ -86,7 +86,7 @@ yabai -m rule --add app="Slack" title="Slack"                  space=social
 yabai -m rule --add app="zoom.us" manage=off                   space=social
 yabai -m rule --add app="Skype" manage=off                     space=social
 yabai -m rule --add app="Telegram" manage=off                  space=social
-yabai -m rule --add app="Discord"                              space=social
+yabai -m rule --add app="Discord"  manage=off                  space=social
 yabai -m rule --add app="Microsoft Outlook" manage=off         space=social
 yabai -m rule --add app="^Microsoft Teams$" manage=off         space=social
 
@@ -98,8 +98,8 @@ yabai -m rule --add app="^pgAdmin$" manage=off                 space=others
 # Music
 yabai -m rule --add app="Spotify"          manage=off          space=others
 yabai -m rule --add app="QuickTime Player" manage=off          space=others
-yabai -m rule --add app="VLC"              mange=off           space=others
-yabai -m rule --add app="Tandem"           mange=off           space=others
+yabai -m rule --add app="VLC"              manage=off           space=others
+yabai -m rule --add app="Tandem"           manage=off           space=others
 yabai -m rule --add app="Pages"            manage=off          space=others
 
 # Notes
@@ -114,6 +114,7 @@ yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
 yabai -m rule --add label="Sourcetree" app="^Sourcetree$" manage=off
+yabai -m rule --add label="Clean My Mac" app="^CleanMyMac X$" manage=off
 
 
 # show digital colour meter topmost and on all spaces
