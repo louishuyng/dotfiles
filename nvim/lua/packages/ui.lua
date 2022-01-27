@@ -1,8 +1,6 @@
 local packer = require "packer"
 local use = packer.use
 
-use 'Yagua/nebulous.nvim'
-use 'yamatsum/nvim-nonicons'
 use "kyazdani42/nvim-web-devicons"
 use {
   "norcalli/nvim-colorizer.lua",
@@ -16,12 +14,11 @@ use {
   config = function()
     require "cores.statusline"
   end,
+
 }
 use {
-  "akinsho/nvim-bufferline.lua",
-  config = function()
-    require "cores.bufferline"
-  end
+  'romgrk/barbar.nvim',
+  requires = {'kyazdani42/nvim-web-devicons'}
 }
 use 'kevinhwang91/nvim-hlslens'
 use 'glepnir/dashboard-nvim'

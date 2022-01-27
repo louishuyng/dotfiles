@@ -46,6 +46,3 @@ map("n", ",ra", "yiw:Far <C-R>\" ", opt)
 map("n", "<space>pi", ":PackerInstall<CR>", opt)
 map("n", "<space>pc", ":PackerCompile<CR>", opt)
 map("n", "<space>pr", ":PackerClean<CR>", opt)
-
--- Theme
-map("n", "<F7>", ":lua require('nebulous.functions').toggle_variant()<CR>", opt) -- Toggle Theme Style

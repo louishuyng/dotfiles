@@ -24,7 +24,7 @@ return packer.startup{
     require 'packages.utils'
   end,
   config = {
-    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua',
+    compile_path = vim.fn.stdpath('config')..'/plugin/packer_compiled.lua',
     display = {
       open_fn = function()
         return require("packer.util").float({border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}})

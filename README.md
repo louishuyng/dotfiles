@@ -6,7 +6,7 @@ This is Louis dotfiles Who loves using nvim + lua  🚀
 - **kolor/vim** (theme)
 - **yamatsum/nvim-nonicons** (icons)
 - **dense-analysis/ale** (auto format and linting)
-- **akinsho/nvim-bufferline.lua** (buffer styling)
+- **romgrk/barbar.nvim** (buffer styling)
 - **famiu/feline.nvim** (statusline styling)
 - **nvim-treesitter/nvim-treesitter** (treesitter)
 - **neovim/nvim-lspconfig** (Language Server Protocol)

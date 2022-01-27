@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-require 'mappings.buffer'
+require 'mappings.barbar'
 require 'mappings.dashboard'
 require 'mappings.fterm'
 require 'mappings.general'

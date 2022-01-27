@@ -1,16 +1,28 @@
-local icons = require "nvim-nonicons"
 local M = {}
 
 M.config = function()
   local actions = require 'telescope.actions'
   require("telescope").setup {
     defaults = {
-      prompt_prefix = "  " .. icons.get("telescope") .. "  ",
-      selection_caret = " ❯ ",
-      entry_prefix = "   ",
-      sorting_strategy = 'ascending',
+      vimgrep_arguments = {
+         "rg",
+         "--color=never",
+         "--no-heading",
+         "--with-filename",
+         "--line-number",
+         "--column",
+         "--smart-case",
+      },
+      prompt_prefix = "   ",
+      selection_caret = "  ",
+      entry_prefix = "  ",      sorting_strategy = 'ascending',
       file_sorter = require("telescope.sorters").get_fzy_sorter,
       winblend = 0,
+      border = {},
+      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      color_devicons = true,
+      use_less = true,
+      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
       mappings = {
         i = {
           ["<C-d>"] = actions.close,
