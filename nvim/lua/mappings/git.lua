@@ -29,3 +29,14 @@ map("n", "gu",  "<Plug>(GitGutterUndoHunk)", opt)
 map("n", "<leader>1", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_oivan <CR><CR>", opt)
 map("n", "<leader>2", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_elxr <CR><CR>", opt)
 map("n", "<leader>3", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_open_source <CR><CR>", opt)
+
+-- Octo
+map("n", "<leader>gpl", ":Octo pr list<CR>", opt)
+map("n", "<leader>gpc", ":Octo pr create<CR>", opt)
+
+map("n", "<leader>gr", ":Octo thread resolve<CR>", opt)
+map("n", "<leader>gR", ":Octo thread unresolve<CR>", opt)
+
+map("n", "<leader>grv", ":Octo review start<CR>", opt)
+map("n", "<leader>grd", ":Octo review discard<CR>", opt)
+map("n", "<leader>grs", ":Octo review submit<CR>", opt)

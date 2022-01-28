@@ -133,6 +133,9 @@ setup_penetration_tools() {
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
+    brew install gh 
+    success "Installed GitHub CLI"
+    
     git config --global user.email "huynguyennbk@gmail.com"
     git config --global user.name  "Louis Nguyen"
     git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"

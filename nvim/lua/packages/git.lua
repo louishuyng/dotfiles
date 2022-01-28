@@ -20,3 +20,12 @@ use {
   requires = 'nvim-lua/plenary.nvim',
 }
 use 'tveskag/nvim-blame-line'
+
+use {
+  'pwntester/octo.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim',
+    'kyazdani42/nvim-web-devicons',
+  },
+}

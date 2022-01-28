@@ -3,6 +3,7 @@ require "mappings"
 require "options"
 
 require "cores.git"
+require "cores.octo"
 require "cores.sneak"
 
 require "plugins.comment"
