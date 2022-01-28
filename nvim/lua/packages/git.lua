@@ -12,7 +12,6 @@ use {
     "Gcommit",
     "Gpush",
     "Gpull",
-    "Git blame",
     "Gvdiff",
   }
 }
@@ -20,3 +19,4 @@ use {
   'ruifm/gitlinker.nvim',
   requires = 'nvim-lua/plenary.nvim',
 }
+use 'tveskag/nvim-blame-line'
