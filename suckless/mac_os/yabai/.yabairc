@@ -74,7 +74,7 @@ yabai -m rule --add app="Visual Studio Code" manage=off        space=code
 yabai -m rule --add app="^OWASP$" manage=off                   space=code
 
 # Information
-yabai -m rule --add app="kitty"                                space=info
+yabai -m rule --add app="Alacritty"                            space=info
 yabai -m rule --add app="Brave Browser"          opacity=1     space=info
 yabai -m rule --add app="^Firefox$"              opacity=1     space=info
 yabai -m rule --add app="qutebrowser"                          space=info

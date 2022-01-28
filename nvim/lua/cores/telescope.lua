@@ -15,7 +15,8 @@ M.config = function()
       },
       prompt_prefix = "   ",
       selection_caret = "  ",
-      entry_prefix = "  ",      sorting_strategy = 'ascending',
+      entry_prefix = "  ",
+      sorting_strategy = 'ascending',
       file_sorter = require("telescope.sorters").get_fzy_sorter,
       winblend = 0,
       border = {},
@@ -46,11 +47,20 @@ M.config = function()
         }
       },
       layout_config = {
-        height = 0.5,
-        width = 0.4,
+         horizontal = {
+            prompt_position = "top",
+            preview_width = 0.55,
+            results_width = 0.8,
+         },
+         vertical = {
+            mirror = false,
+         },
+         width = 0.5,
+         height = 0.80,
+         preview_cutoff = 120,
       },
       initial_mode = "insert",
-      layout_strategy = "flex",
+      layout_strategy = "horizontal",
     },
     extensions = {
       fzy_native = {
