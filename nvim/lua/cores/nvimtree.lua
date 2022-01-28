@@ -116,7 +116,3 @@ nvimtree.setup {
     }
   },
 }
-
-vim.cmd("highlight NvimTreeIndentMarker guifg=#3b4048")
-vim.cmd("highlight NvimTreeNormal guibg=#20242A guifg=#9da5b3")
-vim.cmd("highlight NvimTreeVertSplit guifg=#282c34")
