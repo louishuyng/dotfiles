@@ -87,7 +87,26 @@ cmd + alt - w : chunkc tiling::desktop --annihilate
 # Restart Yabai
 shift + lctrl + alt - r :
     /usr/bin/env osascript <<< \
-        "display notification \"Mother fucker rock it now\" with title \"Louis Hacker\"";\
+        "display notification \"Yabai rock it now\" with title \"Louis Hacker\"";\
         brew services restart spacebar;\
+        brew services restart yabai;\
         sudo yabai --load-sa;\
         launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"; \
+
+# Stop Yabai
+shift + lctrl + alt - d :
+    /usr/bin/env osascript <<< \
+        "display notification \"Stop yabai \" with title \"Louis Hacker\"";\
+        brew services stop yabai;\
+
+# M1 Mode Yabai
+shift + lctrl + alt - m :
+    /usr/bin/env osascript <<< \
+        "display notification \"Yabai M1 mode" with title \"Louis Hacker\"";\
+          yabai -m config --space mouse top_padding 0;\
+
+# External Mode Yabai
+shift + lctrl + alt - e :
+    /usr/bin/env osascript <<< \
+        "display notification \"Yabai External screen mode" with title \"Louis Hacker\"";\
+          yabai -m config --space mouse top_padding 30;\
