@@ -7,16 +7,10 @@ use {
   "norcalli/nvim-colorizer.lua",
   event = "BufRead",
   config = function()
-    require("plugins.others").colorizer()
+    require("config.libs.others").colorizer()
   end
 }
-use {
- 'glepnir/galaxyline.nvim',
-  config = function()
-    require "cores.statusline"
-  end,
-
-}
+use 'glepnir/galaxyline.nvim'
 use {
   'romgrk/barbar.nvim',
   requires = {'kyazdani42/nvim-web-devicons'}

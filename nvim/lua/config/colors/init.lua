@@ -14,9 +14,9 @@ M.init = function(theme)
       base16(base16.themes(theme), true)
 
       -- unload to force reload
-      package.loaded["colors.highlights" or false] = nil
+      package.loaded["config.colors.highlights" or false] = nil
       -- then load the highlights
-      require "colors.highlights"
+      require "config.colors.highlights"
    end
 end
 

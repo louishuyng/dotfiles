@@ -5,7 +5,7 @@ use {
   "kyazdani42/nvim-tree.lua",
   cmd = "NvimTreeToggle",
   config = function()
-    require "cores.nvimtree"
+    require "config.cores.nvimtree"
   end
 }
 use {
@@ -17,6 +17,6 @@ use {
   },
   cmd = "Telescope",
   config = function()
-    require("cores.telescope").config()
+    require("config.cores.telescope").config()
   end
 }

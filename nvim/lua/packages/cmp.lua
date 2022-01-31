@@ -9,7 +9,7 @@ use {
   "hrsh7th/nvim-cmp",
   after = "friendly-snippets",
   config = function()
-    require "cores.cmp"
+    require "config.cores.cmp"
   end
 }
 use {
@@ -17,7 +17,7 @@ use {
   wants = "friendly-snippets",
   after = "nvim-cmp",
   config = function()
-    require("plugins.others").luasnip()
+    require("config.libs.others").luasnip()
   end
 }
 use {

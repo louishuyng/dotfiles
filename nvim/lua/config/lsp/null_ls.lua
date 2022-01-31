@@ -1,4 +1,4 @@
-local on_attach = require 'lsp/on_attach'
+local on_attach = require 'config/lsp/on_attach'
 
 local null_ls = require("null-ls")null_ls.setup({
   sources = {

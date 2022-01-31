@@ -4,7 +4,7 @@ local use = packer.use
 use {
   "neovim/nvim-lspconfig",
   config = function()
-    require "lsp"
+    require "config.lsp"
   end,
 }
 use "jose-elias-alvarez/nvim-lsp-ts-utils"
@@ -14,13 +14,13 @@ use {
   "nvim-treesitter/nvim-treesitter",
   run = ':TSUpdate',
   config = function()
-      require "cores.treesitter"
+      require "config.cores.treesitter"
   end
 }
 use {
   "folke/trouble.nvim",
   config = function()
-    require "plugins.trouble"
+    require "config.libs.trouble"
   end
 }
 use {

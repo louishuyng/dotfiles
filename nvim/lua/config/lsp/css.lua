@@ -1,5 +1,5 @@
 local lsp_config = require 'lspconfig'
-local on_attach = require 'lsp/on_attach'
+local on_attach = require 'config/lsp/on_attach'
 
 lsp_config.cssls.setup({
   filetypes = { 'css', 'sass', 'scss' },

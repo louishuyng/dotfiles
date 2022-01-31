@@ -22,6 +22,8 @@ return packer.startup{
     require 'packages.others'
     require 'packages.ui'
     require 'packages.utils'
+
+    require 'config'
   end,
   config = {
     compile_path = vim.fn.stdpath('config')..'/plugin/packer_compiled.lua',

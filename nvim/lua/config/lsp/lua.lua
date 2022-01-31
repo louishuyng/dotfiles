@@ -1,5 +1,5 @@
 local lsp_config = require 'lspconfig'
-local on_attach = require 'lsp/on_attach'
+local on_attach = require 'config/lsp/on_attach'
 
 local system_name
 if vim.fn.has("mac") == 1 then

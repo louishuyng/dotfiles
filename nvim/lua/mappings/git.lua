@@ -2,15 +2,15 @@ local map = require 'utils.map'
 
 local opt = {}
 
-map("n", "<leader>;",  ":lua require('plugins.git_worktree').pull()<CR>", opt)
+map("n", "<leader>;",  ":lua require('config.libs.git_worktree').pull()<CR>", opt)
 map("n", "<leader>ga", ":Gwrite!<CR>", opt)
 map("n", "<leader>gb",  ":Telescope git_branches<CR>", opt)
 map("n", "<leader>gc", ":Telescope git_commits<CR>", opt)
 map("n", "<leader>gd", ":Gvdiff!<CR>", opt)
 map("n", "<leader>gl", ":Git log<CR>", opt)
 map("n", "<leader>gm",  ":GitMessenger<CR>", opt)
-map("n", "<leader>gp", ":lua require('plugins.git_worktree').push()<CR>", opt)
-map("n", "<leader>gpf", ":lua require('plugins.git_worktree').push_force()<CR>", opt)
+map("n", "<leader>gp", ":lua require('config.libs.git_worktree').push()<CR>", opt)
+map("n", "<leader>gpf", ":lua require('config.libs.git_worktree').push_force()<CR>", opt)
 map("n", "<leader>gs", ":Telescope git_stash<CR>", opt)
 
 map("n", ",gb",  ":ToggleBlameLine<CR>", opt)
