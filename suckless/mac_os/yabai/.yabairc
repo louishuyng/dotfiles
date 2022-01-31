@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-sudo yabai --load-sa
-
 # global settings
 yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          on
@@ -35,6 +33,7 @@ bot=10
 side=18
 
 echo \"space_info: \$space_info, number_of_windows: \$number_of_windows\" >> \"\$HOME/sys_log/yabailogs.txt\"
+sudo yabai --load-sa
 
 [ \$number_of_windows -eq 1 ] && top=0
 [ \$number_of_windows -eq 1 ] && bot=0
