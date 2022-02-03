@@ -40,3 +40,6 @@ map("n", "<leader>gR", ":Octo thread unresolve<CR>", opt)
 map("n", "<leader>grv", ":Octo review start<CR>", opt)
 map("n", "<leader>grd", ":Octo review discard<CR>", opt)
 map("n", "<leader>grs", ":Octo review submit<CR>", opt)
+
+-- Message
+map("n", "<leader>gcm", ":Git commit -m \"Merge branch '' into ''\"", opt)
