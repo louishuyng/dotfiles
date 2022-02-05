@@ -78,7 +78,7 @@ function codeSpace () {
     tmux kill-session -t $SESSION_SANDBOX
     tmux new -d -s $SESSION_SANDBOX -n "golang"
 
-    tmux send-keys -t $SESSION_SANDBOX:1 "cd $DEV_DIR/Golang" Enter
+    tmux send-keys -t $SESSION_SANDBOX:1 "cd $DEV_DIR/gin-api" Enter
     tmux send-keys -t $SESSION_SANDBOX:1 "nvim" Enter
 
     tmux new-window -n "VM"

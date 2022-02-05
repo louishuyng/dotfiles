@@ -31,14 +31,10 @@ export PATH=/usr/local/opt/python/libexec/bin:$PATH
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 #Golang
-export GO111MODULE=off
-
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
-
 export GOPATH=$HOME/development/golib
-export PATH=$PATH:$GOPATH/bin
-export GOPATH=$GOPATH:$HOME/Dev/Projects/Golang
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export GOPATH=$GOPATH:~/Dev/Projects/gin-api
+export GO111MODULE=on
 
 # OPEN SSL
 export PATH="/usr/local/opt/openssl/bin:$PATH"

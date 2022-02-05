@@ -102,11 +102,11 @@ shift + lctrl + alt - d :
 # M1 Mode Yabai
 shift + lctrl + alt - m :
     /usr/bin/env osascript <<< \
-        "display notification \"Yabai M1 mode" with title \"Louis Hacker\"";\
-          yabai -m config --space mouse top_padding 0;\
+        "display notification \"yabai M1 \" with title \"Louis Hacker\"";\
+        yabai -m config --space mouse top_padding 0;\
 
 # External Mode Yabai
 shift + lctrl + alt - e :
     /usr/bin/env osascript <<< \
-        "display notification \"Yabai External screen mode" with title \"Louis Hacker\"";\
-          yabai -m config --space mouse top_padding 30;\
+        "display notification \"yabai External Screen \" with title \"Louis Hacker\"";\
+        yabai -m config --space mouse top_padding 30;\
