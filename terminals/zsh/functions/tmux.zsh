@@ -7,10 +7,12 @@ function codeSpace () {
     DEV_DIR="~/Dev/Projects"
 
     OIVAN_PROJECT="$DEV_DIR/Oivan/sakani-workspace"
+    PRODUCTPINE_PROJECT="$DEV_DIR/Productpine"
     ELXR_PROJECT="$DEV_DIR/ELXR"
     JHMSU_PROJECT="$DEV_DIR/Jhmsu"
 
     SESSION_OIVAN='Oivan'
+    SESSION_PRODUCTPINE="Productpine"
     SESSION_ELXR='Elxr'
     SESSION_JHMSU='Jhmsu'
     SESSION_DEVOPS='Devops'
@@ -43,6 +45,13 @@ function codeSpace () {
     tmux new-window -n "sapa-fe"
     tmux send-keys -t $SESSION_OIVAN:6 "cd $OIVAN_PROJECT/sakani-partners-frontend" Enter
     tmux send-keys -t $SESSION_OIVAN:6 "nvim" Enter
+
+    # PRODUCTPINE
+    tmux kill-session -t $SESSION_PRODUCTPINE
+
+    tmux new -d -s $SESSION_PRODUCTPINE -n "bms"
+    tmux send-keys -t $SESSION_PRODUCTPINE:1 "cd $PRODUCTPINE_PROJECT/brand-management-system" Enter
+    tmux send-keys -t $SESSION_PRODUCTPINE:1 "nvim" Enter
 
     # ELXR
     tmux kill-session -t $SESSION_ELXR
