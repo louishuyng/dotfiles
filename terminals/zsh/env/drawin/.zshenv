@@ -71,3 +71,5 @@ export PATH="$HOME/.config/scripts:$PATH"
 
 #TLDR
 export TLDR_OS=osx
+
+export DISABLE_SPRING=true

@@ -5,7 +5,6 @@ alias railst='bundle exec rspec'
 alias railss='bundle exec rails s -p'
 alias railsm='bundle exec rails db:migrate'
 alias railsg='bundle exec rails generate'
-alias ruby='jruby'
 
 # RUST
 alias cargn='cargo new'
