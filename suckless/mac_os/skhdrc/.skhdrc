@@ -11,6 +11,7 @@ ctrl + alt - s : open -na /Applications/Slack.app
 ctrl + alt - t : open -na /Applications/Alacritty.app
 ctrl + alt - w : open -na /Applications/Wireshark.app
 ctrl + alt - z : open -na /Applications/OWASP\ ZAP.app
+ctrl + alt - h : open -na /Applications/DevToys.app
 
 shift + alt - space : yabai -m window --toggle float
 
