@@ -8,12 +8,10 @@ function codeSpace () {
 
     OIVAN_PROJECT="$DEV_DIR/Oivan/sakani-workspace"
     PRODUCTPINE_PROJECT="$DEV_DIR/Productpine"
-    ELXR_PROJECT="$DEV_DIR/ELXR"
     JHMSU_PROJECT="$DEV_DIR/Jhmsu"
 
     SESSION_OIVAN='Oivan'
     SESSION_PRODUCTPINE="Productpine"
-    SESSION_ELXR='Elxr'
     SESSION_JHMSU='Jhmsu'
     SESSION_DEVOPS='Devops'
     SESSION_SANDBOX='Sandbox'
@@ -52,25 +50,6 @@ function codeSpace () {
     tmux new -d -s $SESSION_PRODUCTPINE -n "bms"
     tmux send-keys -t $SESSION_PRODUCTPINE:1 "cd $PRODUCTPINE_PROJECT/brand-management-system" Enter
     tmux send-keys -t $SESSION_PRODUCTPINE:1 "nvim" Enter
-
-    # ELXR
-    tmux kill-session -t $SESSION_ELXR
-
-    tmux new -d -s $SESSION_ELXR -n "ror-be"
-    tmux send-keys -t $SESSION_ELXR:1 "cd $ELXR_PROJECT/elxr_backend" Enter
-    tmux send-keys -t $SESSION_ELXR:1 "nvim" Enter
-
-    tmux new-window -n "nest-be"
-    tmux send-keys -t $SESSION_ELXR:2 "cd $ELXR_PROJECT/elxr_nest_backend" Enter
-    tmux send-keys -t $SESSION_ELXR:2 "nvim" Enter
-
-    tmux new-window -n "mobile"
-    tmux send-keys -t $SESSION_ELXR:3 "cd $ELXR_PROJECT/elxr_mobile" Enter
-    tmux send-keys -t $SESSION_ELXR:3 "nvim" Enter
-
-    tmux new-window -n "staging"
-    tmux send-keys -t $SESSION_ELXR:4 "cd ~/Dev/Keychain" Enter
-    tmux send-keys -t $SESSION_ELXR:4 "ssh elxr-staging-admin@bastion.the-elxr.com -i bastion.pem" Enter
 
     # JHMSU
     tmux kill-session -t $SESSION_JHMSU
