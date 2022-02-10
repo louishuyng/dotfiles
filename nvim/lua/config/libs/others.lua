@@ -15,7 +15,9 @@ M.luasnip = function()
       history = true,
       updateevents = "TextChanged,TextChangedI",
     }
-    require("luasnip/loaders/from_vscode").load { path = { '~/.config/nvim/my-snippets' } }
+    require("luasnip/loaders/from_vscode").load {
+      paths = vim.fn.stdpath "config" .. "/snippets",
+    }
     end
 end
 
