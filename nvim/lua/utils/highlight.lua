@@ -3,6 +3,7 @@ local cmd = vim.cmd
 -- Define bg color
 -- @param group Group
 -- @param color Color
+local M = {}
 
 M.bg = function(group, col)
    cmd("hi " .. group .. " guibg=" .. col)
@@ -23,4 +24,4 @@ M.fg_bg = function(group, fgcol, bgcol)
    cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
- return M
+return M

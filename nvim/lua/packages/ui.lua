@@ -10,7 +10,7 @@ use {
     require("config.libs.others").colorizer()
   end
 }
-use 'glepnir/galaxyline.nvim'
+use "feline-nvim/feline.nvim"
 use {
   'romgrk/barbar.nvim',
   requires = {'kyazdani42/nvim-web-devicons'}

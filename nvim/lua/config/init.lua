@@ -1,3 +1,5 @@
+require("config.colors").init()
+
 require "config.cores.git"
 require "config.cores.octo"
 require "config.cores.sneak"
@@ -19,5 +21,3 @@ require "config.libs.vimwiki"
 require "config.libs.vista"
 require "config.libs.wilder"
 require "config.libs.wordmotion"
-
-require("config.colors").init()
