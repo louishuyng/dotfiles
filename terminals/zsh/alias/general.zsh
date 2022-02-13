@@ -16,7 +16,7 @@ alias z="j"
 
 # Clear & Remove
 alias rf='rm -rf'
-alias cdes="rm ~/Desktop/*"
+alias cdes="rm ~/Desktop/*; rm -rf ~/Desktop/*"
 alias cfdes="rm -rf ~/Desktop/*"
 
 # Navigating

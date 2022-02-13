@@ -71,7 +71,12 @@ fg("LineNr", grey)
 fg("NvimInternalError", red)
 fg("VertSplit", one_bg2)
 
-bg("Normal", "NONE")
+if ui.transparency then
+   bg("Normal", "NONE")
+   bg("Folded", "NONE")
+   fg("Folded", "NONE")
+   fg("Comment", grey)
+end
 
 if ui.transparency then
    bg("Folded", "NONE")

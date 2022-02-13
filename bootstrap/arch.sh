@@ -1,23 +1,22 @@
 #! /bin/bash
 echo "---"
 
-DOTFILES_ROOT=$(pwd -P)
 set -e
 
 info () {
-  printf "\r  [\033[00;34m..\033[0m] $1\n"
+  printf "\r  [\033[00;34m..\033[0m] %s \n" "$1"
 }
 
 user () {
-  printf "\r  [\033[0;33m??\033[0m] $1\n"
+  printf "\r  [\033[0;33m??\033[0m] %s \n" "$1"
 }
 
 success () {
-  printf "\r\033[2K [\033[00;32mOK\033[0m] $1\n"
+  printf "\r\033[2K [\033[00;32mOK\033[0m] %s \n" "$1"
 }
 
 fail () {
-  printf "\r\033[2K [\033[0;31mFAIL\033[0m] $1\n"
+  printf "\r\033[2K [\033[0;31mFAIL\033[0m] %s \n" "$1"
   echo ''
   exit
 }
@@ -28,7 +27,7 @@ install_libs() {
     sudo pacman -Syu
     sudo pacman -S base-devel fakeroot jshon expac git wget
     wget 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=packer'
-    mv PKGBUILD\?h\=packer PKGBUILD
+    mv PKGBUILD\?h=packer PKGBUILD
     makepkg
     sudo pacman -U packer-*.pkg.tar.zst
 
@@ -121,7 +120,7 @@ install_nvim() {
 
     packer -S nvim-packer-git
 
-    git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+    git clone https://github.com/wbthomason/packer.nvim "$(env:LOCALAPPDATA)\nvim-data\site\pack\packer\start\packer.nvim"
     sudo pacman -S python-pip
 
     success "Installed neovim"
@@ -147,7 +146,7 @@ install_languages() {
     asdf plugin-add golang
     asdf install golang 1.17.3
     asdf global golang 1.17.3
-    mkdir $HOME/go
+    mkdir "$HOME"/go
     success "Installed golang"
   fi
   

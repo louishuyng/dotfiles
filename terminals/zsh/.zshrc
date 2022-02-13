@@ -111,3 +111,5 @@ source "$HOME/.dotfiles/terminals/zsh/nnn.zsh"
 
 ### Env
 source "$HOME/.dotfiles/terminals/zsh/env.zsh"
+
+bindkey -v

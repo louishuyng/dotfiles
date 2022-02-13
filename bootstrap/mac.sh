@@ -1,23 +1,22 @@
 #! /bin/bash
 echo "---"
 
-DOTFILES_ROOT=$(pwd -P)
 set -e
 
 info () {
-  printf "\r  [\033[00;34m..\033[0m] $1\n"
+  printf "\r  [\033[00;34m..\033[0m] %s \n" "$1"
 }
 
 user () {
-  printf "\r  [\033[0;33m??\033[0m] $1\n"
+  printf "\r  [\033[0;33m??\033[0m] %s \n" "$1"
 }
 
 success () {
-  printf "\r\033[2K [\033[00;32mOK\033[0m] $1\n"
+  printf "\r\033[2K [\033[00;32mOK\033[0m] %s \n" "$1"
 }
 
 fail () {
-  printf "\r\033[2K [\033[0;31mFAIL\033[0m] $1\n"
+  printf "\r\033[2K [\033[0;31mFAIL\033[0m] %s \n" "$1"
   echo ''
   exit
 }
@@ -30,7 +29,7 @@ load_pre_script() {
   touch ~/sys_log/attacker.log
 
   cd ~/.dotfiles/scripts/ssh && \
-    yes | cp sshrc  ~/.ssh/
+    cp -i sshrc  ~/.ssh/
 
   success "Setup sshrc config"
 }
@@ -101,7 +100,7 @@ install_devops() {
     success "Installed docker"
 
     brew install vagrant
-    yes | cp ~/.dotfiles/scripts/vagrant/VAGRANTFILE  ~/Dev/VM
+    cp -i ~/.dotfiles/scripts/vagrant/VAGRANTFILE  ~/Dev/VM
     success "Installed vagrant"
 
     brew install minikube
@@ -164,7 +163,7 @@ install_zsh() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install zsh
     brew install peco
-    sudo chsh -s $(which zsh)
+    sudo chsh -s "$(which zsh)"
 
     rm -rf ~/.zsh-defer
     git clone https://github.com/romkatv/zsh-defer.git ~/.zsh-defer
@@ -241,7 +240,7 @@ install_window_manager() {
   read -r -p "Do you want to install window manager? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install koekeishiya/formulae/yabai --HEAD
-    codesign -fs 'yabai-cert' $(which yabai)
+    codesign -fs 'yabai-cert' "$(which yabai)"
 
     sudo yabai --install-sa
     touch ~/sys_log/yabailogs.txt # create log file
@@ -310,7 +309,7 @@ install_tools() {
     sudo port install zathura-plugin-pdf-mupdf
 
     ln -s ~/.dotfiles/suckless/zathura ~/.config/
-    $(brew --prefix)/opt/fzf/install
+    "$(brew --prefix)"/opt/fzf/install
 
     brew install isacikgoz/taps/tldr
 

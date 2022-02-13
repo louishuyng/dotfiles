@@ -2,7 +2,7 @@ local M = {}
 
 M.init = function(theme)
    if not theme then
-      theme = 'onedark'
+      theme = 'chadracula'
    end
 
    vim.g.nvchad_theme = theme

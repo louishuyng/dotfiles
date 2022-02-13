@@ -1,23 +1,22 @@
 #! /bin/bash
 echo "---"
 
-DOTFILES_ROOT=$(pwd -P)
 set -e
 
 info () {
-  printf "\r  [\033[00;34m..\033[0m] $1\n"
+  printf "\r  [\033[00;34m..\033[0m] %s \n" "$1"
 }
 
 user () {
-  printf "\r  [\033[0;33m??\033[0m] $1\n"
+  printf "\r  [\033[0;33m??\033[0m] %s \n" "$1"
 }
 
 success () {
-  printf "\r\033[2K [\033[00;32mOK\033[0m] $1\n"
+  printf "\r\033[2K [\033[00;32mOK\033[0m] %s \n" "$1"
 }
 
 fail () {
-  printf "\r\033[2K [\033[0;31mFAIL\033[0m] $1\n"
+  printf "\r\033[2K [\033[0;31mFAIL\033[0m] %s \n" "$1"
   echo ''
   exit
 }
@@ -83,7 +82,7 @@ install_zsh() {
     sudo apt-get install zsh -y
 
     sudo apt install peco
-    sudo chsh -s $(which zsh)
+    sudo chsh -s "$(which zsh)"
     zsh
 
     rm -rf ~/.zsh-defer
@@ -138,7 +137,7 @@ install_languages() {
     asdf plugin-add golang
     asdf install golang 1.17.3
     asdf global golang 1.17.3
-    mkdir $HOME/go
+    mkdir "$HOME/go"
     success "Installed golang"
   fi
   
