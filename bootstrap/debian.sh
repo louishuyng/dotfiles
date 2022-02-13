@@ -154,6 +154,7 @@ install_tools() {
     sudo apt install bpytop
     sudo apt install fzf
     sudo apt install neofetch
+    sudo apt install shellcheck
 
     go get github.com/isacikgoz/tldr/cmd/tldr
 

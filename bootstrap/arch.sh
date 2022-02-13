@@ -160,6 +160,7 @@ install_tools() {
     sudo pacman -S bpytop
     sudo pacman -S fzf
     sudo pacman -S neofetch
+    sudo pacman -S shellcheck
 
     go get github.com/isacikgoz/tldr/cmd/tldr
 

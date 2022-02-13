@@ -301,6 +301,7 @@ install_tools() {
     brew install khanhas/tap/spicetify-cli
     brew install dos2unix
     brew install jq
+    brew install shellcheck
 
     pip install pydf
 
