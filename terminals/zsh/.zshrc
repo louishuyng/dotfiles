@@ -75,7 +75,8 @@ zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags '--preview-window=d
 zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
 zinit light tj/git-extras
 zinit light laggardkernel/zsh-thefuck
-zinit light jimeh/zsh-peco-history
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
 
 ### Theme 
 zinit ice pick"async.zsh" src"pure.zsh"
@@ -111,5 +112,3 @@ source "$HOME/.dotfiles/terminals/zsh/nnn.zsh"
 
 ### Env
 source "$HOME/.dotfiles/terminals/zsh/env.zsh"
-
-bindkey -v
