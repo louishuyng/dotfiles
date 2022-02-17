@@ -1,3 +1,5 @@
+local package = require("package-info")
+
 if not pcall(require, "feline") then
   return
 end
@@ -281,6 +283,17 @@ table.insert(components.active[3], comps.file.position)
 table.insert(components.active[3], comps.line_percentage)
 table.insert(components.active[3], comps.scroll_bar)
 table.insert(components.active[3], comps.vi_mode.right)
+
+table.insert(components.active[2], {
+  provider = function()
+    return package.get_status()
+  end,
+  hl = {
+      style = "bold",
+  },
+  left_sep = "  ",
+  right_sep = " ",
+})
 
 
 -- TreeSitter
