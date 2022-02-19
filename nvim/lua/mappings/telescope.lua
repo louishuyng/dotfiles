@@ -2,7 +2,7 @@ local map = require 'utils.map'
 
 local opt = {}
 
-map("n", "<c-p>", "<cmd>Telescope git_files layout_config={'width':0.7}<cr>", opt, {silent = true})
+map("n", "<c-p>", "<cmd>Telescope find_files layout_config={'width':0.7}<cr>", opt, {silent = true})
 map("n", "<leader>f", "<cmd>Telescope live_grep layout_config={'width':0.7}<CR>", opt, {silent = true})
 map("n", "<leader>t", "<cmd>Telescope treesitter layout_config={'width':0.7}<CR>", opt, {silent = true})
 map("n", "<leader>h", "<cmd>Telescope oldfiles previewer=false cwd_only=true<CR>", opt, {silent = true})

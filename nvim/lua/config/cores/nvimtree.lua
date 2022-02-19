@@ -61,10 +61,10 @@ nvimtree.setup {
   auto_close = false,
   open_on_tab = false,
   hijack_cursor = true,
-  update_cwd = true,
+  update_cwd = false,
   update_focused_file = {
     enable = true,
-    update_cwd = true,
+    update_cwd = false,
   },
   diagnostics = {
     enable = true,
