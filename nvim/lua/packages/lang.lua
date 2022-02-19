@@ -17,6 +17,7 @@ use {
       require "config.cores.treesitter"
   end
 }
+use "RRethy/nvim-treesitter-textsubjects"
 use {
   "folke/trouble.nvim",
   config = function()
