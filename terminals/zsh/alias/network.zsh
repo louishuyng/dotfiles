@@ -3,7 +3,8 @@ alias wfon='networksetup -setairportpower en0 on'
 alias wfoff='networksetup -setairportpower en0 off'	
 alias wfjoin='networksetup -setairportnetwork en0'	
 alias wfi='networksetup -listallhardwareports'	
-alias localip='ifconfig | grep inet | grep broadcast | cut -d " " -f 2'	
+alias local_ip='ifconfig | grep inet | grep broadcast | cut -d " " -f 2'	
+alias public_ip='dig +short myip.opendns.com @resolver1.opendns.com'	
 alias renewip='sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP'	
 
 # Stop after sending count ECHO_REQUEST packets #

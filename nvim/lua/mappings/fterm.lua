@@ -12,3 +12,4 @@ map('t', '<S-Tab>', '<C-\\><C-n>:FloatermPrev<CR>', opts)
 
 map('n', '<leader>nnn', ':FloatermNew nnn<CR>', opts)
 map('n', '<leader>ht', ':FloatermNew bpytop<CR>', opts)
+map('n', '<leader>ld', ':FloatermNew lazydocker<CR>', opts)

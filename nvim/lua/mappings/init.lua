@@ -27,3 +27,6 @@ require 'mappings.languages.test'
 require 'mappings.languages.vista'
 
 require 'mappings.term.vimux'
+
+require 'mappings.devops.aws'
+require 'mappings.devops.network'

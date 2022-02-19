@@ -5,7 +5,7 @@ local colors = require("config.colors").get()
 local ui = {
    hl_override = "",
    italic_comments = false,
-   transparency = false,
+   transparency = true,
 }
 
 local black = colors.black
