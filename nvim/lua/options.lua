@@ -51,6 +51,9 @@ vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
 
+-- BACKGROUND
+vim.api.nvim_command("set background=dark")
+
 -- COLOR COLUMN
 vim.api.nvim_command("set colorcolumn=80")
 

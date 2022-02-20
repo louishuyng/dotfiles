@@ -1,13 +1,11 @@
 #!/usr/bin/env sh
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          on
+yabai -m config mouse_follows_focus          on
 yabai -m config window_topmost on
 yabai -m config window_placement             first_child
 yabai -m config window_topmost               off
 yabai -m config window_opacity               on
-yabai -m config window_opacity_duration      0.3
 yabai -m config window_shadow                float
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        0.90
@@ -33,7 +31,6 @@ bot=10
 side=18
 
 echo \"space_info: \$space_info, number_of_windows: \$number_of_windows\" >> \"\$HOME/sys_log/yabailogs.txt\"
-sudo yabai --load-sa
 
 [ \$number_of_windows -eq 1 ] && top=0
 [ \$number_of_windows -eq 1 ] && bot=0
@@ -50,6 +47,9 @@ yabai -m signal --add event=application_launched action="$padding_refresh_comman
 yabai -m signal --add event=application_terminated action="$padding_refresh_command"
 
 # signals
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 
@@ -59,29 +59,27 @@ yabai -m signal --add event=application_terminated action="yabai -m query --wind
 yabai -m space 1 --label tool
 yabai -m space 2 --label work
 yabai -m space 3 --label social
-yabai -m space 4 --label temp
+yabai -m space 4 --label data
 yabai -m space 5 --label external
 
-# Coding
-yabai -m rule --add app="Simulator" manage=off                 space=tool
-yabai -m rule --add app="^Xcode$" manage=off                   space=tool
-yabai -m rule --add app="^Postman$" manage=off                 space=tool
-yabai -m rule --add app="^Burp$" manage=off                    space=tool
-yabai -m rule --add app="^Wireshark$" manage=off               space=tool
-yabai -m rule --add app="Visual Studio Code" manage=off        space=tool
-yabai -m rule --add app="^DevToys$" manage=off                 space=tool
-yabai -m rule --add app="^Docker$" manage=off                  space=tool
-
-# Tools
-yabai -m rule --add app="^OWASP$" manage=off                   space=code
+# Tool
+yabai -m rule --add app="Simulator" manage=off                           space=tool
+yabai -m rule --add app="^Xcode$" manage=off                             space=tool
+yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=tool
+yabai -m rule --add app="^Burp$" manage=off                              space=tool
+yabai -m rule --add app="^Wireshark$" manage=off                         space=tool
+yabai -m rule --add app="Visual Studio Code" manage=off opacity=1        space=tool
+yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=tool
+yabai -m rule --add app="^Docker$" manage=off                            space=tool
+yabai -m rule --add app="^OWASP$" manage=off                             space=tool
 
 # Work
 yabai -m rule --add app="Alacritty"                            space=work
-yabai -m rule --add app="Brave Browser"          opacity=1     space=work
-yabai -m rule --add app="^Firefox$"              opacity=1     space=work
 yabai -m rule --add app="qutebrowser"                          space=work
 yabai -m rule --add app="Preview" manage=off                   space=work
 yabai -m rule --add app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off space=work
+yabai -m rule --add app="^Firefox Developer Edition$" opacity=1          space=work
+yabai -m rule --add app="Brave Browser"               opacity=1          space=work
 
 # Social
 yabai -m rule --add app="Slack" title="Slack"                  space=social
@@ -92,16 +90,16 @@ yabai -m rule --add app="Discord"  manage=off                  space=social
 yabai -m rule --add app="Microsoft Outlook" manage=off         space=social
 yabai -m rule --add app="^Microsoft Teams$" manage=off         space=social
 
-# Temp
-yabai -m rule --add app="Notion"           manage=off          space=temp
-yabai -m rule --add app="QuickTime Player" manage=off          space=temp
-yabai -m rule --add app="VLC"              manage=off          space=temp
-yabai -m rule --add app="Tandem"           manage=off          space=temp
-yabai -m rule --add app="Pages"            manage=off          space=temp
+# Data
+yabai -m rule --add app="QuickTime Player" manage=off          space=data
+yabai -m rule --add app="VLC"              manage=off          space=data
+yabai -m rule --add app="Pages"            manage=off          space=data
+yabai -m rule --add app="^DataGrip$"       opacity=1           space=data
+yabai -m rule --add app="Notion"           opacity=1           space=data
 
 # External
-yabai -m rule --add app="Spotify"          manage=off          space=external
-yabai -m rule --add app="^DataGrip$"       manage=off          space=external
+yabai -m rule --add app="Spotify"          opacity=1 manage=off          space=external
+yabai -m rule --add app="Tandem"           manage=off          space=external
 
 # Others
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
