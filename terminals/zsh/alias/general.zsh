@@ -45,3 +45,6 @@ alias ln='ln -i'
 
 # Restart zsh
 alias reset='exec zsh'
+
+# Utils
+alias size="du -sh"
