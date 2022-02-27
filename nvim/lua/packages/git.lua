@@ -1,7 +1,6 @@
 local packer = require "packer"
 local use = packer.use
 
-use 'airblade/vim-gitgutter'
 use 'rhysd/git-messenger.vim'
 use {
   "tpope/vim-fugitive",
@@ -14,6 +13,12 @@ use {
     "Gpull",
     "Gvdiff",
   }
+}
+use {
+  'lewis6991/gitsigns.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim'
+  },
 }
 use {
   'ruifm/gitlinker.nvim',

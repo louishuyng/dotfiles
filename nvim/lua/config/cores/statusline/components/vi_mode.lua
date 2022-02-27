@@ -3,7 +3,7 @@ local vi_mode_utils = require 'feline.providers.vi_mode'
 local vi_mode = {
   left = {
     provider = function()
-      return '   ' .. vi_mode_utils.get_vim_mode()
+      return '   '
     end,
     hl = function()
       local val = {

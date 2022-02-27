@@ -94,12 +94,12 @@ yabai -m rule --add app="^Microsoft Teams$" manage=off         space=social
 yabai -m rule --add app="QuickTime Player" manage=off          space=data
 yabai -m rule --add app="VLC"              manage=off          space=data
 yabai -m rule --add app="Pages"            manage=off          space=data
-yabai -m rule --add app="^DataGrip$"       opacity=1           space=data
 yabai -m rule --add app="Notion"           opacity=1           space=data
 
 # External
-yabai -m rule --add app="Spotify"          opacity=1 manage=off          space=external
+yabai -m rule --add app="Spotify"         opacity=1 manage=off space=external
 yabai -m rule --add app="Tandem"           manage=off          space=external
+yabai -m rule --add app="^DataGrip$"       opacity=1           space=external
 
 # Others
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
