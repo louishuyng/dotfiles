@@ -3,6 +3,7 @@ if not present then
   return
 end
 
+local buf_map = require 'utils.buf_map'
 
 gitsigns.setup{
   signs = {
@@ -15,27 +16,21 @@ gitsigns.setup{
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
-
     -- Navigation
-    map('n', ']h', "&diff ? ']h' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
-    map('n', '[h', "&diff ? '[h' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+    buf_map(bufnr, 'n', ']h', "&diff ? ']h' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+    buf_map(bufnr, 'n', '[h', "&diff ? '[h' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
 
     -- Actions
-    map({'n', 'v'}, 'ga', ':Gitsigns stage_hunk<CR>')
-    map({'n', 'v'}, 'gu', ':Gitsigns reset_hunk<CR>')
-    map('n', 'gA', gs.stage_buffer)
-    map('n', 'gr', gs.undo_stage_hunk)
-    map('n', 'gR', gs.reset_buffer)
-    map('n', 'gp', gs.preview_hunk)
-    map('n', ',gb', gs.toggle_current_line_blame)
-    map('n', '<leader>gd', gs.diffthis)
-    map('n', '<leader>gD', function() gs.diffthis('~') end)
-    map('n', '<leader>td', gs.toggle_deleted)
+    buf_map(bufnr, {'n', 'v'}, 'ga', ':Gitsigns stage_hunk<CR>')
+    buf_map(bufnr, {'n', 'v'}, 'gu', ':Gitsigns reset_hunk<CR>')
+    buf_map(bufnr, 'n', 'gA', gs.stage_buffer)
+    buf_map(bufnr, 'n', 'gr', gs.undo_stage_hunk)
+    buf_map(bufnr, 'n', 'gR', gs.reset_buffer)
+    buf_map(bufnr, 'n', 'gp', gs.preview_hunk)
+    buf_map(bufnr, 'n', ',gb', gs.toggle_current_line_blame)
+    buf_map(bufnr, 'n', '<leader>gd', gs.diffthis)
+    buf_map(bufnr, 'n', '<leader>gD', function() gs.diffthis('~') end)
+    buf_map(bufnr, 'n', '<leader>td', gs.toggle_deleted)
 
     -- Text object
     -- map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')

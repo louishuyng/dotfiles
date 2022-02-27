@@ -3,7 +3,8 @@ function dev() {
   tmux -u new -s $str
 }
 
-function codeSpace () {
+# Working Space
+function louisws () {
     DEV_DIR="~/Dev/Projects"
 
     OIVAN_PROJECT="$DEV_DIR/Oivan/sakani-workspace"
