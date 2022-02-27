@@ -1,4 +1,4 @@
-# Enviroment variables
+# Environment variables
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -73,3 +73,6 @@ export PATH="$HOME/.config/scripts:$PATH"
 export TLDR_OS=osx
 
 export DISABLE_SPRING=true
+
+# Load Nvim
+export PATH=$PATH:$HOME/Dev/ExternalLibs/nvim7/bin
