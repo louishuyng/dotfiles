@@ -41,7 +41,7 @@ else
 end
 
 -- Disable cursor line
-cmd "hi clear CursorLine"
+-- cmd "hi clear CursorLine"
 -- Line number
 fg("cursorlinenr", white)
 
