@@ -72,6 +72,7 @@ yabai -m rule --add app="Visual Studio Code" manage=off opacity=1        space=t
 yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=tool
 yabai -m rule --add app="^Docker$" manage=off                            space=tool
 yabai -m rule --add app="^OWASP$" manage=off                             space=tool
+yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=tool
 
 # Work
 yabai -m rule --add app="Alacritty"                            space=work
@@ -80,6 +81,7 @@ yabai -m rule --add app="Preview" manage=off                   space=work
 yabai -m rule --add app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off space=work
 yabai -m rule --add app="^Firefox Developer Edition$" opacity=1          space=work
 yabai -m rule --add app="Brave Browser"               opacity=1          space=work
+yabai -m rule --add app="Tor Browser" manage=off      opacity=1          space=work
 
 # Social
 yabai -m rule --add app="Slack" title="Slack"                  space=social
@@ -111,6 +113,7 @@ yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
 yabai -m rule --add label="Sourcetree" app="^Sourcetree$" manage=off
 yabai -m rule --add label="Clean My Mac" app="^CleanMyMac X$" manage=off
+yabai -m rule --add app="Finder" manage=off  opacity=1 
 
 
 # show digital colour meter topmost and on all spaces

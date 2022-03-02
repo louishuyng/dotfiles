@@ -3,7 +3,7 @@ if not present then
   return
 end
 
-local buf_map = require 'utils.buf_map'
+local mapping = require 'mappings.git'
 
 gitsigns.setup{
   signs = {
@@ -13,28 +13,7 @@ gitsigns.setup{
     topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
-  on_attach = function(bufnr)
-    local gs = package.loaded.gitsigns
-
-    -- Navigation
-    buf_map(bufnr, 'n', ']h', "&diff ? ']h' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
-    buf_map(bufnr, 'n', '[h', "&diff ? '[h' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
-
-    -- Actions
-    buf_map(bufnr, {'n', 'v'}, 'ga', ':Gitsigns stage_hunk<CR>')
-    buf_map(bufnr, {'n', 'v'}, 'gu', ':Gitsigns reset_hunk<CR>')
-    buf_map(bufnr, 'n', 'gA', gs.stage_buffer)
-    buf_map(bufnr, 'n', 'gr', gs.undo_stage_hunk)
-    buf_map(bufnr, 'n', 'gR', gs.reset_buffer)
-    buf_map(bufnr, 'n', 'gp', gs.preview_hunk)
-    buf_map(bufnr, 'n', ',gb', gs.toggle_current_line_blame)
-    buf_map(bufnr, 'n', '<leader>gd', gs.diffthis)
-    buf_map(bufnr, 'n', '<leader>gD', function() gs.diffthis('~') end)
-    buf_map(bufnr, 'n', '<leader>td', gs.toggle_deleted)
-
-    -- Text object
-    -- map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-  end
+  on_attach = mapping.gitsigns_mappings
 }
 
 -- Git Messenger
