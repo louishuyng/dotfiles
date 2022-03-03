@@ -12,7 +12,7 @@ M.init = function(theme)
    if present then
       -- first load the base16 custom theme
       local custom_theme = base16.theme_from_array {
-	"383838"; "404040"; "606060"; "6f6f6f";
+	"0d0d0d"; "404040"; "606060"; "6f6f6f";
 	"808080"; "dcdccc"; "c0c0c0"; "dcdccc";
 	"caa450"; "caa450"; "caa450"; "c35fb2";
 	"dcdccc"; "8579c5"; "55b5a4"; "dcdccc";

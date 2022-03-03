@@ -14,7 +14,7 @@ opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 1000
 opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
-opt.fillchars = { eob = "x" }
+opt.fillchars = { eob = " " }
 
 -- CENTER CURSOR
 opt.scrolloff = 999
@@ -50,12 +50,6 @@ vim.g.loaded_netrwPlugin = 0
 vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
-
--- BACKGROUND
-vim.api.nvim_command("set background=dark")
-
--- COLOR COLUMN
-vim.api.nvim_command("set colorcolumn=80")
 
 -- LIST
 vim.api.nvim_command("set list")
