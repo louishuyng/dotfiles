@@ -160,6 +160,8 @@ install_tools() {
     sudo pacman -S fzf
     sudo pacman -S neofetch
     sudo pacman -S shellcheck
+    sudo pacman -S rustscan
+    sudo pacman -S osquery
 
     go get github.com/isacikgoz/tldr/cmd/tldr
 

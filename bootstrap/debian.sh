@@ -154,6 +154,8 @@ install_tools() {
     sudo apt install fzf
     sudo apt install neofetch
     sudo apt install shellcheck
+    sudo apt install rustscan
+    sudo apt install osquery
 
     go get github.com/isacikgoz/tldr/cmd/tldr
 

@@ -313,6 +313,9 @@ install_tools() {
 
     brew install isacikgoz/taps/tldr
 
+    brew install rustscan
+    brew install osquery
+
     success "Installed some fancy tools"
   fi
 }
