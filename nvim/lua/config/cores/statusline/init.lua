@@ -22,6 +22,7 @@ table.insert(components.inactive, {})
 
 table.insert(components.active[1], vi_mode.left)
 table.insert(components.active[1], file.info)
+table.insert(components.active[1], git.branch)
 table.insert(components.active[1], git.add)
 table.insert(components.active[1], git.change)
 table.insert(components.active[1], git.remove)
