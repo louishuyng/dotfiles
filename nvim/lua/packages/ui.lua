@@ -16,9 +16,15 @@ use {
   requires = {'kyazdani42/nvim-web-devicons'}
 }
 use 'kevinhwang91/nvim-hlslens'
-use 'glepnir/dashboard-nvim'
 use {
   "andymass/vim-matchup",
   event = "CursorMoved"
 }
 use "voldikss/vim-floaterm"
+use {
+  'goolord/alpha-nvim',
+  requires = { 'kyazdani42/nvim-web-devicons' },
+  config = function ()
+    require("config.libs.alpha")
+  end
+}

@@ -8,7 +8,6 @@ require "config.cores.sneak"
 require "config.cores.statusline"
 
 require "config.libs.comment"
-require "config.libs.dashboard"
 require "config.libs.far"
 require "config.libs.fastfold"
 require "config.libs.fterm"

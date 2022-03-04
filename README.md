@@ -16,16 +16,13 @@ This is Louis dotfiles Who loves using nvim + lua  🚀
 - **kyazdani42/nvim-tree.lua** (File managing)
 - **nvim-telescope/telescope.nvim** (Searching File)
 - **lewis6991/gitsigns.nvim** (Git symbol highlight)
-- **glepnir/dashboard-nvim** (Dashboard startup)
+- **goolord/alpha-nvim** (Dashboard startup)
 - **chrisbra/NrrwRgn** (Narrow or region code)
 
 #### Key bindings
 ##### Vim mode
 - \<Cap\>: Vim mode normal
 
-<img width="1792" alt="Screen Shot 2021-08-28 at 22 56 44" src="https://user-images.githubusercontent.com/40130936/131223639-26e0d58d-7c4c-4f3e-a087-4e601a298d19.png">
 
-
-
-
+![Screen Shot 2022-03-04 at 10 21 34](https://user-images.githubusercontent.com/40130936/156693367-fdd36b7b-bd25-48c3-944a-1ed535c455a6.png)
 
