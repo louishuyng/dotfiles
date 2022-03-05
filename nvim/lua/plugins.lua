@@ -19,6 +19,7 @@ return packer.startup{
     require 'packages.git'
     require 'packages.lang'
     require 'packages.navigator'
+    require 'packages.org'
     require 'packages.others'
     require 'packages.ui'
     require 'packages.utils'

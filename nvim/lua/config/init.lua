@@ -3,6 +3,7 @@ require "config.libs.package_info"
 
 require "config.cores.barbar"
 require "config.cores.git"
+require "config.cores.neorg"
 require "config.cores.octo"
 require "config.cores.sneak"
 require "config.cores.statusline"

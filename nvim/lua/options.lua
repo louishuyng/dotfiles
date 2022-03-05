@@ -72,3 +72,7 @@ vim.cmd [[au FileType go set noexpandtab]]
 vim.cmd [[au FileType go set shiftwidth=2]]
 vim.cmd [[au FileType go set softtabstop=2]]
 vim.cmd [[au FileType go set tabstop=2]]
+
+-- Org mode support
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = 'nc'

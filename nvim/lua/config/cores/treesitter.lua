@@ -20,13 +20,17 @@ ts_config.setup {
     "yaml",
     "html",
     "toml",
-    "vim"
+    "vim",
+    "norg",
+    "markdown"
   },
   matchup = {
     enable = true
   },
   highlight = {
-    enable = true
+    enable = true,
+    disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental),
+    additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
   },
   autotag = {
     enable = true
