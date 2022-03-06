@@ -5,9 +5,22 @@ function louisws () {
     OIVAN_PROJECT="$DEV_DIR/Oivan/sakani-workspace"
     PRODUCTPINE_PROJECT="$DEV_DIR/Productpine"
 
+    SESSION_ORG='Org Mode'
     SESSION_OIVAN='Oivan'
     SESSION_PRODUCTPINE="Productpine"
     SESSION_DEVOPS='Devops'
+
+    # ORG
+    tmux kill-session -t $SESSION_ORG
+    tmux new -d -s $SESSION_ORG -n "work"
+    tmux send-keys -t $SESSION_ORG:1 "cd ~/Dev/org/work" Enter
+    tmux send-keys -t $SESSION_ORG:1 "nvim" Enter
+    tmux send-keys -t $SESSION_ORG:1 ":NeorgStart" Enter
+
+    tmux new-window -n "life"
+    tmux send-keys -t $SESSION_ORG:2 "cd ~/Dev/org/life" Enter
+    tmux send-keys -t $SESSION_ORG:2 "nvim" Enter
+    tmux send-keys -t $SESSION_ORG:2 ":NeorgStart" Enter
 
     # OIVAN
     $(initCodeSpace $SESSION_OIVAN $OIVAN_PROJECT)
