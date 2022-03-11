@@ -15,6 +15,7 @@ map("n", "<leader>gpf", ":lua require('config.libs.git_worktree').push_force()<C
 map("n", "<leader>gs", ":Telescope git_stash<CR>", opt)
 
 map("n", ",gd", ":q!<CR> :Gedit!<CR>", opt)
+map("n", "<leader>gd", ":Gdiffsplit!<CR>", opt)
 map("n", ",gs", ":Git<CR>:20wincmd_<CR>", opt, {silent = true})
 map("n", "<leader>go", "<cmd>lua require'gitlinker'.get_repo_url({action_callback = require'gitlinker.actions'.open_in_browser})<cr>", opt)
 map("n", "dh", ":diffget //2<CR>", opt)
@@ -54,8 +55,6 @@ M.gitsigns_mappings = function(bufnr)
     buf_map(bufnr, 'n', 'gR', gs.reset_buffer)
     buf_map(bufnr, 'n', 'gp', gs.preview_hunk)
     buf_map(bufnr, 'n', ',gb', gs.toggle_current_line_blame)
-    buf_map(bufnr, 'n', '<leader>gd', gs.diffthis)
-    buf_map(bufnr, 'n', '<leader>gD', function() gs.diffthis('~') end)
     buf_map(bufnr, 'n', '<leader>td', gs.toggle_deleted)
     -- Text object
     -- map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
