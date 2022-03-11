@@ -3,6 +3,7 @@ local use = packer.use
 
 use {
   "ms-jpq/chadtree",
+  branch = 'chad',
   run = "python3 -m chadtree deps"
 }
 use {
