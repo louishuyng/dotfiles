@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 require 'mappings.barbar'
+require 'mappings.chadtree'
 require 'mappings.dashboard'
 require 'mappings.fterm'
 require 'mappings.general'
@@ -8,7 +9,6 @@ require 'mappings.hlslens'
 require 'mappings.lsp'
 require 'mappings.maximizer'
 require 'mappings.telescope'
-require 'mappings.tree'
 
 require 'mappings.editor.fold'
 require 'mappings.editor.neoformat'
