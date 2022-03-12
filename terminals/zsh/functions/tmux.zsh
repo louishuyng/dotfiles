@@ -36,7 +36,10 @@ function louisws () {
     tmux send-keys -t $SESSION_DEVOPS:1 "cd ~/.dotfiles" Enter
     tmux send-keys -t $SESSION_DEVOPS:1 "nvim" Enter
 
-    tmux -u attach-session -t $SESSION_DEVOPS:1
+    tmux new-window -n "rocky"
+    tmux send-keys -t $SESSION_DEVOPS:2 "ssh_join rocky" Enter
+
+    tmux -u attach-session -t $SESSION_DEVOPS:2
 }
 
 function initCodeSpace() {

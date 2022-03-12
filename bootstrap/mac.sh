@@ -303,6 +303,7 @@ install_tools() {
     brew install shellcheck
 
     pip install pydf
+    pip install diagrams
 
     sudo port install zathura
     sudo port install zathura-docs
