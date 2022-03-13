@@ -16,6 +16,7 @@ return packer.startup{
       event = "VimEnter"
     }
     require 'packages.cmp'
+    require 'packages.database'
     require 'packages.git'
     require 'packages.lang'
     require 'packages.navigator'
