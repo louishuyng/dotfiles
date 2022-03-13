@@ -36,8 +36,7 @@ M.config = function()
           ["<C-k>"] = actions.move_selection_previous,
           ["<C-b>"] = actions.preview_scrolling_up,
           ["<C-f>"] = actions.preview_scrolling_down,
-          ["<C-s>"] = actions.select_vertical,
-          ["<C-i>"] = actions.select_horizontal,
+          ["<C-h>"] = actions.select_horizontal,
         },
         n = {
           ["<C-d>"] = actions.close,
@@ -46,8 +45,7 @@ M.config = function()
           ["<C-k>"] = actions.move_selection_previous,
           ["<C-b>"] = actions.preview_scrolling_up,
           ["<C-f>"] = actions.preview_scrolling_down,
-          ["<C-s>"] = actions.select_vertical,
-          ["<C-i>"] = actions.select_horizontal,
+          ["<C-h>"] = actions.select_horizontal,
         }
       },
       layout_config = {
