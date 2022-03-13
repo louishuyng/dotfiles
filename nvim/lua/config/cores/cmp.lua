@@ -30,6 +30,7 @@ cmp.setup {
         nvim_lua = "[Lua]",
         buffer = "[BUF]",
         calc = "[Calc]",
+        ['vim-dadbod-completion'] = "[DB]",
         luasnip = "[Snip]", })[entry.source.name] return vim_item end,
   },
   mapping = {
@@ -73,3 +74,5 @@ cmp.setup {
     { name = "orgmode" },
   },
 }
+
+cmp.setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })

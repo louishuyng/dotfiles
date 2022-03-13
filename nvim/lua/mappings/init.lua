@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 
 require 'mappings.barbar'
 require 'mappings.chadtree'
-require 'mappings.dashboard'
 require 'mappings.fterm'
 require 'mappings.general'
 require 'mappings.hlslens'
