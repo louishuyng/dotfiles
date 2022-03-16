@@ -7,6 +7,7 @@ alias em="emacs -Q -nw -l ~/.config/emacs/init.el"
 alias h='history'
 
 # Listing
+alias ls="exa --long  --header --git"
 alias ll="ls -l"
 alias l.='ls -d .* --color=auto'
 alias lla="ll -A"

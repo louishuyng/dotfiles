@@ -43,7 +43,7 @@ function louisws () {
     tmux new-window -n "rocky"
     tmux send-keys -t $SESSION_DEVOPS:3 "ssh_join rocky" Enter
 
-    tmux -u attach-session -t $SESSION_DEVOPS:2
+    tmux -u attach-session -t $SESSION_DEVOPS:3
 }
 
 function initCodeSpace() {
