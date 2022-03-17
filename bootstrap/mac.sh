@@ -172,6 +172,17 @@ install_zsh() {
   fi
 }
 
+install_fish() {
+  read -r -p "Do you want to install fish? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install fish
+    curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+
+    sudo chsh -s "$(which fish)"
+    success "Installed fish"
+  fi
+}
+
 install_font() {
   read -r -p "Do you want to install font? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -329,9 +340,11 @@ link_all_dotfiles() {
   rm -rf ~/.zshrc
 
   mkdir -p ~/.config/kitty
+  mkdir -p ~/.config/fish
 
   cd ~/.dotfiles/terminals && \
     stow kitty -t ~/.config/kitty && \
+    stow fish -t ~/.config/fish && \
     stow tmux -t ~/ && \
     stow zsh -t ~/
   success "Linked terminals"
@@ -375,6 +388,7 @@ install_languages
 install_devops
 setup_penetration_tools
 install_zsh
+install_fish
 install_font
 install_terminal
 install_nvim
