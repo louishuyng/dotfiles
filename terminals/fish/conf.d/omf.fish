@@ -6,4 +6,5 @@ set -q XDG_DATA_HOME
 # Load Oh My Fish configuration.
 source $OMF_PATH/init.fish
 
+source ~/.dotfiles/terminals/fish/env/init.fish
 source ~/.dotfiles/terminals/fish/alias/init.fish

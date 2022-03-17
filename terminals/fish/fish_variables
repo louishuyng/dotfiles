@@ -1,6 +1,9 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/admin/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/admin/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:/Users/admin/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e/Users/admin/\x2econfig/fish/functions/_nvm_list\x2efish\x1e/Users/admin/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e/Users/admin/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e/Users/admin/\x2econfig/fish/functions/nvm\x2efish\x1e/Users/admin/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e/Users/admin/\x2econfig/fish/completions/nvm\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejorgebucaran/nvm\x2efish
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
@@ -29,3 +32,6 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/Users/admin/Dev/ExternalLibs/nvim7/bin\x1e/Users/admin/development/flutter/bin\x1e/Applications/qutebrowser\x2eapp/Contents/MacOS\x1e/Users/admin/\x2edotfiles/nvim\x1e/Users/admin/\x2envm\x1e/Users/admin/development/golib\x1e/Library/Java/JavaVirtualMachines/jdk\x2d14\x2e0\x2e2\x2ejdk/Contents/Home
+SETUVAR nvm_data:/Users/admin/\x2elocal/share/nvm
+SETUVAR nvm_mirror:https\x3a//nodejs\x2eorg/dist
