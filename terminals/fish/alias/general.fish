@@ -2,6 +2,7 @@
 alias cat='bat'
 alias nv="nvim"
 alias em="emacs -Q -nw -l ~/.config/emacs/init.el"
+alias c="clear"
 
 # History
 alias h='history'
@@ -11,9 +12,6 @@ alias ls="exa --long  --header --git"
 alias ll="ls -l"
 alias l.='ls -d .* --color=auto'
 alias lla="ll -A"
-
-# Jumping
-alias z="j"
 
 # Clear & Remove
 alias rf='rm -rf'
@@ -34,7 +32,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # New set command
-alias path='echo -e ${PATH//:/\\n}'
+alias path='echo -e $PATH\n'
 alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
@@ -45,7 +43,7 @@ alias cp='cp -i'
 alias ln='ln -i'
 
 # Restart zsh
-alias reset='exec zsh'
+alias reset='exec fish'
 
 # Utils
 alias size="du -sh"

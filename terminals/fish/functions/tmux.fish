@@ -1,14 +1,13 @@
-# Working Space
-function louisws () {
-    DEV_DIR="~/Dev/Projects"
+function louisws -d "working space of louis"
+    set -l DEV_DIR "~/Dev/Projects"
 
-    OIVAN_PROJECT="$DEV_DIR/Oivan/sakani-workspace"
-    PRODUCTPINE_PROJECT="$DEV_DIR/Productpine"
+    set -l OIVAN_PROJECT $DEV_DIR/Oivan/sakani-workspace
+    set -l PRODUCTPINE_PROJECT $DEV_DIR/Productpine
 
-    SESSION_ORG='Org Mode'
-    SESSION_OIVAN='Oivan'
-    SESSION_PRODUCTPINE="Productpine"
-    SESSION_DEVOPS='Devops'
+    set -l SESSION_ORG "Org Mode"
+    set -l SESSION_OIVAN "Oivan"
+    set -l SESSION_PRODUCTPINE "Productpine"
+    set -l SESSION_DEVOPS "Devops"
 
     # ORG
     tmux kill-session -t $SESSION_ORG
@@ -23,11 +22,11 @@ function louisws () {
     tmux send-keys -t $SESSION_ORG:2 ":NeorgStart" Enter
 
     # OIVAN
-    $(initCodeSpace $SESSION_OIVAN $OIVAN_PROJECT)
-    $(setupRemoteOivan $SESSION_OIVAN)
+    initCodeSpace $SESSION_OIVAN $OIVAN_PROJECT
+    setupRemoteOivan $SESSION_OIVAN
 
     # PRODUCTPINE
-    $(initCodeSpace $SESSION_PRODUCTPINE $PRODUCTPINE_PROJECT)
+    initCodeSpace $SESSION_PRODUCTPINE $PRODUCTPINE_PROJECT
 
     # DEVOPS
     tmux kill-session -t $SESSION_DEVOPS
@@ -44,11 +43,11 @@ function louisws () {
     tmux send-keys -t $SESSION_DEVOPS:3 "ssh_join rocky" Enter
 
     tmux -u attach-session -t $SESSION_DEVOPS:3
-}
+end
 
-function initCodeSpace() {
-  SESSION=$1
-  PROJECT_DIR=$2
+function initCodeSpace -d 'helper init code space'
+  set -l SESSION $argv[1]
+  set -l PROJECT_DIR $argv[2]
 
   tmux kill-session -t $SESSION
 
@@ -63,10 +62,10 @@ function initCodeSpace() {
   tmux send-keys -t $SESSION:2.2 "cd $PROJECT_DIR" Enter
   tmux split-window -v
   tmux send-keys -t $SESSION:2.3 "cd $PROJECT_DIR" Enter
-}
+end
 
-function setupRemoteOivan() {
-  SESSION=$1
+function setupRemoteOivan -d 'set up remote oivan'
+  set -l SESSION $argv[1]
 
   tmux new-window -n "remote-servers"
 
@@ -80,4 +79,4 @@ function setupRemoteOivan() {
 
   tmux send-keys -t $SESSION:3.3 "sshadd oivan" Enter
   tmux send-keys -t $SESSION:3.3 "ssh test" Enter
-}
+end

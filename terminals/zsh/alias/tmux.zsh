@@ -1,1 +1,0 @@
-alias tm='tmux  -u'

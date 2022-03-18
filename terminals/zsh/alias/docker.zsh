@@ -1,6 +1,0 @@
-alias dkcd="docker-compose down"
-alias dkcu="docker-compose up"
-alias dkcud="docker-compose up -d"
-alias dpsa="docker ps -a"
-alias dks="open -a 'Docker'"
-alias dkc="killall Docker"
