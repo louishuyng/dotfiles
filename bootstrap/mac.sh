@@ -158,20 +158,6 @@ setup_git() {
   fi
 }
 
-install_zsh() {
-  read -r -p "Do you want to install zsh? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install zsh
-    brew install peco
-    sudo chsh -s "$(which zsh)"
-
-    rm -rf ~/.zsh-defer
-    git clone https://github.com/romkatv/zsh-defer.git ~/.zsh-defer
-
-    success "Installed zsh"
-  fi
-}
-
 install_fish() {
   read -r -p "Do you want to install fish? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -389,7 +375,6 @@ install_ninja
 install_languages
 install_devops
 setup_penetration_tools
-install_zsh
 install_fish
 install_font
 install_terminal
