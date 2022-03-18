@@ -167,11 +167,11 @@ install_fish() {
   read -r -p "Do you want to install fish? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install fish
-    curl -sfL https://git.io/fundle-install | fish
+    curl -sL https://git.io/fisher | source
 
     sudo chsh -s "$(which fish)"
+    fisher update
     
-    fundle install
     success "Installed fish"
   fi
 }

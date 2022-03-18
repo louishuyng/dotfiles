@@ -5,7 +5,7 @@ set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
 #Homebrew's sbin
-fish_add_path "/usr/local/sbin:$PATH"
+fish_add_path /usr/local/sbin
 #
 # #Qutebrowser
 fish_add_path /Applications/qutebrowser.app/Contents/MacOS
@@ -15,17 +15,17 @@ fish_add_path $HOME/development/flutter/bin
 #
 # #Android
 fish_add_path $HOME/Library/Android/sdk
-fish_add_path $PATH:$ANDROID_HOME/emulator
-fish_add_path $PATH:$ANDROID_HOME/tools
-fish_add_path $PATH:$ANDROID_HOME/tools/bin
-fish_add_path $PATH:$ANDROID_HOME/platform-tools
-fish_add_path $PATH:$HOME/.pub-cache/bin
+fish_add_path $ANDROID_HOME/emulator
+fish_add_path $ANDROID_HOME/tools
+fish_add_path $ANDROID_HOME/tools/bin
+fish_add_path $ANDROID_HOME/platform-tools
+fish_add_path $HOME/.pub-cache/bin
 #
 # #SQL
 fish_add_path /usr/local/mysql/bin
 #
 # #Python
-fish_add_path /usr/local/opt/python/libexec/bin:$PATH
+fish_add_path /usr/local/opt/python/libexec/bin
 #
 # #JAVA
 fish_add_path $(/usr/libexec/java_home)
@@ -37,7 +37,7 @@ set -gx GOPATH $GOPATH:~/Dev/Projects/gin-api
 set -gx GO111MODULE on
 #
 # # OPEN SSL
-fish_add_path "/usr/local/opt/openssl/bin:$PATH"
+fish_add_path /usr/local/opt/openssl/bin
 #
 # # Editor
 set -gx EDITOR "nvim"
@@ -61,13 +61,13 @@ set -gx YABAI_CERT yabai-cert
 set -gx BAT_THEME "TwoDark"
 
 # #Rust
-fish_add_path $PATH:$HOME/.cargo/bin
+fish_add_path $HOME/.cargo/bin
 #
 # #GO
-fish_add_path $PATH:/usr/local/go/bin
+fish_add_path /usr/local/go/bin
 #
 # #Scripts
-fish_add_path "$HOME/.config/scripts:$PATH"
+fish_add_path $HOME/.config/scripts
 #
 # # Load Nvim
 fish_add_path $HOME/Dev/ExternalLibs/nvim7/bin
