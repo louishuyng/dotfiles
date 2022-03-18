@@ -88,6 +88,11 @@ install_languages() {
     asdf plugin-add golang
     asdf install golang latest
     success "Installed golang"
+
+    asdf plugin-add ruby
+    asdf install ruby latest
+    asdf global ruby 3.1.1
+    success "Installed ruby"
   fi
   
 }
