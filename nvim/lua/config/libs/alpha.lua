@@ -107,6 +107,6 @@ alpha.setup {
 vim.cmd [[
 augroup alpha_tabline
   au!
-  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=2
+  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=3
 augroup END
 ]]
