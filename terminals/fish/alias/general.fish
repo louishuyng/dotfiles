@@ -13,9 +13,6 @@ alias ll="ls -l"
 alias l.='ls -d .* --color=auto'
 alias lla="ll -A"
 
-# Jumping
-alias z="j"
-
 # Clear & Remove
 alias rf='rm -rf'
 alias cdes="rm ~/Desktop/*; rm -rf ~/Desktop/*"

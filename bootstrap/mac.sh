@@ -179,6 +179,8 @@ install_fish() {
     curl -sfL https://git.io/fundle-install | fish
 
     sudo chsh -s "$(which fish)"
+    
+    fundle install
     success "Installed fish"
   fi
 }
