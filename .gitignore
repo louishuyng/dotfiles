@@ -38,3 +38,5 @@ zathura
 scripts/crawl-data/node_modules
 
 nvim/lua-language-server
+
+terminals/fish/functions/fundle.fish
