@@ -3,7 +3,7 @@ fundle plugin 'jorgebucaran/nvm.fish'
 fundle plugin 'jorgebucaran/autopair.fish'
 fundle plugin 'jethrokuan/fzf'
 fundle plugin 'jethrokuan/z'
-fundle plugin 'johanson/theme-johanson'
+fundle plugin 'pure-fish/pure'
 
 fundle init
 
