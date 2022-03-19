@@ -305,6 +305,7 @@ install_tools() {
     brew install dos2unix
     brew install jq
     brew install shellcheck
+    brew install fd
 
     pip install pydf
     pip install diagrams

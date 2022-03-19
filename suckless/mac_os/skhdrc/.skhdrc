@@ -5,9 +5,9 @@ ctrl + alt - e : open -na /System/Volumes/Data/usr/local/Cellar/emacs-plus@27/27
 ctrl + alt - f : open -na /Applications/Firefox\ Developer\ Edition.app
 ctrl + alt - m : open -na /Applications/Spotify.app.app
 ctrl + alt - n : open -na /Applications/Notion.app
-ctrl + alt - p : open -na /Applications/Postman.app
+ctrl + alt - a : open -na /Applications/Postman.app
 ctrl + alt - q : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
-ctrl + alt - s : open -na /Applications/Slack.app
+ctrl + alt - c : open -na /Applications/Slack.app
 ctrl + alt - t : open -na /Applications/Alacritty.app
 ctrl + alt - w : open -na /Applications/Wireshark.app
 ctrl + alt - z : open -na /Applications/OWASP\ ZAP.app
@@ -85,29 +85,8 @@ shift + alt - 0 : yabai -m space --balance
 # destroy desktop
 cmd + alt - w : chunkc tiling::desktop --annihilate
 
-# Restart Yabai
-shift + lctrl + alt - r :
-    /usr/bin/env osascript <<< \
-        "display notification \"Yabai rock it now\" with title \"Louis Hacker\"";\
-        brew services restart spacebar;\
-        brew services restart yabai;\
-        sudo yabai --load-sa;\
-        launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"; \
-
-# Stop Yabai
-shift + lctrl + alt - d :
-    /usr/bin/env osascript <<< \
-        "display notification \"Stop yabai \" with title \"Louis Hacker\"";\
-        brew services stop yabai;\
-
 # M1 Mode Yabai
-shift + lctrl + alt - m :
-    /usr/bin/env osascript <<< \
-        "display notification \"yabai M1 \" with title \"Louis Hacker\"";\
-        yabai -m config --space mouse top_padding 0;\
+shift + lctrl + alt - m : yabai -m config --space mouse top_padding 0;
 
 # External Mode Yabai
-shift + lctrl + alt - e :
-    /usr/bin/env osascript <<< \
-        "display notification \"yabai External Screen \" with title \"Louis Hacker\"";\
-        yabai -m config --space mouse top_padding 30;\
+shift + lctrl + alt - e : yabai -m config --space mouse top_padding 30;
