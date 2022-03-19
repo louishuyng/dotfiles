@@ -22,7 +22,6 @@ use 'numToStr/Comment.nvim'
 use 'szw/vim-maximizer'
 use 'tpope/vim-eunuch'
 use 'justinmk/vim-sneak'
-use 'brooth/far.vim'
 use 'terryma/vim-multiple-cursors'
 use 'tpope/vim-surround'
 use 'chrisbra/NrrwRgn'
@@ -39,4 +38,3 @@ use({
   'vuki656/package-info.nvim',
   requires = 'MunifTanjim/nui.nvim',
 })
-use 'numToStr/Navigator.nvim'

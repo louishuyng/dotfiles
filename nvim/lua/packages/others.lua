@@ -3,7 +3,6 @@ local use = packer.use
 
 use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 use 'rcarriga/nvim-notify'
-use 'preservim/vimux'
 
 -- Performance
 use 'lewis6991/impatient.nvim'

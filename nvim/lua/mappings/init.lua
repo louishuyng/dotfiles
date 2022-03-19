@@ -10,7 +10,6 @@ require 'mappings.maximizer'
 require 'mappings.telescope'
 
 require 'mappings.editor.fold'
-require 'mappings.editor.navigator'
 require 'mappings.editor.neoformat'
 require 'mappings.editor.nrrwrgn'
 require 'mappings.editor.pacakage_info'
