@@ -29,10 +29,13 @@ use {
   requires = "nvim-lua/plenary.nvim",
 }
 
+-- DEBUG
+use "puremourning/vimspector"
+
 -- TAGS
 use 'liuchengxu/vista.vim'
 
 -- ROR
 use "vim-test/vim-test"
-use "puremourning/vimspector"
+use 'preservim/vimux'
 use "tpope/vim-rails"

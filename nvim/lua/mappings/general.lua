@@ -11,6 +11,10 @@ map("v", "<C-x>", ":!pbcopy<CR>", opt)
 map("v", "<C-c>", ":w !pbcopy<CR><CR>", opt)
 
 map("v", "/", "*", opt)
+map("n", "<C-j>", "<C-w>j", opt)
+map("n", "<C-k>", "<C-w>k", opt)
+map("n", "<C-l>", "<C-w>l", opt)
+map("n", "<C-h>", "<C-w>h", opt)
 
 map("n", "<C-s>", ":w!<CR>", opt)
 map("v", "<C-s>", "<C-C>:w!<CR>", opt)

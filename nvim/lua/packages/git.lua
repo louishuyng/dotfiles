@@ -1,7 +1,6 @@
 local packer = require "packer"
 local use = packer.use
 
-use 'rhysd/git-messenger.vim'
 use {
   "tpope/vim-fugitive",
   cmd = {
@@ -12,6 +11,7 @@ use {
     "Gpush",
     "Gpull",
     "Gvdiff",
+    "Git blame",
   }
 }
 use {
@@ -24,8 +24,6 @@ use {
   'ruifm/gitlinker.nvim',
   requires = 'nvim-lua/plenary.nvim',
 }
-use 'tveskag/nvim-blame-line'
-
 use {
   'pwntester/octo.nvim',
   requires = {
