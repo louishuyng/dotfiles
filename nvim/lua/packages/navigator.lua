@@ -11,10 +11,13 @@ use {
   requires = {
     {"nvim-lua/plenary.nvim"},
     {"nvim-telescope/telescope-project.nvim"},
-    {"nvim-telescope/telescope-fzy-native.nvim"}
   },
   cmd = "Telescope",
   config = function()
     require("config.cores.telescope").config()
   end
 }
+use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+use {'junegunn/fzf', run = function()
+  vim.fn['fzf#install']()
+end}

@@ -2,6 +2,7 @@ require("config.colors").init()
 require "config.libs.package_info"
 
 require "config.cores.barbar"
+require "config.cores.bqf"
 require "config.cores.chadtree"
 require "config.cores.dadbod"
 require "config.cores.git"

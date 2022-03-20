@@ -28,7 +28,7 @@ fish_add_path /usr/local/mysql/bin
 fish_add_path /usr/local/opt/python/libexec/bin
 #
 # #JAVA
-fish_add_path $(/usr/libexec/java_home)
+fish_add_path /usr/libexec/java_home
 #
 # #Golang
 set -gx GOPATH $HOME/development/golib

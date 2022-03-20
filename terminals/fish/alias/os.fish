@@ -1,5 +1,6 @@
 # OS
-alias sdn="osascript -e 'tell app \"System Events\" to shut down'"
+alias sysoff="osascript -e 'tell app \"System Events\" to shut down'"
+alias syss="osascript -e 'tell application \"System Events\" to sleep'"
 alias root='sudo -i'
 alias su='sudo -i'
 

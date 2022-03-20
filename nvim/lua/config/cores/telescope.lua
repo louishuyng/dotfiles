@@ -36,18 +36,9 @@ M.config = function()
           ["<C-k>"] = actions.move_selection_previous,
           ["<C-b>"] = actions.preview_scrolling_up,
           ["<C-f>"] = actions.preview_scrolling_down,
-          ["<C-s>"] = actions.select_vertical,
-          ["<C-i>"] = actions.select_horizontal,
+          ["<C-v>"] = actions.select_vertical,
+          ["<C-h>"] = actions.select_horizontal,
         },
-        n = {
-          ["<C-d>"] = actions.close,
-          ["<Esc>"] = actions.close,
-          ["<C-j>"] = actions.move_selection_next,
-          ["<C-k>"] = actions.move_selection_previous,
-          ["<C-b>"] = actions.preview_scrolling_up,
-          ["<C-s>"] = actions.select_vertical,
-          ["<C-i>"] = actions.select_horizontal,
-        }
       },
       layout_config = {
          horizontal = {
@@ -81,7 +72,6 @@ M.config = function()
   }
 
   require'telescope'.load_extension('project')
-  require'telescope'.load_extension('fzy_native')
 end
 
 return M
