@@ -36,7 +36,7 @@ map("v", "<leader>ex", ":w !", opt)
 map("v", "<leader>so", ":sort<CR>", opt)
 
 -- Open URL
-map("n", "<leader>O", ":call OpenUrlUnderCursor()<CR>", opt)
+map("n", "<c-b>", ":call OpenUrlUnderCursor()<CR>", opt)
 
 -- Replace
 map("n", "r;", "yiw:%s/<C-R>\"/", opt)
