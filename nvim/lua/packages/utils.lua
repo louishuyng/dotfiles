@@ -19,7 +19,7 @@ use {
   end
 }
 use 'numToStr/Comment.nvim'
-use 'szw/vim-maximizer'
+use 'folke/zen-mode.nvim'
 use 'tpope/vim-eunuch'
 use 'justinmk/vim-sneak'
 use 'terryma/vim-multiple-cursors'

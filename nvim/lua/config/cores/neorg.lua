@@ -50,6 +50,11 @@ neorg.setup {
           })
         end,
       }
-    }
+    },
+    ["core.presenter"] = {
+      config = {
+        zen_mode = "zen-mode",
+      }
+    },
   }
 }

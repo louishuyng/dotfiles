@@ -59,7 +59,7 @@ yabai -m signal --add event=application_terminated action="yabai -m query --wind
 yabai -m space 1 --label tool
 yabai -m space 2 --label work
 yabai -m space 3 --label social
-yabai -m space 4 --label data
+yabai -m space 4 --label management
 yabai -m space 5 --label external
 
 # Tool
