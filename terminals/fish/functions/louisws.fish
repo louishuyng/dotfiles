@@ -4,22 +4,9 @@ function louisws -d "working space of louis"
     set -l OIVAN_PROJECT $DEV_DIR/Oivan/sakani-workspace
     set -l PRODUCTPINE_PROJECT $DEV_DIR/Productpine
 
-    set -l SESSION_ORG "Org Mode"
     set -l SESSION_OIVAN "Oivan"
     set -l SESSION_PRODUCTPINE "Productpine"
-    set -l SESSION_DEVOPS "Devops"
-
-    # ORG
-    tmux kill-session -t $SESSION_ORG
-    tmux new -d -s $SESSION_ORG -n "work"
-    tmux send-keys -t $SESSION_ORG:1 "cd ~/Dev/org/work" Enter
-    tmux send-keys -t $SESSION_ORG:1 "nvim" Enter
-    tmux send-keys -t $SESSION_ORG:1 ":NeorgStart" Enter
-
-    tmux new-window -n "life"
-    tmux send-keys -t $SESSION_ORG:2 "cd ~/Dev/org/life" Enter
-    tmux send-keys -t $SESSION_ORG:2 "nvim" Enter
-    tmux send-keys -t $SESSION_ORG:2 ":NeorgStart" Enter
+    set -l SESSION_SYS "System"
 
     # OIVAN
     initCodeSpace $SESSION_OIVAN $OIVAN_PROJECT
@@ -28,21 +15,26 @@ function louisws -d "working space of louis"
     # PRODUCTPINE
     initCodeSpace $SESSION_PRODUCTPINE $PRODUCTPINE_PROJECT
 
-    # DEVOPS
-    tmux kill-session -t $SESSION_DEVOPS
+    # System
+    tmux kill-session -t $SESSION_SYS
 
-    tmux new -d -s $SESSION_DEVOPS -n "dotfiles"
-    tmux send-keys -t $SESSION_DEVOPS:1 "cd ~/.dotfiles" Enter
-    tmux send-keys -t $SESSION_DEVOPS:1 "nvim" Enter
+    tmux new -d -s $SESSION_SYS -n "dotfiles"
+    tmux send-keys -t $SESSION_SYS:1 "cd ~/.dotfiles" Enter
+    tmux send-keys -t $SESSION_SYS:1 "nvim" Enter
+
+    tmux new-window -n "org"
+    tmux send-keys -t $SESSION_SYS:2 "cd ~/Dev/org/work" Enter
+    tmux send-keys -t $SESSION_SYS:2 "nvim" Enter
+    tmux send-keys -t $SESSION_SYS:2 ":NeorgStart" Enter
 
     tmux new-window -n "dadbod"
-    tmux send-keys -t $SESSION_DEVOPS:2 "nvim" Enter
-    tmux send-keys -t $SESSION_DEVOPS:2 " vd" Enter
+    tmux send-keys -t $SESSION_SYS:3 "nvim" Enter
+    tmux send-keys -t $SESSION_SYS:3 " vd" Enter
 
-    tmux new-window -n "rocky"
-    tmux send-keys -t $SESSION_DEVOPS:3 "ssh_join rocky" Enter
+    tmux new-window -n "remote"
+    tmux send-keys -t $SESSION_SYS:4 "ssh_join rocky" Enter
 
-    tmux -u attach-session -t $SESSION_DEVOPS:3
+    tmux -u attach-session -t $SESSION_SYS:4
 end
 
 function initCodeSpace -d 'helper init code space'
