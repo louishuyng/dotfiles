@@ -8,7 +8,7 @@ ctrl + alt - n : open -na /Applications/Notion.app
 ctrl + alt - a : open -na /Applications/Postman.app
 ctrl + alt - q : /Applications/qutebrowser.app/Contents/MacOS/qutebrowser
 ctrl + alt - c : open -na /Applications/Slack.app
-ctrl + alt - t : open -na /Applications/Alacritty.app
+ctrl + alt - t : open -na /Applications/WezTerm.app
 ctrl + alt - w : open -na /Applications/Wireshark.app
 ctrl + alt - z : open -na /Applications/OWASP\ ZAP.app
 ctrl + alt - h : open -na /Applications/DevToys.app

@@ -32,9 +32,8 @@ function louisws -d "working space of louis"
     tmux send-keys -t $SESSION_SYS:3 " vd" Enter
 
     tmux new-window -n "remote"
-    tmux send-keys -t $SESSION_SYS:4 "ssh_join rocky" Enter
 
-    tmux -u attach-session -t $SESSION_SYS:4
+    tmux -u attach-session -t $SESSION_SYS:1
 end
 
 function initCodeSpace -d 'helper init code space'

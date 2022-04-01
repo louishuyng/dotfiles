@@ -199,6 +199,14 @@ install_terminal() {
 
     success "Installed kitty terminal"
   fi
+
+  read -r -p "Do you want to install wezterm? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew tap wez/wezterm
+    brew install --cask wez/wezterm/wezterm
+
+    success "Installed wezterm terminal"
+  fi
 }
 
 install_nvim() {
@@ -337,12 +345,13 @@ link_all_dotfiles() {
 
   mkdir -p ~/.config/kitty
   mkdir -p ~/.config/fish
+  mkdir -p ~/.config/wezterm
 
   cd ~/.dotfiles/terminals && \
     stow kitty -t ~/.config/kitty && \
     stow fish -t ~/.config/fish && \
+    stow wezterm -t ~/.config/wezterm && \
     stow tmux -t ~/ && \
-    stow zsh -t ~/
   success "Linked terminals"
 
   mkdir -p ~/.config/nvim
