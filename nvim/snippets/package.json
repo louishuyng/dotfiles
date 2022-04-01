@@ -9,6 +9,10 @@
       {
         "language": "lua",
         "path": "./lua.json"
+      },
+      {
+        "language": "ruby",
+        "path": "./rails.json"
       }
     ]
   }
