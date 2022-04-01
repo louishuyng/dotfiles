@@ -1,0 +1,106 @@
+{
+  "rrf": {
+    "prefix": "rrf",
+    "body": [
+      "resources :${1:required}, controller: ${2:optional}, param: :${3:optional}, only: %i[index update show destroy]"
+    ],
+    "description": "Rails Route Full Template"
+  },
+  "rcm": {
+    "prefix": "rcm",
+    "body": [
+      "module Api",
+      "  module V${1:version}",
+      "   class ${2:name}Controller < ApplicationController",
+      "     def ${3:method}",
+      "       ${4}",
+      "     end",
+      "   end",
+      "  end",
+      "end"
+    ],
+    "description": "Rails Controller Module Template"
+  },
+  "rrm": {
+    "prefix": "rrm",
+    "body": [
+      "module V${1:version}",
+      "  class ${2:name}Resource < ::BaseJsonApiResource",
+      "    attributes(",
+      "     ${3}",
+      "    )",
+      "  end",
+      "end"
+    ],
+    "description": "Rails Resource Module Template"
+  },
+  "rpm": {
+    "prefix": "rpm",
+    "body": [
+      "module V${1:version}",
+      "  class ${2:name}Policy < ApplicationPolicy",
+      "    def ${3:method}?",
+      "     ${4}",
+      "    end",
+      "  end",
+      "end"
+    ],
+    "description": "Rails Policy Module Template"
+  },
+  "rscm": {
+    "prefix": "rscm",
+    "body": [
+      "require 'rails_helper'",
+      "      ",
+      "RSpec.describe Api::V${1:version}::${2:name}Controller do",
+      "  describe '#index' do",
+      "    let(:params) { {} }",
+      "      ",
+      "    before do",
+      "      get(:index, params:)",
+      "    end",
+      "      ",
+      "    context '' do",
+      "      ${3}",
+      "    end",
+      "  end",
+      "end"
+    ],
+    "description": "Rails Spec Controller Module Template"
+  },
+  "rsrm": {
+    "prefix": "rsrm",
+    "body": [
+      "require 'swagger_helper'",
+      "      ",
+      "RSpec.describe '${1:api_path}',type: :request do",
+      "  path ${1:api_path} do",
+      "    get('${3:describe}') do",
+      "      tags '${4:tag}'",
+      "      security [Bearer: []]",
+      "       ",
+      "      consumes 'application/json'",
+      "      produces 'application/json'",
+      "      ",
+      "      parameter name: 'filter[name]', in: :query",
+      "      ",
+      "      response(200, 'successful') do",
+      "        let(:Authorization) { \"Bearer #{user.api_key}\" }",
+      "      ",
+      "        after do |example|",
+      "          example.metadata[:response][:content] = {",
+      "            'application/json' => {",
+      "               example: JSON.parse(response.body, symbolize_names: true),",
+      "            },",
+      "          }",
+      "        end",
+      "      ",
+      "        run_test!",
+      "      end",
+      "    end",
+      "  end",
+      "end"
+    ],
+    "description": "Rails Spec Request Module Template"
+  }
+}
