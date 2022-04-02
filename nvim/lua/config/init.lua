@@ -10,6 +10,7 @@ require "config.cores.neorg"
 require "config.cores.octo"
 require "config.cores.sneak"
 require "config.cores.statusline"
+require "config.cores.tabnine"
 
 require "config.libs.comment"
 require "config.libs.fastfold"

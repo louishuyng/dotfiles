@@ -25,7 +25,6 @@ neorg.setup {
         }
       }
     },
-    ["core.integrations.telescope"] = {},
     ["core.keybinds"] = {
       config = {
         hook = function(keybinds)

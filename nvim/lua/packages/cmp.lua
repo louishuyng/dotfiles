@@ -40,3 +40,7 @@ use {
   "hrsh7th/cmp-calc",
   after = "cmp-buffer",
 }
+use {
+  "tzachar/cmp-tabnine",
+  run='./install.sh',
+}
