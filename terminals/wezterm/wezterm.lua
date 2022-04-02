@@ -9,7 +9,7 @@ return {
   hide_tab_bar_if_only_one_tab = true,
 
   colors = {
-    background = "#0d0d0d",
+    background = "#282c34",
     foreground = "#98c379",
     cursor_bg = "#48e566"
   },

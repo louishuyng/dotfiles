@@ -1,8 +1,8 @@
 local packer = require "packer"
 local use = packer.use
 
+use "glepnir/oceanic-material"
 use "kyazdani42/nvim-web-devicons"
-use "NvChad/nvim-base16.lua"
 use {
   "norcalli/nvim-colorizer.lua",
   event = "BufRead",

@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local colors = require("config.colors").get()
+local colors = require("ui.highlight_colors")
 
 local ui = {
    hl_override = "",
@@ -62,6 +62,9 @@ fg("CmpItemAbbrMatch", white)
 fg("CmpItemKind", white)
 fg("CmpItemMenu", white)
 
+-- VertSplit
+fg_bg("VertSplit", "NONE", "NONE" .. " gui=NONE")
+
 -- misc
 
 -- inactive statuslines as thin lines
@@ -74,6 +77,7 @@ fg("VertSplit", one_bg2)
 if ui.transparency then
    bg("Normal", "NONE")
    bg("Folded", "NONE")
+   bg("EndOfBuffer", "NONE")
    fg("Folded", "NONE")
    fg("Comment", grey)
 end
