@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local colors = require("config.colors").get()
+local colors = require("ui.highlight_colors")
 
 local ui = {
    hl_override = "",
@@ -61,6 +61,9 @@ fg("CmpItemAbbr", white)
 fg("CmpItemAbbrMatch", white)
 fg("CmpItemKind", white)
 fg("CmpItemMenu", white)
+
+-- VertSplit
+fg_bg("VertSplit", "NONE", "NONE" .. " gui=NONE")
 
 -- misc
 

@@ -8,11 +8,7 @@ return {
   -- Smart tab bar [distraction-free mode]
   hide_tab_bar_if_only_one_tab = true,
 
-  colors = {
-    background = "#0d0d0d",
-    foreground = "#98c379",
-    cursor_bg = "#48e566"
-  },
+  color_scheme = "OceanicMaterial",
   window_background_opacity = 0.8,
   window_decorations = "NONE | RESIZE",
 
