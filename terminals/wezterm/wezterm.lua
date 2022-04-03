@@ -37,5 +37,13 @@ return {
 
   -- Enable CSI u mode
   -- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
-  enable_csi_u_key_encoding = true
+  enable_csi_u_key_encoding = true,
+
+  -- avoiding changing size when using external screen
+  dpi = 192.0,
+
+  keys = {
+    {key="c", mods="CMD", action="Copy"},
+    {key="v", mods="CMD", action="Paste"},
+  }
 }
