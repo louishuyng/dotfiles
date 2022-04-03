@@ -10,6 +10,7 @@ require 'mappings.telescope'
 require 'mappings.zenmode'
 
 require 'mappings.editor.fold'
+require 'mappings.editor.harpoon'
 require 'mappings.editor.neoformat'
 require 'mappings.editor.nrrwrgn'
 require 'mappings.editor.pacakage_info'
