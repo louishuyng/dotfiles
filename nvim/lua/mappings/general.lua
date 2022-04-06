@@ -43,6 +43,9 @@ map("n", "r;", "yiw:%s/<C-R>\"/", opt)
 map("n", ",ra", "yiw:Far <C-R>\" ", opt)
 
 -- Packer
-map("n", "<space>pi", ":PackerInstall<CR>", opt)
-map("n", "<space>pc", ":PackerCompile<CR>", opt)
-map("n", "<space>pr", ":PackerClean<CR>", opt)
+map("n", "<leader>pi", ":PackerInstall<CR>", opt)
+map("n", "<leader>pc", ":PackerCompile<CR>", opt)
+map("n", "<leader>pr", ":PackerClean<CR>", opt)
+
+-- Reload NVim
+map("n", "<leader>sv", ":silent! exec \"Restart\"<CR>", { silent = true })

@@ -20,7 +20,7 @@ map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
 map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
 map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
 map("n", "<leader>d_", "<Plug>VimspectorRestart", opt)
-map("n", "<leader>d<space>", ":call vimspector#Continue()<CR>", opt)
+map("n", "<leader>d<leader>", ":call vimspector#Continue()<CR>", opt)
 
 map("n", "<leader>drc", "<Plug>VimspectorRunToCursor", opt)
 map("n", "<leader>dbp", "<Plug>VimspectorToggleBreakpoint", opt)

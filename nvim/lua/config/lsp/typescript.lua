@@ -43,7 +43,7 @@ lsp_config.tsserver.setup({
 
     -- no default maps, so you may want to define some here
     local opts = { silent = true }
-    buf_map(bufnr, "n", "<space>rr", ":TSLspRenameFile<CR>", opts)
+    buf_map(bufnr, "n", "<leader>rr", ":TSLspRenameFile<CR>", opts)
     buf_map(bufnr, "n", ",po", ":TSLspOrganize<CR>", opts)
     buf_map(bufnr, "n", ",ia", ":TSLspImportAll<CR>", opts)
 
