@@ -76,3 +76,9 @@ vim.cmd [[au FileType go set tabstop=2]]
 -- Org mode support
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
+
+-- Abbreviations
+vim.cmd('abbrev @@ huynguyennbk@gmail.com')
+vim.cmd('abbrev sname Louis Nguyen')
+vim.cmd('abbrev spass 123456')
+vim.cmd('abbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit')
