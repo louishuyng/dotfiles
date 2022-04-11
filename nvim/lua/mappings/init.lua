@@ -6,6 +6,7 @@ require 'mappings.fterm'
 require 'mappings.general'
 require 'mappings.hlslens'
 require 'mappings.lsp'
+require 'mappings.operator_pending'
 require 'mappings.telescope'
 require 'mappings.zenmode'
 
