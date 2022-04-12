@@ -1,4 +1,5 @@
 local M = {}
+local icons = require "nvim-nonicons"
 
 M.config = function()
   local actions = require 'telescope.actions'
@@ -17,7 +18,7 @@ M.config = function()
          "--column",
          "--smart-case",
       },
-      prompt_prefix = "   ",
+      prompt_prefix = "  " .. icons.get("telescope") .. "  ",
       selection_caret = "  ",
       entry_prefix = "  ",
       sorting_strategy = 'ascending',

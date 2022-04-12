@@ -13,7 +13,6 @@ return {
     foreground = "#98c379",
     cursor_bg = "#48e566"
   },
-  window_background_opacity = 0.8,
   window_decorations = "NONE | RESIZE",
 
   window_padding = {
@@ -24,13 +23,10 @@ return {
   -- Font configuration
   -- https://wezfurlong.org/wezterm/config/fonts.html
   font = wezterm.font_with_fallback({
-    {
-       family="Hack Nerd Font",
-       weight="Medium",
-       harfbuzz_features={"calt=0", "clig=0", "liga=0"}
-    },
+    "Hack",
+    "nonicons"
   }),
-  font_size = 13.3,
+  font_size = 12.3,
 
   -- Cursor style
   default_cursor_style = 'BlinkingBar',

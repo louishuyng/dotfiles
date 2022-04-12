@@ -2,7 +2,7 @@ local packer = require "packer"
 local use = packer.use
 
 use "glepnir/oceanic-material"
-use "kyazdani42/nvim-web-devicons"
+use 'yamatsum/nvim-nonicons'
 use {
   "norcalli/nvim-colorizer.lua",
   event = "BufRead",

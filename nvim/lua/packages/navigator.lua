@@ -2,9 +2,11 @@ local packer = require "packer"
 local use = packer.use
 
 use {
-  "ms-jpq/chadtree",
-  branch = 'chad',
-  run = "python3 -m chadtree deps"
+  "kyazdani42/nvim-tree.lua",
+  cmd = "NvimTreeToggle",
+  config = function()
+    require "config.cores.nvimtree"
+  end
 }
 use {
   "nvim-telescope/telescope.nvim",

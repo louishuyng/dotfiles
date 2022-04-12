@@ -1,8 +1,8 @@
 function louisws -d "working space of louis"
     set -l DEV_DIR "~/Dev/Projects"
 
-    set -l OIVAN_PROJECT $DEV_DIR/Oivan/sakani-workspace
-    set -l PRODUCTPINE_PROJECT $DEV_DIR/Productpine
+    set -l OIVAN_PROJECT $DEV_DIR/Oivan/sakani-workspace/sakani-market-units-service
+    set -l PRODUCTPINE_PROJECT $DEV_DIR/Productpine/brand-management-system
 
     set -l SESSION_OIVAN "Oivan"
     set -l SESSION_PRODUCTPINE "Productpine"
@@ -45,7 +45,6 @@ function initCodeSpace -d 'helper init code space'
   tmux new -d -s $SESSION -n "code"
   tmux send-keys -t $SESSION:1 "cd $PROJECT_DIR" Enter
   tmux send-keys -t $SESSION:1 "nvim" Enter
-  tmux send-keys -t $SESSION:1 " p" Enter
 
   tmux new-window -n "local-logs"
   tmux send-keys -t $SESSION:2.1 "cd $PROJECT_DIR" Enter
