@@ -53,7 +53,7 @@ return function(client)
   if client.resolved_capabilities.document_formatting then
     vim.cmd('augroup Format')
     vim.cmd('autocmd! * <buffer>')
-    vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 5000)')
+    vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)')
     vim.cmd('augroup END')
   end
 end
