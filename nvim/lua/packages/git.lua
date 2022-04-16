@@ -12,6 +12,7 @@ use {
     "Gpull",
     "Gvdiff",
     "Git blame",
+    "Git mergetool",
   }
 }
 use {
@@ -32,3 +33,4 @@ use {
     'kyazdani42/nvim-web-devicons',
   },
 }
+use 'whiteinge/diffconflict'

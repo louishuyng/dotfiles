@@ -14,12 +14,8 @@ map("n", "<leader>gp", ":lua require('config.libs.git_worktree').push()<CR>", op
 map("n", "<leader>gpf", ":lua require('config.libs.git_worktree').push_force()<CR>", opt)
 map("n", "<leader>gs", ":Telescope git_stash<CR>", opt)
 
-map("n", ",gd", ":q!<CR> :Gedit!<CR>", opt)
-map("n", "<leader>gd", ":Gdiffsplit!<CR>", opt)
 map("n", ",gs", ":Git<CR>:20wincmd_<CR>", opt, {silent = true})
 map("n", "<leader>go", "<cmd>lua require'gitlinker'.get_repo_url({action_callback = require'gitlinker.actions'.open_in_browser})<cr>", opt)
-map("n", "dh", ":diffget //2<CR>", opt)
-map("n", "dl", ":diffget //3<CR>", opt)
 
 map("n", "<leader>1", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_oivan <CR><CR>", opt)
 map("n", "<leader>2", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_elxr <CR><CR>", opt)
@@ -36,8 +32,11 @@ map("n", "<leader>grv", ":Octo review start<CR>", opt)
 map("n", "<leader>grd", ":Octo review discard<CR>", opt)
 map("n", "<leader>grs", ":Octo review submit<CR>", opt)
 
--- Message
-map("n", "<leader>gcm", ":Git commit -m \"Merge branch '' into ''\"", opt)
+-- Merge Tool
+map("n", "dh", ":diffget //2<CR>", opt)
+map("n", "dl", ":diffget //3<CR>", opt)
+map("n", "<leader>gd", ":DiffConflicts<CR>", opt)
+map("n", "<leader>gm", ":Git mergetool<CR>", opt)
 
 -- Git Signs
 M.gitsigns_mappings = function(bufnr)

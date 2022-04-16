@@ -143,11 +143,9 @@ fg_bg("TelescopeResultsTitle", darker_black, darker_black)
 
 bg("TelescopeSelection", black2)
 
--- keybinds cheatsheet
-
-fg_bg("CheatsheetBorder", black, black)
-bg("CheatsheetSectionContent", black)
-fg("CheatsheetHeading", white)
+-- Barbar
+fg_bg("BufferCurrentSign", green, "NONE")
+fg_bg("BufferCurrentIndex", green, "NONE")
 
 local section_title_colors = {
    white,
