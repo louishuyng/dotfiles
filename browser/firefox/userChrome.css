@@ -1,433 +1,248 @@
-/* Credits: Minimal Functioning Firefox https://github.com/mut-ex/minimal-functional-fox*/
-
- :root {
-
-   /* Minimal Functional Fox variables*/
-  --mff-bg: #272b2e;
-  --mff-icon-color: #cfcfcf;
-  --mff-nav-toolbar-padding: 8px;
-  --mff-sidebar-bg: var(--mff-bg);
-  --mff-sidebar-color: #cfcfcf;
-  --mff-tab-border-radius: 0px;
-  --mff-tab-color: #cfcfcf;
-  --mff-tab-font-family: "Hack Nerd Font", sans;
-  --mff-tab-font-size: 9pt;
-  --mff-tab-font-weight: 400;
-  --mff-tab-height: 40px;
-  --mff-tab-pinned-bg: #70c1b3;
-  --mff-tab-selected-bg: #1d1f21;
-  --mff-urlbar-color: #cfcfcf;
-  --mff-urlbar-focused-color: #cfcfcf;
-  --mff-urlbar-font-family: "Hack Nerd Font", serif;
-  --mff-urlbar-font-size: 9pt;
-  --mff-urlbar-font-weight: 500;
-  --mff-urlbar-results-color: #cfcfcf;
-  --mff-urlbar-results-font-family: "Hack Nerd Font", serif;
-  --mff-urlbar-results-font-size: 9pt;
-  --mff-urlbar-results-font-weight: 500;
-  --mff-urlbar-results-url-color: #98c1d9;
-  /*   --mff-tab-selected-bg: linear-gradient(90deg, rgba(232,74,95,1) 0%, rgba(255,132,124,1) 50%, rgba(254,206,168,1) 100%); */
-  /*   --mff-urlbar-font-weight: 600; */
-
-  /* Overriden Firefox variables*/
-  --autocomplete-popup-background: var(--mff-bg) !important;
-  --default-arrowpanel-background: var(--mff-bg) !important;
-  --default-arrowpanel-color: #fefefa !important;
-  --lwt-toolbarbutton-icon-fill: var(--mff-icon-color) !important;
-  --panel-disabled-color: #f9f9fa80;
-  --toolbar-bgcolor: var(--mff-bg) !important;
-  --urlbar-separator-color: transparent !important;
+/* Custom min-max-close Buttons */
+.titlebar-button {
+  transition: all 0.3s ease !important;
+  padding: 8px 10px !important;
+}
+.titlebar-button > .toolbarbutton-icon {
+  transition: all 0.3s ease !important;
+  list-style-image: none;
+  border: 1px solid;
+  border-radius: 10px;
+}
+.titlebar-button.titlebar-min > .toolbarbutton-icon {
+  background: #27c840 !important;
+  border-color: #27c83f7a !important;
 }
 
-/*
-  _____ _   ___ ___
- |_   _/_\ | _ ) __|
-   | |/ _ \| _ \__ \
-   |_/_/ \_\___/___/
+.titlebar-button.titlebar-max > .toolbarbutton-icon,
+.titlebar-button.titlebar-restore > .toolbarbutton-icon {
+  background: #febb2e !important;
+  border-color: #febc2e7c !important;
+}
 
-*/
+.titlebar-button.titlebar-close > .toolbarbutton-icon {
+  background: #ff5f57 !important;
+  stroke: #ff5f57 !important;
+  border-color: #ff5f5777 !important;
+}
+.titlebar-button.titlebar-close:hover > .toolbarbutton-icon {
+  background: #ff5f5742 !important;
+  border: 1px solid;
+  border-color: #ff5f57 !important;
+}
+.titlebar-button.titlebar-close:hover {
+  background: #fdfdfd00 !important;
+}
+.titlebar-button.titlebar-max:hover > .toolbarbutton-icon,
+.titlebar-button.titlebar-restore:hover > .toolbarbutton-icon {
+  background: #febc2e44 !important;
+  border: 1px solid;
+  border-color: #febb2e !important;
+}
+.titlebar-button.titlebar-max:hover,
+.titlebar-button.titlebar-restore:hover {
+  background: #fdfdfd00 !important;
+}
+.titlebar-button.titlebar-min:hover > .toolbarbutton-icon {
+  background: #27c83f38 !important;
+  border: 1px solid;
+  border-color: #27c840 !important;
+}
+.titlebar-button.titlebar-min:hover {
+  background: #fdfdfd00 !important;
+}
 
+/* Custom tab active color */
 .tab-background[selected="true"] {
-  background: var(--mff-tab-selected-bg) !important;
+  background: #ffffff15 !important;
 }
 
-.tab-background:not[visuallyselected] {
-  background: var(--mff-tab-selected-bg) !important;
-  opacity: 0.5 !important;
-}
-
-/* This positions the tabs under the navaigator container 
-#titlebar {
-  -moz-box-ordinal-group: 3 !important;
-}
+/* rework of container line
+.tab-context-line{margin-top: 1px !important; max-height: 1px !important; }
+.tab-context-line{-moz-box-ordinal-group: 1 !important; opacity: 1 !important;transition: none !important;}
 */
 
-.tabbrowser-tab::after,
-.tabbrowser-tab::before {
-  border-left: none !important;
+/* Glowing line at top. */
+.tabbrowser-tab > .tab-stack > .tab-background > .tab-context-line {
+  background-color: var(--identity-icon-color) !important;
+  height: 1px !important;
+  border-radius: 1px !important;
+  margin: var(--tab-border-radius) var(--tab-border-radius) 0px !important;
+  box-shadow: 0px 3px 9px 0px var(--identity-icon-color) !important;
 }
-
-.tab-background {
+.tabbrowser-tab > .tab-stack > .tab-background {
+  border-width: 0px !important;
+}
+/* URLBar*/
+#urlbar:not([focused="true"]) > #urlbar-background {
+  border-radius: 5px;
+  background: #ffffff15 !important;
+  box-shadow: 0px 0px 4px 0px hsla(240, 5%, 5%, 0.3) !important;
+}
+#urlbar[open] > #urlbar-background {
   border: none !important;
-}
-
-.tabbrowser-arrowscrollbox {
-  margin-inline-start: 4px !important;
-  margin-inline-end: 0px !important;
-}
-
-.tab-close-button {
- display: none !important;
-}
-
-.tab-text {
-  font-family: var(--mff-tab-font-family);
-  font-weight: var(--mff-tab-font-weight);
-  font-size: var(--mff-tab-font-size) !important;
-  color: var(--mff-tab-color);
-}
-
-/* Hide the favicon for tabs 
-hbox.tab-content .tab-icon-image {
-  display: none !important;
-}
-*/
-
-/* Show the favicon for tabs that are pinned */
-hbox.tab-content[pinned=true] .tab-icon-image {
-  display: initial !important;
-}
-
-hbox.tab-content[pinned=true] .tab-text {
-  display: none !important;
-}
-
-#tabbrowser-tabs {
-  --tab-loading-fill: #033433 !important;
-
-}
-
-.tab-label-container:not([textoverflow]) {
-  display: flex;
-  overflow: hidden;
-  justify-content: center;
-  width: 50% !important;
-  max-width: 50% !important;
-  min-width: 50% !important;
-}
-
-/* .tab-label-container::after {
-  content: "?" !important;
-
-} */
-
-.tab-line {
-  display: none !important;
-}
-
-.tabbrowser-tab {
-  border-radius: var(--mff-tab-border-radius) !important;
-  border-width: 0;
-  height: var(--mff-tab-height) !important;
-  margin-bottom: 0px !important;
-  margin-inline-end: 0px !important;
-  margin-top: 0px !important;
-  max-height: var(--mff-tab-height) !important;
-  min-height: var(--mff-tab-height) !important;
-}
-
-#tabs-newtab-button {
-  list-style-image: url("add.svg") !important;
-  opacity: 0.7;
-}
-
-.tab-icon-sound {
-  /*display: none !important;*/
-}
-
-/*
-  _____ ___   ___  _    ___   _   ___
-|_   _/ _ \ / _ \| |  | _ ) /_\ | _ \
-  | || (_) | (_) | |__| _ \/ _ \|   /
-  |_| \___/ \___/|____|___/_/  \_\_|_\
-*/
-
-.urlbar-icon > image {
-  fill: var(--mff-icon-color) !important;
-  color: var(--mff-icon-color) !important;
-}
-
-.toolbarbutton-text {
-  color: var(--mff-icon-color)  !important;
-}
-.urlbar-icon {
-  color: var(--mff-icon-color)  !important;
-
-}
-
-.toolbarbutton-icon {
- filter: drop-shadow(0 0 0.75rem crimson);
-}
-
-#urlbar-results {
-  font-family: var(--mff-urlbar-results-font-family);
-  font-weight: var(--mff-urlbar-results-font-weight);
-  font-size: var(--mff-urlbar-results-font-size) !important;
-  color: var(--mff-urlbar-results-color) !important;
-}
-
-.urlbarView-row[type="bookmark"] > span{
-  color: green !important;
-}
-
-.urlbarView-row[type="switchtab"] > span{
-  color: orange !important;
-}
-
-.urlbarView-url, .search-panel-one-offs-container {
-  color: var(--mff-urlbar-results-url-color) !important;
-  font-family: var(--mff-urlbar-font-family);
-  font-weight: var(--mff-urlbar-results-font-weight);
-  font-size: var(--mff-urlbar-font-size) !important;
-}
-
-.urlbarView-favicon, .urlbarView-type-icon {
-  display: none !important;
-}
-
-#urlbar-input {
-  font-size: var(--mff-urlbar-font-size) !important;
-  color: var(--mff-urlbar-color) !important;
-  font-family: var(--mff-urlbar-font-family) !important;
-  font-weight: var(--mff-urlbar-font-weight)!important;
-  text-align: center !important;
-}
-
-#tracking-protection-icon-container, #identity-box {
-  display: none;
-}
-
-#back-button > .toolbarbutton-icon{
-  --backbutton-background: transparent !important;
-  border: none !important;
-}
-
-#back-button {
-  list-style-image: url("left-arrow.svg") !important;
-}
-
-#forward-button {
-  list-style-image: url("right-arrow.svg") !important;
-}
-
-toolbar {
-  background-image: none !important;
-}
-
-#urlbar-background {
-  opacity: .98 !important;
-}
-
-#navigator-toolbox, toolbaritem {
-  border: none !important;
-}
-
-#urlbar-background {
-  background-color: var(--mff-bg) !important;
-  border: none !important;
-}
-
-.toolbar-items {
-  background-color: var(--mff-bg) !important;
-}
-
-#sidebar-search-container {
-  background-color: var(--mff-sidebar-bg) !important;
-}
-
-box.panel-arrowbox {
-  display: none;
-}
-
-box.panel-arrowcontent {
-  border-radius: 8px !important;
-  border: none !important;
-}
-
-tab.tabbrowser-tab {
-  overflow: hidden;
-}
-
-tab.tabbrowser-tab:hover {
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
-}
-
-image#star-button {
-  display: none;
-}
-
-toolbar#nav-bar {
-  padding: var(--mff-nav-toolbar-padding) !important;
-}
-
-toolbar#nav-bar {
-  padding: 4px !important;
+  box-shadow: 0px 0px 4px 0px rgb(12, 12, 13) !important;
 }
 
 #urlbar {
-  max-width: 70% !important;
-  margin: 0 15% !important;
-  /* 	position: unset!important; */;
+  text-align: center !important;
+}
+/* Source below from https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_bookmarks_and_main_toolbars.css */
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_bookmarks_and_main_toolbars.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+#navigator-toolbox {
+  --uc-bm-padding: 4px; /* Vertical padding to be applied to bookmarks */
+  --uc-bm-height: calc(
+    20px + 2 * var(--uc-bm-padding)
+  ); /* Might need to adjust if the toolbar has other buttons */
+  --uc-navbar-height: -40px; /* navbar is main toolbar. Use negative value */
+  --uc-autohide-toolbar-delay: 600ms; /* The toolbar is hidden after 0.6s */
 }
 
-#urlbar-input:focus {
-  color: var(--mff-urlbar-focused-color) !important;
+:root[uidensity="compact"] #navigator-toolbox {
+  --uc-bm-padding: 1px;
+  --uc-navbar-height: -34px;
+}
+:root[uidensity="touch"] #navigator-toolbox {
+  --uc-bm-padding: 6px;
 }
 
-
-.megabar[breakout-extend="true"]:not([open="true"]) > #urlbar-background {
-  box-shadow: none !important;
-  background-color: transparent !important;
+:root[sessionrestored] #nav-bar,
+:root[sessionrestored] #PersonalToolbar {
+  background-image: linear-gradient(
+      var(--toolbar-bgcolor),
+      var(--toolbar-bgcolor)
+    ),
+    var(--lwt-additional-images, var(--toolbar-bgimage)) !important;
+  background-position: top, var(--lwt-background-alignment);
+  background-position-y: calc(
+    0px - var(--tab-min-height) - 2 * var(--tab-block-margin, 0px)
+  );
+  background-repeat: repeat, var(--lwt-background-tiling);
+  transform: rotateX(90deg);
+  transform-origin: top;
+  transition: transform 135ms linear var(--uc-autohide-toolbar-delay) !important;
+  z-index: 2;
 }
 
-toolbarbutton {
-  box-shadow: none !important;
+:root[sessionrestored] #PersonalToolbar {
+  z-index: 1;
+  background-position-y: calc(
+    0px - var(--tab-min-height) - 2 * var(--tab-block-margin, 0px) +
+      var(--uc-navbar-height)
+  );
 }
 
-
-/*
-  ___ ___ ___  ___ ___   _   ___
- / __|_ _|   \| __| _ ) /_\ | _ \
- \__ \| || |) | _|| _ \/ _ \|   /
- |___/___|___/|___|___/_/ \_\_|_\
-*/
-
-.close-icon, .urlbar-icon {
-  fill: var(--mff-icon-color) !important;
+:root[lwtheme-image] #nav-bar,
+:root[lwtheme-image] #PersonalToolbar {
+  background-image: linear-gradient(
+      var(--toolbar-bgcolor),
+      var(--toolbar-bgcolor)
+    ),
+    var(--lwt-header-image),
+    var(--lwt-additional-images, var(--toolbar-bgimage)) !important;
 }
 
-.sidebar-placesTree {
-  color: var(--mff-sidebar-color) !important;
+#nav-bar[customizing],
+#PersonalToolbar[customizing] {
+  transform: none !important;
 }
 
-#sidebar-switcher-target {
-/*   color: white !important; */
+#navigator-toolbox > #PersonalToolbar {
+  transform-origin: 0px var(--uc-navbar-height);
+  position: relative;
+}
+
+:root[sessionrestored]:not([customizing]) #navigator-toolbox {
+  margin-bottom: calc(0px - var(--uc-bm-height) + var(--uc-navbar-height));
+}
+#PlacesToolbarItems > .bookmark-item {
+  min-height: calc(
+    var(--uc-bm-height) - 4px
+  ); /* Bookmarks have 2px block margin */
+  padding-block: 0px !important;
+}
+
+#OtherBookmarks,
+#PlacesChevron,
+#PersonalToolbar > #import-button {
+  padding-block: var(--uc-bm-padding) !important;
+}
+
+/* Make sure the bookmarks toolbar is never collapsed even if it is disabled */
+:root[sizemode="fullscreen"] #PersonalToolbar,
+#PersonalToolbar[collapsed="true"] {
+  min-height: initial !important;
+  max-height: initial !important;
+  visibility: hidden !important;
+}
+#PersonalToolbar[collapsed="true"] #PlacesToolbarItems > *,
+:root[sizemode="fullscreen"] #PersonalToolbar #PlacesToolbarItems > * {
+  visibility: hidden !important;
+}
+
+/* The invisible toolbox will overlap sidebar so we'll work around that here */
+#navigator-toolbox {
+  pointer-events: none;
+  border-bottom: none !important;
+}
+#PersonalToolbar {
+  border-bottom: 1px solid var(--chrome-content-separator-color);
+}
+#navigator-toolbox > * {
+  pointer-events: auto;
 }
 
 #sidebar-box {
-  --sidebar-background-color: var(--mff-sidebar-bg) !important;
+  position: relative;
 }
 
-splitter#sidebar-splitter {
-  opacity: 0 !important;
+/* Selected tab needs higher z-index now to "hide" the broder below it */
+.tabbrowser-tab[selected] {
+  z-index: 3 !important;
 }
 
-splitter#sidebar-splitter {
-  border: none !important;
-  background-color: transparent !important;
+/* SELECT TOOLBAR BEHAVIOR */
+/* Comment out or delete one of these to disable that behavior */
+
+/* Show when urlbar is focused */
+#nav-bar:focus-within + #PersonalToolbar,
+#navigator-toolbox > #nav-bar:focus-within {
+  transition-delay: 100ms !important;
+  transform: rotateX(0);
 }
 
-image#sidebar-icon {
-  display: none;
+/* Show when cursor is over the toolbar area */
+#navigator-toolbox:hover > .browser-toolbar {
+  transition-delay: 100ms !important;
+  transform: rotateX(0);
 }
-
-
+/* This makes the tab notification box show immediately below tabs, otherwise it would break the layout */
+#navigator-toolbox > div {
+  display: contents;
+}
+:where(#titlebar, #tab-notification-deck, .global-notificationbox) {
+  -moz-box-ordinal-group: 0;
+}
+/* Show when cursor is over popups/context-menus - cannot control which ones */
 /*
-    _   ___ ___  _____      _____  _   _  _ ___ _
-   /_\ | _ \ _ \/ _ \ \    / / _ \/_\ | \| | __| |
-  / _ \|   /   / (_) \ \/\/ /|  _/ _ \| .` | _|| |__
- /_/ \_\_|_\_|_\\___/ \_/\_/ |_|/_/ \_\_|\_|___|____|
+#mainPopupSet:hover ~ box > toolbox > .browser-toolbar{
+  transition-delay: 100ms !important;
+  transform: rotateX(0);
+}
+*/
+
+/* Uncomment the next part to enable compatibility for multi-row_bookmarks.css
+ * This would break buttons placed in the toolbar,
+ * but that is likely not happening if you are using multi-row setup
  */
 
-.panel-arrowcontent {
-  padding: 0px !important;
-  margin: 0px !important;
-}
-
-toolbarseparator {
-  display: none;
-}
-
-/* 
-keep visible when urlbar is focused
-navbar is hovered
-or menubar/customization is open
-*/
-:root:not([customizing]) :hover > #nav-bar,
-#nav-bar:focus-within,
-#urlbar[focused="true"],
-#identity-box[open="true"],
-#navigator-toolbox:hover > #nav-bar:not([customizing]),
-#toolbar-menubar:not([inactive="true"]) ~ #nav-bar:not([customizing]) {
-	visibility: visible;
-	margin-top: 0;
-    filter: alpha(opacity=100);
-    opacity: 100;
-}
-
-#nav-bar .toolbarbutton-1[open="true"]{
-    
-    visibility: visible;
-    margin-top: 0px;
-    opacity: 100;
-}
-
-
-
-
-
-/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/combined_favicon_and_tab_close_button.css made available under Mozilla Public License v. 2.0
-See the above repository for updates as well as full license text. */
-
-/* Show tab close button when cursor is over the tab icon */
-
-.tab-close-button{
-  -moz-box-ordinal-group: 0;
-  display: -moz-box !important;
-  position: relative;
-  margin-inline: -1px -19px !important;
-  z-index: -1;
-  visibility: hidden;
-  width: unset !important;
-}
-.tabbrowser-tab[pinned] .tab-close-button{ display: none !important; }
-.tabbrowser-tab:hover .tab-close-button{
-  background-color: var(--lwt-selected-tab-background-color,var(--toolbar-bgcolor)) !important;
-  background-image: linear-gradient(var(--toolbarbutton-hover-background),var(--toolbarbutton-hover-background))
-}
-
-@media (-moz-proton){
-  .tab-close-button{
-    margin-inline: -4px -20px !important;
-    padding-inline-start: 7px !important;
-  }
-}
-
-/**** ONLY USE ONE OF THE FOLLOWING ****/
-/**** These select the behavior of a scenario where the page has no favicon ****/
-
-/*** Option 1 - no favicon - no close-button ***/
-
 /*
-.tab-icon-stack:hover ~ .tab-close-button, .tab-close-button:hover{ visibility: visible; z-index: 1 }
+#navigator-toolbox{ margin-bottom: var(--uc-navbar-height) !important; }
+#PersonalToolbar:not([customizing]){
+  position: fixed !important;
+  display: block;
+  margin-bottom: 0px !important;
+}
 */
-
-/*** Option 2 - No icon - always show close-button ***/
-
-/*
-.tab-icon-stack:hover ~ .tab-close-button,
-.tab-close-button:hover,
-.tabbrowser-tab:not([image]) .tab-close-button{ visibility: visible; z-index: 1 }
-.tabbrowser-tab:not([image]) .tab-close-button{ margin-inline-end: 0 !important; }
-*/
-
-/*** Option 3 - No icon - show close-button when cursor is over the tab ***/
-
-.tab-icon-stack:hover ~ .tab-close-button,
-.tab-close-button:hover,
-.tabbrowser-tab:not([image]):hover .tab-close-button{ visibility: visible; z-index: 1;  }
-.tabbrowser-tab:not([image]):hover .tab-close-button{ margin-inline-end: 0 !important; }
-
-
-
-
