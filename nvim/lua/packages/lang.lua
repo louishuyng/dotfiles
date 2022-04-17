@@ -39,3 +39,6 @@ use 'liuchengxu/vista.vim'
 use "vim-test/vim-test"
 use 'preservim/vimux'
 use "tpope/vim-rails"
+
+-- Quick runtpope/vim-rails
+use "is0n/jaq-nvim"

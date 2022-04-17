@@ -23,6 +23,7 @@ require 'mappings.editor.todo'
 require 'mappings.editor.trouble'
 require 'mappings.editor.wordmotion'
 
+require 'mappings.languages.jaq'
 require 'mappings.languages.rails'
 require 'mappings.languages.spector'
 require 'mappings.languages.test'
