@@ -12,6 +12,7 @@ ctrl + alt - w : open -na /Applications/Wireshark.app
 ctrl + alt - z : open -na /Applications/OWASP\ ZAP.app
 ctrl + alt - h : open -na /Applications/DevToys.app
 ctrl + alt - n : open -na /Applications/Obsidian.app
+ctrl + alt - s : open -na /Applications/JetBrains\ Space.app
 
 shift + alt - space : yabai -m window --toggle float
 

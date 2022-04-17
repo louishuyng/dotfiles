@@ -11,7 +11,6 @@ require 'mappings.zenmode'
 
 require 'mappings.editor.fold'
 require 'mappings.editor.harpoon'
-require 'mappings.editor.navigator'
 require 'mappings.editor.neoformat'
 require 'mappings.editor.nrrwrgn'
 require 'mappings.editor.nvimtree'

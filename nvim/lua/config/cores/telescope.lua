@@ -65,6 +65,7 @@ M.config = function()
       project = {
         base_dirs = {
           {'~/Dev/Projects/Productpine'},
+          {'~/Dev/Projects/Eatiplan'},
           {'~/Dev/Projects/Oivan/sakani-workspace'},
           {'~/.dotfiles'}
         }

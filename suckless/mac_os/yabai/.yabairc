@@ -85,6 +85,7 @@ yabai -m rule --add app="Tor Browser" manage=off      opacity=1          space=w
 
 # Social
 yabai -m rule --add app="Slack" title="Slack"      opacity=1            space=social
+yabai -m rule --add app="^JetBrains Space$" title="Space"    opacity=1  space=social
 yabai -m rule --add app="zoom.us" manage=off       opacity=1            space=social
 yabai -m rule --add app="Skype" manage=off         opacity=1            space=social
 yabai -m rule --add app="Telegram" manage=off      opacity=1            space=social
