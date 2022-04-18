@@ -1,6 +1,7 @@
 vim.cmd([[
   let g:dbs = [
-  \ { 'name': 'local-productpine', 'url': 'postgres://postgres:xxxx@localhost:5432/productpine_portal_development' }
+  \ { 'name': 'local-productpine', 'url': 'postgres://postgres:xxxx@localhost:5432/productpine_portal_development' },
+  \ { 'name': 'local-eatiplan-auth', 'url': 'postgres://postgres:xxxx@localhost:5432/eatiplan_auth_development' }
   \ ]
 
   let g:db_ui_use_nerd_fonts = 1
