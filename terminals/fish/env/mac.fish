@@ -31,8 +31,8 @@ fish_add_path /usr/local/opt/python/libexec/bin
 fish_add_path /usr/libexec/java_home
 #
 # #Golang
-set -gx GOROOT $(go env GOROOT)
-set -gx GOBIN  $(go env GOBIN)
+set -gx GOROOT (go env GOROOT)
+set -gx GOBIN  (go env GOBIN)
 set -gx GOPATH $HOME/development/golib
 set -gx GO111MODULE on
 fish_add_path $GOPATH/bin

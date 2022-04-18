@@ -31,7 +31,6 @@ use {
 }
 use 'chaoren/vim-wordmotion'
 use 'kamykn/spelunker.vim'
-use 'sbdchd/neoformat'
 use 'konfekt/fastfold'
 use 'gelguy/wilder.nvim'
 use({
