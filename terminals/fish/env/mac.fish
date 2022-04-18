@@ -31,10 +31,14 @@ fish_add_path /usr/local/opt/python/libexec/bin
 fish_add_path /usr/libexec/java_home
 #
 # #Golang
+set -gx GOROOT $(go env GOROOT)
+set -gx GOBIN  $(go env GOBIN)
 set -gx GOPATH $HOME/development/golib
-fish_add_path $GOROOT/bin:$GOPATH/bin
-set -gx GOPATH $GOPATH:~/Dev/Projects/gin-api
 set -gx GO111MODULE on
+fish_add_path $GOPATH/bin
+fish_add_path $GOROOT/bin
+fish_add_path $GOBIN
+
 #
 # # OPEN SSL
 fish_add_path /usr/local/opt/openssl/bin
