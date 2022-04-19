@@ -2,5 +2,5 @@ local map = require 'utils.map'
 
 local opt = {}
 
-map("n", ",ne", ":NvimTreeToggle<CR>", opt)
-map("n", ",nf", ":NvimTreeFindFile<CR>", opt)
+map("n", ",ne", ":NeoTreeShowToggle<CR>", opt)
+map("n", ",nf", ":NeoTreeFocus<CR>", opt)
