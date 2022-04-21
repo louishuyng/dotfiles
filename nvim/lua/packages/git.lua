@@ -22,15 +22,9 @@ use {
   },
 }
 use {
-  'ruifm/gitlinker.nvim',
-  requires = 'nvim-lua/plenary.nvim',
-}
-use {
   'pwntester/octo.nvim',
   requires = {
-    'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim',
-    'kyazdani42/nvim-web-devicons',
   },
 }
 use 'whiteinge/diffconflict'

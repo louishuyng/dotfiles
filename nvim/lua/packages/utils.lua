@@ -29,11 +29,5 @@ use {
   'windwp/nvim-ts-autotag',
   after = "nvim-treesitter",
 }
-use 'chaoren/vim-wordmotion'
+use 'rcarriga/nvim-notify'
 use 'kamykn/spelunker.vim'
-use 'konfekt/fastfold'
-use 'gelguy/wilder.nvim'
-use({
-  'vuki656/package-info.nvim',
-  requires = 'MunifTanjim/nui.nvim',
-})

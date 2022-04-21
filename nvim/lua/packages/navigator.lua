@@ -3,12 +3,12 @@ local use = packer.use
 
 use {
   "nvim-neo-tree/neo-tree.nvim",
+  requires = 'MunifTanjim/nui.nvim',
   branch = "v2.x",
 }
 use {
   "nvim-telescope/telescope.nvim",
   requires = {
-    {"nvim-lua/plenary.nvim"},
     {"nvim-telescope/telescope-project.nvim"},
   },
   cmd = "Telescope",
@@ -17,7 +17,4 @@ use {
   end
 }
 use {'kevinhwang91/nvim-bqf', ft = 'qf'}
-use {'junegunn/fzf', run = function()
-  vim.fn['fzf#install']()
-end}
 use "ThePrimeagen/harpoon"

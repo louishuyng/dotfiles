@@ -1,4 +1,3 @@
-local compare = require('cmp.config.compare')
 local present, cmp = pcall(require, "cmp")
 
 if not present then
@@ -35,9 +34,6 @@ cmp.setup {
 
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
-        nvim_lua = "[Lua]",
-        buffer = "[BUF]",
-        calc = "[Calc]",
 	cmp_tabnine = "[Tabnine]",
         ['vim-dadbod-completion'] = "[DB]",
         luasnip = "[Snip]", })[entry.source.name] return vim_item end,
@@ -77,25 +73,8 @@ cmp.setup {
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
-    { name = "buffer" },
-    { name = "nvim_lua" },
-    { name = "calc" },
     { name = "orgmode" },
     { name = "vim-dadbod-completion" },
     { name = "cmp_tabnine" }
-  },
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      require('cmp_tabnine.compare'),
-      compare.offset,
-      compare.exact,
-      compare.score,
-      compare.recently_used,
-      compare.kind,
-      compare.sort_text,
-      compare.length,
-      compare.order,
-    },
   },
 }

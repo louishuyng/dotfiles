@@ -4,7 +4,6 @@ local diagnos  = require 'config.cores.statusline.components.diagnos';
 local file  = require 'config.cores.statusline.components.file';
 local git  = require 'config.cores.statusline.components.git';
 local lsp  = require 'config.cores.statusline.components.lsp';
-local package_info  = require 'config.cores.statusline.components.package_info';
 local utils  = require 'config.cores.statusline.components.utils';
 local vi_mode  = require 'config.cores.statusline.components.vi_mode';
 
@@ -38,7 +37,6 @@ table.insert(components.active[3], file.position)
 table.insert(components.active[3], utils.line_percentage)
 table.insert(components.active[3], utils.scroll_bar)
 table.insert(components.active[3], vi_mode.right)
-table.insert(components.active[2], package_info)
 
 local vi_mode_colors = {
     NORMAL = colors.green,

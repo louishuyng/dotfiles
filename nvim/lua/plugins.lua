@@ -21,7 +21,6 @@ return packer.startup{
     require 'packages.lang'
     require 'packages.navigator'
     require 'packages.org'
-    require 'packages.others'
     require 'packages.ui'
     require 'packages.utils'
 

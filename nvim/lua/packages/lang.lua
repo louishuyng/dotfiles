@@ -9,7 +9,6 @@ use {
 }
 use "jose-elias-alvarez/nvim-lsp-ts-utils"
 use "jose-elias-alvarez/null-ls.nvim"
-
 use {
   "nvim-treesitter/nvim-treesitter",
   run = ':TSUpdate',
@@ -24,16 +23,10 @@ use {
     require "config.libs.trouble"
   end
 }
-use {
-  "folke/todo-comments.nvim",
-  requires = "nvim-lua/plenary.nvim",
-}
+use "folke/todo-comments.nvim"
 
 -- DEBUG
 use "puremourning/vimspector"
-
--- TAGS
-use 'liuchengxu/vista.vim'
 
 -- ROR
 use "vim-test/vim-test"

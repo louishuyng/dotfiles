@@ -12,7 +12,6 @@ map("n", "<leader>gl", ":Git log<CR>", opt)
 map("n", ",gb", ":Git blame<CR>", opt)
 map("n", "<leader>gp", ":lua require('config.libs.git_worktree').push()<CR>", opt)
 map("n", "<leader>gpf", ":lua require('config.libs.git_worktree').push_force()<CR>", opt)
-map("n", "<leader>gs", ":Telescope git_stash<CR>", opt)
 
 map("n", ",gs", ":Git<CR>:20wincmd_<CR>", opt, {silent = true})
 map("n", "<leader>go", "<cmd>lua require'gitlinker'.get_repo_url({action_callback = require'gitlinker.actions'.open_in_browser})<cr>", opt)
