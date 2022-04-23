@@ -34,8 +34,15 @@ map("n", "<leader>grs", ":Octo review submit<CR>", opt)
 -- Merge Tool
 map("n", "dh", ":diffget //2<CR>", opt)
 map("n", "dl", ":diffget //3<CR>", opt)
-map("n", "<leader>gd", ":DiffConflicts<CR>", opt)
 map("n", "<leader>gm", ":Git mergetool<CR>", opt)
+
+-- Git Conflict
+map('n', 'co', '<Plug>(git-conflict-ours)', opt)
+map('n', 'ct', '<Plug>(git-conflict-theirs)', opt)
+map('n', 'cb', '<Plug>(git-conflict-both)', opt)
+map('n', 'c0', '<Plug>(git-conflict-none)', opt)
+map("n", "]x", "<Plug>(git-conflict-next-conflict)", opt)
+map("n", "[x", "<Plug>(git-conflict-prev-conflict)", opt)
 
 -- Git Signs
 M.gitsigns_mappings = function(bufnr)

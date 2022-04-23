@@ -13,6 +13,7 @@ require "config.cores.tabnine"
 
 require "config.libs.comment"
 require "config.libs.fterm"
+require "config.libs.git_conflict"
 require "config.libs.git_worktree"
 require "config.libs.jaq"
 require "config.libs.notify"

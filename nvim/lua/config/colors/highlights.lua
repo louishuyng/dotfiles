@@ -97,6 +97,7 @@ fg("AlphaFooter", yellow)
 
 -- Git signs
 fg_bg("DiffAdd", blue, "NONE")
+fg_bg("DiffText", nord_blue, "NONE")
 fg_bg("DiffChange", grey_fg, "NONE")
 fg_bg("DiffChangeDelete", red, "NONE")
 fg_bg("DiffModified", red, "NONE")

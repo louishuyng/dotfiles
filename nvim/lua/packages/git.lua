@@ -27,4 +27,4 @@ use {
     'nvim-telescope/telescope.nvim',
   },
 }
-use 'whiteinge/diffconflict'
+use 'akinsho/git-conflict.nvim'
