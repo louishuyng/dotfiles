@@ -64,9 +64,10 @@ yabai -m space 5 --label external
 
 # Tool
 yabai -m rule --add app="Simulator" manage=off                           space=tool
+yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=tool
 yabai -m rule --add app="^Xcode$" manage=off                             space=tool
 yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=tool
-yabai -m rule --add app="^Burp$" manage=off                              space=tool
+yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=tool
 yabai -m rule --add app="^Wireshark$" manage=off                         space=tool
 yabai -m rule --add app="Visual Studio Code" manage=off opacity=1        space=tool
 yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=tool
@@ -101,7 +102,6 @@ yabai -m rule --add app="Obsidian"         opacity=1            space=management
 
 # External
 yabai -m rule --add app="Spotify"          opacity=1 manage=off    space=external
-yabai -m rule --add app="^DataGrip$"       opacity=1 manage=off    space=external
 
 # Others
 yabai -m rule --add app="QuickTime Player" manage=off
