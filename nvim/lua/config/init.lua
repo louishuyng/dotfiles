@@ -2,10 +2,10 @@ require("config.colors").init()
 
 require "config.cores.barbar"
 require "config.cores.bqf"
+require "config.cores.chadtree"
 require "config.cores.dadbod"
 require "config.cores.git"
 require "config.cores.neorg"
-require "config.cores.neotree"
 require "config.cores.octo"
 require "config.cores.sneak"
 require "config.cores.statusline"

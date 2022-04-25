@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 require 'mappings.barbar'
+require 'mappings.chadtree'
 require 'mappings.fterm'
 require 'mappings.general'
 require 'mappings.lsp'
@@ -11,7 +12,6 @@ require 'mappings.zenmode'
 require 'mappings.editor.fold'
 require 'mappings.editor.harpoon'
 require 'mappings.editor.nrrwrgn'
-require 'mappings.editor.nvimtree'
 require 'mappings.editor.pacakage_info'
 require 'mappings.editor.quickfix'
 require 'mappings.editor.sneak'

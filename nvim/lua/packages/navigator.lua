@@ -2,9 +2,9 @@ local packer = require "packer"
 local use = packer.use
 
 use {
-  "nvim-neo-tree/neo-tree.nvim",
-  requires = 'MunifTanjim/nui.nvim',
-  branch = "v2.x",
+  "ms-jpq/chadtree",
+  branch = 'chad',
+  run = "python3 -m chadtree deps"
 }
 use {
   "nvim-telescope/telescope.nvim",
