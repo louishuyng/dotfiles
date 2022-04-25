@@ -58,9 +58,9 @@ require("neo-tree").setup({
       nowait = true,
     },
     mappings = {
-      ["<space>"] = { 
-          "toggle_node", 
-          nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
+      ["<space>"] = {
+          "toggle_node",
+          nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
       },
       ["<2-LeftMouse>"] = "open",
       ["o"] = "open",
@@ -86,7 +86,7 @@ require("neo-tree").setup({
   filesystem = {
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items
-      hide_dotfiles = true,
+      hide_dotfiles = false,
       hide_gitignored = true,
       hide_by_name = {
         ".DS_Store",
@@ -112,7 +112,7 @@ require("neo-tree").setup({
                                     -- instead of relying on nvim autocmd events.
     window = {
       mappings = {
-        ["<bs>"] = "navigate_up",
+        ["u"] = "navigate_up",
         ["."] = "set_root",
         ["H"] = "toggle_hidden",
         ["/"] = "fuzzy_finder",

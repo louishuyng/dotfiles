@@ -1,47 +1,43 @@
-local map = require 'utils.map'
+vim.keymap.set("n", ",h", ":<C-u>split<CR>")
+vim.keymap.set("n", ",v", ":<C-u>vsplit<CR>")
 
-local opt = {}
+vim.keymap.set("n", ",e", ":e <C-R>=expand(\"%:p:h\") . \"/\" <CR>")
 
-map("n", ",h", ":<C-u>split<CR>", opt)
-map("n", ",v", ":<C-u>vsplit<CR>", opt)
+vim.keymap.set("v", "<C-x>", ":!pbcopy<CR>")
+vim.keymap.set("v", "<C-c>", ":w !pbcopy<CR><CR>")
 
-map("n", ",e", ":e <C-R>=expand(\"%:p:h\") . \"/\" <CR>", opt)
+vim.keymap.set("v", "/", "*")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<C-h>", "<C-w>h")
 
-map("v", "<C-x>", ":!pbcopy<CR>", opt)
-map("v", "<C-c>", ":w !pbcopy<CR><CR>", opt)
-
-map("v", "/", "*", opt)
-map("n", "<C-j>", "<C-w>j", opt)
-map("n", "<C-k>", "<C-w>k", opt)
-map("n", "<C-l>", "<C-w>l", opt)
-map("n", "<C-h>", "<C-w>h", opt)
-
-map("n", "<C-s>", ":w<CR>", opt)
-map("v", "<C-s>", "<C-C>:w<CR>", opt)
-map("i", "<C-s>", "<C-O>:w<CR>", opt)
-map("n", "<C-d>", ":q!<CR>", opt)
-map("v", "<C-d>", "<ESC>:q!<CR>", opt)
-map("i", "<C-d>", "<ESC>:q!<CR>", opt)
+vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("v", "<C-s>", "<C-C>:w<CR>")
+vim.keymap.set("i", "<C-s>", "<C-O>:w<CR>")
+vim.keymap.set("n", "<C-d>", ":q!<CR>")
+vim.keymap.set("v", "<C-d>", "<ESC>:q!<CR>")
+vim.keymap.set("i", "<C-d>", "<ESC>:q!<CR>")
 
 -- Macro Apply Visual
-map("v", ",m", ":normal @", opt)
+vim.keymap.set("v", ",m", ":normal @")
 
 -- Move Block
-map("v", "<S-j>", ":m'>+<CR>gv=gv", opt)
-map("v", "<S-k>", ":m-2<CR>gv=gv", opt)
+vim.keymap.set("v", "<S-j>", ":m'>+<CR>gv=gv")
+vim.keymap.set("v", "<S-k>", ":m-2<CR>gv=gv")
 
-map("v", "<leader>ex", ":w !", opt)
+vim.keymap.set("v", "<leader>ex", ":w !")
 
 -- Sorting
-map("v", "<leader>so", ":sort<CR>", opt)
+vim.keymap.set("v", "<leader>so", ":sort<CR>")
 
 -- Open URL
-map("n", "<c-b>", ":call OpenUrlUnderCursor()<CR>", opt)
+vim.keymap.set("n", "<c-b>", ":call OpenUrlUnderCursor()<CR>")
 
 -- Replace
-map("n", "r;", "yiw:%s/<C-R>\"/", opt)
+vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/")
 
 -- Packer
-map("n", "<leader>pi", ":PackerInstall<CR>", opt)
-map("n", "<leader>pc", ":PackerCompile<CR>", opt)
-map("n", "<leader>pr", ":PackerClean<CR>", opt)
+vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>")
+vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>")
+vim.keymap.set("n", "<leader>pr", ":PackerClean<CR>")

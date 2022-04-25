@@ -1,5 +1,1 @@
-local map = require 'utils.map'
-
-local opt = {}
-
-map("n", "<leader>vd", ":DBUIToggle<CR>", opt)
+vim.keymap.set("n", "<leader>vd", ":DBUIToggle<CR>")

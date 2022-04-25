@@ -1,6 +1,2 @@
-local map = require 'utils.map'
-
-local opt = {}
-
-map("n", "<leader>xx", ":TroubleToggle<CR>", opt)
-map("n", "gr", ":TroubleToggle lsp_references<CR>", opt)
+vim.keymap.set("n", "<leader>xx", ":TroubleToggle<CR>")
+vim.keymap.set("n", "gr", ":TroubleToggle lsp_references<CR>")

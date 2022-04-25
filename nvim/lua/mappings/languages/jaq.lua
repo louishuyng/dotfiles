@@ -1,5 +1,1 @@
-local map = require 'utils.map'
-
-local opt = {}
-
-map("n", "<leader>r", ":Jaq float<CR>", opt)
+vim.keymap.set("n", "<leader>r", ":Jaq float<CR>")

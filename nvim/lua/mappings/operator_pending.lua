@@ -1,5 +1,3 @@
-local map = require 'utils.map'
+local opts = { silent = true }
 
-local opts = { noremap = true, silent = true }
-
-map("o", "p", "i(", opts, {silent = true})
+vim.keymap.set("o", "p", "i(", opts)

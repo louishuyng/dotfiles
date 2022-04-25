@@ -1,7 +1,3 @@
-local map = require 'utils.map'
-
-local opt = {}
-
-map("n", "gs", "<Plug>Sneak_;", opt)
-map("n", "gS", "<Plug>Sneak_,", opt)
+vim.keymap.set("n", "gs", "<Plug>Sneak_;")
+vim.keymap.set("n", "gS", "<Plug>Sneak_,")
 

@@ -1,8 +1,4 @@
-local map = require 'utils.map'
-
-local opt = {}
-
-map("n", "<leader>no", ":NR!<CR>:MaximizerToggle<CR>", opt)
-map("v", "<leader>no", ":NR!<CR>:MaximizerToggle<CR>", opt)
-map("n", "<leader>nw", ":WR!<CR>", opt)
-map("v", "<leader>nw", ":WR!<CR>", opt)
+vim.keymap.set("n", "<leader>no", ":NR!<CR>:MaximizerToggle<CR>")
+vim.keymap.set("v", "<leader>no", ":NR!<CR>:MaximizerToggle<CR>")
+vim.keymap.set("n", "<leader>nw", ":WR!<CR>")
+vim.keymap.set("v", "<leader>nw", ":WR!<CR>")

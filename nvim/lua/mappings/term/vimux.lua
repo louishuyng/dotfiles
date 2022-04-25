@@ -1,8 +1,6 @@
-local map = require 'utils.map'
+local opt = {silent = true}
 
-local opt = {}
-
-map("n", ",vp", ":VimuxPromptCommand<CR>", opt, {silent = true})
-map("n", ",vd", ":VimuxCloseRunner<CR>", opt, {silent = true})
-map("n", ",vc", ":VimuxInterruptRunner<CR>", opt, {silent = true})
-map("n", ",vl", ":VimuxRunLastCommand<CR>", opt, {silent = true})
+vim.keymap.set("n", ",vp", ":VimuxPromptCommand<CR>", opt)
+vim.keymap.set("n", ",vd", ":VimuxCloseRunner<CR>", opt)
+vim.keymap.set("n", ",vc", ":VimuxInterruptRunner<CR>", opt)
+vim.keymap.set("n", ",vl", ":VimuxRunLastCommand<CR>", opt)

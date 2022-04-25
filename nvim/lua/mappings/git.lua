@@ -1,48 +1,46 @@
-local map = require 'utils.map'
 local buf_map = require 'utils.buf_map'
 
-local opt = {}
 local M = {}
 
-map("n", "<leader>;",  ":lua require('config.libs.git_worktree').pull()<CR>", opt)
-map("n", "<leader>ga", ":Gwrite!<CR>", opt)
-map("n", "<leader>gb",  ":Telescope git_branches<CR>", opt)
-map("n", "<leader>gc", ":Telescope git_commits<CR>", opt)
-map("n", "<leader>gl", ":Git log<CR>", opt)
-map("n", ",gb", ":Git blame<CR>", opt)
-map("n", "<leader>gp", ":lua require('config.libs.git_worktree').push()<CR>", opt)
-map("n", "<leader>gpf", ":lua require('config.libs.git_worktree').push_force()<CR>", opt)
+vim.keymap.set("n", "<leader>;",  ":lua require('config.libs.git_worktree').pull()<CR>")
+vim.keymap.set("n", "<leader>ga", ":Gwrite!<CR>")
+vim.keymap.set("n", "<leader>gb",  ":Telescope git_branches<CR>")
+vim.keymap.set("n", "<leader>gc", ":Telescope git_commits<CR>")
+vim.keymap.set("n", "<leader>gl", ":Git log<CR>")
+vim.keymap.set("n", ",gb", ":Git blame<CR>")
+vim.keymap.set("n", "<leader>gp", ":lua require('config.libs.git_worktree').push()<CR>")
+vim.keymap.set("n", "<leader>gpf", ":lua require('config.libs.git_worktree').push_force()<CR>")
 
-map("n", ",gs", ":Git<CR>:20wincmd_<CR>", opt, {silent = true})
-map("n", "<leader>go", "<cmd>lua require'gitlinker'.get_repo_url({action_callback = require'gitlinker.actions'.open_in_browser})<cr>", opt)
+vim.keymap.set("n", ",gs", ":Git<CR>:20wincmd_<CR>", {silent = true})
+vim.keymap.set("n", "<leader>go", "<cmd>lua require'gitlinker'.get_repo_url({action_callback = require'gitlinker.actions'.open_in_browser})<cr>")
 
-map("n", "<leader>1", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_oivan <CR><CR>", opt)
-map("n", "<leader>2", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_elxr <CR><CR>", opt)
-map("n", "<leader>3", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_open_source <CR><CR>", opt)
+vim.keymap.set("n", "<leader>1", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_oivan <CR><CR>")
+vim.keymap.set("n", "<leader>2", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_elxr <CR><CR>")
+vim.keymap.set("n", "<leader>3", ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_open_source <CR><CR>")
 
 -- Octo
-map("n", "<leader>gpl", ":Octo pr list<CR>", opt)
-map("n", "<leader>gpc", ":Octo pr create<CR>", opt)
+vim.keymap.set("n", "<leader>gpl", ":Octo pr list<CR>")
+vim.keymap.set("n", "<leader>gpc", ":Octo pr create<CR>")
 
-map("n", "<leader>gr", ":Octo thread resolve<CR>", opt)
-map("n", "<leader>gR", ":Octo thread unresolve<CR>", opt)
+vim.keymap.set("n", "<leader>gr", ":Octo thread resolve<CR>")
+vim.keymap.set("n", "<leader>gR", ":Octo thread unresolve<CR>")
 
-map("n", "<leader>grv", ":Octo review start<CR>", opt)
-map("n", "<leader>grd", ":Octo review discard<CR>", opt)
-map("n", "<leader>grs", ":Octo review submit<CR>", opt)
+vim.keymap.set("n", "<leader>grv", ":Octo review start<CR>")
+vim.keymap.set("n", "<leader>grd", ":Octo review discard<CR>")
+vim.keymap.set("n", "<leader>grs", ":Octo review submit<CR>")
 
 -- Merge Tool
-map("n", "dh", ":diffget //2<CR>", opt)
-map("n", "dl", ":diffget //3<CR>", opt)
-map("n", "<leader>gm", ":Git mergetool<CR>", opt)
+vim.keymap.set("n", "dh", ":diffget //2<CR>")
+vim.keymap.set("n", "dl", ":diffget //3<CR>")
+vim.keymap.set("n", "<leader>gm", ":Git mergetool<CR>")
 
 -- Git Conflict
-map('n', 'co', '<Plug>(git-conflict-ours)', opt)
-map('n', 'ct', '<Plug>(git-conflict-theirs)', opt)
-map('n', 'cb', '<Plug>(git-conflict-both)', opt)
-map('n', 'c0', '<Plug>(git-conflict-none)', opt)
-map("n", "]x", "<Plug>(git-conflict-next-conflict)", opt)
-map("n", "[x", "<Plug>(git-conflict-prev-conflict)", opt)
+vim.keymap.set('n', '<leader>ch', '<Plug>(git-conflict-ours)')
+vim.keymap.set('n', '<leader>ci', '<Plug>(git-conflict-theirs)')
+vim.keymap.set('n', '<leader>cb', '<Plug>(git-conflict-both)')
+vim.keymap.set('n', '<leader>c0', '<Plug>(git-conflict-none)')
+vim.keymap.set("n", "]x", "<Plug>(git-conflict-next-conflict)")
+vim.keymap.set("n", "[x", "<Plug>(git-conflict-prev-conflict)")
 
 -- Git Signs
 M.gitsigns_mappings = function(bufnr)
@@ -61,7 +59,7 @@ M.gitsigns_mappings = function(bufnr)
     buf_map(bufnr, 'n', 'gp', gs.preview_hunk)
     buf_map(bufnr, 'n', '<leader>td', gs.toggle_deleted)
     -- Text object
-    -- map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    -- vim.keymap.set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
 return M

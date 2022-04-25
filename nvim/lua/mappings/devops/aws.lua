@@ -1,5 +1,1 @@
-local map = require 'utils.map'
-
-local opt = {}
-
-map("n", "<leader>aed", ":call VimuxRunCommand('clear; eb deploy')<CR>", opt)
+vim.keymap.set("n", "<leader>aed", ":call VimuxRunCommand('clear; eb deploy')<CR>")

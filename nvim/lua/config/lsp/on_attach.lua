@@ -51,9 +51,11 @@ return function(client)
   vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   if client.resolved_capabilities.document_formatting then
-    vim.cmd('augroup Format')
-    vim.cmd('autocmd! * <buffer>')
-    vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)')
-    vim.cmd('augroup END')
+    local group = vim.api.nvim_create_augroup("LSPFormat", { clear = true })
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      command = "lua vim.lsp.buf.formatting_sync(nil, 1000)",
+      group = group
+    })
   end
 end

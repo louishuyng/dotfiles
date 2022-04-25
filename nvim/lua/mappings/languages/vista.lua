@@ -1,5 +1,1 @@
-local map = require 'utils.map'
-
-local opt = {}
-
-map("n", "<leader>ca", ":Vista!!<CR>", opt)
+vim.keymap.set("n", "<leader>ca", ":Vista!!<CR>")

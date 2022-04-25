@@ -1,5 +1,1 @@
-local map = require 'utils.map'
-
-local opt = {}
-
-map("n", "zl", ":set foldlevel=", opt)
+vim.keymap.set("n", "zl", ":set foldlevel=")

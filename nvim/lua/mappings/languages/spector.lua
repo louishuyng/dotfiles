@@ -1,26 +1,22 @@
-local map = require 'utils.map'
-
-local opt = {}
-
-map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
+vim.keymap.set("n", "<leader>dd", ":call vimspector#Launch()<CR>")
 
 -- Enable mapping keys that  move directly to window debug windows
--- map("n", "<leader>dt", ":call GotoWindow(g:vimspector_session_windows.tagpage)<CR>", opt)
--- map("n", "<leader>dw", ":call GotoWindow(g:vimspector_session_windows.watches)<CR>", opt)
--- map("n", "<leader>ds", ":call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>", opt)
--- map("n", "<leader>dv", ":call GotoWindow(g:vimspector_session_windows.variables)<CR>", opt)
+-- vim.keymap.set("n", "<leader>dt", ":call GotoWindow(g:vimspector_session_windows.tagpage)<CR>")
+-- vim.keymap.set("n", "<leader>dw", ":call GotoWindow(g:vimspector_session_windows.watches)<CR>")
+-- vim.keymap.set("n", "<leader>ds", ":call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>")
+-- vim.keymap.set("n", "<leader>dv", ":call GotoWindow(g:vimspector_session_windows.variables)<CR>")
 
-map("n", "<leader>dc", ":call GotoWindow(g:vimspector_session_windows.code)<CR>", opt)
-map("n", "<leader>do", ":call GotoWindow(g:vimspector_session_windows.output)<CR>", opt)
-map("n", "<leader>dt", ":call GotoWindow(g:vimspector_session_windows.terminal)<CR>", opt)
+vim.keymap.set("n", "<leader>dc", ":call GotoWindow(g:vimspector_session_windows.code)<CR>")
+vim.keymap.set("n", "<leader>do", ":call GotoWindow(g:vimspector_session_windows.output)<CR>")
+vim.keymap.set("n", "<leader>dt", ":call GotoWindow(g:vimspector_session_windows.terminal)<CR>")
 
-map("n", "<leader>de", ":call vimspector#Reset()<CR>", opt)
+vim.keymap.set("n", "<leader>de", ":call vimspector#Reset()<CR>")
 
-map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
-map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
-map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
-map("n", "<leader>d_", "<Plug>VimspectorRestart", opt)
-map("n", "<leader>d<leader>", ":call vimspector#Continue()<CR>", opt)
+vim.keymap.set("n", "<leader>dl", "<Plug>VimspectorStepInto")
+vim.keymap.set("n", "<leader>dj", "<Plug>VimspectorStepOver")
+vim.keymap.set("n", "<leader>dk", "<Plug>VimspectorStepOut")
+vim.keymap.set("n", "<leader>d_", "<Plug>VimspectorRestart")
+vim.keymap.set("n", "<leader>d<leader>", ":call vimspector#Continue()<CR>")
 
-map("n", "<leader>drc", "<Plug>VimspectorRunToCursor", opt)
-map("n", "<leader>dbp", "<Plug>VimspectorToggleBreakpoint", opt)
+vim.keymap.set("n", "<leader>drc", "<Plug>VimspectorRunToCursor")
+vim.keymap.set("n", "<leader>dbp", "<Plug>VimspectorToggleBreakpoint")

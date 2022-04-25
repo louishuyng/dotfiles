@@ -22,6 +22,10 @@ use {
   },
 }
 use {
+  'ruifm/gitlinker.nvim',
+  requires = 'nvim-lua/plenary.nvim',
+}
+use {
   'pwntester/octo.nvim',
   requires = {
     'nvim-telescope/telescope.nvim',
