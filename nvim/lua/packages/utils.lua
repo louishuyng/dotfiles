@@ -30,4 +30,3 @@ use {
   after = "nvim-treesitter",
 }
 use 'rcarriga/nvim-notify'
-use 'kamykn/spelunker.vim'

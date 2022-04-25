@@ -15,7 +15,6 @@ require 'mappings.editor.nvimtree'
 require 'mappings.editor.pacakage_info'
 require 'mappings.editor.quickfix'
 require 'mappings.editor.sneak'
-require 'mappings.editor.speller'
 require 'mappings.editor.todo'
 require 'mappings.editor.trouble'
 
