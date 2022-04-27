@@ -30,3 +30,7 @@ use {
   after = "nvim-treesitter",
 }
 use 'rcarriga/nvim-notify'
+use {
+  "andymass/vim-matchup",
+  event = "CursorMoved"
+}

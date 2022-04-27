@@ -154,6 +154,9 @@ setup_git() {
     git config --global color.diff.new "green bold"
     git config --global color.diff.whitespace "red reverse"
 
+    git config --global pull.rebase true
+    git config --global rebase.autoStash true
+
     git config --global alias.co checkout
     git config --global alias.br branch
     git config --global alias.ci commit
@@ -316,6 +319,7 @@ install_tools() {
     brew install jq
     brew install shellcheck
     brew install fd
+    brew install act # github action test locally
 
     pip install pydf
     pip install diagrams
