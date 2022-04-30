@@ -16,7 +16,6 @@ use {
       require "config.cores.treesitter"
   end
 }
-use "RRethy/nvim-treesitter-textsubjects"
 use {
   "folke/trouble.nvim",
   config = function()
@@ -34,3 +33,6 @@ use "tpope/vim-rails"
 
 -- Quick runtpope/vim-rails
 use "is0n/jaq-nvim"
+
+-- Indent
+use "lukas-reineke/indent-blankline.nvim"

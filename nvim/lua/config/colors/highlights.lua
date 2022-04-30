@@ -113,6 +113,9 @@ fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
 
+-- Indent
+fg("IndentBlanklineContextChar", nord_blue)
+
 -- NvimTree
 fg("NvimTreeEmptyFolderName", folder_bg)
 fg("NvimTreeEndOfBuffer", darker_black)

@@ -52,8 +52,8 @@ vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
 
 -- LIST
-vim.api.nvim_command("set list")
-vim.api.nvim_command("set list listchars=tab:▸\\ ,trail:·,precedes:←,extends:→,eol:↲,nbsp:␣")
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")
 
 -- FOLD
 opt.foldmethod ='indent'
