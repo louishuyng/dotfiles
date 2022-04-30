@@ -20,6 +20,9 @@ local chadtree_settings = {
     select = {"<tab>"},
     clear_selection = {"<s-tab>"},
     copy = {"c"} ,
+  },
+  ignore = {
+    name_exact = {".DS_Store", ".directory", "thumbs.db", ".git", "node_modules" }
   }
 }
 vim.api.nvim_set_var("chadtree_settings", chadtree_settings)

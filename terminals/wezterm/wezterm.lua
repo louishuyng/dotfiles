@@ -22,10 +22,7 @@ return {
 
   -- Font configuration
   -- https://wezfurlong.org/wezterm/config/fonts.html
-  font = wezterm.font_with_fallback({
-    "Hack",
-    "nonicons"
-  }),
+  font = wezterm.font("Hack Nerd Font"),
   font_size = 12.3,
 
   -- Cursor style

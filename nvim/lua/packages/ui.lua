@@ -2,12 +2,7 @@ local packer = require "packer"
 local use = packer.use
 
 use "glepnir/oceanic-material"
-use {
-  'yamatsum/nvim-nonicons',
-  requires = {
-    'kyazdani42/nvim-web-devicons'
-  },
-}
+use 'kyazdani42/nvim-web-devicons'
 use "feline-nvim/feline.nvim"
 use "romgrk/barbar.nvim"
 use "voldikss/vim-floaterm"

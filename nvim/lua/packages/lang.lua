@@ -30,7 +30,6 @@ use "puremourning/vimspector"
 
 -- ROR
 use "vim-test/vim-test"
-use 'preservim/vimux'
 use "tpope/vim-rails"
 
 -- Quick runtpope/vim-rails

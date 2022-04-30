@@ -1,5 +1,4 @@
 local M = {}
-local icons = require "nvim-nonicons"
 
 M.config = function()
   local actions = require 'telescope.actions'
@@ -18,7 +17,6 @@ M.config = function()
          "--column",
          "--smart-case",
       },
-      prompt_prefix = "  " .. icons.get("telescope") .. "  ",
       selection_caret = "  ",
       entry_prefix = "  ",
       sorting_strategy = 'ascending',
@@ -58,10 +56,6 @@ M.config = function()
       layout_strategy = "horizontal",
     },
     extensions = {
-      fzy_native = {
-        override_generic_sorter = false,
-        override_file_sorter = true,
-      },
       project = {
         base_dirs = {
           {'~/Dev/Projects/Productpine'},
