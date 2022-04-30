@@ -1,6 +1,4 @@
-local cmd = vim.cmd
-
-local colors = require("ui.highlight_colors")
+local colors = require("ui.main_colors")
 
 local ui = {
    hl_override = "",

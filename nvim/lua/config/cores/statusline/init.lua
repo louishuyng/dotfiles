@@ -1,72 +1,69 @@
-local colors = require 'ui.statusline_colors'
+local present, feline = pcall(require, "feline")
 
-local diagnos  = require 'config.cores.statusline.components.diagnos';
-local file  = require 'config.cores.statusline.components.file';
-local git  = require 'config.cores.statusline.components.git';
-local lsp  = require 'config.cores.statusline.components.lsp';
-local utils  = require 'config.cores.statusline.components.utils';
-local vi_mode  = require 'config.cores.statusline.components.vi_mode';
+if not present then
+   return
+end
 
+local colors = require 'ui.main_colors'
+
+-- Components
+local diagnostic  = require 'config.cores.statusline.components.diagnostic';
+local diff  = require 'config.cores.statusline.components.diff';
+local dir_name  = require 'config.cores.statusline.components.dir_name';
+local file_name  = require 'config.cores.statusline.components.file_name';
+local git_branch  = require 'config.cores.statusline.components.git_branch';
+local lsp_icon  = require 'config.cores.statusline.components.lsp_icon';
+local lsp_progress  = require 'config.cores.statusline.components.lsp_progress';
+local others  = require 'config.cores.statusline.components.others';
+
+local function add_table(a, b)
+   table.insert(a, b)
+end
+
+-- components are divided in 3 sections
+local left = {}
+local middle = {}
+local right = {}
+
+-- left
+add_table(left, others.main_icon)
+add_table(left, file_name)
+add_table(left, dir_name)
+add_table(left, diff.add)
+add_table(left, diff.change)
+add_table(left, diff.remove)
+add_table(left, diagnostic.error)
+add_table(left, diagnostic.warning)
+add_table(left, diagnostic.hint)
+add_table(left, diagnostic.info)
+
+add_table(middle, lsp_progress)
+
+-- right
+add_table(right, lsp_icon)
+add_table(right, git_branch)
+add_table(right, others.empty_space)
+add_table(right, others.empty_spaceColored)
+add_table(right, others.mode_icon)
+add_table(right, others.empty_space2)
+add_table(right, others.separator_right)
+add_table(right, others.separator_right2)
+add_table(right, others.position_icon)
+add_table(right, others.current_line)
+
+-- Initialize the components table
 local components = {
-  active = {},
-  inactive = {},
+   active = {},
 }
 
-table.insert(components.active, {})
-table.insert(components.active, {})
-table.insert(components.active, {})
-table.insert(components.inactive, {})
-table.insert(components.inactive, {})
-table.insert(components.inactive, {})
+components.active[1] = left
+components.active[2] = middle
+components.active[3] = right
 
-table.insert(components.active[1], vi_mode.left)
-table.insert(components.active[1], file.info)
-table.insert(components.active[1], git.branch)
-table.insert(components.active[1], git.add)
-table.insert(components.active[1], git.change)
-table.insert(components.active[1], git.remove)
-table.insert(components.inactive[1], vi_mode.left)
-table.insert(components.inactive[1], file.info)
-table.insert(components.active[3], diagnos.err)
-table.insert(components.active[3], diagnos.warn)
-table.insert(components.active[3], diagnos.hint)
-table.insert(components.active[3], diagnos.info)
-table.insert(components.active[3], lsp.name)
-table.insert(components.active[3], file.os)
-table.insert(components.active[3], file.position)
-table.insert(components.active[3], utils.line_percentage)
-table.insert(components.active[3], utils.scroll_bar)
-table.insert(components.active[3], vi_mode.right)
-
-local vi_mode_colors = {
-    NORMAL = colors.green,
-    INSERT = colors.red,
-    VISUAL = colors.magenta,
-    OP = colors.green,
-    BLOCK = colors.blue,
-    REPLACE = colors.violet,
-    ['V-REPLACE'] = colors.violet,
-    ENTER = colors.cyan,
-    MORE = colors.cyan,
-    SELECT = colors.orange,
-    COMMAND = colors.green,
-    SHELL = colors.green,
-    TERM = colors.green,
-    NONE = colors.yellow
-}
-
-require'feline'.setup {
-    colors = { bg = colors.bg, fg = colors.fg },
-    components = components,
-    vi_mode_colors = vi_mode_colors,
-    force_inactive = {
-        filetypes = {
-            'packer',
-            'NvimTree',
-            'fugitive',
-            'fugitiveblame'
-        },
-        buftypes = {'terminal'},
-        bufnames = {}
-    }
+feline.setup {
+   theme = {
+      bg = colors.statusline_bg,
+      fg = colors.fg,
+   },
+   components = components,
 }
