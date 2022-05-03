@@ -18,6 +18,8 @@ require 'mappings.editor.sneak'
 require 'mappings.editor.todo'
 require 'mappings.editor.trouble'
 
+require 'mappings.term.vimux'
+
 require 'mappings.languages.jaq'
 require 'mappings.languages.rails'
 require 'mappings.languages.spector'

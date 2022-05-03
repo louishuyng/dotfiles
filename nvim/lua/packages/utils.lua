@@ -34,3 +34,4 @@ use {
   "andymass/vim-matchup",
   event = "CursorMoved"
 }
+use 'preservim/vimux'
