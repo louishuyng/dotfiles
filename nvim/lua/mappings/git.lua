@@ -32,7 +32,7 @@ vim.keymap.set("n", "<leader>grs", ":Octo review submit<CR>")
 -- Merge Tool
 vim.keymap.set("n", "dh", ":diffget //2<CR>")
 vim.keymap.set("n", "dl", ":diffget //3<CR>")
-vim.keymap.set("n", "<leader>gm", ":Git mergetool<CR>")
+vim.keymap.set("n", "<leader>gm", ":GitConflictListQf<CR>")
 
 -- Git Conflict
 vim.keymap.set('n', '<leader>ch', '<Plug>(git-conflict-ours)')
