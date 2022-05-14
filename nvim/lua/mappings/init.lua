@@ -17,6 +17,7 @@ require 'mappings.editor.quickfix'
 require 'mappings.editor.sneak'
 require 'mappings.editor.todo'
 require 'mappings.editor.trouble'
+require 'mappings.editor.draft-buff'
 
 require 'mappings.term.vimux'
 

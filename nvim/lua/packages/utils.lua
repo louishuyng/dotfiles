@@ -35,3 +35,9 @@ use {
   event = "CursorMoved"
 }
 use 'preservim/vimux'
+use {
+  'loishy/draft-buff',
+  requires = {
+    'MunifTanjim/nui.nvim'
+  },
+}
