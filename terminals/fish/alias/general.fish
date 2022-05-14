@@ -1,6 +1,7 @@
 # Text Editor
 alias cat='bat'
 alias nv="nvim"
+alias nvt='nvim --cmd "set rtp+=./"'
 alias em="emacs -Q -nw -l ~/.config/emacs/init.el"
 alias c="clear"
 
