@@ -165,6 +165,7 @@ install_tools() {
     sudo pacman -S shellcheck
     sudo pacman -S rustscan
     sudo pacman -S osquery
+    sudo pacman -S glow
 
     go get github.com/isacikgoz/tldr/cmd/tldr
 

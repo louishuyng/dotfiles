@@ -335,6 +335,7 @@ install_tools() {
 
     brew install rustscan
     brew install osquery
+    brew install glow
 
     success "Installed some fancy tools"
   fi

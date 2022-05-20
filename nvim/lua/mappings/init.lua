@@ -9,6 +9,7 @@ require 'mappings.operator_pending'
 require 'mappings.telescope'
 require 'mappings.zenmode'
 
+require 'mappings.editor.draft_buff'
 require 'mappings.editor.fold'
 require 'mappings.editor.harpoon'
 require 'mappings.editor.nrrwrgn'
@@ -17,7 +18,6 @@ require 'mappings.editor.quickfix'
 require 'mappings.editor.sneak'
 require 'mappings.editor.todo'
 require 'mappings.editor.trouble'
-require 'mappings.editor.draft-buff'
 
 require 'mappings.term.vimux'
 
