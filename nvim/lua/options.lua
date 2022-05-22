@@ -82,3 +82,6 @@ vim.cmd('abbrev @@ huynguyennbk@gmail.com')
 vim.cmd('abbrev sname Louis Nguyen')
 vim.cmd('abbrev spass 123456')
 vim.cmd('abbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit')
+
+-- LSP
+vim.g.auto_format = true
