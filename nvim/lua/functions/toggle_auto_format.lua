@@ -7,7 +7,10 @@ function M.toggle_auto_format()
     vim.g.auto_format = false
   else
     vim.g.auto_format = true
-    M.get_auto_format()
+
+    if not vim.b.client_not_support_format then
+      M.get_auto_format()
+    end
   end
 
   if not vim.g.auto_format then
