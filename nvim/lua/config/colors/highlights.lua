@@ -145,10 +145,6 @@ fg_bg("TelescopeResultsTitle", darker_black, darker_black)
 
 bg("TelescopeSelection", black2)
 
--- Barbar
-fg_bg("BufferCurrentSign", green, "NONE")
-fg_bg("BufferCurrentIndex", green, "NONE")
-
 local section_title_colors = {
    white,
    blue,

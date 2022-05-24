@@ -1,6 +1,5 @@
 vim.g.mapleader = " "
 
-require 'mappings.barbar'
 require 'mappings.chadtree'
 require 'mappings.fterm'
 require 'mappings.general'

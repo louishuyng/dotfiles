@@ -1,6 +1,5 @@
 require("config.colors").init()
 
-require "config.cores.barbar"
 require "config.cores.bqf"
 require "config.cores.chadtree"
 require "config.cores.dadbod"
