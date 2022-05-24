@@ -47,7 +47,7 @@ lsp_config.tsserver.setup({
     buf_map(bufnr, "n", ",po", ":TSLspOrganize<CR>", opts)
     buf_map(bufnr, "n", ",ia", ":TSLspImportAll<CR>", opts)
 
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
 
     on_attach(client)
   end

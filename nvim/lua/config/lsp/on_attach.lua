@@ -50,11 +50,11 @@ return function(client)
 
   vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     local group = vim.api.nvim_create_augroup("LSPFormat", { clear = true })
 
     vim.api.nvim_create_autocmd("BufWritePre", {
-      command = "lua vim.lsp.buf.formatting_sync(nil, 5000)",
+      command = "lua vim.lsp.buf.format()",
       group = group
     })
   else
