@@ -23,28 +23,12 @@ yabai -m config window_border_width          2
 yabai -m config active_window_border_color  0xff48e566
 yabai -m config normal_window_border_color  0xffa8a8a8
 
-# padding signals
-padding_refresh_command="space_info=\$(yabai -m query --windows --space | jq)
-number_of_windows=\$(yabai -m query --windows --space | jq 'length')
-top=30
-bot=10
-side=18
+yabai -m config --space mouse bottom_padding 10
+yabai -m config --space mouse left_padding 18
+yabai -m config --space mouse right_padding 18
 
-echo \"space_info: \$space_info, number_of_windows: \$number_of_windows\" >> \"\$HOME/sys_log/yabailogs.txt\"
-
-[ \$number_of_windows -eq 1 ] && top=0
-[ \$number_of_windows -eq 1 ] && bot=0
-[ \$number_of_windows -eq 1 ] && side=18
-
-yabai -m config --space mouse top_padding \$top
-yabai -m config --space mouse bottom_padding \$bot
-yabai -m config --space mouse left_padding \$side
-yabai -m config --space mouse right_padding \$side"
-
-yabai -m signal --add event=window_created action="$padding_refresh_command"
-yabai -m signal --add event=window_destroyed action="$padding_refresh_command"
-yabai -m signal --add event=application_launched action="$padding_refresh_command"
-yabai -m signal --add event=application_terminated action="$padding_refresh_command"
+SPACEBAR_HEIGHT=$(spacebar -m config height)
+yabai -m config external_bar all:$SPACEBAR_HEIGHT:0
 
 # signals
 sudo yabai --load-sa
