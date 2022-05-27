@@ -64,6 +64,9 @@ install_ninja() {
     compile/install.sh
     cd ../..
     ./3rd/luamake/luamake rebuild
+
+    brew install luarocks
+    luarocks install --server=https://luarocks.org/dev luaformatter
     
     success "Installed nija and setup lua lsp"
   fi
