@@ -8,5 +8,8 @@ local null_ls = require("null-ls")null_ls.setup({
     null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.diagnostics.tsc,
   },
-  on_attach = on_attach
+  on_attach = function(client)
+    client.server_capabilities.document_formatting = true
+    on_attach(client)
+  end
 })

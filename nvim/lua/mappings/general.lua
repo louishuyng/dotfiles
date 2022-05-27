@@ -42,6 +42,8 @@ vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/", opt)
 -- Buffers
 vim.keymap.set("n", ",bd", ":Bdelete<CR>", opt)
 vim.keymap.set("n", ",bda", ":bufdo :Bdelete<CR>", opt)
+vim.keymap.set("n", ",q", ":bprevious<CR>", opt)
+vim.keymap.set("n", ",w", ":bnext<CR>", opt)
 
 -- Packer
 vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>", opt)
