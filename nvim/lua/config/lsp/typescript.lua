@@ -16,10 +16,10 @@ lsp_config.tsserver.setup({
       import_all_timeout = 5000, -- ms
       -- lower numbers = higher priority
       import_all_priorities = {
-          same_file = 1, -- add to existing import statement
-          local_files = 2, -- git files or files with relative path markers
-          buffer_content = 3, -- loaded buffer content
-          buffers = 4, -- loaded buffer names
+        same_file = 1, -- add to existing import statement
+        local_files = 2, -- git files or files with relative path markers
+        buffer_content = 3, -- loaded buffer content
+        buffers = 4 -- loaded buffer names
       },
       import_all_scan_buffers = 100,
       import_all_select_source = false,
@@ -35,14 +35,14 @@ lsp_config.tsserver.setup({
       -- update imports on file move
       update_imports_on_move = false,
       require_confirmation_on_move = false,
-      watch_dir = nil,
+      watch_dir = nil
     })
 
     -- required to fix code action ranges and filter diagnostics
     ts_utils.setup_client(client)
 
     -- no default maps, so you may want to define some here
-    local opts = { silent = true }
+    local opts = {silent = true}
     buf_map(bufnr, "n", "<leader>rr", ":TSLspRenameFile<CR>", opts)
     buf_map(bufnr, "n", ",po", ":TSLspOrganize<CR>", opts)
     buf_map(bufnr, "n", ",ia", ":TSLspImportAll<CR>", opts)

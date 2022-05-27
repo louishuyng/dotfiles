@@ -1,24 +1,20 @@
 local present, feline = pcall(require, "feline")
 
-if not present then
-   return
-end
+if not present then return end
 
 local colors = require 'ui.main_colors'
 
 -- Components
-local diagnostic  = require 'config.cores.statusline.components.diagnostic';
-local diff  = require 'config.cores.statusline.components.diff';
-local dir_name  = require 'config.cores.statusline.components.dir_name';
-local file_name  = require 'config.cores.statusline.components.file_name';
-local git_branch  = require 'config.cores.statusline.components.git_branch';
-local lsp_icon  = require 'config.cores.statusline.components.lsp_icon';
-local lsp_progress  = require 'config.cores.statusline.components.lsp_progress';
-local others  = require 'config.cores.statusline.components.others';
+local diagnostic = require 'config.cores.statusline.components.diagnostic';
+local diff = require 'config.cores.statusline.components.diff';
+local dir_name = require 'config.cores.statusline.components.dir_name';
+local file_name = require 'config.cores.statusline.components.file_name';
+local git_branch = require 'config.cores.statusline.components.git_branch';
+local lsp_icon = require 'config.cores.statusline.components.lsp_icon';
+local lsp_progress = require 'config.cores.statusline.components.lsp_progress';
+local others = require 'config.cores.statusline.components.others';
 
-local function add_table(a, b)
-   table.insert(a, b)
-end
+local function add_table(a, b) table.insert(a, b) end
 
 -- components are divided in 3 sections
 local left = {}
@@ -52,18 +48,13 @@ add_table(right, others.position_icon)
 add_table(right, others.current_line)
 
 -- Initialize the components table
-local components = {
-   active = {},
-}
+local components = {active = {}}
 
 components.active[1] = left
 components.active[2] = middle
 components.active[3] = right
 
 feline.setup {
-   theme = {
-      bg = colors.statusline_bg,
-      fg = colors.fg,
-   },
-   components = components,
+  theme = {bg = colors.statusline_bg, fg = colors.fg},
+  components = components
 }

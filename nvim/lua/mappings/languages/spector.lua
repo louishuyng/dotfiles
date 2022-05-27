@@ -6,9 +6,12 @@ vim.keymap.set("n", "<leader>dd", ":call vimspector#Launch()<CR>")
 -- vim.keymap.set("n", "<leader>ds", ":call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>")
 -- vim.keymap.set("n", "<leader>dv", ":call GotoWindow(g:vimspector_session_windows.variables)<CR>")
 
-vim.keymap.set("n", "<leader>dc", ":call GotoWindow(g:vimspector_session_windows.code)<CR>")
-vim.keymap.set("n", "<leader>do", ":call GotoWindow(g:vimspector_session_windows.output)<CR>")
-vim.keymap.set("n", "<leader>dt", ":call GotoWindow(g:vimspector_session_windows.terminal)<CR>")
+vim.keymap.set("n", "<leader>dc",
+               ":call GotoWindow(g:vimspector_session_windows.code)<CR>")
+vim.keymap.set("n", "<leader>do",
+               ":call GotoWindow(g:vimspector_session_windows.output)<CR>")
+vim.keymap.set("n", "<leader>dt",
+               ":call GotoWindow(g:vimspector_session_windows.terminal)<CR>")
 
 vim.keymap.set("n", "<leader>de", ":call vimspector#Reset()<CR>")
 

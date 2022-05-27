@@ -13,10 +13,10 @@ M.luasnip = function()
   if present then
     luasnip.config.set_config {
       history = true,
-      updateevents = "TextChanged,TextChangedI",
+      updateevents = "TextChanged,TextChangedI"
     }
-    require("luasnip.loaders.from_vscode").lazy_load { }
-    end
+    require("luasnip.loaders.from_vscode").lazy_load {}
+  end
 end
 
 return M

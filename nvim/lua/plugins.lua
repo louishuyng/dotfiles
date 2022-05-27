@@ -9,12 +9,9 @@ end
 
 local use = packer.use
 
-return packer.startup{
+return packer.startup {
   function()
-    use {
-      "wbthomason/packer.nvim",
-      event = "VimEnter"
-    }
+    use {"wbthomason/packer.nvim", event = "VimEnter"}
     require 'packages.cmp'
     require 'packages.database'
     require 'packages.git'
@@ -27,10 +24,12 @@ return packer.startup{
     require 'config'
   end,
   config = {
-    compile_path = vim.fn.stdpath('config')..'/plugin/packer_compiled.lua',
+    compile_path = vim.fn.stdpath('config') .. '/plugin/packer_compiled.lua',
     display = {
       open_fn = function()
-        return require("packer.util").float({border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}})
+        return require("packer.util").float({
+          border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
+        })
       end,
       working_sym = "",
       error_sym = "",

@@ -1,8 +1,6 @@
 local present, trouble = pcall(require, "trouble")
 
-if not (present) then
-    return
-end
+if not (present) then return end
 
 trouble.setup({
   position = "bottom",
@@ -17,9 +15,9 @@ trouble.setup({
     cancel = "<esc>",
     refresh = "r",
     jump = {"<cr>", "<tab>"},
-    open_split = { "i" },
-    open_vsplit = { "s" },
-    open_tab = { "<c-t>" },
+    open_split = {"i"},
+    open_vsplit = {"s"},
+    open_tab = {"<c-t>"},
     jump_close = {"o"},
     toggle_mode = "m",
     toggle_preview = "P",

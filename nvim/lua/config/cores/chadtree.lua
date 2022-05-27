@@ -1,11 +1,6 @@
 local chadtree_settings = {
-  view = {
-    width = 33,
-    open_direction = "right"
-  },
-  theme = {
-    icon_glyph_set = 'ascii_hollow'
-  },
+  view = {width = 33, open_direction = "right"},
+  theme = {icon_glyph_set = 'ascii_hollow'},
   keymap = {
     change_focus = {"C"},
     change_focus_up = {"u"},
@@ -14,15 +9,18 @@ local chadtree_settings = {
     h_split = {"i"},
     open_sys = {"<enter>"},
     primary = {"o"},
-    secondary = {"o"}, tertiary = {"t"},
+    secondary = {"o"},
+    tertiary = {"t"},
     trash = {"T"},
     collapse = {"O", "`"},
     select = {"<tab>"},
     clear_selection = {"<s-tab>"},
-    copy = {"c"} ,
+    copy = {"c"}
   },
   ignore = {
-    name_exact = {".DS_Store", ".directory", "thumbs.db", ".git", "node_modules" }
+    name_exact = {
+      ".DS_Store", ".directory", "thumbs.db", ".git", "node_modules"
+    }
   }
 }
 vim.api.nvim_set_var("chadtree_settings", chadtree_settings)

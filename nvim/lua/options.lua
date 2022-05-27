@@ -14,14 +14,14 @@ opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 1000
 opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
-opt.fillchars = { eob = " " }
+opt.fillchars = {eob = " "}
 
 -- CENTER CURSOR
 opt.scrolloff = 999
 opt.sidescrolloff = 999
 
 -- CURSOR
-opt.gcr='a:blinkon0'
+opt.gcr = 'a:blinkon0'
 
 -- SWAPFILE
 vim.g.noswapfile = true
@@ -59,7 +59,7 @@ vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
 
 -- FOLD
-opt.foldmethod ='indent'
+opt.foldmethod = 'indent'
 opt.foldnestmax = 5
 vim.api.nvim_command("set nofoldenable")
 

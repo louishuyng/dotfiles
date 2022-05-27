@@ -1,10 +1,6 @@
 local colors = require("ui.main_colors")
 
-local ui = {
-   hl_override = "",
-   italic_comments = false,
-   transparency = false,
-}
+local ui = {hl_override = "", italic_comments = false, transparency = false}
 
 local black = colors.black
 local black2 = colors.black2
@@ -33,9 +29,9 @@ local bg = require("utils.highlight").bg
 
 -- Comments
 if ui.italic_comments then
-   fg("Comment", grey_fg .. " gui=italic")
+  fg("Comment", grey_fg .. " gui=italic")
 else
-   fg("Comment", grey_fg)
+  fg("Comment", grey_fg)
 end
 
 -- Disable cursor line
@@ -73,17 +69,17 @@ fg("NvimInternalError", red)
 fg("VertSplit", one_bg2)
 
 if ui.transparency then
-   bg("Normal", "NONE")
-   bg("Folded", "NONE")
-   bg("EndOfBuffer", "NONE")
-   fg("Folded", "NONE")
-   fg("Comment", grey)
+  bg("Normal", "NONE")
+  bg("Folded", "NONE")
+  bg("EndOfBuffer", "NONE")
+  fg("Folded", "NONE")
+  fg("Comment", grey)
 end
 
 if ui.transparency then
-   bg("Folded", "NONE")
-   fg("Folded", "NONE")
-   fg("Comment", grey)
+  bg("Folded", "NONE")
+  fg("Folded", "NONE")
+  fg("Comment", grey)
 end
 
 -- [[ Plugin Highlights
@@ -145,36 +141,30 @@ fg_bg("TelescopeResultsTitle", darker_black, darker_black)
 
 bg("TelescopeSelection", black2)
 
-local section_title_colors = {
-   white,
-   blue,
-   red,
-   green,
-   yellow,
-   purple,
-   orange,
-}
+local section_title_colors = {white, blue, red, green, yellow, purple, orange}
 for i, color in ipairs(section_title_colors) do
-   vim.cmd("highlight CheatsheetTitle" .. i .. " guibg = " .. color .. " guifg=" .. black)
+  vim.cmd(
+      "highlight CheatsheetTitle" .. i .. " guibg = " .. color .. " guifg=" ..
+          black)
 end
 
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
-   bg("NormalFloat", "NONE")
-   bg("NvimTreeNormal", "NONE")
-   bg("NvimTreeNormalNC", "NONE")
-   bg("NvimTreeStatusLineNC", "NONE")
-   bg("NvimTreeVertSplit", "NONE")
-   fg("NvimTreeVertSplit", grey)
+  bg("NormalFloat", "NONE")
+  bg("NvimTreeNormal", "NONE")
+  bg("NvimTreeNormalNC", "NONE")
+  bg("NvimTreeStatusLineNC", "NONE")
+  bg("NvimTreeVertSplit", "NONE")
+  fg("NvimTreeVertSplit", grey)
 
-   -- telescope
-   bg("TelescopeBorder", "NONE")
-   bg("TelescopePrompt", "NONE")
-   bg("TelescopeResults", "NONE")
-   bg("TelescopePromptBorder", "NONE")
-   bg("TelescopePromptNormal", "NONE")
-   bg("TelescopeNormal", "NONE")
-   bg("TelescopePromptPrefix", "NONE")
-   fg("TelescopeBorder", one_bg)
-   fg_bg("TelescopeResultsTitle", black, blue)
+  -- telescope
+  bg("TelescopeBorder", "NONE")
+  bg("TelescopePrompt", "NONE")
+  bg("TelescopeResults", "NONE")
+  bg("TelescopePromptBorder", "NONE")
+  bg("TelescopePromptNormal", "NONE")
+  bg("TelescopeNormal", "NONE")
+  bg("TelescopePromptPrefix", "NONE")
+  fg("TelescopeBorder", one_bg)
+  fg_bg("TelescopeResultsTitle", black, blue)
 end

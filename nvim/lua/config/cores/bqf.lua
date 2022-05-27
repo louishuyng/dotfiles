@@ -1,8 +1,6 @@
 local present, bqf = pcall(require, "bqf")
 
-if not present then
-   return
-end
+if not present then return end
 
 bqf.setup({
   auto_enable = true,
@@ -11,7 +9,9 @@ bqf.setup({
     win_height = 12,
     win_vheight = 12,
     delay_syntax = 80,
-    border_chars = {'┃', '┃', '━', '━', '┏', '┓', '┗', '┛', '█'},
+    border_chars = {
+      '┃', '┃', '━', '━', '┏', '┓', '┗', '┛', '█'
+    },
     should_preview_cb = function(bufnr)
       local ret = true
       local bufname = vim.api.nvim_buf_get_name(bufnr)
@@ -25,5 +25,5 @@ bqf.setup({
       end
       return ret
     end
-  },
+  }
 })

@@ -1,8 +1,6 @@
 local present, harpoon = pcall(require, "harpoon")
 
-if not (present) then
-  return
-end
+if not (present) then return end
 
 harpoon.setup({
   -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
@@ -18,8 +16,8 @@ harpoon.setup({
   tmux_autoclose_windows = false,
 
   -- filetypes that you want to prevent from adding to the harpoon list menu.
-  excluded_filetypes = { "harpoon" },
+  excluded_filetypes = {"harpoon"},
 
   -- set marks specific to each git branch inside git repository
-  mark_branch = false,
+  mark_branch = false
 })
