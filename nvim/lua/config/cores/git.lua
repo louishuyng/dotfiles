@@ -1,7 +1,7 @@
 local present, gitsigns = pcall(require, "gitsigns")
 if not present then return end
 
-local mapping = require 'mappings.git'
+local mapping = require 'mappings.git.gitsigns'
 
 gitsigns.setup {
   signs = {

@@ -1,0 +1,8 @@
+require 'mappings.utils.fold'
+require 'mappings.utils.harpoon'
+require 'mappings.utils.nrrwrgn'
+require 'mappings.utils.operator_pending'
+require 'mappings.utils.quickfix'
+require 'mappings.utils.search'
+require 'mappings.utils.sneak'
+require 'mappings.utils.zenmode'

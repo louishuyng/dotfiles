@@ -1,5 +1,6 @@
 local opt = {silent = true}
 
+-- General
 vim.keymap.set("n", ",h", ":<C-u>split<CR>", opt)
 vim.keymap.set("n", ",v", ":<C-u>vsplit<CR>", opt)
 
@@ -28,8 +29,6 @@ vim.keymap.set("v", ",m", ":normal @")
 vim.keymap.set("v", "<S-j>", ":m'>+<CR>gv=gv", opt)
 vim.keymap.set("v", "<S-k>", ":m-2<CR>gv=gv", opt)
 
-vim.keymap.set("v", "<leader>ex", ":w !", opt)
-
 -- Sorting
 vim.keymap.set("v", "<leader>so", ":sort<CR>", opt)
 
@@ -49,3 +48,9 @@ vim.keymap.set("n", ",w", ":bnext<CR>", opt)
 vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>", opt)
 vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", opt)
 vim.keymap.set("n", "<leader>pr", ":PackerClean<CR>", opt)
+
+require 'mappings.editor.chadtree'
+require 'mappings.editor.draft_buff'
+require 'mappings.editor.telescope'
+require 'mappings.editor.todo'
+require 'mappings.editor.trouble'

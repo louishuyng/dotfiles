@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>r", ":Jaq float<CR>")
+vim.keymap.set("n", "<leader>ex", ":Jaq float<CR>")

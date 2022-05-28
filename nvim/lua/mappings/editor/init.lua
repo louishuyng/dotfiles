@@ -1,0 +1,6 @@
+require 'mappings.editor.chadtree'
+require 'mappings.editor.draft_buff'
+require 'mappings.editor.general'
+require 'mappings.editor.telescope'
+require 'mappings.editor.todo'
+require 'mappings.editor.trouble'

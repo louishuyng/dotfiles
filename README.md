@@ -9,7 +9,6 @@ This is Louis dotfiles Who loves using nvim + lua 🚀
 | neovim/nvim-lspconfig         | Lanaguge Analyze and Diagnostic    |
 | hrsh7th/nvim-compe            | Autocompletion and support snippet |
 | nvim-telescope/telescope.nvim | Finding Files and Greping Text     |
-| vuki656/package-info.nvim     | Node Package Manager               |
 | kyazdani42/nvim-tree.lua      | File Manger                        |
 | justinmk/vim-sneak            | Moving between lines               |
 | tpope/vim-fugitive            | Git                                |
