@@ -287,6 +287,21 @@ install_qutebrowser() {
   fi
 }
 
+install_nnn() {
+  read -r -p "Do you want to install qutebrowser? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    cd /tmp
+    git clone git@github.com:jarun/nnn.git
+    cd nnn
+
+    # Build with nerd icon
+    make O_NERD=1 
+
+    sudo cp nnn /usr/local/bin
+    rm -rf  /tmp/nnn
+  fi
+}
+
 install_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -315,7 +330,6 @@ install_tools() {
     brew install --cask unnaturalscrollwheels
     brew install adr-tools
     brew install ack
-    brew install nnn
     brew install bpytop
     brew install khanhas/tap/spicetify-cli
     brew install dos2unix
@@ -408,6 +422,7 @@ install_emacs
 install_tmux
 install_window_manager
 install_qutebrowser
+install_nnn
 link_all_dotfiles
 install_tools
 
