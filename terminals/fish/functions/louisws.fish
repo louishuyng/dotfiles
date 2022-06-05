@@ -27,10 +27,6 @@ function louisws -d "working space of louis"
     tmux send-keys -t $SESSION_SYS:2 "nvim" Enter
     tmux send-keys -t $SESSION_SYS:2 ":NeorgStart" Enter
 
-    tmux new-window -n "dadbod"
-    tmux send-keys -t $SESSION_SYS:3 "nvim" Enter
-    tmux send-keys -t $SESSION_SYS:3 " vd" Enter
-
     tmux new-window -n "remote"
 
     tmux -u attach-session -t $SESSION_SYS:1

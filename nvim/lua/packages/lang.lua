@@ -2,7 +2,6 @@ local packer = require "packer"
 local use = packer.use
 
 use {"neovim/nvim-lspconfig", config = function() require "config.lsp" end}
-use "jose-elias-alvarez/nvim-lsp-ts-utils"
 use "jose-elias-alvarez/null-ls.nvim"
 use {
   "nvim-treesitter/nvim-treesitter",

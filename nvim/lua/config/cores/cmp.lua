@@ -29,7 +29,6 @@ cmp.setup {
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         cmp_tabnine = "[Tabnine]",
-        ['vim-dadbod-completion'] = "[DB]",
         luasnip = "[Snip]"
       })[entry.source.name]
       return vim_item
@@ -69,6 +68,6 @@ cmp.setup {
   },
   sources = {
     {name = "nvim_lsp"}, {name = "luasnip"}, {name = "orgmode"},
-    {name = "vim-dadbod-completion"}, {name = "cmp_tabnine"}
+    {name = "cmp_tabnine"}
   }
 }

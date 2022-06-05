@@ -16,7 +16,7 @@ end
 
 function M.get_auto_format()
   vim.api.nvim_create_autocmd("BufWritePre", {
-    command = "lua vim.lsp.buf.formatting_sync(nil, 1000)",
+    command = "lua vim.lsp.buf.format()",
     group = group
   })
 end

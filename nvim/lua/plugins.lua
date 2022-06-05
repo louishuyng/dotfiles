@@ -13,7 +13,6 @@ return packer.startup {
   function()
     use {"wbthomason/packer.nvim", event = "VimEnter"}
     require 'packages.cmp'
-    require 'packages.database'
     require 'packages.git'
     require 'packages.lang'
     require 'packages.navigator'

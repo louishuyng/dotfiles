@@ -7,6 +7,6 @@ require('lspconfig').denols.setup({
   init_options = {enable = true, lint = true, unstable = false},
   on_attach = function(client)
     -- client.resolved_capabilities.document_formatting = false
-    require('config/lsp/on_attach')(client)
+    require('config/cores/lsp/on_attach')(client)
   end
 })

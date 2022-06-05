@@ -3,6 +3,8 @@ return function(client)
                           {noremap = true, silent = true})
   vim.api.nvim_set_keymap('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<CR>',
                           {noremap = true, silent = true})
+  vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>',
+                          {noremap = true, silent = true})
   vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>',
                           {noremap = true, silent = true})
   vim.api.nvim_set_keymap('n', 'gi',

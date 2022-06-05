@@ -2,7 +2,6 @@ require("config.colors").init()
 
 require "config.cores.bqf"
 require "config.cores.chadtree"
-require "config.cores.dadbod"
 require "config.cores.git"
 require "config.cores.neorg"
 require "config.cores.octo"
@@ -22,5 +21,4 @@ require "config.libs.preview_markdown"
 require "config.libs.spector"
 require "config.libs.todo"
 require "config.libs.vim-test"
-require "config.libs.vista"
 require "config.libs.zenmode"
