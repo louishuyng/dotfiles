@@ -18,14 +18,13 @@ yabai -m config mouse_action2                resize
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config window_gap                   15
+yabai -m config bottom_padding               10
+yabai -m config left_padding                 18
+yabai -m config right_padding                18
 yabai -m config window_border                on
 yabai -m config window_border_width          2
 yabai -m config active_window_border_color  0xff48e566
 yabai -m config normal_window_border_color  0xffa8a8a8
-
-yabai -m config --space mouse bottom_padding 10
-yabai -m config --space mouse left_padding 18
-yabai -m config --space mouse right_padding 18
 
 SPACEBAR_HEIGHT=$(spacebar -m config height)
 yabai -m config external_bar all:$SPACEBAR_HEIGHT:0
