@@ -63,6 +63,9 @@ opt.foldmethod = 'indent'
 opt.foldnestmax = 5
 vim.api.nvim_command("set nofoldenable")
 
+-- SPELL
+vim.api.nvim_command("set spell")
+
 -- MUNDO
 vim.api.nvim_command("set undofile")
 vim.api.nvim_command("set undodir=~/.vim/undo")
