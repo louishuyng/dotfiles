@@ -39,8 +39,8 @@ vim.keymap.set("n", "<c-b>", ":call OpenUrlUnderCursor()<CR>", opt)
 vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/", opt)
 
 -- Buffers
-vim.keymap.set("n", ",bd", ":Bdelete<CR>", opt)
-vim.keymap.set("n", ",bda", ":bufdo :Bdelete<CR>", opt)
+vim.keymap.set("n", ",bd", ":bd<CR>", opt)
+vim.keymap.set("n", ",bda", ":bufdo bd<CR>", opt)
 vim.keymap.set("n", ",q", ":bprevious<CR>", opt)
 vim.keymap.set("n", ",w", ":bnext<CR>", opt)
 
