@@ -44,6 +44,9 @@ vim.keymap.set("n", ",bda", ":bufdo bd<CR>", opt)
 vim.keymap.set("n", ",q", ":bprevious<CR>", opt)
 vim.keymap.set("n", ",w", ":bnext<CR>", opt)
 
+-- Notification
+vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)
+
 -- Packer
 vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>", opt)
 vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", opt)
