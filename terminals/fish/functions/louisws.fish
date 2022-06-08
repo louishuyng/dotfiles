@@ -10,7 +10,6 @@ function louisws -d "working space of louis"
 
     # OIVAN
     initCodeSpace $SESSION_OIVAN $OIVAN_PROJECT
-    setupRemoteOivan $SESSION_OIVAN
 
     # PRODUCTPINE
     initCodeSpace $SESSION_PRODUCTPINE $PRODUCTPINE_PROJECT
@@ -38,9 +37,8 @@ function initCodeSpace -d 'helper init code space'
 
   tmux kill-session -t $SESSION
 
-  tmux new -d -s $SESSION -n "code"
-  tmux send-keys -t $SESSION:1 "cd $PROJECT_DIR" Enter
-  tmux send-keys -t $SESSION:1 "nvim" Enter
+  tmux new -d -s $SESSION -n "servers"
+  tmux send-keys -t $SESSION:1.1 "cd $PROJECT_DIR" Enter
 
   tmux new-window -n "local-logs"
   tmux send-keys -t $SESSION:2.1 "cd $PROJECT_DIR" Enter
@@ -48,21 +46,8 @@ function initCodeSpace -d 'helper init code space'
   tmux send-keys -t $SESSION:2.2 "cd $PROJECT_DIR" Enter
   tmux split-window -v
   tmux send-keys -t $SESSION:2.3 "cd $PROJECT_DIR" Enter
-end
 
-function setupRemoteOivan -d 'set up remote oivan'
-  set -l SESSION $argv[1]
-
-  tmux new-window -n "remote-servers"
-
-  tmux send-keys -t $SESSION:3.1 "vpnup oivan" Enter
-  tmux split-window -h
-
-  tmux send-keys -t $SESSION:3.2 "sshadd oivan" Enter
-  tmux send-keys -t $SESSION:3.2 "ssh dev" Enter
-
-  tmux split-window -v
-
-  tmux send-keys -t $SESSION:3.3 "sshadd oivan" Enter
-  tmux send-keys -t $SESSION:3.3 "ssh test" Enter
+  tmux new-window -n "code"
+  tmux send-keys -t $SESSION:3 "cd $PROJECT_DIR" Enter
+  tmux send-keys -t $SESSION:3 "nvim" Enter
 end

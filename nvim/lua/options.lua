@@ -14,7 +14,15 @@ opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 1000
 opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
-opt.fillchars = {eob = " "}
+opt.fillchars = {
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft = '┫',
+  vertright = '┣',
+  verthoriz = '╋'
+}
 
 -- CENTER CURSOR
 opt.scrolloff = 999
