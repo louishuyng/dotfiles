@@ -10,3 +10,4 @@ use {
 }
 use {'kevinhwang91/nvim-bqf', ft = 'qf'}
 use "ThePrimeagen/harpoon"
+use 'nvim-telescope/telescope-ui-select.nvim'

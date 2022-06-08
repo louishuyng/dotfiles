@@ -45,10 +45,13 @@ M.config = function()
         height = 0.80,
         preview_cutoff = 120
       },
-      initial_mode = "insert",
-      layout_strategy = "horizontal"
+      vertical = {mirror = false},
+      width = 0.5,
+      height = 0.80,
+      preview_cutoff = 120
     },
     extensions = {
+      ["ui-select"] = {require("telescope.themes").get_dropdown {}},
       project = {
         base_dirs = {
           {'~/Dev/Projects/Productpine'}, {'~/Dev/Projects/Eatiplan'},
@@ -59,6 +62,7 @@ M.config = function()
   }
 
   require'telescope'.load_extension('project')
+  require("telescope").load_extension("ui-select")
 end
 
 return M
