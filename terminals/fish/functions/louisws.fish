@@ -21,13 +21,7 @@ function louisws -d "working space of louis"
     tmux send-keys -t $SESSION_SYS:1 "cd ~/.dotfiles" Enter
     tmux send-keys -t $SESSION_SYS:1 "nvim" Enter
 
-    tmux new-window -n "org"
-    tmux send-keys -t $SESSION_SYS:2 "cd ~/Dev/org/work" Enter
-    tmux send-keys -t $SESSION_SYS:2 "nvim" Enter
-    tmux send-keys -t $SESSION_SYS:2 ":NeorgStart" Enter
-
-    tmux new-window -n "remote"
-
+    tmux new-window -n "hacking"
     tmux -u attach-session -t $SESSION_SYS:1
 end
 
@@ -37,17 +31,23 @@ function initCodeSpace -d 'helper init code space'
 
   tmux kill-session -t $SESSION
 
-  tmux new -d -s $SESSION -n "servers"
-  tmux send-keys -t $SESSION:1.1 "cd $PROJECT_DIR" Enter
+  tmux new -d -s $SESSION -n "notes"
+  tmux send-keys -t $SESSION:1.1 "cd ~/Dev/org/work" Enter
+  tmux send-keys -t $SESSION:1.1 "nvim" Enter
+  tmux send-keys -t $SESSION:1.1 ":NeorgStart" Enter
+  tmux send-keys -t $SESSION:1.1 ":e $(echo $SESSION | string lower).norg" Enter
+
+  tmux new-window -n "servers"
+  tmux send-keys -t $SESSION:2.1 "cd $PROJECT_DIR" Enter
 
   tmux new-window -n "local-logs"
-  tmux send-keys -t $SESSION:2.1 "cd $PROJECT_DIR" Enter
+  tmux send-keys -t $SESSION:3.1 "cd $PROJECT_DIR" Enter
   tmux split-window -h
-  tmux send-keys -t $SESSION:2.2 "cd $PROJECT_DIR" Enter
+  tmux send-keys -t $SESSION:3.2 "cd $PROJECT_DIR" Enter
   tmux split-window -v
-  tmux send-keys -t $SESSION:2.3 "cd $PROJECT_DIR" Enter
+  tmux send-keys -t $SESSION:3.3 "cd $PROJECT_DIR" Enter
 
   tmux new-window -n "code"
-  tmux send-keys -t $SESSION:3 "cd $PROJECT_DIR" Enter
-  tmux send-keys -t $SESSION:3 "nvim" Enter
+  tmux send-keys -t $SESSION:4.1 "cd $PROJECT_DIR" Enter
+  tmux send-keys -t $SESSION:4.1 "nvim" Enter
 end
