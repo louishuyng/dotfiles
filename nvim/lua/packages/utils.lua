@@ -33,4 +33,4 @@ use({
   "iamcco/markdown-preview.nvim",
   run = function() vim.fn["mkdp#util#install"]() end
 })
-use'mrjones2014/legendary.nvim'
+use 'mrjones2014/legendary.nvim'

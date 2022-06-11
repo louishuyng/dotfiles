@@ -26,3 +26,6 @@ use "is0n/jaq-nvim"
 
 -- Indent
 use "lukas-reineke/indent-blankline.nvim"
+
+-- Analyze code
+use 'stevearc/aerial.nvim'

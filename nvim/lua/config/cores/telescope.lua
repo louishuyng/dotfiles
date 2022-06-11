@@ -31,7 +31,7 @@ M.config = function()
           ["<C-b>"] = actions.preview_scrolling_up,
           ["<C-f>"] = actions.preview_scrolling_down,
           ["<C-v>"] = actions.select_vertical,
-          ["<C-h>"] = actions.select_horizontal
+          ["<C-s>"] = actions.select_horizontal
         }
       },
       layout_config = {
