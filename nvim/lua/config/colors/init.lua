@@ -1,8 +1,7 @@
 local M = {}
 
 M.init = function(theme)
-  vim.g.oceanic_material_transparent_background = 1
-  vim.cmd("colorscheme moonfly")
+  vim.cmd("colorscheme onedark")
 
   if not theme then theme = 'onedark' end
 

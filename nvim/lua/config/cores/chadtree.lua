@@ -1,5 +1,5 @@
 local chadtree_settings = {
-  view = {width = 33, open_direction = "right"},
+  view = {width = 33, open_direction = "left"},
   theme = {icon_glyph_set = 'ascii_hollow'},
   keymap = {
     change_focus = {"C"},

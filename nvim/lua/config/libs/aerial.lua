@@ -3,10 +3,9 @@ if status_ok then
   aerial.setup({
     close_behavior = "global",
     backends = {"lsp", "treesitter", "markdown"},
-    default_direction = "left",
     show_guides = true,
     filter_kind = false,
-    open_automatic = true,
+    open_automatic = false,
     icons = {
       Array = "",
       Boolean = "⊨",

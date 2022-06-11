@@ -9,14 +9,14 @@ This is Louis dotfiles Who loves using nvim + lua 🚀
 | neovim/nvim-lspconfig         | Lanaguge Analyze and Diagnostic    |
 | hrsh7th/nvim-compe            | Autocompletion and support snippet |
 | nvim-telescope/telescope.nvim | Finding Files and Greping Text     |
-| kyazdani42/nvim-tree.lua      | File Manger                        |
+| ms-jpq/chadtree               | File Manger                        |
 | justinmk/vim-sneak            | Moving between lines               |
 | tpope/vim-fugitive            | Git                                |
 | pwntester/octo.nvim           | Git PR                             |
 | goolord/alpha-nvim            | Dashboard UI                       |
 | famiu/feline.nvim             | Statusline UI                      |
 | kyazdani42/nvim-web-devicons  | Icons                              |
-| NvChad/nvim-base16.lua        | Theme UI                           |
+| joshdick/onedark.vim          | Onedark UI                         |
 | rcarriga/nvim-notify          | Notify UI                          |
 
 ### Key bindings
@@ -27,10 +27,12 @@ This is Louis dotfiles Who loves using nvim + lua 🚀
 
 ### Preview Screens
 
-- **Startup** ![Screen Shot 2022-03-04 at 10 54 11](https://user-images.githubusercontent.com/40130936/156696312-bd68dcb2-695e-4724-9570-a4a6d05ad345.png)
 
-- **Finding Files** ![Screen Shot 2022-03-04 at 10 52 34](https://user-images.githubusercontent.com/40130936/156696167-a894d91d-4376-4dc2-ac9a-099da815ff23.png)
+- **Startup** 
+<img src="https://user-images.githubusercontent.com/40130936/173185651-5fd7b68b-3873-41fd-82da-2e1dd2c064c4.png" data-canonical-src="[https://user-images.githubusercontent.com/40130936/173185651-5fd7b68b-3873-41fd-82da-2e1dd2c064c4.png" width="800" height="640" />
 
-- **Term** ![Screen Shot 2022-03-04 at 10 53 00](https://user-images.githubusercontent.com/40130936/156696209-9ac9c9d9-bcd4-4c50-a648-579d384e1a3b.png)
+- **Finding Files** 
+<img src="https://user-images.githubusercontent.com/40130936/173185893-cd2d6feb-57b9-44a6-a0e6-5aeb6f261961.png" data-canonical-src="https://user-images.githubusercontent.com/40130936/173185893-cd2d6feb-57b9-44a6-a0e6-5aeb6f261961.png" width="800" height="640" />
 
-- **Diagnostic** ![Screen Shot 2022-03-04 at 10 58 16](https://user-images.githubusercontent.com/40130936/156696714-995b3479-dd88-4cee-bb9b-dacfe4933dc6.png)
+- **Coding**
+<img src="https://user-images.githubusercontent.com/40130936/173185947-4a3f22d1-b694-45dc-885c-4b8b6c2acda6.png"  width="800" height="640" />

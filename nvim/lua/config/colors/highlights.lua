@@ -68,19 +68,9 @@ fg("LineNr", grey)
 fg("NvimInternalError", red)
 fg("VertSplit", one_bg2)
 
-if ui.transparency then
-  bg("Normal", "NONE")
-  bg("Folded", "NONE")
-  bg("EndOfBuffer", "NONE")
-  fg("Folded", "NONE")
-  fg("Comment", grey)
-end
-
-if ui.transparency then
-  bg("Folded", "NONE")
-  fg("Folded", "NONE")
-  fg("Comment", grey)
-end
+bg("Normal", one_bg)
+bg("NormalFloat", one_bg)
+bg("EndOfBuffer", one_bg)
 
 -- [[ Plugin Highlights
 
@@ -137,7 +127,7 @@ bg("TelescopeNormal", darker_black)
 
 fg_bg("TelescopePreviewTitle", black, green)
 fg_bg("TelescopePromptTitle", black, red)
-fg_bg("TelescopeResultsTitle", darker_black, darker_black)
+fg_bg("TelescopeResultsTitle", black, yellow)
 
 bg("TelescopeSelection", black2)
 
