@@ -9,7 +9,7 @@ function louisws -d "working space of louis"
     set -l SESSION_SYS "System"
 
     # OIVAN
-    initCodeSpace $SESSION_OIVAN $OIVAN_PROJECT
+    # initCodeSpace $SESSION_OIVAN $OIVAN_PROJECT
 
     # PRODUCTPINE
     initCodeSpace $SESSION_PRODUCTPINE $PRODUCTPINE_PROJECT
@@ -39,15 +39,12 @@ function initCodeSpace -d 'helper init code space'
 
   tmux new-window -n "servers"
   tmux send-keys -t $SESSION:2.1 "cd $PROJECT_DIR" Enter
-
-  tmux new-window -n "local-logs"
-  tmux send-keys -t $SESSION:3.1 "cd $PROJECT_DIR" Enter
   tmux split-window -h
-  tmux send-keys -t $SESSION:3.2 "cd $PROJECT_DIR" Enter
+  tmux send-keys -t $SESSION:2.2 "cd $PROJECT_DIR" Enter
   tmux split-window -v
-  tmux send-keys -t $SESSION:3.3 "cd $PROJECT_DIR" Enter
+  tmux send-keys -t $SESSION:2.3 "cd $PROJECT_DIR" Enter
 
   tmux new-window -n "code"
-  tmux send-keys -t $SESSION:4.1 "cd $PROJECT_DIR" Enter
-  tmux send-keys -t $SESSION:4.1 "nvim" Enter
+  tmux send-keys -t $SESSION:3.1 "cd $PROJECT_DIR" Enter
+  tmux send-keys -t $SESSION:3.1 "nvim" Enter
 end

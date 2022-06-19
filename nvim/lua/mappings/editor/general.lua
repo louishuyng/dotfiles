@@ -51,9 +51,3 @@ vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)
 vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>", opt)
 vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", opt)
 vim.keymap.set("n", "<leader>pr", ":PackerClean<CR>", opt)
-
-require 'mappings.editor.chadtree'
-require 'mappings.editor.draft_buff'
-require 'mappings.editor.telescope'
-require 'mappings.editor.todo'
-require 'mappings.editor.trouble'

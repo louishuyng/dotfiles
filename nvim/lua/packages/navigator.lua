@@ -11,3 +11,7 @@ use {
 use {'kevinhwang91/nvim-bqf', ft = 'qf'}
 use "ThePrimeagen/harpoon"
 use 'nvim-telescope/telescope-ui-select.nvim'
+use {
+  'kyazdani42/nvim-tree.lua',
+  tag = 'nightly'
+}

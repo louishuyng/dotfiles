@@ -1,13 +1,13 @@
 require("config.colors").init()
 
 require "config.cores.bqf"
-require "config.cores.chadtree"
 require "config.cores.git"
 require "config.cores.neorg"
 require "config.cores.octo"
 require "config.cores.sneak"
 require "config.cores.statusline"
 require "config.cores.tabnine"
+require "config.cores.tree"
 
 require "config.libs.comment"
 require "config.libs.fterm"
