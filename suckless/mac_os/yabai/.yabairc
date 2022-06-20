@@ -39,27 +39,27 @@ yabai -m signal --add event=application_terminated action="yabai -m query --wind
 # Rules
 
 # Labels
-yabai -m space 1 --label tool
+yabai -m space 1 --label server
 yabai -m space 2 --label work
 yabai -m space 3 --label social
-yabai -m space 4 --label management
+yabai -m space 4 --label digram_and_notes
 yabai -m space 5 --label external
 
-# Tool
-yabai -m rule --add app="Simulator" manage=off                           space=tool
-yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=tool
-yabai -m rule --add app="^Xcode$" manage=off                             space=tool
-yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=tool
-yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=tool
-yabai -m rule --add app="^Wireshark$" manage=off                         space=tool
-yabai -m rule --add app="Visual Studio Code" manage=off opacity=1        space=tool
-yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=tool
-yabai -m rule --add app="^Docker$" manage=off                            space=tool
-yabai -m rule --add app="^OWASP$" manage=off                             space=tool
-yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=tool
+# Server
+yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=server
+yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=server
+yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=server
+yabai -m rule --add app="^Wireshark$" manage=off                         space=server
+yabai -m rule --add app="Visual Studio Code" manage=off opacity=1        space=server
+yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=server
+yabai -m rule --add app="^Docker$" manage=off                            space=server
+yabai -m rule --add app="^OWASP$" manage=off                             space=server
+yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=server
 
 # Work
 yabai -m rule --add app="Alacritty"                            space=work
+yabai -m rule --add app="Simulator" manage=off                 space=work
+yabai -m rule --add app="^Xcode$" manage=off                   space=work
 yabai -m rule --add app="WezTerm"                              space=work
 yabai -m rule --add app="qutebrowser"                          space=work
 yabai -m rule --add app="Preview" manage=off                   space=work
@@ -78,10 +78,11 @@ yabai -m rule --add app="Microsoft Outlook" manage=off   opacity=1      space=so
 yabai -m rule --add app="Tandem"           manage=off    opacity=1      space=social
 yabai -m rule --add app="^Microsoft Teams$" manage=off   opacity=1      space=social
 
-# Management
-yabai -m rule --add app="Pages"            opacity=1            space=management
-yabai -m rule --add app="Notion"           opacity=1            space=management
-yabai -m rule --add app="Obsidian"         opacity=1            space=management
+# digram_and_notes
+yabai -m rule --add app="StarUML"          opacity=1 manage=off    space=digram_and_notes
+yabai -m rule --add app="Pages"            opacity=1               space=digram_and_notes
+yabai -m rule --add app="Notion"           opacity=1               space=digram_and_notes
+yabai -m rule --add app="Obsidian"         opacity=1               space=digram_and_notes
 
 # External
 yabai -m rule --add app="Spotify"          opacity=1 manage=off    space=external
