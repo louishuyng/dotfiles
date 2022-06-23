@@ -47,9 +47,6 @@ opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 
--- Winbar
-vim.api.nvim_command("set winbar=%m\\ %f")
-
 -- DISABLE BUILTIN VIM PLUGINS
 vim.g.loaded_gzip = 0
 vim.g.loaded_tar = 0

@@ -100,6 +100,10 @@ fg("DiagnosticInformation", green)
 -- Indent
 fg("IndentBlanklineContextChar", nord_blue)
 
+-- Barbar
+fg_bg("BufferCurrentSign", green, "NONE")
+fg_bg("BufferCurrentIndex", green, "NONE")
+
 -- NvimTree
 fg("NvimTreeEmptyFolderName", folder_bg)
 fg("NvimTreeEndOfBuffer", darker_black)
