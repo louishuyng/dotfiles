@@ -5,7 +5,8 @@ if status_ok then
     backends = {"lsp", "treesitter", "markdown"},
     show_guides = true,
     filter_kind = false,
-    open_automatic = false,
+    open_automatic = true,
+  default_direction = "prefer_left",
     icons = {
       Array = "",
       Boolean = "⊨",
