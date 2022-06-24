@@ -34,3 +34,7 @@ use({
   run = function() vim.fn["mkdp#util#install"]() end
 })
 use 'mrjones2014/legendary.nvim'
+use {
+  "folke/which-key.nvim",
+  config = function() require("which-key").setup {} end
+}

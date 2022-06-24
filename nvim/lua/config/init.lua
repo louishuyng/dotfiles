@@ -2,9 +2,9 @@ require("config.colors").init()
 
 require "config.cores.bqf"
 require "config.cores.buffer"
+require "config.cores.gh"
 require "config.cores.git"
 require "config.cores.neorg"
-require "config.cores.octo"
 require "config.cores.sneak"
 require "config.cores.statusline"
 require "config.cores.tabnine"

@@ -12,7 +12,6 @@ This is Louis dotfiles Who loves using nvim + lua 🚀
 | ms-jpq/chadtree               | File Manger                        |
 | justinmk/vim-sneak            | Moving between lines               |
 | tpope/vim-fugitive            | Git                                |
-| pwntester/octo.nvim           | Git PR                             |
 | goolord/alpha-nvim            | Dashboard UI                       |
 | famiu/feline.nvim             | Statusline UI                      |
 | kyazdani42/nvim-web-devicons  | Icons                              |
