@@ -65,6 +65,7 @@ yabai -m rule --add app="qutebrowser"                          space=work
 yabai -m rule --add app="Preview" manage=off                   space=work
 yabai -m rule --add app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off space=work
 yabai -m rule --add app="^Firefox Developer Edition$" opacity=1          space=work
+yabai -m rule --add app="^Microsoft Edge$"            opacity=1          space=work
 yabai -m rule --add app="Tor Browser" manage=off      opacity=1          space=work
 
 # Social
