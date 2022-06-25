@@ -25,3 +25,5 @@ require "config.libs.aerial"
 require "config.libs.todo"
 require "config.libs.vim-test"
 require "config.libs.zenmode"
+
+require "config.whichkey"
