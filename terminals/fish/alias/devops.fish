@@ -3,12 +3,13 @@ alias rds='brew services start redis'
 alias rdc='brew services stop redis'
 
 #DOCKER
-alias dkcd="docker-compose down"
-alias dkcu="docker-compose up"
-alias dkcud="docker-compose up -d"
+alias dcd="docker-compose down"
+alias dcu="docker-compose up"
+alias dcud="docker-compose up -d"
 alias dpsa="docker ps -a"
-alias dks="open -a 'Docker'"
-alias dkc="killall Docker"
+alias dkr="open -a 'Docker'"
+alias dks="killall Docker"
+alias dkc="docker system prune"
 
 #K8S
 alias k8smd='minikd'

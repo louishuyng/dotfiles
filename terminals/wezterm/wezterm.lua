@@ -1,6 +1,5 @@
 -- WezTerm
 -- https://wezfurlong.org/wezterm/
-
 local wezterm = require 'wezterm'
 
 return {
@@ -9,16 +8,13 @@ return {
   hide_tab_bar_if_only_one_tab = true,
 
   colors = {
-    background = "#282c34",
+    background = "#2d3343",
     foreground = "#98c379",
     cursor_bg = "#48e566"
   },
   window_decorations = "NONE | RESIZE",
 
-  window_padding = {
-    left = 0, right = 0,
-    top = 0, bottom = 0,
-  },
+  window_padding = {left = 0, right = 0, top = 0, bottom = 0},
 
   -- Font configuration
   -- https://wezfurlong.org/wezterm/config/fonts.html
@@ -36,7 +32,7 @@ return {
   dpi = 192.0,
 
   keys = {
-    {key="c", mods="CMD", action="Copy"},
-    {key="v", mods="CMD", action="Paste"},
+    {key = "c", mods = "CMD", action = "Copy"},
+    {key = "v", mods = "CMD", action = "Paste"}
   }
 }

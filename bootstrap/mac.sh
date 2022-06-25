@@ -354,6 +354,8 @@ install_tools() {
     brew install osquery
     brew install glow
 
+    brew install grpcurl
+
     success "Installed some fancy tools"
   fi
 }
