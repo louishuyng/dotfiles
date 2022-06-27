@@ -1,8 +1,8 @@
-# REDIS
+#Redis
 alias rds='brew services start redis'
 alias rdc='brew services stop redis'
 
-#DOCKER
+#Docker
 alias dcd="docker-compose down"
 alias dcu="docker-compose up"
 alias dcud="docker-compose up -d"
@@ -25,9 +25,12 @@ alias k8sex='kubectl exec'
 alias k8sg='kubectl get'
 alias k8sl='kubectl logs'
 
-# Kubectx
+#Kubectx
 alias k8sns='kubens'
 
-#DATABASE
-# Postgres
- alias pgr="pg_ctl -D /usr/local/var/postgres restart"
+#Postgres
+alias pgr="pg_ctl -D /usr/local/var/postgres restart"
+
+#Mongo
+alias mgr="brew services start mongodb-community@5.0"
+alias mgs="brew services stop mongodb-community@5.0"

@@ -49,6 +49,7 @@ yabai -m space 5 --label external
 yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=server
 yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=server
 yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=server
+yabai -m rule --add app="Mingo$" manage=off          opacity=1           space=server
 yabai -m rule --add app="^Wireshark$" manage=off                         space=server
 yabai -m rule --add app="Visual Studio Code" manage=off opacity=1        space=server
 yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=server
