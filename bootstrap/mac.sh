@@ -356,6 +356,9 @@ install_tools() {
 
     brew install grpcurl
 
+    brew tap yoheimuta/protolint
+    brew install protolint
+
     success "Installed some fancy tools"
   fi
 }
