@@ -6,14 +6,14 @@ vim.cmd [[
 ]]
 
 -- require('config/lsp/deno')
-require "config/lsp/bash"
-require "config/lsp/css"
-require "config/lsp/dart"
+-- require "config/lsp/bash"
+-- require "config/lsp/css"
+-- require "config/lsp/dart"
+-- require "config/lsp/rust"
+-- require "config/lsp/sql"
 require "config/lsp/golang"
 require "config/lsp/lua"
 require "config/lsp/null_ls"
 require "config/lsp/python"
 require "config/lsp/ruby"
-require "config/lsp/rust"
-require "config/lsp/sql"
 require "config/lsp/typescript"
