@@ -65,6 +65,11 @@ window:
   # Window title
   title: Alacritty
 
+  # Background opacity
+  # Window opacity as a floating point number from `0.0` to `1.0`.
+  # The value `0.0` is completely transparent and `1.0` is opaque.
+  opacity: 1
+
   # Window class (Linux only):
   #class: Alacritty
 
@@ -205,13 +210,6 @@ visual_bell:
   animation: EaseOutExpo
   duration: 0
   color: "0xffffff"
-
-# Background opacity
-#
-# Window opacity as a floating point number from `0.0` to `1.0`.
-# The value `0.0` is completely transparent and `1.0` is opaque.
-window:
-  opacity: 1
 
 # Mouse bindings
 #
