@@ -56,6 +56,7 @@ yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=s
 yabai -m rule --add app="^Docker$" manage=off                            space=server
 yabai -m rule --add app="^OWASP$" manage=off                             space=server
 yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=server
+yabai -m rule --add app="^Disk Utility$" manage=off          opacity=1   space=server
 
 # Work
 yabai -m rule --add app="Alacritty"                            space=work

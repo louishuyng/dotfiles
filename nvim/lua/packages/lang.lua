@@ -12,10 +12,8 @@ use {
   "folke/trouble.nvim",
   config = function() require "config.libs.trouble" end
 }
-use "folke/todo-comments.nvim"
 
--- DEBUG
-use "puremourning/vimspector"
+use "folke/todo-comments.nvim"
 
 -- ROR
 use "vim-test/vim-test"

@@ -18,7 +18,6 @@ use {
   end
 }
 use 'numToStr/Comment.nvim'
-use 'folke/zen-mode.nvim'
 use 'tpope/vim-eunuch'
 use 'justinmk/vim-sneak'
 use 'terryma/vim-multiple-cursors'
