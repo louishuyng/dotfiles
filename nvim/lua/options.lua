@@ -92,3 +92,6 @@ vim.cmd('abbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 
 -- LSP
 vim.g.auto_format = true
+
+-- GIT
+vim.cmd('set diffopt=internal,filler,vertical')

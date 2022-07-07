@@ -38,3 +38,5 @@ use {
   config = function() require("which-key").setup {} end
 }
 use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+use 'junegunn/fzf.vim'
+use 'junegunn/fzf'
