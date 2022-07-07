@@ -23,6 +23,7 @@ require "config.libs.notify"
 require "config.libs.nrrwrgn"
 require "config.libs.preview_markdown"
 require "config.libs.todo"
+require "config.libs.ufo"
 require "config.libs.vim-test"
 
 require "config.whichkey"

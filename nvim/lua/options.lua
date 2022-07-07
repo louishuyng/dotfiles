@@ -66,7 +66,7 @@ vim.opt.listchars:append("eol:↴")
 -- FOLD
 opt.foldmethod = 'indent'
 opt.foldnestmax = 5
-vim.api.nvim_command("set nofoldenable")
+vim.o.foldenable = false
 
 -- SPELL
 vim.api.nvim_command("set spell")

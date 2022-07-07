@@ -1,4 +1,4 @@
 require "cmds"
 require "mappings"
-require "options"
+  require "options"
 require "plugins"

@@ -38,3 +38,4 @@ use {
   config = function() require("which-key").setup {} end
 }
 use "anuvyklack/hydra.nvim"
+use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
