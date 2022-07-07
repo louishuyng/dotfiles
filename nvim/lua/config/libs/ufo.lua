@@ -31,6 +31,7 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
 end
 
 ufo.setup({
+  open_fold_hl_timeout = 150,
   provider_selector = function(bufnr, filetype) return {'treesitter', 'indent'} end,
   fold_virt_text_handler = handler
 })

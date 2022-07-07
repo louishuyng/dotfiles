@@ -14,15 +14,6 @@ opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 1000
 opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
-opt.fillchars = {
-  horiz = '━',
-  horizup = '┻',
-  horizdown = '┳',
-  vert = '┃',
-  vertleft = '┫',
-  vertright = '┣',
-  verthoriz = '╋'
-}
 
 -- CENTER CURSOR
 opt.scrolloff = 999
@@ -66,7 +57,12 @@ vim.opt.listchars:append("eol:↴")
 -- FOLD
 opt.foldmethod = 'indent'
 opt.foldnestmax = 5
-vim.o.foldenable = false
+-- NOTE: It could be remove when update nvim
+-- See: https://github.com/kevinhwang91/nvim-ufo/issues/4
+-- vim.o.foldcolumn = '1'
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = -1
 
 -- SPELL
 vim.api.nvim_command("set spell")
