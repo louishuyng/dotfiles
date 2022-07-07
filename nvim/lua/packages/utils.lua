@@ -23,7 +23,6 @@ use 'justinmk/vim-sneak'
 use 'terryma/vim-multiple-cursors'
 use 'tpope/vim-surround'
 use 'chrisbra/NrrwRgn'
-use {'windwp/nvim-ts-autotag', after = "nvim-treesitter"}
 use 'rcarriga/nvim-notify'
 use {"andymass/vim-matchup", event = "CursorMoved"}
 use 'preservim/vimux'
@@ -32,11 +31,8 @@ use({
   "iamcco/markdown-preview.nvim",
   run = function() vim.fn["mkdp#util#install"]() end
 })
-use 'mrjones2014/legendary.nvim'
 use {
   "folke/which-key.nvim",
   config = function() require("which-key").setup {} end
 }
 use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
-use 'junegunn/fzf.vim'
-use 'junegunn/fzf'

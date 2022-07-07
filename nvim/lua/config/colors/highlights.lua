@@ -87,18 +87,12 @@ fg_bg("DiffChangeDelete", red, "NONE")
 fg_bg("DiffModified", red, "NONE")
 fg_bg("DiffDelete", red, "NONE")
 
--- Indent blankline plugin
-fg("IndentBlanklineChar", line)
-
 -- Lsp diagnostics
 
 fg("DiagnosticHint", purple)
 fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
-
--- Indent
-fg("IndentBlanklineContextChar", nord_blue)
 
 -- Barbar
 fg_bg("BufferCurrentSign", green, "NONE")

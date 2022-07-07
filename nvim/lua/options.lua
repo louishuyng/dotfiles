@@ -94,4 +94,6 @@ vim.cmd('abbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 vim.g.auto_format = true
 
 -- GIT
-vim.cmd('set diffopt=internal,filler,vertical')
+vim.opt.diffopt = {
+  "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical"
+}

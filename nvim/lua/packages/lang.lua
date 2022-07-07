@@ -19,11 +19,5 @@ use "folke/todo-comments.nvim"
 use "vim-test/vim-test"
 use "tpope/vim-rails"
 
--- Quick runtpope/vim-rails
-use "is0n/jaq-nvim"
-
--- Indent
-use "lukas-reineke/indent-blankline.nvim"
-
--- Analyze code
-use 'stevearc/aerial.nvim'
+-- TS
+use {'windwp/nvim-ts-autotag', after = "nvim-treesitter"}
