@@ -21,3 +21,6 @@ use "tpope/vim-rails"
 
 -- TS
 use {'windwp/nvim-ts-autotag', after = "nvim-treesitter"}
+
+-- Flutter
+use "akinsho/flutter-tools.nvim"

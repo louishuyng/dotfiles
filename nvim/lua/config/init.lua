@@ -11,6 +11,7 @@ require "config.cores.tabnine"
 require "config.cores.tree"
 
 require "config.libs.comment"
+require "config.libs.flutter_tool"
 require "config.libs.fterm"
 require "config.libs.git_conflict"
 require "config.libs.git_worktree"

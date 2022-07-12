@@ -72,6 +72,3 @@ fish_add_path /usr/local/go/bin
 #
 # #Scripts
 fish_add_path $HOME/.config/scripts
-
-# # NVIM
-fish_add_path $HOME/Dev/ExternalLibs/nvim8/bin

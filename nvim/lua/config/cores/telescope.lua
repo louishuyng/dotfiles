@@ -63,6 +63,7 @@ M.config = function()
 
   require'telescope'.load_extension('project')
   require("telescope").load_extension("ui-select")
+  require("telescope").load_extension("flutter")
 end
 
 return M
