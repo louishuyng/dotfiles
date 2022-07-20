@@ -10,7 +10,6 @@ local folder_bg = colors.folder_bg
 local green = colors.green
 local grey = colors.grey
 local grey_fg = colors.grey_fg
-local line = colors.line
 local nord_blue = colors.nord_blue
 local one_bg = colors.one_bg
 local one_bg2 = colors.one_bg2
@@ -37,7 +36,8 @@ end
 -- Disable cursor line
 -- cmd "hi clear CursorLine"
 -- Line number
-fg("cursorlinenr", white)
+fg("cursorlinenr", grey)
+bg('CursorLine', grey)
 
 -- same it bg, so it doesn't appear
 fg("EndOfBuffer", black)
