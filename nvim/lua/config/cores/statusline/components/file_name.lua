@@ -12,10 +12,10 @@ return {
     end
     return " " .. icon .. " " .. filename .. " "
   end,
-  hl = {fg = colors.white, bg = colors.lightbg},
+  hl = {fg = colors.white, bg = colors.black3},
 
   right_sep = {
     str = separator_style.right,
-    hl = {fg = colors.lightbg, bg = colors.lightbg2}
+    hl = {fg = colors.lightbg, bg = colors.black3}
   }
 }

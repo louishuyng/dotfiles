@@ -8,5 +8,5 @@ return {
       return ""
     end
   end,
-  hl = {fg = colors.grey_fg2, bg = colors.statusline_bg}
+  hl = {fg = colors.grey_fg2, bg = colors.black3}
 }

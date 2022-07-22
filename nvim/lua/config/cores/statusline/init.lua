@@ -55,6 +55,6 @@ components.active[2] = middle
 components.active[3] = right
 
 feline.setup {
-  theme = {bg = colors.statusline_bg, fg = colors.fg},
+  theme = {bg = colors.black3, fg = colors.black3},
   components = components
 }

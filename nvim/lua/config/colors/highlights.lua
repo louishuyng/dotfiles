@@ -71,6 +71,7 @@ fg("VertSplit", one_bg2)
 bg("Normal", one_bg)
 bg("NormalFloat", one_bg)
 bg("EndOfBuffer", one_bg)
+bg("SignColumn", "NONE")
 
 -- [[ Plugin Highlights
 
@@ -93,10 +94,6 @@ fg("DiagnosticHint", purple)
 fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
-
--- Barbar
-fg_bg("BufferCurrentSign", green, "NONE")
-fg_bg("BufferCurrentIndex", green, "NONE")
 
 -- NvimTree
 fg("NvimTreeEmptyFolderName", folder_bg)
@@ -138,6 +135,8 @@ end
 
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
+  bg("Normal", "NONE")
+  bg("EndOfBuffer", "NONE")
   bg("NormalFloat", "NONE")
   bg("NvimTreeNormal", "NONE")
   bg("NvimTreeNormalNC", "NONE")

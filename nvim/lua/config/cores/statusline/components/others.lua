@@ -27,38 +27,36 @@ local mode_colors = {
 }
 
 local chad_mode_hl = function()
-  return {fg = mode_colors[vim.fn.mode()][2], bg = colors.one_bg2}
+  return {fg = mode_colors[vim.fn.mode()][2], bg = colors.black3}
 end
 
 M.main_icon = {
   provider = separator_style.main_icon,
 
-  hl = {fg = colors.statusline_bg, bg = colors.nord_blue},
+  hl = {fg = colors.grey_fg2, bg = colors.black3},
 
   right_sep = {
     str = separator_style.right,
-    hl = {fg = colors.nord_blue, bg = colors.lightbg}
+    hl = {fg = colors.grey_fg2, bg = colors.black3}
   }
 }
 
 M.empty_space = {
   provider = " " .. separator_style.left,
-  hl = {fg = colors.statusline_bg, bg = colors.statusline_bg}
+  hl = {fg = colors.statusline_bg, bg = colors.black3}
 }
 
 -- this matches the vi mode color
 M.empty_spaceColored = {
   provider = separator_style.left,
   hl = function()
-    return {fg = mode_colors[vim.fn.mode()][2], bg = colors.statusline_bg}
+    return {fg = mode_colors[vim.fn.mode()][2], bg = colors.black3}
   end
 }
 
 M.mode_icon = {
   provider = separator_style.vi_mode_icon,
-  hl = function()
-    return {fg = colors.statusline_bg, bg = mode_colors[vim.fn.mode()][2]}
-  end
+  hl = function() return {fg = colors.grey_fg2, bg = colors.black3} end
 }
 
 M.empty_space2 = {
@@ -68,17 +66,17 @@ M.empty_space2 = {
 
 M.separator_right = {
   provider = separator_style.left,
-  hl = {fg = colors.one_bg2, bg = colors.one_bg2}
+  hl = {fg = colors.one_bg2, bg = colors.black3}
 }
 
 M.separator_right2 = {
   provider = separator_style.left,
-  hl = {fg = colors.green, bg = colors.one_bg2}
+  hl = {fg = colors.green, bg = colors.black3}
 }
 
 M.position_icon = {
   provider = separator_style.position_icon,
-  hl = {fg = colors.black, bg = colors.green}
+  hl = {fg = colors.grey_fg2, bg = colors.black3}
 }
 
 M.current_line = {
@@ -95,7 +93,7 @@ M.current_line = {
     return " " .. result .. "%% "
   end,
 
-  hl = {fg = colors.green, bg = colors.one_bg2}
+  hl = {fg = colors.green, bg = colors.black3}
 }
 
 return M

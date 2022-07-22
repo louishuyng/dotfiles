@@ -28,7 +28,8 @@ local colors = {
   statusline_bg = "#22262e",
   lightbg = "#2d3139",
   pmenu_bg = "#61afef",
-  folder_bg = "#61afef"
+  folder_bg = "#61afef",
+  black3 = "#2D3343" -- for status line
 }
 
 return colors

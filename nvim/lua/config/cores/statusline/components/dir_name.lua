@@ -7,9 +7,9 @@ return {
     return "  " .. dir_name .. " "
   end,
 
-  hl = {fg = colors.grey_fg2, bg = colors.lightbg2},
+  hl = {fg = colors.grey_fg2, bg = colors.black3},
   right_sep = {
     str = separator_style.right,
-    hi = {fg = colors.lightbg2, bg = colors.statusline_bg}
+    hi = {fg = colors.lightbg2, bg = colors.black3}
   }
 }

@@ -1,7 +1,6 @@
 require("config.colors").init()
 
 require "config.cores.bqf"
-require "config.cores.buffer"
 require "config.cores.gh"
 require "config.cores.git"
 require "config.cores.neorg"
@@ -11,6 +10,7 @@ require "config.cores.tabnine"
 require "config.cores.tree"
 
 require "config.libs.comment"
+require "config.libs.cyclist"
 require "config.libs.flutter_tool"
 require "config.libs.fterm"
 require "config.libs.git_conflict"
