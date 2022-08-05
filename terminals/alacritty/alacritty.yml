@@ -178,7 +178,7 @@ draw_bold_text_with_bright_colors: true
 # KDE Breeze (Ported from Konsole)
 colors:
   primary:
-    background: "0x2D3343"
+    background: "0x000000"
     foreground: "0x979eab"
 
   cursor:

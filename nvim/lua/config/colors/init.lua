@@ -1,7 +1,7 @@
 local M = {}
 
 M.init = function(theme)
-  vim.cmd("colorscheme onedark")
+  vim.cmd("colorscheme industry")
 
   if not theme then theme = 'onedark' end
 
