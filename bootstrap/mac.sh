@@ -356,6 +356,8 @@ install_tools() {
 
     brew install grpcurl
 
+    brew install --cask graphiql
+
     brew tap yoheimuta/protolint
     brew install protolint
 
