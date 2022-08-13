@@ -3,8 +3,8 @@ local on_attach = require 'config/lsp/on_attach'
 
 lsp_config.tsserver.setup({
   on_attach = function(client, bufnr)
-    client.server_capabilities.document_formatting = true
-
-    on_attach(client)
+    client.resolved_capabilities.document_formatting = false
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fm",
+                                "<cmd>lua vim.lsp.buf.formatting()<CR>", {})
   end
 })
