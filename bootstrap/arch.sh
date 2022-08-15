@@ -195,6 +195,9 @@ link_all_dotfiles() {
   cd ~/.dotfiles/suckless && stow nnn -t ~/.config && stow bpytop -t ~/.config/bpytop
 
   success "Linked other tools"
+
+  ln -s ~/.dotfiles/suckless/git/.gitconfig ~/.gitconfig
+  success "Linked git config"
 }
 
 install_libs

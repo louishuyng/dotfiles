@@ -410,6 +410,9 @@ link_all_dotfiles() {
   spicetify apply
 
   success "Linked other tools"
+
+  ln -s ~/.dotfiles/suckless/git/.gitconfig ~/.gitconfig
+  success "Linked git config"
 }
 
 load_pre_script

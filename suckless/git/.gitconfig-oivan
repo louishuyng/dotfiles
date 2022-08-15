@@ -1,0 +1,5 @@
+[user]
+  email = huynguyennbk@gmail.com
+  name = Louis
+[core]
+  sshCommand = ssh-add --apple-use-keychain ~/.ssh/id_rsa_oivan

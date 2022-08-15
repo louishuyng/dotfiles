@@ -1,0 +1,43 @@
+[user]
+	email = huynguyennbk@gmail.com
+	name = Louis
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = /Users/admin/.gitignore_global
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/louis/.stCommitMsg
+[push]
+	default = current
+[rebase]
+	autoStash = true
+
+[includeIf "~/Dev/Projects/Oivan/sakani-workspace/"]
+  path = ~/.gitconfig-oivan
+[includeIf "~/Dev/Projects/Productpine/"]
+  path = ~/.gitconfig-open-source
+[includeIf "~/.dotfiles/"]
+  path = ~/.gitconfig-open-source
