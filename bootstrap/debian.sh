@@ -163,6 +163,9 @@ install_tools() {
     sudo apt install rustscan
     sudo apt install osquery
 
+    echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list
+    sudo apt update && sudo apt install gum
+
     go get github.com/isacikgoz/tldr/cmd/tldr
 
     success "Installed some fancy tools"

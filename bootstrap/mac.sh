@@ -361,6 +361,8 @@ install_tools() {
     brew tap yoheimuta/protolint
     brew install protolint
 
+    brew install gum
+
     success "Installed some fancy tools"
   fi
 }
