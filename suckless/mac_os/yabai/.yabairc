@@ -91,6 +91,9 @@ yabai -m rule --add app="StarUML"          opacity=1 manage=off    space=digram_
 yabai -m rule --add app="Pages"            opacity=1               space=digram_and_notes
 yabai -m rule --add app="Notion"           opacity=1               space=digram_and_notes
 yabai -m rule --add app="Obsidian"         opacity=1               space=digram_and_notes
+yabai -m rule --add app="^Microsoft Word$" opacity=1 manage=off    space=digram_and_notes
+yabai -m rule --add app="^Microsoft Excel$" opacity=1 manage=off   space=digram_and_notes
+yabai -m rule --add app="^Microsoft PowerPoint$" opacity=1 manage=off    space=digram_and_notes
 
 # External
 yabai -m rule --add app="Spotify"          opacity=1 manage=off    space=external
