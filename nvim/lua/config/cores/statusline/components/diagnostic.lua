@@ -20,7 +20,7 @@ return {
   hint = {
     provider = "diagnostic_hints",
     enabled = function() return lsp.diagnostics_exist(lsp_severity.HINT) end,
-    hl = {fg = colors.grey_fg2},
+    hl = {fg = colors.status_line_fg},
     icon = "  "
   },
 

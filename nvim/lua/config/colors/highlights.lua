@@ -1,6 +1,6 @@
 local colors = require("ui.main_colors")
 
-local ui = {hl_override = "", italic_comments = false, transparency = true}
+local ui = {hl_override = "", italic_comments = false, transparency = false}
 
 local black = colors.black
 local black2 = colors.black2
@@ -64,7 +64,7 @@ fg_bg("VertSplit", "NONE", "NONE" .. " gui=NONE")
 -- inactive statuslines as thin lines
 fg("StatusLineNC", one_bg3 .. " gui=underline")
 
--- fg("LineNr", one_cwbg)
+bg("LineNr", "NONE")
 fg("NvimInternalError", red)
 fg("VertSplit", one_bg2)
 

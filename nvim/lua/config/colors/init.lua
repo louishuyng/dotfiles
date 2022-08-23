@@ -1,7 +1,7 @@
 local M = {}
 
 M.init = function(theme)
-  vim.cmd("colorscheme industry")
+  require('colorbuddy').colorscheme('gruvbuddy')
 
   if not theme then theme = 'onedark' end
 

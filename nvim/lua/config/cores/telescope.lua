@@ -34,24 +34,29 @@ M.config = function()
           ["<C-s>"] = actions.select_horizontal
         }
       },
+      layout_strategy = "vertical",
       layout_config = {
+        width = 0.95,
+        height = 0.85,
+        -- preview_cutoff = 120,
+        prompt_position = "top",
+
         horizontal = {
-          prompt_position = "top",
-          preview_width = 0.55,
-          results_width = 0.8
+          preview_width = function(_, cols, _)
+            if cols > 200 then
+              return math.floor(cols * 0.4)
+            else
+              return math.floor(cols * 0.6)
+            end
+          end
         },
-        vertical = {mirror = false},
-        width = 0.5,
-        height = 0.80,
-        preview_cutoff = 120
-      },
-      vertical = {mirror = false},
-      width = 0.5,
-      height = 0.80,
-      preview_cutoff = 120
+        vertical = {width = 0.7, height = 0.8, preview_height = 0.5},
+        flex = {horizontal = {preview_width = 0.9}}
+      }
     },
     extensions = {
       ["ui-select"] = {require("telescope.themes").get_dropdown {}},
+      fzy_native = {override_generic_sorter = true, override_file_sorter = true},
       project = {
         base_dirs = {
           {'~/Dev/Projects/Productpine'}, {'~/Dev/Projects/Eatiplan'},
@@ -64,6 +69,7 @@ M.config = function()
   require'telescope'.load_extension('project')
   require("telescope").load_extension("ui-select")
   require("telescope").load_extension("flutter")
+  require('telescope').load_extension('fzy_native')
 end
 
 return M

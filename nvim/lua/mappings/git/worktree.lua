@@ -1,4 +1,3 @@
-
 vim.keymap.set("n", "<leader>g;",
                ":lua require('config.libs.git_worktree').pull()<CR>")
 vim.keymap.set("n", "<leader>gp",

@@ -26,5 +26,5 @@ return {
 
     return ""
   end,
-  hl = {fg = colors.green}
+  hl = {fg = colors.status_line_fg}
 }

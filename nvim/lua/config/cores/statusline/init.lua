@@ -1,60 +1,180 @@
-local present, feline = pcall(require, "feline")
+-- TODO: Need to add those sweet sweet lsp workspace diagnostic counts
+if not pcall(require, "el") then
+  -- TODO: Add in a nice default statusline here.
+  -- Would be good to research anyway for the course
+  return
+end
 
-if not present then return end
+require("el").reset_windows()
 
-local colors = require 'ui.main_colors'
+vim.opt.laststatus = 3
 
--- Components
-local diagnostic = require 'config.cores.statusline.components.diagnostic';
-local diff = require 'config.cores.statusline.components.diff';
-local dir_name = require 'config.cores.statusline.components.dir_name';
-local file_name = require 'config.cores.statusline.components.file_name';
-local git_branch = require 'config.cores.statusline.components.git_branch';
-local lsp_icon = require 'config.cores.statusline.components.lsp_icon';
-local lsp_progress = require 'config.cores.statusline.components.lsp_progress';
-local others = require 'config.cores.statusline.components.others';
+if false then
+  -- Disappearing statusline for commands
+  vim.opt.cmdheight = 0
+  vim.api.nvim_create_autocmd("ModeChanged", {
+    group = vim.api.nvim_create_augroup("StatusDisappear", { clear = true }),
+    callback = function()
+      if vim.v.event.new_mode == "c" then
+        vim.opt.laststatus = 0
+      elseif vim.v.event.old_mode == "c" then
+        vim.opt.laststatus = 3
+      end
 
-local function add_table(a, b) table.insert(a, b) end
+      pcall(vim.cmd, [[silent! redraw]])
+    end,
+  })
+end
 
--- components are divided in 3 sections
-local left = {}
-local middle = {}
-local right = {}
+local builtin = require "el.builtin"
+local extensions = require "el.extensions"
+local sections = require "el.sections"
+local subscribe = require "el.subscribe"
+local lsp_statusline = require "el.plugins.lsp_status"
+local helper = require "el.helper"
+local diagnostic = require "el.diagnostic"
 
--- left
-add_table(left, others.main_icon)
-add_table(left, file_name)
-add_table(left, dir_name)
-add_table(left, diff.add)
-add_table(left, diff.change)
-add_table(left, diff.remove)
-add_table(left, diagnostic.error)
-add_table(left, diagnostic.warning)
-add_table(left, diagnostic.hint)
-add_table(left, diagnostic.info)
+local has_lsp_extensions, ws_diagnostics = pcall(require, "lsp_extensions.workspace.diagnostic")
 
-add_table(middle, lsp_progress)
+-- TODO: Spinning planet extension. Integrated w/ telescope.
+-- ◐ ◓ ◑ ◒
+-- 🌛︎🌝︎🌜︎🌚︎
+-- Show telescope icon / emoji when you open it as well
 
--- right
-add_table(right, lsp_icon)
-add_table(right, git_branch)
-add_table(right, others.empty_space)
-add_table(right, others.empty_spaceColored)
-add_table(right, others.mode_icon)
-add_table(right, others.empty_space2)
-add_table(right, others.separator_right)
-add_table(right, others.separator_right2)
-add_table(right, others.position_icon)
-add_table(right, others.current_line)
+local git_icon = subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
+  local icon = extensions.file_icon(_, bufnr)
+  if icon then
+    return icon .. " "
+  end
 
--- Initialize the components table
-local components = {active = {}}
+  return ""
+end)
 
-components.active[1] = left
-components.active[2] = middle
-components.active[3] = right
+local git_branch = subscribe.buf_autocmd("el_git_branch", "BufEnter", function(window, buffer)
+  local branch = extensions.git_branch(window, buffer)
+  if branch then
+    return " " .. extensions.git_icon() .. " " .. branch
+  end
+end)
 
-feline.setup {
-  theme = {bg = colors.black3, fg = colors.black3},
-  components = components
+local git_changes = subscribe.buf_autocmd("el_git_changes", "BufWritePost", function(window, buffer)
+  return extensions.git_changes(window, buffer)
+end)
+
+local ws_diagnostic_counts = function(_, buffer)
+  if not has_lsp_extensions then
+    return ""
+  end
+
+  local messages = {}
+
+  local error_count = ws_diagnostics.get_count(buffer.bufnr, "Error")
+
+  local x = "⬤"
+  if error_count == 0 then
+    -- pass
+  elseif error_count < 5 then
+    table.insert(messages, string.format("%s#%s#%s%%*", "%", "StatuslineError" .. error_count, x))
+  else
+    table.insert(messages, string.format("%s#%s#%s%%*", "%", "StatuslineError5", x))
+  end
+
+  return table.concat(messages, "")
+end
+
+local show_current_func = function(window, buffer)
+  if buffer.filetype == "lua" then
+    return ""
+  end
+
+  return lsp_statusline.current_function(window, buffer)
+end
+
+local minimal_status_line = function(_, buffer)
+  if string.find(buffer.name, "sourcegraph/sourcegraph") then
+    return true
+  end
+end
+
+local is_sourcegraph = function(_, buffer)
+  if string.find(buffer.name, "sg://") then
+    return true
+  end
+end
+
+local diagnostic_display = diagnostic.make_buffer()
+
+require("el").setup {
+  generator = function(window, buffer)
+    local is_minimal = minimal_status_line(window, buffer)
+    local is_sourcegraph = is_sourcegraph(window, buffer)
+
+    local mode = extensions.gen_mode { format_string = " %s " }
+    if is_sourcegraph then
+      return {
+        { mode },
+        { sections.split, required = true },
+        { builtin.file },
+        { sections.split, required = true },
+        { builtin.filetype },
+      }
+    end
+
+    local items = {
+      { mode, required = true },
+      { git_branch },
+      { " " },
+      { sections.split, required = true },
+      { git_icon },
+      { sections.maximum_width(builtin.file_relative, 0.60), required = true },
+      { sections.collapse_builtin { { " " }, { builtin.modified_flag } } },
+      { sections.split, required = true },
+      { diagnostic_display },
+      { show_current_func },
+      -- { lsp_statusline.server_progress },
+      -- { ws_diagnostic_counts },
+      { git_changes },
+      { "[" },
+      { builtin.line_with_width(3) },
+      { ":" },
+      { builtin.column_with_width(2) },
+      { "]" },
+      {
+        sections.collapse_builtin {
+          "[",
+          builtin.help_list,
+          builtin.readonly_list,
+          "]",
+        },
+      },
+      { builtin.filetype },
+    }
+
+    local add_item = function(result, item)
+      if is_minimal and not item.required then
+        return
+      end
+
+      table.insert(result, item)
+    end
+
+    local result = {}
+    for _, item in ipairs(items) do
+      add_item(result, item)
+    end
+
+    return result
+  end,
+}
+
+require("fidget").setup {
+  text = {
+    spinner = "moon",
+  },
+  align = {
+    bottom = true,
+  },
+  window = {
+    relative = "editor",
+  },
 }

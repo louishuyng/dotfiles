@@ -3,7 +3,7 @@ local colors = {
   darker_black = "#1b1f27",
   black = "#1e222a", --  nvim bg
   black2 = "#252931",
-  one_bg = "#2D3343", -- real bg of onedark
+  one_bg = "#282c34", -- real bg of onedark
   one_bg2 = "#353b45",
   one_bg3 = "#30343c",
   grey = "#42464e",
@@ -28,8 +28,7 @@ local colors = {
   statusline_bg = "#22262e",
   lightbg = "#2d3139",
   pmenu_bg = "#61afef",
-  folder_bg = "#61afef",
-  black3 = "#000000" -- for status line
+  folder_bg = "#61afef"
 }
 
 return colors

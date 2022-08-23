@@ -9,10 +9,10 @@ function louisws -d "working space of louis"
     set -l SESSION_SYS "System"
 
     # OIVAN
-    # initCodeSpace $SESSION_OIVAN $OIVAN_PROJECT
+    initCodeSpace $SESSION_OIVAN $OIVAN_PROJECT
 
     # PRODUCTPINE
-    initCodeSpace $SESSION_PRODUCTPINE $PRODUCTPINE_PROJECT
+    # initCodeSpace $SESSION_PRODUCTPINE $PRODUCTPINE_PROJECT
 
     # System
     tmux kill-session -t $SESSION_SYS

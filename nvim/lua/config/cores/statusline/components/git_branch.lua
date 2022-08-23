@@ -2,6 +2,6 @@ local colors = require 'ui.main_colors'
 
 return {
   provider = "git_branch",
-  hl = {fg = colors.grey_fg2, bg = colors.black3},
+  hl = {fg = colors.status_line_fg, bg = colors.status_line},
   icon = "  "
 }

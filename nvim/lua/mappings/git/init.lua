@@ -11,8 +11,6 @@ vim.keymap.set("n", "<leader>go",
 vim.keymap.set("n", "<leader>1",
                ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_oivan <CR><CR>")
 vim.keymap.set("n", "<leader>2",
-               ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_elxr <CR><CR>")
-vim.keymap.set("n", "<leader>3",
                ":silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/id_rsa_open_source <CR><CR>")
 
 require 'mappings.git.octo'
