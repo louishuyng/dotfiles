@@ -363,6 +363,8 @@ install_tools() {
 
     brew install gum
 
+    brew install entr
+
     success "Installed some fancy tools"
   fi
 }

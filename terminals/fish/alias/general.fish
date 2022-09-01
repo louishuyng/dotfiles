@@ -48,3 +48,6 @@ alias reset='exec fish'
 
 # Utils
 alias size="du -sh"
+
+# Zoxide
+alias zz="z -"
