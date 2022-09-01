@@ -365,6 +365,8 @@ install_tools() {
 
     brew install entr
 
+    brew install xclip
+
     success "Installed some fancy tools"
   fi
 }

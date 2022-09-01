@@ -19,7 +19,7 @@ function louisws -d "working space of louis"
 
     tmux new -d -s $SESSION_SYS -n "dotfiles"
     tmux send-keys -t $SESSION_SYS:1 "cd ~/.dotfiles" Enter
-    tmux send-keys -t $SESSION_SYS:1 "nvim" Enter
+    # tmux send-keys -t $SESSION_SYS:1 "nvim" Enter
 
     tmux new-window -n "hacking"
     tmux -u attach-session -t $SESSION_SYS:1
@@ -46,5 +46,5 @@ function initCodeSpace -d 'helper init code space'
 
   tmux new-window -n "code"
   tmux send-keys -t $SESSION:3.1 "cd $PROJECT_DIR" Enter
-  tmux send-keys -t $SESSION:3.1 "nvim" Enter
+  # tmux send-keys -t $SESSION:3.1 "nvim" Enter
 end

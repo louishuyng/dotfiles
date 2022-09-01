@@ -70,6 +70,7 @@ M.config = function()
   require("telescope").load_extension("ui-select")
   require("telescope").load_extension("flutter")
   require('telescope').load_extension('fzy_native')
+  require("telescope").load_extension("refactoring")
 end
 
 return M

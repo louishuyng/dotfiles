@@ -17,3 +17,5 @@ ts_config.setup {
   indent = {enable = true},
   context_commentstring = {enable = true}
 }
+
+require('refactoring').setup({})

@@ -4,7 +4,6 @@ end
 
 set -U fisher_path ~/.dotfiles/terminals/fish/fisherman
 
-source ~/.dotfiles/terminals/fish/conf.d/asdf.fish
 source ~/.dotfiles/terminals/fish/alias/init.fish
 source ~/.dotfiles/terminals/fish/env/init.fish
 

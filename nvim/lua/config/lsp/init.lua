@@ -5,24 +5,24 @@ vim.cmd [[
   sign define DiagnosticSignHint text=💡 linehl= texthl=DiagnosticSignHint numhl= 
 ]]
 
-vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<CR>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', ',rr', '<cmd>lua vim.lsp.buf.rename()<CR>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'ac', '<cmd>lua vim.lsp.buf.code_action()<CR>',
-                        {noremap = true, silent = true})
+vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>',
+               {noremap = true, silent = true})
+vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<CR>',
+               {noremap = true, silent = true})
+vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>',
+               {noremap = true, silent = true})
+vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>',
+               {noremap = true, silent = true})
+vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>',
+               {noremap = true, silent = true})
+vim.keymap.set('n', ',rr', '<cmd>lua vim.lsp.buf.rename()<CR>',
+               {noremap = true, silent = true})
+vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>',
+               {noremap = true, silent = true})
+vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>',
+               {noremap = true, silent = true})
+vim.keymap.set('n', 'ac', '<cmd>lua vim.lsp.buf.code_action()<CR>',
+               {noremap = true, silent = true})
 
 vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
