@@ -39,7 +39,7 @@ opt.shiftwidth = 2
 opt.smartindent = true
 
 -- Winbar
--- vim.api.nvim_command("set winbar=%m\\ %f")
+vim.api.nvim_command("set winbar=%m\\ %f")
 
 -- DISABLE BUILTIN VIM PLUGINS
 vim.g.loaded_gzip = 0
@@ -60,10 +60,6 @@ vim.opt.listchars:append("eol:↴")
 -- FOLD
 opt.foldmethod = 'indent'
 opt.foldnestmax = 5
--- NOTE: It could be remove when update nvim
--- See: https://github.com/kevinhwang91/nvim-ufo/issues/4
--- vim.o.foldcolumn = '1'
--- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = -1
 

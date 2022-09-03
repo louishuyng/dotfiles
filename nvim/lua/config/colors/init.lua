@@ -1,13 +1,8 @@
 local M = {}
 
-M.init = function(theme)
+M.init = function()
   require('colorbuddy').colorscheme('gruvbuddy')
 
-  if not theme then theme = 'onedark' end
-
-  vim.g.nvchad_theme = theme
-
-  -- unload to force reload
   package.loaded["config.colors.highlights" or false] = nil
   -- then load the highlights
   require "config.colors.highlights"

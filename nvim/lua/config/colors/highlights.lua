@@ -11,15 +11,15 @@ local green = colors.green
 local grey = colors.grey
 local grey_fg = colors.grey_fg
 local nord_blue = colors.nord_blue
-local one_bg = colors.one_bg
-local one_bg2 = colors.one_bg2
+local custom_bg = colors.custom_bg
+local custom_bg2 = colors.custom_bg2
 local pmenu_bg = colors.pmenu_bg
 local purple = colors.purple
 local red = colors.red
 local white = colors.white
 local yellow = colors.yellow
 local orange = colors.orange
-local one_bg3 = colors.one_bg3
+local custom_bg3 = colors.custom_bg3
 
 -- functions for setting highlights
 local fg = require("utils.highlight").fg
@@ -35,9 +35,6 @@ end
 
 -- Disable cursor line
 -- cmd "hi clear CursorLine"
--- Line number
-fg("cursorlinenr", grey)
-bg('CursorLine', grey)
 
 -- same it bg, so it doesn't appear
 fg("EndOfBuffer", black)
@@ -47,8 +44,8 @@ fg("FloatBorder", blue)
 bg("NormalFloat", darker_black)
 
 -- Pmenu
-bg("Pmenu", one_bg)
-bg("PmenuSbar", one_bg2)
+bg("Pmenu", custom_bg)
+bg("PmenuSbar", custom_bg2)
 bg("PmenuSel", pmenu_bg)
 bg("PmenuThumb", nord_blue)
 fg("CmpItemAbbr", white)
@@ -62,15 +59,15 @@ fg_bg("VertSplit", "NONE", "NONE" .. " gui=NONE")
 -- misc
 
 -- inactive statuslines as thin lines
-fg("StatusLineNC", one_bg3 .. " gui=underline")
+fg("StatusLineNC", custom_bg3 .. " gui=underline")
 
 bg("LineNr", "NONE")
 fg("NvimInternalError", red)
-fg("VertSplit", one_bg2)
+fg("VertSplit", white)
 
-bg("Normal", one_bg)
-bg("NormalFloat", one_bg)
-bg("EndOfBuffer", one_bg)
+bg("Normal", custom_bg)
+bg("NormalFloat", custom_bg)
+bg("EndOfBuffer", custom_bg)
 bg("SignColumn", "NONE")
 
 -- [[ Plugin Highlights
@@ -101,7 +98,7 @@ fg("NvimTreeEndOfBuffer", darker_black)
 fg("NvimTreeFolderIcon", folder_bg)
 fg("NvimTreeFolderName", folder_bg)
 fg("NvimTreeGitDirty", red)
-fg("NvimTreeIndentMarker", one_bg2)
+fg("NvimTreeIndentMarker", custom_bg2)
 bg("NvimTreeNormal", darker_black)
 bg("NvimTreeNormalNC", darker_black)
 fg("NvimTreeOpenedFolderName", folder_bg)
@@ -152,6 +149,6 @@ if ui.transparency then
   bg("TelescopePromptNormal", "NONE")
   bg("TelescopeNormal", "NONE")
   bg("TelescopePromptPrefix", "NONE")
-  fg("TelescopeBorder", one_bg)
+  fg("TelescopeBorder", custom_bg)
   fg_bg("TelescopeResultsTitle", black, blue)
 end

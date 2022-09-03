@@ -35,4 +35,4 @@ use {
   "folke/which-key.nvim",
   config = function() require("which-key").setup {} end
 }
-use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'} -- make fold look modern

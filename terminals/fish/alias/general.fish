@@ -1,6 +1,7 @@
 # Text Editor
 alias cat='bat'
-alias nv="nvim"
+# TODO: remove when nvim update version to 0.8
+alias nv="~/development/nvim-dev/bin/nvim" #Nvim dev prerelease
 alias nvt='nvim --cmd "set rtp+=./"'
 alias em="emacs -Q -nw -l ~/.config/emacs/init.el"
 alias c="clear"

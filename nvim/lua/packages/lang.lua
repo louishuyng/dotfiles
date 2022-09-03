@@ -27,4 +27,4 @@ use {
   config = function() require "config.cores.treesitter" end
 }
 use 'nvim-treesitter/nvim-treesitter-context'
-use 'ThePrimeagen/refactoring.nvim'
+use 'mfussenegger/nvim-treehopper'

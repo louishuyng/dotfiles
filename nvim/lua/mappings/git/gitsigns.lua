@@ -6,10 +6,8 @@ M.gitsigns_mappings = function(bufnr)
   local gs = package.loaded.gitsigns
 
   -- Navigation
-  buf_map(bufnr, 'n', ']h', "&diff ? ']h' : '<cmd>Gitsigns next_hunk<CR>'",
-          {expr = true})
-  buf_map(bufnr, 'n', '[h', "&diff ? '[h' : '<cmd>Gitsigns prev_hunk<CR>'",
-          {expr = true})
+  buf_map(bufnr, {'n', 'v'}, ']h', ':Gitsigns next_hunk<CR>')
+  buf_map(bufnr, {'n', 'v'}, '[h', ':Gitsigns prev_hunk<CR>')
 
   -- Actions
   buf_map(bufnr, {'n', 'v'}, 'ga', ':Gitsigns stage_hunk<CR>')

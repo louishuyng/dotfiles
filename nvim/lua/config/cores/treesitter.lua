@@ -5,7 +5,7 @@ ts_config.setup {
   ensure_installed = {
     "go", "graphql", "javascript", "jsdoc", "json", "jsonc", "lua", "python",
     "ruby", "rust", "tsx", "typescript", "yaml", "html", "toml", "vim", "norg",
-    "markdown"
+    "fish", "bash", "markdown"
   },
   matchup = {enable = true},
   highlight = {
@@ -17,5 +17,3 @@ ts_config.setup {
   indent = {enable = true},
   context_commentstring = {enable = true}
 }
-
-require('refactoring').setup({})

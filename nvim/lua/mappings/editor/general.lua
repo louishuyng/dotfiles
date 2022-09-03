@@ -38,6 +38,11 @@ vim.keymap.set("n", "<leader>o", ":call OpenUrlUnderCursor()<CR>", opt)
 -- Replace
 vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/", opt)
 
+-- Yank
+-- " replace currently selected text with default register
+-- " without yanking it
+vim.keymap.set("v", "p", "\"_dP", opt)
+
 -- Notification
 vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)
 

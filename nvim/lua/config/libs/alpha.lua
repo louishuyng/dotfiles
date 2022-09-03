@@ -66,6 +66,7 @@ local buttons = {
 -- FOOTER SECTION
 local function footer_plugins()
   local plugins = #vim.tbl_keys(packer_plugins)
+
   local v = vim.version()
   return string.format(" %s   v%s.%s.%s", plugins, v.major, v.minor,
                        v.patch)
@@ -93,6 +94,6 @@ alpha.setup {
 vim.cmd [[
 augroup alpha_tabline
   au!
-  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=3
+  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=0 ruler laststatus=3
 augroup END
 ]]

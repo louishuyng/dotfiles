@@ -19,3 +19,5 @@ vim.keymap.set("n", "tc", ":Telescope flutter commands<CR>", opt)
 vim.keymap.set("n", "<leader>vrc",
                ":Telescope find_files prompt_title=<VimRC> cwd=~/.dotfiles hidden=true<CR>",
                opt)
+vim.keymap.set("n", "<leader>td",
+               ":TodoTelescope layout_config={'width':0.7}<CR>")

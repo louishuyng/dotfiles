@@ -3,7 +3,7 @@ return function(client)
     local group = vim.api.nvim_create_augroup("LSPFormat", {clear = true})
 
     vim.api.nvim_create_autocmd("BufWritePre", {
-      command = "lua vim.lsp.buf.formatting_sync()",
+      command = "lua vim.lsp.buf.format()",
       group = group
     })
   else
