@@ -36,3 +36,15 @@ use {
   config = function() require("which-key").setup {} end
 }
 use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'} -- make fold look modern
+use "stevearc/dressing.nvim"
+use({
+  "ziontee113/icon-picker.nvim",
+  config = function()
+    require("icon-picker").setup({disable_legacy_commands = true})
+  end
+})
+use { 'gen740/SmoothCursor.nvim',
+  config = function()
+    require('smoothcursor').setup()
+  end
+}
