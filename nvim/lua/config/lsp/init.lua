@@ -32,6 +32,7 @@ vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 -- require "config/lsp/rust"
 -- require "config/lsp/sql"
 require "config/lsp/golang"
+require "config/lsp/kotlin"
 require "config/lsp/lua"
 require "config/lsp/null_ls"
 require "config/lsp/python"
