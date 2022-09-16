@@ -28,3 +28,4 @@ use {
 }
 use 'nvim-treesitter/nvim-treesitter-context'
 use 'mfussenegger/nvim-treehopper'
+use 'is0n/jaq-nvim'
