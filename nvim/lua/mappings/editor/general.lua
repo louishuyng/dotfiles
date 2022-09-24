@@ -22,6 +22,10 @@ vim.keymap.set("n", "<C-d>", ":q!<CR>", opt)
 vim.keymap.set("v", "<C-d>", "<ESC>:q!<CR>", opt)
 vim.keymap.set("i", "<C-d>", "<ESC>:q!<CR>", opt)
 
+vim.keymap.set("n", "<C-b>", "<C-a>", opt)
+vim.keymap.set("v", "<C-b>", "<C-a>", opt)
+vim.keymap.set("v", "g<C-b>", "g<C-a>", opt)
+
 -- Macro Apply Visual
 vim.keymap.set("v", ",m", ":normal @")
 

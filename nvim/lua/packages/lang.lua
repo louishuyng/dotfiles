@@ -27,5 +27,5 @@ use {
   config = function() require "config.cores.treesitter" end
 }
 use 'nvim-treesitter/nvim-treesitter-context'
-use 'mfussenegger/nvim-treehopper'
 use 'is0n/jaq-nvim'
+use 'liuchengxu/vista.vim'

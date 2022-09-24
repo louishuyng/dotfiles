@@ -16,3 +16,6 @@ alias cargb='cargo build'
 alias rnm='rm  -rf node_modules'
 alias npmi='npm install'
 alias rnmai='rm -rf node_modules && yarn'
+
+# Kotlin / Java
+alias glr = './gradlew run'

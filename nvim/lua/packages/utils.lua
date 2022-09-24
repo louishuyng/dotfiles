@@ -43,8 +43,8 @@ use({
     require("icon-picker").setup({disable_legacy_commands = true})
   end
 })
-use { 'gen740/SmoothCursor.nvim',
-  config = function()
-    require('smoothcursor').setup()
-  end
+use {
+  'gen740/SmoothCursor.nvim',
+  config = function() require('smoothcursor').setup() end
 }
+use 'karb94/neoscroll.nvim'
