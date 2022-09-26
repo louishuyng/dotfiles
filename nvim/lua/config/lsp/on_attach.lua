@@ -1,4 +1,4 @@
-return function(client)
+return function(client, bufnr)
   if client.server_capabilities.document_formatting then
     local group = vim.api.nvim_create_augroup("LSPFormat", {clear = true})
 

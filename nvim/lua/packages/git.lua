@@ -9,6 +9,4 @@ use {
   }
 }
 use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
-use {'ruifm/gitlinker.nvim', requires = 'nvim-lua/plenary.nvim'}
 use 'akinsho/git-conflict.nvim'
-use {'ldelossa/gh.nvim', requires = {{'ldelossa/litee.nvim'}}}

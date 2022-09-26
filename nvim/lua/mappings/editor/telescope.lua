@@ -15,6 +15,7 @@ vim.keymap.set("n", "tp", ":Telescope project<CR>", opt)
 
 vim.keymap.set("n", "tb", ":Telescope buffers<CR>", opt)
 vim.keymap.set("n", "tc", ":Telescope flutter commands<CR>", opt)
+vim.keymap.set("n", "tm", ":Telescope keymaps<CR>", opt)
 
 vim.keymap.set("n", "<leader>vrc",
                ":Telescope find_files prompt_title=<VimRC> cwd=~/.dotfiles hidden=true<CR>",

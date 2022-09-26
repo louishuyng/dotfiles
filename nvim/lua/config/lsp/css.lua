@@ -8,8 +8,8 @@ lsp_config.cssls.setup({
     sass = {validate = true},
     scss = {validate = true}
   },
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false
-    on_attach(client)
+    on_attach(client, bufnr)
   end
 })

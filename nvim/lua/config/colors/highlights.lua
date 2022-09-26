@@ -10,6 +10,7 @@ local folder_bg = colors.folder_bg
 local green = colors.green
 local grey = colors.grey
 local grey_fg = colors.grey_fg
+local grey_fg2 = colors.grey_fg2
 local nord_blue = colors.nord_blue
 local custom_bg = colors.custom_bg
 local custom_bg2 = colors.custom_bg2
@@ -38,6 +39,7 @@ end
 
 -- same it bg, so it doesn't appear
 fg("EndOfBuffer", black)
+fg("Directory", green)
 
 -- For floating windows
 fg("FloatBorder", blue)
@@ -55,6 +57,13 @@ fg("CmpItemMenu", white)
 
 -- VertSplit
 fg_bg("VertSplit", "NONE", "NONE" .. " gui=NONE")
+
+-- Tabline
+fg_bg("TabLine", grey_fg2, custom_bg3 .. " gui=NONE")
+fg_bg("TabLineSel", white, custom_bg3 .. " gui=NONE")
+
+-- StatusLine
+fg_bg("StatusLine", white, custom_bg3)
 
 -- misc
 
@@ -83,7 +92,11 @@ fg_bg("DiffText", nord_blue, "NONE")
 fg_bg("DiffChange", grey_fg, "NONE")
 fg_bg("DiffChangeDelete", red, "NONE")
 fg_bg("DiffModified", red, "NONE")
-fg_bg("DiffDelete", red, "NONE")
+fg_bg("DiffDelete", red, custom_bg)
+
+fg_bg("diffDeleted", red, custom_bg)
+fg_bg("diffAdded", green, custom_bg)
+fg_bg("diffChanged", grey_fg, custom_bg)
 
 -- Lsp diagnostics
 

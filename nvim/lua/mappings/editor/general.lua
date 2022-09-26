@@ -15,6 +15,9 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", opt)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opt)
 vim.keymap.set("n", "<C-h>", "<C-w>h", opt)
 
+vim.keymap.set("n", "zb", "<C-d>", opt)
+vim.keymap.set("n", "zt", "<C-u>", opt)
+
 vim.keymap.set("n", "<C-s>", ":w!<CR>", opt)
 vim.keymap.set("v", "<C-s>", "<C-C>:w!<CR>", opt)
 vim.keymap.set("i", "<C-s>", "<C-O>:w!<CR>", opt)
@@ -46,6 +49,9 @@ vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/", opt)
 -- " replace currently selected text with default register
 -- " without yanking it
 vim.keymap.set("v", "p", "\"_dP", opt)
+
+-- Buffer switch remapping
+vim.keymap.set("n", "<C-e>", "<C-^>", opt)
 
 -- Notification
 vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)

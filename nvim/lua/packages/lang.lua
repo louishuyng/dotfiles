@@ -11,7 +11,6 @@ use {
 use "folke/todo-comments.nvim"
 
 -- ROR
-use "vim-test/vim-test"
 use "tpope/vim-rails"
 
 -- TS
@@ -26,6 +25,5 @@ use {
   run = ':TSUpdate',
   config = function() require "config.cores.treesitter" end
 }
-use 'nvim-treesitter/nvim-treesitter-context'
-use 'is0n/jaq-nvim'
 use 'liuchengxu/vista.vim'
+use 'mfussenegger/nvim-dap'

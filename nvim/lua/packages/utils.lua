@@ -23,10 +23,8 @@ use 'justinmk/vim-sneak'
 use 'terryma/vim-multiple-cursors'
 use 'tpope/vim-surround'
 use 'chrisbra/NrrwRgn'
-use 'rcarriga/nvim-notify'
 use {"andymass/vim-matchup", event = "CursorMoved"}
 use 'preservim/vimux'
-use {'loishy/draft-buff', requires = {'MunifTanjim/nui.nvim'}}
 use({
   "iamcco/markdown-preview.nvim",
   run = function() vim.fn["mkdp#util#install"]() end
@@ -35,16 +33,4 @@ use {
   "folke/which-key.nvim",
   config = function() require("which-key").setup {} end
 }
-use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'} -- make fold look modern
-use "stevearc/dressing.nvim"
-use({
-  "ziontee113/icon-picker.nvim",
-  config = function()
-    require("icon-picker").setup({disable_legacy_commands = true})
-  end
-})
-use {
-  'gen740/SmoothCursor.nvim',
-  config = function() require('smoothcursor').setup() end
-}
-use 'karb94/neoscroll.nvim'
+use {'nvim-orgmode/orgmode'}

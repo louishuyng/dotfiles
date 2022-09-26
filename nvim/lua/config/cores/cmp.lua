@@ -26,11 +26,8 @@ cmp.setup {
                                     vim_item.kind)
       if entry.source.name == 'cmp_tabnine' then vim_item.kind = '' end
 
-      vim_item.menu = ({
-        nvim_lsp = "[LSP]",
-        cmp_tabnine = "[Tabnine]",
-        luasnip = "[Snip]"
-      })[entry.source.name]
+      vim_item.menu = ({nvim_lsp = "[LSP]", luasnip = "[Snip]"})[entry.source
+                          .name]
       return vim_item
     end
   },
@@ -68,6 +65,6 @@ cmp.setup {
   },
   sources = {
     {name = "nvim_lsp"}, {name = "luasnip"}, {name = "orgmode"},
-    {name = "cmp_tabnine"}
+    {name = "buffer"}, {name = "calc"}
   }
 }

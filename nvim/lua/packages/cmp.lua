@@ -15,4 +15,5 @@ use {
 }
 use {"saadparwaiz1/cmp_luasnip", after = "LuaSnip"}
 use "hrsh7th/cmp-nvim-lsp"
-use {"tzachar/cmp-tabnine", after = "nvim-cmp", run = './install.sh'}
+use {"hrsh7th/cmp-calc", after = "nvim-cmp"}
+use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
