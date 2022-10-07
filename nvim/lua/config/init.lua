@@ -1,7 +1,5 @@
 require("config.colors").init()
 
-require "config.whichkey"
-
 require "config.cores.navic"
 
 require "config.cores.bqf"

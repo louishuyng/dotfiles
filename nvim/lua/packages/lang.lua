@@ -3,12 +3,6 @@ local use = packer.use
 
 use {"neovim/nvim-lspconfig", config = function() require "config.lsp" end}
 use "jose-elias-alvarez/null-ls.nvim"
-use {
-  "folke/trouble.nvim",
-  config = function() require "config.libs.trouble" end
-}
-
-use "folke/todo-comments.nvim"
 
 -- ROR
 use "tpope/vim-rails"

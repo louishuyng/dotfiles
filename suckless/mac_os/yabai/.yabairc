@@ -118,6 +118,7 @@ yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
 yabai -m rule --add label="Sourcetree" app="^Sourcetree$" manage=off
 yabai -m rule --add label="Clean My Mac" app="^CleanMyMac X$" manage=off
 yabai -m rule --add app="Finder" manage=off  opacity=1 
+yabai -m rule --add app="^Notes$"      opacity=1 manage=off
 
 
 # show digital colour meter topmost and on all spaces

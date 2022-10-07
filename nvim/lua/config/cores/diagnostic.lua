@@ -9,7 +9,7 @@ vim.fn.sign_define("DiagnosticSignHint",
 
 vim.diagnostic.config({
   float = {source = "always"},
-  virtual_text = false, -- , source = 'always'},
+  virtual_text = true,
   underline = true,
   signs = true,
   update_in_insert = false,

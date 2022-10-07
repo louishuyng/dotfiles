@@ -29,8 +29,4 @@ use({
   "iamcco/markdown-preview.nvim",
   run = function() vim.fn["mkdp#util#install"]() end
 })
-use {
-  "folke/which-key.nvim",
-  config = function() require("which-key").setup {} end
-}
 use {'nvim-orgmode/orgmode'}

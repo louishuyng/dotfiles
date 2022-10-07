@@ -81,10 +81,13 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
 
 -- Abbreviations
-vim.cmd('abbrev @@ huynguyennbk@gmail.com')
-vim.cmd('abbrev sname Louis Nguyen')
-vim.cmd('abbrev spass 123456')
+-- === General
+vim.cmd('abbrev mgmail huynguyennbk@gmail.com')
+vim.cmd('abbrev mname Louis Nguyen')
 vim.cmd('abbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit')
+-- === Ruby
+vim.cmd('abbrev rubocopd rubocop:disable ')
+vim.cmd('abbrev rubocopo rubocop:disable ')
 
 -- LSP
 vim.g.auto_format = true
@@ -93,3 +96,6 @@ vim.g.auto_format = true
 vim.opt.diffopt = {
   "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical"
 }
+
+-- Grep
+vim.cmd('set grepprg=rg\\ --vimgrep\\ --smart-case\\ --follow')
