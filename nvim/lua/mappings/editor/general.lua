@@ -43,7 +43,7 @@ vim.keymap.set("v", "<S-k>", ":m-2<CR>gv=gv", opt)
 vim.keymap.set("v", "<leader>so", ":sort<CR>", opt)
 
 -- Open URL
-vim.keymap.set("n", "<leader>o", ":call OpenUrlUnderCursor()<CR>", opt)
+vim.keymap.set("n", "<leader><CR>", ":call OpenUrlUnderCursor()<CR>", opt)
 
 -- Replace
 vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/", opt)

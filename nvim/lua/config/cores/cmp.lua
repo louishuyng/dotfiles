@@ -64,7 +64,7 @@ cmp.setup {
     end, {"i", "s"})
   },
   sources = {
-    {name = "nvim_lsp"}, {name = "luasnip"}, {name = "orgmode"},
-    {name = "buffer"}, {name = "calc"}
+    {name = "nvim_lsp"}, {name = "luasnip"}, {name = "buffer"}, {name = "calc"},
+    {name = 'neorg'}
   }
 }

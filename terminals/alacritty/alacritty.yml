@@ -439,6 +439,12 @@ debug:
 #   - ~AppKeypad
 #   - AppKeypad
 key_bindings:
+  # Tmux Moving Session
+  - { key: O,   mods: Command, chars: "\x01\x73\x30\x0a" } # Org mode session switch
+  - { key: D,   mods: Command, chars: "\x01\x73\x31\x0a" } # Work mode session switch
+  - { key: S,   mods: Command, chars: "\x01\x73\x32\x0a" } # System mode session switch
+
+
   # (Windows/Linux only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
   #- { key: C,        mods: Control|Shift, action: Copy             }

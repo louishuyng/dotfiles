@@ -19,6 +19,7 @@ return packer.startup {
     require 'packages.testing'
     require 'packages.ui'
     require 'packages.utils'
+    require 'packages.workflow'
 
     require 'config'
   end,

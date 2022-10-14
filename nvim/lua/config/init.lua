@@ -6,7 +6,7 @@ require "config.cores.bqf"
 require "config.cores.diagnostic"
 require "config.cores.git"
 require "config.cores.heirline"
-require "config.cores.orgmode"
+require "config.cores.org"
 require "config.cores.sneak"
 require "config.cores.tree"
 

@@ -68,11 +68,6 @@ vim.api.nvim_create_autocmd("CursorMoved", {
   desc = "Clear cursor diagnostics"
 })
 
-vim.keymap.set("n", "<leader>ld",
-               function() vim.diagnostic.open_float({scope = "line"}) end,
-               {desc = "Show line diagnostics"})
-vim.keymap.set("n", "<leader>lq", vim.diagnostic.setqflist,
-               {desc = "Send diagnostics to quickfix"})
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
                {desc = "Go to previous diagnostic"})
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next,

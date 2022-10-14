@@ -1,5 +1,7 @@
 return function(client, bufnr)
   if client.server_capabilities.document_formatting then
+    if vim.bo.filetype == 'norg' then return end
+
     local group = vim.api.nvim_create_augroup("LSPFormat", {clear = true})
 
     vim.api.nvim_create_autocmd("BufWritePre", {

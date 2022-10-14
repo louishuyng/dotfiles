@@ -20,7 +20,7 @@ use {
 use 'numToStr/Comment.nvim'
 use 'tpope/vim-eunuch'
 use 'justinmk/vim-sneak'
-use 'terryma/vim-multiple-cursors'
+use 'mg979/vim-visual-multi'
 use 'tpope/vim-surround'
 use 'chrisbra/NrrwRgn'
 use {"andymass/vim-matchup", event = "CursorMoved"}
@@ -29,4 +29,3 @@ use({
   "iamcco/markdown-preview.nvim",
   run = function() vim.fn["mkdp#util#install"]() end
 })
-use {'nvim-orgmode/orgmode'}
