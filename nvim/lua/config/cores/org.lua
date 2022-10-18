@@ -41,6 +41,7 @@ neorg.setup({
       }
     },
     ["core.export.markdown"] = {config = {extensions = "all"}},
-    ["core.norg.journal"] = {}
+    ["core.norg.journal"] = {},
+    ["core.presenter"] = {config = {zen_mode = "zen-mode"}}
   }
 })

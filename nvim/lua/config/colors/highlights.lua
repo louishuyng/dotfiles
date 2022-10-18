@@ -59,7 +59,7 @@ fg("CmpItemMenu", white)
 fg_bg("VertSplit", "NONE", "NONE" .. " gui=NONE")
 
 -- Tabline
-fg_bg("TabLine", grey_fg2, custom_bg3 .. " gui=NONE")
+fg_bg("TabLine", grey_fg2, custom_bg .. " gui=NONE")
 fg_bg("TabLineSel", white, custom_bg3 .. " gui=NONE")
 
 -- StatusLine

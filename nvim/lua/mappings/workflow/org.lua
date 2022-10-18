@@ -5,3 +5,4 @@ vim.keymap.set('n', '<leader>owl', ':Neorg workspace life<CR>', opts)
 
 vim.keymap.set('n', '<leader>oj', ':Neorg journal ')
 vim.keymap.set('n', '<leader>ot', ':Neorg journal toc update<CR>')
+vim.keymap.set('n', '<leader>op', ':Neorg presenter start<CR>')

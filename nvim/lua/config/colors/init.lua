@@ -1,7 +1,7 @@
 local M = {}
 
 M.init = function()
-  require('colorbuddy').colorscheme('gruvbuddy')
+  vim.cmd('colorscheme onedark')
 
   package.loaded["config.colors.highlights" or false] = nil
   -- then load the highlights
