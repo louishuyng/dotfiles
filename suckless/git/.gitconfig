@@ -28,8 +28,6 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[commit]
-	template = /Users/louis/.stCommitMsg
 [push]
 	default = current
 [rebase]
@@ -39,5 +37,7 @@
   path = ~/.gitconfig-oivan
 [includeIf "~/Dev/Projects/Productpine/"]
   path = ~/.gitconfig-open-source
+[includeIf "~/Dev/Projects/Techchain/"]
+  path = ~/.gitconfig-khai-clone
 [includeIf "~/.dotfiles/"]
   path = ~/.gitconfig-open-source

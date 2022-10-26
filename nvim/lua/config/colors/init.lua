@@ -1,7 +1,7 @@
 local M = {}
 
 M.init = function()
-  vim.cmd('colorscheme darkspace')
+  vim.cmd('colorscheme nightfox')
 
   package.loaded["config.colors.highlights" or false] = nil
   -- then load the highlights

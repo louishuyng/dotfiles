@@ -88,12 +88,3 @@ alpha.setup {
   },
   opts = {}
 }
-
--- OTHERS
--- hide tabline and statusline on startup screen
-vim.cmd [[
-augroup alpha_tabline
-  au!
-  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=0 ruler laststatus=3
-augroup END
-]]

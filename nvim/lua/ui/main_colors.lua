@@ -1,9 +1,9 @@
 local colors = {
   white = "#abb2bf",
-  darker_black = "#1b1f27",
   black = "#1e222a",
+  pure_black = "#000000",
   black2 = "#252931",
-  custom_bg = "#282C34", -- nvim bg
+  custom_bg = "#252B32", -- nvim bg
   custom_bg2 = "#353b45",
   custom_bg3 = "#30343c",
   grey = "#42464e",
@@ -16,8 +16,12 @@ local colors = {
   yellow = "#e7c787",
   purple = "#de98fd",
   orange = "#fca2aa",
-  pmenu_bg = "#61afef",
-  folder_bg = "#61afef"
+  folder_bg = "#2C2D31",
+  telescope_bg = "#1E1E1E",
+  folder_fg = "#61afef",
+  winbar = "NONE",
+  winbar_inactive = "NONE",
+  statusline = "#2D3746"
 }
 
 return colors

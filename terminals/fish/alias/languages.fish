@@ -1,10 +1,12 @@
 # ROR
 alias bdi='bundle install'
 alias bdu='bundle update --bundler'
-alias railst='bundle exec rspec'
-alias railss='bundle exec rails s -p'
-alias railsm='bundle exec rails db:migrate'
-alias railsg='bundle exec rails generate'
+alias rspec='bundle exec rspec'
+alias rs='bundle exec rails s'
+alias rc='bundle exec rails c'
+alias rmu='bundle exec rails db:migrate'
+alias rmd='bundle exec rails db:rollback'
+alias rgm='bundle exec rails generate migration'
 
 # RUST
 alias cargn='cargo new'

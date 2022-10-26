@@ -4,9 +4,11 @@ local ui = {hl_override = "", italic_comments = false, transparency = false}
 
 local black = colors.black
 local black2 = colors.black2
+local pure_black = colors.pure_black
 local blue = colors.blue
-local darker_black = colors.darker_black
+local telescope_bg = colors.telescope_bg
 local folder_bg = colors.folder_bg
+local folder_fg = colors.folder_fg
 local green = colors.green
 local grey = colors.grey
 local grey_fg = colors.grey_fg
@@ -14,72 +16,28 @@ local grey_fg2 = colors.grey_fg2
 local nord_blue = colors.nord_blue
 local custom_bg = colors.custom_bg
 local custom_bg2 = colors.custom_bg2
-local pmenu_bg = colors.pmenu_bg
 local purple = colors.purple
 local red = colors.red
 local white = colors.white
 local yellow = colors.yellow
 local orange = colors.orange
 local custom_bg3 = colors.custom_bg3
+local statusline = colors.statusline
+local winbar = colors.winbar
+local winbar_inactive = colors.winbar_inactive
 
 -- functions for setting highlights
 local fg = require("utils.highlight").fg
 local fg_bg = require("utils.highlight").fg_bg
 local bg = require("utils.highlight").bg
 
--- Comments
-if ui.italic_comments then
-  fg("Comment", grey_fg .. " gui=italic")
-else
-  fg("Comment", grey_fg)
-end
-
--- Disable cursor line
--- cmd "hi clear CursorLine"
-bg("CursorLine", custom_bg3)
-bg("CursorLineNr", custom_bg3)
-
--- same it bg, so it doesn't appear
-fg("EndOfBuffer", black)
-fg("Directory", green)
-
--- For floating windows
-fg("FloatBorder", blue)
-bg("NormalFloat", darker_black)
-
--- Pmenu
-bg("Pmenu", custom_bg)
-bg("PmenuSbar", custom_bg2)
-bg("PmenuSel", pmenu_bg)
-bg("PmenuThumb", nord_blue)
-fg("CmpItemAbbr", white)
-fg("CmpItemAbbrMatch", white)
-fg("CmpItemKind", white)
-fg("CmpItemMenu", white)
-
--- VertSplit
-fg_bg("VertSplit", "NONE", "NONE" .. " gui=NONE")
-
--- Tabline
-fg_bg("TabLine", grey_fg2, custom_bg .. " gui=NONE")
-fg_bg("TabLineSel", white, custom_bg3 .. " gui=NONE")
-
--- StatusLine
-fg_bg("StatusLine", white, custom_bg3)
-
--- misc
-
--- inactive statuslines as thin lines
-fg("StatusLineNC", custom_bg3 .. " gui=underline")
-
-bg("LineNr", "NONE")
-fg("NvimInternalError", red)
-fg("VertSplit", white)
-
+-- Background
 bg("Normal", custom_bg)
-bg("NormalFloat", custom_bg)
+bg("NormalNC", custom_bg)
 bg("EndOfBuffer", custom_bg)
-bg("SignColumn", "NONE")
+bg("WinBar", winbar)
+bg("WinBarNC", winbar_inactive)
+bg("CursorLine", grey)
 
 -- [[ Plugin Highlights
 
@@ -107,43 +65,43 @@ fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
 
+-- Navic
+fg_bg("TSNamespace", white, statusline)
+fg_bg("TSProperty", white, statusline)
+fg_bg("TSField", white, statusline)
+fg_bg("TSConstructor", white, statusline)
+fg_bg("TSField", white, statusline)
+fg_bg("TSVariable", white, statusline)
+fg_bg("TSKeyword", white, statusline)
+fg_bg("TSField", white, statusline)
+
 -- NvimTree
-fg("NvimTreeEmptyFolderName", folder_bg)
-fg("NvimTreeEndOfBuffer", darker_black)
-fg("NvimTreeFolderIcon", folder_bg)
-fg("NvimTreeFolderName", folder_bg)
+fg("NvimTreeEmptyFolderName", folder_fg)
+fg("NvimTreeEndOfBuffer", folder_bg)
+fg("NvimTreeFolderIcon", folder_fg)
+fg("NvimTreeFolderName", folder_fg)
 fg("NvimTreeGitDirty", red)
-fg("NvimTreeIndentMarker", custom_bg2)
-bg("NvimTreeNormal", darker_black)
-bg("NvimTreeNormalNC", darker_black)
-fg("NvimTreeOpenedFolderName", folder_bg)
+fg("NvimTreeIndentMarker", white)
+bg("NvimTreeNormal", folder_bg)
+bg("NvimTreeNormalNC", folder_bg)
+fg("NvimTreeOpenedFolderName", folder_fg)
 fg("NvimTreeRootFolder", red .. " gui=underline") -- enable underline for root folder in nvim tree
-fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
-fg("NvimTreeVertSplit", darker_black)
-bg("NvimTreeVertSplit", darker_black)
+fg_bg("NvimTreeStatuslineNc", folder_bg, folder_bg)
+fg("NvimTreeVertSplit", folder_bg)
+bg("NvimTreeVertSplit", folder_bg)
 fg_bg("NvimTreeWindowPicker", red, black2)
 
 -- Telescope
-fg_bg("TelescopeBorder", darker_black, darker_black)
+fg_bg("TelescopeBorder", telescope_bg, telescope_bg)
 fg_bg("TelescopePromptBorder", black2, black2)
-
 fg_bg("TelescopePromptNormal", white, black2)
 fg_bg("TelescopePromptPrefix", red, black2)
-
-bg("TelescopeNormal", darker_black)
-
+bg("TelescopeNormal", telescope_bg)
 fg_bg("TelescopePreviewTitle", black, green)
 fg_bg("TelescopePromptTitle", black, red)
 fg_bg("TelescopeResultsTitle", black, yellow)
 
 bg("TelescopeSelection", black2)
-
-local section_title_colors = {white, blue, red, green, yellow, purple, orange}
-for i, color in ipairs(section_title_colors) do
-  vim.cmd(
-      "highlight CheatsheetTitle" .. i .. " guibg = " .. color .. " guifg=" ..
-          black)
-end
 
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then

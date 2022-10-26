@@ -19,9 +19,6 @@ opt.clipboard = "unnamedplus"
 opt.scrolloff = 999
 opt.sidescrolloff = 999
 
--- CURSOR
-opt.gcr = 'a:blinkon0'
-
 -- SWAPFILE
 vim.g.noswapfile = true
 vim.g.nobackup = true
@@ -52,7 +49,12 @@ vim.g.loaded_spec = 0
 
 -- LIST
 vim.opt.list = true
-vim.opt.listchars:append("eol:↴")
+vim.opt.listchars:append("eol:↲")
+vim.opt.listchars:append("tab:» ")
+vim.opt.listchars:append("trail:·")
+vim.opt.listchars:append("extends:<")
+vim.opt.listchars:append("precedes:>")
+vim.opt.listchars:append("conceal:┊")
 
 -- FOLD
 opt.foldmethod = 'indent'
@@ -99,3 +101,14 @@ vim.opt.diffopt = {
 
 -- Grep
 vim.cmd('set grepprg=rg\\ --vimgrep\\ --smart-case\\ --follow')
+
+-- Winbar
+vim.api.nvim_command("set winbar=%m\\ %f")
+
+-- hide tabline and statusline on startup screen
+vim.cmd [[
+augroup alpha_tabline
+  au!
+  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=1 ruler laststatus=3
+augroup END
+]]

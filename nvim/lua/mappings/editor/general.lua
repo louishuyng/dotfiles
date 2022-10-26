@@ -1,4 +1,4 @@
-local opt = {silent = true}
+local opt = {silent = true, noremap = true}
 
 -- General
 vim.keymap.set("n", ",h", ":<C-u>split<CR>", opt)
@@ -58,6 +58,9 @@ vim.keymap.set("n", "<C-e>", "<C-^>", opt)
 
 -- Notification
 vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)
+
+-- ZenMode
+vim.keymap.set("n", "<C-w>o", ":ZenMode<CR>", opt)
 
 -- Packer
 vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>", opt)

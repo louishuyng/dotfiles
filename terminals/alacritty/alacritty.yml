@@ -60,7 +60,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Windowed
+  startup_mode: Fullscreen
 
   # Window title
   title: Alacritty
@@ -178,12 +178,22 @@ draw_bold_text_with_bright_colors: true
 # KDE Breeze (Ported from Konsole)
 colors:
   primary:
-    background: "0x282C34"
+    background: "0x252B32"
     foreground: "0x979eab"
 
   cursor:
     text: "0x5c6370"
     cursor: "0x48e566"
+
+ # Vi mode cursor colors
+ #
+ #  Colors for the cursor when the vi mode is active.
+ #
+ #  Allowed values are CellForeground/CellBackground, which reference the
+ #  affected cell, or hexadecimal colors like #ff00ff.
+  vi_mode_cursor:
+   text: CellBackground
+   cursor: CellForeground
 
 # Visual Bell
 #
@@ -440,10 +450,9 @@ debug:
 #   - AppKeypad
 key_bindings:
   # Tmux Moving Session
-  - { key: O,   mods: Command, chars: "\x01\x73\x30\x0a" } # Org mode session switch
-  - { key: D,   mods: Command, chars: "\x01\x73\x31\x0a" } # Work mode session switch
-  - { key: S,   mods: Command, chars: "\x01\x73\x32\x0a" } # System mode session switch
-
+  - { key: J,   mods: Alt, chars: "\x01\x73\x30\x0a" } # Org mode session switch
+  - { key: K,   mods: Alt, chars: "\x01\x73\x31\x0a" } # Work mode session switch
+  - { key: L,   mods: Alt, chars: "\x01\x73\x32\x0a" } # System mode session switch
 
   # (Windows/Linux only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
@@ -538,8 +547,8 @@ key_bindings:
   #- { key: Minus,  mods: Command,         action: DecreaseFontSize }
   #- { key: K,      mods: Command,         action: ClearHistory     }
   #- { key: K,      mods: Command,         chars: "\x0c"            }
-  #- { key: V,      mods: Command,         action: Paste            }
-  #- { key: C,      mods: Command,         action: Copy             }
+  - { key: V,      mods: Command,         action: Paste            }
+  - { key: C,      mods: Command,         action: Copy             }
   #- { key: H,      mods: Command,         action: Hide             }
   #- { key: Q,      mods: Command,         action: Quit             }
   #- { key: W,      mods: Command,         action: Quit             }
@@ -566,8 +575,6 @@ key_bindings:
   - { key: PageDown, mods: Alt, chars: "\x1b[6;3~" }
   - { key: PageDown, chars: "\x1b[6~" }
   - { key: Tab, mods: Shift, chars: "\x1b[Z" }
-  - { key: Back, chars: "\x7f" }
-  - { key: Back, mods: Alt, chars: "\x1b\x7f" }
   - { key: Insert, chars: "\x1b[2~" }
   - { key: Delete, chars: "\x1b[3~" }
   - { key: Left, mods: Shift, chars: "\x1b[1;2D" }

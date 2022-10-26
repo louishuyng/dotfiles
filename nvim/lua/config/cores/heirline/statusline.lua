@@ -45,9 +45,7 @@ local ViMode = {
       t = "T"
     }
   },
-  provider = function(self)
-    return " %2(" .. self.mode_names[self.mode] .. "%)"
-  end,
+  provider = function(self) return "%2(" .. self.mode_names[self.mode] .. "%)" end,
   hl = function(self)
     local color = self:mode_color()
     return {fg = color, bold = true}
@@ -71,6 +69,18 @@ local ScrollBar = {
     local line_ratio = current_line / total_lines
     local index = math.ceil(line_ratio * #chars)
     return "  " .. chars[index]
+  end
+}
+
+local FileType = {
+  provider = function() return string.upper(vim.bo.filetype) end,
+  hl = "Type"
+}
+
+local FileEncoding = {
+  provider = function()
+    local enc = (vim.bo.fenc ~= "" and vim.bo.fenc) or vim.o.enc -- :h 'enc'
+    return enc ~= "utf-8" and enc:upper()
   end
 }
 
@@ -107,7 +117,7 @@ local Navic = {
       Method = "Method",
       Property = "TSProperty",
       Field = "TSField",
-      Constructor = "TSConstructor ",
+      Constructor = "TSConstructor",
       Enum = "TSField",
       Interface = "Type",
       Function = "Function",
@@ -138,7 +148,7 @@ local Navic = {
         }
       }
       if #data > 1 and i < #data then
-        table.insert(child, {provider = " > ", hl = {fg = "bright_fg"}})
+        table.insert(child, {provider = " > ", hl = {fg = "purple"}})
       end
       table.insert(children, child)
     end
@@ -320,19 +330,23 @@ local WorkDir = {
     callback = function() vim.cmd("NvimTreeToggle") end,
     name = "heirline_workdir"
   },
-
-  utils.make_flexible_component(1, {
-    provider = function(self)
-      local trail = self.cwd:sub(-1) == "/" and "" or "/"
-      return self.icon .. self.cwd .. trail .. " "
-    end
-  }, {
-    provider = function(self)
-      local cwd = vim.fn.pathshorten(self.cwd)
-      local trail = self.cwd:sub(-1) == "/" and "" or "/"
-      return self.icon .. cwd .. trail .. " "
-    end
-  }, {provider = ""})
+  {
+    flexible = 1,
+    {
+      provider = function(self)
+        local trail = self.cwd:sub(-1) == "/" and "" or "/"
+        return self.icon .. self.cwd .. trail .. " "
+      end
+    },
+    {
+      provider = function(self)
+        local cwd = vim.fn.pathshorten(self.cwd)
+        local trail = self.cwd:sub(-1) == "/" and "" or "/"
+        return self.icon .. cwd .. trail .. " "
+      end
+    },
+    {provider = ""}
+  }
 }
 
 local HelpFilename = {
@@ -355,13 +369,13 @@ ViMode = utils.surround({"", ""}, "bg", {ViMode})
 local Align = {provider = "%="}
 local Space = {provider = " "}
 
+local NavicFlexible = {flexible = 3, Navic, {provider = ""}}
+
+local SpaceFileFlexible = {flexible = 3, Space, FileEncoding, {provider = ""}}
 local DefaultStatusline = {
   ViMode, Space, Spell, WorkDir, {provider = "%<"}, Space, Git, Space,
-  Diagnostics, Align, utils.make_flexible_component(3, Navic, {provider = ""}),
-  Align, DAPMessages, LSPActive, Space, -- UltTest,
-  Space, FileType,
-  utils.make_flexible_component(3, {Space, FileEncoding}, {provider = ""}),
-  Space, Ruler, Space, ScrollBar
+  Diagnostics, Align, NavicFlexible, Align, DAPMessages, LSPActive, Space, -- UltTest,
+  Space, FileType, SpaceFileFlexible, Space, Ruler, Space, ScrollBar
   -- {
   --     provider = function()
   --         return vim.inspect(utils.get_highlight('StatusLine'))
@@ -404,13 +418,7 @@ local GitStatusline = {
 local M = {}
 
 M.StatusLines = {
-  hl = function()
-    if conditions.is_active() then
-      return "StatusLine"
-    else
-      return "StatusLineNC"
-    end
-  end,
+  hl = {bg = "bg"},
   static = {
     mode_colors = {
       n = "red",
