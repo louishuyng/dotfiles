@@ -36,6 +36,8 @@ end
 
 -- Disable cursor line
 -- cmd "hi clear CursorLine"
+bg("CursorLine", custom_bg3)
+bg("CursorLineNr", custom_bg3)
 
 -- same it bg, so it doesn't appear
 fg("EndOfBuffer", black)

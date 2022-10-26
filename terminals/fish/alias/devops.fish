@@ -9,23 +9,22 @@ alias dcud="docker-compose up -d"
 alias dce="docker-compose exec"
 alias dps="docker ps -a"
 alias dpsa="docker ps -a"
-alias dkr="open -a 'Docker'"
-alias dks="killall Docker"
-alias dkc="docker system prune"
+alias dr="open -a 'Docker'"
+alias ds="killall Docker"
+alias dc="docker system prune"
 
 #K8S
-alias k8smd='minikd'
-alias k8s='kubectl'
+alias km='minikd'
+alias k='kubectl'
 
 # Basic Commands
-alias k8sa='kubectl apply'
-alias k8sc='kubectl create'
-alias k8sdel='kubectl delete'
-alias k8sdes='kubectl describe'
-alias k8sed='kubectl edit'
-alias k8sex='kubectl exec'
-alias k8sg='kubectl get'
-alias k8sl='kubectl logs'
+alias ka='kubectl apply'
+alias kc='kubectl create'
+alias kd='kubectl delete'
+alias kds='kubectl describe'
+alias ked='kubectl edit'
+alias kg='kubectl get'
+alias kl='kubectl logs'
 
 #Kubectx
 alias k8sns='kubens'

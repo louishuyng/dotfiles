@@ -1,7 +1,7 @@
 local packer = require "packer"
 local use = packer.use
 
-use 'joshdick/onedark.vim'
+use 'nn1ks/vim-darkspace'
 use 'tjdevries/cyclist.vim'
 use 'kyazdani42/nvim-web-devicons'
 
