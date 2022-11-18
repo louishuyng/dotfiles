@@ -75,3 +75,6 @@ fish_add_path $HOME/.config/scripts
 
 # # GNU sed
 fish_add_path /usr/local/opt/gnu-sed/libexec/gnubin
+
+# Emacs
+fish_add_path ~/.emacs.d/bin/

@@ -2,7 +2,7 @@
 alias cat='bat'
 alias nv="nvim"
 alias nvt='nvim --cmd "set rtp+=./"'
-alias em="emacs -Q -nw -l ~/.config/emacs/init.el"
+alias em="emacs -nw"
 alias c="clear"
 
 # History
