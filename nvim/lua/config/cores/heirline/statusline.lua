@@ -142,7 +142,7 @@ local Navic = {
     local children = {}
     for i, d in ipairs(data) do
       local child = {
-        {provider = d.icon .. " ", hl = self.type_hl[d.type]}, {
+        {provider = d.icon .. " ", hl = {fg = "green"}}, {
           provider = d.name
           -- hl = self.type_hl[d.type],
         }

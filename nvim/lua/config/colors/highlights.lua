@@ -65,16 +65,6 @@ fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
 
--- Navic
-fg_bg("TSNamespace", white, statusline)
-fg_bg("TSProperty", white, statusline)
-fg_bg("TSField", white, statusline)
-fg_bg("TSConstructor", white, statusline)
-fg_bg("TSField", white, statusline)
-fg_bg("TSVariable", white, statusline)
-fg_bg("TSKeyword", white, statusline)
-fg_bg("TSField", white, statusline)
-
 -- NvimTree
 fg("NvimTreeEmptyFolderName", folder_fg)
 fg("NvimTreeEndOfBuffer", folder_bg)
