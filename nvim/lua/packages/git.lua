@@ -4,7 +4,7 @@ local use = packer.use
 use {
   "tpope/vim-fugitive",
   cmd = {
-    "Git", "Gstatus", "Gwrite", "Gcommit", "Gpush", "Gpull", "Gvdiff", "Gdiff",
+    "Git", "Gstatus", "Gcommit", "Gpush", "Gpull", "Gvdiff", "Gdiff",
     "Git blame", "Git mergetool"
   }
 }
