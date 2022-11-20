@@ -450,9 +450,9 @@ debug:
 #   - AppKeypad
 key_bindings:
   # Tmux Moving Session
-  - { key: J,   mods: Command, chars: "\x01\x73\x30\x0a" } # Org mode session switch
-  - { key: K,   mods: Command, chars: "\x01\x73\x31\x0a" } # Work mode session switch
-  - { key: L,   mods: Command, chars: "\x01\x73\x32\x0a" } # System mode session switch
+  - { key: Q,   mods: Alt, chars: "\x01\x73\x30\x0a" } # Org mode session switch
+  - { key: W,   mods: Alt, chars: "\x01\x73\x31\x0a" } # Work mode session switch
+  - { key: E,   mods: Alt, chars: "\x01\x73\x32\x0a" } # System mode session switch
 
   # (Windows/Linux only)
   #- { key: V,        mods: Control|Shift, action: Paste            }

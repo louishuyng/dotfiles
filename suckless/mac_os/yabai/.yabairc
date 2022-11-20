@@ -94,6 +94,7 @@ yabai -m rule --add app="Obsidian"         opacity=1 manage=off    space=view
 yabai -m rule --add app="^Microsoft Word$" opacity=1 manage=off    space=view
 yabai -m rule --add app="^Microsoft Excel$" opacity=1 manage=off   space=view
 yabai -m rule --add app="^Microsoft PowerPoint$" opacity=1 manage=off    space=view
+yabai -m rule --add app="Logseq" opacity=1 manage=off    space=view
 
 # Social
 yabai -m rule --add app="Slack" title="Slack"      opacity=1 manage=off space=social

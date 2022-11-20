@@ -105,6 +105,19 @@ install_zsh() {
   fi
 }
 
+install_fish() {
+  read -r -p "Do you want to install fish? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    sudo pacman -S fish
+    curl -sL https://git.io/fisher | source
+
+    sudo chsh -s "$(which fish)"
+    fisher update
+    
+    success "Installed fish"
+  fi
+}
+
 install_font() {
   read -r -p "Do you want to install font? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -132,6 +145,19 @@ install_nvim() {
     success "Installed neovim"
   fi
 }
+
+install_tmux() {
+  read -r -p "Do you want to install tmux? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    sudo pacman -S tmux
+    rm ~/.tmux.conf
+    cd ~/.dotfiles/terminals && stow tmux -t ~/
+
+    rm -rf ~/.tmux/plugins/tpm
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+}
+
 
 install_languages() {
   read -r -p "Do you want to install languages? [y|N] " response
@@ -183,12 +209,18 @@ link_all_dotfiles() {
 
   rm -rf ~/.zshrc
 
-  cd ~/.dotfiles/terminals && stow zsh -t ~/
+  mkdir -p ~/.config/fish
+
+  cd ~/.dotfiles/terminals && stow zsh -t ~/ && \
+    stow fish -t ~/.config/fish
   success "Linked terminals"
 
   mkdir -p ~/.config/nvim
   cd ~/.dotfiles && stow nvim -t ~/.config/nvim
   success "Linked neovim"
+
+  cd ~/.dotfiles/terminals && \
+  success "Linked fish"
 
   cd ~/.dotfiles && stow emacs -t ~/
   success "Linked emacs"
@@ -206,6 +238,7 @@ install_libs
 setup_git
 install_ninja
 install_zsh
+install_fish
 install_font
 install_nvim
 link_all_dotfiles
