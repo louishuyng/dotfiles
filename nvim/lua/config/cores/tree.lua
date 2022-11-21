@@ -5,9 +5,9 @@ require("nvim-tree").setup({
   open_on_setup = false,
   ignore_ft_on_setup = {},
   open_on_tab = false,
-  update_to_buf_dir = {enable = true, auto_open = true, auto_close = false},
+  update_to_buf_dir = {enable = true, auto_open = false, auto_close = false},
   hijack_cursor = false,
-  update_cwd = true,
+  update_cwd = false,
   update_focused_file = {
     enable = true,
     update_cwd = false,
@@ -15,8 +15,8 @@ require("nvim-tree").setup({
   },
   system_open = {cmd = nil, args = {}},
   filters = {dotfiles = false, custom = {}},
-  git = {enable = true},
-  diagnostics = {enable = true},
+  git = {enable = false},
+  diagnostics = {enable = false},
   view = {
     side = 'right',
     adaptive_size = true,
