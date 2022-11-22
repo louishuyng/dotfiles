@@ -23,7 +23,10 @@ use 'justinmk/vim-sneak'
 use 'mg979/vim-visual-multi'
 use 'tpope/vim-surround'
 use 'chrisbra/NrrwRgn'
-use {"andymass/vim-matchup", event = "CursorMoved"}
+use {
+  "andymass/vim-matchup",
+  setup = function() vim.g.matchup_matchparen_offscreen = {method = "popup"} end
+}
 use 'preservim/vimux'
 use({
   "iamcco/markdown-preview.nvim",

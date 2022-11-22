@@ -194,6 +194,9 @@ install_font() {
     brew tap homebrew/cask-fonts
     brew install font-hack-nerd-font
 
+    # Better font display on Mac
+    defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+
     success "Installed font!"
   fi
 }

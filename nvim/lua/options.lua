@@ -56,6 +56,17 @@ vim.opt.listchars:append("extends:<")
 vim.opt.listchars:append("precedes:>")
 vim.opt.listchars:append("conceal:┊")
 
+-- Fillchars
+vim.opt.fillchars = {
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft = '┫',
+  vertright = '┣',
+  verthoriz = '╋'
+}
+
 -- FOLD
 opt.foldmethod = 'indent'
 opt.foldnestmax = 5

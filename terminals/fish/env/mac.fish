@@ -14,6 +14,7 @@ fish_add_path /Applications/qutebrowser.app/Contents/MacOS
 fish_add_path $HOME/development/flutter/bin
 #
 # #Android
+set -gx ANDROID_HOME ~/Library/Android/sdk
 fish_add_path $HOME/Library/Android/sdk
 fish_add_path $ANDROID_HOME/emulator
 fish_add_path $ANDROID_HOME/tools

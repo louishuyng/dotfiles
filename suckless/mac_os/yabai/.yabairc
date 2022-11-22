@@ -74,6 +74,7 @@ yabai -m rule --add app="^Flipper$" manage=off      opacity=1       space=debugg
 
 # Code
 yabai -m rule --add app="Alacritty"                            space=code
+yabai -m rule --add app="^iTerm 2$"                            space=code
 yabai -m rule --add app="kitty"                                space=code
 yabai -m rule --add app="Simulator" manage=off                 space=code
 yabai -m rule --add app="^Xcode$" manage=off                   space=code

@@ -1,7 +1,10 @@
 local M = {}
 
 M.init = function()
-  vim.cmd('colorscheme nightfox')
+  require("onedarkpro").setup({
+    options = {cursorline = true, terminal_colors = true}
+  })
+  vim.cmd('colorscheme onedarkpro')
 
   package.loaded["config.colors.highlights" or false] = nil
   -- then load the highlights

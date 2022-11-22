@@ -4,6 +4,10 @@ if not present then return end
 
 vim.opt.completeopt = "menuone,noselect"
 
+local winhighlight = {
+  winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel"
+}
+
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and
@@ -16,6 +20,10 @@ local function t(str)
 end
 
 cmp.setup {
+  window = {
+    completion = cmp.config.window.bordered(winhighlight),
+    documentation = cmp.config.window.bordered(winhighlight)
+  },
   snippet = {
     expand = function(args) require("luasnip").lsp_expand(args.body) end
   },

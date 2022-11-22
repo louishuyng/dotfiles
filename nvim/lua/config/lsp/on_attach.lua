@@ -12,7 +12,15 @@ return function(client, bufnr)
   vim.keymap
       .set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts)
   vim.keymap.set('n', ',rr', '<cmd>lua vim.lsp.buf.rename()<CR>', bufopts)
-  vim.keymap.set('n', 'ac', '<cmd>lua vim.lsp.buf.code_action()<CR>', bufopts)
+  vim.keymap.set('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', bufopts)
+
+  -- UI
+  vim.lsp.handlers['textDocument/hover'] =
+      vim.lsp.with(vim.lsp.handlers.hover, {border = "single"})
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+                                                       vim.lsp.handlers
+                                                           .signatureHelp,
+                                                       {border = "single"})
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -21,8 +29,8 @@ return function(client, bufnr)
     if vim.bo.filetype == 'norg' then return end
 
     vim.api.nvim_create_autocmd("BufWritePre", {
-      command = "lua vim.lsp.buf.format()",
-      group = group
+      command = "lua vim.lsp.buf.format({ timeout_ms = 5000 })",
+      group = vim.api.nvim_create_augroup("LSPFormat", {clear = true})
     })
   else
     vim.b.document_formatting = client.server_capabilities.document_formatting

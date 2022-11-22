@@ -148,7 +148,7 @@ local Navic = {
         }
       }
       if #data > 1 and i < #data then
-        table.insert(child, {provider = " > ", hl = {fg = "purple"}})
+        table.insert(child, {provider = " > ", hl = {fg = "statement"}})
       end
       table.insert(children, child)
     end
@@ -232,7 +232,7 @@ local Git = {
     update = false
   },
 
-  hl = {fg = "orange"},
+  hl = {fg = "statement", bold = true},
 
   {
     provider = function(self) return " " .. self.status_dict.head end,
@@ -361,7 +361,7 @@ local HelpFilename = {
 local Spell = {
   condition = function() return vim.wo.spell end,
   provider = "SPELL ",
-  hl = {bold = true, fg = "orange"}
+  hl = {bold = true, fg = "white"}
 }
 
 ViMode = utils.surround({"", ""}, "bg", {ViMode})
@@ -423,15 +423,15 @@ M.StatusLines = {
     mode_colors = {
       n = "red",
       i = "green",
-      v = "cyan",
-      V = "cyan",
-      ["\22"] = "cyan", -- this is an actual ^V, type <C-v><C-v> in insert mode
-      c = "orange",
-      s = "purple",
-      S = "purple",
-      ["\19"] = "purple", -- this is an actual ^S, type <C-v><C-s> in insert mode
-      R = "orange",
-      r = "orange",
+      v = "special",
+      V = "special",
+      ["\22"] = "special", -- this is an actual ^V, type <C-v><C-v> in insert mode
+      c = "constant",
+      s = "statement",
+      S = "statement",
+      ["\19"] = "statement", -- this is an actual ^S, type <C-v><C-s> in insert mode
+      R = "constant",
+      r = "constant",
       ["!"] = "red",
       t = "green"
     },

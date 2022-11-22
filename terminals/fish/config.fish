@@ -1,8 +1,8 @@
 if status is-interactive
+  set -U fish_greeting ""
+
   # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
   set -U fish_key_bindings fish_default_key_bindings
-
-  set -U fisher_path ~/.dotfiles/terminals/fish/fisherman
 
   source ~/.dotfiles/terminals/fish/alias/init.fish
   source ~/.dotfiles/terminals/fish/env/init.fish

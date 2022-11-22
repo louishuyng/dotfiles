@@ -24,6 +24,7 @@ M.config = function()
       color_devicons = true,
       use_less = true,
       set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
+      initial_mode = "insert",
       mappings = {
         i = {
           ["<C-d>"] = actions.close,
@@ -35,7 +36,9 @@ M.config = function()
           ["<C-v>"] = actions.select_vertical,
           ["<C-s>"] = actions.select_horizontal
         }
-      }
+      },
+      layout_config = {vertical = {preview_height = 0.5}},
+      layout_strategy = "vertical"
     },
     extensions = {
       fzy_native = {override_generic_sorter = true, override_file_sorter = true}

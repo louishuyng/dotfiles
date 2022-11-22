@@ -10,7 +10,7 @@
 # each instance of Alacritty. If it is not present, alacritty will
 # check the local terminfo database and use `alacritty` if it is
 # available, otherwise `xterm-256color` is used.
-#TERM: xterm-256color
+TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -141,7 +141,7 @@ font:
     style: Italic
 
   # Point size
-  size: 12.3
+  size: 12
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -175,25 +175,45 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# KDE Breeze (Ported from Konsole)
-colors:
-  primary:
-    background: "0x252B32"
-    foreground: "0x979eab"
+#######################################
+##      START OF COLOR SCHEMES       ##
+#######################################
+schemes:
+  Custom: &Custom
+    primary:
+      background: "#282c34"
+      foreground: "#abb2bf"
 
-  cursor:
-    text: "0x5c6370"
-    cursor: "0x48e566"
+    normal:
+      black: "#282c34"
+      red: "#e06c75"
+      green: "#98c379"
+      yellow: "#e5c07b"
+      blue: "#61afef"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#abb2bf"
 
- # Vi mode cursor colors
- #
- #  Colors for the cursor when the vi mode is active.
- #
- #  Allowed values are CellForeground/CellBackground, which reference the
- #  affected cell, or hexadecimal colors like #ff00ff.
-  vi_mode_cursor:
-   text: CellBackground
-   cursor: CellForeground
+    bright:
+      black: "#3f3f3f"
+      red: "#e06c75"
+      green: "#98c379"
+      yellow: "#e5c07b"
+      blue: "#61afef"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#bfc5ce"
+
+    cursor:
+      text: CellBackground
+      cursor: CellForeground # syntax-cursor-color
+
+    selection:
+      text: CellForeground
+      background: "#3e4452"
+
+colors: *Custom
+
 
 # Visual Bell
 #

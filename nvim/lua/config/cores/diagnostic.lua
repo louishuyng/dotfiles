@@ -8,7 +8,7 @@ vim.fn.sign_define("DiagnosticSignHint",
                    {text = "", texthl = "DiagnosticSignHint"})
 
 vim.diagnostic.config({
-  float = {source = "always"},
+  float = {source = "always", float = {border = "single"}},
   virtual_text = true,
   underline = true,
   signs = true,

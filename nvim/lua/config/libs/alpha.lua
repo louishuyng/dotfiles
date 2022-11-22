@@ -50,7 +50,7 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("SPC SPC ", "  Find File",
+    button("SPC SPC ", "  Find File",
            "<cmd>Telescope find_files hidden=true layout_config={'width':0.7}<cr>"),
     button("SPC fr  ", "  Recent File ",
            "<cmd>Telescope oldfiles previewer=false cwd_only=true<CR>"),
