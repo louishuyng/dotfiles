@@ -45,8 +45,12 @@ fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
 
+-- Telescope
+bg("TelescopeBorder", "NONE")
+bg("TelescopeNormal", "NONE")
+
 -- Floaterm
-fg("FloatermBorder", green)
+fg("FloatermBorder", grey_fg2)
 
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then

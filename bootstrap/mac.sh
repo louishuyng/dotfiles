@@ -115,6 +115,7 @@ install_devops() {
     brew install helm
     brew install hyperkit
     brew install kubectx
+    brew install k9s
     success "Installed k8s"
 
     brew install pstree
