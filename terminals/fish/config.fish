@@ -4,6 +4,20 @@ if status is-interactive
   # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
   set -U fish_key_bindings fish_default_key_bindings
 
+  set -U fisher_path ~/.dotfiles/terminals/fish/fisherman
+
+  # Path to oh-my-fish.
+  set -g OMF_PATH $HOME/.local/share/omf
+
+  # Path to oh-my-fish configuration.
+  set -g OMF_CONFIG $HOME/.config/omf
+
+  # Load oh-my-fish configuration.
+  source $OMF_PATH/init.fish
+
+  # FIX: default theme color not behave as expected  https://github.com/fish-shell/fish-shell/issues/3555
+  set fish_pager_color_progress cya
+
   source ~/.dotfiles/terminals/fish/alias/init.fish
   source ~/.dotfiles/terminals/fish/env/init.fish
 
