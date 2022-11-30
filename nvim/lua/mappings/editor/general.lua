@@ -67,3 +67,6 @@ vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>", opt)
 vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", opt)
 vim.keymap.set("n", "<leader>pr", ":PackerClean<CR>", opt)
 vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>", opt)
+
+-- Clipboard Code Snippet
+vim.keymap.set("v", "<leader>sc", ":Silicon<CR>", opt)

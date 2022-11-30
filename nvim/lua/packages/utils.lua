@@ -33,3 +33,4 @@ use({
   run = function() vim.fn["mkdp#util#install"]() end
 })
 use "folke/zen-mode.nvim"
+use {'krivahtoo/silicon.nvim', run = './install.sh'}

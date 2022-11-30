@@ -21,9 +21,9 @@ yabai -m config mouse_action2                resize
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config window_gap                   07
-yabai -m config bottom_padding               0
-yabai -m config left_padding                 0
-yabai -m config right_padding                0
+yabai -m config bottom_padding               5
+yabai -m config left_padding                 15
+yabai -m config right_padding                15
 yabai -m config window_border                off
 # yabai -m config window_border_width          2
 # yabai -m config active_window_border_color  0xff48e566
@@ -50,27 +50,27 @@ yabai -m signal --add event=display_changed \
 # Rules
 
 # Labels
-yabai -m space 1 --label debugging
+yabai -m space 1 --label debug
 yabai -m space 2 --label code
 yabai -m space 3 --label view
 yabai -m space 4 --label social
 yabai -m space 5 --label external
 
-# Debugging
-yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=debugging
-yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=debugging
-yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=debugging
-yabai -m rule --add app="Mingo$" manage=off          opacity=1           space=debugging
-yabai -m rule --add app="^Wireshark$" manage=off                         space=debugging
-yabai -m rule --add app="Visual Studio Code" manage=off opacity=1        space=debugging
-yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=debugging
-yabai -m rule --add app="^Docker$" manage=off                            space=debugging
-yabai -m rule --add app="^OWASP$" manage=off                             space=debugging
-yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=debugging
-yabai -m rule --add app="^Disk Utility$" manage=off          opacity=1   space=debugging
-yabai -m rule --add app="^GraphiQL$" manage=off          opacity=1       space=debugging
-yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=debugging
-yabai -m rule --add app="^Flipper$" manage=off      opacity=1       space=debugging
+# debug
+yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=debug
+yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=debug
+yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=debug
+yabai -m rule --add app="Mingo$" manage=off          opacity=1           space=debug
+yabai -m rule --add app="^Wireshark$" manage=off                         space=debug
+yabai -m rule --add app="Visual Studio Code" manage=off opacity=1        space=debug
+yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=debug
+yabai -m rule --add app="^Docker$" manage=off                            space=debug
+yabai -m rule --add app="^OWASP$" manage=off                             space=debug
+yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=debug
+yabai -m rule --add app="^Disk Utility$" manage=off          opacity=1   space=debug
+yabai -m rule --add app="^GraphiQL$" manage=off          opacity=1       space=debug
+yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=debug
+yabai -m rule --add app="^Flipper$" manage=off      opacity=1       space=debug
 
 # Code
 yabai -m rule --add app="Alacritty"                            space=code
