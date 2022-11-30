@@ -40,4 +40,13 @@ if status is-interactive
     end
     set_color normal
   end
+
+  # Open tmux at startup 
+  if test -z "$TMUX"
+    if tmux has-session 2>/dev/null
+        exec tmux attach
+    else
+      louisws
+    end
+  end
 end
