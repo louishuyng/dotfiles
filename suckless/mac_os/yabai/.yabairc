@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# stop process new window manager in Ventura
+launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
+
 # global settings
 yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          on
