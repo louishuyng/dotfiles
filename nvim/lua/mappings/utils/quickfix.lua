@@ -1,7 +1,7 @@
 local opt = {silent = true}
 
-vim.keymap.set("n", "<A-j>", ":cn<CR>", opt)
-vim.keymap.set("n", "<A-k>", ":cp<CR>", opt)
+vim.keymap.set("n", "<c-]>", ":cn<CR>", opt)
+vim.keymap.set("n", "<c-[>", ":cp<CR>", opt)
 vim.keymap.set("n", "<leader>j", ":lnext<CR>", opt)
 vim.keymap.set("n", "<leader>k", ":lprev<CR>", opt)
 
