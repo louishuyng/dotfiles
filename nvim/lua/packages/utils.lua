@@ -34,3 +34,6 @@ use({
 })
 use "folke/zen-mode.nvim"
 use {'krivahtoo/silicon.nvim', run = './install.sh'}
+
+-- Learning Purpose will remove after finish
+use "ThePrimeagen/vim-be-good"
