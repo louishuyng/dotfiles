@@ -18,7 +18,7 @@ local colors = {
   orange = "#fca2aa",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#2E323B"
+  statusline = "#33353F"
 }
 
 return colors

@@ -12,7 +12,7 @@ M.config = function()
         "rg", "--color=never", "--no-heading", "--with-filename",
         "--line-number", "--column", "--smart-case"
       },
-      prompt_prefix = '   ',
+      prompt_prefix = ' 🔍  ',
       selection_caret = '  ',
       entry_prefix = '   ',
       path_display = {'truncate'},

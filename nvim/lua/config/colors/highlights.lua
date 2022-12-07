@@ -1,6 +1,6 @@
 local colors = require("ui.main_colors")
 
-local ui = {hl_override = "", italic_comments = false, transparency = false}
+local ui = {hl_override = "", italic_comments = false, transparency = true}
 
 local black = colors.black
 local black2 = colors.black2
@@ -49,6 +49,10 @@ fg("DiagnosticInformation", green)
 bg("TelescopeBorder", "NONE")
 bg("TelescopeNormal", "NONE")
 
+-- Nvimtree
+bg("NvimTreeNormal", "NONE")
+bg("NvimTreeEndOfBuffer", "NONE")
+
 -- Floaterm
 fg("FloatermBorder", grey_fg2)
 
@@ -58,3 +62,17 @@ if ui.transparency then
   bg("EndOfBuffer", "NONE")
   bg("NormalFloat", "NONE")
 end
+
+vim.cmd([[
+  hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
+  hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
+  hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
+  hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
+  hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
+  hi FloatermBorder guifg=#55E579
+  hi FloatBorder guibg=NONE
+  hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+  hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
+  hi CursorLine guibg=#323232 guifg=NONE
+]])

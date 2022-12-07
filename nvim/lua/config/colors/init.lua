@@ -1,10 +1,7 @@
 local M = {}
 
 M.init = function()
-  require("onedarkpro").setup({
-    options = {cursorline = true, terminal_colors = true}
-  })
-  vim.cmd('colorscheme onedarkpro')
+  vim.cmd('colorscheme edge')
 
   package.loaded["config.colors.highlights" or false] = nil
   -- then load the highlights

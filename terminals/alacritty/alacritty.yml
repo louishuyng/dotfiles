@@ -181,7 +181,7 @@ draw_bold_text_with_bright_colors: true
 schemes:
   Custom: &Custom
     primary:
-      background: "#282c34"
+      background: "#000000"
       foreground: "#abb2bf"
 
     normal:
@@ -469,11 +469,6 @@ debug:
 #   - ~AppKeypad
 #   - AppKeypad
 key_bindings:
-  # Tmux Moving Session
-  - { key: Q,   mods: Control|Shift, chars: "\x01\x73\x30\x0a" } # Org mode session switch
-  - { key: W,   mods: Control|Shift, chars: "\x01\x73\x31\x0a" } # Work mode session switch
-  - { key: E,   mods: Control|Shift, chars: "\x01\x73\x32\x0a" } # System mode session switch
-
   # (Windows/Linux only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
   #- { key: C,        mods: Control|Shift, action: Copy             }

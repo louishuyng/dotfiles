@@ -1,7 +1,7 @@
 local packer = require "packer"
 local use = packer.use
 
-use 'olimorris/onedarkpro.nvim'
+use 'sainnhe/edge'
 use 'kyazdani42/nvim-web-devicons'
 use "voldikss/vim-floaterm"
 use {'goolord/alpha-nvim', config = function() require("config.libs.alpha") end}
