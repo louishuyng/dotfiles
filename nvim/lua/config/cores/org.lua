@@ -25,19 +25,7 @@ neorg.setup({
     },
     ["core.keybinds"] = {
       config = {
-        hook = function(keybinds)
-          keybinds.unmap("norg", "n", "<C-s>")
-
-          -- gtd
-          keybinds.map_event_to_mode("norg", {
-            n = { -- Bind keys in normal mode
-              -- Keys for managing notes
-              {"<leader>oc", "core.gtd.base.capture"},
-              {"<leader>ov", "core.gtd.base.views"},
-              {"<leader>oe", "core.gtd.base.edit"}
-            }
-          }, {silent = true, noremap = true})
-        end
+        hook = function(keybinds) keybinds.unmap("norg", "n", "<C-s>") end
       }
     },
     ["core.export.markdown"] = {config = {extensions = "all"}},
