@@ -24,9 +24,10 @@ yabai -m config mouse_action2                resize
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config window_gap                   07
-yabai -m config bottom_padding               5
+yabai -m config top_padding                  5
+yabai -m config bottom_padding               7
 yabai -m config left_padding                 5
-yabai -m config right_padding                5
+yabai -m config right_padding                7
 yabai -m config window_border                on
 yabai -m config window_border_width          1
 yabai -m config active_window_border_color  0xff48e566
@@ -69,6 +70,7 @@ yabai -m rule --add app="^Disk Utility$" manage=off          opacity=1   space=d
 yabai -m rule --add app="^GraphiQL$" manage=off          opacity=1       space=debug
 yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=debug
 yabai -m rule --add app="^Flipper$" manage=off      opacity=1       space=debug
+yabai -m rule --add app="^Lens$" manage=off      opacity=1       space=debug
 
 # Code
 yabai -m rule --add app="Alacritty"                            space=code

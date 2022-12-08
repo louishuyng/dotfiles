@@ -5,8 +5,6 @@ vim.keymap.set("n", "<leader><leader>",
                opt)
 vim.keymap.set("n", "<leader>/",
                ":Telescope live_grep layout_config={'width':0.7}<CR>", opt)
-vim.keymap.set("n", "<leader>tt",
-               ":Telescope treesitter layout_config={'width':0.7}<CR>", opt)
 vim.keymap.set("n", "<leader>?",
                ":Telescope help_tags layout_config={'width':0.7}<CR>", opt)
 
