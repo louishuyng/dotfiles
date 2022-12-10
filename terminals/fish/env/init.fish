@@ -1,5 +1,7 @@
 source ~/.dotfiles/terminals/fish/env/nnn.fish
 
+fish_add_path ~/.dotfiles/scripts
+
 switch (uname)
   case Linux
     source ~/.dotfiles/terminals/fish/env/linux.fish

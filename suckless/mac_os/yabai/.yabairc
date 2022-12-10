@@ -68,6 +68,7 @@ yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity
 yabai -m rule --add app="^Flipper$" manage=off      opacity=1       space=debug
 yabai -m rule --add app="^Lens$" manage=off      opacity=1       space=debug
 yabai -m rule --add label="Sourcetree" app="^Sourcetree$" manage=off space=debug
+yabai -m rule --add app="^DataGrip$"      opacity=1 manage=off          space=debug
 
 # Code
 yabai -m rule --add app="Alacritty"                            space=code
