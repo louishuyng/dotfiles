@@ -2,6 +2,7 @@ local packer = require "packer"
 local use = packer.use
 
 use 'sainnhe/edge'
+use 'romgrk/barbar.nvim'
 use 'kyazdani42/nvim-web-devicons'
 use "voldikss/vim-floaterm"
 use {'goolord/alpha-nvim', config = function() require("config.libs.alpha") end}

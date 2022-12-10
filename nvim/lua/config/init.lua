@@ -1,8 +1,8 @@
-require("config.colors").init()
-
 require "config.cores.navic"
 
 require "config.cores.bqf"
+require "config.cores.buffer"
+require "config.cores.colorschema"
 require "config.cores.diagnostic"
 require "config.cores.git"
 require "config.cores.heirline"

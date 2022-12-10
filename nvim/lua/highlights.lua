@@ -1,6 +1,6 @@
 local colors = require("ui.main_colors")
 
-local ui = {hl_override = "", italic_comments = false, transparency = true}
+local ui = {hl_override = "", italic_comments = false, transparency = false}
 
 local black = colors.black
 local black2 = colors.black2
@@ -45,17 +45,6 @@ fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
 
--- Telescope
-bg("TelescopeBorder", "NONE")
-bg("TelescopeNormal", "NONE")
-
--- Nvimtree
-bg("NvimTreeNormal", "NONE")
-bg("NvimTreeEndOfBuffer", "NONE")
-
--- Floaterm
-fg("FloatermBorder", grey_fg2)
-
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
   bg("Normal", "NONE")
@@ -73,6 +62,7 @@ vim.cmd([[
   hi FloatBorder guibg=NONE
   hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
   hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+  hi NormalFloat guibg=NONE
   hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
   hi CursorLine guibg=#323232 guifg=NONE
 ]])

@@ -24,17 +24,14 @@ yabai -m config mouse_action2                resize
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config window_gap                   07
-yabai -m config top_padding                  5
-yabai -m config bottom_padding               7
-yabai -m config left_padding                 5
-yabai -m config right_padding                7
-yabai -m config window_border                on
+yabai -m config left_padding                 07
+yabai -m config right_padding                07
+yabai -m config window_border                off
 yabai -m config window_border_width          1
 yabai -m config active_window_border_color  0xff48e566
 yabai -m config normal_window_border_color  0xff1A1A1A
 
-# STATUSBAR_HEIGHT=$(spacebar -m config height)
-STATUSBAR_HEIGHT=34
+STATUSBAR_HEIGHT=$(spacebar -m config height)
 yabai -m config external_bar all:$STATUSBAR_HEIGHT:0
 
 # signals
@@ -81,7 +78,7 @@ yabai -m rule --add app="^Xcode$" manage=off                   space=code
 yabai -m rule --add app="WezTerm"                              space=code
 
 # View
-yabai -m rule --add app="^Microsoft Edge$"            opacity=1    space=view
+yabai -m rule --add app="^Microsoft Edge$"            manage=off opacity=1   space=view
 yabai -m rule --add app="^Firefox Developer Edition$" opacity=1          space=view
 yabai -m rule --add app="Tor Browser" manage=off      opacity=1          space=view
 yabai -m rule --add app="^Google Chrome$" manage=off  opacity=1          space=view

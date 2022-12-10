@@ -5,7 +5,7 @@ ctrl + alt - d : open -na /Applications/DataGrip.all
 ctrl + alt - b : open -na /Applications/Microsoft\ Edge.app
 ctrl + alt - o : open -na /Applications/Obsidian.app
 ctrl + alt - m : open -na /Applications/Spotify.app
-ctrl + alt - t : open -na /Applications/iTerm\ 2.app
+ctrl + alt - t : open -na /Applications/Alacritty.app
 ctrl + alt - e : emacs
 ctrl + alt - u : open -na /Applications/StarUML.app
 ctrl + alt - q : open -na /Applications/qutebrowser.app
