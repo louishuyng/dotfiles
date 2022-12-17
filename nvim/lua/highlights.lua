@@ -60,6 +60,7 @@ vim.cmd([[
   hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
   hi FloatermBorder guifg=#55E579
   hi FloatBorder guibg=NONE
+  hi VertSplit guifg=#23272e guibg=bg
   hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
   hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
   hi NormalFloat guibg=NONE
