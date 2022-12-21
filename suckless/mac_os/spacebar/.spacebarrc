@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 spacebar -m config text_font          "Helvetica Neue:Bold:13"
-spacebar -m config icon_font          "Font Awesome 5 Brands:Courant:14"
-spacebar -m config background_color   0xff23272e
+spacebar -m config icon_font          "Font Awesome 5 Brands:Courant:13"
+spacebar -m config background_color   0xff000000
 spacebar -m config foreground_color   0xffa8a8a8
 spacebar -m config position           top
 spacebar -m config height             26

@@ -124,3 +124,15 @@ augroup alpha_tabline
   au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=2 ruler laststatus=3
 augroup END
 ]]
+
+-- plantuml
+vim.cmd [[
+au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
+    \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
+    \  1,
+    \  0
+    \)
+  ]]
+
+-- Theme
+vim.cmd('colorscheme habamax')

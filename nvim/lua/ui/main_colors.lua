@@ -9,15 +9,15 @@ local colors = {
   grey = "#42464e",
   grey_fg = "#565c64",
   grey_fg2 = "#6f737b",
-  red = "DarkRed",
-  green = "#60ff60",
-  blue = "#40ffff",
-  yellow = "#ffff60",
-  purple = "#ff80ff",
+  red = "#D75F5F",
+  green = "#87AF87",
+  blue = "#5F87AF",
+  yellow = "#AFAF87",
+  purple = "#af87af",
   orange = "#fca2aa",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#23272e"
+  statusline = "#303030"
 }
 
 return colors

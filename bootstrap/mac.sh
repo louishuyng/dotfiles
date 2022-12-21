@@ -382,6 +382,8 @@ install_tools() {
 
     brew install xclip
 
+    brew install graphviz
+
     success "Installed some fancy tools"
   fi
 }
