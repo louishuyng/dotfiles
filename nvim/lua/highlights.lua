@@ -10,7 +10,6 @@ local green = colors.green
 local grey = colors.grey
 local grey_fg = colors.grey_fg
 local grey_fg2 = colors.grey_fg2
-local nord_blue = colors.nord_blue
 local custom_bg = colors.custom_bg
 local custom_bg2 = colors.custom_bg2
 local purple = colors.purple
@@ -31,7 +30,7 @@ local bg = require("utils.highlight").bg
 -- [[ Plugin Highlights
 -- Alpha
 fg("AlphaHeader", green)
-fg("AlphaButtons", nord_blue)
+fg("AlphaButtons", blue)
 fg("AlphaFooter", yellow)
 
 -- Git signs

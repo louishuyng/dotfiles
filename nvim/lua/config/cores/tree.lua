@@ -5,7 +5,7 @@ require("nvim-tree").setup({
   open_on_setup = false,
   ignore_ft_on_setup = {},
   open_on_tab = false,
-  update_to_buf_dir = {enable = true, auto_open = false, auto_close = false},
+  hijack_directories = {enable = true, auto_open = false},
   hijack_cursor = false,
   update_cwd = false,
   update_focused_file = {

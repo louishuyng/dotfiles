@@ -1,12 +1,10 @@
-local packer = require "packer"
-local use = packer.use
-
-use {
-  "tpope/vim-fugitive",
-  cmd = {
-    "Git", "Gstatus", "Gcommit", "Gpush", "Gpull", "Gvdiff", "Gdiff",
-    "Git blame", "Git mergetool"
-  }
+return {
+  {
+    "tpope/vim-fugitive",
+    cmd = {
+      "Git", "Gstatus", "Gcommit", "Gpush", "Gpull", "Gvdiff", "Gdiff",
+      "Git blame", "Git mergetool"
+    }
+  }, {'lewis6991/gitsigns.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
+  {'akinsho/git-conflict.nvim'}
 }
-use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
-use 'akinsho/git-conflict.nvim'

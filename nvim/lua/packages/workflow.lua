@@ -1,6 +1,6 @@
-local packer = require "packer"
-local use = packer.use
-use {
-  "nvim-neorg/neorg",
-  run = ":Neorg sync-parsers" -- This is the important bit!
+return {
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers" -- This is the important bit!
+  }
 }

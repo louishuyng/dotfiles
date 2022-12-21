@@ -62,11 +62,10 @@ vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)
 -- ZenMode
 vim.keymap.set("n", "<C-w>o", ":ZenMode<CR>", opt)
 
--- Packer
-vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>", opt)
-vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", opt)
-vim.keymap.set("n", "<leader>pr", ":PackerClean<CR>", opt)
-vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>", opt)
+-- Lazy
+vim.keymap.set("n", "<leader>li", ":Lazy install<CR>", opt)
+vim.keymap.set("n", "<leader>lc", ":Lazy clean<CR>", opt)
+vim.keymap.set("n", "<leader>ls", ":Lazy sync<CR>", opt)
 
 -- Clipboard Code Snippet
 vim.keymap.set("v", "<leader>sc", ":Silicon<CR>", opt)

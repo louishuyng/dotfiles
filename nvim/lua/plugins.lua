@@ -1,40 +1,25 @@
-local present, _ = pcall(require, "packer_init")
-local packer
+local merge = require 'utils.merge'
 
-if present then
-  packer = require "packer"
-else
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git", "clone", "--filter=blob:none", "--single-branch",
+    "https://github.com/folke/lazy.nvim.git", lazypath
+  })
 end
+vim.opt.runtimepath:prepend(lazypath)
 
-local use = packer.use
+local cmp_plugins = require 'packages.cmp'
+local git_plugins = require 'packages.git'
+local lang_plugins = require 'packages.lang'
+local navigator_plugins = require 'packages.navigator'
+local testing_plugins = require 'packages.testing'
+local ui_plugins = require 'packages.ui'
+local utils_plugins = require 'packages.utils'
+local workflow_plugins = require 'packages.workflow'
 
-return packer.startup {
-  function()
-    use {"wbthomason/packer.nvim", event = "VimEnter"}
-    require 'packages.cmp'
-    require 'packages.git'
-    require 'packages.lang'
-    require 'packages.navigator'
-    require 'packages.testing'
-    require 'packages.ui'
-    require 'packages.utils'
-    require 'packages.workflow'
+local plugins = merge(cmp_plugins, git_plugins, lang_plugins, navigator_plugins,
+                      testing_plugins, ui_plugins, utils_plugins,
+                      workflow_plugins)
 
-    require 'config'
-  end,
-  config = {
-    compile_path = vim.fn.stdpath('config') .. '/plugin/packer_compiled.lua',
-    display = {
-      open_fn = function()
-        return require("packer.util").float({
-          border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
-        })
-      end,
-      working_sym = "",
-      error_sym = "",
-      done_sym = "",
-      moved_sym = ""
-    }
-  }
-}
+require("lazy").setup(plugins)

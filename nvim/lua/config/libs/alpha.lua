@@ -64,11 +64,8 @@ local buttons = {
 
 -- FOOTER SECTION
 local function footer_plugins()
-  local plugins = #vim.tbl_keys(packer_plugins)
-
   local v = vim.version()
-  return string.format(" %s   v%s.%s.%s", plugins, v.major, v.minor,
-                       v.patch)
+  return string.format(" v%s.%s.%s", v.major, v.minor, v.patch)
 end
 
 local footer = {

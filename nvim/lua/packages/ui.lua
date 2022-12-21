@@ -1,16 +1,9 @@
-local packer = require "packer"
-local use = packer.use
-
-use 'sainnhe/edge'
-use 'romgrk/barbar.nvim'
-use 'kyazdani42/nvim-web-devicons'
-use "voldikss/vim-floaterm"
-use {'goolord/alpha-nvim', config = function() require("config.libs.alpha") end}
-use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'} -- make fold look modern
-use 'rcarriga/nvim-notify'
-
--- Statusline
-use "rebelot/heirline.nvim"
-
--- winbar statusline
-use "SmiteshP/nvim-navic"
+return {
+  {'romgrk/barbar.nvim'}, {'kyazdani42/nvim-web-devicons'},
+  {"voldikss/vim-floaterm"},
+  {'goolord/alpha-nvim', config = function() require('config.libs.alpha') end},
+  {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'}, -- make fold look modern
+  {'rcarriga/nvim-notify'}, -- Statusline
+  {'rebelot/heirline.nvim'}, -- winbar statusline
+  {'SmiteshP/nvim-navic'}
+}
