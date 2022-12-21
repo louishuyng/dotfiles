@@ -26,9 +26,10 @@ vim.g.nowritebackup = true
 vim.g.nowb = true
 
 -- NUMBERS
-opt.number = true
-opt.numberwidth = 2
-opt.relativenumber = true
+vim.cmd([[
+  set number relativenumber
+  set nu rnu
+]])
 
 -- INDENLINE
 opt.expandtab = true

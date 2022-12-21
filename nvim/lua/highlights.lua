@@ -39,6 +39,10 @@ fg_bg("diffDeleted", red, "NONE")
 fg_bg("diffAdded", green, "NONE")
 fg_bg("diffChanged", purple, "NONE")
 
+fg_bg("DiffDelete", red, "NONE")
+fg_bg("DiffAdd", green, "NONE")
+fg_bg("DiffChange", purple, "NONE")
+
 -- Lsp diagnostics
 fg("DiagnosticHint", purple)
 fg("DiagnosticError", red)
@@ -54,16 +58,17 @@ end
 
 vim.cmd([[
   hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
-  hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
-  hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#444444
-  hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#000000 guifg=#3c1f1e
   hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
   hi FloatermBorder guifg=#55E579
   hi FloatBorder guibg=NONE
   hi VertSplit guifg=#23272e guibg=bg
   hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
   hi NormalFloat guibg=NONE
   hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
   hi CursorLine guibg=#323232 guifg=NONE
+  hi LineNr guibg=NONE guifg=grey
+  hi Visual guibg=#565c64 guifg=NONE
+  hi SignColumn guibg=NONE
+  hi VertSplit cterm=NONE
 ]])

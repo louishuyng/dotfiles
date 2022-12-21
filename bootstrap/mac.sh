@@ -219,6 +219,19 @@ install_terminal() {
   fi
 }
 
+install_mailspring() {
+  read -r -p "Do you want to install kitty? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install --cask mailspring
+
+    rm -rf ~/.dotfiles/suckless/mailspring
+    git clone https://github.com/jakubzet/mailspring-matcha-theme.git ~/.dotfiles/suckless/mailspring 
+    
+    ln -s ~/.dotfiles/suckless/mailspring ~/
+    success "Installed mailspring and custom theme"
+  fi
+}
+
 install_nvim() {
   read -r -p "Do you want to install neovim? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -435,6 +448,7 @@ setup_penetration_tools
 install_fish
 install_font
 install_terminal
+install_mailspring
 install_nvim
 install_emacs
 install_tmux
