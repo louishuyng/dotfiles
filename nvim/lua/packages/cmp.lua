@@ -1,14 +1,13 @@
 return {
   {"rafamadriz/friendly-snippets", event = "InsertEnter"}, {
     "hrsh7th/nvim-cmp",
-    after = "friendly-snippets",
+    dependencies = {"friendly-snippets"},
     config = function() require "config.cores.cmp" end
   }, {
     "L3MON4D3/LuaSnip",
-    wants = "friendly-snippets",
-    after = "nvim-cmp",
+    dependencies = {"nvim-cmp", "friendly-snippets"},
     config = function() require("config.libs.others").luasnip() end
-  }, {"saadparwaiz1/cmp_luasnip", after = "LuaSnip"},
-  {"hrsh7th/cmp-calc", after = "nvim-cmp"},
-  {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
+  }, {"saadparwaiz1/cmp_luasnip", dependencies = {"LuaSnip"}},
+  {"hrsh7th/cmp-calc", dependencies = {"nvim-cmp"}},
+  {"hrsh7th/cmp-buffer", dependencies = {"nvim-cmp"}}
 }

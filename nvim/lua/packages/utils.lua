@@ -1,7 +1,7 @@
 return {
   {
     "windwp/nvim-autopairs",
-    after = "nvim-cmp",
+    dependencies = {"nvim-cmp"},
     config = function()
       local present1, autopairs = pcall(require, "nvim-autopairs")
       local present2, cmp_autopairs = pcall(require,

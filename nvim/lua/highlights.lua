@@ -70,4 +70,5 @@ vim.cmd([[
   hi Visual guibg=#565c64 guifg=NONE
   hi SignColumn guibg=NONE
   hi VertSplit cterm=NONE
+  hi MatchParen      guifg=#FD971F guibg=#000000 gui=bold
 ]])
