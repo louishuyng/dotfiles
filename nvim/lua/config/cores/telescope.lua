@@ -35,9 +35,7 @@ telescope.setup {
         ["<C-v>"] = actions.select_vertical,
         ["<C-s>"] = actions.select_horizontal
       }
-    },
-    layout_config = {vertical = {preview_height = 0.5}},
-    layout_strategy = "vertical"
+    }
   },
   extensions = {
     fzf = {

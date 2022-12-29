@@ -8,6 +8,7 @@ return {
     dependencies = {"nvim-cmp", "friendly-snippets"},
     config = function() require("config.libs.others").luasnip() end
   }, {"saadparwaiz1/cmp_luasnip", dependencies = {"LuaSnip"}},
-  {"hrsh7th/cmp-calc", dependencies = {"nvim-cmp"}},
-  {"hrsh7th/cmp-buffer", dependencies = {"nvim-cmp"}}
+  {"hrsh7th/cmp-calc", dependencies = {"nvim-cmp"}}, {"hrsh7th/cmp-nvim-lsp"},
+  {"hrsh7th/cmp-buffer", dependencies = {"nvim-cmp"}},
+  {'tzachar/cmp-tabnine', build = './install.sh'}
 }
