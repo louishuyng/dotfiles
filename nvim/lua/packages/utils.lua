@@ -23,5 +23,6 @@ return {
     build = function() vim.fn["mkdp#util#install"]() end
   }, {"folke/zen-mode.nvim"},
   {'krivahtoo/silicon.nvim', build = './install.sh'}, {'aklt/plantuml-syntax'},
-  {'weirongxu/plantuml-previewer.vim'}, {'tyru/open-browser.vim'}
+  {'weirongxu/plantuml-previewer.vim'}, {'tyru/open-browser.vim'},
+  {'windwp/nvim-spectre'}
 }

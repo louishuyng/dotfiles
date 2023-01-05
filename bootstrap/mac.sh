@@ -384,6 +384,8 @@ install_tools() {
 
     brew install graphviz
 
+    brew install gnu-sed
+
     success "Installed some fancy tools"
   fi
 }
