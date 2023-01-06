@@ -39,10 +39,10 @@ cmp.setup {
     expand = function(args) require("luasnip").lsp_expand(args.body) end
   },
   formatting = {
+    fields = {"kind", "abbr", "menu"},
     format = function(entry, vim_item)
-      vim_item.kind = string.format("%s %s",
-                                    require("config.libs.lspkind_icons").icons[vim_item.kind],
-                                    vim_item.kind)
+      vim_item.kind = string.format("%s",
+                                    require("config.libs.lspkind_icons").icons[vim_item.kind])
       if entry.source.name == 'cmp_tabnine' then vim_item.kind = '' end
       return vim_item
     end
