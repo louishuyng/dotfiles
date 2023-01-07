@@ -1,12 +1,11 @@
 require "config.cores.navic"
 
-require "config.cores.bqf"
 require "config.cores.buffer"
 require "config.cores.diagnostic"
 require "config.cores.git"
 require "config.cores.heirline"
+require "config.cores.hop"
 require "config.cores.org"
-require "config.cores.sneak"
 require "config.cores.telescope"
 require "config.cores.tree"
 

@@ -14,7 +14,7 @@ return {
       local cmp = require "cmp"
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end
-  }, {'numToStr/Comment.nvim'}, {'tpope/vim-eunuch'}, {'justinmk/vim-sneak'},
+  }, {'numToStr/Comment.nvim'}, {'tpope/vim-eunuch'}, {'phaazon/hop.nvim'},
   {'mg979/vim-visual-multi'}, {'tpope/vim-surround'}, {'chrisbra/NrrwRgn'}, {
     "andymass/vim-matchup",
     init = function() vim.g.matchup_matchparen_offscreen = {method = "popup"} end
