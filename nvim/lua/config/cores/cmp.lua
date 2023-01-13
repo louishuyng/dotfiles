@@ -33,8 +33,10 @@ tabnine:setup({
 })
 
 cmp.setup {
-  window = {documentation = cmp.config.window.bordered(winhighlight)},
-  completion = {completeopt = 'menu,menuone,noinsert'},
+  window = {
+    completion = cmp.config.window.bordered(winhighlight),
+    documentation = cmp.config.window.bordered(winhighlight)
+  },
   snippet = {
     expand = function(args) require("luasnip").lsp_expand(args.body) end
   },

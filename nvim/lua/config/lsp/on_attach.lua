@@ -15,16 +15,10 @@ return function(client, bufnr)
   vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
                  bufopts)
 
-  -- UI
-  vim.lsp.handlers['textDocument/hover'] =
-      vim.lsp.with(vim.lsp.handlers.hover, {border = "single"})
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-                                                       vim.lsp.handlers
-                                                           .signatureHelp,
-                                                       {border = "single"})
-
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  vim.diagnostic.config({float = {border = "single"}})
 
   if client.server_capabilities.document_formatting then
     if vim.bo.filetype == 'norg' then return end

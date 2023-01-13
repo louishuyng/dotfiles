@@ -24,7 +24,6 @@ yabai -m config mouse_action2                resize
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config window_gap                   07
-yabai -m config bottom_padding               07
 yabai -m config window_border                off
 yabai -m config window_border_width          1
 yabai -m config active_window_border_color  0xff48e566

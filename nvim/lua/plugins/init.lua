@@ -9,14 +9,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
-local cmp_plugins = require 'packages.cmp'
-local git_plugins = require 'packages.git'
-local lang_plugins = require 'packages.lang'
-local navigator_plugins = require 'packages.navigator'
-local testing_plugins = require 'packages.testing'
-local ui_plugins = require 'packages.ui'
-local utils_plugins = require 'packages.utils'
-local workflow_plugins = require 'packages.workflow'
+local cmp_plugins = require 'plugins.cmp'
+local git_plugins = require 'plugins.git'
+local lang_plugins = require 'plugins.lang'
+local navigator_plugins = require 'plugins.navigator'
+local testing_plugins = require 'plugins.testing'
+local ui_plugins = require 'plugins.ui'
+local utils_plugins = require 'plugins.utils'
+local workflow_plugins = require 'plugins.workflow'
 
 local plugins = merge(cmp_plugins, git_plugins, lang_plugins, navigator_plugins,
                       testing_plugins, ui_plugins, utils_plugins,

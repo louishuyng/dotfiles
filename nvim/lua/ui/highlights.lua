@@ -1,6 +1,6 @@
 local colors = require("ui.main_colors")
 
-local ui = {hl_override = "", italic_comments = false, transparency = false}
+local ui = {hl_override = "", italic_comments = false}
 
 local black = colors.black
 local black2 = colors.black2
@@ -42,33 +42,27 @@ fg_bg("DiffDelete", red, "NONE")
 fg_bg("DiffAdd", green, "NONE")
 fg_bg("DiffChange", purple, "NONE")
 
+fg_bg("GitSignsDelete", red, "NONE")
+fg_bg("GitSignsChange", purple, "NONE")
+fg_bg("GitSignsAdd", green, "NONE")
+
 -- Lsp diagnostics
 fg("DiagnosticHint", purple)
 fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
 
--- Disable some highlight in nvim tree if transparency enabled
-if ui.transparency then
-  bg("Normal", "NONE")
-  bg("EndOfBuffer", "NONE")
-  bg("NormalFloat", "NONE")
-end
-
 vim.cmd([[
   hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
   hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
   hi FloatermBorder guifg=#55E579
   hi FloatBorder guibg=NONE
-  hi VertSplit guifg=#23272e guibg=bg
+  hi VertSplit guifg=#23272e guibg=bg cterm=NONE
   hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#87af87 gui=NONE
+  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
   hi NormalFloat guibg=NONE
   hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
-  hi CursorLine guibg=#323232 guifg=NONE
   hi LineNr guibg=NONE guifg=grey
-  hi Visual guibg=#565c64 guifg=NONE
+  hi Visual guibg=#323232 guifg=NONE
   hi SignColumn guibg=NONE
-  hi VertSplit cterm=NONE
-  hi MatchParen      guifg=#FD971F guibg=#000000 gui=bold
 ]])
