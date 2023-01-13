@@ -15,10 +15,6 @@ opt.timeoutlen = 1000
 opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
 
--- CENTER CURSOR
-opt.scrolloff = 999
-opt.sidescrolloff = 999
-
 -- SWAPFILE
 vim.g.noswapfile = true
 vim.g.nobackup = true
@@ -28,8 +24,18 @@ vim.g.nowb = true
 -- NUMBERS
 vim.cmd([[
   set number relativenumber
-  set nu rnu
 ]])
+
+-- FILLCHARS
+vim.opt.fillchars = {
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft = '┫',
+  vertright = '┣',
+  verthoriz = '╋'
+}
 
 -- INDENLINE
 opt.expandtab = true
@@ -56,17 +62,6 @@ vim.opt.listchars:append("trail:·")
 vim.opt.listchars:append("extends:<")
 vim.opt.listchars:append("precedes:>")
 vim.opt.listchars:append("conceal:┊")
-
--- Fillchars
-vim.opt.fillchars = {
-  horiz = '━',
-  horizup = '┻',
-  horizdown = '┳',
-  vert = '┃',
-  vertleft = '┫',
-  vertright = '┣',
-  verthoriz = '╋'
-}
 
 -- FOLD
 opt.foldmethod = 'indent'
@@ -134,5 +129,10 @@ au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
     \)
   ]]
 
--- Theme
-vim.cmd('colorscheme habamax')
+-- Draw Performance
+vim.cmd([[
+  set ttyfast
+  set lazyredraw
+  set synmaxcol=128
+  syntax sync minlines=256
+]])
