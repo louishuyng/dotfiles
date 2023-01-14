@@ -90,4 +90,3 @@ shift + lctrl + alt - e : yabai -m config --space mouse top_padding 30;
 # Moving between space
 lctrl - 1 :tmux switch -t Workflow
 lctrl - 2 :tmux switch -t Perx
-lctrl - 3 :tmux switch -t Pdp

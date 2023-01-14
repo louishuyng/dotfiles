@@ -56,26 +56,5 @@ function louisws -d "working space of louis"
     tmux send-keys -t $SESSION_PERX:4.2 "clear" Enter
     tmux send-keys -t $SESSION_PERX:4.2 "yarn start:blackcomb:staging"
 
-    # Product pine
-    tmux kill-session -t $SESSION_PDP
-
-    ## BMS
-    tmux new -d -s $SESSION_PDP -n "bms"
-    tmux send-keys -t $SESSION_PDP:1 "cd $PDP/brand-management-system" Enter
-    tmux send-keys -t $SESSION_PDP:1 "clear" Enter
-    tmux send-keys -t $SESSION_PDP:1 "nv" Enter
-
-    ## HEROKU
-    tmux new-window -n "servers"
-    tmux split-window -h
-
-    tmux send-keys -t $SESSION_PDP:2.1 "cd $PDP/brand-management-system" Enter
-    tmux send-keys -t $SESSION_PDP:2.1 "c" Enter
-    tmux send-keys -t $SESSION_PDP:2.1 "staging console"
-
-    tmux send-keys -t $SESSION_PDP:2.2 "cd $PDP/brand-management-system" Enter
-    tmux send-keys -t $SESSION_PDP:2.2 "c" Enter
-    tmux send-keys -t $SESSION_PDP:2.2 "production console"
-
     tmux -u attach-session -t $SESSION_ORG:1
 end
