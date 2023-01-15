@@ -1,4 +1,4 @@
-local gps = require("nvim-gps")
+local navic = require("nvim-navic")
 
 local winbar_components = {active = {{}, {}, {}}, inactive = {{}, {}, {}}}
 
@@ -6,9 +6,9 @@ local winbar_components = {active = {{}, {}, {}}, inactive = {{}, {}, {}}}
 
 -- nvimGps
 winbar_components.active[1][1] = {
-  provider = function() return gps.get_location() end,
-  enabled = function() return gps.is_available() end,
-  hl = {fg = 'green'}
+  provider = function() return navic.get_location() end,
+  enabled = function() return navic.is_available() end,
+  hl = {fg = 'white', style = 'bold'}
 }
 
 -- RIGHT

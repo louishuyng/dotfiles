@@ -81,3 +81,6 @@ fish_add_path /usr/local/opt/gnu-sed/libexec/gnubin
 
 # Emacs
 fish_add_path ~/.emacs.d/bin/
+
+# MacPort
+fish_add_path /opt/local/bin 

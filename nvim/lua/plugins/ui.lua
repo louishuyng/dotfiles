@@ -1,6 +1,6 @@
 return {
   {
-    'Mofiqul/vscode.nvim',
+    'sainnhe/edge',
     priority = 1000 -- Ensure it loads first
 
   }, {'DaikyXendo/nvim-material-icon'}, {'kyazdani42/nvim-web-devicons'},
@@ -8,5 +8,5 @@ return {
   {'goolord/alpha-nvim', config = function() require('config.libs.alpha') end},
   {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'}, -- make fold look modern
   {'rcarriga/nvim-notify'}, -- Statusline
-  {'SmiteshP/nvim-gps'}, {'famiu/feline.nvim'}
+  {'famiu/feline.nvim'}, {'SmiteshP/nvim-navic'}
 }

@@ -29,8 +29,7 @@ yabai -m config window_border_width          1
 yabai -m config active_window_border_color  0xff48e566
 yabai -m config normal_window_border_color  0xff1A1A1A
 
-STATUSBAR_HEIGHT=$(spacebar -m config height)
-yabai -m config external_bar all:$STATUSBAR_HEIGHT:0
+yabai -m config external_bar all:30:0
 
 # signals
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"

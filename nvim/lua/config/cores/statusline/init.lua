@@ -149,15 +149,8 @@ components.active[1][8] = {
   hl = {fg = 'red', bg = 'statusline', style = 'bold'}
 }
 
--- MIDDLE
-
--- LspName
-components.active[2][1] = {
-  provider = 'lsp_client_names',
-  hl = {fg = 'yellow', style = 'bold', bg = 'statusline'}
-}
 -- diagnosticErrors
-components.active[2][2] = {
+components.active[1][9] = {
   provider = 'diagnostic_errors',
   enabled = function()
     return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR)
@@ -165,7 +158,7 @@ components.active[2][2] = {
   hl = {fg = 'red', style = 'bold', bg = 'statusline'}
 }
 -- diagnosticWarn
-components.active[2][3] = {
+components.active[1][10] = {
   provider = 'diagnostic_warnings',
   enabled = function()
     return lsp.diagnostics_exist(vim.diagnostic.severity.WARN)
@@ -173,7 +166,7 @@ components.active[2][3] = {
   hl = {fg = 'yellow', style = 'bold', bg = 'statusline'}
 }
 -- diagnosticHint
-components.active[2][4] = {
+components.active[1][11] = {
   provider = 'diagnostic_hints',
   enabled = function()
     return lsp.diagnostics_exist(vim.diagnostic.severity.HINT)
@@ -181,17 +174,24 @@ components.active[2][4] = {
   hl = {fg = 'cyan', style = 'bold', bg = 'statusline'}
 }
 -- diagnosticInfo
-components.active[2][5] = {
+components.active[1][12] = {
   provider = 'diagnostic_info',
   enabled = function()
     return lsp.diagnostics_exist(vim.diagnostic.severity.INFO)
   end,
   hl = {fg = 'skyblue', style = 'bold', bg = 'statusline'}
 }
+
 -- RIGHT
 
--- fileIcon
+-- LspName
 components.active[3][1] = {
+  provider = 'lsp_client_names',
+  hl = {fg = 'yellow', style = 'bold', bg = 'statusline'}
+}
+
+-- fileIcon
+components.active[3][2] = {
   provider = function()
     local filename = vim.fn.expand('%:t')
     local extension = vim.fn.expand('%:e')
@@ -200,10 +200,11 @@ components.active[3][1] = {
     return icon
   end,
   hl = hl_icon_current_file,
-  right_sep = default_seperator
+  right_sep = default_seperator,
+  left_sep = default_seperator
 }
 -- fileType
-components.active[3][2] = {
+components.active[3][3] = {
   provider = 'file_type',
   hl = function()
     local val = {}
@@ -222,43 +223,43 @@ components.active[3][2] = {
   right_sep = default_seperator
 }
 -- fileSize
-components.active[3][3] = {
+components.active[3][4] = {
   provider = 'file_size',
   enabled = function() return vim.fn.getfsize(vim.fn.expand('%:t')) > 0 end,
   hl = {fg = 'skyblue', bg = 'statusline', style = 'bold'},
   right_sep = default_seperator
 }
 -- fileFormat
-components.active[3][4] = {
+components.active[3][5] = {
   provider = function() return '' .. vim.bo.fileformat:upper() .. '' end,
   hl = {fg = 'white', bg = 'statusline', style = 'bold'},
   right_sep = default_seperator
 }
 -- fileEncode
-components.active[3][5] = {
+components.active[3][6] = {
   provider = 'file_encoding',
   hl = {fg = 'white', bg = 'statusline', style = 'bold'},
   right_sep = default_seperator
 }
-components.active[3][6] = {
+components.active[3][7] = {
   provider = 'position',
   hl = {fg = 'white', bg = 'statusline', style = 'bold'},
   right_sep = default_seperator
 }
 -- linePercent
-components.active[3][7] = {
+components.active[3][8] = {
   provider = 'line_percentage',
   hl = {fg = 'white', bg = 'statusline', style = 'bold'},
   right_sep = default_seperator
 }
 -- Lazy.nvim
-components.active[3][8] = {
+components.active[3][9] = {
   provider = function() return " ﮮ " end,
   enabled = lazy.has_updates,
   hl = {fg = 'black', bg = 'orange', style = 'bold'}
 }
 -- scrollBar
-components.active[3][9] = {
+components.active[3][10] = {
   provider = 'scroll_bar',
   hl = {fg = 'yellow', bg = 'statusline'}
 }
