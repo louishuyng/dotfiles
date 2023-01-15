@@ -27,5 +27,5 @@ return {
   {'windwp/nvim-spectre'}, {
     'norcalli/nvim-colorizer.lua',
     config = function() require'colorizer'.setup() end
-  }
+  }, {'karb94/neoscroll.nvim'}
 }
