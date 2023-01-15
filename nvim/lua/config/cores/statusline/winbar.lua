@@ -8,7 +8,7 @@ local winbar_components = {active = {{}, {}, {}}, inactive = {{}, {}, {}}}
 winbar_components.active[1][1] = {
   provider = function() return gps.get_location() end,
   enabled = function() return gps.is_available() end,
-  hl = {fg = 'green', style = 'bold'}
+  hl = {fg = 'green'}
 }
 
 -- RIGHT

@@ -12,6 +12,7 @@ require "config.libs.todo"
 require "config.libs.ufo"
 require "config.libs.vim_test"
 require "config.libs.vista"
+require "config.libs.web_devicons"
 require "config.libs.zenmode"
 
 require "config.cores.diagnostic"

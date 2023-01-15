@@ -111,7 +111,7 @@ components.active[1][2] = {
 -- File Name
 components.active[1][3] = {
   provider = function() return vim.fn.expand('%:p:t') end,
-  hl = hl_icon_current_file,
+  hl = {fg = 'fg', bg = 'statusline', style = 'bold'},
   right_sep = default_seperator
 }
 

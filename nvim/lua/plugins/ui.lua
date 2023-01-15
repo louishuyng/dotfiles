@@ -2,7 +2,9 @@ return {
   {
     'Mofiqul/vscode.nvim',
     priority = 1000 -- Ensure it loads first
-  }, {'kyazdani42/nvim-web-devicons'}, {"voldikss/vim-floaterm"},
+
+  }, {'DaikyXendo/nvim-material-icon'}, {'kyazdani42/nvim-web-devicons'},
+  {"voldikss/vim-floaterm"},
   {'goolord/alpha-nvim', config = function() require('config.libs.alpha') end},
   {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'}, -- make fold look modern
   {'rcarriga/nvim-notify'}, -- Statusline
