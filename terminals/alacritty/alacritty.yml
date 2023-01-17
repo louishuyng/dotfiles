@@ -181,7 +181,7 @@ draw_bold_text_with_bright_colors: true
 schemes:
   Custom: &Custom
     primary:
-      background: '#1e1e1e'
+      background: '#232326'
       foreground: '#98c379'
 
     cursor:

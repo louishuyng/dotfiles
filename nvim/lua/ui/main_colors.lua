@@ -2,7 +2,7 @@ local colors = {
   white = "#abb2bf",
   black = "#282c34",
   pure_black = "#000000",
-  bg = '#1e1e1e',
+  bg = '#232326',
   black2 = "#252931",
   custom_bg = "#282c34", -- nvim bg
   custom_bg2 = "#353b45",
@@ -18,7 +18,7 @@ local colors = {
   orange = "#d19a66",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#303030"
+  statusline = "#2c2d31"
 }
 
 return colors

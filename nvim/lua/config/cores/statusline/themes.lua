@@ -22,17 +22,19 @@ M.onedarkpro = {
   bg = colors.bg,
   statusline = colors.statusline,
   black = "#282c34",
-  yellow = "#e5c07b",
-  cyan = "#56b6c2",
   oceanblue = "#61afef",
-  green = "#98c379",
-  orange = "#d19a66",
   violet = "#c678dd",
   magenta = "#c678dd",
   white = "#abb2bf",
   fg = "#abb2bf",
   skyblue = "#61afef",
-  red = "#e06c75"
+  green = "#98c379",
+  orange = "#d19a66",
+  blue = "#61afef",
+  yellow = "#e5c07b",
+  cyan = "#56b6c2",
+  red = "#e86671",
+  grey = "#5c6370"
 }
 
 M.catppuccin = {

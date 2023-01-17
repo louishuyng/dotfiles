@@ -67,7 +67,7 @@ local function hl_icon_current_file()
   local val = {}
   local filename = vim.fn.expand('%:t')
   local extension = vim.fn.expand('%:e')
-  local icon, name = require'nvim-web-devicons'.get_icon(filename, extension)
+  local icon, name = require'nvim-material-icon'.get_icon(filename, extension)
   if icon ~= nil then
     val.fg = vim.fn.synIDattr(vim.fn.hlID(name), 'fg')
   else
