@@ -263,8 +263,11 @@ install_tmux() {
   read -r -p "Do you want to install tmux? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install tmux
+    brew install tmuxinator
+
     rm ~/.tmux.conf
-    cd ~/.dotfiles/terminals && stow tmux -t ~/
+
+    ln -s ~/.dotfiles/terminal/tmuxinator -t ~/.config/tmuxinator
 
     rm -rf ~/.tmux/plugins/tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

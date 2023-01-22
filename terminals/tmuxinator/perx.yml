@@ -1,0 +1,15 @@
+name: Perx
+root: ~/Dev/Projects/PerxTech/ 
+
+attach: false
+
+windows:
+  - api:
+    - cd perx-api
+    - nvim
+  - staging:
+    - k9s
+  - dashboard:
+    - cd perx-dashboard-v4
+  - microsite:
+    - cd microsite-apps-ng

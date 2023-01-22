@@ -8,6 +8,7 @@ alias osq='osqueryi'
 
 # TMUX
 alias tm='tmux  -u'
+alias tx='tmuxinator'
 
 # SPOTIFY
 alias sppl='spotify play'

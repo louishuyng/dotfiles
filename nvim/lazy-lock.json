@@ -15,7 +15,7 @@
   "git-conflict.nvim": { "branch": "main", "commit": "cbefa7075b67903ca27f6eefdc9c1bf0c4881017" },
   "gitsigns.nvim": { "branch": "main", "commit": "addd6e174a85fc1c4007ab0b65d77e6555b417bf" },
   "harpoon": { "branch": "master", "commit": "21d0d1bfa3000e4384740bfaefa0ebc51c773786" },
-  "hop.nvim": { "branch": "master", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
+  "hop.nvim": { "branch": "fix-set-unmatched-lines-not-work-for-empty-lines", "commit": "bde89fd53f82c8a7f7900dfe3f685cd02ef51821" },
   "lazy.nvim": { "branch": "main", "commit": "4f60facf18b34ae06d164485aa2ce879e21e44fc" },
   "markdown-preview.nvim": { "branch": "master", "commit": "02cc3874738bc0f86e4b91f09b8a0ac88aef8e96" },
   "neorg": { "branch": "main", "commit": "a79bf5969e27a3f1f1478c9b05c187815f2b2390" },
