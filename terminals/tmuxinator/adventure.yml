@@ -1,8 +1,11 @@
-name: Learning
+name: Adventure
 
 attach: false
 
 windows:
+  - dotfiles:
+      - cd ~/.dotfiles
+      - nvim
   - devops:
       - cd ~/Dev/awesome-tech/devops
   - backend:

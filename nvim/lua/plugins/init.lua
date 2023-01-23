@@ -16,10 +16,8 @@ local navigator_plugins = require 'plugins.navigator'
 local testing_plugins = require 'plugins.testing'
 local ui_plugins = require 'plugins.ui'
 local utils_plugins = require 'plugins.utils'
-local workflow_plugins = require 'plugins.workflow'
 
 local plugins = merge(cmp_plugins, git_plugins, lang_plugins, navigator_plugins,
-                      testing_plugins, ui_plugins, utils_plugins,
-                      workflow_plugins)
+                      testing_plugins, ui_plugins, utils_plugins)
 
 require("lazy").setup(plugins)

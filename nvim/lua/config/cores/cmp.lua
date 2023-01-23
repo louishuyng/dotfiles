@@ -83,7 +83,7 @@ cmp.setup {
   },
   sources = {
     {name = "cmp_tabnine"}, {name = "nvim_lsp"}, {name = "luasnip"},
-    {name = "buffer"}, {name = "calc"}, {name = 'neorg'}
+    {name = "buffer"}, {name = "calc"}
   },
   sorting = {
     priority_weight = 2,
