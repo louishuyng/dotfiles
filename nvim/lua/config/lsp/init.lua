@@ -1,12 +1,13 @@
--- require('config/lsp/deno')
 -- require "config/lsp/bash"
 -- require "config/lsp/css"
 -- require "config/lsp/rust"
 -- require "config/lsp/sql"
+-- require('config/lsp/deno')
 require "config/lsp/golang"
 require "config/lsp/kotlin"
 require "config/lsp/lua"
 require "config/lsp/null_ls"
 require "config/lsp/python"
 require "config/lsp/ruby"
+require "config/lsp/svelte"
 require "config/lsp/typescript"
