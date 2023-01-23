@@ -1,0 +1,11 @@
+name: Learning
+
+attach: false
+
+windows:
+  - devops:
+      - cd ~/Dev/awesome-tech/devops
+  - backend:
+      - cd ~/Dev/awesome-tech/backend
+  - frontend:
+      - cd ~/Dev/awesome-tech/frontend

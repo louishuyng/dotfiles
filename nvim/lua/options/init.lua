@@ -69,6 +69,12 @@ opt.foldnestmax = 5
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = -1
 
+-- COLORCOLUMN
+vim.cmd([[
+  autocmd FileType * setlocal colorcolumn=120
+  autocmd FileType alpha setlocal colorcolumn=""
+]])
+
 -- SPELL
 vim.api.nvim_command("set spell")
 
