@@ -5,5 +5,6 @@ lsp_config.solargraph.setup({
   on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = true
     on_attach(client, bufnr)
-  end
+  end,
+  settings = {solargraph = {diagnostics = false}}
 })
