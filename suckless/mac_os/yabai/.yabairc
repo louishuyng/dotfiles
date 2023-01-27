@@ -49,49 +49,46 @@ yabai -m space 3 --label III
 yabai -m space 4 --label IV
 yabai -m space 5 --label V
 
-# debug
-yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=I
-yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=I
-yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=I
-yabai -m rule --add app="Mingo$" manage=off          opacity=1           space=I
-yabai -m rule --add app="^Wireshark$" manage=off                         space=I
-yabai -m rule --add app="^Docker$" manage=off                            space=I
-yabai -m rule --add app="^OWASP$" manage=off                             space=I
-yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=I
-yabai -m rule --add app="^Disk Utility$" manage=off          opacity=1   space=I
-yabai -m rule --add app="^GraphiQL$" manage=off          opacity=1       space=I
-yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=I
-yabai -m rule --add app="^Flipper$" manage=off      opacity=1       space=I
-yabai -m rule --add app="^Lens$" manage=off      opacity=1       space=I
-yabai -m rule --add label="Sourcetree" app="^Sourcetree$" manage=off space=I
-yabai -m rule --add app="^DataGrip$"      opacity=1 manage=off          space=I
-yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off space=I
+# Planing
+yabai -m rule --add app="Notion"           opacity=1 manage=off    space=I
+yabai -m rule --add app="Obsidian"         opacity=1 manage=off  space=I
+yabai -m rule --add app="^Miro$"          opacity=1 manage=off space=I
+yabai -m rule --add app="StarUML"          opacity=1 manage=off    space=I
 
-# app
-yabai -m rule --add app="^Microsoft Word$" opacity=1 manage=off space=II
-yabai -m rule --add app="^Microsoft Excel$" opacity=1 manage=off space=II
-yabai -m rule --add app="^Microsoft PowerPoint$" opacity=1 manage=off space=II
-yabai -m rule --add app="StarUML"          opacity=1 manage=off    space=II
-yabai -m rule --add app="Notion"           opacity=1 manage=off    space=II
-yabai -m rule --add app="Obsidian"         opacity=1   space=II
-yabai -m rule --add app="^Figma$"            opacity=1 manage=off    space=II
-yabai -m rule --add app="^Notes$"      opacity=1 manage=off space=II
-yabai -m rule --add app="Pages"            opacity=1 manage=off space=II
-yabai -m rule --add label="Calculator" app="^Calculator$" manage=off space=II
+# debug
+yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=II
+yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=II
+yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=II
+yabai -m rule --add app="Mingo$" manage=off          opacity=1           space=II
+yabai -m rule --add app="^Wireshark$" manage=off                         space=II
+yabai -m rule --add app="^Docker$" manage=off                            space=II
+yabai -m rule --add app="^OWASP$" manage=off                             space=II
+yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=II
+yabai -m rule --add app="^Disk Utility$" manage=off          opacity=1   space=II
+yabai -m rule --add app="^GraphiQL$" manage=off          opacity=1       space=II
+yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=II
+yabai -m rule --add app="^Flipper$" manage=off      opacity=1       space=II
+yabai -m rule --add app="^Lens$" manage=off      opacity=1       space=II
+yabai -m rule --add label="Sourcetree" app="^Sourcetree$" manage=off space=II
+yabai -m rule --add app="^DataGrip$"      opacity=1 manage=off          space=II
+yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off space=II
 yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=II
-yabai -m rule --add app="^Preview" opacity=1 manage=off space=II
-yabai -m rule --add app="^Spotify$"          opacity=1 manage=off space=II
-yabai -m rule --add app="^Miro$"          opacity=1 manage=off space=II
 
 # code
 yabai -m rule --add app="Alacritty"                            space=III
 yabai -m rule --add app="^Xcode$" manage=off                   space=III
 
-# browser
-yabai -m rule --add app="^Microsoft Edge$"         opacity=1   space=IV
-yabai -m rule --add app="qutebrowser"                          space=IV
+# view
+yabai -m rule --add app="^Microsoft Word$" opacity=1 manage=off space=IV
+yabai -m rule --add app="^Microsoft Excel$" opacity=1 manage=off space=IV
+yabai -m rule --add app="^Microsoft PowerPoint$" opacity=1 manage=off space=IV
+yabai -m rule --add app="^Preview" opacity=1 manage=off space=IV
+yabai -m rule --add app="^Microsoft Edge$"         opacity=1 manage=off   space=IV
+yabai -m rule --add app="qutebrowser"                 manage=off       space=IV
+yabai -m rule --add app="Pages"            opacity=1 manage=off space=IV
+yabai -m rule --add app="^Figma$"            opacity=1 manage=off    space=IV
 
-# workspace
+# communication
 yabai -m rule --add app="Slack" title="Slack"      opacity=1 manage=off space=V
 yabai -m rule --add app="zoom.us" manage=off       opacity=1            space=V
 yabai -m rule --add app="^Microsoft Teams$" manage=off       opacity=1  space=V
@@ -109,6 +106,9 @@ yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add label="Clean My Mac" app="^CleanMyMac X$" manage=off
 yabai -m rule --add app="Finder" manage=off  opacity=1 
 yabai -m rule --add app="^System Settings" opacity=1 manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add app="^Notes$"      opacity=1 manage=off
+yabai -m rule --add app="^Spotify$"          opacity=1 manage=off
 
 
 # show digital colour meter topmost and on all spaces
