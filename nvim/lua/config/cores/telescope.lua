@@ -1,5 +1,6 @@
 local present, telescope = pcall(require, "telescope")
 local actions = require 'telescope.actions'
+local icons = require("nvim-nonicons")
 
 telescope.setup {
   defaults = {
@@ -11,9 +12,9 @@ telescope.setup {
       "rg", "--color=never", "--no-heading", "--with-filename", "--line-number",
       "--column", "--smart-case"
     },
-    prompt_prefix = ' 🔍  ',
-    selection_caret = '  ',
-    entry_prefix = '   ',
+    prompt_prefix = "  " .. icons.get("telescope") .. "  ",
+    selection_caret = " ❯ ",
+    entry_prefix = "   ",
     path_display = {'truncate'},
     sorting_strategy = 'ascending',
     file_sorter = require("telescope.sorters").get_fzy_sorter,

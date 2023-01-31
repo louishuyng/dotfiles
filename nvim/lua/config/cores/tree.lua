@@ -1,3 +1,5 @@
+local nonicons_extention = require("nvim-nonicons.extentions.nvim-tree")
+
 require("nvim-tree").setup({
   auto_reload_on_write = false,
   disable_netrw = true,

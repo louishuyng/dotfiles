@@ -1,4 +1,5 @@
 local nvim_notify = require("notify")
+local nonicons_extention = require("nvim-nonicons.extentions.nvim-notify")
 
 nvim_notify.setup({
   -- Animation style
@@ -6,7 +7,8 @@ nvim_notify.setup({
   -- Default timeout for notifications
   timeout = 1500,
   background_colour = "#2E3440",
-  render = "minimal"
+  render = "minimal",
+  icons = nonicons_extention.icons
 })
 
 vim.notify = nvim_notify
