@@ -76,6 +76,7 @@ yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=I
 
 # code
 yabai -m rule --add app="Alacritty"                            space=III
+yabai -m rule --add app="kitty"                            space=III
 yabai -m rule --add app="^Xcode$" manage=off                   space=III
 
 # view
