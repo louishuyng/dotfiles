@@ -2,12 +2,13 @@
 ctrl + alt - p : open -na /Applications/Postman.app
 ctrl + alt - s : open -na /Applications/Slack.app
 ctrl + alt - d : open -na /Applications/DataGrip.app
-ctrl + alt - e : open -na /Applications/Microsoft\ Edge.app
+ctrl + alt - b : open -na /Applications/Microsoft\ Edge.app
 ctrl + alt - o : open -na /Applications/Obsidian.app
 ctrl + alt - m : open -na /Applications/Spotify.app
 ctrl + alt - t : open -na /Applications/Kitty.app
 ctrl + alt - u : open -na /Applications/StarUML.app
 ctrl + alt - q : open -na /Applications/qutebrowser.app
+ctrl + alt - e : emacs &
 
 shift + alt - space : yabai -m window --toggle float
 
