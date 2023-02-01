@@ -1,7 +1,9 @@
 local opts = {silent = true}
 
 vim.keymap.set('n', '<leader>tt', ':FloatermToggle<CR>', opts)
+vim.keymap.set('n', '<leader>tk', ':FloatermKill<CR>', opts)
 vim.keymap.set('t', '<leader>tt', '<C-\\><C-n>:FloatermToggle<CR>', opts)
+vim.keymap.set('t', '<leader>tk', '<C-\\><C-n>:FloatermKill<CR>', opts)
 
 vim.keymap.set('t', '<F7>', '<C-\\><C-n>:FloatermNew<CR>', opts)
 
