@@ -17,6 +17,9 @@ alias dc="docker system prune"
 alias km='minikd'
 alias k='kubectl'
 
+#Terraform
+alias tf='terraform'
+
 # Basic Commands
 alias ka='kubectl apply'
 alias kc='kubectl create'

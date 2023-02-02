@@ -120,6 +120,12 @@ install_devops() {
 
     brew install pstree
     success "Installed pstree"
+
+    brew tap hashicorp/tap
+    brew install hashicorp/tap/terraform
+    brew install hashicorp/tap/terraform-ls # LSP
+
+    success "Installed terraform"
   fi
 }
 
