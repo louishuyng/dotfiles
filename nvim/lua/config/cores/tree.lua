@@ -24,13 +24,14 @@ require("nvim-tree").setup({
     adaptive_size = true,
     mappings = {
       list = {
-        {key = {"o", "<2-LeftMouse>"}, action = "edit"},
+        {key = {"l", "<2-LeftMouse>"}, action = "edit"},
         {key = {"L", "<2-RightMouse>"}, action = "cd"},
         {key = "v", action = "vsplit"}, {key = "s", action = "split"},
         {key = "[h", action = "prev_git_item"},
-        {key = "]h", action = "next_git_item"}, {key = "u", action = "dir_up"},
+        {key = "]h", action = "next_git_item"},
+        {key = "h", action = "close_node"},
         {key = "<CR>", action = "system_open"}, {key = "v", action = "vsplit"},
-        {key = "s", action = "split"}
+        {key = 'H', action = "dir_up"}, {key = "s", action = "split"}
       }
     }
   },

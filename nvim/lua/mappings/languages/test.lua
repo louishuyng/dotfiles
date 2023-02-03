@@ -6,7 +6,7 @@ vim.keymap.set("n", "<leader>nt",
 vim.keymap.set("n", "<leader>nl", ":lua require('neotest').run.run_last()<CR>",
                opt)
 
-vim.keymap.set("n", ",t", ":TestFile<CR>")
-vim.keymap.set("n", ",s", ":TestNearest<CR>")
-vim.keymap.set("n", ",l", ":TestLast<CR>")
-vim.keymap.set("n", ",a", ":TestSuite<CR>")
+vim.keymap.set("n", "<space>tf", ":TestFile<CR>")
+vim.keymap.set("n", "<space>ts", ":TestNearest<CR>")
+vim.keymap.set("n", "<space>tl", ":TestLast<CR>")
+vim.keymap.set("n", "<space>ta", ":TestSuite<CR>")

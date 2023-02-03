@@ -12,7 +12,7 @@ vim.keymap.set("n", "<leader>fr",
                ":Telescope oldfiles previewer=false cwd_only=true<CR>", opt)
 
 vim.keymap.set("n", "<leader>bb", ":Telescope buffers<CR>", opt)
-vim.keymap.set("n", "<leader>tc", ":Telescope flutter commands<CR>", opt)
+vim.keymap.set("n", "<leader>fc", ":Telescope flutter commands<CR>", opt)
 vim.keymap.set("n", "<leader><BS>", ":Telescope keymaps<CR>", opt)
 
 vim.keymap.set("n", "<leader>vc",

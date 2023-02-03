@@ -1,7 +1,7 @@
 local opt = {silent = true, noremap = true}
 
 -- General
-vim.keymap.set("n", ",h", ":<C-u>split<CR>", opt)
+vim.keymap.set("n", ",s", ":<C-u>split<CR>", opt)
 vim.keymap.set("n", ",v", ":<C-u>vsplit<CR>", opt)
 
 vim.keymap.set("n", ",e", ":e <C-R>=expand(\"%:p:h\") . \"/\" <CR>", opt)
