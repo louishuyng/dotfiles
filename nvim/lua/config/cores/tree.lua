@@ -1,5 +1,3 @@
-local nonicons_extention = require("nvim-nonicons.extentions.nvim-tree")
-
 require("nvim-tree").setup({
   auto_reload_on_write = false,
   disable_netrw = true,
@@ -12,7 +10,7 @@ require("nvim-tree").setup({
   update_cwd = false,
   update_focused_file = {
     enable = true,
-    update_cwd = false,
+    update_cwd = true,
     ignore_list = {".git", "node_modules", ".cache"}
   },
   system_open = {cmd = nil, args = {}},

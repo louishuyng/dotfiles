@@ -25,6 +25,7 @@ telescope.setup {
     use_less = true,
     set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
     initial_mode = "insert",
+    layout_config = {height = 0.8, prompt_position = "top"},
     mappings = {
       i = {
         ["<C-d>"] = actions.close,

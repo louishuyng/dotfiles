@@ -27,5 +27,11 @@ return {
   {'windwp/nvim-spectre'}, {
     'norcalli/nvim-colorizer.lua',
     config = function() require'colorizer'.setup() end
+  }, {
+    'Wansmer/sibling-swap.nvim',
+    requires = {'nvim-treesitter'},
+    config = function()
+      require('sibling-swap').setup({ --[[ your config ]] })
+    end
   }
 }

@@ -3,8 +3,16 @@ local opt = {silent = true}
 vim.keymap.set("n", "<leader><leader>",
                ":Telescope find_files hidden=true layout_config={'width':0.7}<cr>",
                opt)
+vim.keymap.set("n", "<leader>ns",
+               ":lua vim.cmd('NvimTreeFocus');vim.cmd('Telescope find_files hidden=true')<CR>",
+               opt)
+
 vim.keymap.set("n", "<leader>/",
                ":Telescope live_grep layout_config={'width':0.7}<CR>", opt)
+vim.keymap.set("n", "<C-f>",
+               ":Telescope current_buffer_fuzzy_find layout_config={'width':0.7}<CR>",
+
+               opt)
 vim.keymap.set("n", "<leader>?",
                ":Telescope help_tags layout_config={'width':0.7}<CR>", opt)
 
