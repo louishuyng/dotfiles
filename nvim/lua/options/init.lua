@@ -122,7 +122,7 @@ vim.cmd('set grepprg=rg\\ --vimgrep\\ --smart-case\\ --follow')
 vim.cmd [[
 augroup alpha_tabline
   au!
-  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=1 ruler laststatus=3
+  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=3 ruler laststatus=3
 augroup END
 ]]
 

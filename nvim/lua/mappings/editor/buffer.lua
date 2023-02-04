@@ -7,9 +7,12 @@ vim.keymap.set("n", "2<Tab>", "2gt", opts)
 vim.keymap.set("n", "3<Tab>", "3gt", opts)
 
 -- Move to previous/next
-vim.keymap.set('n', ',q', ':bprevious<CR>', opts)
-vim.keymap.set('n', ',w', ':bnext<CR>', opts)
+vim.keymap.set('n', ',q', ':BufferLineCyclePrev<CR>', opts)
+vim.keymap.set('n', ',w', ':BufferLineCycleNext<CR>', opts)
 
 -- Close buffer
-vim.keymap.set('n', ',bd', ':bdelete<CR>', opts)
+vim.keymap.set('n', ',bd', ':bdelete %<CR>', opts)
 vim.keymap.set('n', ',bda', ':w <bar> %bd <bar> e# <bar> bd# <CR>', opts)
+
+-- Pick Buffer
+vim.keymap.set('n', '<space>bp', ':BufferLinePick<CR>', opts)

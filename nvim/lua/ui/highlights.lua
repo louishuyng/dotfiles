@@ -55,6 +55,10 @@ fg("DiagnosticInformation", green)
 -- Navic
 fg("NavicSeparator", '#55E579')
 
+-- Buffer
+bg("BufferLineTabSeparator", "NONE")
+bg("BufferLineTabSeparatorSelected", "NONE")
+
 vim.cmd([[
   hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
   hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
