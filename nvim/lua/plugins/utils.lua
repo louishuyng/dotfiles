@@ -33,5 +33,5 @@ return {
     config = function()
       require('sibling-swap').setup({ --[[ your config ]] })
     end
-  }
+  }, {'moll/vim-bbye'}
 }
