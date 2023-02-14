@@ -54,6 +54,11 @@ yabai -m rule --add app="Notion"           opacity=1 manage=off    space=I
 yabai -m rule --add app="Obsidian"         opacity=1 manage=off  space=I
 yabai -m rule --add app="^Miro$"          opacity=1 manage=off space=I
 yabai -m rule --add app="StarUML"          opacity=1 manage=off    space=I
+yabai -m rule --add app="^Microsoft Word$" opacity=1 manage=off space=I
+yabai -m rule --add app="^Microsoft Excel$" opacity=1 manage=off space=I
+yabai -m rule --add app="^Microsoft PowerPoint$" opacity=1 manage=off space=I
+yabai -m rule --add app="^Preview" opacity=1 manage=off space=I
+yabai -m rule --add app="Pages"            opacity=1 manage=off space=I
 
 # debug
 yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=II
@@ -81,13 +86,9 @@ yabai -m rule --add app="Emacs"                            space=III
 yabai -m rule --add app="^Xcode$" manage=off                   space=III
 
 # view
-yabai -m rule --add app="^Microsoft Word$" opacity=1 manage=off space=IV
-yabai -m rule --add app="^Microsoft Excel$" opacity=1 manage=off space=IV
-yabai -m rule --add app="^Microsoft PowerPoint$" opacity=1 manage=off space=IV
-yabai -m rule --add app="^Preview" opacity=1 manage=off space=IV
 yabai -m rule --add app="^Microsoft Edge$"         opacity=1 manage=off   space=IV
+yabai -m rule --add app="^Vivaldi$"         opacity=1 manage=off   space=IV
 yabai -m rule --add app="qutebrowser"                 manage=off       space=IV
-yabai -m rule --add app="Pages"            opacity=1 manage=off space=IV
 yabai -m rule --add app="^Figma$"            opacity=1 manage=off    space=IV
 
 # communication
