@@ -38,4 +38,6 @@ gitsigns.setup {
     }
   },
   on_attach = mapping.gitsigns_mappings
+
 }
+require("git-worktree").setup({})

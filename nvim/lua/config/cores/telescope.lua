@@ -1,6 +1,5 @@
 local present, telescope = pcall(require, "telescope")
 local actions = require 'telescope.actions'
-local icons = require("nvim-nonicons")
 
 telescope.setup {
   defaults = {
@@ -12,9 +11,9 @@ telescope.setup {
       "rg", "--color=never", "--no-heading", "--with-filename", "--line-number",
       "--column", "--smart-case"
     },
-    prompt_prefix = "  " .. icons.get("telescope") .. "  ",
-    selection_caret = " ❯ ",
-    entry_prefix = "   ",
+    prompt_prefix = ' 🔍  ',
+    selection_caret = '  ',
+    entry_prefix = '   ',
     path_display = {'truncate'},
     sorting_strategy = 'ascending',
     file_sorter = require("telescope.sorters").get_fzy_sorter,
@@ -25,7 +24,12 @@ telescope.setup {
     use_less = true,
     set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
     initial_mode = "insert",
-    layout_config = {height = 0.8, prompt_position = "top"},
+    layout_config = {
+      height = 0.6,
+      width = 0.6,
+      preview_width = 0.6,
+      prompt_position = "top"
+    },
     mappings = {
       i = {
         ["<C-d>"] = actions.close,
@@ -52,3 +56,6 @@ telescope.setup {
 
 telescope.load_extension('fzf')
 telescope.load_extension("flutter")
+telescope.load_extension('notify')
+telescope.load_extension('env')
+telescope.load_extension("git_worktree")
