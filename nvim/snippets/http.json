@@ -1,0 +1,15 @@
+{
+ "get": {
+    "prefix": "get",
+    "body": ["GET http://localhost:$1/$2"],
+    "description": "Get Request"
+  },
+ "post": {
+    "prefix": "post",
+    "body": [
+      "POST http://localhost:$1/$2", 
+      "Content-Type: application/json"
+    ],
+    "description": "Get Request"
+  }
+}

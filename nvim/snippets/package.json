@@ -1,0 +1,15 @@
+{
+  "name": "nvim-snippets",
+  "author": "nuxsh",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "http",
+        "path": "./http.json"
+      }
+    ]
+  }
+}

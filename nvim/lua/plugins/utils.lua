@@ -29,9 +29,12 @@ return {
     config = function() require'colorizer'.setup() end
   }, {
     'Wansmer/sibling-swap.nvim',
-    requires = {'nvim-treesitter'},
+    dependencies = {'nvim-treesitter'},
     config = function()
       require('sibling-swap').setup({ --[[ your config ]] })
     end
-  }, {'moll/vim-bbye'}
+  }, {'moll/vim-bbye'},
+  {'chentoast/marks.nvim', config = function() require'marks'.setup() end},
+  {"rest-nvim/rest.nvim"},
+  {'loishy/draft-buff', dependencies = {'MunifTanjim/nui.nvim'}}
 }
