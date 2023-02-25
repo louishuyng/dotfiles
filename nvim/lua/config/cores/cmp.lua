@@ -20,18 +20,6 @@ local function t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local tabnine = require('cmp_tabnine.config')
-
-tabnine:setup({
-  max_lines = 1000,
-  max_num_results = 5,
-  sort = true,
-  run_on_every_keystroke = true,
-  snippet_placeholder = '..',
-  -- ignored_file_types = {lua = true},
-  show_prediction_strength = true
-})
-
 cmp.setup {
   window = {
     completion = cmp.config.window.bordered(winhighlight),
@@ -45,13 +33,10 @@ cmp.setup {
     format = function(entry, vim_item)
       vim_item.kind = string.format("%s",
                                     require("config.libs.lspkind_icons").icons[vim_item.kind])
-      if entry.source.name == 'cmp_tabnine' then vim_item.kind = '' end
       return vim_item
     end
   },
   mapping = {
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-d>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm {
@@ -82,15 +67,7 @@ cmp.setup {
     end, {"i", "s"})
   },
   sources = {
-    {name = "cmp_tabnine"}, {name = "nvim_lsp"}, {name = "luasnip"},
-    {name = "buffer"}, {name = "calc"}, {name = 'orgmode'}
-  },
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      require('cmp_tabnine.compare'), compare.offset, compare.exact,
-      compare.score, compare.recently_used, compare.kind, compare.sort_text,
-      compare.length, compare.order
-    }
+    {name = "nvim_lsp"}, {name = "luasnip"}, {name = "buffer"}, {name = "calc"},
+    {name = 'orgmode'}
   }
 }
