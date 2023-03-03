@@ -7,8 +7,6 @@ windows:
   - api:
     - cd perx-api
     - nvim
-  - staging:
-    - k9s
   - dashboard:
     - cd perx-dashboard-v4
   - microsite:

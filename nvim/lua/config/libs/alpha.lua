@@ -55,13 +55,11 @@ local buttons = {
   type = "group",
   val = {
     button("SPC SPC ", "  Find File",
-           "<cmd>Telescope find_files hidden=true layout_config={'width':0.7}<cr>"),
+           "<cmd>Telescope find_files hidden=true<cr>"),
     button("SPC fr  ", "  Recent File ",
            "<cmd>Telescope oldfiles previewer=false cwd_only=true<CR>"),
-    button("SPC ?   ", "  Help Tags ",
-           "<cmd>Telescope help_tags layout_config={'width':0.7}<CR>"),
-    button("SPC /   ", "  Find Word   ",
-           "<cmd>Telescope live_grep layout_config={'width':0.7}<CR>")
+    button("SPC ?   ", "  Help Tags ", "<cmd>Telescope help_tags<CR>"),
+    button("SPC /   ", "  Find Word   ", "<cmd>Telescope live_grep<CR>")
   },
   opts = {spacing = 1}
 }

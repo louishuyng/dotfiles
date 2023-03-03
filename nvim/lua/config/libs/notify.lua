@@ -1,11 +1,10 @@
 local nvim_notify = require("notify")
-local nonicons_extention = require("nvim-nonicons.extentions.nvim-notify")
 
 nvim_notify.setup({
   -- Animation style
   stages = "fade_in_slide_out",
   -- Default timeout for notifications
-  timeout = 1500,
+  timeout = 1000,
   background_colour = "#2E3440",
   render = "minimal"
 })

@@ -2,4 +2,4 @@
 
 sketchybar --add item disk right                              \
            --set disk script="$PLUGIN_DIR/disk.sh"            \
-                      update_freq=4                           \
+                      update_freq=10                           \

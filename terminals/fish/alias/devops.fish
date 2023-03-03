@@ -12,6 +12,7 @@ alias dpsa="docker ps -a"
 alias dr="open -a 'Docker'"
 alias ds="killall Docker"
 alias dc="docker system prune"
+alias dka="docker kill (docker ps -q)"
 
 #K8S
 alias km='minikd'
@@ -19,6 +20,10 @@ alias k='kubectl'
 
 #Terraform
 alias tf='terraform'
+
+#Ansible
+alias as='ansible'
+alias aspb='ansible-playbook'
 
 # Basic Commands
 alias ka='kubectl apply'

@@ -62,14 +62,15 @@ bg("BufferLineTabSeparatorSelected", "NONE")
 vim.cmd([[
   hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
   hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
-  hi FloatermBorder guifg=#55E579
+  hi FloatermBorder guifg=#87AF87
   hi FloatBorder guibg=NONE
   hi VertSplit guifg=#23272e guibg=bg cterm=NONE
   hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
+  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#87AF87 gui=NONE
   hi NormalFloat guibg=NONE
   hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
   hi LineNr guibg=NONE guifg=grey
   hi Visual guibg=#323232 guifg=NONE
+  hi CursorLine gui=underline cterm=underline guibg=NONE
   hi SignColumn guibg=NONE
 ]])

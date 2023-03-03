@@ -128,29 +128,8 @@ components.active[1][4] = {
   right_sep = default_seperator
 }
 
--- gitBranch
-components.active[1][5] = {
-  provider = 'git_branch',
-  hl = {fg = 'yellow', bg = 'statusline', style = 'bold'}
-}
--- diffAdd
-components.active[1][6] = {
-  provider = 'git_diff_added',
-  hl = {fg = 'green', bg = 'statusline', style = 'bold'}
-}
--- diffModfified
-components.active[1][7] = {
-  provider = 'git_diff_changed',
-  hl = {fg = 'orange', bg = 'statusline', style = 'bold'}
-}
--- diffRemove
-components.active[1][8] = {
-  provider = 'git_diff_removed',
-  hl = {fg = 'red', bg = 'statusline', style = 'bold'}
-}
-
 -- diagnosticErrors
-components.active[1][9] = {
+components.active[1][5] = {
   provider = 'diagnostic_errors',
   enabled = function()
     return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR)
@@ -158,7 +137,7 @@ components.active[1][9] = {
   hl = {fg = 'red', style = 'bold', bg = 'statusline'}
 }
 -- diagnosticWarn
-components.active[1][10] = {
+components.active[1][6] = {
   provider = 'diagnostic_warnings',
   enabled = function()
     return lsp.diagnostics_exist(vim.diagnostic.severity.WARN)
@@ -166,7 +145,7 @@ components.active[1][10] = {
   hl = {fg = 'yellow', style = 'bold', bg = 'statusline'}
 }
 -- diagnosticHint
-components.active[1][11] = {
+components.active[1][7] = {
   provider = 'diagnostic_hints',
   enabled = function()
     return lsp.diagnostics_exist(vim.diagnostic.severity.HINT)
@@ -174,7 +153,7 @@ components.active[1][11] = {
   hl = {fg = 'cyan', style = 'bold', bg = 'statusline'}
 }
 -- diagnosticInfo
-components.active[1][12] = {
+components.active[1][8] = {
   provider = 'diagnostic_info',
   enabled = function()
     return lsp.diagnostics_exist(vim.diagnostic.severity.INFO)

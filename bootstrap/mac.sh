@@ -428,6 +428,7 @@ link_all_dotfiles() {
   rm -rf ~/.yabairc
   rm -rf ~/.spacebarrc
   cd ~/.dotfiles/suckless/mac_os && stow spacebar -t ~/ && stow yabai -t ~/ && stow skhdrc -t ~/
+  ln -s ~/.dotfiles/suckless/mac_os/sketchybar ~/.config
 
   success "Linked window manager"
 

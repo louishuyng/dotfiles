@@ -6,5 +6,6 @@ return {
       "Git blame", "Git mergetool"
     }
   }, {'lewis6991/gitsigns.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
-  {'akinsho/git-conflict.nvim'}, {'sindrets/diffview.nvim'}
+  {'akinsho/git-conflict.nvim'}, {'sindrets/diffview.nvim'},
+  {'ThePrimeagen/git-worktree.nvim'}
 }

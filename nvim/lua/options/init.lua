@@ -141,4 +141,8 @@ vim.cmd([[
   set lazyredraw
   set synmaxcol=128
   syntax sync minlines=256
+  let g:sneak#label = 1
 ]])
+
+-- Draft Buff Mappings Table
+vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}

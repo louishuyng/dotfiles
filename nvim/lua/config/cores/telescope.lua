@@ -25,8 +25,8 @@ telescope.setup {
     set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
     initial_mode = "insert",
     layout_config = {
-      height = 0.6,
-      width = 0.6,
+      height = 0.65,
+      width = 0.65,
       preview_width = 0.6,
       prompt_position = "top"
     },

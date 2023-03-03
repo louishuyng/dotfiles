@@ -1,3 +1,4 @@
+source ~/.dotfiles/terminals/fish/env/credential.fish
 source ~/.dotfiles/terminals/fish/env/generic.fish
 source ~/.dotfiles/terminals/fish/env/nnn.fish
 

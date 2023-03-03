@@ -3,9 +3,10 @@ if not present then return end
 
 ts_config.setup {
   ensure_installed = {
-    "go", "graphql", "javascript", "jsdoc", "json", "jsonc", "lua", "python",
-    "ruby", "rust", "tsx", "typescript", "svelte", "kotlin", "yaml", "html",
-    "toml", "vim", "norg", "fish", "bash", "markdown", "terraform", "org"
+    "go", "graphql", "javascript", "jsdoc", "http", "json", "jsonc", "lua",
+    "python", "ruby", "rust", "tsx", "typescript", "svelte", "kotlin", "yaml",
+    "html", "toml", "vim", "norg", "fish", "bash", "markdown", "terraform",
+    "org"
   },
   matchup = {enable = true},
   highlight = {

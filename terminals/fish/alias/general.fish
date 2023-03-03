@@ -1,3 +1,6 @@
+# Bash
+alias unset 'set --erase'
+
 # Text Editor
 alias cat='bat'
 alias nv="nvim"

@@ -18,7 +18,7 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 0
+    columns: 2
     lines: 0
 
   # Window position (changes require restart)
@@ -170,7 +170,7 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  use_thin_strokes: true
+  # use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -181,7 +181,7 @@ draw_bold_text_with_bright_colors: true
 schemes:
   Custom: &Custom
     primary:
-      background: '#1e1e1e'
+      background: '#000000'
       foreground: '#98c379'
 
     cursor:
@@ -307,7 +307,7 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Block
+  # style: Block
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -372,7 +372,7 @@ debug:
   print_events: false
 
   # Record all characters and escape sequences as test data.
-  ref_test: false
+  # ref_test: false
 
 # Key bindings
 #
