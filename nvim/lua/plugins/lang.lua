@@ -8,5 +8,5 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ':TSUpdate',
     config = function() require "config.cores.treesitter" end
-  }, {'liuchengxu/vista.vim'}, {'mfussenegger/nvim-dap'}
+  }, {'liuchengxu/vista.vim'}
 }

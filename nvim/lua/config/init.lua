@@ -15,6 +15,7 @@ require "config.libs.vista"
 require "config.libs.zenmode"
 
 require "config.cores.bufferline"
+require "config.cores.dap"
 require "config.cores.diagnostic"
 require "config.cores.git"
 require "config.cores.hop"
