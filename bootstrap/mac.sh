@@ -50,100 +50,6 @@ install_homebrew() {
   fi
 }
 
-install_ninja() {
-  read -r -p "Do you want to install ninja and lua lsp? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install ninja
-    
-    cd ~/.dotfiles/nvim
-    git clone https://github.com/sumneko/lua-language-server
-    cd lua-language-server
-    git submodule update --init --recursive
-
-    cd 3rd/luamake
-    compile/install.sh
-    cd ../..
-    ./3rd/luamake/luamake rebuild
-
-    brew install luarocks
-    luarocks install --server=https://luarocks.org/dev luaformatter
-    
-    success "Installed nija and setup lua lsp"
-  fi
-}
-
-install_languages() {
-  read -r -p "Do you want to install languages? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install asdf
-    success "Installed asdf"
-
-    asdf plugin-add rust
-    asdf install rust 1.55.0
-    asdf global rust 1.55.0
-    success "Installed rust"
-
-    asdf plugin-add python
-    asdf install python 3.7.3
-    asdf global python 3.7.3
-    success "Installed python"
-
-    asdf plugin-add golang
-    asdf install golang latest
-    success "Installed golang"
-
-    asdf plugin-add ruby
-    asdf install ruby latest
-    asdf global ruby 3.1.1
-    success "Installed ruby"
-  fi
-  
-}
-
-install_devops() {
-  read -r -p "Do you want to install devops tools? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install docker --cask
-    brew install lazydocker
-    success "Installed docker"
-
-    brew install vagrant
-    cp -i ~/.dotfiles/scripts/vagrant/VAGRANTFILE  ~/Dev/VM
-    success "Installed vagrant"
-
-    brew install minikube
-    brew install helm
-    brew install hyperkit
-    brew install kubectx
-    brew install k9s
-    success "Installed k8s"
-
-    brew install pstree
-    success "Installed pstree"
-
-    brew tap hashicorp/tap
-    brew install hashicorp/tap/terraform
-    brew install hashicorp/tap/terraform-ls # LSP
-
-    success "Installed terraform"
-  fi
-}
-
-setup_penetration_tools() {
-  read -r -p "Do you want to install some penetration tools ? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install owasp-zap
-    brew install nmap
-    brew install openconnect
-    brew install openvpn
-    
-    chmod +x ./tools/beef/install
-    ./tools/beef/install
-    
-    success "Installed penetration tools"
-  fi
-}
-
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -173,6 +79,71 @@ setup_git() {
     git config --global alias.st status
 
     success "Setup Git Successfully"
+  fi
+}
+
+install_languages() {
+  read -r -p "Do you want to install languages? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install asdf
+    success "Installed asdf"
+
+    asdf plugin-add rust
+    asdf install rust 1.55.0
+    asdf global rust 1.55.0
+    success "Installed rust"
+
+    asdf plugin-add python
+    asdf install python 3.7.3
+    asdf global python 3.7.3
+    success "Installed python"
+
+    asdf plugin-add golang
+    asdf install golang latest
+    success "Installed golang"
+
+    asdf plugin-add ruby
+    asdf install ruby latest
+    asdf global ruby 3.1.1
+    success "Installed ruby"
+  fi
+}
+
+install_devops() {
+  read -r -p "Do you want to install devops tools? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install docker --cask
+    brew install lazydocker
+    success "Installed docker"
+
+    brew install helm
+    brew install kubectx
+    brew install k9s
+    success "Installed k8s"
+
+    brew install pstree
+    success "Installed pstree"
+
+    brew tap hashicorp/tap
+    brew install hashicorp/tap/terraform
+    brew install hashicorp/tap/terraform-ls # LSP
+
+    success "Installed terraform"
+  fi
+}
+
+setup_penetration_tools() {
+  read -r -p "Do you want to install some penetration tools ? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install owasp-zap
+    brew install nmap
+    brew install openconnect
+    brew install openvpn
+
+    chmod +x ./tools/beef/install
+    ./tools/beef/install
+
+    success "Installed penetration tools"
   fi
 }
 
@@ -215,18 +186,10 @@ install_terminal() {
 
     success "Installed kitty terminal"
   fi
-
-  read -r -p "Do you want to install wezterm? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew tap wez/wezterm
-    brew install --cask wez/wezterm/wezterm
-
-    success "Installed wezterm terminal"
-  fi
 }
 
 install_mailspring() {
-  read -r -p "Do you want to install kitty? [y|N] " response
+  read -r -p "Do you want to install mailspring? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install --cask mailspring
 
@@ -243,7 +206,7 @@ install_nvim() {
   if [[ $response =~ (y|yes|Y) ]];then
     info "Installing neovim"
     brew install lua
-    brew install --HEAD neovim
+    brew install neovim
 
     # reduce keyrepeat for faster typing in vim
     defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
@@ -287,14 +250,13 @@ install_window_manager() {
     codesign -fs 'yabai-cert' "$(which yabai)"
 
     sudo yabai --install-sa
-    touch ~/sys_log/yabailogs.txt # create log file
 
     brew services start yabai
     killall Dock
 
-    brew install somdoron/formulae/spacebar
-
     brew tap FelixKratz/formulae
+    brew install sketchybar
+
     chmod +x ~/.dotfiles/scripts/*
 
     brew install koekeishiya/formulae/skhd
@@ -326,94 +288,18 @@ install_nnn() {
   fi
 }
 
-install_tools() {
-  read -r -p "Do you want to install some fancy tools ? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install ripgrep
-    brew install neofetch
-    brew install languagetool
-    brew install pgcli
-    brew install mycli
-    brew install bat
-    brew install httpie
-    brew install diff-so-fancy
-    brew install terminal-notifier
-    brew install bluetoothconnector
-    brew install exa
-    brew install fzf
-    brew install pidof
-    brew install watch
-    brew install brightness
-    brew install autojump
-    brew install --cask burp-suite
-    brew install mas
-    brew install pass
-    brew install asciinema
-    brew install asdf
-    brew install efm-langserver
-    brew install --cask unnaturalscrollwheels
-    brew install adr-tools
-    brew install ack
-    brew install bpytop
-    brew install khanhas/tap/spicetify-cli
-    brew install dos2unix
-    brew install jq
-    brew install shellcheck
-    brew install fd
-    brew install act # github action test locally
-
-    pip install pydf
-    pip install diagrams
-
-    sudo port install zathura
-    sudo port install zathura-docs
-    sudo port install zathura-plugin-pdf-mupdf
-
-    ln -s ~/.dotfiles/suckless/zathura ~/.config/
-    "$(brew --prefix)"/opt/fzf/install
-
-    brew install isacikgoz/taps/tldr
-
-    brew install rustscan
-    brew install osquery
-    brew install glow
-
-    brew install grpcurl
-
-    brew install --cask graphiql
-
-    brew tap yoheimuta/protolint
-    brew install protolint
-
-    brew install gum
-
-    brew install entr
-
-    brew install xclip
-
-    brew install graphviz
-
-    brew install gnu-sed
-
-    success "Installed some fancy tools"
-  fi
-}
-
 link_all_dotfiles() {
   brew install stow
 
-  rm -rf ~/.config/alacritty
   rm ~/.tmux.conf
   rm -rf ~/.zshrc
 
   mkdir -p ~/.config/kitty
   mkdir -p ~/.config/fish
-  mkdir -p ~/.config/wezterm
 
   cd ~/.dotfiles/terminals && \
     stow kitty -t ~/.config/kitty && \
     stow fish -t ~/.config/fish && \
-    stow wezterm -t ~/.config/wezterm && \
     stow tmux -t ~/ && \
   success "Linked terminals"
 
@@ -426,8 +312,7 @@ link_all_dotfiles() {
 
   rm -rf ~/.skhdrc
   rm -rf ~/.yabairc
-  rm -rf ~/.spacebarrc
-  cd ~/.dotfiles/suckless/mac_os && stow spacebar -t ~/ && stow yabai -t ~/ && stow skhdrc -t ~/
+  cd ~/.dotfiles/suckless/mac_os && stow yabai -t ~/ && stow skhdrc -t ~/
   ln -s ~/.dotfiles/suckless/mac_os/sketchybar ~/.config
 
   success "Linked window manager"
@@ -440,22 +325,50 @@ link_all_dotfiles() {
   mkdir -p ~/.config/bpytop
   cd ~/.dotfiles/suckless && stow nnn -t ~/.config && stow bpytop -t ~/.config/bpytop
 
-  mkdir -p ~/.config/spicetify
-  ln -s ~/.dotfiles/suckless/spicetify ~/.config/spicetify
-  spicetify apply
-
   success "Linked other tools"
 
   ln -s ~/.dotfiles/suckless/git/.gitconfig ~/.gitconfig
   success "Linked git config"
 }
 
+
+install_tools() {
+  read -r -p "Do you want to install some fancy tools ? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install ripgrep
+    brew install pgcli
+    brew install bat
+    brew install httpie
+    brew install diff-so-fancy
+    brew install terminal-notifier
+    brew install exa
+    brew install fzf
+    brew install pidof
+    brew install watch
+    brew install brightness
+    brew install autojump
+    brew install asciinema
+    brew install asdf
+    brew install --cask unnaturalscrollwheels
+    brew install bpytop
+    brew install jq
+    brew install fd
+    brew install act # github action test locally
+
+    brew install isacikgoz/taps/tldr
+
+    brew install gum
+    brew install graphviz
+    brew install gnu-sed
+
+    success "Installed some fancy tools"
+  fi
+}
+
 load_pre_script
 
 install_homebrew
 setup_git
-install_manage_tools
-install_ninja
 install_languages
 install_devops
 setup_penetration_tools
