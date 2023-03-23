@@ -273,6 +273,15 @@ install_tmux() {
   fi
 }
 
+install_key_bindings() {
+  read -r -p "Do you want to install karabiner? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install --cask karabiner-elements
+
+    success "Installed karabiner"
+  fi
+}
+
 install_window_manager() {
   read -r -p "Do you want to install window manager? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -360,8 +369,12 @@ link_all_dotfiles() {
 
   ln -s ~/.dotfiles/suckless/git/.gitconfig ~/.gitconfig
   success "Linked git config"
-}
 
+  stow karabiner -t ~/.config/karabiner
+  ln -s ~/.dotfiles/suckless/mac_os/karabiner ~/.config
+  
+  success "Linked git config"
+}
 
 install_tools() {
   read -r -p "Do you want to install some fancy tools ? [y|N] " response

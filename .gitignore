@@ -6,7 +6,7 @@ pgcli/history
 pgcli/log
 gcloud
 gh
-karabiner
+suckless/mac_os/karabiner/automatic_backups/*
 configstore
 yarn
 
