@@ -17,14 +17,14 @@ bufferline.setup {
       fg = main_colors.selected_buffer_fg,
       bg = main_colors.selected_buffer_bg,
       bold = true,
-      italic = true
+      italic = false
     },
     numbers = {bg = main_colors.bg},
     numbers_visible = {bg = main_colors.bg},
     numbers_selected = {
       bg = main_colors.selected_buffer_bg,
       bold = true,
-      italic = true
+      italic = false
     },
     modified = {bg = main_colors.bg, fg = main_colors.red},
     modified_visible = {bg = main_colors.bg, fg = main_colors.red},
@@ -35,10 +35,10 @@ bufferline.setup {
     duplicate_selected = {
       fg = main_colors.selected_buffer_fg,
       bg = main_colors.selected_buffer_bg,
-      italic = true
+      italic = false
     },
-    duplicate_visible = {bg = main_colors.bg, italic = true},
-    duplicate = {bg = main_colors.bg, italic = true},
+    duplicate_visible = {bg = main_colors.bg, italic = false},
+    duplicate = {bg = main_colors.bg, italic = false},
     separator_selected = {bg = main_colors.selected_buffer_bg},
     separator_visible = {bg = main_colors.bg},
     separator = {bg = main_colors.bg},
@@ -47,22 +47,21 @@ bufferline.setup {
       fg = main_colors.black_red,
       bg = main_colors.selected_buffer_bg,
       bold = true,
-      italic = true
+      italic = false
     },
     pick_visible = {
       fg = main_colors.red,
       bg = main_colors.bg,
       bold = true,
-      italic = true
+      italic = false
     },
     pick = {
       fg = main_colors.red,
       bg = main_colors.bg,
       bold = true,
-      italic = true
+      italic = false
     },
     offset_separator = {bg = main_colors.bg}
-
   },
   options = {
     show_close_icon = false,

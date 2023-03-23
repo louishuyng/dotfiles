@@ -5,6 +5,7 @@ set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
 #Homebrew's sbin
+fish_add_path /opt/homebrew/bin
 fish_add_path /usr/local/sbin
 #
 # #Qutebrowser

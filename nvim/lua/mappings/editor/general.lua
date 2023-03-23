@@ -68,4 +68,6 @@ vim.keymap.set("n", "<leader>lc", ":Lazy clean<CR>", opt)
 vim.keymap.set("n", "<leader>ls", ":Lazy sync<CR>", opt)
 
 -- Clipboard Code Snippet
-vim.keymap.set("v", "<leader>sc", ":Silicon<CR>", opt)
+vim.keymap.set("v", "<leader>sc", function()
+  require('silicon').visualise_api({to_clip = true})
+end, opt)

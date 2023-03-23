@@ -9,5 +9,3 @@ windows:
     - nvim
   - dashboard:
     - cd perx-dashboard-v4
-  - microsite:
-    - cd microsite-apps-ng

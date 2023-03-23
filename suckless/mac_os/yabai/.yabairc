@@ -82,7 +82,7 @@ yabai -m rule --add app="^DevToys$" manage=off opacity=1                 space=I
 # view
 yabai -m rule --add app="^Microsoft Edge$"         opacity=1 manage=off   space=IV
 yabai -m rule --add app="^Vivaldi$"         opacity=1                  space=IV
-yabai -m rule --add app="qutebrowser"                 manage=off       space=IV
+yabai -m rule --add app="qutebrowser"                       space=IV
 yabai -m rule --add app="^Figma$"            opacity=1 manage=off    space=IV
 
 # communication
@@ -112,6 +112,8 @@ yabai -m rule --add app="^Microsoft Word$" opacity=1 manage=off
 yabai -m rule --add app="^Microsoft Excel$" opacity=1 manage=off
 yabai -m rule --add app="^Microsoft PowerPoint$" opacity=1 manage=off
 yabai -m rule --add app="Numi" opacity=1 manage=off
+yabai -m rule --add app="Messenger" opacity=1 manage=off
+yabai -m rule --add app="Terminal" opacity=1 manage=off
 
 
 # show digital colour meter topmost and on all spaces

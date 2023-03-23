@@ -13,6 +13,7 @@ alias dr="open -a 'Docker'"
 alias ds="killall Docker"
 alias dc="docker system prune"
 alias dka="docker kill (docker ps -q)"
+alias docker="/Applications/Docker.app/Contents/Resources/bin/docker"
 
 #K8S
 alias km='minikd'

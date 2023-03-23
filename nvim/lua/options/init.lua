@@ -16,10 +16,11 @@ opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
 
 -- SWAPFILE
-vim.g.noswapfile = true
-vim.g.nobackup = true
-vim.g.nowritebackup = true
-vim.g.nowb = true
+vim.opt.swapfile = false
+
+-- UNDOFILE
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand('~/.vim/undodir')
 
 -- NUMBERS
 vim.cmd([[
@@ -78,10 +79,6 @@ vim.cmd([[
 -- SPELL
 vim.api.nvim_command("set spell")
 
--- MUNDO
-vim.api.nvim_command("set undofile")
-vim.api.nvim_command("set undodir=~/.vim/undo")
-
 -- RUST
 vim.g.rust_recommended_style = 0
 
@@ -138,7 +135,6 @@ au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
 -- Draw Performance
 vim.cmd([[
   set ttyfast
-  set lazyredraw
   set synmaxcol=128
   syntax sync minlines=256
   let g:sneak#label = 1

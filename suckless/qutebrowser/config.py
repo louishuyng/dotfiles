@@ -75,7 +75,6 @@ config.bind('gj', 'tab-move -')
 # Daily
 config.bind('yt', 'open -t https://youtube.com')
 config.bind('cc', 'open -t https://netflix.com')
-config.bind('14', 'open -t https://kenh14.vn')
 config.bind('gm', 'open -t https://gmail.com')
 config.bind(
     'ct', 'open -t https://www.youtube.com/watch?v=v-wm4xQnWQE&list=PLB5OyPOzUS5r6E7L1IhcM0dw1aEDbZEBk')
@@ -83,7 +82,7 @@ config.bind('gh', 'open -t http://github.com')
 
 # Work
 config.bind(
-    'wjr', 'open -t https://perxtechnologies.atlassian.net/issues/?filter=14427')
+    'wjr', 'open -t https://perxtechnologies.atlassian.net/jira/your-work')
 
 # Social
 config.bind('scm', 'open -t https://messenger.com')
