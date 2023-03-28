@@ -8,7 +8,7 @@ ITEM_DIR="$HOME/.config/sketchybar/view"
 
 PADDING=4
 ICON="SF Symbols"
-LABEL="JetBrainsMono Nerd Font Mono"
+LABEL="Hack Nerd Font"
 
 sketchybar --bar     height=24                                            \
                      blur_radius=0                                        \
@@ -21,8 +21,8 @@ sketchybar --bar     height=24                                            \
                                                                           \
            --default updates=when_shown                                   \
                      drawing=on                                           \
-                     icon.font="$ICON:SemiBold:11.0"                      \
-                     label.font="$LABEL:SemiBold:11.0"                    \
+                     icon.font="$ICON:SemiBold:12.0"                      \
+                     label.font="$LABEL:SemiBold:12.0"                    \
                      icon.padding_left=$PADDING                           \
                      icon.padding_right=$PADDING                          \
                      label.padding_left=$PADDING                          \

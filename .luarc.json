@@ -3,6 +3,15 @@
     "Lua.diagnostics.disable": [
         "different-requires",
         "redefined-local",
-        "unused-local"
+        "unused-local",
+        "cast-local-type"
+    ],
+    "diagnostics.globals": [
+        "vim",
+        "describe",
+        "it",
+        "before_each",
+        "after_each",
+        "_lazygit_toggle"
     ]
 }

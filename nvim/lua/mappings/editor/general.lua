@@ -15,8 +15,8 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", opt)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opt)
 vim.keymap.set("n", "<C-h>", "<C-w>h", opt)
 
-vim.keymap.set("n", "<A-j>", "<C-d>", opt)
-vim.keymap.set("n", "<A-k>", "<C-u>", opt)
+vim.keymap.set("n", "<C-f>", "<C-d>", opt)
+vim.keymap.set("n", "<C-b>", "<C-u>", opt)
 
 vim.keymap.set("n", "<C-s>", ":w!<CR>", opt)
 vim.keymap.set("v", "<C-s>", "<C-C>:w!<CR>", opt)
@@ -25,12 +25,9 @@ vim.keymap.set("n", "<C-d>", ":q!<CR>", opt)
 vim.keymap.set("v", "<C-d>", "<ESC>:q!<CR>", opt)
 vim.keymap.set("i", "<C-d>", "<ESC>:q!<CR>", opt)
 
-vim.keymap.set("n", "<C-b>", "<C-a>", opt)
-vim.keymap.set("v", "<C-b>", "<C-a>", opt)
-vim.keymap.set("v", "g<C-b>", "g<C-a>", opt)
-
 -- Grep file
-vim.keymap.set("n", "<leader>f", "yiw:silent grep <C-R>\" | copen<CR><CR>", opt)
+vim.keymap
+    .set("n", "<leader>fw", "yiw:silent grep <C-R>\" | copen<CR><CR>", opt)
 
 -- Macro Apply Visual
 vim.keymap.set("v", ",m", ":normal @")

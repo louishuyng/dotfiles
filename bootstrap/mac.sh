@@ -213,7 +213,7 @@ install_ninja() {
   read -r -p "Do you want to install ninja and lua lsp? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install ninja
-    
+
     cd ~/.dotfiles/nvim
     git clone https://github.com/sumneko/lua-language-server
     cd lua-language-server
@@ -226,7 +226,7 @@ install_ninja() {
 
     brew install luarocks
     luarocks install --server=https://luarocks.org/dev luaformatter
-    
+
     success "Installed nija and setup lua lsp"
   fi
 }

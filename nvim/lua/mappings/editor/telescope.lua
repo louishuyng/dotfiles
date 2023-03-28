@@ -7,7 +7,8 @@ vim.keymap.set("n", "<leader>ns",
                opt)
 
 vim.keymap.set("n", "<leader>/", ":Telescope live_grep<CR>", opt)
-vim.keymap.set("n", "<C-f>", ":Telescope current_buffer_fuzzy_find<CR>", opt)
+vim.keymap.set("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>",
+               opt)
 vim.keymap.set("n", "<leader>?", ":Telescope help_tags<CR>", opt)
 
 vim.keymap.set("n", "<leader>fr",

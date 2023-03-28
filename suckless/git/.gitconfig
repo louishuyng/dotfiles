@@ -3,7 +3,7 @@
 	name = Louis
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	excludesfile = /Users/admin/.gitignore_global
+	excludesfile = /Users/louishuyng/.gitignore_global
 [color]
 	ui = true
 [color "diff-highlight"]

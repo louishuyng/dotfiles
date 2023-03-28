@@ -33,8 +33,7 @@ return {
     config = function()
       require('sibling-swap').setup({ --[[ your config ]] })
     end
-  }, {'moll/vim-bbye'},
-  {'chentoast/marks.nvim', config = function() require'marks'.setup() end},
+  }, {'chentoast/marks.nvim', config = function() require'marks'.setup() end},
   {"rest-nvim/rest.nvim"},
   {'loishy/draft-buff', dependencies = {'MunifTanjim/nui.nvim'}}
 }

@@ -8,7 +8,7 @@ local sumneko_binary = sumneko_root_path .. "/lua-language-server"
 local main_sumneko_root_path = vim.fn.stdpath('config') ..
                                    '/lua-language-server/main.lua'
 
-lsp_config.sumneko_lua.setup({
+lsp_config.lua_ls.setup({
   on_attach = on_attach,
   cmd = {sumneko_binary, "-E", main_sumneko_root_path},
   settings = {

@@ -1,6 +1,6 @@
 local colors = require("ui.main_colors")
 
-local ui = {hl_override = "", italic_comments = false}
+local ui = { hl_override = "", italic_comments = false }
 
 local black = colors.black
 local black2 = colors.black2
@@ -53,13 +53,6 @@ fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
 
--- Navic
-fg("NavicSeparator", '#55E579')
-
--- Buffer
-bg("BufferLineTabSeparator", "NONE")
-bg("BufferLineTabSeparatorSelected", "NONE")
-
 -- Statusline
 fg_bg("St_NormalMode", green, statusline)
 fg_bg("St_InsertMode", purple, statusline)
@@ -69,12 +62,11 @@ fg_bg("St_ReplaceMode", orange, statusline)
 fg_bg("St_SelectMode", blue, statusline)
 fg_bg("St_CommandMode", green, statusline)
 fg_bg("St_ConfirmMode", green, statusline)
-fg_bg('StatusLine', statusline, colors.white)
 fg_bg('St_gitIcons', grey, statusline)
 fg_bg('St_lspError', red, statusline)
 fg_bg('St_lspWarning', yellow, statusline)
 fg_bg('St_LspHints', purple, statusline)
-fg_bg('St_LspInfo', green, statusline)
+fg_bg('St_LspInfo', blue, statusline)
 fg_bg('St_LspStatus', green, statusline)
 fg_bg('St_LspProgress', red, statusline)
 fg_bg('StText', grey_fg2, statusline)
@@ -89,22 +81,25 @@ vim.cmd([[
   hi FloatBorder guibg=NONE
   hi VertSplit guifg=#23272e guibg=bg cterm=NONE
   hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
+  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#a9b665 gui=NONE
   hi NormalFloat guibg=NONE
   hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
   hi LineNr guibg=NONE guifg=grey
   hi Visual guibg=#323232 guifg=NONE
   hi CursorLine gui=underline cterm=underline guibg=NONE
   hi SignColumn guibg=NONE
-  hi LspDiagnosticsLineNrError guifg=#ff5370 guibg=#312a34 gui=bold
-  hi LspDiagnosticsLineNrWarning guifg=#f78c6c guibg=#312e3a gui=bold
-  hi CursorLineNr guifg=#BD93F9 guibg=NONE
+  hi LspDiagnosticsLineNrError guifg=#ea6962 guibg=#312a34 gui=bold
+  hi LspDiagnosticsLineNrWarning guifg=#e78a4e guibg=#312e3a gui=bold
+  hi CursorLineNr guifg=#d3869b guibg=NONE
+  hi VertSplit guibg=NONE guifg=#565c64
+  hi Statusline guifg=#a6accd guibg=NONE gui=NONE
+  hi StatuslineNC guifg=#7982b4 guibg=NONE gui=NONE
 ]])
 
 -- Highlight line numbers for diagnostics
 vim.fn.sign_define('DiagnosticSignError',
-                   {numhl = 'LspDiagnosticsLineNrError', text = ''})
+  { numhl = 'LspDiagnosticsLineNrError', text = '' })
 vim.fn.sign_define('DiagnosticSignWarn',
-                   {numhl = 'LspDiagnosticsLineNrWarning', text = ''})
-vim.fn.sign_define('DiagnosticSignInfo', {text = ''})
-vim.fn.sign_define('DiagnosticSignHint', {text = ''})
+  { numhl = 'LspDiagnosticsLineNrWarning', text = '' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '' })

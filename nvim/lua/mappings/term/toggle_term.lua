@@ -1,3 +1,4 @@
+---@diagnostic disable: lowercase-global
 local opts = {silent = true, noremap = true}
 
 function _G.set_terminal_keymaps()
@@ -35,9 +36,13 @@ local nnn = Terminal:new({
 })
 
 function _lazygit_toggle() lazygit:toggle() end
+
 function _bpytop_toggle() bpytop:toggle() end
+
 function _lazydocker_toggle() lazydocker:toggle() end
+
 function _k9s_toggle() k9s:toggle() end
+
 function _nnn_toggle() nnn:toggle() end
 
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>",

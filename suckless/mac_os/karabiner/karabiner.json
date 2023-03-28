@@ -17,631 +17,185 @@
                     "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
-                  {
-                    "description": "CAPS_LOCK to HYPER (SHIFT+COMMAND+OPTION+CONTROL) or ESCAPE (If Alone)",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "caps_lock",
-                          "modifiers": {}
-                        },
-                        "to": [
-                          {
-                            "key_code": "left_shift",
-                            "modifiers": [
-                              "left_command",
-                              "left_control",
-                              "left_option"
-                            ]
-                          }
-                        ],
-                        "to_if_alone": [
-                          {
-                            "key_code": "escape"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+,",
-                        "from": {
-                          "key_code": "comma",
-                          "modifiers": {
-                            "mandatory": [
-                              "command",
-                              "shift",
-                              "option",
-                              "control"
-                            ]
-                          }
-                        },
-                        "to": [],
-                        "type": "basic"
-                      },
-                      {
-                        "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+.",
-                        "from": {
-                          "key_code": "period",
-                          "modifiers": {
-                            "mandatory": [
-                              "command",
-                              "shift",
-                              "option",
-                              "control"
-                            ]
-                          }
-                        },
-                        "to": [],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+/",
-                          "key_code": "slash",
-                          "modifiers": {
-                            "mandatory": [
-                              "command",
-                              "shift",
-                              "option",
-                              "control"
-                            ]
-                          }
-                        },
-                        "to": [],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "Hyper + i/j/k/l == vim directional Keys",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "k",
-                          "modifiers": {
-                            "mandatory": [
-                              "left_shift",
-                              "left_command",
-                              "left_control",
-                              "left_option"
-                            ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "up_arrow"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "key_code": "h",
-                          "modifiers": {
-                            "mandatory": [
-                              "left_shift",
-                              "left_command",
-                              "left_control",
-                              "left_option"
-                            ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "left_arrow"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "key_code": "j",
-                          "modifiers": {
-                            "mandatory": [
-                              "left_shift",
-                              "left_command",
-                              "left_control",
-                              "left_option"
-                            ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "down_arrow"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "key_code": "l",
-                          "modifiers": {
-                            "mandatory": [
-                              "left_shift",
-                              "left_command",
-                              "left_control",
-                              "left_option"
-                            ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "right_arrow"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "key_code": "semicolon",
-                          "modifiers": {
-                            "mandatory": [
-                              "left_shift",
-                              "left_command",
-                              "left_control",
-                              "left_option"
-                            ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "right_arrow",
-                            "modifiers": [
-                              "left_command"
-                            ]
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "o Launcher",
-                    "manipulators": [
-                      {
-                        "conditions": [
-                          {
-                            "name": "launcher_mode_v4",
-                            "type": "variable_if",
-                            "value": 1
-                          }
-                        ],
-                        "from": {
-                          "key_code": "n",
-                          "modifiers": {
-                            "mandatory": []
-                          }
-                        },
-                        "to": [
-                          {
-                            "shell_command": "open -a 'notion.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "modifiers": {
-                            "mandatory": []
-                          },
-                          "simultaneous": [
+                    {
+                        "description": "CAPS_LOCK to HYPER (SHIFT+COMMAND+OPTION+CONTROL) or ESCAPE (If Alone)",
+                        "manipulators": [
                             {
-                              "key_code": "o"
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {}
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
                             },
                             {
-                              "key_code": "n"
-                            }
-                          ],
-                          "simultaneous_options": {
-                            "key_down_order": "strict",
-                            "key_up_order": "strict_inverse",
-                            "to_after_key_up": [
-                              {
-                                "set_variable": {
-                                  "name": "launcher_mode_v4",
-                                  "value": 0
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        "parameters": {
-                          "basic.simultaneous_threshold_milliseconds": 500
-                        },
-                        "to": [
-                          {
-                            "set_variable": {
-                              "name": "launcher_mode_v4",
-                              "value": 1
-                            }
-                          },
-                          {
-                            "shell_command": "open -a 'notion.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "conditions": [
-                          {
-                            "name": "launcher_mode_v4",
-                            "type": "variable_if",
-                            "value": 1
-                          }
-                        ],
-                        "from": {
-                          "key_code": "m",
-                          "modifiers": {
-                            "mandatory": []
-                          }
-                        },
-                        "to": [
-                          {
-                            "shell_command": "open -a 'mail.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "modifiers": {
-                            "mandatory": []
-                          },
-                          "simultaneous": [
-                            {
-                              "key_code": "o"
+                                "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+,",
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command",
+                                            "shift",
+                                            "option",
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [],
+                                "type": "basic"
                             },
                             {
-                              "key_code": "m"
-                            }
-                          ],
-                          "simultaneous_options": {
-                            "key_down_order": "strict",
-                            "key_up_order": "strict_inverse",
-                            "to_after_key_up": [
-                              {
-                                "set_variable": {
-                                  "name": "launcher_mode_v4",
-                                  "value": 0
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        "parameters": {
-                          "basic.simultaneous_threshold_milliseconds": 500
-                        },
-                        "to": [
-                          {
-                            "set_variable": {
-                              "name": "launcher_mode_v4",
-                              "value": 1
-                            }
-                          },
-                          {
-                            "shell_command": "open -a 'mail.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "conditions": [
-                          {
-                            "name": "launcher_mode_v4",
-                            "type": "variable_if",
-                            "value": 1
-                          }
-                        ],
-                        "from": {
-                          "key_code": "s",
-                          "modifiers": {
-                            "mandatory": []
-                          }
-                        },
-                        "to": [
-                          {
-                            "shell_command": "open -a 'Brave Browser Beta.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "modifiers": {
-                            "mandatory": []
-                          },
-                          "simultaneous": [
-                            {
-                              "key_code": "o"
+                                "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+.",
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command",
+                                            "shift",
+                                            "option",
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [],
+                                "type": "basic"
                             },
                             {
-                              "key_code": "s"
+                                "from": {
+                                    "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+/",
+                                    "key_code": "slash",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command",
+                                            "shift",
+                                            "option",
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [],
+                                "type": "basic"
                             }
-                          ],
-                          "simultaneous_options": {
-                            "key_down_order": "strict",
-                            "key_up_order": "strict_inverse",
-                            "to_after_key_up": [
-                              {
-                                "set_variable": {
-                                  "name": "launcher_mode_v4",
-                                  "value": 0
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        "parameters": {
-                          "basic.simultaneous_threshold_milliseconds": 500
-                        },
-                        "to": [
-                          {
-                            "set_variable": {
-                              "name": "launcher_mode_v4",
-                              "value": 1
-                            }
-                          },
-                          {
-                            "shell_command": "open -a 'spotify.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "conditions": [
-                          {
-                            "name": "launcher_mode_v4",
-                            "type": "variable_if",
-                            "value": 1
-                          }
-                        ],
-                        "from": {
-                          "key_code": "b",
-                          "modifiers": {
-                            "mandatory": []
-                          }
-                        },
-                        "to": [
-                          {
-                            "shell_command": "open -a 'Brave Browser Beta.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "modifiers": {
-                            "mandatory": []
-                          },
-                          "simultaneous": [
+                        ]
+                    },
+                    {
+                        "description": "Hyper + i/j/k/l == vim directional Keys",
+                        "manipulators": [
                             {
-                              "key_code": "o"
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_shift",
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "up_arrow"
+                                    }
+                                ],
+                                "type": "basic"
                             },
                             {
-                              "key_code": "b"
-                            }
-                          ],
-                          "simultaneous_options": {
-                            "key_down_order": "strict",
-                            "key_up_order": "strict_inverse",
-                            "to_after_key_up": [
-                              {
-                                "set_variable": {
-                                  "name": "launcher_mode_v4",
-                                  "value": 0
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        "parameters": {
-                          "basic.simultaneous_threshold_milliseconds": 500
-                        },
-                        "to": [
-                          {
-                            "set_variable": {
-                              "name": "launcher_mode_v4",
-                              "value": 1
-                            }
-                          },
-                          {
-                            "shell_command": "open -a 'Brave Browser Beta.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "conditions": [
-                          {
-                            "name": "launcher_mode_v4",
-                            "type": "variable_if",
-                            "value": 1
-                          }
-                        ],
-                        "from": {
-                          "key_code": "a",
-                          "modifiers": {
-                            "mandatory": []
-                          }
-                        },
-                        "to": [
-                          {
-                            "shell_command": "open -a 'Activity Monitor.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "modifiers": {
-                            "mandatory": []
-                          },
-                          "simultaneous": [
-                            {
-                              "key_code": "o"
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_shift",
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow"
+                                    }
+                                ],
+                                "type": "basic"
                             },
                             {
-                              "key_code": "a"
-                            }
-                          ],
-                          "simultaneous_options": {
-                            "key_down_order": "strict",
-                            "key_up_order": "strict_inverse",
-                            "to_after_key_up": [
-                              {
-                                "set_variable": {
-                                  "name": "launcher_mode_v4",
-                                  "value": 0
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        "parameters": {
-                          "basic.simultaneous_threshold_milliseconds": 500
-                        },
-                        "to": [
-                          {
-                            "set_variable": {
-                              "name": "launcher_mode_v4",
-                              "value": 1
-                            }
-                          },
-                          {
-                            "shell_command": "open -a 'Activity Monitor.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "conditions": [
-                          {
-                            "name": "launcher_mode_v4",
-                            "type": "variable_if",
-                            "value": 1
-                          }
-                        ],
-                        "from": {
-                          "key_code": "c",
-                          "modifiers": {
-                            "mandatory": []
-                          }
-                        },
-                        "to": [
-                          {
-                            "shell_command": "open -a 'Visual Studio Code.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "modifiers": {
-                            "mandatory": []
-                          },
-                          "simultaneous": [
-                            {
-                              "key_code": "o"
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_shift",
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "down_arrow"
+                                    }
+                                ],
+                                "type": "basic"
                             },
                             {
-                              "key_code": "c"
-                            }
-                          ],
-                          "simultaneous_options": {
-                            "key_down_order": "strict",
-                            "key_up_order": "strict_inverse",
-                            "to_after_key_up": [
-                              {
-                                "set_variable": {
-                                  "name": "launcher_mode_v4",
-                                  "value": 0
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        "parameters": {
-                          "basic.simultaneous_threshold_milliseconds": 500
-                        },
-                        "to": [
-                          {
-                            "set_variable": {
-                              "name": "launcher_mode_v4",
-                              "value": 1
-                            }
-                          },
-                          {
-                            "shell_command": "open -a 'Visual Studio Code.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "conditions": [
-                          {
-                            "name": "launcher_mode_v4",
-                            "type": "variable_if",
-                            "value": 1
-                          }
-                        ],
-                        "from": {
-                          "key_code": "i",
-                          "modifiers": {
-                            "mandatory": []
-                          }
-                        },
-                        "to": [
-                          {
-                            "shell_command": "open -a 'iTerm.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      },
-                      {
-                        "from": {
-                          "modifiers": {
-                            "mandatory": []
-                          },
-                          "simultaneous": [
-                            {
-                              "key_code": "o"
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_shift",
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow"
+                                    }
+                                ],
+                                "type": "basic"
                             },
                             {
-                              "key_code": "i"
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_shift",
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
                             }
-                          ],
-                          "simultaneous_options": {
-                            "key_down_order": "strict",
-                            "key_up_order": "strict_inverse",
-                            "to_after_key_up": [
-                              {
-                                "set_variable": {
-                                  "name": "launcher_mode_v4",
-                                  "value": 0
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        "parameters": {
-                          "basic.simultaneous_threshold_milliseconds": 500
-                        },
-                        "to": [
-                          {
-                            "set_variable": {
-                              "name": "launcher_mode_v4",
-                              "value": 1
-                            }
-                          },
-                          {
-                            "shell_command": "open -a 'iTerm.app'"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  }
-              ]
+                        ]
+                    }
+                ]
             },
             "devices": [
                 {
@@ -711,6 +265,20 @@
                     },
                     "ignore": true,
                     "manipulate_caps_lock_led": false,
+                    "simple_modifications": [],
+                    "treat_as_built_in_keyboard": false
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 45929,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
                     "simple_modifications": [],
                     "treat_as_built_in_keyboard": false
                 }

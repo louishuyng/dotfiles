@@ -63,6 +63,12 @@ M.fileInfo = function()
   return "%#StText# " .. icon() .. " " .. filename .. " "
 end
 
+M.git = function()
+  if not vim.b.gitsigns_head or vim.b.gitsigns_git_status then return "" end
+
+  return "  " .. vim.b.gitsigns_status_dict.head .. "  "
+end
+
 M.gitchanges = function()
   if not vim.b.gitsigns_head or vim.b.gitsigns_git_status or vim.o.columns < 120 then
     return ""
@@ -71,16 +77,15 @@ M.gitchanges = function()
   local git_status = vim.b.gitsigns_status_dict
 
   local added = (git_status.added and git_status.added ~= 0) and
-                    ("%#St_lspInfo#  " .. git_status.added .. "") or ""
+                    ("%#St_lspInfo#  " .. git_status.added .. " ") or ""
   local changed = (git_status.changed and git_status.changed ~= 0) and
-                      ("%#St_lspWarning#  " .. git_status.changed .. "") or
+                      ("%#St_lspWarning#  " .. git_status.changed .. " ") or
                       ""
   local removed = (git_status.removed and git_status.removed ~= 0) and
-                      ("%#St_lspError#  " .. git_status.removed .. "") or ""
+                      ("%#St_lspError#  " .. git_status.removed .. " ") or ""
 
-  return
-      (added .. changed .. removed) ~= "" and (added .. changed .. removed) or
-          ""
+  return (added .. changed .. removed) ~= "" and
+             (added .. changed .. removed .. " | ") or ""
 end
 
 -- LSP STUFF
@@ -157,8 +162,10 @@ M.run = function()
   local modules = require "config.cores.statusline"
 
   return table.concat {
-    modules.mode(), modules.fileInfo(), modules.gitchanges(), "%=",
-    modules.LSP_progress(), "%=", modules.LSP_Diagnostics(),
+    modules.mode(), modules.fileInfo(), modules.git(),
+    modules.LSP_Diagnostics(), "%=", modules.LSP_progress(), "%=",
+
+    modules.gitchanges(),
     vim.o.columns > 140 and "%#StText# Ln %l, Col %c  " or "",
     string.upper(vim.bo.fileencoding) == "" and "" or "%#St_encode#" ..
         string.upper(vim.bo.fileencoding) .. "  ", modules.filetype(),

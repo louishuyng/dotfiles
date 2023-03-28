@@ -1,9 +1,10 @@
 local M = {}
 
 M.icons = {
+  Namespace = "",
   Text = "",
   Method = "",
-  Function = "",
+  Function = "",
   Constructor = "",
   Field = "ﰠ",
   Variable = "",
@@ -11,7 +12,7 @@ M.icons = {
   Interface = "",
   Module = "",
   Property = "ﰠ",
-  Unit = "塞",
+  Unit = "塞",
   Value = "",
   Enum = "",
   Keyword = "",
@@ -22,10 +23,22 @@ M.icons = {
   Folder = "",
   EnumMember = "",
   Constant = "",
-  Struct = "פּ",
+  Struct = "פּ",
   Event = "",
   Operator = "",
-  TypeParameter = ""
+  TypeParameter = "",
+  Table = "",
+  Object = "",
+  Tag = "",
+  Array = "[]",
+  Boolean = "",
+  Number = "",
+  Null = "ﳠ",
+  String = "",
+  Calendar = "",
+  Watch = "",
+  Package = "",
+  Copilot = ""
 }
 
 return M

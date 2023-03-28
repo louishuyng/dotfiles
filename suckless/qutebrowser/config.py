@@ -1,16 +1,8 @@
 import glob
 import os.path
-import dracula.draw
 
 # Load existing settings made via :set
 config.load_autoconfig()
-
-dracula.draw.blood(c, {
-    'spacing': {
-        'vertical': 6,
-        'horizontal': 8
-    }
-})
 
 c.content.javascript.enabled = True
 c.auto_save.session = True
@@ -76,8 +68,6 @@ config.bind('gj', 'tab-move -')
 config.bind('yt', 'open -t https://youtube.com')
 config.bind('cc', 'open -t https://netflix.com')
 config.bind('gm', 'open -t https://gmail.com')
-config.bind(
-    'ct', 'open -t https://www.youtube.com/watch?v=v-wm4xQnWQE&list=PLB5OyPOzUS5r6E7L1IhcM0dw1aEDbZEBk')
 config.bind('gh', 'open -t http://github.com')
 
 # Work
