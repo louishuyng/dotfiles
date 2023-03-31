@@ -141,4 +141,4 @@ vim.cmd([[
 ]])
 
 -- Draft Buff Mappings Table
-vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}
+vim.g.draft_buff_languages = { 'Http', 'Ruby', 'Javascript', 'Golang' }
