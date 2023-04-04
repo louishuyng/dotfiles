@@ -86,6 +86,7 @@ yabai -m rule --add app="^Microsoft Teams$" manage=off       opacity=1  space=IV
 yabai -m rule --add app="^Discord$" manage=off               opacity=1  space=IV
 yabai -m rule --add app="^Skype$"          opacity=1 manage=off space=IV
 yabai -m rule --add app="^Mailspring$"          opacity=1 manage=off space=IV
+yabai -m rule --add app="^Microsoft Outlook$"          opacity=1 manage=off space=IV
 
 # Planing
 yabai -m rule --add app="Notion"           opacity=1 manage=off    space=V
