@@ -78,6 +78,11 @@ yabai -m rule --add app="^Microsoft Edge$"         opacity=1 manage=off   space=
 yabai -m rule --add app="^Vivaldi$"         opacity=1                  space=III
 yabai -m rule --add app="qutebrowser"                       space=III
 yabai -m rule --add app="^Figma$"            opacity=1 manage=off    space=III
+yabai -m rule --add app="Notion"           opacity=1 manage=off    space=III
+yabai -m rule --add app="Obsidian"         opacity=1 manage=off  space=III
+yabai -m rule --add app="^Miro$"          opacity=1 manage=off space=III
+yabai -m rule --add app="StarUML"          opacity=1 manage=off    space=III
+yabai -m rule --add app="draw.io"          opacity=1 manage=off    space=III
 
 # Communication
 yabai -m rule --add app="Slack" title="Slack"      opacity=1 manage=off space=IV
@@ -88,32 +93,28 @@ yabai -m rule --add app="^Skype$"          opacity=1 manage=off space=IV
 yabai -m rule --add app="^Mailspring$"          opacity=1 manage=off space=IV
 yabai -m rule --add app="^Microsoft Outlook$"          opacity=1 manage=off space=IV
 
-# Planing
-yabai -m rule --add app="Notion"           opacity=1 manage=off    space=V
-yabai -m rule --add app="Obsidian"         opacity=1 manage=off  space=V
-yabai -m rule --add app="^Miro$"          opacity=1 manage=off space=V
-yabai -m rule --add app="StarUML"          opacity=1 manage=off    space=V
+# Entertainment
+yabai -m rule --add app="^Spotify$"          opacity=1 manage=off space=V
+yabai -m rule --add app="VLC"              manage=off space=V
+yabai -m rule --add label="App Store" app="^App Store$" manage=off space=V
+yabai -m rule --add app="Messenger" opacity=1 manage=off space=V
 
 # Others
 yabai -m rule --add app="QuickTime Player" manage=off
-yabai -m rule --add app="VLC"              manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add label="App Store" app="^App Store$" manage=off
 yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add label="Clean My Mac" app="^CleanMyMac X$" manage=off
 yabai -m rule --add app="Finder" manage=off  opacity=1 
 yabai -m rule --add app="^System Settings" opacity=1 manage=off
 yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
 yabai -m rule --add app="^Notes$"      opacity=1 manage=off
-yabai -m rule --add app="^Spotify$"          opacity=1 manage=off
 yabai -m rule --add app="Pages"            opacity=1 manage=off
 yabai -m rule --add app="^Preview" opacity=1 manage=off
 yabai -m rule --add app="^Microsoft Word$" opacity=1 manage=off
 yabai -m rule --add app="^Microsoft Excel$" opacity=1 manage=off
 yabai -m rule --add app="^Microsoft PowerPoint$" opacity=1 manage=off
 yabai -m rule --add app="Numi" opacity=1 manage=off
-yabai -m rule --add app="Messenger" opacity=1 manage=off
 yabai -m rule --add app="Terminal" opacity=1 manage=off
 yabai -m rule --add app="1Password" opacity=1 manage=off
 yabai -m rule --add app="^DevUtils$" manage=off opacity=1
