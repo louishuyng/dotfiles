@@ -2,6 +2,9 @@ local present, alpha = pcall(require, "alpha")
 
 if not present then return end
 
+local theme = require("alpha.themes.theta")
+local dashboard = require("alpha.themes.dashboard")
+
 -- HEADER SECTION
 local ascii = {
   [[0   ______   ______   ______   ______   ]],
@@ -21,68 +24,70 @@ local header = {
   opts = {position = "center", hl_shortcut = 'AlphaHeader', hl = 'AlphaHeader'}
 }
 
--- BUTTONS SECTION
-local function button(sc, txt, keybind)
-  local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
+-- INFO SECTION
+function get_info()
+  local lazy_stats = require("lazy").stats()
+  local total_plugins =
+      " " .. lazy_stats.loaded .. "/" .. lazy_stats.count .. " packages"
+  local version = vim.version()
+  local nvim_version_info = "ⓥ " .. version.major .. "." .. version.minor ..
+                                "." .. version.patch
 
-  local opts = {
-    position = "center",
-    text = txt,
-    shortcut = sc,
-    cursor = 5,
-    width = 36,
-    align_shortcut = "right",
-    hl_shortcut = 'AlphaButtons',
-    hl = "AlphaButtons"
-  }
-
-  if keybind then
-    opts.keymap = {"n", sc_, keybind, {noremap = true, silent = true}}
-  end
+  local info_string = total_plugins .. "  |  " .. nvim_version_info
 
   return {
-    type = "button",
-    val = txt,
-    on_press = function()
-      local key = vim.api.nvim_replace_termcodes(sc_, true, false, true)
-      vim.api.nvim_feedkeys(key, "normal", false)
-    end,
-    opts = opts
+    type = "text",
+    val = info_string,
+    opts = {hl = "Delimiter", position = "center"}
   }
 end
 
-local buttons = {
+-- LINK SECTION
+local links = {
   type = "group",
   val = {
-    button("SPC SPC ", "  Find File",
-           "<cmd>Telescope find_files hidden=true<cr>"),
-    button("SPC fr  ", "  Recent File ",
-           "<cmd>Telescope oldfiles previewer=false cwd_only=true<CR>"),
-    button("SPC ?   ", "  Help Tags ", "<cmd>Telescope help_tags<CR>"),
-    button("SPC /   ", "  Find Word   ", "<cmd>Telescope live_grep<CR>")
+    {
+      type = "text",
+      val = "Tools",
+      opts = {hl = "SpecialComment", position = "center"}
+    }, dashboard.button("l", "💤 Lazy", "<cmd>Lazy<CR>"),
+    dashboard.button("m", "🧱 Mason", "<cmd>Mason<CR>")
   },
-  opts = {spacing = 1}
+  position = "center"
 }
 
--- FOOTER SECTION
-local function footer_plugins()
-  local v = vim.version()
-  return string.format(" v%s.%s.%s", v.major, v.minor, v.patch)
-end
-
-local footer = {
-  type = "text",
-  val = footer_plugins(),
-  opts = {position = 'center', hl_shortcut = 'AlphaFooter', hl = 'AlphaFooter'}
+-- RECENT FILES SECTION
+local mru = {
+  type = 'group',
+  val = {
+    {
+      type = 'text',
+      val = 'Recent files',
+      opts = {hl = 'SpecialComment', position = 'center'}
+    }, {type = 'padding', val = 1}, {
+      type = 'group',
+      val = function() return {theme.mru(1, vim.fn.getcwd(), 10)} end
+    }
+  }
+}
+theme.config.layout = {
+  {type = "padding", val = 20}, header, {type = "padding", val = 2}, get_info(),
+  {type = "padding", val = 2}, links, {type = "padding", val = 2}, mru,
+  {type = "padding", val = 2}
 }
 
--- OVERALL LAYOUT SECTION
-local section = {header = header, buttons = buttons, footer = footer}
+alpha.setup(theme.config)
 
-alpha.setup {
-  layout = {
-    {type = "padding", val = 20}, section.header, {type = "padding", val = 2},
-    section.buttons, {type = "padding", val = 1}, section.footer
-  },
-  opts = {}
-}
+-- autocommands to turn off bars
+local alpha_group = vim.api.nvim_create_augroup("alpha", {clear = true})
+vim.api.nvim_create_autocmd("User", {
+  group = alpha_group,
+  pattern = "AlphaReady",
+  command = "set laststatus=0 | set showtabline=0"
+})
+
+vim.api.nvim_create_autocmd("User", {
+  group = alpha_group,
+  pattern = "AlphaClosed",
+  command = "set laststatus=3 | set showtabline=2"
+})
