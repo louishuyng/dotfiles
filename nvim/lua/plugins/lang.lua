@@ -8,5 +8,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ':TSUpdate',
     config = function() require "config.cores.treesitter" end
-  }, {'liuchengxu/vista.vim'}
+  }, {'liuchengxu/vista.vim'}, {"williamboman/mason.nvim"},
+  {"jay-babu/mason-null-ls.nvim"}
 }
