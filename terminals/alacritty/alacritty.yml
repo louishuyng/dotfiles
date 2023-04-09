@@ -5,6 +5,8 @@ selection:
   save_to_clipboard: true
   text: CellBackground
 
+faux_multiplier: 0
+
 window:
   opacity: 1.0
   dimensions:
@@ -36,10 +38,6 @@ key_bindings:
       command: { program: "sh", args: ["-c", "tmux switch -t SourceCode"] },
     }
 
-scrolling:
-  history: 10000
-  multiplier: 3
-
 mouse:
   hide_when_typing: true
 
@@ -64,37 +62,31 @@ draw_bold_text_with_bright_colors: false
 
 colors:
   primary:
-    background: "#000000"
-    foreground: "#98c379"
+    background: "#1e1e1e"
+    foreground: "#d4d4d4"
+  normal:
+    black: "#1e1e1e"
+    red: "#f44747"
+    green: "#608b4e"
+    yellow: "#dcdcaa"
+    blue: "#569cd6"
+    magenta: "#c678dd"
+    cyan: "#56b6c2"
+    white: "#d4d4d4"
+
+  bright:
+    black: "#545454"
+    red: "#f44747"
+    green: "#608b4e"
+    yellow: "#dcdcaa"
+    blue: "#569cd6"
+    magenta: "#c678dd"
+    cyan: "#56b6c2"
+    white: "#d4d4d4"
 
   cursor:
-    text: "#5c6370"
-    cursor: "#abb2bf"
-
-  # Normal colors
-  normal:
-    black: "#5c6370"
-    red: "#e06c75"
-    green: "#98c379"
-    yellow: "#e5c07b"
-    blue: "#61afef"
-    magenta: "#c678dd"
-    cyan: "#56b6c2"
-    white: "#abb2bf"
-
-  # Bright colors
-  bright:
-    black: "#4b5263"
-    red: "#be5046"
-    green: "#98c379"
-    yellow: "#d19a66"
-    blue: "#61afef"
-    magenta: "#c678dd"
-    cyan: "#56b6c2"
-    white: "#3e4452"
-
-cursor:
-  style:
-    shape: Block
-  vi_mode_style:
-    shape: Beam
+    text: "#191919"
+    cursor: "#d8dee9"
+  vi_mode_cursor:
+    text: CellBackground
+    cursor: "#60ff60"
