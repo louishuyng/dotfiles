@@ -44,3 +44,22 @@ alias pgr="pg_ctl -D /usr/local/var/postgres restart"
 #Mongo
 alias mgr="brew services start mongodb-community@5.0"
 alias mgs="brew services stop mongodb-community@5.0"
+
+#Devops Remap Tools
+alias cat='bat'
+
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias size="du -sh"
+
+alias ls="exa --long  --header --git"
+alias lt="exa --tree --level=2 --long --icons --header --git"
+
+alias http='xh'
+
+alias du='ncdu'
+alias df='duf'
+
+alias top='bpytop'

@@ -376,36 +376,40 @@ link_all_dotfiles() {
   success "Linked git config"
 }
 
-install_tools() {
-  read -r -p "Do you want to install some fancy tools ? [y|N] " response
+install_cli_tools() {
+  read -r -p "Do you want to install cli for tools? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew install ripgrep
-    brew install pgcli
-    brew install bat
-    brew install httpie
-    brew install diff-so-fancy
-    brew install terminal-notifier
-    brew install exa
-    brew install fzf
-    brew install pidof
-    brew install watch
-    brew install brightness
-    brew install autojump
-    brew install asciinema
-    brew install asdf
     brew install --cask unnaturalscrollwheels
-    brew install bpytop
-    brew install jq
-    brew install fd
     brew install act # github action test locally
-
-    brew install isacikgoz/taps/tldr
-
-    brew install gum
+    brew install asciinema
+    brew install autojump
+    brew install bpytop
+    brew install brightness
+    brew install diff-so-fancy
+    brew install fzf
     brew install graphviz
-    brew install gnu-sed
+    brew install gum
+    brew install isacikgoz/taps/tldr
+    brew install jq
+    brew install pgcli
+    brew install ripgrep
+    brew install terminal-notifier
 
-    success "Installed some fancy tools"
+    # Devops
+    brew install bat # Better cat
+    brew install exa # Better ls
+    brew install fd # Better find
+    brew install dust # Better checking size
+    brew install sd # Better sed
+    brew install pidof # Better check process id of program
+    brew install dog # Better dig dns networking
+    brew install xh # Better curl 
+    brew install ncdu # Better du
+    brew install duf # Better du
+    brew install jqp # Visualise jq
+    brew install watch
+
+    success "Installed cli for tools"
   fi
 }
 
@@ -428,7 +432,7 @@ install_window_manager
 install_qutebrowser
 install_nnn
 link_all_dotfiles
-install_tools
+install_cli_tools
 
 echo "---"
 

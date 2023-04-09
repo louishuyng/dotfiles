@@ -2,7 +2,6 @@
 alias unset 'set --erase'
 
 # Text Editor
-alias cat='bat'
 alias nv="nvim"
 alias nvt='nvim --cmd "set rtp+=./"'
 alias em="emacs -nw"
@@ -13,6 +12,7 @@ alias h='history'
 
 # Listing
 alias ls="exa --long  --header --git"
+alias lt="exa --tree --level=2 --long --icons --header --git"
 alias ll="ls -l"
 alias l.='ls -d .* --color=auto'
 alias lla="ll -A"
@@ -30,11 +30,6 @@ alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 
-# Colorize the grep command
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
 # New set command
 alias path='echo -e $PATH\n'
 alias now='date +"%T"'
@@ -48,9 +43,6 @@ alias ln='ln -i'
 
 # Restart zsh
 alias reset='exec fish'
-
-# Utils
-alias size="du -sh"
 
 # Zoxide
 alias zz="z -"
