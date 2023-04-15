@@ -1,5 +1,7 @@
 return {
-  {'nvim-tree/nvim-web-devicons'}, {"akinsho/toggleterm.nvim"},
+  {"catppuccin/nvim", name = "catppuccin"}, {'sainnhe/edge'},
+  {'sainnhe/gruvbox-material'}, {'nvim-tree/nvim-web-devicons'},
+  {'SmiteshP/nvim-navic'},
   {'goolord/alpha-nvim', config = function() require('config.libs.alpha') end},
-  {'rcarriga/nvim-notify'}, {'romgrk/barbar.nvim', version = '^1.0.0'}
+  {'rcarriga/nvim-notify'}
 }

@@ -32,7 +32,7 @@ cmp.setup {
     fields = {"kind", "abbr", "menu"},
     format = function(entry, vim_item)
       vim_item.kind = string.format("%s",
-                                    require("config.libs.lspkind_icons").icons[vim_item.kind])
+                                    require("config.libs.icons").kind[vim_item.kind])
       return vim_item
     end
   },

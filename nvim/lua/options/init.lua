@@ -115,14 +115,6 @@ vim.cmd('set grepprg=rg\\ --vimgrep\\ --smart-case\\ --follow')
 -- Winbar
 -- vim.api.nvim_command("set winbar=%m\\ %f")
 
--- hide tabline and statusline on startup screen
-vim.cmd [[
-augroup alpha_tabline
-  au!
-  au FileType alpha set showtabline=0 laststatus=0 noruler | au BufUnload <buffer> set showtabline=3 ruler laststatus=3
-augroup END
-]]
-
 -- plantuml
 vim.cmd [[
 au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
@@ -141,4 +133,7 @@ vim.cmd([[
 ]])
 
 -- Draft Buff Mappings Table
-vim.g.draft_buff_languages = { 'Http', 'Ruby', 'Javascript', 'Golang' }
+vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}
+
+-- Theme
+vim.g.main_theme = 'catppuccin'

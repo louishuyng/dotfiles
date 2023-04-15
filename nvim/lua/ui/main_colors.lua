@@ -1,29 +1,108 @@
-local colors = {
+local linux = {
   white = "#abb2bf",
   black = "#282c34",
   pure_black = "#000000",
   bg = '#000000',
-  selected_buffer_bg = "#000000",
-  selected_buffer_fg = "#60ff60",
-  visible_buffer_fg = '#60ff60',
-  black2 = "#252931",
-  custom_bg = "#282c34", -- nvim bg
-  custom_bg2 = "#353b45",
-  custom_bg3 = "#30343c",
+  fg = '#abb2bf',
+  black2 = "#2b3b51",
   grey = "#5c6370",
   grey_fg = "#565c64",
   grey_fg2 = "#6f737b",
-  red = "#e06c75",
+  red = "#b02626",
   black_red = "#be5046",
   green = "#60ff60",
   blue = "#40ffff",
-  cyan = "#80a0ff",
   yellow = "#ffff60",
   purple = "#ff80ff",
+  cyan = "#40ffff",
   orange = "#d19a66",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#000000"
+  statusline = "#000000",
+  cursorline = "#323232"
 }
 
-return colors
+local gruvbox = {
+  name = "gruvbox",
+  white = "#abb2bf",
+  black = "#32302f",
+  pure_black = "#000000",
+  bg = '#1d2021',
+  fg = "#ddc7a1",
+  black2 = "#2b3b51",
+  grey = "#5c6370",
+  grey_fg = "#565c64",
+  grey_fg2 = "#6f737b",
+  red = "#ea6962",
+  black_red = "#ea6962",
+  green = "#a9b665",
+  blue = "#7daea3",
+  yellow = "#d8a657",
+  purple = "#d3869b",
+  cyan = "#89b482",
+  orange = "#d8a657",
+  winbar = "NONE",
+  winbar_inactive = "NONE",
+  statusline = "#282828",
+  cursorline = "#323232"
+}
+
+local edge = {
+  name = "edge",
+  white = "#c5cdd9",
+  black = "#3e4249",
+  pure_black = "#000000",
+  bg = '#000000',
+  fg = "#c5cdd9",
+  black2 = "#2b3b51",
+  grey = "#5c6370",
+  grey_fg = "#565c64",
+  grey_fg2 = "#6f737b",
+  red = "#ec7279",
+  black_red = "#ec7279",
+  green = "#a0c980",
+  blue = "#6cb6eb",
+  yellow = "#deb974",
+  purple = "#d38aea",
+  cyan = "#5dbbc1",
+  orange = "#deb974",
+  winbar = "NONE",
+  winbar_inactive = "NONE",
+  statusline = "#000000",
+  cursorline = "#323232"
+}
+
+local catppuccin = {
+  name = "catppuccin",
+  white = "#BAC2DE",
+  black = "#45475A",
+  pure_black = "#000000",
+  bg = '#000000',
+  fg = '#CDD6F4',
+  black2 = "#2b3b51",
+  grey = "#5c6370",
+  grey_fg = "#565c64",
+  grey_fg2 = "#6f737b",
+  red = "#F38BA8",
+  black_red = "#F38BA8",
+  green = "#A6E3A1",
+  blue = "#89B4FA",
+  yellow = "#F9E2AF",
+  purple = "#F5C2E7",
+  cyan = "#94E2D5",
+  orange = "#F9E2AF",
+  winbar = "NONE",
+  winbar_inactive = "NONE",
+  statusline = "#000000",
+  cursorline = "#2A2B3B"
+}
+
+local theme = {
+  linux = linux,
+  gruvbox = gruvbox,
+  edge = edge,
+  catppuccin = catppuccin
+}
+
+-- return theme for current theme
+return theme[vim.g.main_theme] or linux

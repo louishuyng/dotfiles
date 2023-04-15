@@ -1,4 +1,5 @@
 local group = require('functions.toggle_auto_format').group
+local navic = require("nvim-navic")
 
 return function(client, bufnr)
   local bufopts = {noremap = true, silent = true, buffer = bufnr}
@@ -15,10 +16,19 @@ return function(client, bufnr)
   vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
                  bufopts)
 
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
+                 {desc = "Go to previous diagnostic"})
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
+                 {desc = "Go to next diagnostic"})
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   vim.diagnostic.config({float = {border = "single"}})
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
 
   if client.server_capabilities.document_formatting then
     if vim.bo.filetype == 'norg' then return end

@@ -2,6 +2,7 @@ local colors = require("ui.main_colors")
 local fg_bg = require("utils.highlight").fg_bg
 
 local icons = require('nvim-web-devicons').get_icons()
+
 for _, icon_data in pairs(icons) do
   if icon_data.color and icon_data.name then
     local hl_group = icon_data.name and 'StatuslineDevIcon' .. icon_data.name
@@ -15,4 +16,53 @@ for _, icon_data in pairs(icons) do
       }))
     end
   end
+end
+
+if vim.g.main_theme == 'gruvbox' then
+  vim.g.gruvbox_material_background = "hard"
+  vim.cmd('colorscheme gruvbox-material')
+end
+
+if vim.g.main_theme == 'edge' then
+  vim.g.edge_transparent_background = 1
+  vim.g.edge_better_performance = 1
+  vim.cmd('colorscheme edge')
+end
+
+if vim.g.main_theme == 'catppuccin' then
+  require("catppuccin").setup {
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    term_colors = true,
+    transparent_background = false,
+    no_italic = false,
+    no_bold = false,
+    styles = {
+      comments = {},
+      conditionals = {},
+      loops = {},
+      functions = {},
+      keywords = {},
+      strings = {},
+      variables = {},
+      numbers = {},
+      booleans = {},
+      properties = {},
+      types = {}
+    },
+    color_overrides = {
+      mocha = {base = "#000000", mantle = "#000000", crust = "#000000"}
+    },
+    highlight_overrides = {
+      mocha = function(C)
+        return {
+          TabLineSel = {bg = C.pink},
+          CmpBorder = {fg = C.surface2},
+          Pmenu = {bg = C.none},
+          TelescopeBorder = {link = "FloatBorder"}
+        }
+      end
+    }
+  }
+
+  vim.cmd('colorscheme catppuccin')
 end

@@ -63,3 +63,5 @@ alias du='ncdu'
 alias df='duf'
 
 alias top='bpytop'
+
+alias find='fd'

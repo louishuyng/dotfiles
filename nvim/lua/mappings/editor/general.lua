@@ -25,6 +25,10 @@ vim.keymap.set("n", "<C-d>", ":q!<CR>", opt)
 vim.keymap.set("v", "<C-d>", "<ESC>:q!<CR>", opt)
 vim.keymap.set("i", "<C-d>", "<ESC>:q!<CR>", opt)
 
+vim.keymap.set("n", "<C-b>", "<C-a>", opt)
+vim.keymap.set("v", "<C-b>", "<C-a>", opt)
+vim.keymap.set("v", "g<C-b>", "g<C-a>", opt)
+
 -- Grep file
 vim.keymap
     .set("n", "<leader>fw", "yiw:silent grep <C-R>\" | copen<CR><CR>", opt)

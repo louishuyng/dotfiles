@@ -65,6 +65,7 @@ yabai -m rule --add app="^DataGrip$"      opacity=1 manage=off          space=I
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off space=I
 yabai -m rule --add app="^FileZilla$" manage=off opacity=1                 space=I
 yabai -m rule --add app="^Apidog$" manage=off opacity=1                 space=I
+yabai -m rule --add app="^RedisInsight-v2$" manage=off opacity=1                 space=I
 
 # Development
 yabai -m rule --add app="Alacritty"                            space=II
@@ -83,6 +84,7 @@ yabai -m rule --add app="Obsidian"         opacity=1 manage=off  space=III
 yabai -m rule --add app="^Miro$"          opacity=1 manage=off space=III
 yabai -m rule --add app="StarUML"          opacity=1 manage=off    space=III
 yabai -m rule --add app="draw.io"          opacity=1 manage=off    space=III
+yabai -m rule --add app="WPS Office"          opacity=1 manage=off    space=III
 
 # Communication
 yabai -m rule --add app="Slack" title="Slack"      opacity=1 manage=off space=IV
@@ -98,6 +100,7 @@ yabai -m rule --add app="^Spotify$"          opacity=1 manage=off space=V
 yabai -m rule --add app="VLC"              manage=off space=V
 yabai -m rule --add label="App Store" app="^App Store$" manage=off space=V
 yabai -m rule --add app="Messenger" opacity=1 manage=off space=V
+yabai -m rule --add app="Telegram" opacity=1 manage=off space=V
 
 # Others
 yabai -m rule --add app="QuickTime Player" manage=off
@@ -119,6 +122,8 @@ yabai -m rule --add app="Terminal" opacity=1 manage=off
 yabai -m rule --add app="1Password" opacity=1 manage=off
 yabai -m rule --add app="^DevUtils$" manage=off opacity=1
 yabai -m rule --add app="^Stats$" manage=off opacity=1
+yabai -m rule --add app="^Raycast$" manage=off opacity=1
+yabai -m rule --add app="^Skitch$" manage=off opacity=1
 
 
 # show digital colour meter topmost and on all spaces

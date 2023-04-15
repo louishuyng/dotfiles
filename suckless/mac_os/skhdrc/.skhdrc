@@ -2,10 +2,10 @@
 ctrl + alt - p : open /Applications/Postman.app
 ctrl + alt - s : open /Applications/Slack.app
 ctrl + alt - d : open /Applications/DataGrip.app
-ctrl + alt - b : open /Applications/Brave\ Browser.app
+ctrl + alt - b : open /Applications/Vivaldi.app
 ctrl + alt - o : open /Applications/Obsidian.app
 ctrl + alt - m : open /Applications/Spotify.app
-ctrl + alt - t : open /Applications/kitty.app
+ctrl + alt - t : open /Applications/Alacritty.app
 ctrl + alt - u : open /Applications/StarUML.app
 ctrl + alt - q : open /Applications/qutebrowser.app
 ctrl + alt - e : emacs &
@@ -28,12 +28,12 @@ shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
 
 # Move focus container to workspace
-shift + cmd - 1 : yabai -m window --space 1; yabai -m space --focus 1
-shift + cmd - 2 : yabai -m window --space 2; yabai -m space --focus 2
-shift + cmd - 3 : yabai -m window --space 3; yabai -m space --focus 3
-shift + cmd - 4 : yabai -m window --space 4; yabai -m space --focus 4
-shift + cmd - 5 : yabai -m window --space 5; yabai -m space --focus 5
-shift + cmd - 6 : yabai -m window --space 6; yabai -m space --focus 6
+shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+shift + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+shift + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
+shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
 
 # Move all the container to workspace
 shift + alt - 1 : yabai -m space --move 1
@@ -49,15 +49,15 @@ alt - r : yabai -m space --rotate 90
 cmd - tab : yabai -m space --focus recent
 alt + cmd - h : yabai -m space --focus prev
 alt + cmd - l : yabai -m space --focus next
-cmd - 1 : yabai -m space --focus 1
-cmd - 2 : yabai -m space --focus 2
-cmd - 3 : yabai -m space --focus 3
-cmd - 4 : yabai -m space --focus 4
-cmd - 5 : yabai -m space --focus 5
-cmd - 6 : yabai -m space --focus 6
-cmd - 7 : yabai -m space --focus 7
-cmd - 8 : yabai -m space --focus 8
-cmd - 9 : yabai -m space --focus 9
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
 
 # Resize windows
 shift + alt - h : \

@@ -1,4 +1,7 @@
-vim.keymap.set("n", ",gb", ":Git blame<CR>")
+vim.keymap.set("n", ",gb", ":Gitsigns toggle_current_line_blame<CR>")
+vim.keymap.set("n", "<leader>tb", ":Gitsigns toggle_current_line_blame<CR>",
+               {silent = true})
+
 vim.keymap.set("n", "<leader>gd", ":Gvdiff ")
 
 vim.keymap.set("n", "<leader>dfh", "::DiffviewFileHistory %<CR>")

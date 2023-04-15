@@ -16,7 +16,13 @@ M.fg = function(group, col) cmd("hi " .. group .. " guifg=" .. col) end
 -- @param group Group
 -- @param fgcol Fg Color
 -- @param bgcol Bg Color
-M.fg_bg = function(group, fgcol, bgcol)
+M.fg_bg = function(group, fgcol, bgcol, gui)
+  if gui ~= nil then
+    cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol .. " gui=" ..
+            gui)
+    return
+  end
+
   cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
