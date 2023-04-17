@@ -1,3 +1,5 @@
+local tmux_session = require('config.cores.telescope.custom.tmux_session')
+
 local opt = {silent = true}
 
 vim.keymap.set("n", "<c-p>",
@@ -24,3 +26,5 @@ vim.keymap.set("n", "<leader>vc",
 vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", opt)
 
 vim.keymap.set("n", "<leader>fn", ":Telescope notify <CR>", opt)
+
+vim.keymap.set("n", "<leader>\\", tmux_session)
