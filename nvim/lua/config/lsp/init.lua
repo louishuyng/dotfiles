@@ -1,3 +1,5 @@
+require 'config/lsp/rename'
+
 -- Highlight line numbers for diagnostics
 vim.fn.sign_define('DiagnosticSignError',
                    {numhl = 'LspDiagnosticsLineNrError', text = ''})
@@ -11,7 +13,7 @@ require("mason").setup()
 local ensure_installed = {
   "lua_ls", "rust_analyzer", "kotlin_language_server", "eslint", "tsserver",
   "bashls", "cssls", "denols", "pyright", "solargraph", "svelte", "terraformls",
-  "yamlls", "prettierd", "rubocop", "codespell"
+  "prettierd", "rubocop", "codespell", "cfn_lint", "yamlfmt"
 }
 
 require("mason-null-ls").setup {ensure_installed = ensure_installed}
@@ -30,4 +32,3 @@ require "config/lsp/ruby"
 require "config/lsp/svelte"
 require "config/lsp/terraform"
 require "config/lsp/typescript"
-require "config/lsp/yaml"
