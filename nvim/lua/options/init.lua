@@ -99,7 +99,7 @@ vim.cmd('abbrev mname Louis Nguyen')
 vim.cmd('abbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit')
 -- === Ruby
 vim.cmd('abbrev rubocopd rubocop:disable ')
-vim.cmd('abbrev rubocopo rubocop:disable ')
+vim.cmd('abbrev rubocopo rubocop:enable ')
 
 -- LSP
 vim.g.auto_format = true
@@ -133,7 +133,7 @@ vim.cmd([[
 ]])
 
 -- Draft Buff Mappings Table
-vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}
+vim.g.draft_buff_languages = { 'Http', 'Ruby', 'Javascript', 'Golang' }
 
 -- Theme
-vim.g.main_theme = 'catppuccin'
+vim.g.main_theme = 'edge'

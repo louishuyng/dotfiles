@@ -4,4 +4,4 @@ CAL=$(date '+%A %d %b')
 
 CALICON=􀉉
 
-sketchybar --set $NAME icon=$CALICON label="$CAL "
+sketchybar --set $NAME icon=$CALICON label="$CAL |"

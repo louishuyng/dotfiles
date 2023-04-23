@@ -4,29 +4,37 @@
 launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          on
-yabai -m config window_placement             first_child
-yabai -m config window_topmost               off
-yabai -m config window_opacity               on
-yabai -m config window_opacity_duration      0.3
-yabai -m config window_shadow                float
-yabai -m config insert_feedback_color        0xaad75f5f
-yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.90
-yabai -m config split_ratio                  0.50
-yabai -m config auto_balance                 off
-yabai -m config mouse_modifier               fn
-yabai -m config mouse_action1                move
-yabai -m config mouse_action2                resize
+yabai -m config \
+	mouse_follows_focus off \
+	focus_follows_mouse off \
+	window_origin_display default \
+	window_placement second_child \
+	window_shadow float \
+	window_topmost off \
+	window_opacity off \
+	window_border on \
+	active_window_opacity 1 \
+	window_border_width 2 \
+	split_ratio 0.50 \
+	split_type auto \
+	active_window_border_color 0xffd38aea \
+	normal_window_border_color 0xff4c566a \
+	insert_feedback_color 0xff949292 \
+	auto_balance on \
 
-# general space settings
-yabai -m config layout                       bsp
-yabai -m config window_gap                   07
-yabai -m config window_border                off
-yabai -m config window_border_width          1
-yabai -m config active_window_border_color  0xff48e566
-yabai -m config normal_window_border_color  0xff1A1A1A
+yabai -m config \
+	window_border_hidpi on \
+	window_border_blur on \
+	window_border_radius 0 \
+
+# Padding
+yabai -m config \
+	layout bsp \
+	top_padding 0   \
+	bottom_padding 30  \
+	left_padding 8 \
+	right_padding 8 \
+	window_gap 6 \
 
 # signals
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
@@ -70,9 +78,10 @@ yabai -m rule --add app="^RedisInsight-v2$" manage=off opacity=1                
 # Development
 yabai -m rule --add app="Alacritty"                            space=II
 yabai -m rule --add app="kitty"                            space=II
+yabai -m rule --add app="Code"                            space=II manage=off
 yabai -m rule --add app="Emacs"                            space=II
 yabai -m rule --add app="^Xcode$" manage=off                   space=II
-yabai -m rule --add label="Sourcetree" app="^Sourcetree$" manage=off space=II
+yabai -m rule --add app="GitKraken" manage=off space=II
 
 # View
 yabai -m rule --add app="^Microsoft Edge$"         opacity=1 manage=off   space=III
@@ -83,8 +92,10 @@ yabai -m rule --add app="Notion"           opacity=1 manage=off    space=III
 yabai -m rule --add app="Obsidian"         opacity=1 manage=off  space=III
 yabai -m rule --add app="^Miro$"          opacity=1 manage=off space=III
 yabai -m rule --add app="StarUML"          opacity=1 manage=off    space=III
+yabai -m rule --add app="EasyPlantUML"          opacity=1 manage=off    space=III
 yabai -m rule --add app="draw.io"          opacity=1 manage=off    space=III
 yabai -m rule --add app="WPS Office"          opacity=1 manage=off    space=III
+yabai -m rule --add app="Linear"          opacity=1 manage=off    space=III
 
 # Communication
 yabai -m rule --add app="Slack" title="Slack"      opacity=1 manage=off space=IV

@@ -1,34 +1,32 @@
 #!/usr/bin/env sh
 
-source "$HOME/.config/sketchybar/color.sh"
+source "$HOME/.config/sketchybar/colors.sh"
 
 PLUGIN_DIR="$HOME/.config/sketchybar/controller"
-PLUGIN_TOUCH="$HOME/.config/sketchybar/controller/touch"
 ITEM_DIR="$HOME/.config/sketchybar/view"
 
 PADDING=4
-ICON="SF Symbols"
-LABEL="Hack Nerd Font"
+LABEL="JetBrainsMono Nerd Font"
 
 sketchybar --bar     height=24                                            \
                      blur_radius=0                                        \
                      padding_left=4                                       \
                      padding_right=4                                      \
-                     color=0xff${BLACK:1}                                 \
+                     color=0xff${BLACK}                                 \
                      position=bottom                                      \
                      sticky=on                                            \
                      font_smoothing=on                                    \
                                                                           \
            --default updates=when_shown                                   \
                      drawing=on                                           \
-                     icon.font="$ICON:SemiBold:12.0"                      \
+                     icon.font="$LABEL:SemiBold:12.0"                      \
                      label.font="$LABEL:SemiBold:12.0"                    \
                      icon.padding_left=$PADDING                           \
                      icon.padding_right=$PADDING                          \
                      label.padding_left=$PADDING                          \
                      label.padding_right=$PADDING                         \
-                     label.color=0xff${GREEN:1}                           \
-                     icon.color=0xff${GREEN:1}                            \
+                     label.color=0xff${NORD4:1}                           \
+                     icon.color=0xff${NORD4:1}                            \
 
 
 # left
@@ -38,11 +36,15 @@ source "$ITEM_DIR/front_app.sh"
 # right
 source "$ITEM_DIR/time.sh"
 source "$ITEM_DIR/cal.sh"
+source "$ITEM_DIR/github.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/airpodsbattery.sh"
+source "$ITEM_DIR/sound.sh"
 source "$ITEM_DIR/disk.sh"
 source "$ITEM_DIR/mem.sh"
 source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/spotify.sh"
 
 # initializing
 sketchybar --update

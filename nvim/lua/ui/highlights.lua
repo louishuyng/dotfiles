@@ -32,20 +32,22 @@ local bg = require("utils.highlight").bg
 if vim.g.main_theme == 'linux' then
   fg_bg("Statusline", statusline, color_fg)
   fg_bg("StatuslineNC", statusline, color_fg)
+  vim.cmd([[hi CursorLine gui=underline cterm=underline guibg=NONE]])
 end
 
 if vim.g.main_theme == 'edge' then
   fg_bg("Statusline", color_fg, statusline)
   fg_bg("StatuslineNC", color_fg, statusline)
+  bg("CursorLine", colors.cursorline)
 end
 
 if vim.g.main_theme == 'catppuccin' then
   bg("Statusline", statusline)
   bg("StatuslineNC", statusline)
+  bg("CursorLine", colors.cursorline)
 end
 
 -- Basic
-bg("CursorLine", colors.cursorline)
 vim.cmd([[
   hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
   hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f

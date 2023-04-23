@@ -77,7 +77,7 @@ local catppuccin = {
   white = "#BAC2DE",
   black = "#45475A",
   pure_black = "#000000",
-  bg = '#000000',
+  bg = '#1E1E2E',
   fg = '#CDD6F4',
   black2 = "#2b3b51",
   grey = "#5c6370",
@@ -93,7 +93,7 @@ local catppuccin = {
   orange = "#F9E2AF",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#000000",
+  statusline = "#313343",
   cursorline = "#2A2B3B"
 }
 

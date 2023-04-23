@@ -8,6 +8,7 @@ ctrl + alt - m : open /Applications/Spotify.app
 ctrl + alt - t : open /Applications/Alacritty.app
 ctrl + alt - u : open /Applications/StarUML.app
 ctrl + alt - q : open /Applications/qutebrowser.app
+ctrl + alt - c : open /Applications/Visual\ Studio\ Code.app
 ctrl + alt - e : emacs &
 
 shift + alt - space : yabai -m window --toggle float
@@ -46,7 +47,6 @@ shift + alt - 6 : yabai -m space --move 6
 alt - r : yabai -m space --rotate 90
 
 # Focus Space
-cmd - tab : yabai -m space --focus recent
 alt + cmd - h : yabai -m space --focus prev
 alt + cmd - l : yabai -m space --focus next
 alt - 1 : yabai -m space --focus 1

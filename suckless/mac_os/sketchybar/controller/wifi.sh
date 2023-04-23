@@ -8,7 +8,7 @@ WIFIACTIVEICON=􀙇
 WIFIINACTIVEICON=􀙈
 
 if [ "$CURR_TX" = "" ]; then
-	sketchybar --set $NAME icon=$WIFIINACTIVEICON label="disconnected "
+	sketchybar --set $NAME icon=$WIFIINACTIVEICON label="disconnected |"
 else
-	sketchybar --set $NAME icon=$WIFIACTIVEICON label="connected "
+	sketchybar --set $NAME icon=$WIFIACTIVEICON label="connected |"
 fi

@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-sketchybar --set $NAME icon.highlight=$SELECTED
+sketchybar --set $NAME background.drawing=$SELECTED icon.highlight=$SELECTED
