@@ -133,7 +133,7 @@ vim.cmd([[
 ]])
 
 -- Draft Buff Mappings Table
-vim.g.draft_buff_languages = { 'Http', 'Ruby', 'Javascript', 'Golang' }
+vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}
 
 -- Theme
-vim.g.main_theme = 'edge'
+vim.g.main_theme = 'dogrun'

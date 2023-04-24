@@ -5,3 +5,4 @@ sketchybar -m --add item docker left                         \
                     icon="🐳"                                \
                     icon.y_offset=2                          \
                     cpu script="$PLUGIN_DIR/docker.sh"       \
+                    click_script="$PLUGIN_DIR/toggle_docker.sh" \

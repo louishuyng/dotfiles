@@ -6,7 +6,7 @@ PLUGIN_DIR="$HOME/.config/sketchybar/controller"
 ITEM_DIR="$HOME/.config/sketchybar/view"
 
 PADDING=4
-LABEL="JetBrainsMono Nerd Font"
+LABEL="JetBrainsMono Nerd Font Mono"
 
 sketchybar --bar     height=24                                            \
                      blur_radius=0                                        \
@@ -43,7 +43,6 @@ source "$ITEM_DIR/airpodsbattery.sh"
 source "$ITEM_DIR/disk.sh"
 source "$ITEM_DIR/mem.sh"
 source "$ITEM_DIR/cpu.sh"
-source "$ITEM_DIR/github.sh"
 source "$ITEM_DIR/spotify.sh"
 
 # initializing

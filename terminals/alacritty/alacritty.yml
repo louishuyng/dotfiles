@@ -173,7 +173,21 @@ colors:
     indexed_colors:
       - {index: 16, color: "#FAB387"}
       - {index: 17, color: "#F5E0DC"}
-colors: *edge
+  ## DOGRUN THEME
+  dogrun: &dogrun
+    primary:
+      background: "#222433"
+      foreground: "#9ea3c0"
+    normal:
+      black: "#3e4249"
+      red: "#CE747D"
+      green: "#8ABC90"
+      yellow: "#A8A386"
+      blue: "#689CC3"
+      magenta: "#949BDF"
+      cyan: "#85BFAA"
+      white: "#c5cdd9"
+colors: *dogrun
 key_bindings:
   - {key: V, mods: Command, action: Paste}
   - {key: C, mods: Command, action: Copy}

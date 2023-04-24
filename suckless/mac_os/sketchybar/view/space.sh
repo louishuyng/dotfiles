@@ -15,7 +15,7 @@ for i in "${!SPACE_ICONS[@]}"; do
                               background.padding_right=4                \
                               background.corner_radius=0                \
                               background.height=24                      \
-                              background.color=0xff${MAGENTA:1}         \
+                              background.color=0xff${GREEN:1}         \
                               background.drawing=off                    \
                               icon.color=0xff${NORD4:1}       \
                               icon.highlight_color=0xff${BLACK:1}       \
