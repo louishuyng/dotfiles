@@ -66,7 +66,7 @@ end
 M.git = function()
   if not vim.b.gitsigns_head or vim.b.gitsigns_git_status then return "" end
 
-  return "  " .. vim.b.gitsigns_status_dict.head .. "  "
+  return "%#StGit#" .. "  " .. vim.b.gitsigns_status_dict.head .. "  "
 end
 
 M.gitchanges = function()
@@ -162,10 +162,8 @@ M.run = function()
   local modules = require "config.cores.statusline"
 
   return table.concat {
-    modules.mode(), modules.fileInfo(), modules.git(),
-    modules.LSP_Diagnostics(), "%=", modules.LSP_progress(), "%=",
-
-    modules.gitchanges(),
+    modules.mode(), modules.git(), modules.LSP_Diagnostics(), "%=",
+    modules.LSP_progress(), "%=", modules.gitchanges(),
     vim.o.columns > 140 and "%#StText# Ln %l, Col %c  " or "",
     string.upper(vim.bo.fileencoding) == "" and "" or "%#St_encode#" ..
         string.upper(vim.bo.fileencoding) .. "  ", modules.filetype(),

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-CAL=$(date '+%A %d %b')
+CAL=$(date '+%a %d %b')
 
 CALICON=􀉉
 
