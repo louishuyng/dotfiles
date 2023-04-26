@@ -15,9 +15,6 @@ opt.timeoutlen = 1000
 opt.ttimeoutlen = 0
 opt.clipboard = "unnamedplus"
 
--- SWAPFILE
-vim.opt.swapfile = false
-
 -- UNDOFILE
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand('~/.vim/undodir')
@@ -126,7 +123,7 @@ au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
 
 -- Draw Performance
 vim.cmd([[
-  set ttyfast
+    set ttyfast
   set synmaxcol=128
   syntax sync minlines=256
   let g:sneak#label = 1
@@ -136,4 +133,4 @@ vim.cmd([[
 vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}
 
 -- Theme
-vim.g.main_theme = 'dogrun'
+vim.g.main_theme = 'linux'

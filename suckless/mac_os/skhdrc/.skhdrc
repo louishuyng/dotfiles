@@ -5,7 +5,7 @@ ctrl + alt - d : open /Applications/DataGrip.app
 ctrl + alt - b : open /Applications/Vivaldi.app
 ctrl + alt - o : open /Applications/Obsidian.app
 ctrl + alt - m : open /Applications/Spotify.app
-ctrl + alt - t : open /Applications/Alacritty.app
+ctrl + alt - t : open /Applications/Kitty.app
 ctrl + alt - u : open /Applications/StarUML.app
 ctrl + alt - q : open /Applications/qutebrowser.app
 ctrl + alt - c : open /Applications/Visual\ Studio\ Code.app

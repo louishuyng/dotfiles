@@ -36,5 +36,6 @@ return {
   }, {'chentoast/marks.nvim', config = function() require'marks'.setup() end},
   {"rest-nvim/rest.nvim"},
   {'loishy/draft-buff', dependencies = {'MunifTanjim/nui.nvim'}},
-  {'mbbill/undotree'}, {'famiu/nvim-reload'}
+  {'mbbill/undotree'}, {'famiu/nvim-reload'}, {'AndrewRadev/splitjoin.vim'}
+
 }
