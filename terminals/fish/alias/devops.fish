@@ -65,3 +65,4 @@ alias df='duf'
 alias top='bpytop'
 
 alias find='fd'
+alias lf='ranger'

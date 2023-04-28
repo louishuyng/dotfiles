@@ -327,6 +327,15 @@ install_nnn() {
   fi
 }
 
+install_nixos() {
+  read -r -p "Do you want to install nixos? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    curl -L https://nixos.org/nix/install | sh
+
+    ln -s ~/.dotfiles/nix ~/.config/nix
+  fi
+}
+
 link_all_dotfiles() {
   brew install stow
 
