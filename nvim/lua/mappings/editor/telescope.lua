@@ -27,3 +27,4 @@ vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", opt)
 vim.keymap.set("n", "<leader>fn", ":Telescope notify <CR>", opt)
 
 vim.keymap.set("n", "<leader>\\", tmux_session)
+vim.keymap.set("n", "<leader>\"", ":Telescope registers<CR>", opt)

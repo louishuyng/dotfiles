@@ -7,7 +7,7 @@ export GREEN=#60ff60
 export BLUE=#0000ff
 export YELLOW=#ffff00
 export ORANGE=#ffa500
-export MAGENTA=#d38aea
+export MAGENTA=#ff80ff
 export GRAY=#808080
 
 export NORD0=#2E3440
