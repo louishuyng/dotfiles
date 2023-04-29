@@ -1,9 +1,0 @@
-name: SourceCode
-root: ~/Dev/Projects/SourceCode/ 
-
-attach: false
-
-windows:
-  - ocr-hk-hospital-claim:
-    - cd ocr-hk-hospital-claim
-    - nvim
