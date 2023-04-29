@@ -79,6 +79,7 @@ yabai -m rule --add app="^RedisInsight-v2$" manage=off opacity=1                
 yabai -m rule --add app="Alacritty"                            space=II
 yabai -m rule --add app="kitty"                            space=II
 yabai -m rule --add app="Code"                            space=II manage=off
+yabai -m rule --add app="WebStorm"                            space=II manage=off
 yabai -m rule --add app="Emacs"                            space=II
 yabai -m rule --add app="^Xcode$" manage=off                   space=II
 yabai -m rule --add app="GitKraken" manage=off space=II

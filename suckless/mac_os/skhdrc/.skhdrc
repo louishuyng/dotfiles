@@ -8,7 +8,7 @@ ctrl + alt - m : open /Applications/Spotify.app
 ctrl + alt - t : open /Applications/Kitty.app
 ctrl + alt - u : open /Applications/StarUML.app
 ctrl + alt - q : open /Applications/qutebrowser.app
-ctrl + alt - c : open /Applications/Visual\ Studio\ Code.app
+ctrl + alt - w : open /Applications/WebStorm.app
 ctrl + alt - e : emacs &
 
 shift + alt - space : yabai -m window --toggle float
