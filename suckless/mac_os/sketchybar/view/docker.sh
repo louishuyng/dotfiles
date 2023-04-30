@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 sketchybar -m --add item docker left                         \
-              --set docker update_freq=60                    \
+              --set docker update_freq=5                     \
                     icon="🐳"                                \
                     icon.y_offset=2                          \
                     cpu script="$PLUGIN_DIR/docker.sh"       \
