@@ -1,43 +1,43 @@
-!/usr/bin/env sh
-
-# Battery is here bcause the ICON_COLOR doesn't play well with all background colors
+#!/bin/bash
 
 PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 CHARGING=$(pmset -g batt | grep 'AC Power')
 
 if [ $PERCENTAGE = "" ]; then
-    exit 0
+  exit 0
 fi
 
+# Battery Icons
+BATTERY_100=􀛨
+BATTERY_75=􀺸
+BATTERY_50=􀺶
+BATTERY_25=􀛩
+BATTERY_0=􀛪
+
+YELLOW=0xffffff00
+ORANGE=0xffffa500
+GREEN=0xff60ff60
+
+DRAWING=on
+COLOR=$WHITE
 case ${PERCENTAGE} in
-[8-9][0-9] | 100)
-      ICON=""
-    ICON_COLOR=0xffa6da95
-    ;;
-7[0-9])
-    ICON=""
-    ICON_COLOR=0xffeed49f
-    ;;
-[4-6][0-9])
-    ICON=""
-    ICON_COLOR=0xfff5a97f
-    ;;
-[1-3][0-9])
-    ICON=""
-    ICON_COLOR=0xffee99a0
-    ;;
-[0-9])
-    ICON=""
-    ICON_COLOR=0xffed8796
-    ;;
+  9[0-9]|100) ICON=$BATTERY_100; COLOR=$GREEN
+  ;;
+  [6-8][0-9]) ICON=$BATTERY_75; COLOR=$YELLOW
+  ;;
+  [3-5][0-9]) ICON=$BATTERY_50; COLOR=$ORANGE
+  ;;
+  [1-2][0-9]) ICON=$BATTERY_25; COLOR=$RED
+  ;;
+  *) ICON=$BATTERY_0; COLOR=$RED
 esac
 
 if [[ $CHARGING != "" ]]; then
     ICON=""
-    ICON_COLOR=0xffeed49f
+    COLOR=0xffeed49f
 fi
 
 sketchybar --set $NAME \
     icon=$ICON \
     label="${PERCENTAGE}% |" \
-    icon.color=${ICON_COLOR}
+    icon.color=${COLOR}
