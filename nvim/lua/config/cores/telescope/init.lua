@@ -32,7 +32,7 @@ telescope.setup {
     layout_strategy = 'bottom_pane',
     layout_config = {
       height = 0.2,
-      preview_width = 0.6,
+      preview_width = 0.5,
       prompt_position = "bottom"
     },
     mappings = {
