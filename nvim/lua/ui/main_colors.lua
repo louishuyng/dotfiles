@@ -52,7 +52,7 @@ local edge = {
   white = "#c5cdd9",
   black = "#3e4249",
   pure_black = "#000000",
-  bg = '#000000',
+  bg = "#1e1e1e",
   fg = "#c5cdd9",
   black2 = "#2b3b51",
   grey = "#5c6370",
@@ -68,7 +68,7 @@ local edge = {
   orange = "#deb974",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#000000",
+  statusline = "#1e1e1e",
   cursorline = "#323232"
 }
 

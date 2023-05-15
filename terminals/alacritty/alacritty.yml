@@ -5,16 +5,18 @@ selection:
   text: CellBackground
 faux_multiplier: 0
 window:
+  position:
+    x: 100
+    y: 170
   opacity: 1.0
   dimensions:
-    columns: 110
-    lines: 52
+    columns: 230
+    lines: 70
   padding:
     x: 4
     y: 0
-  decorations: none
   startup_mode: Windowed
-  dynamic_title: true
+  dynamic_title: false
 scrolling:
   history: 10000
   multiplier: 3
@@ -82,7 +84,7 @@ colors:
   ## EDGE THEME
   edge: &edge
     primary:
-      background: "#000000"
+      background: "#1e1e1e"
       foreground: "#c5cdd9"
     normal:
       black: "#3e4249"
@@ -187,13 +189,14 @@ colors:
       magenta: "#949BDF"
       cyan: "#85BFAA"
       white: "#c5cdd9"
-colors: *dogrun
+colors: *edge
 key_bindings:
   - {key: V, mods: Command, action: Paste}
   - {key: C, mods: Command, action: Copy}
   - {key: Key1, mods: Control, command: {program: "sh", args: ["-c", "tmux switch -t Adventure"]}}
   - {key: Key2, mods: Control, command: {program: "sh", args: ["-c", "tmux switch -t Perx"]}}
   - {key: Key3, mods: Control, command: {program: "sh", args: ["-c", "tmux switch -t SourceCode"]}}
+  - {key: Return, mods: Command, action: ToggleFullscreen}
   - {key: A, mods: Alt, chars: "\ea"}
   - {key: B, mods: Alt, chars: "\eb"}
   - {key: C, mods: Alt, chars: "\ec"}

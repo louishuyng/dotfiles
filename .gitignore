@@ -46,3 +46,5 @@ terminals/fish/env/credential.fish
 suckless/spicetify/Extracted/
 suckless/spicetify/Themes/*
 suckless/mailspring
+
+.idea

@@ -35,22 +35,6 @@ return {
     Value = "",
     Variable = ""
   },
-  git = {
-    LineAdded = "",
-    LineModified = "",
-    LineRemoved = "",
-    FileDeleted = "",
-    FileIgnored = "◌",
-    FileRenamed = "",
-    FileStaged = "S",
-    FileUnmerged = "",
-    FileUnstaged = "",
-    FileUntracked = "U",
-    Diff = "",
-    Repo = "",
-    Octoface = "",
-    Branch = ""
-  },
   ui = {
     ArrowCircleDown = "",
     ArrowCircleLeft = "",
@@ -78,7 +62,7 @@ return {
     ChevronShortLeft = "",
     ChevronShortRight = "",
     ChevronShortUp = "",
-    Circle = "",
+    Circle = "",
     Close = "",
     CloudDownload = "",
     Code = "",

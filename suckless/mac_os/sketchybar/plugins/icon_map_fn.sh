@@ -66,6 +66,9 @@ function icon_map() {
   "Emacs")
     icon_result=":emacs:"
     ;;
+  "Jellyfin Media Player")
+    icon_result=":jellyfin:"
+    ;;
   "Final Cut Pro")
     icon_result=":final_cut_pro:"
     ;;

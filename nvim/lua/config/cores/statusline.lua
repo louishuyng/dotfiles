@@ -40,29 +40,6 @@ M.mode = function()
   return "%#" .. M.modes[m][2] .. "#" .. "▎"
 end
 
-local function icon()
-  local file_name = vim.fn.expand '%:p:t'
-  local extension = vim.fn.expand '%:e'
-
-  local the_icon, highlight = require('nvim-web-devicons').get_icon(file_name,
-                                                                    extension)
-
-  if not the_icon and #file_name == 0 then
-    -- Is in a folder
-    the_icon = ""
-    highlight = 'Accent'
-  end
-
-  return color(string.format('Statusline%s', highlight or 'Accent'),
-               the_icon or '●')
-end
-
-M.fileInfo = function()
-  local filename = (fn.expand "%" == "" and "Empty ") or fn.expand "%:t"
-
-  return "%#StText# " .. icon() .. " " .. filename .. " "
-end
-
 M.git = function()
   if not vim.b.gitsigns_head or vim.b.gitsigns_git_status then return "" end
 

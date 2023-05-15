@@ -19,6 +19,10 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", opt)
 -- vim.keymap.set("v", "<C-b>", "<C-a>", opt)
 -- vim.keymap.set("v", "g<C-b>", "g<C-a>", opt)
 
+-- Scrolling Center
+vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", opt)
+
 -- Grep file
 vim.keymap
     .set("n", "<leader>fw", "yiw:silent grep <C-R>\" | copen<CR><CR>", opt)

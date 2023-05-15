@@ -33,37 +33,22 @@ if vim.g.main_theme == 'linux' then
   fg_bg("Statusline", statusline, color_fg)
   fg_bg("StatuslineNC", statusline, color_fg)
   vim.cmd([[hi CursorLine gui=underline cterm=underline guibg=NONE]])
-end
-
-if vim.g.main_theme == 'edge' then
-  fg_bg("Statusline", color_fg, statusline)
-  fg_bg("StatuslineNC", color_fg, statusline)
-  bg("CursorLine", colors.cursorline)
-end
-
-if vim.g.main_theme == 'catppuccin' then
+else
   bg("Statusline", statusline)
   bg("StatuslineNC", statusline)
-  bg("CursorLine", colors.cursorline)
 end
+
+if vim.g.main_theme == 'catppuccin' then bg("CursorLine", cursorline) end
 
 -- Basic
 vim.cmd([[
-  hi Search cterm=NONE ctermfg=NONE ctermbg=240 guifg=NONE guibg=#585858
-  hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
-  hi FloatermBorder guifg=#87AF87
-  hi FloatBorder guibg=NONE
-  hi VertSplit guifg=#23272e guibg=bg cterm=NONE
-  " hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-  " hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
-  hi NormalFloat guibg=NONE
-  hi DeniteBackground ctermfg=NONE ctermbg=24 cterm=NONE guifg=#ffffff guibg=#000000 gui=NONE
+  hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
   hi LineNr guibg=NONE guifg=grey
   hi Visual guibg=#323232 guifg=NONE
   hi SignColumn guibg=NONE
   hi LspDiagnosticsLineNrError guifg=#ea6962 guibg=#312a34 gui=bold
   hi LspDiagnosticsLineNrWarning guifg=#d8a657 guibg=#312e3a gui=bold
-  " hi VertSplit guibg=NONE guifg=#565c64
 ]])
 
 -- Alpha
@@ -108,9 +93,10 @@ fg_bg('St_LspInfo', blue, statusline)
 fg_bg('St_LspStatus', green, statusline)
 fg_bg('St_LspProgress', red, statusline)
 fg_bg('StText', grey_fg2, statusline)
-fg_bg('St_ft', blue, statusline)
-fg_bg('St_encode', orange, statusline)
 fg_bg('St_cwd', red, statusline)
+
+-- Breadcrumb
+fg('LspCodeLens', "#ea6962")
 
 -- Telescope
 fg_bg('TelescopePromptTitle', black, green, 'bold')

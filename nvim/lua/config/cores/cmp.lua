@@ -21,10 +21,6 @@ local function t(str)
 end
 
 cmp.setup {
-  window = {
-    completion = cmp.config.window.bordered(winhighlight),
-    documentation = cmp.config.window.bordered(winhighlight)
-  },
   snippet = {
     expand = function(args) require("luasnip").lsp_expand(args.body) end
   },

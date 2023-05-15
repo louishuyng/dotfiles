@@ -3,9 +3,9 @@ ctrl + alt - p : open /Applications/Postman.app
 ctrl + alt - s : open /Applications/Slack.app
 ctrl + alt - d : open /Applications/DataGrip.app
 ctrl + alt - b : open /Applications/Vivaldi.app
-ctrl + alt - o : open /Applications/Obsidian.app
+ctrl + alt - n : open /Applications/Notion.app
 ctrl + alt - m : open /Applications/Spotify.app
-ctrl + alt - t : open /Applications/Kitty.app
+ctrl + alt - t : open /Applications/Alacritty.app
 ctrl + alt - u : open /Applications/StarUML.app
 ctrl + alt - q : open /Applications/qutebrowser.app
 ctrl + alt - w : open /Applications/WebStorm.app
@@ -23,10 +23,10 @@ ctrl + alt - k : yabai -m window --focus north
 ctrl + alt - l : yabai -m window --focus east
 
 # Moving windows
-shift + cmd - h : yabai -m window --warp west
-shift + cmd - j : yabai -m window --warp south
-shift + cmd - k : yabai -m window --warp north
-shift + cmd - l : yabai -m window --warp east
+shift + ctrl - h : yabai -m window --warp west
+shift + ctrl - j : yabai -m window --warp south
+shift + ctrl - k : yabai -m window --warp north
+shift + ctrl - l : yabai -m window --warp east
 
 # Move focus container to workspace
 shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1

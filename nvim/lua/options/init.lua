@@ -89,15 +89,6 @@ vim.cmd [[au FileType go set tabstop=2]]
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
 
--- Abbreviations
--- === General
-vim.cmd('abbrev mgmail huynguyennbk@gmail.com')
-vim.cmd('abbrev mname Louis Nguyen')
-vim.cmd('abbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit')
--- === Ruby
-vim.cmd('abbrev rubocopd rubocop:disable ')
-vim.cmd('abbrev rubocopo rubocop:enable ')
-
 -- LSP
 vim.g.auto_format = true
 
@@ -123,7 +114,7 @@ au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
 
 -- Draw Performance
 vim.cmd([[
-    set ttyfast
+  set ttyfast
   set synmaxcol=128
   syntax sync minlines=256
   let g:sneak#label = 1
@@ -131,6 +122,3 @@ vim.cmd([[
 
 -- Draft Buff Mappings Table
 vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}
-
--- Theme
-vim.g.main_theme = 'linux'

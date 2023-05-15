@@ -1,3 +1,4 @@
+require "config.libs.alpha"
 require "config.libs.comment"
 require "config.libs.copilot"
 require "config.libs.flutter_tool"

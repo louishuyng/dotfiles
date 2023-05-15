@@ -85,3 +85,6 @@ fish_add_path ~/.emacs.d/bin/
 
 # MacPort
 fish_add_path /opt/local/bin 
+
+# Webstorm Path
+fish_add_path /Applications/WebStorm.app/Contents/MacOS
