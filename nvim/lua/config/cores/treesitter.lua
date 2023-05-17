@@ -6,7 +6,7 @@ ts_config.setup {
     "go", "graphql", "javascript", "jsdoc", "http", "json", "jsonc", "lua",
     "python", "ruby", "rust", "tsx", "typescript", "svelte", "kotlin", "yaml",
     "html", "toml", "vim", "norg", "fish", "bash", "markdown", "terraform",
-    "org"
+    "org", "smithy"
   },
   matchup = {enable = true},
   highlight = {

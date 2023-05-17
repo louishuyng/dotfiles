@@ -31,6 +31,8 @@ fish_add_path /usr/local/opt/python/libexec/bin
 #
 # #JAVA
 fish_add_path /usr/libexec/java_home
+fish_add_path /opt/homebrew/opt/openjdk/bin
+set -gx CPPFLAGS "-I/opt/homebrew/opt/openjdk/include"
 #
 # #Golang
 set -gx GOROOT (go env GOROOT)
