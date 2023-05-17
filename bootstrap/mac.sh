@@ -383,6 +383,9 @@ link_all_dotfiles() {
   ln -s ~/.dotfiles/suckless/mac_os/karabiner ~/.config
   
   success "Linked git config"
+
+  ln -s ~/.dotfiles/.ideavimrc ~/
+  success "Linked ideavimrc"
 }
 
 install_cli_tools() {
