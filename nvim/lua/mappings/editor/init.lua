@@ -1,6 +1,7 @@
 require 'mappings.editor.buffer'
 require 'mappings.editor.draft_buff'
 require 'mappings.editor.general'
+require 'mappings.editor.oil'
 require 'mappings.editor.spectre'
 require 'mappings.editor.telescope'
 require 'mappings.editor.term'

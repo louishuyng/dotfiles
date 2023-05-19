@@ -4,7 +4,7 @@
 launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
 
 # global settings
-yabai -m config window_border                on
+yabai -m config window_border                off
 yabai -m config window_border_width          2
 yabai -m config active_window_border_color   0xf60ff60f
 yabai -m config window_border_radius 0
@@ -13,7 +13,7 @@ yabai -m config window_border_radius 0
 yabai -m config \
 	layout bsp \
 	top_padding 0   \
-	bottom_padding 30  \
+	bottom_padding 0  \
 	left_padding 8 \
 	right_padding 8 \
 	window_gap 6 \
@@ -58,7 +58,7 @@ yabai -m rule --add app="^Apidog$" manage=off opacity=1                 space=I
 yabai -m rule --add app="^RedisInsight-v2$" manage=off opacity=1                 space=I
 
 # Development
-yabai -m rule --add app="Alacritty"      manage=off                      space=II
+yabai -m rule --add app="Alacritty"                          space=II
 yabai -m rule --add app="kitty" manage=off                            space=II
 yabai -m rule --add app="Code"     manage=off                       space=II manage=off
 yabai -m rule --add app="WebStorm"           manage=off                 space=II manage=off
@@ -68,7 +68,7 @@ yabai -m rule --add app="GitKraken" manage=off space=II
 
 # View
 yabai -m rule --add app="^Microsoft Edge$" manage=off         opacity=1  space=III
-yabai -m rule --add app="^Vivaldi$"      manage=off   opacity=1                  space=III
+yabai -m rule --add app="^Vivaldi$"        opacity=1                  space=III
 yabai -m rule --add app="qutebrowser"      manage=off                 space=III
 yabai -m rule --add app="^Figma$"            opacity=1 manage=off    space=III
 yabai -m rule --add app="Notion"           opacity=1 manage=off    space=III

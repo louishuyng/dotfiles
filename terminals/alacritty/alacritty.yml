@@ -6,7 +6,7 @@ selection:
 faux_multiplier: 0
 window:
   position:
-    x: 100
+    x: 30
     y: 170
   opacity: 1.0
   dimensions:
@@ -16,6 +16,7 @@ window:
     x: 4
     y: 0
   startup_mode: Windowed
+  decorations: none
   dynamic_title: false
 scrolling:
   history: 10000

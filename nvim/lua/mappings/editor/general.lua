@@ -60,7 +60,7 @@ vim.keymap.set("n", "<C-w>o", ":ZenMode<CR>", opt)
 -- Lazy
 vim.keymap.set("n", "<leader>li", ":Lazy install<CR>", opt)
 vim.keymap.set("n", "<leader>lc", ":Lazy clean<CR>", opt)
-vim.keymap.set("n", "<leader>ls", ":Lazy sync<CR>", opt)
+vim.keymap.set("n", "<leader>lu", ":Lazy update<CR>", opt)
 
 -- Clipboard Code Snippet
 vim.keymap.set("v", "<leader>sc", function()
