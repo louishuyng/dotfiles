@@ -16,7 +16,6 @@ window:
     x: 4
     y: 0
   startup_mode: Windowed
-  decorations: none
   dynamic_title: false
 scrolling:
   history: 10000
@@ -85,7 +84,7 @@ colors:
   ## EDGE THEME
   edge: &edge
     primary:
-      background: "#1e1e1e"
+      background: "#000000"
       foreground: "#c5cdd9"
     normal:
       black: "#3e4249"
