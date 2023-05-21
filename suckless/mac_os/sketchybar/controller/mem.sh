@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 MEMICON=􀫦
-MEMORY_USAGE=$(memory_pressure | grep "System-wide memory free percentage:" | awk '{ printf("%02.0f\n", 100-$5"%") }')
+MEMORY_USAGE=$(ps -A -o %mem | awk '{ mem += $1} END {print mem}')
 
 sketchybar -m --set $NAME icon=$MEMICON label="$MEMORY_USAGE% |"
