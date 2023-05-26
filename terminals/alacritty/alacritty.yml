@@ -16,6 +16,7 @@ window:
     x: 4
     y: 0
   startup_mode: Windowed
+  decorations: none
   dynamic_title: false
 scrolling:
   history: 10000
