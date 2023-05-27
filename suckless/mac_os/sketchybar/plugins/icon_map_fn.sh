@@ -147,7 +147,7 @@ function icon_map() {
   "Preview" | "Skim" | "zathura")
     icon_result=":pdf:"
     ;;
-  "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件")
+  "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件" | "Mimestream")
     icon_result=":mail:"
     ;;
   "Notes")

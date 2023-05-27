@@ -91,6 +91,7 @@ yabai -m rule --add app="^Skype$"          opacity=1 manage=off space=IV
 yabai -m rule --add app="^Mailspring$"          opacity=1 manage=off space=IV
 yabai -m rule --add app="^Microsoft Outlook$"          opacity=1 manage=off space=IV
 yabai -m rule --add app="Messenger" opacity=1 manage=off space=IV
+yabai -m rule --add app="Mimestream" opacity=1 manage=off space=IV
 yabai -m rule --add app="Telegram" opacity=1 manage=off space=IV
 
 # Entertainment
