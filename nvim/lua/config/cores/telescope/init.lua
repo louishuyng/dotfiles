@@ -63,5 +63,6 @@ telescope.load_extension('fzf')
 telescope.load_extension("flutter")
 telescope.load_extension('notify')
 telescope.load_extension("git_worktree")
+telescope.load_extension("file_browser")
 
 require "config.cores.telescope.custom.tmux_session"

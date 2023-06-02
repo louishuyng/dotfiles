@@ -45,6 +45,7 @@ vim.cmd([[
   hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
   hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
   hi LineNr guibg=NONE guifg=grey
+  hi VertSplit guifg=#23272e guibg=bg cterm=NONE
   hi Visual guibg=#323232 guifg=NONE
   hi SignColumn guibg=NONE
   hi LspDiagnosticsLineNrError guifg=#ea6962 guibg=#312a34 gui=bold

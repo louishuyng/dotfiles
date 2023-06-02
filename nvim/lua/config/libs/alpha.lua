@@ -25,7 +25,7 @@ local header = {
 }
 
 -- INFO SECTION
-function get_info()
+local function get_info()
   local lazy_stats = require("lazy").stats()
   local total_plugins =
       " " .. lazy_stats.loaded .. "/" .. lazy_stats.count .. " packages"

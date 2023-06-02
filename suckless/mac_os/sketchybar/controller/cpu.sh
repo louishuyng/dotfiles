@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
-CPU=$(printf "%.2f\n" $(top -l 2 | grep -E "^CPU" | tail -1 | awk '{ print $3 + $5 }'))
+CPU=$(top -l  2 | grep -E "^CPU" | tail -1 | awk '{ print $3 + $5 }')
 
 CPUICON=􀫥
 
-sketchybar -m --set $NAME icon=$CPUICON label="$CPU% |"
+MAGENTA=#ff80ff
+sketchybar -m --set $NAME icon="| $CPUICON" label="$CPU%" label.color=0xff${MAGENTA:1} icon.color=0xff${MAGENTA:1}

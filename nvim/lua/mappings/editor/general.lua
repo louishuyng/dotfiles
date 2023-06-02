@@ -43,13 +43,13 @@ vim.keymap.set("n", "<leader><CR>", ":call OpenUrlUnderCursor()<CR>", opt)
 -- Replace
 vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/", opt)
 
+-- Delete entire words while in insert mode
+vim.keymap.set("i", "<C-d>", "<Esc>cvb", opt)
+
 -- Yank
 -- " replace currently selected text with default register
 -- " without yanking it
 vim.keymap.set("v", "p", "\"_dP", opt)
-
--- Buffer switch remapping
-vim.keymap.set("n", "<C-e>", "<C-^>", opt)
 
 -- Notification
 vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)

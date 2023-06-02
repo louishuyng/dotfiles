@@ -62,7 +62,7 @@ alias http='xh'
 alias du='ncdu'
 alias df='duf'
 
-alias top='bpytop'
+alias top2='bpytop'
 
 alias find='fd'
 alias lf='ranger'

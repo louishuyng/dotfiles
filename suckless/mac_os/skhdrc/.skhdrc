@@ -6,7 +6,7 @@ ctrl + alt - b : open /Applications/Vivaldi.app
 ctrl + alt - n : open /Applications/Notion.app
 ctrl + alt - o : open /Applications/Obsidian.app
 ctrl + alt - m : open /Applications/Mimestream.app
-ctrl + alt - t : open /Applications/Alacritty.app
+ctrl + alt - t : open /Applications/Kitty.app
 ctrl + alt - u : open /Applications/StarUML.app
 ctrl + alt - q : open /Applications/qutebrowser.app
 ctrl + alt - w : open /Applications/WebStorm.app
@@ -18,10 +18,10 @@ shift + alt - space : yabai -m window --toggle float
 alt - f         : yabai -m window --toggle zoom-fullscreen
 
 # Navigation
-ctrl + alt - h : yabai -m window --focus west
-ctrl + alt - j : yabai -m window --focus south
-ctrl + alt - k : yabai -m window --focus north
-ctrl + alt - l : yabai -m window --focus east
+cmd - h : yabai -m window --focus west
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
 
 # Moving windows
 shift + ctrl - h : yabai -m window --warp west
