@@ -9,6 +9,5 @@ return {
     "microsoft/vscode-js-debug",
     lazy = true,
     build = "npm install && npx gulp vsDebugServerBundle && mv dist out"
-
   }
 }
