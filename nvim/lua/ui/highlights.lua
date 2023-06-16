@@ -102,3 +102,6 @@ fg('LspCodeLens', "#ea6962")
 -- Telescope
 fg_bg('TelescopePromptTitle', black, green, 'bold')
 fg_bg('TelescopePreviewTitle', black, cyan, 'bold')
+
+-- DAP
+fg_bg('DapStopped', black, green)

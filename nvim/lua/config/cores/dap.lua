@@ -2,12 +2,18 @@ local DEBUGGER_PATH = vim.fn.stdpath "data" .. "/lazy/vscode-js-debug"
 
 vim.fn.sign_define('DapBreakpoint',
                    {text = '🟥', texthl = '', linehl = '', numhl = ''})
-vim.fn.sign_define('DapStopped',
-                   {text = '▶️', texthl = '', linehl = '', numhl = ''})
+vim.fn.sign_define('DapStopped', {
+  text = '▶️',
+  texthl = '',
+  linehl = 'DapStopped',
+  numhl = ''
+})
 
-local dap, dapui = require("dap"), require("dapui")
+local dap, dapui, virtual_text = require("dap"), require("dapui"),
+                                 require("nvim-dap-virtual-text")
 
 dapui.setup()
+virtual_text.setup()
 
 dap.listeners.after.event_initialized["dapui_config"] =
     function() dapui.open() end

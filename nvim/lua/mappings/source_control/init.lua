@@ -4,9 +4,9 @@ vim.keymap.set("n", "<leader>tb", ":Gitsigns toggle_current_line_blame<CR>",
 
 vim.keymap.set("n", "<leader>gd", ":Gvdiff ")
 
-vim.keymap.set("n", "<leader>dfh", "::DiffviewFileHistory %<CR>")
-vim.keymap.set("n", "<leader>dh", "::DiffviewFileHistory <CR>")
-vim.keymap.set("n", "<leader>dc", "::DiffviewClose<CR>")
+vim.keymap.set("n", "<leader>dvf", "::DiffviewFileHistory %<CR>")
+vim.keymap.set("n", "<leader>dva", "::DiffviewFileHistory <CR>")
+vim.keymap.set("n", "<leader>dvc", "::DiffviewClose<CR>")
 
 vim.keymap.set("n", ",gs", ":Git<CR>:20wincmd_<CR>", {silent = true})
 

@@ -3,5 +3,6 @@ local toggle_auto_format =
 
 vim.keymap.set("n", "gv", ":lua vim.cmd('vsplit');vim.lsp.buf.definition()<CR>")
 vim.keymap.set("n", "gs", ":lua vim.cmd('split');vim.lsp.buf.definition()<CR>")
+vim.keymap.set("n", "gF", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>")
 
 vim.keymap.set("n", "<leader>A", toggle_auto_format)

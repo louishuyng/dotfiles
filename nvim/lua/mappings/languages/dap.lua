@@ -1,6 +1,11 @@
-vim.keymap.set('n', '<leader>db', require'dap'.toggle_breakpoint)
-vim.keymap.set('n', '<leader>dn', require'dap'.continue)
-vim.keymap.set('n', '<leader>dl', require'dap'.step_over)
-vim.keymap.set('n', '<leader>dj', require'dap'.step_into)
-vim.keymap.set('n', '<leader>dk', require'dap'.step_out)
-vim.keymap.set('n', '<leader>dt', ":DapTerminate<CR>")
+local opts = {noremap = true, silent = true}
+
+vim.keymap.set('n', '<leader>dt', require('dapui').toggle, opts)
+vim.keymap.set('n', '<leader>db', ":DapToggleBreakpoint<CR>", opts)
+vim.keymap.set('n', '<leader>dc', ":DapContinue<CR>", opts)
+vim.keymap.set('n', '<leader>dl', ":DapStepOver<CR>", opts)
+vim.keymap.set('n', '<leader>dj', ":DapStepInto<CR>", opts)
+vim.keymap.set('n', '<leader>dk', ":DapStepOut<CR>", opts)
+vim.keymap.set('n', '<leader>de', ":DapTerminate<CR>")
+vim.keymap.set('n', '<leader>dr',
+               ":lua require('dapui').open({reset = true})<CR>")
