@@ -1,5 +1,5 @@
-vim.keymap.set("n", "<leader>nn",
-               ":VimuxPromptCommand('nnn')<CR><CR>:VimuxZoomRunner<CR>")
+vim.keymap.set("n", "<leader>ra",
+               ":VimuxPromptCommand('ranger')<CR><CR>:VimuxZoomRunner<CR>")
 
 vim.keymap.set("n", "<leader>k9",
                ":VimuxPromptCommand('k9s')<CR><CR>:VimuxZoomRunner<CR>")
