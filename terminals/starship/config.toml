@@ -1,0 +1,24 @@
+add_newline = true
+right_format = "$username"
+
+[fill]
+symbol = '-'
+style = 'bold green'
+
+[time]
+disabled = true
+
+[line_break]
+disabled = true
+
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[»](bold #918DB3)' 
+error_symbol = '[»](bold red)' 
+vimcmd_symbol = '[V](bold green)'
+
+[username]
+style_user = '#808080 bold'
+style_root = 'cyan bold'
+format = '[$user]($style) '
+disabled = false
+show_always = true

@@ -49,6 +49,9 @@ fish_add_path $GOBIN
 # # OPEN SSL
 fish_add_path /usr/local/opt/openssl/bin
 #
+# # Prompt Config
+set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/config.toml
+
 # # Editor
 set -gx EDITOR "nvim"
 set -gx GIT_EDITOR "nvim"
@@ -90,3 +93,4 @@ fish_add_path /opt/local/bin
 
 # Webstorm Path
 fish_add_path /Applications/WebStorm.app/Contents/MacOS
+

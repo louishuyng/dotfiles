@@ -13,9 +13,9 @@ yabai -m config window_border_radius 0
 yabai -m config \
 	layout bsp \
 	top_padding 0   \
-	bottom_padding 30  \
-	left_padding 8 \
-	right_padding 8 \
+	bottom_padding 26  \
+	left_padding 0 \
+	right_padding 0 \
 	window_gap 6 \
 
 # signals
@@ -70,7 +70,7 @@ yabai -m rule --add app="Sourcetree" manage=off space=II
 
 # View
 yabai -m rule --add app="^Microsoft Edge$" manage=off         opacity=1  space=III
-yabai -m rule --add app="^Vivaldi$"      opacity=1                  space=III
+yabai -m rule --add app="^Brave Browser$"      opacity=1                  space=III
 yabai -m rule --add app="qutebrowser"      manage=off                 space=III
 yabai -m rule --add app="Safari" manage=off opacity=1 space=III
 yabai -m rule --add app="^Figma$"            opacity=1 manage=off    space=III
