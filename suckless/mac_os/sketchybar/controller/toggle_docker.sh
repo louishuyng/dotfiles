@@ -1,7 +1,8 @@
 #!/usr/bin/env fish
 
 if /Applications/Docker.app/Contents/Resources/bin/docker info > /dev/null 2>&1
+   killall OrbStack
    killall Docker
 else
-  open -a 'Docker'
+  open -a 'OrbStack'
 end

@@ -45,6 +45,7 @@ yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=I
 yabai -m rule --add app="Mingo$" manage=off          opacity=1           space=I
 yabai -m rule --add app="^Wireshark$" manage=off                         space=I
 yabai -m rule --add app="^Docker$" manage=off                            space=I
+yabai -m rule --add app="^OrbStack$" manage=off                          space=I
 yabai -m rule --add app="^OWASP$" manage=off                             space=I
 yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=I
 yabai -m rule --add app="^Disk Utility$" manage=off          opacity=1   space=I
