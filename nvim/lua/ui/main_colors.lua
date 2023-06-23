@@ -122,12 +122,38 @@ local dogrun = {
   cursorline = "#2A2B3B"
 }
 
+local dracula = {
+  name = "dracula",
+  white = "#f8f8f2",
+  black = "#000000",
+  pure_black = "#000000",
+  bg = '#1e1f28',
+  fg = '#f8f8f2',
+  black2 = "#000000",
+  grey = "#545454",
+  grey_fg = "#565c64",
+  grey_fg2 = "#6f737b",
+  red = "#ff5555",
+  black_red = "#ff5454",
+  green = "#50fa7b",
+  blue = "#8ae9fc",
+  yellow = "#f0fa8b",
+  purple = "#bd92f8",
+  cyan = "#8ae9fc",
+  orange = "#f0fa8b",
+  winbar = "NONE",
+  winbar_inactive = "NONE",
+  statusline = "#1e1f28",
+  cursorline = "#2A2B3B"
+}
+
 local theme = {
   linux = linux,
   gruvbox = gruvbox,
   edge = edge,
   catppuccin = catppuccin,
-  dogrun = dogrun
+  dogrun = dogrun,
+  dracula = dracula
 }
 
 -- return theme for current theme

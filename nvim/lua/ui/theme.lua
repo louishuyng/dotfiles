@@ -18,4 +18,5 @@ if vim.g.main_theme == 'catppuccin' then
   vim.cmd('colorscheme catppuccin')
 end
 
+if vim.g.main_theme == 'dracula' then vim.cmd('colorscheme dracula') end
 if vim.g.main_theme == 'dogrun' then vim.cmd('colorscheme dogrun') end

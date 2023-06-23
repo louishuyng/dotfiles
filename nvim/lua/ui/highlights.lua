@@ -40,6 +40,13 @@ end
 
 if vim.g.main_theme == 'catppuccin' then bg("CursorLine", cursorline) end
 
+if vim.g.main_theme == 'dracula' then
+  bg("Normal", color_bg)
+  bg("NormalNC", color_bg)
+  bg("EndOfBuffer", color_bg)
+  bg("CursorLine", cursorline)
+end
+
 -- Basic
 vim.cmd([[
   hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
