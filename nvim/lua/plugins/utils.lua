@@ -35,6 +35,20 @@ return {
   }, {'chentoast/marks.nvim', config = function() require'marks'.setup() end},
   {"rest-nvim/rest.nvim"},
   {'loishy/draft-buff', dependencies = {'MunifTanjim/nui.nvim'}},
-  {'mbbill/undotree'}, {'famiu/nvim-reload'}, {'AndrewRadev/splitjoin.vim'}
-
+  {'mbbill/undotree'}, {'famiu/nvim-reload'}, {'AndrewRadev/splitjoin.vim'}, {
+    'glacambre/firenvim',
+    -- Lazy load firenvim
+    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+    cond = not not vim.g.started_by_firenvim,
+    build = function()
+      require("lazy").load({plugins = "firenvim", wait = true})
+      vim.fn["firenvim#install"](0)
+    end,
+    config = function()
+      vim.g.firenvim_config = {
+        -- config values, like in my case:
+        localSettings = {[".*"] = {takeover = "never"}}
+      }
+    end
+  }
 }
