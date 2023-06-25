@@ -52,7 +52,7 @@ local edge = {
   white = "#c5cdd9",
   black = "#3e4249",
   pure_black = "#000000",
-  bg = "#1e1e1e",
+  bg = "#0D1117",
   fg = "#c5cdd9",
   black2 = "#2b3b51",
   grey = "#5c6370",
@@ -68,8 +68,8 @@ local edge = {
   orange = "#deb974",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#1e1e1e",
-  cursorline = "#323232"
+  statusline = "#0D1117",
+  cursorline = "#24283b"
 }
 
 local catppuccin = {
@@ -147,13 +147,39 @@ local dracula = {
   cursorline = "#2A2B3B"
 }
 
+local tokyonight = {
+  name = "tokyonight",
+  white = "#f8f8f2",
+  black = "#000000",
+  pure_black = "#000000",
+  bg = '#24283b',
+  fg = '#c0caf5',
+  black2 = "#000000",
+  grey = "#a9b1d6",
+  grey_fg = "#565c64",
+  grey_fg2 = "#6f737b",
+  red = "#f7768e",
+  black_red = "#f7768e",
+  green = "#9ece6a",
+  blue = "#7aa2f7",
+  yellow = "#e0af68",
+  purple = "#bb9af7",
+  cyan = "#7dcfff",
+  orange = "#e0af68",
+  winbar = "NONE",
+  winbar_inactive = "NONE",
+  statusline = "#24283b",
+  cursorline = "#2e3c64"
+}
+
 local theme = {
   linux = linux,
   gruvbox = gruvbox,
   edge = edge,
   catppuccin = catppuccin,
   dogrun = dogrun,
-  dracula = dracula
+  dracula = dracula,
+  tokyonight = tokyonight
 }
 
 -- return theme for current theme

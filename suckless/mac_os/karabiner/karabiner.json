@@ -960,7 +960,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "speed_multiplier": 1.8
+                                            "speed_multiplier": 1.9
                                         }
                                     }
                                 ],
@@ -1037,7 +1037,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "speed_multiplier": 0.4
+                                            "speed_multiplier": 0.3
                                         }
                                     }
                                 ],

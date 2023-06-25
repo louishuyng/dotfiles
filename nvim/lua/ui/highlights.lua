@@ -36,9 +36,8 @@ if vim.g.main_theme == 'linux' then
 else
   bg("Statusline", statusline)
   bg("StatuslineNC", statusline)
+  bg("CursorLine", cursorline)
 end
-
-if vim.g.main_theme == 'catppuccin' then bg("CursorLine", cursorline) end
 
 if vim.g.main_theme == 'dracula' then
   bg("Normal", color_bg)
