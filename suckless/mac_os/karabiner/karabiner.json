@@ -284,12 +284,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -302,12 +296,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -403,12 +391,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -421,12 +403,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -522,12 +498,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -540,12 +510,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -641,12 +605,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -659,12 +617,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -728,12 +680,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -746,12 +692,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -813,12 +753,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -831,12 +765,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -898,12 +826,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -916,12 +838,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -994,12 +910,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -1012,12 +922,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -1092,12 +996,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -1110,12 +1008,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -1181,12 +1073,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -1199,12 +1085,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -1273,12 +1153,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -1291,12 +1165,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -1369,12 +1237,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -1387,12 +1249,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -1466,12 +1322,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -1484,12 +1334,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
@@ -1563,12 +1407,6 @@
                                                     "name": "mouse_keys_mode_v4_scroll",
                                                     "value": 0
                                                 }
-                                            },
-                                            {
-                                                "set_notification_message": {
-                                                    "id": "mouse_keys_mode_v4",
-                                                    "text": ""
-                                                }
                                             }
                                         ]
                                     }
@@ -1581,12 +1419,6 @@
                                         "set_variable": {
                                             "name": "mouse_keys_mode_v4",
                                             "value": 1
-                                        }
-                                    },
-                                    {
-                                        "set_notification_message": {
-                                            "id": "mouse_keys_mode_v4",
-                                            "text": "Mouse Keys Mode v4"
                                         }
                                     },
                                     {
