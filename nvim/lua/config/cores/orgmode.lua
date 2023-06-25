@@ -8,11 +8,16 @@ orgmode.setup({
   org_default_notes_file = '~/Dev/org/refile.org',
   win_split_mode = 'auto',
   org_capture_templates = {
-    t = {description = 'Task', template = '* TODO %?\n  %u'},
+    t = {description = 'Task', template = '* TODO %?\n  %U'},
     j = {
       description = 'Journal',
       template = '\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?',
       target = '~/Dev/org/journal.org'
+    },
+    r = {
+      description = 'Reading',
+      template = '* READING %?\n LINK [[]] \n %U',
+      target = '~/Dev/org/reading.org'
     },
     e = 'Event',
     er = {
@@ -78,3 +83,5 @@ orgmode.setup({
     end
   }
 })
+
+require("headlines").setup {}

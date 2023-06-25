@@ -5,8 +5,8 @@ ts_config.setup {
   ensure_installed = {
     "go", "graphql", "javascript", "jsdoc", "http", "json", "jsonc", "lua",
     "python", "ruby", "rust", "tsx", "typescript", "svelte", "kotlin", "yaml",
-    "html", "toml", "vim", "norg", "fish", "bash", "markdown", "terraform",
-    "org", "smithy", "regex"
+    "html", "toml", "vim", "fish", "bash", "markdown", "terraform", "org",
+    "smithy", "regex"
   },
   matchup = {enable = true},
   highlight = {
