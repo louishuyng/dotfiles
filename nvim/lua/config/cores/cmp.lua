@@ -20,16 +20,26 @@ local function t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
+local source_names = {
+  vsnip = "(Snippet)",
+  nvim_lsp = "(LSP)",
+  buffer = "(Buffer)",
+  path = "(Path)"
+}
+
 cmp.setup {
   snippet = {
     expand = function(args) require("luasnip").lsp_expand(args.body) end
   },
   formatting = {
-    fields = {"kind", "abbr", "menu"},
-    format = function(entry, vim_item)
-      vim_item.kind = string.format("%s",
-                                    require("config.libs.icons").kind[vim_item.kind])
-      return vim_item
+    format = function(entry, item)
+      item.menu = source_names[entry.source.name] or
+                      string.format("[%s]", entry.source.name)
+      item.kind = string.format("%s %s",
+                                require("config.libs.icons").kind[item.kind],
+                                item.kind)
+
+      return item
     end
   },
   mapping = {
@@ -67,3 +77,17 @@ cmp.setup {
     {name = 'orgmode'}
   }
 }
+
+-- `/` cmdline setup.
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {{name = 'buffer'}}
+})
+
+-- `:` cmdline setup.
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({{name = 'path'}}, {
+    {name = 'cmdline', option = {ignore_cmds = {'Man', '!'}}}
+  })
+})
