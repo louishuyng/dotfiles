@@ -14,7 +14,8 @@ return {
       local cmp = require "cmp"
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end
-  }, {'numToStr/Comment.nvim'}, {'tpope/vim-eunuch'}, {'phaazon/hop.nvim'},
+  }, {'numToStr/Comment.nvim'}, {'tpope/vim-eunuch'},
+
   {'mg979/vim-visual-multi'}, {'tpope/vim-surround'}, {'chrisbra/NrrwRgn'}, {
     "andymass/vim-matchup",
     init = function() vim.g.matchup_matchparen_offscreen = {method = "popup"} end
@@ -50,5 +51,47 @@ return {
         localSettings = {[".*"] = {takeover = "never"}}
       }
     end
+  }, -- Flash Nvim
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    keys = {
+      {
+        "s",
+        mode = {"n", "x", "o"},
+        function()
+          require("flash").jump({
+            search = {mode = function(str) return "\\<" .. str end}
+          })
+        end,
+        desc = "Flash"
+      }, {
+        "S",
+        mode = {"n", "o", "x"},
+        function()
+          -- show labeled treesitter nodes around the cursor
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter"
+      }, {
+        "r",
+        mode = "o",
+        function()
+          -- jump to a remote location to execute the operator
+          require("flash").remote({})
+        end,
+        desc = "Remote Flash"
+      }, {
+        "R",
+        mode = {"n", "o", "x"},
+        function()
+          -- show labeled treesitter nodes around the search matches
+          require("flash").treesitter_search()
+        end,
+        desc = "Treesitter Search"
+      }
+    }
   }
 }
