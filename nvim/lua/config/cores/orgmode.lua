@@ -5,7 +5,7 @@ orgmode.setup_ts_grammar()
 
 orgmode.setup({
   org_agenda_files = {'~/Dev/org/*'},
-  org_default_notes_file = '~/Dev/org/refile.org',
+  org_default_notes_file = '~/Dev/org/todo.org',
   win_split_mode = 'auto',
   org_capture_templates = {
     t = {description = 'Task', template = '* TODO %?\n  %U'},

@@ -1,0 +1,8 @@
+name: Org
+root: ~/Dev/org
+attach: true
+windows:
+  - todo:
+      - nvim todo.org
+  - perx:
+      - nvim perx.org

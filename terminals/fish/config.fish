@@ -1,4 +1,6 @@
 if status is-interactive
+  neofetch
+  
   # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
   set -U fish_key_bindings fish_default_key_bindings
 

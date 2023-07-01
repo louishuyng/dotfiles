@@ -1,11 +1,22 @@
-vim.keymap.set("n", "<leader>ra",
-               ":VimuxPromptCommand('ranger')<CR><CR>:VimuxZoomRunner<CR>")
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({cmd = "lazygit", hidden = true})
+local lazydocker = Terminal:new({cmd = "lazydocker", hidden = true})
+local k9s = Terminal:new({cmd = "k9s", hidden = true})
+local ranger = Terminal:new({cmd = "ranger", hidden = true})
 
-vim.keymap.set("n", "<leader>k9",
-               ":VimuxPromptCommand('k9s')<CR><CR>:VimuxZoomRunner<CR>")
+function _lazygit_toggle() lazygit:toggle() end
 
-vim.keymap.set("n", "<leader>ld",
-               ":VimuxPromptCommand('lazydocker')<CR><CR>:VimuxZoomRunner<CR>")
+function _lazydocker_toggle() lazydocker:toggle() end
 
-vim.keymap.set("n", "<leader>lg",
-               ":VimuxPromptCommand('lazygit')<CR><CR>:VimuxZoomRunner<CR>")
+function _k9s_toggle() k9s:toggle() end
+
+function _ranger_toggle() ranger:toggle() end
+
+vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>",
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>ld", "<cmd>lua _lazydocker_toggle()<CR>",
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>ra", "<cmd>lua _ranger_toggle()<CR>",
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>k9", "<cmd>lua _k9s_toggle()<CR>",
+                        {noremap = true, silent = true})

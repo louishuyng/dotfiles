@@ -44,7 +44,7 @@ cmp.setup {
   },
   mapping = {
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-d>"] = cmp.mapping.close(),
+    ["<C-e>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
@@ -70,7 +70,9 @@ cmp.setup {
       else
         fallback()
       end
-    end, {"i", "s"})
+    end, {"i", "s"}),
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'})
   },
   sources = {
     {name = "nvim_lsp"}, {name = "luasnip"}, {name = "buffer"}, {name = "calc"},
