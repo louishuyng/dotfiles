@@ -8,11 +8,14 @@ local sumneko_binary = sumneko_root_path .. "/lua-language-server"
 local main_sumneko_root_path = vim.fn.stdpath('config') ..
                                    '/lua-language-server/main.lua'
 
+require("neodev").setup({})
+
 lsp_config.lua_ls.setup({
   on_attach = on_attach,
   cmd = {sumneko_binary, "-E", main_sumneko_root_path},
   settings = {
     Lua = {
+      completion = {callSnippet = "Replace"},
       runtime = {version = 'LuaJIT'},
       diagnostics = {
         enable = true,
