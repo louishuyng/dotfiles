@@ -21,3 +21,4 @@ end
 if vim.g.main_theme == 'dracula' then vim.cmd('colorscheme dracula') end
 if vim.g.main_theme == 'dogrun' then vim.cmd('colorscheme dogrun') end
 if vim.g.main_theme == 'tokyonight' then vim.cmd('colorscheme tokyonight') end
+if vim.g.main_theme == 'vscode' then vim.cmd('colorscheme arctic') end

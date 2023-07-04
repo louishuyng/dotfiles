@@ -2,10 +2,6 @@ local fn = vim.fn
 
 local M = {}
 
-local function color(highlight_group, content)
-  return string.format('%%#%s#%s%%*', highlight_group, content)
-end
-
 M.modes = {
   ["n"] = {"NORMAL", "St_NormalMode"},
   ["niI"] = {"NORMAL i", "St_NormalMode"},

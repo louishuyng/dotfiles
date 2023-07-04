@@ -1,4 +1,8 @@
 local colors = require("ui.main_colors")
+local has_value = require("utils.has_value")
+
+local default_theme_list = {"vscode"}
+local default_theme = has_value(default_theme_list, vim.g.main_theme)
 
 local ui = {hl_override = "", italic_comments = false}
 
@@ -36,7 +40,8 @@ if vim.g.main_theme == 'linux' then
 else
   bg("Statusline", statusline)
   bg("StatuslineNC", statusline)
-  bg("CursorLine", cursorline)
+
+  if not default_theme then bg("CursorLine", cursorline) end
 end
 
 if vim.g.main_theme == 'dracula' then
@@ -47,15 +52,20 @@ if vim.g.main_theme == 'dracula' then
 end
 
 -- Basic
+if not default_theme then
+  vim.cmd([[
+    hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+    hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
+    hi LineNr guibg=NONE guifg=grey
+    hi VertSplit guifg=#23272e guibg=bg cterm=NONE
+    hi Visual guibg=#323232 guifg=NONE
+    hi SignColumn guibg=NONE
+  ]])
+end
+
 vim.cmd([[
-  hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
-  hi LineNr guibg=NONE guifg=grey
-  hi VertSplit guifg=#23272e guibg=bg cterm=NONE
-  hi Visual guibg=#323232 guifg=NONE
-  hi SignColumn guibg=NONE
-  hi LspDiagnosticsLineNrError guifg=#ea6962 guibg=#312a34 gui=bold
-  hi LspDiagnosticsLineNrWarning guifg=#d8a657 guibg=#312e3a gui=bold
+  hi LspDiagnosticsLineNrError guifg=red guibg=#312a34 gui=bold
+  hi LspDiagnosticsLineNrWarning guifg=yellow guibg=#312e3a gui=bold
 ]])
 
 -- Alpha

@@ -4,6 +4,7 @@ return {
   -- {'sainnhe/gruvbox-material', priority = 1000, opts = {}},
   -- { 'dracula/vim', priority = 1000, opts = {} },
   -- {"folke/tokyonight.nvim", priority = 1000, opts = {}},
+  {"rockyzhang24/arctic.nvim", dependencies = {"rktjmp/lush.nvim"}},
   {"sainnhe/edge"}, {'nvim-tree/nvim-web-devicons'}, {'SmiteshP/nvim-navic'},
   {'goolord/alpha-nvim'}, {'rcarriga/nvim-notify'}
 }

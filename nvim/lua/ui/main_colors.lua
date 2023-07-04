@@ -171,6 +171,30 @@ local tokyonight = {
   statusline = "#24283b",
   cursorline = "#2e3c64"
 }
+local vscode = {
+  name = "vscode",
+  white = "#dddddd",
+  black = "#000000",
+  pure_black = "#000000",
+  bg = '#24283b',
+  fg = '#c0caf5',
+  black2 = "#000000",
+  grey = "#a9b1d6",
+  grey_fg = "#565c64",
+  grey_fg2 = "#6f737b",
+  red = "#f44747",
+  black_red = "#f44747",
+  green = "#6a9955",
+  blue = "#569cd6",
+  yellow = "#d7ba7d",
+  purple = "#c586c0",
+  cyan = "#4dc9b0",
+  orange = "#e0af68",
+  winbar = "NONE",
+  winbar_inactive = "NONE",
+  statusline = "#24283b",
+  cursorline = "#2e3c64"
+}
 
 local theme = {
   linux = linux,
@@ -179,7 +203,8 @@ local theme = {
   catppuccin = catppuccin,
   dogrun = dogrun,
   dracula = dracula,
-  tokyonight = tokyonight
+  tokyonight = tokyonight,
+  vscode = vscode
 }
 
 -- return theme for current theme
