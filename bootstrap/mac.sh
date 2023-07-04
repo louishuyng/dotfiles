@@ -421,6 +421,7 @@ install_cli_tools() {
     brew install jqp # Visualise jq
     brew install watch
     brew install ansifilter # Program specialized for removing (or working with) ANSI codes 
+    brew install xdg-ninja # A shell script which checks your $HOME for unwanted files and directories.
 
     success "Installed cli for tools"
   fi

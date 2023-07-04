@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader>fr",
                ":Telescope oldfiles previewer=false cwd_only=true<CR>", opt)
 
 -- searching vim built-in
-vim.keymap.set("n", "<leader>?", ":Telescope help_tags<CR>", opt)
+vim.keymap.set("n", "g?", ":Telescope help_tags<CR>", opt)
 vim.keymap.set("n", "<leader><BS>", ":Telescope keymaps<CR>", opt)
 vim.keymap.set("n", "<leader>\"", ":Telescope registers<CR>", opt)
 
