@@ -16,6 +16,7 @@ M.modes = {
   ["ic"] = {"INSERT (completion)", "St_InsertMode"},
   ["ix"] = {"INSERT completion", "St_InsertMode"},
   ["t"] = {"TERMINAL", "St_TerminalMode"},
+  ["nov"] = {"N-PENDING", "St_VisualMode"},
   ["v"] = {"VISUAL", "St_VisualMode"},
   ["V"] = {"V-LINE", "St_VisualMode"},
   ["Vs"] = {"V-LINE (Ctrl O)", "St_VisualMode"},
