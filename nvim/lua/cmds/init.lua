@@ -1,4 +1,5 @@
 require 'cmds.firenvim'
 require 'cmds.migration'
+require 'cmds.python_autoset_path'
 require 'cmds.rest'
 require 'cmds.vim_enter'
