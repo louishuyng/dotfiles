@@ -1,8 +1,17 @@
 local Terminal = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({cmd = "lazygit", hidden = true})
-local lazydocker = Terminal:new({cmd = "lazydocker", hidden = true})
-local k9s = Terminal:new({cmd = "k9s", hidden = true})
-local ranger = Terminal:new({cmd = "ranger", hidden = true})
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  hidden = true,
+  direction = 'float'
+})
+local lazydocker = Terminal:new({
+  cmd = "lazydocker",
+  hidden = true,
+  direction = 'float'
+})
+local k9s = Terminal:new({cmd = "k9s", hidden = true, direction = 'float'})
+local ranger =
+    Terminal:new({cmd = "ranger", hidden = true, direction = 'float'})
 
 function _lazygit_toggle() lazygit:toggle() end
 

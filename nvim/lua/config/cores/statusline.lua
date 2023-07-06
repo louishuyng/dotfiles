@@ -29,7 +29,8 @@ M.modes = {
   ["rm"] = {"MORE", "St_ConfirmMode"},
   ["r?"] = {"CONFIRM", "St_ConfirmMode"},
   ["x"] = {"CONFIRM", "St_ConfirmMode"},
-  ["!"] = {"SHELL", "St_TerminalMode"}
+  ["!"] = {"SHELL", "St_TerminalMode"},
+  ["nt"] = {"NORMAL", "St_TerminalMode"}
 }
 
 M.mode = function()

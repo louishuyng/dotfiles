@@ -4,9 +4,7 @@ windows:
   - dotfiles:
       - cd
       - cd ~/.dotfiles && nvim
-  - devops:
-      - cd ~/Dev/awesome-tech/devops
-  - backend:
-      - cd ~/Dev/awesome-tech/backend
-  - frontend:
-      - cd ~/Dev/awesome-tech/frontend
+  - awesome-tech:
+      - cd ~/Dev/awesome-tech
+  - side-projects:
+      - cd ~/Dev/SideProjects
