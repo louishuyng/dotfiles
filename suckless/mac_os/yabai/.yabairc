@@ -53,7 +53,7 @@ yabai -m rule --add app="^GraphiQL$" manage=off          opacity=1       space=I
 yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=I
 yabai -m rule --add app="^Flipper$" manage=off      opacity=1       space=I
 yabai -m rule --add app="^Lens$" manage=off      opacity=1       space=I
-yabai -m rule --add app="^DataGrip$"      opacity=1 manage=off          space=I
+yabai -m rule --add app="^Postico$"      opacity=1 manage=off          space=I
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off space=I
 yabai -m rule --add app="^FileZilla$" manage=off opacity=1                 space=I
 yabai -m rule --add app="^Apidog$" manage=off opacity=1                 space=I
