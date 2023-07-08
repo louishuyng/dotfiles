@@ -121,3 +121,6 @@ fg_bg('TelescopePreviewTitle', black, cyan, 'bold')
 
 -- DAP
 fg_bg('DapStopped', black, green)
+
+-- Fold
+bg("Folded", "#071C2E")

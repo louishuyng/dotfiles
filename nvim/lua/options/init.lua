@@ -32,7 +32,12 @@ vim.opt.fillchars = {
   vert = '┃',
   vertleft = '┫',
   vertright = '┣',
-  verthoriz = '╋'
+  verthoriz = '╋',
+  eob = ' ',
+  fold = ' ',
+  foldopen = '',
+  foldsep = ' ',
+  foldclose = ''
 }
 
 -- INDENLINE
@@ -62,10 +67,10 @@ vim.opt.listchars:append("precedes:>")
 vim.opt.listchars:append("conceal:┊")
 
 -- FOLD
-opt.foldmethod = 'indent'
-opt.foldnestmax = 5
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = -1
+vim.o.foldcolumn = "1" -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
 -- COLORCOLUMN
 vim.cmd([[
@@ -117,7 +122,6 @@ vim.cmd([[
   set ttyfast
   set synmaxcol=128
   syntax sync minlines=256
-  let g:sneak#label = 1
 ]])
 
 -- Draft Buff Mappings Table
