@@ -1,8 +1,7 @@
 #!/usr/bin/env fish
 
-if /Applications/Docker.app/Contents/Resources/bin/docker info > /dev/null 2>&1
+if pgrep -x "OrbStack" >/dev/null
    killall OrbStack
-   killall Docker
 else
   open -a 'OrbStack'
 end
