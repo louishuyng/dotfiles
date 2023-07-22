@@ -16,7 +16,25 @@ alias dka="docker kill (docker ps -q)"
 
 #K8S
 alias km='minikd'
+
+# Essential aliases. I strongly recommend setting them
 alias k='kubectl'
+alias kg='k get'
+alias kgpo='k get pods'
+alias kdpo='k describe pod'
+alias kd='k describe'
+
+# I also found this one very useful
+alias kap='k apply -f'
+
+# I have this for work only
+alias kgpoa='kgpo --all-namespaces'
+alias kgpol='kgpo --show-labels'
+alias kgpow='kgpo -o wide'
+alias kgd='kg deploy'
+alias kgs='kg svc'
+alias kdd='kd deploy'
+alias kds='kd svc'
 
 #Terraform
 alias tf='terraform'
