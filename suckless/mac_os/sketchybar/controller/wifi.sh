@@ -1,14 +1,15 @@
 #!/usr/bin/env sh
 
-CURRENT_WIFI="$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I)"
-CURR_IP="$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}')"
-CURR_TX="$(echo "$CURRENT_WIFI" | grep -o "lastTxRate: .*" | sed 's/^lastTxRate: //')"
-
 WIFIACTIVEICON=􀙇
 WIFIINACTIVEICON=􀙈
 
-if [ "$CURR_TX" = "" ]; then
-	sketchybar --set $NAME icon=$WIFIINACTIVEICON label="disconnected |"
+CURRENT_WIFI="$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I)"
+
+SSID="$(echo "$CURRENT_WIFI" | grep -o "SSID: .*" | sed 's/^SSID: //' | awk '{for(i=1; i<=NF; i++) printf "%s",substr($i,1,1)}')"
+CURR_TX="$(echo "$CURRENT_WIFI" | grep -o "lastTxRate: .*" | sed 's/^lastTxRate: //' | awk '{print $1/8}')"
+
+if [ "$SSID" = "" ]; then
+  sketchybar --set $NAME label="Disconnected |" icon=$WIFIINACTIVEICON
 else
-	sketchybar --set $NAME icon=$WIFIACTIVEICON label="connected |"
+  sketchybar --set $NAME label="$SSID 􀍾 ${CURR_TX} Mb/s |" icon=$WIFIACTIVEICON
 fi

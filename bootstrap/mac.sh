@@ -406,6 +406,8 @@ install_cli_tools() {
     brew install pgcli
     brew install ripgrep
     brew install terminal-notifier
+    brew tap daipeihust/tap                                                                                                                                                                   louishuyng
+    brew install im-select
 
     # Devops
     brew install bat # Better cat

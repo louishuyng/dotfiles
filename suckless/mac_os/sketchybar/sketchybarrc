@@ -19,8 +19,8 @@ sketchybar --bar     height=24                                            \
                                                                           \
            --default updates=when_shown                                   \
                      drawing=on                                           \
-                     icon.font="$LABEL:SemiBold:12.0"                      \
-                     label.font="$LABEL:SemiBold:12.0"                    \
+                     icon.font="$LABEL:SemiBold:12.5"                      \
+                     label.font="$LABEL:SemiBold:12.5"                    \
                      icon.padding_left=$PADDING                           \
                      icon.padding_right=$PADDING                          \
                      label.padding_left=$PADDING                          \
@@ -33,11 +33,14 @@ sketchybar --bar     height=24                                            \
 source "$ITEM_DIR/space.sh"
 source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/docker.sh"
+source "$ITEM_DIR/vpn.sh"
 source "$ITEM_DIR/warpvpn.sh"
 
 # right
 source "$ITEM_DIR/time.sh"
 source "$ITEM_DIR/cal.sh"
+source "$ITEM_DIR/keyboard.sh"
+source "$ITEM_DIR/mic.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/airpodsbattery.sh"
