@@ -426,6 +426,16 @@ install_cli_tools() {
     brew install xdg-ninja # A shell script which checks your $HOME for unwanted files and directories.
 
     success "Installed cli for tools"
+
+    brew tap FelixKratz/formulae
+    brew install svim
+
+    ln -s ~/.dotfiles/suckless/mac_os/svim ~/.config
+
+    brew services start svim
+    defaults write NSGlobalDomain AppleHighlightColor -string "0.615686 0.823529 0.454902"
+
+    success "Installed vim mode for macos input"
   fi
 }
 
