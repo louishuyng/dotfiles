@@ -238,10 +238,6 @@ install_nvim() {
     brew install lua
     brew install neovim
 
-    # reduce keyrepeat for faster typing in vim
-    defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-
     success "Installed neovim"
   fi
 }
@@ -433,10 +429,68 @@ install_cli_tools() {
     ln -s ~/.dotfiles/suckless/mac_os/svim ~/.config
 
     brew services start svim
-    defaults write NSGlobalDomain AppleHighlightColor -string "0.615686 0.823529 0.454902"
 
     success "Installed vim mode for macos input"
   fi
+}
+
+default_setting_macos() {
+  echo "- Setting up macOS"
+  ## macOS Settings
+
+  ## Appearance & Animations
+
+  # Use Graphite Appearance
+  defaults write NSGlobalDomain AppleAquaColorVariant -int 6
+
+  # Use Graphite Highlight Color
+  defaults write NSGlobalDomain AppleHighlightColor -string "0.780400 0.815700 0.858800"
+
+
+  ## Keyboard
+
+  # Set fast key repeat
+  defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+  defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+
+  # Disable auto-correct
+  defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+  ## Mouse
+  
+  # Set mouse tracking speed to reasonably fast
+  defaults write NSGlobalDomain com.apple.mouse.scaling -float 2
+
+  # Tap to click
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking 1
+  defaults write com.apple.AppleMultitouchTrackpad Clicking 1
+
+  ## Finder
+
+  # Disable all animations
+  defaults write com.apple.finder DisableAllAnimations -bool true
+
+  ## Menu Bar
+  
+  ## Don't show battery percentage
+  defaults write com.apple.menuextra.battery "ShowPercent" -bool false
+
+  # Hide Spotlight Icon
+  defaults write com.apple.Spotlight "NSStatusItem Visible Item-0" 0
+
+  ### Spaces
+  
+  # Don’t automatically rearrange Spaces based on most recent use
+  defaults write com.apple.dock mru-spaces -bool false
+
+  ### Screen Shots
+
+  # Move screen shots to ~/Screen Shots
+  mkdir -p ~/Screen\ Shots
+  defaults write com.apple.screencapture location ~/Screen\ Shots
+
+  echo "- Restarting SystemUIServer"
+  killall SystemUIServer
 }
 
 load_pre_script
@@ -459,6 +513,7 @@ install_qutebrowser
 install_nnn
 link_all_dotfiles
 install_cli_tools
+default_setting_macos
 
 echo "---"
 
