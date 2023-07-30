@@ -21,8 +21,13 @@ alias km='minikd'
 alias k='kubectl'
 alias kg='k get'
 alias kgpo='k get pods'
+alias kgno='k get nodes'
 alias kdpo='k describe pod'
 alias kd='k describe'
+alias kde='k delete'
+alias kl='k logs'
+alias ked='kubectl edit'
+alias kcr='kubectl create'
 
 # I also found this one very useful
 alias kap='k apply -f'
@@ -42,15 +47,6 @@ alias tf='terraform'
 #Ansible
 alias as='ansible'
 alias aspb='ansible-playbook'
-
-# Basic Commands
-alias ka='kubectl apply'
-alias kc='kubectl create'
-alias kd='kubectl delete'
-alias kds='kubectl describe'
-alias ked='kubectl edit'
-alias kg='kubectl get'
-alias kl='kubectl logs'
 
 #Kubectx
 alias k8sns='kubens'
