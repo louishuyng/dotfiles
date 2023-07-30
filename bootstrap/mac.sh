@@ -123,6 +123,7 @@ install_devops() {
     brew install helm
     brew install kubectx
     brew install k9s
+    ln -s ~/.dotfiles/suckless/k9s /Users/louishuyng/Library/Application\ Support
     success "Installed k8s"
 
     brew install pstree
