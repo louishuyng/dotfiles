@@ -1,6 +1,6 @@
-local opts = {silent = true}
+local opts = { silent = true }
 
-vim.keymap.set("n", "<S-t>", ":tabnew<CR>", opts)
+vim.keymap.set("n", "<leader>nt", ":tabnew<CR>", opts)
 
 vim.keymap.set("n", "1<Tab>", "1gt", opts)
 vim.keymap.set("n", "2<Tab>", "2gt", opts)

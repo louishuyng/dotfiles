@@ -68,8 +68,8 @@ local edge = {
   orange = "#deb974",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#0D1117",
-  cursorline = "#24283b"
+  statusline = "#16181C",
+  cursorline = "#323232"
 }
 
 local catppuccin = {
@@ -171,6 +171,7 @@ local tokyonight = {
   statusline = "#24283b",
   cursorline = "#2e3c64"
 }
+
 local vscode = {
   name = "vscode",
   white = "#dddddd",

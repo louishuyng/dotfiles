@@ -1,4 +1,4 @@
-local opt = {silent = true, noremap = true}
+local opt = { silent = true, noremap = true }
 
 -- General
 vim.keymap.set("n", ",s", ":<C-u>split<CR>", opt)
@@ -14,10 +14,6 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", opt)
 vim.keymap.set("n", "<C-k>", "<C-w>k", opt)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opt)
 vim.keymap.set("n", "<C-h>", "<C-w>h", opt)
-
--- vim.keymap.set("n", "<C-b>", "<C-a>", opt)
--- vim.keymap.set("v", "<C-b>", "<C-a>", opt)
--- vim.keymap.set("v", "g<C-b>", "g<C-a>", opt)
 
 -- Scrolling Center
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
@@ -43,9 +39,6 @@ vim.keymap.set("n", "<leader><CR>", ":call OpenUrlUnderCursor()<CR>", opt)
 -- Replace
 vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/", opt)
 
--- Delete entire words while in insert mode
-vim.keymap.set("i", "<C-d>", "<Esc>cvb", opt)
-
 -- Yank
 -- " replace currently selected text with default register
 -- " without yanking it
@@ -64,5 +57,5 @@ vim.keymap.set("n", "<leader>lu", ":Lazy update<CR>", opt)
 
 -- Clipboard Code Snippet
 vim.keymap.set("v", "<leader>sc", function()
-  require('silicon').visualise_api({to_clip = true})
+  require('silicon').visualise_api({ to_clip = true })
 end, opt)

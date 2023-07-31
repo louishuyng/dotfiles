@@ -6,5 +6,3 @@ windows:
       - cd ~/.dotfiles && nvim
   - awesome-tech:
       - cd ~/Dev/awesome-tech
-  - side-projects:
-      - cd ~/Dev/SideProjects

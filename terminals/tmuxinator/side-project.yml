@@ -1,0 +1,10 @@
+name: SideProject
+root: ~/Dev/SideProjects/
+attach: false
+windows:
+  - orchestrator:
+      - cd microservices-demo/services/orchestrator
+  - auth:
+      - cd microservices-demo/services/auth
+  - orchestrator-ui:
+      - cd microservices-demo/orchestrator-ui

@@ -26,6 +26,7 @@ local winbar_inactive = colors.winbar_inactive
 local color_bg = colors.bg
 local color_fg = colors.fg
 local cursorline = colors.cursorline
+local treebg = colors.treebg
 
 -- functions for setting highlights
 local fg = require("utils.highlight").fg
@@ -37,6 +38,8 @@ if vim.g.main_theme == 'linux' then
   fg_bg("Statusline", statusline, color_fg)
   fg_bg("StatuslineNC", statusline, color_fg)
   vim.cmd([[hi CursorLine gui=underline cterm=underline guibg=NONE]])
+elseif vim.g.main_theme == "vscode" then
+  bg("Statusline", statusline)
 else
   bg("Statusline", statusline)
   bg("StatuslineNC", statusline)
@@ -44,7 +47,7 @@ else
   if not default_theme then bg("CursorLine", cursorline) end
 end
 
-if vim.g.main_theme == 'dracula' then
+if vim.g.main_theme == 'dracula' or vim.g.main_theme == 'edge' then
   bg("Normal", color_bg)
   bg("NormalNC", color_bg)
   bg("EndOfBuffer", color_bg)

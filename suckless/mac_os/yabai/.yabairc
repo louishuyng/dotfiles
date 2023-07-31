@@ -41,6 +41,7 @@ yabai -m space 5 --label V
 # Devops
 yabai -m rule --add app="^sqlectron$"      opacity=1 manage=off          space=I
 yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=I
+yabai -m rule --add app="^RapidAPI$" manage=off opacity=1                 space=I
 yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=I
 yabai -m rule --add app="Mingo$" manage=off          opacity=1           space=I
 yabai -m rule --add app="^Wireshark$" manage=off                         space=I
@@ -53,7 +54,7 @@ yabai -m rule --add app="^GraphiQL$" manage=off          opacity=1       space=I
 yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=I
 yabai -m rule --add app="^Flipper$" manage=off      opacity=1       space=I
 yabai -m rule --add app="^Lens$" manage=off      opacity=1       space=I
-yabai -m rule --add app="^Postico$"      opacity=1 manage=off          space=I
+yabai -m rule --add app="^TablePlus$"      opacity=1 manage=off          space=I
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off space=I
 yabai -m rule --add app="^FileZilla$" manage=off opacity=1                 space=I
 yabai -m rule --add app="^Apidog$" manage=off opacity=1                 space=I
@@ -123,6 +124,7 @@ yabai -m rule --add app="^DevUtils$" manage=off opacity=1
 yabai -m rule --add app="^Stats$" manage=off opacity=1
 yabai -m rule --add app="^Raycast$" manage=off opacity=1
 yabai -m rule --add app="^Skitch$" manage=off opacity=1
+yabai -m rule --add app="^Urban VPN Desktop$" manage=off opacity=1
 
 
 # show digital colour meter topmost and on all spaces

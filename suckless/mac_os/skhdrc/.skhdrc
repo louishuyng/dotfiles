@@ -1,22 +1,23 @@
 # terminal - like Linux
 ctrl + alt - a : open /Applications/draw\.io.app
+ctrl + alt - r : open /Applications/RapidAPI.app
 ctrl + alt - p : open /Applications/Postman.app
 ctrl + alt - s : open /Applications/Slack.app
-ctrl + alt - d : open /Applications/Postico\ 2.app
+ctrl + alt - d : open /Applications/TablePlus.app
 ctrl + alt - b : open /Applications/Brave\ Browser.app
 ctrl + alt - n : open /Applications/Notion.app
 ctrl + alt - o : open /Applications/Obsidian.app
+ctrl + alt - c : open /Applications/Messenger.app
 ctrl + alt - m : open /Applications/Mimestream.app
-ctrl + alt - t : open /Applications/Kitty.app
+ctrl + alt - t : open /Applications/Alacritty.app
 ctrl + alt - u : open /Applications/StarUML.app
 ctrl + alt - q : open /Applications/qutebrowser.app
 ctrl + alt - w : open /Applications/wpsoffice.app
-ctrl + alt - e : emacs &
 
 shift + alt - space : yabai -m window --toggle float
 
 # Make window native fullscreen
-alt - f         : yabai -m window --toggle zoom-fullscreen
+alt - z         : yabai -m window --toggle zoom-fullscreen
 
 # Navigation
 cmd - h : yabai -m window --focus west
@@ -85,8 +86,6 @@ shift + alt - 0 : yabai -m space --balance
 # destroy desktop
 cmd + alt - w : chunkc tiling::desktop --annihilate
 
-# M1 Mode Yabai
-shift + lctrl + alt - m : yabai -m config --space mouse top_padding 0;
-
-# External Mode Yabai
-shift + lctrl + alt - e : yabai -m config --space mouse top_padding 30;
+# Enable/Disable Svim
+shift + lctrl + alt - v : brew services start svim
+shift + lctrl + alt - n : brew services stop svim
