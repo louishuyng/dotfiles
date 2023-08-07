@@ -20,26 +20,16 @@ alias km='minikd'
 # Essential aliases. I strongly recommend setting them
 alias k='kubectl'
 alias kg='k get'
-alias kgpo='k get pods'
-alias kgno='k get nodes'
-alias kdpo='k describe pod'
+alias kc='k create'
+alias ke='k edit'
+alias ka='k apply'
 alias kd='k describe'
-alias kde='k delete'
 alias kl='k logs'
-alias ked='kubectl edit'
-alias kcr='kubectl create'
+alias kde='k delete'
+alias ksc='k scale'
 
-# I also found this one very useful
-alias kap='k apply -f'
-
-# I have this for work only
-alias kgpoa='kgpo --all-namespaces'
-alias kgpol='kgpo --show-labels'
-alias kgpow='kgpo -o wide'
-alias kgd='kg deploy'
-alias kgs='kg svc'
-alias kdd='kd deploy'
-alias kds='kd svc'
+export do="--dry-run=client -o yaml"
+export label="--show--labels"
 
 #Terraform
 alias tf='terraform'
