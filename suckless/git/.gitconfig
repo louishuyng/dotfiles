@@ -1,5 +1,5 @@
 [user]
-	email = 40130936+louishuyng@users.noreply.github.com
+	email = huynguyennbk@gmail.com
 	name = Louis Huy Nguyen
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
@@ -46,3 +46,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[alias]
+    change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "

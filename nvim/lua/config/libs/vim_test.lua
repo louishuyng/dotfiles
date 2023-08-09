@@ -1,1 +1,1 @@
-vim.g['test#strategy'] = "toggleterm"
+vim.g['test#strategy'] = "vimux"
