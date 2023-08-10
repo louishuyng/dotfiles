@@ -77,6 +77,8 @@ local get_winbar = function()
     value = value .. "%=" .. tabpage_number .. "/" .. tostring(num_tabs)
   end
 
+  if value ~= nil and string.find(value, "NvimTree_1") ~= nil then value = "" end
+
   local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value,
                              {scope = "local"})
   if not status_ok then return end

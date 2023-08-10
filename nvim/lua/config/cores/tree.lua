@@ -9,6 +9,9 @@ require("nvim-tree").setup({
   git = {enable = false},
   diagnostics = {enable = false},
   notify = {threshold = vim.log.levels.ERROR},
+  renderer = {
+    root_folder_label = function(path) return vim.fn.fnamemodify(path, ":t") end
+  },
   view = {
     side = 'right',
     adaptive_size = true,
