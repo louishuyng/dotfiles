@@ -74,3 +74,11 @@ vim.keymap.set('n', 'zk', function()
   local winid = require('ufo').peekFoldedLinesUnderCursor()
   if not winid then vim.lsp.buf.hover() end
 end)
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"org"},
+  callback = function()
+    require("ufo").detach()
+    vim.opt_local.foldenable = false
+  end
+})
