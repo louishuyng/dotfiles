@@ -1,0 +1,5 @@
+name: Devops
+attach: false
+windows:
+  - database:
+      - cd

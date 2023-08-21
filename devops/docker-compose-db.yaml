@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      # See: https://github.com/docker-library/postgres/pull/658. Alternatively,
+      #   - POSTGRES_USER=postgres
+      #   - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+  mysql:
+    image: mysql:5.7
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: v1
+    ports:
+      - "3306:3306"
+volumes:
+  db_data:
