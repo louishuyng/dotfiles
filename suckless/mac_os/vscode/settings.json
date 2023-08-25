@@ -1,0 +1,68 @@
+{
+  "editor.inlineSuggest.enabled": true,
+  "editor.accessibilitySupport": "off",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "Hack Nerd Font,Menlo, Monaco, 'Courier New', monospace",
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors.normal": ["#1e1e1e", "#fff"],
+  "vim.statusBarColors.insert": ["#608b4e", "#000"],
+  "vim.statusBarColors.visual": ["#c678dd", "#000"],
+  "vim.statusBarColors.visualline": ["#c678dd", "#000"],
+  "vim.statusBarColors.visualblock": ["#A3BE8C", "#000"],
+  "workbench.sideBar.location": "right",
+  "editor.renderWhitespace": "all",
+  "editor.minimap.enabled": false,
+  "workbench.editor.showTabs": false,
+  "editor.renderControlCharacters": false,
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.scrollbar.horizontalScrollbarSize": 0,
+  "editor.renderLineHighlight": "none",
+  "editor.mouseWheelZoom": true,
+  "workbench.layoutControl.type": "menu",
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 1,
+  "workbench.editor.limit.perEditorGroup": true,
+  "editor.formatOnSave": true,
+  "vim.leader": ",",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<leader>", "v"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["g", "f"],
+      "commands": ["editor.action.goToDeclaration"]
+    },
+    {
+      "before": ["g", "v"],
+      "commands": [
+        "editor.action.goToDeclaration",
+        "workbench.action.splitEditorRight"
+      ]
+    },
+    {
+      "before": [",", "b", "d"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": [":", "w"],
+      "commands": ["workbench.action.files.save"]
+    }
+  ],
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#c678dd",
+    "statusBar.noFolderBackground": "#c678dd",
+    "statusBar.debuggingBackground": "#c678dd",
+    "statusBar.foreground": "#000",
+    "statusBar.debuggingForeground": "#000"
+  },
+  "workbench.layoutControl.enabled": false
+}
