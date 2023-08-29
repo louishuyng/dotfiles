@@ -1,6 +1,11 @@
 local colors = require("ui.main_colors")
 local has_value = require("utils.has_value")
 
+-- functions for setting highlights
+local fg = require("utils.highlight").fg
+local fg_bg = require("utils.highlight").fg_bg
+local bg = require("utils.highlight").bg
+
 local default_theme_list = {"vscode"}
 local default_theme = has_value(default_theme_list, vim.g.main_theme)
 
@@ -27,49 +32,6 @@ local color_bg = colors.bg
 local color_fg = colors.fg
 local cursorline = colors.cursorline
 local treebg = colors.treebg
-
--- functions for setting highlights
-local fg = require("utils.highlight").fg
-local fg_bg = require("utils.highlight").fg_bg
-local bg = require("utils.highlight").bg
-
--- HL based on setting
-if vim.g.main_theme == 'linux' then
-  fg_bg("Statusline", statusline, color_fg)
-  fg_bg("StatuslineNC", statusline, color_fg)
-  vim.cmd([[hi CursorLine gui=underline cterm=underline guibg=NONE]])
-elseif vim.g.main_theme == "vscode" then
-  bg("Statusline", statusline)
-else
-  bg("Statusline", statusline)
-  bg("StatuslineNC", statusline)
-
-  if not default_theme then bg("CursorLine", cursorline) end
-end
-
-if vim.g.main_theme == 'dracula' or vim.g.main_theme == 'edge' then
-  bg("Normal", color_bg)
-  bg("NormalNC", color_bg)
-  bg("EndOfBuffer", color_bg)
-  bg("CursorLine", cursorline)
-end
-
--- Basic
-if not default_theme then
-  vim.cmd([[
-    hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
-    hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
-    hi LineNr guibg=NONE guifg=grey
-    hi VertSplit guifg=#23272e guibg=bg cterm=NONE
-    hi Visual guibg=#323232 guifg=NONE
-    hi SignColumn guibg=NONE
-  ]])
-end
-
-vim.cmd([[
-  hi LspDiagnosticsLineNrError guifg=red guibg=#312a34 gui=bold
-  hi LspDiagnosticsLineNrWarning guifg=yellow guibg=#312e3a gui=bold
-]])
 
 -- Alpha
 fg("AlphaHeader", green)
@@ -127,3 +89,51 @@ fg_bg('DapStopped', black, green)
 
 -- Fold
 bg("Folded", "#071C2E")
+
+if default_theme then
+  if colors.bg ~= nil then
+    bg("Normal", colors.bg)
+    bg("NormalNC", colors.bg)
+    bg("EndOfBuffer", colors.bg)
+    bg("LineNr", "None")
+    bg("SignColumn", "None")
+    bg("FoldColumn", "None")
+    bg("VertSplit", "None")
+  end
+
+  bg("CursorLine", colors.cursorline)
+  bg("Statusline", colors.statusline)
+  bg("StatuslineNC", colors.statusline)
+  fg("StatusLine", "None")
+
+  return
+end
+
+-- HL based on setting
+if vim.g.main_theme == 'linux' then
+  fg_bg("Statusline", statusline, color_fg)
+  fg_bg("StatuslineNC", statusline, color_fg)
+
+  vim.cmd([[hi CursorLine gui=underline cterm=underline guibg=NONE]])
+else
+  bg("Statusline", statusline)
+  bg("StatuslineNC", statusline)
+end
+
+if vim.g.main_theme == 'dracula' or vim.g.main_theme == 'edge' then
+  bg("CursorLine", cursorline)
+end
+
+-- Basic
+vim.cmd([[
+  hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
+  hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#60ff60 gui=NONE
+  hi LineNr guibg=NONE guifg=grey
+  hi VertSplit guifg=#23272e guibg=bg cterm=NONE
+  hi Visual guibg=#323232 guifg=NONE
+  hi SignColumn guibg=NONE
+  hi FoldColumn guibg=NONE
+  hi LspDiagnosticsLineNrError guifg=red guibg=#312a34 gui=bold
+  hi LspDiagnosticsLineNrWarning guifg=yellow guibg=#312e3a gui=bold
+  hi CursorLineNr guifg=#60ff60 guibg=NONE
+]])

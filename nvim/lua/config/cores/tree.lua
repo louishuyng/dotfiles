@@ -10,7 +10,10 @@ require("nvim-tree").setup({
   diagnostics = {enable = false},
   notify = {threshold = vim.log.levels.ERROR},
   renderer = {
-    root_folder_label = function(path) return vim.fn.fnamemodify(path, ":t") end
+    root_folder_label = function(path) return vim.fn.fnamemodify(path, ":t") end,
+    icons = {
+      show = {file = true, folder = false, folder_arrow = true, git = true}
+    }
   },
   view = {
     side = 'right',

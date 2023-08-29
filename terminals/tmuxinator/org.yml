@@ -4,3 +4,5 @@ attach: true
 windows:
   - todo:
       - nvim todo.org
+  - lawbite:
+      - nvim lawbite.org

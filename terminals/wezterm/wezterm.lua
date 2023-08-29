@@ -8,7 +8,7 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   color_scheme = 'Edge Dark (base16)',
   colors = {
-    background = "#0D1117",
+    background = "#282c34",
     foreground = "#98c379",
     cursor_bg = "#48e566"
   },
@@ -23,12 +23,10 @@ return {
       }
     }
   },
-  font_size = 10.0,
+  font_size = 12.0,
   -- Cursor style
   default_cursor_style = 'BlinkingBar',
   -- Enable CSI u mode
   -- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
-  enable_csi_u_key_encoding = true,
-  -- avoiding changing size when using external screen
-  dpi = 192.0
+  enable_csi_u_key_encoding = true
 }

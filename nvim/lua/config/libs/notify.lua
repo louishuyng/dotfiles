@@ -10,4 +10,3 @@ nvim_notify.setup({
 })
 
 vim.notify = nvim_notify
-nvim_notify("Hello World Louis")

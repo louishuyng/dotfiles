@@ -1,24 +1,53 @@
+# Inserts a blank line between shell prompts
 add_newline = true
-right_format = "$username"
 
-[fill]
-symbol = '-'
-style = 'bold green'
+# Replace the "❯" symbol in the prompt with "➜"
+# [character] # The name of the module we are configuring is "character"
+# success_symbol = "[➜](bold blue)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+# error_symbol = "[➜](bold red)"
 
-[time]
+# Disable the package module, hiding it from the prompt completely
+[package]
 disabled = true
 
-[line_break]
-disabled = true
+# Sets user-defined palette
+# palette = "catppuccin_mocha"
 
-[character] # The name of the module we are configuring is 'character'
-success_symbol = '[»](bold #918DB3)' 
-error_symbol = '[»](bold red)' 
-vimcmd_symbol = '[V](bold green)'
+[character]
+# Note the use of Catppuccin color 'maroon'
+success_symbol = "[](green) 󰄾"
+error_symbol = "[](red)"
+vicmd_symbol = "[ ](green)"
 
-[username]
-style_user = '#808080 bold'
-style_root = 'cyan bold'
-format = '[$user]($style) '
-disabled = false
-show_always = true
+[directory]
+truncation_length = 4
+# Catppuccin 'lavender'
+style = "bold lavender"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"

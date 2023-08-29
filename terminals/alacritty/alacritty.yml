@@ -33,95 +33,36 @@ font:
     y: 0
 draw_bold_text_with_bright_colors: false
 colors:
-  ## DEFAULT THEME
-  # primary:
-  #   background: "#000000"
-  #   foreground: "#d4d4d4"
-  # normal:
-  #   black: "#191919"
-  #   red: "#b02626"
-  #   green: "#60ff60"
-  #   yellow: "#ffff60"
-  #   blue: "#40ffff"
-  #   magenta: "#ff80ff"
-  #   cyan: "#40ffff"
-  #   white: "#acadb1"
-  # cursor:
-  #   text: "#191919"
-  #   cursor: "#d8dee9"
-  ## GRUVBOX THEME
-  # primary:
-  #   background: '#1d2021'
-  #   foreground: '#d4be98'
-  # normal:
-  #   black: '#32302f'
-  #   red: '#ea6962'
-  #   green: '#a9b665'
-  #   yellow: '#d8a657'
-  #   blue: '#7daea3'
-  #   magenta: '#d3869b'
-  #   cyan: '#89b482'
-  #   white: '#d4be98'
-  # bright:
-  #   black: '#32302f'
-  #   red: '#ea6962'
-  #   green: '#a9b665'
-  #   yellow: '#d8a657'
-  #   blue: '#7daea3'
-  #   magenta: '#d3869b'
-  #   cyan: '#89b482'
-  #   white: '#d4be98'
-  ## EDGE THEME
-  # primary:
-  #   background: "#000000"
-  #   foreground: "#98c379"
-  # cursor:
-  #   text: "#5c6370"
-  #   cursor: "#abb2bf"
-  # # Normal colors
-  # normal:
-  #   black: "#5c6370"
-  #   red: "#e06c75"
-  #   green: "#98c379"
-  #   yellow: "#e5c07b"
-  #   blue: "#61afef"
-  #   magenta: "#c678dd"
-  #   cyan: "#56b6c2"
-  #   white: "#abb2bf"
-  # # Bright colors
-  # bright:
-  #   black: "#4b5263"
-  #   red: "#be5046"
-  #   green: "#98c379"
-  #   yellow: "#d19a66"
-  #   blue: "#61afef"
-  #   magenta: "#c678dd"
-  #   cyan: "#56b6c2"
-  #   white: "#3e4452"
-  # VSCODE THEME
+  # Edge
   primary:
-    background: "0x1e1e1e"
-    foreground: "0xd4d4d4"
+    background: "#1e1e1e"
+    foreground: "#98c379"
   # Normal colors
   normal:
-    black: "0x1e1e1e"
-    red: "0xf44747"
-    green: "0x6a9955"
-    yellow: "0xd7ba7d"
-    blue: "0x569cd6"
-    magenta: "0xc586c0"
-    cyan: "0x4dc9b0"
-    white: "0xdddddd"
-  # Bright colors
-  bright:
-    black: "0x808080"
-    red: "0xf55757"
-    green: "0x80ad6b"
-    yellow: "0xe1cb9e"
-    blue: "0x6fabdc"
-    magenta: "0xd6a9d2"
-    cyan: "0x70d3bf"
-    white: "0xffffff"
+    black: "#5c6370"
+    red: "#e06c75"
+    green: "#98c379"
+    yellow: "#e5c07b"
+    blue: "#61afef"
+    magenta: "#c678dd"
+    cyan: "#56b6c2"
+    white: "#abb2bf"
+    # VSCode
+    # primary:
+    #   background: "#1e1e1e"
+    #   foreground: "#d4d4d4"
+    # cursor:
+    #   text: "#d4d4d4"
+    #   cursor: "#d4d4d4"
+    # normal:
+    #   black: "#1e1e1e"
+    #   red: "#f44747"
+    #   green: "#608b4e"
+    #   yellow: "#dcdcaa"
+    #   blue: "#569cd6"
+    #   magenta: "#c678dd"
+    #   cyan: "#56b6c2"
+    #   white: "#d4d4d4"
 key_bindings:
   - {key: V, mods: Command, action: Paste}
   - {key: C, mods: Command, action: Copy}

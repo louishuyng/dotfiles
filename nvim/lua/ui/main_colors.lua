@@ -2,7 +2,7 @@ local linux = {
   white = "#abb2bf",
   black = "#282c34",
   pure_black = "#000000",
-  bg = '#000000',
+  bg = '#1e1e1e',
   fg = '#abb2bf',
   black2 = "#2b3b51",
   grey = "#5c6370",
@@ -18,7 +18,7 @@ local linux = {
   orange = "#d19a66",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#000000",
+  statusline = "#1e1e1e",
   cursorline = "#323232"
 }
 
@@ -52,7 +52,7 @@ local edge = {
   white = "#c5cdd9",
   black = "#3e4249",
   pure_black = "#000000",
-  bg = "#0D1117",
+  bg = "#282c34",
   fg = "#c5cdd9",
   black2 = "#2b3b51",
   grey = "#5c6370",
@@ -68,33 +68,8 @@ local edge = {
   orange = "#deb974",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#16181C",
+  statusline = "#282c34",
   cursorline = "#323232"
-}
-
-local catppuccin = {
-  name = "catppuccin",
-  white = "#BAC2DE",
-  black = "#45475A",
-  pure_black = "#000000",
-  bg = '#1E1E2E',
-  fg = '#CDD6F4',
-  black2 = "#2b3b51",
-  grey = "#5c6370",
-  grey_fg = "#565c64",
-  grey_fg2 = "#6f737b",
-  red = "#F38BA8",
-  black_red = "#F38BA8",
-  green = "#A6E3A1",
-  blue = "#89B4FA",
-  yellow = "#F9E2AF",
-  purple = "#F5C2E7",
-  cyan = "#94E2D5",
-  orange = "#F9E2AF",
-  winbar = "NONE",
-  winbar_inactive = "NONE",
-  statusline = "#313343",
-  cursorline = "#2A2B3B"
 }
 
 local dogrun = {
@@ -152,7 +127,6 @@ local tokyonight = {
   white = "#f8f8f2",
   black = "#000000",
   pure_black = "#000000",
-  bg = '#24283b',
   fg = '#c0caf5',
   black2 = "#000000",
   grey = "#a9b1d6",
@@ -174,10 +148,10 @@ local tokyonight = {
 
 local vscode = {
   name = "vscode",
-  white = "#dddddd",
+  white = "#d4d4d4",
   black = "#000000",
   pure_black = "#000000",
-  bg = '#24283b',
+  bg = '#1e1e1e',
   fg = '#c0caf5',
   black2 = "#000000",
   grey = "#a9b1d6",
@@ -185,27 +159,51 @@ local vscode = {
   grey_fg2 = "#6f737b",
   red = "#f44747",
   black_red = "#f44747",
-  green = "#6a9955",
+  green = "#608b4e",
   blue = "#569cd6",
-  yellow = "#d7ba7d",
-  purple = "#c586c0",
-  cyan = "#4dc9b0",
+  yellow = "#dcdcaa",
+  purple = "#c678dd",
+  cyan = "#56b6c2",
   orange = "#e0af68",
   winbar = "NONE",
   winbar_inactive = "NONE",
-  statusline = "#24283b",
-  cursorline = "#2e3c64"
+  statusline = "#1e1e1e",
+  cursorline = "#323232"
+}
+
+local catppuccin = {
+  name = "catppuccin",
+  white = "#d4d4d4",
+  black = "#000000",
+  pure_black = "#000000",
+  bg = '#1e1e1e',
+  fg = '#c0caf5',
+  black2 = "#000000",
+  grey = "#a9b1d6",
+  grey_fg = "#565c64",
+  grey_fg2 = "#6f737b",
+  red = "#ff5555",
+  black_red = "#ff5555",
+  green = "#96d382",
+  blue = "#739df2",
+  yellow = "#eaca89",
+  purple = "#b889f4",
+  cyan = "#78cec1",
+  orange = "#f39967",
+  winbar = "NONE",
+  winbar_inactive = "NONE",
+  statusline = "NONE"
 }
 
 local theme = {
   linux = linux,
   gruvbox = gruvbox,
   edge = edge,
-  catppuccin = catppuccin,
   dogrun = dogrun,
   dracula = dracula,
   tokyonight = tokyonight,
-  vscode = vscode
+  vscode = vscode,
+  catppuccin = catppuccin
 }
 
 -- return theme for current theme

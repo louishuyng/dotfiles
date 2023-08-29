@@ -10,3 +10,6 @@ vim.keymap.set("n", "<leader>rs", ":Espec ")
 vim.keymap.set("n", "<leader>rh", ":Ehelper ")
 vim.keymap.set("n", "<leader>rt", ":Etask ")
 vim.keymap.set("n", "<leader>rg", ":Generate ")
+
+vim.keymap.set("n", ",r", ":R<CR>")
+vim.keymap.set("n", ",a", ":A<CR>")

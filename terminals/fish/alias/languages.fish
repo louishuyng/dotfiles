@@ -7,6 +7,7 @@ alias rc='bundle exec rails c'
 alias rmu='bundle exec rails db:migrate'
 alias rmd='bundle exec rails db:rollback'
 alias rgm='bundle exec rails generate migration'
+alias rdbr='rails db:drop db:create db:migrate'
 
 # RUST
 alias cargn='cargo new'

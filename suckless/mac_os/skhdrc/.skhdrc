@@ -7,12 +7,13 @@ ctrl + alt - d : open /Applications/TablePlus.app
 ctrl + alt - b : open /Applications/Brave\ Browser.app
 ctrl + alt - n : open /Applications/Notion.app
 ctrl + alt - o : open /Applications/Obsidian.app
-ctrl + alt - c : open /Applications/Messenger.app
-ctrl + alt - m : open /Applications/Mimestream.app
+ctrl + alt - f : open /Applications/Messenger.app
+ctrl + alt - m : open /Applications/Spotify.app
+ctrl + alt - c : open /Applications/Discord.app
 ctrl + alt - t : open /Applications/Alacritty.app
-ctrl + alt - u : open /Applications/StarUML.app
-ctrl + alt - q : open /Applications/qutebrowser.app
+ctrl + alt - v : open /Applications/Visual\ Studio\ Code.app
 ctrl + alt - w : open /Applications/wpsoffice.app
+ctrl + alt - h : open /Applications/Burp\ Suite\ Community\ Edition.app
 
 shift + alt - space : yabai -m window --toggle float
 

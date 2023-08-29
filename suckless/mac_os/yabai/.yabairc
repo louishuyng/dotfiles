@@ -45,7 +45,6 @@ yabai -m rule --add app="^RapidAPI$" manage=off opacity=1                 space=
 yabai -m rule --add app="^Beekeeper Studio$" manage=off                  space=I
 yabai -m rule --add app="Mingo$" manage=off          opacity=1           space=I
 yabai -m rule --add app="^Wireshark$" manage=off                         space=I
-yabai -m rule --add app="^Docker$" manage=off                            space=I
 yabai -m rule --add app="^OrbStack$" manage=off                          space=I
 yabai -m rule --add app="^OWASP$" manage=off                             space=I
 yabai -m rule --add app="NordVPN" manage=off          opacity=1          space=I
@@ -62,6 +61,7 @@ yabai -m rule --add app="^RedisInsight-v2$" manage=off opacity=1                
 
 # Development
 yabai -m rule --add app="Alacritty"                          space=II
+yabai -m rule --add app="Terminal"                          space=II
 yabai -m rule --add app="kitty"                            space=II
 yabai -m rule --add app="Code"     manage=off                       space=II manage=off
 yabai -m rule --add app="WebStorm"           manage=off                 space=II manage=off
@@ -84,6 +84,7 @@ yabai -m rule --add app="EasyPlantUML"          opacity=1 manage=off    space=II
 yabai -m rule --add app="draw.io"          opacity=1 manage=off    space=III
 yabai -m rule --add app="WPS Office"          opacity=1 manage=off    space=III
 yabai -m rule --add app="Linear"          opacity=1 manage=off    space=III
+yabai -m rule --add app="Fantastical"          opacity=1 manage=off    space=III
 
 # Communication
 yabai -m rule --add app="Slack" title="Slack"      opacity=1 manage=off space=IV
@@ -118,7 +119,6 @@ yabai -m rule --add app="^Microsoft Word$" opacity=1 manage=off
 yabai -m rule --add app="^Microsoft Excel$" opacity=1 manage=off
 yabai -m rule --add app="^Microsoft PowerPoint$" opacity=1 manage=off
 yabai -m rule --add app="Numi" opacity=1 manage=off
-yabai -m rule --add app="Terminal" opacity=1 manage=off
 yabai -m rule --add app="1Password" opacity=1 manage=off
 yabai -m rule --add app="^DevUtils$" manage=off opacity=1
 yabai -m rule --add app="^Stats$" manage=off opacity=1

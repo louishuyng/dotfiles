@@ -40,4 +40,7 @@ gitsigns.setup {
   on_attach = mapping.gitsigns_mappings
 
 }
-require("git-worktree").setup({})
+require("git-worktree").setup({
+  change_directory_command = "tcd",
+  update_on_change_command = "tabnew"
+})
