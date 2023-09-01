@@ -1,4 +1,4 @@
-local opt = { silent = true, noremap = true }
+local opt = {silent = true, noremap = true}
 
 -- General
 vim.keymap.set("n", ",s", ":<C-u>split<CR>", opt)
@@ -57,5 +57,21 @@ vim.keymap.set("n", "<leader>lu", ":Lazy update<CR>", opt)
 
 -- Clipboard Code Snippet
 vim.keymap.set("v", "<leader>sc", function()
-  require('silicon').visualise_api({ to_clip = true })
+  require('silicon').visualise_api({to_clip = true})
 end, opt)
+
+-- Toggle Theme
+local reload_theme = function()
+  if vim.g.main_theme ~= "linux" then
+    vim.g.main_theme = "linux"
+  else
+    vim.g.main_theme = "edge"
+  end
+
+  vim.cmd('luafile ~/.dotfiles/nvim/lua/ui/theme.lua')
+  vim.cmd('luafile ~/.dotfiles/nvim/lua/ui/highlights.lua')
+
+  vim.notify("Theme changed to " .. vim.g.main_theme)
+end
+
+vim.keymap.set("n", "<leader>0", reload_theme)

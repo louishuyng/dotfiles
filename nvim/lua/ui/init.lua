@@ -1,4 +1,4 @@
-vim.g.main_theme = 'edge'
+vim.g.main_theme = 'linux'
 
 require "ui/theme"
 require "ui/icons"

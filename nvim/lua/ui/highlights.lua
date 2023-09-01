@@ -1,4 +1,6 @@
-local colors = require("ui.main_colors")
+local theme = require("ui.main_colors")
+local colors = theme[vim.g.main_theme]
+
 local has_value = require("utils.has_value")
 
 -- functions for setting highlights

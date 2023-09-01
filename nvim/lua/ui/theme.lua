@@ -59,3 +59,5 @@ if vim.g.main_theme == 'vscode' then
   require('vscode').setup({transparent = true})
   require('vscode').load()
 end
+
+if vim.g.main_theme == 'linux' then vim.cmd('colorscheme default') end

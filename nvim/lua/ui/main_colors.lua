@@ -206,5 +206,4 @@ local theme = {
   catppuccin = catppuccin
 }
 
--- return theme for current theme
-return theme[vim.g.main_theme] or linux
+return theme
