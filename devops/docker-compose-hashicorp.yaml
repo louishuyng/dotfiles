@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  vault:
+    build:
+      dockerfile: ./vault-config/Dockerfile
+    container_name: vault
+    hostname: vault
+    ports:
+      - 8200:8200
+    volumes:
+      - ./vault-config/config.json:/vault/config/config.json
+      - vault-disk:/vault/file/
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+      - VAULT_API_ADDR=http://0.0.0.0:8200
+      - VAULT_ADDRESS=http://0.0.0.0:8200
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config=/vault/config/config.json
+    restart: always
+    networks:
+      default:
+        aliases:
+          - vault.localdomain
+  # initializes vault with same approle ids and keep it unsealed
+  vault-init:
+    build:
+      dockerfile: ./vault-config/Dockerfile
+    restart: always
+    container_name: vault-init
+    hostname: vault
+    environment:
+      - VAULT_ADDR=http://vault.localdomain:8200
+      - VAULT_API_ADDR=http://vault.localdomain:8200
+      - VAULT_ADDRESS=http://vault.localdomain:8200
+    volumes:
+      - ./vault-config:/data
+      - vault-disk:/vault/file/
+    command: ["sh", "/data/vault-init.sh"]
+    depends_on:
+      - vault
+    networks:
+      - default
+volumes:
+  vault-disk:

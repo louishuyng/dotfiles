@@ -48,3 +48,7 @@ suckless/spicetify/Themes/*
 suckless/mailspring
 
 .idea
+
+devops/vault-config/env.json
+devops/vault-config/vault-seed-file-version
+devops/vault-config/vault-seed.zip
