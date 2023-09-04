@@ -31,7 +31,7 @@ return function(client, bufnr)
   end
 
   if client.server_capabilities.document_formatting then
-    if vim.bo.filetype == 'norg' then return end
+    if vim.bo.filetype == 'org' then return end
 
     vim.api.nvim_create_autocmd("BufWritePre", {
       command = "lua vim.lsp.buf.format({ timeout_ms = 5000 })",
