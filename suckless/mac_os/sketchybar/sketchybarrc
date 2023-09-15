@@ -34,6 +34,7 @@ source "$ITEM_DIR/space.sh"
 source "$ITEM_DIR/svim.sh"
 source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/docker.sh"
+source "$ITEM_DIR/warpvpn.sh"
 
 # right
 source "$ITEM_DIR/time.sh"

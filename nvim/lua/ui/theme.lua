@@ -60,4 +60,4 @@ if vim.g.main_theme == 'vscode' then
   require('vscode').load()
 end
 
-if vim.g.main_theme == 'linux' then vim.cmd('colorscheme default') end
+if vim.g.main_theme == 'linux' then vim.cmd('colorscheme koehler') end

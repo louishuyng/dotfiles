@@ -5,8 +5,12 @@ return function(client, bufnr)
   local bufopts = {noremap = true, silent = true, buffer = bufnr}
 
   vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', bufopts)
-  vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<CR>', bufopts)
+  vim.keymap.set('n', 'gf',
+                 '<Cmd>lua require("telescope.builtin").lsp_definitions()<CR>',
+                 bufopts)
   vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', bufopts)
+  vim.keymap
+      .set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts)
 
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', bufopts)

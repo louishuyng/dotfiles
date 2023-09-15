@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-SPACE_ICONS=("1" "2" "3" "4" "5")
+SPACE_ICONS=("􀯠" "􀩼" "􀰳" "4" "5")
+
+LABEL="JetBrainsMono Nerd Font Mono"
 
 sid=0
 for i in "${!SPACE_ICONS[@]}"; do
@@ -9,6 +11,7 @@ for i in "${!SPACE_ICONS[@]}"; do
              --set space.$sid associated_space=$sid                     \
                               ignore_association=on                     \
                               icon=${SPACE_ICONS[i]}                    \
+                              icon.font="$LABEL:SemiBold:13"            \
                               icon.padding_left=10                      \
                               icon.padding_right=10                     \
                               icon.color=0xff${GRAY:1}       \
@@ -20,5 +23,6 @@ done
 #
 sketchybar --add item space_separator left                              \
            --set space_separator icon=􀄭                                 \
+                                 icon.font="$LABEL:SemiBold:13"         \
                                  background.padding_left=0              \
-                                 icon.color=0xff${YELLOW:1}              \
+                                 icon.color=0xff${YELLOW:1}             \
