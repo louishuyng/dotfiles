@@ -4,4 +4,3 @@ sketchybar -m --add item warpvpn left                         \
                     label.padding_left=-1                          \
                     icon.font="$LABEL:Bold:15.0"              \
                     cpu script="$PLUGIN_DIR/warpvpn.sh"       \
-	
