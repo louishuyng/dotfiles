@@ -62,8 +62,8 @@ end, opt)
 
 -- Toggle Theme
 local reload_theme = function()
-  if vim.g.main_theme ~= "linux" then
-    vim.g.main_theme = "linux"
+  if vim.g.main_theme ~= "gruvbox" then
+    vim.g.main_theme = "gruvbox"
   else
     vim.g.main_theme = "edge"
   end

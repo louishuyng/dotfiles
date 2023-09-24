@@ -117,7 +117,10 @@ if vim.g.main_theme == 'linux' then
   fg_bg("StatuslineNC", color_fg, statusline)
   bg("Normal", "NONE")
 
-  vim.cmd([[hi CursorLine gui=underline cterm=underline guibg=NONE]])
+  vim.cmd([[
+    hi VertSplit guifg=#ffffff guibg=bg cterm=NONE
+    hi CursorLine gui=underline cterm=underline guibg=NONE
+  ]])
 else
   bg("Statusline", statusline)
   bg("StatuslineNC", statusline)
@@ -129,7 +132,6 @@ end
 
 -- Basic
 vim.cmd([[
-  hi VertSplit guifg=#ffffff guibg=bg cterm=NONE
   hi LspDiagnosticsLineNrError guifg=red guibg=#312a34 gui=bold
   hi LspDiagnosticsLineNrWarning guifg=yellow guibg=#312e3a gui=bold
 ]])
