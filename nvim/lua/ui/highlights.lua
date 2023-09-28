@@ -128,6 +128,7 @@ end
 
 if vim.g.main_theme == 'dracula' or vim.g.main_theme == 'edge' then
   bg("CursorLine", cursorline)
+  fg("VertSplit", "#282c34")
 end
 
 -- Basic

@@ -5,7 +5,7 @@ launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
 
 # global settings
 yabai -m config window_topmost               off
-yabai -m config window_border                on
+yabai -m config window_border                off
 yabai -m config window_border_blur           off
 yabai -m config window_border_width          1
 yabai -m config active_window_border_color   0xff60ff60
@@ -41,22 +41,20 @@ yabai -m space 5 --label Social
 
 
 # Devops
-yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=1
-yabai -m rule --add app="Mingo$" manage=off          opacity=1           space=1
-yabai -m rule --add app="^Wireshark$" manage=off                         space=1
+yabai -m rule --add app="^Postman$" manage=off opacity=1                 space=1 border=on
+yabai -m rule --add app="^Wireshark$" manage=off                         space=1 border=on
 yabai -m rule --add app="^OrbStack$" manage=off                          space=1
 yabai -m rule --add app="^Disk Utility$" manage=off          opacity=1   space=1
 yabai -m rule --add app="^GraphiQL$" manage=off          opacity=1       space=1
-yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=1
+yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=1 border=on
 yabai -m rule --add app="^TablePlus$"      opacity=1 manage=off          space=1
-yabai -m rule --add app="^DataGrip$"      opacity=1 manage=off          space=1
+yabai -m rule --add app="^DataGrip$"      opacity=1 manage=off          space=1 border=on
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off space=1
 yabai -m rule --add app="^FileZilla$" manage=off opacity=1                 space=1
 
 # Development
-yabai -m rule --add app="Alacritty"                          space=2
+yabai -m rule --add app="Alacritty"                          space=2 border=on
 yabai -m rule --add app="Terminal"                          space=2
-yabai -m rule --add app="kitty"                            space=2
 yabai -m rule --add app="Code"     manage=off                       space=2 manage=off
 yabai -m rule --add app="WebStorm"           manage=off                 space=2 manage=off
 yabai -m rule --add app="^Xcode$" manage=off                   space=2

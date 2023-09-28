@@ -129,3 +129,6 @@ vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}
 
 -- Spell Check
 vim.cmd [[au FileType lua setlocal nospell]] -- disable spell check for lua files
+
+-- Theme
+vim.g.main_theme = 'edge'

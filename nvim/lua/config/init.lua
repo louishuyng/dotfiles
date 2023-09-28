@@ -16,7 +16,7 @@ require "config.libs.vim_test"
 require "config.libs.vista"
 require "config.libs.zenmode"
 
-require "config.cores.breadcrumb"
+require "config.cores.bufferline"
 require "config.cores.dap"
 require "config.cores.git"
 require "config.cores.orgmode"

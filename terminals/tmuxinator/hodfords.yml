@@ -6,3 +6,5 @@ windows:
       - cd base-ror
   - lawbite-portal-v2:
       - cd lawbite/portal-v2
+  - lawbite_public_web:
+      - cd lawbite/lawbite_public_web
