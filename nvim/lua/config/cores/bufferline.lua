@@ -62,8 +62,7 @@ bufferline.setup {
         filetype = "NvimTree",
         text = "File Explorer",
         highlight = "Directory",
-        text_align = "left",
-        separator = false
+        text_align = "left"
       }
     },
     show_close_icon = false,
@@ -72,6 +71,11 @@ bufferline.setup {
     indicator = {
       icon = '', -- this should be omitted if indicator style is not 'icon'
       style = 'none'
-    }
+    },
+    custom_filter = function(buf_number, buf_numbers)
+      if vim.bo[buf_number].filetype ~= 'fugitive' then return true end
+
+      return false
+    end
   }
 }
