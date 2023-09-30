@@ -61,11 +61,10 @@ yabai -m rule --add app="^Xcode$" manage=off                   space=2
 yabai -m rule --add app="Sourcetree" manage=off space=2
 
 # View
-yabai -m rule --add app="^Microsoft Edge$" manage=off         opacity=1  space=3
-yabai -m rule --add app="^Brave Browser$"  manage=off   opacity=1                  space=3
+yabai -m rule --add app="^Brave Browser$"  manage=off   opacity=1                  space=3 border=on
 yabai -m rule --add app="^Min$"   manage=off  opacity=1                  space=3
 yabai -m rule --add app="qutebrowser"      manage=off                 space=3
-yabai -m rule --add app="Safari" manage=off opacity=1 space=3
+yabai -m rule --add app="Safari" manage=off opacity=1 space=3 border=on
 yabai -m rule --add app="^Figma$"            opacity=1 manage=off    space=3
 yabai -m rule --add app="Notion"           opacity=1 manage=off    space=3
 yabai -m rule --add app="Obsidian"         opacity=1 manage=off  space=3
@@ -109,7 +108,7 @@ yabai -m rule --add app="^DevUtils$" manage=off opacity=1
 yabai -m rule --add app="^Stats$" manage=off opacity=1
 yabai -m rule --add app="^Raycast$" manage=off opacity=1
 yabai -m rule --add app="^Skitch$" manage=off opacity=1
-yabai -m rule --add app="^Urban VPN Desktop$" manage=off opacity=1
+yabai -m rule --add app="^NordVPN$" manage=off opacity=1
 
 
 # show digital colour meter topmost and on all spaces
