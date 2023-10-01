@@ -61,7 +61,8 @@ yabai -m rule --add app="^Xcode$" manage=off                   space=2
 yabai -m rule --add app="Sourcetree" manage=off space=2
 
 # View
-yabai -m rule --add app="^Brave Browser$"  manage=off   opacity=1                  space=3 border=on
+yabai -m rule --add app="^Brave Browser$"    opacity=1                  space=3 border=on
+yabai -m rule --add app="^Arc$"    opacity=1                  space=3 border=on
 yabai -m rule --add app="^Min$"   manage=off  opacity=1                  space=3
 yabai -m rule --add app="qutebrowser"      manage=off                 space=3
 yabai -m rule --add app="Safari" manage=off opacity=1 space=3 border=on
