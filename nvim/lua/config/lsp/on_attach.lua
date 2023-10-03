@@ -1,4 +1,5 @@
 local group = require('functions.toggle_auto_format').group
+local navic = require("nvim-navic")
 
 return function(client, bufnr)
   local bufopts = {noremap = true, silent = true, buffer = bufnr}
@@ -28,6 +29,10 @@ return function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   vim.diagnostic.config({float = {border = "single"}})
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
 
   if client.server_capabilities.document_formatting then
     if vim.bo.filetype == 'org' then return end

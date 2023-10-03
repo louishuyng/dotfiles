@@ -7,5 +7,5 @@ return {
   -- {'Mofiqul/vscode.nvim'},
   {"sainnhe/edge"}, {'nvim-tree/nvim-web-devicons'}, {'goolord/alpha-nvim'},
   {'rcarriga/nvim-notify'}, {'nvim-lualine/lualine.nvim'},
-  {'akinsho/bufferline.nvim'}
+  {'SmiteshP/nvim-navic'}
 }

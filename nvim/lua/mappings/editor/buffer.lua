@@ -1,4 +1,4 @@
-local opts = {silent = true}
+local opts = { silent = true }
 
 vim.keymap.set("n", "<leader>nt", ":tabnew<CR>", opts)
 
@@ -16,5 +16,3 @@ vim.keymap.set('n', ',bda', ':w <bar> %bd <bar> e# <bar> bd# <CR>', opts)
 
 --  Alternative Buffer
 vim.keymap.set("n", "<BS>", ":b#<CR>", opts)
-
-vim.keymap.set('n', '<space>bp', ':BufferLinePick<CR>', opts)
