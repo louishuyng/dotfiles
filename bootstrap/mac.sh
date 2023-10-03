@@ -405,6 +405,7 @@ install_cli_tools() {
     brew install terminal-notifier
     brew tap daipeihust/tap                                                                                                                                                                   louishuyng
     brew install im-select
+    brew install git-delta
 
     # Devops
     brew install bat # Better cat
@@ -418,6 +419,7 @@ install_cli_tools() {
     brew install ncdu # Better du
     brew install duf # Better du
     brew install jqp # Visualise jq
+    brew install fastmod # Fast partial replacement 
     brew install watch
     brew install ansifilter # Program specialized for removing (or working with) ANSI codes 
     brew install xdg-ninja # A shell script which checks your $HOME for unwanted files and directories.

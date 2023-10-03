@@ -86,7 +86,3 @@ shift + alt - 0 : yabai -m space --balance
 
 # destroy desktop
 cmd + alt - w : chunkc tiling::desktop --annihilate
-
-# Enable/Disable Svim
-shift + lctrl + alt - v : brew services start svim
-shift + lctrl + alt - n : brew services stop svim
