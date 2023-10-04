@@ -46,11 +46,12 @@ yabai -m rule --add app="^Wireshark$" manage=off                         space=1
 yabai -m rule --add app="^OrbStack$" manage=off                          space=1
 yabai -m rule --add app="^Disk Utility$" manage=off          opacity=1   space=1
 yabai -m rule --add app="^GraphiQL$" manage=off          opacity=1       space=1
-yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=1 border=on
 yabai -m rule --add app="^TablePlus$"      opacity=1 manage=off          space=1
 yabai -m rule --add app="^DataGrip$"      opacity=1 manage=off          space=1 border=on
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off space=1
 yabai -m rule --add app="^FileZilla$" manage=off opacity=1                 space=1
+yabai -m rule --add app="^Burp Suite Community Edition$" manage=off      opacity=1       space=1 border=on
+yabai -m rule --add app="ZAP" manage=off      opacity=1       space=1 border=on
 
 # Development
 yabai -m rule --add app="Alacritty"                          space=2 border=on
