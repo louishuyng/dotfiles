@@ -2,8 +2,6 @@ name: Hodfords
 root: ~/Dev/Projects/Hodfords
 attach: false
 windows:
-  - base-ror:
-      - cd base-ror
   - lawbite-portal-v2:
       - cd lawbite/portal-v2
   - lawbite_public_web:
