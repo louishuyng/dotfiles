@@ -16,8 +16,8 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: k3d-louis-k3d
-  currentCluster: k3d-louis-k3d
+  currentContext: arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging
+  currentCluster: arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging
   clusters:
     arn:aws:eks:ap-southeast-1:251316246111:cluster/staging:
       namespace:
@@ -29,6 +29,27 @@ k9s:
         - default
       view:
         active: context
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging:
+      namespace:
+        active: default
+        lockFavorites: false
+        favorites:
+        - all
+        - default
+      view:
+        active: pod
       featureGates:
         nodeShell: false
       shellPod:

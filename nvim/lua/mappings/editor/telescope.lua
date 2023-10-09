@@ -43,6 +43,3 @@ vim.keymap.set("n", "<leader>vc",
 
 -- Trouble
 vim.keymap.set("n", "<leader>fd", ":TroubleToggle<CR>")
-
--- Harpoon
-vim.keymap.set("n", "<leader>mf", ":Telescope harpoon marks<CR>")

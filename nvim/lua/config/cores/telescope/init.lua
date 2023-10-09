@@ -64,6 +64,5 @@ telescope.load_extension("flutter")
 telescope.load_extension('notify')
 telescope.load_extension("git_worktree")
 telescope.load_extension("file_browser")
-telescope.load_extension('harpoon')
 
 require "config.cores.telescope.custom.tmux_session"

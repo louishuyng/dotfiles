@@ -9,7 +9,11 @@ local lazydocker = Terminal:new({
   hidden = true,
   direction = 'float'
 })
-local k9s = Terminal:new({cmd = "k9s", hidden = true, direction = 'float'})
+local k9s = Terminal:new({
+  cmd = "k9s -n default",
+  hidden = true,
+  direction = 'float'
+})
 local ranger =
     Terminal:new({cmd = "ranger", hidden = true, direction = 'float'})
 
