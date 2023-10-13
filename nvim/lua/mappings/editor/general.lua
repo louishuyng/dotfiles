@@ -71,6 +71,7 @@ local reload_theme = function()
   vim.cmd([[
     luafile ~/.dotfiles/nvim/lua/ui/theme.lua
     luafile ~/.dotfiles/nvim/lua/ui/highlights.lua
+    luafile ~/.dotfiles/nvim/lua/config/cores/statusline.lua
     syntax on
   ]])
 

@@ -3,7 +3,8 @@ local tmux_session = require('config.cores.telescope.custom.tmux_session')
 local opt = {silent = true, noremap = true}
 
 -- Main finding
-vim.keymap.set("n", "<c-p>", ":Telescope find_files hidden=true<cr>", opt)
+vim.keymap.set("n", "<c-p>",
+               ":Telescope find_files hidden=true previewer=false<cr>", opt)
 vim.keymap.set("n", "<leader><leader>", ":Telescope buffers<CR>", opt)
 vim.keymap.set("n", "<leader>/", ":Telescope live_grep<CR>", opt)
 vim.api.nvim_set_keymap("n", "<leader>fb",
@@ -11,11 +12,6 @@ vim.api.nvim_set_keymap("n", "<leader>fb",
                         opt)
 vim.keymap.set("n", "<leader>fm", ":Telescope marks<CR>", opt)
 vim.keymap.set("n", "<leader>fj", ":Telescope jumplist<CR>", opt)
-
--- Tree
-vim.keymap.set("n", "<leader>ns",
-               ":lua vim.cmd('NvimTreeFocus');vim.cmd('Telescope find_files hidden=true')<CR>",
-               opt)
 
 -- TODO list
 vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", opt)

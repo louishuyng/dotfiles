@@ -4,7 +4,11 @@ local git_blame = require('gitblame')
 vim.g.gitblame_display_virtual_text = 0
 
 require('lualine').setup {
-  options = {component_separators = '', section_separators = ''},
+  options = {
+    component_separators = '',
+    section_separators = '',
+    theme = vim.g.main_theme == 'edge' and 'edge' or 'gruvbox-material'
+  },
   -- Show git blame info in the status line
   sections = {
     lualine_c = {

@@ -72,12 +72,6 @@ vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decr
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
--- COLORCOLUMN
-vim.cmd([[
-  autocmd FileType * setlocal colorcolumn=120
-  autocmd FileType alpha setlocal colorcolumn=""
-]])
-
 -- SPELL
 vim.api.nvim_command("set spell")
 

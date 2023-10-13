@@ -12,15 +12,15 @@ sketchybar --bar     height=24                                            \
                      blur_radius=0                                        \
                      padding_left=4                                       \
                      padding_right=4                                      \
-                     color=0xff1e1e1e                                   \
-                     position=bottom                                      \
+                     color=0xff000000                                   \
+                     position=top                                      \
                      sticky=on                                            \
                      font_smoothing=on                                    \
                                                                           \
            --default updates=when_shown                                   \
                      drawing=on                                           \
-                     icon.font="$LABEL:SemiBold:12.5"                      \
-                     label.font="$LABEL:SemiBold:12.5"                    \
+                     icon.font="$LABEL:SemiBold:12"                      \
+                     label.font="$LABEL:SemiBold:12"                    \
                      icon.padding_left=$PADDING                           \
                      icon.padding_right=$PADDING                          \
                      label.padding_left=$PADDING                          \
@@ -30,7 +30,6 @@ sketchybar --bar     height=24                                            \
 
 
 # left
-source "$ITEM_DIR/space.sh"
 source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/docker.sh"
 source "$ITEM_DIR/org.sh"
@@ -43,10 +42,10 @@ source "$ITEM_DIR/mic.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/airpodsbattery.sh"
-source "$ITEM_DIR/disk.sh"
-source "$ITEM_DIR/mem.sh"
-source "$ITEM_DIR/cpu.sh"
-source "$ITEM_DIR/spotify.sh"
+# source "$ITEM_DIR/disk.sh"
+# source "$ITEM_DIR/mem.sh"
+# source "$ITEM_DIR/cpu.sh"
+# source "$ITEM_DIR/spotify.sh"
 
 # initializing
 sketchybar --update
