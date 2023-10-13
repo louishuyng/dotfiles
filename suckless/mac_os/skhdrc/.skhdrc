@@ -17,7 +17,7 @@ ctrl + alt - h : open /Applications/Burp\ Suite\ Community\ Edition.app
 
 shift + alt - space : yabai -m window --toggle float
 
-alt - j : yabai -m window --focus stack.next
-alt - k : yabai -m window --focus stack.prev
+alt - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+alt - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
-alt - tab :yabai -m window --focus recent
+alt - tab : yabai -m window --focus stack.recent
