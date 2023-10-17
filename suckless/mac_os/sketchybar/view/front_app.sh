@@ -4,7 +4,7 @@ ICON_FONT="sketchybar-app-font"
 sketchybar --add item       front_app left                                    \
            --subscribe      front_app front_app_switched                      \
            --set            front_app script="$PLUGIN_DIR/front_app.sh"       \
-                            label.padding_left=25                             \
+                            label.padding_left=-1                             \
                             label.padding_right=7                             \
                             label.font="$LABEL:Bold:12"                     \
                             icon.font="$ICON_FONT:Regular:12"                 \

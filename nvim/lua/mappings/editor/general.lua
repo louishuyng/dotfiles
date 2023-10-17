@@ -1,4 +1,4 @@
-local opt = {silent = true, noremap = true}
+local opt = { silent = true, noremap = true }
 
 -- General
 vim.keymap.set("n", ",s", ":<C-u>split<CR>", opt)

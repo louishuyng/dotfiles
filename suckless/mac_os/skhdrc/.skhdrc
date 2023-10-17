@@ -2,22 +2,28 @@
 ctrl + alt - a : open /Applications/draw\.io.app
 ctrl + alt - r : open /Applications/RapidAPI.app
 ctrl + alt - p : open /Applications/Postman.app
-ctrl + alt - s : open /Applications/Slack.app
-ctrl + alt - d : open /Applications/DataGrip.app
-ctrl + alt - b : open /Applications/Arc.app
 ctrl + alt - n : open /Applications/Notion.app
 ctrl + alt - o : open /Applications/Obsidian.app
 ctrl + alt - f : open /Applications/Messenger.app
 ctrl + alt - m : open -a Mail
-ctrl + alt - c : open /Applications/Discord.app
-ctrl + alt - t : open /Applications/Alacritty.app
 ctrl + alt - v : open /Applications/Visual\ Studio\ Code.app
 ctrl + alt - w : open /Applications/wpsoffice.app
 ctrl + alt - h : open /Applications/Burp\ Suite\ Community\ Edition.app
 
 shift + alt - space : yabai -m window --toggle float
 
+alt - tab : yabai -m window --focus stack.recent
+
 alt - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 alt - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
-
-alt - tab : yabai -m window --focus stack.recent
+# alt - 1 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 1) | .id')
+# alt - 2 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 2) | .id')
+# alt - 3 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 3) | .id')
+# alt - 4 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 3) | .id')
+# alt - 5 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 3) | .id')
+#
+alt - q : open /Applications/DataGrip.app
+alt - w : open /Applications/Alacritty.app
+alt - e : open /Applications/Arc.app
+alt - r : open /Applications/Discord.app
+alt - t : open /Applications/Slack.app

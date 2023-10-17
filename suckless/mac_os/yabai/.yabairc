@@ -7,19 +7,13 @@ yabai -m config \
 	layout stack \
 	top_padding 0   \
 	bottom_padding 0  \
-	left_padding 35 \
+	left_padding 0 \
 	right_padding 0
 
-yabai -m config external_bar all:25:0
+yabai -m config external_bar all:22:0
 
 # signals
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
-yabai -m signal --add event=application_terminated action="zsh ~/.dotfiles/suckless/mac_os/yabai/application-terminated.zsh"
-yabai -m signal --add event=window_created action="zsh ~/.dotfiles/suckless/mac_os/yabai/application-launched.zsh"
-
-cmd + shift - k : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus next || yabai -m window --focus first; fi
-cmd + shift - j : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus prev || yabai -m window --focus last; fi
-
-echo "yabai configuration loaded..r
+echo "yabai configuration loaded.."
