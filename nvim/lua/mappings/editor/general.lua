@@ -1,4 +1,4 @@
-local opt = { silent = true, noremap = true }
+local opt = {silent = true, noremap = true}
 
 -- General
 vim.keymap.set("n", ",s", ":<C-u>split<CR>", opt)
@@ -14,6 +14,10 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", opt)
 vim.keymap.set("n", "<C-k>", "<C-w>k", opt)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opt)
 vim.keymap.set("n", "<C-h>", "<C-w>h", opt)
+
+-- Faster Save and Quit
+vim.keymap.set("n", "<leader>w", ":w<CR>")
+vim.keymap.set("n", "<leader>q", ":wq!<CR>")
 
 -- Scrolling Center
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
