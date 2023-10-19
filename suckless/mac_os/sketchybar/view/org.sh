@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 ICON_FONT="sketchybar-app-font"
 
-sketchybar -m --add item org left                         \
+sketchybar -m --add item org right                         \
               --set org update_freq=10                     \
                     icon="􀧵"                                \
                     label.y_offset=-1                          \

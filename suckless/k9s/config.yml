@@ -16,7 +16,7 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging
+  currentContext: lawbite-eks-staging
   currentCluster: arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging
   clusters:
     arn:aws:eks:ap-southeast-1:251316246111:cluster/staging:

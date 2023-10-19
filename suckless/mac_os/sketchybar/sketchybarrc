@@ -22,7 +22,7 @@ sketchybar --bar     height=24                                            \
                      icon.font="$LABEL:SemiBold:12"                      \
                      label.font="$LABEL:SemiBold:12"                    \
                      icon.padding_left=$PADDING                           \
-                     icon.padding_right=$PADDING                          \
+                     icon.padding_right=2                          \
                      label.padding_left=$PADDING                          \
                      label.padding_right=$PADDING                         \
                      label.color=0xff${NORD4:1}                           \
@@ -32,7 +32,7 @@ sketchybar --bar     height=24                                            \
 # left
 source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/docker.sh"
-source "$ITEM_DIR/org.sh"
+source "$ITEM_DIR/k8s.sh"
 
 # right
 source "$ITEM_DIR/time.sh"
@@ -40,11 +40,12 @@ source "$ITEM_DIR/cal.sh"
 source "$ITEM_DIR/keyboard.sh"
 source "$ITEM_DIR/mic.sh"
 source "$ITEM_DIR/wifi.sh"
-source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/airpodsbattery.sh"
-source "$ITEM_DIR/disk.sh"
+# source "$ITEM_DIR/disk.sh"
 source "$ITEM_DIR/mem.sh"
 source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/org.sh"
 # source "$ITEM_DIR/spotify.sh"
 
 # initializing

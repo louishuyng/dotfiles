@@ -9,6 +9,11 @@ ctrl + alt - m : open -a Mail
 ctrl + alt - v : open /Applications/Visual\ Studio\ Code.app
 ctrl + alt - w : open /Applications/wpsoffice.app
 ctrl + alt - h : open /Applications/Burp\ Suite\ Community\ Edition.app
+ctrl + alt - d : open /Applications/DataGrip.app
+ctrl + alt - t : open /Applications/Alacritty.app
+ctrl + alt - b : open /Applications/Arc.app
+ctrl + alt - c : open /Applications/Discord.app
+ctrl + alt - s : open /Applications/Slack.app
 
 shift + alt - space : yabai -m window --toggle float
 
@@ -21,7 +26,7 @@ alt - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.la
 # alt - 3 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 3) | .id')
 # alt - 4 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 3) | .id')
 # alt - 5 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 3) | .id')
-#
+
 alt - q : open /Applications/DataGrip.app
 alt - w : open /Applications/Alacritty.app
 alt - e : open /Applications/Arc.app

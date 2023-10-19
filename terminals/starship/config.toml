@@ -23,7 +23,6 @@ truncation_length = 4
 # Catppuccin 'lavender'
 style = "bold lavender"
 
-
 [directory.substitutions]
 '~/tests/starship-custom' = 'work-project'
 
@@ -41,6 +40,3 @@ disabled = false
 detect_files = ['k8s', 'Dockerfile']
 detect_extensions = ['yaml']
 format = '[$symbol$context( \($namespace\))]($style) '
-
-[kubernetes.context_aliases]
-'arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging' = ' lb-stg'
