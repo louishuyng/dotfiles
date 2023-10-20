@@ -65,21 +65,22 @@ vim.keymap.set("v", "<leader>sc", function()
 end, opt)
 
 -- Toggle Theme
+vim.g.theme_style = "light"
+local c = require("colorbuddy.color").colors
+local Group = require("colorbuddy.group").Group
+local g = require("colorbuddy.group").groups
+
 local reload_theme = function()
-  if vim.g.main_theme ~= "edge" then
-    vim.g.main_theme = "edge"
+  if vim.g.theme_style ~= "dark" then
+    vim.g.theme_style = "dark"
+    Group.new("Normal", c.superwhite, g.Normal.bg:dark())
   else
-    vim.g.main_theme = "gruvbox"
+    vim.g.theme_style = "light"
+    Group.new("Normal", c.superwhite, c.gray0)
   end
 
-  vim.cmd([[
-    luafile ~/.dotfiles/nvim/lua/ui/theme.lua
-    luafile ~/.dotfiles/nvim/lua/ui/highlights.lua
-    luafile ~/.dotfiles/nvim/lua/config/cores/statusline.lua
-    syntax on
-  ]])
-
-  vim.notify("Theme changed to " .. vim.g.main_theme)
+  vim.notify("Theme style to " .. vim.g.theme_style, "info",
+             {title = "Theme", timeout = 500})
 end
 
 vim.keymap.set("n", "<leader>0", reload_theme)

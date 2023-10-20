@@ -1,5 +1,3 @@
-require "ui/theme"
+require "ui/colorscheme"
 require "ui/icons"
 require "ui/lsp"
-
-require "ui/highlights"

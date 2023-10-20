@@ -8,6 +8,5 @@ sketchybar --add item       front_app left                                    \
                             label.padding_right=7                             \
                             label.font="$LABEL:Bold:12"                     \
                             icon.font="$ICON_FONT:Regular:12"                 \
-                            label.y_offset=-1                                 \
                             label.color=0xff${GREEN:1}                             \
                             icon.color=0xff${GREEN:1}                             \

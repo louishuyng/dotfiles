@@ -35,18 +35,18 @@ draw_bold_text_with_bright_colors: false
 colors:
   # Edge
   primary:
-    background: "#1e1e1e"
-    foreground: "#98c379"
+    background: "#111317"
+    foreground: "#E0E0E0"
   # Normal colors
   normal:
     black: "#5c6370"
-    red: "#e06c75"
-    green: "#98c379"
-    yellow: "#e5c07b"
-    blue: "#61afef"
-    magenta: "#c678dd"
-    cyan: "#56b6c2"
-    white: "#abb2bf"
+    red: "#cc6666"
+    green: "#99cc99"
+    yellow: "#f8fe7a"
+    blue: "#81a2be"
+    magenta: "#8e6fbd"
+    cyan: "#8abeb7"
+    white: "#f2e5bc"
     # VSCode
     # primary:
     #   background: "#1e1e1e"

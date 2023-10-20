@@ -1,49 +1,95 @@
+vim.g.loaded_matchparen = 1
+
 local opt = vim.opt
 
-opt.ruler = false
-opt.hidden = true
-opt.ignorecase = true
-opt.autoread = true
-opt.splitbelow = false
-opt.splitright = true
+-- Ignore compiled files
+opt.wildignore = "__pycache__"
+opt.wildignore:append{"*.o", "*~", "*.pyc", "*pycache*"}
+opt.wildignore:append{"Cargo.lock", "Cargo.Bazel.lock"}
+
+-- Cool floating window popup menu for completion on command line
+opt.pumblend = 17
+opt.wildmode = "longest:full"
+opt.wildoptions = "pum"
 opt.termguicolors = true
-opt.cul = true
-opt.mouse = "a"
-opt.cmdheight = 1
-opt.updatetime = 250 -- update interval for gitsigns
-opt.timeoutlen = 1000
-opt.ttimeoutlen = 0
+opt.showmode = false
+opt.showcmd = true
+opt.cmdheight = 1 -- Height of the command bar
+opt.incsearch = true -- Makes search act like search in modern browsers
+opt.showmatch = true -- show matching brackets when text indicator is over them
+opt.relativenumber = true -- Show line numbers
+opt.number = true -- But show the actual number for the line we're on
+opt.ignorecase = true -- Ignore case when searching...
+opt.smartcase = true -- ... unless there is a capital letter in the query
+opt.hidden = true -- I like having buffers stay around
+opt.equalalways = false -- I don't like my windows changing all the time
+opt.splitright = true -- Prefer windows splitting to the right
+opt.splitbelow = false -- Prefer windows splitting to the top
+opt.updatetime = 1000 -- Make updates happen faster
+opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
+opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
+
+-- Cursorline highlighting control
+--  Only have it on in the active buffer
+opt.cursorline = true -- Highlight the current line
+local group = vim.api.nvim_create_augroup("CursorLineControl", {clear = true})
+local set_cursorline = function(event, value, pattern)
+  vim.api.nvim_create_autocmd(event, {
+    group = group,
+    pattern = pattern,
+    callback = function() vim.opt_local.cursorline = value end
+  })
+end
+set_cursorline("WinLeave", false)
+set_cursorline("WinEnter", true)
+set_cursorline("FileType", false, "TelescopePrompt")
+
+-- Tabs
+opt.autoindent = true
+opt.cindent = true
+opt.wrap = true
+
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.smartindent = true
+
+opt.breakindent = true
+opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
+opt.linebreak = true
+
+opt.foldmethod = "marker"
+opt.foldlevel = 0
+opt.modelines = 1
+
+opt.belloff = "all" -- Just turn the dang bell off
+
 opt.clipboard = "unnamedplus"
+
+opt.inccommand = "split"
+opt.swapfile = false -- Living on the edge
+opt.shada = {"!", "'1000", "<50", "s10", "h"}
+
+opt.mouse = "a"
+
+-- set joinspaces
+opt.joinspaces = false -- Two spaces and grade school, we're done
+
+-- set fillchars=eob:~
+opt.fillchars = {eob = "~"}
+
+vim.opt.diffopt = {
+  "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal"
+}
+
+vim.opt.undofile = true
+vim.opt.signcolumn = "yes"
+
+-- SPELL
+vim.api.nvim_command("set spell")
 
 -- UNDOFILE
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand('~/.vim/undodir')
-
--- NUMBERS
-vim.cmd([[
-  set number relativenumber
-]])
-
--- FILLCHARS
-vim.opt.fillchars = {
-  horiz = '━',
-  horizup = '┻',
-  horizdown = '┳',
-  vert = '┃',
-  vertleft = '┫',
-  vertright = '┣',
-  verthoriz = '╋',
-  eob = ' ',
-  fold = ' ',
-  foldopen = '',
-  foldsep = ' ',
-  foldclose = ''
-}
-
--- INDENLINE
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.smartindent = true
 
 -- DISABLE BUILTIN VIM PLUGINS
 vim.g.loaded_gzip = 0
@@ -66,15 +112,6 @@ vim.opt.listchars:append("extends:<")
 vim.opt.listchars:append("precedes:>")
 vim.opt.listchars:append("conceal:┊")
 
--- FOLD
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
--- SPELL
-vim.api.nvim_command("set spell")
-
 -- RUST
 vim.g.rust_recommended_style = 0
 
@@ -90,11 +127,6 @@ vim.opt.concealcursor = 'nc'
 
 -- LSP
 vim.g.auto_format = true
-
--- GIT
-vim.opt.diffopt = {
-  "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical"
-}
 
 -- Grep
 vim.cmd('set grepprg=rg\\ --vimgrep\\ --smart-case\\ --follow')
@@ -125,4 +157,4 @@ vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}
 vim.cmd [[au FileType lua setlocal nospell]] -- disable spell check for lua files
 
 -- Theme
-vim.g.main_theme = 'edge'
+vim.g.main_theme = 'gruvbuddy'
