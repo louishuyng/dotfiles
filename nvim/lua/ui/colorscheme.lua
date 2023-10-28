@@ -84,8 +84,8 @@ vim.cmd [[
   hi link @lsp.type.namespace @namespace
   hi link @punctuation.bracket.rapper @text.literal
   hi link @normal Normal
-  hi LspDiagnosticsLineNrError guifg=#DC322F guibg=#312a34 gui=bold
-  hi LspDiagnosticsLineNrWarning guifg=#B58900 guibg=#312e3a gui=bold
+  hi LspDiagnosticsLineNrError guifg=#cc6666 guibg=#312a34 gui=bold
+  hi LspDiagnosticsLineNrWarning guifg=#f8fe7a guibg=#312e3a gui=bold
 ]]
 
 Group.new("Normal", c.superwhite, c.gray0)

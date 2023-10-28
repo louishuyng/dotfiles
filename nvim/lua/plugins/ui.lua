@@ -7,6 +7,7 @@ return {
     opts = {
       -- options
     }
-  }, {'yamatsum/nvim-nonicons'}, {'nvim-tree/nvim-web-devicons'},
-  {'goolord/alpha-nvim'}, {'rcarriga/nvim-notify'}
+  }, {'nvim-tree/nvim-web-devicons'}, {'goolord/alpha-nvim'},
+  {'rcarriga/nvim-notify'}
+  -- {'yamatsum/nvim-nonicons'},
 }

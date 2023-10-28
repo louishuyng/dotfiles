@@ -84,7 +84,7 @@ vim.opt.undofile = true
 vim.opt.signcolumn = "yes"
 
 -- SPELL
-vim.api.nvim_command("set spell")
+vim.api.nvim_command("set nospell")
 
 -- UNDOFILE
 vim.opt.undofile = true

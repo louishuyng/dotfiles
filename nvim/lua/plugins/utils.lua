@@ -35,7 +35,7 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
-    opts = {},
+    opts = {modes = {search = {enabled = false}}},
     keys = {
       {
         "s",
@@ -71,5 +71,5 @@ return {
   }, {'akinsho/toggleterm.nvim', version = "*", config = true}, {
     'kevinhwang91/nvim-ufo',
     dependencies = {'kevinhwang91/promise-async', "luukvbaal/statuscol.nvim"}
-  }
+  }, {'kamykn/spelunker.vim'}
 }

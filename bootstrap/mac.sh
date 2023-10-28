@@ -424,6 +424,9 @@ install_cli_tools() {
     brew install ansifilter # Program specialized for removing (or working with) ANSI codes 
     brew install xdg-ninja # A shell script which checks your $HOME for unwanted files and directories.
 
+    # Hack Tools
+    brew install feroxbuster
+
     success "Installed cli for tools"
 
     brew tap FelixKratz/formulae

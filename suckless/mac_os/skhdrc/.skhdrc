@@ -1,19 +1,16 @@
 # terminal - like Linux
-ctrl + alt - a : open /Applications/draw\.io.app
-ctrl + alt - r : open /Applications/RapidAPI.app
-ctrl + alt - p : open /Applications/Postman.app
-ctrl + alt - n : open /Applications/Notion.app
-ctrl + alt - o : open /Applications/Obsidian.app
-ctrl + alt - f : open /Applications/Messenger.app
-ctrl + alt - m : open -a Mail
-ctrl + alt - v : open /Applications/Visual\ Studio\ Code.app
-ctrl + alt - w : open /Applications/wpsoffice.app
-ctrl + alt - h : open /Applications/Burp\ Suite\ Community\ Edition.app
-ctrl + alt - d : open /Applications/DataGrip.app
-ctrl + alt - t : open /Applications/Kitty.app
+ctrl + alt - a : open /Applications/Postman.app
 ctrl + alt - b : open /Applications/Arc.app
 ctrl + alt - c : open /Applications/Discord.app
+ctrl + alt - d : open /Applications/DataGrip.app
+ctrl + alt - i : open /Applications/Burp\ Suite\ Community\ Edition.app
+ctrl + alt - m : open /Applications/Spotify.app
+ctrl + alt - n : open /Applications/Notion.app
+ctrl + alt - o : open /Applications/Obsidian.app
 ctrl + alt - s : open /Applications/Slack.app
+ctrl + alt - t : open /Applications/Alacritty.app
+ctrl + alt - v : open /Applications/Visual\ Studio\ Code.app
+ctrl + alt - w : open /Applications/wpsoffice.app
 
 shift + alt - space : yabai -m window --toggle float
 
@@ -27,11 +24,4 @@ alt - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.la
 # alt - 4 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 3) | .id')
 # alt - 5 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 3) | .id')
 
-alt - q : open /Applications/DataGrip.app
-alt - w : open /Applications/Kitty.app
-alt - e : open /Applications/Arc.app
-alt - r : open /Applications/Discord.app
-alt - t : open /Applications/Slack.app
-
-
-ctrl + alt + shift - y : yabai --resetart-service
+ctrl + alt + shift - y : yabai --restart-service; osascript -e 'display notification "Restarted Yabai"'

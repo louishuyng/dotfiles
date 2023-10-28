@@ -1,42 +1,100 @@
-add_newline = true
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$docker_context\
+$c\
+$cmake\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$golang\
+$haskell\
+$helm\
+$java\
+$kotlin\
+$gradle\
+$lua\
+$nodejs\
+$ocaml\
+$php\
+$python\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$zig\
+$aws\
+$gcloud\
+$azure\
+$sudo\
+$cmd_duration $jobs $time\
+$line_break\
+$character"""
 
-# Replace the "❯" symbol in the prompt with "➜"
-# [character] # The name of the module we are configuring is "character"
-# success_symbol = "[➜](bold blue)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
-# error_symbol = "[➜](bold red)"
+[nodejs]
+format = "[$symbol($version )]($style)"
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
-
-# Sets user-defined palette
-# palette = "catppuccin_mocha"
-
-[character]
-# Note the use of Catppuccin color 'maroon'
-success_symbol = "[](green) 󰄾"
-error_symbol = "[](red)"
-vicmd_symbol = "[ ](green)"
+[fill]
+symbol = " "
 
 [directory]
+style = "blue"
+read_only = " "
 truncation_length = 4
-# Catppuccin 'lavender'
-style = "bold lavender"
+truncate_to_repo = false
 
-[directory.substitutions]
-'~/tests/starship-custom' = 'work-project'
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vicmd_symbol = "[❮](green)"
 
-[aws]
-format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold blue'
-symbol = "  "
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
 
-[golang]
-format = '[ $version](bold cyan) '
+[jobs]
+symbol = ""
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style)"
 
-[kubernetes]
-symbol = '☸'
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "cyan"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[git_metrics]
 disabled = false
-detect_files = ['k8s', 'Dockerfile']
-detect_extensions = ['yaml']
-format = '[$symbol$context( \($namespace\))]($style) '
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = "yellow"
+
+[memory_usage]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[time]
+disabled = false
+style = "bold white"
+format = "[$time]($style)"
+
+[custom.stunnel]
+when = "ps aux | grep stunnel | grep -v grep"
+command = "ps -o etime= -p $(ps aux | grep stunnel | grep -v grep | awk '{print $2}')"
+style = "red"
+format = "[TUNNEL OPEN for $output]($style)"

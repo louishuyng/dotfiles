@@ -78,6 +78,10 @@ fish_add_path $HOME/.cargo/bin
 #
 # #GO
 fish_add_path /usr/local/go/bin
+
+# # RUBY
+set -gx BUNDLE_EDITOR nvim
+
 #
 # #Scripts
 fish_add_path $HOME/.config/scripts

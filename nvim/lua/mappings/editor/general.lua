@@ -17,7 +17,7 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", opt)
 
 -- Faster Save and Quit
 vim.keymap.set("n", "<leader>w", ":w<CR>")
-vim.keymap.set("n", "<leader>q", ":wq!<CR>")
+vim.keymap.set("n", "<leader>q", ":q!<CR>")
 
 -- Scrolling Center
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)

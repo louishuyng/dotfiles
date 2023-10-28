@@ -1,17 +1,17 @@
 {
-    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-    "Lua.diagnostics.disable": [
-        "different-requires",
-        "redefined-local",
-        "unused-local",
-        "cast-local-type"
-    ],
-    "diagnostics.globals": [
-        "vim",
-        "describe",
-        "it",
-        "before_each",
-        "after_each",
-        "_lazygit_toggle"
-    ]
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "Lua.diagnostics.disable": [
+    "different-requires",
+    "redefined-local",
+    "unused-local",
+    "cast-local-type"
+  ],
+  "diagnostics.globals": [
+    "vim",
+    "describe",
+    "it",
+    "before_each",
+    "after_each",
+    "_lazygit_toggle"
+  ]
 }

@@ -3,6 +3,8 @@
 # stop process new window manager in Ventura
 launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
 
+yabai -m config window_shadow off
+
 yabai -m config \
 	layout stack \
 	top_padding 0   \
