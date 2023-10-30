@@ -9,7 +9,6 @@ window:
   decorations: buttonless
   dynamic_title: false
   option_as_alt: OnlyLeft
-  dynamic_padding: true
 scrolling:
   history: 10000
   multiplier: 3

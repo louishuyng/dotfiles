@@ -1,23 +1,23 @@
 # terminal - like Linux
-ctrl + alt - a : open /Applications/Postman.app
-ctrl + alt - b : open /Applications/Arc.app
-ctrl + alt - c : open /Applications/Discord.app
-ctrl + alt - d : open /Applications/DataGrip.app
-ctrl + alt - i : open /Applications/Burp\ Suite\ Community\ Edition.app
-ctrl + alt - m : open /Applications/Spotify.app
-ctrl + alt - n : open /Applications/Notion.app
-ctrl + alt - o : open /Applications/Obsidian.app
-ctrl + alt - s : open /Applications/Slack.app
-ctrl + alt - t : open /Applications/Alacritty.app
-ctrl + alt - v : open /Applications/Visual\ Studio\ Code.app
-ctrl + alt - w : open /Applications/wpsoffice.app
+alt - a : open /Applications/Postman.app
+alt - b : open /Applications/Arc.app
+alt - c : open /Applications/Discord.app
+alt - d : open /Applications/DataGrip.app
+alt - i : open /Applications/Burp\ Suite\ Community\ Edition.app
+alt - m : open /Applications/Spotify.app
+alt - n : open /Applications/Notion.app
+alt - o : open /Applications/Obsidian.app
+alt - s : open /Applications/Slack.app
+alt - t : open /Applications/Alacritty.app
+alt - v : open /Applications/Visual\ Studio\ Code.app
+alt - w : open /Applications/wpsoffice.app
 
 shift + alt - space : yabai -m window --toggle float
 
 alt - tab : yabai -m window --focus stack.recent
 
-alt - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first
-alt - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+# alt - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+# alt - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 # alt - 1 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 1) | .id')
 # alt - 2 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 2) | .id')
 # alt - 3 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.["stack-index"] == 3) | .id')
