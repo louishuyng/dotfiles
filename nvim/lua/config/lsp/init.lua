@@ -14,7 +14,7 @@ local ensure_installed = {
   "lua_ls", "rust_analyzer", "kotlin_language_server", "eslint", "tsserver",
   "bashls", "cssls", "denols", "pyright", "solargraph", "svelte", "terraformls",
   "rnix-lsp", "prettierd", "rubocop", "codespell", "cfn_lint", "yamlfmt",
-  "smithy-language-server", "yamlls", "ltex-ls"
+  "smithy-language-server", "yamlls", "ltex-ls", "ruby-lsp"
 }
 
 require("mason-null-ls").setup {ensure_installed = ensure_installed}
