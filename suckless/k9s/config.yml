@@ -16,31 +16,9 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: lawbite-eks-staging
+  currentContext: lawbite
   currentCluster: arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging
   clusters:
-    arn:aws:eks:ap-southeast-1:251316246111:cluster/staging:
-      namespace:
-        active: all
-        lockFavorites: false
-        favorites:
-        - all
-        - infra
-        - default
-      view:
-        active: context
-      featureGates:
-        nodeShell: false
-      shellPod:
-        image: busybox:1.35.0
-        command: []
-        args: []
-        namespace: default
-        limits:
-          cpu: 100m
-          memory: 100Mi
-        labels: {}
-      portForwardAddress: localhost
     arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging:
       namespace:
         active: default

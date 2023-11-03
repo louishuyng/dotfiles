@@ -65,7 +65,7 @@ vim.keymap.set("v", "<leader>sc", function()
 end, opt)
 
 -- Toggle Theme
-vim.g.theme_style = "light"
+vim.g.theme_style = "dark"
 local c = require("colorbuddy.color").colors
 local Group = require("colorbuddy.group").Group
 local g = require("colorbuddy.group").groups

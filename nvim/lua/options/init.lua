@@ -4,8 +4,8 @@ local opt = vim.opt
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
-opt.wildignore:append{"*.o", "*~", "*.pyc", "*pycache*"}
-opt.wildignore:append{"Cargo.lock", "Cargo.Bazel.lock"}
+opt.wildignore:append { "*.o", "*~", "*.pyc", "*pycache*" }
+opt.wildignore:append { "Cargo.lock", "Cargo.Bazel.lock" }
 
 -- Cool floating window popup menu for completion on command line
 opt.pumblend = 17
@@ -14,24 +14,24 @@ opt.wildoptions = "pum"
 opt.termguicolors = true
 opt.showmode = false
 opt.showcmd = true
-opt.cmdheight = 1 -- Height of the command bar
-opt.incsearch = true -- Makes search act like search in modern browsers
-opt.showmatch = true -- show matching brackets when text indicator is over them
+opt.cmdheight = 1         -- Height of the command bar
+opt.incsearch = true      -- Makes search act like search in modern browsers
+opt.showmatch = true      -- show matching brackets when text indicator is over them
 opt.relativenumber = true -- Show line numbers
-opt.number = true -- But show the actual number for the line we're on
-opt.ignorecase = true -- Ignore case when searching...
-opt.smartcase = true -- ... unless there is a capital letter in the query
-opt.hidden = true -- I like having buffers stay around
-opt.splitright = true -- Prefer windows splitting to the right
-opt.splitbelow = false -- Prefer windows splitting to the top
-opt.updatetime = 1000 -- Make updates happen faster
-opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
-opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
+opt.number = true         -- But show the actual number for the line we're on
+opt.ignorecase = true     -- Ignore case when searching...
+opt.smartcase = true      -- ... unless there is a capital letter in the query
+opt.hidden = true         -- I like having buffers stay around
+opt.splitright = true     -- Prefer windows splitting to the right
+opt.splitbelow = false    -- Prefer windows splitting to the top
+opt.updatetime = 1000     -- Make updates happen faster
+opt.hlsearch = true       -- I wouldn't use this without my DoNoHL function
+opt.scrolloff = 10        -- Make it so there are always ten lines below my cursor
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer
 opt.cursorline = true -- Highlight the current line
-local group = vim.api.nvim_create_augroup("CursorLineControl", {clear = true})
+local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
 local set_cursorline = function(event, value, pattern)
   vim.api.nvim_create_autocmd(event, {
     group = group,
@@ -66,7 +66,7 @@ opt.clipboard = "unnamedplus"
 
 opt.inccommand = "split"
 opt.swapfile = false -- Living on the edge
-opt.shada = {"!", "'1000", "<50", "s10", "h"}
+opt.shada = { "!", "'1000", "<50", "s10", "h" }
 
 opt.mouse = "a"
 
@@ -74,7 +74,7 @@ opt.mouse = "a"
 opt.joinspaces = false -- Two spaces and grade school, we're done
 
 -- set fillchars=eob:~
-opt.fillchars = {eob = "~"}
+opt.fillchars = { eob = "~" }
 
 vim.opt.diffopt = {
   "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal"
@@ -120,10 +120,6 @@ vim.cmd [[au FileType go set shiftwidth=2]]
 vim.cmd [[au FileType go set softtabstop=2]]
 vim.cmd [[au FileType go set tabstop=2]]
 
--- Org mode support
-vim.opt.conceallevel = 2
-vim.opt.concealcursor = 'nc'
-
 -- LSP
 vim.g.auto_format = true
 
@@ -150,7 +146,7 @@ vim.cmd([[
 ]])
 
 -- Draft Buff Mappings Table
-vim.g.draft_buff_languages = {'Http', 'Ruby', 'Javascript', 'Golang'}
+vim.g.draft_buff_languages = { 'Http', 'Ruby', 'Javascript', 'Golang' }
 
 -- Spell Check
 vim.cmd [[au FileType lua setlocal nospell]] -- disable spell check for lua files

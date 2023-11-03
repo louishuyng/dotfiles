@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-TIME=$(date '+%H:%M %p')
+TIME=$(date '+%H:%M')
 
 CLOCKICON=􀐫
 

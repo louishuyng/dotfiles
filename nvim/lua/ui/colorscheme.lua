@@ -88,7 +88,7 @@ vim.cmd [[
   hi LspDiagnosticsLineNrWarning guifg=#f8fe7a guibg=#312e3a gui=bold
 ]]
 
-Group.new("Normal", c.superwhite, c.gray0)
+Group.new("Normal", c.superwhite, g.Normal.bg:dark())
 Group.new("SignColumn", nil, nil)
 Group.new("LineNr", nil, nil)
 Group.new("AlphaHeader", c.green)

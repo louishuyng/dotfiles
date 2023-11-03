@@ -9,10 +9,6 @@
       {
         "language": "http",
         "path": "./http.json"
-      },
-      {
-        "language": "org",
-        "path": "./org.json"
       }
     ]
   }

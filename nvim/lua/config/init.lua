@@ -18,7 +18,6 @@ require "config.libs.zenmode"
 
 require "config.cores.dap"
 require "config.cores.git"
-require "config.cores.orgmode"
 require "config.cores.statusline"
 require "config.cores.telescope"
 require "config.cores.term"

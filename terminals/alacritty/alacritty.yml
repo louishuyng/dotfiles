@@ -9,6 +9,7 @@ window:
   decorations: buttonless
   dynamic_title: false
   option_as_alt: OnlyLeft
+  dynamic_padding: true
 scrolling:
   history: 10000
   multiplier: 3
@@ -35,7 +36,7 @@ draw_bold_text_with_bright_colors: false
 colors:
   # Edge
   primary:
-    background: "#292C33"
+    background: "#111317"
     foreground: "#E0E0E0"
   # Normal colors
   normal:
