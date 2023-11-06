@@ -7,7 +7,7 @@ CURRENT_WIFI="$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/
 SSID="$(echo "$CURRENT_WIFI" | grep -o "SSID: .*" | sed 's/^SSID: //' | awk '{for(i=1; i<=NF; i++) printf "%s",substr($i,1,1)}')"
 
 if [ "$SSID" = "" ]; then
-  sketchybar --set $NAME label="Disconnected |" icon=$WIFIINACTIVEICON
+  sketchybar --set $NAME label="Disconnected" icon=$WIFIINACTIVEICON
 else
-  sketchybar --set $NAME label="$SSID |" icon=$WIFIACTIVEICON
+  sketchybar --set $NAME label="$SSID" icon=$WIFIACTIVEICON
 fi

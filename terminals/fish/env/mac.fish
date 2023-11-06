@@ -7,6 +7,7 @@ set -gx LC_ALL en_US.UTF-8
 #Homebrew's sbin
 fish_add_path /opt/homebrew/bin
 fish_add_path /usr/local/sbin
+fish_add_path /opt/homebrew/sbin
 #
 # #Qutebrowser
 fish_add_path /Applications/qutebrowser.app/Contents/MacOS
@@ -79,9 +80,8 @@ fish_add_path $HOME/.cargo/bin
 # #GO
 fish_add_path /usr/local/go/bin
 
-# # RUBY
+# # ROR
 set -gx BUNDLE_EDITOR nvim
-
 #
 # #Scripts
 fish_add_path $HOME/.config/scripts
@@ -98,3 +98,5 @@ fish_add_path /opt/local/bin
 # Webstorm Path
 fish_add_path /Applications/WebStorm.app/Contents/MacOS
 
+# Postgres Lib
+fish_add_path /opt/homebrew/opt/libpq/bin/pg_restore

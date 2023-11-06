@@ -29,3 +29,6 @@ alias cpuinfo='lscpu'
  
 ## get GPU ram on desktop / laptop##
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+## Brew
+alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"

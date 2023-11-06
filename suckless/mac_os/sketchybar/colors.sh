@@ -1,24 +1,29 @@
 #!/usr/bin/env sh
 
-export BLACK=#181926
-export WHITE=#ffffff
-export RED=#ff0000
-export GREEN=#60ff60
-export BLUE=#0000ff
-export YELLOW=#ffff00
-export ORANGE=#ffa500
-export MAGENTA=#ff80ff
-export GRAY=#808080
+# Color Palette
+export BLACK=0xff181926
+export WHITE=0xffcad3f5
+export RED=0xffed8796
+export GREEN=0xffa6da95
+export BLUE=0xff8aadf4
+export YELLOW=0xffeed49f
+export ORANGE=0xfff5a97f
+export MAGENTA=0xffc6a0f6
+export GREY=0xff939ab7
+export TRANSPARENT=0x00000000
 
 export NORD4=#D8DEE9
 export NORD10=#147b7b
 
 # General bar colors
 export BAR_COLOR=0xff1e1e2e
-export BACKGROUND_1=0xff3c3e4f
-export BACKGROUND_2=0xff494d64
+export BAR_BORDER_COLOR=0xff494d64 #0xa024273a
+export ICON_COLOR=$WHITE # Color of all icons
+export LABEL_COLOR=$WHITE # Color of all labels
+export BACKGROUND_1=0x603c3e4f
+export BACKGROUND_2=0x60494d64
 
-export POPUP_BACKGROUND_COLOR=$BLACK
+export POPUP_BACKGROUND_COLOR=0xff1e1e2e
 export POPUP_BORDER_COLOR=$WHITE
 
 export SHADOW_COLOR=$BLACK

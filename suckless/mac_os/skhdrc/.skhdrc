@@ -4,11 +4,11 @@ alt - b : open /Applications/Arc.app
 alt - c : open /Applications/Discord.app
 alt - d : open /Applications/DataGrip.app
 alt - i : open /Applications/Burp\ Suite\ Community\ Edition.app
-alt - m : open /Applications/Spotify.app
+alt - m : open -a Mail.app
 alt - n : open /Applications/Notion.app
 alt - o : open /Applications/Obsidian.app
 alt - s : open /Applications/Slack.app
-alt - t : open /Applications/Alacritty.app
+alt - t : open /Applications/iTerm.app
 alt - v : open /Applications/Visual\ Studio\ Code.app
 alt - w : open /Applications/wpsoffice.app
 

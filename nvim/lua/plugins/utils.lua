@@ -15,7 +15,6 @@ return {
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end
   }, { 'numToStr/Comment.nvim' }, { 'tpope/vim-eunuch' },
-
   { 'mg979/vim-visual-multi' }, { 'tpope/vim-surround' }, { 'chrisbra/NrrwRgn' }, {
   "andymass/vim-matchup",
   init = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end
@@ -28,9 +27,7 @@ return {
   'norcalli/nvim-colorizer.lua',
   config = function() require 'colorizer'.setup() end
 }, { 'chentoast/marks.nvim', config = function() require 'marks'.setup() end },
-  { "rest-nvim/rest.nvim" },
-  { 'loishy/draft-buff',    dependencies = { 'MunifTanjim/nui.nvim' } },
-  { 'mbbill/undotree' }, { 'famiu/nvim-reload' }, { 'AndrewRadev/splitjoin.vim' }, -- Flash Nvim
+  { "rest-nvim/rest.nvim" }, { 'mbbill/undotree' }, -- Flash Nvim
   {
     "folke/flash.nvim",
     event = "VeryLazy",

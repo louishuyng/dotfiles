@@ -33,7 +33,7 @@ sketchybar --bar     height=24                                            \
 source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/docker.sh"
 source "$ITEM_DIR/k8s.sh"
-source "$ITEM_DIR/ip_address.sh"
+source "$ITEM_DIR/spotify.sh"
 
 # right
 source "$ITEM_DIR/time.sh"
@@ -42,14 +42,14 @@ source "$ITEM_DIR/keyboard.sh"
 source "$ITEM_DIR/mic.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/airpodsbattery.sh"
-# source "$ITEM_DIR/disk.sh"
 source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/disk.sh"
 source "$ITEM_DIR/mem.sh"
 source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/taskwarrior.sh"
 source "$ITEM_DIR/mail.sh"
+source "$ITEM_DIR/github.sh"
 source "$ITEM_DIR/slack.sh"
-# source "$ITEM_DIR/spotify.sh"
 
 # initializing
 sketchybar --update
