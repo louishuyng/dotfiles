@@ -1,4 +1,4 @@
-local opt = { silent = true, noremap = true }
+local opt = {silent = true, noremap = true}
 
 -- General
 vim.keymap.set("n", ",s", ":<C-u>split<CR>", opt)
@@ -51,9 +51,6 @@ vim.keymap.set("v", "p", "\"_dP", opt)
 -- Notification
 vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)
 
--- ZenMode
-vim.keymap.set("n", "<C-w>o", ":ZenMode<CR>", opt)
-
 -- Lazy
 vim.keymap.set("n", "<leader>li", ":Lazy install<CR>", opt)
 vim.keymap.set("n", "<leader>lc", ":Lazy clean<CR>", opt)
@@ -61,26 +58,5 @@ vim.keymap.set("n", "<leader>lu", ":Lazy update<CR>", opt)
 
 -- Clipboard Code Snippet
 vim.keymap.set("v", "<leader>sc", function()
-  require('silicon').visualise_api({ to_clip = true })
+  require('silicon').visualise_api({to_clip = true})
 end, opt)
-
--- Toggle Theme
-vim.g.theme_style = "light"
-local c = require("colorbuddy.color").colors
-local Group = require("colorbuddy.group").Group
-local g = require("colorbuddy.group").groups
-
-local reload_theme = function()
-  if vim.g.theme_style ~= "dark" then
-    vim.g.theme_style = "dark"
-    Group.new("Normal", c.superwhite, g.Normal.bg:dark())
-  else
-    vim.g.theme_style = "light"
-    Group.new("Normal", c.superwhite, c.gray0)
-  end
-
-  vim.notify("Theme style to " .. vim.g.theme_style, "info",
-    { title = "Theme", timeout = 500 })
-end
-
-vim.keymap.set("n", "<leader>0", reload_theme)

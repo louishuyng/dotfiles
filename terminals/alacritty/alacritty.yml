@@ -33,36 +33,22 @@ font:
     y: 0
 draw_bold_text_with_bright_colors: false
 colors:
-  # Edge
   primary:
-    background: "#292C33"
-    foreground: "#E0E0E0"
+    background: "0x1e1e1e"
+    foreground: "0x98c379"
+  cursor:
+    text: "0x5c6370"
+    cursor: "0xabb2bf"
   # Normal colors
   normal:
-    black: "#5c6370"
-    red: "#cc6666"
-    green: "#99cc99"
-    yellow: "#f8fe7a"
-    blue: "#81a2be"
-    magenta: "#8e6fbd"
-    cyan: "#8abeb7"
-    white: "#f2e5bc"
-    # VSCode
-    # primary:
-    #   background: "#1e1e1e"
-    #   foreground: "#d4d4d4"
-    # cursor:
-    #   text: "#d4d4d4"
-    #   cursor: "#d4d4d4"
-    # normal:
-    #   black: "#1e1e1e"
-    #   red: "#f44747"
-    #   green: "#608b4e"
-    #   yellow: "#dcdcaa"
-    #   blue: "#569cd6"
-    #   magenta: "#c678dd"
-    #   cyan: "#56b6c2"
-    #   white: "#d4d4d4"
+    black: "0x5c6370"
+    red: "0xe06c75"
+    green: "0x98c379"
+    yellow: "0xe5c07b"
+    blue: "0x61afef"
+    magenta: "0xc678dd"
+    cyan: "0x56b6c2"
+    white: "0xabb2bf"
 key_bindings:
   - {key: V, mods: Command, action: Paste}
   - {key: C, mods: Command, action: Copy}

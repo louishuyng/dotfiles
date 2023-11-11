@@ -38,9 +38,11 @@ gitsigns.setup {
     }
   },
   on_attach = mapping.gitsigns_mappings
-
 }
-require("git-worktree").setup({
-  change_directory_command = "tcd",
-  update_on_change_command = "tabnew"
-})
+
+vim.cmd([[
+  highlight SignColumn guibg=NONE
+  highlight GitSignsAdd guifg=green
+  highlight GitSignsChange guifg=yellow
+  highlight GitSignsDelete guifg=red
+]])

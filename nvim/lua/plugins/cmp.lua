@@ -1,3 +1,4 @@
+-- Custom all CMP plugins for tab completion and snippets
 return {
   {"rafamadriz/friendly-snippets", event = "InsertEnter"}, {
     "hrsh7th/nvim-cmp",
@@ -6,7 +7,10 @@ return {
   }, {
     "L3MON4D3/LuaSnip",
     dependencies = {"nvim-cmp", "friendly-snippets"},
-    config = function() require("config.libs.others").luasnip() end
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require'luasnip'.filetype_extend("ruby", {"rails"})
+    end
   }, {"saadparwaiz1/cmp_luasnip", dependencies = {"LuaSnip"}},
   {"hrsh7th/cmp-calc", dependencies = {"nvim-cmp"}}, {"hrsh7th/cmp-nvim-lsp"},
   {"hrsh7th/cmp-buffer", dependencies = {"nvim-cmp"}}, {

@@ -6,14 +6,21 @@ require("nvim-tree").setup({
   },
   system_open = {cmd = nil, args = {}},
   filters = {dotfiles = false, custom = {}},
-  git = {enable = false},
+  git = {enable = true},
   diagnostics = {enable = false},
   notify = {threshold = vim.log.levels.ERROR},
   renderer = {
     root_folder_label = function(path) return vim.fn.fnamemodify(path, ":t") end,
     icons = {
-      show = {file = true, folder = false, folder_arrow = true, git = true}
-    }
+      show = {
+        file = true,
+        folder = false,
+        folder_arrow = true,
+        git = true,
+        modified = true
+      }
+    },
+    indent_markers = {enable = true}
   },
   view = {
     side = 'right',

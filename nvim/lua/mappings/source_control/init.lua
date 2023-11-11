@@ -1,6 +1,4 @@
-vim.keymap.set("n", ",gb",
-               ":lua require('functions.git_blame_toggle').toggle_current_line_blame()<CR>",
-               {silent = true})
+vim.keymap.set("n", ",gb", ":Git blame<CR>", {silent = true})
 
 vim.keymap.set("n", "<leader>tb", ":Gitsigns toggle_current_line_blame<CR>",
                {silent = true})

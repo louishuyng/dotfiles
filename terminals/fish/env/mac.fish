@@ -82,7 +82,8 @@ fish_add_path /usr/local/go/bin
 
 # # ROR
 set -gx BUNDLE_EDITOR nvim
-#
+unset GEM_HOME
+
 # #Scripts
 fish_add_path $HOME/.config/scripts
 

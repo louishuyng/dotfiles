@@ -8,7 +8,7 @@ alt - m : open -a Mail.app
 alt - n : open /Applications/Notion.app
 alt - o : open /Applications/Obsidian.app
 alt - s : open /Applications/Slack.app
-alt - t : open /Applications/iTerm.app
+alt - t : open /Applications/Alacritty.app
 alt - v : open /Applications/Visual\ Studio\ Code.app
 alt - w : open /Applications/wpsoffice.app
 

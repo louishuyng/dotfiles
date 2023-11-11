@@ -1,7 +1,0 @@
-{
-  "codeblock": {
-    "prefix": "codeblock",
-    "body": ["#+BEGIN_SRC $1", "$2", "#+END_SRC"],
-    "description": "Code Block"
-  }
-}

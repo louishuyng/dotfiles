@@ -1,9 +1,16 @@
+-- Collection of plugins for navigating / modifying files
 return {
-  {"nvim-telescope/telescope.nvim", cmd = "Telescope"},
-  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'}, {
-    "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}
-  }, {"ThePrimeagen/harpoon"}, {'kyazdani42/nvim-tree.lua', tag = 'nightly'},
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    dependencies = {
+      {"nvim-telescope/telescope-fzf-native.nvim", build = "make"}
+    }
+  }, {"ThePrimeagen/harpoon"}, {'nvim-tree/nvim-tree.lua', tag = 'nightly'},
   {"folke/trouble.nvim", config = function() require "config.libs.trouble" end},
-  {"folke/todo-comments.nvim"}, {'stevearc/oil.nvim'}
+  {'stevearc/oil.nvim'}, {
+    "folke/todo-comments.nvim",
+    dependencies = {"nvim-lua/plenary.nvim"},
+    opts = {}
+  }
 }
