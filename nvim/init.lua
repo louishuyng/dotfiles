@@ -2,7 +2,6 @@
 require "options"
 
 -- Plugin Configuration
-require "plugins"
 require 'config'
 
 -- Theme & Highlight

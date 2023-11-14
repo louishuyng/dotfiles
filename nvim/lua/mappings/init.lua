@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 local function cowboy()
   ---@type table?
   local id
@@ -29,7 +27,7 @@ local function cowboy()
   end
 end
 
-cowboy()
+-- cowboy()
 
 require 'mappings.devops'
 require 'mappings.editor'

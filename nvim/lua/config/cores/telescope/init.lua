@@ -44,6 +44,13 @@ telescope.setup {
         ["<C-s>"] = actions.select_horizontal,
         ["<c-d>"] = actions.delete_buffer
       }
+    },
+    extensions = {
+      file_browser = {
+        theme = "dropdown",
+        -- disables netrw and use telescope-file-browser in its place
+        hijack_netrw = true
+      }
     }
   }
 }
@@ -51,5 +58,6 @@ telescope.setup {
 telescope.load_extension('notify')
 telescope.load_extension('harpoon')
 telescope.load_extension("fzf")
+telescope.load_extension("file_browser")
 
 require "config.cores.telescope.custom.tmux_session"

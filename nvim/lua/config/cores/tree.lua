@@ -19,8 +19,7 @@ require("nvim-tree").setup({
         git = true,
         modified = true
       }
-    },
-    indent_markers = {enable = true}
+    }
   },
   view = {
     side = 'right',

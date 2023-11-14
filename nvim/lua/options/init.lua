@@ -147,6 +147,3 @@ vim.cmd([[
 
 -- Spell Check
 vim.cmd [[au FileType lua setlocal nospell]] -- disable spell check for lua files
-
--- Theme
-vim.g.main_theme = 'gruvbuddy'
