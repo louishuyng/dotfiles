@@ -8,7 +8,6 @@ require "config.libs.git_conflict"
 require "config.libs.notify"
 require "config.libs.oil"
 require "config.libs.vim_test"
-require "config.libs.vista"
 
 -- require "config.cores.dap"
 require "config.cores.git"

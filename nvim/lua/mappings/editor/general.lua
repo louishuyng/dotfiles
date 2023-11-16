@@ -40,10 +40,6 @@ vim.keymap.set("v", "<leader>so", ":sort<CR>", opt)
 -- Open URL
 vim.keymap.set("n", "<leader>ob", ":call OpenUrlUnderCursor()<CR>", opt)
 
--- Rename
-vim.keymap.set("n", "<leader>rn",
-               function() return ":IncRename " .. vim.fn.expand("<cword>") end,
-               {expr = true})
 -- Yank
 -- " replace currently selected text with default register
 -- " without yanking it

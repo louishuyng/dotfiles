@@ -5,7 +5,7 @@ return {
     init = function() vim.g.matchup_matchparen_offscreen = {method = "popup"} end
   },
   {'preservim/vimux'},
-  {'windwp/nvim-spectre'},
+  {'windwp/nvim-spectre'}, -- Replace Project wide
   {'mbbill/undotree'},
   {
     "folke/flash.nvim",
@@ -59,19 +59,6 @@ return {
     },
     keys = {{"<C-w>o", "<cmd>ZenMode<cr>", desc = "Zen Mode"}}
   },
-
-  -- Rename
-  {
-    "smjonas/inc-rename.nvim",
-    config = function()
-      require("inc_rename").setup()
-    end,
-  },
-   -- Terminal
-  {'akinsho/toggleterm.nvim', version = "*", config = true},
-
-  -- View code structure
-  {'liuchengxu/vista.vim'}, -- Git
   {
     "tpope/vim-fugitive",
     cmd = {
