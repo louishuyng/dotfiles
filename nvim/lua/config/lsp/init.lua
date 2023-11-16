@@ -1,5 +1,3 @@
-require 'config/lsp/rename'
-
 -- Highlight line numbers for diagnostics
 vim.fn.sign_define('DiagnosticSignError',
                    {numhl = 'LspDiagnosticsLineNrError', text = ''})
