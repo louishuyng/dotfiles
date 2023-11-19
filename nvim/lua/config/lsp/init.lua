@@ -12,7 +12,8 @@ local ensure_installed = {
   "lua_ls", "rust_analyzer", "kotlin_language_server", "eslint", "tsserver",
   "bashls", "cssls", "denols", "pyright", "solargraph", "svelte", "terraformls",
   "rnix-lsp", "prettierd", "rubocop", "codespell", "cfn_lint", "yamlfmt",
-  "smithy-language-server", "yamlls", "ltex-ls", "ruby-lsp"
+  "smithy-language-server", "yamlls", "ltex-ls", "ruby-lsp", "ocaml-lsp",
+  "ocamlformat"
 }
 
 require("mason-null-ls").setup {ensure_installed = ensure_installed}
@@ -23,6 +24,7 @@ require "config/lsp/ltex"
 require "config/lsp/lua"
 require "config/lsp/nix"
 require "config/lsp/null_ls"
+require "config/lsp/ocaml"
 require "config/lsp/python"
 require "config/lsp/ruby"
 require "config/lsp/rust"
