@@ -1,11 +1,3 @@
--- Highlight line numbers for diagnostics
-vim.fn.sign_define('DiagnosticSignError',
-                   {numhl = 'LspDiagnosticsLineNrError', text = ''})
-vim.fn.sign_define('DiagnosticSignWarn',
-                   {numhl = 'LspDiagnosticsLineNrWarning', text = ''})
-vim.fn.sign_define('DiagnosticSignInfo', {text = ''})
-vim.fn.sign_define('DiagnosticSignHint', {text = ''})
-
 require("mason").setup()
 
 local ensure_installed = {
@@ -38,3 +30,17 @@ require "config/lsp/yamlls"
 -- require "config/lsp/css"
 -- require "config/lsp/sql"
 -- require('config/lsp/deno')
+
+-- Highlight line numbers for diagnostics
+local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+end
+
+vim.cmd([[
+   hi DiagnosticSignError guifg=#e06c75
+   hi DiagnosticSignWarn guifg=#e5c07b
+   hi DiagnosticSignInfo guifg=#61afef
+   hi DiagnosticSignHint guifg=#98c379
+]])
