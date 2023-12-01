@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
 
-CPU=$(top -l  2 | grep -E "^CPU" | tail -1 | awk '{ print $3 + $5 }')
-
-CPUICON=􀫥
-
 MAGENTA=#ff80ff
-sketchybar -m --set $NAME icon="| $CPUICON" label="$CPU%" label.color=0xff${MAGENTA:1} icon.color=0xff${MAGENTA:1}
+
+CORE_COUNT=$(sysctl -n machdep.cpu.thread_count)
+CPU_INFO=$(ps -eo pcpu,user)
+CPU_SYS=$(echo "$CPU_INFO" | grep -v $(whoami) | sed "s/[^ 0-9\.]//g" | awk "{sum+=\$1} END {print sum/(100.0 * $CORE_COUNT)}")
+CPU_USER=$(echo "$CPU_INFO" | grep $(whoami) | sed "s/[^ 0-9\.]//g" | awk "{sum+=\$1} END {print sum/(100.0 * $CORE_COUNT)}")
+
+sketchybar -m --set $NAME icon="C:" label=$(echo "$CPU_SYS $CPU_USER" | awk '{printf "%.0f\n", ($1 + $2)*100}')% label.color=0xff${MAGENTA:1} icon.color=0xff${MAGENTA:1}
