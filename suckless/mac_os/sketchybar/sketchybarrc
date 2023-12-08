@@ -6,25 +6,26 @@ PLUGIN_DIR="$HOME/.config/sketchybar/controller"
 ITEM_DIR="$HOME/.config/sketchybar/view"
 
 PADDING=4
+PADDING_LABEL=4
 LABEL="JetBrainsMono Nerd Font Mono"
 
 sketchybar --bar     height=24                                            \
                      blur_radius=0                                        \
                      padding_left=4                                       \
                      padding_right=4                                      \
-                     color=0xff000000                                   \
+                     color=0xff1e1e1e                                   \
                      position=top                                      \
                      sticky=on                                            \
                      font_smoothing=on                                    \
                                                                           \
            --default updates=when_shown                                   \
                      drawing=on                                           \
-                     icon.font="$LABEL:SemiBold:12"                      \
-                     label.font="$LABEL:SemiBold:12"                    \
+                     icon.font="$LABEL:Bold:12"                      \
+                     label.font="$LABEL:Bold:12"                    \
                      icon.padding_left=$PADDING                           \
                      icon.padding_right=2                          \
-                     label.padding_left=$PADDING                          \
-                     label.padding_right=$PADDING                         \
+                     label.padding_left=$PADDING_LABEL                          \
+                     label.padding_right=$PADDING_LABEL                         \
                      label.color=0xff${NORD4:1}                           \
                      icon.color=0xff${NORD4:1}                            \
 
@@ -33,23 +34,21 @@ sketchybar --bar     height=24                                            \
 source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/docker.sh"
 source "$ITEM_DIR/k8s.sh"
-source "$ITEM_DIR/spotify.sh"
+source "$ITEM_DIR/taskwarrior.sh"
 
 # right
 source "$ITEM_DIR/time.sh"
-source "$ITEM_DIR/cal.sh"
-source "$ITEM_DIR/keyboard.sh"
-source "$ITEM_DIR/mic.sh"
-source "$ITEM_DIR/wifi.sh"
-source "$ITEM_DIR/airpodsbattery.sh"
 source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/keyboard.sh"
+# source "$ITEM_DIR/airpodsbattery.sh"
 source "$ITEM_DIR/disk.sh"
 source "$ITEM_DIR/mem.sh"
 source "$ITEM_DIR/cpu.sh"
-source "$ITEM_DIR/taskwarrior.sh"
-source "$ITEM_DIR/mail.sh"
-source "$ITEM_DIR/github.sh"
-source "$ITEM_DIR/slack.sh"
+# source "$ITEM_DIR/mail.sh"
+# source "$ITEM_DIR/spotify.sh"
+# source "$ITEM_DIR/github.sh"
+# source "$ITEM_DIR/slack.sh"
 
 # initializing
 sketchybar --update

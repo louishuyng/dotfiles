@@ -20,25 +20,22 @@ local function t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local source_names = {
-  vsnip = "(Snippet)",
-  nvim_lsp = "(LSP)",
-  buffer = "(Buffer)",
-  path = "(Path)"
-}
-
 cmp.setup {
   snippet = {
     expand = function(args) require("luasnip").lsp_expand(args.body) end
   },
   formatting = {
+    fields = {"kind", "abbr", "menu"},
     format = function(entry, item)
-      item.menu = source_names[entry.source.name] or
-                      string.format("[%s]", entry.source.name)
-      item.kind = string.format("%s %s",
-                                require("config.libs.icons").kind[item.kind],
-                                item.kind)
+      item.menu = ({
+        nvim_lsp = item.kind,
+        luasnip = "Snippet",
+        buffer = "Buffer",
+        path = "Path"
+      })[entry.source.name]
+      local icons = require("config.libs.icons")
 
+      if icons.kinds[item.kind] then item.kind = icons.kinds[item.kind] end
       return item
     end
   },
@@ -74,7 +71,9 @@ cmp.setup {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'})
   },
-  sources = {{name = "nvim_lsp"}, {name = "luasnip"}, {name = "buffer"}}
+  sources = {
+    {name = "nvim_lsp"}, {name = "luasnip"}, {name = "buffer"}, {name = "calc"}
+  }
 }
 
 -- `/` cmdline setup.

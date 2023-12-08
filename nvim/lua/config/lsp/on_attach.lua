@@ -11,14 +11,6 @@ return function(client, bufnr)
   vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', bufopts)
   vim.keymap.set('n', ',rr', '<cmd>lua vim.lsp.buf.rename()<CR>', bufopts)
 
-  -- vim.keymap.set("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", bufopts)
-  -- vim.keymap.set("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", bufopts)
-
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
-                 {desc = "Go to previous diagnostic"})
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
-                 {desc = "Go to next diagnostic"})
-
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 

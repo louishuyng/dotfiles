@@ -2,10 +2,11 @@
 
 export COLOR_CYAN=0xff99cc99
 
-sketchybar --add item taskwarrior right \
+sketchybar --add item taskwarrior left \
            --set taskwarrior script="$PLUGIN_DIR/taskwarrior.sh"  \
                              update_freq=120                    \
-                             icon="􀈏"                          \
-                             icon.y_offset=1                          \
+                             icon="􀧵"                          \
+                             icon.font="$LABEL:Bold:14"                      \
                              icon.color=$COLOR_CYAN             \
                              label.color=$COLOR_CYAN            \
+

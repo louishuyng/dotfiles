@@ -46,3 +46,6 @@ alias reset='exec fish'
 
 # Zoxide
 alias zz="z -"
+
+# Firefox
+alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"

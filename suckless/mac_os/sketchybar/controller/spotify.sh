@@ -38,9 +38,9 @@ update_track() {
                 ARTIST="${ARTIST:0:$((MAX_LENGTH - TRACK_LENGTH - 1))}…"
             fi
         fi
-        sketchybar --set $NAME label="${TRACK}  ${ARTIST}" label.drawing=yes icon.color=0xffa6da95 icon= 
+        sketchybar --set $NAME label="${TRACK}  ${ARTIST} |" label.drawing=yes icon.color=0xffa6da95 icon= 
     else
-        sketchybar --set $NAME label="No Music" icon.color=0xffeed49f icon= 
+        sketchybar --set $NAME label="No Music |" icon.color=0xffeed49f icon= 
     fi
 }
 

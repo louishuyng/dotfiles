@@ -32,7 +32,8 @@ require "config/lsp/yamlls"
 -- require('config/lsp/deno')
 
 -- Highlight line numbers for diagnostics
-local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+local signs = {Error = " ", Warn = " ", Hint = "💡", Info = " "}
+
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
@@ -44,3 +45,11 @@ vim.cmd([[
    hi DiagnosticSignInfo guifg=#61afef
    hi DiagnosticSignHint guifg=#98c379
 ]])
+
+-- vim.keymap.set("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", bufopts)
+-- vim.keymap.set("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", bufopts)
+
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
+               {desc = "Go to previous diagnostic"})
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
+               {desc = "Go to next diagnostic"})

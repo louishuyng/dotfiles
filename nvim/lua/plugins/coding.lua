@@ -1,6 +1,5 @@
 return {
-  -- Completion
-  {'rafamadriz/friendly-snippets', event = "InsertEnter"},
+  -- CMP & Completion
   {
     'hrsh7th/nvim-cmp',
     dependencies = {"friendly-snippets"},
@@ -8,7 +7,9 @@ return {
   },
   {
     'L3MON4D3/LuaSnip',
-    dependencies = {"nvim-cmp", "friendly-snippets"},
+    enabled = true,
+    after = 'hrsh7th/nvim-cmp',
+   dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
       require'luasnip'.filetype_extend("ruby", {"rails"})
@@ -51,6 +52,7 @@ return {
 
       if not (present1 or present2) then return end
 
+
       autopairs.setup()
 
       local cmp = require "cmp"
@@ -71,5 +73,5 @@ return {
   {'tpope/vim-rails'},
 
   -- Testing
-  {'vim-test/vim-test'},
+  {'vim-test/vim-test', dependencies = {'preservim/vimux'}},
 }

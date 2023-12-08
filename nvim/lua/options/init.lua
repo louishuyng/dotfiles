@@ -56,9 +56,10 @@ opt.breakindent = true
 opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
 opt.linebreak = true
 
-opt.foldmethod = "marker"
-opt.foldlevel = 0
-opt.modelines = 1
+opt.foldmethod = 'indent'
+opt.foldnestmax = 5
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = -1
 
 opt.belloff = "all" -- Just turn the dang bell off
 

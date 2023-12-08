@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
 TIME=$(date '+%H:%M')
+CAL=$(date '+%d/%m')
 
-CLOCKICON=􀐫
+CLOCKICON=􀐱
 
-sketchybar --set $NAME icon=$CLOCKICON label="$TIME"
+sketchybar --set $NAME icon=$CLOCKICON label="$CAL $TIME"

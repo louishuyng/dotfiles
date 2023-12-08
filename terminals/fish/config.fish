@@ -15,5 +15,7 @@ if status is-interactive
   eval "$(pyenv init --path)"
 end
 
+set fish_greeting ""
+
 # opam configuration
 source /Users/louishuyng/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true

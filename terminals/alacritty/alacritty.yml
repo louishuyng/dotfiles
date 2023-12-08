@@ -7,6 +7,7 @@ faux_multiplier: 0
 window:
   startup_mode: Windowed
   decorations: buttonless
+  dynamic_padding: true
   dynamic_title: false
   option_as_alt: OnlyLeft
 scrolling:
@@ -16,13 +17,13 @@ mouse:
   hide_when_typing: true
 font:
   normal:
-    family: Hack Nerd Font
+    family: FiraCode Nerd Font
     style: Regular
   bold:
-    family: Hack Nerd Font
+    family: FiraCode Nerd Font
     style: Bold
   italic:
-    family: Hack Nerd Font
+    family: FiraCode Nerd Font
     style: Italic
   size: 12
   offset:
@@ -34,21 +35,21 @@ font:
 draw_bold_text_with_bright_colors: false
 colors:
   primary:
-    background: "0x1e1e1e"
-    foreground: "0x98c379"
+    background: "#191919"
+    foreground: "#98c379"
   cursor:
-    text: "0x5c6370"
-    cursor: "0xabb2bf"
+    text: "#5c6370"
+    cursor: "#abb2bf"
   # Normal colors
   normal:
-    black: "0x5c6370"
-    red: "0xe06c75"
-    green: "0x98c379"
-    yellow: "0xe5c07b"
-    blue: "0x61afef"
-    magenta: "0xc678dd"
-    cyan: "0x56b6c2"
-    white: "0xabb2bf"
+    black: "#363944"
+    red: "#cc6666"
+    green: "#99cc99"
+    yellow: "#f8fe7a"
+    blue: "#81a2be"
+    magenta: "#8e6fbd"
+    cyan: "#8abeb7"
+    white: "#f2e5bc"
 key_bindings:
   - {key: V, mods: Command, action: Paste}
   - {key: C, mods: Command, action: Copy}

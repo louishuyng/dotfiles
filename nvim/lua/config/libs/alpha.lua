@@ -85,5 +85,5 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd("User", {
   group = alpha_group,
   pattern = "AlphaClosed",
-  command = "set laststatus=3 | set showtabline=0"
+  command = "set laststatus=3 | set showtabline=1"
 })

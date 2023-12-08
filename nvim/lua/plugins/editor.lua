@@ -1,12 +1,19 @@
 return {
-  {'mg979/vim-visual-multi'},
-  {'tpope/vim-surround'}, {
+  {'mg979/vim-visual-multi'}, -- Multi Cursor
+  {'tpope/vim-surround'},
+  {
     "andymass/vim-matchup",
     init = function() vim.g.matchup_matchparen_offscreen = {method = "popup"} end
   },
-  {'preservim/vimux'},
   {'windwp/nvim-spectre'}, -- Replace Project wide
-  {'mbbill/undotree'},
+  {'mbbill/undotree'}, -- History Edited Current File Buffer
+  {
+    'folke/todo-comments.nvim',
+    dependencies = {"nvim-lua/plenary.nvim"},
+    opts = {}
+  },
+
+  -- Fast jump
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -17,6 +24,12 @@ return {
       }
     },
     keys = {
+      {
+        "s",
+        mode = {"n", "x", "o"},
+        function() require("flash").jump() end,
+        desc = "Flash"
+      },
       {
         "S",
         mode = {"n", "o", "x"},
@@ -46,7 +59,10 @@ return {
       }
     }
   },
-  {'michaelb/sniprun', build = 'sh install.sh'},
+
+  {'michaelb/sniprun', build = 'sh install.sh'}, -- Run code
+
+  -- Focus
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
@@ -59,13 +75,17 @@ return {
     },
     keys = {{"<C-w>o", "<cmd>ZenMode<cr>", desc = "Zen Mode"}}
   },
+
+  -- Git
   {
     "tpope/vim-fugitive",
     cmd = {
       "Git", "Gstatus", "Gcommit", "Gpush", "Gpull", "Gvdiff", "Gdiff",
       "Git blame", "Git mergetool"
     }
-  }, {'lewis6991/gitsigns.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
+  },
+
+  {'lewis6991/gitsigns.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
   {'akinsho/git-conflict.nvim'},
-  {'sindrets/diffview.nvim'}
+  {'sindrets/diffview.nvim'},
 }

@@ -426,6 +426,8 @@ install_cli_tools() {
 
     # Hack Tools
     brew install feroxbuster
+    brew install nmap
+    brew install metasploit
 
     success "Installed cli for tools"
 

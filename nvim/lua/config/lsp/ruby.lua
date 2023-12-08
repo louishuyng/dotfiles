@@ -8,20 +8,20 @@ local function setup_diagnostics(client, buffer)
 
   local diagnostic_handler = function()
     local params = vim.lsp.util.make_text_document_params(buffer)
-    client.request("textDocument/diagnostic", {textDocument = params},
-                   function(err, result)
-      if err then
-        local err_msg =
-            string.format("diagnostics error - %s", vim.inspect(err))
-        vim.lsp.log.error(err_msg)
-      end
-      local diagnostic_items = {}
-      if result then diagnostic_items = result.items end
-      vim.lsp.diagnostic.on_publish_diagnostics(nil, vim.tbl_extend("keep",
-                                                                    params, {
-        diagnostics = diagnostic_items
-      }), {client_id = client.id})
-    end)
+    client.request("textDocument/diagnostic", { textDocument = params },
+      function(err, result)
+        if err then
+          local err_msg =
+              string.format("diagnostics error - %s", vim.inspect(err))
+          vim.lsp.log.error(err_msg)
+        end
+        local diagnostic_items = {}
+        if result then diagnostic_items = result.items end
+        vim.lsp.diagnostic.on_publish_diagnostics(nil, vim.tbl_extend("keep",
+          params, {
+            diagnostics = diagnostic_items
+          }), { client_id = client.id })
+      end)
   end
 
   diagnostic_handler() -- to request diagnostics on buffer when first attaching
@@ -37,14 +37,14 @@ local function setup_diagnostics(client, buffer)
   })
 end
 
-lsp_config.ruby_ls.setup({
-  on_attach = function(client, buffer) setup_diagnostics(client, buffer) end
-})
+-- lsp_config.ruby_ls.setup({
+--   on_attach = function(client, buffer) setup_diagnostics(client, buffer) end
+-- })
 
 lsp_config.solargraph.setup({
   on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = true
     on_attach(client, bufnr)
   end,
-  settings = {solargraph = {diagnostics = true}}
+  settings = { solargraph = { diagnostics = true } }
 })

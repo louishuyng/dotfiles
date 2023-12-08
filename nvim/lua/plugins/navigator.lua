@@ -12,11 +12,6 @@ return {
   {'nvim-tree/nvim-tree.lua', tag = 'nightly'},
   {'stevearc/oil.nvim'},
   {
-    'folke/todo-comments.nvim',
-    dependencies = {"nvim-lua/plenary.nvim"},
-    opts = {}
-  },
-  {
     'folke/flash.nvim',
     event = "VeryLazy",
     ---@type Flash.Config

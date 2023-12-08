@@ -1,8 +1,9 @@
 # terminal - like Linux
 alt - a : open /Applications/Postman.app
-alt - b : open /Applications/Arc.app
+alt - b : open /Applications/Firefox.app
 alt - c : open /Applications/Discord.app
 alt - d : open /Applications/DataGrip.app
+alt - f : open /Applications/Messenger.app
 alt - i : open /Applications/Burp\ Suite\ Community\ Edition.app
 alt - m : open -a Mail.app
 alt - n : open /Applications/Notion.app
@@ -10,7 +11,6 @@ alt - o : open /Applications/Obsidian.app
 alt - s : open /Applications/Slack.app
 alt - t : open /Applications/Alacritty.app
 alt - v : open /Applications/Visual\ Studio\ Code.app
-alt - w : open /Applications/wpsoffice.app
 
 shift + alt - space : yabai -m window --toggle float
 
