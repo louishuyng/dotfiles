@@ -1,28 +1,34 @@
 require("nvim-tree").setup({
-  update_focused_file = {
-    enable = true,
-    update_cwd = false,
-    ignore_list = {".git", "node_modules", ".cache"}
-  },
-  system_open = {cmd = nil, args = {}},
-  filters = {dotfiles = false, custom = {}},
+  update_focused_file = {enable = true, update_cwd = false},
   git = {enable = true},
-  diagnostics = {enable = false},
-  notify = {threshold = vim.log.levels.ERROR},
   renderer = {
-    root_folder_label = function(path) return vim.fn.fnamemodify(path, ":t") end,
+    root_folder_modifier = ":t",
     icons = {
+      git_placement = "after",
       show = {
         file = true,
         folder = false,
         folder_arrow = true,
-        git = false,
+        git = true,
         modified = true
+      },
+      glyphs = {
+        git = {
+          unstaged = "",
+          staged = "",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "+",
+          deleted = "",
+          ignored = "◌"
+        }
       }
     }
   },
+  diagnostics = {enable = false},
   view = {
     side = 'right',
+    width = 30,
     adaptive_size = true,
     mappings = {
       list = {
