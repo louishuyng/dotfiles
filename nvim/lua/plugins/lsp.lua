@@ -27,7 +27,9 @@ return {
             split = 'i',
             toggle_or_open = '<CR>',
             close = 'q'
-         }
+         },
+         layout = "normal",
+         max_height = 0.3
         }
       })
     end,

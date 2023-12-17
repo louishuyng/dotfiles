@@ -5,10 +5,6 @@ if not present then return end
 
 vim.opt.completeopt = "menuone,noselect"
 
-local winhighlight = {
-  winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel"
-}
-
 local has_words_before = function()
   ---@diagnostic disable-next-line: deprecated
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -22,6 +18,7 @@ local function t(str)
 end
 
 cmp.setup {
+  window = {completion = {winhighlight = "Normal:CmpNormal"}},
   snippet = {
     expand = function(args) require("luasnip").lsp_expand(args.body) end
   },

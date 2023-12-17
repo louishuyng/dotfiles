@@ -44,3 +44,8 @@ require("nvim-tree").setup({
     }
   }
 })
+
+vim.cmd([[
+ hi NvimTreeGitStaged guifg=#99cc99 guibg=NONE
+ hi NvimTreeGitDirty guifg=#cc6666 guibg=NONE
+]])

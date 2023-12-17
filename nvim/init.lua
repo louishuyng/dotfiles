@@ -4,7 +4,7 @@ require "options"
 -- Plugin Configuration
 require 'config'
 
--- Theme & Highlight
+-- UI Support
 require 'ui'
 
 -- Key Bindings

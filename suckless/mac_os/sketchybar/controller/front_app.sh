@@ -6,4 +6,4 @@
 
 # sketchybar --set $NAME label="$INFO " icon="$icon_result"
 
-sketchybar --set $NAME label="$INFO |"
+sketchybar --set $NAME label="$INFO"

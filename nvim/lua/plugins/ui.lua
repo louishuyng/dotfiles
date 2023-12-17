@@ -1,6 +1,4 @@
 return {
-  {'tjdevries/colorbuddy.nvim'},
-  {'tjdevries/gruvbuddy.nvim'},
   {'goolord/alpha-nvim'},
   {
     "nvim-lualine/lualine.nvim",
