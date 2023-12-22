@@ -66,3 +66,7 @@ vim.keymap.set("n", ";s", function()
   local builtin = require("telescope.builtin")
   builtin.treesitter()
 end)
+
+-- Harpoon
+vim.keymap.set("n", "<leader>mf",
+               ":Telescope harpoon marks previewer=false<CR>", opt)

@@ -8,7 +8,10 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
     }
   },
-  {'ThePrimeagen/harpoon'},
+  {
+    'ThePrimeagen/harpoon',
+    branch = "harpoon2",
+  },
   {'nvim-tree/nvim-tree.lua', tag = 'nightly'},
   {'stevearc/oil.nvim'},
   {
