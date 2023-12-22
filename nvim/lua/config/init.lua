@@ -3,7 +3,6 @@ require 'config.lazy'
 require "config.libs.alpha"
 require "config.libs.comment"
 require "config.libs.copilot"
-require "config.libs.git_conflict"
 require "config.libs.harpoon"
 require "config.libs.notify"
 require "config.libs.oil"
