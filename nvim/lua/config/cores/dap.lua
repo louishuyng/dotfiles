@@ -19,31 +19,19 @@ dap.listeners.before.event_terminated["dapui_config"] =
     function() dapui.close() end
 dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 
-for _, language in ipairs {"typescript", "javascript"} do
-  require("dap").configurations[language] = {
-    {
-      type = "pwa-node",
-      request = "launch",
-      name = "Launch file",
-      program = "${file}",
-      cwd = "${workspaceFolder}"
-    }, {
-      type = "pwa-node",
-      request = "attach",
-      name = "Attach",
-      processId = require("dap.utils").pick_process,
-      cwd = "${workspaceFolder}"
-    }, {
-      type = "pwa-node",
-      request = "launch",
-      name = "Debug Jest Tests",
-      -- trace = true, -- include debugger info
-      runtimeExecutable = "node",
-      runtimeArgs = {"./node_modules/jest/bin/jest.js", "--runInBand"},
-      rootPath = "${workspaceFolder}",
-      cwd = "${workspaceFolder}",
-      console = "integratedTerminal",
-      internalConsoleOptions = "neverOpen"
-    }
+-- Golang
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go
+dap.adapters.go = {
+  type = 'executable',
+  command = 'node',
+  args = {os.getenv('HOME') .. '/development/vscode-go/dist/debugAdapter.js'}
+}
+dap.configurations.go = {
+  {
+    type = 'go',
+    name = 'Debug',
+    request = 'launch',
+    program = '${workspaceFolder}',
+    dlvToolPath = os.getenv('HOME') .. '/development/golib/bin/dlv'
   }
-end
+}
