@@ -1,3 +1,2 @@
-require "ui/colorscheme"
-require "ui/icons"
-require "ui/lsp"
+require "ui/dashboard"
+require "ui/statusline"

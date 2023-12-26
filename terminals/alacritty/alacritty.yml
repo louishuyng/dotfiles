@@ -7,8 +7,9 @@ faux_multiplier: 0
 window:
   startup_mode: Windowed
   decorations: buttonless
-  dynamic_padding: true
   dynamic_title: false
+  padding:
+    x: 3
   option_as_alt: OnlyLeft
 scrolling:
   history: 10000
@@ -36,20 +37,17 @@ draw_bold_text_with_bright_colors: false
 colors:
   primary:
     background: "#191919"
-    foreground: "#E4E4E4"
-  cursor:
-    text: "#5c6370"
-    cursor: "#abb2bf"
+    foreground: "#e1e4e8"
   # Normal colors
   normal:
     black: "#363944"
-    red: "#cc6666"
-    green: "#99cc99"
-    yellow: "#f8fe7a"
-    blue: "#81a2be"
-    magenta: "#8e6fbd"
-    cyan: "#8abeb7"
-    white: "#f2e5bc"
+    red: "#f97583"
+    green: "#85e89d"
+    yellow: "#d29922"
+    blue: "#79b8ff"
+    magenta: "#b392f0"
+    cyan: "#76e3ea"
+    white: "#f4f4f4"
 key_bindings:
   - {key: V, mods: Command, action: Paste}
   - {key: C, mods: Command, action: Copy}

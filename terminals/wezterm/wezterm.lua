@@ -1,32 +1,31 @@
 -- WezTerm
 -- https://wezfurlong.org/wezterm/
 local wezterm = require 'wezterm'
+local theme = require("theme")
+local fonts = require("fonts")
 
-return {
-  window_close_confirmation = "NeverPrompt",
-  -- Smart tab bar [distraction-free mode]
-  hide_tab_bar_if_only_one_tab = true,
-  color_scheme = 'Edge Dark (base16)',
-  colors = {
-    background = "#282c34",
-    foreground = "#98c379",
-    cursor_bg = "#48e566"
-  },
+local config = {
+  enable_wayland = false,
+  pane_focus_follows_mouse = false,
+  warn_about_missing_glyphs = false,
+  show_update_window = false,
+  check_for_updates = false,
   window_decorations = "NONE | RESIZE",
+  window_close_confirmation = "NeverPrompt",
   window_padding = {left = 0, right = 0, top = 0, bottom = 0},
-  -- Font configuration
-  -- https://wezfurlong.org/wezterm/config/fonts.html
-  font_rules = {
-    {
-      font = wezterm.font_with_fallback {
-        {family = 'nonicons'}, {family = 'JetBrainsMono Nerd Font Mono'}
-      }
-    }
-  },
-  font_size = 12.0,
+
+  hide_tab_bar_if_only_one_tab = true,
+  enable_scroll_bar = false,
+  window_background_opacity = 1.0,
+
   -- Cursor style
   default_cursor_style = 'BlinkingBar',
-  -- Enable CSI u mode
-  -- https://wezfurlong.org/wezterm/config/lua/config/enable_csi_u_key_encoding.html
-  enable_csi_u_key_encoding = true
+
+  -- Adapter
+  front_end = 'WebGpu'
 }
+
+fonts.setup(config)
+theme.setup(config)
+
+return config

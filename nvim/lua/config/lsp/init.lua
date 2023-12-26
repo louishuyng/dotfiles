@@ -53,3 +53,8 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
                {desc = "Go to previous diagnostic"})
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
                {desc = "Go to next diagnostic"})
+
+vim.lsp.handlers['textDocument/hover'] =
+    vim.lsp.with(vim.lsp.handlers.hover, {border = "single"})
+vim.lsp.handlers['textDocument/signatureHelp'] =
+    vim.lsp.with(vim.lsp.handlers.signatureHelp, {border = "single"})
