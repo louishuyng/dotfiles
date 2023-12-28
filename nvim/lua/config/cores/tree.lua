@@ -7,7 +7,7 @@ require("nvim-tree").setup({
       git_placement = "after",
       show = {
         file = true,
-        folder = false,
+        folder = true,
         folder_arrow = true,
         git = true,
         modified = true

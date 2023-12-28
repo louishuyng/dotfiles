@@ -18,7 +18,16 @@ local function t(str)
 end
 
 cmp.setup {
-  window = {completion = {winhighlight = "Normal:CmpNormal"}},
+  window = {
+    documentation = {
+      border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
+      winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None'
+    },
+    completion = {
+      border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
+      winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None'
+    }
+  },
   snippet = {
     expand = function(args) require("luasnip").lsp_expand(args.body) end
   },

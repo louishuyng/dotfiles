@@ -5,9 +5,8 @@ return {
       vim.cmd("colorscheme fleet")
 
       vim.cmd([[
-        hi Normal guibg=#000000
-        hi NormalNC guibg=#000000
-        hi SignColumn guibg=#000000
+        hi NvimTreeNormal guibg=#0E1117
+        hi NvimTreeNormalNC guibg=#0E1117
       ]])
     end
   }
