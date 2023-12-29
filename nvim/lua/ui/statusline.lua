@@ -28,7 +28,7 @@ local colors = {
   surface0 = "#292929",
   base = "#1d2021",
   mantle = "#212121",
-  crust = "#0D0D0D"
+  crust = "#1e1e1e"
 }
 
 conditions.buffer_not_empty = function()

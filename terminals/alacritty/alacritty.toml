@@ -12,7 +12,7 @@ white = "#f4f4f4"
 yellow = "#d29922"
 
 [colors.primary]
-background = "#191919"
+background = "#0F0F0F"
 foreground = "#e1e4e8"
 
 [env]
@@ -66,6 +66,4 @@ decorations = "buttonless"
 dynamic_title = false
 option_as_alt = "OnlyLeft"
 startup_mode = "Windowed"
-
-[window.padding]
-x = 3
+dynamic_padding = false

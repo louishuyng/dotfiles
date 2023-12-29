@@ -80,4 +80,12 @@ return {
   {'tpope/vim-fugitive'},
   {'lewis6991/gitsigns.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
   {'sindrets/diffview.nvim'},
+
+  -- Markdown
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  }
 }

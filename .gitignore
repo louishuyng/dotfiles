@@ -52,3 +52,5 @@ suckless/mailspring
 devops/vault-config/env.json
 devops/vault-config/vault-seed-file-version
 devops/vault-config/vault-seed.zip
+
+lawbite_irbrc.rb

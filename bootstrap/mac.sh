@@ -383,6 +383,8 @@ link_all_dotfiles() {
 
   ln -s ~/.dotfiles/.ideavimrc ~/
   success "Linked ideavimrc"
+
+  ln -s ~/.dotfiles/.irbrc ~/.irbrc
 }
 
 install_cli_tools() {
