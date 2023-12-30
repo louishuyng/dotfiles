@@ -2,18 +2,22 @@
 draw_bold_text_with_bright_colors = false
 
 [colors.normal]
-black = "#363944"
-blue = "#79b8ff"
-cyan = "#76e3ea"
-green = "#85e89d"
-magenta = "#b392f0"
-red = "#f97583"
-white = "#f4f4f4"
-yellow = "#d29922"
+black = "#5c6370"
+blue = "#61afef"
+cyan = "#56b6c2"
+green = "#98c379"
+magenta = "#c678dd"
+red = "#e06c75"
+white = "#abb2bf"
+yellow = "#e5c07b"
 
 [colors.primary]
 background = "#0F0F0F"
-foreground = "#e1e4e8"
+foreground = "#98c379"
+
+[colors.cursor]
+text = "#5c6370"
+cursor = "#abb2bf"
 
 [env]
 TERM = "xterm-256color"

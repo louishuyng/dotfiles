@@ -6,3 +6,5 @@ windows:
       - cd ~/.dotfiles && nvim
   - awesome-tech:
       - cd ~/Dev/awesome-tech
+  - bro-be:
+      - cd ~/Dev/SideProjects/BroStartupDev/backend-dev

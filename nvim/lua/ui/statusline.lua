@@ -28,7 +28,7 @@ local colors = {
   surface0 = "#292929",
   base = "#1d2021",
   mantle = "#212121",
-  crust = "#1e1e1e"
+  crust = "#1c1c1c"
 }
 
 conditions.buffer_not_empty = function()
@@ -39,8 +39,8 @@ conditions.hide_in_width = function(size)
   return vim.api.nvim_get_option("columns") > (size or 140)
 end
 
-local Align = {provider = "%=", hl = {bg = colors.crust}}
-local Space = {provider = " "}
+local Align = { provider = "%=", hl = { bg = colors.crust } }
+local Space = { provider = " " }
 
 local ViMode = {
   {
@@ -136,16 +136,16 @@ local ViMode = {
     end,
     hl = function(self)
       local mode = self.mode:sub(1, 1)
-      return {fg = self.MODE_COLORS[mode], bg = colors.mantle, bold = true}
+      return { fg = self.MODE_COLORS[mode], bg = colors.mantle, bold = true }
     end,
-    update = {"ModeChanged"}
-  }, {provider = "", hl = {bg = colors.crust, fg = colors.mantle}}
+    update = { "ModeChanged" }
+  }, { provider = "", hl = { bg = colors.crust, fg = colors.mantle } }
 }
 
 local FileNameBlock = {
   init = function(self) self.filename = vim.api.nvim_buf_get_name(0) end,
   condition = conditions.buffer_not_empty,
-  hl = {bg = colors.crust, fg = colors.subtext1}
+  hl = { bg = colors.crust, fg = colors.subtext1 }
 }
 
 local FileIcon = {
@@ -153,11 +153,11 @@ local FileIcon = {
     local filename = self.filename
     local extension = vim.fn.fnamemodify(filename, ":e")
     self.icon, self.icon_color = require("nvim-web-devicons").get_icon_color(
-                                     vim.fn.fnamemodify(filename, ":t"),
-                                     extension, {default = true})
+      vim.fn.fnamemodify(filename, ":t"),
+      extension, { default = true })
   end,
   provider = function(self) return self.icon and (" %s "):format(self.icon) end,
-  hl = function(self) return {fg = self.icon_color} end
+  hl = function(self) return { fg = self.icon_color } end
 }
 
 local FileName = {
@@ -169,36 +169,36 @@ local FileName = {
     end
     return filename
   end,
-  hl = {fg = colors.subtext1, bold = true}
+  hl = { fg = colors.subtext1, bold = true }
 }
 
 local FileFlags = {
   {
     condition = function() return vim.bo.modified end,
     provider = " ● ",
-    hl = {fg = colors.lavender}
+    hl = { fg = colors.lavender }
   }, {
-    condition = function() return not vim.bo.modifiable or vim.bo.readonly end,
-    provider = "",
-    hl = {fg = colors.red}
-  }
+  condition = function() return not vim.bo.modifiable or vim.bo.readonly end,
+  provider = "",
+  hl = { fg = colors.red }
+}
 }
 
 local FileNameModifer = {
   hl = function()
     if vim.bo.modified then
-      return {fg = colors.text, bold = true, force = true}
+      return { fg = colors.text, bold = true, force = true }
     end
   end
 }
 
 FileNameBlock = utils.insert(FileNameBlock, FileIcon,
-                             utils.insert(FileNameModifer, FileName),
-                             unpack(FileFlags), {provider = "%< "})
+  utils.insert(FileNameModifer, FileName),
+  unpack(FileFlags), { provider = "%< " })
 
 local FileType = {
   provider = function() return (" %s "):format(vim.bo.filetype:upper()) end,
-  hl = {bg = colors.crust, fg = colors.surface2},
+  hl = { bg = colors.crust, fg = colors.surface2 },
   condition = function()
     return conditions.buffer_not_empty() and conditions.hide_in_width()
   end
@@ -206,7 +206,7 @@ local FileType = {
 
 local FileSize = {
   provider = function()
-    local suffix = {"b", "k", "M", "G", "T", "P", "E"}
+    local suffix = { "b", "k", "M", "G", "T", "P", "E" }
     local fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
     fsize = (fsize < 0 and 0) or fsize
     if fsize < 1024 then return " " .. fsize .. suffix[1] .. " " end
@@ -216,7 +216,7 @@ local FileSize = {
   condition = function()
     return conditions.buffer_not_empty() and conditions.hide_in_width()
   end,
-  hl = {bg = colors.crust, fg = colors.surface2}
+  hl = { bg = colors.crust, fg = colors.surface2 }
 }
 
 local Ruler = {
@@ -224,14 +224,14 @@ local Ruler = {
   condition = function()
     return conditions.buffer_not_empty() and conditions.hide_in_width()
   end,
-  hl = {bg = colors.crust, fg = colors.surface2}
+  hl = { bg = colors.crust, fg = colors.surface2 }
 }
 
 local LSPActive = {
   condition = function()
     return conditions.hide_in_width(120) and conditions.lsp_attached()
   end,
-  update = {"LspAttach", "LspDetach"},
+  update = { "LspAttach", "LspDetach" },
   on_click = {
     callback = function()
       vim.defer_fn(function() vim.cmd("LspInfo") end, 100)
@@ -247,15 +247,15 @@ local LSPActive = {
     if #names == 0 then return "" end
 
     return (vim.g.emoji and " 🛰 %s " or "  %s "):format((table.concat(
-                                                                  names, " ")))
+      names, " ")))
   end,
-  hl = {bg = colors.crust, fg = colors.subtext1, bold = true, italic = false}
+  hl = { bg = colors.crust, fg = colors.subtext1, bold = true, italic = false }
 }
 
 local Diagnostics = {
   condition = function()
     return conditions.buffer_not_empty() and conditions.hide_in_width() and
-               conditions.has_diagnostics()
+        conditions.has_diagnostics()
   end,
   static = {
     error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
@@ -271,37 +271,37 @@ local Diagnostics = {
       severity = vim.diagnostic.severity.WARN
     })
     self.hints = #vim.diagnostic.get(0,
-                                     {severity = vim.diagnostic.severity.HINT})
+      { severity = vim.diagnostic.severity.HINT })
     self.info = #vim.diagnostic
-                    .get(0, {severity = vim.diagnostic.severity.INFO})
+        .get(0, { severity = vim.diagnostic.severity.INFO })
   end,
-  update = {"DiagnosticChanged", "BufEnter"},
-  hl = {bg = colors.crust},
+  update = { "DiagnosticChanged", "BufEnter" },
+  hl = { bg = colors.crust },
   Space,
   {
     provider = function(self)
       return self.errors > 0 and ("%s%s "):format(self.error_icon, self.errors)
     end,
-    hl = {fg = colors.red}
+    hl = { fg = colors.red }
   },
   {
     provider = function(self)
       return self.warnings > 0 and
-                 ("%s%s "):format(self.warn_icon, self.warnings)
+          ("%s%s "):format(self.warn_icon, self.warnings)
     end,
-    hl = {fg = colors.yellow}
+    hl = { fg = colors.yellow }
   },
   {
     provider = function(self)
       return self.info > 0 and ("%s%s "):format(self.info_icon, self.info)
     end,
-    hl = {fg = colors.sapphire}
+    hl = { fg = colors.sapphire }
   },
   {
     provider = function(self)
       return self.hints > 0 and ("%s%s "):format(self.hint_icon, self.hints)
     end,
-    hl = {fg = colors.sky}
+    hl = { fg = colors.sky }
   },
   Space
 }
@@ -312,23 +312,23 @@ local Git = {
     self.status_dict = vim.b.gitsigns_status_dict
     self.has_changes =
         self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or
-            self.status_dict.changed ~= 0
+        self.status_dict.changed ~= 0
   end,
-  hl = {bg = colors.mantle},
-  {provider = "", hl = {bg = colors.crust, fg = colors.mantle}},
+  hl = { bg = colors.mantle },
+  { provider = "", hl = { bg = colors.crust, fg = colors.mantle } },
   {
     provider = function(self)
       return ("  %s"):format(self.status_dict.head == "" and "~" or
-                                    self.status_dict.head)
+        self.status_dict.head)
     end,
-    hl = {fg = colors.mauve}
+    hl = { fg = colors.mauve }
   },
   {
     provider = function(self)
       local count = self.status_dict.added or 0
       return count > 0 and ("  %s"):format(count)
     end,
-    hl = {fg = colors.green},
+    hl = { fg = colors.green },
     condition = function()
       return conditions.buffer_not_empty() and conditions.hide_in_width()
     end
@@ -338,7 +338,7 @@ local Git = {
       local count = self.status_dict.removed or 0
       return count > 0 and ("  %s"):format(count)
     end,
-    hl = {fg = colors.red},
+    hl = { fg = colors.red },
     condition = function()
       return conditions.buffer_not_empty() and conditions.hide_in_width()
     end
@@ -348,7 +348,7 @@ local Git = {
       local count = self.status_dict.changed or 0
       return count > 0 and ("  %s"):format(count)
     end,
-    hl = {fg = colors.peach},
+    hl = { fg = colors.peach },
     condition = function()
       return conditions.buffer_not_empty() and conditions.hide_in_width()
     end
@@ -367,7 +367,7 @@ local FileFormat = {
       return " CRLF "
     end
   end,
-  hl = {bg = colors.crust, fg = colors.surface2},
+  hl = { bg = colors.crust, fg = colors.surface2 },
   condition = function()
     return conditions.buffer_not_empty() and conditions.hide_in_width()
   end
@@ -381,7 +381,7 @@ local FileEncoding = {
   condition = function()
     return conditions.buffer_not_empty() and conditions.hide_in_width()
   end,
-  hl = {bg = colors.crust, fg = colors.surface2}
+  hl = { bg = colors.crust, fg = colors.surface2 }
 }
 
 local IndentSizes = {
@@ -391,7 +391,7 @@ local IndentSizes = {
     local indent_size = vim.api.nvim_buf_get_option(0, "tabstop")
     return (" %s: %s "):format(indent_type, indent_size)
   end,
-  hl = {bg = colors.crust, fg = colors.surface2},
+  hl = { bg = colors.crust, fg = colors.surface2 },
   condition = function()
     return conditions.buffer_not_empty() and conditions.hide_in_width()
   end
