@@ -87,5 +87,13 @@ return {
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  -- Refactoring
+  {
+    'ThePrimeagen/refactoring.nvim',
+    config = function()
+      require('refactoring').setup()
+    end
   }
 }

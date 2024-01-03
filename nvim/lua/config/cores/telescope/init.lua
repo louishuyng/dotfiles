@@ -18,14 +18,14 @@ telescope.setup {
       diagnostics = {
         theme = "ivy",
         initial_mode = "normal",
-        layout_config = {preview_cutoff = 9999}
+        layout_config = { preview_cutoff = 9999 }
       }
     },
     border = {},
     borderchars = {
-      prompt = {" ", " ", "─", " ", " ", " ", "─", "─"},
-      results = {"─", " ", " ", " ", "─", "─", " ", " "},
-      preview = {"─", " ", "─", "│", "┬", "─", "─", "╰"}
+      prompt = { " ", " ", "─", " ", " ", " ", "─", "─" },
+      results = { "─", " ", " ", " ", "─", "─", " ", " " },
+      preview = { "─", " ", "─", "│", "┬", "─", "─", "╰" }
     },
     layout_strategy = 'bottom_pane',
     layout_config = {
@@ -59,5 +59,6 @@ telescope.load_extension('notify')
 telescope.load_extension('harpoon')
 telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
+telescope.load_extension("refactoring")
 
 require "config.cores.telescope.custom.tmux_session"
