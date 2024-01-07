@@ -11,6 +11,7 @@ alt - o : open /Applications/Obsidian.app
 alt - s : open /Applications/Slack.app
 alt - t : open /Applications/Alacritty.app
 alt - v : open /Applications/Visual\ Studio\ Code.app
+alt - k : open /Applications/VMware\ Fusion.app
 
 shift + alt - space : yabai -m window --toggle float
 

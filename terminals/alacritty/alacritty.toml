@@ -70,4 +70,4 @@ decorations = "buttonless"
 dynamic_title = false
 option_as_alt = "OnlyLeft"
 startup_mode = "Windowed"
-dynamic_padding = false
+dynamic_padding = true
