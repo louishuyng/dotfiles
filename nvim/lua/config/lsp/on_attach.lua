@@ -14,6 +14,11 @@ return function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- If file is dot files, disable formatting
+  if vim.fn.expand('%:t') ~= '^%.%w+$' then
+    return
+  end
+
   if client.server_capabilities.document_formatting then
     vim.api.nvim_create_autocmd("BufWritePre", {
       command = "lua vim.lsp.buf.format({ timeout_ms = 5000 })",
