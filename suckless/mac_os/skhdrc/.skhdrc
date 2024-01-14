@@ -8,7 +8,6 @@ alt - n : open /Applications/Notion.app
 alt - o : open /Applications/Obsidian.app
 alt - s : open /Applications/Slack.app
 alt - t : open /Applications/Alacritty.app
-alt - k : open /Applications/VMware\ Fusion.app
 
 shift + alt - space : yabai -m window --toggle float
 
