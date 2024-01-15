@@ -1,16 +1,20 @@
 # terminal - like Linux
-alt - a : open /Applications/Postman.app
-alt - b : open /Applications/Firefox.app
-alt - c : open /Applications/Discord.app
-alt - d : open /Applications/DataGrip.app
-alt - f : open /Applications/Messenger.app
-alt - n : open /Applications/Notion.app
-alt - o : open /Applications/Obsidian.app
-alt - s : open /Applications/Slack.app
-alt - t : open /Applications/Alacritty.app
+alt + shift - a : open /Applications/Postman.app
+alt + shift - b : open /Applications/Firefox.app
+alt + shift - c : open /Applications/Discord.app
+alt + shift - d : open /Applications/DataGrip.app
+alt + shift - f : open /Applications/Messenger.app
+alt + shift - i : open /Applications/Burp\ Suite\ Community\ Edition.app
+alt + shift - m : open -a Mail.app
+alt + shift - n : open /Applications/Notion.app
+alt + shift - o : open /Applications/Obsidian.app
+alt + shift - s : open /Applications/Slack.app
+alt + shift - t : open /Applications/Alacritty.app
+alt + shift - v : open /Applications/Visual\ Studio\ Code.app
+alt + shift - k : open /Applications/VMware\ Fusion.app
+
+alt + shift - tab : yabai -m window --focus stack.recent
 
 shift + alt - space : yabai -m window --toggle float
-
-alt - tab : yabai -m window --focus stack.recent
 
 ctrl + alt + shift - y : yabai --restart-service; osascript -e 'display notification "Restarted Yabai"'
