@@ -82,6 +82,7 @@ setup_git() {
     git config --global alias.ci commit
     git config --global alias.st status
 
+    mkdir -p ~/.git/safe
     success "Setup Git Successfully"
   fi
 }
