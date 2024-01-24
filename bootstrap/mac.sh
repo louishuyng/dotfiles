@@ -441,6 +441,12 @@ install_cli_tools() {
 
     brew services start svim
 
+    # NOTE Taking
+    curl -Ls https://raw.githubusercontent.com/pimterry/notes/latest-release/install.sh | sudo bash
+    mkdir -p ~/notes
+    mkdir -p ~/notes/.templates
+    cp ~/.dotfiles/templates/* ~/notes/.templates/
+
     success "Installed vim mode for macos input"
   fi
 }
