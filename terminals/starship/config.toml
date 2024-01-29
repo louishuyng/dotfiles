@@ -32,13 +32,18 @@ $solidity\
 $swift\
 $terraform\
 $zig\
-$aws\
-$gcloud\
 $azure\
 $sudo\
-$cmd_duration $jobs $time\
+$cmd_duration $jobs\
 $line_break\
 $character"""
+
+[username]
+style_user = 'red bold'
+style_root = 'red bold'
+format = '[](fg:#A888F7) [$user]($style) [](fg:#F4B23E) '
+disabled = false
+show_always = true
 
 [nodejs]
 format = "[$symbol($version )]($style)"
@@ -47,10 +52,10 @@ format = "[$symbol($version )]($style)"
 symbol = " "
 
 [directory]
-style = "blue"
+style = "blue bold"
+format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " "
-truncation_length = 4
-truncate_to_repo = false
+truncate_to_repo = true
 
 [character]
 success_symbol = "[❯](purple)"
@@ -58,7 +63,8 @@ error_symbol = "[❯](red)"
 vicmd_symbol = "[❮](green)"
 
 [git_branch]
-symbol = " "
+symbol = "󰊢 "
+style="white"
 format = "[$symbol$branch]($style) "
 
 [jobs]

@@ -506,6 +506,9 @@ default_setting_macos() {
   mkdir -p ~/Screen\ Shots
   defaults write com.apple.screencapture location ~/Screen\ Shots
 
+  # Change hostname
+  sudo scutil --set HostName Hack
+
   echo "- Restarting SystemUIServer"
   killall SystemUIServer
 }

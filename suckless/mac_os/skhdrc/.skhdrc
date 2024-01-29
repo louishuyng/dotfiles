@@ -13,6 +13,7 @@ alt + shift - t : open /Applications/Alacritty.app
 alt + shift - v : open /Applications/Visual\ Studio\ Code.app
 alt + shift - k : open /Applications/VMware\ Fusion.app
 
+alt - tab : yabai -m window --focus stack.recent
 alt + shift - tab : yabai -m window --focus stack.recent
 
 shift + alt - space : yabai -m window --toggle float
