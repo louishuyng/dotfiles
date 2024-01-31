@@ -6,7 +6,7 @@ local ensure_installed = {
   "solargraph", "svelte", "terraformls", "rnix-lsp", "prettierd", "rubocop",
   "codespell", "cfn_lint", "yamlfmt", "smithy-language-server", "yamlls",
   "ltex-ls", "ruby-lsp", "ocaml-lsp", "ocamlformat", "gopls",
-  "golangci-lint-langserver", "golangci-lint", "yaml-language-server"
+  "golangci-lint-langserver", "golangci-lint", "yaml-language-server", "eslint"
 }
 
 require("mason-null-ls").setup {ensure_installed = ensure_installed}

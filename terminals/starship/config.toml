@@ -41,7 +41,7 @@ $character"""
 [username]
 style_user = 'red bold'
 style_root = 'red bold'
-format = '[](fg:#A888F7) [$user]($style) [](fg:#F4B23E) '
+format = '[](fg:#A888F7) [$user]($style) [](fg:#8FFC76) '
 disabled = false
 show_always = true
 
@@ -63,7 +63,7 @@ error_symbol = "[❯](red)"
 vicmd_symbol = "[❮](green)"
 
 [git_branch]
-symbol = "󰊢 "
+symbol = "󰮠 "
 style="white"
 format = "[$symbol$branch]($style) "
 
