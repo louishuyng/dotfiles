@@ -1,71 +1,30 @@
 format = """
-$username\
-$hostname\
 $directory\
 $git_branch\
-$git_state\
-$git_status\
-$git_metrics\
-$fill\
-$docker_context\
-$c\
-$cmake\
-$dart\
-$deno\
-$dotnet\
-$elixir\
-$golang\
-$haskell\
-$helm\
-$java\
-$kotlin\
-$gradle\
-$lua\
-$nodejs\
-$ocaml\
-$php\
-$python\
-$ruby\
-$rust\
-$scala\
-$solidity\
-$swift\
-$terraform\
-$zig\
-$azure\
 $sudo\
-$cmd_duration $jobs\
+$cmd_duration\
+$jobs\
 $line_break\
-$character"""
+$character
+"""
 
-[username]
-style_user = 'red bold'
-style_root = 'red bold'
-format = '[](fg:#A888F7) [$user]($style) [](fg:#8FFC76) '
-disabled = false
-show_always = true
-
-[nodejs]
-format = "[$symbol($version )]($style)"
-
-[fill]
-symbol = " "
+[line_break]
+disabled = true
 
 [directory]
-style = "blue bold"
+style = "blue"
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " "
-truncate_to_repo = true
+truncate_to_repo = false
 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vicmd_symbol = "[❮](green)"
+success_symbol = "[](fg:#91C0BE)"
+error_symbol = "[](red)"
+vicmd_symbol = "[](green)"
 
 [git_branch]
-symbol = "󰮠 "
-style="white"
-format = "[$symbol$branch]($style) "
+style="yellow"
+format = "[󰅁$branch*󰅂]($style) "
 
 [jobs]
 symbol = ""
@@ -73,34 +32,6 @@ style = "bold red"
 number_threshold = 1
 format = "[$symbol]($style)"
 
-[git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "cyan"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
-
-[git_metrics]
-disabled = false
-
 [cmd_duration]
 format = "[$duration]($style)"
 style = "yellow"
-
-[memory_usage]
-symbol = " "
-
-[rust]
-symbol = " "
-
-[time]
-disabled = false
-style = "bold white"
-format = "[$time]($style)"
-
-[custom.stunnel]
-when = "ps aux | grep stunnel | grep -v grep"
-command = "ps -o etime= -p $(ps aux | grep stunnel | grep -v grep | awk '{print $2}')"
-style = "red"
-format = "[TUNNEL OPEN for $output]($style)"
