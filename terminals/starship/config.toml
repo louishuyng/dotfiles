@@ -2,8 +2,6 @@ format = """
 $directory\
 $git_branch\
 $sudo\
-$cmd_duration\
-$jobs\
 $line_break\
 $character
 """
@@ -25,13 +23,3 @@ vicmd_symbol = "[](green)"
 [git_branch]
 style="yellow"
 format = "[󰅁$branch*󰅂]($style) "
-
-[jobs]
-symbol = ""
-style = "bold red"
-number_threshold = 1
-format = "[$symbol]($style)"
-
-[cmd_duration]
-format = "[$duration]($style)"
-style = "yellow"
