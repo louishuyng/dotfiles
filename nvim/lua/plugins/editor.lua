@@ -107,5 +107,8 @@ return {
     config = function()
       require('refactoring').setup()
     end
-  }
+  },
+
+  -- REST API
+  {'rest-nvim/rest.nvim'}
 }

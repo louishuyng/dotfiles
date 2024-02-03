@@ -3,7 +3,7 @@
 #+--- Bars General Config ---+
 tmux set -g status-position top  # macOS / darwin style
 tmux set -g status-left-length "200"
-tmux set -g status-bg "#0F0F0F"
+tmux set -g status-bg "#1c1c1c"
 tmux set-option -g status-justify left
 
 #+--- Bars LEFT ---+
