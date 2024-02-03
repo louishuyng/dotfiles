@@ -1,17 +1,17 @@
-# terminal - like Linux
+# Job apps
 alt + shift - a : open /Applications/Postman.app
 alt + shift - b : open /Applications/Firefox.app
 alt + shift - c : open /Applications/Discord.app
 alt + shift - d : open /Applications/TablePlus.app
 alt + shift - f : open /Applications/Messenger.app
 alt + shift - i : open /Applications/Burp\ Suite\ Community\ Edition.app
+alt + shift - k : open /Applications/VMware\ Fusion.app
 alt + shift - m : open -a Mail.app
 alt + shift - n : open /Applications/Notion.app
 alt + shift - o : open /Applications/Obsidian.app
+alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
 alt + shift - t : open /Applications/Alacritty.app
-alt + shift - v : open /Applications/Visual\ Studio\ Code.app
-alt + shift - k : open /Applications/VMware\ Fusion.app
 
 alt - tab : yabai -m window --focus stack.recent
 alt + shift - tab : yabai -m window --focus stack.recent

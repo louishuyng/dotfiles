@@ -1,8 +1,19 @@
 import glob
 import os.path
+import dracula.draw
 
 # Load existing settings made via :set
 config.load_autoconfig()
+
+dracula.draw.blood(c, {
+    'spacing': {
+        'vertical': 6,
+        'horizontal': 8
+    }
+})
+
+# General
+c.tabs.position = 'right'
 
 c.content.javascript.enabled = True
 c.auto_save.session = True
@@ -23,6 +34,16 @@ c.tabs.mode_on_change = 'restore'
 c.tabs.show = 'multiple'
 c.tabs.indicator.width = 0
 
+c.qt.args += [
+    "ignore-gpu-blacklist",
+    "enable-accelerated-2d-canvas",
+    "enable-gpu-memory-buffer-video-frames",
+    "enable-gpu-rasterization",
+    "enable-native-gpu-memory-buffers",
+    "enable-oop-rasterization",
+    "enable-zero-copy",
+]
+
 # Search Engine
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
@@ -39,8 +60,8 @@ c.editor.encoding = 'utf-8'
 
 # Set Font
 c.fonts.hints = "bold 13px 'DejaVu Sans Mono'"
-mono = '12pt Hack Nerd Font'
-small_mono = '10pt Hack Nerd Font'
+mono = '12pt FiraCode Nerd Font'
+small_mono = '11pt FiraCode Nerd Font'
 c.fonts.completion.entry = mono
 c.fonts.completion.category = 'bold ' + mono
 c.fonts.debug_console = mono
@@ -59,10 +80,10 @@ config.bind('po4', 'open -t http://localhost:4200')
 config.bind('po5', 'open -t http://localhost:5100')
 config.bind('po8', 'open -t http://localhost:8000')
 
-config.bind('<shift+j>', 'tab-prev')
-config.bind('<shift+k>', 'tab-next')
-config.bind('gk', 'tab-move +')
-config.bind('gj', 'tab-move -')
+config.bind('<shift+k>', 'tab-prev')
+config.bind('<shift+j>', 'tab-next')
+config.bind('gj', 'tab-move +')
+config.bind('gk', 'tab-move -')
 
 # Daily
 config.bind('yt', 'open -t https://youtube.com')
@@ -80,4 +101,11 @@ config.bind('scf', 'open -t https://facebook.com')
 config.bind('scr', 'open -t https://reddit.com')
 
 # Browser handler
-config.bind('<ctrl+d>', 'wq')
+config.unbind('d')
+config.unbind('<ctrl+w>')
+config.bind('dd', 'tab-close')
+config.bind('<super+w>', 'tab-close')
+config.bind('<backspace>', 'tab-focus last')
+
+# Statusbar
+config.bind('<ctrl-\\>', 'config-cycle tabs.show always never;; config-cycle statusbar.show always never')

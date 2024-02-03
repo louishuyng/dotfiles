@@ -366,6 +366,8 @@ link_all_dotfiles() {
 
   rm -rf ~/.qutebrowser
   ln -s ~/.dotfiles/suckless/qutebrowser ~/.qutebrowser
+  cd ~/.dotfiles/suckless/qutebrowser
+  git clone https://github.com/dracula/qutebrowser-dracula-theme.git dracula
 
   success "Linked qutebrowser"
 
