@@ -52,3 +52,14 @@ vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)
 vim.keymap.set("n", "<leader>li", ":Lazy install<CR>", opt)
 vim.keymap.set("n", "<leader>lc", ":Lazy clean<CR>", opt)
 vim.keymap.set("n", "<leader>lu", ":Lazy update<CR>", opt)
+
+-- Toggle Dark mode
+vim.keymap.set("n", "<leader>0", function()
+  vim.g.dark_mode = vim.g.dark_mode == "true" and "false" or "true"
+
+  vim.cmd([[
+    luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
+    luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
+    syntax on
+  ]])
+end, opt)
