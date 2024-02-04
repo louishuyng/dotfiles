@@ -6,36 +6,11 @@ local mapping = require 'mappings.source_control.gitsigns'
 
 gitsigns.setup {
   signs = {
-    add = {
-      hl = 'GitSignsAdd',
-      text = '┃',
-      numhl = 'GitSignsAddNr',
-      linehl = 'GitSignsAddLn'
-    },
-    change = {
-      hl = 'GitSignsChange',
-      text = '┃',
-      numhl = 'GitSignsChangeNr',
-      linehl = 'GitSignsChangeLn'
-    },
-    delete = {
-      hl = 'GitSignsDelete',
-      text = '┃',
-      numhl = 'GitSignsDeleteNr',
-      linehl = 'GitSignsDeleteLn'
-    },
-    topdelete = {
-      hl = 'GitSignsDelete',
-      text = '▔',
-      numhl = 'GitSignsDeleteNr',
-      linehl = 'GitSignsDeleteLn'
-    },
-    changedelete = {
-      hl = 'GitSignsChange',
-      text = '~',
-      numhl = 'GitSignsChangeNr',
-      linehl = 'GitSignsChangeLn'
-    }
+    add = {hl = 'GitSignsAdd', text = '┃'},
+    change = {hl = 'GitSignsChange', text = '┃'},
+    delete = {hl = 'GitSignsDelete', text = '┃'},
+    topdelete = {hl = 'GitSignsDelete', text = '▔'},
+    changedelete = {hl = 'GitSignsChange', text = '~'}
   },
   on_attach = mapping.gitsigns_mappings
 }

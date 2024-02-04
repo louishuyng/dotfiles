@@ -62,7 +62,7 @@ local light = {
 
 local colors = {}
 
-if vim.g.dark_mode == "true" then
+if vim.g.dark_mode then
   colors = dark
 else
   colors = light
@@ -436,7 +436,7 @@ local IndentSizes = {
 
 heirline.setup({
   statusline = {
-    ViMode, FileNameBlock, FileType, FileSize, Ruler, Align, LSPActive,
-    Diagnostics, FileFormat, FileEncoding, IndentSizes, Git
+    ViMode, FileNameBlock, Git, Diagnostics, Align, LSPActive, Ruler, FileType,
+    FileSize, FileFormat, FileEncoding, IndentSizes
   }
 })

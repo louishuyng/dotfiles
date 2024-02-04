@@ -18,6 +18,11 @@ local function t(str)
 end
 
 cmp.setup {
+  window = {
+    documentation = {
+      winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat"
+    }
+  },
   snippet = {
     expand = function(args) require("luasnip").lsp_expand(args.body) end
   },

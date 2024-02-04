@@ -55,11 +55,13 @@ vim.keymap.set("n", "<leader>lu", ":Lazy update<CR>", opt)
 
 -- Toggle Dark mode
 vim.keymap.set("n", "<leader>0", function()
-  vim.g.dark_mode = vim.g.dark_mode == "true" and "false" or "true"
+  vim.g.dark_mode = not vim.g.dark_mode
 
+  -- Clear all highlights and reload colorscheme, statusline and syntax
   vim.cmd([[
     luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
     luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
+
     syntax on
   ]])
 end, opt)

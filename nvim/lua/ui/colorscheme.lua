@@ -1,24 +1,31 @@
 local note = os.getenv("NVIM_NOTE")
 
-if vim.g.dark_mode == "true" then
+if vim.g.dark_mode then
   vim.cmd([[
-    colorscheme fleet
-
     hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#16181C gui=NONE
     hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#000000 guibg=#55E579 gui=NONE
 
-    hi NvimTreeNormal guibg=#1C1C1C
-    hi NvimTreeNormalNC guibg=#1C1C1C
+    hi Normal guibg=#262626
+    hi NormalNC guibg=#262626
+    hi SignColumn guibg=#262626
 
-    hi Normal guibg=#2B2A33
-    hi NormalNC guibg=#2B2A33
-    hi SignColumn guibg=#2B2A33
-    hi VertSplit guifg=gray guibg=NONE
-    hi CursorLine guibg=#212026
+    hi NvimTreeGitStaged guifg=#99cc99 guibg=NONE
+    hi NvimTreeGitDirty guifg=#cc6666 guibg=NONE
+
+    set background=dark
+    let g:edge_better_performance = 1
+    colorscheme edge
   ]])
 else
   vim.cmd([[
-    colorscheme github_light
+    hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#f0f0f0 gui=NONE
+
+    hi NvimTreeGitStaged guifg=#99cc99 guibg=NONE
+    hi NvimTreeGitDirty guifg=#cc6666 guibg=NONE
+
+    set background=light
+    let g:edge_better_performance = 1
+    colorscheme edge
   ]])
 end
 
