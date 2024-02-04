@@ -2,6 +2,8 @@ vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
 
+opt.bg = "light"
+
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
 opt.wildignore:append{"*.o", "*~", "*.pyc", "*pycache*"}
