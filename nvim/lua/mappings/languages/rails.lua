@@ -11,6 +11,18 @@ vim.keymap.set("n", "<leader>rh", ":Ehelper ")
 vim.keymap.set("n", "<leader>rt", ":Etask ")
 vim.keymap.set("n", "<leader>rg", ":Generate ")
 
+vim.keymap.set("n", "<leader>rC", ":Vcontroller ")
+vim.keymap.set("n", "<leader>rE", ":Venvironment ")
+vim.keymap.set("n", "<leader>rJ", ":Vjob ")
+vim.keymap.set("n", "<leader>rM", ":Vmodel ")
+vim.keymap.set("n", "<leader>rP", ":Vpolicy ")
+vim.keymap.set("n", "<leader>rR", ":Vresource ")
+vim.keymap.set("n", "<leader>rD", ":Vschema ")
+vim.keymap.set("n", "<leader>rS", ":Vservice ")
+vim.keymap.set("n", "<leader>rS", ":Vspec ")
+vim.keymap.set("n", "<leader>rH", ":Vhelper ")
+vim.keymap.set("n", "<leader>rT", ":Vtask ")
+
 vim.keymap.set("n", ",r", ":R<CR>")
 
 function create_spec()
