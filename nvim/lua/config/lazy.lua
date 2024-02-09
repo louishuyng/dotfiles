@@ -11,7 +11,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  spec = {{import = "plugins"}},
+  spec = { { import = "plugins" } },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
     -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
@@ -21,8 +21,8 @@ require("lazy").setup({
     version = false -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  dev = {path = "~/.ghq/github.com"},
-  checker = {enabled = false}, -- automatically check for plugin updates
+  dev = { path = "~/.ghq/github.com" },
+  checker = { enabled = false }, -- automatically check for plugin updates
   performance = {
     cache = {
       enabled = true

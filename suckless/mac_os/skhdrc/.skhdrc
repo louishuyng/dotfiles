@@ -12,9 +12,17 @@ alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
 alt + shift - t : open /Applications/kitty.app
 
-alt - tab : yabai -m window --focus stack.recent
-alt + shift - tab : yabai -m window --focus stack.recent
+alt - tab : yabai -m window --focus recent
+alt + shift - tab : yabai -m space --focus recent
 
 shift + alt - space : yabai -m window --toggle float
+
+# I dont think i need more than 3 screens at the moment
+alt - 1 :yabai -m space --focus 1
+alt - 2 :yabai -m space --focus 2
+alt - 3 :yabai -m space --focus 3
+alt + shift - 1: yabai -m window --space 1; yabai -m space --focus 1
+alt + shift - 2: yabai -m window --space 2; yabai -m space --focus 2
+alt + shift - 3: yabai -m window --space 3; yabai -m space --focus 3
 
 ctrl + alt + shift - y : yabai --restart-service; osascript -e 'display notification "Restarted Yabai"'

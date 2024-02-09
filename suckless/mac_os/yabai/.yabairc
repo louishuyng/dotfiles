@@ -19,4 +19,20 @@ yabai -m config external_bar all:22:0
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+# Labels
+yabai -m space 1 --label Main
+yabai -m space 2 --label Social
+yabai -m space 3 --label Notes
+
+# Social
+yabai -m rule --add app="^Messenger$" space=2
+yabai -m rule --add app="^Slack$" space=2
+yabai -m rule --add app="^Discord$" space=2
+
+# Notes
+yabai -m rule --add app="^Obsidian$" space=3
+yabai -m rule --add app="^Notion$" space=3
+yabai -m rule --add app="^Notion Calendar$" space=3
+yabai -m rule --add app="^Mail$" space=3
+
 echo "yabai configuration loaded.."
