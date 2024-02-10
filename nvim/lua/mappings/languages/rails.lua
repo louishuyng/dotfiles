@@ -25,7 +25,7 @@ vim.keymap.set("n", "<leader>rT", ":Vtask ")
 
 vim.keymap.set("n", ",r", ":R<CR>")
 
-function create_spec()
+local function create_spec()
   local path = vim.fn.expand("%:p")
 
   -- if path include spec then run :A to open the implementation
@@ -46,4 +46,4 @@ function create_spec()
   vim.cmd("e " .. spec_path)
 end
 
-vim.keymap.set("n", ",a", ":lua create_spec()<CR>")
+vim.keymap.set("n", ",a", create_spec)

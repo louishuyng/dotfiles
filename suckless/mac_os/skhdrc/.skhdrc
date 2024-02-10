@@ -12,8 +12,8 @@ alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
 alt + shift - t : open /Applications/kitty.app
 
-alt - tab : yabai -m window --focus recent
-alt + shift - tab : yabai -m space --focus recent
+alt - tab : yabai -m space --focus recent
+alt + shift - tab : yabai -m window --focus stack.recent
 
 shift + alt - space : yabai -m window --toggle float
 

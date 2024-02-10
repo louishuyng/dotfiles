@@ -1,0 +1,1 @@
+ls -d /Applications/* | xargs -I {} basename {} | cut -d "." -f 1 | fzf --no-preview | xargs -I {} open "/Applications/{}.app"
