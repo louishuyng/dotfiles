@@ -21,8 +21,25 @@ shift + alt - space : yabai -m window --toggle float
 alt - 1 :yabai -m space --focus 1
 alt - 2 :yabai -m space --focus 2
 alt - 3 :yabai -m space --focus 3
+alt - 4 :yabai -m space --focus 4
 alt + shift - 1: yabai -m window --space 1; yabai -m space --focus 1
 alt + shift - 2: yabai -m window --space 2; yabai -m space --focus 2
 alt + shift - 3: yabai -m window --space 3; yabai -m space --focus 3
+alt + shift - 4: yabai -m window --space 4; yabai -m space --focus 4
+
+# Zoom
+alt - f         : yabai -m window --toggle zoom-fullscreen
+
+# Navigation
+ctrl + alt - h : yabai -m window --focus west
+ctrl + alt - j : yabai -m window --focus south
+ctrl + alt - k : yabai -m window --focus north
+ctrl + alt - l : yabai -m window --focus east
+
+# Moving windows
+shift + ctrl - h : yabai -m window --warp west
+shift + ctrl - j : yabai -m window --warp south
+shift + ctrl - k : yabai -m window --warp north
+shift + ctrl - l : yabai -m window --warp east
 
 ctrl + alt + shift - y : yabai --restart-service; osascript -e 'display notification "Restarted Yabai"'

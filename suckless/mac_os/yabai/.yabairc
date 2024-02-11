@@ -23,6 +23,9 @@ sudo yabai --load-sa
 yabai -m space 1 --label Main
 yabai -m space 2 --label Social
 yabai -m space 3 --label Notes
+yabai -m space 4 --label BSP
+
+yabai -m config --space 4 layout bsp
 
 # Social
 yabai -m rule --add app="^Messenger$" space=2

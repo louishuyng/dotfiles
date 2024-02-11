@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-SPACE_ICONS=("Main" "Social" "Notes")
+SPACE_ICONS=("Main" "Social" "Notes" "BSP")
 
 GRAY=#D8DEE9
 MAGENTA=#c6a0f6
