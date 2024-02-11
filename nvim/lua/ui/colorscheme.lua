@@ -32,6 +32,7 @@ end
 if note == "true" then
   vim.g.dark_mode = "true"
   vim.cmd([[
-    colorscheme github_dark
+    set background=dark
+    colorscheme edge
   ]])
 end

@@ -5,6 +5,7 @@ local make_entry = require "telescope.make_entry"
 local pickers = require "telescope.pickers"
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local previewers = require('telescope.previewers')
 
 if not has_telescope then
   error('This plugin requires nvim-telescope/telescope.nvim')
@@ -15,7 +16,7 @@ local M = {}
 return function(opts)
   opts = opts or {}
 
-  local command = "tmux list-sessions | awk '{print $1}' | sed 's/://'"
+  local command = "notes ls"
   local handle = io.popen(command)
 
   if (handle == nil) then
@@ -29,22 +30,18 @@ return function(opts)
 
   local files = {}
 
-  for token in string.gmatch(result, "[^%c]+") do table.insert(files, token) end
+  for token in string.gmatch(result, "[^%c]+") do
+    -- Path will be ~/notes/${token}
+    local format = string.format("~/notes/%s", token)
+
+    table.insert(files, format)
+  end
 
   pickers.new(opts, {
     debounce = 100,
-    prompt_title = "Tmux Session",
+    prompt_title = "Engineer Note",
     finder = finders.new_table {results = files},
-    previewer = false,
-    sorter = conf.generic_sorter(opts),
-    attach_mappings = function(prompt_bufnr)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-
-        vim.cmd("silent !tmux switch -t " .. selection[1])
-      end)
-      return true
-    end
+    previewer = previewers.cat.new(opts),
+    sorter = conf.generic_sorter(opts)
   }):find()
 end

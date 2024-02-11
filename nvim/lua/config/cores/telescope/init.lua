@@ -60,5 +60,3 @@ telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
 telescope.load_extension("refactoring")
 telescope.load_extension("live_grep_args")
-
-require "config.cores.telescope.custom.tmux_session"
