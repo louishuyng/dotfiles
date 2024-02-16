@@ -1,21 +1,13 @@
 k9s:
-  liveViewAutoRefresh: false
   refreshRate: 2
   maxConnRetry: 5
   enableMouse: false
-  enableImageScan: false
   headless: false
   logoless: false
   crumbsless: false
   readOnly: false
   noExitOnCtrlC: false
   noIcons: false
-  shellPod:
-    image: busybox:1.35.0
-    namespace: default
-    limits:
-      cpu: 100m
-      memory: 100Mi
   skipLatestRevCheck: false
   logger:
     tail: 100
@@ -26,7 +18,6 @@ k9s:
     showTime: false
   currentContext: lawbite
   currentCluster: arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging
-  keepMissingClusters: false
   clusters:
     arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging:
       namespace:
@@ -39,6 +30,15 @@ k9s:
         active: pod
       featureGates:
         nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
       portForwardAddress: localhost
   thresholds:
     cpu:
@@ -48,4 +48,3 @@ k9s:
       critical: 90
       warn: 70
   screenDumpDir: /var/folders/5f/nxhkc6jx6316_m6rmjsdr05r0000gn/T/k9s-screens-louishuyng
-  disablePodCounting: false
