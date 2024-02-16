@@ -2,7 +2,7 @@ vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
 
-vim.g.dark_mode = false
+vim.g.dark_mode = true
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
