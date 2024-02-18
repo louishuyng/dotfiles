@@ -3,6 +3,7 @@ alt + shift - b : open /Applications/Firefox.app
 alt + shift - c : open /Applications/Discord.app
 alt + shift - d : open /Applications/TablePlus.app
 alt + shift - f : open /Applications/Messenger.app
+alt + shift - g : open /Applications/GitButler.app
 alt + shift - i : open /Applications/Burp\ Suite\ Community\ Edition.app
 alt + shift - k : open /Applications/VMware\ Fusion.app
 alt + shift - m : open -a Mail.app

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd ~/.dotfiles
+git config --local core.sshCommand "ssh -i ~/.ssh/id_rsa_open_source"

@@ -59,30 +59,12 @@ setup_git() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install gh 
     success "Installed GitHub CLI"
-    
-    git config --global user.email "huynguyennbk@gmail.com"
-    git config --global user.name  "Louis Nguyen"
-    git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-    git config --global color.ui true
-    git config --global color.diff-highlight.oldNormal "red bold"
-    git config --global color.diff-highlight.oldHighlight "red bold 52"
-    git config --global color.diff-highlight.newNormal "green bold"
-    git config --global color.diff.meta "11"
-    git config --global color.diff.frag "magenta bold"
-    git config --global color.diff.commit "yellow bold"
-    git config --global color.diff.old "red bold"
-    git config --global color.diff.new "green bold"
-    git config --global color.diff.whitespace "red reverse"
-
-    git config --global pull.rebase true
-    git config --global rebase.autoStash true
-
-    git config --global alias.co checkout
-    git config --global alias.br branch
-    git config --global alias.ci commit
-    git config --global alias.st status
-
     mkdir -p ~/.git/safe
+
+    cp config/ssh_config ~/.ssh/config
+    ~/.dotfiles/scripts/setup_git_ssh
+    cp config/.gitconfig ~/.gitconfig
+
     success "Setup Git Successfully"
   fi
 }

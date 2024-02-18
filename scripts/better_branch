@@ -1,0 +1,72 @@
+#!/bin/bash
+
+#https://gist.github.com/magus424/44995fa9bb867e8ef8fa65c3b33d5122
+
+# Colors
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+NO_COLOR='\033[0m'
+BLUE='\033[1;34m'
+YELLOW='\033[1;33m'
+NO_COLOR='\033[0m'
+
+width1=5
+width2=6
+width3=12
+width4=20
+width5=48
+
+# Function to count commits
+count_commits() {
+    local branch="$1"
+    local base_branch="$2"
+    local ahead_behind
+
+    ahead_behind=$(git rev-list --left-right --count "$base_branch"..."$branch")
+    echo "$ahead_behind"
+}
+
+separator() {
+    head -c $1 < /dev/zero | tr '\0' '-'
+}
+
+# Main script
+main_branch="main"
+
+printf "${GREEN}%-${width1}s " "Ahead"
+printf "${RED}%-${width2}s " "Behind"
+printf "${BLUE}%-${width3}s " "Branch"
+printf "${YELLOW}%-${width4}s " "Last Commit"
+printf "${NO_COLOR}%-${width5}s\n" "Description"
+
+# Separator line for clarity
+printf "${GREEN}%-${width1}s " $(separator $width1)
+printf "${RED}%-${width2}s " $(separator $width2)
+printf "${BLUE}%-${width3}s " $(separator $width3)
+printf "${YELLOW}%-${width4}s " $(separator $width4)
+printf "${NO_COLOR}%-${width5}s\n" $(separator $width5)
+
+format_string="%(objectname:short)@%(refname:short)@%(committerdate:relative)"
+IFS=$'\n'
+
+for branchdata in $(git for-each-ref --sort=-authordate --format="$format_string" refs/heads/); do
+    sha=$(echo "$branchdata" | cut -d '@' -f1)
+    branch=$(echo "$branchdata" | cut -d '@' -f2)
+    time=$(echo "$branchdata" | cut -d '@' -f3)
+    if [ "$branch" != "$main_branch" ]; then
+        # Get branch description
+        description=$(git config branch."$branch".description)
+
+        # Count commits ahead and behind
+        ahead_behind=$(count_commits "$sha" "$main_branch")
+        ahead=$(echo "$ahead_behind" | cut -f2)
+        behind=$(echo "$ahead_behind" | cut -f1)
+
+        # Display branch info
+        printf "${GREEN}%-${width1}s " "$ahead"
+        printf "${RED}%-${width2}s " "$behind"
+        printf "${BLUE}%-${width3}s " "$branch"
+        printf "${YELLOW}%-${width4}s " "$time"
+        printf "${NO_COLOR}%-${width5}s\n" "$description"
+    fi
+done
