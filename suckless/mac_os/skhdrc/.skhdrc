@@ -10,10 +10,10 @@ alt + shift - n : open /Applications/Notion.app
 alt + shift - o : open /Applications/Obsidian.app
 alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
-alt + shift - t : open /Applications/kitty.app
+alt + shift - t : open /Applications/Alacritty.app
 
 alt - tab : yabai -m space --focus recent
-alt + shift - tab : yabai -m window --focus stack.recent
+cmd - tab : yabai -m window --focus stack.recent
 
 shift + alt - space : yabai -m window --toggle float
 

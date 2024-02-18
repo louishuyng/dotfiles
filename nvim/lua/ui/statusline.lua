@@ -28,7 +28,7 @@ local dark = {
   surface0 = "#292929",
   base = "#1d2021",
   mantle = "#212121",
-  crust = "#1c1c1c"
+  crust = "#11121D"
 }
 
 local light = {

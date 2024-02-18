@@ -75,6 +75,12 @@ return {
   -- ROR
   {'tpope/vim-rails'},
 
+  -- JS
+  {
+    'pmizio/typescript-tools.nvim',
+    config = function() require("typescript-tools").setup {} end
+  },
+
   -- Testing
   {'vim-test/vim-test', dependencies = {'preservim/vimux'}},
 }

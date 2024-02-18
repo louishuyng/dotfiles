@@ -1,12 +1,37 @@
 require("mason").setup()
 
 local ensure_installed = {
-  "lua_ls", "rust_analyzer", "kotlin_language_server", "eslint", "tsserver",
-  "typescript-language-server", "bashls", "cssls", "denols", "pyright",
-  "solargraph", "svelte", "terraformls", "rnix-lsp", "prettierd", "rubocop",
+  -- Lua
+  "lua_ls",
+
+  -- Rust
+  "rust_analyzer",
+
+  -- Kotlin
+  "kotlin_language_server",
+
+  -- Typescript
+  "tsserver",
+  "typescript-language-server",
+  "eslint-lsp",
+  "prettier",
+  "svelte",
+  "denols",
+
+  -- Ruby
+  "solargraph",
+  "rubocop",
+  "ruby-lsp",
+
+  -- Golang
+  "gopls",
+  "golangci-lint",
+  "golangci-lint-langserver",
+
+
+  "bashls", "cssls", "pyright", "terraformls", "rnix-lsp",
   "codespell", "cfn_lint", "yamlfmt", "smithy-language-server", "yamlls",
-  "ltex-ls", "ruby-lsp", "ocaml-lsp", "ocamlformat", "gopls",
-  "golangci-lint-langserver", "golangci-lint", "yaml-language-server", "eslint"
+  "ltex-ls", "ocaml-lsp", "ocamlformat", "yaml-language-server",
 }
 
 require("mason-null-ls").setup {ensure_installed = ensure_installed}
