@@ -1,0 +1,27 @@
+name: Regask
+root: ~/Dev/Projects/Regask
+attach: false
+windows:
+  - docker-all:
+      layout: main-vertical
+      panes:
+        - docker-compose up
+        - docker run --name mongo-local -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password  mongo
+  - platform:
+      - cd platform-services
+  - articles:
+      - cd usvc-articles
+  - identity:
+      - cd usvc-identity
+  - gateway:
+      - cd web-api-gateway
+  - frontend:
+      - cd web-frontend
+  - migrations:
+      - cd usvc-migrations
+  - document:
+      - cd usvc-document
+  - request:
+      - cd usvc-request
+  - update:
+      - cd usvc-update

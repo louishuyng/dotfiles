@@ -20,22 +20,29 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # Labels
-yabai -m space 1 --label Main
-yabai -m space 2 --label Social
-yabai -m space 3 --label Notes
-yabai -m space 4 --label BSP
+yabai -m space 1 --label Code
+yabai -m space 2 --label Web
+yabai -m space 3 --label Chat
+yabai -m space 4 --label Plan
+yabai -m space 5 --label BSP
 
-yabai -m config --space 4 layout bsp
+yabai -m config --space 5 layout bsp
+
+# Web
+yabai -m rule --add app="^Firefox$" space=2
+yabai -m rule --add app="^qutebrowser$" space=2
 
 # Social
-yabai -m rule --add app="^Messenger$" space=2
-yabai -m rule --add app="^Slack$" space=2
-yabai -m rule --add app="^Discord$" space=2
+yabai -m rule --add app="^Messenger$" space=3
+yabai -m rule --add app="^Slack$" space=3
+yabai -m rule --add app="^Discord$" space=3
+yabai -m rule --add app="^Microsoft Teams" space=3
 
-# Notes
-yabai -m rule --add app="^Obsidian$" space=3
-yabai -m rule --add app="^Notion$" space=3
-yabai -m rule --add app="^Notion Calendar$" space=3
-yabai -m rule --add app="^Mail$" space=3
+# Plan
+yabai -m rule --add app="^Obsidian$" space=4
+yabai -m rule --add app="^Notion$" space=4
+yabai -m rule --add app="^Notion Calendar$" space=4
+yabai -m rule --add app="^Mail$" space=4
+yabai -m rule --add app="^Microsoft Outlook$" space=4
 
 echo "yabai configuration loaded.."

@@ -1,6 +1,6 @@
 # Job apps
 alt + shift - b : open /Applications/Firefox.app
-alt + shift - c : open /Applications/Discord.app
+alt + shift - c : open /Applications/Microsoft\ Teams\ \(work\ or\ school\).app
 alt + shift - d : open /Applications/TablePlus.app
 alt + shift - f : open /Applications/Messenger.app
 alt + shift - g : open /Applications/GitButler.app
@@ -14,7 +14,7 @@ alt + shift - s : open /Applications/Slack.app
 alt + shift - t : open /Applications/Alacritty.app
 
 alt - tab : yabai -m space --focus recent
-cmd - tab : yabai -m window --focus stack.recent
+cmd - tab : yabai -m window --focus recent
 
 shift + alt - space : yabai -m window --toggle float
 
@@ -23,10 +23,12 @@ alt - 1 :yabai -m space --focus 1
 alt - 2 :yabai -m space --focus 2
 alt - 3 :yabai -m space --focus 3
 alt - 4 :yabai -m space --focus 4
+alt - 4 :yabai -m space --focus 5
 alt + shift - 1: yabai -m window --space 1; yabai -m space --focus 1
 alt + shift - 2: yabai -m window --space 2; yabai -m space --focus 2
 alt + shift - 3: yabai -m window --space 3; yabai -m space --focus 3
 alt + shift - 4: yabai -m window --space 4; yabai -m space --focus 4
+alt + shift - 5: yabai -m window --space 4; yabai -m space --focus 5
 
 # Zoom
 alt - f         : yabai -m window --toggle zoom-fullscreen

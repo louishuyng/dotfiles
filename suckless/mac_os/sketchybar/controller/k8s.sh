@@ -2,4 +2,4 @@
 
 CONTEXT=$(grep "current-context:" ~/.kube/config | awk '{print $2}')
 
-sketchybar --set $NAME label="k8s-$CONTEXT |"
+sketchybar --set $NAME label="$CONTEXT |"
