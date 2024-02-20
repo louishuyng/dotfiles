@@ -3,6 +3,7 @@ vim.g.loaded_matchparen = 1
 local opt = vim.opt
 
 vim.g.dark_mode = true
+vim.g.auto_format = true
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"

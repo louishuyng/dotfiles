@@ -179,12 +179,6 @@ local ViMode = {
   }, {provider = "", hl = {bg = colors.crust, fg = colors.mantle}}
 }
 
-local FileNameBlock = {
-  init = function(self) self.filename = vim.api.nvim_buf_get_name(0) end,
-  condition = conditions.buffer_not_empty,
-  hl = {bg = colors.crust, fg = colors.subtext1}
-}
-
 local FileIcon = {
   init = function(self)
     local filename = self.filename
@@ -195,18 +189,6 @@ local FileIcon = {
   end,
   provider = function(self) return self.icon and (" %s "):format(self.icon) end,
   hl = function(self) return {fg = self.icon_color} end
-}
-
-local FileName = {
-  provider = function(self)
-    local filename = vim.fn.fnamemodify(self.filename, ":t")
-    if filename == "" then return "[No Name]" end
-    if not conditions.width_percent_below(#filename, 0.25) then
-      filename = vim.fn.pathshorten(filename)
-    end
-    return filename
-  end,
-  hl = {fg = colors.subtext1, bold = true}
 }
 
 local FileFlags = {
@@ -228,10 +210,6 @@ local FileNameModifer = {
     end
   end
 }
-
-FileNameBlock = utils.insert(FileNameBlock, FileIcon,
-                             utils.insert(FileNameModifer, FileName),
-                             unpack(FileFlags), {provider = "%< "})
 
 local FileType = {
   provider = function() return (" %s "):format(vim.bo.filetype:upper()) end,
@@ -436,7 +414,7 @@ local IndentSizes = {
 
 heirline.setup({
   statusline = {
-    ViMode, FileNameBlock, Git, Diagnostics, Align, LSPActive, Ruler, FileType,
-    FileSize, FileFormat, FileEncoding, IndentSizes
+    ViMode, Git, Diagnostics, Align, LSPActive, Ruler, FileType, FileSize,
+    FileFormat, FileEncoding, IndentSizes
   }
 })

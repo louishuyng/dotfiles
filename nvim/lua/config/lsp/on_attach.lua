@@ -1,4 +1,16 @@
-local group = require('functions.toggle_auto_format').group
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+local lsp_formatting = function(bufnr)
+  vim.lsp.buf.format({
+    filter = function(client)
+      -- apply whatever logic you want (in this example, we'll only use null-ls)
+      return client.name == "null-ls" or
+                 client.server_capabilities.document_formatting
+    end,
+    bufnr = bufnr
+  })
+end
 
 return function(client, bufnr)
   local bufopts = {noremap = true, silent = true, buffer = bufnr}
@@ -17,12 +29,12 @@ return function(client, bufnr)
   -- If file is has . characters at beginning, don't format
   if vim.fn.match(vim.fn.expand('%:t'), '^[.]') ~= -1 then return end
 
-  if client.server_capabilities.document_formatting then
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({group = augroup, buffer = bufnr})
     vim.api.nvim_create_autocmd("BufWritePre", {
-      command = "lua vim.lsp.buf.format({ timeout_ms = 5000 })",
-      group = vim.api.nvim_create_augroup("LSPFormat", {clear = true})
+      group = augroup,
+      buffer = bufnr,
+      callback = function() lsp_formatting(bufnr) end
     })
-  else
-    vim.b.document_formatting = client.server_capabilities.document_formatting
   end
 end
