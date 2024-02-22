@@ -30,6 +30,7 @@ opt.splitbelow = false -- Prefer windows splitting to the top
 opt.updatetime = 1000 -- Make updates happen faster
 opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
+vim.opt.list = true -- Show some invisible characters (tabs...)
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer
@@ -105,15 +106,6 @@ vim.g.loaded_netrwPlugin = 0
 vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
-
--- LIST
-vim.opt.list = true
-vim.opt.listchars:append("eol:↲")
-vim.opt.listchars:append("tab:» ")
-vim.opt.listchars:append("trail:·")
-vim.opt.listchars:append("extends:<")
-vim.opt.listchars:append("precedes:>")
-vim.opt.listchars:append("conceal:┊")
 
 -- RUST
 vim.g.rust_recommended_style = 0

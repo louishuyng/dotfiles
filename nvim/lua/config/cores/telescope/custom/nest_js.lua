@@ -18,6 +18,7 @@ local mappingsSearchFor = {
   d = 'dto',
   e = 'entity',
   m = 'mapper',
+  s = 'spec',
   mo = 'module'
 }
 

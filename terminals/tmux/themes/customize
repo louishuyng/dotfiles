@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #+--- Bars General Config ---+
-tmux set -g status-position top  # macOS / darwin style
+tmux set -g status-position bottom  # macOS / darwin style
 tmux set -g status-left-length "200"
 tmux set -g status-bg "#11121D"
 tmux set-option -g status-justify left

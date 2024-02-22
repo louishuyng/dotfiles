@@ -8,5 +8,6 @@ require "config.libs.vim_test"
 
 require "config.cores.dap"
 require "config.cores.git"
+require "config.cores.neoscopes"
 require "config.cores.telescope"
 require "config.cores.tree"

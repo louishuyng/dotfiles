@@ -1,6 +1,21 @@
 local tmux_session = require('config.cores.telescope.custom.tmux_session')
+local scopes = require("neoscopes")
 
 local opt = {silent = true, noremap = true}
+
+-- Helper functions to fetch the current scope and set `search_dirs`
+_G.find_files = function()
+  require('telescope.builtin').find_files({
+    search_dirs = scopes.get_current_dirs()
+  })
+end
+_G.live_grep = function()
+  require('telescope.builtin').live_grep({
+    search_dirs = scopes.get_current_dirs()
+  })
+end
+vim.keymap.set("n", "<leader>fs", ":lua find_files()<CR>", opt)
+vim.keymap.set("n", "<leader>ls", ":lua live_grep()<CR>", opt)
 
 -- Main finding
 vim.keymap.set("n", "<c-p>", ":Telescope find_files hidden=true<cr>", opt)

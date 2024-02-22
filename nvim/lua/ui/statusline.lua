@@ -242,6 +242,12 @@ local Ruler = {
   hl = {bg = colors.crust, fg = colors.surface2}
 }
 
+local function table_contains(tbl, x)
+  local found = false
+  for _, v in pairs(tbl) do if v == x then found = true end end
+  return found
+end
+
 local LSPActive = {
   condition = function()
     return conditions.hide_in_width(120) and conditions.lsp_attached()
@@ -256,7 +262,9 @@ local LSPActive = {
   provider = function()
     local names = {}
     for _, server in pairs(vim.lsp.get_active_clients()) do
-      if server.name ~= "null-ls" then table.insert(names, server.name) end
+      if server.name ~= "null-ls" and not table_contains(names, server.name) then
+        table.insert(names, server.name)
+      end
     end
 
     if #names == 0 then return "" end
