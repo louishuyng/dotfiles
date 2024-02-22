@@ -1,5 +1,4 @@
 local tmux_session = require('config.cores.telescope.custom.tmux_session')
-local engineer_note = require('config.cores.telescope.custom.engineer_note')
 
 local opt = {silent = true, noremap = true}
 
@@ -78,5 +77,9 @@ vim.keymap.set({"n", "x"}, "<leader>rf", function()
   require('telescope').extensions.refactoring.refactors()
 end)
 
--- Note Finding
-vim.keymap.set("n", "<leader>fn", engineer_note)
+-- NEST JS
+vim.keymap.set("n", "<leader>fn", function()
+  require('config.cores.telescope.custom.nest_js')({
+    search = vim.fn.input("Search nest_js: ")
+  })
+end)
