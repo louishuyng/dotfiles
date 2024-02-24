@@ -428,6 +428,7 @@ install_cli_tools() {
     # NOTE Taking
     curl -Ls https://raw.githubusercontent.com/pimterry/notes/latest-release/install.sh | sudo bash
     mkdir -p ~/notes
+    mkdir -p ~/notes/dailies
     mkdir -p ~/notes/.templates
     cp ~/.dotfiles/templates/* ~/notes/.templates/
 

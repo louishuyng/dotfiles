@@ -65,13 +65,6 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
 end
 
-vim.cmd([[
-   hi DiagnosticSignError guifg=#e06c75
-   hi DiagnosticSignWarn guifg=#e5c07b
-   hi DiagnosticSignInfo guifg=#61afef
-   hi DiagnosticSignHint guifg=#98c379
-]])
-
 -- vim.keymap.set("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", bufopts)
 -- vim.keymap.set("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", bufopts)
 

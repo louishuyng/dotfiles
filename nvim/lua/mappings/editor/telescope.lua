@@ -1,4 +1,3 @@
-local tmux_session = require('config.cores.telescope.custom.tmux_session')
 local scopes = require("neoscopes")
 
 local opt = {silent = true, noremap = true}
@@ -40,9 +39,6 @@ vim.keymap.set("n", "<leader>fr",
 vim.keymap.set("n", "g?", ":Telescope help_tags<CR>", opt)
 vim.keymap.set("n", "<leader><BS>", ":Telescope keymaps<CR>", opt)
 vim.keymap.set("n", "<leader>\"", ":Telescope registers<CR>", opt)
-
--- tmux
-vim.keymap.set("n", "<leader>\\", tmux_session)
 
 -- vim config
 vim.keymap.set("n", "<leader>vc",
@@ -97,4 +93,10 @@ vim.keymap.set("n", "<leader>fn", function()
   require('config.cores.telescope.custom.nest_js')({
     search = vim.fn.input("Search nest_js: ")
   })
+end)
+
+-- Notes
+vim.keymap.set("n", "<leader>\\", function()
+  require("neoscopes").set_current("Notes")
+  find_files()
 end)

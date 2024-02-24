@@ -10,4 +10,6 @@ for _, dir in ipairs(dirs) do
   table.insert(scopes, {name = name, dirs = {dir}})
 end
 
+table.insert(scopes, {name = "Notes", dirs = {"~/notes"}})
+
 require("neoscopes").setup({scopes = scopes})

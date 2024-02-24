@@ -44,3 +44,10 @@ if note == "true" then
     colorscheme catppuccin
   ]])
 end
+
+vim.cmd([[
+   hi DiagnosticSignError guifg=#ea6962
+   hi DiagnosticSignWarn guifg=#d8a657
+   hi DiagnosticSignInfo guifg=#89b482
+   hi DiagnosticSignHint guifg=#89b482
+]])
