@@ -11,7 +11,7 @@ alt + shift - n : open /Applications/OmniFocus.app
 alt + shift - o : open /Applications/Obsidian.app
 alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
-alt + shift - t : open /Applications/Alacritty.app
+alt + shift - t : open /Applications/Wezterm.app
 
 alt - tab : yabai -m space --focus recent
 cmd - tab : yabai -m window --focus stack.recent

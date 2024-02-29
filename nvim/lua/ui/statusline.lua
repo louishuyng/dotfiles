@@ -2,71 +2,7 @@ local heirline = require("heirline")
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
-local dark = {
-  rosewater = "#ea6962",
-  flamingo = "#ea6962",
-  red = "#ea6962",
-  maroon = "#ea6962",
-  pink = "#d3869b",
-  mauve = "#d3869b",
-  peach = "#e78a4e",
-  yellow = "#d8a657",
-  green = "#a9b665",
-  teal = "#89b482",
-  sky = "#89b482",
-  sapphire = "#89b482",
-  blue = "#7daea3",
-  lavender = "#7daea3",
-  text = "#ebdbb2",
-  subtext1 = "#d5c4a1",
-  subtext0 = "#bdae93",
-  overlay2 = "#a89984",
-  overlay1 = "#928374",
-  overlay0 = "#595959",
-  surface2 = "#737373",
-  surface1 = "#404040",
-  surface0 = "#292929",
-  base = "#1d2021",
-  mantle = "#212121",
-  crust = "#11121D"
-}
-
-local light = {
-  rosewater = "#d73a49",
-  flamingo = "#d73a49",
-  red = "#d73a49",
-  maroon = "#d73a49",
-  pink = "#bf3989",
-  mauve = "#6f42c1",
-  peach = "#e36209",
-  yellow = "#9a6700",
-  green = "#22863a",
-  teal = "#1b7c83",
-  sky = "#1b7c83",
-  sapphire = "#1b7c83",
-  blue = "#005cc5",
-  lavender = "#005cc5",
-  text = "#24292e",
-  subtext1 = "#24292f",
-  subtext0 = "#32383f",
-  overlay2 = "#424a53",
-  overlay1 = "#57606a",
-  overlay0 = "#6e7781",
-  surface2 = "#8c8c8c",
-  surface1 = "#d1d1d1",
-  surface0 = "#e6e6e6",
-  base = "#FFFFFF",
-  mantle = "#f2f2f2",
-  crust = "#ebebeb"
-}
-
-local colors = {}
-
-if vim.g.dark_mode then
-  colors = dark
-else
-  colors = light
-end
+local colors = require("catppuccin.palettes").get_palette()
 
 conditions.buffer_not_empty = function()
   return vim.fn.empty(vim.fn.expand("%:t")) ~= 1

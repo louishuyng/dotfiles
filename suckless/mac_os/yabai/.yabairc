@@ -29,7 +29,7 @@ yabai -m space 5 --label BSP
 yabai -m config --space 5 layout bsp
 
 # Code
-yabai -m rule --add app="^kitty$" space=1
+yabai -m rule --add app="^WezTerm$" space=1
 
 # Web
 yabai -m rule --add app="^Firefox$" space=2
