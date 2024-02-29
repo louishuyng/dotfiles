@@ -1,4 +1,4 @@
-vim.g['test#strategy'] = "vimux"
+vim.g['test#strategy'] = "wezterm"
 
 vim.cmd([[
   let test#ruby#bundle_exec = 1

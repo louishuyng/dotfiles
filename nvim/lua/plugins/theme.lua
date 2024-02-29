@@ -67,7 +67,6 @@ return {
           return {
             CmpItemMenu = {fg = colors.surface2},
             CursorLineNr = {fg = colors.text},
-            CursorLine = {bg = colors.subtext2},
             FloatBorder = {bg = colors.base, fg = colors.surface0},
             NvimTreeNormal = {bg = colors.base},
             LineNr = {fg = colors.surface1},
@@ -112,6 +111,7 @@ return {
           return {
             LineNr = {fg = colors.surface1},
 
+            CursorLine = {bg = colors.subtext2},
             IblIndent = {fg = colors.mantle},
             IblScope = {fg = colors.surface1},
 
@@ -174,6 +174,7 @@ return {
           return {
             Boolean = {fg = colors.blue},
             Constant = {fg = colors.text, style = {"bold"}},
+            CursorLine = {bg = "#444444"},
             Float = {fg = colors.text},
             Function = {fg = colors.mauve},
             Keyword = {fg = colors.red},

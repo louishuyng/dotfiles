@@ -92,6 +92,7 @@ return {
   {'tpope/vim-fugitive'},
   {'lewis6991/gitsigns.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
   {'sindrets/diffview.nvim'},
+  {'akinsho/git-conflict.nvim', version = "*", config = true},
 
   -- Markdown
   {

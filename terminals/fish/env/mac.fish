@@ -100,3 +100,6 @@ fish_add_path /Applications/WebStorm.app/Contents/MacOS
 
 # Postgres Lib
 fish_add_path /opt/homebrew/opt/libpq/bin/pg_restore
+
+# Wezterm
+fish_add_path /Applications/WezTerm.app/Contents/MacOS

@@ -4,8 +4,7 @@ local Fonts = {}
 
 function Fonts.setup(config)
   config.font = wezterm.font('JetBrainsMono Nerd Font', {weight = 'Medium'})
-  config.font_size = 12
-  config.enable_csi_u_key_encoding = true
+  config.font_size = 11
 end
 
 return Fonts
