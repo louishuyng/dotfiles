@@ -1,4 +1,8 @@
+~/.local/bin/mise activate fish | source
+
 if status is-interactive
+  mise activate fish | source
+
   # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
   set -U fish_key_bindings fish_default_key_bindings
 
@@ -13,6 +17,8 @@ if status is-interactive
   complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
   eval "$(pyenv init --path)"
+else
+  mise activate fish --shims | source
 end
 
 set fish_greeting ""

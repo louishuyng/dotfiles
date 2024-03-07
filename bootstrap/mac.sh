@@ -72,27 +72,10 @@ setup_git() {
 install_languages() {
   read -r -p "Do you want to install languages? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew install asdf
-    success "Installed asdf"
+    curl https://mise.run | sh
+    success "Installed mise"
 
-    asdf plugin-add rust
-    asdf install rust 1.55.0
-    asdf global rust 1.55.0
-    success "Installed rust"
-
-    asdf plugin-add python
-    asdf install python 3.7.3
-    asdf global python 3.7.3
-    success "Installed python"
-
-    asdf plugin-add golang
-    asdf install golang latest
-    success "Installed golang"
-
-    asdf plugin-add ruby
-    asdf install ruby latest
-    asdf global ruby 3.1.1
-    success "Installed ruby"
+    # TODO: find a better way to install .mise.toml instead of script
   fi
 }
 

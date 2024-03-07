@@ -5,6 +5,9 @@ local opt = vim.opt
 vim.g.dark_mode = true
 vim.g.auto_format = true
 
+-- Mise Integration
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
 opt.wildignore:append{"*.o", "*~", "*.pyc", "*pycache*"}
