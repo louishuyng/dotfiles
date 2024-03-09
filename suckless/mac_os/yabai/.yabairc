@@ -30,6 +30,7 @@ yabai -m config --space 5 layout bsp
 
 # Code
 yabai -m rule --add app="^WezTerm$" space=1
+yabai -m rule --add app="^kitty$" space=1
 
 # Web
 yabai -m rule --add app="^Firefox$" space=2
@@ -47,6 +48,6 @@ yabai -m rule --add app="^Notion$" space=4
 yabai -m rule --add app="^Notion Calendar$" space=4
 yabai -m rule --add app="^Mail$" space=4
 yabai -m rule --add app="^Microsoft Outlook$" space=4
-yabai -m rule --add app="OmniFocus" space=4
+yabai -m rule --add app="Inkdrop" space=4
 
 echo "yabai configuration loaded.."

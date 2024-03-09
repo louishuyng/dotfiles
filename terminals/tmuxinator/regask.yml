@@ -2,11 +2,12 @@ name: Regask
 root: ~/Dev/Projects/Regask
 attach: false
 windows:
-  - docker-all:
+  - infra:
       layout: main-vertical
       panes:
-        - docker-compose up
-        - docker run --name mongo-local -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password  mongo
+        - cd regask-infrastructure && k9s
+        - cd infra
+        - cd apis
   - platform:
       - cd platform-services
   - articles:

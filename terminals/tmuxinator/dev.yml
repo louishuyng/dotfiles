@@ -1,9 +1,6 @@
 name: Dev
 attach: true
 windows:
-  - notes:
-      - cd
-      - cd ~/notes && nvim
   - dotfiles:
       - cd
       - cd ~/.dotfiles && nvim

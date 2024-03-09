@@ -24,8 +24,8 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: k8s-qa-cluster
-  currentCluster: k8s-qa-cluster
+  currentContext: orbstack
+  currentCluster: orbstack
   keepMissingClusters: false
   clusters:
     arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging:
@@ -42,9 +42,10 @@ k9s:
       portForwardAddress: localhost
     k8s-prod-cluster:
       namespace:
-        active: staging
+        active: all
         lockFavorites: false
         favorites:
+        - all
         - default
       view:
         active: pod
@@ -53,13 +54,26 @@ k9s:
       portForwardAddress: localhost
     k8s-qa-cluster:
       namespace:
-        active: staging
+        active: all
         lockFavorites: false
         favorites:
+        - all
         - staging
         - default
       view:
         active: po
+      featureGates:
+        nodeShell: false
+      portForwardAddress: localhost
+    orbstack:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - all
+        - default
+      view:
+        active: pod
       featureGates:
         nodeShell: false
       portForwardAddress: localhost

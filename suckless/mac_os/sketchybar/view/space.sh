@@ -4,6 +4,7 @@ SPACE_ICONS=("Code" "Web" "Chat" "Plan" "BSP")
 
 GRAY=#D8DEE9
 MAGENTA=#c6a0f6
+YELLOW=#eed49f
 
 sid=0
 for i in "${!SPACE_ICONS[@]}"; do
@@ -13,8 +14,8 @@ for i in "${!SPACE_ICONS[@]}"; do
                               ignore_association=on                     \
                               icon=${SPACE_ICONS[i]}                    \
                               icon.font="$LABEL:SemiBold:12"            \
-                              icon.padding_left=10                      \
-                              icon.padding_right=10                     \
+                              icon.padding_left=7                      \
+                              icon.padding_right=7                     \
                               icon.color=0xff${GRAY:1}       \
                               icon.highlight_color=0xff${MAGENTA:1}       \
                               label.drawing=off                         \
