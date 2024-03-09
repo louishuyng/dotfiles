@@ -100,6 +100,9 @@ install_devops() {
     brew install hashicorp/tap/terraform-ls # LSP
 
     success "Installed terraform"
+
+    brew install hashicorp/tap/vault
+    success "Installed vault"
   fi
 }
 

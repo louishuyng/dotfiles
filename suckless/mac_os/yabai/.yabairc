@@ -30,6 +30,7 @@ yabai -m config --space 5 layout bsp
 
 # Code
 yabai -m rule --add app="^WezTerm$" space=1
+yabai -m rule --add app="^Alacritty$" space=1
 yabai -m rule --add app="^kitty$" space=1
 
 # Web

@@ -34,6 +34,9 @@ export label="--show--labels"
 #Terraform
 alias tf='terraform'
 
+# Vault
+alias va="vault"
+
 #Ansible
 alias as='ansible'
 alias aspb='ansible-playbook'
