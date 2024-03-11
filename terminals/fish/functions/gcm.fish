@@ -12,5 +12,5 @@ function gcm -d 'git commit using gum for more joyful interact'
   set -l DESCRIPTION $(gum write --placeholder "Details of this change (CTRL+D to finish)")
 
   # Commit these changes
-  gum confirm "Commit changes?" && git commit -m "$SUMMARY" -m "$DESCRIPTION"
+  git commit -m "$SUMMARY" -m "$DESCRIPTION"
 end

@@ -9,6 +9,10 @@
       {
         "language": "http",
         "path": "./http.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./js.json"
       }
     ]
   }

@@ -7,13 +7,13 @@ return {
   {
     'L3MON4D3/LuaSnip',
     after = 'hrsh7th/nvim-cmp',
-    dependencies = { 
+    dependencies = {
       'rafamadriz/friendly-snippets',
       'saadparwaiz1/cmp_luasnip'
     },
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
-      require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.dotfiles/nvim/snippets" })
 
       require'luasnip'.filetype_extend("ruby", {"rails"})
     end

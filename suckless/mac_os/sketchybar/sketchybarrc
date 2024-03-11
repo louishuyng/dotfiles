@@ -7,7 +7,7 @@ ITEM_DIR="$HOME/.config/sketchybar/view"
 
 PADDING=4
 PADDING_LABEL=4
-LABEL="JetBrainsMono Nerd Font Mono"
+LABEL="JetBrainsMono Nerd Font"
 
 sketchybar --bar     height=24                                            \
                      blur_radius=0                                        \
@@ -33,7 +33,7 @@ sketchybar --bar     height=24                                            \
 # left
 source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/space.sh"
-source "$ITEM_DIR/team.sh"
+# source "$ITEM_DIR/team.sh"
 
 # right
 source "$ITEM_DIR/time.sh"

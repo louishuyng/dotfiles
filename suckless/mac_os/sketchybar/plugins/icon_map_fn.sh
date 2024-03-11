@@ -1,5 +1,5 @@
 function icon_map() {
-   case "$1" in
+    case "$1" in
    "Live")
         icon_result=":ableton:"
         ;;
@@ -93,6 +93,9 @@ function icon_map() {
    "Cypress")
         icon_result=":cypress:"
         ;;
+   "DaVinci Resolve")
+        icon_result=":davinciresolve:"
+        ;;
    "Default")
         icon_result=":default:"
         ;;
@@ -183,7 +186,7 @@ function icon_map() {
    "Iris")
         icon_result=":iris:"
         ;;
-   "iTerm")
+   "iTerm" | "iTerm2")
         icon_result=":iterm:"
         ;;
    "Jellyfin Media Player")
@@ -216,8 +219,17 @@ function icon_map() {
    "LibreWolf")
         icon_result=":libre_wolf:"
         ;;
+   "Adobe Lightroom")
+        icon_result=":lightroom:"
+        ;;
+   "Lightroom Classic")
+        icon_result=":lightroomclassic:"
+        ;;
    "Linear")
         icon_result=":linear:"
+        ;;
+   "Logic Pro")
+        icon_result=":logicpro:"
         ;;
    "Logseq")
         icon_result=":logseq:"
@@ -249,6 +261,9 @@ function icon_map() {
    "Microsoft Excel")
         icon_result=":microsoft_excel:"
         ;;
+   "Microsoft Outlook")
+        icon_result=":microsoft_outlook:"
+        ;;
    "Microsoft PowerPoint")
         icon_result=":microsoft_power_point:"
         ;;
@@ -264,6 +279,9 @@ function icon_map() {
    "Miro")
         icon_result=":miro:"
         ;;
+   "MongoDB Compass"*)
+        icon_result=":mongodb:"
+        ;;
    "mpv")
         icon_result=":mpv:"
         ;;
@@ -275,6 +293,9 @@ function icon_map() {
         ;;
    "网易云音乐")
         icon_result=":netease_music:"
+        ;;
+   "Noodl" | "Noodl Editor")
+        icon_result=":noodl:"
         ;;
    "NordVPN")
         icon_result=":nord_vpn:"
@@ -306,6 +327,9 @@ function icon_map() {
    "1Password")
         icon_result=":one_password:"
         ;;
+   "ChatGPT")
+        icon_result=":openai:"
+        ;;
    "Orion" | "Orion RC")
         icon_result=":orion:"
         ;;
@@ -317,6 +341,9 @@ function icon_map() {
         ;;
    "Preview" | "预览" | "Skim" | "zathura")
         icon_result=":pdf:"
+        ;;
+   "Adobe Photoshop"*)
+        icon_result=":photoshop:"
         ;;
    "Pi-hole Remote")
         icon_result=":pihole:"

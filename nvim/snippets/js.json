@@ -1,0 +1,80 @@
+{
+  "gspec": {
+    "prefix": "gspec",
+    "body": [
+      "describe('@$1/$2.ts', () => {",
+      "  const testHelper = new CustomTestHelper(CONNECTION_NAME, AppModule);",
+      "",
+      "  beforeAll(() => testHelper.beforeAll())",
+      "",
+      "  after(() => testHelper.afterAll())",
+      "",
+      " })"
+    ],
+    "description": "Generate sample spec"
+  },
+  "gusecase": {
+    "prefix": "gusecase",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "",
+      "import { ClientResetPasswordUseCaseTypes } from '.types';",
+      "",
+      "@Injectable()",
+      "export class $1UseCase {",
+      "  constructor() {}",
+      "",
+      "  async execute(input: any): Promise<any> {}",
+      "}"
+    ],
+    "description": "Generate usecase"
+  },
+  "gmodule": {
+    "prefix": "gmodule",
+    "body": [
+      "import { Module } from '@nestjs/common';",
+      "",
+      "@Module({",
+      "  imports: [],",
+      "  controllers: [],",
+      "  providers: [],",
+      "})",
+      "export class $1Module {}"
+    ],
+    "description": "Generate module"
+  },
+  "gcontroller": {
+    "prefix": "gcontroller",
+    "body": [
+      "import {",
+      "  Body,",
+      "  Controller,",
+      "  HttpCode,",
+      "  HttpStatus,",
+      "  Post,",
+      "  UseGuards,",
+      "} from '@nestjs/common';",
+      "import { UserAuthGuard } from '@regask/common/guards/user-auth-guard.guard';",
+      "",
+      "import { Routes,
+      RouteVersion } from '../../routes.config';",
+      "",
+      "Controller({",
+      "  version: [RouteVersion.v2],
+      ",
+      "  path: $1,
+      ",
+      "})",
+      "export class $2Controller {",
+      "  constructor(",
+      "  ) {}",
+      "",
+      "  @Post()",
+      "  @UseGuards(UserAuthGuard)",
+      "  @HttpCode(HttpStatus.ACCEPTED)",
+      "  async create(",
+      "  )"
+    ],
+    "description": "Generate controller"
+  }
+}
