@@ -30,8 +30,11 @@ require("nvim-tree").setup({
   },
   diagnostics = {enable = false},
   view = {
-    side = 'right',
     width = 30,
+    hide_root_folder = false,
+    side = 'right',
+    number = false,
+    relativenumber = false,
     adaptive_size = true,
     mappings = {
       list = {

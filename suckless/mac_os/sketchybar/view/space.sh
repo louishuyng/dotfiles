@@ -13,7 +13,7 @@ for i in "${!SPACE_ICONS[@]}"; do
              --set space.$sid associated_space=$sid                     \
                               ignore_association=on                     \
                               icon=${SPACE_ICONS[i]}                    \
-                              icon.font="$LABEL:SemiBold:12"            \
+                              icon.font="$LABEL:SemiBold:13"            \
                               icon.padding_left=7                      \
                               icon.padding_right=7                     \
                               icon.color=0xff${GRAY:1}       \

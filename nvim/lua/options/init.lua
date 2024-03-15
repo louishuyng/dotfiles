@@ -142,6 +142,8 @@ vim.cmd([[
   set ttyfast
   set synmaxcol=128
   syntax sync minlines=256
+
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 ]])
 
 -- Spell Check

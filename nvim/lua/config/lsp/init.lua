@@ -29,14 +29,21 @@ local ensure_installed = {
   "golangci-lint-langserver",
 
 
+  -- HTM
+  "htmx-lsp",
+  "html-lsp",
+
   "bashls", "cssls", "pyright", "terraformls", "rnix-lsp",
   "codespell", "cfn_lint", "yamlfmt", "smithy-language-server", "yamlls",
-  "ltex-ls", "ocaml-lsp", "ocamlformat", "yaml-language-server",
+  "ltex-ls", "ocaml-lsp", "ocamlformat", "yaml-language-server", "json-lsp"
 }
 
 require("mason-null-ls").setup {ensure_installed = ensure_installed}
 
 require "config/lsp/golang"
+require "config/lsp/html"
+require "config/lsp/htmx"
+require "config/lsp/json"
 require "config/lsp/kotlin"
 require "config/lsp/ltex"
 require "config/lsp/lua"
@@ -58,7 +65,7 @@ require "config/lsp/yamlls"
 -- require('config/lsp/deno')
 
 -- Highlight line numbers for diagnostics
-local signs = {Error = " ", Warn = " ", Hint = "💡", Info = " "}
+local signs = {Error = "E", Warn = "W", Hint = "H", Info = "I"}
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type

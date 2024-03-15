@@ -1,29 +1,49 @@
+live_config_reload = true
+working_directory = "None"
+
 [colors]
-draw_bold_text_with_bright_colors = false
+draw_bold_text_with_bright_colors = true
 
-[colors.normal]
-black = "#5c6370"
-blue = "#61afef"
-cyan = "#56b6c2"
-green = "#98c379"
-magenta = "#c678dd"
-red = "#e06c75"
-white = "#abb2bf"
-yellow = "#e5c07b"
-
-[colors.primary]
-background = "#0F0F0F"
-foreground = "#98c379"
+[colors.bright]
+black = "0x4b5263"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xbe5046"
+white = "0x3e4452"
+yellow = "0xd19a66"
 
 [colors.cursor]
-text = "#5c6370"
-cursor = "#E2DEDD"
+cursor = "0xabb2bf"
+text = "0x5c6370"
 
-[env]
-TERM = "xterm-256color"
+[colors.normal]
+black = "0x5c6370"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0xabb2bf"
+yellow = "0xe5c07b"
+
+[colors.primary]
+background = "0x000000"
+foreground = "0x98c379"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "Warn"
+persistent_logging = false
+print_events = false
+render_timer = false
 
 [font]
-size = 12
+size = 13
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -45,28 +65,18 @@ style = "Regular"
 x = 0
 y = 0
 
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Command"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Command"
-
-[mouse]
-hide_when_typing = true
-
 [scrolling]
 history = 10000
 multiplier = 3
 
 [selection]
-save_to_clipboard = true
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
-decorations = "buttonless"
-dynamic_title = false
-option_as_alt = "OnlyLeft"
+option_as_alt = "Both"
+decorations = "none"
+padding = { x = 0, y = 0 }
+dynamic_padding = true
 startup_mode = "Windowed"
+title = "Alacritty"

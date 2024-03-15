@@ -12,3 +12,6 @@ alias grh='git reset --hard'
 alias gc='git remote prune origin'
 alias gbda='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(master|develop|dev)\s*$argv)" | command xargs -n 1 git branch -d'
 alias gfa='git fetch --all --prune'
+
+alias ghcs='gh copilot suggest'
+alias ghce='gh copilot explain'

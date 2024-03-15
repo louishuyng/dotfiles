@@ -379,6 +379,7 @@ install_cli_tools() {
     brew tap daipeihust/tap                                                                                                                                                                   louishuyng
     brew install im-select
     brew install git-delta
+    brew install tidy-html5
 
     # Devops
     brew install bat # Better cat

@@ -47,12 +47,12 @@ by Miguel Avila
   > #tabbrowser-arrowscrollbox
   > .tabbrowser-tab
   > .tab-stack
-  > .tab-background[multiselected="true"],
+  > .tab-background[multiselected='true'],
 #tabbrowser-tabs:not([movingtab])
   > #tabbrowser-arrowscrollbox
   > .tabbrowser-tab
   > .tab-stack
-  > .tab-background[selected="true"] {
+  > .tab-background[selected='true'] {
   background-image: none !important;
   background-color: var(--toolbar-bgcolor) !important;
 }
@@ -92,11 +92,11 @@ by Miguel Avila
   display: none;
 }
 
-.tabbrowser-tab:not([pinned]) .tab-icon-image {
-  display: none !important;
-}
+/* .tabbrowser-tab:not([pinned]) .tab-icon-image { */
+/*   display: none !important; */
+/* } */
 
-#nav-bar:not([tabs-hidden="true"]) {
+#nav-bar:not([tabs-hidden='true']) {
   box-shadow: none;
 }
 
@@ -117,13 +117,13 @@ by Miguel Avila
   margin-left: -4px !important;
 }
 
-.tabbrowser-tab:is([visuallyselected="true"], [multiselected])
+.tabbrowser-tab:is([visuallyselected='true'], [multiselected])
   > .tab-stack
   > .tab-background {
   box-shadow: none !important;
 }
 
-.tabbrowser-tab[last-visible-tab="true"] {
+.tabbrowser-tab[last-visible-tab='true'] {
   padding-inline-end: 0 !important;
 }
 
@@ -141,7 +141,7 @@ by Miguel Avila
   margin-left: 0 !important;
 }
 
-#urlbar[focused="true"] > #urlbar-background {
+#urlbar[focused='true'] > #urlbar-background {
   box-shadow: none !important;
 }
 
@@ -150,9 +150,9 @@ by Miguel Avila
 }
 
 /* Bookmarks bar  */
-.bookmark-item .toolbarbutton-icon {
-  display: none;
-}
+/* .bookmark-item .toolbarbutton-icon { */
+/*   display: none; */
+/* } */
 toolbarbutton.bookmark-item:not(.subviewbutton) {
   min-width: 1.6em;
 }
@@ -204,6 +204,3 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
   display: none !important;
 }
 
-.tabbrowser-tab .tab-label {
-  color: #48e566 !important;
-}

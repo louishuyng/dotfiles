@@ -15,6 +15,10 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", opt)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opt)
 vim.keymap.set("n", "<C-h>", "<C-w>h", opt)
 
+vim.keymap.set("n", "<C-i>", "<C-a>", opt)
+vim.keymap.set("v", "<C-i>", "<C-a>", opt)
+vim.keymap.set("v", "g<C-i>", "g<C-a>", opt)
+
 -- Faster Save and Quit
 vim.keymap.set("n", "<leader>w", ":silent w<CR>", opt)
 vim.keymap.set("n", "<leader>q", ":q!<CR>", opt)

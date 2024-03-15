@@ -111,5 +111,13 @@ return {
   },
 
   -- REST API
-  {'rest-nvim/rest.nvim'}
+  {
+    'rest-nvim/rest.nvim',
+    config = function()
+      require("rest-nvim").setup({
+        -- Open request results in a horizontal split
+        result_split_horizontal = true,
+      })
+    end
+  }
 }
