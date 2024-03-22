@@ -24,8 +24,8 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: k8s-prod-cluster
-  currentCluster: k8s-prod-cluster
+  currentContext: k8s-qa-cluster
+  currentCluster: k8s-qa-cluster
   keepMissingClusters: false
   clusters:
     arn:aws:eks:eu-west-2:464700364571:cluster/eks-staging:

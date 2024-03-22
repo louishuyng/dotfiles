@@ -376,7 +376,10 @@ install_cli_tools() {
     brew install pgcli
     brew install ripgrep
     brew install terminal-notifier
-    brew tap daipeihust/tap                                                                                                                                                                   louishuyng
+    brew tap daipeihust/tap
+    brew install urlview
+    brew install extract_url
+
     brew install im-select
     brew install git-delta
     brew install tidy-html5
