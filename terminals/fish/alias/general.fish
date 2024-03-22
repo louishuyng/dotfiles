@@ -2,7 +2,7 @@
 alias unset 'set --erase'
 
 # Text Editor
-alias v="nvim"
+alias nv="nvim"
 alias nvt='nvim --cmd "set rtp+=./"'
 alias em="emacs -nw"
 alias c="clear"
