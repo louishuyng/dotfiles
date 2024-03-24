@@ -7,7 +7,6 @@ windows:
       panes:
         - cd regask-infrastructure && k9s
         - cd infra
-        - cd apis
   - platform:
       - cd platform-services
   - articles:

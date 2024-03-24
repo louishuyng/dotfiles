@@ -112,12 +112,16 @@ return {
 
   -- REST API
   {
-    'rest-nvim/rest.nvim',
-    config = function()
-      require("rest-nvim").setup({
-        -- Open request results in a horizontal split
-        result_split_horizontal = true,
-      })
-    end
+    "vhyrro/luarocks.nvim",
+    opts = {
+      rocks = {  "lua-curl", "nvim-nio", "mimetypes", "xml2lua", "rest.nvim" }, -- Specify LuaRocks packages to install
+    },
+    priority = 1000,
+    config = true,
+  },
+  {
+    "rest-nvim/rest.nvim",
+    ft = "http",
+    dependencies = { "luarocks.nvim" },
   }
 }

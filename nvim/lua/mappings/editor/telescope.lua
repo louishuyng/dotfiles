@@ -100,3 +100,15 @@ vim.keymap.set("n", "<leader>\\", function()
   require("neoscopes").set_current("Notes")
   find_files()
 end)
+
+-- Rest
+vim.keymap.set("n", "<leader>ce", function()
+  require("telescope").extensions.rest.select_env()
+end)
+
+vim.keymap.set("n", "<leader>fa", function()
+  require("telescope.builtin").find_files({
+    prompt_title = "APIs",
+    find_command = {"fd", "--type", "f", "--extension", "http"}
+  })
+end)

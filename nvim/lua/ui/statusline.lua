@@ -248,6 +248,20 @@ local function table_contains(tbl, x)
   return found
 end
 
+local RestEnv = {
+  provider = function()
+    local icon = ""
+    local env = _G._rest_nvim.env_file
+
+    return (" %s %s "):format(icon, env)
+  end,
+  hl = {fg = "#428890", bg = colors.crust, bold = true},
+  condition = function()
+    return vim.bo.filetype == "http"
+  end
+}
+
+
 local LSPActive = {
   condition = function()
     return conditions.hide_in_width(120) and conditions.lsp_attached()
@@ -412,7 +426,7 @@ local IndentSizes = {
     local indent_type =
         vim.api.nvim_buf_get_option(0, "expandtab") and "Spaces" or "Tab Size"
     local indent_size = vim.api.nvim_buf_get_option(0, "tabstop")
-    return (" %s: %s "):format(indent_type, indent_size)
+    return (" %s: %s"):format(indent_type, indent_size)
   end,
   hl = {bg = colors.crust, fg = colors.surface2},
   condition = function()
@@ -422,7 +436,7 @@ local IndentSizes = {
 
 heirline.setup({
   statusline = {
-    ViMode, Git, Diagnostics, Align, LSPActive, Ruler, FileType, FileSize,
+    ViMode, Git, Diagnostics, Align, RestEnv, LSPActive, Ruler, FileType, FileSize,
     FileFormat, FileEncoding, IndentSizes
   }
 })

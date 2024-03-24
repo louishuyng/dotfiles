@@ -355,6 +355,9 @@ link_all_dotfiles() {
   ln -s ~/.dotfiles/.ideavimrc ~/
   success "Linked ideavimrc"
 
+  ln -s $(which fdfind) ~/.local/bin/fd
+  success "Linked fd"
+
   ln -s ~/.dotfiles/.irbrc ~/.irbrc
 }
 
