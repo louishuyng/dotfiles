@@ -17,7 +17,7 @@ local ascii = {
 local header = {
   type = 'text',
   val = ascii,
-  opts = {position = "center", hl_shortcut = 'AlphaHeader', hl = 'AlphaHeader'}
+  opts = { position = "center", hl_shortcut = 'AlphaHeader', hl = 'AlphaHeader' }
 }
 
 -- INFO SECTION
@@ -26,14 +26,14 @@ local function get_info()
   local total_plugins = lazy_stats.loaded .. "/" .. lazy_stats.count .. " packages"
   local version = vim.version()
   local nvim_version_info = "ⓥ " .. version.major .. "." .. version.minor ..
-                                "." .. version.patch
+      "." .. version.patch
 
   local info_string = total_plugins .. "  |  " .. nvim_version_info
 
   return {
     type = "text",
     val = info_string,
-    opts = {hl = "Delimiter", position = "center"}
+    opts = { hl = "Delimiter", position = "center" }
   }
 end
 
@@ -44,7 +44,7 @@ local links = {
     {
       type = "text",
       val = "Tools",
-      opts = {hl = "SpecialComment", position = "center"}
+      opts = { hl = "SpecialComment", position = "center" }
     }, dashboard.button("l", "💤 Lazy", "<cmd>Lazy<CR>"),
     dashboard.button("m", "🧱 Mason", "<cmd>Mason<CR>")
   },
@@ -58,23 +58,23 @@ local mru = {
     {
       type = 'text',
       val = 'Recent files',
-      opts = {hl = 'SpecialComment', position = 'center'}
-    }, {type = 'padding', val = 1}, {
-      type = 'group',
-      val = function() return {theme.mru(1, vim.fn.getcwd(), 10)} end
-    }
+      opts = { hl = 'SpecialComment', position = 'center' }
+    }, { type = 'padding', val = 1 }, {
+    type = 'group',
+    val = function() return { theme.mru(1, vim.fn.getcwd(), 10) } end
+  }
   }
 }
 theme.config.layout = {
-  {type = "padding", val = 12}, header, {type = "padding", val = 2}, get_info(),
-  {type = "padding", val = 2}, links, {type = "padding", val = 2}, mru,
-  {type = "padding", val = 2}
+  { type = "padding", val = 12 }, header, { type = "padding", val = 2 }, get_info(),
+  { type = "padding", val = 2 }, links, { type = "padding", val = 2 }, mru,
+  { type = "padding", val = 2 }
 }
 
 alpha.setup(theme.config)
 
 -- autocommands to turn off bars
-local alpha_group = vim.api.nvim_create_augroup("alpha", {clear = true})
+local alpha_group = vim.api.nvim_create_augroup("alpha", { clear = true })
 vim.api.nvim_create_autocmd("User", {
   group = alpha_group,
   pattern = "AlphaReady",

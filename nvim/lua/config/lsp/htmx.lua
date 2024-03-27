@@ -7,4 +7,3 @@ lsp_config.htmx.setup({
     on_attach(client, bufnr)
   end
 })
-

@@ -5,7 +5,7 @@ return function(...)
 
   math.randomseed(os.time())
 
-  for i, tbl in ipairs({...}) do
+  for i, tbl in ipairs({ ... }) do
     for k, v in pairs(tbl) do
       if type(k) == 'number' then
         -- randomize numeric keys

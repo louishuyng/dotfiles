@@ -7,9 +7,9 @@ local scopes = {}
 
 for _, dir in ipairs(dirs) do
   local name = vim.fn.fnamemodify(dir, ":t")
-  table.insert(scopes, {name = name, dirs = {dir}})
+  table.insert(scopes, { name = name, dirs = { dir } })
 end
 
-table.insert(scopes, {name = "Notes", dirs = {"~/notes"}})
+table.insert(scopes, { name = "Notes", dirs = { "~/notes" } })
 
-require("neoscopes").setup({scopes = scopes})
+require("neoscopes").setup({ scopes = scopes })

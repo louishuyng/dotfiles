@@ -7,4 +7,3 @@ lsp_config.jsonls.setup({
     on_attach(client, bufnr)
   end
 })
-

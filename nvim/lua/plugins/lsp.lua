@@ -1,7 +1,6 @@
 return {
   { 'neovim/nvim-lspconfig',      config = function() require "config.lsp" end },
   { 'nvimtools/none-ls.nvim' },
-  { 'liuchengxu/vista.vim' },
   { 'williamboman/mason.nvim' },
   { 'jay-babu/mason-null-ls.nvim' },
   { 'vim-test/vim-test' },
@@ -9,6 +8,12 @@ return {
     'nvimdev/lspsaga.nvim',
     config = function()
       require("lspsaga").setup({
+        symbol_in_winbar = {
+          enable = false
+        },
+        outline = {
+          win_position = 'left'
+        },
         ui = {
           border = "solid",
         },
@@ -27,9 +32,9 @@ return {
             split = 'i',
             toggle_or_open = '<CR>',
             close = 'q'
-         },
-         layout = "normal",
-         max_height = 0.3
+          },
+          layout = "normal",
+          max_height = 0.3
         }
       })
     end,

@@ -52,7 +52,7 @@ return function(opts)
   pickers.new(opts, {
     debounce = 100,
     prompt_title = "Nest js > " .. search,
-    finder = finders.new_table {results = files},
+    finder = finders.new_table { results = files },
     previewer = previewers.cat.new(opts),
     sorter = conf.generic_sorter(opts)
   }):find()

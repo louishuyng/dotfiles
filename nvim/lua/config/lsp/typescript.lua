@@ -4,7 +4,7 @@ local on_attach = require 'config/lsp/on_attach'
 local function organize_imports()
   local params = {
     command = "_typescript.organizeImports",
-    arguments = {vim.api.nvim_buf_get_name(0)}
+    arguments = { vim.api.nvim_buf_get_name(0) }
   }
   vim.lsp.buf.execute_command(params)
 end
@@ -16,13 +16,13 @@ lsp_config.tsserver.setup({
     on_attach(client, bufnr)
   end,
   commands = {
-    OrganizeImports = {organize_imports, description = "Organize Imports"}
+    OrganizeImports = { organize_imports, description = "Organize Imports" }
   }
 })
 
 lsp_config.eslint.setup({
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre",
-                                {buffer = bufnr, command = "EslintFixAll"})
+      { buffer = bufnr, command = "EslintFixAll" })
   end
 })

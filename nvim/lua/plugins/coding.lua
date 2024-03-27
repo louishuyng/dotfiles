@@ -15,26 +15,26 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.dotfiles/nvim/snippets" })
 
-      require'luasnip'.filetype_extend("ruby", {"rails"})
+      require 'luasnip'.filetype_extend("ruby", { "rails" })
     end
   },
-  {'hrsh7th/cmp-nvim-lsp'},
-  {'hrsh7th/cmp-buffer', dependencies = {"nvim-cmp"}},
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/cmp-buffer',  dependencies = { "nvim-cmp" } },
   {
     'github/copilot.vim',
     event = "VeryLazy",
     build = "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash"
   },
   -- Code Format
-  {'hrsh7th/cmp-cmdline', dependencies = {'nvim-cmp'}},
-  {'numToStr/Comment.nvim'},
+  { 'hrsh7th/cmp-cmdline',  dependencies = { 'nvim-cmp' } },
+  { 'numToStr/Comment.nvim' },
   {
     'windwp/nvim-autopairs',
-    dependencies = {"nvim-cmp"},
+    dependencies = { "nvim-cmp" },
     config = function()
       local present1, autopairs = pcall(require, "nvim-autopairs")
       local present2, cmp_autopairs = pcall(require,
-                                            "nvim-autopairs.completion.cmp")
+        "nvim-autopairs.completion.cmp")
 
       if not (present1 or present2) then return end
 
@@ -45,7 +45,7 @@ return {
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end
   },
-  {'kamykn/spelunker.vim'},
+  { 'kamykn/spelunker.vim' },
 
   -- Treesistter
   {
@@ -53,11 +53,11 @@ return {
     build = ':TSUpdate',
     config = function() require "config.cores.treesitter" end
   },
-  {'nvim-treesitter/nvim-treesitter-textobjects'},
+  { 'nvim-treesitter/nvim-treesitter-textobjects' },
 
   -- ROR
-  {'tpope/vim-rails'},
+  { 'tpope/vim-rails' },
 
   -- Testing
-  {'vim-test/vim-test', dependencies = {'preservim/vimux'}},
+  { 'vim-test/vim-test',                          dependencies = { 'preservim/vimux' } },
 }

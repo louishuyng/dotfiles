@@ -1,4 +1,4 @@
-local opt = {silent = true}
+local opt = { silent = true }
 
 vim.keymap.set("n", "<space>tf", ":TestFile<CR>")
 vim.keymap.set("n", "<space>ts", ":TestNearest<CR>")

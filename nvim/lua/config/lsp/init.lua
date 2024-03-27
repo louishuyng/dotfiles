@@ -3,6 +3,7 @@ require("mason").setup()
 local ensure_installed = {
   -- Lua
   "lua_ls",
+  "luaformatter",
 
   -- Rust
   "rust_analyzer",
@@ -38,7 +39,7 @@ local ensure_installed = {
   "ltex-ls", "ocaml-lsp", "ocamlformat", "yaml-language-server", "json-lsp"
 }
 
-require("mason-null-ls").setup {ensure_installed = ensure_installed}
+require("mason-null-ls").setup { ensure_installed = ensure_installed }
 
 require "config/lsp/golang"
 require "config/lsp/html"
@@ -65,22 +66,22 @@ require "config/lsp/yamlls"
 -- require('config/lsp/deno')
 
 -- Highlight line numbers for diagnostics
-local signs = {Error = "E", Warn = "W", Hint = "H", Info = "I"}
+local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- vim.keymap.set("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", bufopts)
 -- vim.keymap.set("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", bufopts)
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
-               {desc = "Go to previous diagnostic"})
+  { desc = "Go to previous diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
-               {desc = "Go to next diagnostic"})
+  { desc = "Go to next diagnostic" })
 
 vim.lsp.handlers['textDocument/hover'] =
-    vim.lsp.with(vim.lsp.handlers.hover, {border = "single"})
+    vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 vim.lsp.handlers['textDocument/signatureHelp'] =
-    vim.lsp.with(vim.lsp.handlers.signatureHelp, {border = "single"})
+    vim.lsp.with(vim.lsp.handlers.signatureHelp, { border = "single" })

@@ -32,7 +32,7 @@ rest.setup({
         enable = true,
         ---@see https://curl.se/libcurl/c/curl_easy_getinfo.html
         stats = {
-          { "total_time", title = "Time taken:" },
+          { "total_time",      title = "Time taken:" },
           { "size_download_t", title = "Download size:" },
         },
       },
@@ -46,10 +46,10 @@ rest.setup({
             "tidy",
             "-i",
             "-q",
-            "--tidy-mark",      "no",
+            "--tidy-mark", "no",
             "--show-body-only", "auto",
-            "--show-errors",    "0",
-            "--show-warnings",  "0",
+            "--show-errors", "0",
+            "--show-warnings", "0",
             "-",
           }, body):gsub("\n$", "")
 

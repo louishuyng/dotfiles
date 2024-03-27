@@ -1,5 +1,5 @@
 vim.fn.sign_define('DapBreakpoint',
-                   {text = '🟥', texthl = '', linehl = '', numhl = ''})
+  { text = '🟥', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', {
   text = '▶️',
   texthl = '',
@@ -8,7 +8,7 @@ vim.fn.sign_define('DapStopped', {
 })
 
 local dap, dapui, virtual_text = require("dap"), require("dapui"),
-                                 require("nvim-dap-virtual-text")
+    require("nvim-dap-virtual-text")
 -- Init
 dapui.setup()
 virtual_text.setup()
@@ -24,7 +24,7 @@ dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 dap.adapters.go = {
   type = 'executable',
   command = 'node',
-  args = {os.getenv('HOME') .. '/development/vscode-go/dist/debugAdapter.js'}
+  args = { os.getenv('HOME') .. '/development/vscode-go/dist/debugAdapter.js' }
 }
 dap.configurations.go = {
   {

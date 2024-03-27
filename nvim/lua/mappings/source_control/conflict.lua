@@ -1,4 +1,4 @@
-local opts = {silent = true}
+local opts = { silent = true }
 
 vim.keymap.set("n", "<leader>cb", ":GitConflictChooseBoth<CR>", opts)
 vim.keymap.set("n", "<leader>ci", ":GitConflictChooseTheirs<CR>", opts)

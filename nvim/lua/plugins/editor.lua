@@ -1,15 +1,15 @@
 return {
-  {'mg979/vim-visual-multi'}, -- Multi Cursor
-  {'tpope/vim-surround'},
+  { 'mg979/vim-visual-multi' }, -- Multi Cursor
+  { 'tpope/vim-surround' },
   {
     "andymass/vim-matchup",
-    init = function() vim.g.matchup_matchparen_offscreen = {method = "popup"} end
+    init = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end
   },
-  {'windwp/nvim-spectre'}, -- Replace Project wide
-  {'mbbill/undotree'}, -- History Edited Current File Buffer
+  { 'windwp/nvim-spectre' }, -- Replace Project wide
+  { 'mbbill/undotree' },     -- History Edited Current File Buffer
   {
     'folke/todo-comments.nvim',
-    dependencies = {"nvim-lua/plenary.nvim"},
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {}
   },
 
@@ -26,13 +26,13 @@ return {
     keys = {
       {
         "s",
-        mode = {"n", "x", "o"},
+        mode = { "n", "x", "o" },
         function() require("flash").jump() end,
         desc = "Flash"
       },
       {
         "S",
-        mode = {"n", "o", "x"},
+        mode = { "n", "o", "x" },
         function()
           -- show labeled treesitter nodes around the cursor
           require("flash").treesitter()
@@ -50,7 +50,7 @@ return {
       },
       {
         "R",
-        mode = {"n", "o", "x"},
+        mode = { "n", "o", "x" },
         function()
           -- show labeled treesitter nodes around the search matches
           require("flash").treesitter_search()
@@ -60,24 +60,24 @@ return {
     }
   },
 
-  {'michaelb/sniprun', build = 'sh install.sh'}, -- Run code
+  { 'michaelb/sniprun',          build = 'sh install.sh' }, -- Run code
 
   -- Focus
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
     dependencies = {
-      {"folke/twilight.nvim"},
-      {"preservim/vim-pencil"}
+      { "folke/twilight.nvim" },
+      { "preservim/vim-pencil" }
     },
     opts = {
       plugins = {
         gitsigns = true,
         tmux = true,
-        kitty = {enabled = false, font = "+2"}
+        kitty = { enabled = false, font = "+2" }
       }
     },
-    keys = {{"<C-w>o", "<cmd>ZenMode | Pencil<cr>", desc = "Zen Mode with Pencil"}}
+    keys = { { "<C-w>o", "<cmd>ZenMode | Pencil<cr>", desc = "Zen Mode with Pencil" } }
   },
   {
     "folke/twilight.nvim",
@@ -89,10 +89,10 @@ return {
   },
 
   -- Git
-  {'tpope/vim-fugitive'},
-  {'lewis6991/gitsigns.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
-  {'sindrets/diffview.nvim'},
-  {'akinsho/git-conflict.nvim', version = "*", config = true},
+  { 'tpope/vim-fugitive' },
+  { 'lewis6991/gitsigns.nvim',   dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'sindrets/diffview.nvim' },
+  { 'akinsho/git-conflict.nvim', version = "*",                             config = true },
 
   -- Markdown
   {
@@ -114,7 +114,7 @@ return {
   {
     "vhyrro/luarocks.nvim",
     opts = {
-      rocks = {  "lua-curl", "nvim-nio", "mimetypes", "xml2lua", "rest.nvim" }, -- Specify LuaRocks packages to install
+      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua", "rest.nvim" }, -- Specify LuaRocks packages to install
     },
     priority = 1000,
     config = true,
