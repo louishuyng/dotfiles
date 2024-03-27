@@ -47,6 +47,8 @@ suckless/spicetify/Extracted/
 suckless/spicetify/Themes/*
 suckless/mailspring
 
+suckless/k9s/*
+
 .idea
 
 devops/vault-config/env.json
