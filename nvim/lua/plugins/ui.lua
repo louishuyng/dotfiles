@@ -11,6 +11,9 @@ return {
         window = {
           margin = { vertical = 0, horizontal = 1 },
         },
+        hide = {
+          cursorline = true,
+        },
         render = function(props)
           local function get_diagnostic_label()
             local icons = { Error = "E", Warn = "W", Hint = "H", Info = "I" }

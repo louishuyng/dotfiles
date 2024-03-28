@@ -69,3 +69,6 @@ vim.keymap.set("n", "<leader>0", function()
     syntax on
   ]])
 end, opt)
+
+-- Editing Auto Approve PRs
+vim.cmd("command! EditAutoApprovePRs :e ~/Dev/auto_approve_prs.txt")
