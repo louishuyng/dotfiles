@@ -1,7 +1,12 @@
-function icon_map() {
+
+### START-OF-ICON-MAP
+function __icon_map() {
     case "$1" in
    "Live")
         icon_result=":ableton:"
+        ;;
+   "Adobe Bridge 2024")
+        icon_result=":adobe_bridge:"
         ;;
    "Affinity Designer")
         icon_result=":affinity_designer:"
@@ -72,7 +77,7 @@ function icon_map() {
    "Brave Browser")
         icon_result=":brave_browser:"
         ;;
-   "Calendar" | "日历" | "Fantastical" | "Cron" | "Amie")
+   "Calendar" | "日历" | "Fantastical" | "Cron" | "Amie" | "Calendrier" | "Notion Calendar")
         icon_result=":calendar:"
         ;;
    "Caprine")
@@ -156,7 +161,7 @@ function icon_map() {
    "Folx")
         icon_result=":folx:"
         ;;
-   "System Preferences" | "System Settings" | "系统设置")
+   "System Preferences" | "System Settings" | "系统设置" | "Réglages Système")
         icon_result=":gear:"
         ;;
    "GitHub Desktop")
@@ -179,6 +184,9 @@ function icon_map() {
         ;;
    "IntelliJ IDEA")
         icon_result=":idea:"
+        ;;
+   "Inkdrop")
+        icon_result=":inkdrop:"
         ;;
    "Insomnia")
         icon_result=":insomnia:"
@@ -227,6 +235,9 @@ function icon_map() {
         ;;
    "Linear")
         icon_result=":linear:"
+        ;;
+   "LM Studio")
+        icon_result=":lm_studio:"
         ;;
    "Logic Pro")
         icon_result=":logicpro:"
@@ -285,7 +296,10 @@ function icon_map() {
    "mpv")
         icon_result=":mpv:"
         ;;
-   "Music" | "音乐")
+   "Mullvad Browser")
+        icon_result=":mullvad_browser:"
+        ;;
+   "Music" | "音乐" | "Musique")
         icon_result=":music:"
         ;;
    "Neovide" | "neovide")
@@ -303,7 +317,7 @@ function icon_map() {
    "Notability")
         icon_result=":notability:"
         ;;
-   "Notes" | "Inkdrop" | "备忘录")
+   "Notes" | "备忘录")
         icon_result=":notes:"
         ;;
    "Notion")
@@ -330,6 +344,9 @@ function icon_map() {
    "ChatGPT")
         icon_result=":openai:"
         ;;
+   "OpenVPN Connect")
+        icon_result=":openvpn_connect:"
+        ;;
    "Orion" | "Orion RC")
         icon_result=":orion:"
         ;;
@@ -339,7 +356,7 @@ function icon_map() {
    "Parallels Desktop")
         icon_result=":parallels:"
         ;;
-   "Preview" | "预览" | "Skim" | "zathura")
+   "Preview" | "预览" | "Skim" | "zathura" | "Aperçu")
         icon_result=":pdf:"
         ;;
    "Adobe Photoshop"*)
@@ -356,6 +373,9 @@ function icon_map() {
         ;;
    "PomoDone App")
         icon_result=":pomodone:"
+        ;;
+   "Postman")
+        icon_result=":postman:"
         ;;
    "PyCharm")
         icon_result=":pycharm:"
@@ -375,7 +395,7 @@ function icon_map() {
    "Reeder")
         icon_result=":reeder5:"
         ;;
-   "Reminders" | "提醒事项")
+   "Reminders" | "提醒事项" | "Rappels")
         icon_result=":reminders:"
         ;;
    "Replit")
@@ -450,6 +470,9 @@ function icon_map() {
    "Todoist")
         icon_result=":todoist:"
         ;;
+   "Toggl Track")
+        icon_result=":toggl_track:"
+        ;;
    "Tor Browser")
         icon_result=":tor_browser:"
         ;;
@@ -521,3 +544,4 @@ function icon_map() {
         ;;
     esac
 }
+### END-OF-ICON-MAP
