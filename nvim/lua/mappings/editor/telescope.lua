@@ -1,4 +1,5 @@
 local scopes = require("neoscopes")
+local telescope = require("telescope")
 
 local opt = { silent = true, noremap = true }
 
@@ -22,6 +23,7 @@ vim.keymap.set("n", "<leader><leader>", ":Telescope buffers<CR>", opt)
 vim.keymap.set("n", "<leader>/",
   ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
   opt)
+
 vim.keymap.set("n", "<leader>fm", ":Telescope marks<CR>", opt)
 vim.keymap.set("n", "<leader>fj", ":Telescope jumplist<CR>", opt)
 
@@ -47,8 +49,6 @@ vim.keymap.set("n", "<leader>vc",
 
 -- File Browser with the path of the current path
 vim.keymap.set("n", ",e", function()
-  local telescope = require("telescope")
-
   local function telescope_buffer_dir() return vim.fn.expand("%:p:h") end
 
   telescope.extensions.file_browser.file_browser({
@@ -78,10 +78,6 @@ vim.keymap.set("n", ";s", function()
   local builtin = require("telescope.builtin")
   builtin.treesitter()
 end)
-
--- Harpoon
-vim.keymap.set("n", "<leader>mf",
-  ":Telescope harpoon marks previewer=false<CR>", opt)
 
 -- Refactoring
 vim.keymap.set({ "n", "x" }, "<leader>rf", function()

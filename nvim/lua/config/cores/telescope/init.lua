@@ -1,15 +1,22 @@
 local present, telescope = pcall(require, "telescope")
 local actions = require 'telescope.actions'
+local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup {
   defaults = {
     file_ignore_patterns = {
-      ".git/", ".cache", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv",
-      "%.mp4", "%.zip"
+      ".git/", "node_modules/", "vendor/", "target/", "dist/", "build/", ".cache/"
     },
     vimgrep_arguments = {
-      "rg", "--color=never", "--no-heading", "--with-filename", "--line-number",
-      "--column", "--smart-case"
+      "rg",
+      "--hidden",
+      "-L",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
     },
     wrap_results = true,
     sorting_strategy = "ascending",
@@ -42,7 +49,8 @@ telescope.setup {
         ["<C-f>"] = actions.preview_scrolling_down,
         ["<C-v>"] = actions.select_vertical,
         ["<C-s>"] = actions.select_horizontal,
-        ["<c-d>"] = actions.delete_buffer
+        ["<c-d>"] = actions.delete_buffer,
+        ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
       }
     },
     extensions = {
