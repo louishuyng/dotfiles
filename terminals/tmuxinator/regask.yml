@@ -3,10 +3,9 @@ root: ~/Dev/Projects/Regask
 attach: false
 windows:
   - infra:
-      layout: main-vertical
-      panes:
-        - cd regask-infrastructure && k9s
-        - cd infra
+      - cd regask-infrastructure
+  - gitops:
+      - cd platform-gitops
   - platform:
       - cd platform-services
   - articles:
