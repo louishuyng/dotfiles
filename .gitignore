@@ -47,7 +47,8 @@ suckless/spicetify/Extracted/
 suckless/spicetify/Themes/*
 suckless/mailspring
 
-suckless/k9s/*
+suckless/k9s/clusters
+suckless/k9s/*.log
 
 .idea
 
