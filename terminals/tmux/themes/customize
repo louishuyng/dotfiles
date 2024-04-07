@@ -3,7 +3,7 @@
 #+--- Bars General Config ---+
 tmux set -g status-position bottom  # macOS / darwin style
 tmux set -g status-left-length "200"
-tmux set -g status-bg "#1E1E1E"
+tmux set -g status-bg "#0F0F0F"
 tmux set-option -g status-justify left
 
 #+--- Bars LEFT ---+
@@ -17,5 +17,4 @@ tmux set -g window-status-format "#[fg=#6f737b,bg=default,none,dim]  #I #W#[f
 
 #+--- Bars RIGHT ---+
 tmux set -g status-right "#[fg=gray]#{pomodoro_status} "
-tmux set -ag status-right "#[fg=#50C16E] PIA: #{pia_status} #{pia_region}"
 tmux set -ag status-right "#[fg=#ffff00] #(tmux list-panes | wc -l | tr -d ' ') panes"

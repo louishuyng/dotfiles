@@ -10,7 +10,8 @@ null_ls.setup({
     null_ls.builtins.formatting.yamlfmt,
     null_ls.builtins.diagnostics.codespell,
     null_ls.builtins.diagnostics.protolint,
-    null_ls.builtins.diagnostics.cfn_lint
+    null_ls.builtins.diagnostics.cfn_lint,
+    null_ls.builtins.diagnostics.rubocop,
   },
   on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false

@@ -2,8 +2,8 @@ vim.cmd([[
   let g:edge_transparent_background = 1
   colorscheme edge
 
-  hi Normal guibg=#1E1E1E
-  hi NormalNC guibg=#1E1E1E
+  hi Normal guibg=#0F0F0F
+  hi NormalNC guibg=#0F0F0F
   hi VertSplit guifg=#2B2B2B guibg=NONE
 
   hi TelescopePreviewBorder guibg=#21252E guifg=#21252E
@@ -30,7 +30,7 @@ vim.cmd([[
 
   hi DiffAdd cterm=NONE ctermfg=NONE ctermbg=236 guifg=NONE guibg=#303030
   hi DiffChange cterm=NONE ctermfg=NONE ctermbg=238 guifg=NONE guibg=#2E323B
-  hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#1E1E1E guifg=#be5046
+  hi DiffDelete cterm=reverse ctermfg=0 ctermbg=88 guibg=#0F0F0F guifg=#be5046
   hi DiffText cterm=NONE ctermfg=NONE ctermbg=23 guifg=NONE guibg=#005f5f
 
   hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#323232 gui=NONE
