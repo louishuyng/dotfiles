@@ -1,6 +1,6 @@
-name: Regask
-root: ~/Dev/Projects/Regask
-attach: false
+name: regask
+root: ~/Dev/repository/github.com/regask
+attach: true
 windows:
   - infra:
       - cd regask-infrastructure

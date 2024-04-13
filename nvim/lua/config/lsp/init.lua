@@ -36,7 +36,7 @@ local ensure_installed = {
 
   "bashls", "cssls", "pyright", "terraformls", "rnix-lsp",
   "codespell", "cfn_lint", "yamlfmt", "smithy-language-server", "yamlls",
-  "ltex-ls", "ocaml-lsp", "ocamlformat", "yaml-language-server", "json-lsp"
+  "ltex-ls", "ocaml-lsp", "ocamlformat", "yaml-language-server", "json-lsp", "terraform-ls"
 }
 
 require("mason-null-ls").setup { ensure_installed = ensure_installed }

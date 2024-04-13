@@ -1,0 +1,8 @@
+name: louishuyng
+attach: false
+windows:
+  - dotfiles:
+      - cd
+      - cd ~/.dotfiles && nvim
+  - awesome-tech:
+      - cd ~/Dev/repository/github.com/louishuyng/awesome-tech

@@ -1,8 +1,0 @@
-name: Dev
-attach: true
-windows:
-  - dotfiles:
-      - cd
-      - cd ~/.dotfiles && nvim
-  - awesome-tech:
-      - cd ~/Dev/awesome-tech

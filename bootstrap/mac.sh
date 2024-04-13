@@ -279,7 +279,7 @@ install_qutebrowser() {
 }
 
 install_nnn() {
-  read -r -p "Do you want to install qutebrowser? [y|N] " response
+  read -r -p "Do you want to install nnn? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     cd /tmp
     git clone git@github.com:jarun/nnn.git

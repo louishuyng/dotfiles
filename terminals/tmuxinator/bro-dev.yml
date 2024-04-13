@@ -1,7 +1,0 @@
-name: BroDevStartup
-attach: false
-windows:
-  - backend:
-      - cd ~/Dev/SideProjects/BroStartupDev/backend-dev
-  - desktop-app:
-      - cd ~/Dev/SideProjects/BroStartupDev/desktop-app

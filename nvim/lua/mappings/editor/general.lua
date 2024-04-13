@@ -71,4 +71,5 @@ vim.keymap.set("n", "<leader>0", function()
 end, opt)
 
 -- Editing Auto Approve PRs
-vim.cmd("command! EditAutoApprovePRs :e ~/Dev/auto_approve_prs.txt")
+vim.cmd("command! EditAutoApprovePRs :e ~/Dev/Projects/Regask/auto_approve_prs.txt")
+vim.cmd("command! ApprovePRs :!auto_approve_prs")

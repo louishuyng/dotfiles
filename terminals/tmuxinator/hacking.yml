@@ -1,7 +1,0 @@
-name: Hacking
-attach: false
-windows:
-  - hacking1:
-      - cd ~/Dev/Hacking
-  - hacking2:
-      - cd ~/Dev/Hacking

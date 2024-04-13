@@ -1,0 +1,8 @@
+name: PerxTech
+root: ~/Dev/repository/github.com/PerxTech
+attach: false
+windows:
+  - api:
+      - cd perx-api
+  - web:
+      - cd perx-dashboard-v4
