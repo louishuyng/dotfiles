@@ -387,6 +387,9 @@ install_cli_tools() {
     brew install git-delta
     brew install tidy-html5
 
+    brew tap rakalex/mac-brightnessctl
+    brew install mac-brightnessctl
+
     # Devops
     brew install bat # Better cat
     brew install exa # Better ls

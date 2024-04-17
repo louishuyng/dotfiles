@@ -77,6 +77,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 option_as_alt = "Both"
 decorations = "none"
 padding = { x = 0, y = 0 }
-dynamic_padding = true
+dynamic_padding = false
 startup_mode = "Windowed"
+opacity= 0.95
 title = "Alacritty"

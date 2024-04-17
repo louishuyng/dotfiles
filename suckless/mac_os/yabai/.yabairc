@@ -52,4 +52,13 @@ yabai -m rule --add app="Microsoft Outlook" space=4
 yabai -m rule --add app="Inkdrop" space=4
 yabai -m rule --add app="Calendar" space=4
 
+# No Manage at all
+yabai -m rule --add app="Finder" manage=off
+yabai -m rule --add app="System Settings" manage=off
+yabai -m rule --add app="Activity Monitor" manage=off
+yabai -m rule --add app="App Store" manage=off
+yabai -m rule --add app="Raycast" manage=off
+yabai -m rule --add app="Spotify" manage=off
+
+
 echo "yabai configuration loaded.."

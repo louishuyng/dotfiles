@@ -11,10 +11,3 @@ sketchybar --add item       front_app left                                    \
                             label.padding_left=2                             \
                             label.color=0xff${GREEN:1}                             \
                             icon.color=0xff${GREEN:1}                             \
-
-sketchybar --add item space_separator left                              \
-           --set space_separator icon="|"                                 \
-                                 icon.font="$LABEL:SemiBold:12"         \
-                                 background.padding_left=0              \
-                                 icon.padding_right=0                             \
-                                 label.padding_right=0                             \

@@ -40,4 +40,5 @@ ctrl + alt - j : yabai -m window --warp south
 ctrl + alt - k : yabai -m window --warp north
 ctrl + alt - l : yabai -m window --warp east
 
-ctrl + alt + shift - y : yabai --restart-service; osascript -e 'display notification "Restarted Yabai"'
+# Don't commit this
+ctrl + alt + shift - y : yabai --restart-service; echo "xxxx" | sudo -S yabai --load-sa;  osascript -e 'display notification "Restarted Yabai"'

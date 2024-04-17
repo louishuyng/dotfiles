@@ -1,23 +1,7 @@
 vim.cmd([[
-  let g:edge_transparent_background = 1
-  colorscheme edge
-
-  hi Normal guibg=#0F0F0F
-  hi NormalNC guibg=#0F0F0F
+  " hi Normal guibg=#0F0F0F
+  " hi NormalNC guibg=#0F0F0F
   hi VertSplit guifg=#2B2B2B guibg=NONE
-
-  hi TelescopePreviewBorder guibg=#21252E guifg=#21252E
-  hi TelescopePreviewNormal guibg=#21252E
-  hi TelescopePreviewTitle guibg=#21252E guifg=#21252E
-  hi TelescopePromptBorder guibg=#2E323B guifg=#2E323B
-  hi TelescopePromptCounter guifg=#c0afff gui=bold
-  hi TelescopePromptNormal guibg=#2E323B
-  hi TelescopePromptPrefix guibg=#2E323B
-  hi TelescopePromptTitle guifg=#2E323B guibg=#2E323B
-  hi TelescopeResultsBorder guibg=#222222 guifg=#222222
-  hi TelescopeResultsNormal guibg=#222222
-  hi TelescopeResultsTitle guibg=#222222 guifg=#222222
-  hi TelescopeSelection guibg=#2E323B
 
   hi NvimTreeGitStaged guifg=#99cc99 guibg=NONE
   hi NvimTreeGitDirty guifg=#cc6666 guibg=NONE

@@ -49,8 +49,8 @@ vim.keymap.set("n", "<leader>ob", ":call OpenUrlUnderCursor()<CR>", opt)
 -- " without yanking it
 vim.keymap.set("v", "p", "\"_dP", opt)
 
--- Notification
-vim.keymap.set("n", "<leader>sn", ":Notifications<CR>", opt)
+-- Replace
+vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/", opt)
 
 -- Lazy
 vim.keymap.set("n", "<leader>li", ":Lazy install<CR>", opt)

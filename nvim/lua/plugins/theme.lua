@@ -8,7 +8,7 @@ return {
       background = {
         dark = "mocha",
       },
-      transparent_background = false,
+      transparent_background = true,
       color_overrides = {
         mocha = {
           -- custom everforest dark hard port
@@ -43,21 +43,6 @@ return {
       highlight_overrides = {
         all = function(colors)
           return {
-            NormalFloat = { bg = colors.base },
-            Pmenu = { bg = colors.mantle, fg = "" },
-            PmenuSel = { bg = colors.surface0, fg = "" },
-            CursorLineNr = { fg = colors.text },
-            LineNr = { fg = colors.surface1 },
-            FloatBorder = { bg = colors.base, fg = colors.surface0 },
-            VertSplit = { bg = colors.base, fg = colors.surface0 },
-            WinSeparator = { bg = colors.base, fg = colors.surface0 },
-            LspInfoBorder = { link = "FloatBorder" },
-            YankHighlight = { bg = colors.surface2 },
-
-            CmpItemMenu = { fg = colors.surface2 },
-
-            GitSignsChange = { fg = colors.peach },
-
             NeoTreeDirectoryIcon = { fg = colors.subtext1 },
             NeoTreeDirectoryName = { fg = colors.subtext1 },
             NeoTreeFloatBorder = { link = "TelescopeResultsBorder" },
@@ -90,16 +75,6 @@ return {
             TelescopeResultsNormal = { bg = colors.mantle },
             TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
             TelescopeSelection = { bg = colors.surface0 },
-
-            WhichKeyFloat = { bg = colors.mantle },
-
-            IblIndent = { fg = colors.surface0 },
-            IblScope = { fg = colors.overlay0 },
-
-            MasonNormal = { bg = colors.mantle },
-            MasonMutedBlock = { link = "CursorLine" },
-
-            LazyNormal = { bg = colors.mantle },
           }
         end,
       },
