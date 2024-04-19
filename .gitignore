@@ -56,4 +56,6 @@ devops/vault-config/env.json
 devops/vault-config/vault-seed-file-version
 devops/vault-config/vault-seed.zip
 
+devops/traefik/charts
+
 lawbite_irbrc.rb

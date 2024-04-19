@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: identity
+
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Path(`/identity`)
+    kind: Rule
+    services:
+    - name: identity
+      kind: TraefikService
