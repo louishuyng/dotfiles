@@ -1,2 +1,4 @@
 traefik:
-  ports:
+  providers:
+    kubernetesCRD:
+      allowCrossNamespace: true

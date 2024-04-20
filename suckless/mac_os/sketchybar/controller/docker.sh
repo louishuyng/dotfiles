@@ -1,10 +1,10 @@
 #!/usr/bin/env fish
 
-set -l red "0xffcc6666"
+set -l grey "0xff7F7F7F"
 set -l green "0xff99cc99"
 
 if pgrep -x "OrbStack" >/dev/null
-    sketchybar --set $NAME icon.color=$green
+    sketchybar --set $NAME icon.color=$green label="VM/On"
 else
-    sketchybar --set $NAME icon.color=$red
+    sketchybar --set $NAME icon.color=$grey label="VM/Off"
 end

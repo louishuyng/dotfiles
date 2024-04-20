@@ -7,8 +7,10 @@ spec:
   entryPoints:
     - web
   routes:
-  - match: Path(`/identity`)
+  - match: PathPrefix(`/identity`)
     kind: Rule
     services:
-    - name: identity
-      kind: TraefikService
+    - name: identity-service
+      namespace: development
+      port: 80
+      kind: Service
