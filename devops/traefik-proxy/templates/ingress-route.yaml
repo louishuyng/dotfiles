@@ -9,6 +9,8 @@ spec:
   routes:
   - match: PathPrefix(`/identity`)
     kind: Rule
+    middlewares:
+    - name: my-plugindemo
     services:
     - name: identity-service
       namespace: development

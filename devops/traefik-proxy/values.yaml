@@ -1,0 +1,12 @@
+traefik:
+  providers:
+    kubernetesCRD:
+      allowCrossNamespace: true
+  tracing:
+    jaeger:
+      samplingServerURL: http://localhost:5778/sampling
+  experimental:
+    plugins:
+      example:
+        moduleName: github.com/traefik/plugindemo
+        version: v0.2.1

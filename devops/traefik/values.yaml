@@ -1,4 +1,0 @@
-traefik:
-  providers:
-    kubernetesCRD:
-      allowCrossNamespace: true

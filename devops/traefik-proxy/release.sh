@@ -1,5 +1,3 @@
-kubectl create namespace development
-
 helm upgrade --install \
              --atomic \
              --wait \
