@@ -2,9 +2,35 @@ traefik:
   providers:
     kubernetesCRD:
       allowCrossNamespace: true
-  tracing:
-    jaeger:
-      samplingServerURL: http://localhost:5778/sampling
+  logs:
+    access:
+      enabled: true
+      format: json
+      filePath: "/var/log/traefik/access.log"
+      bufferingSize: 1000
+      fields:
+        headers:
+          defaultmode: keep
+          names:
+            Accept: drop
+            Connection: drop
+            Authorization: redact
+  env:
+  - name: TZ
+    value: "Asia/Bangkok"
+  deployment:
+    additionalContainers:
+    - name: tail-accesslogs
+      image: busybox
+      args: [ "/bin/sh", "-c", "tail -n+1 -F /var/log/traefik/access.log" ]
+      volumeMounts:
+      - name: logs
+        mountPath: /var/log/traefik
+    additionalVolumes:
+    - name: logs
+  additionalVolumeMounts:
+  - name: logs
+    mountPath: /var/log/traefik
   experimental:
     plugins:
       example:

@@ -5,8 +5,8 @@ set -l green "0xff99cc99"
 
 if pgrep -x "OrbStack" >/dev/null
    killall OrbStack
-   sketchybar --set docker icon.color=$grey label="VM/On"
+   sketchybar --set docker icon.color=$grey label="VM/Off"
 else
   open -a 'OrbStack'
-   sketchybar --set docker icon.color=$green label="VM/Off"
+   sketchybar --set docker icon.color=$green label="VM/On"
 end

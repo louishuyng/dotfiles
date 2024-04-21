@@ -1,17 +1,26 @@
 # Following these steps will help you to run the project on your local machine.
-## Step 1: Install the required dependencies
+## Step 2: Setup Cluster
+```bash
+setup-cluster.sh
+```
+## Step 2: Install the required dependencies
 ```bash
 install.sh
 ```
 
-## Step 2: Run the project
+## Step 3: Setup Demo App Service & Routes
+```bash
+setup-app.sh
+```
+
+## Step 4: Run the project
 ```bash
 start.sh
 ```
 
-Open your browser and navigate to `http://localhost:9000/dashboard` to view the dashboard.
+Open your browser and navigate to `http://127.0.0.1:9000/dashboard` to view the dashboard.
 
-## Step 3: Release new changes (optional)
+## Step 5: Release new changes (optional)
 ```bash
 release.sh
 ```

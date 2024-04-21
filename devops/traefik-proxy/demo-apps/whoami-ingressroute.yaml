@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`whoami.docker.localhost`)
+    kind: Rule
+    services:
+    - name: whoami
+      port: 80
