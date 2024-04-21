@@ -13,14 +13,13 @@ install.sh
 setup-app.sh
 ```
 
-## Step 4: Run the project
-```bash
-start.sh
-```
-
-Open your browser and navigate to `http://127.0.0.1:9000/dashboard` to view the dashboard.
-
-## Step 5: Release new changes (optional)
+## Step 4: Release project
 ```bash
 release.sh
 ```
+
+## Step 5: Run the project
+```bash
+start.sh
+```
+Open your browser and navigate to `http://127.0.0.1:9000/dashboard` to view the dashboard.

@@ -2,6 +2,8 @@ traefik:
   providers:
     kubernetesCRD:
       allowCrossNamespace: true
+      allowExternalNameServices: true
+
   logs:
     access:
       enabled: true
@@ -18,7 +20,13 @@ traefik:
   env:
   - name: TZ
     value: "Asia/Bangkok"
+
   deployment:
+    labels:
+      app: traefik
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "80"
     additionalContainers:
     - name: tail-accesslogs
       image: busybox
@@ -28,9 +36,18 @@ traefik:
         mountPath: /var/log/traefik
     additionalVolumes:
     - name: logs
+
   additionalVolumeMounts:
   - name: logs
     mountPath: /var/log/traefik
+
+  metrics:
+    prometheus:
+      buckets: "0.1,0.3,1.2,5.0,10.0"
+
+  forwardingTimeouts:
+    dialTimeout: '10s'
+
   experimental:
     plugins:
       example:

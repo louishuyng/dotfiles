@@ -108,3 +108,6 @@ vim.keymap.set("n", "<leader>fa", function()
     find_command = { "fd", "--type", "f", "--extension", "http" }
   })
 end)
+
+vim.keymap.set("n", "<C-e>",
+  ":Telescope harpoon marks previewer=true<CR>", opt)
