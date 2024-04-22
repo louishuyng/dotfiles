@@ -45,6 +45,11 @@ traefik:
     prometheus:
       buckets: "0.1,0.3,1.2,5.0,10.0"
 
+  tracing:
+    jaeger:
+      samplingServerURL: http://jaeger-agent.observability.svc:5778/sampling
+      localAgentHostPort: jaeger-agent.observability.svc:6831
+
   forwardingTimeouts:
     dialTimeout: '10s'
 
