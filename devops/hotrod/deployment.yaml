@@ -22,9 +22,11 @@ spec:
         args: ["all"]
         env:
           - name: JAEGER_AGENT_HOST
-            value: jaeger-agent.observability.svc
+            value: http://jaeger-agent.observability.svc
           - name: JAEGER_AGENT_PORT
             value: "6831"
+          - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            value: "http://jaeger-agent.observability.svc:4318"
         ports:
           - containerPort: 8080
             name: frontend

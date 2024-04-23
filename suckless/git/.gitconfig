@@ -4,6 +4,7 @@
 [core]
         pager = delta
 	excludesfile = /Users/louishuyng/.gitignore_global
+	editor = vim
 [interactive]
     diffFilter = delta --color-only
 
