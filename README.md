@@ -35,5 +35,18 @@ Simply run it, and it will be set up for you.
 ./bootstrap/arch.sh
 ```
 
+## New Flow With Nix
+Install nix package manager following the documentation [here](https://nixos.org/download.html)
+
+```bash
+ln -s ~/.dotfiles/nix ~/.config/nix # Create Symlink with nix config
+ln -s ~/.dotfiles/home-manager ~/.config/home-manager # Create Symlink with home-manager config
+
+nix-shell -p home-manager # Run new shell with home-manager package
+
+home-manager switch # Apply the configuration
+```
+
+
 ## Screenshots
 <img width="1710" alt="image" src="https://github.com/louishuyng/dotfiles/assets/40130936/2ea0e3bd-2342-44b5-afb1-fcf101ca26a7">
