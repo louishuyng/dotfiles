@@ -26,6 +26,7 @@ yabai -m space 3 --label Chat
 yabai -m space 4 --label Plan
 yabai -m space 5 --label BSP
 
+yabai -m config --space 4 layout bsp
 yabai -m config --space 5 layout bsp
 
 # Code
@@ -44,13 +45,12 @@ yabai -m rule --add app="Discord" space=3
 yabai -m rule --add app="Microsoft Teams" space=3
 
 # Plan
-yabai -m rule --add app="Obsidian" space=4
-yabai -m rule --add app="Notion" space=4
-yabai -m rule --add app="Notion Calendar" space=4
-yabai -m rule --add app="Mail" space=4
-yabai -m rule --add app="Microsoft Outlook" space=4
-yabai -m rule --add app="Inkdrop" space=4
-yabai -m rule --add app="Calendar" space=4
+yabai -m rule --add app="Obsidian" space=4 manage=off
+yabai -m rule --add app="Notion" space=4 manage=off
+yabai -m rule --add app="Mail" space=4 manage=off
+yabai -m rule --add app="Microsoft Outlook" space=4 manage=off
+yabai -m rule --add app="Inkdrop" space=4 manage=off
+yabai -m rule --add app="Calendar" space=4 manage=off
 
 # No Manage at all
 yabai -m rule --add app="Finder" manage=off
