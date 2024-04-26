@@ -1,4 +1,3 @@
-helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
 helm dep update .
 
 helm install \

@@ -1,0 +1,23 @@
+authentik:
+  authentik:
+    secret_key: "EUiC/0jqrw2CQVagO7O9OdRpZl8AGPyw9zUT32c4TkDkwU2u"
+    # This sends anonymous usage-data, stack traces on errors and
+    # performance data to sentry.io, and is fully opt-in
+    error_reporting:
+      enabled: true
+    postgresql:
+      password: "password"
+
+  server:
+    ingress:
+      ingressClassName: traefik
+      enabled: true
+      hosts:
+        - authentik.domain.tld
+
+  postgresql:
+    enabled: true
+    auth:
+      password: "password"
+  redis:
+    enabled: true

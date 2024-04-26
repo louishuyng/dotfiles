@@ -1,10 +1,10 @@
 helm dep update .
-kubectl create namespace development
 
 helm install \
      --atomic \
      --wait \
      --create-namespace \
-     --namespace traefik \
+     --namespace authentication \
      -f values.yaml \
-     traefik ./
+     authentik ./
+
