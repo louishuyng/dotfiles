@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-  - match: Host(`prometheus.docker.localhost`) || PathPrefix(`/prometheus`)
+  - match: Host(`prometheus.luixdev`) || PathPrefix(`/prometheus`)
     kind: Rule
     middlewares:
     - name: strip-prometheus-prefix

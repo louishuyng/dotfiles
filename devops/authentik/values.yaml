@@ -13,7 +13,7 @@ authentik:
       ingressClassName: traefik
       enabled: true
       hosts:
-        - authentik.domain.tld
+        - authentik.luixdev
 
   postgresql:
     enabled: true
