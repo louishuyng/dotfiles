@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: portainer
+  namespace: traefik
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`portainer.luixdev`)
+    kind: Rule
+    services:
+    - name: portainer
+      kind: Service
+      port: 9000
+      namespace: management

@@ -128,6 +128,16 @@ vim.cmd('set grepprg=rg\\ --vimgrep\\ --smart-case\\ --follow')
 -- Winbar
 -- vim.api.nvim_command("set winbar=%m\\ %f")
 
+-- Opam
+vim.cmd([[
+  syntax on
+  filetype plugin on
+  filetype indent on
+
+  let g:opamshare = substitute(system('opam var share'),'\n$','','''')
+  execute "set rtp+=" . g:opamshare . "/merlin/vim"
+]])
+
 -- plantuml
 vim.cmd [[
 au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(

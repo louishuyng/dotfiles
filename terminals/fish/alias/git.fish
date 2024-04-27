@@ -15,3 +15,5 @@ alias gfa='git fetch --all --prune'
 
 alias ghcs='gh copilot suggest'
 alias ghce='gh copilot explain'
+
+alias yo='git add -A && git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'

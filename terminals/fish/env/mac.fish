@@ -108,6 +108,3 @@ fish_add_path /Applications/WezTerm.app/Contents/MacOS
 
 # Vault
 set -gx VAULT_ADDR http://127.0.0.1:8200
-
-# Docker
-set -gx DOCKER_CONTENT_TRUST 1

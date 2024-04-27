@@ -43,10 +43,10 @@ print_events = false
 render_timer = false
 
 [font]
-size = 13
+size = 13.5
 
 [font.bold]
-family = "FiraCode Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.glyph_offset]
@@ -54,11 +54,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "FiraCode Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "FiraCode Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [font.offset]
@@ -79,5 +79,5 @@ decorations = "none"
 padding = { x = 0, y = 0 }
 dynamic_padding = false
 startup_mode = "Windowed"
-opacity= 0.95
+opacity= 0.8
 title = "Alacritty"

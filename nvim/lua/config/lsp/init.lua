@@ -18,6 +18,7 @@ local ensure_installed = {
   "prettier",
   "svelte",
   "denols",
+  "biome",
 
   -- Ruby
   "solargraph",

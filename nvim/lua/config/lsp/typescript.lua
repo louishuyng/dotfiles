@@ -34,3 +34,10 @@ lsp_config.eslint.setup({
       { buffer = bufnr, command = "EslintFixAll" })
   end
 })
+
+lsp_config.biome.setup({
+  on_attach = function(client, bufnr)
+    client.server_capabilities.document_formatting = true
+    on_attach(client, bufnr)
+  end
+})

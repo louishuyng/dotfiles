@@ -1,0 +1,8 @@
+apiVersion: v2
+name: portainer
+description: A Helm chart for Portainer
+version: 0.1.0
+dependencies:
+  - name: portainer
+    version: 1.0.51
+    repository: https://portainer.github.io/k8s
