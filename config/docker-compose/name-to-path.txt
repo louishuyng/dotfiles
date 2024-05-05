@@ -1,0 +1,1 @@
+temporal ~/.dotfiles/devops/temporal/docker-compose.yml
