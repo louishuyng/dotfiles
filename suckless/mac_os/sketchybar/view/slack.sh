@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-sketchybar  --add   item slack left \
+sketchybar  --add   item slack right \
             --set   slack \
                     update_freq=60 \
                     script="$PLUGIN_DIR/slack.sh" \

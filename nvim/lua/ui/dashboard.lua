@@ -66,7 +66,7 @@ local mru = {
   }
 }
 theme.config.layout = {
-  { type = "padding", val = 12 }, header, { type = "padding", val = 2 }, get_info(),
+  { type = "padding", val = 14 }, header, { type = "padding", val = 2 }, get_info(),
   { type = "padding", val = 2 }, links, { type = "padding", val = 2 }, mru,
   { type = "padding", val = 2 }
 }

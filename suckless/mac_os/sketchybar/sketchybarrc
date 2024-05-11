@@ -9,12 +9,12 @@ PADDING=4
 PADDING_LABEL=4
 LABEL="JetBrainsMono Nerd Font"
 
-sketchybar --bar     height=32                                            \
+sketchybar --bar     height=24                                            \
                      blur_radius=0                                        \
                      padding_left=4                                       \
                      padding_right=4                                      \
-                     color=0xff000000                                   \
-                     position=top                                      \
+                     color=0xff212121                                   \
+                     position=bottom                                      \
                      sticky=on                                            \
                      font_smoothing=on                                    \
                                                                           \
@@ -31,8 +31,8 @@ sketchybar --bar     height=32                                            \
 
 
 # left
-source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/space.sh"
+source "$ITEM_DIR/front_app.sh"
 # source "$ITEM_DIR/team.sh"
 
 # right

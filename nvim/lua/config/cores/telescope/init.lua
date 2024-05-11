@@ -50,7 +50,6 @@ telescope.setup {
         ["<C-v>"] = actions.select_vertical,
         ["<C-s>"] = actions.select_horizontal,
         ["<c-d>"] = actions.delete_buffer,
-        ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
       }
     },
     extensions = {

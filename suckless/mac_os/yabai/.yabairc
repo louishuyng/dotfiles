@@ -9,11 +9,10 @@ yabai -m config window_border_blur off
 yabai -m config \
 	layout stack \
 	top_padding 0   \
-	bottom_padding 0  \
+	bottom_padding 24  \
+	window_gap 8 \
 	left_padding 0 \
 	right_padding 0
-
-yabai -m config external_bar all:25:0
 
 # signals
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"

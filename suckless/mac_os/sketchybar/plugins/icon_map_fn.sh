@@ -1,4 +1,5 @@
 
+
 ### START-OF-ICON-MAP
 function __icon_map() {
     case "$1" in
@@ -62,6 +63,9 @@ function __icon_map() {
    "Bear")
         icon_result=":bear:"
         ;;
+   "Bilibili" | "哔哩哔哩")
+        icon_result=":bilibili:"
+        ;;
    "Bitwarden")
         icon_result=":bit_warden:"
         ;;
@@ -76,6 +80,9 @@ function __icon_map() {
         ;;
    "Brave Browser")
         icon_result=":brave_browser:"
+        ;;
+   "Calculator" | "Calculette")
+        icon_result=":calculator:"
         ;;
    "Calendar" | "日历" | "Fantastical" | "Cron" | "Amie" | "Calendrier" | "Notion Calendar")
         icon_result=":calendar:"
@@ -95,8 +102,14 @@ function __icon_map() {
    "Color Picker" | "数码测色计")
         icon_result=":color_picker:"
         ;;
+   "CotEditor")
+        icon_result=":coteditor:"
+        ;;
    "Cypress")
         icon_result=":cypress:"
+        ;;
+   "DataSpell")
+        icon_result=":dataspell:"
         ;;
    "DaVinci Resolve")
         icon_result=":davinciresolve:"
@@ -239,6 +252,9 @@ function __icon_map() {
    "LM Studio")
         icon_result=":lm_studio:"
         ;;
+   "LocalSend")
+        icon_result=":localsend:"
+        ;;
    "Logic Pro")
         icon_result=":logicpro:"
         ;;
@@ -277,6 +293,9 @@ function __icon_map() {
         ;;
    "Microsoft PowerPoint")
         icon_result=":microsoft_power_point:"
+        ;;
+   "Microsoft Remote Desktop")
+        icon_result=":microsoft_remote_desktop:"
         ;;
    "Microsoft Teams" | "Microsoft Teams (work or school)")
         icon_result=":microsoft_teams:"
@@ -347,6 +366,9 @@ function __icon_map() {
    "OpenVPN Connect")
         icon_result=":openvpn_connect:"
         ;;
+   "Opera")
+        icon_result=":opera:"
+        ;;
    "Orion" | "Orion RC")
         icon_result=":orion:"
         ;;
@@ -356,8 +378,14 @@ function __icon_map() {
    "Parallels Desktop")
         icon_result=":parallels:"
         ;;
+   "Parsec")
+        icon_result=":parsec:"
+        ;;
    "Preview" | "预览" | "Skim" | "zathura" | "Aperçu")
         icon_result=":pdf:"
+        ;;
+   "PDF Expert")
+        icon_result=":pdf_expert:"
         ;;
    "Adobe Photoshop"*)
         icon_result=":photoshop:"
@@ -385,6 +413,9 @@ function __icon_map() {
         ;;
    "QQ音乐" | "QQMusic")
         icon_result=":qqmusic:"
+        ;;
+   "Quantumult X")
+        icon_result=":quantumult_x:"
         ;;
    "qutebrowser")
         icon_result=":qute_browser:"
@@ -488,7 +519,7 @@ function __icon_map() {
    "Tweetbot" | "Twitter")
         icon_result=":twitter:"
         ;;
-   "Neovide" | "MacVim" | "Vim" | "VimR")
+   "MacVim" | "Vim" | "VimR")
         icon_result=":vim:"
         ;;
    "Vivaldi")
@@ -512,6 +543,9 @@ function __icon_map() {
    "微信" | "WeChat")
         icon_result=":wechat:"
         ;;
+   "企业微信" | "WeCom")
+        icon_result=":wecom:"
+        ;;
    "WezTerm")
         icon_result=":wezterm:"
         ;;
@@ -520,6 +554,9 @@ function __icon_map() {
         ;;
    "Xcode")
         icon_result=":xcode:"
+        ;;
+   "Яндекс Музыка")
+        icon_result=":yandex_music:"
         ;;
    "Yuque" | "语雀")
         icon_result=":yuque:"
