@@ -8,6 +8,23 @@ local ensure_installed = {
   -- Rust
   "rust_analyzer",
 
+  -- Ruby
+  "solargraph",
+  "rubocop",
+  "ruby-lsp",
+
+  -- Golang
+  "gopls",
+  "golangci-lint",
+  "golangci-lint-langserver",
+
+  --Zig
+  "zls",
+
+  --Ocaml
+  "ocaml-lsp",
+  "ocamlformat",
+
   -- Kotlin
   "kotlin_language_server",
 
@@ -20,24 +37,24 @@ local ensure_installed = {
   "denols",
   "biome",
 
-  -- Ruby
-  "solargraph",
-  "rubocop",
-  "ruby-lsp",
+  -- Python
+  "pyright",
 
-  -- Golang
-  "gopls",
-  "golangci-lint",
-  "golangci-lint-langserver",
+  -- Nix
+  "rnix-lsp",
 
+  -- Terraform
+  "terraform-ls",
+  "terraformls",
 
-  -- HTM
+  -- HTML / CSS
   "htmx-lsp",
   "html-lsp",
+  "cssls",
 
-  "bashls", "cssls", "pyright", "terraformls", "rnix-lsp",
-  "codespell", "cfn_lint", "yamlfmt", "smithy-language-server", "yamlls",
-  "ltex-ls", "ocaml-lsp", "ocamlformat", "yaml-language-server", "json-lsp", "terraform-ls"
+  -- Others
+  "bashls", "codespell", "cfn_lint", "yamlfmt", "smithy-language-server", "yamlls",
+  "ltex-ls", "yaml-language-server", "json-lsp",
 }
 
 require("mason-null-ls").setup { ensure_installed = ensure_installed }
@@ -60,6 +77,7 @@ require "config/lsp/svelte"
 require "config/lsp/terraform"
 require "config/lsp/typescript"
 require "config/lsp/yamlls"
+require "config/lsp/zig"
 
 -- require "config/lsp/bash"
 -- require "config/lsp/css"
