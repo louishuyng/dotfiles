@@ -1,13 +1,31 @@
-#!/usr/bin/env sh
-#
-WIFIACTIVEICON=􀙇
-WIFIINACTIVEICON=􀙈
+#!/bin/bash
 
-CURRENT_WIFI="$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I)"
-SSID="$(echo "$CURRENT_WIFI" | grep -o "SSID: .*" | sed 's/^SSID: //' | awk '{for(i=1; i<=NF; i++) printf "%s",substr($i,1,1)}')"
+WIFI_CONNECTED=􀙇
+WIFI_DISCONNECTED=􀙈
 
-if [ "$SSID" = "" ]; then
-  sketchybar --set $NAME label="Disconnected |" icon=$WIFIINACTIVEICON
-else
-  sketchybar --set $NAME label="$SSID |" icon=$WIFIACTIVEICON
-fi
+update() {
+  IP="$(ipconfig getifaddr en0)"
+
+  ICON="$([ -n "$IP" ] && echo "$WIFI_CONNECTED" || echo "$WIFI_DISCONNECTED")"
+  LABEL="$([ -n "$IP" ] && echo "$IP" || echo "Disconnected")"
+
+  sketchybar --set $NAME icon="$ICON" label="$LABEL"
+}
+
+click() {
+  CURRENT_WIDTH="$(sketchybar --query $NAME | jq -r .label.width)"
+
+  WIDTH=0
+  if [ "$CURRENT_WIDTH" -eq "0" ]; then
+    WIDTH=dynamic
+  fi
+
+  sketchybar --animate sin 20 --set $NAME label.width="$WIDTH"
+}
+
+case "$SENDER" in
+  "wifi_change") update
+  ;;
+  "mouse.clicked") click
+  ;;
+esac
