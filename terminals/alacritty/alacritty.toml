@@ -81,5 +81,4 @@ dimensions = { columns = 200, lines = 55 }
 dynamic_padding = true
 startup_mode = "Windowed"
 title = "DevTerm"
-opacity= 0.9
 dynamic_title=false
