@@ -17,7 +17,6 @@ yellow = "#d19a66"
 [colors.cursor]
 cursor = "#abb2bf"
 text = "#5c6370"
-
 [colors.normal]
 black = "#5c6370"
 blue = "#61afef"
@@ -29,7 +28,7 @@ white = "#abb2bf"
 yellow = "#e5c07b"
 
 [colors.primary]
-background = "#1e1e1e"
+background = "#1E1E1E"
 foreground = "#98c379"
 
 [cursor]
@@ -75,10 +74,10 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 option_as_alt = "Both"
-decorations = "full"
+decorations = "buttonless"
 padding = { x = 0, y = 0 }
 dimensions = { columns = 200, lines = 55 }
-dynamic_padding = true
+dynamic_padding = false
 startup_mode = "Windowed"
 title = "DevTerm"
 dynamic_title=false

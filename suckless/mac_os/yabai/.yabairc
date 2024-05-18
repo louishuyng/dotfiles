@@ -18,6 +18,7 @@ yabai -m config \
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+
 # Labels
 yabai -m space 1 --label Code
 yabai -m space 2 --label Web
@@ -27,7 +28,6 @@ yabai -m space 5 --label BSP
 
 yabai -m config --space 4 layout bsp
 yabai -m config --space 5 layout bsp
-
 # Code
 yabai -m rule --add app="WezTerm" space=1
 yabai -m rule --add app="Alacritty" space=1

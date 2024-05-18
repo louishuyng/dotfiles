@@ -17,6 +17,6 @@ export label="--show--labels"
 
 #K9s
 alias regask-staging='k9s --namespace=staging --context k8s-qa-cluster'
-alias regask-prod='k9s --namespace=production --context k8s-prod-cluster'
+alias regask-prod='k9s --namespace=production --context k8s-production-cluster'
 alias regask-dev='k9s --namespace=development --context k8s-qa-cluster'
 alias orb-local='k9s --namespace=all --context k8s-orb-cluster'

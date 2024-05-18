@@ -7,8 +7,9 @@ return {
     require("catppuccin").setup({
       background = {
         dark = "mocha",
+        light = "latte",
       },
-      transparent_background = true,
+      transparent_background = false,
       color_overrides = {
         mocha = {
           -- custom everforest dark hard port
@@ -35,12 +36,20 @@ return {
           surface2  = "#585c4a",
           surface1  = "#414b50",
           surface0  = "#374145",
-          base      = "#1C1C20",
-          mantle    = "#161b1d",
-          crust     = "#14181a",
+          base      = "#0F0F0F",
+          mantle    = "#1C1C20",
+          crust     = "#1e1e1e",
         },
       },
       highlight_overrides = {
+        latte = function(colors)
+          return {
+            MatchParen = {
+              bg = colors.base,
+              fg = colors.overlay0,
+            }
+          }
+        end,
         all = function(colors)
           return {
             CmpItemMenu = { fg = colors.surface2 },
@@ -65,6 +74,9 @@ return {
             TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
             TelescopeSelection = { bg = colors.surface0 },
             VertSplit = { bg = colors.base, fg = colors.surface0 },
+            WinSeparator = { fg = colors.mauve },
+
+            NvimTreeNormal = { bg = colors.crust },
 
             Boolean = { fg = colors.mauve },
             Number = { fg = colors.mauve },
@@ -167,7 +179,5 @@ return {
         end,
       },
     })
-
-    vim.api.nvim_command("colorscheme catppuccin")
   end,
 }

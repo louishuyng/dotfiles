@@ -12,6 +12,7 @@ alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
 alt + shift - t : open /Applications/Alacritty.app
 alt + shift - w : open /Applications/wpsoffice.app
+alt + shift - v : open /Applications/Visual\ Studio\ Code.app
 
 alt - tab : yabai -m space --focus recent
 cmd - tab : yabai -m window --focus stack.recent
