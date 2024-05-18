@@ -344,7 +344,7 @@ link_all_dotfiles() {
 
   success "Linked other tools"
 
-  ln -s ~/.dotfiles/suckless/git/.gitconfig ~/.gitconfig
+  ln -s ~/.dotfiles/config/.gitconfig ~/.gitconfig
   success "Linked git config"
 
   stow karabiner -t ~/.config/karabiner

@@ -43,6 +43,9 @@
 [rebase]
 	autoStash = true
 
+[rerere]
+        enabled = true
+
 [includeIf "gitdir:~/.dotfiles/"]
   path = ~/.dotfiles/config/gitconfig/.personal
 
