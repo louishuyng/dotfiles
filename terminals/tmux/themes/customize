@@ -11,9 +11,9 @@ tmux set -g status-left "#[fg=#15161e,bg=#d38aea,bold] lui0x584s #[fg=#2b97fa,bg
 
 #+--- Windows ---+
 # Focus
-tmux set -g window-status-current-format " #[fg=#98c379]#I #[hnobold,nodim]#W"
+tmux set -g window-status-current-format " #[fg=#98c379]#I:#[hnobold,nodim]#W"
 # Unfocused
-tmux set -g window-status-format " #I #W#[fg=yellow,blink]"
+tmux set -g window-status-format " #I:#W#[fg=yellow,blink]"
 
 #+--- Bars RIGHT ---+
 tmux set -g status-right "#[fg=gray]#{pomodoro_status} "
