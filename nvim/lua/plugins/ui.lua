@@ -1,9 +1,9 @@
 return {
-  { 'goolord/alpha-nvim' },
+  { 'goolord/alpha-nvim' },    -- Dashboard UI
   { 'nvim-tree/nvim-web-devicons' },
-  { 'rebelot/heirline.nvim' },
+  { 'rebelot/heirline.nvim' }, -- StatusBar UI
   {
-    "b0o/incline.nvim",
+    "b0o/incline.nvim",        -- File Information Header UI
     event = "BufReadPre",
     priority = 1200,
     config = function()

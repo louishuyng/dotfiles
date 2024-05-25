@@ -1,4 +1,4 @@
-if vim.g.manual_set_background then
+--[[ if vim.g.manual_set_background then
   -- Do nothing if manual trigger here
 else
   local current_hour = tonumber(os.date("%H"))
@@ -15,6 +15,6 @@ if vim.g.dark_mode then
   vim.cmd('set background=dark')
 else
   vim.cmd('set background=light')
-end
+end ]]
 
 vim.api.nvim_command("colorscheme catppuccin")

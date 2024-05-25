@@ -13,12 +13,18 @@ end
 return function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-  vim.keymap.set('n', 'gd', ':Lspsaga goto_type_definition<CR>', bufopts)
-  vim.keymap.set('n', 'gf', ':Lspsaga goto_definition<CR>', bufopts)
-  vim.keymap.set('n', 'gF', ':Lspsaga peek_definition<CR>', bufopts)
-  vim.keymap.set('n', 'gr', ':Lspsaga finder<CR>', bufopts)
-  vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', bufopts)
-  vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', bufopts)
+  vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', bufopts)
+  vim.keymap.set('n', 'gf',
+    '<Cmd>lua require("telescope.builtin").lsp_definitions()<CR>',
+    bufopts)
+  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', bufopts)
+  vim.keymap
+      .set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts)
+
+  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', bufopts)
+  vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
+    bufopts)
   vim.keymap.set('n', ',rr', '<cmd>lua vim.lsp.buf.rename()<CR>', bufopts)
 
   -- Enable completion triggered by <c-x><c-o>

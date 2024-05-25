@@ -28,7 +28,7 @@ white = "#abb2bf"
 yellow = "#e5c07b"
 
 [colors.primary]
-background = "#1E1E1E"
+background = "#1c1c1c"
 foreground = "#98c379"
 
 [cursor]
@@ -42,7 +42,7 @@ print_events = false
 render_timer = false
 
 [font]
-size = 13
+size = 12.5
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"

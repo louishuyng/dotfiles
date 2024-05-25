@@ -1,26 +1,8 @@
-name: regask
+name: Regask
 root: ~/Dev/repository/github.com/regask
 attach: true
 windows:
   - infra:
-      - cd regask-infrastructure
+      - cd infra
   - gitops:
-      - cd platform-gitops
-  - platform:
-      - cd platform-services
-  - articles:
-      - cd usvc-articles
-  - identity:
-      - cd usvc-identity
-  - gateway:
-      - cd web-api-gateway
-  - frontend:
-      - cd web-frontend
-  - migrations:
-      - cd usvc-migrations
-  - document:
-      - cd usvc-document
-  - request:
-      - cd usvc-request
-  - update:
-      - cd usvc-update
+      - cd gitops

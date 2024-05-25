@@ -66,10 +66,6 @@ return {
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
-    dependencies = {
-      { "folke/twilight.nvim" },
-      { "preservim/vim-pencil" }
-    },
     opts = {
       plugins = {
         gitsigns = true,
@@ -77,15 +73,7 @@ return {
         kitty = { enabled = false, font = "+2" }
       }
     },
-    keys = { { "<C-w>o", "<cmd>ZenMode | Pencil<cr>", desc = "Zen Mode with Pencil" } }
-  },
-  {
-    "folke/twilight.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    keys = { { "<C-w>o", "<cmd>ZenMode<cr>", desc = "Zen Mode" } }
   },
 
   -- Git

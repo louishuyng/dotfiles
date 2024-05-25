@@ -33,9 +33,7 @@ vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", opt)
 -- prefix with <leader>f
 vim.keymap.set("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>",
   opt)
-vim.keymap.set("n", "<leader>fc", ":Telescope flutter commands<CR>", opt)
-vim.keymap.set("n", "<leader>fr",
-  ":Telescope oldfiles previewer=false cwd_only=true<CR>", opt)
+vim.keymap.set("n", "<leader>fr", ":Telescope oldfiles previewer=false cwd_only=true<CR>", opt)
 
 -- searching vim built-in
 vim.keymap.set("n", "g?", ":Telescope help_tags<CR>", opt)
@@ -89,12 +87,6 @@ vim.keymap.set("n", "<leader>fn", function()
   require('config.cores.telescope.custom.nest_js')({
     search = vim.fn.input("Search nest_js: ")
   })
-end)
-
--- Notes
-vim.keymap.set("n", "<leader>\\", function()
-  require("neoscopes").set_current("Notes")
-  find_files()
 end)
 
 -- Rest

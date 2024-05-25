@@ -36,9 +36,10 @@ return {
           surface2  = "#585c4a",
           surface1  = "#414b50",
           surface0  = "#374145",
-          base      = "#0F0F0F",
-          mantle    = "#1C1C20",
-          crust     = "#1e1e1e",
+          base      = "#1C1C20",
+          mantle    = "#161b1d",
+          crust     = "#14181a",
+
         },
       },
       highlight_overrides = {
@@ -47,7 +48,7 @@ return {
             MatchParen = {
               bg = colors.base,
               fg = colors.overlay0,
-            }
+            },
           }
         end,
         all = function(colors)
@@ -74,7 +75,7 @@ return {
             TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
             TelescopeSelection = { bg = colors.surface0 },
             VertSplit = { bg = colors.base, fg = colors.surface0 },
-            WinSeparator = { fg = colors.mauve },
+            WinSeparator = { fg = "gray" },
 
             NvimTreeNormal = { bg = colors.crust },
 

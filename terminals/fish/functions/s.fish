@@ -7,6 +7,19 @@ function s -d 'search using rg'
   if [ -z $path ]
     rg $expression
   else
-    rg $expression --glob $path
+    # If path don't have any child directory then search in the current directory
+    if test -z (ls -d "$path*/")
+      rg $expression --glob "$path*"
+    end
+
+    # If path have child directory then search in the child directory
+    if test -n (ls -d "$path*/")
+      rg $expression --glob "$path*/**"
+    end
+
+    # If path is a file then search in the file
+    if test -f "$path"
+      rg $expression --glob "$path"
+    end
   end
 end

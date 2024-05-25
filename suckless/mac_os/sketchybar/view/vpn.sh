@@ -5,4 +5,5 @@ sketchybar -m --add item vpn right \
                         icon.font="$LABEL:Bold:16"                      \
                         icon.padding_right=3 \
                         label.padding_right=7 \
-                        script="$PLUGIN_DIR/vpn.sh"
+                        script="$PLUGIN_DIR/vpn.sh" \
+                        click_script="$PLUGIN_DIR/toggle_vpn.sh" \

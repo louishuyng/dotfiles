@@ -28,12 +28,12 @@ function Tabs.setup()
     local tab_index = tab_info.tab_index
     local title = tab_info.tab_title
     local result = (title and #title > 0) and title or
-                       tab_info.active_pane.title
+        tab_info.active_pane.title
     local last_slash_pos = string_rfind(result, "/")
     last_slash_pos = last_slash_pos or string_rfind(result, "\\")
     if last_slash_pos then result = result:sub(last_slash_pos + 1) end
     result = string.format("%d %s", tab_index + 1,
-                           wezterm.truncate_left(result, max_width))
+      wezterm.truncate_left(result, max_width))
     return result
   end
 
@@ -42,7 +42,7 @@ function Tabs.setup()
 
     title = " " .. title .. " "
 
-    return {{Text = title}}
+    return { { Text = title } }
   end)
 end
 

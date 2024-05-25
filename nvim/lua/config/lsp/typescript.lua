@@ -13,7 +13,7 @@ lsp_config.tsserver.setup({
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = function(client, bufnr)
     -- Some project need to enable document formatting on tsserver
-    local paths = { "perx-dashboard-v4", "usvc-request", "usvc-migrations" }
+    local paths = { "perx-dashboard-v4", "usvc-request", "usvc-migrations", "lsp-from-scratch" }
 
     if vim.tbl_contains(paths, vim.fn.fnamemodify(vim.fn.getcwd(), ":t")) then
       client.server_capabilities.document_formatting = true

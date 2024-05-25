@@ -14,8 +14,6 @@ alias h='history'
 alias ls="exa --long  --header --git"
 alias lt="exa --tree --level=2 --long --icons --header --git"
 alias ll="ls -l"
-alias l.='ls -d .* --color=auto'
-alias lla="ll -A"
 
 # Clear & Remove
 alias rf='rm -rf'
