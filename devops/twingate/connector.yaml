@@ -1,0 +1,11 @@
+apiVersion: twingate.com/v1beta
+kind: TwingateConnector
+metadata:
+  name: homelab-connector
+  namespace: zero-trust
+spec:
+  imagePolicy:
+    schedule: "0 0 * * *"
+    provider: "dockerhub"
+  name: homelab-connector
+

@@ -1,0 +1,20 @@
+apiVersion: twingate.com/v1beta
+kind: TwingateResource
+metadata:
+  name: traefik-twingateresource
+  namespace: traefik
+spec:
+  name: Traefik Twingate Resource
+  address: traefik.traefik.svc.cluster.local
+---
+apiVersion: twingate.com/v1beta
+kind: TwingateResourceAccess
+metadata:
+  name: traefik-twingateresourceaccess
+  namespace: traefik
+spec:
+  resourceRef:
+    name: traefik-twingateresource
+    namespace: traefik
+  principalId: R3JvdXA6MjM4NjQ1
+  securityPolicyId: U2VjdXJpdHlQb2xpY3k6MzU5MDYw
