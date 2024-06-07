@@ -1,16 +1,9 @@
 #!/usr/bin/env sh
 
-# stop process new window manager in Ventura
-launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
-
-yabai -m config window_shadow off
-yabai -m config window_border_blur off
-
 yabai -m config \
 	layout stack \
 	top_padding 0   \
-	bottom_padding 27  \
-	window_gap 8 \
+	bottom_padding 24  \
 	left_padding 0 \
 	right_padding 0
 
@@ -25,13 +18,16 @@ yabai -m space 3 --label Others
 yabai -m rule --add app="Alacritty" space=1
 yabai -m rule --add app="Arc" space=1
 
+# Web
+yabai -m rule --add app="Arc" space=2
+
 yabai -m rule --add app="Microsoft Teams" space=2
 yabai -m rule --add app="Microsoft Outlook" space=2
 yabai -m rule --add app="Inkdrop" space=2
 yabai -m rule --add app="Slack" space=2
 
 yabai -m rule --add app="Messenger" space=3
-yabai -m rule --add app="Calendar" space=3
-yabai -m rule --add app="Mail" space=3
+yabai -m rule --add app="Calendar" space=4 manage=off
+yabai -m rule --add app="Mail" space=4 manage=off
 
 echo "yabai configuration loaded.."

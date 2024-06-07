@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-SPACE_ICONS=("Code" "Web" "Chat" "Plan" "BSP" "6" "7")
+SPACE_ICONS=("1" "2" "3")
 
 YELLOW=#eed49f
 GREEN=#8DC583
@@ -12,25 +12,19 @@ DEACTIVATE=$GRAY
 sid=0
 for i in "${!SPACE_ICONS[@]}"; do
   sid=$(($i+1))
-
-  if [ $sid -eq 1 ]; then
-    ACTIVATE=$GREEN
-  elif [ $sid -eq 6 ] || [ $sid -eq 7 ]; then
-    ACTIVATE=$YELLOW
-  else
-    ACTIVATE=$PURPLE
-  fi
-
   sketchybar --add space space.$sid left                                \
              --set space.$sid associated_space=$sid                     \
                               ignore_association=on                     \
                               icon=${SPACE_ICONS[i]}                    \
                               icon.font="$LABEL:SemiBold:13"            \
-                              icon.padding_left=7                      \
-                              icon.padding_right=7                     \
-                              icon.color=0xff${DEACTIVATE:1}       \
-                              icon.highlight_color=0xff${ACTIVATE:1}       \
-                              label.drawing=off                         \
+                              icon.padding_left=10                      \
+                              icon.padding_right=3                     \
+                              background.corner_radius=0                \
+                              background.highlight_color=0xff1E1D2D         \
+                              background.color=0xffCBA6F9         \
+                              background.drawing=on                    \
+                              icon.highlight_color=0xff250C42       \
+                              label.drawing=on                         \
                               script="$PLUGIN_DIR/space.sh"             \
                               click_script="yabai -m space --focus $sid"
 done

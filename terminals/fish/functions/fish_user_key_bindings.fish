@@ -2,6 +2,8 @@ function fish_user_key_bindings
   fish_vi_key_bindings
   fzf_bindings
   custom_bindings
+
+  bind \ee 'edit_cmd'
 end
 
 function fzf_bindings

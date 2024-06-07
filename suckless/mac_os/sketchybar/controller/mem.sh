@@ -2,5 +2,5 @@
 
 MEMORY_USAGE="$(memory_pressure | grep "System-wide memory free percentage:" | awk '{ printf("%02.0f\n", 100-$5"%") }')%"
 
-GREEN=#60ff60
-sketchybar -m --set $NAME label="M:$MEMORY_USAGE" label.color=0xff${GREEN:1}
+COLOR=#9BE89F
+sketchybar -m --set $NAME icon="RAM" label="$MEMORY_USAGE |" icon.color=0xff${COLOR:1}

@@ -48,5 +48,6 @@ home-manager switch # Apply the configuration
 ```
 
 
-## Screenshots
-<img width="1710" alt="image" src="https://github.com/louishuyng/dotfiles/assets/40130936/2ea0e3bd-2342-44b5-afb1-fcf101ca26a7">
+## My Screen Daily
+<img width="1728" alt="image" src="https://github.com/louishuyng/dotfiles/assets/40130936/f9f15b64-e182-4b30-9a1e-6807df76c693">
+

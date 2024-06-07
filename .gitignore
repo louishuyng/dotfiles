@@ -59,3 +59,5 @@ devops/vault-config/vault-seed.zip
 devops/**/charts
 
 lawbite_irbrc.rb
+
+values.local.yaml

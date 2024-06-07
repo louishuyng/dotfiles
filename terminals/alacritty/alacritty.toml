@@ -42,7 +42,7 @@ print_events = false
 render_timer = false
 
 [font]
-size = 12.5
+size = 13
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -58,7 +58,6 @@ style = "Italic"
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
-style = "Regular"
 
 [font.offset]
 x = 0
@@ -81,3 +80,8 @@ dynamic_padding = false
 startup_mode = "Windowed"
 title = "DevTerm"
 dynamic_title=false
+
+[keyboard]
+bindings = [
+  { key = "Enter", mods = "Command", action = "ToggleFullscreen" }
+]

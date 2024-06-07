@@ -256,7 +256,7 @@ function __icon_map() {
         icon_result=":keynote:"
         ;;
    "kitty")
-        icon_result=":kitty:"
+        icon_result=":hyper:"
         ;;
    "League of Legends")
         icon_result=":league_of_legends:"

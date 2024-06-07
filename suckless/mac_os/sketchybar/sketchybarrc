@@ -9,11 +9,11 @@ PADDING=4
 PADDING_LABEL=4
 LABEL="JetBrainsMono Nerd Font"
 
-sketchybar --bar     height=24                                            \
+sketchybar --bar     height=27                                            \
                      blur_radius=0                                        \
                      padding_left=4                                       \
                      padding_right=4                                      \
-                     color=0xff161b1d                                   \
+                     color=0xff1f1e2e                                   \
                      position=bottom                                      \
                      sticky=on                                            \
                      font_smoothing=on                                    \
@@ -33,6 +33,7 @@ sketchybar --bar     height=24                                            \
 # left
 source "$ITEM_DIR/space.sh"
 source "$ITEM_DIR/front_app.sh"
+# source "$ITEM_DIR/space_index.sh"
 # source "$ITEM_DIR/team.sh"
 
 # right
@@ -40,7 +41,7 @@ source "$ITEM_DIR/time.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/keyboard.sh"
 # source "$ITEM_DIR/airpodsbattery.sh"
-source "$ITEM_DIR/disk.sh"
+# source "$ITEM_DIR/disk.sh"
 source "$ITEM_DIR/mem.sh"
 source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/wifi.sh"

@@ -1,6 +1,6 @@
 # Job apps
 alt + shift - b : open /Applications/Arc.app
-alt + shift - c : open /Applications/Microsoft\ Teams\ \(work\ or\ school\).app
+alt + shift - c : open /Applications/Microsoft\ Teams.app
 alt + shift - d : open /Applications/TablePlus.app
 alt + shift - f : open /Applications/Messenger.app
 alt + shift - g : open /Applications/GitButler.app
@@ -9,9 +9,10 @@ alt + shift - m : open /Applications/Microsoft\ Outlook.app
 alt + shift - n : open /Applications/Inkdrop.app
 alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
-alt + shift - t : open /Applications/Alacritty.app
+alt + shift - t : open /Applications/kitty.app
 alt + shift - w : open /Applications/wpsoffice.app
 alt + shift - v : open /Applications/Visual\ Studio\ Code.app
+alt + shift - e : open -a "Mission Control"
 
 alt - tab : yabai -m space --focus recent
 cmd - tab : yabai -m window --focus stack.recent
@@ -43,9 +44,10 @@ alt + shift - l : yabai -m window --warp east
 
 # Focus windows
 alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
+# alt - j : yabai -m window --focus south
+# alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
+
 
 # Don't commit this
 ctrl + alt + shift - y : yabai --restart-service; echo "xxxx" | sudo -S yabai --load-sa; osascript -e 'display notification "Restarted Yabai"'

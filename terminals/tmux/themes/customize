@@ -3,7 +3,7 @@
 #+--- Bars General Config ---+
 tmux set -g status-position top  # macOS / darwin style
 tmux set -g status-left-length "200"
-tmux set -g status-bg "#0F0F0F"
+tmux set -g status-bg "#000000"
 tmux set-option -g status-justify left
 
 #+--- Bars LEFT ---+
@@ -18,3 +18,4 @@ tmux set -g window-status-format "#[fg=#4F4F4F] #I:#{b:pane_current_path}#[fg=ye
 #+--- Bars RIGHT ---+
 tmux set -g status-right "#[fg=gray]#{pomodoro_status} "
 tmux set -ag status-right "#[fg=#ffff00,bold] #(tmux list-panes | wc -l | tr -d ' ') panes"
+set -g status-right-length 150
