@@ -62,7 +62,6 @@ telescope.setup {
   }
 }
 
-telescope.load_extension('harpoon')
 telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
 telescope.load_extension("refactoring")
