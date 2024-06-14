@@ -66,7 +66,7 @@
   },
   {
     // Folder Sidebar
-    "context": "Workspace",
+    "context": "ProjectPanel && not_editing",
     "bindings": {
       // Add new file
       "a": "project_panel::NewFile",
@@ -77,6 +77,7 @@
       "r": "project_panel::Rename",
       // Navigate to activepane file
       "ctrl-l": "project_panel::ToggleFocus",
+      "l": "project_panel::Open",
       "ctrl-\\": "workspace::ToggleLeftDock"
     }
   }
