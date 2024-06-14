@@ -1,0 +1,83 @@
+[
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // General
+      "space w": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      // File Explore
+      "ctrl-p": "file_finder::Toggle",
+      "space /": "workspace::NewSearch",
+      // Split
+      ", v": "pane::SplitRight",
+      ", s": "pane::SplitUp",
+      "ctrl-h": [
+        "workspace::ActivatePaneInDirection",
+        "Left"
+      ],
+      "ctrl-l": [
+        "workspace::ActivatePaneInDirection",
+        "Right"
+      ],
+      "ctrl-k": [
+        "workspace::ActivatePaneInDirection",
+        "Up"
+      ],
+      "ctrl-j": [
+        "workspace::ActivatePaneInDirection",
+        "Down"
+      ],
+      // Buffer
+      ", q": "pane::ActivatePrevItem",
+      ", w": "pane::ActivateNextItem",
+      ", b d": "pane::CloseActiveItem",
+      // Temrinal
+      "space t": "workspace::NewTerminal",
+      // LSP
+      "g f": "editor::GoToDefinition",
+      "g v": "editor::GoToDefinitionSplit",
+      // Git
+      ", g b": "editor::ToggleGitBlame",
+      "space g b": "editor::ToggleGitBlameInline",
+      // Collapse sidebar workspace
+      "ctrl-\\": "workspace::ToggleLeftDock",
+      // Code Action
+      "space c a": "editor::ToggleCodeActions",
+      // Find all word match below cursor
+      "ctrl-n": "editor::SelectAllMatches"
+      // TODO:
+      // Run Test
+      // Run Test in current cursor
+      // Run Test in current file
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "tab": [
+        "workspace::SendKeystrokes",
+        "down"
+      ],
+      "shift-tab": [
+        "workspace::SendKeystrokes",
+        "up"
+      ]
+    }
+  },
+  {
+    // Folder Sidebar
+    "context": "Workspace",
+    "bindings": {
+      // Add new file
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      // Delete file
+      "D": "project_panel::Delete",
+      // Rename file
+      "r": "project_panel::Rename",
+      // Navigate to activepane file
+      "ctrl-l": "project_panel::ToggleFocus",
+      "ctrl-\\": "workspace::ToggleLeftDock"
+    }
+  }
+]
