@@ -22,7 +22,6 @@ return function(client, bufnr)
       .set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts)
 
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', bufopts)
   vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
     bufopts)
   vim.keymap.set('n', ',rr', '<cmd>lua vim.lsp.buf.rename()<CR>', bufopts)

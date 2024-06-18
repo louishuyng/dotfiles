@@ -12,6 +12,7 @@ alt + shift - s : open /Applications/Slack.app
 alt + shift - t : open /Applications/kitty.app
 alt + shift - w : open /Applications/wpsoffice.app
 alt + shift - v : open /Applications/Visual\ Studio\ Code.app
+alt + shift - z : open /Applications/Zed.app
 alt + shift - e : open -a "Mission Control"
 
 alt - tab : yabai -m space --focus recent

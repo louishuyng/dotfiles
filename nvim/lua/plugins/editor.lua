@@ -76,6 +76,9 @@ return {
     keys = { { "<C-w>o", "<cmd>ZenMode<cr>", desc = "Zen Mode" } }
   },
 
+  -- Hover Support
+  { "lewis6991/hover.nvim" },
+
   -- Git
   { 'tpope/vim-fugitive' },
   { 'lewis6991/gitsigns.nvim',   dependencies = { 'nvim-lua/plenary.nvim' } },
