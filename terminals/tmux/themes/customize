@@ -1,21 +1,6 @@
 #!/usr/bin/env bash
 
 #+--- Bars General Config ---+
-tmux set -g status-position top  # macOS / darwin style
+tmux set -g status-position bottom  # macOS / darwin style
 tmux set -g status-left-length "200"
 tmux set -g status-bg "#1E1D2D"
-tmux set-option -g status-justify left
-
-#+--- Bars LEFT ---+
-tmux set -g status-left "#[fg=#CBA6FA] #S #[fg=#2b97fa,bg=default,nobold,noitalics,nounderscore]"
-
-#+--- Windows ---j
-# Focus
-tmux set -g window-status-current-format " #[fg=#CDD6F4]#I:#[hnobold,nodim]#{b:pane_current_path}"
-# Unfocused
-tmux set -g window-status-format "#[fg=#4F4F4F] #I:#{b:pane_current_path}#[fg=yellow,blink]"
-
-#+--- Bars RIGHT ---+
-tmux set -g status-right "#[fg=gray]#{pomodoro_status} "
-tmux set -ag status-right "#[fg=#EE99A0,bold] #(tmux list-panes | wc -l | tr -d ' ') panes"
-set -g status-right-length 150

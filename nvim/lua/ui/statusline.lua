@@ -226,56 +226,6 @@ local LSPActive = {
 }
 
 
-local Git = {
-  condition = conditions.is_git_repo,
-  init = function(self)
-    self.status_dict = vim.b.gitsigns_status_dict
-    self.has_changes =
-        self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or
-        self.status_dict.changed ~= 0
-  end,
-  hl = { bg = colors.mantle },
-  { provider = "", hl = { bg = colors.crust, fg = colors.mantle } },
-  {
-    provider = function(self)
-      return ("  %s "):format(self.status_dict.head == "" and "~" or
-        self.status_dict.head)
-    end,
-    hl = { fg = colors.mauve }
-  },
-  {
-    provider = function(self)
-      local count = self.status_dict.added or 0
-      return count > 0 and ("  %s"):format(count)
-    end,
-    hl = { fg = colors.green },
-    condition = function()
-      return conditions.buffer_not_empty() and conditions.hide_in_width()
-    end
-  },
-  {
-    provider = function(self)
-      local count = self.status_dict.removed or 0
-      return count > 0 and ("  %s"):format(count)
-    end,
-    hl = { fg = colors.red },
-    condition = function()
-      return conditions.buffer_not_empty() and conditions.hide_in_width()
-    end
-  },
-  {
-    provider = function(self)
-      local count = self.status_dict.changed or 0
-      return count > 0 and ("  %s"):format(count)
-    end,
-    hl = { fg = colors.peach },
-    condition = function()
-      return conditions.buffer_not_empty() and conditions.hide_in_width()
-    end
-  },
-  Space
-}
-
 local FileFormat = {
   provider = function()
     local fmt = vim.bo.fileformat
@@ -319,7 +269,7 @@ local IndentSizes = {
 
 heirline.setup({
   statusline = {
-    ViMode, Git, Align, RestEnv, LSPActive, Ruler, FileType, FileSize,
+    ViMode, Align, RestEnv, LSPActive, Ruler, FileType, FileSize,
     FileFormat, FileEncoding, IndentSizes
   }
 })
