@@ -61,3 +61,7 @@ devops/**/charts
 lawbite_irbrc.rb
 
 values.local.yaml
+
+raycast/extensions
+raycast/public-extensions-fork
+raycast/config.json
