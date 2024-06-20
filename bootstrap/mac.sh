@@ -358,6 +358,10 @@ link_all_dotfiles() {
   ln -s $(which fdfind) ~/.local/bin/fd
   success "Linked fd"
 
+  mkdir -p ~/.config/raycast
+  ln -s ~/.dotfiles/raycast ~/.config/raycast
+  success "Linked raycast"
+
   ln -s ~/.dotfiles/.irbrc ~/.irbrc
 }
 
