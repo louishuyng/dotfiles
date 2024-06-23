@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#
-SPACE_ICONS=("1" "2" "3")
+
+SPACE_ICONS=("IDE" "2" "3" "4")
 
 YELLOW=#eed49f
 GREEN=#8DC583

@@ -19,19 +19,30 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # Labels
-yabai -m space 2 --label Management
-yabai -m space 3 --label Others
+yabai -m space 1 --label IDE
+yabai -m space 2 --label Web
+yabai -m space 3 --label Management
+yabai -m space 4 --label Others
+
+yabai -m config --space 1 layout bsp \
+  left_padding 70 \
+  right_padding 70 \
+  top_padding 12 \
+  bottom_padding 39
 
 yabai -m rule --add app="kitty" space=1
-yabai -m rule --add app="Arc" space=1
+yabai -m rule --add app="Alacritty" space=1
 
-yabai -m rule --add app="Microsoft Teams" space=2
-yabai -m rule --add app="Microsoft Outlook" space=2
-yabai -m rule --add app="Inkdrop" space=2
-yabai -m rule --add app="Slack" space=2
+yabai -m rule --add app="Arc" space=2
+yabai -m rule --add app="Google Chrome" space=2
 
-yabai -m rule --add app="Messenger" space=3
-yabai -m rule --add app="Calendar" space=3
-yabai -m rule --add app="Mail" space=3
+yabai -m rule --add app="Microsoft Teams" space=3
+yabai -m rule --add app="Microsoft Outlook" space=3
+yabai -m rule --add app="Inkdrop" space=3
+yabai -m rule --add app="Slack" space=3
+
+yabai -m rule --add app="Messenger" space=4
+yabai -m rule --add app="Calendar" space=4
+yabai -m rule --add app="Mail" space=4
 
 echo "yabai configuration loaded.."
