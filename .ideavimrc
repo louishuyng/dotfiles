@@ -1,2 +1,78 @@
-set visualbell
-set noerrorbells
+" vim settings
+set scrolloff=5
+set history=1000
+
+" status bar
+set showmode
+set commentary
+
+let mapleader="\<space>"
+
+" find and replace
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set gdefault
+nmap <leader>nh :noh<CR>
+
+" ideavim settings
+set ideajoin
+set ideamarks
+set idearefactormode=normal
+set ideastatusicon=gray
+
+" better HJKL
+map H ^
+map L $
+map J }
+map K {
+
+nmap <C-k> <C-w>k
+nmap <C-j> <C-w>j
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+
+" location
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+
+" Save and Close
+nmap ,bd <Action>(CloseContent)
+nmap <leader>q  :q<CR>
+nmap <leader>w :write<CR>
+
+" Actions
+nmap gcc :action CommentByLineComment<CR>
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <S-TAB> :action NextTab<CR>
+nnoremap /  :action Find<CR>
+
+" Refactor
+nmap <leader>rf :action Refactorings.QuickListPopupAction<CR>
+nmap ,rr <Action>(RenameElement)
+
+" Go Files
+nmap gf <Action>(GotoDeclaration)
+nmap gr <Action>(FindUsages)
+nmap ,a <Action>(GoToTest)
+
+" File In Projects
+nmap <Leader>fr :action RecentFiles<CR>
+nmap <Leader>/ :action FindInPath<CR>
+nmap <C-p> :action GotoFile<CR>
+namp gv :actiond
+
+" Testing
+nmap <leader>ts <Action>(ContextRun)
+nmap <leader>tl <Action>(Rerun)
+nmap <leader>ta <Action>(RunTests)
+nnoremap <C-c> :action Stop<CR>
+
+" Zen Mode
+nnoremap <C-w>o :action ToggleDistractionFreeMode<CR>
+
+nmap ,v :vsplit<CR>
+nmap ,s :split<CR>
+
+set easymotion

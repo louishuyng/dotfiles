@@ -27,8 +27,8 @@ yabai -m space 4 --label Others
 yabai -m config --space 1 layout bsp \
   left_padding 70 \
   right_padding 70 \
-  top_padding 12 \
-  bottom_padding 39
+  top_padding 43 \
+  bottom_padding 70
 
 yabai -m rule --add app="kitty" space=1
 yabai -m rule --add app="Alacritty" space=1
