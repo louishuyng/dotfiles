@@ -18,28 +18,7 @@ telescope.setup {
       "--column",
       "--smart-case",
     },
-    wrap_results = true,
     sorting_strategy = "ascending",
-    winblend = 0,
-    pickers = {
-      diagnostics = {
-        theme = "ivy",
-        initial_mode = "normal",
-        layout_config = { preview_cutoff = 9999 }
-      }
-    },
-    border = {},
-    borderchars = {
-      prompt = { " ", " ", "─", " ", " ", " ", "─", "─" },
-      results = { "─", " ", " ", " ", "─", "─", " ", " " },
-      preview = { "─", " ", "─", "│", "┬", "─", "─", "╰" }
-    },
-    layout_strategy = 'bottom_pane',
-    layout_config = {
-      height = 0.3,
-      preview_width = 0.5,
-      prompt_position = "bottom"
-    },
     mappings = {
       i = {
         ["<Esc>"] = actions.close,
@@ -49,7 +28,8 @@ telescope.setup {
         ["<C-f>"] = actions.preview_scrolling_down,
         ["<C-v>"] = actions.select_vertical,
         ["<C-s>"] = actions.select_horizontal,
-        ["<c-d>"] = actions.delete_buffer,
+        ["<C-d>"] = actions.delete_buffer,
+        ["<C-p>"] = require("telescope.actions.layout").toggle_preview
       }
     },
     extensions = {

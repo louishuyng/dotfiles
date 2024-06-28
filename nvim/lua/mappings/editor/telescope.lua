@@ -18,27 +18,72 @@ vim.keymap.set("n", "<leader>fs", ":lua find_files()<CR>", opt)
 vim.keymap.set("n", "<leader>ls", ":lua live_grep()<CR>", opt)
 
 -- Main finding
-vim.keymap.set("n", "<c-p>", ":Telescope find_files hidden=true<cr>", opt)
-vim.keymap.set("n", "<leader><leader>", ":Telescope buffers<CR>", opt)
+local dropdown_theme = function(title)
+  return require('telescope.themes').get_dropdown({
+    results_height = 20,
+    winblend = 0,
+    width = 0.8,
+    prompt_title = '',
+    prompt_prefix = title .. ' > ',
+    previewer = false,
+    preview_title = '',
+    borderchars = {
+      prompt = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
+      results = { ' ', '▐', '▄', '▌', '▌', '▐', '▟', '▙' },
+      preview = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
+    },
+  })
+end
+
+vim.keymap.set("n", "<c-p>", function()
+  require('telescope.builtin').find_files(dropdown_theme("Files"))
+end, opt)
+
+vim.keymap.set("n", "<leader><leader>", function()
+  return require('telescope.builtin').buffers(dropdown_theme("Buffers"))
+end, opt)
+
 vim.keymap.set("n", "<leader>/",
-  ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+  function()
+    return require('telescope').extensions.live_grep_args.live_grep_args(dropdown_theme("LiveGrep"))
+  end,
   opt)
 
-vim.keymap.set("n", "<leader>fm", ":Telescope marks<CR>", opt)
-vim.keymap.set("n", "<leader>fj", ":Telescope jumplist<CR>", opt)
+vim.keymap.set("n", "<leader>fm", function()
+  return require('telescope.builtin').marks(dropdown_theme("Marks"))
+end, opt)
+
+vim.keymap.set("n", "<leader>fj", function()
+  return require('telescope.builtin').jumplist(dropdown_theme("Jumplist"))
+end, opt)
 
 -- TODO list
 vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", opt)
 
 -- prefix with <leader>f
-vim.keymap.set("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>",
+vim.keymap.set("n", "<leader>f/", function()
+  return require('telescope.builtin').current_buffer_fuzzy_find(dropdown_theme("CurrentBuffer"))
+end, opt)
+
+vim.keymap.set("n", "<leader>fr",
+  function()
+    return require('telescope.builtin').oldfiles(dropdown_theme("OldFiles"))
+  end,
   opt)
-vim.keymap.set("n", "<leader>fr", ":Telescope oldfiles previewer=false cwd_only=true<CR>", opt)
 
 -- searching vim built-in
-vim.keymap.set("n", "g?", ":Telescope help_tags<CR>", opt)
-vim.keymap.set("n", "<leader><BS>", ":Telescope keymaps<CR>", opt)
-vim.keymap.set("n", "<leader>\"", ":Telescope registers<CR>", opt)
+vim.keymap.set("n", "g?", function()
+  return require('telescope.builtin').help_tags(dropdown_theme("HelpTags"))
+end, opt)
+
+vim.keymap.set("n", "<leader><BS>",
+  function()
+    require('telescope.builtin').keymaps(dropdown_theme("Keymaps"))
+  end, opt)
+
+vim.keymap.set("n", "<leader>\"", function()
+  require('telescope.builtin').registers(dropdown_theme("Registers"))
+end, opt)
 
 -- vim config
 vim.keymap.set("n", "<leader>vc",
@@ -55,26 +100,26 @@ vim.keymap.set("n", ",e", function()
     respect_gitignore = false,
     hidden = true,
     grouped = true,
-    previewer = true
+    previewer = true,
   })
 end, opt)
 
 -- Resume Previous Telescope
 vim.keymap.set("n", "<leader>fl", function()
   local builtin = require("telescope.builtin")
-  builtin.resume()
+
+  builtin.resume(dropdown_theme("Resume"))
 end, opt)
 
 -- List diagnostics for all open buffers or a specific buffer
 vim.keymap.set("n", "<leader>fd", function()
-  local builtin = require("telescope.builtin")
-  builtin.diagnostics()
+  local builtin = require("telescope.builtin").diagnostics(dropdown_theme("Diagnostics"))
 end)
 
 -- Lists Function names, variables, from Treesitter
 vim.keymap.set("n", ";s", function()
   local builtin = require("telescope.builtin")
-  builtin.treesitter()
+  builtin.treesitter(dropdown_theme("Treesitter"))
 end)
 
 -- Refactoring
