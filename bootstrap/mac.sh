@@ -291,6 +291,11 @@ install_nnn() {
     sudo cp nnn /usr/local/bin
     rm -rf  /tmp/nnn
   fi
+
+  read -r -p "Do you want to install yazi? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide font-symbols-only-nerd-font
+  fi
 }
 
 install_nixos() {
@@ -410,6 +415,7 @@ install_cli_tools() {
     brew install watch
     brew install ansifilter # Program specialized for removing (or working with) ANSI codes 
     brew install xdg-ninja # A shell script which checks your $HOME for unwanted files and directories.
+
 
     # Hack Tools
     brew install feroxbuster
