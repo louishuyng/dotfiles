@@ -1,20 +1,60 @@
---[[ if vim.g.manual_set_background then
-  -- Do nothing if manual trigger here
-else
-  local current_hour = tonumber(os.date("%H"))
+local highlight_utils = require 'ui.highlight_utils'
 
-  -- From 5am to 12pm, set light mode
-  if current_hour >= 5 and current_hour <= 12 then
-    vim.g.dark_mode = false
-  else
-    vim.g.dark_mode = true
-  end
-end ]]
+local transaprent = highlight_utils.transaprent
+local gitTransparent = highlight_utils.gitTransparent
+local highlight_telescope = highlight_utils.highlight_telescope
 
-if vim.g.dark_mode then
-  vim.cmd('set background=dark')
-else
-  vim.cmd('set background=light')
+if vim.g.theme == "gruvbox" then
+  vim.g.gruvbox_baby_transparent_mode = 1
+
+  vim.cmd [[
+    set background=dark
+    colorscheme gruvbox-baby
+  ]]
+
+  transaprent()
+  highlight_telescope()
 end
 
-vim.cmd("colorscheme catppuccin")
+if vim.g.theme == "mocha" then
+  vim.cmd [[
+    set background=dark
+    colorscheme catppuccin
+  ]]
+
+  transaprent()
+  highlight_telescope()
+end
+
+if vim.g.theme == 'edge' then
+  vim.cmd [[
+    set background=dark
+
+    let g:edge_better_performance = 1
+    colorscheme edge
+  ]]
+
+  transaprent()
+  highlight_telescope()
+end
+
+if vim.g.theme == 'edge-light' then
+  vim.cmd [[
+    set background=light
+
+    let g:edge_better_performance = 1
+    colorscheme edge
+  ]]
+end
+
+if vim.g.theme == "minimal" then
+  vim.cmd [[
+    set background=dark
+
+    colorscheme minimal-base16
+  ]]
+
+  transaprent()
+  gitTransparent()
+  highlight_telescope()
+end

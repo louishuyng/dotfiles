@@ -1,5 +1,6 @@
 local scopes = require("neoscopes")
 local telescope = require("telescope")
+local dropdown_theme = require("config.cores.telescope.theme").dropdown_theme
 
 local opt = { silent = true, noremap = true }
 
@@ -18,23 +19,6 @@ vim.keymap.set("n", "<leader>fs", ":lua find_files()<CR>", opt)
 vim.keymap.set("n", "<leader>ls", ":lua live_grep()<CR>", opt)
 
 -- Main finding
-local dropdown_theme = function(title)
-  return require('telescope.themes').get_dropdown({
-    results_height = 20,
-    winblend = 0,
-    width = 0.8,
-    prompt_title = '',
-    prompt_prefix = title .. ' > ',
-    previewer = false,
-    preview_title = '',
-    borderchars = {
-      prompt = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
-      results = { ' ', '▐', '▄', '▌', '▌', '▐', '▟', '▙' },
-      preview = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
-    },
-  })
-end
-
 vim.keymap.set("n", "<c-p>", function()
   require('telescope.builtin').find_files(dropdown_theme("Files"))
 end, opt)
@@ -144,4 +128,9 @@ vim.keymap.set("n", "<leader>fa", function()
     prompt_title = "APIs",
     find_command = { "fd", "--type", "f", "--extension", "http" }
   })
+end)
+
+-- Select theme
+vim.keymap.set("n", "<leader>ct", function()
+  require('config.cores.telescope.custom.theme_select')()
 end)

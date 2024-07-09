@@ -2,6 +2,7 @@ local present, telescope = pcall(require, "telescope")
 local actions = require 'telescope.actions'
 local lga_actions = require("telescope-live-grep-args.actions")
 
+
 telescope.setup {
   defaults = {
     file_ignore_patterns = {
@@ -18,6 +19,7 @@ telescope.setup {
       "--column",
       "--smart-case",
     },
+    wrap_results = true,
     sorting_strategy = "ascending",
     mappings = {
       i = {
@@ -31,6 +33,24 @@ telescope.setup {
         ["<C-d>"] = actions.delete_buffer,
         ["<C-p>"] = require("telescope.actions.layout").toggle_preview
       }
+    },
+    pickers = {
+      diagnostics = {
+        theme = "ivy",
+        initial_mode = "normal",
+        layout_config = { preview_cutoff = 9999 }
+      }
+    },
+    border = {},
+    borderchars = {
+      prompt = { " ", " ", "─", " ", " ", " ", "─", "─" },
+      results = { "─", " ", " ", " ", "─", "─", " ", " " },
+      preview = { "─", " ", "─", "│", "┬", "─", "─", "╰" }
+    },
+    layout_strategy = 'bottom_pane',
+    layout_config = {
+      height = 0.3,
+      prompt_position = "bottom"
     },
     extensions = {
       file_browser = {
