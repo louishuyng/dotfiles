@@ -57,20 +57,6 @@ vim.keymap.set("n", "<leader>li", ":Lazy install<CR>", opt)
 vim.keymap.set("n", "<leader>lc", ":Lazy clean<CR>", opt)
 vim.keymap.set("n", "<leader>lu", ":Lazy update<CR>", opt)
 
--- Toggle Dark mode
-vim.keymap.set("n", "<leader>0", function()
-  vim.g.dark_mode = not vim.g.dark_mode
-  vim.g.manual_set_background = true
-
-  -- Clear all highlights and reload colorscheme, statusline and syntax
-  vim.cmd([[
-    luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
-    luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
-
-    syntax on
-  ]])
-end, opt)
-
 -- Editing Auto Approve PRs
 vim.cmd("command! EditAutoApprovePRs :e ~/Dev/Projects/Regask/auto_approve_prs.txt")
 vim.cmd("command! ApprovePRs :!auto_approve_prs")

@@ -92,7 +92,7 @@ vim.opt.undofile = true
 vim.opt.signcolumn = "yes"
 
 -- SPELL
-vim.api.nvim_command("set nospell")
+vim.opt.spell = false
 
 -- UNDOFILE
 vim.opt.undofile = true
@@ -155,6 +155,3 @@ vim.cmd([[
 
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 ]])
-
--- Spell Check
-vim.cmd [[au FileType lua setlocal nospell]] -- disable spell check for lua files

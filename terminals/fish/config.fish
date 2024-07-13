@@ -5,6 +5,7 @@ set -U fish_key_bindings fish_default_key_bindings
 
 set -U fisher_path ~/.dotfiles/terminals/fish/fisherman
 
+source ~/.dotfiles/terminals/fish/theme.fish
 source ~/.dotfiles/terminals/fish/alias/init.fish
 source ~/.dotfiles/terminals/fish/env/init.fish
 

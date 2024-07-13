@@ -58,6 +58,9 @@ local ensure_installed = {
   -- Others
   "bashls", "codespell", "cfn_lint", "yamlfmt", "smithy-language-server", "yamlls",
   "ltex-ls", "yaml-language-server", "json-lsp",
+
+  -- Spell Check
+  "typos-lsp"
 }
 
 require("mason-null-ls").setup { ensure_installed = ensure_installed }
@@ -77,6 +80,7 @@ require "config/lsp/python"
 require "config/lsp/ruby"
 require "config/lsp/rust"
 require "config/lsp/smithy"
+require "config/lsp/spell"
 require "config/lsp/svelte"
 require "config/lsp/terraform"
 require "config/lsp/typescript"

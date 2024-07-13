@@ -13,7 +13,6 @@ return {
           dark = "mocha",
           light = "latte",
         },
-        transparent_background = true,
         highlight_overrides = {
           all = function(colors)
             return {

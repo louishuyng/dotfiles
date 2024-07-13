@@ -13,6 +13,15 @@ return {
     opts = {}
   },
 
+  -- Mark
+  {
+    'chentoast/marks.nvim',
+    config = function()
+      require('marks').setup({
+      })
+    end
+  },
+
   -- Fast jump
   {
     "folke/flash.nvim",
