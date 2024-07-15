@@ -18,5 +18,8 @@ eval "$(pyenv init --path)"
 
 set fish_greeting ""
 
+set -gx ATUIN_NOBIND "true"
+atuin init fish | source
+
 # opam configuration
 source /Users/louishuyng/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true

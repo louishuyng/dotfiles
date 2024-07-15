@@ -1,9 +1,8 @@
 function fish_user_key_bindings
   fish_vi_key_bindings
   fzf_bindings
+  atuin_bindings
   custom_bindings
-
-  bind \ee 'edit_cmd'
 end
 
 function fzf_bindings
@@ -11,5 +10,9 @@ function fzf_bindings
 end
 
 function custom_bindings
-  bind \cn 'clear; nvim'
+  bind --mode insert \cn 'clear; nvim'
+end
+
+function atuin_bindings
+  bind --mode insert \cr _atuin_search
 end
