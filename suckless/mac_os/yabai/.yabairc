@@ -26,6 +26,7 @@ yabai -m space 4 --label Others
 
 yabai -m rule --add app="kitty" space=1
 yabai -m rule --add app="Alacritty" space=1
+yabai -m rule --add app="Code" space=1
 yabai -m rule --add app="WebStorm" space=1
 
 yabai -m rule --add app="Arc" space=2

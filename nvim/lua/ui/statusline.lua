@@ -48,7 +48,7 @@ local colors = {
   status_text = "#4e545f",
   branch_name = "#5c6370",
   branch_cover = "#21252a",
-  line = "#141417",
+  line = "#242634",
   none = "none",
 }
 

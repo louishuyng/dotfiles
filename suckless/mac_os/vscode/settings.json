@@ -1,31 +1,136 @@
 {
-  "editor.inlineSuggest.enabled": true,
-  "editor.accessibilitySupport": "off",
-  "workbench.iconTheme": "material-icon-theme",
-  "editor.fontFamily": "JetbrainsMono Nerd Font,Menlo, Monaco, 'Courier New', monospace",
-  "workbench.sideBar.location": "right",
-  "editor.renderWhitespace": "all",
-  "editor.minimap.enabled": false,
-  "workbench.editor.showTabs": false,
-  "editor.renderControlCharacters": false,
-  "editor.scrollbar.verticalScrollbarSize": 0,
-  "editor.scrollbar.horizontalScrollbarSize": 0,
-  "editor.renderLineHighlight": "none",
-  "editor.mouseWheelZoom": true,
-  "workbench.layoutControl.type": "menu",
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 1,
-  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.iconTheme": "catppuccin-frappe",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 13,
+  "apc.statusBar": {
+    "fontSize": 13
+  },
+  "editor.lineHeight": 0,
+  "chat.editor.fontWeight": "bold",
+  "editor.suggestFontSize": 16,
+  "editor.suggestLineHeight": 28,
+  "terminal.integrated.fontSize": 13,
+  // Color Customization
+  "workbench.colorCustomizations": {
+    "editor.background": "#313445",
+    "editorWidget.background": "#1f2738bb",
+    "editorHoverWidget.background": "#2d3750",
+    "sideBar.background": "#313445",
+    "sideBarSectionHeader.background": "#313445",
+    "terminal. background": "#313445",
+    "editorLineNumber.activeForeground": "#586374",
+    "editorLineNumber.dimmedForeground": "#586374",
+    "editorLineNumber. foreground": "#58637466",
+    "scrollbarSlider.activeBackground": "#6b6f87",
+    "scrollbarSlider.background": "#6b6f87",
+    "scrollbarSlider.hoverBackground": "#6b6f87",
+    "sideBar.border": "#63697355",
+  },
   "editor.formatOnSave": true,
+  "editor.copyWithSyntaxHighlighting": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.emptySelectionClipboard": false,
+  "workbench.editor.enablePreview": false,
+  "window.newWindowDimensions": "inherit",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "files.trimTrailingWhitespace": true,
+  "diffEditor.renderSideBySide": false,
+  "editor.snippetSuggestions": "top",
+  "editor.detectIndentation": false,
+  "window.nativeFullScreen": false,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "hidden",
+  "workbench.editor.showTabs": "single",
+  "editor.lineNumbers": "off",
+  "editor.minimap.enabled": false,
+  "editor.fontLigatures": true,
+  "editor.glyphMargin": true,
+  "scm.diffDecorations": "none",
+  "editor.hover.enabled": false,
+  "editor.matchBrackets": "never",
+  "workbench.tips.enabled": false,
+  "editor.colorDecorators": false,
+  "git.decorations.enabled": false,
+  "editor. accessibilitySupport": "off",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "window.titleBarStyle": "native",
+  // hide scrollbar
+  "apc.menubar.compact": true,
+  "apc.electron": {
+    "backgroundColor": "#2A2E3D",
+    "frame": true,
+    "transparent": true,
+    "titleBarStyle": "hidden",
+    "vibrancy": "ultra-dark",
+    "trafficLightPosition": {
+      "x": 15,
+      "y": 13
+    }
+  },
+  "apc.stylesheet": {
+    "*": "font-family: JetBrainsMono Nerd Font, monospace;",
+    ".Monaco-breadcrumb-item": "display: none !important;", // Hides the breadcrumb that shows file path, method names you are on, etc
+    ".actions-container .highlight-toggled": "display: none !important;", // hides the action buttons on right
+    ".editor.title": "background: transparent !important;",
+    ".editor .title .actions-container .action-item a": "visibility: hidden !important;",
+    ".editor .title .actions-container": "flex-direction: row-reverse;",
+    ".editor .scrollbar .slider": "visibility: hidden !important;",
+    ".editor .scrollbar:hover .slider": "visibility: initial",
+  },
   "vim.leader": ",",
   "vim.normalModeKeyBindings": [
     {
       "before": [
-        "<leader>",
+        ",",
         "v"
       ],
       "commands": [
         "workbench.action.splitEditorRight"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "w"
+      ],
+      // Save current buffer
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "q"
+      ],
+      // Close current buffer
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "/"
+      ],
+      // Search a text in all files
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "s"
+      ],
+      // Open source control
+      "commands": [
+        "workbench.view.scm"
       ]
     },
     {
@@ -58,11 +163,30 @@
     {
       "before": [
         "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
+    {
+      "before": [
+        "g",
         "v"
       ],
       "commands": [
+        "workbench.action.splitEditorRight",
         "editor.action.goToDeclaration",
-        "workbench.action.splitEditorRight"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.splitEditorDown",
+        "workbench.action.nextEditor"
       ]
     },
     {
@@ -83,6 +207,124 @@
       "commands": [
         "workbench.action.files.save"
       ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "a"
+      ],
+      "commands": [
+        "extension.jumpToAlternative"
+      ]
+    },
+    // Toggle break point
+    {
+      "before": [
+        "<space>",
+        "d",
+        "b"
+      ],
+      "commands": [
+        "editor.debug.toggleBreakpoint"
+      ]
     }
-  ]
+  ],
+  "jest.runMode": "on-demand",
+  "editor.accessibilitySupport": "off",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "workbench.colorTheme": "Catppuccin Frappé",
+  "accessibility.signals.chatRequestSent": {
+    "announcement": "off",
+    "sound": "off"
+  },
+  "accessibility.signals.chatResponseReceived": {
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineDeleted": {
+    "sound": "off"
+  },
+  "accessibility.signals.clear": {
+    "announcement": "off",
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineInserted": {
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasBreakpoint": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.lineHasError": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.lineHasFoldedArea": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.lineHasInlineSuggestion": {
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasWarning": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.notebookCellCompleted": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.notebookCellFailed": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.positionHasError": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.voiceRecordingStarted": {
+    "sound": "off"
+  },
+  "accessibility.signals.voiceRecordingStopped": {
+    "sound": "off"
+  },
+  "accessibility.signals.terminalQuickFix": {
+    "announcement": "off",
+    "sound": "off"
+  },
+  "accessibility.signals.terminalCommandSucceeded": {
+    "announcement": "off",
+    "sound": "off"
+  },
+  "accessibility.signals.terminalCommandFailed": {
+    "announcement": "off",
+    "sound": "off"
+  },
+  "accessibility.signals.terminalBell": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.taskFailed": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.taskCompleted": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.noInlayHints": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.positionHasWarning": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.progress": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.diffLineModified": {
+    "sound": "off"
+  }
 }

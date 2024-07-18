@@ -10,15 +10,8 @@ return {
     config = function()
       require("catppuccin").setup({
         background = {
-          dark = "mocha",
+          dark = "frappe",
           light = "latte",
-        },
-        highlight_overrides = {
-          all = function(colors)
-            return {
-              WinSeparator = { fg = "#141417" }
-            }
-          end,
         },
       })
     end,

@@ -4,7 +4,7 @@ local function transaprent()
     hi NormalNC guibg=NONE
     hi SignColumn guibg=NONE
     hi LineNr guibg=NONE
-    hi WinSeparator guifg=#141417
+    hi WinSeparator guifg=#323445
   ]]
 end
 
