@@ -31,6 +31,9 @@ local ensure_installed = {
   -- Kotlin
   "kotlin_language_server",
 
+  -- CSharp
+  "csharp-language-server",
+
   -- Typescript
   "tsserver",
   "typescript-language-server",
@@ -65,6 +68,7 @@ local ensure_installed = {
 
 require("mason-null-ls").setup { ensure_installed = ensure_installed }
 
+require "config/lsp/csharp"
 require "config/lsp/gleam"
 require "config/lsp/golang"
 require "config/lsp/html"

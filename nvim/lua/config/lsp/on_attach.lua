@@ -14,10 +14,6 @@ return function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', bufopts)
-  vim.keymap.set('n', 'gf',
-    '<Cmd>lua require("telescope.builtin").lsp_definitions()<CR>',
-    bufopts)
-  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', bufopts)
   vim.keymap
       .set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts)
 

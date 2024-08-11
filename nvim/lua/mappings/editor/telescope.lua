@@ -41,6 +41,15 @@ vim.keymap.set("n", "<leader>fj", function()
   return require('telescope.builtin').jumplist(dropdown_theme("Jumplist"))
 end, opt)
 
+-- LSP Finding
+vim.keymap.set('n', 'gr', function()
+  require('telescope.builtin').lsp_references(dropdown_theme("References"))
+end, opt)
+
+vim.keymap.set('n', 'gf', function()
+  require('telescope.builtin').lsp_definitions(dropdown_theme("Definitions"))
+end, opt)
+
 -- TODO list
 vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", opt)
 
@@ -104,11 +113,6 @@ end)
 vim.keymap.set("n", ";s", function()
   local builtin = require("telescope.builtin")
   builtin.treesitter(dropdown_theme("Treesitter"))
-end)
-
--- Refactoring
-vim.keymap.set({ "n", "x" }, "<leader>rf", function()
-  require('telescope').extensions.refactoring.refactors()
 end)
 
 -- NEST JS
