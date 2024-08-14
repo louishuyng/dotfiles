@@ -21,7 +21,7 @@ sudo yabai --load-sa
 # Labels
 yabai -m space 1 --label IDE
 yabai -m space 2 --label Web
-yabai -m space 3 --label Management
+yabai -m space 3 --label Work
 yabai -m space 4 --label Others
 
 yabai -m rule --add app="kitty" space=1

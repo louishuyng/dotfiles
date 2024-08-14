@@ -9,7 +9,7 @@ alt + shift - m : open /Applications/Microsoft\ Outlook.app
 alt + shift - n : open /Applications/Inkdrop.app
 alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
-alt + shift - t : open /Applications/kitty.app
+alt + shift - t : open /Applications/Alacritty.app
 alt + shift - w : open /Applications/wpsoffice.app
 alt + shift - v : open /Applications/Visual\ Studio\ Code.app
 alt + shift - z : open /Applications/Zed.app
