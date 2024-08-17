@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-SPACE_ICONS=("IDE" "W3" "@work" "Others")
+SPACE_ICONS=("IDE" "W3" "@chat" "📜Quest" "🎸Music" )
 
 YELLOW=#eed49f
 GREEN=#8DC583
 PURPLE=#c6a0f6
 GRAY=#868686
+ORANGE=#E2574E
+BLUE=#AACCD1
 
 DEACTIVATE=$GRAY
 
@@ -16,6 +18,10 @@ for i in "${!SPACE_ICONS[@]}"; do
     ACTIVATE=$GREEN
   elif [ $sid -eq 3 ]; then
     ACTIVATE=$YELLOW
+  elif [ $sid -eq 4 ]; then
+    ACTIVATE=$BLUE
+  elif [ $sid -eq 5 ]; then
+    ACTIVATE=$ORANGE
   else
     ACTIVATE=$PURPLE
   fi

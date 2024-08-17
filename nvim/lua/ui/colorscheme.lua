@@ -12,7 +12,6 @@ if vim.g.theme == "gruvbox" then
     colorscheme gruvbox-baby
   ]]
 
-  transaprent()
   highlight_telescope()
 end
 
@@ -22,7 +21,7 @@ if vim.g.theme == "mocha" then
     colorscheme catppuccin
   ]]
 
-  transaprent()
+  transaprent({ background = "transparent" })
   highlight_telescope()
 end
 
@@ -31,7 +30,11 @@ if vim.g.theme == 'edge' then
     set background=dark
 
     let g:edge_better_performance = 1
+
     colorscheme edge
+
+    hi Normal guibg=#000000
+    hi NormalNC guibg=#000000
   ]]
 
   transaprent()
@@ -54,7 +57,6 @@ if vim.g.theme == "minimal" then
     colorscheme minimal-base16
   ]]
 
-  transaprent()
   gitTransparent()
   highlight_telescope()
 end

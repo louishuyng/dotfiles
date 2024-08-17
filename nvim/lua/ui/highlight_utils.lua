@@ -1,10 +1,20 @@
-local function transaprent()
+local function transaprent(opts)
+  if opts == nil then
+    opts = {}
+  end
+
+  if opts.background == "transparent" then
+    vim.cmd [[
+      hi Normal guibg=NONE
+      hi NormalNC guibg=NONE
+    ]]
+  end
+
   vim.cmd [[
-    hi Normal guibg=NONE
-    hi NormalNC guibg=NONE
     hi SignColumn guibg=NONE
     hi LineNr guibg=NONE
-    hi WinSeparator guifg=#323445
+    hi WinSeparator guifg=#000000
+    hi MsgArea guibg=NONE
   ]]
 end
 

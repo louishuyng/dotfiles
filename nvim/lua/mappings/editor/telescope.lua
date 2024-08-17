@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>fs", ":lua find_files()<CR>", opt)
 vim.keymap.set("n", "<leader>ls", ":lua live_grep()<CR>", opt)
 
 -- Main finding
-vim.keymap.set("n", "<leader><leader>", function()
+vim.keymap.set("n", "<c-p>", function()
   require('telescope.builtin').find_files(dropdown_theme("Files"))
 end, opt)
 

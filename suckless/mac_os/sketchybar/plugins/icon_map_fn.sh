@@ -3,13 +3,14 @@
 
 
 
+
 ### START-OF-ICON-MAP
 function __icon_map() {
     case "$1" in
    "Live")
         icon_result=":ableton:"
         ;;
-   "Adobe Bridge 2024")
+   "Adobe Bridge"*)
         icon_result=":adobe_bridge:"
         ;;
    "Affinity Designer")
@@ -69,6 +70,9 @@ function __icon_map() {
    "MoneyMoney")
         icon_result=":bank:"
         ;;
+   "Battle.net")
+        icon_result=":battle_net:"
+        ;;
    "Bear")
         icon_result=":bear:"
         ;;
@@ -92,6 +96,9 @@ function __icon_map() {
         ;;
    "Brave Browser")
         icon_result=":brave_browser:"
+        ;;
+   "BusyCal")
+        icon_result=":busycal:"
         ;;
    "Calculator" | "Calculette")
         icon_result=":calculator:"
@@ -117,6 +124,9 @@ function __icon_map() {
    "CotEditor")
         icon_result=":coteditor:"
         ;;
+   "Creative Cloud")
+        icon_result=":creative_cloud:"
+        ;;
    "Cypress")
         icon_result=":cypress:"
         ;;
@@ -128,6 +138,9 @@ function __icon_map() {
         ;;
    "DaVinci Resolve")
         icon_result=":davinciresolve:"
+        ;;
+   "Deezer")
+        icon_result=":deezer:"
         ;;
    "Default")
         icon_result=":default:"
@@ -189,6 +202,9 @@ function __icon_map() {
    "Folx")
         icon_result=":folx:"
         ;;
+   "Fork")
+        icon_result=":fork:"
+        ;;
    "Fusion")
         icon_result=":fusion:"
         ;;
@@ -218,6 +234,12 @@ function __icon_map() {
         ;;
    "IntelliJ IDEA")
         icon_result=":idea:"
+        ;;
+   "Adobe Illustrator"* | "Illustrator")
+        icon_result=":illustrator:"
+        ;;
+   "Adobe InDesign"* | "InDesign")
+        icon_result=":indesign:"
         ;;
    "Inkdrop")
         icon_result=":inkdrop:"
@@ -256,7 +278,7 @@ function __icon_map() {
         icon_result=":keynote:"
         ;;
    "kitty")
-        icon_result=":hyper:"
+        icon_result=":kitty:"
         ;;
    "League of Legends")
         icon_result=":league_of_legends:"
@@ -288,7 +310,7 @@ function __icon_map() {
    "Logseq")
         icon_result=":logseq:"
         ;;
-   "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "Superhuman" | "邮件")
+   "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "Superhuman" | "Spark" | "邮件")
         icon_result=":mail:"
         ;;
    "MAMP" | "MAMP PRO")
@@ -296,6 +318,9 @@ function __icon_map() {
         ;;
    "Maps" | "Google Maps")
         icon_result=":maps:"
+        ;;
+   "Marta")
+        icon_result=":marta:"
         ;;
    "Matlab")
         icon_result=":matlab:"
@@ -390,6 +415,9 @@ function __icon_map() {
    "1Password")
         icon_result=":one_password:"
         ;;
+   "Open Video Downloader")
+        icon_result=":open_video_downloader:"
+        ;;
    "ChatGPT")
         icon_result=":openai:"
         ;;
@@ -423,6 +451,9 @@ function __icon_map() {
    "Adobe Photoshop"*)
         icon_result=":photoshop:"
         ;;
+   "PhpStorm")
+        icon_result=":php_storm:"
+        ;;
    "Pi-hole Remote")
         icon_result=":pihole:"
         ;;
@@ -437,6 +468,9 @@ function __icon_map() {
         ;;
    "Postman")
         icon_result=":postman:"
+        ;;
+   "Proton Mail" | "Proton Mail Bridge")
+        icon_result=":proton_mail:"
         ;;
    "PrusaSlicer" | "SuperSlicer")
         icon_result=":prusaslicer:"
@@ -471,6 +505,12 @@ function __icon_map() {
    "Rider" | "JetBrains Rider")
         icon_result=":rider:"
         ;;
+   "Rio")
+        icon_result=":rio:"
+        ;;
+   "Royal TSX")
+        icon_result=":royaltsx:"
+        ;;
    "Safari" | "Safari浏览器" | "Safari Technology Preview")
         icon_result=":safari:"
         ;;
@@ -488,6 +528,9 @@ function __icon_map() {
         ;;
    "Signal")
         icon_result=":signal:"
+        ;;
+   "sioyek")
+        icon_result=":sioyek:"
         ;;
    "Sketch")
         icon_result=":sketch:"
@@ -509,6 +552,9 @@ function __icon_map() {
         ;;
    "Sublime Text")
         icon_result=":sublime_text:"
+        ;;
+   "superProductivity")
+        icon_result=":superproductivity:"
         ;;
    "Tana")
         icon_result=":tana:"
@@ -597,7 +643,7 @@ function __icon_map() {
    "Xcode")
         icon_result=":xcode:"
         ;;
-   "Яндекс Музыка")
+   "Yandex Music")
         icon_result=":yandex_music:"
         ;;
    "Yuque" | "语雀")
