@@ -164,6 +164,16 @@ install_terminal() {
 
     success "Installed neofetch"
   fi
+
+  read -r -p "Do you want to install rio? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install --cask rio
+
+    success "Installed rio terminal"
+
+    ln -s ~/.dotfiles/terminals/rio/config.toml ~/.config/rio/config.toml
+    ln -s ~/.dotfiles/terminals/rio/themes ~/.config/rio/themes
+  fi
 }
 
 install_mailspring() {

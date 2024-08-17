@@ -13,7 +13,6 @@ local function transaprent(opts)
   vim.cmd [[
     hi SignColumn guibg=NONE
     hi LineNr guibg=NONE
-    hi WinSeparator guifg=#000000
     hi MsgArea guibg=NONE
   ]]
 end

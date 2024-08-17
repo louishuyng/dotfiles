@@ -19,9 +19,13 @@ if vim.g.theme == "mocha" then
   vim.cmd [[
     set background=dark
     colorscheme catppuccin
+
+    hi Normal guibg=#1e1e1e
+    hi NormalNC guibg=#1e1e1e
+    hi WinSeparator guifg=#1e1e1e
   ]]
 
-  transaprent({ background = "transparent" })
+  transaprent()
   highlight_telescope()
 end
 
@@ -35,6 +39,7 @@ if vim.g.theme == 'edge' then
 
     hi Normal guibg=#000000
     hi NormalNC guibg=#000000
+    hi WinSeparator guifg=#000000
   ]]
 
   transaprent()

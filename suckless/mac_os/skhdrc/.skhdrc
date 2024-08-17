@@ -9,7 +9,7 @@ alt + shift - m : open /Applications/Microsoft\ Outlook.app
 alt + shift - n : open /Applications/Inkdrop.app
 alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
-alt + shift - t : open /Applications/Alacritty.app
+alt + shift - t : open /Applications/Rio.app
 alt + shift - w : open /Applications/wpsoffice.app
 alt + shift - v : open /Applications/Visual\ Studio\ Code.app
 alt + shift - z : open /Applications/Zed.app
@@ -38,10 +38,8 @@ alt + shift - 6: yabai -m window --space 6; yabai -m space --focus 6
 alt - f         : yabai -m window --toggle zoom-fullscreen
 
 # Moving windows
-alt + shift - h : yabai -m window --warp west
-alt + shift - j : yabai -m window --warp south
-alt + shift - k : yabai -m window --warp north
-alt + shift - l : yabai -m window --warp east
+alt + shift - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+alt + shift - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
 # Focus windows
 alt - h : yabai -m window --focus west

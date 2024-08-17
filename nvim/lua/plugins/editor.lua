@@ -5,8 +5,7 @@ return {
     "andymass/vim-matchup",
     init = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end
   },
-  { 'windwp/nvim-spectre' }, -- Replace Project wide
-  { 'mbbill/undotree' },     -- History Edited Current File Buffer
+  { 'mbbill/undotree' }, -- History Edited Current File Buffer
   {
     'folke/todo-comments.nvim',
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -69,7 +68,7 @@ return {
     }
   },
 
-  { 'michaelb/sniprun',          build = 'sh install.sh' }, -- Run code
+  { 'michaelb/sniprun', build = 'sh install.sh' },          -- Run code
 
   -- Focus
   {
