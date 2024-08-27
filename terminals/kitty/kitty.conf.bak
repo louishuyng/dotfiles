@@ -3,7 +3,7 @@ editor nvim
 include ./theme.conf
 
 #FONT {
-  font_family      JetBrains Mono
+  font_family      JetbrainsMono Nerd Font
   italic_font      auto
   bold_font        auto
   bold_italic_font auto

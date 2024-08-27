@@ -144,7 +144,7 @@ install_font() {
     rm -rf fonts
 
     brew tap homebrew/cask-fonts
-    brew install font-hack-nerd-font
+    brew install --cask font-jetbrains-mono
 
     # Better font display on Mac
     defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
