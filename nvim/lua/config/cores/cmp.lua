@@ -74,7 +74,9 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' })
   },
   sources = {
-    { name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, { name = "calc" }
+    { name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, { name = "calc" }, {
+    name = "copilot"
+  }
   }
 }
 

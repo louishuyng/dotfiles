@@ -21,9 +21,15 @@ return {
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-buffer',  dependencies = { "nvim-cmp" } },
   {
-    'github/copilot.vim',
-    event = "VeryLazy",
-    build = "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash"
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
   },
   -- Code Format
   { 'hrsh7th/cmp-cmdline',  dependencies = { 'nvim-cmp' } },
