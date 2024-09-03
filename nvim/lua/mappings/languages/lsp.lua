@@ -1,4 +1,2 @@
-vim.keymap.set("n", "gv",
-  ":lua vim.cmd('vsplit');require('telescope.builtin').lsp_definitions()<CR>")
-vim.keymap.set("n", "gs",
-  ":lua vim.cmd('split');require('telescope.builtin').lsp_definitions()<CR>")
+vim.keymap.set("n", "gd", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", {})
+vim.keymap.set("n", "gD", "<cmd>split | lua vim.lsp.buf.definition()<CR>", {})

@@ -68,7 +68,7 @@ return {
     }
   },
 
-  { 'michaelb/sniprun', build = 'sh install.sh' },          -- Run code
+  { 'michaelb/sniprun', build = 'sh install.sh' }, -- Run code
 
   -- Focus
   {
@@ -83,9 +83,6 @@ return {
     },
     keys = { { "<C-w>o", "<cmd>ZenMode<cr>", desc = "Zen Mode" } }
   },
-
-  -- Hover Support
-  { "lewis6991/hover.nvim" },
 
   -- Git
   { 'tpope/vim-fugitive' },
@@ -122,5 +119,17 @@ return {
     "rest-nvim/rest.nvim",
     ft = "http",
     dependencies = { "luarocks.nvim" },
+  },
+
+  -- AI
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      {
+        "stevearc/dressing.nvim", -- Improves the default Neovim UI
+        opts = {},
+      },
+    },
+    config = true
   }
 }
