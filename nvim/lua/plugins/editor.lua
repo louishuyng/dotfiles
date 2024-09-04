@@ -130,6 +130,5 @@ return {
         opts = {},
       },
     },
-    config = true
   }
 }

@@ -16,11 +16,8 @@ end
 local M = {}
 
 local theme_list = {
-  { value = 'gruvbox',    display = 'Gruvbox' },
-  { value = 'mocha',      display = 'Catppuccin Mocha' },
-  { value = 'edge',       display = 'Edge' },
-  { value = 'edge-light', display = 'Edge Light' },
-  { value = 'minimal',    display = 'Minimal' },
+  { value = 'mocha', display = 'Catppuccin Mocha' },
+  { value = 'leaf',  display = 'Leaf' },
 }
 
 local function reloadColorscheme()

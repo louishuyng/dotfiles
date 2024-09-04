@@ -1,5 +1,12 @@
 return {
-  { 'goolord/alpha-nvim' },        -- Dashboard UI
+  { 'goolord/alpha-nvim' }, -- Dashboard UI
   { 'nvim-tree/nvim-web-devicons' },
-  { 'nvim-lualine/lualine.nvim' }, -- StatusBar UI
+  {
+    'nvim-lualine/lualine.nvim', -- StatusBar UI
+    opts = {
+      options = {
+        theme = "leaf",
+      }
+    }
+  }
 }

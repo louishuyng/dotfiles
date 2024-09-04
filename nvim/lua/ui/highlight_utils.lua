@@ -47,6 +47,11 @@ local function highlight_telescope()
   ]]
 end
 
+local function highlight_lsp()
+  vim.cmd [[
+  ]]
+end
+
 return {
   transaprent = transaprent,
   gitTransparent = gitTransparent,

@@ -1,4 +1,6 @@
-local dropdown_theme = function(title)
+local dropdown_theme = function(title, previewer)
+  previewer = previewer or false
+
   return require('telescope.themes').get_dropdown({
     results_height = 20,
     winblend = 0,
@@ -6,7 +8,7 @@ local dropdown_theme = function(title)
     prompt_title = '',
     prompt_prefix = title .. ' > ',
     hidden = true,
-    previewer = false,
+    previewer = previewer,
     preview_title = '',
     borderchars = {
       prompt = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },

@@ -11,9 +11,7 @@ _G.find_files = function()
   })
 end
 _G.live_grep = function()
-  require('telescope.builtin').live_grep({
-    search_dirs = scopes.get_current_dirs()
-  })
+  require('telescope.builtin').live_grep({ search_dirs = scopes.get_current_dirs() })
 end
 vim.keymap.set("n", "<leader>fs", ":lua find_files()<CR>", opt)
 vim.keymap.set("n", "<leader>ls", ":lua live_grep()<CR>", opt)
@@ -41,14 +39,14 @@ vim.keymap.set("n", "<leader>fj", function()
   return require('telescope.builtin').jumplist(dropdown_theme("Jumplist"))
 end, opt)
 
--- LSP Finding
-vim.keymap.set('n', 'gr', function()
-  require('telescope.builtin').lsp_references(dropdown_theme("References"))
-end, opt)
-
-vim.keymap.set('n', 'gf', function()
-  require('telescope.builtin').lsp_definitions(dropdown_theme("Definitions"))
-end, opt)
+-- -- LSP Finding
+-- vim.keymap.set('n', 'gr', function()
+--   require('telescope.builtin').lsp_references(dropdown_theme("References"))
+-- end, opt)
+--
+-- vim.keymap.set('n', 'gf', function()
+--   require('telescope.builtin').lsp_definitions(dropdown_theme("Definitions"))
+-- end, opt)
 
 -- TODO list
 vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", opt)

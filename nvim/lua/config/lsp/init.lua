@@ -106,8 +106,10 @@ end
 
 local bufopts = { buffer = true, silent = true }
 
-vim.keymap.set("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", bufopts)
-vim.keymap.set("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", bufopts)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
+  { desc = "Go to previous diagnostic" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
+  { desc = "Go to next diagnostic" })
 
 vim.lsp.handlers['textDocument/hover'] =
     vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })

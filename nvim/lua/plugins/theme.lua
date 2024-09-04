@@ -1,7 +1,5 @@
 return {
-  { "sainnhe/edge" },
-  { "luisiacc/gruvbox-baby" },
-  { "Yazeed1s/minimal.nvim" },
+  { "daschw/leaf.nvim" },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -10,7 +8,7 @@ return {
     config = function()
       require("catppuccin").setup({
         background = {
-          dark = "mocha",
+          dark = "frappe",
           light = "latte",
         },
       })

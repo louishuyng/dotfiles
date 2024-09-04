@@ -1,5 +1,5 @@
 name: LX-14
-attach: false
+attach: true
 windows:
   - dotfiles:
       - cd

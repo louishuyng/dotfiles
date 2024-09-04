@@ -9,7 +9,7 @@ import = [
 TERM = "xterm-256color"
 
 [font]
-size = 13.0
+size = 12.5
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -28,7 +28,7 @@ family = "JetBrainsMono Nerd Font"
 
 [font.offset]
 x = 0
-y = 0
+y = 10
 
 [scrolling]
 history = 10000
@@ -41,7 +41,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 option_as_alt = "Both"
 decorations = "buttonless"
-padding = { x = 0, y = 0 }
+padding = { x = 0, y = 0  }
 dimensions = { columns = 200, lines = 55 }
 dynamic_padding = false
 startup_mode = "Windowed"

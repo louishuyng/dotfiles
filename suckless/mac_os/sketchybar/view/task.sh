@@ -7,7 +7,7 @@ sketchybar -m --add item task right \
                         icon=":superproductivity:"                                \
                         icon.font="$ICON_FONT:Regular:15"                 \
                         icon.padding_right=3 \
-                        icon.color="0xffECA009" \
+                        icon.color="0xff0D63DE" \
                         label.padding_right=5 \
                         script="$PLUGIN_DIR/task.sh" \
                         click_script="$PLUGIN_DIR/open_task.sh"
