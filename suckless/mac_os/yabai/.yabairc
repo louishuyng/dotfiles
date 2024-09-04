@@ -43,9 +43,9 @@ yabai -m rule --add app="Figma" space=2
 
 yabai -m rule --add app="Messenger" space=3
 yabai -m rule --add app="Slack" space=3
+yabai -m rule --add app="Microsoft Teams" space=3
 
 yabai -m rule --add app="Inkdrop" space=4
-yabai -m rule --add app="Microsoft Teams" space=4
 yabai -m rule --add app="superProductivity" space=4
 yabai -m rule --add app="Calendar" space=4
 yabai -m rule --add app="Microsoft Outlook" space=4
