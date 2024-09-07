@@ -1,0 +1,51 @@
+environment {
+    terminal "Alacritty"
+    textEditor "Visual Studio Code"
+}
+
+behavior {
+    theme "Dark"
+    
+    quickSelect {
+        activateOnAnyCharacter false
+    }
+}
+
+keyBindings {
+    "K" "core.move.up"
+    "J" "core.move.down"
+    "Shift+J" "core.select.move.down"
+    "Shift+K" "core.select.move.up"
+    
+
+    "H" "core.move.left"
+    "L" "core.move.right"
+    
+    "Shift+Y" "core.copy"
+    "Shift+C" "core.move"
+    
+    "Y+Y" "core.clipboard.copy"
+    "P" "core.clipboard.paste"
+    
+    "R" "core.rename"
+    "Ctrl+P" "core.go"
+    
+    "Shift+H" "core.go.up"
+    "Shift+L" "core.open"
+
+    "B" "core.favorites"
+
+    "Shift+D" "core.delete"
+    "D" "core.trash"
+    
+    "Space" "core.preview"
+    "I" "core.finder.showInfo"
+
+    
+    "." "core.display.hidden"
+    
+    "Shift+A" "core.new.folder"
+    "A" "core.new.file"
+    
+    "E" "core.edit"
+}

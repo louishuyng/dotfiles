@@ -222,6 +222,31 @@ install_nvim() {
   fi
 }
 
+install_folder_manager_tool() {
+  read -r -p "Do you want to install nnn? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    cd /tmp
+    git clone git@github.com:jarun/nnn.git
+    cd nnn
+
+    # Build with nerd icon
+    make O_NERD=1 
+
+    sudo cp nnn /usr/local/bin
+    rm -rf  /tmp/nnn
+  fi
+
+  read -r -p "Do you want to install yazi? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide font-symbols-only-nerd-font
+  fi
+
+  read -r -p "Do you want to install marta? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install --cask marta
+  fi
+}
+
 install_emacs() {
   read -r -p "Do you want to install emacs? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
@@ -285,26 +310,6 @@ install_qutebrowser() {
   read -r -p "Do you want to install qutebrowser? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install qutebrowser --cask
-  fi
-}
-
-install_nnn() {
-  read -r -p "Do you want to install nnn? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    cd /tmp
-    git clone git@github.com:jarun/nnn.git
-    cd nnn
-
-    # Build with nerd icon
-    make O_NERD=1 
-
-    sudo cp nnn /usr/local/bin
-    rm -rf  /tmp/nnn
-  fi
-
-  read -r -p "Do you want to install yazi? [y|N] " response
-  if [[ $response =~ (y|yes|Y) ]];then
-    brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide font-symbols-only-nerd-font
   fi
 }
 
@@ -532,7 +537,7 @@ install_emacs
 install_tmux
 install_window_manager
 install_qutebrowser
-install_nnn
+install_folder_manager_tool
 link_all_dotfiles
 install_cli_tools
 default_setting_macos
