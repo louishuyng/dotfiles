@@ -13,8 +13,8 @@ sketchybar --bar     height=27                                            \
                      blur_radius=0                                        \
                      padding_left=4                                       \
                      padding_right=4                                      \
-                     color=0xff000000                                   \
-                     position=top                                      \
+                     color=0xff181818                                   \
+                     position=bottom                                      \
                      sticky=on                                            \
                      font_smoothing=on                                    \
                                                                           \
@@ -47,6 +47,7 @@ source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/docker.sh"
 source "$ITEM_DIR/vpn.sh"
+source "$ITEM_DIR/ollama.sh"
 # source "$ITEM_DIR/task.sh"
 # source "$ITEM_DIR/spotify.sh"
 # source "$ITEM_DIR/github.sh"
