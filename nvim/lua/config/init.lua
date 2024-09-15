@@ -1,6 +1,5 @@
 require 'config.lazy'
 
-require "config.libs.comment"
 require "config.libs.copilot"
 require "config.libs.harpoon"
 require "config.libs.oil"

@@ -1,11 +1,9 @@
 return {
   { 'mg979/vim-visual-multi' }, -- Multi Cursor
-  { 'tpope/vim-surround' },
   {
     "andymass/vim-matchup",
     init = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end
   },
-  { 'mbbill/undotree' }, -- History Edited Current File Buffer
   {
     'folke/todo-comments.nvim',
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -16,8 +14,7 @@ return {
   {
     'chentoast/marks.nvim',
     config = function()
-      require('marks').setup({
-      })
+      require('marks').setup({})
     end
   },
 
@@ -68,7 +65,7 @@ return {
     }
   },
 
-  { 'michaelb/sniprun', build = 'sh install.sh' }, -- Run code
+  { 'michaelb/sniprun',      build = 'sh install.sh' }, -- Run code
 
   -- Focus
   {
@@ -96,6 +93,10 @@ return {
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
   },
 
   -- Refactoring
@@ -130,5 +131,58 @@ return {
         opts = {},
       },
     },
-  }
+  },
+
+  -- MINI plugins
+  {
+    'echasnovski/mini.ai',
+    config = function()
+      local spec_treesitter = require('mini.ai').gen_spec.treesitter
+      require('mini.ai').setup({
+        custom_textobjects = {
+          f = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
+          c = spec_treesitter({ a = '@class.outer', i = '@class.inner' }),
+          o = spec_treesitter({
+            a = { '@conditional.outer', '@loop.outer' },
+            i = { '@conditional.inner', '@loop.inner' },
+          })
+        }
+      })
+    end,
+  },
+  {
+    'echasnovski/mini.completion',
+    version = false,
+    config = function()
+      require('mini.completion').setup({})
+    end
+  },
+  {
+    'echasnovski/mini.bracketed',
+    version = false,
+    config = function()
+      require('mini.bracketed').setup({})
+    end
+  },
+  {
+    'echasnovski/mini.surround',
+    version = false,
+    config = function()
+      require('mini.surround').setup({})
+    end
+  },
+  {
+    'echasnovski/mini.comment',
+    version = false,
+    config = function()
+      require('mini.comment').setup({})
+    end
+  },
+  {
+    'echasnovski/mini.pairs',
+    version = false,
+    config = function()
+      require('mini.pairs').setup({})
+    end
+  },
 }
