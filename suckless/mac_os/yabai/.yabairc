@@ -9,12 +9,12 @@ yabai -m config window_border_blur off
 yabai -m config \
 	layout stack \
 	top_padding 0   \
-	bottom_padding 0  \
+	bottom_padding 27  \
 	window_gap 8 \
 	left_padding 0 \
 	right_padding 0
 
-yabai -m config external_bar all:25:0
+# yabai -m config external_bar all:25:0
 
 # signals
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
@@ -27,13 +27,15 @@ yabai -m signal --add event=window_created action="~/.dotfiles/suckless/mac_os/y
 
 # Labels
 yabai -m space 1 --label IDE
-yabai -m space 2 --label Web
+yabai -m space 2 --label Internet
 yabai -m space 3 --label Chat
 yabai -m space 4 --label Management
 yabai -m space 5 --label Music
 
 yabai -m rule --add app="kitty" space=1
 yabai -m rule --add app="Alacritty" space=1
+yabai -m rule --add app="Marta" space=1
+yabai -m rule --add app="MongoDB Compass" space=1
 yabai -m rule --add app="Code" space=1
 yabai -m rule --add app="WebStorm" space=1
 
@@ -41,6 +43,7 @@ yabai -m rule --add app="Arc" space=2
 yabai -m rule --add app="Google Chrome" space=2
 yabai -m rule --add app="Zen Browser" space=2
 yabai -m rule --add app="Figma" space=2
+yabai -m rule --add app="Kindle" space=2
 
 yabai -m rule --add app="Messenger" space=3
 yabai -m rule --add app="Slack" space=3

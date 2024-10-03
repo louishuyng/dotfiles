@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-SPACE_ICONS=("IDE" "W3" "@chat" "workspace" "🎸Chill" )
+SPACE_ICONS=("IDE" "\$internet" "@chat" "workspace" "🎸Chill" )
 
 YELLOW=#eed49f
 GREEN=#8DC583
 PURPLE=#c6a0f6
 GRAY=#868686
-ORANGE=#E2574E
+ORANGE=#FF8564
 BLUE=#AACCD1
 
 DEACTIVATE=$GRAY

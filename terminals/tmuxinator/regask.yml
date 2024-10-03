@@ -4,5 +4,3 @@ attach: false
 windows:
   - infra:
       - cd infra
-  - gitops:
-      - cd gitops

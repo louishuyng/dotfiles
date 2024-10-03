@@ -28,6 +28,7 @@ return {
     Property = "",
     Reference = "",
     Snippet = "",
+    Supermaven = "",
     String = "",
     Struct = "",
     Text = "",

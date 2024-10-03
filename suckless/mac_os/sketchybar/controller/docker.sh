@@ -4,7 +4,7 @@ set -l grey "0xff7F7F7F"
 set -l green "0xff99cc99"
 
 if pgrep -x "OrbStack" >/dev/null
-    sketchybar --set $NAME icon.color=$green label="VM/On"
+    sketchybar --set $NAME icon.color=$green
 else
-    sketchybar --set $NAME icon.color=$grey label="VM/Off"
+    sketchybar --set $NAME icon.color=$grey
 end

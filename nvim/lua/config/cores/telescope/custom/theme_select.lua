@@ -16,14 +16,17 @@ end
 local M = {}
 
 local theme_list = {
-  { value = 'mocha', display = 'Catppuccin Mocha' },
-  { value = 'leaf',  display = 'Leaf' },
+  { value = 'cyberdream', display = 'Cyber Dream' },
+  { value = 'light',      display = 'Light' },
+  { value = 'mocha',      display = 'Catppuccin Mocha' },
+  { value = 'solarized',  display = "Solarized" },
 }
 
 local function reloadColorscheme()
   vim.cmd([[
     luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
     luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
+    luafile ~/.dotfiles/nvim/lua/plugins/ui.lua
 
     syntax on
   ]])

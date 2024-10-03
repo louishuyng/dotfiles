@@ -7,8 +7,8 @@ GREY=0xff7F7F7F
 
 if [[ $OLLAMA_PROCESS != "" ]]; then
     pkill -9 ollama Ollama
-   sketchybar --set ollama icon.color=$GREY label="Ollama/Off"
+   sketchybar --set ollama icon.color=$GREY
 else
   open -a Ollama
-   sketchybar --set ollama icon.color=$BLUE label="Ollama/On"
+   sketchybar --set ollama icon.color=$BLUE
 fi

@@ -30,26 +30,26 @@ local function gitTransparent()
   ]]
 end
 
-local function highlight_telescope()
-  vim.cmd [[
-    hi TelescopePreviewBorder guibg=#21252E guifg=#21252E
-    hi TelescopePreviewNormal guibg=#21252E
-    hi TelescopePreviewTitle guibg=#21252E guifg=#21252E
-    hi TelescopePromptBorder guibg=#2E323B guifg=#2E323B
-    hi TelescopePromptCounter guifg=#c0afff gui=bold
-    hi TelescopePromptNormal guibg=#2E323B
-    hi TelescopePromptPrefix guibg=#2E323B
-    hi TelescopePromptTitle guifg=#2E323B guibg=#2E323B
-    hi TelescopeResultsBorder guibg=#222222 guifg=#222222
-    hi TelescopeResultsNormal guibg=#222222
-    hi TelescopeResultsTitle guibg=#222222 guifg=#222222
-    hi TelescopeSelection guibg=#2E323B
-  ]]
-end
+local function highlight_telescope(colors)
+  local colors = colors or {}
 
-local function highlight_lsp()
-  vim.cmd [[
-  ]]
+  local input = colors.input or "#21252E"
+  local selection_bg = colors.selection_bg or "#2E2C2F"
+  local selection_fg = colors.selection_fg or "NONE"
+  local bg_result = colors.result or "#222222"
+  local fg_counter = colors.counter or "#c0afff"
+
+  vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = input, fg = input })
+  vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = input })
+  vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = input, fg = input })
+  vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = input, fg = input })
+  vim.api.nvim_set_hl(0, "TelescopePromptCounter", { fg = fg_counter, bold = true })
+  vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = input })
+  vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = input })
+  vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { bg = bg_result, fg = bg_result })
+  vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg = bg_result })
+  vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = bg_result, fg = bg_result })
+  vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = selection_bg, fg = selection_fg })
 end
 
 return {

@@ -35,7 +35,7 @@ local ensure_installed = {
   "csharp-language-server",
 
   -- Typescript
-  "tsserver",
+  "ts_ls",
   "typescript-language-server",
   "eslint-lsp",
   "prettier",

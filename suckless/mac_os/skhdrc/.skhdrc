@@ -1,17 +1,12 @@
 # Job apps
-alt + shift - b : open /Applications/Zen\ Browser.app
+alt + shift - b : open /Applications/Arc.app
 alt + shift - c : open /Applications/Microsoft\ Teams.app
 alt + shift - d : open /Applications/TablePlus.app
 alt + shift - f : open /Applications/Marta.app
-alt + shift - i : open /Applications/Burp\ Suite\ Community\ Edition.app
 alt + shift - m : open /Applications/Microsoft\ Outlook.app
 alt + shift - n : open /Applications/Inkdrop.app
-alt + shift - q : open /Applications/qutebrowser.app
 alt + shift - s : open /Applications/Slack.app
 alt + shift - t : open /Applications/kitty.app; yabai  -m space --focus 1
-alt + shift - w : open /Applications/wpsoffice.app
-alt + shift - v : open /Applications/Visual\ Studio\ Code.app
-alt + shift - z : open /Applications/Zed.app
 alt + shift - e : open -a "Mission Control"
 
 alt - tab : yabai -m space --focus recent
@@ -37,8 +32,8 @@ alt + shift - 6: yabai -m window --space 6; yabai -m space --focus 6
 alt - f         : yabai -m window --toggle zoom-fullscreen
 
 # Stack Cycle
-alt + shift - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first
-alt + shift - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+alt - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+alt - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 
 # Moving windows
 ctrl + alt - h : yabai -m window --warp west
@@ -62,8 +57,8 @@ alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
 # Change space mode
-ctrl + shift - 1 : yabai -m config --space $(yabai -m query --spaces --space | jq '.index') layout stack
-ctrl + shift - 2 : yabai -m config --space $(yabai -m query --spaces --space | jq '.index') layout bsp
+ctrl + alt - 1 : yabai -m config --space $(yabai -m query --spaces --space | jq '.index') layout stack
+ctrl + alt - 2 : yabai -m config --space $(yabai -m query --spaces --space | jq '.index') layout bsp
 
 # Don't commit this
 ctrl + alt + shift - y : yabai --restart-service; yabai -m config layout stack;  echo "xxxx" | sudo -S yabai --load-sa; osascript -e 'display notification "Restarted Yabai"'

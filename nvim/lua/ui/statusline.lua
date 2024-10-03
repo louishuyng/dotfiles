@@ -3,123 +3,92 @@ if not status_ok then
   return
 end
 
-local icons = {
-  ui = {
-    BigCircle = " ",
-    BigUnfilledCircle = " ",
-  }
-}
+local lualine_require = require("lualine_require")
+lualine_require.require = require
 
-local colors = require("leaf.colors").setup()
+local icons = require("lazyvim.config").icons
+local Util = require("lazyvim.util")
 
-local theme = {
-  normal = {
-    a = { fg = colors.none, bg = colors.line },
-    b = { fg = colors.none, bg = colors.line },
-    c = { fg = colors.none, bg = colors.line },
-  },
-}
-
-vim.api.nvim_set_hl(0, "SLGitIcon", { fg = colors.git, bg = colors.bg })
-vim.api.nvim_set_hl(0, "SLBranchName", { fg = colors.branch_name, bg = colors.bg, bold = false })
-vim.api.nvim_set_hl(0, "SLSeparator", { fg = colors.line, bg = colors.bg, bold = false })
-vim.api.nvim_set_hl(0, "SLProgress", { fg = colors.blue, bg = colors.none })
-
-local mode_color = {
-  n = colors.blue,
-  i = colors.green,
-  v = colors.magenta,
-  -- [""] = "#c586c0",
-  V = colors.magenta,
-  ["\22"] = "#c586c0",
-  -- c = '#B5CEA8',
-  -- c = '#D7BA7D',
-  c = colors.yellow,
-  no = colors.red,
-  s = colors.orange,
-  [""] = colors.orange,
-  S = colors.orange,
-  ic = colors.yellow,
-  R = colors.red,
-  Rv = colors.red,
-  cv = colors.blue,
-  ce = colors.red,
-  r = colors.cyan,
-  rm = colors.cyan,
-  ["r?"] = colors.cyan,
-  ["!"] = colors.red,
-  t = colors.red,
-}
-
-local mode = {
-  function()
-    return "  " .. vim.fn.mode():upper() .. " "
-  end,
-  color = function()
-    return { fg = colors.fg, bg = mode_color[vim.fn.mode()], gui = 'bold' }
-  end,
-  padding = 1,
-}
-
-local hide_in_width = function()
-  return vim.fn.winwidth(0) > 80
-end
-
-local path = {
-  'filename',
-  path = 1
-}
-
-local diagnostics = {
-  "diagnostics",
-  sources = { "nvim_diagnostic" },
-  sections = { "error", "warn" },
-  symbols = { error = icons.ui.BigCircle, warn = icons.ui.BigCircle },
-  colored = true,
-  update_in_insert = false,
-}
-
-local progress = {
-  "progress",
-  fmt = function()
-    return "%P / %L"
-  end,
-  color = function()
-    return { bg = colors.line, fg = colors.branch_name }
-  end,
-  separator = { left = " ", right = "" },
-}
+vim.o.laststatus = vim.g.lualine_laststatus
 
 lualine.setup {
   options = {
+    theme = "auto",
     globalstatus = true,
-    icons_enabled = true,
-    theme = theme,
-    component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
-    disabled_filetypes = { "alpha", "dashboard", "NvimTree", "packer", "Outline", "toggleterm", "TelescopePrompt" },
-    always_divide_middle = true,
+    disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
   },
   sections = {
-    lualine_a = { mode, path, filetype },
-    lualine_b = { diagnostics },
-    lualine_c = { { cond = hide_in_width } },
-    lualine_x = {},
-    lualine_y = { progress },
-    lualine_z = {},
+    lualine_a = { "mode" },
+    lualine_b = { "branch" },
+
+    lualine_c = {
+      Util.lualine.root_dir(),
+      {
+        "diagnostics",
+        symbols = {
+          error = icons.diagnostics.Error,
+          warn = icons.diagnostics.Warn,
+          info = icons.diagnostics.Info,
+          hint = icons.diagnostics.Hint,
+        },
+      },
+      { "filetype",                icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+      { Util.lualine.pretty_path() },
+      {
+        require("package-info").get_status,
+        color = Util.ui.fg("Statement"),
+      },
+      {
+        function()
+          return require("nvim-navic").get_location()
+        end,
+        cond = function()
+          return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+        end,
+      },
+    },
+    lualine_x = {
+      -- stylua: ignore
+      {
+        function() return require("noice").api.status.command.get() end,
+        cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+        color = Util.ui.fg("Statement"),
+      },
+      -- stylua: ignore
+      {
+        function() return require("noice").api.status.mode.get() end,
+        cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+        color = Util.ui.fg("Constant"),
+      },
+      -- stylua: ignore
+      {
+        function() return "  " .. require("dap").status() end,
+        cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+        color = Util.ui.fg("Debug"),
+      },
+      {
+        require("lazy.status").updates,
+        cond = require("lazy.status").has_updates,
+        color = Util.ui.fg("Special"),
+      },
+      {
+        "diff",
+        symbols = {
+          added = icons.git.added,
+          modified = icons.git.modified,
+          removed = icons.git.removed,
+        },
+        source = function()
+          local gitsigns = vim.b.gitsigns_status_dict
+          if gitsigns then
+            return {
+              added = gitsigns.added,
+              modified = gitsigns.changed,
+              removed = gitsigns.removed,
+            }
+          end
+        end,
+      },
+    },
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
-  tabline = {},
-  extensions = {},
 }
--- Inserts a component in lualine_c at left section
--- local function ins_left(component)
---   table.insert(config.sections.lualine_c, component)
--- end

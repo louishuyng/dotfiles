@@ -52,5 +52,4 @@ return {
     }
     }
   },
-  { "smartpde/neoscopes" }
 }

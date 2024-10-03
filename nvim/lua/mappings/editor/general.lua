@@ -20,8 +20,8 @@ vim.keymap.set("n", "<leader>w", ":silent w<CR>", opt)
 vim.keymap.set("n", "<leader>q", ":q!<CR>", opt)
 
 -- Scrolling Center
-vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
-vim.keymap.set("n", "<C-u>", "<C-u>zz", opt)
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz", opt)
 
 -- Grep file
 vim.keymap

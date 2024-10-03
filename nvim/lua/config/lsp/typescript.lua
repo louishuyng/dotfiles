@@ -9,7 +9,7 @@ local function organize_imports()
   vim.lsp.buf.execute_command(params)
 end
 
-lsp_config.tsserver.setup({
+lsp_config.ts_ls.setup({
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = function(client, bufnr)
     -- Some project need to enable document formatting on tsserver

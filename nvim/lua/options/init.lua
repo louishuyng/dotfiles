@@ -2,7 +2,7 @@ vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
 
-vim.g.theme = "leaf"
+vim.g.theme = "cyberdream"
 vim.g.auto_format = true
 
 -- Mise Integration

@@ -119,7 +119,7 @@ return {
   {
     "rest-nvim/rest.nvim",
     ft = "http",
-    dependencies = { "luarocks.nvim" },
+    dependencies = { "luarocks.nvim", "j-hui/fidget.nvim" },
   },
 
   -- AI
@@ -130,6 +130,17 @@ return {
         "stevearc/dressing.nvim", -- Improves the default Neovim UI
         opts = {},
       },
+    },
+  },
+
+  -- Key map finding
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
     },
   },
 
@@ -169,13 +180,6 @@ return {
     version = false,
     config = function()
       require('mini.surround').setup({})
-    end
-  },
-  {
-    'echasnovski/mini.comment',
-    version = false,
-    config = function()
-      require('mini.comment').setup({})
     end
   },
   {

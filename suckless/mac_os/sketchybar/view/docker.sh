@@ -7,5 +7,6 @@ sketchybar -m --add item docker right                         \
                     icon=":drafts:"                                \
                     icon.padding_right=0                             \
                     icon.font="$ICON_FONT:Regular:16"                 \
+                    label="VM"                                   \
                     script="$PLUGIN_DIR/docker.sh"       \
                     click_script="$PLUGIN_DIR/toggle_docker.sh" \

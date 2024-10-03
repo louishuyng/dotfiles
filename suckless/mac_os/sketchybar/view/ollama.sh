@@ -5,5 +5,6 @@ sketchybar -m --add item ollama right \
                         icon.font="$LABEL:Bold:16"                      \
                         icon.padding_right=3 \
                         label.padding_right=7 \
+                        label="Ollama" \
                         script="$PLUGIN_DIR/ollama.sh" \
                         click_script="$PLUGIN_DIR/toggle_ollama.sh" \
