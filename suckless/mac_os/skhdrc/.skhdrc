@@ -3,7 +3,7 @@ alt + shift - b : open /Applications/Arc.app
 alt + shift - c : open /Applications/Microsoft\ Teams.app
 alt + shift - d : open /Applications/TablePlus.app
 alt + shift - f : open /Applications/Marta.app
-alt + shift - m : open /Applications/Microsoft\ Outlook.app
+alt + shift - m : open /Applications/Spark\ Desktop.app
 alt + shift - n : open /Applications/Inkdrop.app
 alt + shift - s : open /Applications/Slack.app
 alt + shift - t : open /Applications/kitty.app; yabai  -m space --focus 1

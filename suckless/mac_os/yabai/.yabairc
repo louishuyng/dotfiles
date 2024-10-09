@@ -52,7 +52,7 @@ yabai -m rule --add app="Microsoft Teams" space=3
 yabai -m rule --add app="Inkdrop" space=4
 yabai -m rule --add app="superProductivity" space=4
 yabai -m rule --add app="Calendar" space=4
-yabai -m rule --add app="Microsoft Outlook" space=4
+yabai -m rule --add app="Spark Desktop" space=4
 yabai -m rule --add app="Mail" space=4
 
 yabai -m rule --add app="Deezer" space=5
