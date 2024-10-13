@@ -107,10 +107,11 @@ if vim.g.theme == 'cyberdream' then
   vim.cmd([[
     colorscheme cyberdream
 
-    hi Normal guibg=#0F0F0F
-    hi NormalNC guibg=#0F0F0F
-    hi WinSeparator guifg=#0F0F0F guibg=NONE
+    hi Normal guibg=#1e1e1e
+    hi NormalNC guibg=#1e1e1e
+    hi WinSeparator guifg=#1e1e1e guibg=NONE
     hi NvimTreeNormal guibg=#16181A
+    hi CursorLineNr guifg=#C2FCD0
   ]])
 
   transaprent()

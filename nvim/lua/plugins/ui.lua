@@ -17,18 +17,7 @@ return {
       })
     end,
   },
-  {
-    "goolord/alpha-nvim",
-    config = function()
-      local startify = require("alpha.themes.startify")
-      -- available: devicons, mini, default is mini
-      -- if provider not loaded and enabled is true, it will try to use another provider
-      startify.file_icons.provider = "miniicons"
-      require("alpha").setup(
-        startify.config
-      )
-    end,
-  },
+  { 'goolord/alpha-nvim', dependencies = { 'juansalvatore/git-dashboard-nvim' } },
   {
     "echasnovski/mini.icons",
     lazy = true,

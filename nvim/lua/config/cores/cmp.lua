@@ -74,17 +74,20 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' })
   },
   sources = {
-    { name = "luasnip",  priority = 1 },
-    { name = "nvim_lsp", priority = 2 },
-    { name = "buffer",   priority = 4 },
-    { name = "calc",     priority = 5 }
+    { name = "luasnip",                 priority = 1 },
+    { name = "nvim_lsp",                priority = 2 },
+    { name = "nvim_lsp_signature_help", priority = 3 },
+    { name = "buffer",                  priority = 4 },
   }
 }
 
 -- `/` cmdline setup.
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = { { name = 'buffer' } }
+  sources = {
+    { name = 'buffer' },
+    { name = 'nvim_lsp_document_symbol' }
+  }
 })
 
 -- `:` cmdline setup.

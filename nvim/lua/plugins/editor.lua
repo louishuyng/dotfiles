@@ -89,13 +89,7 @@ return {
 
   -- Markdown
   {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-  },
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
+    'OXY2DEV/markview.nvim',
     opts = {},
   },
 
@@ -144,6 +138,11 @@ return {
     },
   },
 
+  -- Find matching words
+  {
+    'dyng/ctrlsf.vim'
+  },
+
   -- MINI plugins
   {
     'echasnovski/mini.ai',
@@ -160,13 +159,6 @@ return {
         }
       })
     end,
-  },
-  {
-    'echasnovski/mini.completion',
-    version = false,
-    config = function()
-      require('mini.completion').setup({})
-    end
   },
   {
     'echasnovski/mini.bracketed',

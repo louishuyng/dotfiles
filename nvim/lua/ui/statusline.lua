@@ -15,7 +15,7 @@ lualine.setup {
   options = {
     theme = "auto",
     globalstatus = true,
-    disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+    disabled_filetypes = { statusline = { "dashboard", "alpha", "intro" } },
   },
   sections = {
     lualine_a = { "mode" },

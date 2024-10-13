@@ -1,9 +1,6 @@
 return {
   -- CMP & Completion
-  {
-    'hrsh7th/nvim-cmp',
-    config = function() require "config.cores.cmp" end
-  },
+  { 'hrsh7th/nvim-cmp' },
   {
     'L3MON4D3/LuaSnip',
     after = 'hrsh7th/nvim-cmp',
@@ -19,18 +16,14 @@ return {
     end
   },
   { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-buffer',  dependencies = { "nvim-cmp" } },
+  { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+  { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
+  { 'hrsh7th/cmp-buffer',                  dependencies = { "nvim-cmp" } },
   {
     'github/copilot.vim',
     event = "VeryLazy",
     cmd = "Copilot",
     build = "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash"
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
   },
   -- Code Format
   { 'hrsh7th/cmp-cmdline',  dependencies = { 'nvim-cmp' } },

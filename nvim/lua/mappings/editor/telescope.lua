@@ -27,13 +27,13 @@ vim.keymap.set("n", "<leader>fj", function()
 end, opt)
 
 -- -- LSP Finding
--- vim.keymap.set('n', 'gr', function()
---   require('telescope.builtin').lsp_references(dropdown_theme("References"))
--- end, opt)
---
--- vim.keymap.set('n', 'gf', function()
---   require('telescope.builtin').lsp_definitions(dropdown_theme("Definitions"))
--- end, opt)
+vim.keymap.set('n', 'gr', function()
+  require('telescope.builtin').lsp_references(dropdown_theme("References"))
+end, opt)
+
+vim.keymap.set('n', 'gf', function()
+  require('telescope.builtin').lsp_definitions(dropdown_theme("Definitions"))
+end, opt)
 
 -- TODO list
 vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", opt)

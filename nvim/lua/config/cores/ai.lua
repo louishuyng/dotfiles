@@ -22,4 +22,4 @@ require("codecompanion").setup({
 
 vim.api.nvim_set_keymap("n", "<leader>a", ":CodeCompanionActions<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<leader>a", ":CodeCompanion /buffer ", { noremap = true, silent = false })
-vim.api.nvim_set_keymap("n", ",co", ":CodeCompanionToggle<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", ",co", ":CodeCompanionChat<cr>", { noremap = true, silent = true })

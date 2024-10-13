@@ -2,7 +2,6 @@ local present, telescope = pcall(require, "telescope")
 local actions = require 'telescope.actions'
 local lga_actions = require("telescope-live-grep-args.actions")
 
-
 telescope.setup {
   defaults = {
     file_ignore_patterns = {

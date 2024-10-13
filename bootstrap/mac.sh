@@ -75,6 +75,8 @@ install_languages() {
     curl https://mise.run | sh
     success "Installed mise"
 
+    mise use -g usage
+
     # TODO: find a better way to install .mise.toml instead of script
   fi
 }
@@ -413,6 +415,7 @@ install_cli_tools() {
 
     brew tap rakalex/mac-brightnessctl
     brew install mac-brightnessctl
+    brew install --cask dangerzone
 
     # Devops
     brew install bat # Better cat

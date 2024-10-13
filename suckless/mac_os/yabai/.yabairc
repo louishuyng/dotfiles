@@ -38,6 +38,7 @@ yabai -m rule --add app="Marta" space=1
 yabai -m rule --add app="MongoDB Compass" space=1
 yabai -m rule --add app="Code" space=1
 yabai -m rule --add app="WebStorm" space=1
+yabai -m rule --add app="Postman" space=1
 
 yabai -m rule --add app="Arc" space=2
 yabai -m rule --add app="Google Chrome" space=2

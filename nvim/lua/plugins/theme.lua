@@ -2,13 +2,13 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-        background = {
-          dark = "mocha",
-          light = "latte",
+   lazy = false,
+   priority = 1000,
+   config = function()
+     require("catppuccin").setup({
+       background = {
+         dark = "mocha",
+         light = "latte",
         },
         highlight_overrides = {
           all = function(colors)
@@ -84,28 +84,7 @@ return {
       })
     end,
   },
-  {
-    "scottmckendry/cyberdream.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = function(_, opts)
-      opts.transparent = false
-      opts.italic_comments = true
-      opts.borderless_telescope = false
-    end,
-  },
-  -- modicator (auto color line number based on vim mode)
-  {
-    "mawkler/modicator.nvim",
-    dependencies = "scottmckendry/cyberdream.nvim",
-    init = function()
-      -- These are required for Modicator to work
-      vim.o.cursorline = false
-      vim.o.number = true
-      vim.o.termguicolors = true
-    end,
-    opts = {},
-  },
+  { "scottmckendry/cyberdream.nvim", },
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,

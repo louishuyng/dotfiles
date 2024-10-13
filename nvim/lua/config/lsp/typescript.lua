@@ -25,19 +25,32 @@ lsp_config.ts_ls.setup({
   end,
   commands = {
     OrganizeImports = { organize_imports, description = "Organize Imports" }
-  }
+  },
+  root_dir = lsp_config.util.root_pattern("package.json"),
+  single_file_support = false
 })
 
 lsp_config.eslint.setup({
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre",
       { buffer = bufnr, command = "EslintFixAll" })
-  end
+  end,
+  root_dir = lsp_config.util.root_pattern(".eslintrc.js", ".eslintrc.json", ".eslintrc", ".eslintrc.yml"),
+  single_file_support = false
 })
 
-lsp_config.biome.setup({
+require('lspconfig').denols.setup({
   on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = true
+
     on_attach(client, bufnr)
-  end
+  end,
+  root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
 })
+
+-- lsp_config.biome.setup({
+--   on_attach = function(client, bufnr)
+--     client.server_capabilities.document_formatting = true
+--     on_attach(client, bufnr)
+--   end
+-- })

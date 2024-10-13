@@ -5,5 +5,6 @@ lsp_config.htmx.setup({
   on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = true
     on_attach(client, bufnr)
-  end
+  end,
+  single_file_support = false,
 })

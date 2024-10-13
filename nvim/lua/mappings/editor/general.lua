@@ -23,10 +23,6 @@ vim.keymap.set("n", "<leader>q", ":q!<CR>", opt)
 -- vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
 -- vim.keymap.set("n", "<C-u>", "<C-u>zz", opt)
 
--- Grep file
-vim.keymap
-    .set("n", "<leader>fw", "yiw:silent grep <C-R>\" | copen<CR><CR>", opt)
-
 -- Macro Apply Visual
 vim.keymap.set("v", ",m", ":normal @")
 
