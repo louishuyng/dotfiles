@@ -1,31 +1,15 @@
 {
-  "workbench.iconTheme": "catppuccin-frappe",
-  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "vscode_custom_css.imports": [
+    "file:///Users/louishuyng/.dotfiles/suckless/mac_os/vscode/custom_vscode.css",
+    "file:///Users/louishuyng/.dotfiles/suckless/mac_os/vscode/custom_vscode.js"
+  ],
+  "editor.fontFamily": "FiraCode Nerd Font",
   "editor.fontSize": 13,
-  "apc.statusBar": {
-    "fontSize": 13
-  },
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "terminal.integrated.fontSize": 13,
+  "workbench.iconTheme": "catppuccin-frappe",
   "editor.lineHeight": 0,
   "chat.editor.fontWeight": "bold",
-  "editor.suggestFontSize": 16,
-  "editor.suggestLineHeight": 28,
-  "terminal.integrated.fontSize": 13,
-  // Color Customization
-  "workbench.colorCustomizations": {
-    "editor.background": "#313445",
-    "editorWidget.background": "#1f2738bb",
-    "editorHoverWidget.background": "#2d3750",
-    "sideBar.background": "#313445",
-    "sideBarSectionHeader.background": "#313445",
-    "terminal. background": "#313445",
-    "editorLineNumber.activeForeground": "#586374",
-    "editorLineNumber.dimmedForeground": "#586374",
-    "editorLineNumber. foreground": "#58637466",
-    "scrollbarSlider.activeBackground": "#6b6f87",
-    "scrollbarSlider.background": "#6b6f87",
-    "scrollbarSlider.hoverBackground": "#6b6f87",
-    "sideBar.border": "#63697355",
-  },
   "editor.formatOnSave": true,
   "editor.copyWithSyntaxHighlighting": false,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -57,30 +41,6 @@
   "editor.scrollbar.horizontal": "hidden",
   "editor.scrollbar.vertical": "hidden",
   "editor.scrollbar.verticalScrollbarSize": 0,
-  "window.titleBarStyle": "native",
-  // hide scrollbar
-  "apc.menubar.compact": true,
-  "apc.electron": {
-    "backgroundColor": "#2A2E3D",
-    "frame": true,
-    "transparent": true,
-    "titleBarStyle": "hidden",
-    "vibrancy": "ultra-dark",
-    "trafficLightPosition": {
-      "x": 15,
-      "y": 13
-    }
-  },
-  "apc.stylesheet": {
-    "*": "font-family: JetBrainsMono Nerd Font, monospace;",
-    ".Monaco-breadcrumb-item": "display: none !important;", // Hides the breadcrumb that shows file path, method names you are on, etc
-    ".actions-container .highlight-toggled": "display: none !important;", // hides the action buttons on right
-    ".editor.title": "background: transparent !important;",
-    ".editor .title .actions-container .action-item a": "visibility: hidden !important;",
-    ".editor .title .actions-container": "flex-direction: row-reverse;",
-    ".editor .scrollbar .slider": "visibility: hidden !important;",
-    ".editor .scrollbar:hover .slider": "visibility: initial",
-  },
   "vim.leader": ",",
   "vim.normalModeKeyBindings": [
     {
@@ -97,7 +57,6 @@
         "<space>",
         "w"
       ],
-      // Save current buffer
       "commands": [
         "workbench.action.files.save"
       ]
@@ -107,7 +66,6 @@
         "<space>",
         "q"
       ],
-      // Close current buffer
       "commands": [
         "workbench.action.closeActiveEditor"
       ]
@@ -115,9 +73,26 @@
     {
       "before": [
         "<space>",
+        "Q"
+      ],
+      "commands": [
+        "workbench.action.closeWindow"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "<space>"
+      ],
+      "commands": [
+        "workbench.action.quickOpenView"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
         "/"
       ],
-      // Search a text in all files
       "commands": [
         "workbench.action.findInFiles"
       ]
@@ -128,7 +103,6 @@
         "g",
         "s"
       ],
-      // Open source control
       "commands": [
         "workbench.view.scm"
       ]
@@ -176,7 +150,7 @@
       ],
       "commands": [
         "workbench.action.splitEditorRight",
-        "editor.action.goToDeclaration",
+        "editor.action.goToDeclaration"
       ]
     },
     {
@@ -217,7 +191,6 @@
         "extension.jumpToAlternative"
       ]
     },
-    // Toggle break point
     {
       "before": [
         "<space>",
@@ -227,13 +200,32 @@
       "commands": [
         "editor.debug.toggleBreakpoint"
       ]
+    },
+    {
+      "before": [
+        "<space>",
+        "t",
+        "f"
+      ],
+      "commands": [
+        "extension.runJest"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "t",
+        "l"
+      ],
+      "commands": [
+        "extension.runPrevJest"
+      ]
     }
   ],
   "jest.runMode": "on-demand",
   "editor.accessibilitySupport": "off",
   "workbench.layoutControl.enabled": false,
   "window.commandCenter": false,
-  "workbench.colorTheme": "Catppuccin Frappé",
   "accessibility.signals.chatRequestSent": {
     "announcement": "off",
     "sound": "off"
@@ -326,5 +318,84 @@
   },
   "accessibility.signals.diffLineModified": {
     "sound": "off"
+  },
+  "workbench.colorTheme": "Catppuccin Frappé",
+  "yaml.schemas": {
+    "file:///Users/louishuyng/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "redhat.telemetry.enabled": true,
+  "atlascode.bitbucket.enabled": false,
+  "atlascode.jira.enabled": false,
+  "files.eol": "\n",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "explorer.confirmDelete": false,
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    "**/vendor/{[^l],?[^ai]}*": true,
+    "**/public/{[^i],?[^n]}*": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/_ide_helper.php": true,
+    "**/composer.lock": true,
+    "**/package-lock.json": true,
+    "storage": true,
+    ".phpunit.result.cache": true
+  },
+  "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+  "emmet.includeLanguages": {
+    "blade": "html",
+    "vue-html": "html",
+    "vue": "html",
+    "react": "html",
+    "javascript": "html"
+  },
+  "files.associations": {
+    ".php_cs": "php",
+    ".php_cs.dist": "php"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
+  "explorer.sortOrder": "type",
+  "prettier.tabWidth": 4,
+  "vetur.format.options.tabSize": 4,
+  "workbench.tree.indent": 15,
+  "[html]": {
+    "editor.defaultFormatter": "apility.beautify-blade",
+    "editor.formatOnSave": true
+  },
+  "editor.wordWrapColumn": 120,
+  "files.autoSave": "afterDelay",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
   }
 }
