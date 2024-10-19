@@ -2,7 +2,6 @@ name: LX-14
 attach: true
 windows:
   - dotfiles:
-      - cd
-      - cd ~/.dotfiles && nvim
+      - cd ~/.dotfiles
   - awesome-tech:
       - cd ~/Dev/repository/github.com/louishuyng/awesome-tech
