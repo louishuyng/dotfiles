@@ -4,7 +4,8 @@
     "different-requires",
     "redefined-local",
     "unused-local",
-    "cast-local-type"
+    "cast-local-type",
+        "duplicate-index"
   ],
   "diagnostics.globals": [
     "vim",

@@ -13,7 +13,7 @@ lsp_config.ts_ls.setup({
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = function(client, bufnr)
     -- Some project need to enable document formatting on tsserver
-    local paths = { "perx-dashboard-v4", "usvc-request", "usvc-migrations", "lsp-from-scratch" }
+    local paths = { "perx-dashboard-v4", "usvc-request", "usvc-migrations", "lsp-from-scratch", "veeva-sls" }
 
     if vim.tbl_contains(paths, vim.fn.fnamemodify(vim.fn.getcwd(), ":t")) then
       client.server_capabilities.document_formatting = true
@@ -35,7 +35,7 @@ lsp_config.eslint.setup({
     vim.api.nvim_create_autocmd("BufWritePre",
       { buffer = bufnr, command = "EslintFixAll" })
   end,
-  root_dir = lsp_config.util.root_pattern(".eslintrc.js", ".eslintrc.json", ".eslintrc", ".eslintrc.yml"),
+  -- root_dir = lsp_config.util.root_pattern(".eslintrc.js", ".eslintrc.json", ".eslintrc", ".eslintrc.yml"),
   single_file_support = false
 })
 

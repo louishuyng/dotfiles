@@ -1,40 +1,38 @@
 local api = require("nvim-tree.api")
 
 require("nvim-tree").setup({
-  update_focused_file = { enable = true, update_cwd = false },
+  filters = { dotfiles = false },
+  disable_netrw = true,
+  hijack_cursor = true,
+  sync_root_with_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = false,
+  },
   git = { enable = true },
   renderer = {
     root_folder_modifier = ":t",
+    highlight_git = true,
+    indent_markers = { enable = true },
     icons = {
-      git_placement = "after",
-      show = {
-        file = true,
-        folder = true,
-        folder_arrow = true,
-        git = true,
-        modified = true
-      },
       glyphs = {
-        bookmark = "",
-        git = {
-          unstaged = "",
-          staged = "",
-          unmerged = "",
-          renamed = "➜",
-          untracked = "+",
-          deleted = "",
-          ignored = "◌"
-        }
-      }
-    }
+        default = "󰈚",
+        folder = {
+          default = "",
+          empty = "",
+          empty_open = "",
+          open = "",
+          symlink = "",
+        },
+        git = { unmerged = "" },
+      },
+    },
   },
   diagnostics = { enable = false },
   view = {
     width = 30,
-    hide_root_folder = false,
+    preserve_window_proportions = true,
     side = 'right',
-    number = false,
-    relativenumber = false,
     adaptive_size = true,
     mappings = {
       list = {
@@ -42,7 +40,7 @@ require("nvim-tree").setup({
         { key = { "L", "<2-RightMouse>" }, action = "cd" },
         { key = "v",                       action = "vsplit" }, { key = "s", action = "split" },
         { key = "[h",   action = "prev_git_item" },
-        { key = "]h",   action = "next_git_item" },
+        { key = "[h",   action = "prev_git_item" },
         { key = "h",    action = "close_node" },
         { key = "<CR>", action = "system_open" }, { key = "v", action = "vsplit" },
         { key = 'H', action = "dir_up" }, { key = "s", action = "split" }, {

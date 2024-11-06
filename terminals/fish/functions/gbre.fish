@@ -1,6 +1,12 @@
 function gbre -d 'new git branch regask'
   set -l TYPE "REG"
-  set -l TICKET $(gum input --placeholder "Jira Ticket number (If no ticket it will generate XXXX instead)")
+
+  set -l TICKET $argv[1]
+
+  # If Ticket has no value then ask gum
+  if test -z $TICKET
+    set TICKET $(gum input --placeholder "Jira Ticket number (If no ticket it will generate XXXX instead)")
+  end
 
   set -l DESCRIPTION $(gum input --placeholder "Short description of the ticket" | tr '[:upper:]' '[:lower:]' | sed 's/ *$//' | tr ' ' '-')
 

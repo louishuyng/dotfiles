@@ -4,124 +4,62 @@ local transaprent = highlight_utils.transaprent
 local gitTransparent = highlight_utils.gitTransparent
 local highlight_telescope = highlight_utils.highlight_telescope
 
-if vim.g.theme == "mocha" then
+if vim.g.theme == "base" then
   vim.cmd [[
     set background=dark
-    colorscheme catppuccin
 
-    hi Normal guibg=#0D1116
-    hi NormalNC guibg=#0D1116
-    hi WinSeparator guifg=#0D1116 guibg=NONE
+    colorscheme base-jabuti
 
-    hi NvimTreeNormal guibg=#1A1C1E
+    hi Normal guibg=#262221
   ]]
 
   transaprent()
-  highlight_telescope()
+
+  local colors = {}
+
+  colors.input = "#211D1C"
+  colors.result = "#211D1C"
+  colors.counter = "#739B79"
+  colors.selection_bg = "#383635"
+  colors.title = "#739B79"
+  colors.title_bg = "#2E2C2F"
+
+  highlight_telescope(colors)
 end
 
-if vim.g.theme == "solarized" then
-  require("solarized-osaka").setup({
-    transparent = false,
-  })
-
+if vim.g.theme == "frappe" then
   vim.cmd [[
     set background=dark
-    colorscheme solarized-osaka
-
-    hi Normal guibg=#01131A
-    hi NormalNC guibg=#01131A
-    hi WinSeparator guifg=#001419
-    hi NvimTreeNormal guibg=#063643
-    hi NvimTreeNormalNC guibg=#063643
+    colorscheme base-catppuccin-frappe
   ]]
 
+  transaprent()
+
   local colors = {}
-  colors.input = "#083642"
-  colors.selection_bg = "#083642"
-  colors.result = "#001217"
-  colors.counter = "#859901"
+
+  colors.input = "#2C2E3C"
+  colors.result = "#2C2E3C"
+  colors.counter = "#CA9EE6"
+  colors.selection_bg = "#414660"
 
   highlight_telescope(colors)
-  transaprent()
 end
 
-if vim.g.theme == 'newpaper' then
-  require("newpaper").setup({
-    style = "dark",
-  })
-
+if vim.g.theme == 'latte' then
   vim.cmd [[
-    colorscheme newpaper
-
-    hi Normal guibg=#02040A
-    hi NormalNC guibg=#02040A
-
-    hi WinSeparator guifg=#02040A
-    hi NvimTreeNormal guibg=#262626
-    hi NvimTreeNormalNC guibg=#262626
+    set background=light
+    colorscheme base-penumbra-light
   ]]
 
-  local colors = {}
-
-  colors.input = "#3B3B3B"
-  colors.selection_bg = "#323232"
-  colors.result = "#1e1e1e"
-  colors.counter = "#C3E88D"
-
-  highlight_telescope(colors)
-  transaprent()
-  gitTransparent()
-end
-
-if vim.g.theme == 'light' then
-  require("cyberdream").setup({
-    theme = {
-      variant = "light",
-    }
-  })
-
-  vim.cmd([[
-    colorscheme cyberdream
-  ]])
   transaprent()
 
   local colors = {}
 
-  colors.input = "#F2D5CF"
-  colors.selection_bg = "#ACACAC"
-  colors.result = "#E4E4E4"
-  colors.counter = "#0072C1"
+  colors.input = "#E7EBF1"
+  colors.selection_bg = "#BCC0CB"
+  colors.result = "#E7EBF1"
+  colors.counter = "#7287FE"
 
-
-  highlight_telescope(colors)
-end
-
-if vim.g.theme == 'cyberdream' then
-  require("cyberdream").setup({
-    theme = {
-      variant = "dark",
-    }
-  })
-
-  vim.cmd([[
-    colorscheme cyberdream
-
-    hi Normal guibg=#1e1e1e
-    hi NormalNC guibg=#1e1e1e
-    hi WinSeparator guifg=#1e1e1e guibg=NONE
-    hi NvimTreeNormal guibg=#16181A
-    hi CursorLineNr guifg=#C2FCD0
-  ]])
-
-  transaprent()
-
-  local colors = {}
-
-  colors.input = "#3C4048"
-  colors.selection_bg = "#3C4048"
-  colors.result = "#262626"
-  colors.counter = "#5EFF6C"
 
   highlight_telescope(colors)
 end

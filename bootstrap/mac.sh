@@ -35,6 +35,8 @@ load_pre_script() {
 
   sudo mdutil -ai off
 
+  mkdir -p ~/.vim/files/info
+
   success "Turn off spotlight index"
 }
 

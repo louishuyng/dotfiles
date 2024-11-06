@@ -20,16 +20,16 @@ yabai -m config \
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
-yabai -m signal --add event=application_launched action="~/.dotfiles/suckless/mac_os/yabai/noPaddingLeftOneApp.sh"
-yabai -m signal --add event=application_terminated action="~/.dotfiles/suckless/mac_os/yabai/noPaddingLeftOneApp.sh"
-yabai -m signal --add event=space_changed action="~/.dotfiles/suckless/mac_os/yabai/noPaddingLeftOneApp.sh"
-yabai -m signal --add event=window_created action="~/.dotfiles/suckless/mac_os/yabai/noPaddingLeftOneApp.sh"
+# yabai -m signal --add event=application_launched action="~/.dotfiles/suckless/mac_os/yabai/noPaddingLeftOneApp.sh"
+# yabai -m signal --add event=application_terminated action="~/.dotfiles/suckless/mac_os/yabai/noPaddingLeftOneApp.sh"
+# yabai -m signal --add event=space_changed action="~/.dotfiles/suckless/mac_os/yabai/noPaddingLeftOneApp.sh"
+# yabai -m signal --add event=window_created action="~/.dotfiles/suckless/mac_os/yabai/noPaddingLeftOneApp.sh"
 
 # Labels
 yabai -m space 1 --label IDE
 yabai -m space 2 --label Internet
 yabai -m space 3 --label Chat
-yabai -m space 4 --label Management
+yabai -m space 4 --label Productivity
 yabai -m space 5 --label Music
 
 yabai -m rule --add app="kitty" space=1
@@ -51,11 +51,10 @@ yabai -m rule --add app="Slack" space=3
 yabai -m rule --add app="Microsoft Teams" space=3
 
 yabai -m rule --add app="Inkdrop" space=4
-yabai -m rule --add app="superProductivity" space=4
-yabai -m rule --add app="Calendar" space=4
+yabai -m rule --add app="Things3" space=4
 yabai -m rule --add app="Spark Desktop" space=4
-yabai -m rule --add app="Mail" space=4
+yabai -m rule --add app="Morgen" space=4
 
-yabai -m rule --add app="Deezer" space=5
+yabai -m rule --add app="Spotify" space=5
 
 echo "yabai configuration loaded.."

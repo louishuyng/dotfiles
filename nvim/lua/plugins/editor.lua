@@ -10,6 +10,8 @@ return {
     opts = {}
   },
 
+  { 'mbbill/undotree' },
+
   -- Mark
   {
     'chentoast/marks.nvim',
@@ -65,7 +67,7 @@ return {
     }
   },
 
-  { 'michaelb/sniprun',      build = 'sh install.sh' }, -- Run code
+  { 'michaelb/sniprun',          build = 'sh install.sh' }, -- Run code
 
   -- Focus
   {
@@ -89,7 +91,7 @@ return {
 
   -- Markdown
   {
-    'OXY2DEV/markview.nvim',
+    'MeanderingProgrammer/render-markdown.nvim',
     opts = {},
   },
 

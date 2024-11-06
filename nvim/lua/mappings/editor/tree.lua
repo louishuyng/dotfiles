@@ -1,5 +1,4 @@
 local os_extend = require 'utils.os_extend'
-local api = require("nvim-tree.api")
 
 vim.keymap.set("n", "<c-\\>", ":NvimTreeToggle<CR>", { silent = true })
 vim.keymap.set("n", ",nf", ":NvimTreeFocus<CR>", { silent = true })

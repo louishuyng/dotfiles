@@ -14,7 +14,7 @@ end, opt)
 
 vim.keymap.set("n", "<leader>/",
   function()
-    return require('telescope').extensions.live_grep_args.live_grep_args(dropdown_theme("LiveGrep"))
+    return require('telescope').extensions.live_grep_args.live_grep_args(dropdown_theme("LiveGrep", true))
   end,
   opt)
 
@@ -23,16 +23,12 @@ vim.keymap.set("n", "<leader>fm", function()
 end, opt)
 
 vim.keymap.set("n", "<leader>fj", function()
-  return require('telescope.builtin').jumplist(dropdown_theme("Jumplist"))
+  return require('telescope.builtin').jumplist(dropdown_theme("Jumplist", true))
 end, opt)
 
 -- -- LSP Finding
 vim.keymap.set('n', 'gr', function()
   require('telescope.builtin').lsp_references(dropdown_theme("References"))
-end, opt)
-
-vim.keymap.set('n', 'gf', function()
-  require('telescope.builtin').lsp_definitions(dropdown_theme("Definitions"))
 end, opt)
 
 -- TODO list

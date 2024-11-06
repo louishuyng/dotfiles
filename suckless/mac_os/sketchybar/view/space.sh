@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SPACE_ICONS=("IDE" "\$internet" "@chat" "workspace" "🎸Chill" )
+SPACE_ICONS=("IDE" "\$internet" "@chat" "productivity" "🎸Music" )
 
 YELLOW=#eed49f
 GREEN=#8DC583
@@ -30,7 +30,7 @@ for i in "${!SPACE_ICONS[@]}"; do
              --set space.$sid associated_space=$sid                     \
                               ignore_association=on                     \
                               icon=${SPACE_ICONS[i]}                    \
-                              icon.font="$LABEL:SemiBold:13"            \
+                              icon.font="$LABEL:SemiBold:14"            \
                               icon.padding_left=7                      \
                               icon.padding_right=7                     \
                               icon.color=0xff${DEACTIVATE:1}       \

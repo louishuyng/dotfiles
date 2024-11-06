@@ -13,10 +13,11 @@ end
 return function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
+  vim.keymap.set('n', 'gf', ':Lspsaga goto_definition<CR>', bufopts)
   vim.keymap.set('n', 'gF', ':Lspsaga peek_definition<CR>', bufopts)
-  vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', bufopts)
+  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', bufopts)
   vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', bufopts)
-  vim.keymap.set('n', ',rr', '<cmd>lua vim.lsp.buf.rename()<CR>', bufopts)
+  vim.keymap.set('n', ',rr', ':Lspsaga rename<CR>', bufopts)
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

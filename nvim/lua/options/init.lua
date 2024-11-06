@@ -2,7 +2,7 @@ vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
 
-vim.g.theme = "cyberdream"
+vim.g.theme = "base"
 vim.g.auto_format = true
 
 -- Mise Integration
@@ -110,7 +110,7 @@ vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
 
 -- RUST
-vim.g.rust_recommended_style = 0
+vim.g.rust_recommended_style = 1
 
 -- Golang
 vim.cmd [[au FileType go set noexpandtab]]
@@ -153,4 +153,9 @@ vim.cmd([[
   syntax sync minlines=256
 
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+]])
+
+-- File Info
+vim.cmd([[
+  set viminfo='100,n$HOME/.vim/files/info/viminfo
 ]])

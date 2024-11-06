@@ -16,10 +16,9 @@ end
 local M = {}
 
 local theme_list = {
-  { value = 'cyberdream', display = 'Cyber Dream' },
-  { value = 'light',      display = 'Light' },
-  { value = 'mocha',      display = 'Catppuccin Mocha' },
-  { value = 'solarized',  display = "Solarized" },
+  { value = 'base',   display = 'Base' },
+  { value = 'frappe', display = 'Frappe' },
+  { value = 'latte',  display = 'Latte' },
 }
 
 local function reloadColorscheme()

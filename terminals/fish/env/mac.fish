@@ -62,7 +62,7 @@ set -gx REACT_EDITOR "nvim"
 # # Fzf
 set -gx FZF_COMPLETION_TRIGGER '**'
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden'
-set -gx FZF_DEFAULT_OPTS '--height 90% --layout reverse --border --preview="bat --color=always {}" --inline-info'
+set -gx FZF_DEFAULT_OPTS '--layout reverse --preview="bat --color=always {}" --preview-window="up,60%,border-bottom,+{2}+3/3,~3"'
 
 # #TLDR
 set -gx TLDR_OS osx

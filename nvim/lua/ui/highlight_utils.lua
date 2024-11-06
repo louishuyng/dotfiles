@@ -34,6 +34,8 @@ local function highlight_telescope(colors)
   local colors = colors or {}
 
   local input = colors.input or "#21252E"
+  local fg_title = colors.title or input
+  local bg_title = colors.title_bg or input
   local selection_bg = colors.selection_bg or "#2E2C2F"
   local selection_fg = colors.selection_fg or "NONE"
   local bg_result = colors.result or "#222222"
@@ -41,7 +43,7 @@ local function highlight_telescope(colors)
 
   vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { bg = input, fg = input })
   vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = input })
-  vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = input, fg = input })
+  vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { bg = bg_title, fg = fg_title })
   vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = input, fg = input })
   vim.api.nvim_set_hl(0, "TelescopePromptCounter", { fg = fg_counter, bold = true })
   vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = input })
