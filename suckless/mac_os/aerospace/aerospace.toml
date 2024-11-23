@@ -1,0 +1,128 @@
+after-startup-command = ['exec-and-forget sketchybar']
+
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+    'exec-and-forget borders active_color=0xff739B79 inactive_color=0xff width=5.0'
+]
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+
+[gaps]
+inner.horizontal = 14
+inner.vertical =   14
+outer.left =       7
+outer.bottom =     7
+outer.top = [{ monitor."Builtin-in" = 7 }, { monitor."4K" = 35 }, 7]
+outer.right =      7
+
+[mode.main.binding]
+alt-shift-b = 'exec-and-forget open -a /Applications/Zen\ Browser.app'
+alt-shift-c = 'exec-and-forget open -a /Applications/Microsoft\ Teams.app'
+alt-shift-d = 'exec-and-forget open -a /Applications/TablePlus.app'
+alt-shift-e = 'exec-and-forget open -a "Mission Control"'
+alt-shift-f = 'exec-and-forget open -a /Applications/Marta.app'
+alt-shift-m = 'exec-and-forget open -a /Applications/Spark\ Desktop.app'
+alt-shift-n = 'exec-and-forget open -a /Applications/Inkdrop.app'
+alt-shift-s = 'exec-and-forget open -a /Applications/Slack.app'
+alt-shift-t = 'exec-and-forget open -a /Applications/kitty.app'
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+
+alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+
+alt-tab = 'workspace-back-and-forth'
+
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+alt-shift-h = 'move left'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+alt-shift-j = 'move down'
+
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+alt-0 = 'flatten-workspace-tree'
+
+alt-f = 'layout floating tiling'
+alt-ctrl-shift-y = 'reload-config'
+
+# Workspace 1 Apps
+[[on-window-detected]]
+if.app-id = 'com.postmanlabs.mac'
+run='move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'com.mongodb.compass'
+run='move-node-to-workspace 1'
+
+
+# Workspace 2 Apps
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run='move-node-to-workspace 2'
+
+# Workspace 3 Apps
+[[on-window-detected]]
+if.app-id = 'org.mozilla.com.zen.browser'
+run='move-node-to-workspace 3'
+
+# Workspace 4 Apps
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run='move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run='move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run='move-node-to-workspace 4'
+
+# Workspace 5 Apps
+[[on-window-detected]]
+if.app-id = 'com.readdle.SparkDesktop.appstore'
+run='move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'info.pkpk.inkdrop'
+run='move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.kingsoft.wpsoffice.mac.global'
+run='move-node-to-workspace 5'
+
+# Workspace 6 Apps
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = ['layout tiling', 'move-node-to-workspace 6']
+
+[[on-window-detected]]
+if.app-id = 'com.facebook.archon.developerID'
+run = ['layout floating', 'move-node-to-workspace 6']
+
+[workspace-to-monitor-force-assignment]
+6 = 'secondary'

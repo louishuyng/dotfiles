@@ -290,23 +290,21 @@ install_key_bindings() {
 install_window_manager() {
   read -r -p "Do you want to install window manager? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew install koekeishiya/formulae/yabai --HEAD
-    codesign -fs 'yabai-cert' "$(which yabai)"
-
     sudo yabai --install-sa
-
-    brew services start yabai
-    killall Dock
 
     brew tap FelixKratz/formulae
     brew install sketchybar
 
     chmod +x ~/.dotfiles/scripts/*
+    brew install borders
 
-    brew install koekeishiya/formulae/skhd
-    brew services start skhd
+    brew install --cask nikitabobko/tap/aerospace
 
-    success "Installed window manager! Remember to disable System Integrity Protection (SIP)"
+    defaults write com.apple.dock expose-group-apps -bool true && killall Dock
+    defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
+    defaults write -g NSWindowShouldDragOnGesture -bool true
+
+    success "Installed window manager"
   fi
 }
 
