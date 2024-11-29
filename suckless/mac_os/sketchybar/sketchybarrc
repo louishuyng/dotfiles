@@ -8,13 +8,14 @@ ITEM_DIR="$HOME/.config/sketchybar/view"
 PADDING=4
 PADDING_LABEL=4
 LABEL="JetBrainsMono Nerd Font"
+LABEL_COLOR=#48e566
 
 sketchybar --bar     height=27                                            \
                      blur_radius=0                                        \
                      padding_left=4                                       \
                      padding_right=4                                      \
-                     color=0xff1B1B1B                                   \
-                     position=bottom                                      \
+                     color=0xff000000                                   \
+                     position=top                                      \
                      sticky=on                                            \
                      font_smoothing=on                                    \
                                                                           \
@@ -26,8 +27,8 @@ sketchybar --bar     height=27                                            \
                      icon.padding_right=2                          \
                      label.padding_left=$PADDING_LABEL                          \
                      label.padding_right=$PADDING_LABEL                         \
-                     label.color=0xff${NORD4:1}                           \
-                     icon.color=0xff${NORD4:1}                            \
+                     label.color=0xff${LABEL_COLOR:1}                           \
+                     icon.color=0xff${LABEL_COLOR:1}                            \
 
 
 # left

@@ -4,29 +4,14 @@ return {
   },
   {
     "vuki656/package-info.nvim",
-    ft = "json",
-    dependencies = { "MunifTanjim/nui.nvim" },
     config = function()
-      require("package-info").setup({
-        autostart = false,
-        package_manager = "npm",
-        colors = {
-          outdated = "#db4b4b",
-        },
-        hide_up_to_date = true,
-      })
+      require("startup").setup({ theme = "startify" }) -- put theme name here
     end,
   },
   {
-    'goolord/alpha-nvim',
+    'max397574/startup.nvim',
     config = function()
-      local startify = require("alpha.themes.startify")
-      -- available: devicons, mini, default is mini
-      -- if provider not loaded and enabled is true, it will try to use another provider
-      startify.file_icons.provider = "mini"
-      require("alpha").setup(
-        startify.config
-      )
+      require("startup").setup({ theme = "startify" })
     end
   },
   {

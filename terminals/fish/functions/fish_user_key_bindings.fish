@@ -11,6 +11,9 @@ end
 
 function custom_bindings
   bind --mode insert \cn 'clear; nvim'
+
+  # C-e to edit the current command line in nvim
+  bind --mode insert \ce edit_command_buffer
 end
 
 function atuin_bindings

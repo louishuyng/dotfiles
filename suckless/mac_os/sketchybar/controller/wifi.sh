@@ -8,8 +8,9 @@ update() {
 
   ICON="$([ -n "$IP" ] && echo "$WIFI_CONNECTED" || echo "$WIFI_DISCONNECTED")"
   LABEL="$([ -n "$IP" ] && echo "$IP" || echo "Disconnected")"
+  COLOR="$([ -n "$IP" ] && echo "0xffE0E4DC" || echo "0xff7F7F7F")"
 
-  sketchybar --set $NAME icon="$ICON" label="$LABEL"
+  sketchybar --set $NAME icon="$ICON" label="$LABEL" icon.color="$COLOR" label.color="$COLOR"
 }
 
 click() {

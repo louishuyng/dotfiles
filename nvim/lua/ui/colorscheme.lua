@@ -25,6 +25,7 @@ if vim.g.theme == "base" then
   colors.title_bg = "#2E2C2F"
 
   highlight_telescope(colors)
+  -- transaprent({ background = "transparent" })
 end
 
 if vim.g.theme == "frappe" then

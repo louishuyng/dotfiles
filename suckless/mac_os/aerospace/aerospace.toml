@@ -1,24 +1,24 @@
 after-startup-command = ['exec-and-forget sketchybar']
 
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-    'exec-and-forget borders active_color=0xff739B79 inactive_color=0xff width=5.0'
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-default-root-container-layout = 'tiles'
+default-root-container-layout = 'accordion'
 default-root-container-orientation = 'auto'
-
 
 [gaps]
 inner.horizontal = 14
 inner.vertical =   14
-outer.left =       7
-outer.bottom =     7
-outer.top = [{ monitor."Builtin-in" = 7 }, { monitor."4K" = 35 }, 7]
-outer.right =      7
+outer.left =       0
+outer.bottom =     0
+outer.top = [{ monitor."Builtin-in" = 0 }, { monitor."4K" = 27 }, 0]
+outer.right =      0
 
 [mode.main.binding]
 alt-shift-b = 'exec-and-forget open -a /Applications/Zen\ Browser.app'
@@ -69,6 +69,9 @@ alt-0 = 'flatten-workspace-tree'
 alt-f = 'layout floating tiling'
 alt-ctrl-shift-y = 'reload-config'
 
+alt-ctrl-l = 'workspace next'
+alt-ctrl-h = 'workspace prev'
+
 # Workspace 1 Apps
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
@@ -88,6 +91,18 @@ run='move-node-to-workspace 2'
 [[on-window-detected]]
 if.app-id = 'org.mozilla.com.zen.browser'
 run='move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run='move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run='move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.amazon.Lassen'
+run = 'move-node-to-workspace 3'
 
 # Workspace 4 Apps
 [[on-window-detected]]
@@ -117,12 +132,9 @@ run='move-node-to-workspace 5'
 
 # Workspace 6 Apps
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
-run = ['layout tiling', 'move-node-to-workspace 6']
-
-[[on-window-detected]]
 if.app-id = 'com.facebook.archon.developerID'
 run = ['layout floating', 'move-node-to-workspace 6']
+
 
 [workspace-to-monitor-force-assignment]
 6 = 'secondary'

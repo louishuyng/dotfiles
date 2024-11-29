@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
-TIME=$(date '+%H:%M')
+TIME=$(date '+%H:%M') 
+CAL=$(date '+%b-%d')
 
-sketchybar --set $NAME label="$TIME"
+sketchybar --set $NAME icon="􀇲 " label="$TIME" 

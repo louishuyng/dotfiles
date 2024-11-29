@@ -1,4 +1,6 @@
 
+
+
 ### START-OF-ICON-MAP
 function __icon_map() {
     case "$1" in
@@ -224,6 +226,9 @@ function __icon_map() {
    "Fork")
         icon_result=":fork:"
         ;;
+   "FreeTube")
+        icon_result=":freetube:"
+        ;;
    "Fusion")
         icon_result=":fusion:"
         ;;
@@ -253,6 +258,9 @@ function __icon_map() {
         ;;
    "IntelliJ IDEA")
         icon_result=":idea:"
+        ;;
+   "IINA")
+        icon_result=":iina:"
         ;;
    "Adobe Illustrator"* | "Illustrator")
         icon_result=":illustrator:"

@@ -2,6 +2,12 @@ vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
 
+vim.g.startup_bookmarks = {
+  ["D"] = '~/.dotfiles',
+  ["A"] = "~/Dev/repository/github.com/louishuyng/awesome-tech",
+  ["K"] = '~/.dotfiles/terminals/kitty/kitty.conf',
+}
+
 vim.g.theme = "base"
 vim.g.auto_format = true
 

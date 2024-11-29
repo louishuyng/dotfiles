@@ -2,6 +2,10 @@
   "gspec": {
     "prefix": "gspec",
     "body": [
+      "import { AppModule } from '@/app.module';",
+      "import { CONNECTION_NAME } from '@/infra/database/constant';",
+      "import { CustomTestHelper } from '@/test-helper/custom.test-helper';",
+      "",
       "describe('@$1/$2.ts', () => {",
       "  const testHelper = new CustomTestHelper(CONNECTION_NAME, AppModule);",
       "",
@@ -13,18 +17,45 @@
     ],
     "description": "Generate sample spec"
   },
+  "gusecaseTypes": {
+    "prefix": "gusecaseTypes",
+    "body": [
+      "export namespace $1UseCaseTypes {",
+      "  export type Input = {",
+      "    $2",
+      "  };",
+      "",
+      "  export type Output = {",
+      "    $3",
+      "  };",
+      "}"
+    ],
+    "description": "Generate usecase types"
+  },
   "gusecase": {
     "prefix": "gusecase",
     "body": [
       "import { Injectable } from '@nestjs/common';",
+      "import { Logger } from '@regask/common-lib/logger/logger.service';",
+      "import { BaseUseCase, UseCaseResult } from '@regask/common-lib/workflow'",
       "",
-      "import { ClientResetPasswordUseCaseTypes } from '.types';",
+      "import { $1UseCaseTypes } from './types';",
       "",
       "@Injectable()",
-      "export class $1UseCase {",
-      "  constructor() {}",
+      "export class $1UseCase extends BaseUseCase<$1UseCaseTypes.Input, $1UseCaseTypes.Output> {",
+      "  constructor() {",
+      "    super();",
+      "    this.logger = new Logger($1UseCase.name);",
+      "  }",
       "",
-      "  async execute(input: any): Promise<any> {}",
+      "  async handle(input: $1UseCaseTypes.Input): Promise<UseCaseResult<$1UseCaseTypes.Output | null>> {",
+      "    this.logger.info(`Executing usecase ${$1UseCase.name} with input`, { input });",
+      "",
+      "    return {",
+      "      error: null,",
+      "      data: null,",
+      "    };",
+      "  }",
       "}"
     ],
     "description": "Generate usecase"
