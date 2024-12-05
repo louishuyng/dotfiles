@@ -6,7 +6,7 @@ function fish_user_key_bindings
 end
 
 function fzf_bindings
-  fzf_configure_bindings --directory=\cf --git_log=\cg --process=\cp --variables=\cv
+  fzf_configure_bindings --directory=\cf --git_log=\cg --process=\cp --variables=\cv --git_status=\cs
 end
 
 function custom_bindings
@@ -17,5 +17,6 @@ function custom_bindings
 end
 
 function atuin_bindings
-  bind --mode insert \cr _atuin_search
+  bind \cr _atuin_search
+  bind -M insert \cr _atuin_search
 end

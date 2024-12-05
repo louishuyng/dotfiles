@@ -1,0 +1,8 @@
+style = "compact"
+enter_accept = false
+name = "marine"
+filter_mode_shell_up_key_binding = "directory"
+ctrl_n_shortcuts = true
+
+[dotfiles]
+enabled = true
