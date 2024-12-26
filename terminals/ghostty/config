@@ -1,0 +1,13 @@
+auto-update-channel = tip
+theme = FirefoxDev
+
+font-family = "JetBrainsMono Nerd Font"
+font-size = 15
+adjust-cell-height = 35%
+font-thicken = true
+
+window-padding-x = 0
+window-padding-y = 0
+
+macos-titlebar-style = hidden
+confirm-close-surface = false
