@@ -14,6 +14,7 @@ local function transaprent(opts)
     hi SignColumn guibg=NONE
     hi LineNr guibg=NONE
     hi MsgArea guibg=NONE
+    hi Winbar guibg=NONE
   ]]
 end
 

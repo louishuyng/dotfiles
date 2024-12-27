@@ -138,6 +138,18 @@ install_fish() {
   fi
 }
 
+install_nushell() {
+  read -r -p "Do you want to install nushell? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    brew install nushell
+
+    ln -s ~/.dotfiles/terminals/nushell/config.nu ~/Library/Application\ Support/nushell/config.nu
+    ln -s ~/.dotfiles/terminals/nushell/env.nu ~/Library/Application\ Support/nushell/env.nu
+
+    success "Installed nushell"
+  fi
+}
+
 install_font() {
   read -r -p "Do you want to install font? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then

@@ -69,6 +69,26 @@ if vim.g.theme == "latte" then
   }
 end
 
+if vim.g.theme == 'solarized' then
+  colors = {
+    bg0 = "#002B36",
+    bg1 = "#073642",
+    bg2 = "#586E75",
+    fg0 = "#839496",
+    fg1 = "#93A1A1",
+    fg2 = "#EEE8D5",
+    red0 = "#DC322F",
+    red1 = "#CB4B16",
+    yellow0 = "#B58900",
+    yellow1 = "#657B83",
+    green0 = "#859900",
+    green1 = "#2AA198",
+    blue1 = "#268BD2",
+    purple0 = "#6C71C4",
+    purple1 = "#D33682",
+  }
+end
+
 local theme = {
   normal = {
     a = { bg = colors.bg0, fg = colors.purple0 },
@@ -100,15 +120,15 @@ local theme = {
 
 lualine.setup {
   options = {
-    theme = theme,
+    theme = vim.g.theme == 'frappe' and 'auto' or theme,
     globalstatus = true,
     disabled_filetypes = { statusline = { "dashboard", "alpha", "intro" } },
     section_separators = { left = '', right = '' },
-    component_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch" },
+    lualine_b = { "" },
 
     lualine_c = {
       Util.lualine.root_dir(),
@@ -125,7 +145,6 @@ lualine.setup {
       { Util.lualine.pretty_path() },
       {
         require("package-info").get_status,
-        color = Util.ui.fg("Statement"),
       },
       {
         function()
@@ -141,24 +160,24 @@ lualine.setup {
       {
         function() return require("noice").api.status.command.get() end,
         cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-        color = Util.ui.fg("Statement"),
+        color = { fg = Snacks.util.color("Statement") }
       },
       -- stylua: ignore
       {
         function() return require("noice").api.status.mode.get() end,
         cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-        color = Util.ui.fg("Constant"),
+        color = { fg = Snacks.util.color("Constant") }
       },
       -- stylua: ignore
       {
         function() return "  " .. require("dap").status() end,
         cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-        color = Util.ui.fg("Debug"),
+        color = { fg = Snacks.util.color("Debug") }
       },
       {
         require("lazy.status").updates,
         cond = require("lazy.status").has_updates,
-        color = Util.ui.fg("Special"),
+        color = { fg = Snacks.util.color("Special") }
       },
       {
         "diff",

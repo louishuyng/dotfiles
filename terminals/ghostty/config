@@ -1,9 +1,9 @@
 auto-update-channel = tip
-theme = FirefoxDev
+theme = GitHub Dark
 
 font-family = "JetBrainsMono Nerd Font"
 font-size = 15
-adjust-cell-height = 35%
+adjust-cell-height = 37%
 font-thicken = true
 
 window-padding-x = 0
@@ -11,3 +11,7 @@ window-padding-y = 0
 
 macos-titlebar-style = hidden
 confirm-close-surface = false
+
+macos-icon = custom-style
+macos-icon-ghost-color = 44DE62
+macos-icon-screen-color = 44DE62

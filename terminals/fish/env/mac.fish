@@ -56,6 +56,7 @@ set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/config.toml
 
 # # Editor
 set -gx EDITOR "nvim"
+set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 set -gx GIT_EDITOR "nvim"
 set -gx REACT_EDITOR "nvim"
 

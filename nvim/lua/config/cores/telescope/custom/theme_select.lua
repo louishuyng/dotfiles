@@ -16,9 +16,10 @@ end
 local M = {}
 
 local theme_list = {
-  { value = 'base',   display = 'Base' },
-  { value = 'frappe', display = 'Frappe' },
-  { value = 'latte',  display = 'Latte' },
+  { value = 'base',      display = 'Base' },
+  { value = 'solarized', display = 'Solarized' },
+  { value = 'frappe',    display = 'Frappe' },
+  { value = 'latte',     display = 'Latte' },
 }
 
 local function reloadColorscheme()

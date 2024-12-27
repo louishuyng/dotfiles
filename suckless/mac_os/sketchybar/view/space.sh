@@ -36,7 +36,7 @@ for i in "${!SPACE_ICONS[@]}"; do
              --subscribe space.$sid aerospace_workspace_change \
              --set space.$sid \
                         icon=${SPACE_ICONS[i]}                    \
-                        icon.font="$LABEL:SemiBold:14"            \
+                        icon.font="$LABEL:SemiBold:15"            \
                         icon.padding_left=7                      \
                         icon.padding_right=7                     \
                         icon.color=0xff${DEACTIVATE:1}       \

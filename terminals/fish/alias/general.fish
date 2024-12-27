@@ -11,8 +11,8 @@ alias c="clear"
 alias h='history'
 
 # Listing
-alias ls="exa --long  --header --git"
-alias lt="exa --tree --level=2 --long --icons --header --git"
+alias ls="eza --long  --header --git"
+alias lt="eza --tree --level=2 --long --icons --header --git"
 alias ll="ls -l"
 
 # Clear & Remove

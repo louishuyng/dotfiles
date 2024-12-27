@@ -3,10 +3,10 @@ return {
     "LazyVim/LazyVim",
   },
   {
+    "folke/snacks.nvim"
+  },
+  {
     "vuki656/package-info.nvim",
-    config = function()
-      require("startup").setup({ theme = "startify" }) -- put theme name here
-    end,
   },
   {
     'max397574/startup.nvim',
@@ -82,9 +82,36 @@ return {
       return opts
     end,
   },
-
   {
-    "nvim-lualine/lualine.nvim",
-    opts = {}
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+    },
+    config = function()
+      require("barbecue").setup({
+        create_autocmd = false, -- prevent barbecue from updating itself automatically
+        theme = {
+          normal = { bg = "NONE" },
+        }
+      })
+
+      vim.api.nvim_create_autocmd({
+          "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+          "BufWinEnter",
+          "CursorHold",
+          "InsertLeave",
+
+          -- include this if you have set `show_modified` to `true`
+          -- "BufModifiedSet",
+        },
+        {
+          group = vim.api.nvim_create_augroup("barbecue.updater", {}),
+          callback = function()
+            require("barbecue.ui").update()
+          end,
+        })
+    end,
   },
 }

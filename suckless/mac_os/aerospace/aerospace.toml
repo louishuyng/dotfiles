@@ -29,7 +29,7 @@ alt-shift-f = 'exec-and-forget open -a /Applications/Marta.app'
 alt-shift-m = 'exec-and-forget open -a /Applications/Spark\ Desktop.app'
 alt-shift-n = 'exec-and-forget open -a /Applications/Inkdrop.app'
 alt-shift-s = 'exec-and-forget open -a /Applications/Slack.app'
-alt-shift-t = 'exec-and-forget open -a /Applications/kitty.app'
+alt-shift-t = 'exec-and-forget open -a /Applications/Ghostty.app'
 
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
@@ -69,9 +69,6 @@ alt-0 = 'flatten-workspace-tree'
 alt-f = 'layout floating tiling'
 alt-ctrl-shift-y = 'reload-config'
 
-alt-ctrl-l = 'workspace next'
-alt-ctrl-h = 'workspace prev'
-
 # Workspace 1 Apps
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
@@ -85,6 +82,18 @@ run='move-node-to-workspace 1'
 # Workspace 2 Apps
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
+run='move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+run='move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run='move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
 run='move-node-to-workspace 2'
 
 # Workspace 3 Apps
@@ -101,8 +110,8 @@ if.app-id = 'com.figma.Desktop'
 run='move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.amazon.Lassen'
-run = 'move-node-to-workspace 3'
+if.app-id = 'com.readdle.SparkDesktop.appstore'
+run='move-node-to-workspace 3'
 
 # Workspace 4 Apps
 [[on-window-detected]]
@@ -119,12 +128,16 @@ run='move-node-to-workspace 4'
 
 # Workspace 5 Apps
 [[on-window-detected]]
-if.app-id = 'com.readdle.SparkDesktop.appstore'
+if.app-id = 'info.pkpk.inkdrop'
 run='move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'info.pkpk.inkdrop'
-run='move-node-to-workspace 5'
+if.app-id = 'com.amazon.Lassen'
+run=['layout floating', 'move-node-to-workspace 5']
+
+[[on-window-detected]]
+if.app-id = 'com.culturedcode.ThingsMac'
+run=['layout floating', 'move-node-to-workspace 5']
 
 [[on-window-detected]]
 if.app-id = 'com.kingsoft.wpsoffice.mac.global'
@@ -135,6 +148,9 @@ run='move-node-to-workspace 5'
 if.app-id = 'com.facebook.archon.developerID'
 run = ['layout floating', 'move-node-to-workspace 6']
 
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = ['layout floating', 'move-node-to-workspace 6']
 
 [workspace-to-monitor-force-assignment]
 6 = 'secondary'

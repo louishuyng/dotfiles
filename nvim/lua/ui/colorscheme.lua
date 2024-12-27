@@ -11,6 +11,12 @@ if vim.g.theme == "base" then
     colorscheme base-jabuti
 
     hi Normal guibg=#262221
+    hi MiniStatuslineModeNormal guifg=#BE95FF guibg=NONE
+    hi MiniStatuslineModeInsert guifg=#FFA07A guibg=NONE
+    hi MiniStatuslineModeVisual guifg=#98C379 guibg=NONE
+    hi MiniStatuslineModeReplace guifg=#FF6C6B guibg=NONE
+    hi MiniStatuslineModeCommand guifg=#61AFEF guibg=NONE
+    hi MiniStatuslineModeOther guifg=#61AFEF guibg=NONE
   ]]
 
   transaprent()
@@ -25,23 +31,41 @@ if vim.g.theme == "base" then
   colors.title_bg = "#2E2C2F"
 
   highlight_telescope(colors)
-  -- transaprent({ background = "transparent" })
+  transaprent()
 end
 
 if vim.g.theme == "frappe" then
   vim.cmd [[
     set background=dark
-    colorscheme base-catppuccin-frappe
+    colorscheme catppuccin
   ]]
 
   transaprent()
 
   local colors = {}
 
-  colors.input = "#2C2E3C"
-  colors.result = "#2C2E3C"
-  colors.counter = "#CA9EE6"
-  colors.selection_bg = "#414660"
+  colors.input = "#191B1C"
+  colors.result = "#191B1C"
+  colors.counter = "#89B482"
+  colors.selection_bg = "#252626"
+
+  highlight_telescope(colors)
+end
+
+if vim.g.theme == "solarized" then
+  vim.cmd [[
+    set background=dark
+    colorscheme base-solarized-osaka
+  ]]
+
+  transaprent()
+
+  local colors = {}
+
+  colors.input = "#02202D"
+  colors.result = "#02202D"
+  colors.counter = "#29A298"
+  colors.selection_bg = "#0D3B4A"
 
   highlight_telescope(colors)
 end
@@ -49,17 +73,17 @@ end
 if vim.g.theme == 'latte' then
   vim.cmd [[
     set background=light
-    colorscheme base-penumbra-light
+    colorscheme base-flexoki-light
   ]]
 
   transaprent()
 
   local colors = {}
 
-  colors.input = "#E7EBF1"
+  colors.input = "#F6EDE3"
   colors.selection_bg = "#BCC0CB"
-  colors.result = "#E7EBF1"
-  colors.counter = "#7287FE"
+  colors.result = "#F6EDE3"
+  colors.counter = "#3EA57B"
 
 
   highlight_telescope(colors)
