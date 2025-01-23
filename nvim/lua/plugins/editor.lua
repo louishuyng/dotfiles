@@ -117,18 +117,6 @@ return {
     ft = "http",
     dependencies = { "luarocks.nvim", "j-hui/fidget.nvim" },
   },
-
-  -- AI
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      {
-        "stevearc/dressing.nvim", -- Improves the default Neovim UI
-        opts = {},
-      },
-    },
-  },
-
   -- Key map finding
   {
     "folke/which-key.nvim",
