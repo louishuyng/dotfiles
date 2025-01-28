@@ -8,4 +8,7 @@ function p-clean -d 'clean all major processes'
       echo "No running $element processes"
     end
   end
+
+  brew services stop postgresql@15
+  echo "Successfully stopped postgresql@15"
 end

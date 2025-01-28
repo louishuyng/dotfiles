@@ -1,5 +1,3 @@
-~/.local/bin/mise activate fish --shims | source
-
 # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
 set -U fish_key_bindings fish_default_key_bindings
 
@@ -21,5 +19,15 @@ set fish_greeting ""
 set -gx ATUIN_NOBIND "true"
 atuin init fish | source
 
+switcher init fish | source
+
+# optionally use alias `s` instead of `kubeswitch` (add to config.fish)
+function s --wraps switcher
+        kubeswitch $argv;
+end
+
 # opam configuration
 source /Users/louishuyng/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+switcher init fish | source
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish

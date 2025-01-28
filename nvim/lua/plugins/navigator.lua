@@ -27,7 +27,6 @@ return {
     end,
   },
   { 'nvim-tree/nvim-tree.lua', tag = 'nightly' },
-  { 'stevearc/oil.nvim' },
   {
     'folke/flash.nvim',
     event = "VeryLazy",

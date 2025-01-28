@@ -8,7 +8,7 @@ vim.keymap.set("n", "<c-p>", function()
   require('telescope.builtin').find_files(dropdown_theme("Files"))
 end, opt)
 
-vim.keymap.set("n", "<leader>fb", function()
+vim.keymap.set("n", "<leader><leader>", function()
   return require('telescope.builtin').buffers(dropdown_theme("Buffers"))
 end, opt)
 

@@ -15,8 +15,14 @@ return function(client, bufnr)
 
   vim.keymap.set('n', 'gf', ':Lspsaga goto_definition<CR>', bufopts)
   vim.keymap.set('n', 'gF', ':Lspsaga peek_definition<CR>', bufopts)
-  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', bufopts)
   vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', bufopts)
+
+  -- vim.keymap.set('n', 'gf',
+  --   '<Cmd>lua require("telescope.builtin").lsp_definitions()<CR>',
+  --   bufopts)
+  --
+  -- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', bufopts)
+  -- vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', bufopts)
   vim.keymap.set('n', ',rr', ':Lspsaga rename<CR>', bufopts)
 
   -- Enable completion triggered by <c-x><c-o>

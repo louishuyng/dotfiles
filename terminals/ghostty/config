@@ -1,17 +1,23 @@
 auto-update-channel = tip
-theme = GitHub Dark
 
+theme = Dracula+
 font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 adjust-cell-height = 37%
 font-thicken = true
+cursor-style = block
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
 
 window-padding-x = 0
 window-padding-y = 0
+
+window-save-state = default
 
 macos-titlebar-style = hidden
 confirm-close-surface = false
 
 macos-icon = custom-style
-macos-icon-ghost-color = 44DE62
-macos-icon-screen-color = 44DE62
+macos-icon-ghost-color = C693FF
+macos-icon-screen-color = C693FF

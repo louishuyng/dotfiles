@@ -2,6 +2,7 @@
 
 
 
+
 ### START-OF-ICON-MAP
 function __icon_map() {
     case "$1" in
@@ -107,8 +108,11 @@ function __icon_map() {
    "Calculator" | "Calculette")
         icon_result=":calculator:"
         ;;
-   "Calendar" | "日历" | "Fantastical" | "Cron" | "Amie" | "Calendrier" | "Notion Calendar")
+   "Calendar" | "日历" | "Fantastical" | "Cron" | "Amie" | "Calendrier" | "カレンダー" | "Notion Calendar")
         icon_result=":calendar:"
+        ;;
+   "calibre")
+        icon_result=":calibre:"
         ;;
    "Caprine")
         icon_result=":caprine:"
@@ -233,8 +237,11 @@ function __icon_map() {
    "Fusion")
         icon_result=":fusion:"
         ;;
-   "System Preferences" | "System Settings" | "系统设置" | "Réglages Système")
+   "System Preferences" | "System Settings" | "系统设置" | "Réglages Système" | "システム設定")
         icon_result=":gear:"
+        ;;
+   "Ghostty")
+        icon_result=":ghostty:"
         ;;
    "GitHub Desktop")
         icon_result=":git_hub:"
@@ -338,13 +345,13 @@ function __icon_map() {
    "Logseq")
         icon_result=":logseq:"
         ;;
-   "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "Superhuman" | "Spark" | "邮件")
+   "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "Superhuman" | "Spark" | "邮件" | "メール")
         icon_result=":mail:"
         ;;
    "MAMP" | "MAMP PRO")
         icon_result=":mamp:"
         ;;
-   "Maps" | "Google Maps")
+   "Maps" | "Google Maps" | "マップ")
         icon_result=":maps:"
         ;;
    "Marta")
@@ -356,7 +363,7 @@ function __icon_map() {
    "Mattermost")
         icon_result=":mattermost:"
         ;;
-   "Messages" | "信息" | "Nachrichten")
+   "Messages" | "信息" | "Nachrichten" | "メッセージ")
         icon_result=":messages:"
         ;;
    "Messenger")
@@ -392,13 +399,16 @@ function __icon_map() {
    "MongoDB Compass"*)
         icon_result=":mongodb:"
         ;;
+   "Moonlight")
+        icon_result=":moonlight:"
+        ;;
    "mpv")
         icon_result=":mpv:"
         ;;
    "Mullvad Browser")
         icon_result=":mullvad_browser:"
         ;;
-   "Music" | "音乐" | "Musique")
+   "Music" | "音乐" | "Musique" | "ミュージック")
         icon_result=":music:"
         ;;
    "Neovide" | "neovide")
@@ -419,7 +429,7 @@ function __icon_map() {
    "Notability")
         icon_result=":notability:"
         ;;
-   "Notes" | "备忘录")
+   "Notes" | "备忘录" | "メモ")
         icon_result=":notes:"
         ;;
    "Notion")
@@ -473,7 +483,7 @@ function __icon_map() {
    "Parsec")
         icon_result=":parsec:"
         ;;
-   "Preview" | "预览" | "Skim" | "zathura" | "Aperçu")
+   "Preview" | "预览" | "Skim" | "zathura" | "Aperçu" | "プレビュー")
         icon_result=":pdf:"
         ;;
    "PDF Expert")
@@ -515,6 +525,9 @@ function __icon_map() {
    "Proton Mail" | "Proton Mail Bridge")
         icon_result=":proton_mail:"
         ;;
+   "Proton VPN")
+        icon_result=":proton_vpn:"
+        ;;
    "PrusaSlicer" | "SuperSlicer")
         icon_result=":prusaslicer:"
         ;;
@@ -539,7 +552,7 @@ function __icon_map() {
    "Reeder")
         icon_result=":reeder5:"
         ;;
-   "Reminders" | "提醒事项" | "Rappels")
+   "Reminders" | "提醒事项" | "Rappels" | "リマインダー")
         icon_result=":reminders:"
         ;;
    "Replit")
@@ -608,7 +621,7 @@ function __icon_map() {
    "Telegram")
         icon_result=":telegram:"
         ;;
-   "Terminal" | "终端")
+   "Terminal" | "终端" | "ターミナル")
         icon_result=":terminal:"
         ;;
    "Typora")

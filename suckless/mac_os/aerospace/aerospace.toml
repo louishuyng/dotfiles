@@ -22,6 +22,7 @@ outer.right =      0
 
 [mode.main.binding]
 alt-shift-b = 'exec-and-forget open -a /Applications/Zen\ Browser.app'
+# alt-shift-b = 'exec-and-forget open -a /Applications/Arc.app'
 alt-shift-c = 'exec-and-forget open -a /Applications/Microsoft\ Teams.app'
 alt-shift-d = 'exec-and-forget open -a /Applications/TablePlus.app'
 alt-shift-e = 'exec-and-forget open -a "Mission Control"'
@@ -75,6 +76,10 @@ if.app-id = 'com.postmanlabs.mac'
 run='move-node-to-workspace 1'
 
 [[on-window-detected]]
+if.app-id = 'io.httpie.desktop'
+run='move-node-to-workspace 1'
+
+[[on-window-detected]]
 if.app-id = 'com.mongodb.compass'
 run='move-node-to-workspace 1'
 
@@ -98,7 +103,7 @@ run='move-node-to-workspace 2'
 
 # Workspace 3 Apps
 [[on-window-detected]]
-if.app-id = 'org.mozilla.com.zen.browser'
+if.app-id = 'app.zen-browser.zen'
 run='move-node-to-workspace 3'
 
 [[on-window-detected]]

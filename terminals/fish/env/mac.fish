@@ -42,7 +42,7 @@ set -gx GOROOT
 set -gx GOBIN  $(go env GOBIN)
 set -gx GOPATH $HOME/development/golib
 set -gx GO111MODULE on
-set -gx GOV $(mise where golang)
+set -gx GOV $(asdf where golang)
 fish_add_path $GOPATH/bin
 fish_add_path $GOROOT/bin
 fish_add_path $GOBIN
