@@ -1,17 +1,21 @@
-alias gm='git merge'
+alias gb='git branch'
+alias gco='git checkout'
+
+alias gcm='git commit -m'
+alias gcp='git cherry-pick'
+
 alias gs='git status'
 alias gst='git stash'
+
 alias gp='git push'
 alias gpf='git push --force-with-lease'
+
+alias gm='git merge'
 alias gl='git pull'
-alias gpo='git pull origin'
-alias gco='git checkout'
-alias gci='git commit'
+alias glo='git pull origin'
+
 alias grs='git reset --soft'
 alias grh='git reset --hard'
-alias gc='git remote prune origin'
-alias gbda='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(master|develop|dev)\s*$argv)" | command xargs -n 1 git branch -d'
-alias gfa='git fetch --all --prune'
 
 alias ghcs='gh copilot suggest'
 alias ghce='gh copilot explain'
