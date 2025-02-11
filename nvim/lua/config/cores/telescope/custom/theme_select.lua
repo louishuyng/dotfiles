@@ -17,8 +17,8 @@ local M = {}
 
 local theme_list = {
   { value = 'base',      display = 'Base' },
+  { value = 'paper',     display = 'Paper' },
   { value = 'solarized', display = 'Solarized' },
-  { value = 'frappe',    display = 'Frappe' },
   { value = 'latte',     display = 'Latte' },
 }
 

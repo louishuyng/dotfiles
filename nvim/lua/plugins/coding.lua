@@ -35,6 +35,9 @@ return {
   -- ROR
   { 'tpope/vim-rails' },
 
+  -- Golang
+  { 'fatih/vim-go' },
+
   -- Testing
   { 'vim-test/vim-test',                          dependencies = { 'preservim/vimux' } },
 }

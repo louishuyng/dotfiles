@@ -3,6 +3,7 @@ local highlight_utils = require 'ui.highlight_utils'
 local transaprent = highlight_utils.transaprent
 local gitTransparent = highlight_utils.gitTransparent
 local highlight_telescope = highlight_utils.highlight_telescope
+local diagnosticTransparent = highlight_utils.diagnosticTransparent
 
 if vim.g.theme == "base" then
   vim.cmd [[
@@ -10,7 +11,7 @@ if vim.g.theme == "base" then
 
     colorscheme base-jabuti
 
-    hi Normal guibg=#262221
+    hi Normal guibg=#1A1A1A
     hi MiniStatuslineModeNormal guifg=#BE95FF guibg=NONE
     hi MiniStatuslineModeInsert guifg=#FFA07A guibg=NONE
     hi MiniStatuslineModeVisual guifg=#98C379 guibg=NONE
@@ -23,10 +24,10 @@ if vim.g.theme == "base" then
 
   local colors = {}
 
-  colors.input = "#211D1C"
-  colors.result = "#211D1C"
+  colors.input = "#242137"
+  colors.result = "#242137"
   colors.counter = "#739B79"
-  colors.selection_bg = "#383635"
+  colors.selection_bg = "#2E3338"
   colors.title = "#739B79"
   colors.title_bg = "#2E2C2F"
 
@@ -34,20 +35,26 @@ if vim.g.theme == "base" then
   transaprent()
 end
 
-if vim.g.theme == "frappe" then
+if vim.g.theme == "paper" then
   vim.cmd [[
     set background=dark
-    colorscheme catppuccin
+    colorscheme PaperColor
+
+    hi WinSeparator guifg=#606765 guibg=NONE
+    hi Visual guibg=#8787AF guifg=#000009
   ]]
 
+  diagnosticTransparent()
   transaprent()
 
   local colors = {}
 
-  colors.input = "#191B1C"
-  colors.result = "#191B1C"
-  colors.counter = "#89B482"
-  colors.selection_bg = "#252626"
+  colors.input = "#242137"
+  colors.result = "#242137"
+  colors.counter = "#739B79"
+  colors.selection_bg = "#2E3338"
+  colors.title = "#739B79"
+  colors.title_bg = "#2E2C2F"
 
   highlight_telescope(colors)
 end

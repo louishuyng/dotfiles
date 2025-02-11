@@ -8,7 +8,7 @@ vim.g.startup_bookmarks = {
   ["K"] = '~/.dotfiles/terminals/kitty/kitty.conf',
 }
 
-vim.g.theme = "base"
+vim.g.theme = "paper"
 vim.g.auto_format = true
 
 -- Mise Integration
@@ -124,6 +124,7 @@ vim.cmd [[au FileType go set noexpandtab]]
 vim.cmd [[au FileType go set shiftwidth=2]]
 vim.cmd [[au FileType go set softtabstop=2]]
 vim.cmd [[au FileType go set tabstop=2]]
+vim.cmd [[au FileType go set nolist]]
 
 -- LSP
 vim.g.auto_format = true

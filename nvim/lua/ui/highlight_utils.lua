@@ -15,6 +15,7 @@ local function transaprent(opts)
     hi LineNr guibg=NONE
     hi MsgArea guibg=NONE
     hi Winbar guibg=NONE
+    hi Whitespace guibg=NONE
   ]]
 end
 
@@ -28,6 +29,15 @@ local function gitTransparent()
     hi GitSignsStagedChange guibg=NONE
     hi GitSignsStagedDelete guibg=NONE
     hi GitSignsStagedChangeDelete guibg=NONE
+  ]]
+end
+
+local function diagnosticTransparent()
+  vim.cmd [[
+    hi DiagnosticError guibg=NONE
+    hi DiagnosticWarn guibg=NONE
+    hi DiagnosticInfo guibg=NONE
+    hi DiagnosticHint guibg=NONE
   ]]
 end
 
@@ -59,4 +69,5 @@ return {
   transaprent = transaprent,
   gitTransparent = gitTransparent,
   highlight_telescope = highlight_telescope,
+  diagnosticTransparent = diagnosticTransparent,
 }

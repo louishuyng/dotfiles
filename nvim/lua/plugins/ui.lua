@@ -15,22 +15,13 @@ return {
     end
   },
   {
-    "echasnovski/mini.icons",
+    "DaikyXendo/nvim-material-icon",
     lazy = true,
-    opts = {
-      file = {
-        [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
-        ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
-      },
-      filetype = {
-        dotenv = { glyph = "", hl = "MiniIconsYellow" },
-      },
-    },
     init = function()
-      package.preload["nvim-web-devicons"] = function()
-        require("mini.icons").mock_nvim_web_devicons()
-        return package.loaded["nvim-web-devicons"]
-      end
+      require 'nvim-web-devicons'.setup {
+        color_icons = true,
+        default = true,
+      }
     end,
   },
   {
@@ -82,36 +73,31 @@ return {
       return opts
     end,
   },
+  { "SmiteshP/nvim-navic" },
+  -- {
+  --   'echasnovski/mini.statusline',
+  --   config = function()
+  --     local statusline = require("mini.statusline")
+  --     statusline.setup({
+  --       use_icons = vim.g.have_nerd_font,
+  --     })
+  --     ---@diagnostic disable-next-line: duplicate-set-field
+  --     statusline.section_location = function()
+  --       return "%2l:%-2v"
+  --     end
+  --
+  --     statusline.section_filename = function()
+  --       -- Short path
+  --       return vim.fn.expand("%:~:.:.")
+  --     end
+  --
+  --     statusline.section_filetype = function()
+  --       return "%#MiniStatuslineModeNormal# " .. vim.bo.filetype
+  --     end
+  --   end
+  -- },
   {
-    "utilyre/barbecue.nvim",
-    name = "barbecue",
-    version = "*",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-    },
-    config = function()
-      require("barbecue").setup({
-        create_autocmd = false, -- prevent barbecue from updating itself automatically
-        theme = {
-          normal = { bg = "NONE" },
-        }
-      })
-
-      vim.api.nvim_create_autocmd({
-          "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
-          "BufWinEnter",
-          "CursorHold",
-          "InsertLeave",
-
-          -- include this if you have set `show_modified` to `true`
-          -- "BufModifiedSet",
-        },
-        {
-          group = vim.api.nvim_create_augroup("barbecue.updater", {}),
-          callback = function()
-            require("barbecue.ui").update()
-          end,
-        })
-    end,
+    "nvim-lualine/lualine.nvim",
+    opts = {}
   },
 }
