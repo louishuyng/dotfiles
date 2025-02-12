@@ -1,3 +1,5 @@
+alias glp='git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s"'
+
 alias gb='git branch'
 alias gco='git checkout'
 
