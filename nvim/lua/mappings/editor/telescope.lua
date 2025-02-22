@@ -1,3 +1,5 @@
+local harpoon = require('harpoon')
+
 local telescope = require("telescope")
 local dropdown_theme = require("config.cores.telescope.theme").dropdown_theme
 
@@ -28,7 +30,7 @@ end, opt)
 
 -- -- LSP Finding
 vim.keymap.set('n', 'gr', function()
-  require('telescope.builtin').lsp_references(dropdown_theme("References"))
+  require('telescope.builtin').lsp_references(dropdown_theme("References", true))
 end, opt)
 
 -- TODO list

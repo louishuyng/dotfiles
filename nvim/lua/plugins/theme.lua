@@ -6,6 +6,9 @@ return {
       -- Blank to address startup error
     end,
     init = function()
+      vim.cmd [[
+        source $VIMRUNTIME/colors/vim.lua
+      ]]
       vim.opt.termguicolors = true
       vim.cmd.colorscheme 'PaperColor'
     end,

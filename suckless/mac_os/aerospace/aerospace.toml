@@ -1,4 +1,6 @@
-after-startup-command = ['exec-and-forget sketchybar']
+after-startup-command = [
+  'exec-and-forget sketchybar',
+]
 
 exec-on-workspace-change = [
   '/bin/bash',
@@ -18,18 +20,21 @@ inner.vertical =   14
 outer.left =       0
 outer.bottom =     0
 outer.top = [{ monitor."Builtin-in" = 0 }, { monitor."4K" = 27 }, 0]
+# outer.bottom =     27
+# outer.top = 0
 outer.right =      0
 
 [mode.main.binding]
 alt-shift-b = 'exec-and-forget open -a /Applications/Zen\ Browser.app'
 # alt-shift-b = 'exec-and-forget open -a /Applications/Arc.app'
 alt-shift-c = 'exec-and-forget open -a /Applications/Microsoft\ Teams.app'
-alt-shift-d = 'exec-and-forget open -a /Applications/TablePlus.app'
+alt-shift-d = 'exec-and-forget open -a /Applications/DataGrip.app'
 alt-shift-e = 'exec-and-forget open -a "Mission Control"'
 alt-shift-f = 'exec-and-forget open -a /Applications/Marta.app'
 alt-shift-m = 'exec-and-forget open -a /Applications/Spark\ Desktop.app'
 alt-shift-n = 'exec-and-forget open -a /Applications/Inkdrop.app'
 alt-shift-s = 'exec-and-forget open -a /Applications/Slack.app'
+# alt-shift-t = 'exec-and-forget open -a /Applications/Alacritty.app'
 alt-shift-t = 'exec-and-forget open -a /Applications/Ghostty.app'
 
 alt-1 = 'workspace 1'
@@ -83,6 +88,9 @@ run='move-node-to-workspace 1'
 if.app-id = 'com.mongodb.compass'
 run='move-node-to-workspace 1'
 
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.datagrip'
+run='move-node-to-workspace 1'
 
 # Workspace 2 Apps
 [[on-window-detected]]

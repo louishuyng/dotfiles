@@ -67,27 +67,14 @@ return {
     }
   },
 
-  { 'michaelb/sniprun',          build = 'sh install.sh' }, -- Run code
-
-  -- Focus
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    opts = {
-      plugins = {
-        gitsigns = true,
-        tmux = true,
-        kitty = { enabled = false, font = "+2" }
-      }
-    },
-    keys = { { "<C-w>o", "<cmd>ZenMode<cr>", desc = "Zen Mode" } }
-  },
+  { 'michaelb/sniprun',              build = 'sh install.sh' }, -- Run code
 
   -- Git
   { 'tpope/vim-fugitive' },
-  { 'lewis6991/gitsigns.nvim',   dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'lewis6991/gitsigns.nvim',       dependencies = { 'nvim-lua/plenary.nvim' } },
   { 'sindrets/diffview.nvim' },
-  { 'akinsho/git-conflict.nvim', version = "*",                             config = true },
+  { 'akinsho/git-conflict.nvim',     version = "*",                             config = true },
+  { 'ThePrimeagen/git-worktree.nvim' },
 
   -- Markdown
   {
@@ -133,6 +120,42 @@ return {
     'dyng/ctrlsf.vim'
   },
 
+
+  -- Exploring Files
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+
+    config = function()
+      require('oil').setup({
+        keymaps = {
+          ["l"] = "actions.select",
+          ["<C-v>"] = { "actions.select", opts = { vertical = true } },
+          ["<C-s>"] = { "actions.select", opts = { horizontal = true } },
+          ["q"] = { "actions.close", mode = "n" },
+          ["h"] = { "actions.parent", mode = "n" },
+        },
+      })
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "OilActionsPost",
+        callback = function(event)
+          if event.data.actions.type == "move" then
+            Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
+          end
+        end,
+      })
+    end,
+  },
+
+
   -- MINI plugins
   {
     'echasnovski/mini.ai',
@@ -171,5 +194,4 @@ return {
       require('mini.pairs').setup({})
     end
   },
-  { 'echasnovski/mini.files' }
 }

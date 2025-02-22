@@ -2,17 +2,9 @@ return {
   {
     "LazyVim/LazyVim",
   },
-  {
-    "folke/snacks.nvim"
-  },
+  { "folke/snacks.nvim" },
   {
     "vuki656/package-info.nvim",
-  },
-  {
-    'max397574/startup.nvim',
-    config = function()
-      require("startup").setup({ theme = "startify" })
-    end
   },
   {
     "DaikyXendo/nvim-material-icon",

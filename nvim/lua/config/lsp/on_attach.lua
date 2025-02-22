@@ -1,5 +1,6 @@
 -- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local navic = require("nvim-navic")
 
 local lsp_formatting = function(bufnr)
   vim.lsp.buf.format({
@@ -38,5 +39,9 @@ return function(client, bufnr)
       buffer = bufnr,
       callback = function() lsp_formatting(bufnr) end
     })
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
   end
 end

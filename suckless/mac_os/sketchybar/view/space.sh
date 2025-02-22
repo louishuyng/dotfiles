@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SPACE_ICONS=("Debug" "Code" "\$internet" "@chat" "⚡" "External")
+SPACE_ICONS=("?debug" ">develop" "#internet" "@chat" "^boost" "*external")
 
 YELLOW=#eed49f
 GREEN=#8DC583
@@ -36,7 +36,6 @@ for i in "${!SPACE_ICONS[@]}"; do
              --subscribe space.$sid aerospace_workspace_change \
              --set space.$sid \
                         icon=${SPACE_ICONS[i]}                    \
-                        icon.font="$LABEL:SemiBold:15"            \
                         icon.padding_left=7                      \
                         icon.padding_right=7                     \
                         icon.color=0xff${DEACTIVATE:1}       \

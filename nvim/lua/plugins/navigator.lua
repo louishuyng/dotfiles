@@ -4,27 +4,36 @@ return {
     'nvim-telescope/telescope.nvim',
     cmd = "Telescope",
     dependencies = {
-      { "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
-      { "nvim-telescope/telescope-live-grep-args.nvim" },
-      "nvim-telescope/telescope-file-browser.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim",  build = "make" },
+      { "nvim-telescope/telescope-file-browser.nvim" },
     }
   },
-  --  streamline your workflow by helping you manage and quickly switch between frequently used files
   {
-    "jackMort/tide.nvim",
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     config = function()
-      require("tide").setup({
-        keys = {
-          leader = ";",     -- Leader key to prefix all Tide commands
-          panel = ";",      -- Open the panel (uses leader key as prefix)
-          add_item = "a",   -- Add a new item to the list (leader + 'a')
-          delete = "d",     -- Remove an item from the list (leader + 'd')
-          clear_all = "x",  -- Clear all items (leader + 'x')
-          horizontal = "s", -- Split window horizontally (leader + '-')
-          vertical = "v",   -- Split window vertically (leader + '|')
-        },
+      local harpoon = require("harpoon")
+      harpoon:setup()
+
+      vim.keymap.set("n", ";a", function() harpoon:list():add() end)
+      vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+      harpoon:extend({
+        UI_CREATE = function(cx)
+          vim.keymap.set("n", "<C-v>", function()
+            harpoon.ui:select_menu_item({ vsplit = true })
+          end, { buffer = cx.bufnr })
+
+          vim.keymap.set("n", "<C-s>", function()
+            harpoon.ui:select_menu_item({ split = true })
+          end, { buffer = cx.bufnr })
+
+          vim.keymap.set("n", "<C-t>", function()
+            harpoon.ui:select_menu_item({ tabedit = true })
+          end, { buffer = cx.bufnr })
+        end,
       })
-    end,
+    end
   },
   { 'nvim-tree/nvim-tree.lua', tag = 'nightly' },
   {

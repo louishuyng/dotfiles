@@ -31,7 +31,7 @@ local colors = {
 
 if vim.g.theme == "frappe" then
   colors = {
-    bg0 = "#232232",
+    bg0 = "#191B1C",
     bg1 = "#2F2E3E",
     bg2 = "#474655",
     fg0 = "#E7EBF1",
@@ -120,7 +120,7 @@ local theme = {
 
 lualine.setup {
   options = {
-    theme = vim.g.theme == 'frappe' and 'auto' or theme,
+    theme = theme,
     globalstatus = true,
     disabled_filetypes = { statusline = { "dashboard", "alpha", "intro" } },
     section_separators = { left = '', right = '' },

@@ -7,7 +7,7 @@ ITEM_DIR="$HOME/.config/sketchybar/view"
 
 PADDING=4
 PADDING_LABEL=4
-LABEL="JetBrainsMono Nerd Font"
+LABEL="Geist Mono"
 LABEL_COLOR=#48e566
 
 sketchybar --bar     height=27                                            \
@@ -21,8 +21,8 @@ sketchybar --bar     height=27                                            \
                                                                           \
            --default updates=when_shown                                   \
                      drawing=on                                           \
-                     icon.font="$LABEL:Bold:15"                      \
-                     label.font="$LABEL:Bold:15"                    \
+                     icon.font="$LABEL:Regular:15"                      \
+                     label.font="$LABEL:Regular:15"                    \
                      icon.padding_left=$PADDING                           \
                      icon.padding_right=2                          \
                      label.padding_left=$PADDING_LABEL                          \

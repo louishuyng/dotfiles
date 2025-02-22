@@ -429,6 +429,8 @@ install_cli_tools() {
     brew install mac-brightnessctl
     brew install --cask dangerzone
 
+    brew install chafa # Image view in terminal
+
     # Devops
     brew install bat # Better cat
     brew install exa # Better ls

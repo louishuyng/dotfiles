@@ -14,6 +14,8 @@ function custom_bindings
 
   # C-e to edit the current command line in nvim
   bind --mode insert \ce edit_command_buffer
+
+  bind --mode insert \cy 'yazi'
 end
 
 function atuin_bindings

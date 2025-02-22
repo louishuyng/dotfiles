@@ -1,5 +1,5 @@
 name: Regask
-root: ~/Dev/repository/github.com/regask
+root: ~/LX14/repository/github.com/regask
 attach: false
 windows:
   - gitops:
