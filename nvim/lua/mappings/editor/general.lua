@@ -52,3 +52,6 @@ vim.keymap.set("n", "<leader>lu", ":Lazy update<CR>", opt)
 -- Editing Auto Approve PRs
 vim.cmd("command! EditAutoApprovePRs :e ~/Dev/Projects/Regask/auto_approve_prs.txt")
 vim.cmd("command! ApprovePRs :!auto_approve_prs")
+
+-- Tmux
+vim.keymap.set("n", "<leader>.", ":VimuxRunLastCommand<CR>", opt)

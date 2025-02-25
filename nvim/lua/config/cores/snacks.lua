@@ -44,7 +44,7 @@ snacks.setup {
               vim.fn.jobstart("gh issue list --web", { detach = true })
             end,
             icon = " ",
-            height = 7,
+            height = 5,
           },
           {
             icon = " ",
@@ -54,21 +54,21 @@ snacks.setup {
             action = function()
               vim.fn.jobstart("gh pr list --web", { detach = true })
             end,
-            height = 7,
+            height = 5,
           },
           {
             icon = " ",
             title = "Git Status",
             cmd = "git --no-pager diff --stat -B -M -C",
-            height = 10,
+            height = 5,
           },
         }
         return vim.tbl_map(function(cmd)
           return vim.tbl_extend("force", {
             section = "terminal",
             enabled = in_git,
-            padding = 1,
-            ttl = 5 * 60,
+            padding = 0,
+            ttl = 30,
             indent = 3,
           }, cmd)
         end, cmds)
