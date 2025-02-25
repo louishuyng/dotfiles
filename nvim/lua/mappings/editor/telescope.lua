@@ -92,12 +92,6 @@ vim.keymap.set("n", "<leader>fd", function()
   local builtin = require("telescope.builtin").diagnostics(dropdown_theme("Diagnostics"))
 end)
 
--- Lists Function names, variables, from Treesitter
-vim.keymap.set("n", ";s", function()
-  local builtin = require("telescope.builtin")
-  builtin.treesitter(dropdown_theme("Treesitter"))
-end)
-
 -- NEST JS
 vim.keymap.set("n", "<leader>fn", function()
   require('config.cores.telescope.custom.nest_js')({

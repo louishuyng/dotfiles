@@ -6,6 +6,7 @@ snacks.setup {
   zen = { enabled = true },
   rename = { enabled = true },
   quickfile = { enabled = true },
+  input = { enabled = true },
   lazygit = {
     enabled = true,
     os = { editPreset = "nvim-remote" },

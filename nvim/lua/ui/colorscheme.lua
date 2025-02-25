@@ -40,10 +40,13 @@ if vim.g.theme == "paper" then
     colorscheme PaperColor
 
     hi Normal guibg=NONE
-    hi CursorLineNr guibg=NONE
+    hi CursorLineNr guibg=#303030
+    hi NormalFloat guibg=NONE
     hi WinSeparator guifg=#606765 guibg=NONE
     hi Visual guibg=#8787AF guifg=#000009
     hi NonText guibg=NONE
+
+    hi NamuPreview guibg=#303030 guifg=#ebdbb2
   ]]
 
   diagnosticTransparent()

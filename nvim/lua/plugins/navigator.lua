@@ -9,6 +9,7 @@ return {
       { "nvim-telescope/telescope-file-browser.nvim" },
     }
   },
+  { 'bassamsdata/namu.nvim' },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
