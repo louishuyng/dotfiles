@@ -30,7 +30,6 @@ alt-shift-b = 'exec-and-forget open -a /Applications/Zen\ Browser.app'
 alt-shift-c = 'exec-and-forget open -a /Applications/Microsoft\ Teams.app'
 alt-shift-d = 'exec-and-forget open -a /Applications/DataGrip.app'
 alt-shift-e = 'exec-and-forget open -a "Mission Control"'
-alt-shift-f = 'exec-and-forget open -a /Applications/Marta.app'
 alt-shift-m = 'exec-and-forget open -a /Applications/Spark\ Desktop.app'
 alt-shift-n = 'exec-and-forget open -a /Applications/Inkdrop.app'
 alt-shift-s = 'exec-and-forget open -a /Applications/Slack.app'
@@ -65,14 +64,14 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 alt-shift-j = 'move down'
 
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+alt-f = 'layout accordion tiles'
+alt-r = 'layout horizontal vertical'
 
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
 alt-0 = 'flatten-workspace-tree'
 
-alt-f = 'layout floating tiling'
+alt-shift-f = 'layout floating tiling'
 alt-ctrl-shift-y = 'reload-config'
 
 # Workspace 1 Apps
