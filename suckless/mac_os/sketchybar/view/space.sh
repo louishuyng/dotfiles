@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SPACE_ICONS=("?debug" ">develop" "#internet" "@chat" "^boost" "*external")
+SPACE_ICONS=("infra" "code" "web" "chat" "notes" "external")
 
 YELLOW=#eed49f
 GREEN=#8DC583

@@ -21,8 +21,8 @@ sketchybar --bar     height=27                                            \
                                                                           \
            --default updates=when_shown                                   \
                      drawing=on                                           \
-                     icon.font="$LABEL:Regular:15"                      \
-                     label.font="$LABEL:Regular:15"                    \
+                     icon.font="$LABEL:Regular:16"                      \
+                     label.font="$LABEL:Regular:16"                    \
                      icon.padding_left=$PADDING                           \
                      icon.padding_right=2                          \
                      label.padding_left=$PADDING_LABEL                          \

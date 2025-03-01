@@ -9,6 +9,6 @@ wifi=(
 
 sketchybar --add item wifi right \
            --set wifi "${wifi[@]}" \
-                 icon.font="$LABEL:SemiBold:14"         \
+                 icon.font="$LABEL:SemiBold:16"         \
+                 icon.padding_bottom=10                             \
            --subscribe wifi wifi_change mouse.clicked
-
