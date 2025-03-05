@@ -14,10 +14,11 @@ sketchybar --bar     height=27                                            \
                      blur_radius=0                                        \
                      padding_left=4                                       \
                      padding_right=4                                      \
-                     color=0xff000000                                   \
-                     position=top                                      \
+                     color=0xff272727                                   \
+                     position=bottom                                      \
                      sticky=on                                            \
                      font_smoothing=on                                    \
+                     topmost=window                                           \
                                                                           \
            --default updates=when_shown                                   \
                      drawing=on                                           \
