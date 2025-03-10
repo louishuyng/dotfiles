@@ -115,3 +115,13 @@ vim.lsp.handlers['textDocument/hover'] =
     vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 vim.lsp.handlers['textDocument/signatureHelp'] =
     vim.lsp.with(vim.lsp.handlers.signatureHelp, { border = "single" })
+
+vim.keymap.set("n", "<leader>A", function()
+  local current_status = vim.fn.execute("Copilot status")
+
+  if current_status:find("Offline") then
+    vim.cmd("Copilot enable")
+  else
+    vim.cmd("Copilot disable")
+  end
+end, { desc = "Toggle Copilot" })
