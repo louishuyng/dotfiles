@@ -1,5 +1,3 @@
-local harpoon = require('harpoon')
-
 local telescope = require("telescope")
 local dropdown_theme = require("config.cores.telescope.theme").dropdown_theme
 
@@ -10,7 +8,7 @@ vim.keymap.set("n", "<c-p>", function()
   require('telescope.builtin').find_files(dropdown_theme("Files"))
 end, opt)
 
-vim.keymap.set("n", "<leader><leader>", function()
+vim.keymap.set("n", "<leader>fb", function()
   return require('telescope.builtin').buffers(dropdown_theme("Buffers"))
 end, opt)
 
@@ -92,12 +90,12 @@ vim.keymap.set("n", "<leader>fd", function()
   local builtin = require("telescope.builtin").diagnostics(dropdown_theme("Diagnostics"))
 end)
 
--- NEST JS
-vim.keymap.set("n", "<leader>fn", function()
-  require('config.cores.telescope.custom.nest_js')({
-    search = vim.fn.input("Search nest_js: ")
-  })
-end)
+-- -- NEST JS
+-- vim.keymap.set("n", "<leader>fn", function()
+--   require('config.cores.telescope.custom.nest_js')({
+--     search = vim.fn.input("Search nest_js: ")
+--   })
+-- end)
 
 -- Rest
 vim.keymap.set("n", "<leader>ce", function()
