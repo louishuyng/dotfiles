@@ -1,10 +1,9 @@
 local opts = { silent = true }
 
-vim.keymap.set("n", "<leader>nt", ":tabnew<CR>", opts)
+vim.keymap.set("n", "<S-t>", ":tabnew<CR>", opts)
 
-vim.keymap.set("n", "1<Tab>", "1gt", opts)
-vim.keymap.set("n", "2<Tab>", "2gt", opts)
-vim.keymap.set("n", "3<Tab>", "3gt", opts)
+vim.keymap.set("n", "[<Tab>", ":tabprevious<CR>", opts)
+vim.keymap.set("n", "]<Tab>", ":tabnext<CR>", opts)
 
 -- Move to previous/next
 vim.keymap.set('n', ',q', ':bprevious<CR>', opts)

@@ -29,7 +29,7 @@ local colors = {
   purple1 = "#CBA6F7",
 }
 
-if vim.g.theme == "frappe" then
+if vim.g.theme == "catppuccin" then
   colors = {
     bg0 = "#191B1C",
     bg1 = "#2F2E3E",
@@ -49,7 +49,7 @@ if vim.g.theme == "frappe" then
   }
 end
 
-if vim.g.theme == "latte" then
+if vim.g.theme == "light" then
   colors = {
     bg0 = "#F6EDE3",
     bg1 = "#E5DFD4",
@@ -69,25 +69,6 @@ if vim.g.theme == "latte" then
   }
 end
 
-if vim.g.theme == 'solarized' then
-  colors = {
-    bg0 = "#002B36",
-    bg1 = "#073642",
-    bg2 = "#586E75",
-    fg0 = "#839496",
-    fg1 = "#93A1A1",
-    fg2 = "#EEE8D5",
-    red0 = "#DC322F",
-    red1 = "#CB4B16",
-    yellow0 = "#B58900",
-    yellow1 = "#657B83",
-    green0 = "#859900",
-    green1 = "#2AA198",
-    blue1 = "#268BD2",
-    purple0 = "#6C71C4",
-    purple1 = "#D33682",
-  }
-end
 
 local theme = {
   normal = {
@@ -96,19 +77,19 @@ local theme = {
     c = { bg = colors.bg0, fg = colors.fg2 },
   },
   insert = {
-    a = { bg = colors.green0, fg = colors.bg0 },
+    a = { bg = colors.bg0, fg = colors.green0 },
     b = { bg = colors.bg0, fg = colors.green1 },
   },
   command = {
-    a = { bg = colors.yellow0, fg = colors.bg0 },
+    a = { bg = colors.bg0, fg = colors.yellow0 },
     b = { bg = colors.bg0, fg = colors.yellow1 },
   },
   visual = {
-    a = { bg = colors.blue1, fg = colors.bg0 },
+    a = { bg = colors.bg0, fg = colors.blue1 },
     b = { bg = colors.bg0, fg = colors.blue1 },
   },
   replace = {
-    a = { bg = colors.red0, fg = colors.bg0 },
+    a = { bg = colors.bg0, fg = colors.red0 },
     b = { bg = colors.bg0, fg = colors.red1 },
   },
   inactive = {
@@ -117,6 +98,18 @@ local theme = {
     c = { bg = colors.bg0, fg = colors.bg1 },
   }
 }
+
+local marlin = require("marlin")
+
+local marlin_component = function()
+  local indexes = marlin.num_indexes()
+  if indexes == 0 then
+    return ""
+  end
+  local cur_index = marlin.cur_index()
+
+  return " " .. cur_index .. "/" .. indexes
+end
 
 lualine.setup {
   options = {
@@ -128,7 +121,7 @@ lualine.setup {
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "" },
+    lualine_b = { marlin_component },
 
     lualine_c = {
       Util.lualine.root_dir(),
@@ -141,8 +134,6 @@ lualine.setup {
           hint = "H"
         },
       },
-      { "filetype",                icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-      { Util.lualine.pretty_path() },
       {
         require("package-info").get_status,
       },

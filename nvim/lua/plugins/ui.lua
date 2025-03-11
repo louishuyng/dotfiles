@@ -6,9 +6,26 @@ return {
   {
     "vuki656/package-info.nvim",
   },
+  { 'romgrk/barbar.nvim' },
   {
     "DaikyXendo/nvim-material-icon",
     lazy = true,
+    opts = {
+      override_by_extension = {
+        ["c++"] = {
+          icon = "",
+          color = "#0188d1",
+          cterm_color = "32",
+          name = "cjj",
+        },
+        ["h++"] = {
+          icon = "",
+          color = "#0188d1",
+          cterm_color = "32",
+          name = "hjj",
+        },
+      },
+    },
     init = function()
       require 'nvim-web-devicons'.setup {
         color_icons = true,
