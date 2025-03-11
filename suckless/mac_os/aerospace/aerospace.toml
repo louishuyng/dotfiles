@@ -17,14 +17,13 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 14
 inner.vertical =   14
+outer.top = [{ monitor."builtin-in" = 0 }, { monitor."BenQ" = 0 }, 0]
+outer.bottom = [{ monitor."builtin-in" = 0 }, { monitor."BenQ" = 27 }, 0]
 outer.left =       0
-outer.bottom =     27
-outer.top = [{ monitor."Builtin-in" = 0 }, { monitor."4K" = 27 }, 0]
-# outer.bottom =     27
-# outer.top = 0
 outer.right =      0
 
 [mode.main.binding]
+alt-shift-a = 'exec-and-forget open -a /Applications/Claude.app'
 alt-shift-b = 'exec-and-forget open -a /Applications/Zen\ Browser.app'
 # alt-shift-b = 'exec-and-forget open -a /Applications/Arc.app'
 alt-shift-c = 'exec-and-forget open -a /Applications/Microsoft\ Teams.app'
@@ -101,6 +100,10 @@ if.app-id = 'org.alacritty'
 run='move-node-to-workspace 2'
 
 [[on-window-detected]]
+if.app-id = 'com.exafunction.windsurf'
+run='move-node-to-workspace 2'
+
+[[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
 run='move-node-to-workspace 2'
 
@@ -127,42 +130,38 @@ run='move-node-to-workspace 3'
 
 # Workspace 4 Apps
 [[on-window-detected]]
-if.app-id = 'com.hnc.Discord'
+if.app-id = 'info.pkpk.inkdrop'
 run='move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'com.microsoft.teams2'
+if.app-id = 'com.kingsoft.wpsoffice.mac.global'
 run='move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
+if.app-id = 'com.anthropic.claudefordesktop'
 run='move-node-to-workspace 4'
 
 # Workspace 5 Apps
 [[on-window-detected]]
-if.app-id = 'info.pkpk.inkdrop'
+if.app-id = 'com.hnc.Discord'
 run='move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'com.amazon.Lassen'
-run=['layout floating', 'move-node-to-workspace 5']
-
-[[on-window-detected]]
-if.app-id = 'com.culturedcode.ThingsMac'
-run=['layout floating', 'move-node-to-workspace 5']
-
-[[on-window-detected]]
-if.app-id = 'com.kingsoft.wpsoffice.mac.global'
+if.app-id = 'com.microsoft.teams2'
 run='move-node-to-workspace 5'
 
-# Workspace 6 Apps
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run='move-node-to-workspace 5'
+
 [[on-window-detected]]
 if.app-id = 'com.facebook.archon.developerID'
-run = ['layout floating', 'move-node-to-workspace 6']
+run = ['layout floating', 'move-node-to-workspace 5']
 
+# Workspace 6 Apps
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = ['layout floating', 'move-node-to-workspace 6']
 
 [workspace-to-monitor-force-assignment]
-6 = 'secondary'
+6 = '^built-in'
