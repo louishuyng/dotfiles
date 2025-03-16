@@ -4,7 +4,7 @@ local actions = require 'telescope.actions'
 telescope.setup {
   defaults = {
     file_ignore_patterns = {
-      ".git/", "node_modules/", "vendor/", "target/", "dist/", "build/", ".cache/"
+      ".git/",
     },
     vimgrep_arguments = {
       "rg",
@@ -37,7 +37,7 @@ telescope.setup {
         theme = "ivy",
         initial_mode = "normal",
         layout_config = { preview_cutoff = 9999 }
-      }
+      },
     },
     border = {},
     borderchars = {

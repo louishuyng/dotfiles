@@ -1,5 +1,6 @@
-local dropdown_theme = function(title, previewer)
+local dropdown_theme = function(title, previewer, ignore)
   previewer = previewer or false
+  ignore = ignore or false
 
   return require('telescope.themes').get_dropdown({
     results_height = 20,
@@ -9,6 +10,7 @@ local dropdown_theme = function(title, previewer)
     prompt_prefix = title .. ' > ',
     selection_caret = ' ',
     hidden = true,
+    no_ignore = ignore,
     previewer = previewer,
     preview_title = 'Preview',
     borderchars = {
