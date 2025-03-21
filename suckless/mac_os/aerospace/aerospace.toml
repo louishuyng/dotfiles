@@ -33,22 +33,23 @@ alt-r = 'workspace R' # Reading books or Research (Kindle, pdf, etc)
 alt-m = 'workspace M' # Music (Spotify)
 alt-a = 'workspace A' # Anything (Social Media, etc)
 
-alt-shift-i = ['move-node-to-workspace I', 'workspace I']
-alt-shift-c = ['move-node-to-workspace C', 'workspace C']
-alt-shift-t = ['move-node-to-workspace T', 'workspace T']
-alt-shift-b = ['move-node-to-workspace B', 'workspace B']
-alt-shift-n = ['move-node-to-workspace N', 'workspace N']
-alt-shift-r = ['move-node-to-workspace R', 'workspace R']
-alt-shift-m = ['move-node-to-workspace M', 'workspace M']
-alt-shift-s = ['move-node-to-workspace S', 'workspace S']
-alt-shift-a = ['move-node-to-workspace A', 'workspace A']
+alt-cmd-i = ['move-node-to-workspace I', 'workspace I']
+alt-cmd-c = ['move-node-to-workspace C', 'workspace C']
+alt-cmd-t = ['move-node-to-workspace T', 'workspace T']
+alt-cmd-b = ['move-node-to-workspace B', 'workspace B']
+alt-cmd-n = ['move-node-to-workspace N', 'workspace N']
+alt-cmd-r = ['move-node-to-workspace R', 'workspace R']
+alt-cmd-m = ['move-node-to-workspace M', 'workspace M']
+alt-cmd-s = ['move-node-to-workspace S', 'workspace S']
+alt-cmd-a = ['move-node-to-workspace A', 'workspace A']
 
 alt-tab = 'workspace-back-and-forth'
 
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+# Let 'focus' work when all windows are floating
+alt-h = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace left || $HOME/.config/aerospace/scripts/focus-window.sh left'
+alt-j = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace down || $HOME/.config/aerospace/scripts/focus-window.sh down'
+alt-k = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace up || $HOME/.config/aerospace/scripts/focus-window.sh up'
+alt-l = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace right || $HOME/.config/aerospace/scripts/focus-window.sh right'
 
 alt-shift-h = 'move left'
 alt-shift-k = 'move up'
@@ -68,32 +69,32 @@ alt-ctrl-shift-y = 'reload-config'
 # Workspace Infra
 [[on-window-detected]]
 if.app-id = 'com.mongodb.compass'
-run='move-node-to-workspace I'
+run = ['layout floating', 'move-node-to-workspace I']
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.datagrip'
-run='move-node-to-workspace I'
+run = ['layout floating', 'move-node-to-workspace I']
 
 # Workspace Code
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
-run='move-node-to-workspace C'
+run = ['layout floating', 'move-node-to-workspace C']
 
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'
-run='move-node-to-workspace C'
+run = ['layout floating', 'move-node-to-workspace C']
 
 [[on-window-detected]]
 if.app-id = 'com.exafunction.windsurf'
-run='move-node-to-workspace C'
+run = ['layout floating', 'move-node-to-workspace C']
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run='move-node-to-workspace C'
+run = ['layout floating', 'move-node-to-workspace C']
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
-run='move-node-to-workspace C'
+run = ['layout floating', 'move-node-to-workspace C']
 
 # Workspace Terminal
 [[on-window-detected]]
@@ -111,50 +112,50 @@ run='move-node-to-workspace T'
 # Workspace Browser
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run='move-node-to-workspace B'
+run = ['layout floating', 'move-node-to-workspace B']
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
-run='move-node-to-workspace B'
+run = ['layout floating', 'move-node-to-workspace B']
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
-run='move-node-to-workspace B'
+run = ['layout floating', 'move-node-to-workspace B']
 
 # Workspace Note
 [[on-window-detected]]
 if.app-id = 'info.pkpk.inkdrop'
-run='move-node-to-workspace N'
+run = ['layout floating', 'move-node-to-workspace N']
 
 # Workspace Work
 [[on-window-detected]]
 if.app-id = 'com.readdle.SparkDesktop.appstore'
-run='move-node-to-workspace W'
+run = ['layout floating', 'move-node-to-workspace W']
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run='move-node-to-workspace W'
+run = ['layout floating', 'move-node-to-workspace W']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run='move-node-to-workspace W'
+run = ['layout floating', 'move-node-to-workspace W']
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run='move-node-to-workspace W'
+run = ['layout floating', 'move-node-to-workspace W']
 
 [[on-window-detected]]
 if.app-id = 'com.linear'
-run='move-node-to-workspace W'
+run = ['layout floating', 'move-node-to-workspace W']
 
 # Workspace Reading
 [[on-window-detected]]
 if.app-id = 'com.kingsoft.wpsoffice.mac.global'
-run='move-node-to-workspace R'
+run = ['layout floating', 'move-node-to-workspace R']
 
 [[on-window-detected]]
 if.app-id = 'com.amazon.Lassen'
-run='move-node-to-workspace R'
+run = ['layout floating', 'move-node-to-workspace R']
 
 # Workspace Music
 [[on-window-detected]]
