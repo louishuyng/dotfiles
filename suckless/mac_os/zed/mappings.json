@@ -1,5 +1,13 @@
 [
   {
+    "bindings": {
+      "ctrl-p": "file_finder::Toggle",
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious",
+      "cmd-s": "workspace::ToggleRightDock"
+    }
+  },
+  {
     "context": "Editor && vim_mode == normal",
     "bindings": {
       // General
@@ -11,44 +19,53 @@
       // Split
       ", v": "pane::SplitRight",
       ", s": "pane::SplitUp",
-      "ctrl-h": [
-        "workspace::ActivatePaneInDirection",
-        "Left"
-      ],
-      "ctrl-l": [
-        "workspace::ActivatePaneInDirection",
-        "Right"
-      ],
-      "ctrl-k": [
-        "workspace::ActivatePaneInDirection",
-        "Up"
-      ],
-      "ctrl-j": [
-        "workspace::ActivatePaneInDirection",
-        "Down"
-      ],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
       // Buffer
-      ", q": "pane::ActivatePrevItem",
-      ", w": "pane::ActivateNextItem",
+      "alt-,": "pane::ActivatePreviousItem",
+      "alt-.": "pane::ActivateNextItem",
       ", b d": "pane::CloseActiveItem",
+      ", b d a": "pane::CloseAllItems",
       // Temrinal
-      "space t": "workspace::NewTerminal",
+      "ctrl-t": "workspace::NewTerminal",
       // LSP
       "g f": "editor::GoToDefinition",
       "g v": "editor::GoToDefinitionSplit",
       // Git
       ", g b": "editor::ToggleGitBlame",
       "space g b": "editor::ToggleGitBlameInline",
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
       // Collapse sidebar workspace
-      "ctrl-\\": "workspace::ToggleLeftDock",
+      "ctrl-\\": "project_panel::ToggleFocus",
+      "space v": "outline_panel::ToggleFocus",
+      ", g s": "git_panel::ToggleFocus",
       // Code Action
       "space c a": "editor::ToggleCodeActions",
-      // Find all word match below cursor
-      "ctrl-n": "editor::SelectAllMatches"
+      // Find all word matc hbelow cursor
+      "ctrl-n": "editor::SelectAllMatches",
+      // Diagnostic
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic"
       // TODO:
       // Run Test
       // Run Test in current cursor
       // Run Test in current file
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "use_key_equivalents": true,
+    "bindings": {
+      "\\ \\": "editor::ComposeCompletion"
+    }
+  },
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "\\ \\": "editor::AcceptEditPrediction"
     }
   },
   {
@@ -75,10 +92,58 @@
       "D": "project_panel::Delete",
       // Rename file
       "r": "project_panel::Rename",
-      // Navigate to activepane file
-      "ctrl-l": "project_panel::ToggleFocus",
-      "l": "project_panel::Open",
-      "ctrl-\\": "workspace::ToggleLeftDock"
+      "l": "project_panel::OpenPermanent"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-i": "assistant::InlineAssist",
+      "cmd-l": "assistant::NewChat"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "GitPanel > Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "OutlinePanel > Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      // Close terminal
+      "ctrl-t": "pane::CloseActiveItem"
     }
   }
 ]
