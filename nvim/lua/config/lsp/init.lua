@@ -20,6 +20,7 @@ local ensure_installed = {
   "gopls",
   "golangci-lint",
   "golangci-lint-langserver",
+  -- "delve", Something wrong with this installation installed this package manually
 
   --Zig
   "zls",
