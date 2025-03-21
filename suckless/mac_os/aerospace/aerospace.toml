@@ -23,33 +23,25 @@ outer.left =       0
 outer.right =      0
 
 [mode.main.binding]
-alt-shift-a = 'exec-and-forget open -a /Applications/Claude.app'
-alt-shift-b = 'exec-and-forget open -a /Applications/Zen\ Browser.app'
-# alt-shift-b = 'exec-and-forget open -a /Applications/Arc.app'
-alt-shift-c = 'exec-and-forget open -a /Applications/Microsoft\ Teams.app'
-alt-shift-d = 'exec-and-forget open -a /Applications/DataGrip.app'
-alt-shift-e = 'exec-and-forget open -a "Mission Control"'
-alt-shift-m = 'exec-and-forget open -a /Applications/Spark\ Desktop.app'
-alt-shift-n = 'exec-and-forget open -a /Applications/Inkdrop.app'
-alt-shift-s = 'exec-and-forget open -a /Applications/Slack.app'
-# alt-shift-t = 'exec-and-forget open -a /Applications/Alacritty.app'
-alt-shift-t = 'exec-and-forget open -a /Applications/Ghostty.app'
+alt-i = 'workspace I' # Infra (DevOps)
+alt-c = 'workspace C' # Code (IDE, Coding Tools, etc)
+alt-t = 'workspace T' # Terminal (Main Terminal For Coding with web window inside)
+alt-b = 'workspace B' # Browser (Browse anything)
+alt-n = 'workspace N' # Note taking (Inkdrop, Notion, etc)
+alt-w = 'workspace W' # Work (Work related apps like Slack, Teams, etc)
+alt-r = 'workspace R' # Reading books or Research (Kindle, pdf, etc)
+alt-m = 'workspace M' # Music (Spotify)
+alt-a = 'workspace A' # Anything (Social Media, etc)
 
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-
-alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
-alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
-alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+alt-shift-i = ['move-node-to-workspace I', 'workspace I']
+alt-shift-c = ['move-node-to-workspace C', 'workspace C']
+alt-shift-t = ['move-node-to-workspace T', 'workspace T']
+alt-shift-b = ['move-node-to-workspace B', 'workspace B']
+alt-shift-n = ['move-node-to-workspace N', 'workspace N']
+alt-shift-r = ['move-node-to-workspace R', 'workspace R']
+alt-shift-m = ['move-node-to-workspace M', 'workspace M']
+alt-shift-s = ['move-node-to-workspace S', 'workspace S']
+alt-shift-a = ['move-node-to-workspace A', 'workspace A']
 
 alt-tab = 'workspace-back-and-forth'
 
@@ -64,7 +56,7 @@ alt-shift-l = 'move right'
 alt-shift-j = 'move down'
 
 alt-f = 'layout accordion tiles'
-alt-r = 'layout horizontal vertical'
+alt-slash= 'layout horizontal vertical'
 
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
@@ -73,95 +65,106 @@ alt-0 = 'flatten-workspace-tree'
 alt-shift-f = 'layout floating tiling'
 alt-ctrl-shift-y = 'reload-config'
 
-# Workspace 1 Apps
-[[on-window-detected]]
-if.app-id = 'com.postmanlabs.mac'
-run='move-node-to-workspace 1'
-
-[[on-window-detected]]
-if.app-id = 'io.httpie.desktop'
-run='move-node-to-workspace 1'
-
+# Workspace Infra
 [[on-window-detected]]
 if.app-id = 'com.mongodb.compass'
-run='move-node-to-workspace 1'
+run='move-node-to-workspace I'
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.datagrip'
-run='move-node-to-workspace 1'
+run='move-node-to-workspace I'
 
-# Workspace 2 Apps
+# Workspace Code
 [[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
-run='move-node-to-workspace 2'
+if.app-id = 'com.postmanlabs.mac'
+run='move-node-to-workspace C'
 
 [[on-window-detected]]
-if.app-id = 'org.alacritty'
-run='move-node-to-workspace 2'
+if.app-id = 'io.httpie.desktop'
+run='move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'com.exafunction.windsurf'
-run='move-node-to-workspace 2'
+run='move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run='move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-run='move-node-to-workspace 2'
-
-# Workspace 3 Apps
-[[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
-run='move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run='move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'com.figma.Desktop'
-run='move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'com.readdle.SparkDesktop.appstore'
-run='move-node-to-workspace 3'
-
-# Workspace 4 Apps
-[[on-window-detected]]
-if.app-id = 'info.pkpk.inkdrop'
-run='move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'com.kingsoft.wpsoffice.mac.global'
-run='move-node-to-workspace 4'
+run='move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
-run='move-node-to-workspace 4'
+run='move-node-to-workspace C'
 
-# Workspace 5 Apps
+# Workspace Terminal
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run='move-node-to-workspace T'
+
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run='move-node-to-workspace T'
+
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+run='move-node-to-workspace T'
+
+# Workspace Browser
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run='move-node-to-workspace B'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run='move-node-to-workspace B'
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run='move-node-to-workspace B'
+
+# Workspace Note
+[[on-window-detected]]
+if.app-id = 'info.pkpk.inkdrop'
+run='move-node-to-workspace N'
+
+# Workspace Work
+[[on-window-detected]]
+if.app-id = 'com.readdle.SparkDesktop.appstore'
+run='move-node-to-workspace W'
+
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run='move-node-to-workspace 5'
+run='move-node-to-workspace W'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run='move-node-to-workspace 5'
+run='move-node-to-workspace W'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run='move-node-to-workspace 5'
+run='move-node-to-workspace W'
 
 [[on-window-detected]]
-if.app-id = 'com.facebook.archon.developerID'
-run = ['layout floating', 'move-node-to-workspace 5']
+if.app-id = 'com.linear'
+run='move-node-to-workspace W'
 
-# Workspace 6 Apps
+# Workspace Reading
+[[on-window-detected]]
+if.app-id = 'com.kingsoft.wpsoffice.mac.global'
+run='move-node-to-workspace R'
+
+[[on-window-detected]]
+if.app-id = 'com.amazon.Lassen'
+run='move-node-to-workspace R'
+
+# Workspace Music
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = ['layout floating', 'move-node-to-workspace 6']
+run = ['layout floating', 'move-node-to-workspace M']
+
+# Workspace Anything
+[[on-window-detected]]
+if.app-id = 'com.facebook.archon.developerID'
+run = ['layout floating', 'move-node-to-workspace A']
 
 [workspace-to-monitor-force-assignment]
-6 = '^built-in'
+A = '^built-in'

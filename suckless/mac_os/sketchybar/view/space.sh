@@ -1,36 +1,16 @@
 #!/usr/bin/env bash
 
-SPACE_ICONS=("infra" "code" "web" "chat" "notes" "external")
-
-YELLOW=#eed49f
-GREEN=#8DC583
-PURPLE=#c6a0f6
-GRAY=#868686
-ORANGE=#FF8564
-BLUE=#36ADFF
-WHITE=#F9F9F9
-
-DEACTIVATE=$GRAY
+SPACE_ICONS=("infra" "code" "terminal" "browser" "note" "work" "reading" "music" "any")
 
 sketchybar --add event aerospace_workspace_change
 
-for i in "${!SPACE_ICONS[@]}"; do
-  sid=$(($i+1))
-  echo $sid
+DEACTIVATE=#868686
+ACTIVATE=#AF87D7
 
-  if [ $sid -eq 1 ]; then
-    ACTIVATE=$PURPLE
-  elif [ $sid -eq 2 ]; then
-    ACTIVATE=$GREEN
-  elif [ $sid -eq 3 ]; then
-    ACTIVATE=$BLUE
-  elif [ $sid -eq 4 ]; then
-    ACTIVATE=$YELLOW
-  elif [ $sid -eq 5 ]; then
-    ACTIVATE=$ORANGE
-  else
-    ACTIVATE=$WHITE
-  fi
+LIST_SPACES_INDEX=(I C T B N W R M A)
+
+for i in "${!LIST_SPACES_INDEX[@]}"; do
+  sid=${LIST_SPACES_INDEX[i]}
 
   sketchybar --add item space.$sid left \
              --subscribe space.$sid aerospace_workspace_change \
