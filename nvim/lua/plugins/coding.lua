@@ -30,7 +30,6 @@ return {
     build = ':TSUpdate',
     config = function() require "config.cores.treesitter" end
   },
-  { 'nvim-treesitter/nvim-treesitter-textobjects' },
 
   -- ROR
   { 'tpope/vim-rails' },
@@ -39,5 +38,5 @@ return {
   { 'fatih/vim-go' },
 
   -- Testing
-  { 'vim-test/vim-test',                          dependencies = { 'preservim/vimux' } },
+  { 'vim-test/vim-test', dependencies = { 'preservim/vimux' } },
 }

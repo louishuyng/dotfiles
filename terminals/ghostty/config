@@ -1,9 +1,10 @@
 auto-update-channel = tip
 
-theme = Chalkboard
-font-family = "JetBrainsMono Nerd Font"
-font-size = 15.0
-adjust-cell-height = 15%
+theme = Ef-Trio-Dark
+
+font-family = "monoki"
+font-size = 13
+adjust-cell-height = 17%
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
@@ -16,7 +17,7 @@ window-save-state = default
 macos-titlebar-style = hidden
 confirm-close-surface = false
 
-background-opacity = 0.93
+macos-option-as-alt = true
 
 keybind = cmd+shift+r=reload_config
 

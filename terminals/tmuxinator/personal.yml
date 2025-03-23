@@ -3,5 +3,5 @@ attach: true
 windows:
   - dotfiles:
       - cd ~/.dotfiles
-  - awesome-tech:
-      - cd ~/LX14/repository/github.com/louishuyng/awesome-tech
+  - research:
+      - cd ~/LX14/projects/research

@@ -2,14 +2,14 @@ live_config_reload = true
 working_directory = "None"
 
 import = [
-  "~/.dotfiles/terminals/alacritty/theme.toml"
+  "~/.dotfiles/terminals/alacritty/tokyonight.toml"
 ]
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 15
+size = 14
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -28,7 +28,7 @@ family = "JetBrainsMono Nerd Font"
 
 [font.offset]
 x = 0
-y = 8
+y = 12
 
 [scrolling]
 history = 10000

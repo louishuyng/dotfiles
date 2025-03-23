@@ -59,5 +59,5 @@ vim.keymap.set("n", "<C-e>", function()
           return true
         end,
       })
-      :find()
+      :find({ hidden = true })
 end, { desc = "Telescope marlin" })

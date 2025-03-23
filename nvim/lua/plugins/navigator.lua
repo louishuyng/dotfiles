@@ -9,7 +9,6 @@ return {
       { "nvim-telescope/telescope-file-browser.nvim" },
     }
   },
-  { 'bassamsdata/namu.nvim' },
   {
     "desdic/marlin.nvim",
     opts = {},

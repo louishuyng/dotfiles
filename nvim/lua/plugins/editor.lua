@@ -126,7 +126,7 @@ return {
     ---@type oil.SetupOpts
     opts = {},
     -- Optional dependencies
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = {},
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
@@ -134,13 +134,14 @@ return {
     config = function()
       require('oil').setup({
         keymaps = {
-          ["l"] = "actions.select",
           ["<C-v>"] = { "actions.select", opts = { vertical = true } },
           ["<C-s>"] = { "actions.select", opts = { horizontal = true } },
+          ["<BS>"] = { "actions.parent", mode = "n" },
           ["q"] = { "actions.close", mode = "n" },
-          ["h"] = { "actions.parent", mode = "n" },
         },
       })
+
+      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
       vim.api.nvim_create_autocmd("User", {
         pattern = "OilActionsPost",

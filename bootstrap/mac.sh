@@ -448,6 +448,7 @@ install_cli_tools() {
     brew install ansifilter # Program specialized for removing (or working with) ANSI codes 
     brew install xdg-ninja # A shell script which checks your $HOME for unwanted files and directories.
     brew install atuin # History search
+    brew install serpl # Search and replace
 
 
     # Hack Tools

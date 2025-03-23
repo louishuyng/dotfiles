@@ -1,3 +1,5 @@
+local Shade = require("nightfox.lib.shade")
+
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
   return
@@ -11,61 +13,65 @@ local Util = require("lazyvim.util")
 
 vim.o.laststatus = vim.g.lualine_laststatus
 
-local colors = {
-  bg0 = "#262626",
-  bg1 = "#303232",
-  bg2 = "#4A4A4A",
-  fg0 = "#D1D3CC",
-  fg1 = "#E1E4DC",
-  fg2 = "#F1F5EC",
-  red0 = "#9D4B53",
-  red1 = "#BA5860",
-  yellow0 = "#E2C697",
-  yellow1 = "#E2C697",
-  green0 = "#ABE9B4",
-  green1 = "#ABE9B4",
-  blue1 = "#89B4FA",
-  purple0 = "#CBA6F7",
-  purple1 = "#CBA6F7",
-}
+local colors = {}
 
-if vim.g.theme == "catppuccin" then
+if vim.g.theme == "paper" then
   colors = {
-    bg0 = "#191B1C",
-    bg1 = "#2F2E3E",
-    bg2 = "#474655",
-    fg0 = "#E7EBF1",
-    fg1 = "#D1D3CC",
-    fg2 = "#BCC0CB",
+    bg0 = "#262626",
+    bg1 = "#303232",
+    bg2 = "#4A4A4A",
+    fg0 = "#D1D3CC",
+    fg1 = "#E1E4DC",
+    fg2 = "#F1F5EC",
     red0 = "#9D4B53",
     red1 = "#BA5860",
-    yellow0 = "#A78A58",
-    yellow1 = "#CCAA6C",
+    yellow0 = "#E2C697",
+    yellow1 = "#E2C697",
     green0 = "#ABE9B4",
     green1 = "#ABE9B4",
-    blue1 = "#5292C6",
+    blue1 = "#89B4FA",
     purple0 = "#CBA6F7",
     purple1 = "#CBA6F7",
   }
 end
 
+if vim.g.theme == "night" then
+  colors = {
+    bg0     = "#191726",
+    bg1     = "#232136",
+    bg2     = "#2d2a45",
+    fg0     = "#eae8ff",
+    fg1     = "#e0def4",
+    fg2     = "#cdcbe0",
+    red0    = "#eb6f92",
+    red1    = "#f083a2",
+    yellow0 = "#f6c177",
+    yellow1 = "#f9cb8c",
+    green0  = "#a3be8c",
+    green1  = "#b1d196",
+    blue1   = "#569fba",
+    purple0 = "#ccb1ed",
+    purple1 = "#c4a7e7",
+  }
+end
+
 if vim.g.theme == "light" then
   colors = {
-    bg0 = "#F6EDE3",
-    bg1 = "#E5DFD4",
-    bg2 = "#D0C6BC",
-    fg0 = "#1E1B1F",
-    fg1 = "#2E2C2F",
-    fg2 = "#3E3D3F",
-    red0 = "#9D4B53",
-    red1 = "#BA5860",
-    yellow0 = "#A78A58",
-    yellow1 = "#CCAA6C",
-    green0 = "#3EA57B",
-    green1 = "#3EA57B",
-    blue1 = "#5292C6",
-    purple0 = "#AC78BD",
-    purple1 = "#AC78BD",
+    bg0     = "#e4dcd4",
+    bg1     = "#f6f2ee",
+    bg2     = "#dbd1dd",
+    fg0     = "#302b5d",
+    fg1     = "#3d2b5a",
+    fg2     = "#643f61",
+    red0    = "#a5222f",
+    red1    = "#a5222f",
+    green0  = "#396847",
+    green1  = "#396847",
+    yellow0 = "#AC5402",
+    yellow1 = "#AC5402",
+    blue1   = "#2848a9",
+    purple0 = "#6e33ce",
+    purple1 = "#6e33ce",
   }
 end
 

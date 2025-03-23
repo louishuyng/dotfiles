@@ -33,15 +33,15 @@ alt-r = 'workspace R' # Reading books or Research (Kindle, pdf, etc)
 alt-m = 'workspace M' # Music (Spotify)
 alt-a = 'workspace A' # Anything (Social Media, etc)
 
-alt-cmd-i = ['move-node-to-workspace I', 'workspace I']
-alt-cmd-c = ['move-node-to-workspace C', 'workspace C']
-alt-cmd-t = ['move-node-to-workspace T', 'workspace T']
-alt-cmd-b = ['move-node-to-workspace B', 'workspace B']
-alt-cmd-n = ['move-node-to-workspace N', 'workspace N']
-alt-cmd-r = ['move-node-to-workspace R', 'workspace R']
-alt-cmd-m = ['move-node-to-workspace M', 'workspace M']
-alt-cmd-s = ['move-node-to-workspace S', 'workspace S']
-alt-cmd-a = ['move-node-to-workspace A', 'workspace A']
+alt-ctrl-i = ['move-node-to-workspace I', 'workspace I']
+alt-ctrl-c = ['move-node-to-workspace C', 'workspace C']
+alt-ctrl-t = ['move-node-to-workspace T', 'workspace T']
+alt-ctrl-b = ['move-node-to-workspace B', 'workspace B']
+alt-ctrl-n = ['move-node-to-workspace N', 'workspace N']
+alt-ctrl-w = ['move-node-to-workspace W', 'workspace W']
+alt-ctrl-r = ['move-node-to-workspace R', 'workspace R']
+alt-ctrl-m = ['move-node-to-workspace M', 'workspace M']
+alt-ctrl-a = ['move-node-to-workspace A', 'workspace A']
 
 alt-tab = 'workspace-back-and-forth'
 

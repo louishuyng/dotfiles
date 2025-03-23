@@ -12,21 +12,15 @@ alias dpsa="docker ps -a"
 alias dr="open -a 'Docker'"
 alias ds="killall Docker"
 alias dc="docker system prune"
-alias dka="docker kill (docker ps -q)"
+alias dca="docker kill (docker ps -q)"
 
 #K8S
 alias km='minikd'
 
 # Essential aliases. I strongly recommend setting them
 alias k='kubectl'
-alias kg='k get'
-alias kc='k create'
-alias ke='k edit'
-alias ka='k apply'
-alias kd='k describe'
-alias kl='k logs'
-alias kde='k delete'
-alias ksc='k scale'
+alias kns='kubens'
+alias kctx='kubectx'
 
 export do="--dry-run=client -o yaml"
 export label="--show--labels"
@@ -36,9 +30,6 @@ alias tf='terraform'
 
 # Vault
 alias va="vault"
-
-#Kubectx
-alias k8sns='kubens'
 
 #Postgres
 alias pgr="pg_ctl -D /usr/local/var/postgres restart"

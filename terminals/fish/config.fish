@@ -31,3 +31,12 @@ source /Users/louishuyng/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or 
 switcher init fish | source
 
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# Added by Windsurf
+fish_add_path /Users/louishuyng/.codeium/windsurf/bin
+
+fish_add_path /Users/louishuyng/.spicetify

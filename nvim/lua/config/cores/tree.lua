@@ -16,13 +16,17 @@ require("nvim-tree").setup({
     indent_markers = { enable = true },
     icons = {
       glyphs = {
-        default = "󰈚",
+        default = "",
+        symlink = "",
         folder = {
-          default = "",
-          empty = "",
-          empty_open = "",
-          open = "",
-          symlink = "",
+          arrow_closed = "",
+          arrow_open = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = ""
         },
         git = { unmerged = "" },
       },

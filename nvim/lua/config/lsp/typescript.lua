@@ -34,6 +34,9 @@ lsp_config.eslint.setup({
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre",
       { buffer = bufnr, command = "EslintFixAll" })
+
+    client.server_capabilities.document_formatting = true
+    on_attach(client, bufnr)
   end,
   -- root_dir = lsp_config.util.root_pattern(".eslintrc.js", ".eslintrc.json", ".eslintrc", ".eslintrc.yml"),
   single_file_support = false

@@ -42,7 +42,8 @@ vim.keymap.set("n", "<leader>ob", ":call OpenUrlUnderCursor()<CR>", opt)
 vim.keymap.set("v", "p", "\"_dP", opt)
 
 -- Replace
-vim.keymap.set("n", "r;", "yiw:%s/<C-R>\"/", opt)
+vim.keymap.set("n", ";r", "yiw:%s/<C-R>\"/", opt)
+vim.keymap.set("v", ";r", "\"_y:%s/<C-R>\"/", opt)
 
 -- Lazy
 vim.keymap.set("n", "<leader>li", ":Lazy install<CR>", opt)
