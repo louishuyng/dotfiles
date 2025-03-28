@@ -40,11 +40,30 @@ local function nestJsCreateSpec()
   vim.cmd("e " .. spec_path)
 end
 
+local function goCreateSpec()
+  local path = vim.fn.expand("%:p")
+
+  -- if path include spec then run :A to open the implementation
+  if string.find(path, "_test.go") then
+    local file_path = string.gsub(path, "_test.go$", ".go")
+
+    vim.cmd("e" .. file_path)
+    return
+  end
+
+  -- create the spec file for the current file
+  -- replace extension .go with _test.go
+  local path = vim.fn.expand("%:p")
+  local spec_path = string.gsub(path, ".go$", "_test.go")
+
+  vim.cmd("e " .. spec_path)
+end
+
 local function create_spec()
   local filetype = vim.bo.filetype
 
   if filetype == "ruby" then rubyCreateSpec() end
-
+  if filetype == "go" then goCreateSpec() end
   -- NOTE: I only want to focus on nestjs for now
   if filetype == "typescript" then nestJsCreateSpec() end
 end
