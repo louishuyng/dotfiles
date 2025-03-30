@@ -33,15 +33,20 @@ alt-r = 'workspace R' # Reading books or Research (Kindle, pdf, etc)
 alt-m = 'workspace M' # Music (Spotify)
 alt-a = 'workspace A' # Anything (Social Media, etc)
 
-alt-ctrl-i = ['move-node-to-workspace I', 'workspace I']
-alt-ctrl-c = ['move-node-to-workspace C', 'workspace C']
-alt-ctrl-t = ['move-node-to-workspace T', 'workspace T']
-alt-ctrl-b = ['move-node-to-workspace B', 'workspace B']
-alt-ctrl-n = ['move-node-to-workspace N', 'workspace N']
-alt-ctrl-w = ['move-node-to-workspace W', 'workspace W']
-alt-ctrl-r = ['move-node-to-workspace R', 'workspace R']
-alt-ctrl-m = ['move-node-to-workspace M', 'workspace M']
-alt-ctrl-a = ['move-node-to-workspace A', 'workspace A']
+alt-shift-i = ['move-node-to-workspace I', 'workspace I']
+alt-shift-c = ['move-node-to-workspace C', 'workspace C']
+alt-shift-t = ['move-node-to-workspace T', 'workspace T']
+alt-shift-b = ['move-node-to-workspace B', 'workspace B']
+alt-shift-n = ['move-node-to-workspace N', 'workspace N']
+alt-shift-w = ['move-node-to-workspace W', 'workspace W']
+alt-shift-r = ['move-node-to-workspace R', 'workspace R']
+alt-shift-m = ['move-node-to-workspace M', 'workspace M']
+alt-shift-a = ['move-node-to-workspace A', 'workspace A']
+
+alt-shift-h = 'move left'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+alt-shift-j = 'move down'
 
 alt-tab = 'workspace-back-and-forth'
 
@@ -50,11 +55,6 @@ alt-h = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-wor
 alt-j = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace down || $HOME/.config/aerospace/scripts/focus-window.sh down'
 alt-k = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace up || $HOME/.config/aerospace/scripts/focus-window.sh up'
 alt-l = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace right || $HOME/.config/aerospace/scripts/focus-window.sh right'
-
-alt-shift-h = 'move left'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
-alt-shift-j = 'move down'
 
 alt-f = 'layout accordion tiles'
 alt-slash= 'layout horizontal vertical'

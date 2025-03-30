@@ -1,42 +1,47 @@
 return {
   {
-    "EdenEast/nightfox.nvim",
-    config = function()
-      local Shade = require("nightfox.lib.shade")
-
-      require("nightfox").setup({
-        palettes = {
-          duskfox = {
-            black   = Shade.new("#393b44", 0.15, -0.15),
-            red     = Shade.new("#c94f6d", 0.15, -0.15),
-            green   = Shade.new("#81b29a", 0.10, -0.15),
-            yellow  = Shade.new("#dbc074", 0.15, -0.15),
-            blue    = Shade.new("#719cd6", 0.15, -0.15),
-            magenta = Shade.new("#9d79d6", 0.30, -0.15),
-            cyan    = Shade.new("#63cdcf", 0.15, -0.15),
-            white   = Shade.new("#dfdfe0", 0.15, -0.15),
-            orange  = Shade.new("#f4a261", 0.15, -0.15),
-            pink    = Shade.new("#d67ad2", 0.15, -0.15),
-
-            comment = "#738091",
-          },
-        },
-      })
-    end
-  },
-  {
-    'NLKNguyen/papercolor-theme',
-    event = "VeryLazy",
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
-    config = function()
-      -- Blank to address startup error
-    end,
-    init = function()
-      vim.cmd [[
-        source $VIMRUNTIME/colors/vim.lua
-      ]]
-      vim.opt.termguicolors = true
-      vim.cmd.colorscheme 'PaperColor'
-    end,
+    opts = {
+      color_overrides = {
+        latte = {
+          rosewater = "#fdf7e8",
+          flamingo = "#cb4b16",
+          pink = "#d33682",
+          mauve = "#6c71c4",
+          red = "#dc322f",
+          maroon = "#c03260",
+          peach = "#cb4b1f",
+          yellow = "#b58900",
+          green = "#859900",
+          teal = "#2aa198",
+          sky = "#2398d2",
+          sapphire = "#0077b3",
+          blue = "#268bd2",
+          lavender = "#7b88d3",
+          text = "#657b83",
+          subtext1 = "#586e75",
+          subtext0 = "#073642",
+          overlay2 = "#002b36",
+          overlay1 = "#839496",
+          overlay0 = "#93a1a1",
+          surface2 = "#eee8d5",
+          surface1 = "#ebecef",
+          surface0 = "#ccd0da",
+          base = "#fdf6e3",
+          mantle = "#f7f1dc",
+          crust = "#f5ecd7",
+        },
+      },
+      highlight_overrides = {
+        latte = function(C)
+          return {
+            FlashLabel = { fg = C.base, bg = C.red, style = { "bold" } },
+          }
+        end,
+      },
+    },
   },
+  -- { 'NLKNguyen/papercolor-theme' },
 }

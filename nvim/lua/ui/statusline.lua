@@ -1,5 +1,3 @@
-local Shade = require("nightfox.lib.shade")
-
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
   return
@@ -8,7 +6,8 @@ end
 local lualine_require = require("lualine_require")
 lualine_require.require = require
 
-local icons = require("lazyvim.config").icons
+local icons = require("config.libs.icons")
+
 local Util = require("lazyvim.util")
 
 vim.o.laststatus = vim.g.lualine_laststatus
@@ -17,47 +16,47 @@ local colors = {}
 
 if vim.g.theme == "paper" then
   colors = {
-    bg0 = "#262626",
-    bg1 = "#303232",
-    bg2 = "#4A4A4A",
+    bg0 = "#1E1B1F",
+    bg1 = "#2E2C2F",
+    bg2 = "#3E3D3F",
     fg0 = "#D1D3CC",
     fg1 = "#E1E4DC",
     fg2 = "#F1F5EC",
-    red0 = "#9D4B53",
+    red0 = "#C45C64",
     red1 = "#BA5860",
-    yellow0 = "#E2C697",
-    yellow1 = "#E2C697",
-    green0 = "#ABE9B4",
-    green1 = "#ABE9B4",
-    blue1 = "#89B4FA",
-    purple0 = "#CBA6F7",
-    purple1 = "#CBA6F7",
+    yellow0 = "#D8B573",
+    yellow1 = "#CCAA6C",
+    green0 = "#7AA682",
+    green1 = "#729B79",
+    blue1 = "#5292C6",
+    purple0 = "#9571B3",
+    purple1 = "#8C6AA8",
   }
 end
 
 if vim.g.theme == "night" then
   colors = {
-    bg0     = "#191726",
+    bg0     = "#1E2031",
     bg1     = "#232136",
     bg2     = "#2d2a45",
     fg0     = "#eae8ff",
     fg1     = "#e0def4",
     fg2     = "#cdcbe0",
-    red0    = "#eb6f92",
-    red1    = "#f083a2",
-    yellow0 = "#f6c177",
-    yellow1 = "#f9cb8c",
-    green0  = "#a3be8c",
-    green1  = "#b1d196",
-    blue1   = "#569fba",
-    purple0 = "#ccb1ed",
-    purple1 = "#c4a7e7",
+    red0    = "#ed8796",
+    red1    = "#ed8796",
+    yellow0 = "#eed49f",
+    yellow1 = "#eed49f",
+    green0  = "#a6da95",
+    green1  = "#a6da95",
+    blue1   = "#8aadf4",
+    purple0 = "#b7bdf8",
+    purple1 = "#b7bdf8",
   }
 end
 
 if vim.g.theme == "light" then
   colors = {
-    bg0     = "#e4dcd4",
+    bg0     = "#F7F1DC",
     bg1     = "#f6f2ee",
     bg2     = "#dbd1dd",
     fg0     = "#302b5d",
@@ -126,62 +125,55 @@ lualine.setup {
     component_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = { "mode" },
-    lualine_b = { marlin_component },
+    lualine_a = {
+      {
+        "mode",
+        fmt = function(mode)
+          -- Vertical bar symbol
+          return "▐"
+        end,
+        padding = { left = 0, right = 0 },
+      },
+      {
+        "filesize",
+        color = { fg = colors.fg2 }
+      },
+      {
+        'filename',
+        file_status = true,   -- Displays file status (readonly status, modified status)
+        newfile_status = false,
+        path = 4,             -- 0: Just the filename
+
+        shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+        symbols = {
+          modified = '[+]',
+          readonly = '[-]',
+          unnamed = '[No Name]',
+          newfile = '[New]',
+        },
+        color = { fg = colors.yellow1 }
+      },
+      {
+        "location",
+        color = { fg = colors.fg2 },
+      }
+    },
+    lualine_b = {
+      {
+        "marlin",
+        fmt = marlin_component,
+        color = { fg = colors.purple0 },
+      }
+    },
 
     lualine_c = {
       Util.lualine.root_dir(),
       {
-        "diagnostics",
-        symbols = {
-          error = "E",
-          warn = "W",
-          info = "I",
-          hint = "H"
-        },
-      },
-      {
-        require("package-info").get_status,
-      },
-      {
-        function()
-          return require("nvim-navic").get_location()
-        end,
-        cond = function()
-          return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-        end,
-      },
-    },
-    lualine_x = {
-      -- stylua: ignore
-      {
-        function() return require("noice").api.status.command.get() end,
-        cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-        color = { fg = Snacks.util.color("Statement") }
-      },
-      -- stylua: ignore
-      {
-        function() return require("noice").api.status.mode.get() end,
-        cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-        color = { fg = Snacks.util.color("Constant") }
-      },
-      -- stylua: ignore
-      {
-        function() return "  " .. require("dap").status() end,
-        cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-        color = { fg = Snacks.util.color("Debug") }
-      },
-      {
-        require("lazy.status").updates,
-        cond = require("lazy.status").has_updates,
-        color = { fg = Snacks.util.color("Special") }
-      },
-      {
         "diff",
         symbols = {
-          added = icons.git.added,
-          modified = icons.git.modified,
-          removed = icons.git.removed,
+          added = "+",
+          modified = "~",
+          removed = "-",
         },
         source = function()
           local gitsigns = vim.b.gitsigns_status_dict
@@ -194,6 +186,38 @@ lualine.setup {
           end
         end,
       },
+      {
+        "diagnostics",
+        symbols = {
+          error = icons.diagnostics.error,
+          warn = icons.diagnostics.warn,
+          info = icons.diagnostics.info,
+          hint = icons.diagnostics.hint,
+        },
+      },
     },
+    lualine_x = {
+      -- stylua: ignore
+      {
+        function() return require("noice").api.status.mode.get() end,
+        cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+        color = { fg = Snacks.util.color("Constant") }
+      },
+      {
+        "encoding",
+      },
+      {
+        "branch",
+        icon = "",
+        color = { fg = colors.green0 }
+      },
+      {
+        function() return "  " .. require("dap").status() end,
+        cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+        color = { fg = Snacks.util.color("Debug") }
+      },
+    },
+    lualine_y = {},
+    lualine_z = {}
   },
 }

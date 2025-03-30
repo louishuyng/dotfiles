@@ -48,10 +48,10 @@ require 'barbar'.setup {
     button = '',
     -- Enables / disables diagnostic symbols
     diagnostics = {
-      [vim.diagnostic.severity.ERROR] = { enabled = true, icon = '' },
-      [vim.diagnostic.severity.WARN] = { enabled = false },
+      [vim.diagnostic.severity.ERROR] = { enabled = true, icon = 'E' },
+      [vim.diagnostic.severity.WARN] = { enabled = true, icon = 'W' },
+      [vim.diagnostic.severity.HINT] = { enabled = false },
       [vim.diagnostic.severity.INFO] = { enabled = false },
-      [vim.diagnostic.severity.HINT] = { enabled = true },
     },
     gitsigns = {
       added = { enabled = false, icon = '+' },
@@ -59,12 +59,7 @@ require 'barbar'.setup {
       deleted = { enabled = false, icon = '-' },
     },
     filetype = {
-      -- Sets the icon's highlight group.
-      -- If false, will use nvim-web-devicons colors
-      custom_colors = false,
-
-      -- Requires `nvim-web-devicons` if `true`
-      enabled = false,
+      enabled = true,
     },
     separator = { left = '', right = '' },
 

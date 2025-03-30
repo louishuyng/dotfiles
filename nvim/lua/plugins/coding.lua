@@ -15,12 +15,12 @@ return {
       require 'luasnip'.filetype_extend("ruby", { "rails" })
     end
   },
+  { 'lukas-reineke/cmp-under-comparator' },
   { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-nvim-lsp-signature-help' },
-  { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
-  { 'hrsh7th/cmp-buffer',                  dependencies = { "nvim-cmp" } },
+  { 'hrsh7th/cmp-buffer',                dependencies = { "nvim-cmp" } },
+  { 'hrsh7th/cmp-cmdline',               dependencies = { 'nvim-cmp' } },
+
   -- Code Format
-  { 'hrsh7th/cmp-cmdline',                 dependencies = { 'nvim-cmp' } },
   { 'numToStr/Comment.nvim' },
   { 'kamykn/spelunker.vim' },
 

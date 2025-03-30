@@ -10,7 +10,6 @@ local function organize_imports()
 end
 
 lsp_config.ts_ls.setup({
-  capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = function(client, bufnr)
     -- Some project need to enable document formatting on tsserver
     local paths = { "perx-dashboard-v4", "usvc-request", "usvc-migrations", "lsp-from-scratch", "veeva-sls" }

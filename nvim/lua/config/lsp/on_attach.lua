@@ -1,6 +1,7 @@
+local dropdown_theme = require("config.cores.telescope.theme").dropdown_theme
+
 -- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-local navic = require("nvim-navic")
 
 local lsp_formatting = function(bufnr)
   vim.lsp.buf.format({
@@ -14,20 +15,13 @@ end
 return function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-  vim.keymap.set('n', 'gf', ':Lspsaga goto_definition<CR>', bufopts)
-  vim.keymap.set('n', 'gF', ':Lspsaga peek_definition<CR>', bufopts)
-  vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', bufopts)
+  require("better-diagnostic-virtual-text.api").setup_buf(bufnr, {})
 
-  -- vim.keymap.set('n', 'gf',
-  --   '<Cmd>lua require("telescope.builtin").lsp_definitions()<CR>',
-  --   bufopts)
-  --
-  -- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', bufopts)
-  -- vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', bufopts)
-  vim.keymap.set('n', ',rr', ':Lspsaga rename<CR>', bufopts)
-
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.definition()<CR>', bufopts)
+  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts)
+  vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', bufopts)
+  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', bufopts)
+  vim.keymap.set('n', ',rr', '<cmd>lua vim.lsp.buf.rename()<CR>', bufopts)
 
   -- If file is has . characters at beginning, don't format
   if vim.fn.match(vim.fn.expand('%:t'), '^[.]') ~= -1 then return end
@@ -39,9 +33,5 @@ return function(client, bufnr)
       buffer = bufnr,
       callback = function() lsp_formatting(bufnr) end
     })
-  end
-
-  if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
   end
 end

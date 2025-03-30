@@ -7,7 +7,10 @@ snacks.setup {
   rename = { enabled = true },
   quickfile = { enabled = true },
   input = { enabled = true },
-  notifier = { enabled = true },
+  notifier = {
+    enabled = true,
+    level = vim.log.levels.WARN,
+  },
   dashboard = {
     enabled = true,
     sections = {
@@ -80,6 +83,9 @@ snacks.setup {
 vim.keymap.set("n", "<C-w>o", ":lua require('snacks').zen() <CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>go", ":lua require('snacks').gitbrowse() <CR>", { desc = "Open git browser url" })
 
+vim.api.nvim_set_keymap("n", "<leader>fn", ":lua require('snacks').notifier.show_history()<CR>",
+  { noremap = true, silent = true })
+
 ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
 local progress = vim.defaulttable()
 vim.api.nvim_create_autocmd("LspProgress", {
@@ -87,7 +93,7 @@ vim.api.nvim_create_autocmd("LspProgress", {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     local value = ev.data.params
-    .value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
+        .value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
     if not client or type(value) ~= "table" then
       return
     end

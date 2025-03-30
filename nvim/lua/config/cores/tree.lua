@@ -22,7 +22,7 @@ require("neo-tree").setup({
       },
     },
   },
-  close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+  close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
   enable_git_status = true,
   enable_diagnostics = true,
@@ -52,19 +52,6 @@ require("neo-tree").setup({
       folder_closed = "",
       folder_open = "",
       folder_empty = "󰜌",
-      provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
-        if node.type == "file" or node.type == "terminal" then
-          local success, web_devicons = pcall(require, "nvim-web-devicons")
-          local name = node.type == "terminal" and "terminal" or node.name
-          if success then
-            local devicon, hl = web_devicons.get_icon(name)
-            icon.text = devicon or icon.text
-            icon.highlight = hl or icon.highlight
-          end
-        end
-      end,
-      -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
-      -- then these will never be used.
       default = "*",
       highlight = "NeoTreeFileIcon",
     },
@@ -178,6 +165,7 @@ require("neo-tree").setup({
         ["w"] = "open_with_window_picker",
         ["C"] = "close_node",
         ["z"] = "close_all_nodes",
+        ["F"] = "clear_filter",
         ["a"] = {
           "add",
           config = {

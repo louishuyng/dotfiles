@@ -1,4 +1,5 @@
 local _, telescope = pcall(require, "telescope")
+local lga_actions = require("telescope-live-grep-args.actions")
 local actions = require 'telescope.actions'
 
 telescope.setup {
@@ -29,7 +30,8 @@ telescope.setup {
         ["<C-v>"] = actions.select_vertical,
         ["<C-s>"] = actions.select_horizontal,
         ["<C-d>"] = actions.delete_buffer,
-        ["<C-p>"] = require("telescope.actions.layout").toggle_preview
+        ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+        ["<C-g>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
       }
     },
     pickers = {
@@ -66,7 +68,7 @@ telescope.setup {
     preview = {
       mime_hook = function(filepath, bufnr, opts)
         local is_image = function(filepath)
-          local image_extensions = { 'png', 'jpg' } -- Supported image formats
+          local image_extensions = { 'png', 'jpg', 'svg' } -- Supported image formats
           local split_path = vim.split(filepath:lower(), '.', { plain = true })
           local extension = split_path[#split_path]
           return vim.tbl_contains(image_extensions, extension)

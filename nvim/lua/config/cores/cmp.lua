@@ -1,6 +1,8 @@
 local present, cmp = pcall(require, "cmp")
 local compare = require('cmp.config.compare')
 
+local icons = require("config.libs.icons")
+
 if not present then return end
 
 vim.opt.completeopt = "menuone,noselect"
@@ -29,43 +31,46 @@ cmp.setup {
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, item)
-      item.menu = ({
-        nvim_lsp = item.kind,
-        luasnip = "Snippet",
-        buffer = "Buffer",
-        path = "Path"
-      })[entry.source.name]
-      local icons = require("config.libs.icons")
-
-      if icons.kinds[item.kind] then item.kind = icons.kinds[item.kind] end
+      local kind = string.lower(item.kind)
+      item.kind = icons.kinds[item.kind] or "?"
+      item.abbr = item.abbr:match("[^(]+")
+      item.menu = (icons.cmp_sources[entry.source.name] or "") .. kind
       return item
-    end
+    end,
   },
   mapping = {
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true
-    },
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<CR>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = false,
+    }),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<C-j>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif require("luasnip").expand_or_jumpable() then
-        vim.fn.feedkeys(t "<Plug>luasnip-expand-or-jump", "")
-      elseif has_words_before() then
-        cmp.complete()
       else
         fallback()
       end
     end, { "i", "s" }),
+
+    ["<C-k>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif require("luasnip").jumpable(-1) then
-        vim.fn.feedkeys(t "<Plug>luasnip-jump-prev", "")
-      elseif has_words_before() then
-        cmp.complete()
       else
         fallback()
       end
@@ -74,11 +79,33 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' })
   },
   sources = {
-    { name = "luasnip",                 priority = 1 },
-    { name = "nvim_lsp",                priority = 2 },
-    { name = "nvim_lsp_signature_help", priority = 3 },
-    { name = "buffer",                  priority = 4 },
-  }
+    { name = "luasnip",  keyword_length = 2 },
+    { name = "nvim_lsp", keyword_length = 3 },
+    {
+      name = "buffer",
+      keyword_length = 5,
+      option = {
+        get_bufnrs = function()
+          local bufs = {}
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            bufs[vim.api.nvim_win_get_buf(win)] = true
+          end
+          return vim.tbl_keys(bufs)
+        end,
+      },
+    },
+    -- { name = "path" },
+  },
+  sorting = {
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      require("cmp-under-comparator").under,
+      cmp.config.compare.kind,
+    },
+  },
 }
 
 -- `/` cmdline setup.
@@ -86,7 +113,6 @@ cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' },
-    { name = 'nvim_lsp_document_symbol' }
   }
 })
 

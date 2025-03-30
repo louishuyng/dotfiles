@@ -15,30 +15,21 @@ if vim.g.theme == "night" then
   vim.cmd [[
     set background=dark
 
-    colorscheme duskfox
+    colorscheme catppuccin
 
-    hi Normal guibg=#171717
-    hi NormalNC guibg=#171717
-
-    hi BufferCurrent guibg=NONE guifg=white
-    hi BufferCurrentMod guibg=NONE guifg=white
-    hi BufferCurrentError guibg=NONE guifg=#F00000
-    hi BufferInactiveError guibg=#191726 guifg=#F00000
-    hi BufferCurrentHINT guibg=NONE guifg=#D8AF5F
-    hi BufferInactiveHINT guibg=#191726 guifg=#D8AF5F
-
-    hi WinSeparator guifg=#9D79D6 guibg=NONE
+    hi NvimTreeNormal guibg=NONE
+    hi WinSeparator guifg=#C69FF5 guibg=NONE
   ]]
 
   transaprent()
 
   local colors = {}
 
-  colors.input = "#191726"
-  colors.result = "#191726"
+  colors.input = "#1E2031"
+  colors.result = "#1E2031"
   colors.counter = "#9D79D6"
-  colors.selection_bg = "#373354"
-  colors.title = "#82A5D5"
+  colors.selection_bg = "#313447"
+  colors.title = "#8AADF3"
   colors.title_bg = "#2E2C2F"
 
   highlight_telescope(colors)
@@ -59,14 +50,6 @@ if vim.g.theme == "paper" then
     hi NamuPreview guibg=#303030 guifg=#ebdbb2
 
     hi NonText guibg=NONE
-    hi BufferCurrent guibg=NONE guifg=white
-    hi BufferCurrentMod guibg=NONE guifg=white
-    hi BufferCurrentError guibg=NONE guifg=#F00000
-    hi BufferInactiveError guibg=NONE guifg=#F00000
-    hi BufferVisibleError guibg=NONE guifg=#F00000
-    hi BufferCurrentHINT guibg=NONE guifg=#D8AF5F
-    hi BufferInactiveHINT guibg=NONE guifg=#D8AF5F
-    hi BufferVisibleHINT guibg=NONE guifg=#D8AF5F
   ]]
 
   diagnosticTransparent()
@@ -89,15 +72,7 @@ if vim.g.theme == "light" then
 
   vim.cmd [[
     set background=light
-    colorscheme dayfox
-
-    hi NonText guibg=NONE
-    hi BufferCurrent guibg=#2748A9 guifg=white
-    hi BufferCurrentMod guibg=#2748A9 guifg=white
-    hi BufferCurrentError guibg=#2748A9 guifg=#F00000
-    hi BufferInactiveError guibg=#E5DCD4 guifg=#F00000
-    hi BufferCurrentHINT guibg=NONE guifg=#D8AF5F
-    hi BufferInactiveHINT guibg=#E5DCD4 guifg=#D8AF5F
+    colorscheme catppuccin
   ]]
 
   transaprent()
@@ -105,10 +80,14 @@ if vim.g.theme == "light" then
 
   local colors = {}
 
-  colors.input = "#EEE8D5"
-  colors.result = "#EEE8D5"
+  colors.input = "#F7F1DC"
+  colors.result = "#F7F1DC"
   colors.counter = "#2AA198"
-  colors.selection_bg = "#FCF3DB"
+  colors.selection_bg = "#CCD0DA"
 
   highlight_telescope(colors)
 end
+
+
+vim.cmd.highlight("DiagnosticUnderlineError gui=undercurl")
+vim.cmd.highlight("DiagnosticUnderlineWarn gui=undercurl")

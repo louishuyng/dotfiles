@@ -30,11 +30,6 @@ vim.keymap.set("n", "<leader>fj", function()
   return require('telescope.builtin').jumplist(dropdown_theme("Jumplist", true))
 end, opt)
 
--- -- LSP Finding
-vim.keymap.set('n', 'gr', function()
-  require('telescope.builtin').lsp_references(dropdown_theme("References", true))
-end, opt)
-
 -- TODO list
 vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", opt)
 
