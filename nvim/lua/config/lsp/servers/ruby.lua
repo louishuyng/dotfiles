@@ -42,9 +42,6 @@ local on_attach = require 'config/lsp/on_attach'
 -- })
 
 lsp_config.solargraph.setup({
-  on_attach = function(client, bufnr)
-    client.server_capabilities.document_formatting = true
-    on_attach(client, bufnr)
-  end,
-  settings = { solargraph = { diagnostics = true } }
+  on_attach = on_attach,
+  settings = { solargraph = { diagnostics = true } },
 })

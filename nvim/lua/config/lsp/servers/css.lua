@@ -6,10 +6,7 @@ lsp_config.cssls.setup({
   settings = {
     css = { validate = true },
     sass = { validate = true },
-    scss = { validate = true }
+    scss = { validate = true },
   },
-  on_attach = function(client, bufnr)
-    client.server_capabilities.document_formatting = false
-    on_attach(client, bufnr)
-  end
+  on_attach = on_attach,
 })
