@@ -4,16 +4,11 @@
 [core]
         pager = delta
 	excludesfile = /Users/louishuyng/.gitignore_global
-[interactive]
-    diffFilter = delta --color-only
+[interactive] diffFilter = delta --color-only
 
 [delta]
     navigate = true
-[merge]
-    conflictstyle = diff3
 
-[diff]
-    colorMoved = default
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -29,34 +24,50 @@
 	whitespace = red reverse
 [alias]
 	co = checkout
+        cp = cherry-pick
 	br = branch
 	ci = commit
 	st = status
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+        new = checkout -b
+        compare  = diff --word-diff
+        rewrite = commit --amend --no-verify
+        pushf = push --force-with-lease
+        delivery = push -u origin
+        sync = rebase --autostash
+        hard = reset --hard
+        soft = reset --soft
+        lol = log --pretty='format:%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s'
+        graph = log --pretty=format:'%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s' --graph --decorate
+        change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 [push]
 	default = current
 [rebase]
 	autoStash = true
-
 [rerere]
         enabled = true
+
+[diff]
+    tool = p4merge
+
+[merge]
+    tool = p4merge
+
+[difftool "p4merge"]
+    cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+    path = 
+
+[mergetool "p4merge"]
+    cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+    trustExitCode = true
 
 [includeIf "gitdir:~/.dotfiles/"]
   path = ~/.dotfiles/config/gitconfig/.personal
 
-[includeIf "gitdir:~/Dev/Projects/Hodfords/"]
-  path = ~/.dotfiles/config/gitconfig/.hodfords
+[includeIf "gitdir:~/LX14/repository/github.com/regask/"]
+  path = ~/.dotfiles/config/gitconfig/.regask
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[alias]
-    change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
-	bb = !better_branch
