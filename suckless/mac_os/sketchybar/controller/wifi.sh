@@ -3,6 +3,8 @@
 WIFI_CONNECTED=􀙇
 WIFI_DISCONNECTED=􀙈
 
+IS_DARK_THEME=$(osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode')
+
 update() {
   IP="$(ipconfig getifaddr en0)"
 
@@ -10,7 +12,7 @@ update() {
   LABEL="$([ -n "$IP" ] && echo "$IP" || echo "Disconnected")"
   COLOR="$([ -n "$IP" ] && echo "0xffE0E4DC" || echo "0xff7F7F7F")"
 
-  sketchybar --set $NAME icon="$ICON" label="$LABEL" icon.color="$COLOR" label.color="$COLOR"
+  sketchybar --set $NAME icon="$ICON" label="$LABEL"
 }
 
 click() {

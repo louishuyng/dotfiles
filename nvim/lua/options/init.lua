@@ -3,61 +3,63 @@ vim.g.loaded_matchparen = 1
 local opt = vim.opt
 
 vim.g.startup_bookmarks = {
-  ["D"] = '~/.dotfiles',
-  ["A"] = "~/Dev/repository/github.com/louishuyng/awesome-tech",
-  ["K"] = '~/.dotfiles/terminals/kitty/kitty.conf',
+  ['D'] = '~/.dotfiles',
+  ['A'] = '~/Dev/repository/github.com/louishuyng/awesome-tech',
+  ['K'] = '~/.dotfiles/terminals/kitty/kitty.conf',
 }
 
-vim.g.default_black_theme = "night"
-vim.g.default_white_theme = "light"
+vim.g.default_black_theme = 'night'
+vim.g.default_white_theme = 'light'
 
 vim.g.auto_format = true
 
 -- Mise Integration
-vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+vim.env.PATH = vim.env.HOME .. '/.asdf/shims:' .. vim.env.PATH
 
 -- Ignore compiled files
-opt.wildignore = "__pycache__"
-opt.wildignore:append { "*.o", "*~", "*.pyc", "*pycache*" }
-opt.wildignore:append { "Cargo.lock", "Cargo.Bazel.lock" }
+opt.wildignore = '__pycache__'
+opt.wildignore:append { '*.o', '*~', '*.pyc', '*pycache*' }
+opt.wildignore:append { 'Cargo.lock', 'Cargo.Bazel.lock' }
 
 -- Cool floating window popup menu for completion on command line
 opt.pumblend = 17
-opt.wildmode = "longest:full"
-opt.wildoptions = "pum"
+opt.wildmode = 'longest:full'
+opt.wildoptions = 'pum'
 opt.termguicolors = true
 opt.showmode = false
 opt.showcmd = true
-opt.cmdheight = 1         -- Height of the command bar
-opt.incsearch = true      -- Makes search act like search in modern browsers
-opt.showmatch = true      -- show matching brackets when text indicator is over them
-opt.number = true         -- But show the actual number for the line we're on
-opt.ignorecase = true     -- Ignore case when searching...
-opt.smartcase = true      -- ... unless there is a capital letter in the query
-opt.hidden = true         -- I like having buffers stay around
-opt.splitright = true     -- Prefer windows splitting to the right
-opt.splitbelow = false    -- Prefer windows splitting to the top
-opt.updatetime = 1000     -- Make updates happen faster
-opt.hlsearch = true       -- I wouldn't use this without my DoNoHL function
-opt.scrolloff = 10        -- Make it so there are always ten lines below my cursor
-vim.opt.list = true       -- Show some invisible characters (tabs...)
-opt.laststatus = 3        -- Always display the status line
+opt.cmdheight = 1 -- Height of the command bar
+opt.incsearch = true -- Makes search act like search in modern browsers
+opt.showmatch = true -- show matching brackets when text indicator is over them
+opt.number = true -- But show the actual number for the line we're on
+opt.ignorecase = true -- Ignore case when searching...
+opt.smartcase = true -- ... unless there is a capital letter in the query
+opt.hidden = true -- I like having buffers stay around
+opt.splitright = true -- Prefer windows splitting to the right
+opt.splitbelow = false -- Prefer windows splitting to the top
+opt.updatetime = 1000 -- Make updates happen faster
+opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
+opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
+vim.opt.list = true -- Show some invisible characters (tabs...)
+opt.laststatus = 3 -- Always display the status line
 opt.relativenumber = true -- Relative line numbers
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer
 opt.cursorline = true -- Highlight the current line
-local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
+local group = vim.api.nvim_create_augroup('CursorLineControl', { clear = true })
 local set_cursorline = function(event, value, pattern)
   vim.api.nvim_create_autocmd(event, {
     group = group,
     pattern = pattern,
-    callback = function() vim.opt_local.cursorline = value end
+    callback = function()
+      vim.opt_local.cursorline = value
+    end,
   })
 end
-set_cursorline("WinLeave", false)
-set_cursorline("WinEnter", true)
-set_cursorline("FileType", false, "TelescopePrompt")
+set_cursorline('WinLeave', false)
+set_cursorline('WinEnter', true)
+set_cursorline('FileType', false, 'TelescopePrompt')
 
 -- Tabs
 opt.autoindent = true
@@ -69,36 +71,40 @@ opt.shiftwidth = 2
 opt.smartindent = true
 
 opt.breakindent = true
-opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
+opt.showbreak = string.rep(' ', 3) -- Make it so that long lines wrap smartly
 opt.linebreak = true
 
+opt.fillchars = { fold = ' ' }
 opt.foldmethod = 'indent'
-opt.foldnestmax = 5
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = -1
+opt.foldenable = false
+opt.foldlevel = 99
 
-opt.belloff = "all" -- Just turn the dang bell off
+opt.belloff = 'all' -- Just turn the dang bell off
 
-opt.clipboard = "unnamedplus"
+opt.clipboard = 'unnamedplus'
 
-opt.inccommand = "split"
+opt.inccommand = 'split'
 opt.swapfile = false -- Living on the edge
-opt.shada = { "!", "'1000", "<50", "s10", "h" }
+opt.shada = { '!', "'1000", '<50', 's10', 'h' }
 
-opt.mouse = "a"
+opt.mouse = 'a'
 
 -- set joinspaces
 opt.joinspaces = false -- Two spaces and grade school, we're done
 
 -- set fillchars=eob:~
-opt.fillchars = { eob = "~" }
+opt.fillchars = { eob = '~' }
 
 vim.opt.diffopt = {
-  "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal"
+  'internal',
+  'filler',
+  'closeoff',
+  'hiddenoff',
+  'algorithm:minimal',
 }
 
 vim.opt.undofile = true
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = 'yes'
 
 -- SPELL
 vim.opt.spell = false

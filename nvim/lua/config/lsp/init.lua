@@ -21,7 +21,7 @@ require('mason').setup({
 
     -- Golang
     'gopls',
-    'golangci-lint',
+    'golangci-lint-langserver',
     'goimports',
     'delve',
 

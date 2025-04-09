@@ -38,3 +38,5 @@ else
   sketchybar --set battery label.color=0xffED8796 icon.color=0xffED8796
   sketchybar --set front_app label.color=0xff122323 icon.color=0xff122323 background.color=0xff07B89C
 end
+
+tmux source ~/.tmux.conf

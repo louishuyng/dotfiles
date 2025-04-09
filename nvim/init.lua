@@ -1,14 +1,14 @@
 -- Basic Vim Options
-require "options"
+require('options')
 
 -- Plugin Configuration
-require 'config'
+require('config')
 
 -- UI Support
-require 'ui'
+require('ui')
 
 -- Key Bindings
-require "mappings"
+require('mappings')
 
 -- Auto Setup
-require "cmds"
+require('cmds')

@@ -1,3 +1,4 @@
+alias g='git'
 alias ghcs='gh copilot suggest'
 alias ghce='gh copilot explain'
 

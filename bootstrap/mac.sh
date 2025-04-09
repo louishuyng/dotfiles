@@ -449,6 +449,7 @@ install_cli_tools() {
     brew install xdg-ninja # A shell script which checks your $HOME for unwanted files and directories.
     brew install atuin # History search
     brew install serpl # Search and replace
+    brew install aichat # AI cli
 
 
     # Hack Tools

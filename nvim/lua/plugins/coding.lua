@@ -32,10 +32,7 @@ return {
   },
 
   -- ROR
-  { 'tpope/vim-rails' },
-
-  -- Golang
-  { 'fatih/vim-go' },
+  -- { 'tpope/vim-rails' },
 
   -- Testing
   { 'vim-test/vim-test', dependencies = { 'preservim/vimux' } },

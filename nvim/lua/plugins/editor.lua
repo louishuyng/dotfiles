@@ -1,30 +1,24 @@
 return {
   { 'mg979/vim-visual-multi' }, -- Multi Cursor
   {
-    "andymass/vim-matchup",
-    init = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end
+    'andymass/vim-matchup',
+    init = function()
+      vim.g.matchup_matchparen_offscreen = { method = 'popup' }
+    end,
   },
   {
     'folke/todo-comments.nvim',
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {}
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {},
   },
 
   { 'mbbill/undotree' },
 
-  -- Mark
-  {
-    'chentoast/marks.nvim',
-    config = function()
-      require('marks').setup({})
-    end
-  },
-
   -- Git
   { 'tpope/vim-fugitive' },
-  { 'lewis6991/gitsigns.nvim',       dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
   { 'sindrets/diffview.nvim' },
-  { 'akinsho/git-conflict.nvim',     version = "*",                             config = true },
+  { 'akinsho/git-conflict.nvim', version = '*', config = true },
   { 'ThePrimeagen/git-worktree.nvim' },
 
   -- Markdown
@@ -38,16 +32,15 @@ return {
     'ThePrimeagen/refactoring.nvim',
     config = function()
       require('refactoring').setup()
-    end
+    end,
   },
 
   -- REST API
-  { "rest-nvim/rest.nvim", ft = "http",
-  },
+  { 'rest-nvim/rest.nvim', ft = 'http' },
   -- Key map finding
   {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
@@ -57,9 +50,8 @@ return {
 
   -- Find matching words
   {
-    'dyng/ctrlsf.vim'
+    'dyng/ctrlsf.vim',
   },
-
 
   -- Exploring Files
   {
@@ -76,26 +68,25 @@ return {
     config = function()
       require('oil').setup({
         keymaps = {
-          ["<C-v>"] = { "actions.select", opts = { vertical = true } },
-          ["<C-s>"] = { "actions.select", opts = { horizontal = true } },
-          ["<BS>"] = { "actions.parent", mode = "n" },
-          ["q"] = { "actions.close", mode = "n" },
+          ['<C-v>'] = { 'actions.select', opts = { vertical = true } },
+          ['<C-s>'] = { 'actions.select', opts = { horizontal = true } },
+          ['<BS>'] = { 'actions.parent', mode = 'n' },
+          ['q'] = { 'actions.close', mode = 'n' },
         },
       })
 
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "OilActionsPost",
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'OilActionsPost',
         callback = function(event)
-          if event.data.actions.type == "move" then
+          if event.data.actions.type == 'move' then
             Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
           end
         end,
       })
     end,
   },
-
 
   -- MINI plugins
   {
@@ -109,8 +100,8 @@ return {
           o = spec_treesitter({
             a = { '@conditional.outer', '@loop.outer' },
             i = { '@conditional.inner', '@loop.inner' },
-          })
-        }
+          }),
+        },
       })
     end,
   },
@@ -119,20 +110,20 @@ return {
     version = false,
     config = function()
       require('mini.bracketed').setup({})
-    end
+    end,
   },
   {
     'echasnovski/mini.surround',
     version = false,
     config = function()
       require('mini.surround').setup({})
-    end
+    end,
   },
   {
     'echasnovski/mini.pairs',
     version = false,
     config = function()
       require('mini.pairs').setup({})
-    end
+    end,
   },
 }

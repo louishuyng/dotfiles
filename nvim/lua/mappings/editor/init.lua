@@ -1,7 +1,6 @@
 require 'mappings.editor.buffer'
 require 'mappings.editor.ctrlf'
 require 'mappings.editor.general'
-require 'mappings.editor.neoscopes'
 require 'mappings.editor.refactoring'
 require 'mappings.editor.telescope'
 require 'mappings.editor.term'

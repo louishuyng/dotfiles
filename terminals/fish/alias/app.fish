@@ -10,9 +10,6 @@ alias osq='osqueryi'
 alias tm='tmux  -u'
 alias tx='tmuxinator'
 
-# Ranger
-alias ra='ranger'
-
 # SPOTIFY
 alias sppl='spotify play'
 alias sppa='spotify pause'
@@ -22,3 +19,6 @@ alias spm='spotify mute'
 alias spu='spotify unmute'
 alias sp+='spotify +'
 alias sp-='spotify -'
+
+# AI
+alias ai="aichat"

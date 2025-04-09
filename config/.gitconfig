@@ -31,9 +31,9 @@
         new = checkout -b
         compare  = diff --word-diff
         rewrite = commit --amend --no-verify
-        pushf = push --force-with-lease
-        delivery = push -u origin
-        sync = rebase --autostash
+        pushf = push --force-with-lease --no-verify
+        delivery = push -u origin --no-verify
+        sync = pull --rebase --autostash
         hard = reset --hard
         soft = reset --soft
         lol = log --pretty='format:%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s'

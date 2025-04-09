@@ -1,13 +1,5 @@
 return {
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      {
-        "stevearc/dressing.nvim", -- Improves the default Neovim UI
-        opts = {},
-      },
-    },
-  },
+  { "olimorris/codecompanion.nvim" },
   {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',

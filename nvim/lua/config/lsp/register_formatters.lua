@@ -1,10 +1,7 @@
 local get_lsp_format_opt = function()
   local bufnr = vim.fn.bufnr()
-  local disable_filetypes = {
-    c = true,
-    cpp = true,
-    typescript = true,
-  }
+
+  local disable_filetypes = {}
 
   local lsp_format_opt
   if disable_filetypes[vim.bo[bufnr].filetype] then
@@ -14,13 +11,6 @@ local get_lsp_format_opt = function()
   end
 
   return lsp_format_opt
-end
-
-local eslint_format = function()
-  if vim.fn.exists 'EslintFixAll' then
-    vim.cmd 'EslintFixAll'
-  end
-  return {}
 end
 
 require('conform').setup({
@@ -34,8 +24,6 @@ require('conform').setup({
   end,
   formatters_by_ft = {
     lua = { 'stylua' },
-    -- go = { 'gofmt', 'golangci-lint', 'goimports' },
-    typescript = eslint_format,
   },
 })
 

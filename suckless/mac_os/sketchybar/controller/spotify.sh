@@ -5,6 +5,8 @@
 
 MAX_LENGTH=35
 
+IS_DARK_THEME=$(osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode')
+
 # Logic starts here, do not modify
 HALF_LENGTH=$(((MAX_LENGTH + 1) / 2))
 
@@ -38,9 +40,16 @@ update_track() {
                 ARTIST="${ARTIST:0:$((MAX_LENGTH - TRACK_LENGTH - 1))}…"
             fi
         fi
-        sketchybar --set $NAME label="${TRACK} < ${ARTIST} |" label.color=0xffBBF2DD
+
+        if [ $IS_DARK_THEME = "true" ]; then
+            # Dark mode
+            sketchybar --set $NAME label="${TRACK} < ${ARTIST} |" label.color=0xffBBF2DD
+        else
+            # Light mode
+            sketchybar --set $NAME label="${TRACK} < ${ARTIST} |" label.color=0xff198E31
+        fi 
     else
-        sketchybar --set $NAME label="No Music |" label.color=0xff868686
+        sketchybar --set $NAME label="No Music |" label.color=0xff999999
     fi
 }
 
