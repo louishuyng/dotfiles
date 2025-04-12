@@ -101,4 +101,3 @@ k9s:
         bgColor: *selection
         toggleOnColor: *magenta
         toggleOffColor: *blue
-

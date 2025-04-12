@@ -1,12 +1,12 @@
 auto-update-channel = tip
 
-theme = dark:vesper,light:Builtin Solarized Light
+theme = dark:Paraiso Dark,light:dayfox
 cursor-color = #AF87D7
 
 shell-integration = fish
 
 font-family = "Martina Mono"
-font-size = 14
+font-size = 15
 adjust-cell-height = 4
 adjust-cell-height = 6
 font-thicken = true

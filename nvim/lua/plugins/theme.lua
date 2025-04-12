@@ -23,33 +23,58 @@ return {
           crust = '#1a1016',
         },
         latte = {
-          rosewater = '#c14a4a',
-          flamingo = '#c14a4a',
-          red = '#c14a4a',
-          maroon = '#c14a4a',
-          pink = '#945e80',
-          mauve = '#945e80',
-          peach = '#c35e0a',
-          yellow = '#b47109',
-          green = '#6c782e',
-          teal = '#4c7a5d',
-          sky = '#4c7a5d',
-          sapphire = '#4c7a5d',
-          blue = '#45707a',
-          lavender = '#45707a',
-          text = '#654735',
-          subtext1 = '#73503c',
-          subtext0 = '#805942',
-          overlay2 = '#8c6249',
-          overlay1 = '#8c856d',
-          overlay0 = '#a69d81',
-          surface2 = '#bfb695',
-          surface1 = '#d1c7a3',
-          surface0 = '#e3dec3',
-          base = '#f9f5d7',
-          mantle = '#f0ebce',
-          crust = '#e8e3c8',
+          rosewater = '#cc7983',
+          flamingo = '#bb5d60',
+          pink = '#d54597',
+          mauve = '#a65fd5',
+          red = '#b7242f',
+          maroon = '#db3e68',
+          peach = '#e46f2a',
+          yellow = '#bc8705',
+          green = '#1a8e32',
+          teal = '#00a390',
+          sky = '#089ec0',
+          sapphire = '#0ea0a0',
+          blue = '#017bca',
+          lavender = '#8584f7',
+          text = '#444444',
+          subtext1 = '#555555',
+          subtext0 = '#666666',
+          overlay2 = '#777777',
+          overlay1 = '#888888',
+          overlay0 = '#999999',
+          surface2 = '#aaaaaa',
+          surface1 = '#bbbbbb',
+          surface0 = '#cccccc',
+          base = '#ffffff',
+          mantle = '#eeeeee',
+          crust = '#dddddd',
         },
+      },
+      highlight_overrides = {
+        -- Increase contrast, which is not enough by default:
+        latte = function(colors)
+          return {
+            TermCursor = { bg = colors.mauve },
+            Identifier = { fg = colors.maroon },
+            markdownCode = { fg = colors.maroon },
+            markdownCodeBlock = { fg = colors.maroon },
+            Substitute = { bg = colors.crust }, -- used for substitution hints
+            Visual = { bg = colors.crust }, -- used for highlighting visual selection
+            VisualNOS = { bg = colors.crust }, -- Visual mode selection when vim is "Not Owning the Selection".
+            LspReferenceText = { bg = colors.crust }, -- used for highlighting "text" references
+            LspReferenceRead = { bg = colors.crust }, -- used for highlighting "read" references
+            LspReferenceWrite = { bg = colors.crust }, -- used for highlighting "write" references
+            LspSignatureActiveParameter = { bg = colors.crust },
+            MatchParen = { bg = colors.crust }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+            illuminatedWord = { bg = colors.crust },
+            illuminatedCurWord = { bg = colors.crust },
+            IlluminatedWordText = { bg = colors.crust },
+            IlluminatedWordRead = { bg = colors.crust },
+            IlluminatedWordWrite = { bg = colors.crust },
+            RenderMarkdownCodeInline = { bg = colors.crust },
+          }
+        end,
       },
     },
   },
@@ -61,6 +86,7 @@ return {
         vim.cmd([[
           luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
           luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
+          luafile ~/.dotfiles/nvim/lua/ui/buffer.lua
           luafile ~/.dotfiles/nvim/lua/plugins/ui.lua
         ]])
       end,
@@ -69,6 +95,7 @@ return {
         vim.cmd([[
           luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
           luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
+          luafile ~/.dotfiles/nvim/lua/ui/buffer.lua
           luafile ~/.dotfiles/nvim/lua/plugins/ui.lua
         ]])
       end,

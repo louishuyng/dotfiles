@@ -15,9 +15,19 @@ return {
   { 'mbbill/undotree' },
 
   -- Git
-  { 'tpope/vim-fugitive' },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+
+      -- Only one of these is needed.
+      'nvim-telescope/telescope.nvim', -- optional
+      'ibhagwan/fzf-lua', -- optional
+      'echasnovski/mini.pick', -- optional
+    },
+  },
   { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-  { 'sindrets/diffview.nvim' },
   { 'akinsho/git-conflict.nvim', version = '*', config = true },
   { 'ThePrimeagen/git-worktree.nvim' },
 
