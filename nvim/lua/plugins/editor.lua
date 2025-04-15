@@ -24,12 +24,10 @@ return {
       -- Only one of these is needed.
       'nvim-telescope/telescope.nvim', -- optional
       'ibhagwan/fzf-lua', -- optional
-      'echasnovski/mini.pick', -- optional
     },
   },
   { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
   { 'akinsho/git-conflict.nvim', version = '*', config = true },
-  { 'ThePrimeagen/git-worktree.nvim' },
 
   -- Markdown
   {

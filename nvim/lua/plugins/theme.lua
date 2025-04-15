@@ -51,31 +51,6 @@ return {
           crust = '#dddddd',
         },
       },
-      highlight_overrides = {
-        -- Increase contrast, which is not enough by default:
-        latte = function(colors)
-          return {
-            TermCursor = { bg = colors.mauve },
-            Identifier = { fg = colors.maroon },
-            markdownCode = { fg = colors.maroon },
-            markdownCodeBlock = { fg = colors.maroon },
-            Substitute = { bg = colors.crust }, -- used for substitution hints
-            Visual = { bg = colors.crust }, -- used for highlighting visual selection
-            VisualNOS = { bg = colors.crust }, -- Visual mode selection when vim is "Not Owning the Selection".
-            LspReferenceText = { bg = colors.crust }, -- used for highlighting "text" references
-            LspReferenceRead = { bg = colors.crust }, -- used for highlighting "read" references
-            LspReferenceWrite = { bg = colors.crust }, -- used for highlighting "write" references
-            LspSignatureActiveParameter = { bg = colors.crust },
-            MatchParen = { bg = colors.crust }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-            illuminatedWord = { bg = colors.crust },
-            illuminatedCurWord = { bg = colors.crust },
-            IlluminatedWordText = { bg = colors.crust },
-            IlluminatedWordRead = { bg = colors.crust },
-            IlluminatedWordWrite = { bg = colors.crust },
-            RenderMarkdownCodeInline = { bg = colors.crust },
-          }
-        end,
-      },
     },
   },
   {

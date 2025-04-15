@@ -12,13 +12,11 @@ vim.keymap.set('n', '<leader>dvo', ':DiffviewOpen<CR>')
 vim.keymap.set('n', '<leader>dvc', ':DiffviewClose<CR>')
 
 vim.keymap.set('n', ',gs', function()
-  neogit.open({
-    kind = 'split_above',
-  })
+  neogit.open()
 end, { silent = true })
 
 vim.keymap.set('n', '<leader>1', ':silent !ssh-add -D; ssh-add --apple-use-keychain ~/.ssh/open_source <CR><CR>')
 
 require 'mappings.source_control.conflict'
 require 'mappings.source_control.telescope_git'
-require 'mappings.source_control.worktree'
+require 'mappings.source_control.utils'
