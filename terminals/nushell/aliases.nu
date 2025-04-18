@@ -4,6 +4,8 @@ alias g = git
 alias nv = nvim
 
 alias k = kubectl
+alias kns = kubens
+alias kctx = kubectx
 
 alias ll = ls -l
 alias cdes = rm -rf ~/Desktop/*

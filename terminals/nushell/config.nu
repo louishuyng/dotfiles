@@ -31,3 +31,6 @@ source ~/.dotfiles/terminals/nushell/aliases.nu
 
 # Key Bindings
 source ~/.dotfiles/terminals/nushell/key-bindings.nu
+
+# Completions
+source ~/.dotfiles/terminals/nushell/completer.nu

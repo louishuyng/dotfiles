@@ -142,6 +142,7 @@ install_nushell() {
   read -r -p "Do you want to install nushell? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install nushell
+    brew install carapace
 
     ln -s ~/.dotfiles/terminals/nushell/config.nu ~/Library/Application\ Support/nushell/config.nu
     ln -s ~/.dotfiles/terminals/nushell/env.nu ~/Library/Application\ Support/nushell/env.nu
