@@ -48,7 +48,7 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 alt-shift-j = 'move down'
 
-alt-tab = 'workspace-back-and-forth'
+alt-tab = 'focus-back-and-forth'
 
 # Let 'focus' work when all windows are floating
 alt-h = 'exec-and-forget aerospace focus --boundaries-action wrap-around-the-workspace left || $HOME/.config/aerospace/scripts/focus-window.sh left'

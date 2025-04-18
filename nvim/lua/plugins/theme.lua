@@ -7,6 +7,19 @@ return {
         light = 'latte',
         dark = 'mocha',
       },
+      integrations = {
+        mason = true,
+        neotest = true,
+        noice = true,
+        copilot_vim = true,
+        diffview = true,
+        snacks = {
+          enabled = true,
+          indent_scope_color = '', -- catppuccin color (eg. `lavender`) Default: text
+        },
+        lsp_trouble = true,
+        which_key = true,
+      },
       color_overrides = {
         mocha = {
           text = '#F4CDE9',

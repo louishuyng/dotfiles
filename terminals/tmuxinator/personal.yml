@@ -1,7 +1,5 @@
 name: LX14
+root: ~/.dotfiles
 attach: true
 windows:
   - dotfiles:
-      - cd ~/.dotfiles
-  - research:
-      - cd ~/LX14/projects/research
