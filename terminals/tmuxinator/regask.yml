@@ -2,4 +2,5 @@ name: Regask
 root: ~/LX14/repository/github.com/regask
 attach: false
 windows:
-  - regask:
+  - gitops:
+      - cd gitops

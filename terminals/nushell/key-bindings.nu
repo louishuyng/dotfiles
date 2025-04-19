@@ -9,4 +9,14 @@ $env.config.keybindings = [
       { send: Enter }
     ]
   }
+  {
+    name: "nvim-launch"
+    modifier: control
+    keycode: char_y
+    mode: vi_insert
+    event: [
+      { edit: InsertString, value: "yazi" }
+      { send: Enter }
+    ]
+  }
 ]
