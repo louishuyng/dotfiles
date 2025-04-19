@@ -1,7 +1,3 @@
-# Zoxide setup
-source ~/.zoxide.nu
-zoxide init nushell | save -f ~/.zoxide.nu
-
 # Functions
 source ~/.dotfiles/terminals/nushell/functions.nu
 
@@ -26,3 +22,9 @@ $env.config.render_right_prompt_on_last_line = true
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+
+# Atuin setup
+source ~/.local/share/atuin/init.nu
+
+# Zoxide setup
+source ~/.zoxide.nu

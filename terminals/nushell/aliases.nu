@@ -3,7 +3,7 @@ alias cat = bat
 alias g = git
 alias nv = nvim
 alias tm = tmux
-alias z = __zoxide_z
+alias zed = ^open -a /Applications/Zed.app -n
 
 alias k = kubectl
 alias kns = kubens
