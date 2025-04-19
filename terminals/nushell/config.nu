@@ -1,24 +1,3 @@
-# Starship setup
-$env.STARSHIP_SHELL = "nu"
-
-def create_left_prompt [] {
-    starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)'
-}
-
-# Use nushell functions to define your right and left prompt
-$env.PROMPT_COMMAND = { || create_left_prompt }
-$env.PROMPT_COMMAND_RIGHT = ""
-
-# The prompt indicators are environmental variables that represent
-# the state of the prompt
-$env.PROMPT_INDICATOR = ""
-$env.PROMPT_INDICATOR_VI_INSERT = ""
-$env.PROMPT_INDICATOR_VI_NORMAL = ""
-$env.PROMPT_MULTILINE_INDICATOR = ""
-
-mkdir ($nu.data-dir | path join "vendor/autoload")
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-
 # Zoxide setup
 source ~/.zoxide.nu
 zoxide init nushell | save -f ~/.zoxide.nu
@@ -34,3 +13,16 @@ source ~/.dotfiles/terminals/nushell/key-bindings.nu
 
 # Completions
 source ~/.dotfiles/terminals/nushell/completer.nu
+
+# Starship setup
+$env.STARSHIP_SHELL = "nushell"
+
+# the state of the prompt
+$env.PROMPT_INDICATOR = ""
+$env.PROMPT_INDICATOR_VI_INSERT = ""
+$env.PROMPT_INDICATOR_VI_NORMAL = ""
+$env.PROMPT_MULTILINE_INDICATOR = ""
+$env.config.render_right_prompt_on_last_line = true
+
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
