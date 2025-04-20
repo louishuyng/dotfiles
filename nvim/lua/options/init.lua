@@ -11,6 +11,10 @@ vim.g.startup_bookmarks = {
 vim.g.default_black_theme = 'night'
 vim.g.default_white_theme = 'light'
 
+vim.g.home_dir = '/Users/louishuyng'
+vim.g.work_project_dir = vim.g.home_dir .. '/LX14/projects'
+vim.g.work_repository_dir = vim.g.home_dir .. '/LX14/repository/github.com'
+
 vim.g.auto_format = true
 
 -- Mise Integration

@@ -59,10 +59,17 @@ return {
           surface2 = '#aaaaaa',
           surface1 = '#bbbbbb',
           surface0 = '#cccccc',
-          base = '#ffffff',
-          mantle = '#eeeeee',
-          crust = '#dddddd',
+          base = '#E4E2CE',
+          mantle = '#f7f1dc',
+          crust = '#f5ecd7',
         },
+      },
+      highlight_overrides = {
+        all = function(C)
+          return {
+            WinBar = { bg = C.mantle, fg = C.text },
+          }
+        end,
       },
     },
   },

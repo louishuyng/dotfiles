@@ -10,12 +10,22 @@ $env.config.keybindings = [
     ]
   }
   {
-    name: "nvim-launch"
+    name: "Yazi"
     modifier: control
     keycode: char_y
     mode: vi_insert
     event: [
       { edit: InsertString, value: "yazi" }
+      { send: Enter }
+    ]
+  }
+  {
+    name: "Atuin"
+    modifier: control
+    keycode: char_r
+    mode: vi_insert
+    event: [
+      { edit: InsertString, value: "_atuin_search" }
       { send: Enter }
     ]
   }

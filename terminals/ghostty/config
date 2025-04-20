@@ -1,6 +1,6 @@
 auto-update-channel = tip
 
-theme = dark:vesper,light:catppuccin-latte
+theme = dark:vesper,light:flexoki-light
 cursor-color = #AF87D7
 shell-integration = none
 

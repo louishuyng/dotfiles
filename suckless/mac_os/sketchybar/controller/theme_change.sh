@@ -7,12 +7,12 @@ set IS_DARK_THEME (osascript -e 'tell application "System Events" to tell appear
 set LIST_SPACES_INDEX I C T B N W R M A
 
 if test "$IS_DARK_THEME" = "false"
-  sketchybar --bar color=0xffffffff
+  sketchybar --bar color=0xffE4E2CE
   sketchybar --set '/.*/' label.color=0xff999999
 
   for i in $LIST_SPACES_INDEX
     sketchybar --set space.$i icon.color=0xff999999
-    sketchybar --set space.$i icon.highlight_color=0xff8584F7
+    sketchybar --set space.$i icon.highlight_color=0xff6C71C4
   end
 
   sketchybar --set cpu label.color=0xff198E31 icon.color=0xff198E31

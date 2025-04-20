@@ -3,7 +3,7 @@ return {
     'LazyVim/LazyVim',
   },
   { 'folke/snacks.nvim' },
-  { 'romgrk/barbar.nvim' },
+  -- { 'romgrk/barbar.nvim' },
   { 'nvim-tree/nvim-web-devicons' },
   { 'folke/noice.nvim' },
   {
