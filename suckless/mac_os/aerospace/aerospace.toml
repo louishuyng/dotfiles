@@ -27,7 +27,6 @@ alt-i = 'workspace I' # Infra (DevOps)
 alt-c = 'workspace C' # Code (IDE, Coding Tools, etc)
 alt-t = 'workspace T' # Terminal (Main Terminal For Coding with web window inside)
 alt-b = 'workspace B' # Browser (Browse anything)
-alt-n = 'workspace N' # Note taking (Inkdrop, Notion, etc)
 alt-w = 'workspace W' # Work (Work related apps like Slack, Teams, etc)
 alt-r = 'workspace R' # Reading books or Research (Kindle, pdf, etc)
 alt-m = 'workspace M' # Music (Spotify)
@@ -37,7 +36,6 @@ alt-shift-i = ['move-node-to-workspace I', 'workspace I']
 alt-shift-c = ['move-node-to-workspace C', 'workspace C']
 alt-shift-t = ['move-node-to-workspace T', 'workspace T']
 alt-shift-b = ['move-node-to-workspace B', 'workspace B']
-alt-shift-n = ['move-node-to-workspace N', 'workspace N']
 alt-shift-w = ['move-node-to-workspace W', 'workspace W']
 alt-shift-r = ['move-node-to-workspace R', 'workspace R']
 alt-shift-m = ['move-node-to-workspace M', 'workspace M']
@@ -122,11 +120,6 @@ run = ['layout floating', 'move-node-to-workspace B']
 if.app-id = 'com.figma.Desktop'
 run = ['layout floating', 'move-node-to-workspace B']
 
-# Workspace Note
-[[on-window-detected]]
-if.app-id = 'info.pkpk.inkdrop'
-run = ['layout floating', 'move-node-to-workspace N']
-
 # Workspace Work
 [[on-window-detected]]
 if.app-id = 'com.readdle.SparkDesktop.appstore'
@@ -149,6 +142,10 @@ if.app-id = 'com.linear'
 run = ['layout floating', 'move-node-to-workspace W']
 
 # Workspace Reading
+[[on-window-detected]]
+if.app-id = 'info.pkpk.inkdrop'
+run = ['layout floating', 'move-node-to-workspace R']
+
 [[on-window-detected]]
 if.app-id = 'com.kingsoft.wpsoffice.mac.global'
 run = ['layout floating', 'move-node-to-workspace R']

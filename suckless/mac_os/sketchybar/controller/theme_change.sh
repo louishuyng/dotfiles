@@ -4,7 +4,7 @@
 set USE_EXTERNAL_DISPLAY (system_profiler SPDisplaysDataType | grep BenQ | wc -l)
 set IS_DARK_THEME (osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode')
 
-set LIST_SPACES_INDEX I C T B N W R M A
+set LIST_SPACES_INDEX I C T B W R M A
 
 if test "$IS_DARK_THEME" = "false"
   sketchybar --bar color=0xffE4E2CE

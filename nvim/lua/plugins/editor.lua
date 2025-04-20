@@ -1,5 +1,5 @@
 return {
-  { 'mg979/vim-visual-multi' }, -- Multi Cursor
+  { 'terryma/vim-multiple-cursors' }, -- Multi Cursor
   {
     'andymass/vim-matchup',
     init = function()
@@ -36,12 +36,12 @@ return {
   },
 
   -- Refactoring
-  {
-    'ThePrimeagen/refactoring.nvim',
-    config = function()
-      require('refactoring').setup()
-    end,
-  },
+  -- {
+  --   'ThePrimeagen/refactoring.nvim',
+  --   config = function()
+  --     require('refactoring').setup()
+  --   end,
+  -- },
 
   -- REST API
   { 'rest-nvim/rest.nvim', ft = 'http' },

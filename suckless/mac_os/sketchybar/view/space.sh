@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-SPACE_ICONS=("infra" "code" "terminal" "browser" "note" "work" "reading" "music" "any")
+SPACE_ICONS=("infra" "code" "terminal" "browser" "work" "reading" "music" "any")
 
 sketchybar --add event aerospace_workspace_change
 
-LIST_SPACES_INDEX=(I C T B N W R M A)
+LIST_SPACES_INDEX=(I C T B W R M A)
 
 for i in "${!LIST_SPACES_INDEX[@]}"; do
   sid=${LIST_SPACES_INDEX[i]}
