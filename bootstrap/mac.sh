@@ -365,6 +365,8 @@ link_all_dotfiles() {
   cd ~/.dotfiles/suckless/mac_os && stow yabai -t ~/ && stow skhdrc -t ~/
   ln -s ~/.dotfiles/suckless/mac_os/sketchybar ~/.config
 
+  ln -s ~/.dotfiles/suckless/yazi/*.toml ~/.config/yazi
+
   success "Linked window manager"
 
   rm -rf ~/.qutebrowser

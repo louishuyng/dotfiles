@@ -1,0 +1,19 @@
+[[manager.prepend_keymap]]
+on   = [ "g", "g" ]
+run  = "cd ~/LX14/repository/github.com"
+desc = "Go to github repository"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "w" ]
+run  = "cd ~/LX14/repository/github.com/regask"
+desc = "Go to main work"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "r" ]
+run  = "cd ~/LX14/projects/research"
+desc = "Go to research"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "p" ]
+run  = "cd ~/LX14/projects"
+desc = "Go to projects"
