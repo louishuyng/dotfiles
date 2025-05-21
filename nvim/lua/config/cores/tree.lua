@@ -10,15 +10,15 @@ require('neo-tree').setup({
     sources = {
       {
         source = 'filesystem',
-        display_name = ' 󰈚 Files ',
+        display_name = '  Files ',
       },
       {
         source = 'git_status',
-        display_name = ' 󰊢 Git ',
+        display_name = '   Git ',
       },
       {
         source = 'document_symbols',
-        display_name = '  Symbols ',
+        display_name = '  Symbols ',
       },
     },
   },

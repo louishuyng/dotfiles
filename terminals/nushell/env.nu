@@ -23,6 +23,9 @@ $env.PATH = ($env.PATH | split row (char esep) | append "/opt/homebrew/bin" | un
 $env.PATH = ($env.PATH | split row (char esep) | append "/usr/local/sbin" | uniq)
 $env.PATH = ($env.PATH | split row (char esep) | append "/opt/homebrew/sbin" | uniq)
 
+# Scripts Path
+$env.PATH = ($env.PATH | split row (char esep) | append $"($env.HOME)/.dotfiles/scripts" | uniq)
+
 # Qutebrowser
 $env.PATH = ($env.PATH | split row (char esep) | append "/Applications/qutebrowser.app/Contents/MacOS" | uniq)
 

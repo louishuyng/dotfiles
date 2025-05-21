@@ -28,7 +28,7 @@ case ${PERCENTAGE} in
 esac
 
 if [[ $CHARGING != "" ]]; then
-   ICON="🔌"
+   ICON="󰄌"
 fi
 
 sketchybar --set $NAME \

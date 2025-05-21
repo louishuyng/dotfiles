@@ -6,7 +6,7 @@ k9s:
   readOnly: false
   noExitOnCtrlC: false
   ui:
-    skin: skin
+    skin: skin-dark
     enableMouse: false
     headless: false
     logoless: false

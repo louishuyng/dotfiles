@@ -1,5 +1,5 @@
 return {
-  { "olimorris/codecompanion.nvim" },
+  { 'olimorris/codecompanion.nvim' },
   {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
@@ -12,14 +12,14 @@ return {
         -- Use alt to interact with Copilot.
         keymap = {
           -- Disable the built-in mapping, we'll configure it in nvim-cmp.
-          accept = "<Bslash><Bslash>",
+          accept = '<Bslash><Bslash>',
           next = '<C-n>',
           prev = '<C-p>',
           dismiss = '/',
         },
       },
       filetypes = { markdown = true },
-      copilot_node_command = vim.fn.expand("$HOME") .. "/.asdf/shims/node"
+      copilot_node_command = vim.fn.expand('$HOME') .. '/.asdf/shims/node',
     },
     config = function(_, opts)
       local copilot = require 'copilot.suggestion'

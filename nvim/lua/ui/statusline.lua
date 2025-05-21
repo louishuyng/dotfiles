@@ -14,7 +14,7 @@ vim.o.laststatus = vim.g.lualine_laststatus
 
 local colors = {}
 
-local flavour = vim.g.theme == 'night' and 'mocha' or 'latte'
+local flavour = vim.g.theme == 'night' and vim.g.default_dark_catppuccin_theme or 'latte'
 
 local C = require('catppuccin.palettes').get_palette(flavour)
 
@@ -99,21 +99,21 @@ lualine.setup {
         'filesize',
         color = { fg = colors.fg2 },
       },
-      {
-        'filename',
-        file_status = true, -- Displays file status (readonly status, modified status)
-        newfile_status = false,
-        path = 4, -- 0: Just the filename
-
-        shorting_target = 40, -- Shortens path to leave 40 spaces in the window
-        symbols = {
-          modified = '[+]',
-          readonly = '[-]',
-          unnamed = '[No Name]',
-          newfile = '[New]',
-        },
-        color = { fg = colors.yellow1 },
-      },
+      -- {
+      --   'filename',
+      --   file_status = true, -- Displays file status (readonly status, modified status)
+      --   newfile_status = false,
+      --   path = 4, -- 0: Just the filename
+      --
+      --   shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+      --   symbols = {
+      --     modified = '[+]',
+      --     readonly = '[-]',
+      --     unnamed = '[No Name]',
+      --     newfile = '[New]',
+      --   },
+      --   color = { fg = colors.yellow1 },
+      -- },
       {
         'location',
         color = { fg = colors.fg2 },
@@ -150,10 +150,10 @@ lualine.setup {
       {
         'diagnostics',
         symbols = {
-          error = icons.diagnostics.error,
-          warn = icons.diagnostics.warn,
-          info = icons.diagnostics.info,
-          hint = icons.diagnostics.hint,
+          error = icons.diagnostics.Error,
+          warn = icons.diagnostics.Warn,
+          info = icons.diagnostics.Info,
+          hint = icons.diagnostics.Hint,
         },
       },
     },

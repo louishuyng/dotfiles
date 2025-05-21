@@ -12,8 +12,24 @@ snacks.setup {
     enabled = true,
     level = vim.log.levels.WARN,
   },
+  -- scroll = {
+  --   enabled = true,
+  --   animate = {
+  --     duration = { step = 15, total = 250 },
+  --     easing = 'linear',
+  --   },
+  --   animate_repeat = {
+  --     delay = 100, -- delay in ms before using the repeat animation
+  --     duration = { step = 5, total = 50 },
+  --     easing = 'linear',
+  --   },
+  --   -- what buffers to animate
+  --   filter = function(buf)
+  --     return vim.g.snacks_scroll ~= false and vim.b[buf].snacks_scroll ~= false and vim.bo[buf].buftype ~= 'terminal'
+  --   end,
+  -- },
   dashboard = {
-    enabled = true,
+    enabled = false,
     sections = {
       {
         icon = ' ',
@@ -27,43 +43,43 @@ snacks.setup {
       function()
         local in_git = Snacks.git.get_root() ~= nil
         local cmds = {
-          {
-            title = 'Notifications',
-            cmd = 'gh notify -s -a -n5',
-            action = function()
-              vim.ui.open('https://github.com/notifications')
-            end,
-            key = 'n',
-            icon = ' ',
-            height = 5,
-            enabled = true,
-          },
+          -- {
+          --   title = 'Notifications',
+          --   cmd = 'gh notify -s -a -n5',
+          --   action = function()
+          --     vim.ui.open('https://github.com/notifications')
+          --   end,
+          --   key = 'n',
+          --   icon = ' ',
+          --   height = 5,
+          --   enabled = true,
+          -- },
           {
             title = 'Open Issues',
-            cmd = 'gh issue list -L 3',
+            cmd = 'clear; gh issue list -L 3',
             key = 'i',
             action = function()
               vim.fn.jobstart('gh issue list --web', { detach = true })
             end,
             icon = ' ',
-            height = 5,
+            height = 10,
           },
           {
             icon = ' ',
             title = 'Open PRs',
-            cmd = 'gh pr list -L 3',
+            cmd = 'clear;gh pr list -L 3',
             key = 'P',
             action = function()
               vim.fn.jobstart('gh pr list --web', { detach = true })
             end,
-            height = 5,
+            height = 10,
           },
-          {
-            icon = ' ',
-            title = 'Git Status',
-            cmd = 'git --no-pager diff --stat -B -M -C',
-            height = 5,
-          },
+          -- {
+          --   icon = ' ',
+          --   title = 'Git Status',
+          --   cmd = 'git --no-pager diff --stat -B -M -C',
+          --   height = 5,
+          -- },
         }
         return vim.tbl_map(function(cmd)
           return vim.tbl_extend('force', {

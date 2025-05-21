@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-APP_BG_COLOR=#000000
-
 source "$HOME/.config/sketchybar/plugins/icon_map_fn.sh"
 
 __icon_map "${INFO}"

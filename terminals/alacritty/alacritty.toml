@@ -1,15 +1,8 @@
-live_config_reload = true
-working_directory = "None"
-
-import = [
-  "~/.dotfiles/terminals/alacritty/tokyonight.toml"
-]
-
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 14
+size = 13
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -41,6 +34,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 option_as_alt = "Both"
 decorations = "buttonless"
+decorations_theme_variant = "Dark"
 padding = { x = 0, y = 0  }
 dimensions = { columns = 200, lines = 55 }
 dynamic_padding = false
@@ -55,6 +49,14 @@ bindings = [
 
 [cursor.style]
 shape = "Block"
+
+[general]
+live_config_reload = true
+working_directory = "None"
+
+import = [
+  "~/.dotfiles/terminals/alacritty/tokyonight.toml",
+]
 
 [cursor]
 unfocused_hollow = false

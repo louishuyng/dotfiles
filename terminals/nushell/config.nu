@@ -1,6 +1,3 @@
-# Functions
-source ~/.dotfiles/terminals/nushell/functions.nu
-
 # Aliases
 source ~/.dotfiles/terminals/nushell/aliases.nu
 
@@ -28,3 +25,6 @@ source ~/.local/share/atuin/init.nu
 
 # Zoxide setup
 source ~/.zoxide.nu
+
+# Functions
+source ~/.dotfiles/terminals/nushell/functions.nu

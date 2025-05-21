@@ -1,4 +1,4 @@
-local folder_icon = '󰉋'
+local folder_icon = '󱍢'
 
 local M = {}
 
@@ -42,6 +42,14 @@ function M.render()
     if prefix ~= '' then
       path = path:gsub('^' .. prefix_path, '')
       prefix = string.format('%%#WinBarDir#%s %s%s', folder_icon, prefix, separator)
+    end
+
+    -- Make path only 3 levels deep.
+    -- Keep only last 3 segments.
+    local path_parts = vim.split(path, '/')
+
+    if #path_parts > 3 then
+      path = table.concat(path_parts, '/', #path_parts - 2)
     end
   end
 

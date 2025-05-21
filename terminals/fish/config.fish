@@ -1,3 +1,18 @@
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+
+set --erase _asdf_shims
+
 # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
 set -U fish_key_bindings fish_default_key_bindings
 
@@ -27,30 +42,8 @@ function s --wraps switcher
         kubeswitch $argv;
 end
 
-# opam configuration
-source /Users/louishuyng/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-switcher init fish | source
-
-# ASDF configuration code
-if test -z $ASDF_DATA_DIR
-    set _asdf_shims "$HOME/.asdf/shims"
-else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
-end
-
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-
-set --erase _asdf_shims
-
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
-
-# Added by Windsurf
-fish_add_path /Users/louishuyng/.codeium/windsurf/bin
 
 fish_add_path /Users/louishuyng/.spicetify

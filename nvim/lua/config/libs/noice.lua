@@ -19,7 +19,7 @@ require('noice').setup({
     view = 'cmdline',
   },
   popupmenu = {
-    enabled = false, -- enables the Noice popupmenu UI
+    enabled = true, -- enables the Noice popupmenu UI
   },
   messages = {
     -- NOTE: If you enable messages, then the cmdline is enabled automatically.

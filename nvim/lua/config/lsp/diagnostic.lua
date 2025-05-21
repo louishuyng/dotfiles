@@ -8,6 +8,16 @@ local signs = {
   Info = icons.diagnostics.Info,
 }
 
+vim.diagnostic.config({
+  underline = true,
+  virtual_text = {
+    spacing = 2,
+    prefix = '●',
+  },
+  update_in_insert = true,
+  severity_sort = true,
+})
+
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

@@ -62,4 +62,7 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
   },
+
+  -- Nvim on browser
+  { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
 }

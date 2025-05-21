@@ -16,7 +16,7 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', opt)
 vim.keymap.set('n', '<C-h>', '<C-w>h', opt)
 
 -- Faster Save and Quit
-vim.keymap.set('n', '<leader>w', ':silent w<CR>', opt)
+vim.keymap.set('n', '<leader>w', ':silent w!<CR>', opt)
 vim.keymap.set('n', '<leader>q', ':q!<CR>', opt)
 
 -- Scrolling Center

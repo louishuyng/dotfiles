@@ -1,15 +1,16 @@
 auto-update-channel = tip
 
-theme = dark:vesper,light:flexoki-light
+theme = dark:GitHub-Dark-Default,light:Github-Light-Default
+background-opacity = 0.8
+
 cursor-color = #AF87D7
 shell-integration = none
 
-font-family = "Martina Mono"
-font-size = 15
-adjust-cell-height = 4
-adjust-cell-height = 6
+font-family = "Aporetic Sans Mono"
+font-size = 14
 font-thicken = true
-font-thicken-strength = 0
+font-thicken-strength = 70
+adjust-cell-height = 5
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
@@ -18,7 +19,6 @@ window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 window-padding-color = extend
-
 window-save-state = default
 
 macos-titlebar-style = hidden

@@ -7,13 +7,12 @@ ITEM_DIR="$HOME/.config/sketchybar/view"
 
 PADDING=4
 PADDING_LABEL=4
-LABEL="JetBrains Mono"
+LABEL="Aporetic Sans Mono"
 LABEL_COLOR=#7F7F7F
 
 sketchybar --bar     blur_radius=0                                        \
                      padding_left=4                                       \
-                     padding_right=4                                      \
-                     color=0xff272727                                   \
+                     padding_right=4                                      \ color=0xff272727                                   \
                      position=bottom                                      \
                      sticky=on                                            \
                      font_smoothing=on                                    \
@@ -22,8 +21,8 @@ sketchybar --bar     blur_radius=0                                        \
 ############## GLOBAL DEFAULTS ##############
 sketchybar           --default updates=when_shown                                   \
                      drawing=on                                           \
-                     icon.font="$LABEL:Regular:15"                      \
-                     label.font="$LABEL:Regular:15"                    \
+                     icon.font="$LABEL:Regular:14"                      \
+                     label.font="$LABEL:Regular:14"                    \
                      icon.padding_left=$PADDING                           \
                      icon.padding_right=2                          \
                      label.padding_left=$PADDING_LABEL                          \
@@ -33,13 +32,17 @@ sketchybar           --default updates=when_shown                               
 
 sketchybar --add item display right \
   --subscribe display display_change \
-  --set display script="$PLUGIN_DIR/display_change.sh"
+  --set display script="$PLUGIN_DIR/display_change.sh" \
+                icon.drawing=off \
+                label.drawing=off \
 
 sketchybar --add event theme_change AppleInterfaceThemeChangedNotification
 
 sketchybar --add item theme right \
   --subscribe theme theme_change \
-  --set theme script="$PLUGIN_DIR/theme_change.sh"
+  --set theme script="$PLUGIN_DIR/theme_change.sh" \
+              label.drawing=off \
+              icon.drawing=off \
 
 source "$PLUGIN_DIR/theme_change.sh"
 
@@ -51,8 +54,8 @@ source "$ITEM_DIR/front_app.sh"
 
 # right
 source "$ITEM_DIR/time.sh"
-source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/keyboard.sh"
+source "$ITEM_DIR/battery.sh"
 # source "$ITEM_DIR/airpodsbattery.sh"
 # source "$ITEM_DIR/disk.sh"
 source "$ITEM_DIR/mem.sh"

@@ -52,7 +52,14 @@ opts.adapters = {
     go_test_args = { '-v', '-race', '-count=1', '-timeout=60s' },
     dap_go_enabled = true,
   },
-  ['neotest-jest'] = {},
+  ['neotest-jest'] = {
+    jestCommand = 'yarn test --',
+    jestConfigFile = 'jest.config.ts',
+    env = { CI = true },
+    cwd = function(path)
+      return vim.fn.getcwd()
+    end,
+  },
 }
 
 if opts.adapters then

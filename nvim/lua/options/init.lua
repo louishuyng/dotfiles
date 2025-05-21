@@ -10,6 +10,7 @@ vim.g.startup_bookmarks = {
 
 vim.g.default_black_theme = 'night'
 vim.g.default_white_theme = 'light'
+vim.g.default_dark_catppuccin_theme = 'frappe'
 
 vim.g.home_dir = '/Users/louishuyng'
 vim.g.work_project_dir = vim.g.home_dir .. '/LX14/projects'
@@ -175,3 +176,33 @@ vim.cmd([[
 vim.cmd([[
   set laststatus=3
 ]])
+
+vim.cmd([[
+  if exists('g:started_by_firenvim')
+    " Don't automatically trigger on touch
+    let g:firenvim_config = {
+      \ 'globalSettings': {
+          \ 'alt': 'all',
+          \ 'ignoreKeys': {
+          \ },
+      \ },
+      \ 'localSettings': {
+          \ '.*': {
+              \ 'cmdline': 'neovim',
+              \ 'content': 'text',
+              \ 'priority': 0,
+              \ 'selector': 'textarea:not(.firenvim-disabled)',
+              \ 'takeover': 'never',
+          \ },
+      \ }
+    \ }
+  endif
+]])
+
+vim.api.nvim_create_autocmd({ 'UIEnter' }, {
+  callback = function(event)
+    local client = vim.api.nvim_get_chan_info(vim.v.event.chan).client
+    if client ~= nil and client.name == 'Firenvim' then
+    end
+  end,
+})

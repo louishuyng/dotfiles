@@ -13,8 +13,8 @@ if vim.g.theme == 'night' then
     "hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#34302C gui=NONE
     "hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#1c1c1c guibg=#85B695 gui=NONE
 
-    hi NeoTreeNormal guibg=NONE
-    hi NeoTreeNormalNC guibg=NONE
+    "hi NeoTreeNormal guibg=NONE
+    "hi NeoTreeNormalNC guibg=NONE
   ]]
 
   transaprent()
@@ -24,16 +24,13 @@ if vim.g.theme == 'light' then
   vim.cmd [[
     set background=light
     colorscheme catppuccin
-
-    hi NeoTreeNormal guibg=NONE
-    hi NeoTreeNormalNC guibg=NONE
   ]]
 
   transaprent()
   gitTransparent()
 end
 
-local flavour = vim.g.theme == 'night' and 'mocha' or 'latte'
+local flavour = vim.g.theme == 'night' and vim.g.default_dark_catppuccin_theme or 'latte'
 
 local C = require('catppuccin.palettes').get_palette(flavour)
 
@@ -47,6 +44,3 @@ colors.title = C.yellow
 colors.title_bg = C.crust
 
 highlight_telescope(colors)
-
-vim.cmd.highlight('DiagnosticUnderlineError gui=undercurl')
-vim.cmd.highlight('DiagnosticUnderlineWarn gui=undercurl')

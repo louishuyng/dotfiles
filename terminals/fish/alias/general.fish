@@ -1,6 +1,8 @@
 # Bash
 alias unset 'set --erase'
 
+alias fetch='neofetch'
+
 # Text Editor
 alias nv="nvim"
 alias nvt='nvim --cmd "set rtp+=./"'

@@ -9,8 +9,4 @@ return {
   { 'williamboman/mason.nvim' },
   { 'vim-test/vim-test' },
   { 'stevearc/conform.nvim' },
-  {
-    'sontungexpt/better-diagnostic-virtual-text',
-    lazy = true,
-  },
 }
