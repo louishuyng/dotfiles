@@ -5,7 +5,6 @@ require 'config.libs.multicursor'
 require 'config.libs.noice'
 require 'config.libs.rest'
 
-require 'config.cores.ai'
 require 'config.cores.cmp'
 require 'config.cores.git'
 require 'config.cores.snacks'
