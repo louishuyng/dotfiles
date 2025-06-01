@@ -4,7 +4,7 @@
 set USE_EXTERNAL_DISPLAY (system_profiler SPDisplaysDataType | grep BenQ | wc -l)
 set IS_DARK_THEME (osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode')
 
-set LIST_SPACES_INDEX I C T B W R M O
+set LIST_SPACES_INDEX I D T W O C N A
 
 if test "$IS_DARK_THEME" = "false"
   sketchybar --bar color=0xffE7E9EF
@@ -12,7 +12,12 @@ if test "$IS_DARK_THEME" = "false"
 
   for i in $LIST_SPACES_INDEX
     sketchybar --set space.$i icon.color=0xff999999
-    sketchybar --set space.$i icon.highlight_color=0xff6C71C4
+
+    if [ $i = "I" ] || [ $i = "T" ]
+      sketchybar --set space.$i icon.highlight_color=0xff198E30
+    else
+      sketchybar --set space.$i icon.highlight_color=0xff6F42C1
+    end
   end
 
   sketchybar --set separator_space icon.color=0xff005cc5
@@ -32,7 +37,12 @@ else
 
   for i in $LIST_SPACES_INDEX
     sketchybar --set space.$i icon.color=0xff868686
-    sketchybar --set space.$i icon.highlight_color=0xffAF87D7
+
+    if [ $i = "I" ] || [ $i = "T" ]
+      sketchybar --set space.$i icon.highlight_color=0xffA6D189
+    else
+      sketchybar --set space.$i icon.highlight_color=0xffBFAFFF
+    end
   end
 
   sketchybar --set separator_space icon.color=0xffBABBF1

@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 ICON_FONT="Hack Nerd Font:Regular:16"
-SPACE_ICONS=("" "󰇴" "" "󱡓" "" "󰑇" "" "")
+ICON_SMALL_FRONT="Hack Nerd Font:Regular:13"
+SPACE_ICONS=("Infra" "" "" "" "" "" "󱞂" "")
 
 sketchybar --add event aerospace_workspace_change
 
-LIST_SPACES_INDEX=(I C T B W R M O)
+LIST_SPACES_INDEX=(I D T W O C N A)
 
 for i in "${!LIST_SPACES_INDEX[@]}"; do
   sid=${LIST_SPACES_INDEX[i]}
@@ -14,12 +15,17 @@ for i in "${!LIST_SPACES_INDEX[@]}"; do
              --subscribe space.$sid aerospace_workspace_change \
              --set space.$sid \
                         icon=${SPACE_ICONS[i]}                    \
-                        icon.font="$ICON_FONT"             \
                         icon.padding_left=7                      \
                         icon.padding_right=7                     \
                         label.drawing=off                         \
                         script="$PLUGIN_DIR/space.sh $sid"             \
                         click_script="aerospace workspace $sid"
+
+  if [ $sid == "I" ]; then
+    sketchybar --set space.$sid icon.font="$ICON_SMALL_FRONT"
+  else
+    sketchybar --set space.$sid icon.font="$ICON_FONT"
+  fi
 done
 
 sketchybar --add item separator_space left \
