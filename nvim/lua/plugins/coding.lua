@@ -15,8 +15,9 @@ return {
       require 'luasnip'.filetype_extend('ruby', { 'rails' })
     end,
   },
-  { 'lukas-reineke/cmp-under-comparator' },
   { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/cmp-nvim-lua' },
+  { 'FelipeLema/cmp-async-path' },
   { 'hrsh7th/cmp-buffer', dependencies = { 'nvim-cmp' } },
   { 'hrsh7th/cmp-cmdline', dependencies = { 'nvim-cmp' } },
 

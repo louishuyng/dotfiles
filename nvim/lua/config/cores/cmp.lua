@@ -7,22 +7,51 @@ if not present then
   return
 end
 
+local LspKind = {}
+
+LspKind.Completion = {
+  Text = { text = 'Text', icon = '' },
+  Method = { text = 'Method', icon = '' },
+  Function = { text = 'Function', icon = '' },
+  Constructor = { text = 'Constructor', icon = '' },
+  Field = { text = 'Field', icon = '' },
+  Variable = { text = 'Variable', icon = '' },
+  Class = { text = 'Class', icon = '' },
+  Interface = { text = 'Interface', icon = '' },
+  Module = { text = 'Module', icon = '' },
+  Property = { text = 'Property', icon = '' },
+  Unit = { text = 'Unit', icon = 'ﱦ' },
+  Value = { text = 'Value', icon = '' },
+  Enum = { text = 'Enum', icon = '' },
+  Keyword = { text = 'Keyword', icon = '' },
+  Snippet = { text = 'Snippet', icon = '' },
+  Color = { text = 'Color', icon = '' },
+  File = { text = 'File', icon = '' },
+  Reference = { text = 'Reference', icon = '' },
+  Folder = { text = 'Folder', icon = '' },
+  EnumMember = { text = 'EnumMember', icon = '' },
+  Constant = { text = 'Constant', icon = '' },
+  Struct = { text = 'Struct', icon = '' },
+  Event = { text = 'Event', icon = 'ﯓ' },
+  Operator = { text = 'Operator', icon = '' },
+  TypeParameter = { text = 'TypeParameter', icon = '' },
+}
+
 vim.opt.completeopt = 'menuone,noselect'
-
-local has_words_before = function()
-  ---@diagnostic disable-next-line: deprecated
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-end
-
-local function t(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
 
 cmp.setup {
   window = {
+    completion = {
+      winhighlight = 'Normal:Pmenu,CursorLine:CmpCursorLine,Search:None',
+      col_offset = -3,
+      side_padding = 0,
+      scrollbar = false,
+    },
     documentation = {
-      winhighlight = 'Normal:NormalFloat,FloatBorder:NormalFloat,CursorLine:Visual,Search:None',
+      border = 'solid',
+      winhighlight = 'Normal:CmpDoc,FloatBorder:CmpDoc,Search:None',
+      max_width = 80,
+      max_height = 12,
     },
   },
   snippet = {
@@ -33,10 +62,34 @@ cmp.setup {
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },
     format = function(entry, item)
-      local kind = string.lower(item.kind)
-      item.kind = icons.kinds[item.kind] or '?'
-      item.abbr = item.abbr:match('[^(]+')
-      item.menu = (icons.cmp_sources[entry.source.name] or '') .. kind
+      local kind = item.kind
+      local kind_hl_group = ('CmpItemKind%s'):format(kind)
+
+      item.kind_hl_group = ('%sIcon'):format(kind_hl_group)
+      item.kind = (' %s '):format(LspKind.Completion[kind].icon)
+
+      local source = entry.source.name
+      if source == 'nvim_lsp' or source == 'path' then
+        item.menu_hl_group = kind_hl_group
+      else
+        item.menu_hl_group = 'Comment'
+      end
+      item.menu = kind
+
+      if source == 'buffer' then
+        item.menu_hl_group = nil
+        item.menu = nil
+      end
+
+      local half_win_width = math.floor(vim.api.nvim_win_get_width(0) * 0.5)
+      if vim.api.nvim_strwidth(item.abbr) > half_win_width then
+        item.abbr = ('%s…'):format(item.abbr:sub(1, half_win_width))
+      end
+
+      if item.menu then -- Add exta space to visually differentiate `abbr` and `menu`
+        item.abbr = ('%s '):format(item.abbr)
+      end
+
       return item
     end,
   },
@@ -81,32 +134,11 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
   },
   sources = {
-    { name = 'luasnip', keyword_length = 2 },
-    { name = 'nvim_lsp', keyword_length = 3 },
-    {
-      name = 'buffer',
-      keyword_length = 5,
-      option = {
-        get_bufnrs = function()
-          local bufs = {}
-          for _, win in ipairs(vim.api.nvim_list_wins()) do
-            bufs[vim.api.nvim_win_get_buf(win)] = true
-          end
-          return vim.tbl_keys(bufs)
-        end,
-      },
-    },
-    -- { name = "path" },
-  },
-  sorting = {
-    comparators = {
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
-      cmp.config.compare.recently_used,
-      require('cmp-under-comparator').under,
-      cmp.config.compare.kind,
-    },
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'buffer' },
+    { name = 'nvim_lua' },
+    { name = 'async_path' },
   },
 }
 
