@@ -1,16 +1,19 @@
 auto-update-channel = tip
 
-theme = dark:GitHub-Dark-Default,light:Github-Light-Default
+theme = dark:dark,light:light
 background-opacity = 0.8
-
+background-blur = 8
 cursor-color = #AF87D7
+
 shell-integration = none
 
-font-family = "Aporetic Sans Mono"
+font-family = "Jetbrains Mono"
 font-size = 14
-font-thicken = true
+font-thicken = false
 font-thicken-strength = 70
-adjust-cell-height = 5
+adjust-cell-height = 4
+adjust-cell-height = 3
+adjust-cell-width = -1
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
