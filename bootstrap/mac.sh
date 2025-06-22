@@ -376,11 +376,6 @@ link_all_dotfiles() {
 
   success "Linked qutebrowser"
 
-  mkdir -p ~/.config/bpytop
-  cd ~/.dotfiles/suckless && stow nnn -t ~/.config && stow bpytop -t ~/.config/bpytop
-
-  success "Linked other tools"
-
   ln -s ~/.dotfiles/config/.gitconfig ~/.gitconfig
   success "Linked git config"
 
@@ -409,7 +404,6 @@ install_cli_tools() {
     brew install act # github action test locally
     brew install asciinema
     brew install autojump
-    brew install bpytop
     brew install brightness
     brew install diff-so-fancy
     brew install fzf
@@ -436,6 +430,8 @@ install_cli_tools() {
 
     # Devops
     brew install bat # Better cat
+    brew install procs # Better ps
+    brew install bottom # Better top
     brew install exa # Better ls
     brew install fd # Better find
     brew install dust # Better checking size
@@ -453,6 +449,7 @@ install_cli_tools() {
     brew install atuin # History search
     brew install serpl # Search and replace
     brew install aichat # AI cli
+    brew install gitkraken-cli # Git kraken
 
 
     # Hack Tools
