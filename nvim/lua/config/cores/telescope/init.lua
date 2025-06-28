@@ -31,7 +31,7 @@ telescope.setup {
         ['<C-s>'] = actions.select_horizontal,
         ['<C-d>'] = actions.delete_buffer,
         ['<C-p>'] = require('telescope.actions.layout').toggle_preview,
-        ['<C-g>'] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
+        ['<C-g>'] = lga_actions.quote_prompt({ postfix = ' --no-ignore --iglob **/' }),
       },
     },
     pickers = {
