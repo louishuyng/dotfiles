@@ -2,9 +2,6 @@
 (define-key evil-normal-state-map ",v" 'split-window-horizontally)
 (define-key evil-normal-state-map ",h" 'split-window-vertically)
 
-;; Exit Emacs
-(define-key evil-normal-state-map "\C-d" 'evil-quit)
-
 ;; Movement Window
 (map! "C-l" 'evil-window-right)
 (map! "C-h" 'evil-window-left)
@@ -12,6 +9,12 @@
 (map! "C-j" 'evil-window-down)
 
 
-;; Scroll
-(define-key evil-normal-state-map "zt" 'evil-scroll-up)
-(define-key evil-normal-state-map "zb" 'evil-scroll-down)
+;; Save and quit
+(map! :leader
+      :desc "Save buffer" "w" #'save-buffer)
+(map! :leader
+      :desc "Save and quit" "q" #'evil-quit)
+
+;; Open file
+;; <Ctrl-p> to open file replace space + space
+(define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)

@@ -17,7 +17,7 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 14
 inner.vertical =   14
-outer.top = [{ monitor."Built-in" = 0 }, 0]
+outer.top = [{ monitor."Built-in" = 0 }, 28]
 outer.bottom = [{ monitor."Built-in" = 0 }, 27]
 outer.left =       0
 outer.right =      0
@@ -28,8 +28,7 @@ alt-d = 'workspace D' # Dev (IDE, Coding Tools, etc)
 alt-t = 'workspace T' # Terminal (Main Terminal For Coding with web window inside)
 alt-w = 'workspace W' # Web (Browse or any web development related like figma, etc)
 alt-c = 'workspace C' # Chat (Chat related apps like Slack, Teams, Whatsapp etc)
-alt-n = 'workspace N' # Notes Collection (Kindle, pdf, inkdrop, etc)
-alt-o = 'workspace O' # Organize for planing, management (Linear, Jira, etc..)
+alt-o = 'workspace O' # Operation for planing, management and note taking (Linear, Jira, etc..)
 alt-a = 'workspace A' # Any (Social Media, Spotify, Music etc)
 
 alt-shift-i = ['move-node-to-workspace I', 'workspace I']
@@ -37,7 +36,6 @@ alt-shift-d = ['move-node-to-workspace D', 'workspace D']
 alt-shift-t = ['move-node-to-workspace T', 'workspace T']
 alt-shift-w = ['move-node-to-workspace W', 'workspace W']
 alt-shift-c = ['move-node-to-workspace C', 'workspace C']
-alt-shift-n = ['move-node-to-workspace N', 'workspace N']
 alt-shift-o = ['move-node-to-workspace O', 'workspace O']
 alt-shift-a = ['move-node-to-workspace A', 'workspace A']
 
@@ -73,39 +71,51 @@ run = ['layout floating', 'move-node-to-workspace I']
 if.app-id = 'com.jetbrains.datagrip'
 run = ['layout floating', 'move-node-to-workspace I']
 
-# Workspace Code
+[[on-window-detected]]
+if.app-id = 'com.electron.kontena-lens'
+run = ['layout floating', 'move-node-to-workspace I']
+
+# Workspace Dev
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
+if.app-id = 'com.usebruno.app'
+run = ['layout floating', 'move-node-to-workspace D']
+
+[[on-window-detected]]
+if.app-id = 'ai.elementlabs.lmstudio'
+run = ['layout floating', 'move-node-to-workspace D']
+ 
+[[on-window-detected]]
 if.app-id = 'com.axosoft.gitkraken'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
 if.app-id = 'com.exafunction.windsurf'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace D']
 
 # Workspace Terminal
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run='move-node-to-workspace T'
+run = ['layout floating', 'move-node-to-workspace T']
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
@@ -128,7 +138,7 @@ run = ['layout floating', 'move-node-to-workspace W']
 if.app-id = 'com.figma.Desktop'
 run = ['layout floating', 'move-node-to-workspace W']
 
-# Workspace Organize
+# Workspace Operation
 [[on-window-detected]]
 if.app-id = 'com.amazon.Lassen'
 run = ['layout floating', 'move-node-to-workspace O']
@@ -143,6 +153,10 @@ run = ['layout floating', 'move-node-to-workspace O']
 
 [[on-window-detected]]
 if.app-id = 'com.readdle.SparkDesktop.appstore'
+run = ['layout floating', 'move-node-to-workspace O']
+
+[[on-window-detected]]
+if.app-id = 'info.pkpk.inkdrop'
 run = ['layout floating', 'move-node-to-workspace O']
 
 # Workspace Chat
@@ -165,11 +179,6 @@ run = ['layout floating', 'move-node-to-workspace C']
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
 run = ['layout floating', 'move-node-to-workspace C']
-
-# Workspace Note
-[[on-window-detected]]
-if.app-id = 'info.pkpk.inkdrop'
-run = ['layout floating', 'move-node-to-workspace N']
 
 # Workspace Any
 [[on-window-detected]]

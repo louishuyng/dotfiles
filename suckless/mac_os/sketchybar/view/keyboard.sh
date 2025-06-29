@@ -5,6 +5,8 @@ sketchybar --add       event              input_change 'AppleSelectedInputSource
            --add       item               keyboard right                                              \
            --set       keyboard           script="$PLUGIN_DIR/keyboard.sh"                            \
                                           label.padding_left=0                           \
+                                          label.padding_right=2                           \
+                                          icon.padding_left=0                           \
                                           icon.font="$ICON_FONT"             \
                                           icon="󰘵"                                 \
            --subscribe keyboard           input_change

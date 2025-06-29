@@ -1,18 +1,19 @@
 auto-update-channel = tip
 
-theme = dark:dark,light:light
-background-opacity = 0.8
-background-blur = 8
+theme = dark:catppuccin-frappe,light:catppuccin-latte
+background-opacity = 1
+background-blur = false
 cursor-color = #AF87D7
+
 
 shell-integration = none
 
-font-family = "Jetbrains Mono"
-font-size = 14
-font-thicken = false
+font-family = "Terminess Nerd Font"
+font-size = 16
+font-thicken = true
 font-thicken-strength = 70
+adjust-cell-height = 5
 adjust-cell-height = 4
-adjust-cell-height = 3
 adjust-cell-width = -1
 
 mouse-hide-while-typing = true
@@ -22,7 +23,7 @@ window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 window-padding-color = extend
-window-save-state = default
+window-save-state = always
 
 macos-titlebar-style = hidden
 confirm-close-surface = false

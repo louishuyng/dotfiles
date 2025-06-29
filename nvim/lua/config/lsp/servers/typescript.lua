@@ -1,5 +1,4 @@
 local lsp_config = require 'lspconfig'
-local on_attach = require 'config/lsp/on_attach'
 
 local function organize_imports()
   local params = {
@@ -13,18 +12,15 @@ lsp_config.ts_ls.setup({
   commands = {
     OrganizeImports = { organize_imports, description = 'Organize Imports' },
   },
-  on_attach = on_attach,
   root_dir = lsp_config.util.root_pattern('package.json'),
   single_file_support = false,
 })
 
 lsp_config.eslint.setup({
-  on_attach = on_attach,
   single_file_support = false,
 })
 
 require('lspconfig').denols.setup({
-  on_attach = on_attach,
   root_dir = lsp_config.util.root_pattern('deno.json', 'deno.jsonc'),
 })
 

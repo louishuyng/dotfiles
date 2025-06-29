@@ -9,12 +9,6 @@ if vim.g.theme == 'night' then
   vim.cmd [[
     set background=dark
     colorscheme catppuccin
-
-    "hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#34302C gui=NONE
-    "hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=#1c1c1c guibg=#85B695 gui=NONE
-
-    "hi NeoTreeNormal guibg=NONE
-    "hi NeoTreeNormalNC guibg=NONE
   ]]
 
   transaprent()

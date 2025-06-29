@@ -6,6 +6,7 @@ local pickers = require 'telescope.pickers'
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
 local previewers = require('telescope.previewers')
+local reload_theme = require('utils.reload_theme').reload_theme
 
 local dropdown_theme = require('config.cores.telescope.theme').dropdown_theme
 
@@ -19,16 +20,6 @@ local theme_list = {
   { value = 'night', display = 'Night' },
   { value = 'light', display = 'Light' },
 }
-
-local function reloadColorscheme()
-  vim.cmd([[
-    luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
-    luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
-    luafile ~/.dotfiles/nvim/lua/plugins/ui.lua
-
-    syntax on
-  ]])
-end
 
 return function(opts)
   -- Choose theme in telescope picker
@@ -56,7 +47,7 @@ return function(opts)
         actions.select_default:replace(function()
           local selection = action_state.get_selected_entry()
           vim.g.theme = selection.value
-          reloadColorscheme()
+          reload_theme()
           actions.close(prompt_bufnr)
         end)
 

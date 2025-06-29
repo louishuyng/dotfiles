@@ -1,5 +1,5 @@
-vim.g.barbar_auto_setup = false -- disable auto-setup
-
+-- vim.g.barbar_auto_setup = false -- disable auto-setup
+--
 -- require 'barbar'.setup {
 --   -- WARN: do not copy everything below into your config!
 --   --       It is just an example of what configuration options there are.
@@ -59,7 +59,7 @@ vim.g.barbar_auto_setup = false -- disable auto-setup
 --       deleted = { enabled = false, icon = '-' },
 --     },
 --     filetype = {
---       enabled = true,
+--       enabled = false,
 --     },
 --     separator = { left = '', right = '' },
 --

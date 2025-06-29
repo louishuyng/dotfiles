@@ -1,5 +1,4 @@
 local lsp_config = require 'lspconfig'
-local on_attach = require 'config/lsp/on_attach'
 
 -- -- textDocument/diagnostic support until 0.10.0 is released
 -- _timers = {}

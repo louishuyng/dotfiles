@@ -1,5 +1,4 @@
 local lsp_config = require 'lspconfig'
-local on_attach = require 'config/lsp/on_attach'
 
 lsp_config.yamlls.setup({
   settings = {
@@ -29,5 +28,4 @@ lsp_config.yamlls.setup({
       hover = true,
     },
   },
-  on_attach = on_attach,
 })

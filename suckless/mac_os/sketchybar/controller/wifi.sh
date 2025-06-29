@@ -1,7 +1,7 @@
 #!/bin/bash
 
-WIFI_CONNECTED=􀙇
-WIFI_DISCONNECTED=􀙈
+WIFI_CONNECTED="Wifi"
+WIFI_DISCONNECTED="NoWifi"
 
 IS_DARK_THEME=$(osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode')
 
@@ -12,7 +12,7 @@ update() {
   LABEL="$([ -n "$IP" ] && echo "$IP" || echo "Disconnected")"
 
   if [ "$IS_DARK_THEME" = "true" ]; then
-    COLOR="$([ -n "$IP" ] && echo "0xffFFFFFF" || echo "0xff7F7F7F")"
+    COLOR="$([ -n "$IP" ] && echo "0xFFD3D3D4" || echo "0xFFD3D3D4")"
   else
     COLOR="$([ -n "$IP" ] && echo "0xff000000" || echo "0xff7F7F7F")"
   fi

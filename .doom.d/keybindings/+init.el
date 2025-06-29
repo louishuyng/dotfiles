@@ -1,5 +1,3 @@
-(load! "+buffer")
-(load! "+file")
 (load! "+general")
-(load! "+git")
+(load! "+tree")
 (load! "+lsp")

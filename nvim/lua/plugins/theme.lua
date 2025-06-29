@@ -1,3 +1,5 @@
+local reload_theme = require('utils.reload_theme').reload_theme
+
 return {
   {
     'catppuccin/nvim',
@@ -25,6 +27,11 @@ return {
       show_end_of_buffer = false,
       integration_default = false,
       color_overrides = {
+        macchiato = {
+          base = '#2A2C35',
+          crust = '#21252B',
+          mantle = '#2B2637',
+        },
         latte = {
           rosewater = '#d73a49',
           flamingo = '#d73a49',
@@ -50,33 +57,50 @@ return {
           surface1 = '#d1d1d1',
           surface0 = '#e6e6e6',
           base = '#FFFFFF',
-          mantle = '#f2f2f2',
+          mantle = '#e6e9ef',
           crust = '#ebebeb',
         },
       },
       highlight_overrides = {
+        -- macchiato = function(colors)
+        --   return {
+        --     Normal = { bg = 'NONE' },
+        --     NormalNC = { bg = 'NONE' },
+        --   }
+        -- end,
         all = function(colors)
           return {
-            -- Normal = { bg = 'NONE' },
-            -- NormalNC = { bg = 'NONE' },
             WinBar = { fg = colors.mauve },
-            WinSeparator = { fg = colors.subtext0 },
             DiagnosticVirtualTextError = { bg = 'NONE', fg = colors.red },
             DiagnosticVirtualTextWarn = { bg = 'NONE', fg = colors.yellow },
             DiagnosticVirtualTextInfo = { bg = 'NONE', fg = colors.blue },
             DiagnosticVirtualTextHint = { bg = 'NONE', fg = colors.teal },
             DiagnosticUnderlineError = { sp = colors.red, style = { 'undercurl' } },
             DiagnosticUnderlineWarn = { sp = colors.yellow, style = { 'undercurl' } },
-          }
-        end,
-        frappe = function(colors)
-          return {
-            -- Normal = { bg = 'NONE' },
-            -- NormalNC = { bg = 'NONE' },
-            NeoTreeDirectoryIcon = { fg = colors.lavender },
-            NeoTreeDirectoryName = { fg = colors.lavender },
-            NeoTreeNormal = { bg = colors.crust },
-            NeoTreeNormalNC = { bg = colors.crust },
+            SnacksIndent = { fg = colors.surface1 },
+            IblIndent = { fg = colors.surface1 },
+
+            -- surface1:
+            SignColumn = { fg = colors.surface2 }, -- column where |signs| are displayed
+            SignColumnSB = { fg = colors.surface2 }, -- column where |signs| are displayed
+
+            LineNr = { fg = colors.surface2 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' o…
+            TreesitterContextLineNumber = { fg = colors.surface2 },
+            CursorLineNr = { fg = colors.blue }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+
+            DapUIUnavailable = { fg = colors.surface2 },
+
+            GitSignsCurrentLineBlame = { fg = colors.surface2 },
+
+            -- More contrast menus:
+            Pmenu = { bg = colors.crust, fg = colors.overlay0 }, -- Popup menu: normal item.
+            CmpCursorLine = { bg = colors.green, style = { 'bold' }, fg = colors.surface0 }, -- Popup menu: selected item.
+
+            -- NeoTreeNormal = { bg = colors.crust },
+            -- NeoTreeNormalNC = { bg = colors.crust },
+
+            -- More contrast for window separator:
+            WinSeparator = { fg = colors.surface2 }, -- Separator between windows.
           }
         end,
       },
@@ -87,21 +111,11 @@ return {
     opts = {
       set_dark_mode = function()
         vim.g.theme = vim.g.default_black_theme
-        vim.cmd([[
-          luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
-          luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
-          luafile ~/.dotfiles/nvim/lua/ui/buffer.lua
-          luafile ~/.dotfiles/nvim/lua/plugins/ui.lua
-        ]])
+        reload_theme()
       end,
       set_light_mode = function()
         vim.g.theme = vim.g.default_white_theme
-        vim.cmd([[
-          luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
-          luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
-          luafile ~/.dotfiles/nvim/lua/ui/buffer.lua
-          luafile ~/.dotfiles/nvim/lua/plugins/ui.lua
-        ]])
+        reload_theme()
       end,
       update_interval = 3000,
       fallback = 'dark',

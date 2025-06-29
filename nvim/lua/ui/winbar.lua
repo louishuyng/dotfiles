@@ -1,4 +1,4 @@
-local folder_icon = '󱍢'
+local folder_icon = ' '
 
 local M = {}
 
@@ -14,7 +14,7 @@ function M.render()
   end
 
   -- Replace slashes by arrows.
-  local separator = ' %#WinbarSeparator# '
+  local separator = '%#WinbarSeparator# '
 
   local prefix, prefix_path = '', ''
 
@@ -43,14 +43,14 @@ function M.render()
       path = path:gsub('^' .. prefix_path, '')
       prefix = string.format('%%#WinBarDir#%s %s%s', folder_icon, prefix, separator)
     end
+  end
 
-    -- Make path only 3 levels deep.
-    -- Keep only last 3 segments.
-    local path_parts = vim.split(path, '/')
+  -- Make path only 3 levels deep.
+  -- Keep only last 3 segments.
+  local path_parts = vim.split(path, '/')
 
-    if #path_parts > 3 then
-      path = table.concat(path_parts, '/', #path_parts - 2)
-    end
+  if #path_parts > 3 then
+    path = table.concat(path_parts, '/', #path_parts - 2)
   end
 
   -- Remove leading slash.

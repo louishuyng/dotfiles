@@ -1,5 +1,4 @@
 # Aliases
-alias cat = bat
 alias g = git
 alias nv = nvim
 alias tm = tmux

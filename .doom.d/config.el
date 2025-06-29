@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Louis"
-      user-mail-address "huynguyennbk@gmail.com")
+; (setq user-full-name "John Doe"
+;       user-mail-address "john@doe.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -32,7 +32,10 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'catppuccin)
+(setq catppuccin-flavor 'macchiato) ; or 'frappe 'latte, 'macchiato, or 'mocha
+    (load-theme 'catppuccin t)
+
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -40,7 +43,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dev/org/")
+(setq org-directory "/Volumes/mememe/Org/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -75,5 +78,36 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; source: https://nayak.io/posts/golang-development-doom-emacs/
+;; golang formatting set up
+;; use gofumpt
+(after! lsp-mode
+  (setq  lsp-go-use-gofumpt t)
+  )
+;; automatically organize imports
+(add-hook 'go-mode-hook #'lsp-deferred)
+;; Make sure you don't have other goimports hooks enabled.
+(defun lsp-go-install-save-hooks ()
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+;; enable all analyzers; not done by default
+(after! lsp-mode
+  (setq  lsp-go-analyses '((fieldalignment . t)
+                           (nilness . t)
+                           (shadow . t)
+                           (unusedparams . t)
+                           (unusedwrite . t)
+                           (useany . t)
+                           (unusedvariable . t)))
+)
+;; use system clipboard
+; (require 'pbcopy)
+; (turn-on-pbcopy)
+
+ (setq 
+   treemacs-follow-mode 1
+   treemacs-project-follow-mode 1
+   treemacs-position 'right)
+
 (load! "keybindings/+init")
-(load! "packages/+init")

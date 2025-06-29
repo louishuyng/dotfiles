@@ -22,3 +22,6 @@ alias sp-='spotify -'
 
 # AI
 alias ai="aichat"
+
+# GIT
+alias gko='open -na "GitKraken" --args -p $(pwd)'

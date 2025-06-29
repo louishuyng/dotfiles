@@ -57,3 +57,6 @@ vim.cmd('command! ApprovePRs :!auto_approve_prs')
 -- Register
 local esc = vim.api.nvim_replace_termcodes('<Esc>', true, true, true)
 vim.fn.setreg('l', "yoconsole.log('" .. esc .. 'pa:' .. esc .. 'la, ' .. esc .. 'pl')
+
+-- Noice
+vim.keymap.set('n', '<leader>h', ':Noice all<CR>', opt)

@@ -3,9 +3,11 @@
 # Max number of characters so it fits nicely to the right of the notch
 # MAY NOT WORK WITH NON-ENGLISH CHARACTERS
 
-MAX_LENGTH=35
+MAX_LENGTH=15
 
 IS_DARK_THEME=$(osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode')
+
+ICON=
 
 # Logic starts here, do not modify
 HALF_LENGTH=$(((MAX_LENGTH + 1) / 2))
@@ -43,13 +45,13 @@ update_track() {
 
         if [ $IS_DARK_THEME = "true" ]; then
             # Dark mode
-            sketchybar --set $NAME label="${TRACK} < ${ARTIST} |" label.color=0xffBBF2DD
+            sketchybar --set $NAME label="${TRACK} < ${ARTIST}" label.color=0xff98D681 icon.color=0xff98D681 icon="${ICON}"
         else
             # Light mode
-            sketchybar --set $NAME label="${TRACK} < ${ARTIST} |" label.color=0xff198E31
+            sketchybar --set $NAME label="${TRACK} < ${ARTIST}" label.color=0xff23863A icon.color=0xff23863A icon="${ICON}"
         fi 
     else
-        sketchybar --set $NAME label="No Music |" label.color=0xff999999
+        sketchybar --set $NAME label="" icon=""
     fi
 }
 

@@ -10,7 +10,7 @@ vim.g.startup_bookmarks = {
 
 vim.g.default_black_theme = 'night'
 vim.g.default_white_theme = 'light'
-vim.g.default_dark_catppuccin_theme = 'frappe'
+vim.g.default_dark_catppuccin_theme = 'macchiato'
 
 vim.g.home_dir = '/Users/louishuyng'
 vim.g.work_project_dir = vim.g.home_dir .. '/LX14/projects'
@@ -47,7 +47,7 @@ opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 vim.opt.list = true -- Show some invisible characters (tabs...)
 opt.laststatus = 3 -- Always display the status line
-opt.relativenumber = true -- Relative line numbers
+opt.relativenumber = false -- Relative line numbers
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer
@@ -206,3 +206,6 @@ vim.api.nvim_create_autocmd({ 'UIEnter' }, {
     end
   end,
 })
+
+-- AI
+vim.g.copilot_enabled = false -- sets the default

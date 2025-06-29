@@ -12,7 +12,7 @@ M.theme_by_system = function()
   local function check_mode()
     local hasChanged = false
 
-    if vim.fn.system("defaults read -g AppleInterfaceStyle") == "Dark\n" then
+    if vim.fn.system('defaults read -g AppleInterfaceStyle') == 'Dark\n' then
       if vim.g.theme == light_theme then
         hasChanged = true
       end
@@ -28,14 +28,19 @@ M.theme_by_system = function()
 
     if hasChanged then
       vim.cmd([[
-      luafile ~/.dotfiles/nvim/lua/ui/colorscheme.lua
-      luafile ~/.dotfiles/nvim/lua/ui/statusline.lua
+      luafile ~/.dotfiles/nvim/lua/ui/init.lua
       luafile ~/.dotfiles/nvim/lua/plugins/ui.lua
     ]])
     end
   end
 
-  timer:start(0, sleep, vim.schedule_wrap(function() check_mode() end))
+  timer:start(
+    0,
+    sleep,
+    vim.schedule_wrap(function()
+      check_mode()
+    end)
+  )
   check_mode()
 end
 

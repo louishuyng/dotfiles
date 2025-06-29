@@ -29,7 +29,7 @@ function Theme.setup(config)
 		surface0 = "#374145",
 		base = "#0F0F0F",
 		mantle = "#1C1C20",
-		crust = "#1e1e1e",
+		crust = "#5b4f45",
 	}
 
 	config.colors = {

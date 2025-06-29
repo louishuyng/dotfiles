@@ -427,6 +427,7 @@ install_cli_tools() {
     brew install --cask dangerzone
 
     brew install chafa # Image view in terminal
+    brew install tokei # statistics the code
 
     # Devops
     brew install bat # Better cat
