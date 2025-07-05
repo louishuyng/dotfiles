@@ -6,6 +6,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local bufnr = ev.buf
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
+    require('inlay-hints').on_attach(client, bufnr)
+
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
     -- if client.server_capabilities.documentSymbolProvider then
