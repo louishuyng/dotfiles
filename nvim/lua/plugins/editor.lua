@@ -134,6 +134,15 @@ return {
       require('mini.pairs').setup({})
     end,
   },
+  {
+    'nvim-pack/nvim-spectre',
+    lazy = true,
+    cmd = { 'Spectre' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'catppuccin/nvim',
+    },
+  },
 
   -- discipline
   -- {

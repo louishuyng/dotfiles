@@ -192,7 +192,7 @@ require('neo-tree').setup({
   },
   git_status = {
     window = {
-      position = 'float',
+      position = 'right',
       mappings = {
         ['<2-LeftMouse>'] = 'open',
         ['l'] = 'open',

@@ -409,7 +409,7 @@ ins_left {
 
 ins_left(create_separator('right'))
 
--- ins_left(create_mode_based_component('filename', nil, colors.BG))
+ins_left(create_mode_based_component('filename', nil, colors.FG, colors.BG))
 
 ins_left(create_separator('left'))
 

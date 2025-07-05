@@ -1,7 +1,7 @@
 local os_extend = require 'utils.os_extend'
 
-vim.keymap.set("n", "<c-\\>", ":Neotree toggle right<CR>", { silent = true })
-vim.keymap.set("n", ",nf", ":Neotree filesystem reveal right<CR>", { silent = true })
+vim.keymap.set('n', '<c-\\>', ':Neotree toggle<CR>', { silent = true })
+vim.keymap.set('n', ',nf', ':Neotree filesystem reveal<CR>', { silent = true })
 
 local top_level = os_extend.capture('git rev-parse --show-toplevel')
 

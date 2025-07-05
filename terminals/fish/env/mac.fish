@@ -1,4 +1,5 @@
 # Environment variables
+fish_add_path ~/.asdf/shims
 
 # You may need to manually set your language environment
 set -gx LANG en_US.UTF-8

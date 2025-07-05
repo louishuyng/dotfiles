@@ -4,6 +4,7 @@ require 'config.libs.marlin'
 require 'config.libs.multicursor'
 require 'config.libs.noice'
 require 'config.libs.rest'
+require 'config.libs.spectre'
 
 require 'config.cores.cmp'
 require 'config.cores.git'
