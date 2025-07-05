@@ -66,4 +66,16 @@ return {
 
   -- Nvim on browser
   { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
+
+  -- Code runner
+  {
+    'CRAG666/code_runner.nvim',
+    opts = {
+      mode = 'vimux',
+    },
+    config = true,
+    dependencies = {
+      'preservim/vimux',
+    },
+  },
 }

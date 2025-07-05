@@ -11,6 +11,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "a8912b88ce488f411177fc8aed358b04dc246d7b" },
   "cmp-nvim-lua": { "branch": "main", "commit": "f12408bdb54c39c23e67cab726264c10db33ada8" },
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
+  "code_runner.nvim": { "branch": "main", "commit": "65c8d11f507073b915f10faa88ea05bd4fbf69ce" },
   "conform.nvim": { "branch": "master", "commit": "973f3cb73887d510321653044791d7937c7ec0fa" },
   "copilot.lua": { "branch": "master", "commit": "46f4b7d026cba9497159dcd3e6aa61a185cb1c48" },
   "ctrlsf.vim": { "branch": "master", "commit": "50186c529c881b7844bcd66c7b8e9826eb8990a4" },
@@ -67,5 +68,6 @@
   "vim-matchup": { "branch": "master", "commit": "5456eaccf757606884ec1ac1ef3f564019973873" },
   "vim-multiple-cursors": { "branch": "master", "commit": "6456718e1d30b42c04b920c5413ca44f68f08759" },
   "vim-test": { "branch": "master", "commit": "bdbbdee521d41fbc7c7f3edff54ccc50272b7cbb" },
+  "vimux": { "branch": "master", "commit": "7db6b2f79d432ee3820668b1d4625311dbe1d0ad" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
