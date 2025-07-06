@@ -59,4 +59,4 @@ local esc = vim.api.nvim_replace_termcodes('<Esc>', true, true, true)
 vim.fn.setreg('l', "yoconsole.log('" .. esc .. 'pa:' .. esc .. 'la, ' .. esc .. 'pl')
 
 -- Noice
-vim.keymap.set('n', '<leader>h', ':Noice all<CR>', opt)
+vim.keymap.set('n', '<leader>mo', ':Noice all<CR>', opt)

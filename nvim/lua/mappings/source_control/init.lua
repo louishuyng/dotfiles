@@ -2,8 +2,6 @@ local neogit = require('neogit')
 
 vim.keymap.set('n', ',gb', ':Gitsigns blame<CR>', { silent = true })
 
-vim.keymap.set('n', '<leader>tb', ':Gitsigns toggle_current_line_blame<CR>', { silent = true })
-
 vim.keymap.set('n', '<leader>gd', ':Gvdiff ')
 
 vim.keymap.set('n', '<leader>dvf', ':DiffviewFileHistory %<CR>')
