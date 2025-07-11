@@ -1,19 +1,24 @@
 return {
   {
-    "mfussenegger/nvim-dap",
+    'mfussenegger/nvim-dap',
     recommended = true,
-    desc = "Debugging support. Requires language specific adapters to be configured. (see lang extras)",
+    desc = 'Debugging support. Requires language specific adapters to be configured. (see lang extras)',
 
     dependencies = {
-      "rcarriga/nvim-dap-ui",
+      'rcarriga/nvim-dap-ui',
       -- virtual text for the debugger
       {
-        "theHamsta/nvim-dap-virtual-text",
+        'theHamsta/nvim-dap-virtual-text',
         opts = {},
       },
       {
-        "leoluz/nvim-dap-go",
+        'leoluz/nvim-dap-go',
         opts = {},
+      },
+      {
+        'microsoft/vscode-js-debug',
+        lazy = true,
+        build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
       },
     },
 
@@ -39,31 +44,88 @@ return {
     },
 
     config = function()
-      local icons = require("lazyvim.config").icons
+      local icons = require('lazyvim.config').icons
+      local dap = require('dap')
 
-      require("mason-nvim-dap").setup({})
+      require('mason-nvim-dap').setup({})
 
-      vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+      vim.api.nvim_set_hl(0, 'DapStoppedLine', { default = true, link = 'Visual' })
 
       for name, sign in pairs(icons.dap) do
-        sign = type(sign) == "table" and sign or { sign }
+        sign = type(sign) == 'table' and sign or { sign }
         vim.fn.sign_define(
-          "Dap" .. name,
-          { text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
+          'Dap' .. name,
+          { text = sign[1], texthl = sign[2] or 'DiagnosticInfo', linehl = sign[3], numhl = sign[3] }
         )
       end
 
       -- setup dap config by VsCode launch.json file
-      local vscode = require("dap.ext.vscode")
-      local json = require("plenary.json")
+      local vscode = require('dap.ext.vscode')
+      local json = require('plenary.json')
       vscode.json_decode = function(str)
         return vim.json.decode(json.json_strip_comments(str))
+      end
+
+      if not dap.adapters['pwa-node'] then
+        require('dap').adapters['pwa-node'] = {
+          type = 'server',
+          host = 'localhost',
+          port = '${port}',
+          executable = {
+            command = 'node',
+            -- 💀 Make sure to update this path to point to your installation
+            args = {
+              LazyVim.get_pkg_path('js-debug-adapter', '/js-debug/src/dapDebugServer.js'),
+              '${port}',
+            },
+          },
+        }
+      end
+      if not require('dap').adapters['node'] then
+        dap.adapters['node'] = function(cb, config)
+          if config.type == 'node' then
+            config.type = 'pwa-node'
+          end
+          local nativeAdapter = dap.adapters['pwa-node']
+          if type(nativeAdapter) == 'function' then
+            nativeAdapter(cb, config)
+          else
+            cb(nativeAdapter)
+          end
+        end
+      end
+
+      local js_filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' }
+
+      local vscode = require('dap.ext.vscode')
+      vscode.type_to_filetypes['node'] = js_filetypes
+      vscode.type_to_filetypes['pwa-node'] = js_filetypes
+
+      for _, language in ipairs(js_filetypes) do
+        if not dap.configurations[language] then
+          dap.configurations[language] = {
+            {
+              type = 'pwa-node',
+              request = 'launch',
+              name = 'Launch file',
+              program = '${file}',
+              cwd = '${workspaceFolder}',
+            },
+            {
+              type = 'pwa-node',
+              request = 'attach',
+              name = 'Attach',
+              processId = require('dap.utils').pick_process,
+              cwd = '${workspaceFolder}',
+            },
+          }
+        end
       end
     end,
   },
   {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "nvim-neotest/nvim-nio" },
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'nvim-neotest/nvim-nio' },
     -- stylua: ignore
     keys = {
       { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
@@ -71,26 +133,26 @@ return {
     },
     opts = {},
     config = function(_, opts)
-      local dap = require("dap")
-      local dapui = require("dapui")
+      local dap = require('dap')
+      local dapui = require('dapui')
       dapui.setup(opts)
-      dap.listeners.after.event_initialized["dapui_config"] = function()
+      dap.listeners.after.event_initialized['dapui_config'] = function()
         dapui.open({})
       end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
+      dap.listeners.before.event_terminated['dapui_config'] = function()
         dapui.close({})
       end
-      dap.listeners.before.event_exited["dapui_config"] = function()
+      dap.listeners.before.event_exited['dapui_config'] = function()
         dapui.close({})
       end
     end,
   },
   {
-    'theHamsta/nvim-dap-virtual-text'
+    'theHamsta/nvim-dap-virtual-text',
   },
   {
-    "jay-babu/mason-nvim-dap.nvim",
-    cmd = { "DapInstall", "DapUninstall" },
+    'jay-babu/mason-nvim-dap.nvim',
+    cmd = { 'DapInstall', 'DapUninstall' },
     opts = {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -108,5 +170,5 @@ return {
     },
     -- mason-nvim-dap is loaded when nvim-dap loads
     config = function() end,
-  }
+  },
 }
