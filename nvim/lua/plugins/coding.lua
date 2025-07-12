@@ -33,6 +33,7 @@ return {
       require 'config.cores.treesitter'
     end,
   },
+  { 'nvim-treesitter/nvim-treesitter-context' },
 
   {
     'folke/trouble.nvim',
@@ -59,7 +60,6 @@ return {
       'nvim-neotest/neotest-jest',
       'fredrikaverpil/neotest-golang',
       'nvim-lua/plenary.nvim',
-      'antoinemadec/FixCursorHold.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
   },

@@ -15,11 +15,6 @@ return {
         'leoluz/nvim-dap-go',
         opts = {},
       },
-      {
-        'microsoft/vscode-js-debug',
-        lazy = true,
-        build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
-      },
     },
 
     -- stylua: ignore

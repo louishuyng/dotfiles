@@ -17,8 +17,8 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 14
 inner.vertical =   14
-outer.top = [{ monitor."Built-in" = 0 }, 0]
-outer.bottom = [{ monitor."Built-in" = 0 }, 27]
+outer.top = [{ monitor."Built-in" = 0 }, 28]
+outer.bottom = [{ monitor."Built-in" = 0 }, 0]
 outer.left =       0
 outer.right =      0
 
@@ -115,7 +115,7 @@ run = ['layout floating', 'move-node-to-workspace D']
 # Workspace Terminal
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ['layout floating', 'move-node-to-workspace T']
+run = ['move-node-to-workspace T']
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'

@@ -1,7 +1,7 @@
-vim.keymap.set('n', 'gd', '<cmd>vsplit | lua vim.lsp.buf.definition()<CR>', {})
-vim.keymap.set('n', 'gD', '<cmd>split | lua vim.lsp.buf.definition()<CR>', {})
+vim.keymap.set('n', 'gd', '<cmd>vsplit | lua vim.lsp.buf.definition()<CR>', { desc = 'Go definition & vsplit file' })
+vim.keymap.set('n', 'gD', '<cmd>split | lua vim.lsp.buf.definition()<CR>', { desc = 'Go definition & hsplit file' })
 
 vim.keymap.set('n', '<leader>s', ':Neotree source=document_symbols reveal=true<CR>', {
   noremap = true,
   silent = true,
-})
+}, { desc = 'Show symbols on neotree' })

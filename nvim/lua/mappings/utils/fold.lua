@@ -1,1 +1,1 @@
-vim.keymap.set("n", "zl", ":set foldlevel=")
+vim.keymap.set('n', 'zl', ':set foldlevel=', { desc = 'Set foldlevel' })
