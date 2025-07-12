@@ -1,5 +1,6 @@
 require 'config.lazy'
 
+require 'config.libs.aerial'
 require 'config.libs.marlin'
 require 'config.libs.multicursor'
 require 'config.libs.noice'

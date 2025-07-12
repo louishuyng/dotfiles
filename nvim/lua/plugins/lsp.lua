@@ -10,6 +10,10 @@ return {
   { 'vim-test/vim-test' },
   { 'stevearc/conform.nvim' },
   {
+    'stevearc/aerial.nvim',
+    opts = {},
+  },
+  {
     'MysticalDevil/inlay-hints.nvim',
     event = 'LspAttach',
     dependencies = { 'neovim/nvim-lspconfig' },

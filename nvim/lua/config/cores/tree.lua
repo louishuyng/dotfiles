@@ -16,10 +16,6 @@ require('neo-tree').setup({
         source = 'git_status',
         display_name = '   Git ',
       },
-      {
-        source = 'document_symbols',
-        display_name = '  Symbols ',
-      },
     },
   },
   close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -223,24 +219,6 @@ require('neo-tree').setup({
         ['on'] = { 'order_by_name', nowait = false },
         ['os'] = { 'order_by_size', nowait = false },
         ['ot'] = { 'order_by_type', nowait = false },
-      },
-    },
-  },
-  document_symbols = {
-    window = {
-      position = 'right',
-      mappings = {
-        ['<2-LeftMouse>'] = 'open',
-        ['l'] = 'open',
-        ['<esc>'] = 'cancel', -- close preview or floating neo-tree window
-        ['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
-        ['p'] = 'focus_preview',
-        ['s'] = 'open_split',
-        ['v'] = 'open_vsplit',
-        ['t'] = 'open_tabnew',
-        ['w'] = 'open_with_window_picker',
-        ['C'] = 'close_node',
-        ['z'] = 'close_all_nodes',
       },
     },
   },
