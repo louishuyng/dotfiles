@@ -1,35 +1,24 @@
+## Description
 
-A basic set of dotfiles to enhance my daily development workflow 🧑‍🎨
+A basic set of dotfiles to enhance my daily development workflow
 
-## Flow with Terminal & Shell
+## Terminal & Coding
 
-I mostly using neovim as a main text editor. You can check the setup [here](./nvim)
+My favorite editor is Neovim. and setup configured [Neovim](./nvim)
 
-Most people use zsh as their `shell`, but I prefer `fish` because it is simpler and easier to configure.
-I also love the syntax of fish. To see more my configure [here](./terminals/fish)
+I prefer `fish` as main command line shell due to the beauty of the syntax see my configure [Fish](./terminals/fish)
 
-My main terminal is [kitty](./terminals/kitty)
+Ghostty is quite popular terminal [Ghostty](./terminals/ghostty)
 
-When handling multiple terminal at the same time I prefer using [Tmux](./terminals/tmux)
+I love tmux when working with multiple projects [Tmux](./terminals/tmux)
 
-## My Screen Daily
-![My term](./screenshots/my-term.png)
+## Window Manager
 
+- Control all my windows with [Aerospace](./suckless/mac_os/aerospace) 
+- Decorator menubar UI with [Sketchy Bar](./suckless/mac_os/sketchybar)
+- Additional Key bindings with [Karabiner](./suckless/mac_os/karabiner)
 
-## Flow with Window Management
-
-I use [yabai](./suckless/mac_os/yabai) as the main window management system and also set up a decorator menubar UI using [Sketchy Bar](./suckless/mac_os/sketchybar)
-
-In addition, I have configured keybindings to improve my speed and control over Windows or applications.
-
-Two main key binding tools are below:
-- [Skhd](./suckless/mac_os/skhdrc)
-- [Karabiner](./suckless/mac_os/karabiner)
-
-## How I set up that?
-
-Basically, I save all instructions for installing tools and plugins in the shell file below.
-Simply run it, and it will be set up for you.
+## Installation
 
 ```bash
 # For MacOS
@@ -39,7 +28,7 @@ Simply run it, and it will be set up for you.
 ./bootstrap/arch.sh
 ```
 
-## New Flow With Nix
+## Nix Setup
 Installing nix package manager following the documentation [here](https://nixos.org/download.html)
 
 ```bash
@@ -50,3 +39,6 @@ nix-shell -p home-manager # Run new shell with home-manager package
 
 home-manager switch # Apply the configuration
 ```
+
+## Examples
+- [Showcases](examples/showcases.md)
