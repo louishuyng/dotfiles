@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-BIG_ICON_FONT="Hack Nerd Font:Regular:16"
-MED_ICON_FONT="Hack Nerd Font:Regular:14"
-ICON_FONT="Hack Nerd Font:Regular:13"
+BIG_ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:16"
+MED_ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:15"
+ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:14"
 SPACE_ICONS=("" "Dev" "" "Web" "Chat" "" "Any")
 
 sketchybar --add event aerospace_workspace_change
@@ -24,15 +24,15 @@ for i in "${!LIST_SPACES_INDEX[@]}"; do
                         click_script="aerospace workspace $sid"
 
   if [ $sid == "T" ]; then
-    sketchybar --set space.$sid icon.font="$MED_ICON_FONT" icon.font.style="Bold"
+    sketchybar --set space.$sid icon.font="$MED_ICON_FONT"
   fi
 
   if [ $sid == "O" ]; then
-    sketchybar --set space.$sid icon.font="$ICON_FONT" icon.font.style="Bold"
+    sketchybar --set space.$sid icon.font="$ICON_FONT"
   fi
 
   if [ $sid == "I" ]; then
-    sketchybar --set space.$sid icon.font="$BIG_ICON_FONT" icon.font.style="Bold"
+    sketchybar --set space.$sid icon.font="$BIG_ICON_FONT"
   fi
 
   # if [ $sid == "A" ] || [ $sid == "C" ] || [ $sid == "O" ]; then

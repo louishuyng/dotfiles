@@ -7,10 +7,10 @@ cursor-color = #AF87D7
 
 shell-integration = none
 
-# font-family = "JetBrains Mono"
-font-family = "Terminess Nerd Font"
-font-size = 15
-font-thicken = true
+# font-family = "Terminess Nerd Font"
+font-family = "GeistMono Nerd Font Mono"
+font-size = 14
+font-thicken = false
 font-thicken-strength = 70
 # adjust-cell-height = 3
 adjust-cell-height = 3

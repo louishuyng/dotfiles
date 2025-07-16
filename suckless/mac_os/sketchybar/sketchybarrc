@@ -7,12 +7,13 @@ ITEM_DIR="$HOME/.config/sketchybar/view"
 
 PADDING=4
 PADDING_LABEL=4
-LABEL="JetBrains Mono"
+LABEL="JetBrainsMono Nerd Font Propo"
 
 sketchybar --bar     blur_radius=0                                        \
                      padding_left=4                                       \
                      padding_right=4                                      \ color=0xff272727                                   \
                      position=bottom                                      \
+                     height=29 \
                      sticky=on                                            \
                      font_smoothing=on                                    \
                      topmost=window                                           \
