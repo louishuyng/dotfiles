@@ -4,34 +4,68 @@ return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    build = ':CatppuccinCompile',
     opts = {
-      background = { -- :h background
+      compile = {
+        -- Compile the theme on startup
+        enabled = true,
+        path = vim.fn.stdpath('cache') .. '/catppuccin',
+      },
+      dim_inactive = {
+        enabled = false,
+        shade = 'dark',
+        percentage = 0.3,
+      },
+      background = {
         light = 'latte',
         dark = vim.g.default_dark_catppuccin_theme,
       },
       integrations = {
         mason = true,
+        dap = true,
+        cmp = true,
+        dap_ui = true,
         neotest = true,
         neotree = true,
         noice = true,
         copilot_vim = true,
         diffview = true,
+        flash = true,
         snacks = {
           enabled = true,
           indent_scope_color = '', -- catppuccin color (eg. `lavender`) Default: text
         },
         lsp_trouble = true,
         which_key = true,
+        treesitter_context = true,
+        markdown = true,
+        telescope = { enabled = true, style = 'nvchad' },
+        mini = { enabled = true, indentscope_color = '' },
+        semantic_tokens = true,
+        gitsigns = true,
+        render_markdown = true,
+        treesitter = true,
+        treesitter_context = true,
+        native_lsp = {
+          enabled = true,
+          virtual_text = {
+            errors = { 'italic' },
+            hints = { 'italic' },
+            warnings = { 'italic' },
+            information = { 'italic' },
+          },
+          underlines = {
+            errors = { 'underline' },
+            hints = { 'underline' },
+            warnings = { 'underline' },
+            information = { 'underline' },
+          },
+        },
       },
       transparent_background = false,
       show_end_of_buffer = false,
       integration_default = false,
       color_overrides = {
-        macchiato = {
-          base = '#2A2C35',
-          crust = '#21252B',
-          mantle = '#2B2637',
-        },
         latte = {
           rosewater = '#d73a49',
           flamingo = '#d73a49',
@@ -62,45 +96,144 @@ return {
         },
       },
       highlight_overrides = {
-        -- macchiato = function(colors)
-        --   return {
-        --     Normal = { bg = 'NONE' },
-        --     NormalNC = { bg = 'NONE' },
-        --   }
-        -- end,
-        all = function(colors)
+        all = function(color)
           return {
-            WinBar = { fg = colors.mauve },
-            DiagnosticVirtualTextError = { bg = 'NONE', fg = colors.red },
-            DiagnosticVirtualTextWarn = { bg = 'NONE', fg = colors.yellow },
-            DiagnosticVirtualTextInfo = { bg = 'NONE', fg = colors.blue },
-            DiagnosticVirtualTextHint = { bg = 'NONE', fg = colors.teal },
-            DiagnosticUnderlineError = { sp = colors.red, style = { 'undercurl' } },
-            DiagnosticUnderlineWarn = { sp = colors.yellow, style = { 'undercurl' } },
-            SnacksIndent = { fg = colors.surface1 },
-            IblIndent = { fg = colors.surface1 },
+            -- For base configs
+            NormalFloat = { fg = color.text, bg = transparent_background and color.none or color.mantle },
+            FloatBorder = {
+              fg = transparent_background and color.blue or color.mantle,
+              bg = transparent_background and color.none or color.mantle,
+            },
+            CursorLineNr = { fg = color.green },
+            WinSeparator = { fg = color.overlay2, bg = 'NONE' },
 
-            -- surface1:
-            SignColumn = { fg = colors.surface2 }, -- column where |signs| are displayed
-            SignColumnSB = { fg = colors.surface2 }, -- column where |signs| are displayed
+            -- Tabline
+            TabLineFill = { fg = color.lavender, bg = color.base },
+            TabLineSel = { fg = color.subtext1, bg = color.surface1 },
+            TabLine = { fg = color.overlay0, bg = color.surface0 },
 
-            LineNr = { fg = colors.surface2 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' o…
-            TreesitterContextLineNumber = { fg = colors.surface2 },
-            CursorLineNr = { fg = colors.blue }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+            -- Editor
+            Comment = { fg = color.overlay1 },
+            CursorLineNR = { fg = color.yellow },
 
-            DapUIUnavailable = { fg = colors.surface2 },
+            -- Splits
+            VertSplit = { fg = color.surface0 },
 
-            GitSignsCurrentLineBlame = { fg = colors.surface2 },
+            -- Floats
+            FloatNormal = { fg = color.text, bg = color.mantle },
+            FloatBorder = { fg = color.surface2 },
 
-            -- More contrast menus:
-            Pmenu = { bg = colors.crust, fg = colors.overlay0 }, -- Popup menu: normal item.
-            CmpCursorLine = { bg = colors.green, style = { 'bold' }, fg = colors.surface0 }, -- Popup menu: selected item.
+            -- Noice
+            NoiceCmdlineIcon = { fg = color.peach },
+            NoiceCmdlineIconCmdline = { fg = color.peach },
 
-            -- NeoTreeNormal = { bg = colors.crust },
-            -- NeoTreeNormalNC = { bg = colors.crust },
+            NoiceCmdlinePopupBorder = { fg = color.surface2 },
+            NoiceCmdlinePopupBorderCmdline = { fg = color.surface2 },
+            NoiceCmdlinePopupBorderSearch = { fg = color.surface2 },
+            NoiceCmdlinePopupBorderFilter = { fg = color.surface2 },
+            NoiceCmdlinePopupBorderlua = { fg = color.surface2 },
 
-            -- More contrast for window separator:
-            WinSeparator = { fg = colors.surface2 }, -- Separator between windows.
+            -- Mason Colours
+            MasonHeader = { fg = color.base, bg = color.peach },
+            MasonHeaderSecondary = { fg = color.base, bg = color.teal },
+
+            MasonHighlight = { fg = color.teal },
+            MasonHighlightBlock = { bg = color.teal, fg = color.base },
+            MasonHighlightBlockBold = { bg = color.teal, fg = color.base, bold = true },
+
+            MasonHighlightSecondary = { fg = color.red },
+            MasonHighlightBlockSecondary = { bg = color.red, fg = color.base },
+            MasonHighlightBlockBoldSecondary = { bg = color.red, fg = color.base, bold = true },
+
+            MasonLink = { fg = color.rosewater },
+
+            MasonMuted = { fg = color.overlay1 },
+            MasonMutedBlock = { bg = color.surface0, fg = color.overlay1 },
+            MasonMutedBlockBold = { bg = color.surface0, fg = color.overlay1, bold = true },
+
+            MasonError = { fg = color.red },
+
+            MasonHeading = { bold = true },
+
+            --ToggleTerm Custom Colours
+            LazygitBorder = { fg = color.surface2 },
+
+            --Nvim-Notify Colours
+            NotifyERRORBorder = { fg = color.surface2, bg = color.base },
+            NotifyWARNBorder = { fg = color.surface2, bg = color.base },
+            NotifyINFOBorder = { fg = color.surface2, bg = color.base },
+            NotifyDEBUGBorder = { fg = color.surface2, bg = color.base },
+            NotifyTRACEBorder = { fg = color.surface2, bg = color.base },
+
+            NotifyERRORIcon = { fg = color.red, bg = color.base },
+            NotifyWARNIcon = { fg = color.yellow, bg = color.base },
+            NotifyINFOIcon = { fg = color.green, bg = color.base },
+            NotifyDEBUGIcon = { fg = color.surface2, bg = color.base },
+            NotifyTRACEIcon = { fg = color.lavender, bg = color.base },
+
+            NotifyERRORTitle = { fg = color.red, bg = color.base },
+            NotifyWARNTitle = { fg = color.yellow, bg = color.base },
+            NotifyINFOTitle = { fg = color.green, bg = color.base },
+            NotifyDEBUGTitle = { fg = color.surface2, bg = color.base },
+            NotifyTRACETitle = { fg = color.lavender, bg = color.base },
+
+            NotifyERRORBody = { fg = color.text, bg = color.base },
+            NotifyWARNBody = { fg = color.text, bg = color.base },
+            NotifyINFOBody = { fg = color.text, bg = color.base },
+            NotifyDEBUGBody = { fg = color.text, bg = color.base },
+            NotifyTRACEBody = { fg = color.text, bg = color.base },
+
+            -- For native lsp configs
+            DiagnosticVirtualTextError = { bg = color.none },
+            DiagnosticVirtualTextWarn = { bg = color.none },
+            DiagnosticVirtualTextInfo = { bg = color.none },
+            DiagnosticVirtualTextHint = { bg = color.none },
+            LspInfoBorder = { link = 'FloatBorder' },
+
+            -- For mason.nvim
+            MasonNormal = { link = 'NormalFloat' },
+
+            -- For indent-blankline
+            IblIndent = { fg = color.surface0 },
+            IblScope = { fg = color.surface2, style = { 'bold' } },
+
+            -- For nvim-cmp and wilder.nvim
+            Pmenu = { fg = color.overlay2, bg = transparent_background and color.none or color.base },
+            PmenuBorder = { fg = color.surface1, bg = transparent_background and color.none or color.base },
+            PmenuSel = { bg = color.green, fg = color.base },
+            CmpItemAbbr = { fg = color.overlay2 },
+            CmpItemAbbrMatch = { fg = color.blue, style = { 'bold' } },
+            CmpDoc = { link = 'NormalFloat' },
+            CmpDocBorder = {
+              fg = transparent_background and color.surface1 or color.mantle,
+              bg = transparent_background and color.none or color.mantle,
+            },
+
+            -- For fidget
+            FidgetTask = { bg = color.none, fg = color.surface2 },
+            FidgetTitle = { fg = color.blue, style = { 'bold' } },
+
+            -- For nvim-notify
+            NotifyBackground = { bg = color.base },
+
+            -- For nvim-tree
+            NvimTreeRootFolder = { fg = color.pink },
+            NvimTreeIndentMarker = { fg = color.surface2 },
+
+            -- For trouble.nvim
+            TroubleNormal = { bg = transparent_background and color.none or color.base },
+            TroubleNormalNC = { bg = transparent_background and color.none or color.base },
+
+            -- For telescope.nvim
+            TelescopeMatching = { fg = color.lavender },
+            TelescopeResultsDiffAdd = { fg = color.green },
+            TelescopeResultsDiffChange = { fg = color.yellow },
+            TelescopeResultsDiffDelete = { fg = color.red },
+
+            -- For treesitter
+            ['@keyword.return'] = { fg = color.pink, style = clear },
+            ['@error.c'] = { fg = color.none, style = clear },
+            ['@error.cpp'] = { fg = color.none, style = clear },
           }
         end,
       },
