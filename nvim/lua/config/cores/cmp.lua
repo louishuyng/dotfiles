@@ -42,16 +42,12 @@ vim.opt.completeopt = 'menuone,noselect'
 cmp.setup {
   window = {
     completion = {
-      winhighlight = 'Normal:Pmenu,CursorLine:CmpCursorLine,Search:None',
-      col_offset = -3,
-      side_padding = 0,
-      scrollbar = false,
+      winhighlight = 'Normal:Pmenu,CursorLine:PmenuSel,Search:None',
+      border = { '┏', '━', '┓', '┃', '┛', '━', '┗', '┃' },
     },
     documentation = {
-      border = 'solid',
-      winhighlight = 'Normal:CmpDoc,FloatBorder:CmpDoc,Search:None',
-      max_width = 80,
-      max_height = 12,
+      border = { '┏', '━', '┓', '┃', '┛', '━', '┗', '┃' },
+      winhighlight = 'Normal:Pmenu,CursorLine:PmenuSel,Search:None',
     },
   },
   snippet = {
