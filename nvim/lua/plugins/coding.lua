@@ -33,6 +33,19 @@ return {
       require 'config.cores.treesitter'
     end,
   },
+  {
+    'code-biscuits/nvim-biscuits',
+    config = function()
+      require('nvim-biscuits').setup({
+        toggle_keybind = '<leader>bb',
+        cursor_line_only = true,
+        show_on_start = true,
+        default_config = {
+          prefix_string = ' 🐿️ ',
+        },
+      })
+    end,
+  },
   { 'nvim-treesitter/nvim-treesitter-context' },
 
   {
