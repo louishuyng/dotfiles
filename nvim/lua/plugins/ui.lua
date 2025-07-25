@@ -12,8 +12,8 @@ return {
   -- {
   --   'SmiteshP/nvim-navic',
   -- },
-  -- { 'romgrk/barbar.nvim' },
-  --  { 'b0o/incline.nvim' },
+  { 'akinsho/nvim-bufferline.lua' },
+  -- { 'b0o/incline.nvim' },
   { 'nvim-tree/nvim-web-devicons' },
   { 'folke/noice.nvim' },
   {

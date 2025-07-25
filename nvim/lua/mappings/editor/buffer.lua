@@ -7,43 +7,21 @@ map('n', '<S-t>', ':tabnew<CR>', {
   desc = 'New Tab',
 })
 
-map('n', '[<Tab>', ':tabprevious<CR>', {
+map('n', ',bd', ':tabclose<CR>', {
   noremap = true,
   silent = true,
-  desc = 'Prev Tab',
-})
-map('n', ']<Tab>', ':tabnext<CR>', {
-  noremap = true,
-  silent = true,
-  desc = 'Next Tab',
+  desc = 'Close Tab',
 })
 
 -- Move to previous/next
-map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', {
+map('n', '<A-,>', ':BufferLineCyclePrev<CR>', {
   noremap = true,
   silent = true,
-  desc = 'Next Buffer',
+  desc = 'Prev Buffer',
 })
-map('n', '<A-.>', '<Cmd>BufferNext<CR>', { noremap = true, silent = true, desc = 'Next Buffer' })
-
--- Re-order to previous/next
-map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', {
-  noremap = true,
-  silent = true,
-  desc = 'Move Buffer Previous',
-})
-map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', {
-  noremap = true,
-  silent = true,
-  desc = 'Move Buffer Next',
-})
+map('n', '<A-.>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true, desc = 'Next Buffer' })
 
 -- Close buffer
-map('n', ',bd', ':bdelete<CR>', {
-  noremap = true,
-  silent = true,
-  desc = 'Close buffer',
-})
 map('n', ',bda', ':w! <bar> %bd <bar> e# <bar> bd# <CR>', {
   noremap = true,
   silent = true,
