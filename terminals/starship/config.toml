@@ -29,8 +29,8 @@ add_newline = true
 
 [username]
 format = '[ ](fg:red) '
-disabled = false
-show_always = true
+disabled = true
+show_always = false
 
 [os]
 format = "[$symbol]($style fg:cyan) "
@@ -45,8 +45,8 @@ Fedora = " "
 Linux = " "
 Manjaro = " "
 Mint = " "
-NixOS = " "
-Macos = " "
+NixOS = " "
+Macos = " "
 openSUSE = " "
 Pop = " "
 SUSE = " "

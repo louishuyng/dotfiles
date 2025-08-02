@@ -59,3 +59,6 @@ vim.fn.setreg('l', "yoconsole.log('" .. esc .. 'pa:' .. esc .. 'la, ' .. esc .. 
 
 -- Noice
 vim.keymap.set('n', '<leader>mo', ':Noice all<CR>', { desc = 'Log vim messages', silent = true, noremap = true })
+
+-- Reload Buffer
+vim.keymap.set('n', '<leader>e', ':e!<CR>', { desc = 'Reload buffer', silent = true, noremap = true })

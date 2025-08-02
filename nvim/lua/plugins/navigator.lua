@@ -7,6 +7,7 @@ return {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       { 'nvim-telescope/telescope-live-grep-args.nvim' },
       { 'nvim-telescope/telescope-file-browser.nvim' },
+      { 'nvim-telescope/telescope-frecency.nvim' },
     },
   },
   {
@@ -26,7 +27,15 @@ return {
   {
     'folke/flash.nvim',
     event = 'VeryLazy',
-    opts = { modes = { search = { enabled = false } } },
+    opts = {
+      modes = {
+        search = { enabled = false },
+        char = {
+          enabled = true,
+          keys = { 'f', 'F' },
+        },
+      },
+    },
     keys = {
       {
         's',

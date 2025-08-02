@@ -6,7 +6,6 @@ sketchybar --add item       front_app left                                    \
            --subscribe      front_app front_app_switched                      \
            --set            front_app script="$PLUGIN_DIR/front_app.sh"       \
                             icon.font="$ICON_FONT:Regular:17"                 \
-                            label.font="JetbrainsMono Nerd Font Propo:Bold:13" \
                             icon.padding_left=3                             \
                             label.padding_right=3                             \
                             label.padding_left=0                             \

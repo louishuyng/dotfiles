@@ -1,5 +1,3 @@
-local reload_theme = require('utils.reload_theme').reload_theme
-
 return {
   {
     'catppuccin/nvim',
@@ -98,6 +96,8 @@ return {
       highlight_overrides = {
         all = function(color)
           return {
+            -- Normal = { bg = 'NONE' },
+            -- NormalNC = { bg = 'NONE' },
             -- For base configs
             NormalFloat = { fg = color.text, bg = transparent_background and color.none or color.mantle },
             FloatBorder = {
@@ -198,7 +198,7 @@ return {
             IblScope = { fg = color.surface2, style = { 'bold' } },
 
             -- For nvim-cmp and wilder.nvim
-            Pmenu = { fg = color.overlay2, bg = transparent_background and color.none or color.base },
+            Pmenu = { fg = color.overlay2, bg = transparent_background and color.none or color.mantle },
             PmenuBorder = { fg = color.surface1, bg = transparent_background and color.none or color.base },
             PmenuSel = { bg = color.green, fg = color.base },
             CmpItemAbbr = { fg = color.overlay2 },
@@ -237,21 +237,6 @@ return {
           }
         end,
       },
-    },
-  },
-  {
-    'f-person/auto-dark-mode.nvim',
-    opts = {
-      set_dark_mode = function()
-        vim.g.theme = vim.g.default_black_theme
-        reload_theme()
-      end,
-      set_light_mode = function()
-        vim.g.theme = vim.g.default_white_theme
-        reload_theme()
-      end,
-      update_interval = 3000,
-      fallback = 'dark',
     },
   },
 }

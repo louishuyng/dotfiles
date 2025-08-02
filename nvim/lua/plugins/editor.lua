@@ -1,17 +1,10 @@
 return {
   { 'terryma/vim-multiple-cursors' }, -- Multi Cursor
   {
-    'andymass/vim-matchup',
-    init = function()
-      vim.g.matchup_matchparen_offscreen = { method = 'popup' }
-    end,
-  },
-  {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {},
   },
-
   { 'mbbill/undotree' },
 
   -- Git
@@ -159,18 +152,6 @@ return {
     cmd = { 'Spectre' },
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'catppuccin/nvim',
     },
   },
-
-  -- discipline
-  -- {
-  --   'm4xshen/hardtime.nvim',
-  --   lazy = false,
-  --   dependencies = { 'MunifTanjim/nui.nvim' },
-  --   opts = {},
-  --   config = function()
-  --     require('hardtime').setup({})
-  --   end,
-  -- },
 }

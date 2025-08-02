@@ -1,5 +1,6 @@
 local present, cmp = pcall(require, 'cmp')
 local compare = require('cmp.config.compare')
+local luasnip = require('luasnip')
 
 local icons = require('config.libs.icons')
 
@@ -43,16 +44,14 @@ cmp.setup {
   window = {
     completion = {
       winhighlight = 'Normal:Pmenu,CursorLine:PmenuSel,Search:None',
-      border = { '┏', '━', '┓', '┃', '┛', '━', '┗', '┃' },
     },
     documentation = {
-      border = { '┏', '━', '┓', '┃', '┛', '━', '┗', '┃' },
       winhighlight = 'Normal:Pmenu,CursorLine:PmenuSel,Search:None',
     },
   },
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   formatting = {
@@ -133,8 +132,6 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
-    { name = 'nvim_lua' },
-    { name = 'async_path' },
   },
 }
 

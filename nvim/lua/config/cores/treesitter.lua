@@ -3,6 +3,8 @@ if not present then
   return
 end
 
+local context = require 'treesitter-context'
+
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
@@ -47,7 +49,7 @@ require('nvim-treesitter.configs').setup {
   indent = { enable = true },
 }
 
-require 'treesitter-context'.setup {
+context.setup {
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
   multiwindow = false, -- Enable multiwindow support.
   max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
@@ -64,5 +66,5 @@ require 'treesitter-context'.setup {
 }
 
 vim.keymap.set('n', '[[', function()
-  require('treesitter-context').go_to_context(vim.v.count1)
+  context.go_to_context(vim.v.count1)
 end, { silent = true, desc = 'Go to parent context' })

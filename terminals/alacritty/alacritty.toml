@@ -2,26 +2,18 @@
 TERM = "xterm-256color"
 
 [font]
-size = 13
-
-[font.bold]
-family = "JetBrainsMono Nerd Font"
-style = "Bold"
+size = 12.5
 
 [font.glyph_offset]
 x = 0
 y = 0
 
-[font.italic]
-family = "JetBrainsMono Nerd Font"
-style = "Italic"
-
 [font.normal]
 family = "JetBrainsMono Nerd Font"
 
 [font.offset]
-x = 0
-y = 12
+x = -1
+y = 5
 
 [scrolling]
 history = 10000
@@ -36,7 +28,7 @@ option_as_alt = "Both"
 decorations = "buttonless"
 decorations_theme_variant = "Dark"
 padding = { x = 0, y = 0  }
-dimensions = { columns = 200, lines = 55 }
+dimensions = { columns = 250, lines = 60 }
 dynamic_padding = false
 startup_mode = "Windowed"
 title = "DevTerm"
@@ -55,7 +47,7 @@ live_config_reload = true
 working_directory = "None"
 
 import = [
-  "~/.dotfiles/terminals/alacritty/tokyonight.toml",
+  "~/.dotfiles/terminals/alacritty/theme.toml",
 ]
 
 [cursor]

@@ -10,7 +10,7 @@ snacks.setup {
   picker = { enabled = true },
   notifier = {
     enabled = true,
-    level = vim.log.levels.WARN,
+    level = vim.log.levels.INFO,
   },
   -- scroll = {
   --   enabled = true,

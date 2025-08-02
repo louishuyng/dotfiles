@@ -19,12 +19,13 @@ local dropdown_theme = function(title, previewer, ignore)
       preview = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
     },
     layout_config = {
-      prompt_position = "top",
+      prompt_position = 'top',
       width = 0.5,
     },
+    workspace = 'CWD',
   })
 end
 
 return {
-  dropdown_theme = dropdown_theme
+  dropdown_theme = dropdown_theme,
 }

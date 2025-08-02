@@ -4,6 +4,7 @@ local transaprent = highlight_utils.transaprent
 local gitTransparent = highlight_utils.gitTransparent
 local highlight_telescope = highlight_utils.highlight_telescope
 local diagnosticTransparent = highlight_utils.diagnosticTransparent
+local palettes = require('catppuccin.palettes')
 
 if vim.g.theme == 'night' then
   vim.cmd [[
@@ -11,7 +12,7 @@ if vim.g.theme == 'night' then
     colorscheme catppuccin
   ]]
 
-  local C = require('catppuccin.palettes').get_palette(vim.g.default_dark_catppuccin_theme)
+  local C = palettes.get_palette(vim.g.default_dark_catppuccin_theme)
 
   local colors = {}
 
@@ -31,7 +32,7 @@ if vim.g.theme == 'light' then
     colorscheme catppuccin
   ]]
 
-  local C = require('catppuccin.palettes').get_palette('latte')
+  local C = palettes.get_palette('latte')
 
   local colors = {}
 
@@ -45,5 +46,4 @@ if vim.g.theme == 'light' then
   highlight_telescope(colors)
 end
 
-transaprent()
 gitTransparent()

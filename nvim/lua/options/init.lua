@@ -8,9 +8,8 @@ vim.g.startup_bookmarks = {
   ['K'] = '~/.dotfiles/terminals/kitty/kitty.conf',
 }
 
-vim.g.default_black_theme = 'night'
-vim.g.default_white_theme = 'light'
-vim.g.default_dark_catppuccin_theme = 'macchiato'
+vim.g.theme = 'night'
+vim.g.default_dark_catppuccin_theme = 'frappe'
 
 vim.g.home_dir = '/Users/louishuyng'
 vim.g.work_project_dir = vim.g.home_dir .. '/LX14/projects'
@@ -40,14 +39,13 @@ opt.number = true -- But show the actual number for the line we're on
 opt.ignorecase = true -- Ignore case when searching...
 opt.smartcase = true -- ... unless there is a capital letter in the query
 opt.hidden = true -- I like having buffers stay around
-opt.splitright = true -- Prefer windows splitting to the right
-opt.splitbelow = false -- Prefer windows splitting to the top
+opt.splitright = true -- Prefer windows splitting to the right opt.splitbelow = false -- Prefer windows splitting to the top
 opt.updatetime = 1000 -- Make updates happen faster
 opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 vim.opt.list = true -- Show some invisible characters (tabs...)
 opt.laststatus = 3 -- Always display the status line
-opt.relativenumber = false -- Relative line numbers
+opt.relativenumber = true -- Relative line numbers
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer
@@ -112,7 +110,7 @@ vim.opt.undofile = true
 vim.opt.signcolumn = 'yes'
 
 -- SPELL
-vim.opt.spell = false
+vim.opt.spell = true
 
 -- UNDOFILE
 vim.opt.undofile = true
@@ -176,36 +174,6 @@ vim.cmd([[
 vim.cmd([[
   set laststatus=3
 ]])
-
-vim.cmd([[
-  if exists('g:started_by_firenvim')
-    " Don't automatically trigger on touch
-    let g:firenvim_config = {
-      \ 'globalSettings': {
-          \ 'alt': 'all',
-          \ 'ignoreKeys': {
-          \ },
-      \ },
-      \ 'localSettings': {
-          \ '.*': {
-              \ 'cmdline': 'neovim',
-              \ 'content': 'text',
-              \ 'priority': 0,
-              \ 'selector': 'textarea:not(.firenvim-disabled)',
-              \ 'takeover': 'never',
-          \ },
-      \ }
-    \ }
-  endif
-]])
-
-vim.api.nvim_create_autocmd({ 'UIEnter' }, {
-  callback = function(event)
-    local client = vim.api.nvim_get_chan_info(vim.v.event.chan).client
-    if client ~= nil and client.name == 'Firenvim' then
-    end
-  end,
-})
 
 -- AI
 vim.g.copilot_enabled = false -- sets the default

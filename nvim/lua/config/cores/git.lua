@@ -42,7 +42,6 @@ neogit.setup {
   mappings = {
     status = {
       ['o'] = 'Toggle',
-      ['b'] = 'OpenTree',
     },
   },
 }

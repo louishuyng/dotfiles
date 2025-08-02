@@ -1,6 +1,6 @@
 # Aliases
 alias g = git
-alias nv = nvim
+alias v = nvim
 alias tm = tmux
 alias zed = ^open -a /Applications/Zed.app -n
 

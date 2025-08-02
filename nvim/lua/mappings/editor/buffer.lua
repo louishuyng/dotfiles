@@ -14,12 +14,12 @@ map('n', ',bd', ':tabclose<CR>', {
 })
 
 -- Move to previous/next
-map('n', '<A-,>', ':BufferLineCyclePrev<CR>', {
+map('n', ',q', ':BufferLineCyclePrev<CR>', {
   noremap = true,
   silent = true,
   desc = 'Prev Buffer',
 })
-map('n', '<A-.>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true, desc = 'Next Buffer' })
+map('n', ',w', ':BufferLineCycleNext<CR>', { noremap = true, silent = true, desc = 'Next Buffer' })
 
 -- Close buffer
 map('n', ',bda', ':w! <bar> %bd <bar> e# <bar> bd# <CR>', {

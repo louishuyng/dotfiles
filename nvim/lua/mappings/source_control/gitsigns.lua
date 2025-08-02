@@ -1,10 +1,9 @@
 local buf_map = require 'utils.buf_map'
+local gitsigns = require('gitsigns')
 
 local M = {}
 
 M.gitsigns_mappings = function(bufnr)
-  local gitsigns = require('gitsigns')
-
   local function map(mode, l, r, opts)
     opts = opts or {}
     opts.buffer = bufnr

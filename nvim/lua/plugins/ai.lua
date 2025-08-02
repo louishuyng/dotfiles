@@ -48,12 +48,6 @@ return {
             require('copilot').setup(opts) -- setting up for the very first time
             require('copilot.command').enable()
 
-            vim.notify('Copilot enabled', 'warn', {
-              opts = function(notify)
-                notify.icon = '' -- Copilot icon
-              end,
-            })
-
             vim.g.copilot_enabled = true
           else
             require('copilot.command').disable()

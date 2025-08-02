@@ -62,6 +62,7 @@ local function highlight_telescope(colors)
   vim.api.nvim_set_hl(0, 'TelescopeResultsNormal', { bg = bg_result })
   vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { bg = bg_result, fg = bg_result })
   vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = selection_bg, fg = selection_fg })
+  vim.api.nvim_set_hl(0, 'TelescopeSelectionCaret', { bg = selection_bg, fg = selection_fg })
 end
 
 return {

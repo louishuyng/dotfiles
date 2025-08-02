@@ -11,7 +11,7 @@ LABEL="JetBrainsMono Nerd Font Propo"
 
 sketchybar --bar     blur_radius=0                                        \
                      padding_left=4                                       \
-                     padding_right=4                                      \ color=0xff272727                                   \
+                     padding_right=4                                      \
                      position=bottom                                      \
                      height=29 \
                      sticky=on                                            \

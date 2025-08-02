@@ -4,7 +4,7 @@
 set USE_EXTERNAL_DISPLAY (system_profiler SPDisplaysDataType | grep BenQ | wc -l)
 set IS_DARK_THEME (osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode')
 
-set LIST_SPACES_INDEX I D T W C O A
+set LIST_SPACES_INDEX I D T W R P C A
 
 if test "$IS_DARK_THEME" = "false"
   sketchybar --bar color=0xffE4E4E4
@@ -25,11 +25,7 @@ if test "$IS_DARK_THEME" = "false"
   sketchybar --set keyboard icon.color=0xff000000
   # sketchybar --set airpods icon.color=0xff000000
 else
-  if test $USE_EXTERNAL_DISPLAY -eq 1
-    sketchybar --bar color=0xff272727
-  else
-    sketchybar --bar color=0xff000000
-  end
+  sketchybar --bar color=0xff272727
 
   sketchybar --set '/.*/' label.color=0xff7F7F7F
 
@@ -45,7 +41,7 @@ else
   sketchybar --set disk label.color=0xffE78284
   sketchybar --set battery label.color=0xffBFAFFE icon.color=0xffBFAFFE
 
-  sketchybar --set front_app icon.color=0xffC2C2C2 label.color=0xffC2C2C2
+  sketchybar --set front_app icon.color=0xffCBA6F7 label.color=0xffCBA6F7
   sketchybar --set keyboard icon.color=0xFFD3D3D4
   # sketchybar --set airpods icon.color=0xFFD3D3D4
 end

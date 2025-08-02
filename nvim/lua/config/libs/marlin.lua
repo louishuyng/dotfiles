@@ -5,7 +5,7 @@ local mindex = 0
 local generate_finder = function()
   mindex = 0
   return require('telescope.finders').new_table({
-    results = require('marlin').get_indexes(),
+    results = marlin.get_indexes(),
     entry_maker = function(entry)
       mindex = mindex + 1
       return {

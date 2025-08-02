@@ -3,11 +3,11 @@
 BIG_ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:16"
 MED_ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:15"
 ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:14"
-SPACE_ICONS=("" "Dev" "" "Web" "Chat" "" "Any")
+SPACE_ICONS=("" "Dev" "" "Web" "Read" "Plan" "Chat" "Any")
 
 sketchybar --add event aerospace_workspace_change
 
-LIST_SPACES_INDEX=(I D T W C O A)
+LIST_SPACES_INDEX=(I D T W R P C A)
 
 for i in "${!LIST_SPACES_INDEX[@]}"; do
   sid=${LIST_SPACES_INDEX[i]}
@@ -19,29 +19,12 @@ for i in "${!LIST_SPACES_INDEX[@]}"; do
                         icon.padding_left=5                      \
                         icon.padding_right=5                     \
                         label.drawing=off                         \
-                        icon.font.style="Bold"  \
                         script="$PLUGIN_DIR/space.sh $sid"             \
                         click_script="aerospace workspace $sid"
 
-  if [ $sid == "T" ]; then
+  if [ $sid == "I" ]; then
     sketchybar --set space.$sid icon.font="$MED_ICON_FONT"
   fi
-
-  if [ $sid == "O" ]; then
-    sketchybar --set space.$sid icon.font="$ICON_FONT"
-  fi
-
-  if [ $sid == "I" ]; then
-    sketchybar --set space.$sid icon.font="$BIG_ICON_FONT"
-  fi
-
-  # if [ $sid == "A" ] || [ $sid == "C" ] || [ $sid == "O" ]; then
-  #   sketchybar --set space.$sid icon.font="$BIG_ICON_FONT"
-  # elif [ $sid == "I" ]; then
-  #   sketchybar --set space.$sid icon.font="$ICON_SMALL_FRONT"
-  # else
-  #   sketchybar --set space.$sid icon.font="$ICON_FONT"
-  # fi
 done
 
 # sketchybar --add item separator_space left \

@@ -1,19 +1,31 @@
 -- CosmicInk config for lualine
-local flavour = vim.g.theme == 'night' and vim.g.default_dark_catppuccin_theme or 'latte'
 local marlin = require('marlin')
+local icons = require('config.libs.icons')
+local palettes = require('catppuccin.palettes')
 
-local C = require('catppuccin.palettes').get_palette(flavour)
+local colors = {}
+local flavour = ''
 
-local colors = {
+if vim.g.theme == 'night' then
+  flavour = vim.g.default_dark_catppuccin_theme
+end
+
+if vim.g.theme == 'light' then
+  flavour = 'latte'
+end
+
+local C = palettes.get_palette(flavour)
+
+colors = {
   BG = C.mantle,
   FG = C.text,
   YELLOW = C.yellow,
   CYAN = C.sky,
-  DARKBLUE = C.mauve,
+  DARKBLUE = C.lavender,
   GREEN = C.green,
   ORANGE = C.peach,
-  DARKGREEN = C.green,
-  MAGENTA = C.lavender,
+  DARKGREEN = C.mauve,
+  MAGENTA = C.mauve,
   BLUE = C.blue,
   RED = C.red,
 }
@@ -409,21 +421,9 @@ ins_left {
 
 ins_left(create_separator('right'))
 
-ins_left(create_mode_based_component('filename', nil, colors.FG, colors.BG))
+-- ins_left(create_mode_based_component('filename', nil, colors.FG, colors.BG))
 
 ins_left(create_separator('left'))
-
-ins_left {
-  function()
-    return ''
-  end,
-  color = function()
-    return {
-      fg = get_middle_color(),
-    }
-  end,
-  cond = hide_in_width,
-}
 
 ins_left {
   function()

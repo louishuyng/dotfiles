@@ -1,6 +1,6 @@
 auto-update-channel = tip
 
-theme = dark:catppuccin-frappe,light:catppuccin-latte
+theme = dark:Ghostty Default StyleDark,light:light
 background-opacity = 1
 background-blur = false
 cursor-color = #AF87D7
@@ -8,12 +8,12 @@ cursor-color = #AF87D7
 shell-integration = none
 
 # font-family = "Terminess Nerd Font"
-font-family = "GeistMono Nerd Font Mono"
-font-size = 14
+font-family = "JetbrainsMono Nerd Font"
+font-size = 13
 font-thicken = false
 font-thicken-strength = 70
 # adjust-cell-height = 3
-adjust-cell-height = 3
+adjust-cell-height = 4
 adjust-cell-width = -1
 
 mouse-hide-while-typing = true
@@ -22,10 +22,12 @@ mouse-scroll-multiplier = 2
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-window-width = 200
-window-height = 50
+window-width = 220
+window-height = 55
 window-padding-color = extend
 window-save-state = default
+# window-decoration = false
+# gtk-titlebar = false
 
 macos-titlebar-style = hidden
 confirm-close-surface = false
@@ -34,4 +36,4 @@ macos-option-as-alt = true
 
 keybind = cmd+shift+r=reload_config
 
-macos-icon = retro
+macos-icon = xray

@@ -16,14 +16,11 @@ return {
     end,
   },
   { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-nvim-lua' },
-  { 'FelipeLema/cmp-async-path' },
   { 'hrsh7th/cmp-buffer', dependencies = { 'nvim-cmp' } },
   { 'hrsh7th/cmp-cmdline', dependencies = { 'nvim-cmp' } },
 
   -- Code Format
   { 'numToStr/Comment.nvim' },
-  { 'kamykn/spelunker.vim' },
 
   -- Treesistter
   {
@@ -35,11 +32,12 @@ return {
   },
   {
     'code-biscuits/nvim-biscuits',
+    build = ':TSUpdate',
     config = function()
       require('nvim-biscuits').setup({
         toggle_keybind = '<leader>bb',
         cursor_line_only = true,
-        show_on_start = true,
+        show_on_start = false,
         default_config = {
           prefix_string = ' 🐿️ ',
         },
@@ -48,19 +46,6 @@ return {
   },
   { 'nvim-treesitter/nvim-treesitter-context' },
 
-  {
-    'folke/trouble.nvim',
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
-    cmd = 'Trouble',
-    keys = {
-      {
-        '<leader>fd',
-        '<cmd>Trouble diagnostics toggle<cr>',
-        desc = 'Diagnostics (Trouble)',
-      },
-    },
-  },
-
   -- ROR
   -- { 'tpope/vim-rails' },
 
@@ -68,7 +53,6 @@ return {
   {
     'nvim-neotest/neotest',
     dependencies = {
-      'folke/trouble.nvim',
       'nvim-neotest/nvim-nio',
       'nvim-neotest/neotest-jest',
       'fredrikaverpil/neotest-golang',
@@ -77,18 +61,13 @@ return {
     },
   },
 
-  -- Nvim on browser
-  { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
-
   -- Code runner
   {
-    'CRAG666/code_runner.nvim',
-    opts = {
-      mode = 'vimux',
-    },
-    config = true,
-    dependencies = {
-      'preservim/vimux',
-    },
+    'michaelb/sniprun',
+    branch = 'master',
+    build = 'sh install.sh',
+    config = function()
+      require('sniprun').setup({})
+    end,
   },
 }

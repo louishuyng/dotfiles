@@ -1,19 +1,15 @@
 local helpers = require 'incline.helpers'
 local devicons = require 'nvim-web-devicons'
 
+local palettes = require('catppuccin.palettes')
+
 require('incline').setup {
   window = {
     padding = 0,
     margin = { horizontal = 0, vertical = 0 },
-    placement = {
-      horizontal = 'right',
-      vertical = 'bottom',
-    },
   },
   render = function(props)
-    local flavour = vim.g.theme == 'night' and vim.g.default_dark_catppuccin_theme or 'latte'
-
-    local C = require('catppuccin.palettes').get_palette(flavour)
+    local C = palettes.get_palette(flavour)
 
     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
     if filename == '' then

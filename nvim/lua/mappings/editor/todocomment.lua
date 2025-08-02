@@ -1,3 +1,5 @@
-vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next()
-end, { desc = "Next todo comment" })
+local todo = require('todo-comments')
+
+vim.keymap.set('n', ']t', function()
+  todo.jump_next()
+end, { desc = 'Next todo comment' })

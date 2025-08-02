@@ -2,12 +2,6 @@ return {
   {
     'LazyVim/LazyVim',
   },
-  {
-    'catgoose/nvim-colorizer.lua',
-    event = 'BufReadPre',
-    opts = { -- set to setup table
-    },
-  },
   { 'folke/snacks.nvim' },
   -- {
   --   'SmiteshP/nvim-navic',

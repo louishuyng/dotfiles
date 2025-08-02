@@ -2,6 +2,8 @@ local status_ok, lualine = pcall(require, 'lualine')
 if not status_ok then
   return
 end
+local noice = require('noice')
+local dap = require('dap')
 
 local lualine_require = require('lualine_require')
 lualine_require.require = require
@@ -160,8 +162,8 @@ lualine.setup {
     lualine_x = {
       -- stylua: ignore
       {
-        function() return require("noice").api.status.mode.get() end,
-        cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+        function() return noice.api.status.mode.get() end,
+        cond = function() return package.loaded["noice"] and noice.api.status.mode.has() end,
         color = { fg = Snacks.util.color("Constant") }
       },
       {
@@ -174,10 +176,10 @@ lualine.setup {
       },
       {
         function()
-          return '  ' .. require('dap').status()
+          return '  ' .. dap.status()
         end,
         cond = function()
-          return package.loaded['dap'] and require('dap').status() ~= ''
+          return package.loaded['dap'] and dap.status() ~= ''
         end,
         color = { fg = Snacks.util.color('Debug') },
       },

@@ -4,7 +4,7 @@ alias unset 'set --erase'
 alias fetch='neofetch'
 
 # Text Editor
-alias nv="nvim"
+alias v="nvim"
 alias nvt='nvim --cmd "set rtp+=./"'
 alias em="emacs -nw"
 alias c="clear"

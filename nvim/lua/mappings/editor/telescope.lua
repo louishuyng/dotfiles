@@ -1,17 +1,18 @@
 local telescope = require('telescope')
+local builtin = require('telescope.builtin')
 local dropdown_theme = require('config.cores.telescope.theme').dropdown_theme
 
 -- Main finding
 vim.keymap.set('n', '<c-p>', function()
-  require('telescope.builtin').find_files(dropdown_theme('Files'))
+  builtin.find_files(dropdown_theme('Files'))
 end, { silent = true, noremap = true, desc = 'Find files' })
 
 vim.keymap.set('n', '<leader>fi', function()
-  require('telescope.builtin').find_files(dropdown_theme('Files', false, true))
+  builtin.find_files(dropdown_theme('Files', false, true))
 end, { silent = true, noremap = true, desc = 'Find files include ignore' })
 
 vim.keymap.set('n', '<leader>fb', function()
-  return require('telescope.builtin').buffers(dropdown_theme('Buffers'))
+  return builtin.buffers(dropdown_theme('Buffers'))
 end, { silent = true, noremap = true, desc = 'List buffers' })
 
 vim.keymap.set('n', '<leader>/', function()
@@ -19,40 +20,44 @@ vim.keymap.set('n', '<leader>/', function()
 end, { silent = true, noremap = true, desc = 'Grep words' })
 
 vim.keymap.set('n', '<leader>fm', function()
-  return require('telescope.builtin').marks(dropdown_theme('Marks'))
+  return builtin.marks(dropdown_theme('Marks'))
 end, { silent = true, noremap = true, desc = 'List marks' })
 
 vim.keymap.set('n', '<leader>fj', function()
-  return require('telescope.builtin').jumplist(dropdown_theme('Jumplist', true))
+  return builtin.jumplist(dropdown_theme('Jumplist', true))
 end, { silent = true, noremap = true, desc = 'List jumplist' })
 
 vim.keymap.set('n', 'gr', function()
-  require('telescope.builtin').lsp_references(dropdown_theme('References', true))
+  builtin.lsp_references(dropdown_theme('References', true))
 end, { silent = true, noremap = true, desc = 'Find references' })
+
+vim.keymap.set('n', '<leader>fd', function()
+  builtin.diagnostics(dropdown_theme('Diagnostics'))
+end, { silent = true, noremap = true, desc = 'Find diagnostics' })
 
 -- TODO list
 vim.keymap.set('n', '<leader>td', ':TodoTelescope<CR>', { silent = true, noremap = true, desc = 'List todo list' })
 
 -- prefix with <leader>f
 vim.keymap.set('n', '<leader>f/', function()
-  return require('telescope.builtin').current_buffer_fuzzy_find(dropdown_theme('CurrentBuffer'))
+  return builtin.current_buffer_fuzzy_find(dropdown_theme('CurrentBuffer'))
 end, { silent = true, noremap = true, desc = 'Search in current buffer' })
 
 vim.keymap.set('n', '<leader>fr', function()
-  return require('telescope.builtin').oldfiles(dropdown_theme('OldFiles'))
-end, { silent = true, noremap = true, desc = 'Search old files' })
+  require('telescope').extensions.frecency.frecency(dropdown_theme('Recent Files'))
+end, { silent = true, noremap = true, desc = 'Search recent files' })
 
 -- searching vim built-in
 vim.keymap.set('n', 'g?', function()
-  return require('telescope.builtin').help_tags(dropdown_theme('HelpTags'))
+  return builtin.help_tags(dropdown_theme('HelpTags'))
 end, { silent = true, noremap = true, desc = 'Open help tags' })
 
 vim.keymap.set('n', '<leader><BS>', function()
-  require('telescope.builtin').keymaps(dropdown_theme('Keymaps'))
+  builtin.keymaps(dropdown_theme('Keymaps'))
 end, { silent = true, noremap = true, desc = 'List keymaps' })
 
 vim.keymap.set('n', '<leader>"', function()
-  require('telescope.builtin').registers(dropdown_theme('Registers'))
+  builtin.registers(dropdown_theme('Registers'))
 end, { silent = true, noremap = true, desc = 'List registers' })
 
 -- vim config
@@ -81,7 +86,7 @@ end, { silent = true, noremap = true, desc = 'File browser' })
 
 -- Resume Previous Telescope
 vim.keymap.set('n', '<leader>fl', function()
-  local builtin = require('telescope.builtin')
+  local builtin = builtin
 
   builtin.resume(dropdown_theme('Resume'))
 end, { silent = true, noremap = true, desc = 'Get last telescope result' })
@@ -99,7 +104,7 @@ vim.keymap.set('n', '<leader>ce', function()
 end, { silent = true, noremap = true, desc = 'Choose rest environment' })
 
 vim.keymap.set('n', '<leader>fa', function()
-  require('telescope.builtin').find_files({
+  builtin.find_files({
     prompt_title = 'APIs',
     find_command = { 'fd', '--type', 'f', '--extension', 'http' },
   })

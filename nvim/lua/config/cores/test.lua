@@ -2,13 +2,33 @@ local neotest_ns = vim.api.nvim_create_namespace('neotest')
 
 local opts = {
   status = { virtual_text = true },
-  output = { open_on_run = false },
-  quickfix = {
-    open = function()
-      require('trouble').open({ mode = 'quickfix', focus = false })
-    end,
+  output = {
+    enabled = true,
+    open_on_run = false,
   },
 }
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'NeotestResult',
+  callback = function(args)
+    local results = args.data
+    if results then
+      -- Check if any tests failed
+      local has_failures = false
+      for _, result in pairs(results) do
+        if result.status == 'failed' then
+          has_failures = true
+          break
+        end
+      end
+
+      -- Open output panel if there are failures
+      if has_failures then
+        require('neotest').output_panel.open()
+      end
+    end
+  end,
+})
 
 vim.diagnostic.config({
   virtual_text = {
@@ -19,33 +39,6 @@ vim.diagnostic.config({
     end,
   },
 }, neotest_ns)
-
-opts.consumers = opts.consumers or {}
-opts.consumers.trouble = function(client)
-  client.listeners.results = function(adapter_id, results, partial)
-    if partial then
-      return
-    end
-    local tree = assert(client:get_position(nil, { adapter = adapter_id }))
-
-    local failed = 0
-    for pos_id, result in pairs(results) do
-      if result.status == 'failed' and tree:get_key(pos_id) then
-        failed = failed + 1
-      end
-    end
-    vim.schedule(function()
-      local trouble = require('trouble')
-      if trouble.is_open() then
-        trouble.refresh()
-        if failed == 0 then
-          trouble.close()
-        end
-      end
-    end)
-    return {}
-  end
-end
 
 opts.adapters = {
   ['neotest-golang'] = {

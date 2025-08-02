@@ -23,8 +23,4 @@ for PR_URL in $PR_URLS
 do
   gh pr review $PR_URL --approve
   echo "Approved PR: $PR_URL ✅"
-
-  # Add some delay to avoid other people think you are a bot
-  # Sleep random time between 1 to 5 seconds
-  sleep $((1 + RANDOM % 5))
 done
