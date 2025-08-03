@@ -7,8 +7,8 @@
   "contributes": {
     "snippets": [
       {
-        "language": "http",
-        "path": "./http.json"
+        "language": "hurl",
+        "path": "./hurl.json"
       },
       {
         "language": "typescript",

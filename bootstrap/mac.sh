@@ -457,6 +457,7 @@ install_cli_tools() {
     brew install serpl # Search and replace
     brew install aichat # AI cli
     brew install gitkraken-cli # Git kraken
+    brew install hurl # Postman CLI alternative
 
 
     # Hack Tools

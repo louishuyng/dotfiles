@@ -98,11 +98,6 @@ end, { silent = true, noremap = true, desc = 'Get last telescope result' })
 --   })
 -- end)
 
--- Rest
-vim.keymap.set('n', '<leader>ce', function()
-  require('telescope').extensions.rest.select_env()
-end, { silent = true, noremap = true, desc = 'Choose rest environment' })
-
 vim.keymap.set('n', '<leader>fa', function()
   builtin.find_files({
     prompt_title = 'APIs',

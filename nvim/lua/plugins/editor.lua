@@ -59,8 +59,6 @@ return {
   --   end,
   -- },
 
-  -- REST API
-  { 'rest-nvim/rest.nvim', ft = 'http' },
   -- Key map finding
   {
     'folke/which-key.nvim',
