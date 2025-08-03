@@ -262,6 +262,12 @@ install_folder_manager_tool() {
   if [[ $response =~ (y|yes|Y) ]];then
     brew install --cask marta
   fi
+
+  read -r -p "Do you want to install superfile? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)" # super file
+    ln -s ~/.dotfiles/suckless/superfile/config.toml ~/Library/Application\ Support/superfile/config.toml
+  fi
 }
 
 install_emacs() {
