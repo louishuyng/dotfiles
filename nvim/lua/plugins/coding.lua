@@ -1,12 +1,15 @@
 return {
   -- CMP & Completion
-  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/nvim-cmp', lazy = false },
   {
     'L3MON4D3/LuaSnip',
     after = 'hrsh7th/nvim-cmp',
     dependencies = {
       'rafamadriz/friendly-snippets',
       'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
     },
     config = function()
       require('luasnip.loaders.from_vscode').lazy_load()
@@ -15,14 +18,11 @@ return {
       require 'luasnip'.filetype_extend('ruby', { 'rails' })
     end,
   },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-buffer', dependencies = { 'nvim-cmp' } },
-  { 'hrsh7th/cmp-cmdline', dependencies = { 'nvim-cmp' } },
 
   -- Code Format
-  { 
+  {
     'numToStr/Comment.nvim',
-    event = { "BufReadPost", "BufNewFile" },
+    event = { 'BufReadPost', 'BufNewFile' },
   },
 
   -- Treesistter

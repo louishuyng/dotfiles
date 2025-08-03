@@ -41,6 +41,15 @@ LspKind.Completion = {
 vim.opt.completeopt = 'menuone,noselect'
 
 cmp.setup {
+  performance = {
+    debounce = 60,
+    throttle = 30,
+    fetching_timeout = 500,
+    confirm_resolve_timeout = 80,
+    async_budget = 1,
+    max_view_entries = 200,
+  },
+  preselect = cmp.PreselectMode.Item,
   window = {
     completion = {
       winhighlight = 'Normal:Pmenu,CursorLine:PmenuSel,Search:None',
@@ -128,10 +137,44 @@ cmp.setup {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
   },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      compare.offset,
+      compare.exact,
+      compare.score,
+      compare.recently_used,
+      compare.locality,
+      compare.kind,
+      compare.sort_text,
+      compare.length,
+      compare.order,
+    },
+  },
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'buffer' },
+    { 
+      name = 'nvim_lsp',
+      priority = 1000,
+      keyword_length = 1,
+      max_item_count = 50,
+    },
+    { 
+      name = 'luasnip',
+      priority = 750,
+      keyword_length = 2,
+      max_item_count = 20,
+    },
+    { 
+      name = 'buffer',
+      priority = 500,
+      keyword_length = 3,
+      max_item_count = 10,
+      option = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end
+      },
+    },
   },
 }
 

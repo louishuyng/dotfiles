@@ -5,7 +5,7 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {},
   },
-  { 'mbbill/undotree' },
+  { 'mbbill/undotree', lazy = false },
 
   -- Git
   {
@@ -84,7 +84,7 @@ return {
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     -- Lazy load Oil on command
     lazy = true,
-    cmd = "Oil",
+    cmd = 'Oil',
 
     config = function()
       require('oil').setup({
