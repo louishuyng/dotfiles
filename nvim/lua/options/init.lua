@@ -40,7 +40,7 @@ opt.ignorecase = true -- Ignore case when searching...
 opt.smartcase = true -- ... unless there is a capital letter in the query
 opt.hidden = true -- I like having buffers stay around
 opt.splitright = true -- Prefer windows splitting to the right opt.splitbelow = false -- Prefer windows splitting to the top
-opt.updatetime = 1000 -- Make updates happen faster
+opt.updatetime = 250 -- Make updates happen faster
 opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 vim.opt.list = true -- Show some invisible characters (tabs...)
@@ -164,8 +164,8 @@ au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
 -- Draw Performance
 vim.cmd([[
   set ttyfast
-  set synmaxcol=128
-  syntax sync minlines=256
+  set synmaxcol=500
+  syntax sync minlines=50
 
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 ]])

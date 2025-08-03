@@ -42,12 +42,12 @@ vim.opt.completeopt = 'menuone,noselect'
 
 cmp.setup {
   performance = {
-    debounce = 60,
-    throttle = 30,
-    fetching_timeout = 500,
+    debounce = 100,
+    throttle = 50,
+    fetching_timeout = 300,
     confirm_resolve_timeout = 80,
     async_budget = 1,
-    max_view_entries = 200,
+    max_view_entries = 50,
   },
   preselect = cmp.PreselectMode.Item,
   window = {
@@ -168,10 +168,16 @@ cmp.setup {
       name = 'buffer',
       priority = 500,
       keyword_length = 3,
-      max_item_count = 10,
+      max_item_count = 5,
       option = {
         get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
+          local bufs = {}
+          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buftype == '' then
+              table.insert(bufs, buf)
+            end
+          end
+          return bufs
         end
       },
     },

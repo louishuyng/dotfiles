@@ -54,7 +54,7 @@ vim.lsp.set_log_level("ERROR")
 
 -- Debounce text changes
 local timer = vim.loop.new_timer()
-local DEBOUNCE_MS = 150
+local DEBOUNCE_MS = 200
 local orig_buf_text_changed = vim.lsp.util.buf_text_changed
 
 vim.lsp.util.buf_text_changed = function(bufnr)
@@ -66,5 +66,15 @@ vim.lsp.util.buf_text_changed = function(bufnr)
     end)
   end)
 end
+
+-- Disable semantic tokens for better performance
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
+  end,
+})
 
 return capabilities
