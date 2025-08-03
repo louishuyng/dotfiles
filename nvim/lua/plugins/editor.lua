@@ -1,15 +1,17 @@
 return {
-  { 'terryma/vim-multiple-cursors' }, -- Multi Cursor
+  { 'terryma/vim-multiple-cursors', lazy = false }, -- Multi Cursor
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    event = { 'BufReadPost', 'BufNewFile' },
     opts = {},
   },
-  { 'mbbill/undotree', lazy = false },
+  { 'mbbill/undotree', cmd = 'UndotreeToggle' },
 
   -- Git
   {
     'NeogitOrg/neogit',
+    cmd = 'Neogit',
     dependencies = {
       'nvim-lua/plenary.nvim', -- required
       'sindrets/diffview.nvim', -- optional - Diff integration
@@ -19,11 +21,12 @@ return {
       'ibhagwan/fzf-lua', -- optional
     },
   },
-  { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-  { 'akinsho/git-conflict.nvim', version = '*', config = true },
+  { 'lewis6991/gitsigns.nvim', event = { 'BufReadPost', 'BufNewFile' }, dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'akinsho/git-conflict.nvim', version = '*', event = { 'BufReadPost', 'BufNewFile' }, config = true },
   {
     'polarmutex/git-worktree.nvim',
     version = '^2',
+    cmd = { 'GitWorktreeSwitch', 'GitWorktreeCreate', 'GitWorktreeDelete' },
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local Hooks = require('git-worktree.hooks')
@@ -44,6 +47,7 @@ return {
   -- Markdown
   {
     'MeanderingProgrammer/render-markdown.nvim',
+    ft = 'markdown',
     opts = {},
   },
 
@@ -71,6 +75,7 @@ return {
   -- Find matching words
   {
     'dyng/ctrlsf.vim',
+    cmd = { 'CtrlSF', 'CtrlSFOpen', 'CtrlSFToggle' },
   },
 
   -- Exploring Files
@@ -112,6 +117,7 @@ return {
   -- MINI plugins
   {
     'echasnovski/mini.ai',
+    event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       local spec_treesitter = require('mini.ai').gen_spec.treesitter
       require('mini.ai').setup({
@@ -129,6 +135,7 @@ return {
   {
     'echasnovski/mini.bracketed',
     version = false,
+    event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       require('mini.bracketed').setup({})
     end,
@@ -136,6 +143,7 @@ return {
   {
     'echasnovski/mini.surround',
     version = false,
+    event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       require('mini.surround').setup({})
     end,

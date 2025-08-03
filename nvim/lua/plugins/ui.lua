@@ -1,8 +1,10 @@
 return {
   {
     'LazyVim/LazyVim',
+    lazy = false,
+    priority = 1000,
   },
-  { 'folke/snacks.nvim' },
+  { 'folke/snacks.nvim', lazy = false, priority = 1000 },
   -- {
   --   'SmiteshP/nvim-navic',
   -- },
@@ -11,10 +13,10 @@ return {
     event = "VeryLazy",
   },
   -- { 'b0o/incline.nvim' },
-  { 'nvim-tree/nvim-web-devicons' },
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
   { 
     'folke/noice.nvim',
-    event = "VeryLazy",
+    event = 'VimEnter',
   },
   {
     'nvim-lualine/lualine.nvim',

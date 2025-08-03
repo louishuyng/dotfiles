@@ -29,6 +29,8 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    lazy = false,
+    priority = 1000,
     config = function()
       require 'config.cores.treesitter'
     end,
@@ -36,6 +38,7 @@ return {
   {
     'code-biscuits/nvim-biscuits',
     build = ':TSUpdate',
+    event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       require('nvim-biscuits').setup({
         toggle_keybind = '<leader>bb',
@@ -47,7 +50,7 @@ return {
       })
     end,
   },
-  { 'nvim-treesitter/nvim-treesitter-context' },
+  { 'nvim-treesitter/nvim-treesitter-context', event = { 'BufReadPost', 'BufNewFile' } },
 
   -- ROR
   -- { 'tpope/vim-rails' },
@@ -55,6 +58,7 @@ return {
   -- Testing
   {
     'nvim-neotest/neotest',
+    cmd = { 'Neotest' },
     dependencies = {
       'nvim-neotest/nvim-nio',
       'nvim-neotest/neotest-jest',
@@ -69,6 +73,7 @@ return {
     'michaelb/sniprun',
     branch = 'master',
     build = 'sh install.sh',
+    cmd = { 'SnipRun', 'SnipRunOperator' },
     config = function()
       require('sniprun').setup({})
     end,
