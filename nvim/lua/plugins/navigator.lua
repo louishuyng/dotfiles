@@ -17,7 +17,8 @@ return {
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
-    lazy = false, -- neo-tree will lazily load itself
+    lazy = true,
+    cmd = { "Neotree" },
     ---@module "neo-tree"
     ---@type neotree.Config?
     opts = {

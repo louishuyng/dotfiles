@@ -132,17 +132,22 @@ vim.g.loaded_spec = 0
 vim.g.rust_recommended_style = 1
 
 -- Golang
-vim.cmd [[au FileType go set noexpandtab]]
-vim.cmd [[au FileType go set shiftwidth=2]]
-vim.cmd [[au FileType go set softtabstop=2]]
-vim.cmd [[au FileType go set tabstop=2]]
-vim.cmd [[au FileType go set nolist]]
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  callback = function()
+    vim.bo.expandtab = false
+    vim.bo.shiftwidth = 2
+    vim.bo.softtabstop = 2
+    vim.bo.tabstop = 2
+    vim.wo.list = false
+  end,
+})
 
 -- LSP
 vim.g.auto_format = true
 
 -- Grep
-vim.cmd('set grepprg=rg\\ --vimgrep\\ --smart-case\\ --follow')
+vim.opt.grepprg = 'rg --vimgrep --smart-case --follow'
 
 -- Winbar
 -- vim.api.nvim_command("set winbar=%m\\ %f")

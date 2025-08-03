@@ -1,0 +1,1526 @@
+--- Startup times for process: Primary (or UI client) ---
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.000  000.000: --- NVIM STARTING ---
+000.062  000.062: event init
+000.184  000.122: early init
+000.449  000.264: locale set
+000.475  000.026: init first window
+000.868  000.393: inits 1
+000.886  000.018: window checked
+000.890  000.004: parsing arguments
+001.321  000.037  000.037: require('vim.shared')
+001.400  000.032  000.032: require('vim.inspect')
+001.438  000.030  000.030: require('vim._options')
+001.440  000.116  000.054: require('vim._editor')
+001.442  000.184  000.030: require('vim._init_packages')
+001.444  000.371: init lua interpreter
+003.258  001.814: expanding arguments
+003.270  000.012: inits 2
+003.541  000.271: init highlight
+003.563  000.022: clear screen
+003.694  000.013  000.013: require('vim.keymap')
+004.524  000.130  000.130: sourcing nvim_exec2()
+004.676  001.110  000.967: require('vim._defaults')
+004.678  000.005: init default mappings & autocommands
+005.297  000.048  000.048: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/ftplugin.vim
+005.383  000.024  000.024: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/indent.vim
+022.559  000.009  000.009: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.563  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.565  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.567  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.570  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.576  000.004  000.004: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.582  000.004  000.004: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.600  000.016  000.016: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.605  000.003  000.003: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.608  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+022.610  017.074  017.032: require('options')
+023.426  000.478  000.478: require('lazy')
+023.451  000.011  000.011: require('ffi')
+023.493  000.024  000.024: require('vim.fs')
+023.618  000.125  000.125: require('vim.uri')
+023.626  000.173  000.024: require('vim.loader')
+023.855  000.213  000.213: require('lazy.stats')
+024.016  000.129  000.129: require('lazy.core.util')
+024.147  000.130  000.130: require('lazy.core.config')
+024.331  000.089  000.089: require('lazy.core.handler')
+024.703  000.104  000.104: require('lazy.pkg')
+024.707  000.212  000.108: require('lazy.core.meta')
+024.715  000.383  000.170: require('lazy.core.plugin')
+024.720  000.572  000.100: require('lazy.core.loader')
+025.320  000.087  000.087: require('lazy.async')
+025.547  000.111  000.111: require('lazy.manage.process')
+025.625  000.077  000.077: require('lazy.terminal')
+025.629  000.307  000.119: require('lazy.manage.task')
+025.630  000.592  000.198: require('lazy.manage.runner')
+025.633  000.678  000.086: require('lazy.manage')
+025.635  000.793  000.115: require('lazy.view.commands')
+025.713  000.065  000.065: require('lazy.core.fragments')
+028.024  000.089  000.089: require('lazy.core.handler.keys')
+028.197  000.077  000.077: require('lazy.core.handler.event')
+028.198  000.172  000.096: require('lazy.core.handler.ft')
+028.267  000.067  000.067: require('lazy.core.handler.cmd')
+028.338  000.003  000.003: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+029.416  000.975  000.975: require('vim.filetype')
+029.418  001.013  000.038: sourcing /Users/louishuyng/.local/share/nvim/lazy/rest.nvim/ftdetect/http.lua
+029.420  001.053  000.040: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+029.425  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+030.625  000.095  000.095: sourcing nvim_exec2() called at /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/filetype.lua:0
+030.627  000.140  000.045: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/filetype.lua
+030.628  000.175  000.035: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+030.750  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+030.754  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+031.174  000.058  000.058: require('marlin.callbacks')
+031.293  000.054  000.054: require('marlin.utils')
+031.294  000.120  000.066: require('marlin.sorters')
+031.369  000.073  000.073: require('marlin.datafile')
+031.374  000.546  000.295: require('marlin')
+031.529  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+031.533  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+031.891  000.064  000.064: require('lualine_require')
+032.212  000.590  000.526: require('lualine')
+032.276  000.006  000.006: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.586  000.071  000.071: require('lualine.highlight')
+032.896  000.005  000.005: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.908  000.003  000.003: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.913  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.917  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.921  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.925  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.928  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.941  000.010  000.010: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.945  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.948  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.952  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.956  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.960  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.964  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.967  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.970  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.974  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.977  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.980  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.984  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.988  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.992  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+032.997  000.004  000.004: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.438  000.069  000.069: require('lualine.utils.mode')
+033.648  000.016  000.016: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.653  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.829  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.834  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.838  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.918  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.922  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.928  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.931  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.937  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.940  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.944  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.958  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.963  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.973  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+033.977  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.047  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.050  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.054  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.057  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.060  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.064  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.067  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.150  000.004  000.004: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.154  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.157  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.160  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.460  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.464  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.467  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.471  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.474  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.477  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.480  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.485  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.490  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.494  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.497  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.500  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.503  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.506  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.510  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.514  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.517  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.520  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.524  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.567  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.577  000.007  000.007: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.582  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.586  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.590  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.593  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.597  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.634  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.637  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+034.998  000.004  000.004: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+035.019  000.003  000.003: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+035.027  000.006  000.006: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+035.035  000.003  000.003: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+035.039  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+035.064  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+035.068  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+035.463  000.393  000.393: require('mini.bracketed')
+036.127  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+036.132  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+036.524  000.124  000.124: require('git-conflict.colors')
+036.586  000.061  000.061: require('git-conflict.utils')
+036.824  000.160  000.160: require('vim.health')
+036.827  000.239  000.079: require('vim.deprecated.health')
+036.955  000.077  000.077: require('vim.hl')
+036.969  000.772  000.270: require('git-conflict')
+037.271  000.171  000.171: require('vim.iter')
+038.060  000.068  000.068: require('nvim-treesitter.utils')
+038.512  000.056  000.056: require('vim.treesitter.language')
+038.586  000.074  000.074: require('vim.func')
+038.666  000.078  000.078: require('vim.func._memoize')
+038.713  000.326  000.117: require('vim.treesitter.query')
+038.789  000.075  000.075: require('vim.treesitter._range')
+038.797  000.483  000.083: require('vim.treesitter.languagetree')
+038.800  000.550  000.067: require('vim.treesitter')
+039.111  001.049  000.499: require('nvim-treesitter.parsers')
+039.377  000.050  000.050: require('nvim-treesitter.compat')
+039.487  000.060  000.060: require('nvim-treesitter.ts_utils')
+039.489  000.111  000.051: require('nvim-treesitter.tsrange')
+039.540  000.049  000.049: require('nvim-treesitter.caching')
+039.544  000.271  000.061: require('nvim-treesitter.query')
+039.550  000.353  000.081: require('nvim-treesitter.configs')
+039.551  000.440  000.087: require('nvim-treesitter.info')
+039.619  000.067  000.067: require('nvim-treesitter.shell_command_selectors')
+039.628  001.738  000.114: require('nvim-treesitter.install')
+039.679  000.050  000.050: require('nvim-treesitter.statusline')
+039.732  000.052  000.052: require('nvim-treesitter.query_predicates')
+039.734  002.063  000.223: require('nvim-treesitter')
+040.160  002.562  000.499: sourcing /Users/louishuyng/.local/share/nvim/lazy/nvim-treesitter/plugin/nvim-treesitter.lua
+040.162  002.597  000.035: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+040.191  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+040.196  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+040.776  000.058  000.058: require('treesitter-context.config')
+040.782  000.243  000.184: require('treesitter-context')
+040.829  000.315  000.072: sourcing /Users/louishuyng/.local/share/nvim/lazy/nvim-treesitter-context/plugin/treesitter-context.lua
+040.830  000.345  000.031: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+040.859  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+040.863  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+040.866  000.610  000.264: require('treesitter-context')
+042.453  000.070  000.070: require('nvim-treesitter.indent')
+042.523  000.049  000.049: require('nvim-treesitter.highlight')
+042.681  000.066  000.066: require('vim.treesitter.highlighter')
+042.726  000.044  000.044: require('treesitter-context.util')
+042.729  000.179  000.069: require('treesitter-context.render')
+042.751  002.553  001.645: require('config.cores.treesitter')
+043.108  000.133  000.133: require('vim.lsp.log')
+043.443  000.334  000.334: require('vim.lsp.protocol')
+043.621  000.177  000.177: require('vim.lsp.util')
+043.830  000.104  000.104: require('vim.lsp.sync')
+043.840  000.217  000.114: require('vim.lsp._changetracking')
+044.004  000.086  000.086: require('vim.lsp._transport')
+044.013  000.172  000.086: require('vim.lsp.rpc')
+044.044  001.174  000.142: require('vim.lsp')
+044.311  000.266  000.266: require('lspconfig.util')
+044.387  000.071  000.071: require('vim.version')
+045.607  002.775  001.264: sourcing /Users/louishuyng/.local/share/nvim/lazy/nvim-lspconfig/plugin/lspconfig.lua
+045.610  002.810  000.035: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+045.640  000.003  000.003: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+045.646  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+046.197  000.136  000.136: require('lspconfig.async')
+046.199  000.299  000.164: require('lspconfig.configs')
+046.206  000.366  000.066: require('lspconfig')
+046.292  000.084  000.084: require('lspconfig.configs.gopls')
+046.491  000.130  000.130: require('lspconfig.manager')
+046.635  000.137  000.137: require('lspconfig.configs.golangci_lint_ls')
+046.668  000.887  000.170: require('config/lsp/servers/golang')
+046.876  000.128  000.128: require('lspconfig.configs.html')
+046.965  000.297  000.168: require('config/lsp/servers/html')
+047.104  000.076  000.076: require('lspconfig.configs.jsonls')
+047.121  000.155  000.079: require('config/lsp/servers/json')
+047.239  000.053  000.053: require('lspconfig.configs.ltex')
+047.277  000.155  000.102: require('config/lsp/servers/ltex')
+047.400  000.052  000.052: require('lspconfig.configs.lua_ls')
+047.417  000.139  000.087: require('config/lsp/servers/lua')
+047.511  000.048  000.048: require('lspconfig.configs.pyright')
+047.519  000.101  000.053: require('config/lsp/servers/python')
+047.642  000.074  000.074: require('lspconfig.configs.solargraph')
+047.671  000.152  000.078: require('config/lsp/servers/ruby')
+047.774  000.051  000.051: require('lspconfig.configs.rust_analyzer')
+047.784  000.113  000.062: require('config/lsp/servers/rust')
+047.904  000.075  000.075: require('lspconfig.configs.typos_lsp')
+047.913  000.128  000.053: require('config/lsp/servers/spell')
+048.031  000.072  000.072: require('lspconfig.configs.terraformls')
+048.042  000.128  000.057: require('config/lsp/servers/terraform')
+048.170  000.082  000.082: require('lspconfig.configs.ts_ls')
+048.246  000.059  000.059: require('lspconfig.configs.eslint')
+048.333  000.071  000.071: require('lspconfig.configs.denols')
+048.350  000.307  000.095: require('config/lsp/servers/typescript')
+048.445  000.046  000.046: require('lspconfig.configs.yamlls')
+048.456  000.105  000.059: require('config/lsp/servers/yamlls')
+048.562  000.062  000.062: require('lspconfig.configs.zls')
+048.572  000.116  000.053: require('config/lsp/servers/zig')
+048.573  002.848  000.065: require('config.lsp.register_server')
+048.880  000.027  000.027: sourcing /Users/louishuyng/.local/share/nvim/lazy/conform.nvim/plugin/conform.lua
+048.882  000.070  000.043: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+048.910  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+048.914  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+048.966  000.345  000.273: require('conform')
+048.977  000.404  000.058: require('config.lsp.register_formatters')
+049.068  000.043  000.043: require('config.libs.icons')
+049.167  000.002  000.002: require('vim.F')
+049.185  000.116  000.114: require('vim.diagnostic')
+049.188  000.210  000.051: require('config.lsp.diagnostic')
+049.241  000.052  000.052: require('config.lsp.on_attach')
+049.616  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+049.620  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+049.844  000.046  000.046: require('mason-core.path')
+050.007  000.051  000.051: require('mason-core.functional.data')
+050.058  000.050  000.050: require('mason-core.functional.function')
+050.114  000.053  000.053: require('mason-core.functional.list')
+050.170  000.045  000.045: require('mason-core.functional.relation')
+050.216  000.044  000.044: require('mason-core.functional.logic')
+050.263  000.045  000.045: require('mason-core.functional.number')
+050.312  000.047  000.047: require('mason-core.functional.string')
+050.360  000.045  000.045: require('mason-core.functional.table')
+050.404  000.043  000.043: require('mason-core.functional.type')
+050.405  000.503  000.079: require('mason-core.functional')
+050.424  000.579  000.076: require('mason-core.platform')
+050.478  000.053  000.053: require('mason.settings')
+050.480  000.827  000.148: require('mason-core.installer.InstallLocation')
+050.642  000.060  000.060: require('mason-core.log')
+050.643  000.113  000.052: require('mason-core.EventEmitter')
+050.698  000.054  000.054: require('mason-registry.sources')
+050.700  000.220  000.053: require('mason-registry')
+050.702  001.460  000.412: require('mason')
+050.834  000.071  000.071: require('mason.api.command')
+050.836  005.188  000.142: require('config.lsp')
+050.896  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+050.899  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+051.687  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+051.691  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+051.722  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+051.750  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+052.054  000.057  000.057: require('dap.utils')
+052.083  000.329  000.272: require('dap')
+052.237  000.049  000.049: require('nio.tasks')
+052.285  000.047  000.047: require('nio.control')
+052.384  000.098  000.098: require('nio.uv')
+052.432  000.047  000.047: require('nio.tests')
+052.552  000.074  000.074: require('vim.ui')
+052.554  000.121  000.047: require('nio.ui')
+052.657  000.060  000.060: require('nio.streams')
+052.658  000.104  000.044: require('nio.file')
+052.807  000.048  000.048: require('nio.util')
+052.838  000.129  000.082: require('nio.logger')
+052.840  000.182  000.052: require('nio.lsp')
+052.889  000.048  000.048: require('nio.process')
+052.892  000.754  000.058: require('nio')
+053.149  000.005  000.005: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+053.150  000.059  000.054: require('dapui.config.highlights')
+053.175  000.022  000.022: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+053.201  000.192  000.111: require('dapui.config')
+053.203  000.252  000.059: require('dapui.util')
+053.257  000.054  000.054: require('dapui.windows.layout')
+053.259  000.366  000.061: require('dapui.windows')
+053.314  000.055  000.055: require('dapui.controls')
+053.317  001.233  000.059: require('dapui')
+053.354  000.015  000.015: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+053.530  000.061  000.061: require('dapui.client.types')
+053.532  000.128  000.068: require('dapui.client')
+053.584  000.052  000.052: require('dap.breakpoints')
+053.637  000.049  000.049: require('dapui.client.lib')
+053.743  000.054  000.054: require('dapui.render.canvas')
+053.744  000.103  000.049: require('dapui.elements.breakpoints')
+053.806  000.056  000.056: require('dapui.components.breakpoints')
+053.893  000.076  000.076: require('dapui.elements.repl')
+053.939  000.044  000.044: require('dapui.elements.scopes')
+053.994  000.048  000.048: require('dapui.components.scopes')
+054.043  000.048  000.048: require('dapui.components.variables')
+054.092  000.044  000.044: require('dapui.elements.stacks')
+054.187  000.045  000.045: require('dapui.components.frames')
+054.188  000.093  000.047: require('dapui.components.threads')
+054.240  000.044  000.044: require('dapui.elements.watches')
+054.295  000.052  000.052: require('dapui.components.watches')
+054.345  000.044  000.044: require('dapui.elements.hover')
+054.427  000.046  000.046: require('dapui.components.hover')
+054.475  000.045  000.045: require('dapui.elements.console')
+054.559  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+054.564  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+054.857  000.062  000.062: require('dap-go-ts')
+054.860  000.256  000.194: require('dap-go')
+054.985  000.047  000.047: sourcing /Users/louishuyng/.local/share/nvim/lazy/nvim-dap/plugin/dap.lua
+054.987  000.080  000.033: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+054.989  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+054.992  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+055.165  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+055.168  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+055.464  000.210  000.210: require('lazyvim.util')
+055.471  000.477  000.266: require('lazyvim.config')
+055.703  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+055.708  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+055.791  000.305  000.304: require('mason-nvim-dap')
+055.954  000.162  000.162: require('mason-nvim-dap.settings')
+056.030  000.070  000.070: require('dap.ext.vscode')
+056.088  000.057  000.057: require('mason-nvim-dap.mappings.filetypes')
+056.230  000.075  000.075: require('mason-core.async')
+056.286  000.055  000.055: require('mason-core.optional')
+056.341  000.054  000.054: require('mason-core.notify')
+056.354  000.256  000.072: require('mason-nvim-dap.api.command')
+056.652  000.016  000.016: sourcing /Users/louishuyng/.local/share/nvim/lazy/plenary.nvim/plugin/plenary.vim
+056.653  000.043  000.027: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+056.657  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+056.664  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+056.708  000.310  000.267: require('plenary.json')
+056.728  005.630  001.102: require('dap')
+056.732  005.785  000.155: require('nvim-dap-virtual-text')
+056.761  000.004  000.004: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+056.770  000.006  000.006: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+056.898  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+056.903  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+057.189  000.285  000.285: require('mini.pairs')
+057.930  000.274  000.274: require('sniprun')
+057.947  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.950  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.955  000.005  000.005: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.957  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.962  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.965  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.969  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.971  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.991  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.993  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.995  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+057.999  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.000  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.002  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.004  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.006  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.008  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.009  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.010  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.012  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.014  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.016  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.017  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim:1
+058.093  000.075  000.075: require('sniprun.display')
+058.098  000.449  000.067: sourcing /Users/louishuyng/.local/share/nvim/lazy/sniprun/plugin/sniprun.vim
+058.099  000.476  000.027: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.102  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.106  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.123  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.126  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.129  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.131  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.134  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.136  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.140  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.142  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.149  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.173  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.177  000.003  000.003: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.179  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.181  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.182  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.183  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.185  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.187  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.188  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.190  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.191  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.194  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.196  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.197  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.228  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.234  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.616  000.381  000.381: require('mini.ai')
+058.862  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+058.867  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+059.134  000.264  000.264: require('oil')
+059.229  000.090  000.090: require('oil.ringbuf')
+059.313  000.083  000.083: require('oil.config')
+059.737  000.066  000.066: require('oil.log')
+059.754  000.148  000.082: require('oil.fs')
+059.969  000.108  000.108: require('oil.constants')
+059.988  000.233  000.125: require('oil.util')
+060.543  000.254  000.254: sourcing /Users/louishuyng/.local/share/nvim/lazy/ctrlsf.vim/autoload/ctrlsf/backend.vim
+060.784  000.682  000.428: sourcing /Users/louishuyng/.local/share/nvim/lazy/ctrlsf.vim/plugin/ctrlsf.vim
+060.786  000.714  000.032: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+060.792  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+060.807  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+061.427  000.088  000.088: require('nvim-biscuits.utils')
+061.493  000.065  000.065: require('nvim-biscuits.config')
+061.630  000.071  000.071: require('nvim-biscuits.languages.html')
+061.694  000.063  000.063: require('nvim-biscuits.languages.vue')
+061.758  000.064  000.064: require('nvim-biscuits.languages.javascript')
+061.821  000.061  000.061: require('nvim-biscuits.languages.python')
+061.822  000.328  000.069: require('nvim-biscuits.languages')
+061.877  000.055  000.055: require('vendor.parse')
+061.880  000.910  000.374: require('nvim-biscuits')
+061.887  000.928  000.019: sourcing /Users/louishuyng/.local/share/nvim/lazy/nvim-biscuits/plugin/nvim-biscuits.vim
+061.889  000.975  000.047: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+061.893  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+061.897  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+062.522  000.494  000.494: require('cmp.utils.api')
+062.701  000.089  000.089: require('cmp.types.cmp')
+062.986  000.181  000.181: require('cmp.utils.misc')
+063.057  000.355  000.173: require('cmp.types.lsp')
+063.188  000.130  000.130: require('cmp.types.vim')
+063.189  000.666  000.092: require('cmp.types')
+063.287  000.098  000.098: require('cmp.utils.highlight')
+063.523  000.131  000.131: require('cmp.utils.debug')
+063.528  000.240  000.109: require('cmp.utils.autocmd')
+063.843  000.007  000.007: sourcing nvim_exec2() called at /Users/louishuyng/.local/share/nvim/lazy/nvim-cmp/plugin/cmp.lua:0
+063.844  001.854  000.350: sourcing /Users/louishuyng/.local/share/nvim/lazy/nvim-cmp/plugin/cmp.lua
+063.846  001.883  000.029: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+063.852  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+063.869  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+064.056  000.016  000.016: sourcing /Users/louishuyng/.local/share/nvim/lazy/todo-comments.nvim/plugin/todo.vim
+064.057  000.049  000.032: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+064.060  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+064.078  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+064.799  000.166  000.166: require('todo-comments.util')
+064.802  000.314  000.148: require('todo-comments.config')
+064.921  000.065  000.065: require('todo-comments.highlight')
+064.923  000.120  000.054: require('todo-comments.jump')
+064.924  000.697  000.263: require('todo-comments')
+064.963  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+064.969  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+065.457  000.209  000.209: require('gitsigns')
+065.592  000.118  000.118: require('gitsigns.highlight')
+065.664  000.058  000.058: require('gitsigns.debug.log')
+065.740  000.076  000.076: require('gitsigns.config')
+066.014  000.046  000.046: require('gitsigns.debounce')
+066.018  000.796  000.289: sourcing /Users/louishuyng/.local/share/nvim/lazy/gitsigns.nvim/plugin/gitsigns.lua
+066.020  000.832  000.036: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+066.045  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+066.049  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+066.473  000.049  000.049: require('render-markdown.config.injections')
+066.520  000.045  000.045: require('render-markdown.config.patterns')
+066.566  000.046  000.046: require('render-markdown.config.anti_conceal')
+066.611  000.044  000.044: require('render-markdown.config.padding')
+066.657  000.046  000.046: require('render-markdown.config.latex')
+066.701  000.043  000.043: require('render-markdown.config.on')
+066.751  000.050  000.050: require('render-markdown.config.completions')
+066.808  000.055  000.055: require('render-markdown.config.heading')
+066.854  000.045  000.045: require('render-markdown.config.paragraph')
+066.902  000.048  000.048: require('render-markdown.config.code')
+066.946  000.043  000.043: require('render-markdown.config.dash')
+066.988  000.042  000.042: require('render-markdown.config.document')
+067.034  000.045  000.045: require('render-markdown.config.bullet')
+067.079  000.045  000.045: require('render-markdown.config.checkbox')
+067.123  000.043  000.043: require('render-markdown.config.quote')
+067.170  000.046  000.046: require('render-markdown.config.pipe_table')
+067.224  000.054  000.054: require('render-markdown.config.callout')
+067.275  000.050  000.050: require('render-markdown.config.link')
+067.318  000.042  000.042: require('render-markdown.config.sign')
+067.361  000.043  000.043: require('render-markdown.config.inline_highlight')
+067.404  000.043  000.043: require('render-markdown.config.indent')
+067.448  000.043  000.043: require('render-markdown.config.html')
+067.498  000.050  000.050: require('render-markdown.config.win_options')
+067.551  000.052  000.052: require('render-markdown.config.overrides')
+067.600  000.048  000.048: require('render-markdown.config.handlers')
+067.601  001.413  000.253: require('render-markdown')
+067.661  000.059  000.059: require('render-markdown.lib.presets')
+067.783  000.055  000.055: require('render-markdown.lib.compat')
+067.840  000.056  000.056: require('render-markdown.lib.env')
+068.041  000.050  000.050: require('render-markdown.lib.str')
+068.043  000.099  000.049: require('render-markdown.lib.line')
+068.092  000.049  000.049: require('render-markdown.lib.resolved')
+068.141  000.048  000.048: require('render-markdown.lib.iter')
+068.142  000.248  000.052: require('render-markdown.lib.config')
+068.144  000.299  000.051: require('render-markdown.state')
+068.282  000.055  000.055: require('render-markdown.core.log')
+068.429  000.045  000.045: require('render-markdown.request.callout')
+068.476  000.046  000.046: require('render-markdown.request.checkbox')
+068.528  000.051  000.051: require('render-markdown.request.conceal')
+068.577  000.049  000.049: require('render-markdown.request.offset')
+068.623  000.045  000.045: require('render-markdown.request.used')
+068.724  000.054  000.054: require('render-markdown.lib.node')
+068.775  000.050  000.050: require('render-markdown.lib.range')
+068.776  000.153  000.049: require('render-markdown.request.view')
+068.778  000.444  000.055: require('render-markdown.request.context')
+068.827  000.049  000.049: require('render-markdown.lib.marks')
+068.879  000.051  000.051: require('render-markdown.core.ts')
+068.880  000.598  000.053: require('render-markdown.handler.html')
+068.981  000.051  000.051: require('render-markdown.lib.indent')
+068.983  000.102  000.051: require('render-markdown.handler.latex')
+069.031  000.048  000.048: require('render-markdown.handler.markdown')
+069.079  000.047  000.047: require('render-markdown.handler.markdown_inline')
+069.080  000.936  000.086: require('render-markdown.core.handlers')
+069.238  000.046  000.046: require('render-markdown.lib.decorator')
+069.285  000.046  000.046: require('render-markdown.lib.extmark')
+069.289  000.150  000.058: require('render-markdown.core.ui')
+069.293  000.207  000.057: require('render-markdown.core.manager')
+069.417  000.070  000.070: require('render-markdown.integ.source')
+069.419  000.119  000.050: require('render-markdown.integ.blink')
+069.480  000.060  000.060: require('render-markdown.core.colors')
+069.625  000.048  000.048: require('render-markdown.api')
+069.626  000.100  000.052: require('render-markdown.core.command')
+069.664  003.509  000.205: sourcing /Users/louishuyng/.local/share/nvim/lazy/render-markdown.nvim/plugin/render-markdown.lua
+069.667  003.539  000.030: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+069.671  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+069.675  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+069.973  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+069.979  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+070.161  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+070.189  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+070.763  000.044  000.044: require('luasnip.util.types')
+070.764  000.110  000.065: require('luasnip.util.ext_opts')
+070.922  000.052  000.052: require('luasnip.util.lazy_table')
+070.971  000.048  000.048: require('luasnip.extras.filetype_functions')
+070.974  000.162  000.062: require('luasnip.default_config')
+070.975  000.210  000.048: require('luasnip.session')
+070.977  000.594  000.273: require('luasnip.config')
+071.146  000.043  000.043: require('luasnip.util.vimversion')
+071.148  000.098  000.055: require('luasnip.util.util')
+071.255  000.048  000.048: require('luasnip.nodes.key_indexer')
+071.301  000.045  000.045: require('luasnip.util.feedkeys')
+071.303  000.155  000.062: require('luasnip.nodes.util')
+071.395  000.043  000.043: require('luasnip.session.snippet_collection.source')
+071.440  000.044  000.044: require('luasnip.util.table')
+071.482  000.041  000.041: require('luasnip.util.auto_table')
+071.484  000.180  000.052: require('luasnip.session.snippet_collection')
+071.630  000.045  000.045: require('luasnip.util.select')
+071.670  000.040  000.040: require('luasnip.util.time')
+072.028  000.498  000.413: require('luasnip.util._builtin_vars')
+072.178  000.694  000.195: require('luasnip.util.environ')
+072.229  000.050  000.050: require('luasnip.util.extend_decorator')
+072.341  000.065  000.065: require('luasnip.util.path')
+072.459  000.065  000.065: require('luasnip.util.log')
+072.461  000.120  000.055: require('luasnip.loaders.util')
+072.506  000.044  000.044: require('luasnip.loaders.data')
+072.567  000.061  000.061: require('luasnip.loaders.fs_watchers')
+072.569  000.339  000.050: require('luasnip.loaders')
+072.577  001.599  000.082: require('luasnip')
+072.605  002.318  000.126: sourcing /Users/louishuyng/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.lua
+072.606  002.352  000.034: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+072.657  000.017  000.017: sourcing /Users/louishuyng/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.vim
+072.658  000.046  000.030: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+072.660  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+072.665  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+072.772  000.046  000.046: require('luasnip.session.enqueueable_operations')
+073.254  000.081  000.081: require('luasnip.util.events')
+073.258  000.139  000.058: require('luasnip.nodes.node')
+073.343  000.084  000.084: require('luasnip.nodes.insertNode')
+073.406  000.062  000.062: require('luasnip.nodes.textNode')
+073.459  000.051  000.051: require('luasnip.util.mark')
+073.505  000.046  000.046: require('luasnip.util.pattern_tokenizer')
+073.554  000.048  000.048: require('luasnip.util.dict')
+074.751  001.149  001.149: require('luasnip.util.jsregexp')
+074.752  001.197  000.048: require('luasnip.nodes.util.trig_engines')
+074.775  001.956  000.328: require('luasnip.nodes.snippet')
+074.950  000.055  000.055: require('luasnip.util.parser.neovim_ast')
+075.002  000.052  000.052: require('luasnip.util.str')
+075.413  000.409  000.409: require('luasnip.util.jsregexp')
+075.473  000.059  000.059: require('luasnip.util.directed_graph')
+075.475  000.637  000.062: require('luasnip.util.parser.ast_utils')
+075.536  000.060  000.060: require('luasnip.nodes.functionNode')
+075.632  000.096  000.096: require('luasnip.nodes.choiceNode')
+075.699  000.066  000.066: require('luasnip.nodes.dynamicNode')
+075.748  000.049  000.049: require('luasnip.util.functions')
+075.751  000.975  000.068: require('luasnip.util.parser.ast_parser')
+075.867  000.115  000.115: require('luasnip.util.parser.neovim_parser')
+075.870  003.097  000.052: require('luasnip.util.parser')
+075.920  000.049  000.049: require('luasnip.nodes.snippetProxy')
+076.012  000.090  000.090: require('luasnip.util.jsonc')
+076.112  000.049  000.049: require('luasnip.nodes.duplicate')
+076.113  000.100  000.051: require('luasnip.loaders.snippet_cache')
+076.119  003.452  000.070: require('luasnip.loaders.from_vscode')
+080.116  000.097  000.097: require('luasnip.nodes.multiSnippet')
+083.262  000.059  000.059: require('diffview.lazy')
+083.524  000.075  000.075: require('diffview.ffi')
+083.586  000.062  000.062: require('diffview.oop')
+083.596  000.230  000.094: require('diffview.async')
+083.738  000.135  000.135: require('diffview.utils')
+083.830  000.055  000.055: require('diffview.mock')
+083.840  000.564  000.145: require('diffview.logger')
+083.923  000.077  000.077: require('diffview.control')
+084.010  000.079  000.079: require('diffview.events')
+084.013  001.020  000.240: require('diffview.bootstrap')
+084.027  001.068  000.049: sourcing /Users/louishuyng/.local/share/nvim/lazy/diffview.nvim/plugin/diffview.lua
+084.030  001.103  000.034: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.036  000.002  000.002: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.042  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.263  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.267  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.420  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.424  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.578  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.583  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.739  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.744  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.941  000.129  000.129: sourcing /Users/louishuyng/.local/share/nvim/lazy/telescope.nvim/plugin/telescope.lua
+084.942  000.155  000.026: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.944  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+084.949  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+085.212  000.032  000.032: sourcing /Users/louishuyng/.local/share/nvim/lazy/fzf-lua/plugin/fzf-lua.lua
+085.213  000.057  000.025: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+085.216  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+085.221  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+085.319  000.046  000.046: sourcing /Users/louishuyng/.local/share/nvim/lazy/neogit/plugin/neogit.lua
+085.321  000.076  000.030: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+085.323  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+085.330  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+085.501  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+085.506  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+085.929  000.421  000.421: require('mini.surround')
+086.703  000.113  000.113: require('Comment.config')
+087.115  000.305  000.305: require('Comment.ft')
+087.123  000.419  000.114: require('Comment.utils')
+087.229  000.105  000.105: require('Comment.opfunc')
+087.342  000.113  000.113: require('Comment.extra')
+087.348  001.057  000.307: require('Comment.api')
+087.385  001.149  000.092: sourcing /Users/louishuyng/.local/share/nvim/lazy/Comment.nvim/plugin/Comment.lua
+087.386  001.177  000.028: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+087.389  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+087.404  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+087.456  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+087.463  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+087.693  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+087.706  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+087.915  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+087.928  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+088.787  000.378  000.378: require('plenary.bit')
+088.954  000.166  000.166: require('plenary.functional')
+088.994  000.760  000.216: require('plenary.path')
+088.995  001.056  000.295: require('git-worktree.hooks')
+089.078  000.083  000.083: require('git-worktree.config')
+089.120  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+089.124  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+089.499  000.020  000.020: sourcing /Users/louishuyng/.local/share/nvim/lazy/nvim-web-devicons/plugin/nvim-web-devicons.vim
+089.500  000.051  000.031: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+089.502  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+089.507  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+089.701  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+089.704  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+089.911  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+089.915  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+090.254  000.291  000.291: require('aerial')
+090.483  000.080  000.080: sourcing /Users/louishuyng/.local/share/nvim/lazy/undotree/plugin/undotree.vim
+090.484  000.107  000.028: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+090.486  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+090.489  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+090.880  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+090.884  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.100  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.104  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.186  000.038  000.038: sourcing /Users/louishuyng/.local/share/nvim/lazy/neotest/plugin/neotest.lua
+091.187  000.065  000.027: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.189  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.193  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.463  000.036  000.036: sourcing /Users/louishuyng/.local/share/nvim/lazy/neo-tree.nvim/plugin/neo-tree.lua
+091.464  000.063  000.027: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.466  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.470  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.732  000.247  000.247: require('neo-tree')
+091.768  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+091.772  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+092.071  000.283  000.283: require('catppuccin')
+092.188  000.050  000.050: require('catppuccin.lib.hashing')
+092.297  000.052  000.052: require('catppuccin.palettes')
+092.356  000.058  000.058: require('catppuccin.palettes.mocha')
+092.783  000.256  000.256: require('snacks')
+092.784  000.278  000.021: sourcing /Users/louishuyng/.local/share/nvim/lazy/snacks.nvim/plugin/snacks.lua
+092.785  000.304  000.027: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+092.787  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+092.791  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.032  000.152  000.152: sourcing /Users/louishuyng/.local/share/nvim/lazy/vim-multiple-cursors/plugin/multiple_cursors.vim
+093.034  000.178  000.026: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.036  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.040  000.000  000.000: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.155  000.052  000.052: sourcing /Users/louishuyng/.config/nvim/plugin/cool.vim
+093.156  000.080  000.028: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.213  000.005  000.005: sourcing /Users/louishuyng/.config/nvim/plugin/gotowindow.vim
+093.214  000.030  000.026: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.251  000.005  000.005: sourcing /Users/louishuyng/.config/nvim/plugin/openurl.vim
+093.252  000.030  000.024: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.376  000.033  000.033: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/plugin/editorconfig.lua
+093.377  000.063  000.030: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.429  000.028  000.028: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/plugin/man.lua
+093.430  000.051  000.023: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.460  000.005  000.005: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/plugin/matchit.vim
+093.461  000.029  000.024: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.490  000.006  000.006: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/plugin/matchparen.vim
+093.492  000.030  000.024: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.547  000.028  000.028: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/plugin/osc52.lua
+093.549  000.055  000.027: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.600  000.028  000.028: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/plugin/shada.vim
+093.601  000.051  000.022: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.634  000.007  000.007: sourcing /opt/homebrew/Cellar/neovim/0.11.3/share/nvim/runtime/plugin/spellfile.vim
+093.635  000.032  000.025: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+093.931  000.049  000.049: require('cmp_nvim_lsp.source')
+093.933  000.105  000.056: require('cmp_nvim_lsp')
+093.936  000.128  000.024: sourcing /Users/louishuyng/.local/share/nvim/lazy/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua
+093.937  000.157  000.029: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+094.247  000.065  000.065: require('cmp.utils.char')
+094.251  000.113  000.048: require('cmp.utils.str')
+094.403  000.046  000.046: require('cmp.utils.buffer')
+094.407  000.107  000.061: require('cmp.utils.keymap')
+094.408  000.156  000.049: require('cmp.utils.feedkeys')
+094.567  000.054  000.054: require('cmp.config.mapping')
+094.615  000.046  000.046: require('cmp.utils.cache')
+094.718  000.047  000.047: require('cmp.config.compare')
+094.719  000.103  000.056: require('cmp.config.default')
+094.726  000.263  000.060: require('cmp.config')
+094.731  000.322  000.059: require('cmp.utils.async')
+094.817  000.041  000.041: require('cmp.utils.pattern')
+094.819  000.087  000.046: require('cmp.context')
+094.997  000.066  000.066: require('cmp.utils.snippet')
+095.050  000.053  000.053: require('cmp.matcher')
+095.053  000.181  000.063: require('cmp.entry')
+095.056  000.237  000.056: require('cmp.source')
+095.145  000.041  000.041: require('cmp.utils.event')
+095.285  000.040  000.040: require('cmp.utils.options')
+095.287  000.094  000.054: require('cmp.utils.window')
+095.288  000.143  000.049: require('cmp.view.docs_view')
+095.375  000.086  000.086: require('cmp.view.custom_entries_view')
+095.432  000.056  000.056: require('cmp.view.wildmenu_entries_view')
+095.480  000.048  000.048: require('cmp.view.native_entries_view')
+095.542  000.061  000.061: require('cmp.view.ghost_text_view')
+095.547  000.490  000.054: require('cmp.view')
+095.936  001.857  000.452: require('cmp.core')
+096.088  000.046  000.046: require('cmp.config.sources')
+096.129  000.041  000.041: require('cmp.config.window')
+096.146  002.126  000.182: require('cmp')
+096.216  000.070  000.070: require('cmp_cmdline')
+096.231  002.230  000.034: sourcing /Users/louishuyng/.local/share/nvim/lazy/cmp-cmdline/after/plugin/cmp_cmdline.lua
+096.232  002.257  000.027: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+096.366  000.056  000.056: require('cmp_luasnip')
+096.379  000.093  000.038: sourcing /Users/louishuyng/.local/share/nvim/lazy/cmp_luasnip/after/plugin/cmp_luasnip.lua
+096.381  000.124  000.030: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+096.653  000.041  000.041: require('cmp_buffer.timer')
+096.655  000.090  000.049: require('cmp_buffer.buffer')
+096.656  000.136  000.047: require('cmp_buffer.source')
+096.657  000.183  000.047: require('cmp_buffer')
+096.665  000.217  000.034: sourcing /Users/louishuyng/.local/share/nvim/lazy/cmp-buffer/after/plugin/cmp_buffer.lua
+096.666  000.246  000.028: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+096.725  000.016  000.016: sourcing /Users/louishuyng/.local/share/nvim/lazy/ctrlsf.vim/after/plugin/ctrlsf.vim
+096.726  000.043  000.027: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+096.754  073.984  022.320: require('config.lazy')
+096.844  000.089  000.089: require('config.libs.aerial')
+097.027  000.183  000.183: require('config.libs.marlin')
+097.093  000.009  000.009: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+097.095  000.067  000.058: require('config.libs.multicursor')
+097.225  000.042  000.042: require('noice.util.lazy')
+097.228  000.090  000.048: require('noice')
+097.397  000.052  000.052: require('noice.util.call')
+097.400  000.117  000.065: require('noice.util')
+097.401  000.173  000.056: require('noice.health')
+097.465  000.060  000.060: require('noice.config')
+097.468  000.372  000.050: require('config.libs.noice')
+098.342  000.285  000.285: require('rest-nvim.autocmds')
+098.417  000.070  000.070: require('rest-nvim.commands')
+098.488  000.064  000.064: require('rest-nvim.ui.highlights')
+098.490  000.588  000.169: sourcing /Users/louishuyng/.local/share/nvim/lazy/rest.nvim/plugin/rest-nvim.lua
+098.492  000.617  000.029: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+098.526  001.015  000.398: require('rest-nvim')
+098.529  001.061  000.046: require('config.libs.rest')
+098.635  000.052  000.052: require('catppuccin.palettes.frappe')
+098.834  000.026  000.026: sourcing /Users/louishuyng/.local/share/nvim/lazy/nvim-spectre/plugin/spectre.lua
+098.836  000.061  000.036: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+098.838  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+098.846  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+099.193  000.285  000.285: require('spectre.config')
+099.237  000.043  000.043: require('spectre.state')
+099.472  000.042  000.042: require('plenary.compat')
+099.475  000.102  000.060: require('plenary.job')
+099.517  000.041  000.041: require('spectre._log')
+099.565  000.047  000.047: require('spectre.utils')
+099.569  000.243  000.052: require('spectre.search.base')
+099.570  000.288  000.046: require('spectre.search')
+099.667  000.053  000.053: require('spectre.replace.base')
+099.668  000.098  000.045: require('spectre.replace')
+099.670  000.432  000.046: require('spectre.state_utils')
+099.843  000.064  000.064: require('nvim-web-devicons.filetypes')
+099.996  000.103  000.103: require('nvim-web-devicons.default.icons_by_filename')
+100.191  000.195  000.195: require('nvim-web-devicons.default.icons_by_file_extension')
+100.256  000.064  000.064: require('nvim-web-devicons.default.icons_by_operating_system')
+100.304  000.048  000.048: require('nvim-web-devicons.default.icons_by_desktop_environment')
+100.351  000.046  000.046: require('nvim-web-devicons.default.icons_by_window_manager')
+100.351  000.502  000.047: require('nvim-web-devicons.icons-default')
+100.438  000.716  000.149: require('nvim-web-devicons')
+100.833  000.061  000.061: require('plenary.strings')
+100.834  000.115  000.054: require('plenary.window.border')
+100.900  000.065  000.065: require('plenary.window')
+100.950  000.050  000.050: require('plenary.popup.utils')
+100.952  000.298  000.069: require('plenary.popup')
+102.084  002.413  001.399: require('spectre.ui')
+102.306  000.042  000.042: require('plenary.tbl')
+102.307  000.087  000.045: require('plenary.vararg.rotate')
+102.308  000.130  000.043: require('plenary.vararg')
+102.349  000.040  000.040: require('plenary.errors')
+102.350  000.216  000.046: require('plenary.async.async')
+102.521  000.044  000.044: require('plenary.async.structs')
+102.524  000.090  000.046: require('plenary.async.control')
+102.526  000.135  000.044: require('plenary.async.util')
+102.527  000.176  000.041: require('plenary.async.tests')
+102.528  000.444  000.052: require('plenary.async')
+102.533  003.891  000.211: require('spectre')
+102.602  000.045  000.045: require('spectre.highlight')
+102.715  004.184  000.196: require('config.libs.spectre')
+103.156  000.440  000.440: require('config.cores.cmp')
+103.311  000.047  000.047: require('utils.buf_map')
+103.312  000.104  000.057: require('mappings.source_control.gitsigns')
+103.414  000.056  000.056: require('neogit')
+103.562  000.061  000.061: require('neogit.lib.util')
+103.601  000.185  000.125: require('neogit.config')
+103.645  000.044  000.044: require('neogit.lib.signs')
+103.692  000.047  000.047: require('neogit.autocmds')
+103.824  000.055  000.055: require('neogit.lib.color')
+103.825  000.132  000.077: require('neogit.lib.hl')
+103.978  000.108  000.108: require('neogit.logger')
+103.980  000.154  000.046: require('neogit.lib.state')
+104.257  000.053  000.053: require('neogit.lib.ui.component')
+104.312  000.054  000.054: require('neogit.lib.ui.renderer')
+104.360  000.048  000.048: require('neogit.lib.collection')
+104.365  000.228  000.073: require('neogit.lib.ui')
+104.370  000.319  000.092: require('neogit.lib.buffer')
+104.555  000.045  000.045: require('neogit.lib.git')
+104.581  000.134  000.089: require('neogit.buffers.common')
+104.586  000.216  000.082: require('neogit.buffers.status.ui')
+104.637  000.050  000.050: require('neogit.popups')
+104.690  000.052  000.052: require('neogit.watcher')
+104.736  000.045  000.045: require('neogit.lib.event')
+104.741  000.760  000.077: require('neogit.buffers.status')
+104.958  000.050  000.050: require('neogit.lib.notification')
+104.960  000.112  000.063: require('neogit.lib.popup.builder')
+105.012  000.051  000.051: require('neogit.lib.input')
+105.155  000.093  000.093: require('neogit.lib.finder')
+105.156  000.143  000.049: require('neogit.buffers.fuzzy_finder')
+105.211  000.054  000.054: require('neogit.lib.popup.ui')
+105.213  000.426  000.066: require('neogit.lib.popup')
+105.213  000.472  000.046: require('neogit.lib')
+105.479  000.094  000.094: require('neogit.buffers.process')
+105.532  000.052  000.052: require('neogit.spinner')
+105.542  000.232  000.086: require('neogit.process')
+105.610  000.068  000.068: require('neogit.runner')
+105.759  000.544  000.244: require('neogit.lib.git.cli')
+108.221  005.064  002.567: require('config.cores.git')
+108.358  000.137  000.137: require('config.cores.snacks')
+108.674  000.123  000.123: require('telescope._extensions')
+108.676  000.246  000.123: require('telescope')
+108.993  000.111  000.111: require('telescope.state')
+109.271  000.146  000.146: require('telescope.deprecated')
+109.638  000.114  000.114: require('plenary.log')
+109.660  000.263  000.149: require('telescope.log')
+109.848  000.187  000.187: require('telescope.utils')
+109.852  000.580  000.131: require('telescope.sorters')
+111.055  002.061  001.335: require('telescope.config')
+111.057  002.270  000.098: require('telescope.actions.state')
+111.122  000.064  000.064: require('telescope-live-grep-args.helpers')
+111.123  002.393  000.059: require('telescope-live-grep-args.actions.quote_prompt')
+111.124  002.447  000.054: require('telescope-live-grep-args.actions')
+111.486  000.190  000.190: require('telescope.pickers.scroller')
+111.576  000.089  000.089: require('telescope.actions.utils')
+111.820  000.126  000.126: require('telescope.actions.mt')
+111.834  000.258  000.132: require('telescope.actions.set')
+112.082  000.120  000.120: require('telescope.config.resolve')
+112.083  000.248  000.128: require('telescope.pickers.entry_display')
+112.189  000.105  000.105: require('telescope.from_entry')
+112.383  001.259  000.368: require('telescope.actions')
+112.681  000.107  000.107: require('telescope.pickers.window')
+112.696  000.226  000.119: require('telescope.pickers.layout_strategies')
+112.705  000.320  000.094: require('telescope.actions.layout')
+113.706  000.388  000.388: require('fzf_lib')
+113.709  000.505  000.118: require('telescope._extensions.fzf')
+114.118  000.166  000.166: require('telescope._extensions.file_browser.utils')
+114.232  000.113  000.113: require('telescope._extensions.file_browser.lsp')
+116.246  002.013  002.013: require('plenary.scandir')
+116.369  002.540  000.248: require('telescope._extensions.file_browser.actions')
+116.761  000.113  000.113: require('telescope._extensions.file_browser.git')
+116.854  000.092  000.092: require('telescope._extensions.file_browser.make_entry_utils')
+116.962  000.107  000.107: require('telescope._extensions.file_browser.fs_stat')
+116.965  000.438  000.126: require('telescope._extensions.file_browser.make_entry')
+117.312  000.074  000.074: require('plenary.class')
+117.321  000.237  000.163: require('telescope._')
+117.528  000.206  000.206: require('telescope.make_entry')
+117.529  000.563  000.120: require('telescope.finders.async_oneshot_finder')
+118.538  000.233  000.233: require('telescope.finders.async_static_finder')
+118.718  000.179  000.179: require('telescope.finders.async_job_finder')
+118.736  001.206  000.794: require('telescope.finders')
+118.743  002.373  000.165: require('telescope._extensions.file_browser.finders')
+120.055  000.895  000.895: require('telescope.debounce')
+120.539  000.479  000.479: require('telescope.mappings')
+120.775  000.235  000.235: require('telescope.pickers.highlights')
+120.950  000.173  000.173: require('telescope.pickers.layout')
+121.114  000.074  000.074: require('telescope.algos.linked_list')
+121.116  000.165  000.091: require('telescope.entry_manager')
+121.184  000.068  000.068: require('telescope.pickers.multi')
+121.192  002.290  000.275: require('telescope.pickers')
+121.193  002.450  000.160: require('telescope._extensions.file_browser.picker')
+121.268  000.074  000.074: require('telescope._extensions.file_browser.config')
+121.269  007.529  000.092: require('telescope._extensions.file_browser')
+121.436  000.053  000.053: require('telescope-live-grep-args.prompt_parser')
+121.519  000.082  000.082: require('telescope.themes')
+121.521  000.214  000.079: require('telescope._extensions.live_grep_args')
+121.575  000.052  000.052: require('telescope._extensions.rest')
+121.832  000.050  000.050: require('git-worktree.logger')
+121.834  000.102  000.052: require('git-worktree.git')
+121.836  000.153  000.050: require('git-worktree.worktree')
+121.837  000.196  000.044: require('git-worktree')
+121.840  000.264  000.067: require('telescope._extensions.git_worktree')
+121.969  000.052  000.052: require('frecency')
+121.970  000.129  000.077: require('telescope._extensions.frecency')
+122.136  000.051  000.051: require('frecency.lazy_require')
+122.146  000.119  000.068: require('frecency.os_util')
+122.155  000.184  000.065: require('frecency.config')
+122.287  000.051  000.051: require('frecency.log')
+122.288  000.108  000.058: require('frecency.timer')
+122.501  000.055  000.055: require('frecency.v1.entry')
+122.610  000.054  000.054: require('frecency.wait')
+122.613  000.111  000.057: require('frecency.v1.table')
+122.669  000.056  000.056: require('frecency.file_lock')
+122.727  000.057  000.057: require('frecency.fs')
+122.783  000.055  000.055: require('frecency.watcher')
+122.786  000.400  000.066: require('frecency.v1.database')
+122.988  000.060  000.060: require('frecency.v2.entry')
+122.990  000.148  000.088: require('frecency.v2.table')
+122.992  000.206  000.058: require('frecency.v2.database')
+122.993  000.668  000.062: require('frecency.database')
+123.106  000.103  000.103: require('plenary.async.uv_async')
+123.196  014.837  000.809: require('config.cores.telescope')
+123.387  000.052  000.052: require('neotest.async')
+123.439  000.051  000.051: require('neotest-jest.compat')
+123.573  000.049  000.049: require('neotest.lib.require')
+123.577  000.104  000.055: require('neotest.lib')
+123.834  000.127  000.127: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+123.839  000.208  000.081: require('neotest.config')
+123.891  000.051  000.051: require('neotest.utils')
+123.930  000.352  000.092: require('neotest.logging')
+124.007  000.077  000.077: require('neotest-jest.util')
+124.102  000.094  000.094: require('neotest-jest.jest-util')
+124.157  000.054  000.054: require('neotest-jest.parameterized-tests')
+124.170  000.904  000.119: require('neotest-jest')
+124.272  000.048  000.048: require('neotest-golang.extra_args')
+124.322  000.049  000.049: require('neotest-golang.logging')
+124.404  000.082  000.082: require('neotest-golang.options')
+124.564  000.049  000.049: require('neotest-golang.lib.convert')
+124.706  000.045  000.045: require('neotest-golang.lib.sanitize')
+124.707  000.091  000.046: require('neotest-golang.lib.json')
+124.708  000.144  000.053: require('neotest-golang.lib.cmd')
+124.755  000.046  000.046: require('neotest-golang.lib.find')
+124.799  000.043  000.043: require('neotest-golang.lib.string')
+124.800  000.335  000.053: require('neotest-golang.lib')
+124.802  000.397  000.062: require('neotest-golang.process')
+124.994  000.048  000.048: require('neotest-golang.features.testify.query')
+124.998  000.099  000.050: require('neotest-golang.features.testify.lookup')
+125.052  000.053  000.053: require('neotest-golang.features.testify.tree_modification')
+125.053  000.203  000.050: require('neotest-golang.features.testify')
+125.054  000.251  000.049: require('neotest-golang.query')
+125.154  000.051  000.051: require('neotest-golang.runspec.dir')
+125.258  000.052  000.052: require('neotest-golang.features.dap')
+125.259  000.104  000.052: require('neotest-golang.runspec.file')
+125.308  000.048  000.048: require('neotest-golang.runspec.namespace')
+125.360  000.052  000.052: require('neotest-golang.runspec.test')
+125.361  000.306  000.052: require('neotest-golang.runspec')
+125.363  001.190  000.056: require('neotest-golang')
+125.741  000.049  000.049: require('neotest')
+125.840  000.053  000.053: require('neotest.adapters')
+126.006  000.047  000.047: require('neotest.client.events')
+126.008  000.101  000.053: require('neotest.client.state')
+126.061  000.053  000.053: require('neotest.client.runner')
+126.114  000.052  000.052: require('neotest.client.strategies')
+126.117  000.276  000.070: require('neotest.client')
+126.229  000.054  000.054: require('neotest.consumers.run')
+126.283  000.054  000.054: require('neotest.consumers.diagnostic')
+126.335  000.051  000.051: require('neotest.consumers.status')
+126.388  000.053  000.053: require('neotest.consumers.output')
+126.489  000.048  000.048: require('neotest.consumers.output_panel.panel')
+126.490  000.101  000.053: require('neotest.consumers.output_panel')
+126.793  000.048  000.048: require('neotest.lib.func_util.memoize')
+126.794  000.096  000.049: require('neotest.lib.func_util')
+126.797  000.149  000.053: require('neotest.types.tree')
+126.845  000.047  000.047: require('neotest.types.fanout_accum')
+126.846  000.248  000.052: require('neotest.types')
+126.901  000.055  000.055: require('neotest.consumers.summary.canvas')
+126.965  000.063  000.063: require('neotest.consumers.summary.component')
+126.967  000.425  000.059: require('neotest.consumers.summary.summary')
+126.973  000.482  000.056: require('neotest.consumers.summary')
+127.024  000.050  000.050: require('neotest.consumers.jump')
+127.176  000.001  000.001: require('jit.profile')
+127.344  000.167  000.167: require('jit.vmdef')
+127.347  000.227  000.059: require('plenary.profile.p')
+127.348  000.273  000.046: require('plenary.profile')
+127.349  000.324  000.051: require('neotest.consumers.benchmark')
+127.394  000.045  000.045: require('neotest.consumers.quickfix')
+127.491  000.047  000.047: require('neotest.consumers.state.tracker')
+127.492  000.097  000.050: require('neotest.consumers.state')
+127.632  000.091  000.091: require('neotest.consumers.watch.watcher')
+127.634  000.141  000.050: require('neotest.consumers.watch')
+127.635  001.516  000.063: require('neotest.consumers')
+127.714  000.046  000.046: require('neotest.lib.window')
+127.783  004.585  000.551: require('config.cores.test')
+127.865  000.082  000.082: require('config.cores.tree')
+127.866  105.254  000.169: require('config')
+128.013  000.055  000.055: require('mappings.devops.network')
+128.013  000.101  000.047: require('mappings.devops')
+128.127  000.066  000.066: require('mappings.editor.buffer')
+128.185  000.057  000.057: require('mappings.editor.code_runner')
+128.244  000.059  000.059: require('mappings.editor.ctrlf')
+128.350  000.106  000.106: require('mappings.editor.general')
+128.557  000.147  000.147: require('telescope.builtin')
+128.609  000.051  000.051: require('config.cores.telescope.theme')
+128.649  000.298  000.100: require('mappings.editor.telescope')
+128.699  000.050  000.050: require('mappings.editor.todocomment')
+128.786  000.042  000.042: require('utils.os_extend')
+140.420  011.720  011.677: require('mappings.editor.tree')
+140.522  000.100  000.100: require('mappings.editor.undotree')
+140.523  012.509  000.055: require('mappings.editor')
+140.628  000.054  000.054: require('mappings.languages.lsp')
+140.680  000.052  000.052: require('mappings.languages.spec')
+140.743  000.061  000.061: require('mappings.languages.test')
+140.744  000.220  000.053: require('mappings.languages')
+140.973  000.169  000.169: require('mappings.source_control.conflict')
+141.058  000.084  000.084: require('mappings.source_control.telescope_git')
+141.059  000.314  000.061: require('mappings.source_control')
+141.153  000.043  000.043: require('mappings.utils.fold')
+141.205  000.051  000.051: require('mappings.utils.operator_pending')
+141.258  000.052  000.052: require('mappings.utils.quickfix')
+141.300  000.041  000.041: require('mappings.utils.search')
+141.300  000.241  000.053: require('mappings.utils')
+141.301  013.435  000.048: require('mappings')
+141.399  000.010  000.010: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+141.402  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+141.403  000.058  000.048: require('cmds.migration')
+152.226  000.020  000.020: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+152.230  010.827  010.807: require('cmds.python_autoset_path')
+152.387  000.006  000.006: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+152.389  000.001  000.001: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+152.391  000.159  000.152: require('cmds.rest')
+152.462  000.006  000.006: sourcing nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0
+152.463  000.071  000.066: require('cmds.term')
+152.531  000.067  000.067: require('cmds.vim_enter')
+152.531  011.229  000.047: require('cmds')
+152.643  000.056  000.056: require('utils.reload_theme')
+152.739  000.062  000.062: require('ui.highlight_utils')
+154.452  000.869  000.869: sourcing /Users/louishuyng/.local/share/nvim/lazy/catppuccin/colors/catppuccin.vim
+154.552  000.009  000.009: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.079  000.072  000.072: require('catppuccin.utils.lualine')
+155.091  000.002  000.002: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.094  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.096  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.098  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.099  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.101  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.103  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.104  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.106  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.108  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.109  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.111  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.112  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.114  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.116  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.117  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.128  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.131  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.133  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.135  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.136  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.138  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.139  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.141  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.143  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.144  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.146  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.147  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.149  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.151  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.152  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.154  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.155  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.157  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.158  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.160  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.161  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.163  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.165  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.166  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.168  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.169  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.171  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.172  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.174  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.175  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.177  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.178  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.180  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.181  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.183  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.184  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.185  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.187  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.188  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.190  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.191  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.193  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.194  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.196  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.197  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.199  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.200  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.202  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.204  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.205  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.207  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.208  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.210  000.000  000.000: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.211  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.213  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.222  000.002  000.002: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.228  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.232  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.237  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.242  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.246  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.310  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.315  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.319  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.322  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.325  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.328  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.330  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.334  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.337  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.375  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.378  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.384  000.004  000.004: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.518  000.003  000.003: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.522  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.542  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.546  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.557  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.560  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.563  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.566  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.568  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.572  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.575  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.578  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.580  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.583  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.585  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.588  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.591  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.594  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.597  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.600  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.602  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.605  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.608  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.613  000.003  000.003: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.616  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.619  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.621  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.640  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.643  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.646  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.648  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.651  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.654  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.656  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.661  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.664  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.666  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.669  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.672  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.674  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.678  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.681  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.684  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.686  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.689  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.691  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.694  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.696  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.708  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.711  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.745  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.748  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.750  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.753  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.756  000.001  000.001: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.824  000.005  000.005: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.832  000.002  000.002: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.844  000.005  000.005: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.849  000.003  000.003: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+155.853  000.002  000.002: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+156.043  000.015  000.015: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+157.394  000.007  000.007: sourcing nvim_exec2() called at ColorScheme Autocommands for "*":0
+157.397  004.654  003.556: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:1
+157.415  000.004  000.004: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:1
+157.668  000.007  000.007: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.671  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.672  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.674  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.675  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.677  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.678  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.680  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.694  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.696  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.697  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.699  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.700  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.701  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.703  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.704  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.705  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.707  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.708  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.709  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.711  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.712  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.714  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.715  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.716  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.718  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.719  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.721  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.722  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.723  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.725  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.726  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.727  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.729  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.730  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.731  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.733  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.734  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.735  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.737  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.738  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.739  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.741  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.742  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.743  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.744  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.746  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.747  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.749  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.750  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.751  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.753  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.754  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.755  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.757  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.758  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.759  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.760  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.762  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.763  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.764  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.766  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.767  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.768  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.769  000.000  000.000: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.770  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.772  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.777  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.781  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.784  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.788  000.003  000.003: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.810  000.002  000.002: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.814  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.853  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.858  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.861  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.864  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.867  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.909  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.944  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.948  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.951  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.954  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.957  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+157.960  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.006  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.010  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.013  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.017  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.022  000.003  000.003: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.026  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.029  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.039  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.043  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.046  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.050  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.054  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.091  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.094  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.101  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.133  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.165  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.196  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.203  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.207  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.211  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.223  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.226  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.253  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.294  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.297  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.300  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.303  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.311  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.314  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.317  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.320  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.323  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.326  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.358  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.424  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.428  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.432  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.435  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.450  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.454  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.485  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.545  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.558  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.561  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.564  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.567  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.604  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.607  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.651  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.657  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.660  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.693  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.732  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.796  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.826  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.862  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.895  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.928  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.959  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+158.967  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.002  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.005  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.012  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.015  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.018  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.021  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.024  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.027  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.030  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.102  000.002  000.002: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.106  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.109  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.111  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.114  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.118  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.121  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.130  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.133  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.136  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.139  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.173  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.235  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.268  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.306  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.309  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.312  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.315  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.318  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.321  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.324  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.341  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.345  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.348  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.351  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.354  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.357  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.360  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.412  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.416  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.421  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.424  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.427  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.430  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.434  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.440  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.443  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.446  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.449  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.452  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.455  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.459  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.464  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.467  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.470  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.474  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.477  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.479  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.492  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.498  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.501  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.504  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.507  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.510  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.513  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.516  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.522  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.524  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.528  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.531  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.534  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.537  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.540  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.550  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.554  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.559  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.562  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.566  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.570  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.573  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.579  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.583  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.586  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.589  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.592  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.595  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.598  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.604  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.608  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.611  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.614  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.617  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.620  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.672  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.681  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.684  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.687  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.690  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.694  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.697  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.700  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.708  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.739  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.742  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.771  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.803  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.807  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.810  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.833  000.003  000.003: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.837  000.002  000.002: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.844  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.848  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.851  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.855  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.858  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.861  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.865  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.879  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.882  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.886  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.889  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.912  000.001  000.001: sourcing nvim_exec2() called at nvim_exec2() called at /Users/louishuyng/.config/nvim/init.lua:0:2
+159.953  000.001  000.001: sou

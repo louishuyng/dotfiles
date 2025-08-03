@@ -1,36 +1,24 @@
-local map = vim.api.nvim_set_keymap
-
 -- Tab
-map('n', '<S-t>', ':tabnew<CR>', {
-  noremap = true,
-  silent = true,
+vim.keymap.set('n', '<S-t>', ':tabnew<CR>', {
   desc = 'New Tab',
 })
 
-map('n', ',bd', ':tabclose<CR>', {
-  noremap = true,
-  silent = true,
+vim.keymap.set('n', ',bd', ':tabclose<CR>', {
   desc = 'Close Tab',
 })
 
 -- Move to previous/next
-map('n', ',q', ':BufferLineCyclePrev<CR>', {
-  noremap = true,
-  silent = true,
+vim.keymap.set('n', ',q', ':BufferLineCyclePrev<CR>', {
   desc = 'Prev Buffer',
 })
-map('n', ',w', ':BufferLineCycleNext<CR>', { noremap = true, silent = true, desc = 'Next Buffer' })
+vim.keymap.set('n', ',w', ':BufferLineCycleNext<CR>', { desc = 'Next Buffer' })
 
 -- Close buffer
-map('n', ',bda', ':w! <bar> %bd <bar> e# <bar> bd# <CR>', {
-  noremap = true,
-  silent = true,
+vim.keymap.set('n', ',bda', ':w! <bar> %bd <bar> e# <bar> bd# <CR>', {
   desc = 'Close all buffer',
 })
 
 --  Alternative Buffer
-map('n', '<BS>', ':b#<CR>', {
-  noremap = true,
-  silent = true,
+vim.keymap.set('n', '<BS>', ':b#<CR>', {
   desc = 'Switch between recent buffer',
 })

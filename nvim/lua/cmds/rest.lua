@@ -1,2 +1,7 @@
-vim.cmd("autocmd BufEnter *.http nnoremap <CR> :hor Rest run<CR>")
-vim.cmd("autocmd BufEnter *.http nnoremap <space>rl :hor Rest run last<CR>")
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.http",
+  callback = function()
+    vim.keymap.set('n', '<CR>', ':hor Rest run<CR>', { buffer = true })
+    vim.keymap.set('n', '<space>rl', ':hor Rest run last<CR>', { buffer = true })
+  end,
+})

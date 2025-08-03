@@ -20,7 +20,10 @@ return {
   { 'hrsh7th/cmp-cmdline', dependencies = { 'nvim-cmp' } },
 
   -- Code Format
-  { 'numToStr/Comment.nvim' },
+  { 
+    'numToStr/Comment.nvim',
+    event = { "BufReadPost", "BufNewFile" },
+  },
 
   -- Treesistter
   {

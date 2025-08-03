@@ -100,11 +100,11 @@ snacks.setup {
 vim.keymap.set('n', '<C-w>o', ":lua require('snacks').zen() <CR>", { desc = 'Open parent directory' })
 vim.keymap.set('n', '<leader>go', ":lua require('snacks').gitbrowse() <CR>", { desc = 'Open git browser url' })
 
-vim.api.nvim_set_keymap(
+vim.keymap.set(
   'n',
   '<leader>fn',
   ":lua require('snacks').notifier.show_history()<CR>",
-  { noremap = true, silent = true }
+  { desc = 'Find Notification History' }
 )
 
 -- ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
