@@ -13,9 +13,18 @@ vim.diagnostic.config({
   virtual_text = {
     spacing = 2,
     prefix = '●',
+    severity = { min = vim.diagnostic.severity.WARN },
   },
-  update_in_insert = true,
+  update_in_insert = false,
   severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
 })
 
 for type, icon in pairs(signs) do

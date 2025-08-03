@@ -1,3 +1,4 @@
+require('config.lsp.performance')
 require('config.lsp.register_server')
 require('config.lsp.register_formatters')
 require('config.lsp.diagnostic')
