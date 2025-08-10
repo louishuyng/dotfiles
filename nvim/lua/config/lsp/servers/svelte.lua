@@ -1,3 +1,7 @@
-local on_attach = require 'config/lsp/on_attach'
+vim.lsp.config('svelte', {
+  cmd = { 'svelteserver', '--stdio' },
+  filetypes = { 'svelte' },
+  root_markers = { 'package.json', '.git' },
+})
 
-lsp_config.svelte.setup({})
+vim.lsp.enable('svelte')

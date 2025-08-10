@@ -1,5 +1,3 @@
-local lsp_config = require 'lspconfig'
-
 local function organize_imports()
   local params = {
     command = '_typescript.organizeImports',
@@ -8,20 +6,19 @@ local function organize_imports()
   vim.lsp.buf.execute_command(params)
 end
 
-lsp_config.ts_ls.setup({
+vim.lsp.config('ts_ls', {
   commands = {
     OrganizeImports = { organize_imports, description = 'Organize Imports' },
   },
-  root_dir = lsp_config.util.root_pattern('package.json'),
   single_file_support = false,
   settings = {
     typescript = {
-      updateImportsOnFileMove = { enabled = "always" },
+      updateImportsOnFileMove = { enabled = 'always' },
       suggest = {
         completeFunctionCalls = true,
       },
       inlayHints = {
-        includeInlayParameterNameHints = "literal",
+        includeInlayParameterNameHints = 'literal',
         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
         includeInlayFunctionParameterTypeHints = false,
         includeInlayVariableTypeHints = false,
@@ -31,12 +28,12 @@ lsp_config.ts_ls.setup({
       },
     },
     javascript = {
-      updateImportsOnFileMove = { enabled = "always" },
+      updateImportsOnFileMove = { enabled = 'always' },
       suggest = {
         completeFunctionCalls = true,
       },
       inlayHints = {
-        includeInlayParameterNameHints = "literal",
+        includeInlayParameterNameHints = 'literal',
         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
         includeInlayFunctionParameterTypeHints = false,
         includeInlayVariableTypeHints = false,
@@ -48,17 +45,24 @@ lsp_config.ts_ls.setup({
   },
 })
 
-lsp_config.eslint.setup({
+vim.lsp.config('eslint', {
   single_file_support = false,
 })
 
-require('lspconfig').denols.setup({
-  root_dir = lsp_config.util.root_pattern('deno.json', 'deno.jsonc'),
+vim.lsp.config('denols', {
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  root_dir = function(fname)
+    return vim.fs.root(fname, { 'deno.json', 'deno.jsonc' })
+  end,
 })
 
--- lsp_config.biome.setup({
---   on_attach = function(client, bufnr)
---     client.server_capabilities.document_formatting = true
---     on_attach(client, bufnr)
---   end
+-- vim.lsp.config('biome', {
+--   cmd = { 'biome', 'lsp-proxy' },
+--   filetypes = { 'javascript', 'javascriptreact', 'json', 'jsonc', 'typescript', 'typescript.tsx', 'typescriptreact' },
+--   root_markers = { 'biome.json', '.git' },
 -- })
+
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('eslint')
+vim.lsp.enable('denols')
+-- vim.lsp.enable('biome')

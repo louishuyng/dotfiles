@@ -1,6 +1,7 @@
-local lsp_config = require 'lspconfig'
-
-lsp_config.rust_analyzer.setup({
+vim.lsp.config('rust_analyzer', {
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  root_markers = { 'Cargo.toml', 'rust-project.json', '.git' },
   settings = {
     ['rust-analyzer'] = {
       inlayHints = {
@@ -38,3 +39,5 @@ lsp_config.rust_analyzer.setup({
     },
   },
 })
+
+vim.lsp.enable('rust_analyzer')

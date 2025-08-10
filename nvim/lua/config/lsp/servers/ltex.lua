@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('ltex', {
+  cmd = { 'ltex-ls' },
+  filetypes = { 'bib', 'gitcommit', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex' },
+  root_markers = { '.git' },
+})
 
-lsp_config.ltex.setup({})
+vim.lsp.enable('ltex')

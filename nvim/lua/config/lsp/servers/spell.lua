@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('typos_lsp', {
+  cmd = { 'typos-lsp' },
+  filetypes = { 'text', 'markdown', 'tex', 'gitcommit' },
+  root_markers = { '.git' },
+})
 
-lsp_config.typos_lsp.setup({})
+vim.lsp.enable('typos_lsp')

@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('kotlin_language_server', {
+  cmd = { 'kotlin-language-server' },
+  filetypes = { 'kotlin' },
+  root_markers = { 'settings.gradle', 'settings.gradle.kts', 'build.gradle', 'build.gradle.kts', '.git' },
+})
 
-lsp_config.kotlin_language_server.setup({})
+vim.lsp.enable('kotlin_language_server')

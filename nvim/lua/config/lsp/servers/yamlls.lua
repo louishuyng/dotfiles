@@ -1,6 +1,7 @@
-local lsp_config = require 'lspconfig'
-
-lsp_config.yamlls.setup({
+vim.lsp.config('yamlls', {
+  cmd = { 'yaml-language-server', '--stdio' },
+  filetypes = { 'yaml', 'yaml.docker-compose', 'yaml.gitlab' },
+  root_markers = { '.git' },
   settings = {
     yaml = {
       schemaStore = {
@@ -29,3 +30,5 @@ lsp_config.yamlls.setup({
     },
   },
 })
+
+vim.lsp.enable('yamlls')

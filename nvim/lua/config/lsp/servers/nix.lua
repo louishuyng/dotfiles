@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('rnix', {
+  cmd = { 'rnix-lsp' },
+  filetypes = { 'nix' },
+  root_markers = { 'flake.nix', 'shell.nix', 'default.nix', '.git' },
+})
 
-lsp_config.rnix.setup({})
+vim.lsp.enable('rnix')

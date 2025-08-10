@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('jsonls', {
+  cmd = { 'vscode-json-language-server', '--stdio' },
+  filetypes = { 'json', 'jsonc' },
+  root_markers = { 'package.json', '.git' },
+})
 
-lsp_config.jsonls.setup({})
+vim.lsp.enable('jsonls')

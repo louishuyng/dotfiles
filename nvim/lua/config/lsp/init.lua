@@ -27,6 +27,9 @@ require('mason').setup({
     'goimports',
     'delve',
 
+    -- Elixir
+    'elixirls',
+
     --Zig
     -- 'zls',
 

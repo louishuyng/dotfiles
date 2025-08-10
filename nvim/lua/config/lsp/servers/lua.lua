@@ -1,6 +1,15 @@
-local lsp_config = require 'lspconfig'
-
-lsp_config.lua_ls.setup({
+vim.lsp.config('lua_ls', {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_markers = {
+    '.luarc.json',
+    '.luarc.jsonc',
+    '.luacheckrc',
+    '.stylua.toml',
+    'stylua.toml',
+    'selene.toml',
+    'selene.yml',
+  },
   settings = {
     Lua = {
       runtime = {
@@ -16,11 +25,13 @@ lsp_config.lua_ls.setup({
         enable = false,
       },
       completion = {
-        callSnippet = "Replace",
+        callSnippet = 'Replace',
       },
       diagnostics = {
-        disable = { "missing-fields" },
+        disable = { 'missing-fields' },
       },
     },
   },
 })
+
+vim.lsp.enable('lua_ls')

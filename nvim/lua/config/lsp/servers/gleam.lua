@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('gleam', {
+  cmd = { 'gleam', 'lsp' },
+  filetypes = { 'gleam' },
+  root_markers = { 'gleam.toml', '.git' },
+})
 
-lsp_config.gleam.setup({})
+vim.lsp.enable('gleam')

@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('ocamllsp', {
+  cmd = { 'ocamllsp' },
+  filetypes = { 'ocaml', 'reason', 'dune', 'dune-project' },
+  root_markers = { '*.opam', 'esy.json', 'package.json', 'dune-project', 'dune-workspace', '.git' },
+})
 
-lsp_config.ocamllsp.setup({})
+vim.lsp.enable('ocamllsp')

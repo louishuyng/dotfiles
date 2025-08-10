@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('zls', {
+  cmd = { 'zls' },
+  filetypes = { 'zig', 'zir' },
+  root_markers = { 'build.zig', '.git' },
+})
 
-lsp_config.zls.setup({})
+vim.lsp.enable('zls')

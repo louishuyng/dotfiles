@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('csharp_ls', {
+  cmd = { 'csharp-ls' },
+  filetypes = { 'cs' },
+  root_markers = { '*.sln', '*.csproj', 'omnisharp.json', 'function.json', '.git' },
+})
 
-lsp_config.csharp_ls.setup({})
+vim.lsp.enable('csharp_ls')

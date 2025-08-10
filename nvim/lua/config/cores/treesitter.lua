@@ -42,6 +42,7 @@ require('nvim-treesitter.configs').setup {
     'gleam',
     'kdl',
     'sql',
+    'elixir',
   },
   matchup = { enable = true },
   autotag = { enable = true },

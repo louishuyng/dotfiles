@@ -1,3 +1,7 @@
-local lsp_config = require 'lspconfig'
+vim.lsp.config('terraformls', {
+  cmd = { 'terraform-ls', 'serve' },
+  filetypes = { 'terraform', 'terraform-vars' },
+  root_markers = { '.terraform', '*.tf', '.git' },
+})
 
-lsp_config.terraformls.setup({})
+vim.lsp.enable('terraformls')

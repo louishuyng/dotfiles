@@ -1,6 +1,4 @@
-local lsp_config = require 'lspconfig'
-
-lsp_config.gopls.setup({
+vim.lsp.config('gopls', {
   settings = {
     gopls = {
       hints = {
@@ -15,5 +13,7 @@ lsp_config.gopls.setup({
     },
   },
 })
+vim.lsp.config('golangci_lint_ls', {})
 
-lsp_config.golangci_lint_ls.setup({})
+vim.lsp.enable('gopls')
+vim.lsp.enable('golangci_lint_ls')
