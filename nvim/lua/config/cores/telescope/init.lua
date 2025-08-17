@@ -89,6 +89,7 @@ telescope.setup {
         end
       end,
     },
+    -- This extension's options, see below.
   },
 }
 
@@ -96,4 +97,4 @@ telescope.load_extension('fzf')
 telescope.load_extension('file_browser')
 telescope.load_extension('live_grep_args')
 telescope.load_extension('git_worktree')
-telescope.load_extension('frecency')
+telescope.load_extension('recent_files')

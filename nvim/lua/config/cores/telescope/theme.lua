@@ -22,7 +22,7 @@ local dropdown_theme = function(title, previewer, ignore)
       prompt_position = 'top',
       width = 0.5,
     },
-    workspace = 'CWD',
+    only_cwd = true,
   })
 end
 

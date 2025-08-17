@@ -31,10 +31,6 @@ vim.keymap.set('n', 'gr', function()
   builtin.lsp_references(dropdown_theme('References', true))
 end, { silent = true, noremap = true, desc = 'Find references' })
 
-vim.keymap.set('n', '<leader>fd', function()
-  builtin.diagnostics(dropdown_theme('Diagnostics'))
-end, { silent = true, noremap = true, desc = 'Find diagnostics' })
-
 -- TODO list
 vim.keymap.set('n', '<leader>td', ':TodoTelescope<CR>', { silent = true, noremap = true, desc = 'List todo list' })
 
@@ -44,7 +40,7 @@ vim.keymap.set('n', '<leader>f/', function()
 end, { silent = true, noremap = true, desc = 'Search in current buffer' })
 
 vim.keymap.set('n', '<leader>fr', function()
-  require('telescope').extensions.frecency.frecency(dropdown_theme('Recent Files'))
+  require('telescope').extensions.recent_files.pick(dropdown_theme('Recent Files'))
 end, { silent = true, noremap = true, desc = 'Search recent files' })
 
 -- searching vim built-in
