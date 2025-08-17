@@ -35,21 +35,21 @@ return {
       require 'config.cores.treesitter'
     end,
   },
-  {
-    'code-biscuits/nvim-biscuits',
-    build = ':TSUpdate',
-    event = { 'BufReadPost', 'BufNewFile' },
-    config = function()
-      require('nvim-biscuits').setup({
-        toggle_keybind = '<leader>bb',
-        cursor_line_only = true,
-        show_on_start = false,
-        default_config = {
-          prefix_string = ' 🐿️ ',
-        },
-      })
-    end,
-  },
+  -- {
+  --   'code-biscuits/nvim-biscuits',
+  --   build = ':TSUpdate',
+  --   event = { 'BufReadPost', 'BufNewFile' },
+  --   config = function()
+  --     require('nvim-biscuits').setup({
+  --       toggle_keybind = '<leader>bb',
+  --       cursor_line_only = true,
+  --       show_on_start = false,
+  --       default_config = {
+  --         prefix_string = ' 🐿️ ',
+  --       },
+  --     })
+  --   end,
+  -- },
   { 'nvim-treesitter/nvim-treesitter-context', event = { 'BufReadPost', 'BufNewFile' } },
 
   -- ROR
@@ -58,13 +58,25 @@ return {
   -- Testing
   {
     'nvim-neotest/neotest',
-    cmd = { 'Neotest' },
+    commit = '52fca6717ef972113ddd6ca223e30ad0abb2800c',
     dependencies = {
       'nvim-neotest/nvim-nio',
-      'nvim-neotest/neotest-jest',
-      'fredrikaverpil/neotest-golang',
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
+      'nvim-neotest/neotest-jest',
+      'fredrikaverpil/neotest-golang',
+    },
+  },
+  {
+    'folke/trouble.nvim',
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = 'Trouble',
+    keys = {
+      {
+        '<leader>fd',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = 'Diagnostics (Trouble)',
+      },
     },
   },
 
@@ -130,12 +142,16 @@ return {
 
   -- Code runner
   {
-    'michaelb/sniprun',
-    branch = 'master',
-    build = 'sh install.sh',
-    cmd = { 'SnipRun', 'SnipRunOperator' },
+    'CRAG666/code_runner.nvim',
+    lazy = false,
     config = function()
-      require('sniprun').setup({})
+      require('code_runner').setup({
+        filetype = {
+          go = {
+            'go run',
+          },
+        },
+      })
     end,
   },
 }
