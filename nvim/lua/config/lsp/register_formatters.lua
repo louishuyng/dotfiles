@@ -1,7 +1,12 @@
 local get_lsp_format_opt = function()
   local bufnr = vim.fn.bufnr()
 
-  local disable_filetypes = {}
+  local disable_filetypes = {
+    javascript = true,
+    typescript = true,
+    javascriptreact = true,
+    typescriptreact = true,
+  }
 
   local lsp_format_opt
   if disable_filetypes[vim.bo[bufnr].filetype] then
@@ -24,6 +29,10 @@ require('conform').setup({
   end,
   formatters_by_ft = {
     lua = { 'stylua' },
+    javascript = { 'eslint', 'prettier' },
+    typescript = { 'eslint_d', 'prettier_d' },
+    javascriptreact = { 'eslint_d', 'prettier_d' },
+    typescriptreact = { 'eslint_d', 'prettier_d' },
   },
 })
 
@@ -31,5 +40,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   callback = function(args)
     require('conform').format({ bufnr = args.buf })
+  end,
+})
+
+-- Kill eslint_d and prettier_d processes when exiting Neovim
+vim.api.nvim_create_autocmd('VimLeavePre', {
+  callback = function()
+    vim.fn.system('eslint_d stop')
+    vim.fn.system('prettier_d stop')
   end,
 })
