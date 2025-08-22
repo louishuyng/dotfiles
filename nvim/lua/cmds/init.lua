@@ -1,3 +1,4 @@
+require 'cmds.macro_recording'
 require 'cmds.migration'
 require 'cmds.python_autoset_path'
 require 'cmds.rest'
