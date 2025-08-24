@@ -10,6 +10,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
+      'folke/lazydev.nvim',
     },
     config = function()
       require('luasnip.loaders.from_vscode').lazy_load()
