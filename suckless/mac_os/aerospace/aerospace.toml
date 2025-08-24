@@ -83,6 +83,10 @@ if.app-id = 'com.postmanlabs.mac'
 run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
+if.app-id = 'app.yaak.desktop'
+run = ['layout floating', 'move-node-to-workspace D']
+
+[[on-window-detected]]
 if.app-id = 'com.jgraph.drawio.desktop'
 run = ['layout floating', 'move-node-to-workspace D']
 
@@ -112,7 +116,7 @@ run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['move-node-to-workspace D']
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
@@ -150,16 +154,16 @@ if.app-id = 'com.kingsoft.wpsoffice.mac.global'
 run = ['layout floating', 'move-node-to-workspace R']
 
 [[on-window-detected]]
-if.app-id = 'info.pkpk.inkdrop'
-run = ['layout floating', 'move-node-to-workspace R']
-
-[[on-window-detected]]
 if.app-id = 'com.amazon.Lassen'
 run = ['layout floating', 'move-node-to-workspace R']
 
 # Workspace Plan
 [[on-window-detected]]
 if.app-id = 'com.readdle.SparkDesktop.appstore'
+run = ['layout floating', 'move-node-to-workspace P']
+
+[[on-window-detected]]
+if.app-id = 'info.pkpk.inkdrop'
 run = ['layout floating', 'move-node-to-workspace P']
 
 [[on-window-detected]]

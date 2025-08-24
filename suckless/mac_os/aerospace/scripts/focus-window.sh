@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/opt/homebrew/bin/bash
 
 AEROSPACE="/opt/homebrew/bin/aerospace"
 

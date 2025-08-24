@@ -1,52 +1,41 @@
-vim.lsp.config('ts_ls', {
-  single_file_support = false,
+vim.lsp.config('vtsls', {
+  -- explicitly add default filetypes, so that we can extend
+  -- them in related extras
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+  },
   settings = {
+    complete_function_calls = true,
+    vtsls = {
+      enableMoveToFileCodeAction = true,
+      autoUseWorkspaceTsdk = true,
+      experimental = {
+        maxInlayHintLength = 30,
+        completion = {
+          enableServerSideFuzzyMatch = true,
+        },
+      },
+    },
     typescript = {
       updateImportsOnFileMove = { enabled = 'always' },
       suggest = {
         completeFunctionCalls = true,
       },
       inlayHints = {
-        includeInlayParameterNameHints = 'literal',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = false,
-        includeInlayVariableTypeHints = false,
-        includeInlayPropertyDeclarationTypeHints = false,
-        includeInlayFunctionLikeReturnTypeHints = false,
-        includeInlayEnumMemberValueHints = false,
-      },
-    },
-    javascript = {
-      updateImportsOnFileMove = { enabled = 'always' },
-      suggest = {
-        completeFunctionCalls = true,
-      },
-      inlayHints = {
-        includeInlayParameterNameHints = 'literal',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = false,
-        includeInlayVariableTypeHints = false,
-        includeInlayPropertyDeclarationTypeHints = false,
-        includeInlayFunctionLikeReturnTypeHints = false,
-        includeInlayEnumMemberValueHints = false,
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        parameterNames = { enabled = 'literals' },
+        parameterTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        variableTypes = { enabled = false },
       },
     },
   },
 })
 
-vim.lsp.config('denols', {
-  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-  root_dir = function(fname)
-    return vim.fs.root(fname, { 'deno.json', 'deno.jsonc' })
-  end,
-})
-
--- vim.lsp.config('biome', {
---   cmd = { 'biome', 'lsp-proxy' },
---   filetypes = { 'javascript', 'javascriptreact', 'json', 'jsonc', 'typescript', 'typescript.tsx', 'typescriptreact' },
---   -- root_markers = { 'biome.json', '.git' },
--- })
-
-vim.lsp.enable('ts_ls')
-vim.lsp.enable('denols')
--- vim.lsp.enable('biome')
+vim.lsp.enable('vtsls')

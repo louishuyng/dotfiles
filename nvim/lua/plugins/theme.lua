@@ -94,12 +94,48 @@ return {
           mantle = '#e6e9ef',
           crust = '#ebebeb',
         },
+        frappe = {
+          rosewater = '#C45C64',
+          flamingo = '#C87D68',
+          red = '#C45C64',
+          maroon = '#926B6A',
+          pink = '#9571B3',
+          mauve = '#9571B3',
+          peach = '#C87D68',
+          yellow = '#D8B573',
+          green = '#7AA682',
+          teal = '#4CA5AF',
+          sky = '#4CA5AF',
+          sapphire = '#4CA5AF',
+          blue = '#589CD5',
+          lavender = '#589CD5',
+          text = '#E1E4DC',
+          subtext1 = '#D1D3CC',
+          subtext0 = '#F1F5EC',
+          overlay2 = '#6F6F6E',
+          overlay1 = '#6F6F6E',
+          overlay0 = '#6F6F6E',
+          surface2 = '#3E3D3F',
+          surface1 = '#363438',
+          surface0 = '#363438',
+          base = '#2C2A2E',
+          mantle = '#1D1B1D',
+          crust = '#0D0B10',
+        },
       },
       highlight_overrides = {
+        frappe = function(colors)
+          return {
+            NeoTreeDirectoryIcon = { fg = '#90A4AE' },
+            NeoTreeDirectoryName = { fg = '#90A4AE' },
+            NeoTreeRootName = { fg = '#90A4AE' },
+
+            Normal = { bg = '#000000' },
+            NormalNC = { bg = '#000000' },
+          }
+        end,
         all = function(color)
           return {
-            -- Normal = { bg = 'NONE' },
-            -- NormalNC = { bg = 'NONE' },
             -- For base configs
             NormalFloat = { fg = color.text, bg = transparent_background and color.none or color.mantle },
             FloatBorder = {
@@ -107,6 +143,8 @@ return {
               bg = transparent_background and color.none or color.mantle,
             },
             CursorLineNr = { fg = color.green },
+            CursorLine = { bg = transparent_background and color.none or color.surface0 },
+            LineNr = { fg = color.overlay1 },
             WinSeparator = { fg = color.overlay2, bg = 'NONE' },
 
             -- Tabline
@@ -186,10 +224,6 @@ return {
             NotifyTRACEBody = { fg = color.text, bg = color.base },
 
             -- For native lsp configs
-            DiagnosticVirtualTextError = { bg = color.none },
-            DiagnosticVirtualTextWarn = { bg = color.none },
-            DiagnosticVirtualTextInfo = { bg = color.none },
-            DiagnosticVirtualTextHint = { bg = color.none },
             LspInfoBorder = { link = 'FloatBorder' },
 
             -- For mason.nvim
@@ -218,9 +252,7 @@ return {
             -- For nvim-notify
             NotifyBackground = { bg = color.base },
 
-            -- For nvim-tree
-            NvimTreeRootFolder = { fg = color.pink },
-            NvimTreeIndentMarker = { fg = color.surface2 },
+            -- For neotree
 
             -- For trouble.nvim
             TroubleNormal = { bg = transparent_background and color.none or color.base },
@@ -239,6 +271,26 @@ return {
           }
         end,
       },
+    },
+  },
+  {
+    'f-person/auto-dark-mode.nvim',
+    lazy = false,
+    opts = {
+      set_dark_mode = function()
+        local reload_theme = require('utils.reload_theme').reload_theme
+
+        vim.g.theme = vim.g.default_dark_theme
+        reload_theme()
+      end,
+      set_light_mode = function()
+        local reload_theme = require('utils.reload_theme').reload_theme
+
+        vim.g.theme = vim.g.default_light_theme
+        reload_theme()
+      end,
+      update_interval = 10000,
+      fallback = 'dark',
     },
   },
 }

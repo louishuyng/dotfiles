@@ -9,11 +9,11 @@ x = 0
 y = 0
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "BerkeleyMono Nerd Font Plus Font Awesome Plus Font Awesome Extension Plus Octicons Plus Power Symbols Plus Codicons Plus Pomicons Plus Font Logos Plus Material Design Icons Plus Weather Icons"
 
 [font.offset]
-x = -1
-y = 5
+x = 0
+y = 4
 
 [scrolling]
 history = 10000

@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 STATUS_LABEL=$(lsappinfo info -only StatusLabel "Slack")
-ICON="󰒱"
 
 if [[ $STATUS_LABEL =~ \"label\"=\"([^\"]*)\" ]]; then
     LABEL="${BASH_REMATCH[1]}"
@@ -15,8 +14,7 @@ if [[ $STATUS_LABEL =~ \"label\"=\"([^\"]*)\" ]]; then
         exit 0
     fi
 
-    sketchybar --set $NAME icon=$ICON label="${LABEL}" icon.color=${ICON_COLOR}
+    sketchybar --set $NAME label="${LABEL}" icon.color=${ICON_COLOR} label.drawing=on icon.drawing=on
 else
-    ICON_COLOR="0xff939ab7"
-    sketchybar --set $NAME icon=$ICON icon.color=${ICON_COLOR} label.drawing=off icon.padding_right=5
+    sketchybar --set $NAME label.drawing=off icon.drawing=off
 fi

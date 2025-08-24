@@ -20,18 +20,19 @@ local generate_finder = function()
   })
 end
 
-local keymap = vim.keymap.set
-
-keymap('n', ';a', function()
+vim.keymap.set('n', ';a', function()
   marlin.add()
 end, { desc = 'add file' })
-keymap('n', ']f', function()
+
+vim.keymap.set('n', ']f', function()
   marlin.next()
 end, { desc = 'open next index' })
-keymap('n', '[f', function()
+
+vim.keymap.set('n', '[f', function()
   marlin.prev()
 end, { desc = 'open previous index' })
-keymap('n', '<Leader><Leader>', function()
+
+vim.keymap.set('n', '<Leader><Leader>', function()
   marlin.toggle()
 end, { desc = 'toggle cur/last open index' })
 

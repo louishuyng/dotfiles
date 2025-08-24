@@ -6,7 +6,8 @@
     "unused-local",
     "cast-local-type",
         "duplicate-index",
-        "undefined-global"
+        "undefined-global",
+        "deprecated"
   ],
   "diagnostics.globals": [
     "vim",

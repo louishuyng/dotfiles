@@ -44,12 +44,9 @@ require('mason').setup({
     -- 'csharp-language-server',
 
     -- Typescript
-    'ts_ls',
-    'typescript-language-server',
+    'vtsls',
+    'prettier_d',
     'js-debug-adapter',
-    'eslint-lsp',
-    'prettier',
-    'denols',
 
     -- Python
     -- 'pyright',

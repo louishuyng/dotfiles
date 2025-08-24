@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/opt/homebrew/bin/bash
 
 cd ~/.dotfiles
 git config --local core.sshCommand "ssh -i ~/.ssh/open_source"

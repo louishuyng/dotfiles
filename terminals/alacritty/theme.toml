@@ -1,26 +1,33 @@
-# Default colors
+# Leaf-Darker Theme for Alacritty
+
 [colors.primary]
-background = '0x252623'
-foreground = '0xf1e9d2'
+background = '#1D1B1D'
+foreground = '#E1E4DC'
 
-# Normal colors
+[colors.cursor]
+text = '#1E1B1F'
+cursor = '#AF87D7'
+
+[colors.selection]
+text = '#E1E4DC'
+background = '#3E3D3F'
+
 [colors.normal]
-black = '0x1c1e1b'
-red = '0xe75a7c'
-green = '0x8fb573'
-yellow = '0xdbb651'
-blue = '0x57a5e5'
-magenta = '0xaaaaff'
-cyan = '0x70c2be'
-white = '0xf1e9d2'
+black = '#1E1B1F'
+red = '#C45C64'
+green = '#7AA682'
+yellow = '#D8B573'
+blue = '#589CD5'
+magenta = '#9571B3'
+cyan = '#4CA5AF'
+white = '#E1E4DC'
 
-# Bright colors
 [colors.bright]
-black = '0x5b5e5a'
-red = '0xe75a7c'
-green = '0x8fb573'
-yellow = '0xdbb651'
-blue = '0x57a5e5'
-magenta = '0xaaaaff'
-cyan = '0x70c2be'
-white = '0xfff8f0'
+black = '#6F6F6E'
+red = '#C45C64'
+green = '#7AA682'
+yellow = '#D8B573'
+blue = '#589CD5'
+magenta = '#9571B3'
+cyan = '#4CA5AF'
+white = '#FFFFFB'

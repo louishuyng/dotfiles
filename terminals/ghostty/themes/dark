@@ -1,31 +1,31 @@
-# Ef-Maris-Dark Colors
-background = #131c2b
-foreground = #eaedef
-selection-background = #183c65
-selection-foreground = #eaedef
-cursor-color = #8fdfff
+# Leaf-Darker Theme
+background = #1E1B1F
+foreground = #E1E4DC
+selection-background = #3E3D3F
+selection-foreground = #E1E4DC
+cursor-color = #AF87D7
 
 # black
-palette = 0=#1d2c39
-palette = 8=#4a5664
+palette = 0=#1E1B1F
+palette = 8=#6F6F6E
 # red
-palette = 1=#ff6f6f
-palette = 9=#ff7788
+palette = 1=#C45C64
+palette = 9=#C45C64
 # green
-palette = 2=#41bf4f
-palette = 10=#30c489
+palette = 2=#7AA682
+palette = 10=#7AA682
 # yellow
-palette = 3=#d0d24f
-palette = 11=#cab27f
+palette = 3=#D8B573
+palette = 11=#D8B573
 # blue
-palette = 4=#57b0ff
-palette = 12=#12b4ff
+palette = 4=#589CD5
+palette = 12=#589CD5
 # magenta
-palette = 5=#f59acf
-palette = 13=#cf90ff
+palette = 5=#9571B3
+palette = 13=#9571B3
 # cyan
-palette = 6=#2fd0db
-palette = 14=#65d5a8
+palette = 6=#4CA5AF
+palette = 14=#4CA5AF
 # white
-palette = 7=#eaedef
-palette = 15=#969faf
+palette = 7=#E1E4DC
+palette = 15=#FFFFFB

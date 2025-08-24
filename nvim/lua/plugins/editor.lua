@@ -86,7 +86,7 @@ return {
     dependencies = {},
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     -- Lazy load Oil on command
-    lazy = true,
+    lazy = false,
     cmd = 'Oil',
 
     config = function()
@@ -135,7 +135,10 @@ return {
     version = false,
     event = { 'BufReadPost', 'BufNewFile' },
     config = function()
-      require('mini.bracketed').setup({})
+      require('mini.bracketed').setup({
+        -- Avoid Conflicted with Marlin navigation
+        file = { suffix = '', options = {} },
+      })
     end,
   },
   {

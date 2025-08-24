@@ -1,34 +1,33 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
-local dropdown_theme = require('config.cores.telescope.theme').dropdown_theme
+local telescope_theme = require('config.cores.telescope.theme').dropdown_theme
 
 -- Main finding
 vim.keymap.set('n', '<c-p>', function()
-  builtin.find_files(dropdown_theme('Files'))
+  builtin.find_files(telescope_theme('Files'))
 end, { silent = true, noremap = true, desc = 'Find files' })
 
 vim.keymap.set('n', '<leader>fi', function()
-  builtin.find_files(dropdown_theme('Files', false, true))
+  builtin.find_files(telescope_theme('Files', false, true))
 end, { silent = true, noremap = true, desc = 'Find files include ignore' })
 
 vim.keymap.set('n', '<leader>fb', function()
-  return builtin.buffers(dropdown_theme('Buffers'))
+  return builtin.buffers(telescope_theme('Buffers'))
 end, { silent = true, noremap = true, desc = 'List buffers' })
-
 vim.keymap.set('n', '<leader>/', function()
-  return require('telescope').extensions.live_grep_args.live_grep_args(dropdown_theme('LiveGrep', true))
+  return require('telescope').extensions.live_grep_args.live_grep_args(telescope_theme('LiveGrep', true))
 end, { silent = true, noremap = true, desc = 'Grep words' })
 
 vim.keymap.set('n', '<leader>fm', function()
-  return builtin.marks(dropdown_theme('Marks'))
+  return builtin.marks(telescope_theme('Marks'))
 end, { silent = true, noremap = true, desc = 'List marks' })
 
 vim.keymap.set('n', '<leader>fj', function()
-  return builtin.jumplist(dropdown_theme('Jumplist', true))
+  return builtin.jumplist(telescope_theme('Jumplist', true))
 end, { silent = true, noremap = true, desc = 'List jumplist' })
 
 vim.keymap.set('n', 'gr', function()
-  builtin.lsp_references(dropdown_theme('References', true))
+  builtin.lsp_references(telescope_theme('References', true))
 end, { silent = true, noremap = true, desc = 'Find references' })
 
 -- TODO list
@@ -36,24 +35,24 @@ vim.keymap.set('n', '<leader>td', ':TodoTelescope<CR>', { silent = true, noremap
 
 -- prefix with <leader>f
 vim.keymap.set('n', '<leader>f/', function()
-  return builtin.current_buffer_fuzzy_find(dropdown_theme('CurrentBuffer'))
+  return builtin.current_buffer_fuzzy_find(telescope_theme('CurrentBuffer'))
 end, { silent = true, noremap = true, desc = 'Search in current buffer' })
 
 vim.keymap.set('n', '<leader>fr', function()
-  require('telescope').extensions.recent_files.pick(dropdown_theme('Recent Files'))
+  require('telescope').extensions.recent_files.pick(telescope_theme('Recent Files'))
 end, { silent = true, noremap = true, desc = 'Search recent files' })
 
 -- searching vim built-in
 vim.keymap.set('n', 'g?', function()
-  return builtin.help_tags(dropdown_theme('HelpTags'))
+  return builtin.help_tags(telescope_theme('HelpTags'))
 end, { silent = true, noremap = true, desc = 'Open help tags' })
 
 vim.keymap.set('n', '<leader><BS>', function()
-  builtin.keymaps(dropdown_theme('Keymaps'))
+  builtin.keymaps(telescope_theme('Keymaps'))
 end, { silent = true, noremap = true, desc = 'List keymaps' })
 
 vim.keymap.set('n', '<leader>"', function()
-  builtin.registers(dropdown_theme('Registers'))
+  builtin.registers(telescope_theme('Registers'))
 end, { silent = true, noremap = true, desc = 'List registers' })
 
 -- vim config
@@ -84,7 +83,7 @@ end, { silent = true, noremap = true, desc = 'File browser' })
 vim.keymap.set('n', '<leader>fl', function()
   local builtin = builtin
 
-  builtin.resume(dropdown_theme('Resume'))
+  builtin.resume(telescope_theme('Resume'))
 end, { silent = true, noremap = true, desc = 'Get last telescope result' })
 
 -- -- NEST JS

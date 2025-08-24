@@ -44,8 +44,8 @@ require('neo-tree').setup({
       expander_highlight = 'NeoTreeExpander',
     },
     icon = {
-      folder_closed = '▶',
-      folder_open = '▼',
+      folder_closed = '',
+      folder_open = '',
       folder_empty = '󰉖',
       default = '󰈙',
       highlight = 'NeoTreeFileIcon',

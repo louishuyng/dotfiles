@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+#!/opt/homebrew/bin/bash
 
-BIG_ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:16"
+BIG_ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:20"
 MED_ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:15"
 ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:14"
-SPACE_ICONS=("" "Dev" "" "Web" "Read" "Plan" "Chat" "Any")
+SPACE_ICONS=("" "Dev" "" "Web" "Read" "Plan" "Chat" "Any")
 
 sketchybar --add event aerospace_workspace_change
 
@@ -15,15 +15,20 @@ for i in "${!LIST_SPACES_INDEX[@]}"; do
   sketchybar --add item space.$sid left \
              --subscribe space.$sid aerospace_workspace_change \
              --set space.$sid \
-                        icon=${SPACE_ICONS[i]}                    \
-                        icon.padding_left=5                      \
-                        icon.padding_right=5                     \
-                        label.drawing=off                         \
+                        label=${SPACE_ICONS[i]}                    \
+                        label.padding_left=4                      \
+                        label.padding_right=4                     \
+                        icon.padding_left=0\
+                        icon.padding_right=0\
                         script="$PLUGIN_DIR/space.sh $sid"             \
                         click_script="aerospace workspace $sid"
 
   if [ $sid == "I" ]; then
-    sketchybar --set space.$sid icon.font="$MED_ICON_FONT"
+    sketchybar --set space.$sid label.font="$MED_ICON_FONT"
+  fi
+
+  if [ $sid == "T" ]; then
+    sketchybar --set space.$sid label.font="$BIG_ICON_FONT"
   fi
 done
 

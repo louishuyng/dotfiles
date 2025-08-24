@@ -8,7 +8,8 @@ vim.g.startup_bookmarks = {
   ['K'] = '~/.dotfiles/terminals/kitty/kitty.conf',
 }
 
-vim.g.theme = 'night'
+vim.g.default_dark_theme = 'night'
+vim.g.default_light_theme = 'light'
 vim.g.default_dark_catppuccin_theme = 'frappe'
 
 vim.g.home_dir = '/Users/louishuyng'
@@ -132,8 +133,8 @@ vim.g.loaded_spec = 0
 vim.g.rust_recommended_style = 1
 
 -- Golang
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "go",
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'go',
   callback = function()
     vim.bo.expandtab = false
     vim.bo.shiftwidth = 2

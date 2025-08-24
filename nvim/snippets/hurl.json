@@ -1,22 +1,38 @@
 {
   "get": {
     "prefix": "get",
-    "body": ["GET http://localhost:$1/$2"],
+    "body": [
+      "GET {{API_URL}}:$1/$2",
+      "Content-Type: application/json",
+      "Authorization: {{TOKEN}}"
+    ],
     "description": "Get Request"
   },
   "post": {
     "prefix": "post",
-    "body": ["POST http://localhost:$1/$2", "Content-Type: application/json"],
+    "body": [
+      "POST {{API_URL}}:$1/$2",
+      "Content-Type: application/json",
+      "Authorization: {{TOKEN}}"
+    ],
     "description": "POST Request"
   },
   "delete": {
     "prefix": "delete",
-    "body": ["DELETE http://localhost:$1/$2", "Content-Type: application/json"],
+    "body": [
+      "DELETE {{API_URL}}:$1/$2",
+      "Content-Type: application/json",
+      "Authorization: {{TOKEN}}"
+    ],
     "description": "DELETE Request"
   },
   "put": {
     "prefix": "put",
-    "body": ["PUT http://localhost:$1/$2", "Content-Type: application/json"],
+    "body": [
+      "PUT {{API_URL}}:$1/$2",
+      "Content-Type: application/json",
+      "Authorization: {{TOKEN}}"
+    ],
     "description": "PUT Request"
   }
 }

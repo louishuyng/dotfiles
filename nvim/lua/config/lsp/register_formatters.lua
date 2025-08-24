@@ -29,10 +29,10 @@ require('conform').setup({
   end,
   formatters_by_ft = {
     lua = { 'stylua' },
-    javascript = { 'eslint', 'prettier' },
-    typescript = { 'eslint_d', 'prettier_d' },
-    javascriptreact = { 'eslint_d', 'prettier_d' },
-    typescriptreact = { 'eslint_d', 'prettier_d' },
+    javascript = { 'eslint_d', 'prettier_d', 'prettier' },
+    typescript = { 'eslint_d', 'prettier_d', 'prettier' },
+    javascriptreact = { 'eslint_d', 'prettier_d', 'prettier' },
+    typescriptreact = { 'eslint_d', 'prettier_d', 'prettier' },
   },
 })
 
@@ -40,13 +40,5 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   callback = function(args)
     require('conform').format({ bufnr = args.buf })
-  end,
-})
-
--- Kill eslint_d and prettier_d processes when exiting Neovim
-vim.api.nvim_create_autocmd('VimLeavePre', {
-  callback = function()
-    vim.fn.system('eslint_d stop')
-    vim.fn.system('prettier_d stop')
   end,
 })

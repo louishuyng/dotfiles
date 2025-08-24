@@ -58,5 +58,4 @@ alias top2='bpytop'
 alias find='fd'
 alias lf='ranger'
 
-# Loca
-alias loca="cd ~/LX14/repository/github.com/regask/loca-run && go run cmd/ui/main.go --env development"
+alias api='hurl --variables-file vars.env'

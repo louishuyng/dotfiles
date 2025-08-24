@@ -12,6 +12,14 @@ snacks.setup {
     enabled = true,
     level = vim.log.levels.INFO,
   },
+  styles = {
+    notification = {
+      border = 'rounded',
+      wo = {
+        winhl = 'NormalFloat:Normal,FloatBorder:DiagnosticOk'
+      }
+    }
+  },
   -- scroll = {
   --   enabled = true,
   --   animate = {

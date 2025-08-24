@@ -5,15 +5,6 @@ k9s:
   maxConnRetry: 5
   readOnly: false
   noExitOnCtrlC: false
-  ui:
-    skin: cyberdream
-    enableMouse: false
-    headless: false
-    logoless: false
-    crumbsless: false
-    reactive: false
-    noIcons: false
-    defaultsToFullScreen: false
   skipLatestRevCheck: false
   disablePodCounting: false
   shellPod:

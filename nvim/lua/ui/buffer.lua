@@ -2,7 +2,6 @@ local icons = require('config.libs.icons')
 local bufferline = require('bufferline')
 
 bufferline.setup {
-  highlights = require('catppuccin.groups.integrations.bufferline').get(),
   options = {
     mode = 'tabs',
     style_preset = {

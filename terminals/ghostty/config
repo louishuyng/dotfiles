@@ -1,19 +1,21 @@
 auto-update-channel = tip
 
-theme = dark:Ghostty Default StyleDark,light:light
+theme = dark:dark,light:light
 background-opacity = 1
 background-blur = false
-cursor-color = #AF87D7
 
 shell-integration = none
 
 # font-family = "Terminess Nerd Font"
-font-family = "JetbrainsMono Nerd Font"
-font-size = 13
-font-thicken = false
-font-thicken-strength = 70
-# adjust-cell-height = 3
-adjust-cell-height = 4
+font-family = "Berkeley Mono"
+font-family-bold = "Bold"
+font-family-italic = "Oblique"
+font-family-bold-italic = "Bold Oblique"
+
+font-size = 12.5
+font-thicken = true
+font-thicken-strength = 0
+adjust-cell-height = 2
 adjust-cell-width = -1
 
 mouse-hide-while-typing = true
