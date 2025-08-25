@@ -39,25 +39,34 @@ return {
     },
 
     config = function()
-      local icons = require('lazyvim.config').icons
+      require('lazyvim.config')
+
       local dap = require('dap')
 
       require('mason-nvim-dap').setup({})
 
-      vim.api.nvim_set_hl(0, 'DapStoppedLine', { default = true, link = 'Visual' })
+      local icons = require('config.libs.icons').debug
 
-      for name, sign in pairs(icons.dap) do
-        sign = type(sign) == 'table' and sign or { sign }
-        local dap_ns = vim.api.nvim_create_namespace('dap')
-
-        vim.diagnostic.config({
-          signs = {
-            text = sign[1],
-            texthl = sign[2] or 'DiagnosticInfo',
-            linehl = sign[3],
-            numhl = sign[3],
-          },
-        }, dap_ns)
+      local signs = {
+        DapBreakpoint = { text = icons.Breakpoint, texthl = 'DapBreakpoint', linehl = '', numhl = '' },
+        DapBreakpointCondition = {
+          text = icons.BreakpointCondition,
+          texthl = 'DapBreakpointCondition',
+          linehl = '',
+          numhl = '',
+        },
+        DapLogPoint = { text = icons.DebugLogPoint, texthl = 'DapLogPoint', linehl = '', numhl = '' },
+        DapStopped = { text = icons.Stopped, texthl = 'DapStopped', linehl = 'Visual', numhl = '' },
+        DapBreakpointRejected = {
+          text = icons.BreakpointRejected,
+          texthl = 'DapBreakpointRejected',
+          linehl = '',
+          numhl = '',
+        },
+      }
+      -- Apply all sign definitions
+      for sign_name, sign_config in pairs(signs) do
+        vim.fn.sign_define(sign_name, sign_config)
       end
 
       -- setup dap config by VsCode launch.json file

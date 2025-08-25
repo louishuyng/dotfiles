@@ -5,4 +5,11 @@ return {
     Hint = 'H',
     Info = 'I ',
   },
+  debug = {
+    Breakpoint = '',
+    BreakpointCondition = '',
+    DebugLogPoint = '',
+    Stopped = '',
+    BreakpointRejected = '',
+  },
 }
