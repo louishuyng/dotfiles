@@ -26,4 +26,12 @@ return {
       vim.diagnostic.config({ virtual_text = false }) -- Disable default virtual text
     end,
   },
+  {
+    'mfussenegger/nvim-lint',
+    enabled = true,
+    event = {
+      'BufReadPre',
+      'BufNewFile',
+    },
+  },
 }

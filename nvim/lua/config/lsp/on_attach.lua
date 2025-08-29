@@ -11,7 +11,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local bufnr = ev.buf
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-    if not client then return end
+    if not client then
+      return
+    end
 
     -- If file has . characters at beginning, don't format
     if vim.fn.match(vim.fn.expand('%:t'), '^[.]') ~= -1 then
@@ -24,9 +26,40 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = bufnr, silent = true, noremap = true }
 
     vim.keymap.set('n', 'gf', vim.lsp.buf.definition, vim.tbl_extend('force', opts, { desc = 'Go to definition' }))
+    vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, vim.tbl_extend('force', opts, { desc = 'Go to declaration' }))
+
+    vim.keymap.set(
+      'n',
+      'gi',
+      vim.lsp.buf.implementation,
+      vim.tbl_extend('force', opts, { desc = 'Go to implementation' })
+    )
+
+    vim.keymap.set(
+      'n',
+      'go',
+      vim.lsp.buf.type_definition,
+      vim.tbl_extend('force', opts, { desc = 'Go to type definition' })
+    )
+
     vim.keymap.set('n', 'gs', vim.lsp.buf.document_symbol, vim.tbl_extend('force', opts, { desc = 'Document symbol' }))
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, vim.tbl_extend('force', opts, { desc = 'Go to implementation' }))
+
+    vim.keymap.set(
+      'n',
+      'gv',
+      '<cmd>vsplit | lua vim.lsp.buf.definition()<CR>',
+      { desc = 'Go definition & vsplit file' }
+    )
+
+    vim.keymap.set(
+      'n',
+      'gi',
+      vim.lsp.buf.implementation,
+      vim.tbl_extend('force', opts, { desc = 'Go to implementation' })
+    )
+
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, vim.tbl_extend('force', opts, { desc = 'Code action' }))
     vim.keymap.set('n', ',rr', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = 'Rename' }))
+    vim.keymap.set('n', 'gl', vim.diagnostic.open_float, vim.tbl_extend('force', opts, { desc = 'Line diagnostics' }))
   end,
 })

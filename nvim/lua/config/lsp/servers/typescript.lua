@@ -38,4 +38,19 @@ vim.lsp.config('vtsls', {
   },
 })
 
+vim.lsp.config('eslint', {
+  single_file_support = true,
+  settings = {
+    packageManager = 'yarn', -- or 'npm'
+  },
+  -- Optional: Auto-fix on save
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = bufnr,
+      command = 'EslintFixAll',
+    })
+  end,
+})
+
 vim.lsp.enable('vtsls')
+vim.lsp.enable('eslint')

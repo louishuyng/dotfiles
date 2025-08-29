@@ -1,8 +1,9 @@
-require('config.lsp.performance')
-require('config.lsp.register_server')
-require('config.lsp.register_formatters')
 require('config.lsp.diagnostic')
+require('config.lsp.lint')
 require('config.lsp.on_attach')
+require('config.lsp.performance')
+require('config.lsp.register_formatters')
+require('config.lsp.register_server')
 
 require('mason').setup({
   ensure_installed = {
@@ -45,6 +46,7 @@ require('mason').setup({
 
     -- Typescript
     'vtsls',
+    'eslint',
     'prettier_d',
     'js-debug-adapter',
 
