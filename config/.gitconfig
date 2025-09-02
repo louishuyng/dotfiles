@@ -63,6 +63,9 @@
 [includeIf "gitdir:~/.dotfiles/"]
   path = ~/.dotfiles/config/gitconfig/.personal
 
+[includeIf "gitdir:~/LX14/repository/github.com/louishuyng"]
+  path = ~/.dotfiles/config/gitconfig/.personal
+
 [includeIf "gitdir:~/LX14/repository/github.com/regask/"]
   path = ~/.dotfiles/config/gitconfig/.regask
 

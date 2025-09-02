@@ -115,6 +115,10 @@ if.app-id = 'com.exafunction.windsurf'
 run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
+if.app-id = 'tonyapp.devutils'
+run = ['layout floating', 'move-node-to-workspace D']
+
+[[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
 run = ['move-node-to-workspace D']
 
@@ -138,7 +142,7 @@ run='move-node-to-workspace T'
 # Workspace Web
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = ['layout floating', 'move-node-to-workspace W']
+run = ['move-node-to-workspace W']
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'

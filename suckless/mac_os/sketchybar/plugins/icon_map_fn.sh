@@ -1,5 +1,6 @@
 
 
+
 ### START-OF-ICON-MAP
 function __icon_map() {
     case "$1" in
@@ -105,7 +106,7 @@ function __icon_map() {
    "BluOS Controller")
         icon_result=":bluos_controller:"
         ;;
-   "Books" | "Calibre" | "Bücher")
+   "Books" | "Calibre" | "Bücher" | "Kindle")
         icon_result=":book:"
         ;;
    "Brave Browser")
@@ -210,7 +211,7 @@ function __icon_map() {
    "DingTalk" | "钉钉" | "阿里钉")
         icon_result=":dingtalk:"
         ;;
-   "Discord" | "Discord Canary" | "Discord PTB" | "Legcord")
+   "Discord" | "Discord Canary" | "Discord PTB")
         icon_result=":discord:"
         ;;
    "Docker" | "Docker Desktop")

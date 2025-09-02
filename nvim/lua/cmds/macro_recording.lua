@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
 
       vim.notify('✅ Recorded @' .. reg, vim.log.levels.INFO, {
         title = '🎬 Macro Recording',
-        timeout = 2000,
+        timeout = 500,
         icon = '',
       })
     end

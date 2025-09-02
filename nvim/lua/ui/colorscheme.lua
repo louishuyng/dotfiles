@@ -1,9 +1,6 @@
 local highlight_utils = require 'ui.highlight_utils'
 
-local transaprent = highlight_utils.transaprent
-local gitTransparent = highlight_utils.gitTransparent
 local highlight_telescope = highlight_utils.highlight_telescope
-local diagnosticTransparent = highlight_utils.diagnosticTransparent
 local palettes = require('catppuccin.palettes')
 
 if vim.g.theme == 'night' then
@@ -45,5 +42,3 @@ if vim.g.theme == 'light' then
 
   highlight_telescope(colors)
 end
-
-gitTransparent()

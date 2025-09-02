@@ -1,27 +1,13 @@
+local icons = require('config.libs.icons')
 local status_ok, lualine = pcall(require, 'lualine')
 if not status_ok then
   return
 end
-local noice = require('noice')
-local dap = require('dap')
-
-local lualine_require = require('lualine_require')
-lualine_require.require = require
-
-local icons = require('config.libs.icons')
-
-local Util = require('lazyvim.util')
-
-vim.o.laststatus = vim.g.lualine_laststatus
-
-local colors = {}
-
-local flavour = vim.g.theme == 'night' and vim.g.default_dark_catppuccin_theme or 'latte'
 
 local C = require('catppuccin.palettes').get_palette(flavour)
 
 local colors = {
-  bg0 = C.mantle,
+  bg0 = C.crust,
   bg1 = C.base,
   bg2 = C.surface0,
   fg0 = C.text,
@@ -40,8 +26,8 @@ local colors = {
 
 local theme = {
   normal = {
-    a = { bg = colors.bg0, fg = colors.purple0 },
-    b = { bg = colors.bg0, fg = colors.yellow0 },
+    a = { bg = colors.bg0, fg = colors.blue1 },
+    b = { bg = colors.bg0, fg = colors.blue1 },
     c = { bg = colors.bg0, fg = colors.fg2 },
   },
   insert = {
@@ -53,8 +39,8 @@ local theme = {
     b = { bg = colors.bg0, fg = colors.yellow1 },
   },
   visual = {
-    a = { bg = colors.bg0, fg = colors.blue1 },
-    b = { bg = colors.bg0, fg = colors.blue1 },
+    a = { bg = colors.bg0, fg = colors.purple0 },
+    b = { bg = colors.bg0, fg = colors.purple1 },
   },
   replace = {
     a = { bg = colors.bg0, fg = colors.red0 },
@@ -68,7 +54,6 @@ local theme = {
 }
 
 local marlin = require('marlin')
-
 local marlin_component = function()
   local indexes = marlin.num_indexes()
   if indexes == 0 then
@@ -86,51 +71,58 @@ lualine.setup {
     disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'intro' } },
     section_separators = { left = '', right = '' },
     component_separators = { left = '', right = '' },
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    },
   },
   sections = {
     lualine_a = {
       {
-        'mode',
-        fmt = function(mode)
-          -- Vertical bar symbol
-          return '▐'
+        function()
+          local mode = vim.fn.mode()
+          return '▌'
         end,
-        padding = { left = 0, right = 0 },
-      },
-      {
-        'filesize',
-        color = { fg = colors.fg2 },
-      },
-      -- {
-      --   'filename',
-      --   file_status = true, -- Displays file status (readonly status, modified status)
-      --   newfile_status = false,
-      --   path = 4, -- 0: Just the filename
-      --
-      --   shorting_target = 40, -- Shortens path to leave 40 spaces in the window
-      --   symbols = {
-      --     modified = '[+]',
-      --     readonly = '[-]',
-      --     unnamed = '[No Name]',
-      --     newfile = '[New]',
-      --   },
-      --   color = { fg = colors.yellow1 },
-      -- },
-      {
-        'location',
-        color = { fg = colors.fg2 },
+        padding = { left = 0 },
       },
     },
     lualine_b = {
       {
-        'marlin',
-        fmt = marlin_component,
-        color = { fg = colors.purple0 },
+        'active',
+        fmt = function()
+          return ''
+        end,
+        color = function()
+          return { fg = colors.green0 }
+        end,
       },
     },
-
     lualine_c = {
-      Util.lualine.root_dir(),
+      {
+        'filesize',
+        color = function()
+          return {
+            fg = colors.fg2,
+          }
+        end,
+      },
+      {
+        'filename',
+        file_status = true,
+        newfile_status = true,
+        path = 4,
+        symbols = {
+          modified = '*',
+          readonly = 'RO',
+          unnamed = 'scratch',
+          newfile = 'new',
+        },
+        color = function()
+          return { fg = colors.fg2 }
+        end,
+      },
+      { 'location' },
       {
         'diff',
         symbols = {
@@ -138,16 +130,6 @@ lualine.setup {
           modified = '~',
           removed = '-',
         },
-        source = function()
-          local gitsigns = vim.b.gitsigns_status_dict
-          if gitsigns then
-            return {
-              added = gitsigns.added,
-              modified = gitsigns.changed,
-              removed = gitsigns.removed,
-            }
-          end
-        end,
       },
       {
         'diagnostics',
@@ -158,30 +140,57 @@ lualine.setup {
           hint = icons.diagnostics.Hint,
         },
       },
+      {
+        'marlin',
+        fmt = marlin_component,
+        color = function()
+          return { fg = colors.purple0 }
+        end,
+      },
     },
     lualine_x = {
-      -- stylua: ignore
       {
-        function() return noice.api.status.mode.get() end,
-        cond = function() return package.loaded["noice"] and noice.api.status.mode.has() end,
-        color = { fg = Snacks.util.color("Constant") }
+        -- Recording Macro
+        function()
+          local reg = vim.fn.reg_recording()
+          return reg ~= '' and '[' .. reg .. ']' or ''
+        end,
+        color = {
+          fg = colors.red0,
+          gui = 'bold',
+        },
+        cond = function()
+          return vim.fn.reg_recording() ~= ''
+        end,
+      },
+      -- Show file format (LF, CRLF, CR)
+      {
+        'fileformat',
+        symbols = {
+          unix = 'LF', -- Show 'LF' for Unix line endings
+          dos = 'CRLF', -- Show 'CRLF' for Windows line endings
+          mac = 'CR', -- Show 'CR' for old Mac line endings
+        },
       },
       {
         'encoding',
+        fmt = function(str)
+          return str:upper() -- Display as uppercase (UTF-8 instead of utf-8)
+        end,
+      },
+      {
+        'lsp_status',
+        icon = '',
+        color = function()
+          return { fg = colors.yellow0 }
+        end,
       },
       {
         'branch',
-        icon = '',
-        color = { fg = colors.green0 },
-      },
-      {
-        function()
-          return '  ' .. dap.status()
+        icon = '',
+        color = function()
+          return { fg = colors.green0 }
         end,
-        cond = function()
-          return package.loaded['dap'] and dap.status() ~= ''
-        end,
-        color = { fg = Snacks.util.color('Debug') },
       },
     },
     lualine_y = {},

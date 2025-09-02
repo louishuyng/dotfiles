@@ -1,41 +1,26 @@
 -- CosmicInk config for lualine
-local marlin = require('marlin')
-local icons = require('config.libs.icons')
-local palettes = require('catppuccin.palettes')
 
-local colors = {}
-local flavour = ''
-
-if vim.g.theme == 'night' then
-  flavour = vim.g.default_dark_catppuccin_theme
-end
-
-if vim.g.theme == 'light' then
-  flavour = 'latte'
-end
-
-local C = palettes.get_palette(flavour)
-
-colors = {
-  BG = C.mantle,
-  FG = C.text,
-  YELLOW = C.yellow,
-  CYAN = C.sky,
-  DARKBLUE = C.lavender,
-  GREEN = C.green,
-  ORANGE = C.peach,
-  DARKGREEN = C.mauve,
-  MAGENTA = C.mauve,
-  BLUE = C.blue,
-  RED = C.red,
+-- Default Theme Colors: Define a set of base colors for your theme
+local colors = {
+  BG = '#16181b', -- Dark background
+  FG = '#c5c4c4', -- Light foreground for contrast
+  YELLOW = '#e8b75f', -- Vibrant yellow
+  CYAN = '#00bcd4', -- Soft cyan
+  DARKBLUE = '#2b3e50', -- Deep blue
+  GREEN = '#00e676', -- Bright green
+  ORANGE = '#ff7733', -- Warm orange
+  DARKGREEN = '#54a83b', -- Dark green
+  MAGENTA = '#d360aa', -- Deep magenta
+  BLUE = '#4f9cff', -- Light-medium blue
+  RED = '#ff3344', -- Strong red
 }
 
 -- Function to get the color associated with the current mode in Vim
 local function get_mode_color()
   -- Define a table mapping modes to their associated colors
   local mode_color = {
-    n = colors.DARKGREEN,
-    i = colors.DARKBLUE,
+    n = colors.DARKBLUE,
+    i = colors.DARKGREEN,
     v = colors.RED,
     [''] = colors.BLUE,
     V = colors.RED,
@@ -228,7 +213,7 @@ local reversed_icon_sets = reverse_table(icon_sets_list)
 local function create_separator(side, use_mode_color)
   return {
     function()
-      return side == 'left' and '' or '' -- Choose separator symbol based on side
+      return side == 'left' and '' or '' -- Choose separator symbol based on side
     end,
     color = function()
       -- Set color based on mode or opposite color
@@ -270,7 +255,9 @@ local function mode()
     v = 'V', -- Visual mode
     [''] = 'V', -- Visual block mode
     V = 'V', -- Visual line mode
-    c = 'C', -- Command-line mode no = 'N', -- NInsert mode s = 'S', -- Select mode
+    c = 'C', -- Command-line mode
+    no = 'N', -- NInsert mode
+    s = 'S', -- Select mode
     S = 'S', -- Select line mode
     ic = 'I', -- Insert mode (completion)
     R = 'R', -- Replace mode
@@ -306,12 +293,12 @@ local config = {
         },
       }, -- Simplified inactive theme
     },
-    -- disabled_filetypes = {
-    --   'neo-tree',
-    --   'undotree',
-    --   'sagaoutline',
-    --   'diff',
-    -- },
+    disabled_filetypes = {
+      'neo-tree',
+      'undotree',
+      'sagaoutline',
+      'diff',
+    },
   },
   sections = {
     lualine_a = {},
@@ -367,8 +354,8 @@ ins_left {
   color = function()
     local mode_color = get_mode_color()
     return {
-      fg = mode_color,
-      bg = colors.BG,
+      fg = colors.BG,
+      bg = mode_color,
       gui = 'bold',
     }
   end,
@@ -398,32 +385,23 @@ ins_left {
   end,
 }
 
-ins_left {
-  function()
-    local indexes = marlin.num_indexes()
-    if indexes == 0 then
-      return ''
-    end
-    local cur_index = marlin.cur_index()
-
-    return ' ' .. cur_index .. '/' .. indexes
-  end,
-  icon = '󰯏',
-  color = function()
-    local color = get_opposite_color(get_mode_color())
-
-    return {
-      fg = color,
-      gui = 'bold',
-    }
-  end,
-}
-
 ins_left(create_separator('right'))
 
--- ins_left(create_mode_based_component('filename', nil, colors.FG, colors.BG))
+ins_left(create_mode_based_component('filename', nil, colors.BG))
 
 ins_left(create_separator('left'))
+
+ins_left {
+  function()
+    return ''
+  end,
+  color = function()
+    return {
+      fg = get_middle_color(),
+    }
+  end,
+  cond = hide_in_width,
+}
 
 ins_left {
   function()
@@ -470,7 +448,7 @@ ins_right {
     return reg ~= '' and '[' .. reg .. ']' or ''
   end,
   color = {
-    fg = colors.RED,
+    fg = '#ff3344',
     gui = 'bold',
   },
   cond = function()
@@ -540,7 +518,7 @@ ins_right {
 
 ins_right {
   function()
-    return ''
+    return ''
   end,
   color = function()
     return { fg = get_middle_color() }
@@ -550,16 +528,12 @@ ins_right {
 
 ins_right(create_separator('right'))
 
-ins_right(create_mode_based_component('location', nil, colors.FG, colors.BG))
+ins_right(create_mode_based_component('location', nil, colors.BG))
 
 ins_right(create_separator('left'))
 
 ins_right {
   'branch',
-  padding = {
-    left = 0,
-    right = 1,
-  },
   icon = ' ',
   --[[ Truncates and formats Git branch names for display in lualine:
     First segment: Uppercase, truncated to 1 character.
@@ -630,6 +604,6 @@ ins_right {
 
 ins_right(create_separator('right'))
 
-ins_right(create_mode_based_component('progress', nil, colors.MAGENTA, colors.BG))
+ins_right(create_mode_based_component('progress', nil, colors.BG))
 
 require('lualine').setup(config)

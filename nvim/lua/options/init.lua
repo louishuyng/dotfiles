@@ -182,4 +182,4 @@ vim.cmd([[
 ]])
 
 -- AI
-vim.g.copilot_enabled = false -- sets the default
+vim.g.copilot_enabled = true

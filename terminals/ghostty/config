@@ -1,7 +1,7 @@
 auto-update-channel = tip
 
 theme = dark:dark,light:light
-background-opacity = 1
+background-opacity = 0.8
 background-blur = false
 
 shell-integration = none
@@ -15,7 +15,7 @@ font-family-bold-italic = "Bold Oblique"
 font-size = 12.5
 font-thicken = true
 font-thicken-strength = 0
-adjust-cell-height = 2
+adjust-cell-height = 0
 adjust-cell-width = -1
 
 mouse-hide-while-typing = true
@@ -28,8 +28,8 @@ window-width = 220
 window-height = 55
 window-padding-color = extend
 window-save-state = default
-# window-decoration = false
-# gtk-titlebar = false
+window-decoration = false
+gtk-titlebar = false
 
 macos-titlebar-style = hidden
 confirm-close-surface = false

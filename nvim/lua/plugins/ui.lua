@@ -8,19 +8,18 @@ return {
   -- {
   --   'SmiteshP/nvim-navic',
   -- },
-  { 
+  {
     'akinsho/nvim-bufferline.lua',
-    event = "VeryLazy",
+    event = 'VeryLazy',
   },
   -- { 'b0o/incline.nvim' },
   { 'nvim-tree/nvim-web-devicons', lazy = true },
-  { 
+  {
     'folke/noice.nvim',
     event = 'VimEnter',
   },
   {
     'nvim-lualine/lualine.nvim',
-    event = "VeryLazy",
-    opts = {},
+    event = 'VeryLazy',
   },
 }

@@ -1,31 +1,22 @@
-# Leaf-Darker Theme
-background = #1E1B1F
-foreground = #E1E4DC
-selection-background = #3E3D3F
-selection-foreground = #E1E4DC
-cursor-color = #AF87D7
-
-# black
-palette = 0=#1E1B1F
-palette = 8=#6F6F6E
-# red
-palette = 1=#C45C64
-palette = 9=#C45C64
-# green
-palette = 2=#7AA682
-palette = 10=#7AA682
-# yellow
-palette = 3=#D8B573
-palette = 11=#D8B573
-# blue
-palette = 4=#589CD5
-palette = 12=#589CD5
-# magenta
-palette = 5=#9571B3
-palette = 13=#9571B3
-# cyan
-palette = 6=#4CA5AF
-palette = 14=#4CA5AF
-# white
-palette = 7=#E1E4DC
-palette = 15=#FFFFFB
+palette = 0=#21222c
+palette = 1=#ff5555
+palette = 2=#50fa7b
+palette = 3=#f1fa8c
+palette = 4=#bd93f9
+palette = 5=#ff79c6
+palette = 6=#8be9fd
+palette = 7=#f8f8f2
+palette = 8=#6272a4
+palette = 9=#ff6e6e
+palette = 10=#69ff94
+palette = 11=#ffffa5
+palette = 12=#d6acff
+palette = 13=#ff92df
+palette = 14=#a4ffff
+palette = 15=#ffffff
+background = #222222
+foreground = #f8f8f2
+cursor-color = #f8f8f2
+cursor-text = #282a36
+selection-foreground = #f8f8f2
+selection-background = #44475a

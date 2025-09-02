@@ -2,6 +2,7 @@ return {
   {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
+    lazy = false,
     event = 'InsertEnter',
     build = ':Copilot auth',
     opts = {
@@ -13,8 +14,8 @@ return {
         keymap = {
           -- Disable the built-in mapping, we'll configure it in nvim-cmp.
           accept = '<Bslash><Bslash>',
-          next = '<C-n>',
-          prev = '<C-p>',
+          next = '<M-]>',
+          prev = '<M-[>',
           dismiss = '/',
         },
       },
@@ -25,6 +26,7 @@ return {
       },
     },
     config = function(_, opts)
+      require('copilot').setup(opts)
       Snacks.toggle({
         name = 'Github Copilot',
         get = function()

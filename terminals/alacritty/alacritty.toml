@@ -13,7 +13,7 @@ family = "BerkeleyMono Nerd Font Plus Font Awesome Plus Font Awesome Extension P
 
 [font.offset]
 x = 0
-y = 4
+y = 1
 
 [scrolling]
 history = 10000
@@ -25,7 +25,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 option_as_alt = "Both"
-decorations = "buttonless"
+decorations = "none"
 decorations_theme_variant = "Dark"
 padding = { x = 0, y = 0  }
 dimensions = { columns = 250, lines = 60 }
@@ -33,6 +33,8 @@ dynamic_padding = false
 startup_mode = "Windowed"
 title = "DevTerm"
 dynamic_title=false
+opacity = 0.8
+blur = true
 
 [keyboard]
 bindings = [
