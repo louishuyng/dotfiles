@@ -1,7 +1,9 @@
 # Bash
 alias unset 'set --erase'
 
-alias fetch='neofetch'
+alias cat='bat --style=plain'
+
+alias info='clear && neofetch'
 
 # Text Editor
 alias v="nvim"

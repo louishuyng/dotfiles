@@ -50,7 +50,6 @@ set fish_pager_color_prefix normal --bold --underline
 set fish_pager_color_progress brwhite --background=cyan --bold
 set fish_pager_color_selected_background -r
 
-
 # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
@@ -60,14 +59,14 @@ set fish_greeting ""
 
 zoxide init fish | source
 
-set -gx ATUIN_NOBIND "true"
+set -gx ATUIN_NOBIND true
 atuin init fish | source
 
 switcher init fish | source
 
 # optionally use alias `s` instead of `kubeswitch` (add to config.fish)
 function s --wraps switcher
-        kubeswitch $argv;
+    kubeswitch $argv
 end
 
 # Added by OrbStack: command-line tools and integration
@@ -79,4 +78,3 @@ fish_add_path /Users/louishuyng/.spicetify
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/louishuyng/.lmstudio/bin
 # End of LM Studio CLI section
-
