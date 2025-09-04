@@ -458,6 +458,7 @@ install_cli_tools() {
     brew install aichat # AI cli
     brew install gitkraken-cli # Git kraken
     brew install hurl # Postman CLI alternative
+    brew install tfenv # Terraform version manager
 
 
     # Hack Tools

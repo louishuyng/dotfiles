@@ -5,7 +5,7 @@ fish_add_path ~/.asdf/shims
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
-set -gx TERM "xterm-256color"
+set -gx TERM xterm-256color
 
 #Homebrew's sbin
 fish_add_path /opt/homebrew/bin
@@ -36,11 +36,11 @@ fish_add_path /usr/local/opt/python/libexec/bin
 # #JAVA
 fish_add_path /usr/libexec/java_home
 fish_add_path /opt/homebrew/opt/openjdk/bin
-set -gx CPPFLAGS "-I/opt/homebrew/opt/openjdk/include"
+set -gx CPPFLAGS -I/opt/homebrew/opt/openjdk/include
 #
 # #Golang
 set -gx GOROOT
-set -gx GOBIN  $(go env GOBIN)
+set -gx GOBIN $(go env GOBIN)
 set -gx GOPATH $HOME/development/golib
 set -gx GO111MODULE on
 set -gx GOV $(asdf where golang)
@@ -56,10 +56,10 @@ fish_add_path /usr/local/opt/openssl/bin
 set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/config.toml
 
 # # Editor
-set -gx EDITOR "nvim"
+set -gx EDITOR nvim
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
-set -gx GIT_EDITOR "nvim"
-set -gx REACT_EDITOR "nvim"
+set -gx GIT_EDITOR nvim
+set -gx REACT_EDITOR nvim
 
 # # Fzf
 set -gx FZF_COMPLETION_TRIGGER '**'
@@ -75,7 +75,7 @@ set -gx DISABLE_SPRING true
 set -gx YABAI_CERT yabai-cert
 #
 # # Bat
-set -gx BAT_THEME "TwoDark"
+set -gx BAT_THEME TwoDark
 
 # #Rust
 fish_add_path $HOME/.cargo/bin
@@ -98,7 +98,7 @@ fish_add_path ~/.emacs.d/bin/
 fish_add_path ~/.config/emacs/bin
 
 # MacPort
-fish_add_path /opt/local/bin 
+fish_add_path /opt/local/bin
 
 # Webstorm Path
 fish_add_path /Applications/WebStorm.app/Contents/MacOS
@@ -114,3 +114,6 @@ set -gx VAULT_ADDR http://127.0.0.1:8200
 
 # Ghostty
 fish_add_path SNACKS_GHOSTTY=true
+
+# Terraform
+set -gx TFENV_ARCH arm64
