@@ -12,5 +12,5 @@ function gcre -d 'git commit regask'
     set -l DESCRIPTION $(gum write --placeholder "Details of this change (CTRL+D to finish)")
 
     # Commit the changes
-    git commit -m "$SUMMARY" -m "$DESCRIPTION" --no-verify
+    git commit -m "$SUMMARY" -m "$DESCRIPTION"
 end

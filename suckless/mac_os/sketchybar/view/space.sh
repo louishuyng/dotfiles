@@ -3,7 +3,7 @@
 BIG_ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:20"
 MED_ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:15"
 ICON_FONT="JetbrainsMono Nerd Font Propo:Regular:14"
-SPACE_ICONS=("" "Dev" "" "Web" "Read" "Plan" "Chat" "Any")
+SPACE_ICONS=("" "Dev" "" "Web" "Read" "" "Chat" "Any")
 
 sketchybar --add event aerospace_workspace_change
 
@@ -23,12 +23,8 @@ for i in "${!LIST_SPACES_INDEX[@]}"; do
                         script="$PLUGIN_DIR/space.sh $sid"             \
                         click_script="aerospace workspace $sid"
 
-  if [ $sid == "I" ]; then
+  if [ $sid == "I" ] || [ $sid == "T" ] || [ $sid == "P" ]; then
     sketchybar --set space.$sid label.font="$MED_ICON_FONT"
-  fi
-
-  if [ $sid == "T" ]; then
-    sketchybar --set space.$sid label.font="$BIG_ICON_FONT"
   fi
 done
 

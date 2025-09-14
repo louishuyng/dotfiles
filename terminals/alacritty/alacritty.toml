@@ -13,7 +13,7 @@ family = "BerkeleyMono Nerd Font Plus Font Awesome Plus Font Awesome Extension P
 
 [font.offset]
 x = 0
-y = 1
+y = 0
 
 [scrolling]
 history = 10000
@@ -34,7 +34,7 @@ startup_mode = "Windowed"
 title = "DevTerm"
 dynamic_title=false
 opacity = 0.8
-blur = true
+blur = false
 
 [keyboard]
 bindings = [

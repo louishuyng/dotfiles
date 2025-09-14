@@ -96,7 +96,7 @@ return {
         },
         frappe = {
           base = '#27212E',
-          mantle = '#3F3549',
+          mantle = '#1d1d1d',
           crust = '#231D29',
         },
       },
@@ -106,6 +106,9 @@ return {
             NeoTreeDirectoryIcon = { fg = colors.blue },
             NeoTreeDirectoryName = { fg = colors.green },
             NeoTreeRootName = { fg = colors.mauve },
+            --
+            -- Normal = { bg = 'NONE' },
+            -- NormalNC = { bg = 'NONE' },
           }
         end,
         all = function(color)

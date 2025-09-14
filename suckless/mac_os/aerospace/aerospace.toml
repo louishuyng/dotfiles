@@ -97,7 +97,11 @@ run = ['layout floating', 'move-node-to-workspace D']
 [[on-window-detected]]
 if.app-id = 'ai.elementlabs.lmstudio'
 run = ['layout floating', 'move-node-to-workspace D']
- 
+
+[[on-window-detected]]
+if.app-id = 'org.wireshark.Wireshark'
+run = ['layout floating', 'move-node-to-workspace D']
+
 [[on-window-detected]]
 if.app-id = 'com.axosoft.gitkraken'
 run = ['layout floating', 'move-node-to-workspace D']
@@ -159,7 +163,7 @@ run = ['layout floating', 'move-node-to-workspace R']
 
 [[on-window-detected]]
 if.app-id = 'com.amazon.Lassen'
-run = ['layout floating', 'move-node-to-workspace R']
+run = ['move-node-to-workspace R']
 
 # Workspace Plan
 [[on-window-detected]]
@@ -203,6 +207,10 @@ run = ['layout floating', 'move-node-to-workspace A']
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = ['layout floating', 'move-node-to-workspace A']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.TV'
+run = ['move-node-to-workspace A']
 
 [workspace-to-monitor-force-assignment]
 A = '^built-in'

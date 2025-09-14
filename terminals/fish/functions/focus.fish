@@ -1,8 +1,8 @@
 function focus --description "Now I focus on something"
     # Define list options with icons and corresponding text labels
     set -l LIST_OPTIONS \
-        "󰮡 programming" \
-        " reading" \
+        " craft" \
+        "󰮡 research" \
         "󱢊 relaxing" \
         " deep-work" \
         " meeting" \
