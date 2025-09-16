@@ -17,7 +17,13 @@ if vim.g.theme == 'light' then
   ]]
 end
 
-local C = palettes.get_palette(vim.g.default_dark_catppuccin_theme)
+local C = {}
+if vim.g.theme == 'drak' then
+  C = palettes.get_palette(vim.g.default_dark_catppuccin_theme)
+else
+  C = palettes.get_palette(vim.g.default_light_catppuccin_theme)
+end
+
 local colors = {}
 
 colors.input = C.mantle
