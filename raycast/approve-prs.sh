@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/homebrew/bin/bash
 
 # Required parameters:
 # @raycast.schemaVersion 1

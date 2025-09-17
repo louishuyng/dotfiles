@@ -18,28 +18,28 @@ default-root-container-orientation = 'auto'
 inner.horizontal = 14
 inner.vertical =   14
 outer.top = [{ monitor."Built-in" = 0 }, 0]
-outer.bottom = [{ monitor."Built-in" = 29 }, 29]
+outer.bottom = [{ monitor."Built-in" = 30 }, 30]
 outer.left =       0
 outer.right =      0
 
 [mode.main.binding]
-alt-i = 'workspace I' # Infra (DevOps)
-alt-d = 'workspace D' # Dev (IDE, Coding Tools, etc)
-alt-t = 'workspace T' # Terminal (Main Terminal For Coding with web window inside)
-alt-w = 'workspace W' # Web (Browse or any web development related like figma, etc)
-alt-c = 'workspace C' # Chat (Chat related apps like Slack, Teams, Whatsapp etc)
-alt-r = 'workspace R' # Reading Including book, notes (Kindle, Inkdrop)
-alt-p = 'workspace P' # planing emails (Linear, Jira, Spark etc..)
-alt-a = 'workspace A' # Any (Social Media, Spotify, Music etc)
+alt-i = 'workspace Infra' # Infra (DevOps)
+alt-d = 'workspace Dev' # Dev (IDE, Coding Tools, etc)
+alt-t = 'workspace Terminal' # Terminal (Main Terminal For Coding with web window inside)
+alt-w = 'workspace Web' # Web (Browse or any web development related like figma, etc)
+alt-c = 'workspace Chat' # Chat (Chat related apps like Slack, Teams, Whatsapp etc)
+alt-r = 'workspace Reading' # Reading Including book, notes (Kindle, Inkdrop)
+alt-p = 'workspace Planing' # planing emails (Linear, Jira, Spark etc..)
+alt-a = 'workspace Any' # Any (Social Media, Spotify, Music etc)
 
-alt-shift-i = ['move-node-to-workspace I', 'workspace I']
-alt-shift-d = ['move-node-to-workspace D', 'workspace D']
-alt-shift-t = ['move-node-to-workspace T', 'workspace T']
-alt-shift-w = ['move-node-to-workspace W', 'workspace W']
-alt-shift-c = ['move-node-to-workspace C', 'workspace C']
-alt-shift-r = ['move-node-to-workspace R', 'workspace R']
-alt-shift-p = ['move-node-to-workspace P', 'workspace P']
-alt-shift-a = ['move-node-to-workspace A', 'workspace A']
+alt-shift-i = ['move-node-to-workspace Infra', 'workspace Infra']
+alt-shift-d = ['move-node-to-workspace Dev', 'workspace Dev']
+alt-shift-t = ['move-node-to-workspace Terminal', 'workspace Terminal']
+alt-shift-w = ['move-node-to-workspace Web', 'workspace Web']
+alt-shift-c = ['move-node-to-workspace Chat', 'workspace Chat']
+alt-shift-r = ['move-node-to-workspace Reading', 'workspace Reading']
+alt-shift-p = ['move-node-to-workspace Planing', 'workspace Planing']
+alt-shift-a = ['move-node-to-workspace Any', 'workspace Any']
 
 alt-shift-h = 'move left'
 alt-shift-k = 'move up'
@@ -67,150 +67,154 @@ alt-ctrl-shift-y = 'reload-config'
 # Workspace Infra
 [[on-window-detected]]
 if.app-id = 'com.mongodb.compass'
-run = ['layout floating', 'move-node-to-workspace I']
+run = ['layout floating', 'move-node-to-workspace Infra']
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.datagrip'
-run = ['layout floating', 'move-node-to-workspace I']
+run = ['layout floating', 'move-node-to-workspace Infra']
 
 [[on-window-detected]]
 if.app-id = 'com.electron.kontena-lens'
-run = ['layout floating', 'move-node-to-workspace I']
+run = ['layout floating', 'move-node-to-workspace Infra']
 
 # Workspace Dev
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'app.yaak.desktop'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.jgraph.drawio.desktop'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.usebruno.app'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'ai.elementlabs.lmstudio'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'org.wireshark.Wireshark'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.axosoft.gitkraken'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.exafunction.windsurf'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'tonyapp.devutils'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run = ['move-node-to-workspace D']
+run = ['move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
-run = ['layout floating', 'move-node-to-workspace D']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 # Workspace Terminal
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ['move-node-to-workspace T']
+run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
-run='move-node-to-workspace T'
+run='move-node-to-workspace Terminal'
 
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
-run='move-node-to-workspace T'
+run='move-node-to-workspace Terminal'
 
 # Workspace Web
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = ['move-node-to-workspace W']
+run = ['move-node-to-workspace Web']
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
-run = ['layout floating', 'move-node-to-workspace W']
+run = ['layout floating', 'move-node-to-workspace Web']
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
-run = ['layout floating', 'move-node-to-workspace W']
+run = ['layout floating', 'move-node-to-workspace Web']
 
 # Workspace Reading
 [[on-window-detected]]
 if.app-id = 'com.kingsoft.wpsoffice.mac.global'
-run = ['layout floating', 'move-node-to-workspace R']
+run = ['layout floating', 'move-node-to-workspace Reading']
 
 [[on-window-detected]]
 if.app-id = 'com.amazon.Lassen'
-run = ['move-node-to-workspace R']
+run = ['move-node-to-workspace Reading']
 
 # Workspace Plan
 [[on-window-detected]]
 if.app-id = 'com.readdle.SparkDesktop.appstore'
-run = ['layout floating', 'move-node-to-workspace P']
+run = ['layout floating', 'move-node-to-workspace Planing']
 
 [[on-window-detected]]
 if.app-id = 'info.pkpk.inkdrop'
-run = ['layout floating', 'move-node-to-workspace P']
+run = ['layout floating', 'move-node-to-workspace Planing']
 
 [[on-window-detected]]
 if.app-id = 'com.linear'
-run = ['layout floating', 'move-node-to-workspace P']
+run = ['layout floating', 'move-node-to-workspace Planing']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = ['layout floating', 'move-node-to-workspace Planing']
 
 # Workspace Chat
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace Chat']
 
 [[on-window-detected]]
 if.app-id = 'app.legcord.Legcord'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace Chat']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace Chat']
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace Chat']
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = ['layout floating', 'move-node-to-workspace C']
+run = ['layout floating', 'move-node-to-workspace Chat']
 
 # Workspace Any
 [[on-window-detected]]
 if.app-id = 'com.facebook.archon'
-run = ['layout floating', 'move-node-to-workspace A']
+run = ['layout floating', 'move-node-to-workspace Any']
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = ['layout floating', 'move-node-to-workspace A']
+run = ['layout floating', 'move-node-to-workspace Any']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.TV'
-run = ['move-node-to-workspace A']
+run = ['move-node-to-workspace Any']
 
 [workspace-to-monitor-force-assignment]
-A = '^built-in'
+Any = '^built-in'

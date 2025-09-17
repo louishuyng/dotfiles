@@ -1,3 +1,9 @@
+local events = require('neo-tree.events')
+
+local function on_move(data)
+  Snacks.rename.on_rename_file(data.source, data.destination)
+end
+
 require('neo-tree').setup({
   sources = {
     'filesystem',
@@ -260,5 +266,9 @@ require('neo-tree').setup({
         ['ot'] = { 'order_by_type', nowait = false },
       },
     },
+  },
+  event_handlers = {
+    { event = events.FILE_MOVED, handler = on_move },
+    { event = events.FILE_RENAMED, handler = on_move },
   },
 })

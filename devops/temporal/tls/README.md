@@ -8,7 +8,7 @@ run from a shell
 
 ## Script source with comments
 ```bash
-#!/usr/bin/env bash
+#!/opt/homebrew/bin/bash
 set -xe
 
 # Build container image for generating cert material

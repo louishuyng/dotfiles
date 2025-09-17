@@ -1,75 +1,264 @@
-#!/usr/bin/env sh
+#!/opt/homebrew/bin/bash
 
-source "$HOME/.config/sketchybar/colors.sh"
+# Modern aesthetic sketchybar configuration with aerospace integration
+# Colors and icons are defined in separate files for better organization
 
-PLUGIN_DIR="$HOME/.config/sketchybar/controller"
-ITEM_DIR="$HOME/.config/sketchybar/view"
+source "$CONFIG_DIR/colors.sh"
+source "$CONFIG_DIR/icons.sh"
 
-PADDING=4
-PADDING_LABEL=4
-LABEL="BerkeleyMono Nerd Font Plus Font Awesome Plus Font Awesome Extension Plus Octicons Plus Power Symbols Plus Codicons Plus Pomicons Plus Font Logos Plus Material Design Icons Plus Weather Icons"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-sketchybar --bar     blur_radius=0                                        \
-                     padding_left=0                                       \
-                     padding_right=4                                      \
-                     position=bottom                                      \
-                     y_offset=0 \
-                     height=29 \
-                     sticky=on                                            \
-                     font_smoothing=on                                    \
-                     topmost=window                                           \
+##### Bar Appearance #####
+sketchybar --bar position=bottom height=29 \
+                 color=$BAR_COLOR \
+                 border_width=0 \
+                 corner_radius=0 \
+                 margin=0 \
+                 blur_radius=0 \
+                 padding_left=0 \
+                 padding_right=5 \
+                 shadow=off \
+                 sticky=on \
+                 topmost=window
 
-############## GLOBAL DEFAULTS ##############
-sketchybar           --default updates=when_shown                                   \
-                     drawing=on                                           \
-                     icon.font="$LABEL:Regular:14"                      \
-                     label.font="$LABEL:Regular:14"                    \
-                     icon.padding_left=$PADDING                           \
-                     icon.padding_right=2                          \
-                     label.padding_left=$PADDING_LABEL                          \
-                     label.padding_right=$PADDING_LABEL                         \
+##### Changing Defaults #####
+default=(
+  updates=when_shown
+  icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0"
+  icon.color=$ICON_COLOR
+  icon.padding_left=6
+  icon.padding_right=6
+  label.font="JetbrainsMono Nerd Font Propo:Semibold:13.0"
+  label.color=$LABEL_COLOR
+  label.padding_left=6
+  label.padding_right=6
+  padding_left=8
+  padding_right=8
+  background.height=26
+  background.corner_radius=6
+  background.border_width=1
+  background.border_color=$BACKGROUND_2
+  popup.background.border_width=2
+  popup.background.corner_radius=6
+  popup.background.border_color=$POPUP_BORDER_COLOR
+  popup.background.color=$POPUP_BACKGROUND_COLOR
+)
 
-sketchybar --add item display right \
-  --subscribe display display_change \
-  --set display script="$PLUGIN_DIR/display_change.sh" \
-                icon.drawing=off \
-                label.drawing=off \
+sketchybar --default "${default[@]}"
 
-sketchybar --add event theme_change AppleInterfaceThemeChangedNotification
+##### Left Side Items #####
 
-sketchybar --add item theme right \
-  --subscribe theme theme_change \
-  --set theme script="$PLUGIN_DIR/theme_change.sh" \
-              label.drawing=off \
-              icon.drawing=off \
+# Apple Logo
+sketchybar --add item apple.logo left \
+           --set apple.logo icon=$APPLE \
+                           icon.font="JetbrainsMono Nerd Font Propo:Black:22.0" \
+                           icon.color=$ACCENT_SECONDARY \
+                           padding_right=0 \
+                           padding_left=4 \
+                           label.drawing=off \
+                           click_script="$PLUGIN_DIR/apple.sh"
 
-source "$PLUGIN_DIR/theme_change.sh"
+# Aerospace Display-Aware Workspaces
+sketchybar --add event aerospace_workspace_change
 
-# left
-source "$ITEM_DIR/focus.sh"
-source "$ITEM_DIR/space.sh"
-source "$ITEM_DIR/front_app.sh"
-# source "$ITEM_DIR/space_index.sh"
-# source "$ITEM_DIR/team.sh"
+# Monitor 1 Workspace Indicator (Primary - Built-in Display)
+sketchybar --add item space left \
+           --subscribe space aerospace_workspace_change \
+           --set space \
+                 padding_left=0 \
+                 padding_right=0 \
+                 icon.padding_left=3 \
+                 icon.padding_right=0 \
+                 label.padding_left=0 \
+                 label.padding_right=0 \
+                 background.drawing=off \
+                 script="$PLUGIN_DIR/aerospace_display.sh"
 
-# right
-source "$ITEM_DIR/time.sh"
-source "$ITEM_DIR/keyboard.sh"
-source "$ITEM_DIR/battery.sh"
-source "$ITEM_DIR/mem.sh"
-source "$ITEM_DIR/cpu.sh"
-source "$ITEM_DIR/disk.sh"
-source "$ITEM_DIR/wifi.sh"
-source "$ITEM_DIR/docker.sh"
-source "$ITEM_DIR/vpn.sh"
-source "$ITEM_DIR/ai.sh"
-source "$ITEM_DIR/airpodsbattery.sh"
-source "$ITEM_DIR/spotify.sh"
-# source "$ITEM_DIR/task.sh"
-# source "$ITEM_DIR/github.sh"
-# source "$ITEM_DIR/slack.sh"
+# Monitor Connection Watcher (detects when monitors are connected/disconnected)
+sketchybar --add item monitor_watcher left \
+           --set monitor_watcher \
+                 drawing=off \
+                 update_freq=5 \
+                 script="$PLUGIN_DIR/monitor_watcher.sh"
 
-# initializing
+# Separator
+sketchybar --add item separator left \
+           --set separator icon="󰇙" \
+                          icon.font="JetbrainsMono Nerd Font Propo:Regular:16.0" \
+                          icon.color=$ACCENT_TERTIARY \
+                          padding_left=5 \
+                          padding_right=0 \
+                          label.drawing=off
+
+# Front App
+sketchybar --add item front_app left \
+           --set front_app icon.drawing=on \
+                          icon.font="sketchybar-app-font:Regular:16" \
+                          icon.color=$ACCENT_QUATERNARY \
+                          icon.padding_left=0 \
+                          icon.padding_right=2 \
+                          label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
+                          label.color=$WHITE \
+                          label.padding_left=4 \
+                          label.padding_right=8 \
+                          padding_left=8 \
+                          padding_right=8 \
+                          script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched
+
+##### Right Side Items #####
+
+# Clock
+sketchybar --add item clock right \
+           --set clock icon="󰅐" \
+                       icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+                       icon.color=$YELLOW \
+                       icon.padding_left=8 \
+                       icon.padding_right=6 \
+                       label.font="JetbrainsMono Nerd Font Propo:Medium:12.0" \
+                       label.color=$WHITE \
+                       label.padding_left=4 \
+                       label.padding_right=8 \
+                       update_freq=10 \
+                       script="$PLUGIN_DIR/clock.sh" \
+                       background.color=$BACKGROUND_1 \
+                       background.drawing=on \
+                       padding_left=4 \
+                       padding_right=4 \
+                       click_script="$PLUGIN_DIR/clock_click.sh"
+
+
+# Weather
+sketchybar --add item weather right \
+           --set weather icon="󰖕" \
+                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+                        icon.color=$BLUE \
+                        icon.padding_left=8 \
+                        icon.padding_right=6 \
+                        label.padding_left=4 \
+                        label.padding_right=8 \
+                        update_freq=1800 \
+                        script="$PLUGIN_DIR/weather.sh" \
+                        background.color=$BACKGROUND_1 \
+                        background.drawing=on \
+                        padding_left=4 \
+                        padding_right=4
+
+
+# Calendar Events
+sketchybar --add item calendar right \
+           --set calendar icon.font="JetbrainsMono Nerd Font Propo:Semibold:12.0" \
+                          icon.padding_left=8 \
+                          icon.padding_right=6 \
+                          label.font="JetbrainsMono Nerd Font Propo:Medium:10.0" \
+                          label.padding_left=4 \
+                          label.padding_right=8 \
+                          label.max_chars=25 \
+                          update_freq=300 \
+                          script="$PLUGIN_DIR/calendar.sh" \
+                          background.color=$BACKGROUND_1 \
+                          background.drawing=on \
+                          background.height=26 \
+                          padding_left=4 \
+                          padding_right=4
+
+
+# Now Playing
+sketchybar --add item now_playing right \
+           --set now_playing icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+                            icon.padding_left=8 \
+                            icon.padding_right=6 \
+                            label.font="JetbrainsMono Nerd Font Propo:Medium:12.0" \
+                            label.padding_left=4 \
+                            label.padding_right=8 \
+                            update_freq=2 \
+                            script="$PLUGIN_DIR/now_playing.sh" \
+                            background.color=$BACKGROUND_1 \
+                            background.drawing=on \
+                            drawing=off \
+                            padding_left=0 \
+                            padding_right=4
+
+# WiFi Status
+sketchybar --add item wifi right \
+           --set wifi icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+                      icon.padding_left=8 \
+                      icon.padding_right=8 \
+                      label.drawing=off \
+                      update_freq=10 \
+                      script="$PLUGIN_DIR/wifi.sh" \
+                      background.color=$BACKGROUND_1 \
+                      background.drawing=off \
+                      padding_left=2 \
+                      padding_right=2
+
+# Bluetooth Status
+sketchybar --add item bluetooth right \
+           --set bluetooth icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+                          icon.padding_left=9 \
+                          icon.padding_right=9 \
+                          label.drawing=off \
+                          update_freq=10 \
+                          script="$PLUGIN_DIR/bluetooth.sh" \
+                          background.color=$BACKGROUND_1 \
+                          background.drawing=off \
+                          padding_left=2 \
+                          padding_right=2
+
+
+# Volume
+sketchybar --add item volume right \
+           --set volume icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+                        icon.color=$ACCENT_PRIMARY \
+                        icon.padding_left=10 \
+                        icon.padding_right=12 \
+                        label.drawing=off \
+                        script="$PLUGIN_DIR/volume.sh" \
+                        background.color=$BACKGROUND_1 \
+                        background.drawing=off \
+                        padding_left=2 \
+                        padding_right=2 \
+                        click_script="$PLUGIN_DIR/volume_click.sh" \
+                        popup.background.border_width=2 \
+                        popup.background.corner_radius=6 \
+                        popup.background.border_color=$POPUP_BORDER_COLOR \
+                        popup.background.color=$POPUP_BACKGROUND_COLOR \
+                        popup.horizontal=on \
+           --subscribe volume volume_change
+
+# Battery
+sketchybar --add item battery right \
+           --set battery icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
+                        icon.color=$ACCENT_SECONDARY \
+                        icon.padding_left=8 \
+                        icon.padding_right=6 \
+                        label.font="JetbrainsMono Nerd Font Propo:Medium:12.0" \
+                        label.color=$WHITE \
+                        label.padding_left=4 \
+                        label.padding_right=8 \
+                        update_freq=120 \
+                        script="$PLUGIN_DIR/battery.sh" \
+                        background.color=$BACKGROUND_1 \
+                        background.drawing=off \
+                        padding_left=2 \
+                        padding_right=2 \
+           --subscribe battery system_woke power_source_change
+
+# Pritunl VPN
+# sketchybar --add item pritunl right \
+#            --set pritunl icon="􀤆" \
+#                         icon.font="JetbrainsMono Nerd Font Propo:Semibold:13.0" \
+#                         icon.color=$ACCENT_PRIMARY \
+#                         icon.padding_left=8 \
+#                         icon.padding_right=10 \
+#                         label.drawing=off \
+#                         background.color=$BACKGROUND_1 \
+#                         background.drawing=on \
+#                         padding_left=4 \
+#                         padding_right=4 \
+#                         click_script="open -a Pritunl"
+
+
+##### Finalize Setup #####
 sketchybar --update
 
-echo "sketchybar configuration loaded.."

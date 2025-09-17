@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/opt/homebrew/bin/bash
 
 # Description: Navigate to directory using jump/autojump/zoxide/z
 #

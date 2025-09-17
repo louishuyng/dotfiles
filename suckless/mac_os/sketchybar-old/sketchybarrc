@@ -1,0 +1,75 @@
+#!/opt/homebrew/bin/bash
+
+source "$HOME/.config/sketchybar/colors.sh"
+
+PLUGIN_DIR="$HOME/.config/sketchybar/controller"
+ITEM_DIR="$HOME/.config/sketchybar/view"
+
+PADDING=4
+PADDING_LABEL=4
+LABEL="BerkeleyMono Nerd Font Plus Font Awesome Plus Font Awesome Extension Plus Octicons Plus Power Symbols Plus Codicons Plus Pomicons Plus Font Logos Plus Material Design Icons Plus Weather Icons"
+
+sketchybar --bar     blur_radius=0                                        \
+                     padding_left=0                                       \
+                     padding_right=4                                      \
+                     position=bottom                                      \
+                     y_offset=0 \
+                     height=29 \
+                     sticky=on                                            \
+                     font_smoothing=on                                    \
+                     topmost=window                                           \
+
+############## GLOBAL DEFAULTS ##############
+sketchybar           --default updates=when_shown                                   \
+                     drawing=on                                           \
+                     icon.font="$LABEL:Regular:14"                      \
+                     label.font="$LABEL:Regular:14"                    \
+                     icon.padding_left=$PADDING                           \
+                     icon.padding_right=2                          \
+                     label.padding_left=$PADDING_LABEL                          \
+                     label.padding_right=$PADDING_LABEL                         \
+
+sketchybar --add item display right \
+  --subscribe display display_change \
+  --set display script="$PLUGIN_DIR/display_change.sh" \
+                icon.drawing=off \
+                label.drawing=off \
+
+sketchybar --add event theme_change AppleInterfaceThemeChangedNotification
+
+sketchybar --add item theme right \
+  --subscribe theme theme_change \
+  --set theme script="$PLUGIN_DIR/theme_change.sh" \
+              label.drawing=off \
+              icon.drawing=off \
+
+source "$PLUGIN_DIR/theme_change.sh"
+
+# left
+source "$ITEM_DIR/focus.sh"
+source "$ITEM_DIR/space.sh"
+source "$ITEM_DIR/front_app.sh"
+# source "$ITEM_DIR/space_index.sh"
+# source "$ITEM_DIR/team.sh"
+
+# right
+source "$ITEM_DIR/time.sh"
+source "$ITEM_DIR/keyboard.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/mem.sh"
+source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/disk.sh"
+source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/docker.sh"
+source "$ITEM_DIR/vpn.sh"
+source "$ITEM_DIR/ai.sh"
+source "$ITEM_DIR/airpodsbattery.sh"
+source "$ITEM_DIR/spotify.sh"
+# source "$ITEM_DIR/task.sh"
+# source "$ITEM_DIR/github.sh"
+# source "$ITEM_DIR/slack.sh"
+
+# initializing
+sketchybar --update
+
+echo "sketchybar configuration loaded.."

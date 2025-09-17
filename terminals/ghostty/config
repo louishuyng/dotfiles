@@ -15,10 +15,10 @@ font-family-bold = "Bold"
 font-family-italic = "Oblique"
 font-family-bold-italic = "Bold Oblique"
 
-font-size = 13
+font-size = 12.5
 font-thicken = true
 font-thicken-strength = 0
-adjust-cell-height = 0
+adjust-cell-height = 8
 adjust-cell-width = -1
 
 mouse-hide-while-typing = true

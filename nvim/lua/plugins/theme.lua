@@ -95,7 +95,7 @@ return {
           crust = '#ebebeb',
         },
         frappe = {
-          base = '#000000',
+          base = '#27212E',
           mantle = '#1d1d1d',
           crust = '#231D29',
         },

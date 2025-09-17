@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/homebrew/bin/bash
 olddir=$(pwd)
 
 cd ~/.dotfiles/sketchybar-app-font

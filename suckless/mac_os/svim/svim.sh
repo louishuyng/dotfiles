@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/opt/homebrew/bin/bash
 
 # This script is executed when either the mode changes,
 # or the commandline changes

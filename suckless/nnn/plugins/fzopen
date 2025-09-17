@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/opt/homebrew/bin/bash
 
 # Description: Regular mode:
 #                Fuzzy find a file in directory subtree.
