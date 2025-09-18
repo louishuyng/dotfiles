@@ -51,8 +51,8 @@ sketchybar --default "${default[@]}"
 # Apple Logo
 sketchybar --add item apple.logo left \
            --set apple.logo icon=$APPLE \
-                           icon.font="JetbrainsMono Nerd Font Propo:Black:22.0" \
-                           icon.color=$ACCENT_SECONDARY \
+                           icon.font="Hack Nerd Font:Bold:22.0" \
+                           icon.color=0xffF75208 \
                            padding_right=0 \
                            padding_left=4 \
                            label.drawing=off \
@@ -67,7 +67,7 @@ sketchybar --add item space left \
            --set space \
                  padding_left=0 \
                  padding_right=0 \
-                 icon.padding_left=3 \
+                 icon.padding_left=0 \
                  icon.padding_right=0 \
                  label.padding_left=0 \
                  label.padding_right=0 \
@@ -90,6 +90,36 @@ sketchybar --add item separator left \
                           padding_right=0 \
                           label.drawing=off
 
+# VPN
+sketchybar --add item vpn left \
+           --set vpn icon="􀤆" \
+                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:13.0" \
+                        update_freq=10  \
+                        icon.padding_left=8 \
+                        icon.padding_right=10 \
+                        label.drawing=off \
+                        background.color=$BACKGROUND_1 \
+                        background.drawing=on \
+                        padding_left=4 \
+                        padding_right=4 \
+                        script="$PLUGIN_DIR/vpn.sh" \
+                        click_script="$PLUGIN_DIR/toggle_vpn.sh"
+
+# ORB
+sketchybar --add item docker left \
+           --set docker icon="󰀘" \
+                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+                        update_freq=10  \
+                        icon.padding_left=8 \
+                        icon.padding_right=5 \
+                        label.drawing=off \
+                        background.color=$BACKGROUND_1 \
+                        background.drawing=on \
+                        padding_left=4 \
+                        padding_right=4 \
+                        script="$PLUGIN_DIR/docker.sh" \
+                        click_script="$PLUGIN_DIR/toggle_docker.sh"
+
 # Front App
 sketchybar --add item front_app left \
            --set front_app icon.drawing=on \
@@ -105,6 +135,7 @@ sketchybar --add item front_app left \
                           padding_right=8 \
                           script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
+
 
 ##### Right Side Items #####
 
@@ -179,6 +210,7 @@ sketchybar --add item now_playing right \
                             padding_left=0 \
                             padding_right=4
 
+
 # WiFi Status
 sketchybar --add item wifi right \
            --set wifi icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
@@ -243,20 +275,6 @@ sketchybar --add item battery right \
                         padding_left=2 \
                         padding_right=2 \
            --subscribe battery system_woke power_source_change
-
-# Pritunl VPN
-# sketchybar --add item pritunl right \
-#            --set pritunl icon="􀤆" \
-#                         icon.font="JetbrainsMono Nerd Font Propo:Semibold:13.0" \
-#                         icon.color=$ACCENT_PRIMARY \
-#                         icon.padding_left=8 \
-#                         icon.padding_right=10 \
-#                         label.drawing=off \
-#                         background.color=$BACKGROUND_1 \
-#                         background.drawing=on \
-#                         padding_left=4 \
-#                         padding_right=4 \
-#                         click_script="open -a Pritunl"
 
 
 ##### Finalize Setup #####
