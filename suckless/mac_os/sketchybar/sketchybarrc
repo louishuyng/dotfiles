@@ -150,6 +150,7 @@ sketchybar --add item front_app left \
                           padding_left=8 \
                           padding_right=8 \
                           script="$PLUGIN_DIR/front_app.sh" \
+                          click_script="/opt/homebrew/bin/aerospace focus-back-and-forth" \
            --subscribe front_app front_app_switched
 
 

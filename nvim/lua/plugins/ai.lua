@@ -16,7 +16,7 @@ return {
           accept = '<Bslash><Bslash>',
           next = '<M-]>',
           prev = '<M-[>',
-          dismiss = '/',
+          dismiss = '<M-x>',
         },
       },
       copilot_node_command = vim.fn.expand('$HOME') .. '/.asdf/shims/node',
