@@ -5,25 +5,22 @@ source "$CONFIG_DIR/colors.sh"
 
 # Get count of today's calendar events
 get_event_count() {
-    # Use EventKit to count today's calendar events
+    # Use EventKit to count events from current time to end of today
     local event_count=$(osascript << 'EOF'
 tell application "Calendar"
     set currentDate to current date
     set startOfDay to currentDate - (time of currentDate)
     set endOfDay to startOfDay + (1 * days) - 1
-
     set todayEventCount to 0
     repeat with cal in calendars
-        set calEvents to (events of cal whose start date ≥ startOfDay and start date ≤ endOfDay)
+        set calEvents to (events of cal whose start date ≥ currentDate and start date ≤ endOfDay)
         set todayEventCount to todayEventCount + (count of calEvents)
     end repeat
-
     return todayEventCount
 end tell
 EOF
 )
-
-    echo "$event_count"
+    echo $event_count
 }
 
 # Get calendar information
