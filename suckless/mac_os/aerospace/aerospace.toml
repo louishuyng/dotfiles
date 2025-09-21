@@ -217,4 +217,11 @@ if.app-id = 'com.apple.TV'
 run = ['move-node-to-workspace Any']
 
 [workspace-to-monitor-force-assignment]
+Infra = 1
+Dev = '^built-in'
+Terminal = '^built-in'
+Web = 1
+Chat = '^built-in'
+Reading = 1
+Planing = 1
 Any = '^built-in'
