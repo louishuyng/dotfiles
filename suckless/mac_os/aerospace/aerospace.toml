@@ -31,6 +31,8 @@ alt-c = 'workspace Chat' # Chat (Chat related apps like Slack, Teams, Whatsapp e
 alt-r = 'workspace Reading' # Reading Including book, notes (Kindle, Inkdrop)
 alt-p = 'workspace Planing' # planing emails (Linear, Jira, Spark etc..)
 alt-a = 'workspace Any' # Any (Social Media, Spotify, Music etc)
+alt-1 = 'workspace External-1' # Workspace for external monitor more focus on coding and devops
+alt-2 = 'workspace External-2' # Workspace for external monitor more focusing on reading and browsing
 
 alt-shift-i = ['move-node-to-workspace Infra', 'workspace Infra']
 alt-shift-d = ['move-node-to-workspace Dev', 'workspace Dev']
@@ -40,6 +42,8 @@ alt-shift-c = ['move-node-to-workspace Chat', 'workspace Chat']
 alt-shift-r = ['move-node-to-workspace Reading', 'workspace Reading']
 alt-shift-p = ['move-node-to-workspace Planing', 'workspace Planing']
 alt-shift-a = ['move-node-to-workspace Any', 'workspace Any']
+alt-shift-1 = ['move-node-to-workspace External-1', 'workspace External-1']
+alt-shift-2 = ['move-node-to-workspace External-2', 'workspace External-2']
 
 alt-shift-h = 'move left'
 alt-shift-k = 'move up'
@@ -149,7 +153,7 @@ if.app-id = 'app.zen-browser.zen'
 run = ['move-node-to-workspace Web']
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'company.thebrowser.Web'
 run = ['layout floating', 'move-node-to-workspace Web']
 
 [[on-window-detected]]
@@ -168,19 +172,19 @@ run = ['move-node-to-workspace Reading']
 # Workspace Plan
 [[on-window-detected]]
 if.app-id = 'com.readdle.SparkDesktop.appstore'
-run = ['layout floating', 'move-node-to-workspace Planing']
+run = ['move-node-to-workspace Planing']
 
 [[on-window-detected]]
 if.app-id = 'info.pkpk.inkdrop'
-run = ['layout floating', 'move-node-to-workspace Planing']
+run = ['move-node-to-workspace Planing']
 
 [[on-window-detected]]
 if.app-id = 'com.linear'
-run = ['layout floating', 'move-node-to-workspace Planing']
+run = ['move-node-to-workspace Planing']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = ['layout floating', 'move-node-to-workspace Planing']
+run = ['move-node-to-workspace Planing']
 
 # Workspace Chat
 [[on-window-detected]]
@@ -217,11 +221,13 @@ if.app-id = 'com.apple.TV'
 run = ['move-node-to-workspace Any']
 
 [workspace-to-monitor-force-assignment]
-Infra = 1
+Infra = '^built-in'
 Dev = '^built-in'
 Terminal = '^built-in'
-Web = 1
+Web = '^built-in'
 Chat = '^built-in'
-Reading = 1
-Planing = 1
+Reading = '^built-in'
+Planing = '^built-in'
 Any = '^built-in'
+External-1 = 1
+External-2 = 1
