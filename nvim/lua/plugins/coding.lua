@@ -51,7 +51,7 @@ return {
   --     })
   --   end,
   -- },
-  { 'nvim-treesitter/nvim-treesitter-context', event = { 'BufReadPost', 'BufNewFile' } },
+  -- { 'nvim-treesitter/nvim-treesitter-context', event = { 'BufReadPost', 'BufNewFile' } },
 
   -- ROR
   -- { 'tpope/vim-rails' },

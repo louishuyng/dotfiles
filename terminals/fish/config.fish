@@ -78,3 +78,4 @@ fish_add_path /Users/louishuyng/.spicetify
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/louishuyng/.lmstudio/bin
 # End of LM Studio CLI section
+export PATH="$HOME/.local/bin:$PATH"

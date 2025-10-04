@@ -106,7 +106,6 @@ return {
             NeoTreeDirectoryIcon = { fg = colors.blue },
             NeoTreeDirectoryName = { fg = colors.green },
             NeoTreeRootName = { fg = colors.mauve },
-            --
             -- Normal = { bg = 'NONE' },
             -- NormalNC = { bg = 'NONE' },
           }

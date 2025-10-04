@@ -5,18 +5,18 @@ auto-update-channel = tip
 theme = dark:dark,light:light
 
 background-opacity = 1
-background-blur = false
+background-blur = 0
 
 shell-integration = none
 
-# font-family = "Terminess Nerd Font"
-font-family = "Berkeley Mono"
+font-family = "Jetbrains Mono Nerd Font"
+# font-family = "Berkeley Mono"
 font-family-bold = "Bold"
 font-family-italic = "Oblique"
 font-family-bold-italic = "Bold Oblique"
 
 font-size = 12.5
-font-thicken = true
+font-thicken = false
 font-thicken-strength = 0
 adjust-cell-height = 8
 adjust-cell-width = -1

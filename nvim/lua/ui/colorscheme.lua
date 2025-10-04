@@ -18,7 +18,7 @@ if vim.g.theme == 'light' then
 end
 
 local C = {}
-if vim.g.theme == 'drak' then
+if vim.g.theme == 'night' then
   C = palettes.get_palette(vim.g.default_dark_catppuccin_theme)
 else
   C = palettes.get_palette(vim.g.default_light_catppuccin_theme)

@@ -1,6 +1,3 @@
-[user]
-	email = louis.nguyen@regask.com
-	name = Louis Huy Nguyen
 [core]
         pager = delta
 	excludesfile = /Users/louishuyng/.gitignore_global

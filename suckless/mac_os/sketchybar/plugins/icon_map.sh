@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/bash
+#!/usr/bin/env bash
 
 ### START-OF-ICON-MAP
 function __icon_map() {

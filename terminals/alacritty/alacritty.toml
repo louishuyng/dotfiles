@@ -2,7 +2,7 @@
 TERM = "xterm-256color"
 
 [font]
-size = 12.5
+size = 12
 
 [font.glyph_offset]
 x = 0
@@ -12,8 +12,8 @@ y = 0
 family = "JetBrainsMono Nerd Font"
 
 [font.offset]
-x = -1
-y = 5
+x = 0
+y = 8
 
 [scrolling]
 history = 10000
@@ -26,14 +26,14 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 option_as_alt = "Both"
 decorations = "none"
-decorations_theme_variant = "Dark"
+decorations_theme_variant = "none"
 padding = { x = 0, y = 0  }
 dimensions = { columns = 250, lines = 60 }
-dynamic_padding = false
+dynamic_padding = true
 startup_mode = "Windowed"
 title = "DevTerm"
 dynamic_title=false
-opacity = 0.8
+opacity = 0.95
 blur = false
 
 [keyboard]
@@ -51,6 +51,3 @@ working_directory = "None"
 import = [
   "~/.dotfiles/terminals/alacritty/theme.toml",
 ]
-
-[cursor]
-unfocused_hollow = false

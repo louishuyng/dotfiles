@@ -10,6 +10,7 @@ alias v="nvim"
 alias nvt='nvim --cmd "set rtp+=./"'
 alias em="emacs -nw"
 alias c="clear"
+alias nv="nvim"
 
 # History
 alias h='history'

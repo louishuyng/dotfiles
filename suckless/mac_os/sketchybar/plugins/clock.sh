@@ -4,8 +4,8 @@
 source "$CONFIG_DIR/colors.sh"
 
 # Get current time and date
-TIME=$(date "+%I:%M %p")
-DATE=$(date "+%a %d %b")
+TIME=$(date '+%H:%M')
+DATE=$(date '+%b-%d')
 
 # Format the label with both time and date
 LABEL="$TIME  $DATE"

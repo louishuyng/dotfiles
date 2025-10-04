@@ -28,7 +28,7 @@ EVENT_COUNT=$(get_event_count 2>/dev/null)
 
 # Function to open Calendar app
 open_calendar() {
-    osascript -e 'tell application "Calendar" to activate'
+  open -a "Calendar"
 }
 
 if [[ -z "$EVENT_COUNT" ]] || [[ "$EVENT_COUNT" -eq 0 ]]; then

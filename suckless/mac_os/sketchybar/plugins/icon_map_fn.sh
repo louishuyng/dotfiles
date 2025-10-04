@@ -106,7 +106,7 @@ function __icon_map() {
    "BluOS Controller")
         icon_result=":bluos_controller:"
         ;;
-   "Books" | "Calibre" | "Bücher" | "Kindle")
+   "Books" | "Calibre" | "Bücher")
         icon_result=":book:"
         ;;
    "Brave Browser")

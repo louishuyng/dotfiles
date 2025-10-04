@@ -51,7 +51,6 @@ alias lt="exa --tree --level=2 --long --icons --header --git"
 alias http='xh'
 
 alias du='ncdu'
-alias df='duf'
 
 alias top2='bpytop'
 

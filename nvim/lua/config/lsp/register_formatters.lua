@@ -17,7 +17,6 @@ require('conform').setup({
     markdown = { 'markdownlint' },
     fish = { 'fish_indent' },
     sh = { 'shfmt' },
-    yaml = { 'yamlfmt' },
     go = { 'gofmt' },
   },
 })

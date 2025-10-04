@@ -18,7 +18,7 @@ default-root-container-orientation = 'auto'
 inner.horizontal = 14
 inner.vertical =   14
 outer.top = [{ monitor."Built-in" = 0 }, 0]
-outer.bottom = [{ monitor."Built-in" = 30 }, 30]
+outer.bottom = [{ monitor."Built-in" = 31 }, 31]
 outer.left =       0
 outer.right =      0
 

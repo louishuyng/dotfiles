@@ -183,3 +183,8 @@ vim.cmd([[
 
 -- AI
 vim.g.copilot_enabled = true
+
+-- cliboard
+vim.cmd([[
+  set clipboard+=unnamedplus
+]])
