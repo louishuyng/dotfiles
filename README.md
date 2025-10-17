@@ -1,6 +1,6 @@
 ## Description
-
 A basic set of dotfiles to enhance my daily development workflow
+
 
 ## Terminal & Coding
 

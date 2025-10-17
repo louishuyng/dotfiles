@@ -2,15 +2,16 @@ auto-update-channel = tip
 
 # custom-shader = shaders/custom_shader.glsl
 
-theme = dark:dark,light:light
+theme = dark:dark,light:Builtin Solarized Light
 
 background-opacity = 1
 background-blur = 0
+cursor-color = #AF87D7
 
 shell-integration = none
 
-font-family = "Jetbrains Mono Nerd Font"
-# font-family = "Berkeley Mono"
+# font-family = "Jetbrains Mono Nerd Font"
+font-family = "Berkeley Mono"
 font-family-bold = "Bold"
 font-family-italic = "Oblique"
 font-family-bold-italic = "Bold Oblique"
@@ -18,7 +19,7 @@ font-family-bold-italic = "Bold Oblique"
 font-size = 12.5
 font-thicken = false
 font-thicken-strength = 0
-adjust-cell-height = 8
+adjust-cell-height = 15%
 adjust-cell-width = -1
 
 mouse-hide-while-typing = true

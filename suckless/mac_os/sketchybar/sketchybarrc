@@ -9,7 +9,7 @@ source "$CONFIG_DIR/icons.sh"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 ##### Bar Appearance #####
-sketchybar --bar position=bottom height=32 \
+sketchybar --bar position=top height=32 \
                  color=$BAR_COLOR \
                  border_width=0 \
                  corner_radius=0 \
@@ -24,11 +24,11 @@ sketchybar --bar position=bottom height=32 \
 ##### Changing Defaults #####
 default=(
   updates=when_shown
-  icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0"
+  icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0"
   icon.color=$ICON_COLOR
   icon.padding_left=6
   icon.padding_right=6
-  label.font="JetbrainsMono Nerd Font Propo:Semibold:13.0"
+  label.font="JetbrainsMono Nerd Font Propo:Semibold:14.0"
   label.color=$LABEL_COLOR
   label.padding_left=6
   label.padding_right=6
@@ -51,7 +51,7 @@ sketchybar --default "${default[@]}"
 # Apple Logo
 sketchybar --add item logo left \
            --set logo icon=$APPLE \
-                           icon.font="JetbrainsMono Nerd Font Propo:Semibold:22.0" \
+                           icon.font="JetbrainsMono Nerd Font Propo:Semibold:23.0" \
                            icon.color=0xffF75208 \
                            padding_right=0 \
                            padding_left=0 \
@@ -86,7 +86,7 @@ sketchybar --add item display center \
 # Separator
 sketchybar --add item separator left \
            --set separator icon="󰇙" \
-                          icon.font="JetbrainsMono Nerd Font Propo:Regular:16.0" \
+                          icon.font="JetbrainsMono Nerd Font Propo:Regular:17.0" \
                           icon.color=$ACCENT_TERTIARY \
                           padding_left=5 \
                           padding_right=0 \
@@ -97,7 +97,7 @@ sketchybar --add item separator left \
 sketchybar --add item devops left \
            --set devops icon=$DEVOPS \
                         icon.color=$GREY \
-                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:20.0" \
+                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:21.0" \
                         update_freq=10  \
                         icon.padding_left=8 \
                         icon.padding_right=5 \
@@ -112,10 +112,10 @@ sketchybar --add item devops left \
 sketchybar --add item github left \
            --set github icon=$GITHUB \
                         icon.color=$GREY \
-                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:17.0" \
+                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:18.0" \
                         update_freq=60  \
                         icon.padding_left=8 \
-                        label.font="JetbrainsMono Nerd Font Propo:Medium:12.0" \
+                        label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
                         label.color=$WHITE \
                         label.drawing=on \
                         background.color=$BACKGROUND_1 \
@@ -128,7 +128,7 @@ sketchybar --add item github left \
 # VPN
 sketchybar --add item vpn left \
            --set vpn icon="􀤆" \
-                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:13.0" \
+                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:14.0" \
                         update_freq=10  \
                         icon.padding_left=8 \
                         icon.padding_right=10 \
@@ -143,7 +143,7 @@ sketchybar --add item vpn left \
 # ORB
 sketchybar --add item docker left \
            --set docker icon="󰀘" \
-                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
                         update_freq=10  \
                         icon.padding_left=8 \
                         icon.padding_right=5 \
@@ -158,7 +158,7 @@ sketchybar --add item docker left \
 # Front App
 sketchybar --add item front_app left \
            --set front_app icon.drawing=on \
-                          icon.font="sketchybar-app-font:Regular:17" \
+                          icon.font="sketchybar-app-font:Regular:18" \
                           icon.color=$ACCENT_QUATERNARY \
                           icon.padding_left=0 \
                           icon.padding_right=2 \
@@ -179,29 +179,29 @@ sketchybar --add item front_app left \
 # Clock
 sketchybar --add item clock right \
            --set clock icon="󰅐" \
-                       icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+                       icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
                        icon.color=$YELLOW \
                        icon.padding_left=8 \
                        icon.padding_right=6 \
-                       label.font="JetbrainsMono Nerd Font Propo:Medium:12.0" \
+                       label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
                        label.color=$WHITE \
-                       label.padding_left=4 \
+                       label.padding_left=0 \
                        label.padding_right=8 \
                        update_freq=10 \
                        script="$PLUGIN_DIR/clock.sh" \
                        background.color=$BACKGROUND_1 \
-                       background.drawing=on \
+                       background.drawing=off \
                        padding_left=2 \
                        padding_right=0 \
                        click_script="$PLUGIN_DIR/clock_click.sh"
 
 # CPU
 sketchybar --add item cpu right \
-           --set cpu icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
+           --set cpu icon.font="JetbrainsMono Nerd Font Propo:Semibold:18.0" \
                         icon.padding_left=8 \
                         icon.padding_right=6 \
-                        label.font="JetbrainsMono Nerd Font Propo:Medium:12.0" \
-                        label.padding_left=4 \
+                        label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
+                        label.padding_left=0 \
                         label.padding_right=4 \
                         update_freq=10 \
                         script="$PLUGIN_DIR/cpu.sh" \
@@ -211,13 +211,13 @@ sketchybar --add item cpu right \
                         padding_right=0 \
 # RAM
 sketchybar --add item ram right \
-           --set ram icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
+           --set ram icon.font="JetbrainsMono Nerd Font Propo:Semibold:17.0" \
                         icon=$RAM \
                         icon.color=$MAGENTA \
                         icon.padding_left=8 \
                         icon.padding_right=6 \
-                        label.font="JetbrainsMono Nerd Font Propo:Medium:12.0" \
-                        label.padding_left=4 \
+                        label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
+                        label.padding_left=0 \
                         label.padding_right=4 \
                         update_freq=10 \
                         script="$PLUGIN_DIR/ram.sh" \
@@ -228,15 +228,16 @@ sketchybar --add item ram right \
 
 # disk
 sketchybar --add item disk right \
-           --set disk icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+           --set disk icon.font="JetbrainsMono Nerd Font Propo:Semibold:17.0" \
                              icon=$DISK \
                              icon.color=$RED \
                              icon.padding_left=8 \
                              icon.padding_right=4 \
                              label.drawing=on \
                              update_freq=60 \
-                             label.padding_left=4 \
-                             label.padding_right=8 \
+                             label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
+                             label.padding_left=0 \
+                             label.padding_right=4 \
                              script="$PLUGIN_DIR/disk.sh" \
                              background.color=$BACKGROUND_1 \
                              background.drawing=off \
@@ -247,11 +248,11 @@ sketchybar --add item disk right \
 
 # Calendar Events
 sketchybar --add item calendar right \
-           --set calendar icon.font="JetbrainsMono Nerd Font Propo:Semibold:12.0" \
+           --set calendar icon.font="JetbrainsMono Nerd Font Propo:Semibold:13.0" \
                           icon.padding_left=8 \
                           icon.padding_right=6 \
-                          label.font="JetbrainsMono Nerd Font Propo:Medium:10.0" \
-                          label.padding_left=4 \
+                          label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
+                          label.padding_left=2 \
                           label.padding_right=8 \
                           label.max_chars=25 \
                           update_freq=300 \
@@ -265,10 +266,10 @@ sketchybar --add item calendar right \
 
 # Now Playing
 sketchybar --add item now_playing right \
-           --set now_playing icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+           --set now_playing icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
                             icon.padding_left=8 \
                             icon.padding_right=6 \
-                            label.font="JetbrainsMono Nerd Font Propo:Medium:12.0" \
+                        label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
                             label.padding_left=4 \
                             label.padding_right=8 \
                             update_freq=2 \
@@ -281,7 +282,7 @@ sketchybar --add item now_playing right \
 
 # Volume
 sketchybar --add item volume right \
-           --set volume icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+           --set volume icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
                         icon.color=$ACCENT_PRIMARY \
                         icon.padding_left=10 \
                         icon.padding_right=12 \
@@ -303,7 +304,7 @@ sketchybar --add item volume right \
 # Input Source
 # sketchybar --add       event              input_change 'AppleSelectedInputSourcesChangedNotification' \
 #             --add item input_source right \
-#             --set input_source icon.font="JetbrainsMono Nerd Font Propo:Semibold:13.0" \
+#             --set input_source icon.font="JetbrainsMono Nerd Font Propo:Semibold:14.0" \
 #                               icon.padding_left=10 \
 #                               icon.padding_right=12 \
 #                               label.drawing=off \
@@ -318,13 +319,13 @@ sketchybar --add item volume right \
 
 # Battery
 sketchybar --add item battery right \
-           --set battery icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
+           --set battery icon.font="JetbrainsMono Nerd Font Propo:Semibold:17.0" \
                         icon.color=$ACCENT_SECONDARY \
                         icon.padding_left=8 \
                         icon.padding_right=6 \
-                        label.font="JetbrainsMono Nerd Font Propo:Medium:12.0" \
+                        label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
                         label.color=$WHITE \
-                        label.padding_left=4 \
+                        label.padding_left=0 \
                         label.padding_right=8 \
                         update_freq=120 \
                         script="$PLUGIN_DIR/battery.sh" \
@@ -337,7 +338,7 @@ sketchybar --add item battery right \
 # Weather
 # sketchybar --add item weather right \
 #            --set weather icon="󰖕" \
-#                         icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+#                         icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
 #                         icon.color=$BLUE \
 #                         icon.padding_left=8 \
 #                         icon.padding_right=6 \
@@ -352,7 +353,7 @@ sketchybar --add item battery right \
 #
 # Bluetooth Status
 # sketchybar --add item bluetooth right \
-#           --set bluetooth icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+#           --set bluetooth icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
 #           icon.padding_left=9 \
 #           icon.padding_right=9 \
 #           label.drawing=off \
@@ -365,7 +366,7 @@ sketchybar --add item battery right \
 #
 # WiFi Status
 sketchybar --add item wifi right \
-           --set wifi icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
+           --set wifi icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
                       icon.padding_left=8 \
                       icon.padding_right=8 \
                       label.drawing=off \

@@ -17,10 +17,10 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 14
 inner.vertical =   14
-outer.top = [{ monitor."Built-in" = 0 }, 0]
-outer.bottom = [{ monitor."Built-in" = 31 }, 31]
-outer.left =       0
-outer.right =      0
+outer.top = [{ monitor."Built-in" = 3 }, 35]
+outer.bottom = [{ monitor."Built-in" = 0 }, 0]
+outer.left =       3
+outer.right =      3
 
 [mode.main.binding]
 alt-i = 'workspace Infra' # Infra (DevOps)
@@ -92,6 +92,14 @@ run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.jgraph.drawio.desktop'
+run = ['layout floating', 'move-node-to-workspace Dev']
+
+[[on-window-detected]]
+if.app-id = 'com.conductor.app'
+run = ['layout floating', 'move-node-to-workspace Dev']
+
+[[on-window-detected]]
+if.app-id = 'com.install4j.9806-1938-4586-6531.70'
 run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]

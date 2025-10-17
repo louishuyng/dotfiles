@@ -79,3 +79,6 @@ fish_add_path /Users/louishuyng/.spicetify
 set -gx PATH $PATH /Users/louishuyng/.lmstudio/bin
 # End of LM Studio CLI section
 export PATH="$HOME/.local/bin:$PATH"
+
+# opencode
+fish_add_path /Users/louishuyng/.opencode/bin

@@ -47,6 +47,7 @@ return {
   -- Markdown
   {
     'MeanderingProgrammer/render-markdown.nvim',
+    lazy = false,
     ft = 'markdown',
     opts = {},
   },

@@ -62,4 +62,10 @@ vim.fn.setreg('l', "yoconsole.log('" .. esc .. 'pa:' .. esc .. 'la, ' .. esc .. 
 vim.keymap.set('n', '<leader>mo', ':Noice all<CR>', { desc = 'Log vim messages', silent = true, noremap = true })
 
 -- Reload Buffer
-vim.keymap.set('n', '<leader>rb', ':e!<CR>', { desc = 'Reload buffer', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>rb', function()
+  -- Reload the current buffer lsp and enable copilot
+  vim.cmd('edit!')
+  vim.cmd('LspRestart')
+  vim.cmd('Copilot enable')
+  vim.notify('Buffer reloaded', vim.log.levels.INFO)
+end, { desc = 'Reload buffer', silent = true, noremap = true })

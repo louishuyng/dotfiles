@@ -10,7 +10,8 @@ vim.g.startup_bookmarks = {
 
 vim.g.default_dark_theme = 'night'
 vim.g.default_light_theme = 'light'
-vim.g.default_dark_catppuccin_theme = 'frappe'
+vim.g.default_dark_catppuccin_theme = 'mocha'
+vim.g.default_light_catppuccin_theme = 'latte'
 
 vim.g.home_dir = '/Users/louishuyng'
 vim.g.work_project_dir = vim.g.home_dir .. '/LX14/projects'
@@ -84,8 +85,6 @@ opt.foldenable = false
 opt.foldlevel = 99
 
 opt.belloff = 'all' -- Just turn the dang bell off
-
-opt.clipboard = 'unnamedplus'
 
 opt.inccommand = 'split'
 opt.swapfile = false -- Living on the edge

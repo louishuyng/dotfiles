@@ -94,7 +94,23 @@ lualine.setup {
           return ''
         end,
         color = function()
-          return { fg = colors.green0 }
+          local mode = vim.fn.mode()
+          local mode_color = {
+            n = colors.blue1,
+            i = colors.green1,
+            v = colors.purple1,
+            V = colors.purple1,
+            ['\22'] = colors.purple1,
+            c = colors.yellow1,
+            s = colors.purple1,
+            S = colors.purple1,
+            ['\19'] = colors.purple1,
+            R = colors.red1,
+            r = colors.red1,
+            ['!'] = colors.yellow1,
+            t = colors.green1,
+          }
+          return { fg = mode_color[mode] or colors.blue1 }
         end,
       },
     },

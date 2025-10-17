@@ -55,7 +55,7 @@ function __icon_map() {
    "Anytype")
         icon_result=":anytype:"
         ;;
-   "Apifox")
+   "Apifox" | "Burp Suite Community Edition")
         icon_result=":apifox:"
         ;;
    "App Eraser")

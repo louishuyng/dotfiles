@@ -9,7 +9,14 @@ vim.lsp.config('yamlls', {
         url = 'https://www.schemastore.org/api/json/catalog.json',
       },
       schemas = {
-        kubernetes = { '*.yml', '*.yaml' },
+        ['https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/all.json'] = {
+          'k8s/**/*.{yml,yaml}',
+          'kubernetes/**/*.{yml,yaml}',
+          'devops/**/*.{yml,yaml}',
+          'knative/**/*.{yml,yaml}',
+          '**/templates/*.{yml,yaml}',
+          'templates/*.{yml,yaml}',
+        },
         ['http://json.schemastore.org/github-workflow'] = '.github/workflows/*',
         ['http://json.schemastore.org/github-action'] = '.github/action.{yml,yaml}',
         ['http://json.schemastore.org/ansible-stable-2.9'] = 'roles/tasks/*.{yml,yaml}',

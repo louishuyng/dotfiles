@@ -1,11 +1,13 @@
-require('conform').setup({
-  lsp_format = 'prefer',
-  notify_on_error = false,
-  format_on_save = {
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 500,
-  },
+local conform = require('conform')
+
+conform.setup({
+  notify_on_error = true,
+  format_on_save = function(bufnr)
+    return {
+      timeout_ms = 3000,
+      lsp_fallback = true,
+    }
+  end,
   formatters_by_ft = {
     javascript = { 'prettier', 'eslint' },
     typescript = { 'prettier', 'eslint' },
@@ -18,12 +20,23 @@ require('conform').setup({
     fish = { 'fish_indent' },
     sh = { 'shfmt' },
     go = { 'gofmt' },
+    python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format', 'autopep8' },
   },
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*',
-  callback = function(args)
-    require('conform').format({ bufnr = args.buf })
-  end,
+  formatters = {
+    ruff_fix = {
+      command = 'ruff',
+      args = { 'fix', '--stdin-filename', '$FILENAME', '-' },
+      stdin = true,
+    },
+    ruff_format = {
+      command = 'ruff',
+      args = { 'format', '--stdin-filename', '$FILENAME', '-' },
+      stdin = true,
+    },
+    autopep8 = {
+      command = 'autopep8',
+      args = { '--aggressive', '--aggressive', '-' },
+      stdin = true,
+    },
+  },
 })

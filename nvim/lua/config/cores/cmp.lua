@@ -1,98 +1,81 @@
 local present, cmp = pcall(require, 'cmp')
 local compare = require('cmp.config.compare')
+local defaults = require('cmp.config.default')()
 local luasnip = require('luasnip')
 
-local icons = require('config.libs.icons')
+-- for conciseness
+local opt = vim.opt -- vim options
 
+-- set options
+opt.completeopt = 'menu,menuone,noselect'
 if not present then
   return
 end
 
-local iconsKinds = {
-  Array = ' ',
-  Boolean = '󰨙 ',
-  Class = ' ',
-  Codeium = '󰘦 ',
-  Color = ' ',
-  Control = ' ',
-  Collapsed = ' ',
-  Constant = '󰏿 ',
-  Constructor = ' ',
-  Copilot = ' ',
-  Enum = ' ',
-  EnumMember = ' ',
-  Event = ' ',
-  Field = ' ',
-  File = ' ',
-  Folder = ' ',
-  Function = '󰊕 ',
-  Interface = ' ',
-  Key = ' ',
-  Keyword = ' ',
-  Method = '󰊕 ',
-  Module = ' ',
-  Namespace = '󰦮 ',
-  Null = ' ',
-  Number = '󰎠 ',
-  Object = ' ',
-  Operator = ' ',
-  Package = ' ',
-  Property = ' ',
-  Reference = ' ',
-  Snippet = '󱄽 ',
-  String = ' ',
-  Struct = '󰆼 ',
-  Supermaven = ' ',
-  TabNine = '󰏚 ',
-  Text = ' ',
-  TypeParameter = ' ',
-  Unit = ' ',
-  Value = ' ',
-  Variable = '󰀫 ',
+local COMPLETION_KIND = {
+  Text = true,
+  Method = true,
+  Function = true,
+  Constructor = true,
+  Field = true,
+  Variable = true,
+  Class = true,
+  Interface = true,
+  Module = true,
+  Property = true,
+  Unit = true,
+  Value = true,
+  Enum = true,
+  Keyword = true,
+  Snippet = true,
+  Color = true,
+  File = true,
+  Reference = true,
+  Folder = true,
+  EnumMember = true,
+  Constant = true,
+  Struct = true,
+  Event = true,
+  Operator = true,
+  TypeParameter = true,
 }
 
-vim.opt.completeopt = 'menuone,noselect'
-
 cmp.setup {
-  performance = {
-    debounce = 100,
-    throttle = 50,
-    fetching_timeout = 300,
-    confirm_resolve_timeout = 80,
-    async_budget = 1,
-    max_view_entries = 50,
-  },
   preselect = cmp.PreselectMode.Item,
-  window = {
-    completion = {
-      winhighlight = 'Normal:Pmenu,CursorLine:PmenuSel,Search:None',
-    },
-    documentation = {
-      winhighlight = 'Normal:Pmenu,CursorLine:PmenuSel,Search:None',
-    },
-  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+    documentation = {
+      border = 'rounded', -- single|rounded|none
+    },
+  },
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },
     format = function(entry, item)
-      local icons = iconsKinds
-      if icons[item.kind] then
-        item.kind = icons[item.kind] .. item.kind
+      local icons = require('config.libs.icons').kinds
+      local kind = item.kind
+      local kind_hl_group = ('CmpItemKind%s'):format(kind)
+
+      item.kind = (' %s '):format(icons[kind])
+
+      local source = entry.source.name
+      item.menu = kind
+
+      if source == 'buffer' then
+        item.menu_hl_group = nil
+        item.menu = nil
       end
 
-      local widths = {
-        abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
-        menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
-      }
+      local half_win_width = math.floor(vim.api.nvim_win_get_width(0) * 0.5)
+      if vim.api.nvim_strwidth(item.abbr) > half_win_width then
+        item.abbr = ('%s…'):format(item.abbr:sub(1, half_win_width))
+      end
 
-      for key, width in pairs(widths) do
-        if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
-          item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. '…'
-        end
+      if item.menu then -- Add exta space to visually differentiate `abbr` and `menu`
+        item.abbr = ('%s '):format(item.abbr)
       end
 
       return item
@@ -138,33 +121,27 @@ cmp.setup {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
   },
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      compare.offset,
-      compare.exact,
-      compare.score,
-      compare.recently_used,
-      compare.locality,
-      compare.kind,
-      compare.sort_text,
-      compare.length,
-      compare.order,
-    },
-  },
-  sources = {
+  sources = cmp.config.sources({
     { name = 'lazydev' },
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'path' },
+  }, {
     { name = 'buffer' },
-  },
+  }),
+  sorting = defaults.sorting,
 }
 
--- `/` cmdline setup.
+-- `/` cmdline setup with borders
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' },
+  },
+  window = {
+    completion = {
+      border = 'rounded',
+      winhighlight = 'Normal:Pmenu,FloatBorder:PmenuBorder,CursorLine:PmenuSel,Search:None',
+    },
   },
 })
 
@@ -174,4 +151,10 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({ { name = 'path' } }, {
     { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } },
   }),
+  window = {
+    completion = {
+      border = 'rounded',
+      winhighlight = 'Normal:Pmenu,FloatBorder:PmenuBorder,CursorLine:PmenuSel,Search:None',
+    },
+  },
 })

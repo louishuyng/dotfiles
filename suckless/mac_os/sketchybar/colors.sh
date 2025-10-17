@@ -26,7 +26,8 @@ export BATTERY_4=0xffff5370  # Ultra Rich Red - Low
 export BATTERY_5=0xffd7263d  # Ultra Deep Red - Critical
 
 # General bar colors
-export BAR_COLOR=0xff1c1c1c             # Transparent bar
+export BAR_COLOR=0xff000000             # Transparent bar
+export BAR_COLOR_EXTERNAL=0xff1c1c1c             # Transparent bar external
 export BAR_BORDER_COLOR=0xff2a2a2a        # Dark grey border
 export BACKGROUND_1=0xff1e1e1e            # Pure dark grey background for items
 export BACKGROUND_2=0xff2a2a2a            # Slightly lighter dark grey for borders

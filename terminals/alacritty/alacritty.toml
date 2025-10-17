@@ -13,14 +13,14 @@ family = "JetBrainsMono Nerd Font"
 
 [font.offset]
 x = 0
-y = 8
+y = 9
 
 [scrolling]
 history = 10000
 multiplier = 3
 
 [selection]
-save_to_clipboard = false
+save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]

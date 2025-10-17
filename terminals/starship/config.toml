@@ -2,12 +2,10 @@ format = """\
 [](fg:arrow)\
 $username\
 $os\
-$git_branch\
 (\
     at \
     $directory\
 )\
-$cmd_duration\
 (\
     via \
     $python\
@@ -16,9 +14,19 @@ $cmd_duration\
     $c\
     $rust\
     $java\
-)
-[](fg:arrow)$character\
+    $character\
+)\
 """
+
+right_format = """\
+$git_branch\
+$git_status\
+$cmd_duration\
+$docker_context\
+$kubernetes\
+$time \
+"""
+
 # Add the modules you need
 
 # Disable the blank line at the start of the prompt
@@ -55,8 +63,8 @@ Windows = " "
 
 [character]
 disabled = false
-success_symbol = '[\$](bold fg:green)'
-error_symbol = '[\$](bold fg:red)'
+success_symbol = '[](bold fg:green)'
+error_symbol = '[](bold fg:red)'
 vimcmd_symbol = '[△](bold fg:green)'
 
 [directory]
@@ -66,17 +74,13 @@ truncation_symbol = "…/"
 truncate_to_repo = true
 read_only ="  "
 
-[time]
-disabled = true
-format = "at [󱑈 $time]($style)"
-time_format = "%H:%M"
-
 [cmd_duration]
+disabled = false
 format = "took [ $duration]($style) "
 min_time = 500
 
 [git_branch]
-format = "via [$symbol$branch]($style) "
+format = "[$symbol$branch]($style) "
 symbol = " "
 
 [git_status]
@@ -84,8 +88,20 @@ format = '[ $all_status$ahead_behind ]($style)'
 disabled = true
 
 [docker_context]
-disabled=true
+disabled=false
 symbol = " "
+
+[kubernetes]
+disabled=false
+symbol = " "
+format = "[$symbol$context]($style) "
+
+[time]
+disabled = false
+format = "[$time]($style)"
+time_format = "%R"
+utc_time_offset = "local"
+style = "italic dimmed white"
 
 [package]
 disabled=true

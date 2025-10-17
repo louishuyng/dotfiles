@@ -8,12 +8,10 @@ TIME=$(date '+%H:%M')
 DATE=$(date '+%b-%d')
 
 # Format the label with both time and date
-LABEL="$TIME  $DATE"
+LABEL="$TIME $DATE"
 
 # Set the clock with enhanced styling
 sketchybar --set "$NAME" label="$LABEL" \
                         icon="󰅐" \
                         icon.color=$YELLOW \
                         label.color=$WHITE \
-                        label.font="SF Pro:Medium:13.0"
-
