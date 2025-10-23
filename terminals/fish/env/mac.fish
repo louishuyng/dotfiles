@@ -1,5 +1,5 @@
 # Environment variables
-fish_add_path ~/.asdf/shims
+# Note: asdf shims are added in config.fish
 
 # You may need to manually set your language environment
 set -gx LANG en_US.UTF-8
@@ -40,10 +40,13 @@ set -gx CPPFLAGS -I/opt/homebrew/opt/openjdk/include
 #
 # #Golang
 set -gx GOROOT
-set -gx GOBIN $(go env GOBIN)
+set -gx GOBIN $(go env GOBIN 2>/dev/null)
 set -gx GOPATH $HOME/development/golib
 set -gx GO111MODULE on
-set -gx GOV $(asdf where golang)
+# Set GOV only if asdf and golang are available
+if command -q asdf; and asdf current golang &>/dev/null
+    set -gx GOV $(asdf where golang)
+end
 fish_add_path $GOPATH/bin
 fish_add_path $GOROOT/bin
 fish_add_path $GOBIN

@@ -15,7 +15,7 @@ local icons = {
 
 gitsigns.setup {
   on_attach = mapping.gitsigns_mappings,
-  word_diff = true,
+  word_diff = false,
   signs = {
     add = {
       text = icons.BoldLineMiddle,

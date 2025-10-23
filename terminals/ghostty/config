@@ -17,9 +17,9 @@ font-family-italic = "Oblique"
 font-family-bold-italic = "Bold Oblique"
 
 font-size = 12.5
-font-thicken = false
+font-thicken = true
 font-thicken-strength = 0
-adjust-cell-height = 15%
+adjust-cell-height = 42%
 adjust-cell-width = -1
 
 mouse-hide-while-typing = true
@@ -28,14 +28,8 @@ mouse-scroll-multiplier = 2
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-window-width = 220
-window-height = 55
-window-padding-color = extend
 window-save-state = default
-window-decoration = false
-gtk-titlebar = false
-
-macos-titlebar-style = hidden
+window-decoration = none
 confirm-close-surface = false
 
 macos-option-as-alt = true

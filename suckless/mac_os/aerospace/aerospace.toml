@@ -107,6 +107,10 @@ if.app-id = 'com.usebruno.app'
 run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
+if.app-id = 'dev.kdrag0n.MacVirt'
+run = ['layout floating', 'move-node-to-workspace Dev']
+
+[[on-window-detected]]
 if.app-id = 'ai.elementlabs.lmstudio'
 run = ['layout floating', 'move-node-to-workspace Dev']
 

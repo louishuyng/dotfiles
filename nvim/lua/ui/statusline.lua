@@ -91,7 +91,7 @@ lualine.setup {
       {
         'active',
         fmt = function()
-          return ''
+          return ''
         end,
         color = function()
           local mode = vim.fn.mode()

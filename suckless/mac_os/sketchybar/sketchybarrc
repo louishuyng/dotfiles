@@ -166,6 +166,7 @@ sketchybar --add item front_app left \
                           label.color=$WHITE \
                           label.padding_left=4 \
                           label.padding_right=0 \
+                          width=120 \
                           padding_left=8 \
                           padding_right=0 \
                           script="$PLUGIN_DIR/front_app.sh" \
