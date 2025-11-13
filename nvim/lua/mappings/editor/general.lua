@@ -13,6 +13,47 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', opt)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opt)
 vim.keymap.set('n', '<C-h>', '<C-w>h', opt)
 
+-- Custom resize mode: press <leader>rs then use hjkl to resize continuously
+vim.keymap.set('n', '<leader>rs', function()
+  vim.notify('Resize Mode: h/j/k/l to resize, ESC/q to exit', vim.log.levels.INFO)
+  local chars = { 'h', 'j', 'k', 'l' }
+  local exit_chars = { 'q', '\27' } -- q and ESC (\27)
+  while true do
+    vim.cmd('redraw')
+    local ok, char = pcall(vim.fn.getcharstr)
+    if not ok then
+      vim.notify('Exited resize mode', vim.log.levels.INFO)
+      break
+    end
+
+    -- Check if user wants to exit
+    if vim.tbl_contains(exit_chars, char) then
+      vim.notify('Exited resize mode', vim.log.levels.INFO)
+      break
+    end
+
+    -- Handle resize keys
+    if vim.tbl_contains(chars, char) then
+      if char == 'h' then
+        require('smart-splits').resize_left(5)
+      elseif char == 'j' then
+        require('smart-splits').resize_down(5)
+      elseif char == 'k' then
+        require('smart-splits').resize_up(5)
+      elseif char == 'l' then
+        require('smart-splits').resize_right(5)
+      end
+    else
+      -- Any other key exits and feeds the key back
+      if char ~= '' then
+        vim.api.nvim_feedkeys(char, 'n', false)
+      end
+      vim.notify('Exited resize mode', vim.log.levels.INFO)
+      break
+    end
+  end
+end, { desc = 'Enter resize mode (use hjkl, ESC/q to exit)' })
+
 -- Faster Save and Quit
 vim.keymap.set('n', '<leader>w', ':silent w!<CR>', opt)
 vim.keymap.set('n', '<leader>W', ':silent wa!<CR>', opt)
