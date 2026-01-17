@@ -401,6 +401,9 @@ link_all_dotfiles() {
   success "Linked raycast"
 
   ln -s ~/.dotfiles/.irbrc ~/.irbrc
+
+  ln -s ~/.dotfiles/opencode/agent ~/.config/opencode
+  success "Linked opencode"
 }
 
 install_cli_tools() {

@@ -16,9 +16,9 @@ snacks.setup {
     notification = {
       border = 'rounded',
       wo = {
-        winhl = 'NormalFloat:Normal,FloatBorder:DiagnosticOk'
-      }
-    }
+        winhl = 'NormalFloat:Normal,FloatBorder:DiagnosticOk',
+      },
+    },
   },
   -- scroll = {
   --   enabled = true,
@@ -36,6 +36,11 @@ snacks.setup {
   --     return vim.g.snacks_scroll ~= false and vim.b[buf].snacks_scroll ~= false and vim.bo[buf].buftype ~= 'terminal'
   --   end,
   -- },
+  terminal = {
+    enabled = true,
+    open_cmd = '50vnew', -- command to open terminal window
+    close_on_exit = true, -- close terminal window when process exits
+  },
   dashboard = {
     enabled = false,
     sections = {
