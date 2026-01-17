@@ -113,7 +113,6 @@ lualine.setup {
           return { fg = mode_color[mode] or colors.blue1 }
         end,
       },
-      require('opencode').statusline,
     },
     lualine_c = {
       {
@@ -162,6 +161,32 @@ lualine.setup {
         fmt = marlin_component,
         color = function()
           return { fg = colors.purple0 }
+        end,
+      },
+      {
+        'opencode',
+        ---@alias opencode.status.Status
+        ---| "idle"
+        ---| "error"
+        ---| "responding"
+        ---| "requesting_permission"
+        color = function()
+          local status = require('opencode.status').status
+
+          if status == 'responding' then
+            return { fg = colors.green0 }
+          elseif status == 'requesting_permission' then
+            return { fg = colors.yellow0 }
+          elseif status == 'error' then
+            return { fg = colors.red0 }
+          else
+            return { fg = colors.fg2 }
+          end
+        end,
+        fmt = function()
+          local status = require('opencode').statusline()
+
+          return status
         end,
       },
     },
