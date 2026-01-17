@@ -26,30 +26,30 @@ local colors = {
 
 local theme = {
   normal = {
-    a = { bg = colors.bg0, fg = colors.blue1 },
-    b = { bg = colors.bg0, fg = colors.blue1 },
+    a = { bg = colors.blue1, fg = colors.bg0, gui = 'bold' },
+    b = { bg = colors.bg2, fg = colors.blue1 },
     c = { bg = colors.bg0, fg = colors.fg2 },
   },
   insert = {
-    a = { bg = colors.bg0, fg = colors.green0 },
-    b = { bg = colors.bg0, fg = colors.green1 },
+    a = { bg = colors.green0, fg = colors.bg0, gui = 'bold' },
+    b = { bg = colors.bg2, fg = colors.green1 },
   },
   command = {
-    a = { bg = colors.bg0, fg = colors.yellow0 },
-    b = { bg = colors.bg0, fg = colors.yellow1 },
+    a = { bg = colors.yellow0, fg = colors.bg0, gui = 'bold' },
+    b = { bg = colors.bg2, fg = colors.yellow1 },
   },
   visual = {
-    a = { bg = colors.bg0, fg = colors.purple0 },
-    b = { bg = colors.bg0, fg = colors.purple1 },
+    a = { bg = colors.purple0, fg = colors.bg0, gui = 'bold' },
+    b = { bg = colors.bg2, fg = colors.purple1 },
   },
   replace = {
-    a = { bg = colors.bg0, fg = colors.red0 },
-    b = { bg = colors.bg0, fg = colors.red1 },
+    a = { bg = colors.red0, fg = colors.bg0, gui = 'bold' },
+    b = { bg = colors.bg2, fg = colors.red1 },
   },
   inactive = {
-    a = { bg = colors.bg0, fg = colors.blue1 },
-    b = { bg = colors.bg0, fg = colors.bg0 },
-    c = { bg = colors.bg0, fg = colors.bg1 },
+    a = { bg = colors.bg1, fg = colors.fg1 },
+    b = { bg = colors.bg0, fg = colors.fg1 },
+    c = { bg = colors.bg0, fg = colors.fg1 },
   },
 }
 
@@ -70,7 +70,7 @@ lualine.setup {
     globalstatus = true,
     disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'intro' } },
     section_separators = { left = '', right = '' },
-    component_separators = { left = '', right = '' },
+    component_separators = { left = '│', right = '│' },
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -78,15 +78,7 @@ lualine.setup {
     },
   },
   sections = {
-    lualine_a = {
-      {
-        function()
-          local mode = vim.fn.mode()
-          return '▌'
-        end,
-        padding = { left = 0 },
-      },
-    },
+    lualine_a = {},
     lualine_b = {
       {
         'active',
@@ -116,52 +108,60 @@ lualine.setup {
     },
     lualine_c = {
       {
-        'filesize',
-        color = function()
-          return {
-            fg = colors.fg2,
-          }
-        end,
+        'branch',
+        icon = '',
+        color = { fg = colors.green0, gui = 'bold' },
+        padding = { left = 1, right = 1 },
       },
-      -- {
-      --   'filename',
-      --   file_status = true,
-      --   newfile_status = true,
-      --   path = 4,
-      --   symbols = {
-      --     modified = '*',
-      --     readonly = 'RO',
-      --     unnamed = 'scratch',
-      --     newfile = 'new',
-      --   },
-      --   color = function()
-      --     return { fg = colors.fg2 }
-      --   end,
-      -- },
-      { 'location' },
       {
         'diff',
         symbols = {
-          added = '+',
-          modified = '~',
-          removed = '-',
+          added = icons.git.added or ' ',
+          modified = icons.git.modified or ' ',
+          removed = icons.git.removed or ' ',
         },
+        diff_color = {
+          added = { fg = colors.green0 },
+          modified = { fg = colors.yellow0 },
+          removed = { fg = colors.red0 },
+        },
+        padding = { left = 1, right = 1 },
       },
       {
         'diagnostics',
         symbols = {
-          error = icons.diagnostics.Error,
-          warn = icons.diagnostics.Warn,
-          info = icons.diagnostics.Info,
-          hint = icons.diagnostics.Hint,
+          error = icons.diagnostics.Error .. ' ',
+          warn = icons.diagnostics.Warn .. ' ',
+          info = icons.diagnostics.Info .. ' ',
+          hint = icons.diagnostics.Hint .. ' ',
         },
+        diagnostics_color = {
+          error = { fg = colors.red0 },
+          warn = { fg = colors.yellow0 },
+          info = { fg = colors.blue1 },
+          hint = { fg = colors.fg2 },
+        },
+        padding = { left = 1, right = 1 },
+      },
+      {
+        'filename',
+        file_status = true,
+        newfile_status = true,
+        path = 1,
+        symbols = {
+          modified = ' ●',
+          readonly = ' ',
+          unnamed = '[No Name]',
+          newfile = ' ',
+        },
+        color = { fg = colors.fg0, gui = 'bold' },
+        padding = { left = 1, right = 1 },
       },
       {
         'marlin',
         fmt = marlin_component,
-        color = function()
-          return { fg = colors.purple0 }
-        end,
+        color = { fg = colors.purple0 },
+        padding = { left = 1, right = 1 },
       },
       {
         'opencode',
@@ -174,20 +174,20 @@ lualine.setup {
           local status = require('opencode.status').status
 
           if status == 'responding' then
-            return { fg = colors.green0 }
+            return { fg = colors.green0, gui = 'bold' }
           elseif status == 'requesting_permission' then
-            return { fg = colors.yellow0 }
+            return { fg = colors.yellow0, gui = 'bold' }
           elseif status == 'error' then
-            return { fg = colors.red0 }
+            return { fg = colors.red0, gui = 'bold' }
           else
             return { fg = colors.fg2 }
           end
         end,
         fmt = function()
           local status = require('opencode').statusline()
-
           return status
         end,
+        padding = { left = 1, right = 1 },
       },
     },
     lualine_x = {
@@ -195,7 +195,7 @@ lualine.setup {
         -- Recording Macro
         function()
           local reg = vim.fn.reg_recording()
-          return reg ~= '' and '[' .. reg .. ']' or ''
+          return reg ~= '' and ' REC @' .. reg or ''
         end,
         color = {
           fg = colors.red0,
@@ -204,38 +204,54 @@ lualine.setup {
         cond = function()
           return vim.fn.reg_recording() ~= ''
         end,
+        padding = { left = 1, right = 1 },
       },
-      -- Show file format (LF, CRLF, CR)
       {
-        'fileformat',
-        symbols = {
-          unix = 'LF', -- Show 'LF' for Unix line endings
-          dos = 'CRLF', -- Show 'CRLF' for Windows line endings
-          mac = 'CR', -- Show 'CR' for old Mac line endings
-        },
+        'lsp_status',
+        icon = '',
+        color = { fg = colors.yellow0 },
+        padding = { left = 1, right = 1 },
+      },
+      {
+        'filetype',
+        colored = true,
+        icon_only = false,
+        padding = { left = 1, right = 1 },
       },
       {
         'encoding',
         fmt = function(str)
-          return str:upper() -- Display as uppercase (UTF-8 instead of utf-8)
+          return str:upper()
         end,
+        color = { fg = colors.fg2 },
+        padding = { left = 1, right = 1 },
       },
       {
-        'lsp_status',
-        icon = '',
-        color = function()
-          return { fg = colors.yellow0 }
-        end,
-      },
-      {
-        'branch',
-        icon = '',
-        color = function()
-          return { fg = colors.green0 }
-        end,
+        'fileformat',
+        symbols = {
+          unix = '',
+          dos = '',
+          mac = '',
+        },
+        color = { fg = colors.fg2 },
+        padding = { left = 1, right = 1 },
       },
     },
-    lualine_y = {},
-    lualine_z = {},
+    lualine_y = {
+      {
+        'progress',
+        color = { fg = colors.fg2 },
+        padding = { left = 1, right = 1 },
+      },
+    },
+    lualine_z = {
+      {
+        'location',
+        padding = { left = 1, right = 0 },
+      },
+      {
+        'filesize',
+      },
+    },
   },
 }

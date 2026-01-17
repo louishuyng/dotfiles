@@ -5,6 +5,11 @@ return {
     Hint = ' ',
     Info = ' ',
   },
+  git = {
+    added = ' ',
+    modified = ' ',
+    removed = ' ',
+  },
   debug = {
     Breakpoint = '',
     BreakpointCondition = '',

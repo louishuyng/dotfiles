@@ -76,7 +76,7 @@ vim.keymap.set('v', '<leader>so', ':sort<CR>', { silent = true, noremap = true, 
 -- Open URL
 vim.keymap.set(
   'n',
-  '<leader>ob',
+  '<leader>ou',
   ':call OpenUrlUnderCursor()<CR>',
   { silent = true, noremap = true, desc = 'Open url under cursor' }
 )
