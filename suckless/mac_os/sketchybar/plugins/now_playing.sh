@@ -47,5 +47,4 @@ fi
 sketchybar --set "$NAME" icon="$ICON" \
                         icon.color="$COLOR" \
                         label="$LABEL" \
-                        label.color=$WHITE \
                         click_script="open -a 'Spotify'"

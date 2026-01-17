@@ -33,7 +33,7 @@ dynamic_padding = true
 startup_mode = "Windowed"
 title = "DevTerm"
 dynamic_title=false
-opacity = 0.9
+opacity = 1
 blur = false
 
 [keyboard]

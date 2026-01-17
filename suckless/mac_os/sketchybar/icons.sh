@@ -60,7 +60,7 @@ MODE_PENDING=􀈏
 
 # Resources
 DISK=󰋊
-RAM=󰓅
+RAM= 
 
 ICON_APP=󰣆 # fallback app
 ICON_TERM=󰆍 # fallback terminal app, terminal, warp, iterm2

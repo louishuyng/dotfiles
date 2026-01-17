@@ -14,4 +14,3 @@ LABEL="$TIME $DATE"
 sketchybar --set "$NAME" label="$LABEL" \
                         icon="󰅐" \
                         icon.color=$YELLOW \
-                        label.color=$WHITE \

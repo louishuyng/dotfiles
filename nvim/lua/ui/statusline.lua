@@ -110,7 +110,7 @@ lualine.setup {
       {
         'branch',
         icon = '',
-        color = { fg = colors.green0, gui = 'bold' },
+        color = { fg = colors.fg0, gui = 'bold' },
         padding = { left = 1, right = 1 },
       },
       {
@@ -154,7 +154,7 @@ lualine.setup {
           unnamed = '[No Name]',
           newfile = ' ',
         },
-        color = { fg = colors.fg0, gui = 'bold' },
+        color = { fg = colors.green0 },
         padding = { left = 1, right = 1 },
       },
       {
@@ -209,13 +209,7 @@ lualine.setup {
       {
         'lsp_status',
         icon = '',
-        color = { fg = colors.yellow0 },
-        padding = { left = 1, right = 1 },
-      },
-      {
-        'filetype',
-        colored = true,
-        icon_only = false,
+        color = { fg = colors.purple0 },
         padding = { left = 1, right = 1 },
       },
       {
@@ -223,34 +217,21 @@ lualine.setup {
         fmt = function(str)
           return str:upper()
         end,
-        color = { fg = colors.fg2 },
-        padding = { left = 1, right = 1 },
-      },
-      {
-        'fileformat',
-        symbols = {
-          unix = '',
-          dos = '',
-          mac = '',
-        },
-        color = { fg = colors.fg2 },
+        color = { fg = colors.blue1 },
         padding = { left = 1, right = 1 },
       },
     },
     lualine_y = {
       {
         'progress',
-        color = { fg = colors.fg2 },
+        color = { fg = colors.green0, bg = colors.bg0 },
         padding = { left = 1, right = 1 },
       },
     },
     lualine_z = {
       {
         'location',
-        padding = { left = 1, right = 0 },
-      },
-      {
-        'filesize',
+        color = { fg = colors.yellow0, bg = colors.bg0 },
       },
     },
   },

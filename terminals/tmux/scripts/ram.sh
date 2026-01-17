@@ -16,4 +16,4 @@ used_mem=$(echo "($pages_active + $pages_wired) * $page_size" | bc)
 # Calculate percentage
 percentage=$(echo "scale=0; ($used_mem * 100) / $total_mem" | bc)
 
-echo "󰍛 ${percentage}%"
+echo "  ${percentage}%"

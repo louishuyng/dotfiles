@@ -44,4 +44,3 @@ fi
 sketchybar --set "$NAME" icon="$ICON" \
                         icon.color="$COLOR" \
                         label="$BATTERY_LEVEL%" \
-                        label.color=$WHITE \

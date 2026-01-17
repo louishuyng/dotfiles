@@ -4,7 +4,7 @@
 source "$CONFIG_DIR/colors.sh"
 
 # Get CPU usage percentage
-CPU_USAGE=$(top -l 1 -n 0 | grep "CPU usage" | awk '{print $3}' | sed 's/%//')
+CPU_USAGE=$(top -l 2 -n 0 -F | grep "CPU usage" | tail -1 | awk '{print $3}' | cut -d'%' -f1)
 
 # Handle empty CPU usage
 if [[ -z "$CPU_USAGE" ]]; then
@@ -33,4 +33,3 @@ fi
 sketchybar --set "$NAME" icon="$ICON" \
                         icon.color="$COLOR" \
                         label="$CPU_USAGE%" \
-                        label.color=$WHITE \
