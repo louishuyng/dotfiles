@@ -39,8 +39,15 @@ vim.keymap.set('n', '<leader>f/', function()
 end, { silent = true, noremap = true, desc = 'Search in current buffer' })
 
 vim.keymap.set('n', '<leader>fr', function()
-  require('telescope').extensions.recent_files.pick(telescope_theme('Recent Files'))
-end, { silent = true, noremap = true, desc = 'Search recent files' })
+  local theme_opts = telescope_theme('Recent Files')
+  theme_opts.cwd_only = true
+  builtin.oldfiles(theme_opts)
+end, { silent = true, noremap = true, desc = 'Search recent files in project' })
+
+vim.keymap.set('n', '<leader>fR', function()
+  local theme_opts = telescope_theme('Recent Files (All)')
+  builtin.oldfiles(theme_opts)
+end, { silent = true, noremap = true, desc = 'Search all recent files' })
 
 -- searching vim built-in
 vim.keymap.set('n', 'g?', function()

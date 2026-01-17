@@ -3,6 +3,7 @@ return {
   { 'hrsh7th/nvim-cmp', lazy = false },
   {
     'L3MON4D3/LuaSnip',
+    lazy = false,
     after = 'hrsh7th/nvim-cmp',
     dependencies = {
       'rafamadriz/friendly-snippets',
@@ -31,7 +32,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     lazy = false,
-    priority = 1000,
+    priority = 900,
     config = function()
       require 'config.cores.treesitter'
     end,
@@ -70,7 +71,9 @@ return {
   },
   {
     'folke/trouble.nvim',
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {
+      use_diagnostic_signs = true,
+    }, -- for default options, refer to the configuration section for custom setup.
     cmd = 'Trouble',
     keys = {
       {

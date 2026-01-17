@@ -9,3 +9,6 @@ require('mappings')
 
 -- Auto Setup
 require('cmds')
+
+-- UI Setup
+require('ui')

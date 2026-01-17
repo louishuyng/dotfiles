@@ -17,10 +17,10 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 14
 inner.vertical =   14
-outer.top = [{ monitor."Built-in" = 3 }, 35]
-outer.bottom = [{ monitor."Built-in" = 0 }, 0]
-outer.left =       3
-outer.right =      3
+outer.top = [{ monitor."Built-in" = 0 }, 0]
+outer.bottom = [{ monitor."Built-in" = 32 }, 32]
+outer.left =       0
+outer.right =      0
 
 [mode.main.binding]
 alt-i = 'workspace Infra' # Infra (DevOps)
@@ -140,7 +140,7 @@ run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run = ['move-node-to-workspace Dev']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
@@ -153,11 +153,11 @@ run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
-run='move-node-to-workspace Terminal'
+run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
-run='move-node-to-workspace Terminal'
+run = ['move-node-to-workspace Terminal']
 
 # Workspace Web
 [[on-window-detected]]
@@ -165,7 +165,7 @@ if.app-id = 'app.zen-browser.zen'
 run = ['move-node-to-workspace Web']
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Web'
+if.app-id = 'company.thebrowser.dia'
 run = ['layout floating', 'move-node-to-workspace Web']
 
 [[on-window-detected]]
@@ -179,24 +179,28 @@ run = ['layout floating', 'move-node-to-workspace Reading']
 
 [[on-window-detected]]
 if.app-id = 'com.amazon.Lassen'
-run = ['move-node-to-workspace Reading']
+run = ['layout floating', 'move-node-to-workspace Reading']
 
 # Workspace Plan
 [[on-window-detected]]
 if.app-id = 'com.readdle.SparkDesktop.appstore'
-run = ['move-node-to-workspace Planing']
+run = ['layout floating', 'move-node-to-workspace Planing']
 
 [[on-window-detected]]
 if.app-id = 'info.pkpk.inkdrop'
-run = ['move-node-to-workspace Planing']
+run = ['layout floating', 'move-node-to-workspace Planing']
 
 [[on-window-detected]]
 if.app-id = 'com.linear'
-run = ['move-node-to-workspace Planing']
+run = ['layout floating', 'move-node-to-workspace Planing']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = ['move-node-to-workspace Planing']
+run = ['layout floating', 'move-node-to-workspace Planing']
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
+run = ['layout floating', 'move-node-to-workspace Planing']
 
 # Workspace Chat
 [[on-window-detected]]
@@ -230,7 +234,7 @@ run = ['layout floating', 'move-node-to-workspace Any']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.TV'
-run = ['move-node-to-workspace Any']
+run = ['layout floating', 'move-node-to-workspace Any']
 
 [workspace-to-monitor-force-assignment]
 Infra = '^built-in'

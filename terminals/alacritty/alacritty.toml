@@ -13,7 +13,7 @@ family = "JetBrainsMono Nerd Font"
 
 [font.offset]
 x = 0
-y = 9
+y = 0
 
 [scrolling]
 history = 10000
@@ -28,12 +28,12 @@ option_as_alt = "Both"
 decorations = "none"
 decorations_theme_variant = "none"
 padding = { x = 0, y = 0  }
-dimensions = { columns = 250, lines = 60 }
+dimensions = { columns = 210, lines = 60 }
 dynamic_padding = true
 startup_mode = "Windowed"
 title = "DevTerm"
 dynamic_title=false
-opacity = 0.95
+opacity = 0.9
 blur = false
 
 [keyboard]

@@ -25,12 +25,14 @@ telescope.setup {
         ['<Esc>'] = actions.close,
         ['<C-j>'] = actions.move_selection_next,
         ['<C-k>'] = actions.move_selection_previous,
+        ['<C-n>'] = actions.move_selection_next,
+        ['<C-p>'] = actions.move_selection_previous,
         ['<C-b>'] = actions.preview_scrolling_up,
         ['<C-f>'] = actions.preview_scrolling_down,
         ['<C-v>'] = actions.select_vertical,
         ['<C-s>'] = actions.select_horizontal,
         ['<C-d>'] = actions.delete_buffer,
-        ['<C-p>'] = require('telescope.actions.layout').toggle_preview,
+        ['<C-\\>'] = require('telescope.actions.layout').toggle_preview,
         ['<C-g>'] = lga_actions.quote_prompt({ postfix = ' --no-ignore --iglob **/' }),
       },
     },
@@ -96,4 +98,3 @@ telescope.setup {
 telescope.load_extension('fzf')
 telescope.load_extension('file_browser')
 telescope.load_extension('live_grep_args')
-telescope.load_extension('recent_files')

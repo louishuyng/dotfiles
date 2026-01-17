@@ -1,0 +1,10 @@
+name: Regask[Ops]
+root: ~/LX14/repository/github.com/regask
+attach: false
+windows:
+  - gitops: cd gitops
+  - iac-modules: cd iac-modules
+  - iac-live: cd iac-live
+  - k9s:
+      - cd k9s-play
+      - regask-staging

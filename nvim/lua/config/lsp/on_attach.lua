@@ -1,5 +1,3 @@
--- local navic = require('nvim-navic')
-
 local augroup = vim.api.nvim_create_augroup('UserLspConfig', { clear = true })
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
@@ -37,7 +35,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     vim.keymap.set(
       'n',
-      'go',
+      'gt',
       vim.lsp.buf.type_definition,
       vim.tbl_extend('force', opts, { desc = 'Go to type definition' })
     )

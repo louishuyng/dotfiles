@@ -35,7 +35,7 @@ elif [[ "$SPOTIFY_INFO" == "paused" ]]; then
     # Music is paused - show paused state
     sketchybar --set "$NAME" drawing=on
     ICON="󰏤"
-    COLOR=$ACCENT_TERTIARY
+    COLOR=$LIGHT_GREY
     LABEL="Paused"
 else
     # No music playing - hide the item completely

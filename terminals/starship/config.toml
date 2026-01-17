@@ -13,6 +13,7 @@ $os\
     $nodejs\
     $c\
     $rust\
+    $terraform\
     $java\
     $character\
 )\
@@ -141,4 +142,9 @@ format = '[$symbol( $version) ]($style)'
 format ="[$symbol$version ]($style)"
 symbol = " "
 version_format = "${raw}"
-disabled=true
+
+[terraform]
+format = "[$symbol($version) ]($style)"
+symbol = "🏎 "
+version_format = "${raw}"
+disabled=false

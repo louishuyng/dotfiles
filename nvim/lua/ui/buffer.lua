@@ -12,5 +12,6 @@ bufferline.setup {
       bufferline.style_preset.no_bold,
     },
     themable = true,
+    always_show_bufferline = false,
   },
 }

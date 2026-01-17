@@ -7,7 +7,7 @@ end
 local C = require('catppuccin.palettes').get_palette(flavour)
 
 local colors = {
-  bg0 = C.crust,
+  bg0 = C.mantle,
   bg1 = C.base,
   bg2 = C.surface0,
   fg0 = C.text,
@@ -113,6 +113,7 @@ lualine.setup {
           return { fg = mode_color[mode] or colors.blue1 }
         end,
       },
+      require('opencode').statusline,
     },
     lualine_c = {
       {
@@ -123,21 +124,21 @@ lualine.setup {
           }
         end,
       },
-      {
-        'filename',
-        file_status = true,
-        newfile_status = true,
-        path = 4,
-        symbols = {
-          modified = '*',
-          readonly = 'RO',
-          unnamed = 'scratch',
-          newfile = 'new',
-        },
-        color = function()
-          return { fg = colors.fg2 }
-        end,
-      },
+      -- {
+      --   'filename',
+      --   file_status = true,
+      --   newfile_status = true,
+      --   path = 4,
+      --   symbols = {
+      --     modified = '*',
+      --     readonly = 'RO',
+      --     unnamed = 'scratch',
+      --     newfile = 'new',
+      --   },
+      --   color = function()
+      --     return { fg = colors.fg2 }
+      --   end,
+      -- },
       { 'location' },
       {
         'diff',

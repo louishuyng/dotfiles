@@ -47,11 +47,6 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
-  window = {
-    documentation = {
-      border = 'rounded', -- single|rounded|none
-    },
-  },
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },
     format = function(entry, item)
@@ -123,6 +118,7 @@ cmp.setup {
   sources = cmp.config.sources({
     { name = 'lazydev' },
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'path' },
   }, {
     { name = 'buffer' },

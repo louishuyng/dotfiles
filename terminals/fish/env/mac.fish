@@ -120,3 +120,6 @@ fish_add_path SNACKS_GHOSTTY=true
 
 # Terraform
 set -gx TFENV_ARCH arm64
+
+# Duck DB
+fish_add_path ~/.duckdb/cli/latest

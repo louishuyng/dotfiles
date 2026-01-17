@@ -5,13 +5,23 @@ return {
     priority = 1000,
   },
   { 'folke/snacks.nvim', lazy = false, priority = 1000 },
-  -- {
-  --   'SmiteshP/nvim-navic',
-  -- },
   {
-    'akinsho/nvim-bufferline.lua',
+    'Bekaboo/dropbar.nvim',
     event = 'VeryLazy',
+    dependencies = {
+      'nvim-telescope/telescope-fzf-native.nvim',
+    },
+    config = function()
+      local dropbar_api = require('dropbar.api')
+      vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
+      vim.keymap.set('n', '[;', dropbar_api.goto_context_start, { desc = 'Go to start of current context' })
+      vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
+    end,
   },
+  -- {
+  --   'akinsho/nvim-bufferline.lua',
+  --   event = 'VeryLazy',
+  -- },
   -- { 'b0o/incline.nvim' },
   {
     'DaikyXendo/nvim-material-icon',
@@ -51,6 +61,28 @@ return {
             end,
           },
         },
+      })
+    end,
+  },
+  -- Color highlighter
+  {
+    'norcalli/nvim-colorizer.lua',
+    event = 'BufReadPre',
+    config = function()
+      require('colorizer').setup({
+        '*',
+        css = { css = true },
+        scss = { css = true },
+      }, {
+        RGB = true,
+        RRGGBB = true,
+        names = false,
+        RRGGBBAA = true,
+        rgb_fn = true,
+        hsl_fn = true,
+        css = true,
+        css_fn = true,
+        mode = 'background',
       })
     end,
   },

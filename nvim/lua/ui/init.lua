@@ -1,3 +1,4 @@
-require('ui.buffer')
-require('ui.colorscheme')
+require('ui.highlights')
 require('ui.statusline')
+require('ui.winbar')
+-- require('ui.buffer')

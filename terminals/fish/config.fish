@@ -82,3 +82,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # opencode
 fish_add_path /Users/louishuyng/.opencode/bin
+
+# fish_add_path /Users/louishuyng/.iximiuz/labctl/bin
+# labctl completion fish | source
+
+# >>> coursier install directory >>>
+set -gx PATH "$PATH:/Users/louishuyng/Library/Application Support/Coursier/bin"
+# <<< coursier install directory <<<

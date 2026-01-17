@@ -5,10 +5,6 @@ require('aerial').setup({
     vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
   end,
   backends = { 'lsp', 'treesitter', 'markdown', 'asciidoc', 'man' },
-  layout = {
-    -- Enum: prefer_right, prefer_left, right, left, float
-    default_direction = 'left',
-  },
   keymaps = {
     ['?'] = 'actions.show_help',
     ['g?'] = 'actions.show_help',

@@ -2,6 +2,15 @@
 
 source "$CONFIG_DIR/colors.sh"
 
+# Check current popup state
+POPUP_STATE=$(sketchybar --query space | jq -r '.popup.drawing')
+
+# If popup is currently open, just close it
+if [ "$POPUP_STATE" = "on" ]; then
+    sketchybar --set space popup.drawing=off
+    exit 0
+fi
+
 # Get current workspace
 FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
 
@@ -67,5 +76,5 @@ if [ $counter -eq 0 ]; then
                      click_script="sketchybar --set space popup.drawing=off"
 fi
 
-# Toggle the popup
-sketchybar --set space popup.drawing=toggle
+# Open the popup
+sketchybar --set space popup.drawing=on

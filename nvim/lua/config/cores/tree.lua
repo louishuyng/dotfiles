@@ -4,6 +4,8 @@ local function on_move(data)
   Snacks.rename.on_rename_file(data.source, data.destination)
 end
 
+local position = 'left'
+
 require('neo-tree').setup({
   sources = {
     'filesystem',
@@ -11,17 +13,17 @@ require('neo-tree').setup({
     'git_status',
   },
   source_selector = {
-    winbar = true,
+    winbar = false,
     statusline = false,
     sources = {
       {
         source = 'filesystem',
         display_name = '  Files ',
       },
-      {
-        source = 'git_status',
-        display_name = '   Git ',
-      },
+      -- {
+      --   source = 'git_status',
+      --   display_name = '   Git ',
+      -- },
     },
   },
   close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -50,8 +52,8 @@ require('neo-tree').setup({
       expander_highlight = 'NeoTreeExpander',
     },
     icon = {
-      folder_closed = '',
-      folder_open = '',
+      folder_closed = '▶',
+      folder_open = '▼',
       folder_empty = '󰉖',
       default = '󰈙',
       highlight = 'NeoTreeFileIcon',
@@ -187,7 +189,7 @@ require('neo-tree').setup({
     -- instead of relying on nvim autocmd events.
     commands = {}, -- Add a custom command or override a global one using the same function name
     window = {
-      position = 'right',
+      position = position,
       width = 40,
       mapping_options = {
         noremap = true,
@@ -233,7 +235,7 @@ require('neo-tree').setup({
   },
   git_status = {
     window = {
-      position = 'right',
+      position = position,
       mappings = {
         ['<2-LeftMouse>'] = 'open',
         ['l'] = 'open',

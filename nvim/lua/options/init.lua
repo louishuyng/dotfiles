@@ -2,16 +2,9 @@ vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
 
-vim.g.startup_bookmarks = {
-  ['D'] = '~/.dotfiles',
-  ['A'] = '~/Dev/repository/github.com/louishuyng/awesome-tech',
-  ['K'] = '~/.dotfiles/terminals/kitty/kitty.conf',
-}
-
 vim.g.default_dark_theme = 'night'
 vim.g.default_light_theme = 'light'
-vim.g.default_dark_catppuccin_theme = 'mocha'
-vim.g.default_light_catppuccin_theme = 'latte'
+vim.g.default_dark_catppuccin_theme = 'frappe'
 
 vim.g.home_dir = '/Users/louishuyng'
 vim.g.work_project_dir = vim.g.home_dir .. '/LX14/projects'
@@ -27,14 +20,10 @@ opt.wildignore = '__pycache__'
 opt.wildignore:append { '*.o', '*~', '*.pyc', '*pycache*' }
 opt.wildignore:append { 'Cargo.lock', 'Cargo.Bazel.lock' }
 
--- Cool floating window popup menu for completion on command line
-opt.pumblend = 17
-opt.wildmode = 'longest:full'
-opt.wildoptions = 'pum'
-opt.termguicolors = true
+opt.cursorline = true
 opt.showmode = false
 opt.showcmd = true
-opt.cmdheight = 1 -- Height of the command bar
+opt.cmdheight = 0 -- Height of the command bar
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.number = true -- But show the actual number for the line we're on
@@ -45,26 +34,17 @@ opt.splitright = true -- Prefer windows splitting to the right opt.splitbelow = 
 opt.updatetime = 250 -- Make updates happen faster
 opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
-vim.opt.list = true -- Show some invisible characters (tabs...)
+opt.list = true -- Show some invisible characters (tabs...)
+-- Modern listchars for better visibility
+opt.listchars = {
+  tab = '→ ',
+  trail = '·',
+  nbsp = '␣',
+  extends = '⟩',
+  precedes = '⟨',
+}
 opt.laststatus = 3 -- Always display the status line
 opt.relativenumber = true -- Relative line numbers
-
--- Cursorline highlighting control
---  Only have it on in the active buffer
-opt.cursorline = true -- Highlight the current line
-local group = vim.api.nvim_create_augroup('CursorLineControl', { clear = true })
-local set_cursorline = function(event, value, pattern)
-  vim.api.nvim_create_autocmd(event, {
-    group = group,
-    pattern = pattern,
-    callback = function()
-      vim.opt_local.cursorline = value
-    end,
-  })
-end
-set_cursorline('WinLeave', false)
-set_cursorline('WinEnter', true)
-set_cursorline('FileType', false, 'TelescopePrompt')
 
 -- Tabs
 opt.autoindent = true
@@ -79,7 +59,24 @@ opt.breakindent = true
 opt.showbreak = string.rep(' ', 3) -- Make it so that long lines wrap smartly
 opt.linebreak = true
 
-opt.fillchars = { fold = ' ' }
+-- Modern, elegant fillchars
+opt.fillchars = {
+  eob = ' ', -- end of buffer
+  fold = ' ',
+  foldopen = '▾',
+  foldclose = '▸',
+  foldsep = '│',
+  diff = '╱',
+  msgsep = '─',
+  horiz = '─',
+  horizup = '┴',
+  horizdown = '┬',
+  vert = '│',
+  vertleft = '┤',
+  vertright = '├',
+  verthoriz = '┼',
+}
+
 opt.foldmethod = 'indent'
 opt.foldenable = false
 opt.foldlevel = 99
@@ -95,8 +92,8 @@ opt.mouse = 'a'
 -- set joinspaces
 opt.joinspaces = false -- Two spaces and grade school, we're done
 
--- set fillchars=eob:~
-opt.fillchars = { eob = '~' }
+-- Smooth cursor line and column
+opt.cursorlineopt = 'both'
 
 vim.opt.diffopt = {
   'internal',
@@ -162,13 +159,13 @@ au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
   ]]
 
 -- Draw Performance
-vim.cmd([[
-  set ttyfast
-  set synmaxcol=500
-  syntax sync minlines=50
-
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-]])
+-- vim.cmd([[
+--   set ttyfast
+--   set synmaxcol=500
+--   syntax sync minlines=50
+--
+--   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+-- ]])
 
 -- File Info
 vim.cmd([[
