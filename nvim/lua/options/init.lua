@@ -4,7 +4,7 @@ local opt = vim.opt
 
 vim.g.default_dark_theme = 'night'
 vim.g.default_light_theme = 'light'
-vim.g.default_dark_catppuccin_theme = 'frappe'
+vim.g.default_dark_catppuccin_theme = 'mocha'
 
 vim.g.home_dir = '/Users/louishuyng'
 vim.g.work_project_dir = vim.g.home_dir .. '/LX14/projects'

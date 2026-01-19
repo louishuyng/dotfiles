@@ -1,6 +1,7 @@
 
 
 
+
 ### START-OF-ICON-MAP
 function __icon_map() {
     case "$1" in
@@ -55,7 +56,7 @@ function __icon_map() {
    "Anytype")
         icon_result=":anytype:"
         ;;
-   "Apifox" | "Burp Suite Community Edition")
+   "Apifox")
         icon_result=":apifox:"
         ;;
    "App Eraser")
