@@ -4,24 +4,35 @@ if not status_ok then
   return
 end
 
-local C = require('catppuccin.palettes').get_palette(flavour)
+-- Detect current theme and get colors
+local function get_theme_colors()
+  local colorscheme = vim.g.colors_name or 'midnight'
+  
+  if colorscheme == 'daylight' then
+    return require('lush_themes.daylight.colors')
+  else
+    return require('lush_themes.midnight.colors')
+  end
+end
+
+local theme_colors = get_theme_colors()
 
 local colors = {
-  bg0 = C.mantle,
-  bg1 = C.base,
-  bg2 = C.surface0,
-  fg0 = C.text,
-  fg1 = C.subtext0,
-  fg2 = C.subtext1,
-  red0 = C.red,
-  red1 = C.red,
-  yellow0 = C.yellow,
-  yellow1 = C.yellow,
-  green0 = C.green,
-  green1 = C.green,
-  blue1 = C.blue,
-  purple0 = C.mauve,
-  purple1 = C.mauve,
+  bg0 = theme_colors.bg_dark,
+  bg1 = theme_colors.bg,
+  bg2 = theme_colors.bg_highlight,
+  fg0 = theme_colors.fg,
+  fg1 = theme_colors.fg_dark,
+  fg2 = theme_colors.fg,
+  red0 = theme_colors.red,
+  red1 = theme_colors.red,
+  yellow0 = theme_colors.yellow,
+  yellow1 = theme_colors.yellow,
+  green0 = theme_colors.green,
+  green1 = theme_colors.green,
+  blue1 = theme_colors.blue,
+  purple0 = theme_colors.purple,
+  purple1 = theme_colors.purple,
 }
 
 local theme = {

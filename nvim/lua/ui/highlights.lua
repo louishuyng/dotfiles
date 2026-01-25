@@ -1,36 +1,39 @@
 local highlight_utils = require 'ui.highlight_utils'
 
 local highlight_telescope = highlight_utils.highlight_telescope
-local palettes = require('catppuccin.palettes')
 
 if vim.g.theme == 'night' then
   vim.cmd [[
     set background=dark
-    colorscheme catppuccin
+    colorscheme midnight
   ]]
 end
 
 if vim.g.theme == 'light' then
   vim.cmd [[
     set background=light
-    colorscheme catppuccin
+    colorscheme daylight
   ]]
 end
 
-local C = {}
-if vim.g.theme == 'night' then
-  C = palettes.get_palette(vim.g.default_dark_catppuccin_theme)
-else
-  C = palettes.get_palette(vim.g.default_light_catppuccin_theme)
+-- Function to get colors based on current theme
+local function get_theme_colors()
+  if vim.g.theme == 'light' then
+    return require('lush_themes.daylight.colors')
+  else
+    return require('lush_themes.midnight.colors')
+  end
 end
+
+local theme_colors = get_theme_colors()
 
 local colors = {}
 
-colors.input = C.mantle
-colors.result = C.mantle
-colors.counter = C.green
-colors.selection_bg = C.base
-colors.title = C.yellow
-colors.title_bg = C.crust
+colors.input = theme_colors.bg_dark
+colors.result = theme_colors.bg_dark
+colors.counter = theme_colors.green
+colors.selection_bg = theme_colors.bg
+colors.title = theme_colors.yellow
+colors.title_bg = theme_colors.bg_float
 
 highlight_telescope(colors)
