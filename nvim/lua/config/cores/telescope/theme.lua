@@ -17,13 +17,10 @@ local dropdown_theme = function(title, previewer, ignore)
       prompt = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
       results = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
     },
-    -- layout_config = {
-    --   prompt_position = 'top',
-    --   width = 0.6,
-    --   height = 0.4,
-    --   preview_width = 0.5,
-    -- },
-    -- layout_strategy = 'horizontal',
+    layout_config = {
+      height = 0.4,
+      width = 0.4,
+    },
     only_cwd = true,
     sorting_strategy = 'ascending',
     file_ignore_patterns = { '%.git/', 'node_modules/', '__pycache__/', '%.o$', '%.class$' },

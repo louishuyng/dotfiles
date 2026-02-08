@@ -1,49 +1,74 @@
 [env]
 TERM = "xterm-256color"
 
+# Font Configuration
 [font]
 size = 13
+
+[font.normal]
+family = "JetBrainsMono Nerd Font Propo"
+style = "Light"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font Propo"
+style = "Regular"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font Propo"
+style = "Light Italic"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Italic"
+
+[font.offset]
+x = 0
+y = 5
 
 [font.glyph_offset]
 x = 0
 y = 0
 
-[font.normal]
-family = "JetBrainsMono Nerd Font"
-
-[font.offset]
-x = 0
-y = 0
-
+# Scrolling
 [scrolling]
 history = 10000
 multiplier = 3
 
+# Selection
 [selection]
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
+# Window
 [window]
 option_as_alt = "Both"
 decorations = "none"
 decorations_theme_variant = "none"
-padding = { x = 0, y = 0  }
+padding = { x = 0, y = 0 }
 dimensions = { columns = 210, lines = 60 }
 dynamic_padding = true
 startup_mode = "Windowed"
 title = "DevTerm"
-dynamic_title=false
-opacity = 1
-blur = false
+dynamic_title = false
+opacity = 0.95
+blur = true
 
+# Keyboard
 [keyboard]
 bindings = [
   { key = "Enter", mods = "Command", action = "ToggleFullscreen" }
 ]
 
+# Cursor
+[cursor]
+blink_interval = 0
+unfocused_hollow = true
+
 [cursor.style]
 shape = "Block"
+blinking = "Never"
 
+# General
 [general]
 live_config_reload = true
 working_directory = "None"

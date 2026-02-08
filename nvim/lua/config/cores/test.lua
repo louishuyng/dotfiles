@@ -1,92 +1,44 @@
-local neotest_ns = vim.api.nvim_create_namespace('neotest')
-
-local opts = {
-  status = { virtual_text = true },
-  output = { open_on_run = false },
-  quickfix = {
-    open = function()
-      require('trouble').open({ mode = 'quickfix', focus = false })
-    end,
-  },
-}
-
-vim.diagnostic.config({
-  virtual_text = {
-    format = function(diagnostic)
-      -- Replace newline and tab characters with space for more compact diagnostics
-      local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
-      return message
-    end,
-  },
-}, neotest_ns)
-
-opts.consumers = opts.consumers or {}
-opts.consumers.trouble = function(client)
-  client.listeners.results = function(adapter_id, results, partial)
-    if partial then
-      return
-    end
-    local tree = assert(client:get_position(nil, { adapter = adapter_id }))
-
-    local failed = 0
-    for pos_id, result in pairs(results) do
-      if result.status == 'failed' and tree:get_key(pos_id) then
-        failed = failed + 1
-      end
-    end
-    vim.schedule(function()
-      local trouble = require('trouble')
-      if trouble.is_open() then
-        trouble.refresh()
-        if failed == 0 then
-          trouble.close()
-        end
+-- vim-test configuration
+-- Custom strategies for different terminals
+vim.g['test#custom_strategies'] = {
+  -- Snacks terminal strategy (for non-WezTerm)
+  snacks = function(cmd)
+    require('snacks').terminal.toggle(cmd, {
+      win = { position = 'bottom', height = 0.3 },
+    })
+  end,
+  -- WezTerm strategy - opens test in a pane below (async)
+  wezterm = function(cmd)
+    local handle
+    handle = vim.uv.spawn('wezterm', {
+      args = { 'cli', 'split-pane', '--bottom', '--percent', '30', '--', 'sh', '-c', cmd },
+      detached = true,
+    }, function()
+      if handle then
+        handle:close()
       end
     end)
-    return {}
-  end
-end
-
-opts.adapters = {
-  ['neotest-golang'] = {
-    go_test_args = { '-v', '-race', '-count=1', '-timeout=60s' },
-    dap_go_enabled = true,
-  },
-  ['neotest-jest'] = {
-    env = { CI = true },
-    cwd = function(path)
-      return vim.fn.getcwd()
-    end,
-  },
+  end,
 }
 
-if opts.adapters then
-  local adapters = {}
-  for name, config in pairs(opts.adapters or {}) do
-    if type(name) == 'number' then
-      if type(config) == 'string' then
-        config = require(config)
-      end
-      adapters[#adapters + 1] = config
-    elseif config ~= false then
-      local adapter = require(name)
-      if type(config) == 'table' and not vim.tbl_isempty(config) then
-        local meta = getmetatable(adapter)
-        if adapter.setup then
-          adapter.setup(config)
-        elseif adapter.adapter then
-          adapter.adapter(config)
-          adapter = adapter.adapter
-        elseif meta and meta.__call then
-          adapter = adapter(config)
-        else
-          error('Adapter ' .. name .. ' does not support setup')
-        end
-      end
-      adapters[#adapters + 1] = adapter
-    end
+-- Auto-detect terminal and set strategy
+local function get_strategy()
+  if os.getenv('WEZTERM_PANE') then
+    return 'wezterm'
   end
-  opts.adapters = adapters
+  return 'snacks'
 end
 
-require('neotest').setup(opts)
+vim.g['test#strategy'] = get_strategy()
+
+-- Optional: Customize test commands for different languages
+-- For Go tests
+vim.g['test#go#gotest#options'] = '-v -race -count=1 -timeout=60s'
+
+-- For Jest/JavaScript tests - add timeout to force exit if hanging
+vim.g['test#javascript#jest#executable'] = 'timeout 60 npx jest'
+vim.g['test#javascript#jest#options'] = '--verbose --forceExit'
+
+-- Ensure Jest is enabled for JavaScript/TypeScript files
+vim.g['test#javascript#runner'] = 'jest'
+vim.g['test#typescript#runner'] = 'jest'

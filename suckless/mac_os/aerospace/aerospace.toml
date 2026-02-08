@@ -17,8 +17,8 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 14
 inner.vertical =   14
-outer.top = [{ monitor."Built-in" = 0 }, 0]
-outer.bottom = [{ monitor."Built-in" = 32 }, 32]
+outer.top = [{ monitor."Built-in" = 0 }, 32]
+outer.bottom = [{ monitor."Built-in" = 0 }, 0]
 outer.left =       0
 outer.right =      0
 
@@ -81,9 +81,22 @@ run = ['layout floating', 'move-node-to-workspace Infra']
 if.app-id = 'com.electron.kontena-lens'
 run = ['layout floating', 'move-node-to-workspace Infra']
 
+
+[[on-window-detected]]
+if.app-id = 'li.zihua.medis2'
+run = ['layout floating', 'move-node-to-workspace Infra']
+ 
+[[on-window-detected]]
+if.app-id = 'com.wails.loca-dashboard'
+run = ['layout floating', 'move-node-to-workspace Infra']
+
 # Workspace Dev
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
+run = ['layout floating', 'move-node-to-workspace Dev']
+
+[[on-window-detected]]
+if.app-id = 'com.neovide.neovide'
 run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
@@ -152,6 +165,9 @@ if.app-id = 'com.mitchellh.ghostty'
 run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = ['move-node-to-workspace Terminal']
+[[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
 run = ['move-node-to-workspace Terminal']
 
@@ -192,6 +208,10 @@ run = ['layout floating', 'move-node-to-workspace Planing']
 
 [[on-window-detected]]
 if.app-id = 'info.pkpk.inkdrop'
+run = ['layout floating', 'move-node-to-workspace Planing']
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
 run = ['layout floating', 'move-node-to-workspace Planing']
 
 [[on-window-detected]]

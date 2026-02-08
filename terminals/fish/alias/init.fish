@@ -1,3 +1,4 @@
+source ~/.dotfiles/terminals/fish/alias/ai.fish
 source ~/.dotfiles/terminals/fish/alias/app.fish
 source ~/.dotfiles/terminals/fish/alias/devops.fish
 source ~/.dotfiles/terminals/fish/alias/general.fish

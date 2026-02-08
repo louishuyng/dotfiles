@@ -6,13 +6,13 @@ SESSION=$(tmux display-message -p '#S')
 # Return appropriate icon based on session name
 case "$SESSION" in
     "LX14")
-        echo ""
+        echo "🦖"
         ;;
     "Regask[Dev]")
-        echo ""
+        echo "💻"
         ;;
     "Regask[Ops]")
-        echo "󰣳"
+        echo "📦"
         ;;
     *)
         echo " "

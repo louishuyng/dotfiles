@@ -52,10 +52,11 @@ require('neo-tree').setup({
       expander_highlight = 'NeoTreeExpander',
     },
     icon = {
-      folder_closed = '▶',
-      folder_open = '▼',
-      folder_empty = '󰉖',
-      default = '󰈙',
+      folder_closed = '\xef\x93\x93', -- U+F4D3 nf-oct-file_directory_fill
+      folder_open = '\xef\x90\x93', -- U+F413 nf-oct-file_directory (outline)
+      folder_empty = '\xef\x90\x93', -- U+F413 nf-oct-file_directory (outline)
+      folder_empty_open = '\xef\x90\x93', -- U+F413 nf-oct-file_directory (outline)
+      default = '\xef\x80\x80', -- U+F000 nf-fa-file_o
       highlight = 'NeoTreeFileIcon',
     },
     modified = {
@@ -70,10 +71,10 @@ require('neo-tree').setup({
     git_status = {
       symbols = {
         -- Change type
-        added = '✚', -- or "✚", but this is redundant info if you use git_status_colors on the name
-        modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
-        deleted = '✖', -- this can only be used in the git_status source
-        renamed = '󰁕', -- this can only be used in the git_status source
+        added = '✚',
+        modified = '●',
+        deleted = '✖',
+        renamed = '➜',
         -- Status type
         untracked = '',
         ignored = '',
@@ -148,6 +149,36 @@ require('neo-tree').setup({
     end,
   },
   filesystem = {
+    components = {
+      icon = function(config, node, state)
+        local components = require('neo-tree.sources.common.components')
+        -- No icon for root node
+        if node:get_depth() == 1 then
+          return {}
+        end
+        return components.icon(config, node, state)
+      end,
+      name = function(config, node, state)
+        local components = require('neo-tree.sources.common.components')
+        local highlight = config.highlight or 'NeoTreeFileName'
+
+        -- Check if this is the root node
+        if node:get_depth() == 1 then
+          -- For root, show only the folder name (not full path)
+          local name = vim.fn.fnamemodify(node.path, ':t')
+          if name == '' then
+            name = node.path
+          end
+          return {
+            text = name,
+            highlight = 'NeoTreeRootName',
+          }
+        end
+
+        -- For all other nodes, use default component
+        return components.name(config, node, state)
+      end,
+    },
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items
       hide_dotfiles = true,

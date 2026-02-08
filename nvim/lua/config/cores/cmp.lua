@@ -41,6 +41,11 @@ local COMPLETION_KIND = {
 }
 
 cmp.setup {
+  enabled = function()
+    -- Enable cmp even during macro recording
+    local buftype = vim.api.nvim_get_option_value('buftype', { buf = 0 })
+    return buftype ~= 'prompt'
+  end,
   preselect = cmp.PreselectMode.Item,
   snippet = {
     expand = function(args)

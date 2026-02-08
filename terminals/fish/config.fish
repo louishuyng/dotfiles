@@ -23,39 +23,15 @@ source ~/.dotfiles/terminals/fish/env/init.fish
 
 starship init fish | source
 
-set fish_color_command normal
-set fish_color_comment red
-set fish_color_cwd green
-set fish_color_cwd_root red
-set fish_color_end green
-set fish_color_error brred
-set fish_color_escape brcyan
-set fish_color_history_current --bold
-set fish_color_host normal
-set fish_color_host_remote yellow
-set fish_color_keyword normal
-set fish_color_operator brcyan
-set fish_color_option cyan
-set fish_color_param cyan
-set fish_color_quote yellow
-set fish_color_redirection cyan --bold
-set fish_color_search_match white --background=brblack --bold
-set fish_color_selection white --background=brblack --bold
-set fish_color_status red
-set fish_color_user brgreen
-set fish_color_valid_path --underline
-set fish_pager_color_completion normal
-set fish_pager_color_description yellow -i
-set fish_pager_color_prefix normal --bold --underline
-set fish_pager_color_progress brwhite --background=cyan --bold
-set fish_pager_color_selected_background -r
-
 # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
 eval "$(pyenv init --path)"
 
 set fish_greeting ""
+
+# Doom Emacs configuration
+set -gx DOOMDIR "$HOME/.doom.d"
 
 zoxide init fish | source
 

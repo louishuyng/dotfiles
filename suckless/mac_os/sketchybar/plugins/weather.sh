@@ -44,7 +44,7 @@ if [[ "$weather" =~ ([0-9.-]+°[CF]) ]]; then
     temp="${BASH_REMATCH[1]}"
     sketchybar --set "$NAME" label="$temp" \
                             icon.color=$BLUE \
-                            label.color=$WHITE
+                            label.color=$LABEL_COLOR
 else
     sketchybar --set "$NAME" label="N/A" \
                             icon.color=$GREY \

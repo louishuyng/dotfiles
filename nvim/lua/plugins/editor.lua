@@ -1,5 +1,15 @@
 return {
-  { 'terryma/vim-multiple-cursors', lazy = false }, -- Multi Cursor
+  {
+    'mg979/vim-visual-multi',
+    event = 'VeryLazy',
+    init = function()
+      vim.g.VM_theme = 'iceblue'
+      vim.g.VM_maps = {
+        ['Find Under'] = '<C-n>',
+        ['Find Subword Under'] = '<C-n>',
+      }
+    end,
+  },
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -47,7 +57,6 @@ return {
   -- Markdown
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    lazy = false,
     ft = 'markdown',
     opts = {},
   },
@@ -86,8 +95,8 @@ return {
     -- Optional dependencies
     dependencies = {},
     -- Lazy load Oil on command
-    lazy = false,
     cmd = 'Oil',
+    keys = { { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' } },
 
     config = function()
       require('oil').setup({
@@ -98,8 +107,6 @@ return {
           ['q'] = { 'actions.close', mode = 'n' },
         },
       })
-
-      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
       vim.api.nvim_create_autocmd('User', {
         pattern = 'OilActionsPost',
@@ -152,7 +159,7 @@ return {
   {
     'echasnovski/mini.pairs',
     version = false,
-    lazy = false,
+    event = 'InsertEnter',
     config = function()
       require('mini.pairs').setup({})
     end,

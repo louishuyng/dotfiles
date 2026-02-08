@@ -113,6 +113,21 @@ snacks.setup {
 vim.keymap.set('n', '<C-w>o', ":lua require('snacks').zen() <CR>", { desc = 'Open parent directory' })
 vim.keymap.set('n', '<leader>go', ":lua require('snacks').gitbrowse() <CR>", { desc = 'Open git browser url' })
 
+-- Terminal keymaps
+vim.keymap.set('n', '<leader>tt', function()
+  Snacks.terminal.toggle()
+end, { desc = 'Terminal Open' })
+
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+vim.keymap.set('n', '<leader>th', function()
+  Snacks.terminal.toggle(nil, { win = { position = 'bottom', height = 0.3 } })
+end, { desc = 'Terminal Horizontal' })
+
+vim.keymap.set('n', '<leader>tv', function()
+  Snacks.terminal.toggle(nil, { win = { position = 'right', width = 0.4 } })
+end, { desc = 'Terminal Vertical' })
+
 vim.keymap.set(
   'n',
   '<leader>fn',

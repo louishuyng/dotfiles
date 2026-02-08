@@ -1,103 +1,100 @@
-# -----------------------------------------------------------------------------
-# Solarized Dark Skin
-# Based on: K9s Solarized Dark Skin
-# Author:   [@danmikita](danmikita@gmail.com)
-# -----------------------------------------------------------------------------
-
-# Styles...
-foreground: &foreground "#839495"
-background: &background "#002833"
-current_line: &current_line "#003440"
-selection: &selection "#003440"
-comment: &comment "#6272a4"
-cyan: &cyan "#2aa197"
-green: &green "#859901"
-orange: &orange "#cb4a16"
-magenta: &magenta "#d33582"
-blue: &blue "#2aa198"
-red: &red "#dc312e"
-
-# Skin...
 k9s:
   body:
-    fgColor: *foreground
-    bgColor: *background
-    logoColor: *blue
+    fgColor: '#cdd6f4'
+    bgColor: default
+    logoColor: '#cba6f7'
   prompt:
-    fgColor: *foreground
-    bgColor: *background
-    suggestColor: *orange
-  info:
-    fgColor: *magenta
-    sectionColor: *foreground
-  dialog:
-    fgColor: *foreground
-    bgColor: *background
-    buttonFgColor: *foreground
-    buttonBgColor: *magenta
-    buttonFocusFgColor: white
-    buttonFocusBgColor: *cyan
-    labelFgColor: *orange
-    fieldFgColor: *foreground
+    fgColor: '#cdd6f4'
+    bgColor: default
+    suggestColor: '#89b4fa'
+  help:
+    fgColor: '#cdd6f4'
+    bgColor: default
+    sectionColor: '#a6e3a1'
+    keyColor: '#89b4fa'
+    numKeyColor: '#f38ba8'
   frame:
-    border:
-      fgColor: *selection
-      focusColor: *current_line
-    menu:
-      fgColor: *foreground
-      keyColor: *magenta
-      numKeyColor: *magenta
-    crumbs:
-      fgColor: *foreground
-      bgColor: *current_line
-      activeColor: *current_line
-    status:
-      newColor: *cyan
-      modifyColor: *blue
-      addColor: *green
-      errorColor: *red
-      highlightColor: *orange
-      killColor: *comment
-      completedColor: *comment
     title:
-      fgColor: *foreground
-      bgColor: *current_line
-      highlightColor: *orange
-      counterColor: *blue
-      filterColor: *magenta
+      fgColor: '#89dceb'
+      bgColor: default
+      highlightColor: '#f38ba8'
+      counterColor: '#f9e2af'
+      filterColor: '#a6e3a1'
+    border:
+      fgColor: '#6c7086'
+      focusColor: '#89b4fa'
+    menu:
+      fgColor: '#cdd6f4'
+      keyColor: '#89b4fa'
+      numKeyColor: '#f38ba8'
+    crumbs:
+      fgColor: '#bac2de'
+      bgColor: default
+      activeColor: '#fab387'
+    status:
+      newColor: '#89b4fa'
+      modifyColor: '#89dceb'
+      addColor: '#a6e3a1'
+      pendingColor: '#f9e2af'
+      errorColor: '#f38ba8'
+      highlightColor: '#89dceb'
+      killColor: '#cba6f7'
+      completedColor: '#6c7086'
+  info:
+    fgColor: '#f9e2af'
+    sectionColor: '#cdd6f4'
   views:
+    table:
+      fgColor: '#cdd6f4'
+      bgColor: default
+      cursorFgColor: '#1e1e2e'
+      cursorBgColor: '#89b4fa'
+      markColor: '#f38ba8'
+      header:
+        fgColor: '#6c7086'
+        bgColor: default
+        sorterColor: '#89dceb'
+    xray:
+      fgColor: '#cdd6f4'
+      bgColor: default
+      cursorColor: '#89b4fa'
+      cursorTextColor: '#1e1e2e'
+      graphicColor: '#cba6f7'
     charts:
       bgColor: default
+      chartBgColor: default
+      dialBgColor: default
       defaultDialColors:
-        - *blue
-        - *red
+        - '#a6e3a1'
+        - '#f38ba8'
       defaultChartColors:
-        - *blue
-        - *red
-    table:
-      fgColor: *foreground
-      bgColor: *background
-      cursorFgColor: *selection
-      cursorBgColor: *current_line
-      header:
-        fgColor: *foreground
-        bgColor: *background
-        sorterColor: *cyan
-    xray:
-      fgColor: *foreground
-      bgColor: *background
-      cursorColor: *current_line
-      graphicColor: *blue
-      showIcons: false
+        - '#a6e3a1'
+        - '#f38ba8'
+      resourceColors:
+        cpu:
+          - '#cba6f7'
+          - '#89b4fa'
+        mem:
+          - '#f9e2af'
+          - '#fab387'
     yaml:
-      keyColor: *magenta
-      colonColor: *blue
-      valueColor: *foreground
+      keyColor: '#89b4fa'
+      valueColor: '#cdd6f4'
+      colonColor: '#6c7086'
     logs:
-      fgColor: *foreground
-      bgColor: *background
+      fgColor: '#cdd6f4'
+      bgColor: default
       indicator:
-        fgColor: *foreground
-        bgColor: *selection
-        toggleOnColor: *magenta
-        toggleOffColor: *blue
+        fgColor: '#89b4fa'
+        bgColor: default
+        toggleOnColor: '#a6e3a1'
+        toggleOffColor: '#6c7086'
+  dialog:
+    fgColor: '#cdd6f4'
+    bgColor: default
+    buttonFgColor: '#cdd6f4'
+    buttonBgColor: default
+    buttonFocusFgColor: '#1e1e2e'
+    buttonFocusBgColor: '#89b4fa'
+    labelFgColor: '#fab387'
+    fieldFgColor: '#cdd6f4'

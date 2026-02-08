@@ -1,5 +1,5 @@
 function p-clean -d 'clean all major processes'
-    set -l array node ruby k9s nvim
+    set -l array node ruby k9s nvim gopls claude prettierd
 
     for element in $array
         if pkill -9 -f $element >/dev/null 2>&1

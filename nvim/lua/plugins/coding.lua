@@ -1,10 +1,9 @@
 return {
-  -- CMP & Completion
-  { 'hrsh7th/nvim-cmp', lazy = false },
+  -- CMP & Completion (deferred to InsertEnter for faster startup)
+  { 'hrsh7th/nvim-cmp', event = 'InsertEnter' },
   {
     'L3MON4D3/LuaSnip',
-    lazy = false,
-    after = 'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
     dependencies = {
       'rafamadriz/friendly-snippets',
       'saadparwaiz1/cmp_luasnip',
@@ -58,16 +57,20 @@ return {
   -- { 'tpope/vim-rails' },
 
   -- Testing
+  { 'preservim/vimux' },
   {
-    'nvim-neotest/neotest',
-    commit = '52fca6717ef972113ddd6ca223e30ad0abb2800c',
-    dependencies = {
-      'nvim-neotest/nvim-nio',
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-neotest/neotest-jest',
-      'fredrikaverpil/neotest-golang',
+    'vim-test/vim-test',
+    dependencies = { 'preservim/vimux' },
+    keys = {
+      { '<space>tf', '<cmd>TestFile<cr>', desc = 'Test File' },
+      { '<space>ts', '<cmd>TestNearest<cr>', desc = 'Test Nearest' },
+      { '<space>tl', '<cmd>TestLast<cr>', desc = 'Test Last' },
+      { '<space>ta', '<cmd>TestSuite<cr>', desc = 'Test Suite' },
+      { '<space>tv', '<cmd>TestVisit<cr>', desc = 'Test Visit' },
     },
+    config = function()
+      require('config.cores.test')
+    end,
   },
   {
     'folke/trouble.nvim',
@@ -86,7 +89,7 @@ return {
   -- Code runner
   {
     'CRAG666/code_runner.nvim',
-    lazy = false,
+    cmd = { 'RunCode', 'RunFile', 'RunProject' },
     config = function()
       require('code_runner').setup({
         filetype = {

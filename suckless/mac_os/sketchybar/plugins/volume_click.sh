@@ -31,7 +31,7 @@ sketchybar --add item volume.mute popup.volume \
 # Add volume down button
 sketchybar --add item volume.down popup.volume \
            --set volume.down icon="−" \
-                           icon.color=$WHITE \
+                           icon.color=$POPUP_ICON_COLOR \
                            icon.font="SF Pro:Medium:14.0" \
                            label.drawing=off \
                            background.drawing=off \
@@ -64,7 +64,7 @@ sketchybar --add item volume.slider popup.volume \
 # Add volume up button
 sketchybar --add item volume.up popup.volume \
            --set volume.up icon="+" \
-                         icon.color=$WHITE \
+                         icon.color=$POPUP_ICON_COLOR \
                          icon.font="SF Pro:Medium:14.0" \
                          label.drawing=off \
                          background.drawing=off \
@@ -75,7 +75,7 @@ sketchybar --add item volume.up popup.volume \
 # Add volume percentage
 sketchybar --add item volume.percent popup.volume \
            --set volume.percent icon="$VOLUME%" \
-                               icon.color=$WHITE \
+                               icon.color=$POPUP_ICON_COLOR \
                                icon.font="SF Pro:Medium:9.0" \
                                label.drawing=off \
                                background.drawing=off \

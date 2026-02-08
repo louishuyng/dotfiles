@@ -2,6 +2,50 @@ vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
 
+vim.g.transparent_enabled = false
+
+-- GUI Font settings (for Neovide, VimR, or other GUI clients)
+if vim.g.neovide then
+  -- Font configuration
+  vim.o.guifont = 'JetBrainsMono Nerd Font:h13'
+
+  -- Minimal UI - hide toolbar, title bar, and menubar
+  vim.g.neovide_title_hidden = true
+  vim.g.neovide_show_border = false
+  vim.g.neovide_fullscreen = false
+
+  -- Cursor animation (disabled)
+  vim.g.neovide_cursor_animation_length = 0
+  vim.g.neovide_cursor_trail_size = 0
+
+  -- Window appearance - minimal padding
+  vim.g.neovide_padding_top = 0
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
+  vim.g.neovide_floating_blur_amount_x = 2.0
+  vim.g.neovide_floating_blur_amount_y = 2.0
+
+  -- Performance
+  vim.g.neovide_refresh_rate = 60
+  vim.g.neovide_refresh_rate_idle = 5
+  vim.g.neovide_no_idle = false
+  vim.g.neovide_confirm_quit = true
+
+  -- Visual effects
+  vim.g.neovide_transparency = 1.0
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_underline_stroke_scale = 1.0
+  vim.g.neovide_scroll_animation_length = 0.3
+  vim.g.neovide_scroll_animation_far_lines = 1
+
+  -- macOS specific
+  vim.g.neovide_input_macos_option_key_is_meta = 'both'
+end
+
+-- Fallback font for other GUI clients
+vim.o.guifont = 'JetBrainsMono Nerd Font:h14'
+
 vim.g.default_dark_theme = 'night'
 vim.g.default_light_theme = 'light'
 vim.g.default_dark_catppuccin_theme = 'mocha'
@@ -44,6 +88,7 @@ opt.listchars = {
   precedes = '⟨',
 }
 opt.laststatus = 3 -- Always display the status line
+opt.showtabline = 0 -- Never show tabline
 opt.relativenumber = true -- Relative line numbers
 
 -- Tabs
@@ -106,9 +151,6 @@ vim.opt.diffopt = {
 vim.opt.undofile = true
 vim.opt.signcolumn = 'yes'
 
--- SPELL
-vim.opt.spell = true
-
 -- UNDOFILE
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand('~/.vim/undodir')
@@ -140,34 +182,31 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Enable spell only for text filetypes
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'text', 'gitcommit' },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
+
 -- LSP
 vim.g.auto_format = true
 
 -- Grep
 vim.opt.grepprg = 'rg --vimgrep --smart-case --follow'
-
 -- Winbar
 -- vim.api.nvim_command("set winbar=%m\\ %f")
 
--- plantuml
-vim.cmd [[
-au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
-    \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
-    \  1,
-    \  0
-    \)
-  ]]
+-- Performance
+vim.cmd([[
+   set ttyfast
+   set synmaxcol=500
+   syntax sync minlines=50
 
--- Draw Performance
--- vim.cmd([[
---   set ttyfast
---   set synmaxcol=500
---   syntax sync minlines=50
---
---   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
--- ]])
+   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+ ]])
 
--- File Info
 vim.cmd([[
   set viminfo='100,n$HOME/.vim/files/info/viminfo
 ]])

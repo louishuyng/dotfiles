@@ -1,12 +1,10 @@
 auto-update-channel = tip
 
-# custom-shader = shaders/custom_shader.glsl
-
 theme = dark:dark,light:light
 
-background-opacity = 1
-background-blur = false
-cursor-color = #AF87D7
+# Background
+background-opacity = 0.80
+background-blur-radius = 8
 
 shell-integration = none
 
@@ -23,8 +21,8 @@ font-thicken-strength = 0
 adjust-cell-width = 0%
 adjust-cell-height = 5%
 
-window-width = 210
-window-height = 53
+window-width = 200
+window-height = 55
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
@@ -34,13 +32,18 @@ scrollback-limit = 10000
 
 window-padding-x = 0
 window-padding-y = 0
-window-padding-balance = true
-window-save-state = default
+window-padding-balance = false
+window-padding-color = extend
+window-save-state = always
 window-decoration = none
 confirm-close-surface = false
 
+# macOS specific
 macos-option-as-alt = true
+macos-titlebar-style = hidden
+macos-window-shadow = true
 
+# Keybindings
 keybind = cmd+shift+r=reload_config
 keybind = cmd+u=toggle_background_opacity
 keybind = cmd+t=toggle_quick_terminal

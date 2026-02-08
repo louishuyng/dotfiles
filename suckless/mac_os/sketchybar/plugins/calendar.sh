@@ -56,7 +56,7 @@ fi
 sketchybar --set "$NAME" icon="$ICON" \
                         icon.color="$COLOR" \
                         label="$LABEL" \
-                        label.color=$WHITE \
+                        label.color=$LABEL_COLOR \
                         label.font="SF Pro:Medium:12.0" \
                         label.max_chars=20 \
                         click_script="$CONFIG_DIR/plugins/calendar.sh open"

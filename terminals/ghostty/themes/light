@@ -3,7 +3,7 @@ background = #fff9f9
 foreground = #1a1a1a
 selection-background = #dadadf
 selection-foreground = #1a1a1a
-cursor-color = #bb0000
+cursor-color = #1a1a1a
 
 # black
 palette = 0=#efecec

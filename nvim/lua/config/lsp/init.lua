@@ -14,10 +14,9 @@ require('mason').setup({
     -- Rust
     'rust_analyzer',
 
-    -- Ruby
+    -- Ruby (only solargraph, ruby-lsp not used)
     'solargraph',
     'rubocop',
-    'ruby-lsp',
 
     -- Gleam
     -- 'gleam',
@@ -47,7 +46,7 @@ require('mason').setup({
     -- Typescript
     'vtsls',
     'eslint',
-    'prettier_d',
+    'prettier',
     'js-debug-adapter',
 
     -- Python
@@ -71,8 +70,6 @@ require('mason').setup({
     'cfn_lint',
     'yamlfmt',
     'smithy-language-server',
-    'yamlls',
-    'ltex-ls',
     'yaml-language-server',
     'json-lsp',
 

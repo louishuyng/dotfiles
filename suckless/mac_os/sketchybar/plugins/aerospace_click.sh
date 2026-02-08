@@ -49,7 +49,7 @@ for workspace in $ALL_WORKSPACES; do
                          icon.padding_left=8 \
                          icon.padding_right=6 \
                          label="$workspace" \
-                         label.color=$WHITE \
+                         label.color=$POPUP_LABEL_COLOR \
                          label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
                          label.padding_left=0 \
                          label.padding_right=8 \

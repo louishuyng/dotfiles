@@ -58,9 +58,9 @@ if [ "$SHOULD_SHOW" = "true" ]; then
                    background.corner_radius=6 \
                    background.height=26 \
                    background.border_width=0 \
-                   icon.color=$WHITE \
+                   icon.color=$POPUP_ICON_COLOR \
                    icon.font="SF Pro:Semibold:14.0" \
-                   label.color=$WHITE
+                   label.color=$POPUP_LABEL_COLOR
     else
         # Workspace visible on other display but not focused - subtle styling
         sketchybar --set "$NAME" \

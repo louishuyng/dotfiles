@@ -2,16 +2,13 @@ local lint = require('lint')
 
 lint.linters_by_ft = {
   fish = { 'fish' },
-  typesccript = { 'eslint' },
-  typescriptreact = { 'eslint' },
-  javascript = { 'eslint' },
-  javascriptreact = { 'eslint' },
+  -- eslint removed: using eslint LSP instead (vim.lsp.enable('eslint') in typescript.lua)
   python = { 'ruff' },
 }
 
 local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
--- local events = { "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }
-local events = { 'BufEnter', 'BufWritePost', 'InsertLeave' }
+-- Removed BufEnter for performance - lint only on save and insert leave
+local events = { 'BufWritePost', 'InsertLeave' }
 vim.api.nvim_create_autocmd(events, {
   group = lint_augroup,
   callback = function()
