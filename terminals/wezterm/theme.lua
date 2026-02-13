@@ -2,68 +2,127 @@ local wezterm = require("wezterm")
 
 local Theme = {}
 
-function Theme.setup(config)
-	local colors = {
-		rosewater = "#fed1cb",
-		flamingo = "#ff9185",
-		pink = "#d699b6",
-		mauve = "#cb7ec8",
-		red = "#e06062",
-		maroon = "#e67e80",
-		peach = "#e69875",
-		yellow = "#d3ad63",
-		green = "#b0cc76",
-		teal = "#6db57f",
-		sky = "#8fbbb3",
-		sapphire = "#60aaa0",
-		blue = "#59a6c3",
-		lavender = "#e0d3d4",
-		text = "#98c379",
-		subtext1 = "#e0d7c3",
-		subtext0 = "#d3c6aa",
-		overlay2 = "#9da9a0",
-		overlay1 = "#859289",
-		overlay0 = "#6d6649",
-		surface2 = "#585c4a",
-		surface1 = "#414b50",
-		surface0 = "#374145",
-		base = "#0F0F0F",
-		mantle = "#1C1C20",
-		crust = "#5b4f45",
-	}
+Theme.palettes = {
+	mocha = {
+		base = "#000000",
+		mantle = "#33353f",
+		crust = "#202023",
+		text = "#c5cdd9",
+		subtext1 = "#bcc5d1",
+		subtext0 = "#9da9a0",
+		overlay2 = "#7f8490",
+		overlay1 = "#6b7089",
+		overlay0 = "#535965",
+		surface2 = "#414550",
+		surface1 = "#3b3e48",
+		surface0 = "#363944",
+		rosewater = "#deb974",
+		flamingo = "#deb974",
+		pink = "#d38aea",
+		mauve = "#d38aea",
+		red = "#ec7279",
+		maroon = "#ec7279",
+		peach = "#deb974",
+		yellow = "#deb974",
+		green = "#a0c980",
+		teal = "#5dbbc1",
+		sky = "#5dbbc1",
+		sapphire = "#6cb6eb",
+		blue = "#6cb6eb",
+		lavender = "#d38aea",
+	},
+	latte = {
+		rosewater = "#dc8a78",
+		flamingo = "#dd7878",
+		pink = "#ea76cb",
+		mauve = "#8839ef",
+		red = "#d20f39",
+		maroon = "#e64553",
+		peach = "#fe640b",
+		yellow = "#df8e1d",
+		green = "#40a02b",
+		teal = "#179299",
+		sky = "#04a5e5",
+		sapphire = "#209fb5",
+		blue = "#1e66f5",
+		lavender = "#7287fd",
+		text = "#4c4f69",
+		subtext1 = "#5c5f77",
+		subtext0 = "#6c6f85",
+		overlay2 = "#7c7f93",
+		overlay1 = "#8c8fa1",
+		overlay0 = "#9ca0b0",
+		surface2 = "#acb0be",
+		surface1 = "#bcc0cc",
+		surface0 = "#ccd0da",
+		base = "#eff1f5",
+		mantle = "#e6e9ef",
+		crust = "#dce0e8",
+	},
+}
+
+function Theme.is_dark()
+	if wezterm.gui then
+		return wezterm.gui.get_appearance():find("Dark") ~= nil
+	end
+	return true
+end
+
+function Theme.get_palette()
+	return Theme.palettes.mocha
+end
+
+function Theme.apply_colors(config, c)
+	local is_latte = c.base == Theme.palettes.latte.base
 
 	config.colors = {
-		split = colors.surface0,
-		foreground = colors.text,
-		background = colors.base,
-		cursor_border = colors.overlay2,
-		cursor_fg = colors.base,
-		selection_bg = colors.surface2,
-		visual_bell = colors.surface0,
-		indexed = { [16] = colors.peach, [17] = colors.rosewater },
-		scrollbar_thumb = colors.surface2,
-		compose_cursor = colors.flamingo,
+		split = c.overlay0,
+		foreground = c.text,
+		background = c.base,
+		cursor_border = c.rosewater,
+		cursor_fg = is_latte and c.base or c.crust,
+		cursor_bg = c.rosewater,
+		selection_fg = c.text,
+		selection_bg = c.surface2,
+		visual_bell = c.surface0,
+		indexed = { [16] = c.peach, [17] = c.rosewater },
+		scrollbar_thumb = c.surface2,
+		compose_cursor = c.flamingo,
 		ansi = {
-			colors.surface0,
-			colors.red,
-			colors.green,
-			colors.yellow,
-			colors.blue,
-			colors.mauve,
-			colors.teal,
-			colors.subtext1,
+			is_latte and c.subtext1 or c.surface1,
+			c.red,
+			c.green,
+			c.yellow,
+			c.blue,
+			c.pink,
+			c.teal,
+			is_latte and c.surface2 or c.subtext1,
 		},
 		brights = {
-			colors.surface2,
-			colors.red,
-			colors.green,
-			colors.yellow,
-			colors.blue,
-			colors.mauve,
-			colors.teal,
-			colors.subtext0,
+			is_latte and c.subtext0 or c.surface2,
+			c.red,
+			c.green,
+			c.yellow,
+			c.blue,
+			c.pink,
+			c.teal,
+			is_latte and c.surface1 or c.subtext0,
 		},
 	}
+
+	config.command_palette_bg_color = c.crust
+	config.command_palette_fg_color = c.text
+end
+
+function Theme.setup(config)
+	local c = Theme.get_palette()
+	Theme.apply_colors(config, c)
+
+	wezterm.on("window-config-reloaded", function(window, _pane)
+		local c = Theme.get_palette()
+		local overrides = window:get_config_overrides() or {}
+		Theme.apply_colors(overrides, c)
+	end)
 end
 
 return Theme

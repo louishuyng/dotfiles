@@ -2,7 +2,6 @@ local lint = require('lint')
 
 lint.linters_by_ft = {
   fish = { 'fish' },
-  -- eslint removed: using eslint LSP instead (vim.lsp.enable('eslint') in typescript.lua)
   python = { 'ruff' },
 }
 

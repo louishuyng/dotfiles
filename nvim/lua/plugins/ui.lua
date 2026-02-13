@@ -46,7 +46,6 @@ return {
   {
     'akinsho/nvim-bufferline.lua',
     event = 'VeryLazy',
-    enabled = false,
   },
   -- { 'b0o/incline.nvim' },
   {

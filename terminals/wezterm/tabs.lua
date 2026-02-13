@@ -1,155 +1,114 @@
--- Tabs module - status bar and tab formatting (like tmux status line)
+-- Tabs module - tabline.wez with minimal transparent design
 local wezterm = require("wezterm")
+local theme = require("theme")
 
 local Tabs = {}
 
--- Colors for status bar (matching your theme)
-local colors = {
-	bg = "#1C1C20",
-	fg = "#d3c6aa",
-	active_bg = "#374145",
-	active_fg = "#e0d7c3",
-	workspace_bg = "#59a6c3",
-	workspace_fg = "#0F0F0F",
-	zoomed_bg = "#e06062",
-	leader_bg = "#b0cc76",
+local process_icons = {
+	["nvim"] = { wezterm.nerdfonts.custom_neovim },
+	["vim"] = { wezterm.nerdfonts.custom_vim },
+	["fish"] = { wezterm.nerdfonts.md_fish },
+	["zsh"] = { wezterm.nerdfonts.dev_terminal },
+	["bash"] = { wezterm.nerdfonts.cod_terminal_bash },
+	["node"] = { wezterm.nerdfonts.md_nodejs },
+	["python"] = { wezterm.nerdfonts.dev_python },
+	["python3"] = { wezterm.nerdfonts.dev_python },
+	["ruby"] = { wezterm.nerdfonts.dev_ruby },
+	["go"] = { wezterm.nerdfonts.md_language_go },
+	["cargo"] = { wezterm.nerdfonts.dev_rust },
+	["rustc"] = { wezterm.nerdfonts.dev_rust },
+	["git"] = { wezterm.nerdfonts.dev_git },
+	["lazygit"] = { wezterm.nerdfonts.dev_git },
+	["docker"] = { wezterm.nerdfonts.dev_docker },
+	["kubectl"] = { wezterm.nerdfonts.md_kubernetes },
+	["ssh"] = { wezterm.nerdfonts.md_ssh },
+	["make"] = { wezterm.nerdfonts.seti_makefile },
+	["brew"] = { wezterm.nerdfonts.dev_homebrew },
+	["npm"] = { wezterm.nerdfonts.dev_npm },
 }
 
--- Get folder name from path
-local function basename(path)
-	if not path then
-		return ""
-	end
-	return path:match("([^/]+)$") or path
-end
+local function build_theme()
+	local c = theme.get_palette()
+	local bg = "NONE"
+	local active = c.crust
 
--- Format tab title
-local function tab_title(tab_info, max_width)
-	local tab_index = tab_info.tab_index
-	local title = tab_info.tab_title
-
-	-- Use custom title if set, otherwise use pane title or cwd
-	if title and #title > 0 then
-		-- Custom title set
-	else
-		local pane = tab_info.active_pane
-		local cwd = pane.current_working_dir
-		if cwd then
-			-- Extract folder name from URL
-			local path = cwd.file_path or cwd:gsub("file://[^/]*", "")
-			title = basename(path)
-		else
-			title = pane.title
-		end
-	end
-
-	-- Truncate if needed
-	title = wezterm.truncate_right(title, max_width - 4)
-	return string.format(" %d: %s ", tab_index + 1, title)
-end
-
-function Tabs.setup(config)
-	-- Tab bar colors
-	config.colors = config.colors or {}
-	config.colors.tab_bar = {
-		background = colors.bg,
-		active_tab = {
-			bg_color = colors.active_bg,
-			fg_color = colors.active_fg,
-			intensity = "Bold",
+	return {
+		normal_mode = {
+			a = { fg = c.yellow, bg = bg },
+			b = { fg = c.text, bg = bg },
+			c = { fg = c.overlay1, bg = bg },
+			x = { fg = c.red, bg = bg },
+			y = { fg = c.green, bg = bg },
+			z = { fg = c.blue, bg = bg },
 		},
-		inactive_tab = {
-			bg_color = colors.bg,
-			fg_color = colors.fg,
+		copy_mode = {
+			a = { fg = c.yellow, bg = bg },
+			b = { fg = c.text, bg = bg },
+			c = { fg = c.overlay1, bg = bg },
+			x = { fg = c.red, bg = bg },
+			y = { fg = c.green, bg = bg },
+			z = { fg = c.blue, bg = bg },
 		},
-		inactive_tab_hover = {
-			bg_color = colors.active_bg,
-			fg_color = colors.active_fg,
+		search_mode = {
+			a = { fg = c.yellow, bg = bg },
+			b = { fg = c.text, bg = bg },
+			c = { fg = c.overlay1, bg = bg },
+			x = { fg = c.overlay1, bg = bg },
+			y = { fg = c.teal, bg = bg },
+			z = { fg = c.blue, bg = bg },
 		},
-		new_tab = {
-			bg_color = colors.bg,
-			fg_color = colors.fg,
-		},
-		new_tab_hover = {
-			bg_color = colors.active_bg,
-			fg_color = colors.active_fg,
+		tab = {
+			active = { fg = c.green, bg = active },
+			inactive = { fg = c.subtext1, bg = bg },
+			inactive_hover = { fg = c.text, bg = bg },
 		},
 	}
+end
 
-	-- Format tab titles
-	wezterm.on("format-tab-title", function(tab, tabs, panes, _config, hover, max_width)
-		local title = tab_title(tab, max_width)
+function Tabs.setup(config, tabline)
+	tabline.setup({
+		options = {
+			theme = config.colors or "Catppuccin Mocha",
+			theme_overrides = build_theme(),
+			section_separators = { left = "", right = "" },
+			component_separators = { left = "", right = "" },
+			tab_separators = { left = "", right = "" },
+		},
+		sections = {
+			tabline_a = { { "workspace", icon = "Louis 󱘖" } },
+			tabline_b = {},
+			tabline_c = {},
+			tab_active = {
+				{ "index", padding = { left = 1, right = 0 } },
+				{ "cwd", padding = { left = 1, right = 0 }, max_length = 20 },
+				{
+					"process",
+					icons_only = true,
+					padding = { left = 1, right = 0 },
+					process_to_icon = process_icons,
+				},
+			},
+			tab_inactive = {
+				{ "index", padding = { left = 1, right = 0 } },
+				{ "cwd", padding = { left = 1, right = 0 }, max_length = 16 },
+				{
+					"process",
+					icons_only = true,
+					padding = { left = 1, right = 1 },
+					process_to_icon = process_icons,
+				},
+			},
+			tabline_x = {
+				{ "cpu", throttle = 3 },
+			},
+			tabline_y = {
+				{ "ram", throttle = 3 },
+			},
+			tabline_z = { "domain" },
+		},
+	})
 
-		local bg = tab.is_active and colors.active_bg or colors.bg
-		local fg = tab.is_active and colors.active_fg or colors.fg
-
-		-- Add zoom indicator
-		if tab.active_pane.is_zoomed then
-			title = " " .. title
-		end
-
-		return {
-			{ Background = { Color = bg } },
-			{ Foreground = { Color = fg } },
-			{ Text = title },
-		}
-	end)
-
-	-- Update right status (workspace name, time, etc. - like tmux status-right)
-	wezterm.on("update-right-status", function(window, pane)
-		local workspace = window:active_workspace()
-		local date = wezterm.strftime("%H:%M")
-
-		-- Check if leader key is active
-		local leader = ""
-		if window:leader_is_active() then
-			leader = " LEADER "
-		end
-
-		-- Check if pane is zoomed
-		local zoom = ""
-		if pane:tab():active_pane():is_zoomed() then
-			zoom = " ZOOM "
-		end
-
-		-- Build status elements
-		local elements = {}
-
-		-- Leader indicator
-		if leader ~= "" then
-			table.insert(elements, { Background = { Color = colors.leader_bg } })
-			table.insert(elements, { Foreground = { Color = colors.workspace_fg } })
-			table.insert(elements, { Text = leader })
-		end
-
-		-- Zoom indicator
-		if zoom ~= "" then
-			table.insert(elements, { Background = { Color = colors.zoomed_bg } })
-			table.insert(elements, { Foreground = { Color = colors.workspace_fg } })
-			table.insert(elements, { Text = zoom })
-		end
-
-		-- Time
-		table.insert(elements, { Background = { Color = colors.bg } })
-		table.insert(elements, { Foreground = { Color = colors.fg } })
-		table.insert(elements, { Text = " " .. date .. " " })
-
-		window:set_right_status(wezterm.format(elements))
-	end)
-
-	-- Update left status - show workspace name with icon
-	wezterm.on("update-status", function(window, pane)
-		local workspace = window:active_workspace()
-		local icon = ""
-
-		local elements = {
-			{ Background = { Color = colors.bg } },
-			{ Foreground = { Color = colors.workspace_bg } },
-			{ Text = " " .. icon .. "  " .. workspace .. " " },
-		}
-
-		window:set_left_status(wezterm.format(elements))
-	end)
+	tabline.apply_to_config(config)
 end
 
 return Tabs

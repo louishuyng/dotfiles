@@ -79,7 +79,7 @@ local function get_colors()
   end
 
   return {
-    bg = '#33353f', -- mantle dark
+    bg = '#000000', -- mantle dark
     fg = '#c5cdd9', -- text dark
     fg_alt = '#9099a4', -- overlay0 dark
     red = '#ec7279',

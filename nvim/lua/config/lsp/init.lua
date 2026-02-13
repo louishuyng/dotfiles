@@ -47,6 +47,7 @@ require('mason').setup({
     'vtsls',
     'eslint',
     'prettier',
+    'oxlint',
     'js-debug-adapter',
 
     -- Python

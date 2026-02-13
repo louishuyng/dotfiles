@@ -54,12 +54,48 @@ vim.keymap.set('n', '<leader>oi', function()
   end
 end, { desc = 'Organize Imports' })
 
+-- ESLint LSP: only activate if eslint config exists in project
 vim.lsp.config('eslint', {
   single_file_support = true,
+  root_dir = function(bufnr, on_dir)
+    local root = vim.fs.root(bufnr, {
+      '.eslintrc',
+      '.eslintrc.js',
+      '.eslintrc.cjs',
+      '.eslintrc.json',
+      '.eslintrc.yaml',
+      '.eslintrc.yml',
+      'eslint.config.js',
+      'eslint.config.mjs',
+      'eslint.config.cjs',
+    })
+    if root then
+      on_dir(root)
+    end
+  end,
   settings = {
-    packageManager = 'yarn', -- or 'npm'
+    packageManager = 'yarn',
+  },
+})
+
+-- Oxlint LSP: only activate if oxlint config exists in project
+vim.lsp.config('oxlint', {
+  cmd = { 'oxc_language_server' },
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+  },
+  root_markers = {
+    'oxlintrc.json',
+    '.oxlintrc.json',
+    'package.json',
   },
 })
 
 vim.lsp.enable('vtsls')
 vim.lsp.enable('eslint')
+vim.lsp.enable('oxlint')

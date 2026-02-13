@@ -7,18 +7,12 @@ local Keys = {}
 
 local direction_keys = { h = "Left", j = "Down", k = "Up", l = "Right" }
 
--- Helper for pane navigation/resize
-local function split_nav(resize_or_move, key)
+-- Helper for pane navigation
+local function pane_nav(key)
 	return {
 		key = key,
-		mods = resize_or_move == "resize" and "LEADER|SHIFT" or "LEADER",
-		action = wezterm.action_callback(function(win, pane)
-			if resize_or_move == "resize" then
-				win:perform_action({ AdjustPaneSize = { direction_keys[key], 5 } }, pane)
-			else
-				win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-			end
-		end),
+		mods = "LEADER",
+		action = act.ActivatePaneDirection(direction_keys[key]),
 	}
 end
 
@@ -67,22 +61,53 @@ function Keys.setup(config)
 		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
 		-- Zoom pane toggle (like tmux: prefix + z)
 		{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
+		-- Swap panes (like tmux: prefix + { / })
+		{ key = "{", mods = "LEADER|SHIFT", action = act.RotatePanes("CounterClockwise") },
+		{ key = "}", mods = "LEADER|SHIFT", action = act.RotatePanes("Clockwise") },
 
-		-- Tab navigation (prefix + h/l or Ctrl+Shift+h/l for fast switching)
-		{ key = "h", mods = "LEADER", action = act.ActivateTabRelative(-1) },
-		{ key = "l", mods = "LEADER", action = act.ActivateTabRelative(1) },
+		-- Pane navigation (prefix + h/j/k/l like tmux)
+		pane_nav("h"),
+		pane_nav("j"),
+		pane_nav("k"),
+		pane_nav("l"),
+
+		-- Fast tab switching (Ctrl+Shift+h/l)
 		{ key = "h", mods = "CTRL|SHIFT", action = act.ActivateTabRelative(-1) },
 		{ key = "l", mods = "CTRL|SHIFT", action = act.ActivateTabRelative(1) },
 
-		-- Pane navigation (prefix + j/k for up/down panes)
-		split_nav("move", "j"),
-		split_nav("move", "k"),
-
-		-- Pane resize (like tmux: prefix + H/J/K/L)
-		split_nav("resize", "h"),
-		split_nav("resize", "j"),
-		split_nav("resize", "k"),
-		split_nav("resize", "l"),
+		-- Pane resize (prefix + H/J/K/L, repeatable like tmux -r)
+		{
+			key = "H",
+			mods = "LEADER|SHIFT",
+			action = act.Multiple({
+				act.AdjustPaneSize({ "Left", 2 }),
+				act.ActivateKeyTable({ name = "resize_pane", one_shot = false, timeout_milliseconds = 500 }),
+			}),
+		},
+		{
+			key = "J",
+			mods = "LEADER|SHIFT",
+			action = act.Multiple({
+				act.AdjustPaneSize({ "Down", 2 }),
+				act.ActivateKeyTable({ name = "resize_pane", one_shot = false, timeout_milliseconds = 500 }),
+			}),
+		},
+		{
+			key = "K",
+			mods = "LEADER|SHIFT",
+			action = act.Multiple({
+				act.AdjustPaneSize({ "Up", 2 }),
+				act.ActivateKeyTable({ name = "resize_pane", one_shot = false, timeout_milliseconds = 500 }),
+			}),
+		},
+		{
+			key = "L",
+			mods = "LEADER|SHIFT",
+			action = act.Multiple({
+				act.AdjustPaneSize({ "Right", 2 }),
+				act.ActivateKeyTable({ name = "resize_pane", one_shot = false, timeout_milliseconds = 500 }),
+			}),
+		},
 
 		-- ==========================================
 		-- Tab/Window Management
@@ -207,6 +232,12 @@ function Keys.setup(config)
 
 	-- Copy mode key bindings (vim-style)
 	config.key_tables = {
+		resize_pane = {
+			{ key = "H", mods = "SHIFT", action = act.AdjustPaneSize({ "Left", 2 }) },
+			{ key = "J", mods = "SHIFT", action = act.AdjustPaneSize({ "Down", 2 }) },
+			{ key = "K", mods = "SHIFT", action = act.AdjustPaneSize({ "Up", 2 }) },
+			{ key = "L", mods = "SHIFT", action = act.AdjustPaneSize({ "Right", 2 }) },
+		},
 		copy_mode = {
 			{ key = "Escape", action = act.CopyMode("Close") },
 			{ key = "q", action = act.CopyMode("Close") },

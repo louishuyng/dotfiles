@@ -202,7 +202,7 @@ sketchybar --add item clock right \
            --set clock icon="󰅐" \
                        icon.font="JetbrainsMono Nerd Font Propo:Semibold:15.0" \
                        icon.color=$ACCENT_GOLD \
-                       icon.padding_left=10 \
+                       icon.padding_left=8 \
                        icon.padding_right=5 \
                        label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
                        label.color=$LABEL_COLOR \
@@ -214,40 +214,40 @@ sketchybar --add item clock right \
                        background.drawing=off \
                        background.corner_radius=9 \
                        background.height=28 \
-                       padding_left=4 \
+                       padding_left=0 \
                        padding_right=0 \
                        click_script="$PLUGIN_DIR/clock_click.sh"
 
  # CPU
-sketchybar --add item cpu right \
-           --set cpu icon.font="JetbrainsMono Nerd Font Propo:Semibold:18.0" \
-                        icon.padding_left=8 \
-                        icon.padding_right=6 \
-                        label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
-                        label.padding_left=0 \
-                        label.padding_right=0 \
-                        update_freq=10 \
-                        script="$PLUGIN_DIR/cpu.sh" \
-                        background.color=$BACKGROUND_1 \
-                        background.drawing=off \
-                        padding_left=0 \
-                        padding_right=0 \
-# RAM
-sketchybar --add item ram right \
-           --set ram icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
-                        icon=$RAM \
-                        icon.color=$MAGENTA \
-                        icon.padding_left=8 \
-                        icon.padding_right=6 \
-                        label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
-                        label.padding_left=0 \
-                        label.padding_right=4 \
-                        update_freq=10 \
-                        script="$PLUGIN_DIR/ram.sh" \
-                        background.color=$BACKGROUND_1 \
-                        background.drawing=off \
-                        padding_left=0 \
-                        padding_right=0 \
+# sketchybar --add item cpu right \
+#            --set cpu icon.font="JetbrainsMono Nerd Font Propo:Semibold:18.0" \
+#                         icon.padding_left=8 \
+#                         icon.padding_right=6 \
+#                         label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
+#                         label.padding_left=0 \
+#                         label.padding_right=0 \
+#                         update_freq=10 \
+#                         script="$PLUGIN_DIR/cpu.sh" \
+#                         background.color=$BACKGROUND_1 \
+#                         background.drawing=off \
+#                         padding_left=0 \
+#                         padding_right=0 \
+# # RAM
+# sketchybar --add item ram right \
+#            --set ram icon.font="JetbrainsMono Nerd Font Propo:Semibold:16.0" \
+#                         icon=$RAM \
+#                         icon.color=$MAGENTA \
+#                         icon.padding_left=8 \
+#                         icon.padding_right=6 \
+#                         label.font="JetbrainsMono Nerd Font Propo:Medium:13.0" \
+#                         label.padding_left=0 \
+#                         label.padding_right=4 \
+#                         update_freq=10 \
+#                         script="$PLUGIN_DIR/ram.sh" \
+#                         background.color=$BACKGROUND_1 \
+#                         background.drawing=off \
+#                         padding_left=0 \
+#                         padding_right=0 \
 
 # Disk - Storage indicator
 sketchybar --add item disk right \

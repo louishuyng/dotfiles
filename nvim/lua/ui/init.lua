@@ -1,3 +1,3 @@
 require('ui.statusline')
 require('ui.winbar')
--- require('ui.buffer')
+require('ui.buffer')

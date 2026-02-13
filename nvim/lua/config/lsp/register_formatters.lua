@@ -9,10 +9,10 @@ conform.setup({
     }
   end,
   formatters_by_ft = {
-    javascript = { 'prettier', 'eslint' },
-    typescript = { 'prettier', 'eslint' },
-    javascriptreact = { 'prettier', 'eslint' },
-    typescriptreact = { 'prettier', 'eslint' },
+    javascript = { 'oxfmt', 'prettier', stop_after_first = true },
+    typescript = { 'oxfmt', 'prettier', stop_after_first = true },
+    javascriptreact = { 'oxfmt', 'prettier', stop_after_first = true },
+    typescriptreact = { 'oxfmt', 'prettier', stop_after_first = true },
     json = { 'prettier' },
     vue = { 'prettier', 'eslint' },
     lua = { 'stylua' },
@@ -23,6 +23,10 @@ conform.setup({
     python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format', 'autopep8' },
   },
   formatters = {
+    oxfmt = {
+      command = 'oxfmt',
+      stdin = true,
+    },
     ruff_fix = {
       command = 'ruff',
       args = { 'fix', '--stdin-filename', '$FILENAME', '-' },

@@ -35,10 +35,6 @@ vim.g['test#strategy'] = get_strategy()
 -- For Go tests
 vim.g['test#go#gotest#options'] = '-v -race -count=1 -timeout=60s'
 
--- For Jest/JavaScript tests - add timeout to force exit if hanging
-vim.g['test#javascript#jest#executable'] = 'timeout 60 npx jest'
-vim.g['test#javascript#jest#options'] = '--verbose --forceExit'
-
 -- Ensure Jest is enabled for JavaScript/TypeScript files
 vim.g['test#javascript#runner'] = 'jest'
 vim.g['test#typescript#runner'] = 'jest'

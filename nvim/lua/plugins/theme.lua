@@ -1,3 +1,5 @@
+local reload_theme = require('utils.reload_theme').reload_theme
+
 return {
   {
     'catppuccin/nvim',
@@ -336,10 +338,14 @@ return {
       set_dark_mode = function()
         vim.opt.background = 'dark'
         vim.cmd.colorscheme('catppuccin-frappe')
+
+        reload_theme()
       end,
       set_light_mode = function()
         vim.opt.background = 'light'
         vim.cmd.colorscheme('catppuccin-latte')
+
+        reload_theme()
       end,
       update_interval = 10000,
       fallback = 'dark',
