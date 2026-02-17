@@ -26,11 +26,7 @@ if [[ "$SPOTIFY_INFO" == "playing|"* ]]; then
     ICON="󰓇"
     COLOR=$ACCENT_SECONDARY
     IFS='|' read -r state artist track <<< "$SPOTIFY_INFO"
-    if [[ ${#track} -gt 20 ]]; then
-        LABEL="${track:0:20}..."
-    else
-        LABEL="$track"
-    fi
+    LABEL="$track"
 elif [[ "$SPOTIFY_INFO" == "paused" ]]; then
     # Music is paused - show paused state
     sketchybar --set "$NAME" drawing=on

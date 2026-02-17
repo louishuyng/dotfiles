@@ -4,6 +4,7 @@
 
 
 
+
 ### START-OF-ICON-MAP
 function __icon_map() {
     case "$1" in
@@ -94,7 +95,7 @@ function __icon_map() {
    "App Store")
         icon_result=":app_store:"
         ;;
-   "Books" | "Apple Books")
+   "Apple Books" | "Books" | "Bücher")
         icon_result=":apple_books:"
         ;;
    "Arc")
@@ -157,7 +158,7 @@ function __icon_map() {
    "BluOS Controller")
         icon_result=":bluos_controller:"
         ;;
-   "Books" | "Calibre" | "Bücher")
+   "Calibre")
         icon_result=":book:"
         ;;
    "Brain.fm")
@@ -202,7 +203,7 @@ function __icon_map() {
    "Cherry Studio")
         icon_result=":cherry_studio:"
         ;;
-   "Chess")
+   "Chess" | "The Enemy Within")
         icon_result=":chess:"
         ;;
    "Amazon Chime")
@@ -505,6 +506,9 @@ function __icon_map() {
    "Hyper")
         icon_result=":hyper:"
         ;;
+   "Hyperkey")
+        icon_result=":hyperkey:"
+        ;;
    "IntelliJ IDEA")
         icon_result=":idea:"
         ;;
@@ -640,6 +644,9 @@ function __icon_map() {
    "LM Studio")
         icon_result=":lm_studio:"
         ;;
+   "LobeHub")
+        icon_result=":lobehub:"
+        ;;
    "LocalSend")
         icon_result=":localsend:"
         ;;
@@ -709,6 +716,9 @@ function __icon_map() {
    "Microsoft Word")
         icon_result=":microsoft_word:"
         ;;
+   "Migaku")
+        icon_result=":migaku:"
+        ;;
    "Mimestream")
         icon_result=":mimestream:"
         ;;
@@ -735,6 +745,9 @@ function __icon_map() {
         ;;
    "mpv")
         icon_result=":mpv:"
+        ;;
+   "MTGA")
+        icon_result=":mtga:"
         ;;
    "Mullvad Browser")
         icon_result=":mullvad_browser:"
@@ -892,6 +905,9 @@ function __icon_map() {
    "Perplexity" | "Perplexity AI")
         icon_result=":perplexity:"
         ;;
+   "pgAdmin 4")
+        icon_result=":pgadmin:"
+        ;;
    "Phoenix Slides")
         icon_result=":phoenix_slides:"
         ;;
@@ -939,6 +955,9 @@ function __icon_map() {
         ;;
    "Preview" | "预览" | "Skim" | "zathura" | "Aperçu" | "プレビュー" | "Vorschau")
         icon_result=":preview:"
+        ;;
+   "Print Center" | "Druckzentrale")
+        icon_result=":print_center:"
         ;;
    "Pro Tools")
         icon_result=":pro_tools:"
@@ -1030,6 +1049,9 @@ function __icon_map() {
    "Safari" | "Safari浏览器" | "Safari Technology Preview")
         icon_result=":safari:"
         ;;
+   "Screencap")
+        icon_result=":screencap:"
+        ;;
    "Scribus")
         icon_result=":scribus:"
         ;;
@@ -1087,6 +1109,9 @@ function __icon_map() {
    "Spark Desktop")
         icon_result=":spark:"
         ;;
+   "Sparkle")
+        icon_result=":sparkle:"
+        ;;
    "Spotify")
         icon_result=":spotify:"
         ;;
@@ -1140,6 +1165,9 @@ function __icon_map() {
         ;;
    "TeamSpeak 3")
         icon_result=":team_speak:"
+        ;;
+   "TeamViewer")
+        icon_result=":teamviewer:"
         ;;
    "Telegram")
         icon_result=":telegram:"
@@ -1212,6 +1240,9 @@ function __icon_map() {
         ;;
    "Tweetbot" | "Twitter")
         icon_result=":twitter:"
+        ;;
+   "UGREEN NAS")
+        icon_result=":ugreen-nas:"
         ;;
    "Unity" | "Unity Hub")
         icon_result=":unity:"

@@ -109,6 +109,9 @@ function Tabs.setup(config, tabline)
 	})
 
 	tabline.apply_to_config(config)
+
+	config.use_fancy_tab_bar = true
+	config.tab_bar_at_bottom = true
 end
 
 return Tabs

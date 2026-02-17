@@ -102,7 +102,7 @@ return {
         return {
           -- Dashboard
           AlphaHeader = { fg = colors.blue },
-          AlphaFooter = { fg = colors.mauve },
+          AlphaFooter = { fg = colors.yellow },
           AlphaButtons = { fg = colors.text },
           AlphaShortcut = { fg = colors.yellow },
           AlphaButtonText = { fg = colors.text },

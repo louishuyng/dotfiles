@@ -52,10 +52,6 @@ config.max_fps = 120
 -- ==========================================
 tabs.setup(config, tabline)
 
-config.use_fancy_tab_bar = true
-config.tab_bar_at_bottom = true
-config.tab_max_width = 32
-
 -- ==========================================
 -- Scrollback
 -- ==========================================

@@ -170,7 +170,7 @@ sketchybar --add item docker left \
                         background.corner_radius=9 \
                         background.height=28 \
                         padding_left=10 \
-                        padding_right=10 \
+                        padding_right=5 \
                         script="$PLUGIN_DIR/docker.sh" \
                         click_script="$PLUGIN_DIR/toggle_docker.sh"
 
