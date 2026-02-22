@@ -14,6 +14,10 @@ return {
             direction = 'right',
             percent = 35,
           },
+          -- enabled = 'tmux',
+          -- tmux = {
+          --   options = '-h -p 35',
+          -- },
         },
       }
 

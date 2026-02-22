@@ -40,6 +40,7 @@ config.initial_cols = 140
 config.initial_rows = 40
 config.enable_scroll_bar = false
 config.inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 }
+config.window_background_opacity = 1.0
 
 -- ==========================================
 -- GPU/Rendering

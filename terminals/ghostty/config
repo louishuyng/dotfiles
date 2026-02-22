@@ -4,7 +4,7 @@ theme = dark:dark,light:light
 
 # Background
 background-opacity = 0.80
-background-blur-radius = 8
+background-blur-radius = 0
 
 shell-integration = none
 

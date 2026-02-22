@@ -4,7 +4,7 @@ local Theme = {}
 
 Theme.palettes = {
 	mocha = {
-		base = "#000000",
+		base = "#1D1C1C",
 		mantle = "#33353f",
 		crust = "#202023",
 		text = "#c5cdd9",

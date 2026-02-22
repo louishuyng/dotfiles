@@ -8,7 +8,8 @@
         "duplicate-index",
         "undefined-global",
         "deprecated",
-        "assign-type-mismatch"
+        "assign-type-mismatch",
+        "redundant-parameter"
   ],
   "diagnostics.globals": [
     "vim",

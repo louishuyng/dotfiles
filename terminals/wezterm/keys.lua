@@ -195,6 +195,20 @@ function Keys.setup(config)
 		{ key = ":", mods = "LEADER|SHIFT", action = act.ActivateCommandPalette },
 		-- Toggle fullscreen
 		{ key = "Enter", mods = "CMD", action = act.ToggleFullScreen },
+		-- Toggle transparency
+		{
+			key = "t",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(window, _pane)
+				local overrides = window:get_config_overrides() or {}
+				if overrides.window_background_opacity == 0.80 then
+					overrides.window_background_opacity = 1.0
+				else
+					overrides.window_background_opacity = 0.80
+				end
+				window:set_config_overrides(overrides)
+			end),
+		},
 
 		-- ==========================================
 		-- Font size

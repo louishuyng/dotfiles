@@ -167,6 +167,7 @@ run = ['move-node-to-workspace Terminal']
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = ['move-node-to-workspace Terminal']
+
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
 run = ['move-node-to-workspace Terminal']
@@ -178,7 +179,7 @@ run = ['move-node-to-workspace Terminal']
 # Workspace Web
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = ['move-node-to-workspace Web']
+run = ['layout floating', 'move-node-to-workspace Web']
 
 [[on-window-detected]]
 if.app-id = 'net.imput.helium'

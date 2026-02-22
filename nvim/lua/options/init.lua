@@ -2,7 +2,7 @@ vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
 
-vim.g.transparent_enabled = false
+vim.g.transparent_enabled = true
 
 -- GUI Font settings (for Neovide, VimR, or other GUI clients)
 if vim.g.neovide then
