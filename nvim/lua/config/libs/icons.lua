@@ -1,20 +1,20 @@
 return {
   diagnostics = {
-    Error = ' ',
-    Warn = ' ',
-    Hint = ' ',
-    Info = ' ',
+    Error = ' ',
+    Warn = '󰶬 ',
+    Hint = '󰨈 ',
+    Info = ' ',
   },
   git = {
-    added = '󰐕 ',
-    modified = '󰏫 ',
-    removed = '󰍴 ',
-    renamed = '󰁕 ',
+    added = '󰐕',
+    modified = '~',
+    removed = '󰍴',
+    renamed = '󰁕',
     untracked = '󰋗 ',
     ignored = '󰈉 ',
-    unstaged = '󰄱 ',
+    unstaged = '󰄷 ',
     staged = '󰄵 ',
-    conflict = '󰞇 ',
+    conflict = ' ',
   },
   debug = {
     Breakpoint = '',
@@ -64,5 +64,8 @@ return {
     Unit = ' ',
     Value = '󰎠 ',
     Variable = ' ',
+  },
+  misc = {
+    Encoding = '󰚄',
   },
 }

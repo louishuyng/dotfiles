@@ -45,13 +45,13 @@ option_as_alt = "Both"
 decorations = "none"
 decorations_theme_variant = "none"
 padding = { x = 0, y = 0 }
-dimensions = { columns = 210, lines = 60 }
+dimensions = { columns = 210, lines = 52 }
 dynamic_padding = true
 startup_mode = "Windowed"
 title = "DevTerm"
 dynamic_title = false
-opacity = 0.95
-blur = true
+opacity = 0.8
+blur = false
 
 # Keyboard
 [keyboard]

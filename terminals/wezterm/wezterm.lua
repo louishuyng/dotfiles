@@ -36,8 +36,8 @@ config.status_update_interval = 100
 -- ==========================================
 config.window_decorations = "NONE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
-config.initial_cols = 140
-config.initial_rows = 40
+config.initial_cols = 210
+config.initial_rows = 57
 config.enable_scroll_bar = false
 config.inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 }
 config.window_background_opacity = 1.0

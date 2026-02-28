@@ -52,11 +52,11 @@ require('neo-tree').setup({
       expander_highlight = 'NeoTreeExpander',
     },
     icon = {
-      folder_closed = '\xef\x93\x93', -- U+F4D3 nf-oct-file_directory_fill
-      folder_open = '\xef\x90\x93', -- U+F413 nf-oct-file_directory (outline)
-      folder_empty = '\xef\x90\x93', -- U+F413 nf-oct-file_directory (outline)
-      folder_empty_open = '\xef\x90\x93', -- U+F413 nf-oct-file_directory (outline)
-      default = '\xef\x80\x80', -- U+F000 nf-fa-file_o
+      folder_closed = '▶',
+      folder_open = '▼',
+      folder_empty = '󰜌',
+      folder_empty_open = '󰜌',
+      default = '',
       highlight = 'NeoTreeFileIcon',
     },
     modified = {

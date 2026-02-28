@@ -92,7 +92,6 @@ vim.lsp.config('oxlint', {
   root_markers = {
     'oxlintrc.json',
     '.oxlintrc.json',
-    'package.json',
   },
 })
 

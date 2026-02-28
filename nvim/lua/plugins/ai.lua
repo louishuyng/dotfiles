@@ -7,20 +7,6 @@ return {
     'NickvanDyke/opencode.nvim',
     lazy = false,
     config = function()
-      vim.g.opencode_opts = {
-        provider = {
-          enabled = 'wezterm',
-          wezterm = {
-            direction = 'right',
-            percent = 35,
-          },
-          -- enabled = 'tmux',
-          -- tmux = {
-          --   options = '-h -p 35',
-          -- },
-        },
-      }
-
       -- Required for `opts.events.reload`.
       vim.o.autoread = true
 

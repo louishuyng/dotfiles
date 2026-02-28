@@ -111,6 +111,7 @@ function Tabs.setup(config, tabline)
 	tabline.apply_to_config(config)
 
 	config.use_fancy_tab_bar = true
+	config.mouse_wheel_scrolls_tabs = true
 	config.tab_bar_at_bottom = true
 end
 

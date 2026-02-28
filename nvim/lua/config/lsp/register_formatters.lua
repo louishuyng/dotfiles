@@ -9,10 +9,10 @@ conform.setup({
     }
   end,
   formatters_by_ft = {
-    javascript = { 'oxfmt', 'prettier', stop_after_first = true },
-    typescript = { 'oxfmt', 'prettier', stop_after_first = true },
-    javascriptreact = { 'oxfmt', 'prettier', stop_after_first = true },
-    typescriptreact = { 'oxfmt', 'prettier', stop_after_first = true },
+    javascript = { 'oxfmt', 'prettier', 'eslint' },
+    typescript = { 'oxfmt', 'prettier', 'eslint' },
+    javascriptreact = { 'oxfmt', 'prettier', 'eslint' },
+    typescriptreact = { 'oxfmt', 'prettier', 'eslint' },
     json = { 'prettier' },
     vue = { 'prettier', 'eslint' },
     lua = { 'stylua' },

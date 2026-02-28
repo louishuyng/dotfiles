@@ -49,7 +49,7 @@ function Keys.setup(config)
 		{
 			key = "|",
 			mods = "LEADER|SHIFT",
-			action = act.SplitPane({ direction = "Right", size = { Percent = 30 } }),
+			action = act.SplitPane({ direction = "Right", size = { Percent = 50 } }),
 		},
 		-- Split pane horizontally (like tmux: prefix + -)
 		{

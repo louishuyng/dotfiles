@@ -1,23 +1,40 @@
 -- vim-test configuration
 -- Custom strategies for different terminals
+local wezterm_pane_id = nil
+
 vim.g['test#custom_strategies'] = {
-  -- Snacks terminal strategy (for non-WezTerm)
-  snacks = function(cmd)
-    require('snacks').terminal.toggle(cmd, {
-      win = { position = 'bottom', height = 0.3 },
-    })
-  end,
-  -- WezTerm strategy - opens test in a pane below (async)
+  -- WezTerm strategy - opens test in a pane below, reuses existing pane
   wezterm = function(cmd)
-    local handle
-    handle = vim.uv.spawn('wezterm', {
-      args = { 'cli', 'split-pane', '--bottom', '--percent', '30', '--', 'sh', '-c', cmd },
-      detached = true,
-    }, function()
-      if handle then
-        handle:close()
+    -- Check if existing pane is still valid
+    if wezterm_pane_id then
+      local check = vim.fn.system('wezterm cli list --format json')
+      local ok, panes = pcall(vim.json.decode, check)
+      local pane_exists = false
+      if ok and panes then
+        for _, pane in ipairs(panes) do
+          if pane.pane_id == wezterm_pane_id then
+            pane_exists = true
+            break
+          end
+        end
       end
-    end)
+      if not pane_exists then
+        wezterm_pane_id = nil
+      end
+    end
+
+    if wezterm_pane_id then
+      -- Reuse existing pane: send Ctrl-C to stop any running process, clear, then run command
+      vim.fn.system('wezterm cli send-text --pane-id ' .. wezterm_pane_id .. ' --no-paste $\'\\x03\'')
+      vim.fn.system('wezterm cli send-text --pane-id ' .. wezterm_pane_id .. ' --no-paste "clear && ' .. cmd:gsub('"', '\\"') .. '\n"')
+    else
+      -- Create new pane and capture its ID
+      local result = vim.fn.system('wezterm cli split-pane --bottom --percent 30')
+      wezterm_pane_id = tonumber(result:match('%d+'))
+      if wezterm_pane_id then
+        vim.fn.system('wezterm cli send-text --pane-id ' .. wezterm_pane_id .. ' --no-paste "' .. cmd:gsub('"', '\\"') .. '\n"')
+      end
+    end
   end,
 }
 
@@ -26,10 +43,14 @@ local function get_strategy()
   if os.getenv('WEZTERM_PANE') then
     return 'wezterm'
   end
-  return 'snacks'
+
+  return 'vimux' -- Default to vimux if not WezTerm
 end
 
 vim.g['test#strategy'] = get_strategy()
+
+-- Vimux settings
+vim.g['VimuxHeight'] = '15'
 
 -- Optional: Customize test commands for different languages
 -- For Go tests

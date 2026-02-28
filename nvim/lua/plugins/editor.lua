@@ -1,5 +1,5 @@
 return {
-  { 'terryma/vim-multiple-cursors', lazy = false },
+  { 'terryma/vim-multiple-cursors', lazy = false }, -- Multi Cursor (consider vim-visual-multi)
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -45,10 +45,10 @@ return {
   -- },
 
   -- Markdown
+  --
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    ft = 'markdown',
-    opts = {},
+    'OXY2DEV/markview.nvim',
+    lazy = false,
   },
 
   -- Refactoring
