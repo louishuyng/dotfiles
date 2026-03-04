@@ -24,11 +24,11 @@ return {
       vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = dark_green_bg })
 
       -- highlight NeoTree
-      vim.api.nvim_set_hl(0, 'NeoTreeNormal', { bg = gray_bg })
-      vim.api.nvim_set_hl(0, 'NeoTreeNormalNC', { bg = gray_bg })
-      vim.api.nvim_set_hl(0, 'NeoTreeCursorLine', { bg = dark_gray_bg })
+      -- vim.api.nvim_set_hl(0, 'NeoTreeNormal', { bg = gray_bg })
+      -- vim.api.nvim_set_hl(0, 'NeoTreeNormalNC', { bg = gray_bg })
+      -- vim.api.nvim_set_hl(0, 'NeoTreeCursorLine', { bg = dark_gray_bg })
       vim.api.nvim_set_hl(0, 'NeoTreeRootName', { fg = green, bg = 'NONE', italic = false })
-      vim.api.nvim_set_hl(0, 'NeoTreeWinSeparator', { fg = 'NONE', bg = 'NONE' })
+      -- vim.api.nvim_set_hl(0, 'NeoTreeWinSeparator', { fg = 'NONE', bg = 'NONE' })
 
       -- highlight Alpha
       vim.api.nvim_set_hl(0, 'AlphaHeader', { fg = yellow, bg = 'NONE' })
@@ -38,7 +38,7 @@ return {
       vim.api.nvim_set_hl(0, 'StatusLine', { bg = dark_gray_bg })
 
       -- highlight general
-      vim.api.nvim_set_hl(0, 'WinSeparator', { fg = red, bg = 'NONE' })
+      -- vim.api.nvim_set_hl(0, 'WinSeparator', { fg = red, bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'CursorLine', { bg = dark_green_bg })
       vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'NeoTreeEndOfBuffer', { bg = 'NONE' })

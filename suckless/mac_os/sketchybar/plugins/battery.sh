@@ -1,46 +1,47 @@
 #!/opt/homebrew/bin/bash
 
-# Source colors for consistent theming
-source "$CONFIG_DIR/colors.sh"
+# Braille patterns for battery visualization
+declare -a dots_0=("⠀")
+declare -a dots_1=("⠁" "⠂" "⠄" "⠈" "⠐" "⠠" "⡀" "⢀")
+declare -a dots_2=("⠃" "⠅" "⠆" "⠉" "⠊" "⠌" "⠑" "⠒" "⠔" "⠘" "⠡" "⠢" "⠤" "⠨" "⠰" "⡁" "⡂" "⡄" "⡈" "⡐" "⡠" "⢁" "⢂" "⢄" "⢈" "⢐" "⢠" "⣀")
+declare -a dots_3=("⠇" "⠋" "⠍" "⠎" "⠓" "⠕" "⠖" "⠙" "⠚" "⠜" "⠣" "⠥" "⠦" "⠩" "⠪" "⠬" "⠱" "⠲" "⠴" "⠸" "⡃" "⡅" "⡆" "⡉" "⡊" "⡌" "⡑" "⡒" "⡔" "⡘" "⡡" "⡢" "⡤" "⡨" "⡰" "⢃" "⢅" "⢆" "⢉" "⢊" "⢌" "⢑" "⢒" "⢔" "⢘" "⢡" "⢢" "⢤" "⢨" "⢰" "⣁" "⣂" "⣄" "⣈" "⣐" "⣠")
+declare -a dots_4=("⠏" "⠗" "⠛" "⠝" "⠞" "⠧" "⠫" "⠭" "⠮" "⠳" "⠵" "⠶" "⠹" "⠺" "⠼" "⡇" "⡋" "⡍" "⡎" "⡓" "⡕" "⡖" "⡙" "⡚" "⡜" "⡣" "⡥" "⡦" "⡩" "⡪" "⡬" "⡱" "⡲" "⡴" "⡸" "⢇" "⢋" "⢍" "⢎" "⢓" "⢕" "⢖" "⢙" "⢚" "⢜" "⢣" "⢥" "⢦" "⢩" "⢪" "⢬" "⢱" "⢲" "⢴" "⢸" "⣃" "⣅" "⣆" "⣉" "⣊" "⣌" "⣑" "⣒" "⣔" "⣘" "⣡" "⣢" "⣤" "⣨" "⣰")
+declare -a dots_5=("⠟" "⠯" "⠷" "⠻" "⠽" "⠾" "⡏" "⡗" "⡛" "⡝" "⡞" "⡧" "⡫" "⡭" "⡮" "⡳" "⡵" "⡶" "⡹" "⡺" "⡼" "⢏" "⢗" "⢛" "⢝" "⢞" "⢧" "⢫" "⢭" "⢮" "⢳" "⢵" "⢶" "⢹" "⢺" "⢼" "⣇" "⣋" "⣍" "⣎" "⣓" "⣕" "⣖" "⣙" "⣚" "⣜" "⣣" "⣥" "⣦" "⣩" "⣪" "⣬" "⣱" "⣲" "⣴" "⣸")
+declare -a dots_6=("⠿" "⡟" "⡯" "⡷" "⡻" "⡽" "⡾" "⢟" "⢯" "⢷" "⢻" "⢽" "⢾" "⣏" "⣗" "⣛" "⣝" "⣞" "⣧" "⣫" "⣭" "⣮" "⣳" "⣵" "⣶" "⣹" "⣺" "⣼")
+declare -a dots_7=("⡿" "⢿" "⣟" "⣯" "⣷" "⣻" "⣽" "⣾")
+declare -a dots_8=("⣿")
 
-# Get battery information
-BATTERY_INFO=$(pmset -g batt | grep -Eo "[0-9]+%" | cut -d% -f1)
-POWER_SOURCE=$(pmset -g ps | head -1)
+PERCENTAGE=$(pmset -g batt | grep -Eo "[0-9]+%" | cut -d% -f1)
+CHARGING=$(pmset -g batt | grep 'AC Power')
 
-# Check if charging
-if [[ $POWER_SOURCE == *"AC Power"* ]]; then
-    CHARGING=true
+if [[ $PERCENTAGE -eq 0 ]]; then
+    arr_name="dots_0"
+elif [[ $PERCENTAGE -le 12 ]]; then
+    arr_name="dots_1"
+elif [[ $PERCENTAGE -le 25 ]]; then
+    arr_name="dots_2"
+elif [[ $PERCENTAGE -le 37 ]]; then
+    arr_name="dots_3"
+elif [[ $PERCENTAGE -le 50 ]]; then
+    arr_name="dots_4"
+elif [[ $PERCENTAGE -le 62 ]]; then
+    arr_name="dots_5"
+elif [[ $PERCENTAGE -le 75 ]]; then
+    arr_name="dots_6"
+elif [[ $PERCENTAGE -le 87 ]]; then
+    arr_name="dots_7"
 else
-    CHARGING=false
+    arr_name="dots_8"
 fi
 
-# Set battery level
-BATTERY_LEVEL=$BATTERY_INFO
+declare -n arr="$arr_name"
+random_index=$((RANDOM % ${#arr[@]}))
+ICON="${arr[$random_index]}"
 
-# Determine icon and color based on battery level and charging status
-if [[ $CHARGING == true ]]; then
-    ICON="󰂄"  # Charging icon
-    COLOR=$ACCENT_SECONDARY
+if [[ $CHARGING != "" ]]; then
+    LABEL=$(printf "%3d*" "$PERCENTAGE")
 else
-    if [[ $BATTERY_LEVEL -gt 75 ]]; then
-        ICON="󰁹"  # Full battery
-        COLOR=$BATTERY_1
-    elif [[ $BATTERY_LEVEL -gt 50 ]]; then
-        ICON="󰁾"  # Three quarters
-        COLOR=$BATTERY_2
-    elif [[ $BATTERY_LEVEL -gt 25 ]]; then
-        ICON="󰁼"  # Half battery
-        COLOR=$BATTERY_3
-    elif [[ $BATTERY_LEVEL -gt 10 ]]; then
-        ICON="󰁻"  # Quarter battery
-        COLOR=$BATTERY_4
-    else
-        ICON="󰁺"  # Empty battery
-        COLOR=$BATTERY_5
-    fi
+    LABEL=$(printf "%3d%%" "$PERCENTAGE")
 fi
 
-# Update the battery item
-sketchybar --set "$NAME" icon="$ICON" \
-                        icon.color="$COLOR" \
-                        label="$BATTERY_LEVEL%" \
+sketchybar --set "$NAME" icon="$ICON" label="$LABEL"
