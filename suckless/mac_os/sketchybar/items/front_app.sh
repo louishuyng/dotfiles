@@ -6,7 +6,7 @@ front_app=(
 	icon.color=0xffA0C980
 	label.color=0xffA0C980
         icon.padding_right=5
-        icon.padding_left=5
+        icon.padding_left=7
 	script="$PLUGIN_DIR/front_app.sh"
 )
 

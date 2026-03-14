@@ -1,17 +1,4 @@
-# ASDF configuration code
-if test -z $ASDF_DATA_DIR
-    set _asdf_shims "$HOME/.asdf/shims"
-else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
-end
-
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-
-set --erase _asdf_shims
+mise activate fish | source
 
 # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
 set -U fish_key_bindings fish_default_key_bindings
@@ -65,3 +52,6 @@ fish_add_path /Users/louishuyng/.opencode/bin
 # >>> coursier install directory >>>
 set -gx PATH "$PATH:/Users/louishuyng/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
+
+# Vite+ bin (https://viteplus.dev)
+source "$HOME/.vite-plus/env.fish"

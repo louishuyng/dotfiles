@@ -9,21 +9,26 @@ local Workspaces = {}
 Workspaces.project_dirs = {
 	"~/LX14/repository/github.com/louishuyng",
 	"~/LX14/repository/github.com/regask",
+	"~/LX14/repository/github.com/regask/ops",
 }
 
 -- Predefined workspaces
 Workspaces.predefined = {
 	{
-		name = "HOME",
+		name = ".DotFile",
 		cwd = "~/.dotfiles",
 	},
 	{
-		name = "LX14",
+		name = "MyLab",
 		cwd = "~/LX14/repository/github.com/louishuyng",
 	},
 	{
-		name = "Regask",
+		name = "R-Dev",
 		cwd = "~/LX14/repository/github.com/regask",
+	},
+	{
+		name = "R-Ops",
+		cwd = "~/LX14/repository/github.com/regask/ops",
 	},
 }
 

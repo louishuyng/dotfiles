@@ -1,4 +1,5 @@
 vim.g.loaded_matchparen = 1
+vim.g.loaded_perl_provider = 0
 
 local opt = vim.opt
 
@@ -57,7 +58,7 @@ vim.g.work_repository_dir = vim.g.home_dir .. '/LX14/repository/github.com'
 vim.g.auto_format = true
 
 -- Mise Integration
-vim.env.PATH = vim.env.HOME .. '/.asdf/shims:' .. vim.env.PATH
+vim.env.PATH = vim.env.HOME .. '/.local/share/mise/shims:' .. vim.env.PATH
 
 -- Ignore compiled files
 opt.wildignore = '__pycache__'

@@ -3,8 +3,9 @@
 battery=(
 	update_freq=120
 	icon.drawing=on
-        icon.padding_left=0
-	padding_right=10
+        padding_left=20
+        label.padding_left=5
+        label.padding_right=10
 	script="$PLUGIN_DIR/battery.sh"
 )
 

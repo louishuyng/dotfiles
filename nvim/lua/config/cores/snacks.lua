@@ -6,12 +6,9 @@ snacks.setup {
   zen = { enabled = true },
   rename = { enabled = true },
   quickfile = { enabled = true },
-  input = { enabled = true },
-  picker = { enabled = true },
-  notifier = {
-    enabled = true,
-    level = vim.log.levels.INFO,
-  },
+  input = { enabled = false },
+  picker = { enabled = true, ui_select = false },
+  notifier = { enabled = false },
   styles = {
     notification = {
       border = 'rounded',

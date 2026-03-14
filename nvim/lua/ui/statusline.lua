@@ -87,6 +87,35 @@ local function lsp_status()
   return table.concat(messages, ' ')
 end
 
+local function macro_recording()
+  local reg = vim.fn.reg_recording()
+  if reg == '' then
+    return nil
+  end
+  return color('DiagnosticError', ' @' .. reg)
+end
+
+local function marlin_index()
+  local ok, marlin = pcall(require, 'marlin')
+  if not ok then
+    return nil
+  end
+
+  local indexes = marlin.get_indexes()
+  if not indexes or #indexes == 0 then
+    return nil
+  end
+
+  local current_file = vim.fn.expand('%:p')
+  for i, entry in ipairs(indexes) do
+    if entry.filename == current_file then
+      return color('Type', '󰵺 ' .. i .. '/' .. #indexes)
+    end
+  end
+
+  return nil
+end
+
 local function mode_color()
   local mode_colors = {
     n = 'String',
@@ -168,8 +197,9 @@ function M.statusline()
     file_modified(),
     file_read_only(),
     '',
+    marlin_index(),
+    macro_recording(),
     lsp_status(),
-    '',
     git_changes(),
     -- Right side
     '%=',

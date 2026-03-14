@@ -61,9 +61,8 @@ function Keys.setup(config)
 		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
 		-- Zoom pane toggle (like tmux: prefix + z)
 		{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-		-- Swap panes (like tmux: prefix + { / })
-		{ key = "{", mods = "LEADER|SHIFT", action = act.RotatePanes("CounterClockwise") },
-		{ key = "}", mods = "LEADER|SHIFT", action = act.RotatePanes("Clockwise") },
+		-- Swap pane: pick target interactively (like tmux prefix + {/})
+		{ key = "m", mods = "LEADER", action = act.PaneSelect({ mode = "SwapWithActiveKeepFocus" }) },
 
 		-- Pane navigation (prefix + h/j/k/l like tmux)
 		pane_nav("h"),
@@ -121,6 +120,23 @@ function Keys.setup(config)
 		{ key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
 		{ key = "l", mods = "LEADER|CTRL", action = act.ActivateTabRelative(1) },
 		{ key = "h", mods = "LEADER|CTRL", action = act.ActivateTabRelative(-1) },
+		-- Arrow keys: prev/next window, repeatable (like tmux: bind -r Left/Right)
+		{
+			key = "LeftArrow",
+			mods = "LEADER",
+			action = act.Multiple({
+				act.ActivateTabRelative(-1),
+				act.ActivateKeyTable({ name = "window_nav", one_shot = false, timeout_milliseconds = 500 }),
+			}),
+		},
+		{
+			key = "RightArrow",
+			mods = "LEADER",
+			action = act.Multiple({
+				act.ActivateTabRelative(1),
+				act.ActivateKeyTable({ name = "window_nav", one_shot = false, timeout_milliseconds = 500 }),
+			}),
+		},
 		-- Rename tab
 		{
 			key = ",",
@@ -251,6 +267,10 @@ function Keys.setup(config)
 			{ key = "J", mods = "SHIFT", action = act.AdjustPaneSize({ "Down", 2 }) },
 			{ key = "K", mods = "SHIFT", action = act.AdjustPaneSize({ "Up", 2 }) },
 			{ key = "L", mods = "SHIFT", action = act.AdjustPaneSize({ "Right", 2 }) },
+		},
+		window_nav = {
+			{ key = "LeftArrow", action = act.ActivateTabRelative(-1) },
+			{ key = "RightArrow", action = act.ActivateTabRelative(1) },
 		},
 		copy_mode = {
 			{ key = "Escape", action = act.CopyMode("Close") },

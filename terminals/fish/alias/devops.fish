@@ -58,3 +58,6 @@ alias find='fd'
 alias lf='ranger'
 
 alias api='hurl --variables-file vars.env'
+
+## Open Source kubectl
+alias open-kubectl='export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig && export KUBERNETES_PROVIDER=local && ~/LX14/repository/github.com/louishuyng/kubernetes/cluster/kubectl.sh'

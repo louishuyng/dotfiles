@@ -18,8 +18,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       return
     end
 
-    -- Disable semantic tokens for better performance
-    client.server_capabilities.semanticTokensProvider = nil
 
     local opts = { buffer = bufnr, silent = true, noremap = true }
 

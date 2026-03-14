@@ -4,6 +4,23 @@ local theme = require("theme")
 
 local Tabs = {}
 
+local disk_last_update = 0
+local disk_last_result = ""
+
+local function disk_usage(_)
+	local current_time = os.time()
+	if current_time - disk_last_update < 3 then
+		return disk_last_result
+	end
+	local success, result = wezterm.run_child_process({ "df", "-H", "/" })
+	if success then
+		local avail = result:match("\n%S+%s+%S+%s+%S+%s+(%S+)")
+		disk_last_result = " " .. wezterm.nerdfonts.md_harddisk .. " " .. (avail or "?") .. " "
+	end
+	disk_last_update = current_time
+	return disk_last_result
+end
+
 local process_icons = {
 	["nvim"] = { wezterm.nerdfonts.custom_neovim },
 	["vim"] = { wezterm.nerdfonts.custom_vim },
@@ -35,11 +52,11 @@ local function build_theme()
 	return {
 		normal_mode = {
 			a = { fg = c.yellow, bg = bg },
-			b = { fg = c.text, bg = bg },
+			b = { fg = c.blue, bg = bg },
 			c = { fg = c.overlay1, bg = bg },
 			x = { fg = c.red, bg = bg },
-			y = { fg = c.green, bg = bg },
-			z = { fg = c.blue, bg = bg },
+			y = { fg = c.yellow, bg = bg },
+			z = { fg = c.green, bg = bg },
 		},
 		copy_mode = {
 			a = { fg = c.yellow, bg = bg },
@@ -75,8 +92,8 @@ function Tabs.setup(config, tabline)
 			tab_separators = { left = "", right = "" },
 		},
 		sections = {
-			tabline_a = { { "workspace", icon = "Louis 󱘖" } },
-			tabline_b = {},
+			tabline_a = { { "workspace", icon = "󱘖" } },
+			tabline_b = { "" },
 			tabline_c = {},
 			tab_active = {
 				{ "index", padding = { left = 1, right = 0 } },
@@ -102,9 +119,9 @@ function Tabs.setup(config, tabline)
 				{ "cpu", throttle = 3 },
 			},
 			tabline_y = {
-				{ "ram", throttle = 3 },
+				disk_usage,
 			},
-			tabline_z = { "domain" },
+			tabline_z = { { "ram", throttle = 3 } },
 		},
 	})
 

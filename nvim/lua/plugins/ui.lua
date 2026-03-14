@@ -150,7 +150,7 @@ return {
         return math.floor(vim.o.columns * 0.75)
       end,
       stages = 'fade_in_slide_out',
-      render = 'wrapped-compact',
+      render = 'compact',
       background_colour = '#1e222a',
       fps = 60,
       icons = {

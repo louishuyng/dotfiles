@@ -29,13 +29,22 @@ return {
   -- Treesistter
   {
     'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
     lazy = false,
+    build = function()
+      require('nvim-treesitter').install({
+        'go', 'javascript', 'typescript', 'tsx', 'python', 'ruby', 'rust',
+        'lua', 'json', 'jsonc', 'yaml', 'html', 'css', 'bash', 'toml',
+        'vim', 'vimdoc', 'fish', 'markdown', 'markdown_inline', 'regex',
+        'xml', 'sql', 'elixir', 'gleam', 'zig', 'ocaml', 'kotlin',
+        'terraform', 'graphql',
+      })
+    end,
     priority = 900,
     config = function()
       require 'config.cores.treesitter'
     end,
   },
+
   -- {
   --   'code-biscuits/nvim-biscuits',
   --   build = ':TSUpdate',

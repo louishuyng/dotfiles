@@ -6,7 +6,27 @@ return {
       require 'config.lsp'
     end,
   },
-  { 'williamboman/mason.nvim', cmd = 'Mason', build = ':MasonUpdate' },
+  {
+    'williamboman/mason.nvim',
+    cmd = 'Mason',
+    build = ':MasonUpdate',
+    lazy = false,
+    config = function()
+      require('mason').setup()
+    end,
+  },
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    dependencies = { 'williamboman/mason.nvim' },
+    lazy = false,
+    config = function()
+      require('mason-tool-installer').setup({
+        ensure_installed = require('config.lsp.mason_packages'),
+        auto_update = false,
+        run_on_start = true,
+      })
+    end,
+  },
   {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },

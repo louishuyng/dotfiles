@@ -80,15 +80,6 @@ vim.lsp.config('eslint', {
 
 -- Oxlint LSP: only activate if oxlint config exists in project
 vim.lsp.config('oxlint', {
-  cmd = { 'oxc_language_server' },
-  filetypes = {
-    'javascript',
-    'javascriptreact',
-    'javascript.jsx',
-    'typescript',
-    'typescriptreact',
-    'typescript.tsx',
-  },
   root_markers = {
     'oxlintrc.json',
     '.oxlintrc.json',

@@ -1,11 +1,15 @@
 # Environment variables
-# Note: asdf shims are added in config.fish
+# Note: mise is activated in config.fish
 
 # You may need to manually set your language environment
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
-set -gx TERM xterm-256color
+if test -n "$TMUX"
+    set -gx TERM tmux-256color
+else
+    set -gx TERM xterm-256color
+end
 
 #Homebrew's sbin
 fish_add_path /opt/homebrew/bin
@@ -39,13 +43,13 @@ fish_add_path /opt/homebrew/opt/openjdk/bin
 set -gx CPPFLAGS -I/opt/homebrew/opt/openjdk/include
 #
 # #Golang
-set -gx GOROOT
-set -gx GOBIN $(go env GOBIN 2>/dev/null)
+set -gx GOROOT (go env GOROOT 2>/dev/null)
+set -gx GOBIN (go env GOBIN 2>/dev/null)
 set -gx GOPATH $HOME/development/golib
 set -gx GO111MODULE on
-# Set GOV only if asdf and golang are available
-if command -q asdf; and asdf current golang &>/dev/null
-    set -gx GOV $(asdf where golang)
+# Set GOV only if mise and golang are available
+if command -q mise; and mise where go &>/dev/null
+    set -gx GOV $(mise where go)
 end
 fish_add_path $GOPATH/bin
 fish_add_path $GOROOT/bin
@@ -123,3 +127,6 @@ set -gx TFENV_ARCH arm64
 
 # Duck DB
 fish_add_path ~/.duckdb/cli/latest
+
+# K8s etcd
+fish_add_path ~/LX14/repository/github.com/louishuyng/kubernetes/third_party/etcd

@@ -108,6 +108,17 @@ require('neo-tree').setup({
       enabled = false,
     },
   },
+  buffers = {
+    follow_current_file = { enabled = true },
+    renderers = {
+      file = {
+        { 'icon' },
+        { 'name', use_git_status_colors = true },
+        { 'modified', zindex = 20, align = 'right' },
+        { 'diagnostics', zindex = 20, align = 'right' },
+      },
+    },
+  },
   nesting_rules = {},
   commands = {
     copy_selector = function(state)
