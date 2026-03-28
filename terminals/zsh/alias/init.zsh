@@ -1,0 +1,10 @@
+source ~/.dotfiles/terminals/zsh/alias/ai.zsh
+source ~/.dotfiles/terminals/zsh/alias/app.zsh
+source ~/.dotfiles/terminals/zsh/alias/devops.zsh
+source ~/.dotfiles/terminals/zsh/alias/general.zsh
+source ~/.dotfiles/terminals/zsh/alias/git.zsh
+source ~/.dotfiles/terminals/zsh/alias/k8s.zsh
+source ~/.dotfiles/terminals/zsh/alias/languages.zsh
+source ~/.dotfiles/terminals/zsh/alias/network.zsh
+source ~/.dotfiles/terminals/zsh/alias/os.zsh
+source ~/.dotfiles/terminals/zsh/alias/workflow.zsh

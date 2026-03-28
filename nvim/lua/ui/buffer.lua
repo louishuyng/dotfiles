@@ -1,32 +1,15 @@
 local icons = require('config.libs.icons')
 local bufferline = require('bufferline')
+local p = require('utils.highlights').palette
 
--- Get colors based on current theme
-local function get_colors()
-  local is_light = vim.o.background == 'light'
-
-  if is_light then
-    return {
-      bg = '#eef1f4',
-      fg = '#4b505b',
-      fg_alt = '#9ca2ab',
-      accent = '#5079be',
-      modified = '#be7e05',
-      error = '#d05858',
-    }
-  end
-
-  return {
-    bg = '#33353f',
-    fg = '#c5cdd9',
-    fg_alt = '#535965',
-    accent = '#6cb6eb',
-    modified = '#deb974',
-    error = '#ec7279',
-  }
-end
-
-local colors = get_colors()
+local colors = {
+  bg = p.base01,
+  fg = p.base05,
+  fg_alt = p.base04,
+  accent = p.base0B,
+  modified = p.base0A,
+  error = p.base08,
+}
 
 bufferline.setup {
   options = {

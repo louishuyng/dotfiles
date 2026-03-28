@@ -130,3 +130,5 @@ fish_add_path ~/.duckdb/cli/latest
 
 # K8s etcd
 fish_add_path ~/LX14/repository/github.com/louishuyng/kubernetes/third_party/etcd
+
+set -gx GITHUB_TOKEN (cat ~/.github_token)

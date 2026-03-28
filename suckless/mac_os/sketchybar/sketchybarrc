@@ -8,6 +8,7 @@ ITEM_DIR="$CONFIG_DIR/items"
 ##### Bar Appearance #####
 sketchybar --bar position=top height=32 \
                  color=$BAR_COLOR \
+                 blur_radius=0 \
                  padding_left=10 \
                  padding_right=10
 

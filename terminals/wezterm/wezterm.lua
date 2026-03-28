@@ -16,6 +16,7 @@ local config = wezterm.config_builder and wezterm.config_builder() or {}
 -- ==========================================
 -- Default Directory & Workspace
 -- ==========================================
+config.default_prog = { "/bin/zsh", "-l" }
 config.default_cwd = wezterm.home_dir .. "/.dotfiles"
 config.default_workspace = "HOME"
 

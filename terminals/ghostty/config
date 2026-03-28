@@ -6,10 +6,11 @@ theme = dark:dark,light:light
 background-opacity = 0.80
 background-blur-radius = 0
 
+command = /bin/zsh
 shell-integration = none
 
-font-family = "Jetbrains Mono Nerd Font"
-# font-family = "Berkeley Mono"
+# font-family = "Jetbrains Mono Nerd Font"
+font-family = "Berkeley Mono"
 # font-family = "Terminess Nerd Font"
 font-family-bold = "Bold"
 font-family-italic = "Oblique"
@@ -19,7 +20,7 @@ font-size = 13.0
 font-thicken = false
 font-thicken-strength = 0
 adjust-cell-width = 0%
-adjust-cell-height = 5%
+adjust-cell-height = 8%
 
 window-width = 200
 window-height = 55

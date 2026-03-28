@@ -20,6 +20,7 @@ return {
     branch = 'v3.x',
     lazy = true,
     cmd = { 'Neotree' },
+    dependencies = { 'folke/edgy.nvim' },
     ---@module "neo-tree"
     ---@type neotree.Config?
     opts = {

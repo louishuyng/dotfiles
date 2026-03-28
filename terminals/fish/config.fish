@@ -1,4 +1,5 @@
 mise activate fish | source
+tv init fish | source
 
 # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
 set -U fish_key_bindings fish_default_key_bindings
@@ -52,6 +53,3 @@ fish_add_path /Users/louishuyng/.opencode/bin
 # >>> coursier install directory >>>
 set -gx PATH "$PATH:/Users/louishuyng/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
-
-# Vite+ bin (https://viteplus.dev)
-source "$HOME/.vite-plus/env.fish"

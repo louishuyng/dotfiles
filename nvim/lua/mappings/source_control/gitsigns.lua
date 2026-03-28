@@ -65,6 +65,18 @@ M.gitsigns_mappings = function(bufnr)
 
   -- Text object
   map({ 'o', 'x' }, 'ih', gitsigns.select_hunk, { desc = 'Select hunk' })
+
+  -- Open git changes of all files in quickfix list
+  -- Only the file not the changes
+  map('n', '<leader>G', function()
+    local qflist = {}
+    for _, item in ipairs(vim.fn.getqflist()) do
+      if item.valid == 1 then
+        table.insert(qflist, { filename = item.filename })
+      end
+    end
+    gitsigns.setqflist(qflist)
+  end, { desc = 'Set qflist to git changes' })
 end
 
 return M

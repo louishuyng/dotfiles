@@ -1,47 +1,48 @@
 #!/opt/homebrew/bin/bash
 
-# Braille patterns for battery visualization
-declare -a dots_0=("⠀")
-declare -a dots_1=("⠁" "⠂" "⠄" "⠈" "⠐" "⠠" "⡀" "⢀")
-declare -a dots_2=("⠃" "⠅" "⠆" "⠉" "⠊" "⠌" "⠑" "⠒" "⠔" "⠘" "⠡" "⠢" "⠤" "⠨" "⠰" "⡁" "⡂" "⡄" "⡈" "⡐" "⡠" "⢁" "⢂" "⢄" "⢈" "⢐" "⢠" "⣀")
-declare -a dots_3=("⠇" "⠋" "⠍" "⠎" "⠓" "⠕" "⠖" "⠙" "⠚" "⠜" "⠣" "⠥" "⠦" "⠩" "⠪" "⠬" "⠱" "⠲" "⠴" "⠸" "⡃" "⡅" "⡆" "⡉" "⡊" "⡌" "⡑" "⡒" "⡔" "⡘" "⡡" "⡢" "⡤" "⡨" "⡰" "⢃" "⢅" "⢆" "⢉" "⢊" "⢌" "⢑" "⢒" "⢔" "⢘" "⢡" "⢢" "⢤" "⢨" "⢰" "⣁" "⣂" "⣄" "⣈" "⣐" "⣠")
-declare -a dots_4=("⠏" "⠗" "⠛" "⠝" "⠞" "⠧" "⠫" "⠭" "⠮" "⠳" "⠵" "⠶" "⠹" "⠺" "⠼" "⡇" "⡋" "⡍" "⡎" "⡓" "⡕" "⡖" "⡙" "⡚" "⡜" "⡣" "⡥" "⡦" "⡩" "⡪" "⡬" "⡱" "⡲" "⡴" "⡸" "⢇" "⢋" "⢍" "⢎" "⢓" "⢕" "⢖" "⢙" "⢚" "⢜" "⢣" "⢥" "⢦" "⢩" "⢪" "⢬" "⢱" "⢲" "⢴" "⢸" "⣃" "⣅" "⣆" "⣉" "⣊" "⣌" "⣑" "⣒" "⣔" "⣘" "⣡" "⣢" "⣤" "⣨" "⣰")
-declare -a dots_5=("⠟" "⠯" "⠷" "⠻" "⠽" "⠾" "⡏" "⡗" "⡛" "⡝" "⡞" "⡧" "⡫" "⡭" "⡮" "⡳" "⡵" "⡶" "⡹" "⡺" "⡼" "⢏" "⢗" "⢛" "⢝" "⢞" "⢧" "⢫" "⢭" "⢮" "⢳" "⢵" "⢶" "⢹" "⢺" "⢼" "⣇" "⣋" "⣍" "⣎" "⣓" "⣕" "⣖" "⣙" "⣚" "⣜" "⣣" "⣥" "⣦" "⣩" "⣪" "⣬" "⣱" "⣲" "⣴" "⣸")
-declare -a dots_6=("⠿" "⡟" "⡯" "⡷" "⡻" "⡽" "⡾" "⢟" "⢯" "⢷" "⢻" "⢽" "⢾" "⣏" "⣗" "⣛" "⣝" "⣞" "⣧" "⣫" "⣭" "⣮" "⣳" "⣵" "⣶" "⣹" "⣺" "⣼")
-declare -a dots_7=("⡿" "⢿" "⣟" "⣯" "⣷" "⣻" "⣽" "⣾")
-declare -a dots_8=("⣿")
-
 PERCENTAGE=$(pmset -g batt | grep -Eo "[0-9]+%" | cut -d% -f1)
 CHARGING=$(pmset -g batt | grep 'AC Power')
 
-if [[ $PERCENTAGE -eq 0 ]]; then
-    arr_name="dots_0"
-elif [[ $PERCENTAGE -le 12 ]]; then
-    arr_name="dots_1"
-elif [[ $PERCENTAGE -le 25 ]]; then
-    arr_name="dots_2"
-elif [[ $PERCENTAGE -le 37 ]]; then
-    arr_name="dots_3"
-elif [[ $PERCENTAGE -le 50 ]]; then
-    arr_name="dots_4"
-elif [[ $PERCENTAGE -le 62 ]]; then
-    arr_name="dots_5"
-elif [[ $PERCENTAGE -le 75 ]]; then
-    arr_name="dots_6"
-elif [[ $PERCENTAGE -le 87 ]]; then
-    arr_name="dots_7"
-else
-    arr_name="dots_8"
+if [[ -z "$PERCENTAGE" ]]; then
+    exit 0
 fi
 
-declare -n arr="$arr_name"
-random_index=$((RANDOM % ${#arr[@]}))
-ICON="${arr[$random_index]}"
+CHARGE_FONT_SIZE=15
+UNCHARGE_FONT_SIZE=16
 
+# Battery level icon
 if [[ $CHARGING != "" ]]; then
-    LABEL=$(printf "%3d*" "$PERCENTAGE")
-else
-    LABEL=$(printf "%3d%%" "$PERCENTAGE")
+    ICON=""
+elif [[ $PERCENTAGE -le 10 ]]; then ICON="󰂎"
+elif [[ $PERCENTAGE -le 20 ]]; then ICON="󱊡"
+elif [[ $PERCENTAGE -le 30 ]]; then ICON="󱊡"
+elif [[ $PERCENTAGE -le 40 ]]; then ICON="󰁽"
+elif [[ $PERCENTAGE -le 50 ]]; then ICON="󱊢"
+elif [[ $PERCENTAGE -le 60 ]]; then ICON="󱊢"
+elif [[ $PERCENTAGE -le 70 ]]; then ICON="󱊢"
+elif [[ $PERCENTAGE -le 80 ]]; then ICON="󱊢"
+elif [[ $PERCENTAGE -le 90 ]]; then ICON="󱊢"
+else                                ICON="󱊣"
 fi
 
-sketchybar --set "$NAME" icon="$ICON" label="$LABEL"
+# Diverse color scale
+if    [[ $PERCENTAGE -le 10 ]]; then COLOR=0xffff5555  # red    → critical
+elif  [[ $PERCENTAGE -le 25 ]]; then COLOR=0xffffb86c  # orange → low
+elif  [[ $PERCENTAGE -le 50 ]]; then COLOR=0xfff1fa8c  # yellow → medium
+elif  [[ $PERCENTAGE -le 75 ]]; then COLOR=0xff8be9fd  # blue  → good
+else                                  COLOR=0xff50fa7b  # green   → full
+fi
+
+LABEL="${PERCENTAGE}%"
+
+FONT_SIZE=$UNCHARGE_FONT_SIZE
+if [[ $CHARGING != "" ]]; then
+    FONT_SIZE=$CHARGE_FONT_SIZE
+fi
+
+sketchybar --set "$NAME" \
+    icon="$ICON" \
+    icon.color="$COLOR" \
+    icon.font="BlexMono Nerd Font:Regular:$FONT_SIZE" \
+    label="$LABEL" \
+    label.color="$COLOR"

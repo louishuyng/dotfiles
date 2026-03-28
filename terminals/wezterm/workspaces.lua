@@ -10,6 +10,7 @@ Workspaces.project_dirs = {
 	"~/LX14/repository/github.com/louishuyng",
 	"~/LX14/repository/github.com/regask",
 	"~/LX14/repository/github.com/regask/ops",
+	"~/LX14/notes/Obsidian",
 }
 
 -- Predefined workspaces
@@ -21,6 +22,10 @@ Workspaces.predefined = {
 	{
 		name = "MyLab",
 		cwd = "~/LX14/repository/github.com/louishuyng",
+	},
+	{
+		name = "MyObsidian",
+		cwd = "~/LX14/notes/Obsidian",
 	},
 	{
 		name = "R-Dev",

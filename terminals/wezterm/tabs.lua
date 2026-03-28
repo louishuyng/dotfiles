@@ -92,7 +92,7 @@ function Tabs.setup(config, tabline)
 			tab_separators = { left = "", right = "" },
 		},
 		sections = {
-			tabline_a = { { "workspace", icon = "󱘖" } },
+			tabline_a = { { "workspace", icon = "SPACE >" } },
 			tabline_b = { "" },
 			tabline_c = {},
 			tab_active = {
@@ -119,9 +119,11 @@ function Tabs.setup(config, tabline)
 				{ "cpu", throttle = 3 },
 			},
 			tabline_y = {
+				{ "ram", throttle = 3 },
+			},
+			tabline_z = {
 				disk_usage,
 			},
-			tabline_z = { { "ram", throttle = 3 } },
 		},
 	})
 
@@ -129,7 +131,7 @@ function Tabs.setup(config, tabline)
 
 	config.use_fancy_tab_bar = true
 	config.mouse_wheel_scrolls_tabs = true
-	config.tab_bar_at_bottom = true
+	config.tab_bar_at_bottom = false
 end
 
 return Tabs

@@ -4,9 +4,12 @@ local function on_move(data)
   Snacks.rename.on_rename_file(data.source, data.destination)
 end
 
-local position = 'left'
+local position = 'right'
 
 require('neo-tree').setup({
+  window = {
+    winhighlight = 'Normal:NeoTreeNormal,NormalNC:NeoTreeNormalNC,SignColumn:NeoTreeSignColumn,CursorLine:NeoTreeCursorLine,EndOfBuffer:NeoTreeEndOfBuffer',
+  },
   sources = {
     'filesystem',
     'document_symbols',
