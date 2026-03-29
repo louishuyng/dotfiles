@@ -9,6 +9,21 @@ vim.keymap.set('n', '<leader>dva', ':DiffviewFileHistory <CR>', { desc = 'Track 
 vim.keymap.set('n', '<leader>dvo', ':DiffviewOpen<CR>', { desc = 'Open git diff' })
 vim.keymap.set('n', '<leader>dvc', ':DiffviewClose<CR>', { desc = 'Close git diff' })
 
+-- Normal mode: history for current line
+vim.keymap.set('n', '<leader>dvl', function()
+  local line = vim.fn.line('.')
+  vim.cmd(string.format('%d,%dDiffviewFileHistory %%', line, line))
+end, { desc = 'Git line history' })
+
+-- Visual mode: history for selected lines
+vim.keymap.set('v', '<leader>dvl', function()
+  local line1 = vim.fn.line('v')
+  local line2 = vim.fn.line('.')
+  local start = math.min(line1, line2)
+  local finish = math.max(line1, line2)
+  vim.cmd(string.format('%d,%dDiffviewFileHistory %%', start, finish))
+end, { desc = 'Git line history (selection)' })
+
 vim.keymap.set('n', ',gs', function()
   neogit.open()
 end, { silent = true, desc = 'Open neo git' })
