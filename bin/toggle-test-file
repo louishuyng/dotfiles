@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Toggle between implementation and test file
+# Usage: toggle-test-file <file_path>
+
+f="$1"
+
+if [[ "$f" == *.spec.ts ]]; then
+  zed "${f%.spec.ts}.ts"
+elif [[ "$f" == *.ts ]]; then
+  zed "${f%.ts}.spec.ts"
+elif [[ "$f" == *_test.go ]]; then
+  zed "${f%_test.go}.go"
+elif [[ "$f" == *.go ]]; then
+  zed "${f%.go}_test.go"
+elif [[ "$f" == *_spec.rb ]]; then
+  zed "${f/_spec.rb/.rb}"
+elif [[ "$f" == *.rb ]]; then
+  zed "${f/.rb/_spec.rb}"
+fi
