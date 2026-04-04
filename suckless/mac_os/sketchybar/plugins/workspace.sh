@@ -1,14 +1,20 @@
 #!/bin/bash
 
-FONT="BlexMono Nerd Font"
+FOCUSED="$FOCUSED_WORKSPACE"
+OCCUPIED=$(aerospace list-workspaces --monitor all --empty no 2>/dev/null)
 
-# # Random Icon
-# ICON_ONE=""
-# ICON_TWO=""
-# ICON_FOUR=""
-#
-# ICONS=($ICON_ONE $ICON_TWO $ICON_THREE)
-#
-# RANDOM_ICON=${ICONS[$RANDOM % ${#ICONS[@]}]}
+# NAME is like "workspace.Terminal" — extract the workspace name
+THIS_WS="${NAME#workspace.}"
 
-sketchybar --set $NAME label="$FOCUSED_WORKSPACE |" icon="󱃞" icon.font="$FONT:Regular:18" animate tanh 10
+if echo "$OCCUPIED" | grep -q "^${THIS_WS}$"; then
+	if [ "$THIS_WS" = "$FOCUSED" ]; then
+		# Active workspace — bright blue
+		sketchybar --set "$NAME" label.color=0xffC778DD drawing=on
+	else
+		# Occupied but inactive — dim
+		sketchybar --set "$NAME" label.color=0xff3b4261 drawing=on
+	fi
+else
+	# Empty — hide
+	sketchybar --set "$NAME" drawing=off
+fi

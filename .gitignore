@@ -65,3 +65,4 @@ values.local.yaml
 raycast/extensions
 raycast/public-extensions-fork
 raycast/config.json
+.superpowers/

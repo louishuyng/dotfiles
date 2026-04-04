@@ -1,14 +1,13 @@
 #!/opt/homebrew/bin/bash
 
 battery=(
-	update_freq=120
-	icon.drawing=on
-	label.drawing=on
-	icon.padding_left=4
-	icon.padding_right=3
-	padding_left=20
-	label.padding_left=0
-	label.padding_right=10
+	update_freq=60
+	label.padding_left=5
+	label.padding_right=0
+	# background.drawing=on
+	# background.color=0xff0f1f0f
+	# background.corner_radius=6
+	# background.height=22
 	script="$PLUGIN_DIR/battery.sh"
 )
 

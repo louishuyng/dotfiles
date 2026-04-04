@@ -4,7 +4,7 @@ local function on_move(data)
   Snacks.rename.on_rename_file(data.source, data.destination)
 end
 
-local position = 'right'
+local position = 'left'
 
 require('neo-tree').setup({
   window = {
@@ -23,10 +23,10 @@ require('neo-tree').setup({
         source = 'filesystem',
         display_name = '  Files ',
       },
-      -- {
-      --   source = 'git_status',
-      --   display_name = '   Git ',
-      -- },
+      {
+        source = 'git_status',
+        display_name = '   Git ',
+      },
     },
   },
   close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab

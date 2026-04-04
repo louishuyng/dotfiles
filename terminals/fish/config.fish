@@ -11,6 +11,26 @@ source ~/.dotfiles/terminals/fish/env/init.fish
 
 starship init fish | source
 
+# Wrap starship's fish_prompt to auto-detect macOS appearance on each prompt
+functions -c fish_prompt __starship_fish_prompt
+function fish_prompt
+    set -l _appearance (/usr/libexec/PlistBuddy -c "Print AppleInterfaceStyle" ~/Library/Preferences/.GlobalPreferences.plist 2>/dev/null)
+    if test -z "$_appearance"
+        set _appearance Light
+    end
+    if test "$_appearance" != "$_cached_appearance"
+        set -g _cached_appearance $_appearance
+        if test "$_appearance" = "Dark"
+            source ~/.dotfiles/terminals/fish/themes/catppuccin-mocha.fish
+            set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/config.toml
+        else
+            source ~/.dotfiles/terminals/fish/themes/catppuccin-latte.fish
+            set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/catppuccin-latte.toml
+        end
+    end
+    __starship_fish_prompt
+end
+
 # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 

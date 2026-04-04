@@ -106,44 +106,6 @@ return {
       })
     end,
   },
-  -- Sidebar/panel layout manager
-  {
-    'folke/edgy.nvim',
-    event = 'VeryLazy',
-    opts = {
-      right = {
-        {
-          title = 'Files',
-          ft = 'neo-tree',
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == 'filesystem'
-          end,
-          size = { width = 40 },
-        },
-        {
-          title = 'Git',
-          ft = 'neo-tree',
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == 'git_status'
-          end,
-          size = { width = 40 },
-        },
-        {
-          title = 'Symbols',
-          ft = 'neo-tree',
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == 'document_symbols'
-          end,
-          size = { width = 40 },
-        },
-      },
-      options = {
-        left = { size = 40 },
-        right = { size = 40 },
-      },
-      animate = { enabled = false },
-    },
-  },
   -- Color highlighter
   {
     'norcalli/nvim-colorizer.lua',
@@ -189,7 +151,7 @@ return {
       end,
       stages = 'fade_in_slide_out',
       render = 'compact',
-      background_colour = '#1e222a',
+      background_colour = '#161616',
       fps = 60,
       icons = {
         ERROR = '󰅚 ',

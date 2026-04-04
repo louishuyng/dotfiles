@@ -1,6 +1,16 @@
 # Environment variables
 # Note: mise is activated in config.fish
 
+# Auto-detect macOS appearance and apply matching theme
+set -l _appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
+if test "$_appearance" = "Dark"
+    source ~/.dotfiles/terminals/fish/themes/catppuccin-mocha.fish
+    set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/config.toml
+else
+    source ~/.dotfiles/terminals/fish/themes/catppuccin-latte.fish
+    set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/catppuccin-latte.toml
+end
+
 # You may need to manually set your language environment
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
@@ -59,8 +69,6 @@ fish_add_path $GOBIN
 # # OPEN SSL
 fish_add_path /usr/local/opt/openssl/bin
 #
-# # Prompt Config
-set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/config.toml
 
 # # Editor
 set -gx EDITOR nvim

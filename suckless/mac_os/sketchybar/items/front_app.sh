@@ -1,12 +1,16 @@
 #!/bin/bash
 
 front_app=(
-	icon.drawing=on
-	icon.font="sketchybar-app-font:Regular:15"
-	icon.color=0xffA0C980
-	label.color=0xffA0C980
-        icon.padding_right=5
-        icon.padding_left=7
+        label.color=0xffFFB654
+	# icon.font="sketchybar-app-font:Regular:15"
+        # icon.color=0xff17FE52
+	label.font="BlexMono Nerd Font:Regular:13.0"
+        icon.padding_left=5
+	label.padding_left=5
+	label.padding_right=5
+	background.drawing=on
+	background.corner_radius=0
+	background.height=22
 	script="$PLUGIN_DIR/front_app.sh"
 )
 

@@ -6,11 +6,18 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
 
 ##### Bar Appearance #####
-sketchybar --bar position=top height=32 \
+sketchybar --bar position=bottom height=32 \
                  color=$BAR_COLOR \
-                 blur_radius=0 \
-                 padding_left=10 \
-                 padding_right=10
+                 border_width=0 \
+                 corner_radius=0 \
+                 margin=0 \
+                 padding_left=0 \
+                 padding_right=0 \
+                 shadow=off \
+                 sticky=on \
+                 topmost=window \
+                 y_offset=0 \
+                 notch_width=200
 
 
 ##### Changing Defaults #####
@@ -27,17 +34,29 @@ sketchybar --default "${default[@]}"
 
 ##### Adding items #####
 sketchybar --add event aerospace_workspace_change
-sketchybar --add event theme_change "AppleInterfaceThemeChangedNotification"
-sketchybar --add item theme_listener left \
-           --set theme_listener script="$PLUGIN_DIR/theme_change.sh" \
-                                drawing=off \
-           --subscribe theme_listener theme_change
+
+# sketchybar --add event theme_change "AppleInterfaceThemeChangedNotification"
+# sketchybar --add item theme_listener left \
+#            --set theme_listener script="$PLUGIN_DIR/theme_change.sh" \
+#                                 drawing=off \
+#            --subscribe theme_listener theme_change
 
 source "$ITEM_DIR/workspace.sh"
 source "$ITEM_DIR/front_app.sh"
+
+# Right side — order = rightmost first
 source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/battery.sh"
-source "$ITEM_DIR/spotify.sh"
+source "$ITEM_DIR/network.sh"
+source "$ITEM_DIR/cpu.sh"
+# source "$ITEM_DIR/spotify.sh"
 
 ##### Force all scripts to run the first time #####
 sketchybar --update
+
+##### Initialize workspace states on startup #####
+FOCUSED_WS=$(aerospace list-workspaces --focused 2>/dev/null)
+for ws in $(aerospace list-workspaces --monitor all --empty no 2>/dev/null); do
+	NAME="workspace.$ws" FOCUSED_WORKSPACE="$FOCUSED_WS" \
+		bash "$CONFIG_DIR/plugins/workspace.sh"
+done

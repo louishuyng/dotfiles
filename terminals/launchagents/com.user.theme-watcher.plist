@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.user.theme-watcher</string>
+    <key>WatchPaths</key>
+    <array>
+        <string>/Users/louishuyng/Library/Preferences/.GlobalPreferences.plist</string>
+    </array>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>if /usr/libexec/PlistBuddy -c "Print AppleInterfaceStyle" ~/Library/Preferences/.GlobalPreferences.plist 2&gt;/dev/null | grep -q Dark; then pkill -SIGUSR1 fish; else pkill -SIGUSR2 fish; fi</string>
+    </array>
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

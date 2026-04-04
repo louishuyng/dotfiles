@@ -7,42 +7,22 @@ if [[ -z "$PERCENTAGE" ]]; then
     exit 0
 fi
 
-CHARGE_FONT_SIZE=15
-UNCHARGE_FONT_SIZE=16
-
-# Battery level icon
 if [[ $CHARGING != "" ]]; then
-    ICON=""
-elif [[ $PERCENTAGE -le 10 ]]; then ICON="󰂎"
-elif [[ $PERCENTAGE -le 20 ]]; then ICON="󱊡"
-elif [[ $PERCENTAGE -le 30 ]]; then ICON="󱊡"
-elif [[ $PERCENTAGE -le 40 ]]; then ICON="󰁽"
-elif [[ $PERCENTAGE -le 50 ]]; then ICON="󱊢"
-elif [[ $PERCENTAGE -le 60 ]]; then ICON="󱊢"
-elif [[ $PERCENTAGE -le 70 ]]; then ICON="󱊢"
-elif [[ $PERCENTAGE -le 80 ]]; then ICON="󱊢"
-elif [[ $PERCENTAGE -le 90 ]]; then ICON="󱊢"
-else                                ICON="󱊣"
+    SUFFIX=" ⚡"
+else
+    SUFFIX=""
 fi
 
-# Diverse color scale
-if    [[ $PERCENTAGE -le 10 ]]; then COLOR=0xffff5555  # red    → critical
-elif  [[ $PERCENTAGE -le 25 ]]; then COLOR=0xffffb86c  # orange → low
-elif  [[ $PERCENTAGE -le 50 ]]; then COLOR=0xfff1fa8c  # yellow → medium
-elif  [[ $PERCENTAGE -le 75 ]]; then COLOR=0xff8be9fd  # blue  → good
-else                                  COLOR=0xff50fa7b  # green   → full
-fi
-
-LABEL="${PERCENTAGE}%"
-
-FONT_SIZE=$UNCHARGE_FONT_SIZE
-if [[ $CHARGING != "" ]]; then
-    FONT_SIZE=$CHARGE_FONT_SIZE
+# Tokyo Night color scale — bg darkens, text stays white
+if    [[ $PERCENTAGE -le 10 ]]; then BG=0xff3d0a12; COLOR=0xfff7768e  # red
+elif  [[ $PERCENTAGE -le 25 ]]; then BG=0xff3d2000; COLOR=0xffff9e64  # orange
+elif  [[ $PERCENTAGE -le 50 ]]; then BG=0xff3d3000; COLOR=0xffe0af68  # yellow
+elif  [[ $PERCENTAGE -le 75 ]]; then BG=0xff0f1f3d; COLOR=0xff7aa2f7  # blue
+else                                  BG=0xff0f2a12; COLOR=0xff9ece6a  # green
 fi
 
 sketchybar --set "$NAME" \
-    icon="$ICON" \
     icon.color="$COLOR" \
-    icon.font="BlexMono Nerd Font:Regular:$FONT_SIZE" \
-    label="$LABEL" \
-    label.color="$COLOR"
+    label="B:${PERCENTAGE}%${SUFFIX}" \
+    label.color="$COLOR" \
+    # background.color="$BG"

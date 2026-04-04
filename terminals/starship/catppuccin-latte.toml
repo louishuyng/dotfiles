@@ -1,0 +1,355 @@
+format = """\
+»\
+$directory\
+${custom.giturl}\
+$git_branch\
+${custom.git_worktree}\
+$git_status\
+(\
+    via \
+    $python\
+    $golang\
+    $nodejs\
+    $c\
+    $rust\
+    $terraform\
+    $java\
+    $character\
+)\
+"""
+
+right_format = """\
+$cmd_duration\
+$docker_context\
+$kubernetes\
+$time \
+"""
+
+palette = "catppuccin_latte"
+
+# Add the modules you need
+
+# Disable the blank line at the start of the prompt
+add_newline = true
+
+
+# I disabled some modules (Rust, Java...) since some things aren't installed in my machine, enable them if you need.
+
+[directory]
+style = "sapphire"
+format = "[ $path ]($style)"
+truncation_length = 4
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Developer" = "󰲋 "
+"Others" = " "
+
+[username]
+disabled = true
+show_always = true
+style_user = "bg:surface0 fg:text"
+style_root = "bg:surface0 fg:text"
+format = " $user "
+
+[line_break] 
+disabled = true
+
+
+[os]
+disabled = true
+
+[os.symbols]
+Alpine = " "
+Arch = " "
+Debian = " "
+EndeavourOS = " "
+Fedora = " "
+Linux = " "
+Manjaro = " "
+Mint = " "
+NixOS = " "
+Macos = " "
+openSUSE = " "
+Pop = " "
+SUSE = " "
+Ubuntu = " "
+Windows = " "
+
+[character] 
+disabled = false
+success_symbol = "[ ](bold fg:green)"
+error_symbol = "[✘ ](bold fg:red)"
+vimcmd_symbol = "[: ](bold fg:yellow)"
+
+[cmd_duration]
+disabled = false
+format = "took [ $duration]($style) "
+min_time = 500
+
+
+[custom.giturl]
+description = "Display symbol for remote Git server"
+command = """
+GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
+if [[ "$GIT_REMOTE" =~ "github" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "git" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+else
+    GIT_REMOTE_SYMBOL=" "
+fi
+echo "$GIT_REMOTE_SYMBOL  "
+"""
+when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+shell = ["bash", "--norc", "--noprofile"]
+format = "$output "
+require_repo = true
+
+[custom.git_worktree]
+description = "Show indicator when inside a git worktree"
+command = '''
+common_dir=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
+git_dir=$(git rev-parse --path-format=absolute --git-dir 2>/dev/null)
+[ "$common_dir" != "$git_dir" ] && echo "⛓ "
+'''
+when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+shell = ["bash", "--norc", "--noprofile"]
+format = " ([$output ]($style))"
+style = "bold green"
+require_repo = true
+
+[git_branch]
+symbol = "(base) "
+style = "fg:lavender bg:base"
+format =  " [$symbol$branch]($style)(base) "
+
+
+# [git_status] 
+# MINIMAL git status 
+# format = " [($all_status$ahead_behind )]($style)"
+# ahead    = "⇡${count} "
+# behind   = "⇣${count} "
+# diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+
+[git_status]
+format = "[$staged$modified$renamed$conflicted$ahead_behind]($style)"
+# options available for format
+staged     = "[+${count} ](green)"
+modified   = "[!${count} ](yellow)"
+renamed    = "[»${count} ](blue)"
+deleted    = "[-${count} ](red)"
+untracked  = "[?${count} ](sapphire)"
+stashed    = "[≡${count} ](lavender)"
+conflicted = "[✖${count} ](red bold)"
+
+ahead      = "[⇡${count} ](teal)"
+behind     = "[⇣${count} ](peach)"
+diverged   = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
+
+
+[docker_context]
+disabled=false
+symbol = " "
+
+[kubernetes]
+disabled=false
+symbol = " "
+format = "[$symbol$context]($style) "
+
+[time]
+disabled = true
+time_format = "%R"
+format = "[[  $time ](fg:yellow bg:foam)]($style)"
+
+[package]
+disabled=true
+
+[fill]
+symbol = " "
+
+[nodejs]
+format = "[$symbol$version ]($style)"
+symbol = " "
+version_format = "${raw}"
+disabled=false
+
+[python]
+disabled=false
+format = '[${symbol}${pyenv_prefix}(${version})( \($virtualenv\)) ]($style)'
+symbol = " "
+version_format = "${raw}"
+
+[java]
+format = "[$symbol$version ]($style)"
+version_format = "${raw}"
+symbol = " "
+disabled = true
+
+[c]
+format = "[$symbol($version(-$name)) ]($style)"
+symbol = " "
+version_format = "${raw}"
+disabled=true
+
+[golang]
+symbol = ""
+format = '[$symbol( $version) ]($style)'
+
+[rust]
+format ="[$symbol$version ]($style)"
+symbol = " "
+version_format = "${raw}"
+
+[terraform]
+format = "[$symbol($version) ]($style)"
+symbol = "🏎 "
+version_format = "${raw}"
+disabled=false
+
+[palettes.catppuccin_latte]
+# --- background ---
+crust = "#dce0e8"
+mantle = "#e6e9ef"
+base = "#eff1f5" # git branch bg
+
+overlay2 = "#7c7f93"
+overlay1 = "#8c8fa1"
+overlay0 = "#9ca0b0"
+
+surface2 = "#acb0be"
+surface1 = "#bcc0cc"
+surface0 = "#ccd0da"
+
+# --- text ---
+text = "#4c4f69"
+subtext1 = "#5c5f77"
+subtext0 = "#6c6f85"
+
+# --- accents (catppuccin_latte) ---
+rosewater = "#dc8a78"
+flamingo = "#dd7878"
+pink = "#ea76cb"
+mauve = "#8839ef"
+red = "#d20f39"
+maroon = "#e64553"
+peach = "#fe640b"
+yellow = "#df8e1d"
+green = "#40a02b"
+teal = "#179299"
+sky = "#04a5e5"
+sapphire = "#209fb5"
+blue = "#1e66f5"
+lavender = "#7287fd" # git branch fg
+
+[palettes.catppuccin_mocha]
+# --- background ---
+crust = "#11111b"
+mantle = "#181825"
+base = "#1e1e2e" # git branch bg
+
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+
+# --- text ---
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+
+# --- accents (catppuccin_mocha) ---
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe" # git branch fg
+
+[palettes.gruvbox_dark]
+# --- background ---
+crust = "#1d2021"
+mantle = "#282828"
+base = "#fbf1c7" # git branch bg
+
+surface0 = "#3c3836"
+surface1 = "#504945"
+surface2 = "#665c54"
+
+overlay0 = "#7c6f64"
+overlay1 = "#a89984"
+overlay2 = "#bdae93"
+
+# --- text ---
+text = "#ebdbb2"
+subtext0 = "#d5c4a1"
+subtext1 = "#fbf1c7"
+
+# --- accents gruvbox ---
+rosewater = "#fbf1c7"
+flamingo = "#fe8019"
+pink = "#d3869b"
+mauve = "#d3869b"
+red = "#cc241d"
+maroon = "#fb4934"
+peach = "#fe8019"
+yellow = "#d79921"
+green = "#98971a"
+teal = "#8ec07c"
+sky = "#8ec07c"
+sapphire = "#83a598"
+blue = "#458588"
+lavender = "#d3869b" # git branch fg
+
+[palettes.tokyonight_night]
+# --- background ---
+crust = "#16161e"
+mantle = "#16161e"
+base = "#1a1b26" # git branch bg
+
+surface0 = "#292e42"
+surface1 = "#3b4261"
+surface2 = "#414868"
+
+overlay0 = "#565f89"
+overlay1 = "#737aa2"
+overlay2 = "#9aa5ce"
+
+# --- text ---
+text = "#c0caf5"
+subtext0 = "#a9b1d6"
+subtext1 = "#c0caf5"
+
+# --- accents tokyonight ---
+rosewater = "#c0caf5"
+flamingo = "#ff9e64"
+pink = "#f7768e"
+mauve = "#bb9af7"
+red = "#f7768e"
+maroon = "#f7768e"
+peach = "#ff9e64"
+yellow = "#e0af68"
+green = "#9ece6a"
+teal = "#7dcfff"
+sky = "#7dcfff"
+sapphire = "#7aa2f7" # dir fg 
+blue = "#7aa2f7"
+lavender = "#bb9af7" # git branch fg

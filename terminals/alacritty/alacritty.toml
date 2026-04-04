@@ -3,27 +3,14 @@ TERM = "xterm-256color"
 
 # Font Configuration
 [font]
-size = 13
+size = 15
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Propo"
-style = "Light"
-
-[font.bold]
-family = "JetBrainsMono Nerd Font Propo"
-style = "Regular"
-
-[font.italic]
-family = "JetBrainsMono Nerd Font Propo"
-style = "Light Italic"
-
-[font.bold_italic]
-family = "JetBrainsMono Nerd Font Mono"
-style = "Italic"
+family = "Terminess Nerd Font"
 
 [font.offset]
 x = 0
-y = 5
+y = 8
 
 [font.glyph_offset]
 x = 0
