@@ -5,16 +5,16 @@ SESSION=$(tmux display-message -p '#S')
 
 # Return appropriate icon based on session name
 case "$SESSION" in
-    "LX14")
-        echo "󰱯"
+    "LX-CONFIG")
+        echo "󰱯 "
         ;;
-    "RCODE")
-        echo ""
+    "LX-REGASK")
+        echo " "
         ;;
-    "ROPS")
-        echo "󱃾"
+    "LX-RESEARCH")
+        echo "󱃾 "
         ;;
     *)
-        echo " "
+        echo ""
         ;;
 esac

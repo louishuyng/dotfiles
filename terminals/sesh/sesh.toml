@@ -1,0 +1,11 @@
+[[session]]
+name = "LX-CONFIG"
+path = "~/.dotfiles"
+
+[[session]]
+name = "LX-RESEARCH"
+path = "~/LX14/projects/research"
+
+[[session]]
+name = "LX-REGASK"
+path = "~/LX14/repository/github.com/regask"
