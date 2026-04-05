@@ -36,7 +36,7 @@ if [[ -n "$PREV_TIME" && "$PREV_TIME" -gt 0 ]]; then
         [[ $SPEED_OUT -lt 0 ]] && SPEED_OUT=0
         UP=$(format_speed $SPEED_OUT)
         DOWN=$(format_speed $SPEED_IN)
-        sketchybar --set "$NAME" label="W⋮ ↑${UP} ↓${DOWN}"
+        sketchybar --set "$NAME" label="N⋮↑${UP} ↓${DOWN}"
         exit 0
     fi
 fi

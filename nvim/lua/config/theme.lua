@@ -1,6 +1,6 @@
 local dark_opts = {
   style = 'moon',
-  transparent = false,
+  transparent = true,
   terminal_colors = true,
   lualine_bold = true,
 
@@ -30,9 +30,7 @@ local dark_opts = {
     c.green1 = '#4fa89a'
   end,
 
-  on_highlights = function(hl, c)
-    hl.Normal = { fg = c.fg, bg = c.bg }
-  end,
+  on_highlights = function(hl, c) end,
 }
 
 local light_opts = {
@@ -51,32 +49,19 @@ local light_opts = {
   },
 }
 
-return {
-  {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('tokyonight').setup(dark_opts)
-      vim.cmd.colorscheme 'tokyonight'
-    end,
-  },
-  {
-    'f-person/auto-dark-mode.nvim',
-    lazy = false,
-    priority = 999,
-    opts = {
-      update_interval = 1000,
-      set_dark_mode = function()
-        require('tokyonight').setup(dark_opts)
-        vim.cmd.colorscheme 'tokyonight'
-        vim.o.background = 'dark'
-      end,
-      set_light_mode = function()
-        require('tokyonight').setup(light_opts)
-        vim.cmd.colorscheme 'tokyonight'
-        vim.o.background = 'light'
-      end,
-    },
-  },
-}
+require('tokyonight').setup(dark_opts)
+vim.cmd.colorscheme 'tokyonight'
+
+require('auto-dark-mode').setup({
+  update_interval = 1000,
+  set_dark_mode = function()
+    require('tokyonight').setup(dark_opts)
+    vim.cmd.colorscheme 'tokyonight'
+    vim.o.background = 'dark'
+  end,
+  set_light_mode = function()
+    require('tokyonight').setup(light_opts)
+    vim.cmd.colorscheme 'tokyonight'
+    vim.o.background = 'light'
+  end,
+})

@@ -90,17 +90,12 @@ vim.keymap.set('v', 'p', '"_dP', opt)
 vim.keymap.set('n', ';r', 'yiw:%s/<C-R>"/', opt)
 vim.keymap.set('v', ';r', '"_y:%s/<C-R>"/', opt)
 
--- Lazy
-vim.keymap.set('n', '<leader>li', ':Lazy install<CR>', opt)
-vim.keymap.set('n', '<leader>lc', ':Lazy clean<CR>', opt)
-vim.keymap.set('n', '<leader>lu', ':Lazy update<CR>', opt)
+-- Pack (vim.pack)
+vim.keymap.set('n', '<leader>lu', '<cmd>lua vim.pack.update()<CR>', { silent = true, noremap = true, desc = 'Pack update' })
 
 -- Register
 local esc = vim.api.nvim_replace_termcodes('<Esc>', true, true, true)
 vim.fn.setreg('l', "yoconsole.log('" .. esc .. 'pa:' .. esc .. 'la, ' .. esc .. 'pl')
-
--- Noice
-vim.keymap.set('n', '<leader>mo', ':Noice all<CR>', { desc = 'Log vim messages', silent = true, noremap = true })
 
 -- Reload Buffer
 vim.keymap.set('n', '<leader>rb', function()

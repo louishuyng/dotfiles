@@ -1,8 +1,5 @@
 local augroup = vim.api.nvim_create_augroup('UserLspConfig', { clear = true })
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signatureHelp, { border = 'single' })
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = augroup,
   callback = function(ev)
@@ -17,7 +14,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if vim.fn.match(vim.fn.expand('%:t'), '^[.]') ~= -1 then
       return
     end
-
 
     local opts = { buffer = bufnr, silent = true, noremap = true }
 

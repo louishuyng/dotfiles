@@ -9,7 +9,7 @@ THIS_WS="${NAME#workspace.}"
 if echo "$OCCUPIED" | grep -q "^${THIS_WS}$"; then
 	if [ "$THIS_WS" = "$FOCUSED" ]; then
 		# Active workspace — bright blue
-		sketchybar --set "$NAME" label.color=0xffC778DD drawing=on
+		sketchybar --set "$NAME" label.color=0xff7aa2f7 drawing=on
 	else
 		# Occupied but inactive — dim
 		sketchybar --set "$NAME" label.color=0xff3b4261 drawing=on

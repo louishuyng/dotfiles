@@ -1,4 +1,3 @@
-vim.g.loaded_matchparen = 1
 vim.g.loaded_perl_provider = 0
 
 local opt = vim.opt
@@ -69,6 +68,7 @@ opt.cursorline = true
 opt.showmode = false
 opt.showcmd = true
 opt.cmdheight = 0 -- Height of the command bar
+opt.shortmess:append('WIcCsS') -- Suppress startup and common messages
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.number = true -- But show the actual number for the line we're on
@@ -156,17 +156,7 @@ vim.opt.signcolumn = 'yes'
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand('~/.vim/undodir')
 
--- DISABLE BUILTIN VIM PLUGINS
-vim.g.loaded_gzip = 0
-vim.g.loaded_tar = 0
-vim.g.loaded_tarPlugin = 0
-vim.g.loaded_zipPlugin = 0
-vim.g.loaded_2html_plugin = 0
-vim.g.loaded_netrw = 0
-vim.g.loaded_netrwPlugin = 0
-vim.g.loaded_matchit = 0
-vim.g.loaded_matchparen = 0
-vim.g.loaded_spec = 0
+-- Builtin plugins disabled in init.lua
 
 -- RUST
 vim.g.rust_recommended_style = 1
@@ -200,27 +190,10 @@ vim.opt.grepprg = 'rg --vimgrep --smart-case --follow'
 -- vim.api.nvim_command("set winbar=%m\\ %f")
 
 -- Performance
-vim.cmd([[
-   set ttyfast
-   set synmaxcol=500
-   syntax sync minlines=50
-
-   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
- ]])
-
-vim.cmd([[
-  set viminfo='100,n$HOME/.vim/files/info/viminfo
-]])
-
--- UI
-vim.cmd([[
-  set laststatus=3
-]])
+vim.opt.synmaxcol = 500
 
 -- AI
 vim.g.copilot_enabled = true
 
--- cliboard
-vim.cmd([[
-  set clipboard+=unnamedplus
-]])
+-- Clipboard
+vim.opt.clipboard:append('unnamedplus')

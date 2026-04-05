@@ -121,7 +121,6 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
   },
   sources = cmp.config.sources({
-    { name = 'lazydev' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },

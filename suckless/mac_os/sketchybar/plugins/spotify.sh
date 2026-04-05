@@ -13,16 +13,19 @@ if [[ "$STATE" != "playing" && "$STATE" != "paused" ]]; then
 fi
 
 TRACK=$(osascript -e 'tell application "Spotify" to name of current track as string' 2>/dev/null)
+ARTIST=$(osascript -e 'tell application "Spotify" to artist of current track as string' 2>/dev/null)
 
 # Truncate to 25 chars
 if [[ ${#TRACK} -gt 25 ]]; then
-    TRACK="${TRACK:0:25}…"
+    TRACK="${TRACK:0:25}... | ${ARTIST}"
+else
+    TRACK="${TRACK} | ${ARTIST}"
 fi
 
 if [[ "$STATE" == "playing" ]]; then
-    COLOR=0xffbb9af7
+    COLOR=0xff1DD05D
 else
-    COLOR=0xff565f89
+    COLOR=0xff8A91AD
 fi
 
 sketchybar --set spotify \

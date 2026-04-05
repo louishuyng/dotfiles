@@ -1,26 +1,24 @@
 auto-update-channel = tip
 
-theme = dark:dark,light:light
+theme = dark:TokyoNight Moon,light:light
+
 
 # Background
 background-opacity = 0.80
 background-blur-radius = 0
 
-command = /bin/zsh
-shell-integration = none
-
-# font-family = "Jetbrains Mono Nerd Font"
+font-family = "Jetbrains Mono Nerd Font"
 # font-family = "Berkeley Mono"
-font-family = "Terminess Nerd Font"
+# font-family = "Terminess Nerd Font"
 font-family-bold = "Bold"
 font-family-italic = "Oblique"
 font-family-bold-italic = "Bold Oblique"
 
-font-size = 15.0
+font-size = 13.0
 font-thicken = false
 font-thicken-strength = 0
 adjust-cell-width = 0%
-adjust-cell-height = 8%
+adjust-cell-height = 5%
 
 window-width = 200
 window-height = 55

@@ -1,7 +1,7 @@
 -- LSP Performance Optimizations
 
 -- Reduce default timeout for LSP requests
-vim.lsp.set_log_level("ERROR")
+vim.lsp.log.set_level("ERROR")
 
 -- Configure LSP for better performance
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -50,22 +50,7 @@ capabilities.textDocument.foldingRange = {
 }
 
 -- Global LSP settings for performance
-vim.lsp.set_log_level("ERROR")
-
--- Debounce text changes
-local timer = vim.loop.new_timer()
-local DEBOUNCE_MS = 200
-local orig_buf_text_changed = vim.lsp.util.buf_text_changed
-
-vim.lsp.util.buf_text_changed = function(bufnr)
-  timer:stop()
-  timer:start(DEBOUNCE_MS, 0, function()
-    timer:stop()
-    vim.schedule(function()
-      orig_buf_text_changed(bufnr)
-    end)
-  end)
-end
+vim.lsp.log.set_level("ERROR")
 
 -- Disable semantic tokens for better performance
 vim.api.nvim_create_autocmd("LspAttach", {

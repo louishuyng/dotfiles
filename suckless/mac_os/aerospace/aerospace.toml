@@ -17,24 +17,22 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 14
 inner.vertical =   14
-outer.top = [{ monitor."Built-in" = 0 }, 0]
-outer.bottom = [{ monitor."Built-in" = 32 }, 32]
+outer.top = [{ monitor."Built-in" = 0 }, 32]
+outer.bottom = [{ monitor."Built-in" = 0 }, 0]
 outer.left =       0
 outer.right =      0
 
 [mode.main.binding]
-alt-i = 'workspace Infra' # Infra (DevOps)
-alt-d = 'workspace Dev' # Dev (IDE, Coding Tools, etc)
+alt-d = 'workspace Dev' # Dev (IDE, Coding Tools, DevOps, etc)
 alt-t = 'workspace Terminal' # Terminal (Main Terminal For Coding with web window inside)
 alt-w = 'workspace Web' # Web (Browse or any web development related like figma, etc)
 alt-c = 'workspace Chat' # Chat (Chat related apps like Slack, Teams, Whatsapp etc)
 alt-r = 'workspace Reading' # Reading Including book, notes (Kindle, Inkdrop)
 alt-p = 'workspace Planing' # planing emails (Linear, Jira, Spark etc..)
 alt-a = 'workspace Any' # Any (Social Media, Spotify, Music etc)
-alt-1 = 'workspace Inbox' # Inbox (Email, Calendar, etc)
-alt-2 = 'workspace Virtual' # Virtual Machine'
+alt-i = 'workspace Inbox' # Inbox (Email, Calendar, etc)
+alt-v = 'workspace Virtual' # Virtual Machine'
 
-alt-shift-i = ['move-node-to-workspace Infra', 'workspace Infra']
 alt-shift-d = ['move-node-to-workspace Dev', 'workspace Dev']
 alt-shift-t = ['move-node-to-workspace Terminal', 'workspace Terminal']
 alt-shift-w = ['move-node-to-workspace Web', 'workspace Web']
@@ -42,8 +40,8 @@ alt-shift-c = ['move-node-to-workspace Chat', 'workspace Chat']
 alt-shift-r = ['move-node-to-workspace Reading', 'workspace Reading']
 alt-shift-p = ['move-node-to-workspace Planing', 'workspace Planing']
 alt-shift-a = ['move-node-to-workspace Any', 'workspace Any']
-alt-shift-1 = ['move-node-to-workspace Inbox', 'workspace Inbox']
-alt-shift-2 = ['move-node-to-workspace Virtual', 'workspace Virtual']
+alt-shift-i = ['move-node-to-workspace Inbox', 'workspace Inbox']
+alt-shift-v = ['move-node-to-workspace Virtual', 'workspace Virtual']
 
 alt-shift-h = 'move left'
 alt-shift-k = 'move up'
@@ -68,29 +66,27 @@ alt-0 = 'flatten-workspace-tree'
 alt-shift-f = 'layout floating tiling'
 alt-ctrl-shift-y = 'reload-config'
 
-# Workspace Infra
+# Workspace Dev
 [[on-window-detected]]
 if.app-id = 'com.mongodb.compass'
-run = ['layout floating', 'move-node-to-workspace Infra']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.datagrip'
-run = ['layout floating', 'move-node-to-workspace Infra']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.electron.kontena-lens'
-run = ['layout floating', 'move-node-to-workspace Infra']
-
+run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'li.zihua.medis2'
-run = ['layout floating', 'move-node-to-workspace Infra']
- 
+run = ['layout floating', 'move-node-to-workspace Dev']
+
 [[on-window-detected]]
 if.app-id = 'com.wails.loca-dashboard'
-run = ['layout floating', 'move-node-to-workspace Infra']
+run = ['layout floating', 'move-node-to-workspace Dev']
 
-# Workspace Dev
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
 run = ['layout floating', 'move-node-to-workspace Dev']
@@ -245,9 +241,17 @@ run = ['layout floating', 'move-node-to-workspace Any']
 if.app-id = 'com.apple.TV'
 run = ['layout floating', 'move-node-to-workspace Any']
 
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+run = ['layout floating', 'move-node-to-workspace Any']
+
 # Workspace Virutal
 [[on-window-detected]]
 if.app-id = 'org.virtualbox.app.VirtualBox'
+run = ['layout floating', 'move-node-to-workspace Virtual']
+
+[[on-window-detected]]
+if.app-id = 'com.utmapp.UTM'
 run = ['layout floating', 'move-node-to-workspace Virtual']
 
 # Workspace Inbox
@@ -264,7 +268,6 @@ if.app-id = 'com.microsoft.Outlook'
 run = ['layout floating', 'move-node-to-workspace Inbox']
 
 [workspace-to-monitor-force-assignment]
-Infra = '^built-in'
 Dev = '^built-in'
 Terminal = '^built-in'
 Web = '^built-in'

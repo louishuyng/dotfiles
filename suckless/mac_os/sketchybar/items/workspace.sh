@@ -9,15 +9,14 @@ WS_LABELS=(
 	[Chat]="CHAT"
 	[Dev]="DEV"
 	[Inbox]="INBOX"
-	[Infra]="INFRA"
 	[Planing]="PLAN"
 	[Reading]="READ"
 	[Terminal]="TERM"
-	[Virtual]="VIRT"
+	[Virtual]="VIRTUAL"
 	[Web]="WEB"
 )
 
-WORKSPACES=(Virtual Infra Dev Terminal Web Reading Planing Chat Inbox Any)
+WORKSPACES=(Virtual Dev Terminal Web Reading Planing Chat Inbox Any)
 
 first=true
 for ws in "${WORKSPACES[@]}"; do
@@ -32,7 +31,6 @@ for ws in "${WORKSPACES[@]}"; do
 		--set "workspace.$ws" \
 			label="$label" \
 			label.font="BlexMono Nerd Font:Regular:13.0" \
-			label.color=0xff3b4261 \
 			label.padding_left=6 \
 			label.padding_right=6 \
 			icon.drawing=off \
@@ -46,10 +44,10 @@ done
 
 # Bracket all workspace items together with a unified background
 sketchybar --add bracket workspaces \
-    workspace.Virtual workspace.Infra workspace.Dev workspace.Terminal \
+    workspace.Virtual workspace.Dev workspace.Terminal \
     workspace.Web workspace.Reading workspace.Planing workspace.Chat \
     workspace.Inbox workspace.Any \
     --set workspaces \
-        background.color=0xff000000 \
+        background.color=0xff131721 \
         background.corner_radius=0 \
         background.height=24

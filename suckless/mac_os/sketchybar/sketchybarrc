@@ -6,18 +6,17 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
 
 ##### Bar Appearance #####
-sketchybar --bar position=bottom height=32 \
+sketchybar --bar position=top height=32 \
                  color=$BAR_COLOR \
                  border_width=0 \
                  corner_radius=0 \
                  margin=0 \
-                 padding_left=0 \
-                 padding_right=0 \
+                 padding_left=8 \
+                 padding_right=8 \
                  shadow=off \
                  sticky=on \
                  topmost=window \
                  y_offset=0 \
-                 notch_width=200
 
 
 ##### Changing Defaults #####

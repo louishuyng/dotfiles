@@ -1,6 +1,1 @@
-vim.keymap.set(
-  'n',
-  '<leader>ut',
-  '<cmd>UndotreeToggle<CR>',
-  { noremap = true, silent = true, desc = 'Toggle undo tree' }
-)
+vim.keymap.set('n', '<leader>ut', '<cmd>Undotree<CR>', { noremap = true, silent = true, desc = 'Toggle undo tree' })

@@ -25,4 +25,4 @@ sketchybar --set "$NAME" \
     icon.color="$COLOR" \
     label="B:${PERCENTAGE}%${SUFFIX}" \
     label.color="$COLOR" \
-    # background.color="$BG"
+    background.color="$BG"

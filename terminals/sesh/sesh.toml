@@ -9,3 +9,7 @@ path = "~/LX14/projects/research"
 [[session]]
 name = "LX-REGASK"
 path = "~/LX14/repository/github.com/regask"
+
+[[session]]
+name = "LX-PERSONAL"
+path = "~/LX14/repository/github.com/louishuyng"
