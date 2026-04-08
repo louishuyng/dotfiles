@@ -57,6 +57,31 @@ local function goCreateSpec()
   vim.cmd('e ' .. spec_path)
 end
 
+local function pythonCreateSpec()
+  local filename = vim.fn.expand('%:t')
+  local root = vim.fs.root(0, '.git') or vim.fn.getcwd()
+
+  -- if file starts with test_ then find the source file
+  if string.find(filename, '^test_') then
+    local src_name = string.gsub(filename, '^test_', '')
+    local results = vim.fn.globpath(root, '**/' .. src_name, false, true)
+    for _, f in ipairs(results) do
+      if not string.find(f, '/tests/') then
+        vim.cmd('e ' .. f)
+        return
+      end
+    end
+    return
+  end
+
+  -- find the test file in tests/ directory
+  local test_name = 'test_' .. filename
+  local results = vim.fn.globpath(root .. '/tests', '**/' .. test_name, false, true)
+  if #results > 0 then
+    vim.cmd('e ' .. results[1])
+  end
+end
+
 local function create_spec()
   local filetype = vim.bo.filetype
 
@@ -69,6 +94,9 @@ local function create_spec()
   -- NOTE: I only want to focus on nestjs for now
   if filetype == 'typescript' then
     nestJsCreateSpec()
+  end
+  if filetype == 'python' then
+    pythonCreateSpec()
   end
 end
 

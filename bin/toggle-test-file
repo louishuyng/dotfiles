@@ -16,4 +16,14 @@ elif [[ "$f" == *_spec.rb ]]; then
   zed "${f/_spec.rb/.rb}"
 elif [[ "$f" == *.rb ]]; then
   zed "${f/.rb/_spec.rb}"
+elif [[ "$(basename "$f")" == test_*.py ]]; then
+  root="$(git -C "$(dirname "$f")" rev-parse --show-toplevel)"
+  src_name="$(basename "$f" | sed 's/^test_//')"
+  src="$(find "$root" -path "$root/tests" -prune -o -name "$src_name" -type f -print | head -1)"
+  [[ -n "$src" ]] && zed "$src"
+elif [[ "$f" == *.py ]]; then
+  root="$(git -C "$(dirname "$f")" rev-parse --show-toplevel)"
+  test_name="test_$(basename "$f")"
+  test="$(find "$root/tests" -name "$test_name" -type f | head -1)"
+  [[ -n "$test" ]] && zed "$test"
 fi

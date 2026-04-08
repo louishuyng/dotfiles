@@ -135,7 +135,8 @@
     "context": "Terminal",
     "bindings": {
       // Close terminal
-      "ctrl-t": "pane::CloseActiveItem"
+      "ctrl-t": "pane::CloseActiveItem",
+      "ctrl-l": "terminal::Clear"
     }
   },
   {
