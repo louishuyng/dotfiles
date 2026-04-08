@@ -1,5 +1,0 @@
-name: LX14
-attach: true
-windows:
-  - dotfiles:
-      - cd ~/.dotfiles

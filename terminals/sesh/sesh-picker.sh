@@ -1,15 +1,45 @@
 #!/bin/bash
-selected=$(sesh list | fzf \
-  --no-sort --ansi --no-preview \
-  --border-label ' sesh ' --prompt '⚡  ' \
-  --header '  ^a all ^t tmux ^g configs ^x zoxide' \
+
+# Tokyo Night color palette
+TN_BG="#1a1b26"
+TN_FG="#c0caf5"
+TN_BLUE="#7aa2f7"
+TN_CYAN="#7dcfff"
+TN_GREEN="#9ece6a"
+TN_MAGENTA="#bb9af7"
+TN_COMMENT="#565f89"
+TN_SELECTION="#283457"
+TN_BORDER="#3b4261"
+
+selected=$(sesh list -idH | fzf \
+  --no-sort --ansi \
+  --border none \
+  --no-preview \
+  --prompt '  ' \
+  --pointer '▌' \
+  --marker '▍' \
+  --header '  ^a all  ^t tmux  ^g configs  ^x zoxide  ^d kill' \
+  --header-first \
+  --padding 0 \
+  --margin 0 \
+  --color "bg:$TN_BG,fg:$TN_FG" \
+  --color "bg+:$TN_SELECTION,fg+:$TN_BLUE" \
+  --color "hl:$TN_MAGENTA,hl+:$TN_MAGENTA" \
+  --color "header:$TN_COMMENT" \
+  --color "prompt:$TN_CYAN" \
+  --color "pointer:$TN_BLUE,marker:$TN_GREEN" \
+  --color "info:$TN_COMMENT,spinner:$TN_MAGENTA" \
   --bind 'tab:down,btab:up' \
-  --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list)' \
-  --bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t)' \
-  --bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -c)' \
-  --bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z)')
+  --bind 'ctrl-a:change-prompt(  )+reload(sesh list -idH)' \
+  --bind 'ctrl-t:change-prompt(  )+reload(sesh list -itdH)' \
+  --bind 'ctrl-g:change-prompt(  )+reload(sesh list -icdH)' \
+  --bind 'ctrl-x:change-prompt(  )+reload(sesh list -izdH)' \
+  --bind 'ctrl-d:execute(tmux kill-session -t {})+reload(sesh list -idH)')
 
 [ -z "$selected" ] && exit 0
+
+# Strip ANSI color codes and icon prefix from selection
+selected=$(echo "$selected" | sed 's/\x1b\[[0-9;]*m//g; s/^[^ ]* //')
 
 open_in_session() {
   local session="$1"

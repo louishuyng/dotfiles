@@ -1,5 +1,0 @@
-name: RCODE
-root: ~/LX14/repository/github.com/regask
-attach: false
-windows:
-  - ops: cd gitops
