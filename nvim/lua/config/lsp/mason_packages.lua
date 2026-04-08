@@ -16,6 +16,10 @@ return {
   'goimports',
   'delve',
 
+  -- Python
+  'ruff',
+  'pyright',
+
   -- Elixir
   'elixir-ls',
 

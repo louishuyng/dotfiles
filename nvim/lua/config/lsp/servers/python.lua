@@ -1,5 +1,5 @@
 vim.lsp.config('ruff', {
-  cmd = { 'ruff-lsp' },
+  cmd = { 'ruff', 'server' },
   filetypes = { 'python' },
   settings = {
     organizeImports = true,
