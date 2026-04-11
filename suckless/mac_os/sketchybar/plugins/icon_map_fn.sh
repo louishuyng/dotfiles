@@ -1,4 +1,6 @@
 
+
+
 ### START-OF-ICON-MAP
 function __icon_map() {
     case "$1" in
@@ -8,7 +10,7 @@ function __icon_map() {
    "Acrobat")
         icon_result=":acrobat:"
         ;;
-   "Activity Monitor" | "Aktivitätsanzeige")
+   "Activity Monitor" | "Aktivitätsanzeige" | "Монітор активності" | "Монитор активности")
         icon_result=":activity_monitor:"
         ;;
    "aw-tauri")
@@ -50,6 +52,9 @@ function __icon_map() {
    "AirPort Utility")
         icon_result=":airport_utility:"
         ;;
+   "AirVPN" | "Eddie")
+        icon_result=":airvpn:"
+        ;;
    "Alacritty")
         icon_result=":alacritty:"
         ;;
@@ -79,6 +84,9 @@ function __icon_map() {
         ;;
    "Anytype")
         icon_result=":anytype:"
+        ;;
+   "ApiArk")
+        icon_result=":apiark:"
         ;;
    "Apifox")
         icon_result=":apifox:"
@@ -128,6 +136,9 @@ function __icon_map() {
    "Battle.net")
         icon_result=":battle_net:"
         ;;
+   "Bazaar")
+        icon_result=":bazaar:"
+        ;;
    "Bazecor")
         icon_result=":bazecor:"
         ;;
@@ -155,13 +166,13 @@ function __icon_map() {
    "Blitzit")
         icon_result=":blitzit:"
         ;;
-   "Bluetooth File Exchange")
-        icon_result=":bluetooth_file_exchange:"
+   "Bluetooth File Exchange" | "Bluetooth")
+        icon_result=":bluetooth:"
         ;;
    "BluOS Controller")
         icon_result=":bluos_controller:"
         ;;
-   "Calibre")
+   "Calibre" | "Книги")
         icon_result=":book:"
         ;;
    "Brain.fm")
@@ -185,10 +196,10 @@ function __icon_map() {
    "BusyCal")
         icon_result=":busycal:"
         ;;
-   "Calculator" | "Calculette" | "Rechner")
+   "Calculator" | "Calculette" | "Rechner" | "Калькулятор")
         icon_result=":calculator:"
         ;;
-   "Calendar" | "日历" | "Fantastical" | "Cron" | "Amie" | "Calendrier" | "カレンダー" | "Notion Calendar" | "Kalender")
+   "Calendar" | "日历" | "Fantastical" | "Cron" | "Amie" | "Calendrier" | "カレンダー" | "Notion Calendar" | "Kalender" | "Календар" | "Календарь")
         icon_result=":calendar:"
         ;;
    "calibre")
@@ -230,6 +241,9 @@ function __icon_map() {
    "ClickUp")
         icon_result=":click_up:"
         ;;
+   "CLion")
+        icon_result=":clion:"
+        ;;
    "Clock")
         icon_result=":clock:"
         ;;
@@ -245,11 +259,14 @@ function __icon_map() {
    "Cold Turkey Blocker")
         icon_result=":cold_turkey_blocker:"
         ;;
-   "Color Picker" | "数码测色计")
+   "Color Picker" | "数码测色计" | "Кольоромір" | "Цифровой колориметр")
         icon_result=":color_picker:"
         ;;
    "Comet")
         icon_result=":comet:"
+        ;;
+   "Comet")
+        icon_result=":comet_browser:"
         ;;
    "Conductor")
         icon_result=":conductor:"
@@ -356,6 +373,9 @@ function __icon_map() {
    "Dropbox")
         icon_result=":dropbox:"
         ;;
+   "DSM")
+        icon_result=":dsm:"
+        ;;
    "DVD Player")
         icon_result=":dvd_player:"
         ;;
@@ -377,7 +397,7 @@ function __icon_map() {
    "FaceTime" | "FaceTime 通话")
         icon_result=":face_time:"
         ;;
-   "Feishu")
+   "Feishu" | "飞书" | "飞书会议")
         icon_result=":feishu:"
         ;;
    "Figma")
@@ -392,7 +412,7 @@ function __icon_map() {
    "Finamp")
         icon_result=":finamp:"
         ;;
-   "Find My")
+   "Find My" | "Локатор" | "Локатор")
         icon_result=":find_my:"
         ;;
    "Finder" | "访达" | "Bloom")
@@ -404,17 +424,26 @@ function __icon_map() {
    "Firefox Developer Edition" | "Firefox Nightly")
         icon_result=":firefox_developer_edition:"
         ;;
+   "Flaresolverr")
+        icon_result=":flaresolverr:"
+        ;;
    "Floorp")
         icon_result=":floorp:"
         ;;
    "FL Studio")
         icon_result=":flstudio:"
         ;;
+   "Fluxer")
+        icon_result=":fluxer:"
+        ;;
    "FMOD Studio")
         icon_result=":fmod:"
         ;;
    "Folx")
         icon_result=":folx:"
+        ;;
+   "Font Book")
+        icon_result=":font_book:"
         ;;
    "foobar2000")
         icon_result=":foobar2000:"
@@ -446,7 +475,7 @@ function __icon_map() {
    "Games")
         icon_result=":games:"
         ;;
-   "System Preferences" | "System Settings" | "系统设置" | "Réglages Système" | "システム設定" | "Systemeinstellungen" | "System­einstellungen")
+   "System Preferences" | "System Settings" | "系统设置" | "Réglages Système" | "システム設定" | "Systemeinstellungen" | "System­einstellungen" | "Системні параметри" | "Системные настройки")
         icon_result=":gear:"
         ;;
    "Gemini" | "Google Gemini")
@@ -518,6 +547,9 @@ function __icon_map() {
    "Hyperkey")
         icon_result=":hyperkey:"
         ;;
+   "iA Writer")
+        icon_result=":ia_writer:"
+        ;;
    "IntelliJ IDEA")
         icon_result=":idea:"
         ;;
@@ -571,6 +603,9 @@ function __icon_map() {
         ;;
    "Jellyfin Media Player")
         icon_result=":jellyfin:"
+        ;;
+   "Jellyseer")
+        icon_result=":jellyseer:"
         ;;
    "JetBrains Gateway")
         icon_result=":jetbrains_gateway:"
@@ -632,6 +667,9 @@ function __icon_map() {
    "LibreOffice")
         icon_result=":libreoffice:"
         ;;
+   "Lidarr")
+        icon_result=":lidarr:"
+        ;;
    "Adobe Lightroom")
         icon_result=":lightroom:"
         ;;
@@ -674,7 +712,7 @@ function __icon_map() {
    "MacPass")
         icon_result=":macpass:"
         ;;
-   "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "Superhuman" | "Spark" | "Spark Mail" | "邮件" | "メール")
+   "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "Superhuman" | "Spark" | "Spark Mail" | "邮件" | "メール" | "Пошта" | "Почта")
         icon_result=":mail:"
         ;;
    "MakeMKV")
@@ -683,7 +721,7 @@ function __icon_map() {
    "MAMP" | "MAMP PRO")
         icon_result=":mamp:"
         ;;
-   "Maps" | "Google Maps" | "マップ" | "Karten")
+   "Maps" | "Google Maps" | "マップ" | "Karten" | "Карти" | "Карты")
         icon_result=":maps:"
         ;;
    "Marked 2")
@@ -701,7 +739,7 @@ function __icon_map() {
    "Google Meet")
         icon_result=":meet:"
         ;;
-   "Messages" | "信息" | "Nachrichten" | "メッセージ")
+   "Messages" | "信息" | "Nachrichten" | "メッセージ" | "Повідомлення" | "Сообщения")
         icon_result=":messages:"
         ;;
    "Messenger")
@@ -776,7 +814,7 @@ function __icon_map() {
    "MuseScore")
         icon_result=":musescore:"
         ;;
-   "Music" | "音乐" | "Musique" | "ミュージック" | "Musik" | "Chromatix")
+   "Music" | "音乐" | "Musique" | "ミュージック" | "Musik" | "Chromatix" | "Музика" | "Музыка")
         icon_result=":music:"
         ;;
    "Native Access")
@@ -824,7 +862,7 @@ function __icon_map() {
    "Notability")
         icon_result=":notability:"
         ;;
-   "Notes" | "备忘录" | "メモ" | "Notizen")
+   "Notes" | "备忘录" | "メモ" | "Notizen" | "Нотатки" | "Заметки")
         icon_result=":notes:"
         ;;
    "Notion")
@@ -890,6 +928,9 @@ function __icon_map() {
    "Overleaf" | "ShareLaTeX")
         icon_result=":overleaf:"
         ;;
+   "Overseer" | "Seer")
+        icon_result=":overseer:"
+        ;;
    "Pages" | "Pages 文稿")
         icon_result=":pages:"
         ;;
@@ -908,7 +949,7 @@ function __icon_map() {
    "Password Depot")
         icon_result=":password_depot:"
         ;;
-   "Passwords" | "Passwörter")
+   "Passwords" | "Passwörter" | "Паролі" | "Пароли")
         icon_result=":passwords:"
         ;;
    "PDF Expert")
@@ -929,7 +970,7 @@ function __icon_map() {
    "Phone")
         icon_result=":phone:"
         ;;
-   "Photos" | "Fotos")
+   "Photos" | "Fotos" | "Фото")
         icon_result=":photos:"
         ;;
    "Adobe Photoshop"*)
@@ -956,7 +997,10 @@ function __icon_map() {
    "Plexamp")
         icon_result=":plexamp:"
         ;;
-   "Podcasts" | "播客")
+   "Plezy")
+        icon_result=":plezy:"
+        ;;
+   "Podcasts" | "播客" | "Подкасти" | "Подкасты")
         icon_result=":podcasts:"
         ;;
    "PomoDone App")
@@ -968,7 +1012,7 @@ function __icon_map() {
    "Premiere" | "Adobe Premiere" | "Adobe Premiere Pro 2024")
         icon_result=":premiere:"
         ;;
-   "Preview" | "预览" | "Skim" | "zathura" | "Aperçu" | "プレビュー" | "Vorschau")
+   "Preview" | "预览" | "Skim" | "zathura" | "Aperçu" | "プレビュー" | "Vorschau" | "Оглядач" | "Просмотр")
         icon_result=":preview:"
         ;;
    "Print Center" | "Druckzentrale")
@@ -982,6 +1026,9 @@ function __icon_map() {
         ;;
    "Proton VPN" | "ProtonVPN")
         icon_result=":proton_vpn:"
+        ;;
+   "Prowlarr")
+        icon_result=":prowlarr:"
         ;;
    "Proxyman")
         icon_result=":proxyman:"
@@ -1022,6 +1069,9 @@ function __icon_map() {
    "qutebrowser")
         icon_result=":qute_browser:"
         ;;
+   "Radarr")
+        icon_result=":radarr:"
+        ;;
    "Raindrop.io")
         icon_result=":raindrop_io:"
         ;;
@@ -1040,7 +1090,7 @@ function __icon_map() {
    "Remind Faster")
         icon_result=":remind_me_faster:"
         ;;
-   "Reminders" | "提醒事项" | "Rappels" | "リマインダー" | "Erinnerungen")
+   "Reminders" | "提醒事项" | "Rappels" | "リマインダー" | "Erinnerungen" | "Нагадування" | "Напоминания")
         icon_result=":reminders:"
         ;;
    "Replit")
@@ -1073,6 +1123,9 @@ function __icon_map() {
    "Scribus")
         icon_result=":scribus:"
         ;;
+   "Script Debugger")
+        icon_result=":script_debugger:"
+        ;;
    "Script Editor")
         icon_result=":script_editor:"
         ;;
@@ -1097,7 +1150,7 @@ function __icon_map() {
    "Shapr3D")
         icon_result=":shapr3d:"
         ;;
-   "Shortcuts")
+   "Shortcuts" | "Команди" | "Команды")
         icon_result=":shortcuts:"
         ;;
    "Sibelius")
@@ -1124,6 +1177,9 @@ function __icon_map() {
    "solidtime")
         icon_result=":solidtime:"
         ;;
+   "Sonarr")
+        icon_result=":sonarr:"
+        ;;
    "Spark Desktop")
         icon_result=":spark:"
         ;;
@@ -1141,6 +1197,12 @@ function __icon_map() {
         ;;
    "Stickies")
         icon_result=":stickies:"
+        ;;
+   "Stocks")
+        icon_result=":stocks:"
+        ;;
+   "Stremio")
+        icon_result=":stremio:"
         ;;
    "Studio 3T")
         icon_result=":studio_3t:"
@@ -1190,7 +1252,7 @@ function __icon_map() {
    "Telegram")
         icon_result=":telegram:"
         ;;
-   "Terminal" | "终端" | "ターミナル")
+   "Terminal" | "终端" | "ターミナル" | "Термінал" | "Терминал")
         icon_result=":terminal:"
         ;;
    "Termius")
@@ -1213,6 +1275,9 @@ function __icon_map() {
         ;;
    "TIDAL")
         icon_result=":tidal:"
+        ;;
+   "TigerVNC")
+        icon_result=":tigervnc:"
         ;;
    "Timery")
         icon_result=":timery:"
@@ -1301,7 +1366,7 @@ function __icon_map() {
    "Wave")
         icon_result=":waveterm:"
         ;;
-   "Weather" | "Wetter")
+   "Weather" | "Wetter" | "Погода")
         icon_result=":weather:"
         ;;
    "WebStorm")
@@ -1355,10 +1420,13 @@ function __icon_map() {
    "Yuque" | "语雀")
         icon_result=":yuque:"
         ;;
+   "Z-Library")
+        icon_result=":z_library:"
+        ;;
    "Zed")
         icon_result=":zed:"
         ;;
-   "Zen" | "Zen Browser")
+   "Zen" | "Zen Browser" | "Twilight")
         icon_result=":zen_browser:"
         ;;
    "Zeplin")

@@ -9,7 +9,7 @@ vim.pack.add({
   'https://github.com/nvim-tree/nvim-web-devicons',
 
   -- Theme
-  'https://github.com/folke/tokyonight.nvim',
+  'https://github.com/catppuccin/nvim',
   'https://github.com/f-person/auto-dark-mode.nvim',
 
   -- UI

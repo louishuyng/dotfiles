@@ -1,16 +1,15 @@
 #!/opt/homebrew/bin/bash
 
+source "$CONFIG_DIR/colors.sh"
+
 network=(
 	update_freq=3
-	icon.color=0xff7aa2f7
+	icon.color=$PURPLE
 	label.padding_left=8
-	label.color=0xffE2B2FF
+	label.color=$PURPLE
 	label.padding_right=8
-	background.drawing=on
-	background.color=0xff5F507A
-	background.corner_radius=6
-	background.height=22
-        padding_left=10
+	background.drawing=off
+	padding_left=10
 	script="$PLUGIN_DIR/network.sh"
 )
 

@@ -1,7 +1,6 @@
 #!/opt/homebrew/bin/bash
 
 # One item per Aerospace workspace
-# Labels are shown/hidden based on occupation; active one highlighted in blue
 
 declare -A WS_LABELS
 WS_LABELS=(
@@ -41,13 +40,3 @@ for ws in "${WORKSPACES[@]}"; do
 			script="$PLUGIN_DIR/workspace.sh" \
 		--subscribe "workspace.$ws" aerospace_workspace_change
 done
-
-# Bracket all workspace items together with a unified background
-sketchybar --add bracket workspaces \
-    workspace.Virtual workspace.Dev workspace.Terminal \
-    workspace.Web workspace.Reading workspace.Planing workspace.Chat \
-    workspace.Inbox workspace.Any \
-    --set workspaces \
-        background.color=0xff131721 \
-        background.corner_radius=0 \
-        background.height=24

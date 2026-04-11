@@ -68,7 +68,7 @@ opt.cursorline = true
 opt.showmode = false
 opt.showcmd = true
 opt.cmdheight = 0 -- Height of the command bar
-opt.shortmess:append('WIcCsS') -- Suppress startup and common messages
+opt.shortmess:append('WcCsS') -- Suppress common messages (keep intro screen)
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.number = true -- But show the actual number for the line we're on

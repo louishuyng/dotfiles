@@ -11,8 +11,8 @@ sketchybar --bar position=top height=32 \
                  border_width=0 \
                  corner_radius=0 \
                  margin=0 \
-                 padding_left=8 \
-                 padding_right=8 \
+                 padding_left=0 \
+                 padding_right=0 \
                  shadow=off \
                  sticky=on \
                  topmost=window \
@@ -27,7 +27,7 @@ default=(
 	label.color=$TEXT_COLOR
 	padding_left=5
 	padding_right=5
-	background.color=$ITEM_BG_COLOR
+	background.drawing=off
 )
 sketchybar --default "${default[@]}"
 
@@ -40,7 +40,9 @@ sketchybar --add event aerospace_workspace_change
 #                                 drawing=off \
 #            --subscribe theme_listener theme_change
 
+source "$ITEM_DIR/pulse.sh"
 source "$ITEM_DIR/workspace.sh"
+source "$ITEM_DIR/separator.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Right side — order = rightmost first

@@ -12,6 +12,9 @@ vim.g.loaded_tohtml = 1
 vim.g.loaded_tutor = 1
 vim.g.loaded_zipPlugin = 1
 
+-- Enable built-in optional plugins (nvim 0.12)
+vim.cmd.packadd('nvim.undotree')
+
 -- Leader keys (must be set before plugins load)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','

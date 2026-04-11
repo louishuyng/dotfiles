@@ -1,6 +1,28 @@
 local icons = require('config.libs.icons')
 local M = {}
 
+local function setup_highlights()
+  local ok, palettes = pcall(require, 'catppuccin.palettes')
+  if not ok then return end
+  local c = palettes.get_palette()
+  if not c then return end
+
+  local hl = vim.api.nvim_set_hl
+  hl(0, 'StlModeNormal', { fg = c.green, bold = true })
+  hl(0, 'StlModeInsert', { fg = c.mauve, bold = true })
+  hl(0, 'StlModeVisual', { fg = c.yellow, bold = true })
+  hl(0, 'StlModeCommand', { fg = c.peach, bold = true })
+  hl(0, 'StlModeReplace', { fg = c.red, bold = true })
+  hl(0, 'StlModified', { fg = c.peach, bold = true })
+  hl(0, 'StlReadOnly', { fg = c.red, bold = true })
+  hl(0, 'StlInfo', { fg = c.blue })
+  hl(0, 'StlAccent', { fg = c.teal })
+  hl(0, 'StlEncoding', { fg = c.yellow })
+end
+
+setup_highlights()
+vim.api.nvim_create_autocmd('ColorScheme', { callback = setup_highlights })
+
 ---@return integer
 local function get_current_bufnr()
   return vim.fn.winbufnr(vim.g.statusline_winid) or 0
@@ -38,7 +60,7 @@ local function file_modified()
   local is_modified = vim.api.nvim_get_option_value('modified', { buf = get_current_bufnr() })
 
   if is_modified then
-    return color('StatuslineBoolean', '+')
+    return color('StlModified', '+')
   end
 
   return nil
@@ -48,7 +70,7 @@ local function file_read_only()
   local is_readonly = vim.api.nvim_get_option_value('readonly', { buf = get_current_bufnr() })
 
   if is_readonly then
-    return color('StatuslineBoolean', '‼')
+    return color('StlReadOnly', '‼')
   end
 
   return nil
@@ -109,7 +131,7 @@ local function marlin_index()
   local current_file = vim.fn.expand('%:p')
   for i, entry in ipairs(indexes) do
     if entry.filename == current_file then
-      return color('Type', '󰵺 ' .. i .. '/' .. #indexes)
+      return color('StlAccent', '󰵺 ' .. i .. '/' .. #indexes)
     end
   end
 
@@ -118,22 +140,22 @@ end
 
 local function mode_color()
   local mode_colors = {
-    n = 'String',
-    i = 'Keyword',
-    v = 'Type',
-    V = 'Type',
-    [''] = 'Keyword',
-    c = 'Constant',
-    s = 'Type',
-    S = 'Type',
-    [''] = 'Type',
-    R = 'DiagnosticError',
-    Rv = 'DiagnosticError',
+    n = 'StlModeNormal',
+    i = 'StlModeInsert',
+    v = 'StlModeVisual',
+    V = 'StlModeVisual',
+    [''] = 'StlModeInsert',
+    c = 'StlModeCommand',
+    s = 'StlModeVisual',
+    S = 'StlModeVisual',
+    [''] = 'StlModeVisual',
+    R = 'StlModeReplace',
+    Rv = 'StlModeReplace',
   }
 
   local mode = vim.api.nvim_get_mode().mode
   local icon = '▎'
-  local color_group = mode_colors[mode] or 'Function'
+  local color_group = mode_colors[mode] or 'StlInfo'
 
   return color(color_group, icon)
 end
@@ -169,15 +191,15 @@ local function line_tracking()
   local total_lines = vim.fn.line('$')
 
   if line == 1 then
-    return color('Function', 'Top')
+    return color('StlInfo', 'Top')
   elseif line == total_lines then
-    return color('Function', 'Bot')
+    return color('StlInfo', 'Bot')
   end
 
   return string.format(
     '%s/%s',
-    color('Function', string.format('%s', line)),
-    color('Function', string.format('%s', total_lines))
+    color('StlInfo', string.format('%s', line)),
+    color('StlInfo', string.format('%s', total_lines))
   )
 end
 
@@ -187,7 +209,7 @@ local function file_encoding()
     encoding = 'utf-8'
   end
 
-  return color('Type', string.format(icons.misc.Encoding .. ' %s', encoding))
+  return color('StlEncoding', string.format(icons.misc.Encoding .. ' %s', encoding))
 end
 
 function M.statusline()

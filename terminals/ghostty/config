@@ -1,10 +1,9 @@
 auto-update-channel = tip
 
-theme = dark:TokyoNight Moon,light:light
-
+theme = dark:dark,light:iTerm2 Solarized Light
 
 # Background
-background-opacity = 0.80
+background-opacity = 0.8
 background-blur-radius = 0
 
 font-family = "Jetbrains Mono Nerd Font"
@@ -34,7 +33,7 @@ window-padding-y = 0
 window-padding-balance = false
 window-padding-color = extend
 window-save-state = always
-window-decoration = none
+# window-decoration = none
 confirm-close-surface = false
 
 # macOS specific

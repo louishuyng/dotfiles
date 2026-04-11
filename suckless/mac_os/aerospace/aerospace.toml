@@ -64,6 +64,7 @@ alt-equal = 'resize smart +50'
 alt-0 = 'flatten-workspace-tree'
 
 alt-shift-f = 'layout floating tiling'
+alt-shift-m = 'macos-native-fullscreen'
 alt-ctrl-shift-y = 'reload-config'
 
 # Workspace Dev
@@ -77,6 +78,10 @@ run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.electron.kontena-lens'
+run = ['layout floating', 'move-node-to-workspace Dev']
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.rustrover'
 run = ['layout floating', 'move-node-to-workspace Dev']
 
 [[on-window-detected]]

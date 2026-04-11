@@ -71,3 +71,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[url "git@github.com-regask:regask/"]
+	insteadOf = https://github.com/regask/

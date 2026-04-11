@@ -11,7 +11,7 @@ TN_COMMENT="#565f89"
 TN_SELECTION="#283457"
 TN_BORDER="#3b4261"
 
-selected=$(sesh list -idH | fzf \
+selected=$(sesh list -iH | fzf \
   --no-sort --ansi \
   --border none \
   --no-preview \
@@ -30,11 +30,11 @@ selected=$(sesh list -idH | fzf \
   --color "pointer:$TN_BLUE,marker:$TN_GREEN" \
   --color "info:$TN_COMMENT,spinner:$TN_MAGENTA" \
   --bind 'tab:down,btab:up' \
-  --bind 'ctrl-a:change-prompt(  )+reload(sesh list -idH)' \
-  --bind 'ctrl-t:change-prompt(  )+reload(sesh list -itdH)' \
-  --bind 'ctrl-g:change-prompt(  )+reload(sesh list -icdH)' \
-  --bind 'ctrl-x:change-prompt(  )+reload(sesh list -izdH)' \
-  --bind 'ctrl-d:execute(tmux kill-session -t {})+reload(sesh list -idH)')
+  --bind 'ctrl-a:change-prompt(  )+reload(sesh list -iH)' \
+  --bind 'ctrl-t:change-prompt(  )+reload(sesh list -itH)' \
+  --bind 'ctrl-g:change-prompt(  )+reload(sesh list -icH)' \
+  --bind 'ctrl-x:change-prompt(  )+reload(sesh list -izH)' \
+  --bind 'ctrl-d:execute(tmux kill-session -t {})+reload(sesh list -iH)')
 
 [ -z "$selected" ] && exit 0
 

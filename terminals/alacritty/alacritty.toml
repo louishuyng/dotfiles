@@ -28,15 +28,14 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 # Window
 [window]
-decorations = "none"
 decorations_theme_variant = "none"
 padding = { x = 0, y = 0 }
 dimensions = { columns = 210, lines = 50 }
 dynamic_padding = true
 startup_mode = "Windowed"
-title = "DevTerm"
+title = "Hell's Terminal"
 dynamic_title = false
-opacity = 0.8
+opacity = 1
 blur = false
 
 # Keyboard

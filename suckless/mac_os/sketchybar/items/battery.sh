@@ -4,10 +4,7 @@ battery=(
 	update_freq=60
 	label.padding_left=8
 	label.padding_right=8
-	background.drawing=on
-	background.color=0xff0f1f0f
-	background.corner_radius=6
-	background.height=22
+	background.drawing=off
 	script="$PLUGIN_DIR/battery.sh"
 )
 

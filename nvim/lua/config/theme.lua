@@ -1,67 +1,86 @@
-local dark_opts = {
-  style = 'moon',
-  transparent = true,
-  terminal_colors = true,
-  lualine_bold = true,
-
-  styles = {
-    comments = { italic = true },
-    keywords = { italic = true },
-    functions = { bold = true },
-    variables = {},
-    sidebars = 'dark',
-    floats = 'dark',
+local opts = {
+  transparent_background = false,
+  color_overrides = {
+    mocha = {
+      -- Syntax: Material theme (vibrant, saturated)
+      rosewater = '#F78C6C',
+      flamingo = '#FF9CAC',
+      pink = '#FF9CAC',
+      mauve = '#C792EA',
+      red = '#FF5370',
+      maroon = '#f07178',
+      peach = '#F78C6C',
+      yellow = '#FFCB6B',
+      green = '#C3E88D',
+      teal = '#89DDFF',
+      sky = '#89DDFF',
+      sapphire = '#82AAFF',
+      blue = '#82AAFF',
+      lavender = '#d2a8ff',
+      -- Text: GitHub Dark
+      text = '#e6edf3',
+      subtext1 = '#c9d1d9',
+      subtext0 = '#b1bac4',
+      overlay2 = '#8b949e',
+      overlay1 = '#6e7681',
+      overlay0 = '#484f58',
+      -- Surfaces: GitHub Dark
+      -- surface2 = '#30363d',
+      -- surface1 = '#21262d',
+      -- surface0 = '#1e1e1e',
+      base = '#0d1117',
+      -- mantle = '#090c10',
+      -- crust = '#010409',
+    },
+    latte = {
+      rosewater = '#fdf7e8',
+      flamingo = '#cb4b16',
+      pink = '#d33682',
+      mauve = '#6c71c4',
+      red = '#dc322f',
+      maroon = '#c03260',
+      peach = '#cb4b1f',
+      yellow = '#b58900',
+      green = '#859900',
+      teal = '#2aa198',
+      sky = '#2398d2',
+      sapphire = '#0077b3',
+      blue = '#268bd2',
+      lavender = '#7b88d3',
+      text = '#657b83',
+      base = '#fdf6e3',
+      mantle = '#f7f1dc',
+      crust = '#f5ecd7',
+    },
   },
+  highlight_overrides = {
+    all = function(colors)
+      return {
+        TelescopeSelection = { fg = 'None', bg = colors.surface0 },
+        WinSeparator = { fg = colors.mauve, bg = 'None' },
+      }
+    end,
 
-  on_colors = function(c)
-    c.bg = '#1A1B26'
-    c.bg_dark = '#0b0d12'
-    c.bg_float = '#0d0f16'
-    c.bg_popup = '#0d0f16'
-    c.bg_sidebar = '#0b0d12'
-
-    c.fg = '#9aa3c2'
-    c.fg_dark = '#6b7699'
-    c.fg_gutter = '#363d57'
-    c.comment = '#4e5a7a'
-
-    c.blue = '#5d7fcc'
-    c.magenta = '#9172d4'
-    c.green1 = '#4fa89a'
-  end,
-
-  on_highlights = function(hl, c) end,
+    mocha = function(colors)
+      return {
+        Normal = { bg = 'None' },
+        NormalNC = { bg = 'None' },
+      }
+    end,
+  },
 }
 
-local light_opts = {
-  style = 'day',
-  transparent = false,
-  terminal_colors = true,
-  lualine_bold = true,
-
-  styles = {
-    comments = { italic = true },
-    keywords = { italic = true },
-    functions = { bold = true },
-    variables = {},
-    sidebars = 'light',
-    floats = 'light',
-  },
-}
-
-require('tokyonight').setup(dark_opts)
-vim.cmd.colorscheme 'tokyonight'
+require('catppuccin').setup(opts)
+vim.cmd.colorscheme 'catppuccin'
 
 require('auto-dark-mode').setup({
   update_interval = 1000,
   set_dark_mode = function()
-    require('tokyonight').setup(dark_opts)
-    vim.cmd.colorscheme 'tokyonight'
+    vim.cmd.colorscheme 'catppuccin'
     vim.o.background = 'dark'
   end,
   set_light_mode = function()
-    require('tokyonight').setup(light_opts)
-    vim.cmd.colorscheme 'tokyonight'
+    vim.cmd.colorscheme 'catppuccin'
     vim.o.background = 'light'
   end,
 })
