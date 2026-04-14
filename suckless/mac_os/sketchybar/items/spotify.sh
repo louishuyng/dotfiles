@@ -2,14 +2,14 @@
 
 spotify=(
 	update_freq=5
-	icon="♫"
 	icon.padding_left=8
 	icon.padding_right=6
 	label.padding_right=8
-	background.drawing=on
-	background.color=0xff241830
-	background.corner_radius=6
-	background.height=22
+        icon.font="BlexMono Nerd Font:Bold:18.0"
+	# background.drawing=on
+	# background.color=0xff241830
+	# background.corner_radius=6
+	# background.height=22
         padding_right=0
 	drawing=off
 	click_script="open -a Spotify"
@@ -18,4 +18,4 @@ spotify=(
 
 sketchybar --add item spotify right \
 	--set spotify "${spotify[@]}" \
-	--subscribe spotify system_woke
+	--subscribe spotify system_woke mouse.entered mouse.exited
