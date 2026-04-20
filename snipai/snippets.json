@@ -1,0 +1,91 @@
+{
+  "guseCase": {
+    "description": "Scaffold a NestJS usecase — enrich file, create types.ts + usecase.spec.ts, let AI split into concerns when the logic warrants it, register the domain module.",
+    "prefix": "guseCase",
+    "filetype": "typescript",
+    "insert": "import { Injectable } from '@nestjs/common';\nimport { Logger } from '@regask/common-lib/logger/logger.service';\nimport { BaseUseCase, UseCaseResult } from '@regask/common-lib/workflow';\n\nimport { {{usecase_name}}UseCaseTypes } from './types';\n\n@Injectable()\nexport class {{usecase_name}}UseCase extends BaseUseCase<\n  {{usecase_name}}UseCaseTypes.Input,\n  {{usecase_name}}UseCaseTypes.Output\n> {\n  constructor() {\n    super();\n    this.logger = new Logger({{usecase_name}}UseCase.name);\n  }\n\n  async handle(\n    input: {{usecase_name}}UseCaseTypes.Input,\n  ): Promise<UseCaseResult<{{usecase_name}}UseCaseTypes.Output | null>> {\n    this.logger.info(`Executing {{usecase_name}}UseCase`, { input });\n\n    return {\n      data: null,\n      error: null,\n    };\n  }\n}\n",
+    "body": "Working dir: {{cwd}}. Target file: {{cursor_file}}. Purpose of {{usecase_name}}UseCase: {{purpose}}\n\nDo the following:\n\n1. Enrich {{cursor_file}} into a production-ready usecase matching sibling usecases under the nearest `workflows/<domain>/` directory — copy their import style, DI pattern, and error-handling approach. Use `InvalidInputException`, `PermissionDeniedException`, or `UseCaseError` from `@regask/common-lib/workflow/types` where appropriate. Prefer private `#methodName()` helpers over public ones.\n\n2. Create sibling `types.ts` exporting `export namespace {{usecase_name}}UseCaseTypes { export type Input = { ... }; export type Output = { ... }; }`. Derive both shapes from the stated purpose; reference entity types from `@/cores/entities/*` when the output is an entity.\n\n3. Create sibling `usecase.spec.ts` using `CustomTestHelper(CONNECTION_NAME, AppModule)` from `@/test-helper/custom.test-helper`. Cover the happy path plus one `describe` per error/behaviour branch implied by the purpose. Use factories from `@/test-helper/factories/*` where they exist.\n\n4. Decide whether to split: if the purpose implies multiple distinct responsibilities (permission/access checks, data mapping, external-service calls, side-effectful fan-outs), extract each into `concerns/<kebab-name>.concern.ts` that extends `BaseUseCase<Input, Output>` with a matching `<kebab-name>.concern.spec.ts`. If the logic is a single cohesive step, keep it inline and create no concerns. Match the style of existing concerns under `workflows/<same-domain>/concerns/` or sibling `./concerns/`.\n\n5. Register the usecase and every new concern in `src/workflows/<domain>/module.ts` — add to `useCases`, `concerns`, and `exports` arrays. Create the module file following sibling `workflows/*/module.ts` shape if it doesn't exist.\n\nType-check the touched files. Do not run the full test suite.",
+    "parameter": {
+      "usecase_name": {
+        "type": "string",
+        "description": "PascalCase class prefix WITHOUT the `UseCase` suffix (e.g. `GetAlertDetails`)"
+      },
+      "purpose": {
+        "type": "text",
+        "description": "What the usecase does — inputs, outputs, error/permission branches, dependencies. More detail = better concern-splitting decisions."
+      }
+    }
+  },
+  "gController": {
+    "description": "Scaffold a NestJS controller wiring an existing usecase — controller + dto + spec + routes.config entry + module registration.",
+    "prefix": "gController",
+    "filetype": "typescript",
+    "insert": "import { Controller, {{http_method}}, HttpCode, HttpStatus } from '@nestjs/common';\nimport { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';\nimport { throwIfHaveErrorInUseCase } from '@regask/common-lib/controllers/usecaseErrorHandler';\nimport { AuditUser } from '@regask/common-lib/microservices/identity/types/audit-user.type';\n\nimport { Routes, RouteVersion } from '@/routers/routes.config';\nimport { GetAuditUser } from '@/shared/decorators/get-audit-user.decorator';\n\n@Controller({\n  version: [RouteVersion.{{route_version}}],\n})\n@ApiTags('TBD')\nexport class TBDController {\n  constructor(private readonly usecase: {{usecase_name}}) {}\n\n  @{{http_method}}(Routes.{{route_key}})\n  @ApiOperation({ summary: '{{summary}}' })\n  @HttpCode(HttpStatus.OK)\n  async handle(@GetAuditUser() user: AuditUser) {\n    const { error, data } = await this.usecase.execute({ user });\n    throwIfHaveErrorInUseCase(error);\n    return data;\n  }\n}\n",
+    "body": "Working dir: {{cwd}}. Target file: {{cursor_file}}. Wire {{usecase_name}} via {{http_method}} {{route_path}} on router version {{route_version}}. Route key: `Routes.{{route_key}}`. Swagger summary: {{summary}}.\n\nDo the following:\n\n1. Locate the usecase: grep for `export class {{usecase_name}}` under `src/workflows/**/usecase.ts` and read its Input/Output from the sibling `types.ts`.\n\n2. Enrich {{cursor_file}}:\n   - Replace `TBDController` with a descriptive class name derived from {{usecase_name}} (strip `UseCase`, append `Controller`).\n   - Replace `@ApiTags('TBD')` with the domain tag used by neighbouring controllers under `src/routers/{{route_version}}/<domain>/**`.\n   - Add the correct `@/workflows/...` import for {{usecase_name}} (use the path discovered in step 1).\n   - Expand `handle(...)` to accept real `@Param`/`@Body`/`@Query` arguments derived from the usecase Input; pass them to `usecase.execute({ ... })` and rename the method to an action verb (`get`, `create`, `update`, ...).\n   - Add `@ApiOkResponse({ type: <ResponseDto> })` pointing at the sibling DTO created in step 3.\n\n3. Create sibling `dto.ts` — a request DTO per non-trivial body/query and a response DTO derived from the usecase Output, using `class` + `@ApiProperty` to match the convention in other `{{route_version}}` DTOs.\n\n4. Create sibling `controller.spec.ts` using `CustomTestHelper` with the `testHelper.request.<method>(url).requestedBy(user).executedWithUsecase({ usecase, expectedInput, mockOutput })` pattern. Cover success + at least one `UseCaseError` branch.\n\n5. Ensure `{{route_path}}` is registered in `src/routers/routes.config.ts` at the dotted key `Routes.{{route_key}}` — create any missing intermediate keys, leave it alone if already present and equal.\n\n6. Register the new controller in `src/routers/{{route_version}}/<domain>/module.ts` in the `controllers` array. Ensure the usecase's workflow module is among its `imports` (add if missing).\n\nType-check the touched files. Do not run the full test suite.",
+    "parameter": {
+      "usecase_name": {
+        "type": "string",
+        "description": "Full class name of the usecase to wire (e.g. `GetAlertDetailsUseCase`)"
+      },
+      "http_method": {
+        "type": "select",
+        "options": ["Get", "Post", "Put", "Patch", "Delete"],
+        "default": "Get",
+        "description": "HTTP verb decorator"
+      },
+      "route_version": {
+        "type": "select",
+        "options": ["v1", "v2", "v3"],
+        "default": "v2",
+        "description": "Router version folder"
+      },
+      "route_key": {
+        "type": "string",
+        "description": "Dotted path inside `routes.config.ts` (e.g. `alerts.getDetails`)"
+      },
+      "route_path": {
+        "type": "string",
+        "description": "URL pattern (e.g. `alerts/:id`)"
+      },
+      "summary": {
+        "type": "string",
+        "description": "Swagger `@ApiOperation` summary"
+      }
+    }
+  },
+  "gControllerMethod": {
+    "description": "Add a new method to an existing NestJS controller — wire usecase + extend dto + append spec case + register route.",
+    "prefix": "gControllerMethod",
+    "filetype": "typescript",
+    "insert": "  @{{http_method}}(Routes.{{route_key}})\n  @ApiOperation({ summary: '{{summary}}' })\n  @HttpCode(HttpStatus.OK)\n  async handle(@GetAuditUser() user: AuditUser) {\n    const { error, data } = await this.{{usecase_var}}.execute({ user });\n    throwIfHaveErrorInUseCase(error);\n    return data;\n  }\n",
+    "body": "Working dir: {{cwd}}. Adding a {{http_method}} {{route_path}} method to the existing controller at {{cursor_file}}. Wire {{usecase_name}} (constructor property `{{usecase_var}}`). Route key: `Routes.{{route_key}}`. Swagger summary: {{summary}}.\n\nDo the following:\n\n1. Locate the usecase: grep for `export class {{usecase_name}}` under `src/workflows/**/usecase.ts` and read its Input/Output from the sibling `types.ts`.\n\n2. Enrich the method just inserted at the cursor:\n   - Rename `handle` to an action verb matching the style of neighbouring methods in this controller (e.g. `get`, `create`, `update`).\n   - Add real `@Param`/`@Body`/`@Query` arguments derived from the usecase Input; pass them to `this.{{usecase_var}}.execute({ ... })`.\n   - Add `@ApiOkResponse({ type: <ResponseDto> })` pointing at the sibling DTO.\n   - Merge any missing imports at the top of the file; keep every existing import intact.\n\n3. Constructor: if `{{usecase_var}}: {{usecase_name}}` isn't already injected, add it to the constructor parameter list and add the matching `@/workflows/...` import.\n\n4. Extend sibling `dto.ts` — append a request DTO if the method takes a non-trivial body/query, plus a response DTO for the Output. Create `dto.ts` if it doesn't exist.\n\n5. Append a new `describe('#{{http_method}} {{route_path}}', ...)` block to sibling `controller.spec.ts` using `testHelper.request.<method>(url).requestedBy(user).executedWithUsecase(...)`. Cover success + one `UseCaseError` branch.\n\n6. Ensure `{{route_path}}` is registered in `src/routers/routes.config.ts` at the dotted key `Routes.{{route_key}}` — create missing intermediate keys, leave it alone if already present and equal.\n\nDo NOT change the `@Controller(...)` decorator, the class name, or any other method in this file. Type-check the touched files only.",
+    "parameter": {
+      "usecase_name": {
+        "type": "string",
+        "description": "Full class name of the usecase to wire (e.g. `GetAlertDetailsUseCase`)"
+      },
+      "usecase_var": {
+        "type": "string",
+        "description": "Constructor property name for the usecase (e.g. `getAlertDetailsUseCase`)"
+      },
+      "http_method": {
+        "type": "select",
+        "options": ["Get", "Post", "Put", "Patch", "Delete"],
+        "default": "Get",
+        "description": "HTTP verb decorator"
+      },
+      "route_key": {
+        "type": "string",
+        "description": "Dotted path inside `routes.config.ts` (e.g. `alerts.getDetails`)"
+      },
+      "route_path": {
+        "type": "string",
+        "description": "URL pattern (e.g. `alerts/:id`)"
+      },
+      "summary": {
+        "type": "string",
+        "description": "Swagger `@ApiOperation` summary"
+      }
+    }
+  }
+}
