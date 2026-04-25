@@ -1,0 +1,18 @@
+{
+  "lastChangelogVersion": "0.70.2",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "packages": [
+    {
+      "source": "npm:@a5c-ai/babysitter-pi",
+      "extensions": []
+    },
+    "npm:@ifi/pi-extension-subagents",
+    "npm:pi-markdown-preview",
+    "npm:pi-mermaid",
+    "npm:pi-smart-fetch",
+    "npm:@ifi/oh-pi-extensions",
+    "npm:@ifi/oh-pi-themes"
+  ],
+  "theme": "catppuccin-mocha"
+}
