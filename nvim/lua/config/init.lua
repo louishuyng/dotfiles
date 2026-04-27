@@ -26,6 +26,8 @@ require 'config.lsp'
 
 -- Core plugin configs
 require 'config.cores.treesitter'
+-- snipai registers a cmp source; must load before cmp reads its sources list
+require 'config.cores.snipai'
 require 'config.cores.cmp'
 require 'config.cores.git'
 require 'config.cores.snacks'
@@ -43,3 +45,4 @@ require 'config.libs.multicursor'
 -- noice.nvim removed: vim._core.ui2 handles cmdline/messages natively in 0.12
 require 'config.libs.rest'
 require 'config.libs.spectre'
+require 'ui.dashboard'
