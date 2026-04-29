@@ -4,6 +4,8 @@ if not present then
   return
 end
 
+require('git-conflict').setup()
+
 local mapping = require 'mappings.source_control.gitsigns'
 
 local icons = {
@@ -38,7 +40,7 @@ gitsigns.setup {
 local neogit = require('neogit')
 
 neogit.setup {
-  kind = 'auto',
+  kind = 'split_above',
   mappings = {
     status = {
       ['o'] = 'Toggle',

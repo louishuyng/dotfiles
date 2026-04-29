@@ -9,11 +9,11 @@ THIS_WS="${NAME#workspace.}"
 
 if echo "$OCCUPIED" | grep -q "^${THIS_WS}$"; then
 	if [ "$THIS_WS" = "$FOCUSED" ]; then
-		# Active — bright green
-		sketchybar --animate tanh 15 --set "$NAME" label.color=$GREEN drawing=on
+		# Active — theme-specific high-contrast color
+		sketchybar --animate tanh 15 --set "$NAME" label.color=$WORKSPACE_ACTIVE_COLOR drawing=on
 	else
-		# Occupied but inactive — dim green
-		sketchybar --animate tanh 15 --set "$NAME" label.color=$GREEN_DIM drawing=on
+		# Occupied but inactive — readable, but clearly less prominent
+		sketchybar --animate tanh 15 --set "$NAME" label.color=$WORKSPACE_INACTIVE_COLOR drawing=on
 	fi
 else
 	sketchybar --set "$NAME" drawing=off

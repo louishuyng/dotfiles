@@ -10,9 +10,8 @@
     "npm:@ifi/pi-extension-subagents",
     "npm:pi-markdown-preview",
     "npm:pi-mermaid",
-    "npm:pi-smart-fetch",
-    "npm:@ifi/oh-pi-extensions",
-    "npm:@ifi/oh-pi-themes"
+    "npm:@ifi/oh-pi-themes",
+    "npm:pi-powerline-footer"
   ],
   "theme": "catppuccin-mocha"
 }

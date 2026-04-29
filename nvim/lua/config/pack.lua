@@ -92,6 +92,7 @@ vim.pack.add({
   'https://github.com/jay-babu/mason-nvim-dap.nvim',
 
   -- AI
-  'https://github.com/github/copilot.vim',
-  'https://github.com/NickvanDyke/opencode.nvim',
+  -- 'https://github.com/github/copilot.vim',
+  -- 'https://github.com/NickvanDyke/opencode.nvim',
+  'https://github.com/louishuyng/snipai',
 })

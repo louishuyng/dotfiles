@@ -25,19 +25,23 @@ if ! pgrep -x "Spotify" >/dev/null; then
     exit 0
 fi
 
-STATE=$(osascript -e 'tell application "Spotify" to player state as string' 2>/dev/null)
+# Single AppleScript call returns: state|track|artist
+INFO=$(osascript <<'EOA' 2>/dev/null
+tell application "Spotify"
+    return (player state as string) & "|" & (name of current track as string) & "|" & (artist of current track as string)
+end tell
+EOA
+)
+
+IFS='|' read -r STATE TRACK ARTIST <<<"$INFO"
 
 if [[ "$STATE" != "playing" && "$STATE" != "paused" ]]; then
     sketchybar --set spotify drawing=off
     exit 0
 fi
 
-TRACK=$(osascript -e 'tell application "Spotify" to name of current track as string' 2>/dev/null)
-ARTIST=$(osascript -e 'tell application "Spotify" to artist of current track as string' 2>/dev/null)
-
 FULL_LABEL="$TRACK - $ARTIST |"
 
-# Truncate to 25 chars
 if [[ ${#TRACK} -gt 25 ]]; then
     SHORT_LABEL="${TRACK:0:25}... |"
 else
@@ -50,7 +54,6 @@ else
     COLOR=0xff8A91AD
 fi
 
-# Cache for hover events
 cat > "$SPOTIFY_CACHE" <<EOC
 FULL_LABEL="$FULL_LABEL"
 SHORT_LABEL="$SHORT_LABEL"

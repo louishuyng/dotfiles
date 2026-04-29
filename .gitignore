@@ -67,9 +67,10 @@ raycast/public-extensions-fork
 raycast/config.json
 .superpowers/
 
-pi/**
-
-!pi/agent/extensions/**
-!pi/agent/skills/**
-!pi/agent/prompts/**
+pi/*
+!pi/agent/
+pi/agent/*
+!pi/agent/extensions/
+!pi/agent/skills/
+!pi/agent/prompts/
 !pi/agent/settings.json

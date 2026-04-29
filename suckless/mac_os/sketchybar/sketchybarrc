@@ -5,8 +5,13 @@ source "$CONFIG_DIR/colors.sh"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
 
+# CPU helper: autonomous Mach-based daemon that pushes cpu% to the `cpu` item.
+# Replaces the per-tick `top -l 2` shell poll (~1s blocking every 5s).
+killall helper >/dev/null 2>&1
+"$CONFIG_DIR/helper/helper" >/dev/null 2>&1 &
+
 ##### Bar Appearance #####
-sketchybar --bar position=top height=32 \
+sketchybar --bar position=bottom height=32 \
                  color=$BAR_COLOR \
                  border_width=0 \
                  corner_radius=0 \
@@ -21,9 +26,9 @@ sketchybar --bar position=top height=32 \
 
 ##### Changing Defaults #####
 default=(
-	icon.font="BlexMono Nerd Font:Regular:13.0"
+	icon.font="Terminess Nerd Font:Regular:16.0"
 	icon.color=$TEXT_COLOR
-	label.font="BlexMono Nerd Font:Regular:13.0"
+	label.font="Terminess Nerd Font:Regular:16.0"
 	label.color=$TEXT_COLOR
 	padding_left=5
 	padding_right=5
@@ -34,15 +39,15 @@ sketchybar --default "${default[@]}"
 ##### Adding items #####
 sketchybar --add event aerospace_workspace_change
 
-# sketchybar --add event theme_change "AppleInterfaceThemeChangedNotification"
-# sketchybar --add item theme_listener left \
-#            --set theme_listener script="$PLUGIN_DIR/theme_change.sh" \
-#                                 drawing=off \
-#            --subscribe theme_listener theme_change
+sketchybar --add event theme_change "AppleInterfaceThemeChangedNotification"
+sketchybar --add item theme_listener left \
+           --set theme_listener script="$PLUGIN_DIR/theme_change.sh" \
+                                drawing=off \
+           --subscribe theme_listener theme_change
 
 source "$ITEM_DIR/pulse.sh"
 source "$ITEM_DIR/workspace.sh"
-source "$ITEM_DIR/separator.sh"
+# source "$ITEM_DIR/separator.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Right side — order = rightmost first
@@ -50,7 +55,7 @@ source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/network.sh"
 source "$ITEM_DIR/cpu.sh"
-# source "$ITEM_DIR/spotify.sh"
+source "$ITEM_DIR/spotify.sh"
 
 ##### Force all scripts to run the first time #####
 sketchybar --update

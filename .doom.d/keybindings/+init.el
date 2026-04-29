@@ -1,11 +1,14 @@
 ;;; keybindings/+init.el -*- lexical-binding: t; -*-
 
-;; Load all keybinding modules
+;; Load all keybinding modules.
 (load! "+general")
+(load! "+editor")
+(load! "+tree")
+(load! "+telescope")
 (load! "+lsp")
 (load! "+git")
-(load! "+tree")
-(load! "+workspace")
 (load! "+test")
+(load! "+dap")
 (load! "+term")
-(load! "+ai")
+(load! "+utils")
+(load! "+devops")

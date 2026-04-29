@@ -4,8 +4,8 @@ source "$CONFIG_DIR/colors.sh"
 
 sketchybar --add item pulse left \
 	--set pulse \
-		label="" \
-		label.font="BlexMono Nerd Font:Bold:20.0" \
+		label="󱄺" \
+		label.font="BlexMono Nerd Font:Bold:26.0" \
 		label.padding_left=8 \
 		label.padding_right=4 \
 		icon.drawing=off \

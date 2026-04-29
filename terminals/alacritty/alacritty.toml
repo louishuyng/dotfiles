@@ -3,14 +3,14 @@ TERM = "xterm-256color"
 
 # Font Configuration
 [font]
-size = 13
+size = 15
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "Terminess Nerd Font"
 
 [font.offset]
 x = 0
-y = 5
+y = 3
 
 [font.glyph_offset]
 x = 0
@@ -28,6 +28,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 # Window
 [window]
+decorations = "none"
 decorations_theme_variant = "none"
 padding = { x = 0, y = 0 }
 dimensions = { columns = 210, lines = 50 }

@@ -1,32 +1,16 @@
 ;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/packages.el
+;;; packages.el
 
-;; ============================================================================
-;; THEME
-;; ============================================================================
+;; Theme.
 (package! catppuccin-theme)
 
-;; ============================================================================
-;; GIT (extras beyond magit)
-;; ============================================================================
-(package! git-timemachine)        ; browse git history
-(package! blamer)                 ; git blame inline
+;; Visual block move (S-j / S-k in visual mode).
+(package! drag-stuff)
 
-;; ============================================================================
-;; AI ASSISTANCE
-;; ============================================================================
-;; NOTE: Copilot temporarily disabled - causes slow doom sync
-;; Uncomment when ready:
-;; (package! copilot
-;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
-(package! gptel)                  ; LLM client (Claude/ChatGPT)
+;; Format-on-save manager (prettier, gofmt, rustfmt, ruff, etc.).
+(package! apheleia)
 
-;; ============================================================================
-;; UTILITIES
-;; ============================================================================
-(package! drag-stuff)             ; move lines/regions
+;; Hover documentation popup (nvim-style K).
+(package! eldoc-box)
 
-;; ============================================================================
-;; LANGUAGE SPECIFIC (only if not provided by doom)
-;; ============================================================================
-;; Most testing is handled by doom's lang modules
+

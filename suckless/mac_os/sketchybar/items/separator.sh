@@ -13,5 +13,5 @@ sketchybar --add item separator left \
 		background.drawing=off \
 		padding_left=0 \
 		padding_right=0 \
-		update_freq=1 \
+		update_freq=3 \
 		script="$PLUGIN_DIR/separator.sh"

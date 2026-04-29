@@ -3,7 +3,7 @@
 source "$CONFIG_DIR/colors.sh"
 
 clock=(
-	update_freq=1
+	update_freq=30
 	icon.drawing=off
 	label.color=$WHITE
 	label.padding_left=5

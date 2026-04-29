@@ -45,4 +45,3 @@ require 'config.libs.multicursor'
 -- noice.nvim removed: vim._core.ui2 handles cmdline/messages natively in 0.12
 require 'config.libs.rest'
 require 'config.libs.spectre'
-require 'ui.dashboard'

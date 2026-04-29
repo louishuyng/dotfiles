@@ -3,7 +3,7 @@
 
 # Auto-detect macOS appearance and apply matching theme
 set -l _appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
-if test "$_appearance" = "Dark"
+if test "$_appearance" = Dark
     source ~/.dotfiles/terminals/fish/themes/catppuccin-mocha.fish
     set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/config.toml
 else
@@ -25,6 +25,7 @@ end
 fish_add_path /opt/homebrew/bin
 fish_add_path /usr/local/sbin
 fish_add_path /opt/homebrew/sbin
+set -gx PANDOC_PATH /opt/homebrew/bin/pandoc
 #
 # #Qutebrowser
 fish_add_path /Applications/qutebrowser.app/Contents/MacOS
@@ -140,3 +141,6 @@ fish_add_path ~/.duckdb/cli/latest
 fish_add_path ~/LX14/repository/github.com/louishuyng/kubernetes/third_party/etcd
 
 set -gx GITHUB_TOKEN (cat ~/.github_token)
+
+# Lua Binaries
+fish_add_path ~/.luarocks/bin/

@@ -25,14 +25,22 @@ vim.g['test#custom_strategies'] = {
 
     if wezterm_pane_id then
       -- Reuse existing pane: send Ctrl-C to stop any running process, clear, then run command
-      vim.fn.system('wezterm cli send-text --pane-id ' .. wezterm_pane_id .. ' --no-paste $\'\\x03\'')
-      vim.fn.system('wezterm cli send-text --pane-id ' .. wezterm_pane_id .. ' --no-paste "clear && ' .. cmd:gsub('"', '\\"') .. '\n"')
+      vim.fn.system('wezterm cli send-text --pane-id ' .. wezterm_pane_id .. " --no-paste $'\\x03'")
+      vim.fn.system(
+        'wezterm cli send-text --pane-id '
+          .. wezterm_pane_id
+          .. ' --no-paste "clear && '
+          .. cmd:gsub('"', '\\"')
+          .. '\n"'
+      )
     else
       -- Create new pane and capture its ID
       local result = vim.fn.system('wezterm cli split-pane --bottom --percent 30')
       wezterm_pane_id = tonumber(result:match('%d+'))
       if wezterm_pane_id then
-        vim.fn.system('wezterm cli send-text --pane-id ' .. wezterm_pane_id .. ' --no-paste "' .. cmd:gsub('"', '\\"') .. '\n"')
+        vim.fn.system(
+          'wezterm cli send-text --pane-id ' .. wezterm_pane_id .. ' --no-paste "' .. cmd:gsub('"', '\\"') .. '\n"'
+        )
       end
     end
   end,

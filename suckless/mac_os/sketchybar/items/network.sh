@@ -7,9 +7,9 @@ network=(
 	icon.color=$PURPLE
 	label.padding_left=8
 	label.color=$PURPLE
-	label.padding_right=8
+	label.padding_right=0
 	background.drawing=off
-	padding_left=10
+	padding_left=0
 	script="$PLUGIN_DIR/network.sh"
 )
 

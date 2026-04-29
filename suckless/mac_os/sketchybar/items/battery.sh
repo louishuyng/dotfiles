@@ -2,8 +2,8 @@
 
 battery=(
 	update_freq=60
-	label.padding_left=8
-	label.padding_right=8
+	label.padding_left=3
+	label.padding_right=0
 	background.drawing=off
 	script="$PLUGIN_DIR/battery.sh"
 )

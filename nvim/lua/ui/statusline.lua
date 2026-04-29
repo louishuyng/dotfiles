@@ -3,9 +3,13 @@ local M = {}
 
 local function setup_highlights()
   local ok, palettes = pcall(require, 'catppuccin.palettes')
-  if not ok then return end
+  if not ok then
+    return
+  end
   local c = palettes.get_palette()
-  if not c then return end
+  if not c then
+    return
+  end
 
   local hl = vim.api.nvim_set_hl
   hl(0, 'StlModeNormal', { fg = c.green, bold = true })
@@ -18,6 +22,7 @@ local function setup_highlights()
   hl(0, 'StlInfo', { fg = c.blue })
   hl(0, 'StlAccent', { fg = c.teal })
   hl(0, 'StlEncoding', { fg = c.yellow })
+  hl(0, 'StlSnipai', { fg = c.mauve, bold = true })
 end
 
 setup_highlights()
@@ -212,6 +217,18 @@ local function file_encoding()
   return color('StlEncoding', string.format(icons.misc.Encoding .. ' %s', encoding))
 end
 
+local function snipai_status()
+  local ok, statusline = pcall(require, 'snipai.statusline')
+  if not ok then
+    return nil
+  end
+  local text = statusline.status(get_current_bufnr())
+  if text == nil or text == '' then
+    return nil
+  end
+  return color('StlSnipai', text)
+end
+
 function M.statusline()
   local sections = {
     mode_color(),
@@ -220,6 +237,7 @@ function M.statusline()
     file_read_only(),
     '',
     marlin_index(),
+    snipai_status(),
     macro_recording(),
     lsp_status(),
     git_changes(),

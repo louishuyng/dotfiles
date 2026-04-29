@@ -6,8 +6,8 @@ snacks.setup {
   zen = { enabled = true },
   rename = { enabled = true },
   quickfile = { enabled = true },
-  input = { enabled = false },
-  picker = { enabled = false, ui_select = false },
+  input = { enabled = true },
+  picker = { enabled = true, ui_select = true },
   notifier = { enabled = false },
   styles = {
     notification = {

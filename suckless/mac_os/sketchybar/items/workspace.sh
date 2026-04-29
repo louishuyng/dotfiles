@@ -29,7 +29,6 @@ for ws in "${WORKSPACES[@]}"; do
 	sketchybar --add item "workspace.$ws" left \
 		--set "workspace.$ws" \
 			label="$label" \
-			label.font="BlexMono Nerd Font:Regular:13.0" \
 			label.padding_left=6 \
 			label.padding_right=6 \
 			icon.drawing=off \

@@ -3,18 +3,20 @@
 SCRIPT="$(realpath "$0")"
 SESH_TOML="${SESH_TOML:-$HOME/.config/sesh/sesh.toml}"
 
-#--------------------------------------------------------------------
-# parse_roots <out_path>
-# Parse sesh.toml into TSV "name<TAB>expanded_path" lines.
-# If sesh.toml is missing, writes an empty file and returns 0.
+# Tokyo Night palette
+ICON_TMUX_FG=$'\033[38;2;125;207;255m'  # #7dcfff cyan
+ICON_ZOX_FG=$'\033[38;2;224;175;104m'   # #e0af68 yellow
+RESET=$'\033[0m'
+ICON_TMUX=$''  # nerd-font terminal
+ICON_ZOX=$''   # nerd-font lightning bolt
+
 #--------------------------------------------------------------------
 parse_roots() {
   local out="$1"
   : > "$out"
   [[ -r "$SESH_TOML" ]] || return 0
 
-  local current_name=""
-  local line
+  local current_name="" line
   while IFS= read -r line; do
     if [[ "$line" =~ ^[[:space:]]*name[[:space:]]*=[[:space:]]*\"(.+)\"[[:space:]]*$ ]]; then
       current_name="${BASH_REMATCH[1]}"
@@ -27,92 +29,68 @@ parse_roots() {
 }
 
 #--------------------------------------------------------------------
-# tmux_list — one session name per line, empty if no tmux server
+# shorten_path /a/b/c/d/e  →  d/e   (last 2 segments)
 #--------------------------------------------------------------------
-tmux_list() {
-  tmux list-sessions -F '#{session_name}' 2>/dev/null || true
-}
-
-#--------------------------------------------------------------------
-# tmux_has_match <query>
-# 0 if any tmux session name contains query (case-insensitive); 1 otherwise.
-# Empty query returns 0 (treated as "match anything").
-#--------------------------------------------------------------------
-tmux_has_match() {
-  local query="${1:-}"
-  [[ -z "$query" ]] && return 0
-  local q_lc="${query,,}"
-  local name n_lc
-  while IFS= read -r name; do
-    n_lc="${name,,}"
-    [[ "$n_lc" == *"$q_lc"* ]] && return 0
-  done < <(tmux_list)
-  return 1
-}
-
-#--------------------------------------------------------------------
-# cmd_source <query>
-#--------------------------------------------------------------------
-cmd_source() {
-  local query="${1:-}"
-  if tmux_has_match "$query"; then
-    tmux_list
+shorten_path() {
+  local p="$1"
+  local base="${p##*/}"
+  local rest="${p%/*}"
+  local parent="${rest##*/}"
+  if [[ -z "$parent" || "$parent" == "$rest" ]]; then
+    printf '%s' "$base"
   else
-    zoxide query -l 2>/dev/null || true
+    printf '%s/%s' "$parent" "$base"
   fi
 }
 
 #--------------------------------------------------------------------
-# cmd_prompt <query>
+# build_list <out>
+# Each line: "<colored-icon> <display>\t<target>"
+#   --with-nth=1 hides the target field, --ansi renders icon color.
 #--------------------------------------------------------------------
-cmd_prompt() {
-  local query="${1:-}"
-  if tmux_has_match "$query"; then
-    printf '  tmux ❯ '
-  else
-    printf '  zoxide ❯ '
-  fi
+build_list() {
+  local out="$1"
+  {
+    local line target
+    while IFS= read -r line; do
+      [[ -z "$line" ]] && continue
+      target="${line%% *}"
+      printf '%s%s%s %s\t%s\n' "$ICON_TMUX_FG" "$ICON_TMUX" "$RESET" "$line" "$target"
+    done < <(tmux list-windows -a -F '#S:#I #W' 2>/dev/null)
+
+    local path short
+    while IFS= read -r path; do
+      [[ -z "$path" ]] && continue
+      short=$(shorten_path "$path")
+      printf '%s%s%s %s\t%s\n' "$ICON_ZOX_FG" "$ICON_ZOX" "$RESET" "$short" "$path"
+    done < <(zoxide query -l 2>/dev/null)
+  } > "$out"
 }
+
 #--------------------------------------------------------------------
-# cmd_preview <line>
-# If line is an active tmux session: show windows + git status of first window.
-# Else treat line as a path: show directory tree (eza if available, else ls).
+# cmd_preview <target>
 #--------------------------------------------------------------------
 cmd_preview() {
-  local line="${1:-}"
-  [[ -z "$line" ]] && return 0
+  local target="${1:-}"
+  [[ -z "$target" ]] && return 0
 
-  if tmux has-session -t "$line" 2>/dev/null; then
-    printf 'Session: %s\n\n' "$line"
-    tmux list-windows -t "$line" -F '#I  #W  (#{pane_current_path})' 2>/dev/null
-
-    local first_path
-    first_path=$(tmux list-windows -t "$line" -F '#{pane_current_path}' 2>/dev/null | head -1)
-    if [[ -n "$first_path" ]] && git -C "$first_path" rev-parse --git-dir >/dev/null 2>&1; then
-      printf '\n── git ──\n'
-      printf 'branch: %s\n' "$(git -C "$first_path" branch --show-current 2>/dev/null)"
-      local dirty
-      dirty=$(git -C "$first_path" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
-      printf 'dirty:  %s files\n' "$dirty"
-      printf 'recent:\n'
-      git -C "$first_path" log --oneline -3 2>/dev/null | sed 's/^/  /'
-    fi
-    return 0
-  fi
-
-  local expanded="${line/#\~/$HOME}"
-  if command -v eza >/dev/null 2>&1; then
-    eza --tree --level=2 --color=always --icons --git-ignore "$expanded" 2>/dev/null \
-      || printf '(path not found: %s)\n' "$expanded"
-  else
-    ls -la "$expanded" 2>/dev/null \
-      || printf '(path not found: %s)\n' "$expanded"
-  fi
+  case "$target" in
+    /*|~*)
+      local expanded="${target/#\~/$HOME}"
+      if command -v eza >/dev/null 2>&1; then
+        eza --tree --level=2 --color=always --icons --git-ignore "$expanded" 2>/dev/null \
+          || printf '(path not found)\n'
+      else
+        ls -la "$expanded" 2>/dev/null || printf '(path not found)\n'
+      fi
+      ;;
+    *)
+      tmux capture-pane -t "$target" -p -E - 2>/dev/null | tail -20 \
+        || printf '(no window)\n'
+      ;;
+  esac
 }
-#--------------------------------------------------------------------
-# open_in_session <session> <path>
-# Find an existing window in <session> whose pane_current_path == <path>
-# and switch to it; else create a new window in that session at <path>.
+
 #--------------------------------------------------------------------
 open_in_session() {
   local session="$1" path="$2"
@@ -131,17 +109,23 @@ open_in_session() {
 
 #--------------------------------------------------------------------
 # route_selection <selected> <roots_tsv>
+# selected = "<display>\t<target>"; routing uses the target field.
 #--------------------------------------------------------------------
 route_selection() {
   local selected="$1" roots_tsv="$2"
   [[ -z "$selected" ]] && return 0
 
-  if tmux has-session -t "$selected" 2>/dev/null; then
-    tmux switch-client -t "$selected"
-    return 0
-  fi
+  local target="${selected#*$'\t'}"
 
-  local expanded="${selected/#\~/$HOME}"
+  case "$target" in
+    /*|~*) ;;
+    *)
+      tmux switch-client -t "$target"
+      return 0
+      ;;
+  esac
+
+  local expanded="${target/#\~/$HOME}"
 
   local name root
   while IFS=$'\t' read -r name root; do
@@ -156,39 +140,36 @@ route_selection() {
     fi
   done < "$roots_tsv"
 
-  sesh connect "$selected"
+  sesh connect "$target"
 }
 
-#--------------------------------------------------------------------
-# cmd_main
-#--------------------------------------------------------------------
 cmd_main() {
   local tmp
-  tmp=$(mktemp -d "${TMPDIR:-/tmp}/sesh-picker.XXXXXX")
+  tmp=$(mktemp -d "${TMPDIR:-/tmp}/sesh-picker.XXXXXX") || return 1
   trap 'rm -rf "$tmp"' EXIT
 
   parse_roots "$tmp/roots.tsv"
+  build_list "$tmp/all.list"
 
   local selected
-  selected=$(tmux_list | fzf \
-    --ansi --no-sort --border none --padding 0 --margin 0 \
+  selected=$(FZF_DEFAULT_OPTS= fzf \
+    --ansi --no-sort --border none --padding 0 --margin 0 --info=hidden \
     --pointer '▌' --marker '▍' \
-    --header 'enter: open   ^d: kill session' \
-    --header-first \
-    --prompt '  tmux ❯ ' \
+    --prompt '❯ ' \
+    --delimiter=$'\t' --with-nth=1 --nth=1 \
+    --color='fg:#c0caf5,bg:-1,fg+:#c0caf5,bg+:#364a82,hl:#7aa2f7,hl+:#bb9af7,pointer:#bb9af7,prompt:#7dcfff,marker:#9ece6a,gutter:-1' \
     --bind 'tab:down,btab:up' \
-    --bind "change:transform-list-source(bash $SCRIPT --source {q})+transform-prompt(bash $SCRIPT --prompt {q})" \
-    --bind 'ctrl-d:execute-silent(tmux kill-session -t {} 2>/dev/null)+reload(tmux list-sessions -F "#{session_name}" 2>/dev/null)' \
-    --preview "bash $SCRIPT --preview {}" \
-    --preview-window 'right:55%:wrap')
+    --bind "ctrl-d:execute-silent(tmux kill-window -t {2} 2>/dev/null; bash $SCRIPT --rebuild $tmp/all.list)+reload(cat $tmp/all.list)" \
+    --preview "bash $SCRIPT --preview {2}" \
+    --preview-window 'right:45%:wrap:border-left' \
+    < "$tmp/all.list")
 
   [[ -z "$selected" ]] && exit 0
   route_selection "$selected" "$tmp/roots.tsv"
 }
 
 case "${1:-}" in
-  --source)  shift; cmd_source  "${1:-}" ;;
-  --prompt)  shift; cmd_prompt  "${1:-}" ;;
   --preview) shift; cmd_preview "${1:-}" ;;
+  --rebuild) shift; build_list "${1:-/dev/null}" ;;
   *)         cmd_main ;;
 esac

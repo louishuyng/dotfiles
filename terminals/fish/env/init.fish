@@ -3,6 +3,7 @@ source ~/.dotfiles/terminals/fish/env/generic.fish
 source ~/.dotfiles/terminals/fish/env/nnn.fish
 
 fish_add_path ~/.dotfiles/scripts
+fish_add_path ~/.bun/bin
 
 switch (uname)
     case Linux

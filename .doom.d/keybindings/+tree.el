@@ -1,44 +1,66 @@
 ;;; keybindings/+tree.el -*- lexical-binding: t; -*-
+;; Treemacs file tree. Mirrors nvim Neo-tree bindings.
 
-;; ============================================================================
-;; TREEMACS (like nvim neo-tree)
-;; ============================================================================
+(map! "C-\\"  #'+treemacs/toggle
+      :n ",nf" #'treemacs-find-file
+      :n "-"   #'dired-jump)
 
-;; Toggle with Ctrl-\ (like nvim)
-(map! "C-\\" #'treemacs)
+(defun +my/treemacs-set-root-to-git-toplevel ()
+  "Set treemacs root to current buffer's git toplevel."
+  (interactive)
+  (require 'treemacs)
+  (if-let ((toplevel (vc-root-dir)))
+      (let ((toplevel (expand-file-name toplevel)))
+        (treemacs-do-add-project-to-workspace
+         toplevel
+         (file-name-nondirectory (directory-file-name toplevel))))
+    (message "Not inside a git repository")))
 
-;; Additional tree operations (like nvim neo-tree mappings)
-(map! :n ",nf" #'treemacs-find-file            ; Focus current file in tree
-      :n ",cr" #'+treemacs/toggle-project-root  ; Change root to project
-      :n ",cd" #'treemacs-root-down)            ; Change root to current dir
+(defun +my/treemacs-set-root-to-current-dir ()
+  "Set treemacs root to the directory of the current file."
+  (interactive)
+  (let ((dir (file-name-directory (or buffer-file-name default-directory))))
+    (treemacs-do-add-project-to-workspace
+     dir
+     (file-name-nondirectory (directory-file-name dir)))))
 
-;; Open file browser (like nvim telescope file_browser)
-(map! :n ",e" #'find-file)
+(map! :n ",cr" #'+my/treemacs-set-root-to-git-toplevel
+      :n ",cd" #'+my/treemacs-set-root-to-current-dir)
 
-;; Dired as buffer (like nvim oil.nvim)
-(map! :n "-" #'dired-jump)
+;; --- Sesh project ↔ Treemacs workspace --------------------------------
+;; `,np` picks a project from your sesh.toml roots and adds it to the
+;; current treemacs workspace. `,nr` removes the project that contains
+;; the buffer at point — useful when you're inside a file and want to
+;; drop its project from the side bar.
 
-;; ============================================================================
-;; TREEMACS CUSTOMIZATION
-;; ============================================================================
-(after! treemacs
-  ;; Inside treemacs buffer
-  (map! :map treemacs-mode-map
-        "o" #'treemacs-RET-action        ; open file
-        "a" #'treemacs-create-file       ; add file
-        "A" #'treemacs-create-dir        ; add directory
-        "d" #'treemacs-delete-file       ; delete
-        "r" #'treemacs-rename-file       ; rename
-        "R" #'treemacs-refresh           ; refresh
-        "q" #'treemacs-quit              ; quit
-        "?" #'treemacs-helpful-hydra))   ; help
+(defun +my/treemacs-add-sesh-project ()
+  "Pick a sesh-defined project and add it to the treemacs workspace."
+  (interactive)
+  (require 'treemacs)
+  (let* ((entries (+my/project-list))
+         (label (completing-read "Add to treemacs: " entries nil t))
+         (path (cdr (assoc label entries))))
+    (when path
+      (treemacs-do-add-project-to-workspace
+       path
+       (file-name-nondirectory (directory-file-name path)))
+      (message "Added: %s" path))))
 
-;; ============================================================================
-;; DIRED (like nvim oil.nvim)
-;; ============================================================================
-(after! dired
-  (map! :map dired-mode-map
-        :n "-" #'dired-up-directory      ; go up
-        :n "h" #'dired-up-directory      ; go up (vim style)
-        :n "l" #'dired-find-file         ; enter dir/open file
-        :n "q" #'kill-current-buffer))   ; quit
+(defun +my/treemacs-remove-current-project ()
+  "Remove the treemacs project that contains the current buffer's file."
+  (interactive)
+  (require 'treemacs)
+  (let* ((file (expand-file-name (or (buffer-file-name) default-directory)))
+         (workspace (treemacs-current-workspace))
+         (proj (cl-find-if
+                (lambda (p)
+                  (string-prefix-p (treemacs-project->path p) file))
+                (treemacs-workspace->projects workspace))))
+    (if proj
+        (progn
+          (treemacs-do-remove-project-from-workspace proj)
+          (message "Removed: %s" (treemacs-project->name proj)))
+      (message "No treemacs project contains %s" file))))
+
+(map! :n ",np" #'+my/treemacs-add-sesh-project
+      :n ",nr" #'+my/treemacs-remove-current-project)

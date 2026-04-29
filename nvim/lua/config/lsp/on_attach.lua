@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.tbl_extend('force', opts, { desc = 'Go to type definition' })
     )
 
-    vim.keymap.set('n', 'gs', vim.lsp.buf.document_symbol, vim.tbl_extend('force', opts, { desc = 'Document symbol' }))
+    vim.keymap.set('n', 'gS', vim.lsp.buf.document_symbol, vim.tbl_extend('force', opts, { desc = 'Document symbol' }))
 
     vim.keymap.set(
       'n',

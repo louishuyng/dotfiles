@@ -4,7 +4,7 @@ local function on_move(data)
   Snacks.rename.on_rename_file(data.source, data.destination)
 end
 
-local position = 'left'
+local position = 'right'
 
 require('neo-tree').setup({
   window = {
