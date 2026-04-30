@@ -15,7 +15,7 @@ cursor-color = #AF87D7
 
 font-size = 15.0
 font-thicken = true
-font-thicken-strength = 200
+font-thicken-strength = 150
 adjust-cell-width = 0%
 adjust-cell-height = 5%
 

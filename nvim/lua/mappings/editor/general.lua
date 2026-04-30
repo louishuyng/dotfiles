@@ -97,6 +97,9 @@ vim.keymap.set('n', '<leader>lu', '<cmd>lua vim.pack.update()<CR>', { silent = t
 local esc = vim.api.nvim_replace_termcodes('<Esc>', true, true, true)
 vim.fn.setreg('l', "yoconsole.log('" .. esc .. 'pa:' .. esc .. 'la, ' .. esc .. 'pl')
 
+-- Messages
+vim.keymap.set('n', '<leader>mo', ':messages<CR>', { silent = true, noremap = true, desc = 'Open :messages' })
+
 -- Reload Buffer
 vim.keymap.set('n', '<leader>rb', function()
   -- Reload the current buffer lsp and enable copilot

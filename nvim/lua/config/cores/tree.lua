@@ -1,3 +1,5 @@
+local icons = require('config.libs.icons')
+
 -- nvim-tree, configured to feel like Emacs Treemacs.
 -- Visual highlights live in nvim/lua/ui/treemacs_highlights.lua.
 
@@ -224,10 +226,10 @@ nvim_tree.setup({
     show_on_dirs = false,
     show_on_open_dirs = true,
     icons = {
-      hint = '',
-      info = '',
-      warning = '',
-      error = '',
+      hint = icons.diagnostics.Hint,
+      info = icons.diagnostics.Info,
+      warning = icons.diagnostics.Warn,
+      error = icons.diagnostics.Error,
     },
   },
   modified = {
@@ -250,10 +252,6 @@ if Event.FileRenamed then
     end
   end)
 end
-
-local hi = require('ui.treemacs_highlights')
-hi.apply()
-hi.attach_autocmd()
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'NvimTree',
