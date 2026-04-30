@@ -1,0 +1,29 @@
+# Playzone registry.
+# Each [[playzone]] block describes a scripted action surfaced in the
+# playzone picker (prefix p in tmux).
+#
+# Fields:
+#   name        — unique identifier, primary label in the picker
+#   description — secondary label shown next to the name
+#   script      — path to the script, relative to this file's directory
+
+
+[[playzone]]
+name = "k9s-regask-dev"
+description = "regask-qa cluster [namespace development]"
+script = "scripts/k9s-regask-dev.sh"
+
+[[playzone]]
+name = "k9s-regask-stg"
+description = "regask-qa cluster [namespace staging]"
+script = "scripts/k9s-regask-stg.sh"
+
+[[playzone]]
+name = "k9s-regask-uat"
+description = "regask-qa cluster [namespace pre-prod]"
+script = "scripts/k9s-regask-uat.sh"
+
+[[playzone]]
+name = "k9s-regask-prod"
+description = "regask-production cluster [namespace production]"
+script = "scripts/k9s-regask-prod.sh"
