@@ -80,7 +80,7 @@ vim.pack.add({
   'https://github.com/williamboman/mason.nvim',
   'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
   'https://github.com/stevearc/conform.nvim',
-  'https://github.com/stevearc/aerial.nvim',
+  'https://github.com/hedyhli/outline.nvim',
   'https://github.com/rachartier/tiny-inline-diagnostic.nvim',
   'https://github.com/mfussenegger/nvim-lint',
   'https://github.com/scalameta/nvim-metals',
@@ -97,3 +97,26 @@ vim.pack.add({
   -- 'https://github.com/NickvanDyke/opencode.nvim',
   'https://github.com/louishuyng/snipai',
 })
+
+vim.api.nvim_create_user_command('PackClean', function()
+  local inactive = {}
+  for _, p in ipairs(vim.pack.get()) do
+    if not p.active then
+      table.insert(inactive, p.spec.name)
+    end
+  end
+
+  if #inactive == 0 then
+    vim.notify('PackClean: no inactive plugins', vim.log.levels.INFO)
+    return
+  end
+
+  local prompt = ('Remove %d inactive plugin(s)?\n  - %s\n\nProceed?'):format(
+    #inactive,
+    table.concat(inactive, '\n  - ')
+  )
+  if vim.fn.confirm(prompt, '&Yes\n&No', 2) == 1 then
+    vim.pack.del(inactive)
+    vim.notify(('PackClean: removed %d plugin(s)'):format(#inactive), vim.log.levels.INFO)
+  end
+end, { desc = 'Remove plugins not in vim.pack.add list' })

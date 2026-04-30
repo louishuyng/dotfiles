@@ -38,7 +38,7 @@ require('config.cores.tree')
 require('config.cores.dap')
 
 -- Library / misc plugin configs
-require('config.libs.aerial')
+require('config.libs.outline')
 require('config.libs.editor')
 require('config.libs.marlin')
 require('config.libs.metals')

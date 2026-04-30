@@ -92,6 +92,7 @@ vim.keymap.set('v', ';r', '"_y:%s/<C-R>"/', opt)
 
 -- Pack (vim.pack)
 vim.keymap.set('n', '<leader>lu', '<cmd>lua vim.pack.update()<CR>', { silent = true, noremap = true, desc = 'Pack update' })
+vim.keymap.set('n', '<leader>lc', '<cmd>PackClean<CR>', { silent = true, noremap = true, desc = 'Pack clean' })
 
 -- Register
 local esc = vim.api.nvim_replace_termcodes('<Esc>', true, true, true)
