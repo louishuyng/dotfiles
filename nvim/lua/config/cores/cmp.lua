@@ -59,7 +59,7 @@ cmp.setup {
       local kind = item.kind
       local kind_hl_group = ('CmpItemKind%s'):format(kind)
 
-      item.kind = (' %s '):format(icons[kind])
+      item.kind = (' %s '):format(icons[kind] or icons.Default)
 
       local source = entry.source.name
       item.menu = kind
@@ -158,3 +158,18 @@ cmp.setup.cmdline(':', {
     },
   },
 })
+
+local function setup_cmp_highlights()
+  local ok, palettes = pcall(require, 'catppuccin.palettes')
+  if not ok then
+    return
+  end
+  local c = palettes.get_palette()
+  if not c then
+    return
+  end
+  vim.api.nvim_set_hl(0, 'CmpItemMenu', { fg = c.green })
+end
+
+setup_cmp_highlights()
+vim.api.nvim_create_autocmd('ColorScheme', { callback = setup_cmp_highlights })

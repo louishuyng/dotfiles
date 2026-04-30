@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+# Install language servers used by Doom Emacs (lsp-mode).
+# Idempotent: skips servers that are already installed.
+
+set -e
+
+note() { printf '\033[1;34m[%s]\033[0m %s\n' "$(date +%H:%M:%S)" "$*"; }
+have() { command -v "$1" >/dev/null 2>&1; }
+
+# --- TypeScript / JavaScript -------------------------------------------------
+if have npm; then
+  if ! have typescript-language-server; then
+    note "Installing typescript-language-server + typescript"
+    npm i -g typescript-language-server typescript
+  else
+    note "typescript-language-server already installed"
+  fi
+  if ! have vscode-json-language-server; then
+    note "Installing vscode-langservers-extracted (json/css/html/eslint)"
+    npm i -g vscode-langservers-extracted
+  else
+    note "vscode-langservers-extracted already installed"
+  fi
+  if ! have yaml-language-server; then
+    note "Installing yaml-language-server"
+    npm i -g yaml-language-server
+  else
+    note "yaml-language-server already installed"
+  fi
+  # Linters / formatters used by flycheck + apheleia.
+  if ! have eslint; then
+    note "Installing eslint"
+    npm i -g eslint
+  else
+    note "eslint already installed"
+  fi
+  if ! have prettier; then
+    note "Installing prettier"
+    npm i -g prettier
+  else
+    note "prettier already installed"
+  fi
+  if ! have oxlint; then
+    note "Installing oxlint"
+    npm i -g oxlint
+  else
+    note "oxlint already installed"
+  fi
+else
+  note "SKIP: npm not found — install Node.js first to get TS/JSON/YAML servers"
+fi
+
+# --- Python ------------------------------------------------------------------
+if have pip || have pip3; then
+  PIP=$(command -v pip3 || command -v pip)
+  if ! have pyright-langserver && ! have pyright; then
+    note "Installing pyright"
+    "$PIP" install --user pyright
+  else
+    note "pyright already installed"
+  fi
+else
+  note "SKIP: pip not found — Python LSP not installed"
+fi
+
+# --- Ruby --------------------------------------------------------------------
+if have gem; then
+  if ! have solargraph; then
+    note "Installing solargraph"
+    gem install solargraph
+  else
+    note "solargraph already installed"
+  fi
+else
+  note "SKIP: gem not found — Ruby LSP not installed"
+fi
+
+# --- Go ----------------------------------------------------------------------
+if have go; then
+  if ! have gopls; then
+    note "Installing gopls"
+    go install golang.org/x/tools/gopls@latest
+  else
+    note "gopls already installed"
+  fi
+else
+  note "SKIP: go not found — gopls not installed"
+fi
+
+# --- Rust --------------------------------------------------------------------
+if have rustup; then
+  if ! have rust-analyzer; then
+    note "Installing rust-analyzer via rustup"
+    rustup component add rust-analyzer
+  else
+    note "rust-analyzer already installed"
+  fi
+else
+  note "SKIP: rustup not found — rust-analyzer not installed"
+fi
+
+# --- Bash --------------------------------------------------------------------
+if have npm; then
+  if ! have bash-language-server; then
+    note "Installing bash-language-server"
+    npm i -g bash-language-server
+  else
+    note "bash-language-server already installed"
+  fi
+fi
+
+# --- Lua ---------------------------------------------------------------------
+if have brew; then
+  if ! have lua-language-server; then
+    note "Installing lua-language-server (brew)"
+    brew install lua-language-server
+  else
+    note "lua-language-server already installed"
+  fi
+  if ! have stylua; then
+    note "Installing stylua (brew)"
+    brew install stylua
+  else
+    note "stylua already installed"
+  fi
+else
+  note "SKIP: brew not found — install lua-language-server / stylua manually"
+fi
+
+note "Done. Open Emacs and lsp-mode will pick servers up automatically."
+note "If a server is still missing in Emacs, run: M-x lsp-install-server"

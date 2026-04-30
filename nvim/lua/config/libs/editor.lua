@@ -154,7 +154,7 @@ require('smoothcursor').setup({
   speed = 25,
   intervals = 35,
   threshold = 3,
-  disabled_filetypes = { 'alpha', 'neo-tree', 'oil', 'mason' },
+  disabled_filetypes = { 'alpha', 'NvimTree', 'oil', 'mason' },
 })
 
 -- Material icons + web-devicons

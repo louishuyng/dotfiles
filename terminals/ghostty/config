@@ -14,10 +14,10 @@ font-family = "Terminess Nerd Font"
 cursor-color = #AF87D7
 
 font-size = 15.0
-font-thicken = false
-font-thicken-strength = 0
+font-thicken = true
+font-thicken-strength = 200
 adjust-cell-width = 0%
-adjust-cell-height = 7%
+adjust-cell-height = 5%
 
 window-width = 200
 window-height = 55

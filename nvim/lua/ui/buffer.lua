@@ -51,12 +51,6 @@ bufferline.setup {
     themable = true,
     offsets = {
       {
-        filetype = 'neo-tree',
-        text = '󰙅 File Explorer',
-        text_align = 'center',
-        separator = true,
-      },
-      {
         filetype = 'NvimTree',
         text = '󰙅 File Explorer',
         text_align = 'center',

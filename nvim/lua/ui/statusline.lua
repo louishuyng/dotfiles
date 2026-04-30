@@ -17,12 +17,16 @@ local function setup_highlights()
   hl(0, 'StlModeVisual', { fg = c.yellow, bold = true })
   hl(0, 'StlModeCommand', { fg = c.peach, bold = true })
   hl(0, 'StlModeReplace', { fg = c.red, bold = true })
-  hl(0, 'StlModified', { fg = c.peach, bold = true })
   hl(0, 'StlReadOnly', { fg = c.red, bold = true })
   hl(0, 'StlInfo', { fg = c.blue })
   hl(0, 'StlAccent', { fg = c.teal })
-  hl(0, 'StlEncoding', { fg = c.yellow })
   hl(0, 'StlSnipai', { fg = c.mauve, bold = true })
+  hl(0, 'StlFileSize', { fg = c.overlay1 })
+  hl(0, 'StlBranch', { fg = c.mauve, bold = true })
+  hl(0, 'StlFiletype', { fg = c.text })
+  hl(0, 'StlRocket', { fg = c.green })
+  hl(0, 'StlScroll', { fg = c.subtext0 })
+  hl(0, 'StlPathModified', { fg = c.yellow, bold = true })
 end
 
 setup_highlights()
@@ -43,32 +47,14 @@ end
 
 ---@return string
 local function file_name()
-  local is_active = vim.g.statusline_winid == vim.api.nvim_get_current_win()
-  local bufnr = get_current_bufnr()
-  local name = vim.fn.expand('#' .. bufnr .. ':p:t')
-  local extension = vim.fn.expand('#' .. bufnr .. ':e')
-
-  local icon, highlight = require('nvim-web-devicons').get_icon(name, extension)
-  if not icon then
-    -- Is in a folder
-    icon = ''
-    highlight = 'String'
-  end
-
-  local file_path = '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
-  local icon_str = icon and color(highlight, icon .. ' ') or ''
-
-  return icon_str .. ' ' .. file_path
-end
-
-local function file_modified()
   local is_modified = vim.api.nvim_get_option_value('modified', { buf = get_current_bufnr() })
+  local file_path = '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
 
   if is_modified then
-    return color('StlModified', '+')
+    return color('StlPathModified', '󰳻 ' .. file_path)
   end
 
-  return nil
+  return file_path
 end
 
 local function file_read_only()
@@ -81,36 +67,22 @@ local function file_read_only()
   return nil
 end
 
+local DIAGNOSTIC_SEVERITIES = {
+  { severity = vim.diagnostic.severity.ERROR, hl = 'DiagnosticError', icon = icons.diagnostics.Error, always = true },
+  { severity = vim.diagnostic.severity.WARN, hl = 'DiagnosticWarn', icon = icons.diagnostics.Warn, always = true },
+  { severity = vim.diagnostic.severity.INFO, hl = 'DiagnosticInfo', icon = icons.diagnostics.Info, always = true },
+  { severity = vim.diagnostic.severity.HINT, hl = 'DiagnosticHint', icon = icons.diagnostics.Hint, always = false },
+}
+
 local function lsp_status()
   local bufnr = get_current_bufnr()
-
-  local errors = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.ERROR })
-  local warnings = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.WARN })
-  local infos = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.INFO })
-  local hints = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.HINT })
-
   local messages = {}
-
-  -- if no messages, show the checkmark
-  if #errors == 0 and #warnings == 0 and #infos == 0 and #hints == 0 then
-    return ''
+  for _, sev in ipairs(DIAGNOSTIC_SEVERITIES) do
+    local count = #vim.diagnostic.get(bufnr, { severity = sev.severity })
+    if sev.always or count > 0 then
+      table.insert(messages, color(sev.hl, sev.icon .. tostring(count)))
+    end
   end
-
-  if #errors ~= 0 then
-    table.insert(messages, color('DiagnosticError', string.format(icons.diagnostics.Error .. '%s', #errors)))
-  end
-  if #warnings ~= 0 then
-    table.insert(messages, color('DiagnosticWarn', string.format(icons.diagnostics.Warn .. '%s', #warnings)))
-  end
-
-  if #infos ~= 0 then
-    table.insert(messages, color('DiagnosticInfo', string.format(icons.diagnostics.Info .. '%s', #infos)))
-  end
-
-  if #hints ~= 0 then
-    table.insert(messages, color('DiagnosticHint', string.format(icons.diagnostics.Hint .. '%s', #hints)))
-  end
-
   return table.concat(messages, ' ')
 end
 
@@ -143,26 +115,51 @@ local function marlin_index()
   return nil
 end
 
-local function mode_color()
-  local mode_colors = {
-    n = 'StlModeNormal',
-    i = 'StlModeInsert',
-    v = 'StlModeVisual',
-    V = 'StlModeVisual',
-    [''] = 'StlModeInsert',
-    c = 'StlModeCommand',
-    s = 'StlModeVisual',
-    S = 'StlModeVisual',
-    [''] = 'StlModeVisual',
-    R = 'StlModeReplace',
-    Rv = 'StlModeReplace',
-  }
+local MODE_COLORS = {
+  n = 'StlModeNormal',
+  i = 'StlModeInsert',
+  v = 'StlModeVisual',
+  V = 'StlModeVisual',
+  [''] = 'StlModeInsert', -- ctrl-i fallback (kept from prior impl)
+  c = 'StlModeCommand',
+  s = 'StlModeVisual',
+  S = 'StlModeVisual',
+  [''] = 'StlModeVisual', -- ctrl-v block visual
+  R = 'StlModeReplace',
+  Rv = 'StlModeReplace',
+  t = 'StlModeInsert',
+}
 
+local function mode_bar()
   local mode = vim.api.nvim_get_mode().mode
-  local icon = '▎'
-  local color_group = mode_colors[mode] or 'StlInfo'
+  local color_group = MODE_COLORS[mode] or 'StlInfo'
+  return color(color_group, '▎')
+end
 
-  return color(color_group, icon)
+local MODE_LETTERS = {
+  n = '󰰓 ',
+  i = '󰰄 ',
+  v = '󰰫 ',
+  V = '󰰫 ',
+  [''] = '󰰫 ',
+  c = '󰯲 ',
+  s = '󰰢 ',
+  S = '󰰢 ',
+  [''] = '󰰢 ',
+  R = '󰰟 ',
+  Rv = '󰰟 ',
+  t = '󰰥 ',
+}
+
+local function mode_letter()
+  local mode = vim.api.nvim_get_mode().mode
+  local color_group = MODE_COLORS[mode] or 'StlInfo'
+  local letter = MODE_LETTERS[mode] or '󰰓'
+  return color(color_group, letter)
+end
+
+local function mode_indicator()
+  return mode_bar() .. ' ' .. mode_letter()
 end
 
 local function git_changes()
@@ -191,30 +188,30 @@ local function git_changes()
   return table.concat(messages, ' ')
 end
 
-local function line_tracking()
+local function position()
   local line = vim.fn.line('.')
-  local total_lines = vim.fn.line('$')
+  local col = vim.fn.virtcol('.')
+  local total = vim.fn.line('$')
+  local first = vim.fn.line('w0')
+  local last = vim.fn.line('w$')
 
-  if line == 1 then
-    return color('StlInfo', 'Top')
-  elseif line == total_lines then
-    return color('StlInfo', 'Bot')
+  local scroll
+  if first == 1 and last == total then
+    scroll = 'All'
+  elseif line == 1 then
+    scroll = 'Top'
+  elseif line == total then
+    scroll = 'Bot'
+  else
+    scroll = string.format('%d%%%%', math.floor((line - 1) / math.max(total - 1, 1) * 100))
   end
 
   return string.format(
-    '%s/%s',
-    color('StlInfo', string.format('%s', line)),
-    color('StlInfo', string.format('%s', total_lines))
+    '%s:%s %s',
+    color('StlInfo', tostring(line)),
+    color('StlInfo', tostring(col)),
+    color('StlScroll', scroll)
   )
-end
-
-local function file_encoding()
-  local encoding = vim.bo.fileencoding
-  if encoding == '' then
-    encoding = 'utf-8'
-  end
-
-  return color('StlEncoding', string.format(icons.misc.Encoding .. ' %s', encoding))
 end
 
 local function snipai_status()
@@ -229,31 +226,96 @@ local function snipai_status()
   return color('StlSnipai', text)
 end
 
+local function file_size()
+  local fname = vim.api.nvim_buf_get_name(get_current_bufnr())
+  if fname == '' then
+    return nil
+  end
+  local stat = vim.uv.fs_stat(fname)
+  if not stat then
+    return nil
+  end
+  local bytes = stat.size
+  local s
+  if bytes < 1024 then
+    s = string.format('%dB', bytes)
+  elseif bytes < 1024 * 1024 then
+    s = string.format('%.1fk', bytes / 1024)
+  else
+    s = string.format('%.1fM', bytes / 1024 / 1024)
+  end
+  return color('StlFileSize', s)
+end
+
+local FT_DISPLAY = {
+  typescript = 'TypeScript',
+  typescriptreact = 'TypeScript',
+  javascript = 'JavaScript',
+  javascriptreact = 'JavaScript',
+  json = 'JSON',
+  yaml = 'YAML',
+  html = 'HTML',
+  css = 'CSS',
+  scss = 'SCSS',
+  sh = 'Shell',
+  zsh = 'Zsh',
+  fish = 'Fish',
+}
+
+local function filetype()
+  local ft = vim.bo[get_current_bufnr()].filetype
+  if ft == '' then
+    return nil
+  end
+  local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(ft)
+  local name = FT_DISPLAY[ft] or (ft:sub(1, 1):upper() .. ft:sub(2))
+
+  return color('StlFiletype', name)
+end
+
+local function git_branch()
+  local bufnr = get_current_bufnr()
+  local head = vim.b[bufnr].gitsigns_head or vim.g.gitsigns_head
+  if not head or head == '' then
+    return nil
+  end
+  return color('StlBranch', ' ' .. head)
+end
+
+local function lsp_rocket()
+  local bufnr = get_current_bufnr()
+  if #vim.lsp.get_clients({ bufnr = bufnr }) == 0 then
+    return nil
+  end
+  return color('StlRocket', ' ')
+end
+
 function M.statusline()
   local sections = {
-    mode_color(),
+    -- Left cluster
+    mode_indicator(),
+    file_size(),
     file_name(),
-    file_modified(),
     file_read_only(),
-    '',
     marlin_index(),
     snipai_status(),
     macro_recording(),
-    lsp_status(),
-    git_changes(),
-    -- Right side
+    position(),
+    -- Separator
     '%=',
-    ' ',
-    line_tracking(),
-    ' ',
-    file_encoding(),
+    -- Right cluster
+    lsp_rocket(),
+    filetype(),
+    git_branch(),
+    git_changes(),
+    lsp_status(),
   }
 
   return table.concat(
     vim.tbl_filter(function(section)
-      return section
+      return section ~= nil and section ~= ''
     end, sections),
-    ' '
+    '  '
   )
 end
 
