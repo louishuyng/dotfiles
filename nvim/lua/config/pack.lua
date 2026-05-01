@@ -24,7 +24,7 @@ vim.pack.add({
   'https://github.com/gen740/SmoothCursor.nvim',
 
   -- Editor
-  'https://github.com/terryma/vim-multiple-cursors',
+  'https://github.com/mg979/vim-visual-multi',
   'https://github.com/folke/todo-comments.nvim',
   'https://github.com/folke/which-key.nvim',
   'https://github.com/dyng/ctrlsf.vim',
