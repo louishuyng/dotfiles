@@ -1,36 +1,45 @@
 local icons = require('config.libs.icons')
+local palette = require('config.theme.palette')
 local M = {}
 
-local function setup_highlights()
-  local ok, palettes = pcall(require, 'catppuccin.palettes')
-  if not ok then
-    return
-  end
-  local c = palettes.get_palette()
-  if not c then
+local function setup_highlights(c)
+  c = c or palette.colors
+  if not next(c) then
     return
   end
 
   local hl = vim.api.nvim_set_hl
-  hl(0, 'StlModeNormal', { fg = c.green, bold = true })
-  hl(0, 'StlModeInsert', { fg = c.mauve, bold = true })
-  hl(0, 'StlModeVisual', { fg = c.yellow, bold = true })
-  hl(0, 'StlModeCommand', { fg = c.peach, bold = true })
-  hl(0, 'StlModeReplace', { fg = c.red, bold = true })
-  hl(0, 'StlReadOnly', { fg = c.red, bold = true })
-  hl(0, 'StlInfo', { fg = c.blue })
-  hl(0, 'StlAccent', { fg = c.teal })
-  hl(0, 'StlSnipai', { fg = c.mauve, bold = true })
-  hl(0, 'StlFileSize', { fg = c.overlay1 })
-  hl(0, 'StlBranch', { fg = c.mauve, bold = true })
+
+  hl(0, 'StatusLine', { bg = c.bg_alt, fg = c.text })
+  hl(0, 'StatusLineNC', { bg = c.bg_alt, fg = c.muted })
+
+  -- Tabline (visible when 2+ tabs exist; see options/init.lua showtabline).
+  -- Inactive tabs sit on the bg_alt chrome layer (same as the tree, since
+  -- both are "frame" elements). The active tab drops to editor bg so it
+  -- visually owns the canvas below.
+  hl(0, 'TabLine', { bg = c.bg_alt, fg = c.muted })
+  hl(0, 'TabLineSel', { bg = c.bg, fg = c.primary, bold = true })
+  hl(0, 'TabLineFill', { bg = c.bg_alt })
+
+  hl(0, 'StlModeNormal', { fg = c.primary, bold = true })
+  hl(0, 'StlModeInsert', { fg = c.info, bold = true })
+  hl(0, 'StlModeVisual', { fg = c.tertiary, bold = true })
+  hl(0, 'StlModeCommand', { fg = c.warn, bold = true })
+  hl(0, 'StlModeReplace', { fg = c.error, bold = true })
+  hl(0, 'StlReadOnly', { fg = c.error, bold = true })
+  hl(0, 'StlInfo', { fg = c.info })
+  hl(0, 'StlAccent', { fg = c.secondary })
+  hl(0, 'StlSnipai', { fg = c.tertiary, bold = true })
+  hl(0, 'StlFileSize', { fg = c.muted })
+  hl(0, 'StlBranch', { fg = c.tertiary, bold = true })
   hl(0, 'StlFiletype', { fg = c.text })
-  hl(0, 'StlRocket', { fg = c.green })
-  hl(0, 'StlScroll', { fg = c.subtext0 })
-  hl(0, 'StlPathModified', { fg = c.yellow, bold = true })
+  hl(0, 'StlRocket', { fg = c.primary })
+  hl(0, 'StlScroll', { fg = c.subtle })
+  hl(0, 'StlPathModified', { fg = c.attention, bold = true })
+  hl(0, 'StlSearch', { fg = c.attention, bold = true })
 end
 
-setup_highlights()
-vim.api.nvim_create_autocmd('ColorScheme', { callback = setup_highlights })
+palette.on_change(setup_highlights)
 
 ---@return integer
 local function get_current_bufnr()
@@ -86,6 +95,20 @@ local function lsp_status()
   return table.concat(messages, ' ')
 end
 
+local function search_count()
+  if vim.v.hlsearch == 0 then
+    return nil
+  end
+  local ok, result = pcall(vim.fn.searchcount, { maxcount = 999, timeout = 100 })
+  if not ok or type(result) ~= 'table' or (result.total or 0) == 0 then
+    return nil
+  end
+  if result.incomplete == 1 then
+    return color('StlSearch', '󰍉 ?/?')
+  end
+  return color('StlSearch', string.format('󰍉 %d/%d', result.current, result.total))
+end
+
 local function macro_recording()
   local reg = vim.fn.reg_recording()
   if reg == '' then
@@ -137,18 +160,17 @@ local function mode_bar()
 end
 
 local MODE_LETTERS = {
-  n = '󰰓 ',
-  i = '󰰄 ',
-  v = '󰰫 ',
-  V = '󰰫 ',
-  [''] = '󰰫 ',
-  c = '󰯲 ',
-  s = '󰰢 ',
-  S = '󰰢 ',
-  [''] = '󰰢 ',
-  R = '󰰟 ',
-  Rv = '󰰟 ',
-  t = '󰰥 ',
+  n = '󰲉 ',
+  i = '󰊠 ',
+  v = '󰈈 ',
+  V = '󰈈 ',
+  c = '󰘳 ',
+  s = '󰒆 ',
+  S = '󰒆 ',
+  [''] = '󰒆 ',
+  R = '󰑖 ',
+  Rv = '󰑖 ',
+  t = ' ',
 }
 
 local function mode_letter()
@@ -301,6 +323,7 @@ function M.statusline()
     snipai_status(),
     macro_recording(),
     position(),
+    search_count(),
     -- Separator
     '%=',
     -- Right cluster
