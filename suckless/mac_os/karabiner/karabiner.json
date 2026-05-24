@@ -121,7 +121,7 @@
                                     "key_code": "j",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "mouse_key": { "vertical_wheel": 50 } }],
+                                "to": [{ "mouse_key": { "vertical_wheel": -50 } }],
                                 "type": "basic"
                             },
                             {
@@ -194,7 +194,7 @@
                                     "key_code": "k",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "mouse_key": { "vertical_wheel": -50 } }],
+                                "to": [{ "mouse_key": { "vertical_wheel": 50 } }],
                                 "type": "basic"
                             },
                             {
@@ -1513,14 +1513,6 @@
                         "is_keyboard": true,
                         "product_id": 668,
                         "vendor_id": 1452
-                    }
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": true,
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 668,
-                        "vendor_id": 76
                     }
                 },
                 {
