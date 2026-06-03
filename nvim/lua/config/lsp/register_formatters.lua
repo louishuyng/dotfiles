@@ -21,10 +21,16 @@ conform.setup({
     sh = { 'shfmt' },
     go = { 'gofmt' },
     python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format', 'autopep8' },
+    zig = { 'zigfmt' },
   },
   formatters = {
     oxfmt = {
       command = 'oxfmt',
+      stdin = true,
+    },
+    zigfmt = {
+      command = 'zig',
+      args = { 'fmt', '--stdin' },
       stdin = true,
     },
     ruff_fix = {

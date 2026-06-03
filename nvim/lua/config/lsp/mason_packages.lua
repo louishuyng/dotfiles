@@ -33,6 +33,9 @@ return {
   -- CSS
   'css-lsp',
 
+  -- Zig
+  { 'zls', version = '0.14.0' },
+
   -- Others
   'bash-language-server',
   'codespell',
