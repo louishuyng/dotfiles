@@ -1,0 +1,886 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#   "mss",
+#   "Pillow",
+#   "zeroconf",
+# ]
+# ///
+"""Mirror the screen's dominant color to a Nanoleaf controller.
+
+Captures the primary display at a configurable rate, extracts the dominant
+non-black/non-gray color, smooths it across frames, and PUTs it to the
+Nanoleaf REST state endpoint.
+
+Connection resolution order:
+  1. env vars NANOLEAF_IP + NANOLEAF_TOKEN (+ optional NANOLEAF_PORT)
+  2. cached config at ~/.config/nanoleaf-sync/config.json
+  3. auto-discover via mDNS + interactive pairing (hold the power button)
+
+For volume / beat-driven lighting use the Nanoleaf app's native Rhythm
+mode — the controller's built-in mic + their firmware handles it better
+than re-implementing it here.
+"""
+
+import argparse
+import colorsys
+import json
+import os
+import pathlib
+import signal
+import socket
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+
+from mss import mss
+from PIL import Image
+
+
+CONFIG_DIR = pathlib.Path.home() / ".config" / "nanoleaf-sync"
+CONFIG_PATH = CONFIG_DIR / "config.json"
+PID_PATH = CONFIG_DIR / "nanoleaf-sync.pid"
+LOG_PATH = CONFIG_DIR / "nanoleaf-sync.log"
+RUNTIME_PATH = CONFIG_DIR / "runtime.json"
+RHYTHM_STATE_PATH = CONFIG_DIR / "rhythm_state.json"
+SCRIPT_PATH = pathlib.Path(__file__).resolve()
+MDNS_SERVICE_TYPES = ("_nanoleafapi._tcp.local.", "_nanoleafms._tcp.local.")
+
+DEFAULT_DIM_MIN = 5
+DEFAULT_DIM_MAX = 100
+
+API_BASE = ""  # populated by main() once IP+token are resolved
+
+
+def discover_ip(timeout: float = 6.0) -> str | None:
+    """Browse mDNS for a Nanoleaf controller, return the first IPv4 found."""
+    from zeroconf import ServiceBrowser, Zeroconf
+
+    found: dict[str, str] = {}
+
+    class Listener:
+        def add_service(self, zc, type_, name):
+            info = zc.get_service_info(type_, name, timeout=2000)
+            if info and info.addresses:
+                found["ip"] = socket.inet_ntoa(info.addresses[0])
+
+        def update_service(self, *a, **kw):
+            pass
+
+        def remove_service(self, *a, **kw):
+            pass
+
+    zc = Zeroconf()
+    try:
+        browsers = [ServiceBrowser(zc, t, Listener()) for t in MDNS_SERVICE_TYPES]
+        deadline = time.time() + timeout
+        while time.time() < deadline and "ip" not in found:
+            time.sleep(0.2)
+        for b in browsers:
+            b.cancel()
+        return found.get("ip")
+    finally:
+        zc.close()
+
+
+def pair(ip: str, port: str = "16021", timeout_s: float = 35.0) -> str:
+    """Poll the /new endpoint until pairing succeeds; user must hold the power button."""
+    print(
+        f"Pairing with Nanoleaf at {ip}...\n"
+        "  → Hold the controller's power button for ~5-7 seconds until the LED starts\n"
+        "    flashing (pairing mode lasts ~30s). I'll keep polling until it accepts.",
+        file=sys.stderr,
+    )
+    url = f"http://{ip}:{port}/api/v1/new"
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        try:
+            req = urllib.request.Request(url, data=b"", method="POST")
+            with urllib.request.urlopen(req, timeout=3) as resp:
+                data = json.loads(resp.read())
+                token = data.get("auth_token")
+                if token:
+                    print("  ✓ paired", file=sys.stderr)
+                    return token
+        except urllib.error.HTTPError as e:
+            if e.code != 403:  # 403 = not in pairing mode yet
+                raise
+        except urllib.error.URLError:
+            pass
+        time.sleep(2)
+    raise SystemExit("error: pairing timed out — the controller never entered pairing mode")
+
+
+def load_cached_config() -> dict | None:
+    if not CONFIG_PATH.exists():
+        return None
+    try:
+        return json.loads(CONFIG_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def save_cached_config(ip: str, token: str, port: str) -> None:
+    CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    CONFIG_PATH.write_text(json.dumps({"ip": ip, "token": token, "port": port}, indent=2))
+    CONFIG_PATH.chmod(0o600)
+    print(f"  saved config → {CONFIG_PATH}", file=sys.stderr)
+
+
+def resolve_connection(force_pair: bool = False) -> tuple[str, str, str]:
+    """Return (ip, token, port). Resolution order: env → cache → discover+pair."""
+    port = os.environ.get("NANOLEAF_PORT", "16021")
+
+    if not force_pair:
+        env_ip = os.environ.get("NANOLEAF_IP")
+        env_tok = os.environ.get("NANOLEAF_TOKEN")
+        if env_ip and env_tok:
+            return env_ip, env_tok, port
+
+        cached = load_cached_config()
+        if cached and cached.get("ip") and cached.get("token"):
+            return cached["ip"], cached["token"], cached.get("port", port)
+
+    print("No saved Nanoleaf credentials — discovering on the local network...", file=sys.stderr)
+    ip = discover_ip()
+    if not ip:
+        raise SystemExit(
+            "error: no Nanoleaf found via mDNS. Set NANOLEAF_IP manually, or check that\n"
+            "the controller is powered on and on the same network."
+        )
+    print(f"  found controller at {ip}", file=sys.stderr)
+    token = pair(ip, port)
+    save_cached_config(ip, token, port)
+    return ip, token, port
+
+
+def api_request(method: str, path: str, payload: dict | None = None, timeout: float = 2.0):
+    body = json.dumps(payload).encode() if payload is not None else None
+    headers = {"Content-Type": "application/json"} if body else {}
+    req = urllib.request.Request(API_BASE + path, data=body, headers=headers, method=method)
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        raw = resp.read()
+        return json.loads(raw) if raw else None
+
+
+def get_current_effect() -> str | None:
+    try:
+        return api_request("GET", "/effects/select")
+    except Exception:
+        return None
+
+
+def restore_effect(name: str) -> None:
+    try:
+        api_request("PUT", "/effects", {"select": name})
+    except Exception as e:
+        print(f"  warning: failed to restore effect '{name}': {e}", file=sys.stderr)
+
+
+def ensure_on() -> None:
+    try:
+        api_request("PUT", "/state", {"on": {"value": True}})
+    except Exception as e:
+        print(f"  warning: failed to turn on: {e}", file=sys.stderr)
+
+
+def dominant_color(img: Image.Image, palette_size: int = 8) -> tuple[int, int, int]:
+    """Quantize to a small palette, return the most-common saturated, non-dark color."""
+    small = img.convert("RGB").resize((160, 90))
+    quantized = small.quantize(colors=palette_size)
+    palette = quantized.getpalette()
+    counts = sorted(quantized.getcolors(), reverse=True)  # [(count, palette_idx), ...]
+    fallback: tuple[int, int, int] | None = None
+    for _count, idx in counts:
+        r, g, b = palette[idx * 3], palette[idx * 3 + 1], palette[idx * 3 + 2]
+        if fallback is None:
+            fallback = (r, g, b)
+        if max(r, g, b) < 35:  # too dark
+            continue
+        if max(r, g, b) - min(r, g, b) < 18:  # too gray
+            continue
+        return r, g, b
+    return fallback or (0, 0, 0)
+
+
+def rgb_to_hsb(r: int, g: int, b: int) -> tuple[int, int, int]:
+    h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+    return int(h * 360), int(s * 100), int(v * 100)
+
+
+def scene_luminance(img: Image.Image) -> float:
+    """Mean perceived luminance of the frame, 0.0-1.0."""
+    small = img.convert("L").resize((80, 45))
+    px = small.tobytes()
+    return sum(px) / (len(px) * 255.0)
+
+
+def load_runtime() -> dict:
+    if not RUNTIME_PATH.exists():
+        return {}
+    try:
+        return json.loads(RUNTIME_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def save_runtime(updates: dict) -> dict:
+    current = load_runtime()
+    current.update(updates)
+    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    tmp = RUNTIME_PATH.with_suffix(".tmp")
+    tmp.write_text(json.dumps(current, indent=2))
+    tmp.replace(RUNTIME_PATH)
+    return current
+
+
+def add_sync_args(p: argparse.ArgumentParser) -> None:
+    p.add_argument("--rate", type=float, default=5.0, help="updates per second (default 5, max ~10)")
+    p.add_argument("--brightness", type=int, default=None, help="lock brightness 1-100 (disables auto-dim)")
+    p.add_argument("--no-auto-dim", action="store_true", help="disable auto-dim (default: auto-dim is ON)")
+    p.add_argument("--dim-min", type=int, default=DEFAULT_DIM_MIN, help=f"auto-dim floor (default {DEFAULT_DIM_MIN})")
+    p.add_argument("--dim-max", type=int, default=DEFAULT_DIM_MAX, help=f"auto-dim ceiling (default {DEFAULT_DIM_MAX})")
+    p.add_argument("--smooth", type=float, default=0.5, help="0=instant, 1=frozen (default 0.5)")
+    p.add_argument("--monitor", type=int, default=1, help="display index (1=primary, default 1)")
+    p.add_argument("--top-margin", type=int, default=32, help="pixels to crop from the top (skip menu bar, default 32)")
+    p.add_argument("--bottom-margin", type=int, default=32, help="pixels to crop from the bottom (skip dock, default 32)")
+    p.add_argument("--no-restore", action="store_true", help="don't restore previous effect on exit")
+    p.add_argument("--pair", action="store_true", help="force re-discovery and pairing (ignores env + cached config)")
+
+
+def forward_sync_args(args: argparse.Namespace) -> list[str]:
+    """Reconstruct CLI flags from a parsed Namespace, for passing to the daemon child."""
+    parts: list[str] = [
+        "--rate", str(args.rate),
+        "--smooth", str(args.smooth),
+        "--monitor", str(args.monitor),
+        "--top-margin", str(args.top_margin),
+        "--bottom-margin", str(args.bottom_margin),
+        "--dim-min", str(args.dim_min),
+        "--dim-max", str(args.dim_max),
+    ]
+    if args.brightness is not None:
+        parts.extend(["--brightness", str(args.brightness)])
+    if args.no_auto_dim:
+        parts.append("--no-auto-dim")
+    if args.no_restore:
+        parts.append("--no-restore")
+    if args.pair:
+        parts.append("--pair")
+    return parts
+
+
+def is_alive(pid: int) -> bool:
+    try:
+        os.kill(pid, 0)
+        return True
+    except OSError:
+        return False
+
+
+def read_pidfile() -> int | None:
+    if not PID_PATH.exists():
+        return None
+    try:
+        pid = int(PID_PATH.read_text().strip())
+    except (OSError, ValueError):
+        return None
+    return pid if is_alive(pid) else None
+
+
+def run_sync(args: argparse.Namespace) -> int:
+    """Foreground sync loop. Writes PID to PID_PATH if NANOLEAF_SYNC_DAEMON is set."""
+    global API_BASE
+    ip, token, port = resolve_connection(force_pair=args.pair)
+    API_BASE = f"http://{ip}:{port}/api/v1/{token}"
+
+    is_daemon = bool(os.environ.get("NANOLEAF_SYNC_DAEMON"))
+    if is_daemon:
+        PID_PATH.parent.mkdir(parents=True, exist_ok=True)
+        PID_PATH.write_text(str(os.getpid()))
+
+    # Seed the runtime config from CLI args so `set` has a sensible baseline.
+    save_runtime({
+        "brightness": args.brightness,
+        "auto_dim": (args.brightness is None) and (not args.no_auto_dim),
+        "dim_min": args.dim_min,
+        "dim_max": args.dim_max,
+    })
+    runtime = load_runtime()
+    runtime_mtime = RUNTIME_PATH.stat().st_mtime if RUNTIME_PATH.exists() else 0.0
+
+    interval = 1.0 / args.rate
+    new_weight = 1.0 - max(0.0, min(1.0, args.smooth))
+
+    previous_effect = None if args.no_restore else get_current_effect()
+    if previous_effect:
+        print(f"Saved current effect: '{previous_effect}' (will restore on exit)")
+
+    ensure_on()
+    print(f"Syncing screen → {ip} @ {args.rate} Hz. Ctrl+C to stop.", flush=True)
+
+    stopped = False
+
+    def stop(_sig, _frame):
+        nonlocal stopped
+        stopped = True
+
+    signal.signal(signal.SIGINT, stop)
+    signal.signal(signal.SIGTERM, stop)
+
+    smoothed: tuple[float, float, float] | None = None
+
+    try:
+        with mss() as sct:
+            if args.monitor >= len(sct.monitors):
+                print(f"Monitor {args.monitor} not found. Available: {len(sct.monitors) - 1}", file=sys.stderr)
+                return 1
+            raw_mon = sct.monitors[args.monitor]
+            top_m = max(0, args.top_margin)
+            bot_m = max(0, args.bottom_margin)
+            cropped_h = raw_mon["height"] - top_m - bot_m
+            if cropped_h <= 0:
+                print(f"margins too large: {top_m}+{bot_m} >= monitor height {raw_mon['height']}", file=sys.stderr)
+                return 1
+            mon = {
+                "left": raw_mon["left"],
+                "top": raw_mon["top"] + top_m,
+                "width": raw_mon["width"],
+                "height": cropped_h,
+            }
+            while not stopped:
+                t0 = time.time()
+
+                # Pick up runtime config changes from `nanoleaf-sync set` (cheap mtime check).
+                try:
+                    m = RUNTIME_PATH.stat().st_mtime
+                    if m != runtime_mtime:
+                        runtime = load_runtime()
+                        runtime_mtime = m
+                except OSError:
+                    pass
+
+                shot = sct.grab(mon)
+                img = Image.frombytes("RGB", shot.size, shot.bgra, "raw", "BGRX")
+                r, g, b = dominant_color(img)
+                if smoothed is None:
+                    smoothed = (float(r), float(g), float(b))
+                else:
+                    smoothed = tuple(new_weight * n + (1 - new_weight) * o for n, o in zip((r, g, b), smoothed))
+                sr, sg, sb = (int(c) for c in smoothed)
+                h, s, _v = rgb_to_hsb(sr, sg, sb)
+                payload: dict = {"hue": {"value": h}, "sat": {"value": s}}
+
+                dmin = int(runtime.get("dim_min", DEFAULT_DIM_MIN))
+                dmax = int(runtime.get("dim_max", DEFAULT_DIM_MAX))
+                if runtime.get("brightness") is not None:
+                    payload["brightness"] = {"value": int(runtime["brightness"])}
+                elif runtime.get("auto_dim"):
+                    lum = scene_luminance(img)
+                    b_val = int(round(dmin + lum * (dmax - dmin)))
+                    payload["brightness"] = {"value": max(1, min(100, b_val))}
+
+                try:
+                    api_request("PUT", "/state", payload)
+                except Exception as e:
+                    print(f"  put failed: {e}", file=sys.stderr, flush=True)
+                elapsed = time.time() - t0
+                sleep_for = interval - elapsed
+                if sleep_for > 0:
+                    # break sleep into small chunks so Ctrl+C feels responsive
+                    end = time.time() + sleep_for
+                    while not stopped and time.time() < end:
+                        time.sleep(min(0.05, end - time.time()))
+
+        print("\nStopping...", flush=True)
+        if previous_effect:
+            restore_effect(previous_effect)
+            print(f"Restored '{previous_effect}'.", flush=True)
+        return 0
+    finally:
+        if is_daemon and PID_PATH.exists():
+            try:
+                if int(PID_PATH.read_text().strip()) == os.getpid():
+                    PID_PATH.unlink()
+            except (OSError, ValueError):
+                pass
+
+
+def cmd_start(args: argparse.Namespace) -> int:
+    existing = read_pidfile()
+    if existing:
+        print(f"already running (PID {existing}). Use `nanoleaf-sync stop` first.", file=sys.stderr)
+        return 1
+    if PID_PATH.exists():
+        PID_PATH.unlink()  # stale
+
+    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    log = open(LOG_PATH, "a")
+    log.write(f"\n--- started at {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
+    log.flush()
+
+    env = os.environ.copy()
+    env["NANOLEAF_SYNC_DAEMON"] = "1"
+
+    proc = subprocess.Popen(
+        [str(SCRIPT_PATH), "run", *forward_sync_args(args)],
+        stdout=log, stderr=log, stdin=subprocess.DEVNULL,
+        start_new_session=True, close_fds=True, env=env,
+    )
+    # Brief wait to surface immediate failures.
+    time.sleep(0.6)
+    if proc.poll() is not None:
+        print(f"failed to start (exit {proc.returncode}); see {LOG_PATH}", file=sys.stderr)
+        return 1
+    print(f"started (PID {proc.pid}). logs: {LOG_PATH}")
+    return 0
+
+
+def cmd_stop() -> int:
+    pid = read_pidfile()
+    if pid is None:
+        print("not running", file=sys.stderr)
+        if PID_PATH.exists():
+            PID_PATH.unlink()
+        return 1
+    try:
+        os.kill(pid, signal.SIGTERM)
+    except OSError as e:
+        print(f"failed to signal PID {pid}: {e}", file=sys.stderr)
+        return 1
+    # Wait up to ~6s for graceful exit (script restores effect on shutdown)
+    for _ in range(60):
+        if not is_alive(pid):
+            break
+        time.sleep(0.1)
+    if is_alive(pid):
+        print(f"PID {pid} still alive after SIGTERM, sending SIGKILL", file=sys.stderr)
+        try:
+            os.kill(pid, signal.SIGKILL)
+        except OSError:
+            pass
+    if PID_PATH.exists():
+        PID_PATH.unlink()
+    print("stopped")
+    return 0
+
+
+def cmd_status() -> int:
+    pid = read_pidfile()
+    if pid is None:
+        print("not running")
+        return 1
+    print(f"running (PID {pid}). logs: {LOG_PATH}")
+    return 0
+
+
+def cmd_set(args: argparse.Namespace) -> int:
+    updates: dict = {}
+    if args.brightness is not None:
+        # Explicit brightness wins over auto-dim.
+        updates["brightness"] = args.brightness
+        updates["auto_dim"] = False
+    if args.auto_dim:
+        updates["auto_dim"] = True
+        updates["brightness"] = None
+    if args.no_auto_dim:
+        updates["auto_dim"] = False
+    if args.dim_min is not None:
+        updates["dim_min"] = args.dim_min
+    if args.dim_max is not None:
+        updates["dim_max"] = args.dim_max
+
+    if not updates:
+        print(json.dumps(load_runtime(), indent=2))
+        return 0
+
+    final = save_runtime(updates)
+    pid = read_pidfile()
+    if pid:
+        print(f"updated (daemon PID {pid} will apply within ~1 frame)")
+    else:
+        print("updated (no daemon running; values will apply at next `start`)")
+    print(json.dumps(final, indent=2))
+    return 0
+
+
+HELP_DOC = """\
+nanoleaf-sync — mirror the screen's dominant color to a Nanoleaf controller,
+or hand off to the controller's built-in rhythm mode for music.
+
+QUICK START
+  nanoleaf-sync start              # background daemon, auto-dim ON, defaults
+  nanoleaf-sync status             # check if running
+  nanoleaf-sync stop               # stop, restore previous Nanoleaf effect
+  nanoleaf-sync logs -f            # follow the daemon log
+  nanoleaf-sync rhythm             # switch the controller into its native
+                                   # mic-driven rhythm effect for music
+
+  First run on a new network triggers mDNS discovery + interactive pairing
+  (hold the power button ~5-7s). Creds cached at
+  ~/.config/nanoleaf-sync/config.json (perms 600).
+
+COMMANDS
+  start [flags]      Start daemon in the background (returns immediately).
+  stop               SIGTERM, wait <=6s, fall back to SIGKILL, restore prior effect.
+  status             Print PID or 'not running' (exit 1 if not running).
+  restart [flags]    stop then start with new flags.
+  run [flags]        Foreground sync (Ctrl+C to stop). Implicit if no subcommand.
+  logs [-f]          tail ~/.config/nanoleaf-sync/nanoleaf-sync.log. -f follows.
+  set [flags]        Live-tweak a running daemon (applies within ~1 frame).
+  auto-dim [on|off]  Shortcut for `set --auto-dim` / `set --no-auto-dim`.
+  rhythm [name|list|off]  Hand off to the Nanoleaf's built-in rhythm effect.
+                     `rhythm list`              list available rhythm-like effects.
+                     `rhythm "Pulse Pop Beats"` select a specific one (also remembers
+                                                it as your default for next time).
+                     `rhythm`                   use your saved default; otherwise pick
+                                                the first matching effect.
+                     `rhythm off`               restore the effect that was active
+                                                before rhythm was enabled.
+  help               This screen.
+
+  Bare flags (`nanoleaf-sync --rate 8`) implicitly mean `run --rate 8`.
+
+FLAGS for start / run / restart
+  --rate N            updates per second (default 5, practical max ~10)
+  --smooth X          EMA weight, 0 instant -> 1 frozen (default 0.5)
+  --brightness N      lock at N% (1-100); disables auto-dim
+  --no-auto-dim       disable auto-dim (default: auto-dim is ON)
+  --dim-min N         auto-dim floor (default 5)
+  --dim-max N         auto-dim ceiling (default 100)
+  --monitor N         display index, 1=primary (default 1)
+  --top-margin PX     crop from top, skip menu bar (default 32)
+  --bottom-margin PX  crop from bottom, skip dock (default 32)
+  --no-restore        don't save/restore previous effect on exit
+  --pair              force re-discovery + re-pairing (ignores cached creds)
+
+BRIGHTNESS SOURCE  (precedence top-down)
+  1. Fixed:    `--brightness N` (or `set --brightness N`).
+  2. Auto-dim: ON by default. Mean frame luminance mapped into
+               [--dim-min, --dim-max]. Dark scenes -> dim, bright scenes -> bright.
+  3. None:     If both are off, Nanoleaf keeps its existing brightness.
+
+  For music reactivity, use `nanoleaf-sync rhythm` — the controller's
+  built-in mic + firmware does this much better than a screen-sync script.
+
+LIVE TWEAKS
+  The daemon polls ~/.config/nanoleaf-sync/runtime.json each frame.
+    nanoleaf-sync set --brightness 40            # lock 40% (kills auto-dim)
+    nanoleaf-sync set --auto-dim                 # re-enable auto-dim
+    nanoleaf-sync set --dim-min 10 --dim-max 80  # constrain range
+    nanoleaf-sync set                            # print current runtime config
+
+CONFIG / STATE FILES  (~/.config/nanoleaf-sync/)
+  config.json         controller IP/token/port (perms 600)
+  runtime.json        live tweakable values, polled each frame
+  rhythm_state.json   `previous_effect` (for `rhythm off`) and `preferred_rhythm`
+  nanoleaf-sync.pid   daemon PID
+  nanoleaf-sync.log   daemon stdout+stderr (appended)
+
+ENV VAR OVERRIDES (highest precedence over config.json)
+  NANOLEAF_IP, NANOLEAF_TOKEN, NANOLEAF_PORT (default 16021)
+
+RECOMMENDED CONFIGS
+  # Most real-time, for gaming / video
+  nanoleaf-sync start --rate 10 --smooth 0.2
+  # Calmer ambient for reading
+  nanoleaf-sync start --rate 3 --smooth 0.7 --dim-max 60
+  # Fixed bright color, mood-lamp style
+  nanoleaf-sync start --brightness 80 --smooth 0.8
+  # Music: hand off to the controller's native firmware
+  nanoleaf-sync rhythm
+
+MACOS PERMISSION GOTCHAS  (Sequoia/Tahoe)
+  The script needs TWO macOS permissions, scoped to the terminal app
+  (e.g. Ghostty). The daemon inherits them only if the terminal had
+  them when it spawned.
+
+  1) Screen & System Audio Recording
+     Without it: captured frames show your wallpaper instead of windows.
+     Symptom: lights respond to desktop, not to YouTube/games.
+  2) Local Network
+     Without it: cannot reach the controller.
+     Symptom: `put failed: ... No route to host` despite ping working.
+
+  Grant each via Settings -> Privacy & Security -> the matching pane.
+  After granting, FULLY quit and relaunch the terminal (not just close
+  the window). If using tmux, also `tmux kill-server` so the server
+  re-inherits perms.
+
+TROUBLESHOOTING
+  put failed: ... No route to host  -> Local Network permission (see above).
+  Lights follow wallpaper            -> Screen Recording permission (see above).
+  `start` returns 'failed to start'  -> check `nanoleaf-sync logs` for the
+                                        underlying traceback.
+  Stuck color after Ctrl+C           -> controller unreachable at exit; reset
+                                        in the Nanoleaf app or re-run.
+  `set` has no effect                -> `nanoleaf-sync status` first; if running,
+                                        check logs for errors.
+  Wrong controller after moving net  -> `nanoleaf-sync run --pair` (re-pair).
+  `rhythm off` says "no saved prior" -> rhythm was never enabled via this
+                                        script, so there's nothing to restore.
+                                        Pick any effect in the Nanoleaf app.
+
+HOW IT WORKS (briefly)
+  1. mss grabs primary monitor minus top/bottom margins.
+  2. Frame downscaled to 160x90, quantized to 8-color palette.
+  3. Most-saturated non-dark color picked as dominant.
+  4. EMA-smoothed across frames (`--smooth`).
+  5. Converted to HSB; PUT to /api/v1/{token}/state on the Nanoleaf.
+  6. Brightness from (in order): fixed value -> frame luminance, mapped to
+     [dim_min, dim_max]. Included in the same PUT.
+  7. On stop, the effect captured at startup is restored.
+  8. `rhythm` instead PUTs an effect name to /effects so the controller's
+     own firmware handles music reactivity via its built-in mic.
+"""
+
+
+def cmd_auto_dim(state: str | None) -> int:
+    """Shortcut: `nanoleaf-sync auto-dim` enables, `auto-dim off` disables."""
+    if state in (None, "on"):
+        save_runtime({"auto_dim": True, "brightness": None})
+        msg = "auto-dim ON"
+    elif state == "off":
+        save_runtime({"auto_dim": False})
+        msg = "auto-dim OFF"
+    else:
+        print(f"unknown state '{state}', use 'on' or 'off'", file=sys.stderr)
+        return 2
+    pid = read_pidfile()
+    suffix = f" (daemon PID {pid} will apply within ~1 frame)" if pid else " (no daemon running)"
+    print(msg + suffix)
+    return 0
+
+
+# --- rhythm (delegate music sync to the Nanoleaf's built-in firmware) -------
+# The Nanoleaf controller has a microphone and a set of "rhythm" effects that
+# react to room audio in firmware. We just need to stop the screen-sync daemon
+# (so it doesn't overwrite the effect) and PUT the effect name to /effects.
+
+RHYTHM_NAME_HINTS = ("rhythm", "rhythmic", "pulse", "beat", "sound bar", "streak")
+
+
+def list_effects() -> list[str]:
+    try:
+        return api_request("GET", "/effects/effectsList") or []
+    except Exception as e:
+        print(f"failed to list effects: {e}", file=sys.stderr)
+        return []
+
+
+def find_rhythm_effects(effects: list[str]) -> list[str]:
+    matches = []
+    for name in effects:
+        low = name.lower()
+        if any(h in low for h in RHYTHM_NAME_HINTS):
+            matches.append(name)
+    return matches
+
+
+def load_rhythm_state() -> dict:
+    if not RHYTHM_STATE_PATH.exists():
+        return {}
+    try:
+        return json.loads(RHYTHM_STATE_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def save_rhythm_state(updates: dict) -> dict:
+    current = load_rhythm_state()
+    current.update(updates)
+    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    tmp = RHYTHM_STATE_PATH.with_suffix(".tmp")
+    tmp.write_text(json.dumps(current, indent=2))
+    tmp.replace(RHYTHM_STATE_PATH)
+    return current
+
+
+def cmd_rhythm(name: str | None, list_only: bool, off: bool) -> int:
+    # Need a configured controller before we can hit the API.
+    ip, token, port = resolve_connection(force_pair=False)
+    global API_BASE
+    API_BASE = f"http://{ip}:{port}/api/v1/{token}"
+
+    state = load_rhythm_state()
+
+    if off:
+        previous = state.get("previous_effect")
+        if not previous:
+            print("rhythm isn't currently active (no saved previous effect).", file=sys.stderr)
+            return 1
+        try:
+            api_request("PUT", "/effects", {"select": previous})
+        except Exception as e:
+            print(f"failed to restore '{previous}': {e}", file=sys.stderr)
+            return 1
+        save_rhythm_state({"previous_effect": None})
+        print(f"rhythm OFF — restored '{previous}'")
+        return 0
+
+    effects = list_effects()
+    if not effects:
+        print("no effects returned by the controller", file=sys.stderr)
+        return 1
+    rhythm_effects = find_rhythm_effects(effects)
+
+    if list_only:
+        preferred = state.get("preferred_rhythm")
+        if rhythm_effects:
+            print("Rhythm-like effects on this controller:")
+            for n in rhythm_effects:
+                marker = "  ← default" if n == preferred else ""
+                print(f"  {n}{marker}")
+        else:
+            print("No effects matching rhythm name hints found. All effects:")
+            for n in effects:
+                print(f"  {n}")
+        if preferred:
+            print(f"\nyour saved default: {preferred}")
+        return 0
+
+    # Determine which effect to activate.
+    target: str | None = name
+    if target is None:
+        target = state.get("preferred_rhythm")
+    if target is None:
+        if not rhythm_effects:
+            print(
+                "no rhythm-like effects found. Try `nanoleaf-sync rhythm list` and pick\n"
+                "one explicitly: `nanoleaf-sync rhythm \"<name>\"`",
+                file=sys.stderr,
+            )
+            return 1
+        target = rhythm_effects[0]
+    if target not in effects:
+        print(f"effect '{target}' not on this controller. `nanoleaf-sync rhythm list` to see options.", file=sys.stderr)
+        return 1
+
+    # Stop the screen-sync daemon so it doesn't keep PUTing manual colors
+    # over our selected effect.
+    pid = read_pidfile()
+    if pid:
+        print("stopping screen-sync daemon first...")
+        cmd_stop()
+
+    # Save the current effect as "previous" so `rhythm off` can restore it
+    # later. Don't overwrite if rhythm is already active (preserve the
+    # original pre-rhythm state).
+    if not state.get("previous_effect"):
+        current_effect = get_current_effect()
+        if current_effect and current_effect != target:
+            save_rhythm_state({"previous_effect": current_effect})
+
+    try:
+        api_request("PUT", "/effects", {"select": target})
+    except Exception as e:
+        print(f"failed to select effect '{target}': {e}", file=sys.stderr)
+        return 1
+
+    # Remember this effect as the new default for `rhythm` with no args.
+    if name is not None:
+        save_rhythm_state({"preferred_rhythm": target})
+
+    print(f"activated rhythm effect: '{target}'")
+    print("the controller's built-in mic now drives the lights.")
+    print("turn off: `nanoleaf-sync rhythm off` (restores prior effect)")
+    print("         or `nanoleaf-sync start` to return to screen-sync mode")
+    return 0
+
+
+def cmd_logs(follow: bool) -> int:
+    if not LOG_PATH.exists():
+        print(f"no log file at {LOG_PATH}", file=sys.stderr)
+        return 1
+    cmd = ["tail", "-f", str(LOG_PATH)] if follow else ["tail", "-n", "200", str(LOG_PATH)]
+    try:
+        return subprocess.call(cmd)
+    except KeyboardInterrupt:
+        return 0
+
+
+def main() -> int:
+    # Backward-compat: bare flags (e.g. `nanoleaf-sync --rate 2`) default to `run`.
+    KNOWN_CMDS = {"run", "start", "stop", "status", "restart", "logs", "set", "auto-dim", "rhythm", "help"}
+    argv = sys.argv[1:]
+    if argv and argv[0] not in KNOWN_CMDS and argv[0] not in ("-h", "--help"):
+        argv = ["run", *argv]
+    if not argv:
+        argv = ["run"]
+
+    p = argparse.ArgumentParser(
+        description="Sync Nanoleaf to screen dominant color (foreground or as a background daemon).",
+        epilog="For full flag reference, examples, and macOS gotchas, run: nanoleaf-sync help\n"
+               "For flags of a specific subcommand: nanoleaf-sync <cmd> --help",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    run = sub.add_parser("run", help="run in the foreground (Ctrl+C to stop)")
+    add_sync_args(run)
+
+    start = sub.add_parser("start", help="start in the background; logs to ~/.config/nanoleaf-sync/nanoleaf-sync.log")
+    add_sync_args(start)
+
+    sub.add_parser("stop", help="stop the background daemon")
+    sub.add_parser("status", help="show whether the daemon is running")
+
+    restart = sub.add_parser("restart", help="stop then start with new flags")
+    add_sync_args(restart)
+
+    logs = sub.add_parser("logs", help="show recent daemon logs (use -f to follow)")
+    logs.add_argument("-f", "--follow", action="store_true")
+
+    setp = sub.add_parser("set", help="tweak a running daemon: brightness, auto-dim, dim range")
+    setp.add_argument("--brightness", type=int, default=None, help="lock brightness 1-100 (disables auto-dim)")
+    setp.add_argument("--auto-dim", action="store_true", help="enable luminance auto-dim (clears fixed brightness)")
+    setp.add_argument("--no-auto-dim", action="store_true", help="disable auto-dim")
+    setp.add_argument("--dim-min", type=int, default=None, help="auto-dim floor")
+    setp.add_argument("--dim-max", type=int, default=None, help="auto-dim ceiling")
+
+    autodim = sub.add_parser("auto-dim", help="shortcut: `auto-dim` enables, `auto-dim off` disables")
+    autodim.add_argument("state", nargs="?", choices=["on", "off"], default=None)
+
+    rhy = sub.add_parser("rhythm", help="hand off to the Nanoleaf's built-in mic-driven rhythm effect")
+    rhy.add_argument("target", nargs="?", default=None,
+                     help="effect name to select; 'list' to list rhythm effects; 'off' to "
+                          "restore the previous effect; omit to use your saved default")
+
+    sub.add_parser("help", help="show this help message")
+
+    args = p.parse_args(argv)
+
+    if args.cmd == "run":
+        return run_sync(args)
+    if args.cmd == "start":
+        return cmd_start(args)
+    if args.cmd == "stop":
+        return cmd_stop()
+    if args.cmd == "status":
+        return cmd_status()
+    if args.cmd == "restart":
+        cmd_stop()
+        return cmd_start(args)
+    if args.cmd == "logs":
+        return cmd_logs(args.follow)
+    if args.cmd == "set":
+        return cmd_set(args)
+    if args.cmd == "auto-dim":
+        return cmd_auto_dim(args.state)
+    if args.cmd == "rhythm":
+        target = args.target
+        list_only = target == "list"
+        off = target == "off"
+        passthrough = None if (list_only or off) else target
+        return cmd_rhythm(passthrough, list_only=list_only, off=off)
+    if args.cmd == "help":
+        print(HELP_DOC)
+        return 0
+    return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main())
