@@ -7,8 +7,8 @@ set -euo pipefail
 DIR="$(cd "$(dirname "$0")" && pwd)"
 TOML="$DIR/playzones.toml"
 
-# Tokyo Night palette + nerd-font icon (matches sesh-picker.sh).
-ICON_FG=$'\033[38;2;125;207;255m'   # #7dcfff cyan
+# Use ANSI named colors so the terminal palette drives light/dark theming.
+ICON_FG=$'\033[36m'   # terminal cyan
 RESET=$'\033[0m'
 ICON=$''                          # nerd-font glyph (gamepad-ish)
 
@@ -110,7 +110,6 @@ cmd_main() {
     --pointer '▌' --marker '▍' \
     --prompt '❯ ' \
     --delimiter=$'\t' --with-nth=1,2 --nth=1,2 \
-    --color='fg:#c0caf5,bg:-1,fg+:#c0caf5,bg+:#364a82,hl:#7aa2f7,hl+:#bb9af7,pointer:#bb9af7,prompt:#7dcfff,marker:#9ece6a,gutter:-1' \
     --bind 'tab:down,btab:up' \
     --preview "bash $script --preview {3}" \
     --preview-window 'right:45%:wrap:border-left' \
