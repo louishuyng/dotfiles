@@ -1,0 +1,69 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+#
+# Only non-default tweaks. Every key here is verified against yazi 26.5.x.
+# Defining [opener]/[open] replaces Yazi's built-in lists, so they are complete.
+# Yazi passes selected paths as shell args; use "$@"/"$1" (not deprecated %s placeholders).
+
+# : Manager {{{
+
+[mgr]
+ratio          = [1, 3, 4]
+sort_by        = "natural"
+sort_sensitive = false
+sort_dir_first = true
+linemode       = "size"
+show_hidden    = false
+show_symlink   = true
+scrolloff      = 5
+
+# : }}}
+
+# : Preview {{{
+
+[preview]
+wrap     = "no"
+tab_size = 2
+
+# : }}}
+
+# : Opener {{{
+
+[opener]
+edit = [
+  { run = '${EDITOR:-nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+]
+open = [
+  { run = 'open "$@"', desc = "Open", for = "macos" },
+]
+reveal = [
+  { run = 'open -R "$1"', desc = "Reveal in Finder", for = "macos" },
+]
+extract = [
+  { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+]
+play = [
+  { run = 'open "$@"', desc = "Play", for = "macos" },
+]
+
+# : }}}
+
+# : Open {{{
+
+[open]
+rules = [
+  { mime = "inode/directory",       use = ["open", "reveal"] },
+  { mime = "text/html",              use = ["open", "edit", "reveal"] },
+  { mime = "application/xhtml+xml",  use = ["open", "edit", "reveal"] },
+  { mime = "text/*",                 use = ["edit", "reveal"] },
+  { mime = "image/*",                use = ["open", "reveal"] },
+  { mime = "{audio,video}/*",        use = ["play", "reveal"] },
+  { mime = "application/{json,ndjson,javascript}", use = ["edit", "reveal"] },
+  { mime = "application/pdf",        use = ["open", "reveal"] },
+
+  { mime = "application/{,g}zip",                          use = ["extract", "reveal"] },
+  { mime = "application/{tar,bzip2,7z-compressed,xz,rar}", use = ["extract", "reveal"] },
+
+  { mime = "*",                      use = ["open", "edit", "reveal"] },
+]
+
+# : }}}

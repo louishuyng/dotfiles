@@ -1,19 +1,34 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
+on   = [ "e" ]
+run  = 'shell --block "${EDITOR:-nvim} \"$0\""'
+desc = "Edit hovered file"
+
+[[mgr.prepend_keymap]]
 on   = [ "g", "g" ]
 run  = "cd ~/LX14/repository/github.com"
 desc = "Go to github repository"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "w" ]
 run  = "cd ~/LX14/repository/github.com/regask"
 desc = "Go to main work"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "r" ]
 run  = "cd ~/LX14/projects/research"
 desc = "Go to research"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "p" ]
 run  = "cd ~/LX14/projects"
 desc = "Go to projects"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "d" ]
+run  = "cd ~/Downloads"
+desc = "Go to Downloads"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "s" ]
+run  = "cd ~/Screenshot"
+desc = "Go to Screenshot"
