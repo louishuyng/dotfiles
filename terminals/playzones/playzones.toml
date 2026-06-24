@@ -9,6 +9,6 @@
 
 
 [[playzone]]
-name = "kli-regask"
-description = "kli TUI in k9s-play folder"
-script = "scripts/kli-regask.sh"
+name = "ku-regask"
+description = "ku TUI in k9s-play folder"
+script = "scripts/ku-regask.sh"
