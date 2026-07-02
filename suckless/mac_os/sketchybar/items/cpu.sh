@@ -1,33 +1,53 @@
-#!/opt/homebrew/bin/bash
+#!/bin/bash
 
-source "$CONFIG_DIR/colors.sh"
+cpu_top=(
+  label.font="$FONT:Semibold:11"
+  label=CPU
+  icon.drawing=off
+  width=0
+  padding_right=15
+  y_offset=8
+)
 
-# Display order left->right: C R D
-sketchybar --add item disk right \
-	--set disk \
-		update_freq=60 \
-		icon.drawing=off \
-		label="D:0" \
-		label.color=$AMBER \
-		label.padding_left=2 \
-		label.padding_right=0 \
-		script="$PLUGIN_DIR/disk.sh"
+cpu_percent=(
+  label.font="$FONT:Heavy:13"
+  label=CPU
+  y_offset=-6
+  padding_right=15
+  width=55
+  icon.drawing=off
+  update_freq=4
+  mach_helper="$HELPER"
+)
 
-sketchybar --add item ram right \
-	--set ram \
-		update_freq=5 \
-		icon.drawing=off \
-		label="R:0%" \
-		label.color=$GREEN \
-		label.padding_left=2 \
-		label.padding_right=2 \
-		script="$PLUGIN_DIR/ram.sh"
+cpu_sys=(
+  width=0
+  graph.color=$RED
+  graph.fill_color=$RED
+  label.drawing=off
+  icon.drawing=off
+  background.height=30
+  background.drawing=on
+  background.color=$TRANSPARENT
+)
 
-# cpu item: label is updated by the autonomous helper daemon (see sketchybarrc).
-sketchybar --add item cpu right \
-	--set cpu \
-		icon.drawing=off \
-		label="C:0%" \
-		label.color=$RED_SOFT \
-		label.padding_left=6 \
-		label.padding_right=2
+cpu_user=(
+  graph.color=$BLUE
+  label.drawing=off
+  icon.drawing=off
+  background.height=30
+  background.drawing=on
+  background.color=$TRANSPARENT
+)
+
+sketchybar --add item cpu.top right              \
+           --set cpu.top "${cpu_top[@]}"         \
+                                                 \
+           --add item cpu.percent right          \
+           --set cpu.percent "${cpu_percent[@]}" \
+                                                 \
+           --add graph cpu.sys right 75          \
+           --set cpu.sys "${cpu_sys[@]}"         \
+                                                 \
+           --add graph cpu.user right 75         \
+           --set cpu.user "${cpu_user[@]}"

@@ -3,9 +3,9 @@
 SCRIPT="$(realpath "$0")"
 SESH_TOML="${SESH_TOML:-$HOME/.config/sesh/sesh.toml}"
 
-# Tokyo Night palette
-ICON_TMUX_FG=$'\033[38;2;125;207;255m'  # #7dcfff cyan
-ICON_ZOX_FG=$'\033[38;2;224;175;104m'   # #e0af68 yellow
+# Use ANSI named colors so the terminal palette drives light/dark theming.
+ICON_TMUX_FG=$'\033[36m'  # terminal cyan
+ICON_ZOX_FG=$'\033[33m'   # terminal yellow
 RESET=$'\033[0m'
 ICON_TMUX=$''  # nerd-font terminal
 ICON_ZOX=$''   # nerd-font lightning bolt
@@ -157,7 +157,6 @@ cmd_main() {
     --pointer '▌' --marker '▍' \
     --prompt '❯ ' \
     --delimiter=$'\t' --with-nth=1 --nth=1 \
-    --color='fg:#c0caf5,bg:-1,fg+:#c0caf5,bg+:#364a82,hl:#7aa2f7,hl+:#bb9af7,pointer:#bb9af7,prompt:#7dcfff,marker:#9ece6a,gutter:-1' \
     --bind 'tab:down,btab:up' \
     --bind "ctrl-d:execute-silent(tmux kill-window -t {2} 2>/dev/null; bash $SCRIPT --rebuild $tmp/all.list)+reload(cat $tmp/all.list)" \
     --preview "bash $SCRIPT --preview {2}" \

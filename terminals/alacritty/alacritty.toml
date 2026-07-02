@@ -3,7 +3,7 @@ TERM = "xterm-256color"
 
 # Font Configuration
 [font]
-size = 15
+size = 16
 
 [font.normal]
 family = "Terminess Nerd Font"
@@ -32,7 +32,7 @@ decorations = "none"
 decorations_theme_variant = "none"
 padding = { x = 0, y = 0 }
 dimensions = { columns = 210, lines = 50 }
-dynamic_padding = true
+dynamic_padding = false
 startup_mode = "Windowed"
 title = "Hell's Terminal"
 dynamic_title = false

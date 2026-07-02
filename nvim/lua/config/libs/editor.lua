@@ -136,27 +136,6 @@ vim.keymap.set('n', '<leader>un', function()
   require('notify').dismiss({ silent = true, pending = true })
 end, { desc = 'Dismiss all Notifications' })
 
--- SmoothCursor
-require('smoothcursor').setup({
-  type = 'default',
-  cursor = '▷',
-  texthl = 'SmoothCursor',
-  fancy = {
-    enable = true,
-    head = { cursor = '▷', texthl = 'SmoothCursor' },
-    body = {
-      { cursor = '●', texthl = 'SmoothCursorBody' },
-      { cursor = '●', texthl = 'SmoothCursorBody' },
-      { cursor = '•', texthl = 'SmoothCursorBody' },
-      { cursor = '.', texthl = 'SmoothCursorBody' },
-    },
-  },
-  speed = 25,
-  intervals = 35,
-  threshold = 3,
-  disabled_filetypes = { 'alpha', 'NvimTree', 'oil', 'mason' },
-})
-
 -- Material icons + web-devicons
 local web_devicons_ok, web_devicons = pcall(require, 'nvim-web-devicons')
 if web_devicons_ok then

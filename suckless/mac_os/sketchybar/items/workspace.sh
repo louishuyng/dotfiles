@@ -1,41 +1,30 @@
-#!/opt/homebrew/bin/bash
+#!/bin/bash
 
-# One item per Aerospace workspace
+# A single pill on the left of the bar that shows the currently focused
+# Aerospace workspace. Triggered by the `aerospace_workspace_change` event
+# emitted from aerospace.toml's `exec-on-workspace-change`.
 
-declare -A WS_LABELS
-WS_LABELS=(
-	[Any]="ANY"
-	[Chat]="CHAT"
-	[Dev]="DEV"
-	[Inbox]="INBOX"
-	[Planing]="PLAN"
-	[Reading]="READ"
-	[Terminal]="TERM"
-	[Virtual]="VIRTUAL"
-	[Web]="WEB"
+# Register the custom event fired by aerospace.toml's exec-on-workspace-change.
+# Without this, --trigger/--subscribe silently no-op and the label never updates.
+sketchybar --add event aerospace_workspace_change
+
+workspace=(
+  label.font="$FONT:SemiBold:14.0"
+  label.padding_left=6
+  label.padding_right=6
+  icon.drawing=off
+  padding_left=4
+  padding_right=2
+  background.drawing=off
+  updates=on
+  script="$PLUGIN_DIR/workspace.sh"
 )
 
-WORKSPACES=(Virtual Dev Terminal Web Reading Planing Chat Inbox Any)
+sketchybar --add item workspace left            \
+           --set workspace "${workspace[@]}"    \
+           --subscribe workspace aerospace_workspace_change
 
-first=true
-for ws in "${WORKSPACES[@]}"; do
-	label="${WS_LABELS[$ws]}"
-	if $first; then
-		pad_left=0
-		first=false
-	else
-		pad_left=2
-	fi
-	sketchybar --add item "workspace.$ws" left \
-		--set "workspace.$ws" \
-			label="$label" \
-			label.padding_left=6 \
-			label.padding_right=6 \
-			icon.drawing=off \
-			padding_left="$pad_left" \
-			padding_right=2 \
-			drawing=off \
-			click_script="aerospace workspace $ws" \
-			script="$PLUGIN_DIR/workspace.sh" \
-		--subscribe "workspace.$ws" aerospace_workspace_change
-done
+# Prime the label with the currently focused workspace so something is
+# visible before the first workspace switch.
+sketchybar --trigger aerospace_workspace_change \
+  FOCUSED_WORKSPACE="$(aerospace list-workspaces --focused 2>/dev/null)"

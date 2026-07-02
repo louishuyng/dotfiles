@@ -1,19 +1,22 @@
 #!/bin/bash
 
-source "$CONFIG_DIR/colors.sh"
+#Filename: ~/github/dotfiles-latest/sketchybar/felixkratz/items/front_app.sh
 
 front_app=(
-	icon.color=$FRONT_APP_COLOR
-	icon.font="sketchybar-app-font:Regular:18"
-	label.color=$FRONT_APP_COLOR
-	icon.padding_left=0
-	label.padding_left=5
-	label.padding_right=5
-	background.drawing=off
-	padding_left=5
-	script="$PLUGIN_DIR/front_app.sh"
+  padding_left=0
+  padding_right=15
+  label.padding_left=4
+  label.padding_right=15
+  # Using "JetBrainsMono Nerd Font"
+  label.font="$FONT:Bold:8.0"
+  # Using default "SF Pro"
+  # label.font="$FONT:Black:13.0"
+  icon.background.drawing=on
+  display=active
+  script="$PLUGIN_DIR/front_app.sh"
+  click_script="open -a 'Mission Control'"
 )
 
 sketchybar --add item front_app left \
-	--set front_app "${front_app[@]}" \
-	--subscribe front_app front_app_switched
+  --set front_app "${front_app[@]}" \
+  --subscribe front_app front_app_switched

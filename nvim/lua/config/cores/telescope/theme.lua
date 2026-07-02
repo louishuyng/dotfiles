@@ -2,24 +2,18 @@ local dropdown_theme = function(title, previewer, ignore)
   previewer = previewer or false
   ignore = ignore or false
 
-  return require('telescope.themes').get_dropdown({
-    results_height = 20,
+  return require('telescope.themes').get_ivy({
     winblend = 0,
-    width = 0.8,
     prompt_title = '',
-    prompt_prefix = title .. ' > ',
-    selection_caret = ' ',
+    prompt_prefix = title .. ': ',
+    selection_caret = '  ',
     hidden = true,
     no_ignore = ignore,
     previewer = previewer,
     preview_title = 'Preview',
-    borderchars = {
-      prompt = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-      results = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-    },
+    results_title = ' ',
     layout_config = {
-      height = 0.4,
-      width = 0.4,
+      height = 18,
     },
     only_cwd = true,
     sorting_strategy = 'ascending',

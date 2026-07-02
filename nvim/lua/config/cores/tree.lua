@@ -58,8 +58,8 @@ end
 
 local function on_attach(bufnr)
   local api = require('nvim-tree.api')
-  local function map(lhs, rhs, desc)
-    vim.keymap.set('n', lhs, rhs, {
+  local function map(lhs, rhs, desc, mode)
+    vim.keymap.set(mode or 'n', lhs, rhs, {
       buffer = bufnr,
       noremap = true,
       nowait = true,
@@ -71,7 +71,14 @@ local function on_attach(bufnr)
   -- Open / navigate
   map('l', api.node.open.edit, 'open')
   map('<2-LeftMouse>', api.node.open.edit, 'open')
-  map('<CR>', api.node.open.edit, 'open')
+  map('<CR>', function()
+    local node = api.tree.get_node_under_cursor()
+    if node and node.type == 'file' then
+      vim.ui.open(node.absolute_path)
+    else
+      api.node.open.edit()
+    end
+  end, 'open in OS default app')
   map('P', api.node.open.preview, 'preview')
   map('s', api.node.open.horizontal, 'open: split')
   map('v', api.node.open.vertical, 'open: vsplit')
@@ -79,21 +86,98 @@ local function on_attach(bufnr)
   map('w', api.node.open.edit, 'open: window-picker')
   map('<esc>', api.node.navigate.parent_close, 'close node / parent')
   map('C', api.node.navigate.parent_close, 'close node')
-  map('z', api.tree.collapse_all, 'collapse all')
+  map('z', api.node.navigate.parent_close, 'collapse current folder')
+  map('Z', api.tree.collapse_all, 'collapse all')
+  map('m', api.marks.toggle, 'mark: toggle', { 'n', 'x' })
+  map('M', api.marks.clear, 'mark: clear all')
+  map('gd', api.marks.bulk.delete, 'mark: bulk delete')
+  map('gm', api.marks.bulk.move, 'mark: bulk move')
+  map('gt', api.marks.bulk.trash, 'mark: bulk trash')
+
+  local function bulk(op)
+    return function()
+      local marks = api.marks.list()
+      if #marks == 0 then
+        local node = api.tree.get_node_under_cursor()
+        if node then
+          table.insert(marks, node)
+        end
+      end
+      for _, node in ipairs(marks) do
+        op(node)
+      end
+      api.marks.clear()
+      api.tree.reload()
+    end
+  end
+  map('gy', bulk(api.fs.copy.node), 'mark: bulk copy')
+  map('gx', bulk(api.fs.cut), 'mark: bulk cut')
+
+  local function bulk_yank(extract, label)
+    return function()
+      local marks = api.marks.list()
+      if #marks == 0 then
+        local node = api.tree.get_node_under_cursor()
+        if node then
+          table.insert(marks, node)
+        end
+      end
+      local parts = {}
+      for _, node in ipairs(marks) do
+        table.insert(parts, extract(node))
+      end
+      local result = table.concat(parts, '\n')
+      vim.fn.setreg('+', result)
+      vim.notify(('Copied %d %s:\n%s'):format(#parts, label, result))
+      api.marks.clear()
+    end
+  end
+  map(
+    'gb',
+    bulk_yank(function(n)
+      return vim.fn.fnamemodify(n.absolute_path, ':t:r')
+    end, 'basename(s)'),
+    'mark: bulk yank basename'
+  )
+  map(
+    'gn',
+    bulk_yank(function(n)
+      return vim.fn.fnamemodify(n.absolute_path, ':t')
+    end, 'filename(s)'),
+    'mark: bulk yank filename'
+  )
+  map(
+    'gp',
+    bulk_yank(function(n)
+      return vim.fn.fnamemodify(n.absolute_path, ':.')
+    end, 'relative path(s)'),
+    'mark: bulk yank relative path'
+  )
+  map(
+    'gP',
+    bulk_yank(function(n)
+      return n.absolute_path
+    end, 'absolute path(s)'),
+    'mark: bulk yank absolute path'
+  )
+  map('>', api.tree.change_root_to_node, 'cd: into folder (new root)')
+  map('<', api.tree.change_root_to_parent, 'cd: up to parent root')
 
   -- Filesystem ops
   map('a', api.fs.create, 'add file')
   map('A', function()
     api.fs.create()
   end, 'add directory (append "/" when prompted)')
-  map('d', api.fs.remove, 'delete')
+  -- Operations that nvim-tree supports in visual mode: select a range
+  -- with `V`/`v` then press the key to act on every selected node.
+  map('d', api.fs.remove, 'delete', { 'n', 'x' })
   map('r', api.fs.rename, 'rename')
   map('b', api.fs.rename_basename, 'rename basename')
-  map('y', api.fs.copy.node, 'clipboard: copy')
-  map('x', api.fs.cut, 'clipboard: cut')
+  map('y', api.fs.copy.node, 'clipboard: copy', { 'n', 'x' })
+  map('x', api.fs.cut, 'clipboard: cut', { 'n', 'x' })
   map('p', api.fs.paste, 'clipboard: paste')
   map('c', api.fs.copy.absolute_path, 'copy absolute path')
-  map('m', api.fs.rename_full, 'move (rename full path)')
+  map('gR', api.fs.rename_full, 'move (rename full path)')
 
   -- Window
   map('q', api.tree.close, 'close window')
@@ -101,10 +185,14 @@ local function on_attach(bufnr)
   map('?', api.tree.toggle_help, 'help')
   map('i', api.node.show_info_popup, 'file details')
   map('H', api.tree.toggle_hidden_filter, 'toggle hidden')
+  map('I', api.tree.toggle_gitignore_filter, 'toggle gitignored')
+  map('f', api.live_filter.start, 'live filter: start')
+  map('F', api.live_filter.clear, 'live filter: clear')
+  map('/', api.tree.search_node, 'search node')
   map(']c', api.node.navigate.git.next, 'git: next change')
   map('[c', api.node.navigate.git.prev, 'git: prev change')
   map('Y', copy_selector, 'copy path / name (selector)')
-  map('gg', function()
+  map('gl', function()
     if Snacks and Snacks.lazygit then
       Snacks.lazygit()
     else
@@ -121,9 +209,13 @@ nvim_tree.setup({
   sync_root_with_cwd = true,
   respect_buf_cwd = true,
   view = {
-    width = 36,
-    side = 'left',
-    signcolumn = 'yes',
+    width = {
+      min = 36,
+      max = -1,
+      padding = 1,
+    },
+    side = 'right',
+    signcolumn = 'no',
     number = false,
     relativenumber = false,
   },
@@ -151,7 +243,7 @@ nvim_tree.setup({
     icons = {
       web_devicons = {
         file = { enable = true, color = true },
-        folder = { enable = false, color = true },
+        folder = { enable = true, color = true },
       },
       git_placement = 'signcolumn',
       modified_placement = 'after',
@@ -164,26 +256,10 @@ nvim_tree.setup({
         git = true,
         modified = true,
       },
-      glyphs = {
-        default = '',
-        symlink = '',
-        bookmark = '󰆤',
-        modified = '●',
-        folder = {
-          arrow_closed = '',
-          arrow_open = '',
-          default = '',
-          open = '',
-          empty = '',
-          empty_open = '',
-          symlink = '',
-          symlink_open = '',
-        },
-      },
     },
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
     git_ignored = true,
     custom = {},
     exclude = {},
@@ -205,9 +281,7 @@ nvim_tree.setup({
       eject = true,
       resize_window = false,
       window_picker = {
-        enable = true,
-        picker = 'default',
-        chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        enable = false,
         exclude = {
           filetype = { 'notify', 'qf', 'trouble', 'terminal' },
           buftype = { 'terminal', 'quickfix' },
@@ -252,20 +326,6 @@ if Event.FileRenamed then
     end
   end)
 end
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'NvimTree',
-  callback = function()
-    vim.opt_local.cursorline = true
-    vim.opt_local.winhighlight = table.concat({
-      'Normal:NvimTreeNormal',
-      'NormalNC:NvimTreeNormalNC',
-      'EndOfBuffer:NvimTreeEndOfBuffer',
-      'CursorLine:NvimTreeCursorLine',
-      'SignColumn:NvimTreeSignColumn',
-    }, ',')
-  end,
-})
 
 vim.keymap.set('n', '<leader>tw', function()
   vim.ui.input({ prompt = 'New tree root: ', completion = 'dir', default = vim.fn.getcwd() }, function(input)

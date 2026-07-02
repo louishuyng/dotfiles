@@ -141,6 +141,8 @@ fish_add_path ~/.duckdb/cli/latest
 fish_add_path ~/LX14/repository/github.com/louishuyng/kubernetes/third_party/etcd
 
 set -gx GITHUB_TOKEN (cat ~/.github_token)
+set -gx NODE_AUTH_TOKEN (cat ~/.github_token)
+set -gx KNOCK_SERVICE_TOKEN (cat ~/.knock_service_token)
 
 # Lua Binaries
 fish_add_path ~/.luarocks/bin/

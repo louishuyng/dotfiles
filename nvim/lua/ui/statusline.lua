@@ -160,23 +160,23 @@ local function mode_bar()
 end
 
 local MODE_LETTERS = {
-  n = '󰲉 ',
-  i = '󰊠 ',
-  v = '󰈈 ',
-  V = '󰈈 ',
-  c = '󰘳 ',
-  s = '󰒆 ',
-  S = '󰒆 ',
-  [''] = '󰒆 ',
-  R = '󰑖 ',
-  Rv = '󰑖 ',
-  t = ' ',
+  n = ' ',
+  i = 'INS',
+  v = 'VISL',
+  V = 'V-LINE',
+  c = 'COMMAND',
+  s = 'SEL',
+  S = 'S-LINE',
+  [''] = 'V-BLOCK',
+  R = 'REP',
+  Rv = 'V-REP',
+  t = 'TERM',
 }
 
 local function mode_letter()
   local mode = vim.api.nvim_get_mode().mode
   local color_group = MODE_COLORS[mode] or 'StlInfo'
-  local letter = MODE_LETTERS[mode] or '󰰓'
+  local letter = MODE_LETTERS[mode] or mode:upper()
   return color(color_group, letter)
 end
 

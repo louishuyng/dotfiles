@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>-</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="agentsmd---coding-agent-instructions">AGENTS.md - Coding Agent
+Instructions</h1>
+<h2 id="project-overview">Project Overview</h2>
+<p>This is a personal dotfiles repository managing development
+environment configuration for macOS. Primary components: Neovim (Lua),
+Fish shell, Tmux, Ghostty/WezTerm terminals, Aerospace window manager,
+SketchyBar, Karabiner, and Nix/Home Manager. There is no traditional
+build system, test suite, or CI pipeline.</p>
+<h2 id="repository-structure">Repository Structure</h2>
+<pre><code>nvim/              Neovim config (Lua) - the largest and most actively edited component
+  lua/plugins/     Plugin declarations (lazy.nvim spec tables)
+  lua/config/      Plugin configuration (cores/, libs/, lsp/)
+  lua/mappings/    Keybindings organized by domain (editor/, languages/, source_control/, utils/)
+  lua/cmds/        Autocommands
+  lua/options/     Vim options
+  lua/ui/          Statusline, winbar, buffer UI, dashboard
+  lua/utils/       Small utility modules
+  lua/functions/   Custom Lua functions
+terminals/         Shell and terminal emulator configs (fish/, tmux/, ghostty/, wezterm/, etc.)
+suckless/          Window manager and desktop tool configs (aerospace, sketchybar, karabiner, yazi)
+bootstrap/         OS setup scripts (mac.sh, arch.sh, debian.sh)
+scripts/           Standalone utility scripts (shell)
+config/            Git config, SSH config, docker-compose name mappings
+home-manager/      Nix Home Manager flake (flake.nix, home.nix)
+devops/            Docker compose files, Helm/Terraform configs
+opencode/          OpenCode AI agent config
+.doom.d/           Doom Emacs config (secondary editor)</code></pre>
+<h2 id="build--lint--test-commands">Build / Lint / Test Commands</h2>
+<p>There is no unified build or test system. Validation is done
+per-component:</p>
+<h3 id="neovim-lua">Neovim (Lua)</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Format all Lua files with StyLua (config: nvim/.stylua.toml)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">stylua</span> nvim/</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check a single file</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">stylua</span> <span class="at">--check</span> nvim/lua/plugins/editor.lua</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Lint Lua (configured via .luarc.json at repo root)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The luarc disables: different-requires, redefined-local, unused-local,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># cast-local-type, duplicate-index, undefined-global, deprecated, assign-type-mismatch</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Globals: vim, describe, it, before_each, after_each, _lazygit_toggle</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Neovim and verify no errors on startup</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">nvim</span> <span class="at">--headless</span> <span class="st">&quot;+Lazy! sync&quot;</span> +qa</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Check health inside Neovim</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># :checkhealth</span></span></code></pre></div>
+<h3 id="shell-scripts">Shell Scripts</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lint Fish scripts</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fish</span> <span class="at">--no-execute</span> terminals/fish/config.fish</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Format Fish scripts (used by conform.nvim)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fish_indent</span> <span class="at">-w</span> terminals/fish/config.fish</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Lint Bash scripts with shellcheck</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">shellcheck</span> bootstrap/mac.sh</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">shellcheck</span> scripts/<span class="pp">*</span>.sh</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Format Bash with shfmt (used by conform.nvim)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">shfmt</span> <span class="at">-w</span> bootstrap/mac.sh</span></code></pre></div>
+<h3 id="nix--home-manager">Nix / Home Manager</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply home-manager configuration</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">home-manager</span> switch <span class="at">--flake</span> ~/.dotfiles/home-manager</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check flake</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> flake check ~/.dotfiles/home-manager</span></code></pre></div>
+<h3 id="sketchybar">SketchyBar</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Restart sketchybar after config changes</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sketchybar</span> <span class="at">--reload</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use the restart script</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">~/.dotfiles/suckless/mac_os/sketchybar/restart.sh</span></span></code></pre></div>
+<h2 id="code-style-guidelines">Code Style Guidelines</h2>
+<h3 id="lua-neovim-config---primary-language">Lua (Neovim config) -
+PRIMARY LANGUAGE</h3>
+<p><strong>Formatter</strong>: StyLua (config at
+<code>nvim/.stylua.toml</code>)</p>
+<ul>
+<li>Column width: 120</li>
+<li>Indent: 2 spaces</li>
+<li>Quote style: auto-prefer-single (use single quotes <code>'</code> by
+default)</li>
+<li>Call parentheses: Input style</li>
+<li>Line endings: Unix (LF)</li>
+</ul>
+<p><strong>Imports and module loading</strong>:</p>
+<ul>
+<li>Use <code>require 'module.path'</code> with single quotes (no
+parentheses for simple strings)</li>
+<li>Use <code>require('module')</code> with parentheses only when
+chaining or assigning inline</li>
+<li>Module paths use dots:
+<code>require 'config.cores.telescope'</code></li>
+<li>LSP server requires use slashes:
+<code>require 'config/lsp/servers/lua'</code></li>
+<li>Group requires logically with blank lines between sections</li>
+<li>Entry-point files (init.lua) just list requires, no logic</li>
+</ul>
+<p><strong>Plugin declarations</strong> (lua/plugins/*.lua):</p>
+<ul>
+<li>Return a table of plugin specs:
+<code>return { { 'author/plugin', ... }, ... }</code></li>
+<li>Always specify lazy-loading: <code>event</code>, <code>cmd</code>,
+<code>ft</code>, or <code>keys</code></li>
+<li>Use <code>config = function() ... end</code> for complex setup,
+<code>opts = {}</code> for simple</li>
+<li>Comment out unused plugins rather than deleting them (preserves
+history)</li>
+</ul>
+<p><strong>Keymaps</strong>:</p>
+<ul>
+<li>Standard opts pattern:
+<code>local opt = { silent = true, noremap = true }</code></li>
+<li>Use <code>vim.keymap.set(mode, lhs, rhs, opts)</code> (not legacy
+vim.api.nvim_set_keymap)</li>
+<li>Add <code>desc</code> field to all keymaps for which-key
+discoverability</li>
+<li>Leader is Space, local leader is Comma</li>
+</ul>
+<p><strong>Error handling</strong>:</p>
+<ul>
+<li>Use <code>pcall</code> for optional module loading:
+<code>local ok, mod = pcall(require, 'module')</code></li>
+<li>Early-return pattern on failure:
+<code>if not ok then return end</code></li>
+<li>Guard against nil: check
+<code>if not client then return end</code></li>
+</ul>
+<p><strong>Naming conventions</strong>:</p>
+<ul>
+<li>Files: lowercase with underscores
+(<code>git_blame_toggle.lua</code>, <code>vim_enter.lua</code>)</li>
+<li>Variables: snake_case (<code>local augroup</code>,
+<code>local mode_component</code>)</li>
+<li>Module directories: lowercase, no underscores (<code>config</code>,
+<code>mappings</code>, <code>plugins</code>)</li>
+<li>Constants/globals: <code>vim.g.*</code> for global editor state</li>
+</ul>
+<p><strong>General patterns</strong>:</p>
+<ul>
+<li>LSP config uses <code>vim.lsp.config()</code> +
+<code>vim.lsp.enable()</code> pattern (Neovim 0.11+)</li>
+<li>Formatters configured via conform.nvim (see
+<code>config/lsp/register_formatters.lua</code>)</li>
+<li>Linting via nvim-lint</li>
+<li>Testing via vim-test with snacks/wezterm strategy
+auto-detection</li>
+<li>Treesitter for syntax; disable built-in plugins for performance</li>
+</ul>
+<h3 id="fish-shell">Fish Shell</h3>
+<ul>
+<li>Aliases go in <code>terminals/fish/alias/</code> organized by domain
+(git.fish, devops.fish, etc.)</li>
+<li>Functions go in <code>terminals/fish/functions/</code> (one function
+per file, matching filename)</li>
+<li>Environment variables in <code>terminals/fish/env/</code> split by
+OS (mac.fish, linux.fish)</li>
+<li>Use <code>set -gx</code> for global exports, <code>set -U</code> for
+universal variables</li>
+<li>Format with <code>fish_indent</code></li>
+</ul>
+<h3 id="bash-bootstrapscripts">Bash (bootstrap/scripts)</h3>
+<ul>
+<li>Start with <code>#! /bin/bash</code> and <code>set -e</code></li>
+<li>Use helper functions for output: <code>info()</code>,
+<code>success()</code>, <code>fail()</code></li>
+<li>Use <code>read -r -p</code> for interactive prompts</li>
+<li>Quote all variable expansions</li>
+<li>Format with <code>shfmt</code>, lint with
+<code>shellcheck</code></li>
+</ul>
+<h3 id="toml--config-files">TOML / Config Files</h3>
+<ul>
+<li>Aerospace config:
+<code>suckless/mac_os/aerospace/aerospace.toml</code></li>
+<li>Ghostty config: <code>terminals/ghostty/config</code> (key = value
+format, no extension)</li>
+<li>Alacritty: <code>terminals/alacritty/alacritty.toml</code></li>
+<li>StyLua: <code>nvim/.stylua.toml</code></li>
+<li>Yazi: <code>suckless/yazi/*.toml</code></li>
+</ul>
+<h3 id="nix">Nix</h3>
+<ul>
+<li>Home Manager entry: <code>home-manager/home.nix</code></li>
+<li>Flake: <code>home-manager/flake.nix</code></li>
+<li>Target: aarch64-darwin (Apple Silicon Mac)</li>
+<li>Follow nixos-unstable channel</li>
+</ul>
+<h2 id="git-conventions">Git Conventions</h2>
+<ul>
+<li>Commit messages: lowercase, short, descriptive</li>
+<li>Prefixes used: <code>feat:</code>, <code>fix:</code>,
+<code>setup</code>, <code>update</code>, <code>add</code>,
+<code>build</code></li>
+<li>Examples from history: <code>feat: update config</code>,
+<code>fix diagnostic api is deprecated</code>,
+<code>setup wezterm flow</code>, <code>build theme with lush</code></li>
+<li>Git aliases defined in <code>config/.gitconfig</code> (co, br, ci,
+st, sync, lol, graph)</li>
+<li>Uses git-delta as pager, p4merge for diff/merge tool</li>
+</ul>
+<h2 id="symlink-architecture">Symlink Architecture</h2>
+<p>Configs are symlinked from this repo to their expected system
+locations:</p>
+<ul>
+<li><code>nvim/</code> -&gt; <code>~/.config/nvim/</code></li>
+<li><code>terminals/fish/</code> -&gt; <code>~/.config/fish/</code></li>
+<li><code>terminals/ghostty/</code> -&gt;
+<code>~/.config/ghostty/</code></li>
+<li><code>suckless/mac_os/sketchybar/</code> -&gt;
+<code>~/.config/sketchybar/</code></li>
+<li><code>home-manager/</code> -&gt;
+<code>~/.config/home-manager/</code></li>
+<li>GNU Stow is used for some symlinks (see
+<code>link_all_dotfiles()</code> in bootstrap/mac.sh)</li>
+</ul>
+<h2 id="key-tools-and-versions">Key Tools and Versions</h2>
+<ul>
+<li>Editor: Neovim (latest) with lazy.nvim plugin manager</li>
+<li>Shell: Fish (primary), Nushell (secondary)</li>
+<li>Terminal: Ghostty (primary), WezTerm, Kitty</li>
+<li>Window Manager: Aerospace (tiling)</li>
+<li>Menu Bar: SketchyBar</li>
+<li>Version Manager: mise (asdf-compatible)</li>
+<li>Font: JetBrains Mono Nerd Font</li>
+</ul>
+</body>
+</html>

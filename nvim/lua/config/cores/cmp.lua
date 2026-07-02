@@ -139,7 +139,7 @@ cmp.setup.cmdline('/', {
   },
   window = {
     completion = {
-      border = 'rounded',
+      border = 'none',
       winhighlight = 'Normal:Pmenu,FloatBorder:PmenuBorder,CursorLine:PmenuSel,Search:None',
     },
   },
@@ -159,17 +159,14 @@ cmp.setup.cmdline(':', {
   },
 })
 
-local function setup_cmp_highlights()
-  local ok, palettes = pcall(require, 'catppuccin.palettes')
-  if not ok then
+local palette = require('config.theme.palette')
+
+local function setup_cmp_highlights(c)
+  c = c or palette.colors
+  if not next(c) then
     return
   end
-  local c = palettes.get_palette()
-  if not c then
-    return
-  end
-  vim.api.nvim_set_hl(0, 'CmpItemMenu', { fg = c.green })
+  vim.api.nvim_set_hl(0, 'CmpItemMenu', { fg = c.primary })
 end
 
-setup_cmp_highlights()
-vim.api.nvim_create_autocmd('ColorScheme', { callback = setup_cmp_highlights })
+palette.on_change(setup_cmp_highlights)

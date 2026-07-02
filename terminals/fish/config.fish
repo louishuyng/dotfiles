@@ -34,14 +34,14 @@ end
 # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
-eval "$(pyenv init --path)"
-
 set fish_greeting ""
 
 # Doom Emacs configuration
 set -gx DOOMDIR "$HOME/.doom.d"
 
 zoxide init fish | source
+complete -c z -f -a "(zoxide query -l 2>/dev/null)" -d "zoxide dir"
+complete -c zi -f -a "(zoxide query -l 2>/dev/null)" -d "zoxide dir"
 
 set -gx ATUIN_NOBIND true
 atuin init fish | source

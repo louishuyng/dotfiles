@@ -1,14 +1,10 @@
-#!/opt/homebrew/bin/bash
+#!/bin/bash
 
-source "$CONFIG_DIR/plugins/icon_map_fn.sh"
+# Filename: ~/github/dotfiles-latest/sketchybar/felixkratz/plugins/front_app.sh
 
 if [ "$SENDER" = "front_app_switched" ]; then
-	__icon_map "${INFO}"
-	if [ "$icon_result" != ":default:" ]; then
-		sketchybar --set "$NAME" label="$INFO" icon="$icon_result"
-	else
-		sketchybar --set "$NAME" label="$INFO" icon=""
-	fi
+  sketchybar --set $NAME \
+    label="" label.drawing=off \
+    icon.background.image="app.$INFO" \
+    icon.background.image.scale=0.9
 fi
-
-

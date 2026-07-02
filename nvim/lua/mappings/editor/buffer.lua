@@ -1,17 +1,13 @@
--- Tab
-vim.keymap.set('n', '<S-t>', ':tabnew<CR>', {
-  desc = 'New Tab',
-})
+-- Tabs
+vim.keymap.set('n', '<S-t>', ':tabnew<CR>', { desc = 'New Tab' })
+vim.keymap.set('n', ',Q', ':tabprevious<CR>', { desc = 'Prev Tab' })
+vim.keymap.set('n', ',W', ':tabnext<CR>', { desc = 'Next Tab' })
+vim.keymap.set('n', ',bD', ':tabclose<CR>', { desc = 'Close Tab' })
 
-vim.keymap.set('n', ',tc', ':tabclose<CR>', {
-  desc = 'Close Tab',
-})
-
--- Move to previous/next
-vim.keymap.set('n', ',q', ':BufferLineCyclePrev<CR>', {
-  desc = 'Prev Buffer',
-})
-vim.keymap.set('n', ',w', ':BufferLineCycleNext<CR>', { desc = 'Next Buffer' })
+-- Buffer cycling (native — replaces BufferLineCyclePrev/Next now that
+-- nvim-bufferline is gone).
+vim.keymap.set('n', ',q', ':bprevious<CR>', { desc = 'Prev Buffer' })
+vim.keymap.set('n', ',w', ':bnext<CR>', { desc = 'Next Buffer' })
 
 --  Alternative Buffer
 vim.keymap.set('n', '<BS>', ':b#<CR>', {

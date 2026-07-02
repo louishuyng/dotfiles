@@ -145,7 +145,7 @@ snacks.setup {
     },
   },
   words = {
-    enabled = true,
+    enabled = false,
     debounce = 200,
     notify_jump = false,
     notify_end = true,
@@ -257,65 +257,46 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- Catppuccin-aware highlights for snacks UI surfaces. Re-applied on colorscheme
--- switch so auto-dark-mode (latte/macchiato flips) keeps every group coherent.
-local function apply_snacks_hl()
-  local ok, palettes = pcall(require, 'catppuccin.palettes')
-  local flavor = (vim.g.colors_name or ''):match('catppuccin%-(%a+)') or 'macchiato'
-  local p = ok and palettes.get_palette(flavor) or {}
+-- Theme-agnostic highlights for snacks UI surfaces. Driven by the semantic
+-- palette so dark/light flips and theme swaps both stay coherent.
+local palette = require('config.theme.palette')
 
-  -- Fallbacks if catppuccin failed to load
-  local green = p.green or '#96d382'
-  local peach = p.peach or '#fa8c45'
-  local yellow = p.yellow or '#f5cc3f'
-  local red = p.red or '#ed8796'
-  local mauve = p.mauve or '#c6a0f6'
-  local subtext0 = p.subtext0 or '#a5adcb'
-  local overlay0 = p.overlay0 or '#6e738d'
-  local surface1 = p.surface1 or '#363a4f'
+local function apply_snacks_hl(c)
+  c = c or palette.colors
+  if not next(c) then
+    return
+  end
 
   local set = function(group, opts)
     vim.api.nvim_set_hl(0, group, opts)
   end
 
-  -- Dashboard
-  set('SnacksDashboardHeader', { fg = green })
+  set('SnacksDashboardHeader', { fg = c.primary })
 
-  -- Notifier (border + title per level)
-  set('SnacksNotifierBorderInfo', { fg = green })
-  set('SnacksNotifierBorderWarn', { fg = peach })
-  set('SnacksNotifierBorderError', { fg = red })
-  set('SnacksNotifierBorderDebug', { fg = mauve })
-  set('SnacksNotifierBorderTrace', { fg = subtext0 })
-  set('SnacksNotifierTitleInfo', { fg = green, bold = true })
-  set('SnacksNotifierTitleWarn', { fg = peach, bold = true })
-  set('SnacksNotifierTitleError', { fg = red, bold = true })
+  set('SnacksNotifierBorderInfo', { fg = c.primary })
+  set('SnacksNotifierBorderWarn', { fg = c.warn })
+  set('SnacksNotifierBorderError', { fg = c.error })
+  set('SnacksNotifierBorderDebug', { fg = c.tertiary })
+  set('SnacksNotifierBorderTrace', { fg = c.subtle })
+  set('SnacksNotifierTitleInfo', { fg = c.primary, bold = true })
+  set('SnacksNotifierTitleWarn', { fg = c.warn, bold = true })
+  set('SnacksNotifierTitleError', { fg = c.error, bold = true })
 
-  -- Indent + scope
-  set('SnacksIndent', { fg = overlay0 })
-  set('SnacksIndentScope', { fg = mauve, bold = true })
+  set('SnacksIndent', { fg = c.overlay })
+  set('SnacksIndentScope', { fg = c.tertiary, bold = true })
 
-  -- Dim (linked to Comment so it follows the comment color in either flavor)
   set('SnacksDim', { link = 'Comment' })
 
-  -- Words (LSP word references at cursor)
-  set('SnacksWordsActive', { bg = surface1, fg = green, bold = true })
+  set('SnacksWordsActive', { bg = c.surface, fg = c.primary, bold = true })
 
-  -- Picker
-  set('SnacksPickerBorder', { fg = green })
-  set('SnacksPickerTitle', { fg = mauve, bold = true })
-  set('SnacksPickerInput', { fg = green })
-  set('SnacksPickerPrompt', { fg = green, bold = true })
+  set('SnacksPickerBorder', { fg = c.primary })
+  set('SnacksPickerTitle', { fg = c.tertiary, bold = true })
+  set('SnacksPickerInput', { fg = c.primary })
+  set('SnacksPickerPrompt', { fg = c.primary, bold = true })
 
-  -- Image
-  set('SnacksImageBorder', { fg = green })
-
-  -- Touch yellow so future statuscolumn/notifier-warn variants can pull it
-  -- without re-declaring. Harmless when unused.
-  _ = yellow
+  set('SnacksImageBorder', { fg = c.primary })
 end
-apply_snacks_hl()
-vim.api.nvim_create_autocmd('ColorScheme', { group = snacks_grp, callback = apply_snacks_hl })
+palette.on_change(apply_snacks_hl)
 
 -- Key bindings
 vim.keymap.set('n', '<C-w>o', ":lua require('snacks').zen() <CR>", { desc = 'Open parent directory' })

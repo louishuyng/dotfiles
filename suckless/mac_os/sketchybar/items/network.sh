@@ -1,17 +1,19 @@
-#!/opt/homebrew/bin/bash
+#!/bin/bash
 
-source "$CONFIG_DIR/colors.sh"
+# Local network throughput indicator (download ↓ / upload ↑).
+# Polls netstat for the default interface every update_freq seconds.
 
 network=(
-	update_freq=3
-	icon.color=$PURPLE
-	label.padding_left=8
-	label.color=$PURPLE
-	label.padding_right=0
-	background.drawing=off
-	padding_left=0
-	script="$PLUGIN_DIR/network.sh"
+  updates=on
+  update_freq=2
+  label.drawing=on
+  padding_right=0
+  padding_left=7
+  label.padding_right=2
+  width=100
+  label.font="$FONT:Regular:13.0"
+  script="$PLUGIN_DIR/network.sh"
 )
 
-sketchybar --add item network right \
-	--set network "${network[@]}"
+sketchybar --add item network left \
+  --set network "${network[@]}"

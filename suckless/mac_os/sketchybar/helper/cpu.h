@@ -5,6 +5,11 @@
 #include <stdbool.h>
 #include <time.h>
 
+#define MAX_TOPPROC_LEN 28
+
+static const char TOPPROC[] = { "/bin/ps -Aceo pid,pcpu,comm -r" }; 
+static const char FILTER_PATTERN[] = { "com.apple." };
+
 struct cpu {
   host_t host;
   mach_msg_type_number_t count;
@@ -19,7 +24,7 @@ static inline void cpu_init(struct cpu* cpu) {
   cpu->host = mach_host_self();
   cpu->count = HOST_CPU_LOAD_INFO_COUNT;
   cpu->has_prev_load = false;
-  cpu->command[0] = '\0';
+  snprintf(cpu->command, 100, "");
 }
 
 static inline void cpu_update(struct cpu* cpu) {
@@ -29,7 +34,7 @@ static inline void cpu_update(struct cpu* cpu) {
                                         &cpu->count                );
 
   if (error != KERN_SUCCESS) {
-    cpu->command[0] = '\0';
+    printf("Error: Could not read cpu host statistics.\n");
     return;
   }
 
@@ -43,18 +48,73 @@ static inline void cpu_update(struct cpu* cpu) {
     uint32_t delta_idle = cpu->load.cpu_ticks[CPU_STATE_IDLE]
                           - cpu->prev_load.cpu_ticks[CPU_STATE_IDLE];
 
-    uint32_t total = delta_user + delta_system + delta_idle;
-    double total_perc = total > 0
-        ? (double)(delta_user + delta_system) / (double)total
-        : 0.0;
+    double user_perc = (double)delta_user / (double)(delta_system
+                                                     + delta_user
+                                                     + delta_idle);
 
-    // Quoted value preserves the space between the Nerd Font CPU glyph and the
-    // number; the helper's command splitter strips quotes but keeps spaces inside.
-    snprintf(cpu->command, sizeof(cpu->command),
-             "--set cpu label=\"\xef\x92\xbc %.0f%%\"",
-             total_perc * 100.0);
-  } else {
-    cpu->command[0] = '\0';
+    double sys_perc = (double)delta_system / (double)(delta_system
+                                                      + delta_user
+                                                      + delta_idle);
+
+    double total_perc = user_perc + sys_perc;
+
+    FILE* file;
+    char line[1024];
+
+    file = popen(TOPPROC, "r");
+    if (!file) {
+      printf("Error: TOPPROC command errored out...\n" );
+      return;
+    }
+
+    fgets(line, sizeof(line), file);
+    fgets(line, sizeof(line), file);
+
+    char* start = strstr(line, FILTER_PATTERN);
+    char topproc[MAX_TOPPROC_LEN + 4];
+    uint32_t caret = 0;
+    for (int i = 0; i < sizeof(line); i++) {
+      if (start && i == start - line) {
+        i+=9;
+        continue;
+      }
+
+      if (caret >= MAX_TOPPROC_LEN && caret <= MAX_TOPPROC_LEN + 2) {
+        topproc[caret++] = '.';
+        continue;
+      }
+      if (caret > MAX_TOPPROC_LEN + 2) break;
+      topproc[caret++] = line[i];
+      if (line[i] == '\0') break;
+    }
+
+    topproc[MAX_TOPPROC_LEN + 3] = '\0';
+
+    pclose(file);
+
+    char color[16];
+    if (total_perc >= .7) {
+      snprintf(color, 16, "%s", getenv("RED"));
+    } else if (total_perc >= .3) {
+      snprintf(color, 16, "%s", getenv("ORANGE"));
+    } else if (total_perc >= .1) {
+      snprintf(color, 16, "%s", getenv("YELLOW"));
+    } else {
+      snprintf(color, 16, "%s", getenv("LABEL_COLOR"));
+    }
+
+    snprintf(cpu->command, 256, "--push cpu.sys %.2f "
+                                "--push cpu.user %.2f "
+                                "--set cpu.top label='%s' "
+                                "--set cpu.percent label=%.0f%% label.color=%s ",
+                                sys_perc,
+                                user_perc,
+                                topproc,
+                                total_perc*100.,
+                                color          );
+  }
+  else {
+    snprintf(cpu->command, 256, "");
   }
 
   cpu->prev_load = cpu->load;

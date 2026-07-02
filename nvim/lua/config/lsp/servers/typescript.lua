@@ -78,12 +78,30 @@ vim.lsp.config('eslint', {
   },
 })
 
--- Oxlint LSP: only activate if oxlint config exists in project
+-- Oxlint LSP: pin root to the project; never attach to vendored deps.
+-- NOTE: lspconfig's default oxlint config ships a `root_dir` *function*, which
+-- takes precedence over `root_markers` (so a bare root_markers override is
+-- ignored). It also treats any package.json that mentions "oxlint" as a marker,
+-- which makes it spawn a stray client inside node_modules/.pnpm packages that
+-- carry their own oxlint scripts. Overriding root_dir fixes both.
 vim.lsp.config('oxlint', {
-  root_markers = {
-    'oxlintrc.json',
-    '.oxlintrc.json',
-  },
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    if fname:match('/node_modules/') then
+      return -- don't attach to vendored files
+    end
+    local root = vim.fs.root(bufnr, {
+      'oxlintrc.json',
+      '.oxlintrc.json',
+      '.oxlintrc.jsonc',
+      'oxlint.config.ts',
+      'package.json',
+      '.git',
+    })
+    if root then
+      on_dir(root)
+    end
+  end,
 })
 
 vim.lsp.enable('vtsls')

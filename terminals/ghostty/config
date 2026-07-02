@@ -1,23 +1,23 @@
 auto-update-channel = tip
 
-theme = dark:dark,light:iTerm2 Solarized Light
+theme = dark:GitHub Dark Default,light:iTerm2 Solarized Light
 
 # Background
 background-opacity = 0.8
 background-blur-radius = 0
 
-# font-family = "Jetbrains Mono Nerd Font"
 # font-family = "Berkeley Mono"
 font-family = "Terminess Nerd Font"
-# font-family= "IosevkaNerdFontMono"
+# font-family = "Jetbrains Mono Nerd Font"
+# font-family = "IoskeleyMono Nerd Font"
 
 cursor-color = #AF87D7
 
-font-size = 15.0
+font-size = 16.0
 font-thicken = true
 font-thicken-strength = 150
 adjust-cell-width = 0%
-adjust-cell-height = 5%
+adjust-cell-height = 2%
 
 window-width = 200
 window-height = 55
@@ -33,7 +33,7 @@ window-padding-y = 0
 window-padding-balance = false
 window-padding-color = extend
 window-save-state = always
-# window-decoration = none
+window-decoration = none
 confirm-close-surface = false
 
 # macOS specific
@@ -46,4 +46,4 @@ keybind = cmd+shift+r=reload_config
 keybind = cmd+u=toggle_background_opacity
 keybind = cmd+t=toggle_quick_terminal
 
-macos-icon = xray
+macos-icon = retro

@@ -10,18 +10,19 @@ vim.pack.add({
 
   -- Theme
   'https://github.com/catppuccin/nvim',
+  'https://github.com/sainnhe/gruvbox-material',
+  'https://github.com/savq/melange-nvim',
+  'https://github.com/projekt0n/github-nvim-theme',
+  'https://github.com/craftzdog/solarized-osaka.nvim',
   'https://github.com/f-person/auto-dark-mode.nvim',
 
   -- UI
   'https://github.com/folke/snacks.nvim',
-  'https://github.com/Bekaboo/dropbar.nvim',
-  'https://github.com/akinsho/nvim-bufferline.lua',
   'https://github.com/DaikyXendo/nvim-material-icon',
   -- noice.nvim removed: vim._core.ui2 handles cmdline/messages in nvim 0.12
   'https://github.com/mrjones2014/smart-splits.nvim',
   'https://github.com/norcalli/nvim-colorizer.lua',
   'https://github.com/rcarriga/nvim-notify',
-  'https://github.com/gen740/SmoothCursor.nvim',
 
   -- Editor
   'https://github.com/mg979/vim-visual-multi',

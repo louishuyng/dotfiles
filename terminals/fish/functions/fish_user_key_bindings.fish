@@ -16,6 +16,10 @@ function custom_bindings
     bind --mode insert \ce edit_command_buffer
 
     bind --mode insert \cy yazi
+
+    # C-l clears the screen AND re-renders the LOUIS start page
+    bind \cl 'clear; commandline -f repaint'
+    bind --mode insert \cl 'clear; commandline -f repaint'
 end
 
 function atuin_bindings

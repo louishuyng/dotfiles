@@ -1,67 +1,147 @@
-#!/opt/homebrew/bin/bash
+#!/bin/bash
 
-SPOTIFY_CACHE="/tmp/sketchybar_spotify_cache"
+next ()
+{
+  osascript -e 'tell application "Spotify" to play next track'
+}
 
-# Hover: show full track name and artist
-if [[ "$SENDER" == "mouse.entered" ]]; then
-    if [[ -f "$SPOTIFY_CACHE" ]]; then
-        source "$SPOTIFY_CACHE"
-        sketchybar --set spotify label="$FULL_LABEL"
+back () 
+{
+  osascript -e 'tell application "Spotify" to play previous track'
+}
+
+play () 
+{
+  osascript -e 'tell application "Spotify" to playpause'
+}
+
+repeat () 
+{
+  REPEAT=$(osascript -e 'tell application "Spotify" to get repeating')
+  if [ "$REPEAT" = "false" ]; then
+    sketchybar -m --set spotify.repeat icon.highlight=on
+    osascript -e 'tell application "Spotify" to set repeating to true'
+  else 
+    sketchybar -m --set spotify.repeat icon.highlight=off
+    osascript -e 'tell application "Spotify" to set repeating to false'
+  fi
+}
+
+shuffle () 
+{
+  SHUFFLE=$(osascript -e 'tell application "Spotify" to get shuffling')
+  if [ "$SHUFFLE" = "false" ]; then
+    sketchybar -m --set spotify.shuffle icon.highlight=on
+    osascript -e 'tell application "Spotify" to set shuffling to true'
+  else 
+    sketchybar -m --set spotify.shuffle icon.highlight=off
+    osascript -e 'tell application "Spotify" to set shuffling to false'
+  fi
+}
+
+update ()
+{
+  PLAYING=1
+  if [ "$(echo "$INFO" | jq -r '.["Player State"]')" = "Playing" ]; then
+    PLAYING=0
+    TRACK="$(echo "$INFO" | jq -r .Name)"
+    ARTIST="$(echo "$INFO" | jq -r .Artist)"
+    ALBUM="$(echo "$INFO" | jq -r .Album)"
+    SHUFFLE=$(osascript -e 'tell application "Spotify" to get shuffling')
+    REPEAT=$(osascript -e 'tell application "Spotify" to get repeating')
+    COVER=$(osascript -e 'tell application "Spotify" to get artwork url of current track')
+  fi
+
+  args=()
+  if [ $PLAYING -eq 0 ]; then
+    curl -s --max-time 20 "$COVER" -o /tmp/cover.jpg
+    if [ "$ARTIST" == "" ]; then
+      args+=(--set spotify.title label="$TRACK"
+             --set spotify.album label="Podcast"
+             --set spotify.artist label="$ALBUM"  )
+    else
+      args+=(--set spotify.title label="$TRACK"
+             --set spotify.album label="$ALBUM"
+             --set spotify.artist label="$ARTIST")
     fi
-    exit 0
-fi
+    args+=(--set spotify.play icon=􀊆
+           --set spotify.shuffle icon.highlight=$SHUFFLE
+           --set spotify.repeat icon.highlight=$REPEAT
+           --set spotify.cover background.image="/tmp/cover.jpg"
+                               background.color=0x00000000
+           --set spotify.anchor drawing=on                      )
+  else
+    args+=(--set spotify.anchor drawing=off popup.drawing=off
+           --set spotify.play icon=􀊄                         )
+  fi
+  sketchybar -m "${args[@]}"
+}
 
-# Hover exit: revert to truncated label
-if [[ "$SENDER" == "mouse.exited" ]]; then
-    if [[ -f "$SPOTIFY_CACHE" ]]; then
-        source "$SPOTIFY_CACHE"
-        sketchybar --set spotify label="$SHORT_LABEL"
-    fi
-    exit 0
-fi
+scrubbing() {
+  DURATION_MS=$(osascript -e 'tell application "Spotify" to get duration of current track')
+  DURATION=$((DURATION_MS/1000))
 
-if ! pgrep -x "Spotify" >/dev/null; then
-    sketchybar --set spotify drawing=off
-    exit 0
-fi
+  TARGET=$((DURATION*PERCENTAGE/100))
+  osascript -e "tell application \"Spotify\" to set player position to $TARGET"
+  sketchybar --set spotify.state slider.percentage=$PERCENTAGE
+}
 
-# Single AppleScript call returns: state|track|artist
-INFO=$(osascript <<'EOA' 2>/dev/null
-tell application "Spotify"
-    return (player state as string) & "|" & (name of current track as string) & "|" & (artist of current track as string)
-end tell
-EOA
-)
+scroll() {
+  DURATION_MS=$(osascript -e 'tell application "Spotify" to get duration of current track')
+  DURATION=$((DURATION_MS/1000))
 
-IFS='|' read -r STATE TRACK ARTIST <<<"$INFO"
+  FLOAT="$(osascript -e 'tell application "Spotify" to get player position')"
+  TIME=${FLOAT%.*}
+  
+  sketchybar --animate linear 10 \
+             --set spotify.state slider.percentage="$((TIME*100/DURATION))" \
+                                 icon="$(date -r $TIME +'%M:%S')" \
+                                 label="$(date -r $DURATION +'%M:%S')"
+}
 
-if [[ "$STATE" != "playing" && "$STATE" != "paused" ]]; then
-    sketchybar --set spotify drawing=off
-    exit 0
-fi
+mouse_clicked () {
+  case "$NAME" in
+    "spotify.next") next
+    ;;
+    "spotify.back") back
+    ;;
+    "spotify.play") play
+    ;;
+    "spotify.shuffle") shuffle
+    ;;
+    "spotify.repeat") repeat
+    ;;
+    "spotify.state") scrubbing
+    ;;
+    *) exit
+    ;;
+  esac
+}
 
-FULL_LABEL="$TRACK - $ARTIST |"
+popup () {
+  sketchybar --set spotify.anchor popup.drawing=$1
+}
 
-if [[ ${#TRACK} -gt 25 ]]; then
-    SHORT_LABEL="${TRACK:0:25}... |"
-else
-    SHORT_LABEL="$TRACK |"
-fi
+routine() {
+  case "$NAME" in
+    "spotify.state") scroll
+    ;;
+    *) update
+    ;;
+  esac
+}
 
-if [[ "$STATE" == "playing" ]]; then
-    COLOR=0xff1DD05D
-else
-    COLOR=0xff8A91AD
-fi
-
-cat > "$SPOTIFY_CACHE" <<EOC
-FULL_LABEL="$FULL_LABEL"
-SHORT_LABEL="$SHORT_LABEL"
-EOC
-
-sketchybar --set spotify \
-    drawing=on \
-    icon="󰼛" \
-    icon.color="$COLOR" \
-    label="$SHORT_LABEL" \
-    label.color="$COLOR"
+case "$SENDER" in
+  "mouse.clicked") mouse_clicked
+  ;;
+  "mouse.entered") popup on
+  ;;
+  "mouse.exited"|"mouse.exited.global") popup off
+  ;;
+  "routine") routine
+  ;;
+  "forced") exit 0
+  ;;
+  *) update
+  ;;
+esac

@@ -48,17 +48,29 @@ vim.g['test#custom_strategies'] = {
 
 -- Auto-detect terminal and set strategy
 local function get_strategy()
+  -- Neovide is a GUI host: env vars inherited from the launching shell
+  -- (WEZTERM_PANE, TMUX) point at panes we can't actually drive from here,
+  -- so always use the in-editor :terminal split.
+  if vim.g.neovide then
+    return 'neovim'
+  end
   if os.getenv('WEZTERM_PANE') then
     return 'wezterm'
   end
-
-  return 'vimux' -- Default to vimux if not WezTerm
+  if os.getenv('TMUX') then
+    return 'vimux'
+  end
+  return 'neovim' -- plain TUI nvim with no multiplexer
 end
 
 vim.g['test#strategy'] = get_strategy()
 
 -- Vimux settings
 vim.g['VimuxHeight'] = '15'
+
+-- :terminal split height for the 'neovim' fallback strategy
+vim.g['test#neovim#term_position'] = 'belowright 15'
+vim.g['test#neovim#start_normal'] = 1 -- enter terminal in normal mode so output stays scrollable
 
 -- Optional: Customize test commands for different languages
 -- For Go tests

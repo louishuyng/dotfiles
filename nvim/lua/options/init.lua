@@ -13,6 +13,10 @@ if vim.g.neovide then
   vim.g.neovide_title_hidden = true
   vim.g.neovide_show_border = false
   vim.g.neovide_fullscreen = false
+  -- Force a blank window title — without this, macOS falls back to the
+  -- app name ("Neovide") in the buttonless titlebar.
+  vim.opt.title = true
+  vim.opt.titlestring = ' '
 
   -- Cursor animation (disabled)
   vim.g.neovide_cursor_animation_length = 0
@@ -33,7 +37,7 @@ if vim.g.neovide then
   vim.g.neovide_confirm_quit = true
 
   -- Visual effects
-  vim.g.neovide_transparency = 1.0
+  vim.g.neovide_opacity = 1.0
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_underline_stroke_scale = 1.0
   vim.g.neovide_scroll_animation_length = 0.3
@@ -43,12 +47,8 @@ if vim.g.neovide then
   vim.g.neovide_input_macos_option_key_is_meta = 'both'
 end
 
--- Fallback font for other GUI clients
-vim.o.guifont = 'JetBrainsMono Nerd Font:h14'
-
 vim.g.default_dark_theme = 'night'
 vim.g.default_light_theme = 'light'
-vim.g.default_dark_catppuccin_theme = 'mocha'
 
 vim.g.home_dir = '/Users/louishuyng'
 vim.g.work_project_dir = vim.g.home_dir .. '/LX14/projects'
@@ -89,7 +89,7 @@ opt.listchars = {
   precedes = '⟨',
 }
 opt.laststatus = 3 -- Always display the status line
-opt.showtabline = 0 -- Never show tabline
+opt.showtabline = 1 -- Show tabline only when 2+ tabs exist
 opt.relativenumber = true -- Relative line numbers
 
 -- Tabs
@@ -186,8 +186,7 @@ vim.g.auto_format = true
 
 -- Grep
 vim.opt.grepprg = 'rg --vimgrep --smart-case --follow'
--- Winbar
--- vim.api.nvim_command("set winbar=%m\\ %f")
+-- It auto-attaches to buffers with treesitter/LSP and leaves the rest empty.
 
 -- Performance
 vim.opt.synmaxcol = 500
