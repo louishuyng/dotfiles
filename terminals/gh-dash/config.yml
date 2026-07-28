@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://gh-dash.dev/schema.json
+
+prSections:
+  - title: mine
+    filters: is:open author:@me
+  - title: review
+    filters: is:open review-requested:@me
+  - title: involved
+    filters: is:open involves:@me -author:@me
+  - title: regask
+    filters: is:open org:regask -author:@me
+
+issuesSections:
+  - title: mine
+    filters: is:open author:@me
+  - title: assigned
+    filters: is:open assignee:@me
+
+# Needed by the tuicr keybinding: RepoPath is where the command cd's into.
+repoPaths:
+  louishuyng/dotfiles: ~/.dotfiles
+  regask/*: ~/LX14/repository/github.com/regask/*
+  louishuyng/*: ~/LX14/repository/github.com/louishuyng/*
+
+keybindings:
+  universal:
+    # g was first-item; keep that on home only so g is free for lazygit
+    - key: home
+      builtin: firstLine
+  prs:
+    - key: r
+      name: tuicr
+      command: cd {{.RepoPath}} && tuicr pr {{.PrNumber}}
+    # lazygit must live here, not in universal: universal commands always get
+    # the repo gh-dash started in, not the selected row's repo
+    - key: g
+      name: lazygit
+      command: cd {{.RepoPath}} && lazygit
+    # sidebar tabs (Overview / Activity / Checks / Files); replaces ] and [
+    - key: tab
+      builtin: nextSidebarTab
+    - key: shift+tab
+      builtin: prevSidebarTab
+    - key: d
+      builtin: diff
+      name: gh diff
+  issues:
+    - key: g
+      name: lazygit
+      command: cd {{.RepoPath}} && lazygit
+
+defaults:
+  preview:
+    open: true
+    width: 0.5
+  prsLimit: 20
+  issuesLimit: 20
+  view: prs
+  refetchIntervalMinutes: 30

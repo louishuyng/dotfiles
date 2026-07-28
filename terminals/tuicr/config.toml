@@ -1,0 +1,22 @@
+# Follows macOS light/dark like the rest of the setup
+appearance = "system"
+theme_dark = "catppuccin-mocha"
+theme_light = "catppuccin-latte"
+
+diff_view = "side-by-side"
+show_file_list = true
+cursor_line = true
+scroll_offset = 5
+mouse = true
+
+# vim modal editing in the comment box
+comment_vim = true
+
+# launched from a tmux popup / gh-dash, so skip the startup roundtrip
+no_update_check = true
+
+comment_types = [
+  { id = "note", label = "question", definition = "ask for clarification", color = "yellow" },
+  { id = "nit", label = "nit", definition = "non-blocking style comment", color = "blue" },
+  { id = "blocker", label = "blocker", definition = "must fix before merge", color = "red" },
+]
