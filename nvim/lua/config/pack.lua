@@ -14,6 +14,7 @@ vim.pack.add({
   'https://github.com/savq/melange-nvim',
   'https://github.com/projekt0n/github-nvim-theme',
   'https://github.com/craftzdog/solarized-osaka.nvim',
+  'https://github.com/Aejkatappaja/cendre',
   'https://github.com/f-person/auto-dark-mode.nvim',
 
   -- UI
@@ -69,11 +70,11 @@ vim.pack.add({
   'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
   'https://github.com/nvim-telescope/telescope-live-grep-args.nvim',
   'https://github.com/nvim-telescope/telescope-file-browser.nvim',
+  -- Binary is built automatically via the PackChanged autocmd below.
   'https://github.com/desdic/marlin.nvim',
   'https://github.com/nvim-tree/nvim-tree.lua',
   'https://github.com/s1n7ax/nvim-window-picker',
   'https://github.com/folke/edgy.nvim',
-  'https://github.com/ibhagwan/fzf-lua',
   'https://github.com/folke/flash.nvim',
 
   -- LSP

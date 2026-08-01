@@ -59,7 +59,7 @@ function M.setup()
         transparent = false,
         hide_end_of_buffer = true,
         styles = {
-          comments = 'NONE',
+          comments = 'italic',
           keywords = 'NONE',
         },
       },

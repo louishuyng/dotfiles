@@ -1,0 +1,57 @@
+# solarized-osaka (light / "day") — resolved values from
+# craftzdog/solarized-osaka.nvim's light table.
+#
+# base03 #fdf5e2  base02 #ede7d3  base01 #adb7b7  base00 #9eabac
+# base0  #637981  fg     #576d74  base2  #063540  base3  #002c38
+# Accents are shared with the dark variant; only the bases flip.
+
+panel_bg = "#fdf5e2"
+bg_highlight = "#ede7d3"
+fg_primary = "#063540"
+fg_secondary = "#576d74"
+fg_dim = "#9eabac"
+
+diff_add = "#849900"
+diff_add_bg = "#ebffd7"
+diff_del = "#db302d"
+diff_del_bg = "#ffd2d1"
+diff_context = "#576d74"
+diff_hunk_header = "#268bd3"
+expanded_context_fg = "#9eabac"
+
+syntax_add_bg = "#ebffd7"
+syntax_del_bg = "#ffd2d1"
+
+file_added = "#849900"
+file_modified = "#b28500"
+file_deleted = "#db302d"
+file_renamed = "#6d71c4"
+
+reviewed = "#849900"
+pending = "#b28500"
+
+comment_note = "#268bd3"
+comment_suggestion = "#29a298"
+comment_issue = "#db302d"
+comment_praise = "#849900"
+
+border_focused = "#29a298"
+border_unfocused = "#adb7b7"
+status_bar_bg = "#ede7d3"
+# orange reads better than yellow against the cream background
+cursor_color = "#c94c16"
+cursor_line_bg = "#ede7d3"
+branch_name = "#6d71c4"
+help_indicator = "#9eabac"
+
+message_info_fg = "#002c38"
+message_info_bg = "#268bd3"
+message_warning_fg = "#002c38"
+message_warning_bg = "#b28500"
+message_error_fg = "#002c38"
+message_error_bg = "#db302d"
+update_badge_fg = "#002c38"
+update_badge_bg = "#b28500"
+
+mode_fg = "#002c38"
+mode_bg = "#29a298"

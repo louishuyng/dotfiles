@@ -8,3 +8,4 @@ source ~/.dotfiles/terminals/fish/alias/languages.fish
 source ~/.dotfiles/terminals/fish/alias/network.fish
 source ~/.dotfiles/terminals/fish/alias/os.fish
 source ~/.dotfiles/terminals/fish/alias/workflow.fish
+source ~/.dotfiles/terminals/fish/alias/learning.fish

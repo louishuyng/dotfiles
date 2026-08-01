@@ -1,0 +1,1 @@
+alias csub="codecrafters submit"

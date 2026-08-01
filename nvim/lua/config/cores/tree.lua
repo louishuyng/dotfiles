@@ -214,7 +214,7 @@ nvim_tree.setup({
       max = -1,
       padding = 1,
     },
-    side = 'right',
+    side = 'left',
     signcolumn = 'no',
     number = false,
     relativenumber = false,

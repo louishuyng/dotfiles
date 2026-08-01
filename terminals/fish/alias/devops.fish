@@ -64,3 +64,6 @@ alias open-kubectl='export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig && ex
 
 # Disk
 alias disk="dysk"
+
+# Backstage
+alias bsr="backstage-regask"

@@ -1,0 +1,57 @@
+# solarized-osaka (dark) — palette lifted from craftzdog/solarized-osaka.nvim.
+# The plugin computes its colors via HSL at load time; these are the resolved
+# values, so nvim and tuicr stay in sync.
+#
+# base04 #001419  base03 #002c38  base02 #063540  base00 #637981
+# base0  #9eabac  base1  #adb7b7  fg     #839395
+
+panel_bg = "#001419"
+bg_highlight = "#002c38"
+fg_primary = "#9eabac"
+fg_secondary = "#839395"
+fg_dim = "#637981"
+
+diff_add = "#849900"
+diff_add_bg = "#191d00"
+diff_del = "#db302d"
+diff_del_bg = "#380605"
+diff_context = "#839395"
+diff_hunk_header = "#268bd3"
+expanded_context_fg = "#637981"
+
+syntax_add_bg = "#191d00"
+syntax_del_bg = "#380605"
+
+file_added = "#849900"
+file_modified = "#b28500"
+file_deleted = "#db302d"
+file_renamed = "#6d71c4"
+
+reviewed = "#849900"
+pending = "#b28500"
+
+comment_note = "#268bd3"
+comment_suggestion = "#29a298"
+comment_issue = "#db302d"
+comment_praise = "#849900"
+
+border_focused = "#29a298"
+border_unfocused = "#063540"
+status_bar_bg = "#002c38"
+cursor_color = "#b28500"
+cursor_line_bg = "#063540"
+branch_name = "#6d71c4"
+help_indicator = "#637981"
+
+# Solarized accents sit mid-luminance, so badges take the darkest base as text
+message_info_fg = "#001419"
+message_info_bg = "#268bd3"
+message_warning_fg = "#001419"
+message_warning_bg = "#b28500"
+message_error_fg = "#001419"
+message_error_bg = "#db302d"
+update_badge_fg = "#001419"
+update_badge_bg = "#b28500"
+
+mode_fg = "#001419"
+mode_bg = "#29a298"

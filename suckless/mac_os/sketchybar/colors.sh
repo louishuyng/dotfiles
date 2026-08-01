@@ -181,7 +181,7 @@ export BG1=0x60${linkarzu_color13#\#}
 export BG2=0x60${linkarzu_color07#\#}
 
 # General bar colors
-export BAR_COLOR=$BG080
+export BAR_COLOR=0xff1F1F1F
 export BAR_BORDER_COLOR=$BG2
 export BACKGROUND_1=$BG1
 export BACKGROUND_2=$BG2

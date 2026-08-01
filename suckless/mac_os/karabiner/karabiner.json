@@ -1522,6 +1522,24 @@
                         "product_id": 6519,
                         "vendor_id": 12951
                     }
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 4285,
+                        "vendor_id": 14139
+                    },
+                    "ignore": false,
+                    "treat_as_built_in_keyboard": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 4285,
+                        "vendor_id": 14139
+                    },
+                    "treat_as_built_in_keyboard": true
                 }
             ],
             "name": "Louis",

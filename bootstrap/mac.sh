@@ -59,7 +59,8 @@ install_homebrew() {
 setup_git() {
   read -r -p "Do you want to setup git? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
-    brew install gh 
+    brew install gh
+    gh extension install dlvhdr/gh-dash
     success "Installed GitHub CLI"
     mkdir -p ~/.git/safe
 
@@ -351,11 +352,13 @@ link_all_dotfiles() {
 
   mkdir -p ~/.config/kitty
   mkdir -p ~/.config/fish
+  mkdir -p ~/.config/gh-dash
 
   cd ~/.dotfiles/terminals && \
     stow kitty -t ~/.config/kitty && \
     stow fish -t ~/.config/fish && \
     stow tmux -t ~/ && \
+    stow gh-dash -t ~/.config/gh-dash && \
     stow neofetch ~/.config/neofetch \
   success "Linked terminals"
 
@@ -460,6 +463,7 @@ install_cli_tools() {
     brew install serpl # Search and replace
     brew install aichat # AI cli
     brew install gitkraken-cli # Git kraken
+    brew install agavra/tap/tuicr # Code review TUI (opened from gh-dash)
     brew install hurl # Postman CLI alternative
     brew install tfenv # Terraform version manager
 

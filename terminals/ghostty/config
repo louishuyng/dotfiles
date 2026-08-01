@@ -1,23 +1,22 @@
 auto-update-channel = tip
 
-theme = dark:GitHub Dark Default,light:iTerm2 Solarized Light
+theme = dark:dark,light:light
 
 # Background
 background-opacity = 0.8
 background-blur-radius = 0
 
 # font-family = "Berkeley Mono"
-font-family = "Terminess Nerd Font"
-# font-family = "Jetbrains Mono Nerd Font"
-# font-family = "IoskeleyMono Nerd Font"
+# font-family = "Terminess Nerd Font"
+font-family = "Jetbrains Mono Nerd Font"
 
 cursor-color = #AF87D7
 
-font-size = 16.0
+font-size = 14
 font-thicken = true
 font-thicken-strength = 150
 adjust-cell-width = 0%
-adjust-cell-height = 2%
+adjust-cell-height = 0%
 
 window-width = 200
 window-height = 55

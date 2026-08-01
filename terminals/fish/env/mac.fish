@@ -146,3 +146,6 @@ set -gx KNOCK_SERVICE_TOKEN (cat ~/.knock_service_token)
 
 # Lua Binaries
 fish_add_path ~/.luarocks/bin/
+
+# Tudo
+set -gx TODO_DIR ~/LX14/notes/tuxedo/

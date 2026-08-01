@@ -60,3 +60,8 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 # Syntax highlighting (must be last)
 [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/louishuyng/.lmstudio/bin"
+# End of LM Studio CLI section
+

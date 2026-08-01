@@ -17,8 +17,8 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 14
 inner.vertical =   14
-outer.top = [{ monitor."Built-in" = 8 }, 40]
-outer.bottom = [{ monitor."Built-in" = 0 }, 0]
+outer.top = [{ monitor."Built-in" = 0 }, 0]
+outer.bottom = [{ monitor."Built-in" = 40 }, 40]
 outer.left =       0
 outer.right =      0
 
@@ -268,6 +268,14 @@ run = ['move-node-to-workspace Any']
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
+run = ['move-node-to-workspace Any']
+
+[[on-window-detected]]
+if.app-id = 'com.deezer.deezer-desktop'
+run = ['move-node-to-workspace Any']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
 run = ['move-node-to-workspace Any']
 
 # Workspace Virutal

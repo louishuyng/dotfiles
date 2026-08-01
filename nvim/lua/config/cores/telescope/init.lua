@@ -98,6 +98,20 @@ telescope.load_extension('fzf')
 telescope.load_extension('file_browser')
 telescope.load_extension('live_grep_args')
 
+-- fff.nvim powers the <c-p> file picker (see custom/fff_files.lua). fff.setup()
+-- only records config into vim.g.fff; file_picker.setup() marks the picker
+-- ready (fff.file_search's wait_for_initial_scan needs this) and requiring the
+-- module kicks off the background index scan, so the first <c-p> is instant.
+local ok_fff, fff = pcall(require, 'fff')
+if ok_fff then
+  fff.setup({})
+  vim.schedule(function()
+    pcall(function()
+      require('fff.file_picker').setup()
+    end)
+  end)
+end
+
 -- Theme-agnostic Telescope highlights. Pulls from the semantic palette so
 -- the picker stays visually distinct from the editor background regardless
 -- of which theme is active (tokyonight, catppuccin, ...).

@@ -6,10 +6,10 @@ POPUP_OFF='sketchybar --set apple.logo popup.drawing=off'
 POPUP_CLICK_SCRIPT='sketchybar --set $NAME popup.drawing=toggle'
 
 apple_logo=(
-  icon="𒅌    "
-  icon.font="$FONT:Regular:24.0"
+  icon="☤"
+  icon.font="$FONT:Regular:40.0"
   # Here you can change the icon color
-  icon.color=0xffBB2026
+  icon.color=0xffABC631
   label.drawing=off
   click_script="$POPUP_CLICK_SCRIPT"
   popup.height=35

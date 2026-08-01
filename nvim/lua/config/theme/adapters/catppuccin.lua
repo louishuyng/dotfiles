@@ -15,7 +15,6 @@ local opts = {
     light = 'latte',
     dark = 'macchiato',
   },
-  no_italic = true,
   color_overrides = {
     macchiato = {
       -- base = '#000000',

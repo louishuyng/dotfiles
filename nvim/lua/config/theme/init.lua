@@ -18,6 +18,9 @@ local adapter_loaders = {
   catppuccin = function()
     return require('config.theme.adapters.catppuccin')
   end,
+  cendre = function()
+    return require('config.theme.adapters.cendre')
+  end,
   gruvbox_material = function()
     return require('config.theme.adapters.gruvbox_material')
   end,
@@ -104,7 +107,23 @@ local function apply(variant)
   active_variant = variant
   local adapter = ensure_setup(M.config[variant])
   palette.set_adapter(adapter)
-  adapter.apply(variant)
+
+  -- Adapters flip `vim.o.background` before `:colorscheme`, and that flip
+  -- re-sources the *current* (outgoing) colorscheme, firing a ColorScheme event
+  -- while the old theme's colors are still live. Plugins that re-derive
+  -- highlights from base groups with `default = true` (git-conflict, neogit,
+  -- gitsigns, oil, ...) latch onto those stale colors on that early event; the
+  -- real colorscheme load then can't override a group already set as default,
+  -- so their colors lag one toggle behind until a restart. Swallow ColorScheme
+  -- across the whole swap and emit exactly one event once the new theme is live.
+  local eventignore = vim.o.eventignore
+  vim.o.eventignore = (eventignore ~= '' and eventignore .. ',' or '') .. 'ColorScheme'
+  local ok, err = pcall(adapter.apply, variant)
+  vim.o.eventignore = eventignore
+  if not ok then
+    error(err)
+  end
+  vim.api.nvim_exec_autocmds('ColorScheme', { pattern = vim.g.colors_name })
 end
 
 ---@param themes string|{dark?:string, light?:string}

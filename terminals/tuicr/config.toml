@@ -1,7 +1,7 @@
 # Follows macOS light/dark like the rest of the setup
 appearance = "system"
-theme_dark = "catppuccin-mocha"
-theme_light = "catppuccin-latte"
+theme_dark = "solarized-osaka"
+theme_light = "solarized-osaka-day"
 
 diff_view = "side-by-side"
 show_file_list = true
@@ -15,8 +15,15 @@ comment_vim = true
 # launched from a tmux popup / gh-dash, so skip the startup roundtrip
 no_update_check = true
 
+# `id` is what gets exported as the [TYPE] tag, `label` is TUI-only — keep them
+# in sync so the badge and the GitHub comment agree
 comment_types = [
-  { id = "note", label = "question", definition = "ask for clarification", color = "yellow" },
+  { id = "question", label = "question", definition = "ask for clarification", color = "yellow" },
   { id = "nit", label = "nit", definition = "non-blocking style comment", color = "blue" },
   { id = "blocker", label = "blocker", definition = "must fix before merge", color = "red" },
 ]
+
+[forge]
+# exports as `[NIT] body` / `[BLOCKER] body`; prepended inline, so a
+# ```suggestion fence must start on the second line of the comment
+comment_type_prefix = true

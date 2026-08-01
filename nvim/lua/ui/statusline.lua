@@ -109,6 +109,125 @@ local function search_count()
   return color('StlSearch', string.format('󰍉 %d/%d', result.current, result.total))
 end
 
+-- A row of decorative glyphs that breathe through the theme's accent hues. A
+-- short timer runs one phase that all icons share with a per-slot offset, so
+-- they pulse as a staggered wave; each full breath re-rolls the glyphs and
+-- steps the hue. All PULSE_COUNT icons stay on screen at all times — the
+-- breath only dims them (never below PULSE_MIN), it never removes them.
+-- Cool Nerd Font icons, all from the Material Design range, which Terminess
+-- draws with a real outline: skull, ghost, alien, devil, space-invader, robot,
+-- death-star, nuke, biohazard, bug, code-tags. (Font Awesome / Codicon glyphs
+-- are in the font's cmap but render as empty outlines here, so they're avoided.)
+local PULSE_GLYPHS = { '󰚌', '󰊠', '󰢚', '󰡆', '󰼰', '󰚩', '󰣫', '󰚤', '󰨃', '󰃤', '󰅴' }
+local PULSE_HUES = { 'primary', 'secondary', 'tertiary', 'info', 'warn', 'error' }
+local PULSE_COUNT = 5 -- number of icons in the row
+local PULSE_SEP = '  ' -- padding between icons in the row
+local PULSE_PAD_LEFT = ' ' -- extra gap before the row (widens the space after search_count)
+local PULSE_INTERVAL = 100 -- ms between ticks
+local PULSE_STEP = 0.05 -- phase advance per tick (~2s per full breath)
+local PULSE_IDLE_MS = 150 -- don't force redraws until input has been quiet this long
+local PULSE_MIN = 0.55 -- dimmest brightness — kept high enough that icons stay visible
+local PULSE_MAX = 1.0 -- brightest brightness at the peak of the breath
+
+local pulse = { hue = 1, phase = 0, last_input = 0, glyphs = {} }
+for i = 1, PULSE_COUNT do
+  pulse.glyphs[i] = PULSE_GLYPHS[i]
+end
+
+-- Stamp the last keypress so the timer can tell idle from active editing. The
+-- namespace is stable across reloads, so re-sourcing replaces (not stacks) it.
+vim.on_key(function()
+  pulse.last_input = vim.uv.now()
+end, vim.api.nvim_create_namespace('stl_pulse_key'))
+
+local function hex_to_rgb(hex)
+  hex = hex:gsub('#', '')
+  return tonumber(hex:sub(1, 2), 16), tonumber(hex:sub(3, 4), 16), tonumber(hex:sub(5, 6), 16)
+end
+
+---Linearly blend two hex colors; t in [0,1], 0 = from, 1 = to.
+local function blend(from, to, t)
+  local fr, fg, fb = hex_to_rgb(from)
+  local tr, tg, tb = hex_to_rgb(to)
+  return string.format(
+    '#%02x%02x%02x',
+    math.floor(fr + (tr - fr) * t + 0.5),
+    math.floor(fg + (tg - fg) * t + 0.5),
+    math.floor(fb + (tb - fb) * t + 0.5)
+  )
+end
+
+-- Recompute every slot's highlight from the current phase. No side effects
+-- beyond nvim_set_hl, so it's safe to call on theme change as well as per tick.
+local function apply_pulse_hl()
+  local c = palette.colors
+  if not c.bg_alt then
+    return
+  end
+  for i = 1, PULSE_COUNT do
+    local phase = (pulse.phase + (i - 1) / PULSE_COUNT) % 1
+    -- cosine easing between PULSE_MIN (breath edges) and PULSE_MAX (its peak).
+    local brightness = PULSE_MIN + (PULSE_MAX - PULSE_MIN) * (0.5 - 0.5 * math.cos(phase * 2 * math.pi))
+    local hidx = (pulse.hue - 1 + (i - 1)) % #PULSE_HUES + 1
+    local hue = c[PULSE_HUES[hidx]] or c.primary
+    vim.api.nvim_set_hl(0, 'StlPulse' .. i, { fg = blend(c.bg_alt, hue, brightness), bold = true })
+  end
+end
+
+-- Fill pulse.glyphs with PULSE_COUNT *distinct* glyphs (partial Fisher-Yates),
+-- so no two slots ever show the same character.
+local function roll_glyphs()
+  local pool = { unpack(PULSE_GLYPHS) }
+  for i = 1, PULSE_COUNT do
+    local j = math.random(i, #pool)
+    pool[i], pool[j] = pool[j], pool[i]
+    pulse.glyphs[i] = pool[i]
+  end
+end
+
+local function pulse_tick()
+  if not palette.colors.bg_alt then
+    return
+  end
+  pulse.phase = pulse.phase + PULSE_STEP
+  if pulse.phase >= 1 then
+    pulse.phase = pulse.phase - 1
+    pulse.hue = pulse.hue % #PULSE_HUES + 1
+    roll_glyphs()
+  end
+  apply_pulse_hl()
+  -- Only force a redraw when idle; while typing/moving, the user's own events
+  -- already redraw the statusline, so forcing more just adds input latency.
+  if vim.uv.now() - pulse.last_input > PULSE_IDLE_MS then
+    vim.cmd('redrawstatus')
+  end
+end
+
+-- Seed the slot highlights now (and re-seed on theme flip) so the groups exist
+-- before the first tick; on_change fires immediately if the palette is ready.
+palette.on_change(apply_pulse_hl)
+
+-- Survive config reloads: stop any timer a previous load of this module started.
+if _G.__stl_pulse_timer then
+  pcall(function()
+    _G.__stl_pulse_timer:stop()
+    _G.__stl_pulse_timer:close()
+  end)
+end
+math.randomseed(os.time())
+_G.__stl_pulse_timer = vim.uv.new_timer()
+if _G.__stl_pulse_timer then
+  _G.__stl_pulse_timer:start(PULSE_INTERVAL, PULSE_INTERVAL, vim.schedule_wrap(pulse_tick))
+end
+
+local function pulse_icons()
+  local parts = {}
+  for i = 1, PULSE_COUNT do
+    parts[i] = color('StlPulse' .. i, pulse.glyphs[i])
+  end
+  return PULSE_PAD_LEFT .. table.concat(parts, PULSE_SEP)
+end
+
 local function macro_recording()
   local reg = vim.fn.reg_recording()
   if reg == '' then
@@ -160,7 +279,7 @@ local function mode_bar()
 end
 
 local MODE_LETTERS = {
-  n = ' ',
+  n = '❑ ',
   i = 'INS',
   v = 'VISL',
   V = 'V-LINE',
@@ -176,12 +295,13 @@ local MODE_LETTERS = {
 local function mode_letter()
   local mode = vim.api.nvim_get_mode().mode
   local color_group = MODE_COLORS[mode] or 'StlInfo'
-  local letter = MODE_LETTERS[mode] or mode:upper()
+  -- local letter = MODE_LETTERS[mode] or mode:upper()
+  local letter = 'C@d3 [NIX]'
   return color(color_group, letter)
 end
 
 local function mode_indicator()
-  return mode_bar() .. ' ' .. mode_letter()
+  return mode_bar() .. '' .. mode_letter()
 end
 
 local function git_changes()
@@ -324,6 +444,7 @@ function M.statusline()
     macro_recording(),
     position(),
     search_count(),
+    -- pulse_icons(),
     -- Separator
     '%=',
     -- Right cluster

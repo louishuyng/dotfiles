@@ -2,7 +2,6 @@ local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local telescope_theme = require('config.cores.telescope.theme').dropdown_theme
 
--- Main finding
 vim.keymap.set('n', '<c-p>', function()
   builtin.find_files(telescope_theme('Files'))
 end, { silent = true, noremap = true, desc = 'Find files' })
