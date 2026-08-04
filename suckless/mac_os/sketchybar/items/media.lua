@@ -99,7 +99,7 @@ local popup_title = sbar.add("item", "popup.center.media.title", {
 			style = settings.font.style_map["Bold"],
 			size = 13,
 		},
-		color = 0xffffffff,
+		color = colors.white,
 		padding_left = 4,
 		padding_right = 4,
 	},
@@ -336,7 +336,7 @@ local function set_label(text, faded, animate)
 		return
 	end
 	last_label_state = key
-	local color = faded and colors.with_alpha(colors.white, faded) or 0xffffffff
+	local color = faded and colors.with_alpha(colors.white, faded) or colors.white
 	if animate then
 		sbar.animate("tanh", 10, function()
 			media:set({ label = { string = text, color = color } })
