@@ -14,8 +14,8 @@ agent_panel_sort = "priority"
 # Tracks host light/dark so the com.user.theme-watcher launchd daemon stays the
 # single source of truth for appearance.
 auto_switch = true
-dark_name = "tokyo-night"
-light_name = "catppuccin-latte"
+dark_name = "rose-pine"
+light_name = "rose-pine-dawn"
 
 [keys]
 prefix = "ctrl+a"
@@ -197,24 +197,29 @@ command = "herdr pane split --current --direction right --ratio 0.50 --focus"
 # 300% and slammed a 26-row pane to 46, pinning its neighbour at the 5-row
 # minimum. 0.05 nudges 2-3 rows per press and reverses cleanly with the
 # opposite direction — the closest analogue to tmux's 3 cells.
+#
+# Uppercase rather than shift+lowercase, and unshifted brackets rather than
+# braces: the shift/punctuation-modifier forms validated but were never
+# delivered by the terminal. See herdr's own note that
+# "punctuation-with-modifiers may depend on your terminal/tmux setup".
 
 [[keys.command]]
-key = "prefix+shift+h"
+key = "prefix+H"
 type = "shell"
 command = "herdr pane resize --current --direction left --amount 0.05"
 
 [[keys.command]]
-key = "prefix+shift+j"
+key = "prefix+J"
 type = "shell"
 command = "herdr pane resize --current --direction down --amount 0.05"
 
 [[keys.command]]
-key = "prefix+shift+k"
+key = "prefix+K"
 type = "shell"
 command = "herdr pane resize --current --direction up --amount 0.05"
 
 [[keys.command]]
-key = "prefix+shift+l"
+key = "prefix+L"
 type = "shell"
 command = "herdr pane resize --current --direction right --amount 0.05"
 
@@ -222,24 +227,29 @@ command = "herdr pane resize --current --direction right --amount 0.05"
 # Replaces the tmux `,`/`.` (swap-window -t -1/+1) that this migration
 # dropped. herdr's CLI has no `tab move`; see scripts/tab-move.sh for why this
 # needs a script instead of a plain herdr invocation.
+#
+# Uppercase rather than shift+lowercase, and unshifted brackets rather than
+# braces: the shift/punctuation-modifier forms validated but were never
+# delivered by the terminal. See herdr's own note that
+# "punctuation-with-modifiers may depend on your terminal/tmux setup".
 
 [[keys.command]]
-key = "prefix+{"
+key = "prefix+["
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh left"
 
 [[keys.command]]
-key = "prefix+}"
+key = "prefix+]"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh right"
 
 # herdr's own background, deliberately lighter than Ghostty's #11111B so the
-# multiplexer chrome reads as distinct from terminal content. tokyo-night's
-# bg_highlight, so it stays in-family with the base theme.
+# multiplexer chrome reads as distinct from terminal content. rose-pine's
+# overlay colour, so it stays in-family with the base theme.
 #
 # NOTE: [theme.custom] has no light/dark variants — verified that
 # [theme.custom.dark] and friends are rejected as unknown config keys. So this
 # applies in light mode too, where it will look wrong. The user accepted that
 # trade-off deliberately; do not "fix" it by dropping the override.
 [theme.custom]
-panel_bg = "#24283b"
+panel_bg = "#26233a"

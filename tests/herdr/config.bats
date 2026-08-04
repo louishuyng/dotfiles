@@ -24,8 +24,8 @@ setup() {
   grep -q '^auto_switch = true$' "$XDG/herdr/config.toml"
   # herdr's settings UI writes this file, so pin the variants too — a UI-driven
   # theme change should surface here deliberately, not as a mystery red.
-  grep -q '^dark_name = "tokyo-night"$' "$XDG/herdr/config.toml"
-  grep -q '^light_name = "catppuccin-latte"$' "$XDG/herdr/config.toml"
+  grep -q '^dark_name = "rose-pine"$' "$XDG/herdr/config.toml"
+  grep -q '^light_name = "rose-pine-dawn"$' "$XDG/herdr/config.toml"
   # `name` must stay absent: with auto_switch on it is redundant, and its
   # presence means the UI overwrote our config again.
   ! grep -q '^name = ' "$XDG/herdr/config.toml"
@@ -89,12 +89,12 @@ prefix+right|shell|herdr pane swap --current --direction right||
 prefix+shift+t|shell|~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh||
 prefix+minus|shell|herdr pane split --current --direction down --ratio 0.70 --focus||
 prefix+||shell|herdr pane split --current --direction right --ratio 0.50 --focus||
-prefix+shift+h|shell|herdr pane resize --current --direction left --amount 0.05||
-prefix+shift+j|shell|herdr pane resize --current --direction down --amount 0.05||
-prefix+shift+k|shell|herdr pane resize --current --direction up --amount 0.05||
-prefix+shift+l|shell|herdr pane resize --current --direction right --amount 0.05||
-prefix+{|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh left||
-prefix+}|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh right||
+prefix+H|shell|herdr pane resize --current --direction left --amount 0.05||
+prefix+J|shell|herdr pane resize --current --direction down --amount 0.05||
+prefix+K|shell|herdr pane resize --current --direction up --amount 0.05||
+prefix+L|shell|herdr pane resize --current --direction right --amount 0.05||
+prefix+[|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh left||
+prefix+]|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh right||
 WANT
 
   # Exact count: catches a stray or duplicated block the table alone would miss.
@@ -104,7 +104,7 @@ WANT
 @test "herdr's panel background is pinned distinct from Ghostty's" {
   # Ghostty's dark background is #11111B; this must not drift back to matching
   # it, and `reset` would make herdr inherit the terminal background again.
-  grep -q '^panel_bg = "#24283b"$' "$XDG/herdr/config.toml"
+  grep -q '^panel_bg = "#26233a"$' "$XDG/herdr/config.toml"
 }
 
 @test "the appearance toggle flips macOS appearance without writing config" {
