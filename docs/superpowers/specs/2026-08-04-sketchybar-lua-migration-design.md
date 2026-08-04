@@ -50,8 +50,14 @@ Already present, so the Lua path adds no new install steps:
 | aerospace | 0.20.3-Beta |
 | Hardware | Mac15,7 (16" MacBook Pro — has a notch) |
 
-`nowplaying-cli` and `switchaudio-osx` must be verified during implementation; media and
-volume-source-switching depend on them.
+`nowplaying-cli` and `SwitchAudioSource` are both on PATH, so media and volume-source-switching
+work as-is.
+
+**Font, not covered above:** upstream's `helpers/default_font.lua` names *Satoshi Variable*,
+which is not installed here — every label would fall back silently to a system default. The
+config is pointed at **JetBrainsMono Nerd Font** instead (48 faces installed; the family the bash
+bar already used). Its style map is remapped to faces that exist: `Semibold` → `SemiBold`, and
+both `Heavy` and `Black` → `ExtraBold`, since JetBrainsMono ships no Black face.
 
 ## Design
 
@@ -135,8 +141,8 @@ Notch spacer width `230`, sized for the 16" panel. Single constant in `items/ini
 | Right bracket | wifi → bluetooth → volume → battery |
 
 Workspace pills follow flameberry's behavior: unfocused and empty → not drawn; unfocused with
-windows → dark oval of app icons; focused → accent-filled pill showing the workspace name plus
-its app icons.
+windows → a small empty dark oval; focused → accent-filled pill showing the workspace name plus
+its app icons. App icons render only in the focused pill.
 
 Workspace names on this machine are words (`Any Chat Dev Inbox Planing Reading Terminal Virtual
 Web`), and `display_label` prints the id verbatim, so the focused pill will be wider than
