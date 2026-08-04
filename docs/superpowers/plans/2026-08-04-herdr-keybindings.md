@@ -166,9 +166,14 @@ Expected: symlink points into `.dotfiles`; `config: ok` with no warnings.
 
 - [ ] **Step 6: Add the bootstrap hook**
 
-In `bootstrap/mac.sh`, immediately after the rio `ln -s` block, add:
+In `bootstrap/mac.sh`, inside `install_terminal()` but **after** the rio `if`/`fi`
+block closes — not inside it. The rio lines are guarded by a "do you want to
+install rio?" prompt; herdr is the outer multiplexer, not an optional terminal,
+so its link must not depend on that answer:
 
 ```bash
+  # herdr is the outer multiplexer, not an optional terminal — link it
+  # regardless of which terminal emulators the user opts into above.
   mkdir -p ~/.config/herdr
   ln -sfn ~/.dotfiles/terminals/herdr/config.toml ~/.config/herdr/config.toml
 ```
