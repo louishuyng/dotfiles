@@ -24,11 +24,21 @@ hd_active() {
 
 # hd_workspace_id_by_label <label>
 hd_workspace_id_by_label() {
-  local label="$1" json
+  local label="$1"
   [[ -z "$label" ]] && return 0
+
+  local json out
   json=$("$HERDR_BIN" workspace list 2>/dev/null) || return 2
-  printf '%s' "$json" | jq -r --arg l "$label" \
-    'first(.result.workspaces[]? | select(.label == $l) | .workspace_id) // empty'
+  # jq's status is normalized to 2: malformed herdr output is a failed call, not
+  # a no-match. Its stderr is suppressed because Task 6 runs these inside an fzf
+  # popup, where a stray parse error garbles the UI.
+  out=$(printf '%s' "$json" | jq -r --arg l "$label" \
+    'first(.result.workspaces[]? | select(.label == $l) | .workspace_id) // empty' 2>/dev/null) || return 2
+
+  # Print only when non-empty, so "no match" stays truly empty output rather
+  # than a bare newline.
+  [[ -n "$out" ]] && printf '%s\n' "$out"
+  return 0
 }
 
 # hd_ensure_workspace <label> <cwd>
@@ -50,10 +60,12 @@ hd_ensure_workspace() {
     return 0
   fi
 
-  local expanded="${cwd/#\~/$HOME}" out
+  local expanded="${cwd/#\~/$HOME}" out result
   mkdir -p "$expanded" || return 2
   out=$("$HERDR_BIN" workspace create --label "$label" --cwd "$expanded" --focus 2>/dev/null) || return 2
-  printf '%s' "$out" | jq -r '.result.workspace.workspace_id // empty'
+  result=$(printf '%s' "$out" | jq -r '.result.workspace.workspace_id // empty' 2>/dev/null) || return 2
+  [[ -n "$result" ]] && printf '%s\n' "$result"
+  return 0
 }
 
 # hd_tab_id_by_cwd <workspace_id> <cwd>
@@ -61,12 +73,17 @@ hd_ensure_workspace() {
 #   <cwd>. Matches cwd, not foreground_cwd: the pane's root is stable, whereas
 #   foreground_cwd drifts as the user cds around.
 hd_tab_id_by_cwd() {
-  local ws="$1" cwd="$2" json
+  local ws="$1" cwd="$2"
   [[ -z "$ws" || -z "$cwd" ]] && return 0
   local expanded="${cwd/#\~/$HOME}"
+
+  local json out
   json=$("$HERDR_BIN" pane list --workspace "$ws" 2>/dev/null) || return 2
-  printf '%s' "$json" | jq -r --arg c "$expanded" \
-    'first(.result.panes[]? | select(.cwd == $c) | .tab_id) // empty'
+  out=$(printf '%s' "$json" | jq -r --arg c "$expanded" \
+    'first(.result.panes[]? | select(.cwd == $c) | .tab_id) // empty' 2>/dev/null) || return 2
+
+  [[ -n "$out" ]] && printf '%s\n' "$out"
+  return 0
 }
 
 # hd_first_pane_id <tab_id>
@@ -74,24 +91,31 @@ hd_tab_id_by_cwd() {
 #   `pane list` works without --workspace, so nothing here depends on tab ids
 #   being formatted "<workspace_id>:<tab>".
 hd_first_pane_id() {
-  local tab="$1" json
+  local tab="$1"
   [[ -z "$tab" ]] && return 0
+
+  local json out
   json=$("$HERDR_BIN" pane list 2>/dev/null) || return 2
-  printf '%s' "$json" | jq -r --arg t "$tab" \
-    'first(.result.panes[]? | select(.tab_id == $t) | .pane_id) // empty'
+  out=$(printf '%s' "$json" | jq -r --arg t "$tab" \
+    'first(.result.panes[]? | select(.tab_id == $t) | .pane_id) // empty' 2>/dev/null) || return 2
+
+  [[ -n "$out" ]] && printf '%s\n' "$out"
+  return 0
 }
 
 # hd_open_tab <workspace_id> <cwd>
 hd_open_tab() {
-  local ws="$1" cwd="$2" out
+  local ws="$1" cwd="$2"
   if [[ -z "$ws" || -z "$cwd" ]]; then
     echo "hd_open_tab: missing argument(s)" >&2
     return 2
   fi
-  local expanded="${cwd/#\~/$HOME}"
+  local expanded="${cwd/#\~/$HOME}" out result
   mkdir -p "$expanded" || return 2
   out=$("$HERDR_BIN" tab create --workspace "$ws" --cwd "$expanded" --focus 2>/dev/null) || return 2
-  printf '%s' "$out" | jq -r '.result.tab.tab_id // empty'
+  result=$(printf '%s' "$out" | jq -r '.result.tab.tab_id // empty' 2>/dev/null) || return 2
+  [[ -n "$result" ]] && printf '%s\n' "$result"
+  return 0
 }
 
 # hd_split_run <pane_id> <direction> <ratio> <cwd> <cmd>
@@ -111,7 +135,7 @@ hd_split_run() {
   local out new
   out=$("$HERDR_BIN" pane split --pane "$pane" --direction "$direction" \
           --ratio "$ratio" --cwd "$expanded" 2>/dev/null) || return 2
-  new=$(printf '%s' "$out" | jq -r '.result.pane.pane_id // empty')
+  new=$(printf '%s' "$out" | jq -r '.result.pane.pane_id // empty' 2>/dev/null)
   [[ -z "$new" ]] && return 2
 
   # The split already happened, so on failure the caller is left holding an

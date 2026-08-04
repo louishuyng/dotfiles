@@ -165,3 +165,27 @@ EOF
   grep -q "pane split" "$calls"
   grep -q "pane run wNEW:p10 ku" "$calls"
 }
+
+@test "malformed herdr output is a failed call, not a no-match" {
+  cat > "$BATS_TEST_TMPDIR/herdr-garbage" <<'GARBAGE'
+#!/opt/homebrew/bin/bash
+echo "this is not json at all"
+exit 0
+GARBAGE
+  chmod +x "$BATS_TEST_TMPDIR/herdr-garbage"
+  export HERDR_BIN="$BATS_TEST_TMPDIR/herdr-garbage"
+
+  # bats folds stderr into $output, so asserting it is empty also proves no jq
+  # parse error leaked — which is what would garble the fzf popup in Task 6.
+  run hd_workspace_id_by_label "LX-REGASK"
+  [ "$status" -eq 2 ]
+  [ -z "$output" ]
+
+  run hd_tab_id_by_cwd w1 /synthetic/regask/api
+  [ "$status" -eq 2 ]
+  [ -z "$output" ]
+
+  run hd_first_pane_id w1:t1
+  [ "$status" -eq 2 ]
+  [ -z "$output" ]
+}
