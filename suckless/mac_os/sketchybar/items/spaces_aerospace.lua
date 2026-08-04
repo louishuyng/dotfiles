@@ -28,4 +28,20 @@ function M.display_label(workspace_id)
 	return workspace_id
 end
 
+-- Pill display order, most-used first. Aerospace's list-workspaces returns
+-- alphabetical order, which buries the workspaces used most. Workspaces absent
+-- from this list still get a pill — they sort alphabetically after the listed
+-- ones — so adding a workspace in aerospace.toml never makes it invisible here.
+M.display_order = {
+	"Dev",
+	"Terminal",
+	"Web",
+	"Chat",
+	"Reading",
+	"Planing",
+	"Any",
+	"Inbox",
+	"Virtual",
+}
+
 return M

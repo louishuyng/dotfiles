@@ -196,7 +196,36 @@ local function update_all_spaces()
 	end)
 end
 
-local workspaces = exec_to_table(backend.list_workspaces_cmd())
+-- Sort by the backend's declared display order. Unlisted workspaces sort
+-- alphabetically after the listed ones. table.sort is not stable in Lua, hence
+-- the explicit alphabetical tiebreaker rather than relying on input order.
+local function apply_display_order(list, order)
+	if not order then
+		return list
+	end
+	local rank = {}
+	for i, name in ipairs(order) do
+		rank[name] = i
+	end
+	local ordered = {}
+	for _, name in ipairs(list) do
+		ordered[#ordered + 1] = name
+	end
+	table.sort(ordered, function(a, b)
+		local ra, rb = rank[a], rank[b]
+		if ra and rb then
+			return ra < rb
+		elseif ra then
+			return true
+		elseif rb then
+			return false
+		end
+		return a < b
+	end)
+	return ordered
+end
+
+local workspaces = apply_display_order(exec_to_table(backend.list_workspaces_cmd()), backend.display_order)
 
 for i, workspace in ipairs(workspaces) do
 	local space = sbar.add("item", "space." .. workspace:gsub("%s+", "_"), {
