@@ -29,24 +29,63 @@ setup() {
   grep -q '^last_pane = "prefix+tab"$' "$XDG/herdr/config.toml"
 }
 
-@test "all ten launchers are bound" {
-  for k in 'prefix+/' 'prefix+i' 'prefix+t' 'prefix+shift+r' 'prefix+a' \
-           'prefix+ctrl+r' 'prefix+g' 'prefix+n' 'prefix+p' 'prefix+s'; do
-    grep -qF "key = \"$k\"" "$XDG/herdr/config.toml" || {
-      echo "missing launcher: $k"; return 1
-    }
-  done
+# One "key|type|command|width|height" record per [[keys.command]] block, so a
+# wrong size, command or type fails instead of slipping past a key-only grep.
+cmd_records() {
+  awk '
+    function val(s) { if (match(s, /"[^"]*"/)) return substr(s, RSTART+1, RLENGTH-2); return "" }
+    /^\[\[keys\.command\]\]/ { if (k != "") print k "|" t "|" c "|" w "|" h; k=t=c=w=h=""; next }
+    /^key *=/     { k = val($0); next }
+    /^type *=/    { t = val($0); next }
+    /^command *=/ { c = val($0); next }
+    /^width *=/   { w = val($0); next }
+    /^height *=/  { h = val($0); next }
+    END { if (k != "") print k "|" t "|" c "|" w "|" h }
+  ' "$1"
 }
 
-@test "pane swap is bound on all four arrows" {
-  for d in left right up down; do
-    grep -qF "herdr pane swap --current --direction $d" "$XDG/herdr/config.toml" || {
-      echo "missing swap: $d"; return 1
+@test "every command binding has the exact key, type, command and size" {
+  cmd_records "$XDG/herdr/config.toml" > "$BATS_TEST_TMPDIR/cmds"
+
+  while IFS= read -r want; do
+    [ -z "$want" ] && continue
+    grep -qxF "$want" "$BATS_TEST_TMPDIR/cmds" || {
+      echo "missing or wrong: $want"
+      echo "--- actual records ---"
+      cat "$BATS_TEST_TMPDIR/cmds"
+      return 1
     }
-  done
+  done <<'WANT'
+prefix+/|popup|yazi|80%|80%
+prefix+i|popup|lazydocker|80%|80%
+prefix+t|popup|tuxedo|80%|80%
+prefix+shift+r|popup|serpl|80%|80%
+prefix+a|popup|posting|90%|90%
+prefix+ctrl+r|popup|tuicr|90%|90%
+prefix+g|popup|gh dash|90%|90%
+prefix+n|popup|~/.dotfiles/terminals/notes/note.sh|90%|90%
+prefix+p|popup|~/.dotfiles/terminals/playzones/playzone-picker.sh|80%|80%
+prefix+s|popup|~/.dotfiles/terminals/sesh/sesh-picker.sh|80%|80%
+prefix+left|shell|herdr pane swap --current --direction left||
+prefix+down|shell|herdr pane swap --current --direction down||
+prefix+up|shell|herdr pane swap --current --direction up||
+prefix+right|shell|herdr pane swap --current --direction right||
+prefix+shift+t|shell|~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh||
+WANT
+
+  # Exact count: catches a stray or duplicated block the table alone would miss.
+  [ "$(wc -l < "$BATS_TEST_TMPDIR/cmds")" -eq 15 ]
 }
 
-@test "theme toggle runs the appearance script, not a config rewrite" {
+@test "the appearance toggle flips macOS appearance without writing config" {
   grep -qF 'toggle-appearance.sh' "$XDG/herdr/config.toml"
-  [ -x "$REPO/terminals/herdr/scripts/toggle-appearance.sh" ]
+
+  local s="$REPO/terminals/herdr/scripts/toggle-appearance.sh"
+  [ -x "$s" ]
+  grep -q 'osascript' "$s"
+
+  # Writing config.toml here would dirty the git-tracked symlink target on
+  # every single toggle — that is why the toggle flips host appearance instead.
+  ! grep -q 'config\.toml' "$s"
+  ! grep -qE '>>|[^0-9<>]>[^&]|sed -i|tee ' "$s"
 }
