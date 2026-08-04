@@ -19,7 +19,9 @@ local playpause = sbar.add("item", "center.media.playpause", {
 		padding_right = 4,
 	},
 	label = { drawing = false },
-	click_script = "nowplaying-cli togglePlayPause",
+	-- No click_script here: the mouse.clicked subscription below already issues the
+	-- nowplaying-cli command, and sketchybar fires both mechanisms on one click —
+	-- which sent togglePlayPause twice and cancelled itself out.
 })
 
 local artwork = sbar.add("item", "center.media.artwork", {
@@ -135,7 +137,6 @@ local popup_prev = sbar.add("item", "popup.center.media.prev", {
 		padding_right = 8,
 	},
 	label = { drawing = false },
-	click_script = "nowplaying-cli previous",
 })
 
 local popup_playpause = sbar.add("item", "popup.center.media.playpause", {
@@ -152,7 +153,6 @@ local popup_playpause = sbar.add("item", "popup.center.media.playpause", {
 		padding_right = 8,
 	},
 	label = { drawing = false },
-	click_script = "nowplaying-cli togglePlayPause",
 })
 
 local popup_next = sbar.add("item", "popup.center.media.next", {
@@ -169,7 +169,6 @@ local popup_next = sbar.add("item", "popup.center.media.next", {
 		padding_right = 12,
 	},
 	label = { drawing = false },
-	click_script = "nowplaying-cli next",
 })
 
 local current_track_key = nil
