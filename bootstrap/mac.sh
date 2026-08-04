@@ -191,6 +191,9 @@ install_terminal() {
 
     ln -s ~/.dotfiles/terminals/rio/config.toml ~/.config/rio/config.toml
     ln -s ~/.dotfiles/terminals/rio/themes ~/.config/rio/themes
+
+    mkdir -p ~/.config/herdr
+    ln -sfn ~/.dotfiles/terminals/herdr/config.toml ~/.config/herdr/config.toml
   fi
 }
 

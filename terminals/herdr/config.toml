@@ -1,0 +1,47 @@
+# Keybindings mirror terminals/tmux/.tmux.conf so muscle memory carries over.
+# Design + rationale: docs/superpowers/specs/2026-08-04-herdr-keybindings-design.md
+
+onboarding = false
+
+[ui.toast]
+delivery = "herdr"
+
+[ui]
+show_agent_labels_on_pane_borders = false
+agent_panel_sort = "priority"
+
+[theme]
+# Tracks host light/dark so the com.user.theme-watcher launchd daemon stays the
+# single source of truth for appearance.
+auto_switch = true
+dark_name = "catppuccin"
+light_name = "catppuccin-latte"
+
+[keys]
+prefix = "ctrl+a"
+
+# tmux parity. Anything absent here already matches tmux at herdr's default:
+# h/j/k/l pane focus, prefix+- split below, z zoom, x close pane, c new tab,
+# 1..9 switch tab, ? help, b sidebar, w workspace picker, shift+x close tab.
+split_vertical = "prefix+|"
+previous_tab = "prefix+ctrl+h"
+next_tab = "prefix+ctrl+l"
+detach = "prefix+d"
+new_workspace = "prefix+ctrl+c"
+rename_tab = "prefix+,"
+rename_workspace = "prefix+$"
+
+# Opens scrollback in nvim — a superset of the tmux v/y copy-mode flow.
+edit_scrollback = "prefix+v"
+
+# last-pane, not last-window: herdr has no last-tab action. cycle_pane_next is
+# cleared to free the key; h/j/k/l already covers directional movement.
+last_pane = "prefix+tab"
+cycle_pane_next = ""
+
+# Displaced by the bindings above and the launchers in [[keys.command]].
+settings = "prefix+shift+s"       # prefix+s -> project picker
+goto = "prefix+ctrl+g"            # prefix+g -> gh dash
+reload_config = "prefix+ctrl+shift+r"  # prefix+shift+r -> serpl
+
+switch_workspace = "prefix+shift+1..9"
