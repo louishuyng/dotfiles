@@ -45,6 +45,8 @@ printf '%s\n' /Users/x/regask/api /Users/x/personal/blog
 EOF
   chmod +x "$FIX/zoxide"
 
+  # hd_active now gives $TMUX precedence, so clear it to assert the herdr path.
+  unset TMUX
   export HERDR_ENV=1 HERDR_BIN="$FIX/herdr" PATH="$FIX:$PATH"
 }
 

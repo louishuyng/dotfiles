@@ -18,8 +18,13 @@ HERDR_BIN="${HERDR_BIN:-herdr}"
 
 # hd_active
 #   True inside a herdr pane. The backend switch for dual-backend scripts.
+#
+#   $TMUX takes precedence: tmux started inside a herdr pane inherits
+#   HERDR_ENV=1, but the user is looking at tmux, so the tmux backend is the
+#   correct one. Without this the picker lists herdr tabs and ignores the
+#   user's tmux sessions entirely.
 hd_active() {
-  [[ "${HERDR_ENV:-}" == "1" ]]
+  [[ -z "${TMUX:-}" && "${HERDR_ENV:-}" == "1" ]]
 }
 
 # hd_workspace_id_by_label <label>

@@ -10,8 +10,8 @@ PLUGIN_DIR="$CONFIG_DIR/plugins" # Directory where all the plugin scripts are st
 
 # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 # FONT="SF Pro"
-# FONT="JetBrainsMono Nerd Font"
-FONT="IoskeleyMono Nerd Font"
+FONT="JetBrainsMono Nerd Font"
+# FONT="IoskeleyMono Nerd Font"
 
 # All paddings use this value (icon, label, background), default is 3 but I
 # decreased it
@@ -24,16 +24,16 @@ killall helper
 $CONFIG_DIR/helper/helper $HELPER >/dev/null 2>&1 &
 
 # Unload the macOS on screen indicator overlay for volume change
-launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist >/dev/null 2>&1 &
+launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist >/dev/null 2>&1 &sketchybarrc
 
 # Setting up the general bar appearance of the bar
 bar=(
-  height=40
+  height=32
   color=$BAR_COLOR
   # border_width=1
   # border_color=$BAR_BORDER_COLOR
   shadow=off
-  position=bottom
+  position=top
   sticky=on
   padding_right=10
   padding_left=10
@@ -51,7 +51,7 @@ defaults=(
   icon.color=$ICON_COLOR
   icon.padding_left=$PADDINGS
   icon.padding_right=$PADDINGS
-  label.font="$FONT:Semibold:13.0"
+  label.font="$FONT:Semibold:14.0"
   label.color=$LABEL_COLOR
   label.padding_left=$PADDINGS
   label.padding_right=$PADDINGS
@@ -77,7 +77,7 @@ sketchybar --default "${defaults[@]}"
 
 # Shows the apple logo, you can change it's color in "items/apple.sh"
 # If you click on it, you can see preferences, activity and lock screen
-source "$ITEM_DIR/apple.sh"
+# source "$ITEM_DIR/apple.sh"
 
 # Aerospace workspace indicators (left side).
 # Driven by `exec-on-workspace-change` in aerospace.toml which fires the

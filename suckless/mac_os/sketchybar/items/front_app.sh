@@ -3,15 +3,16 @@
 #Filename: ~/github/dotfiles-latest/sketchybar/felixkratz/items/front_app.sh
 
 front_app=(
-  padding_left=0
-  padding_right=15
+  icon.padding_right=0
   label.padding_left=4
-  label.padding_right=15
-  # Using "JetBrainsMono Nerd Font"
-  label.font="$FONT:Bold:8.0"
+  label.padding_right=0
+  padding_right=25
   # Using default "SF Pro"
+  icon.font="sketchybar-app-font:Regular:18"
   # label.font="$FONT:Black:13.0"
-  icon.background.drawing=on
+  label.color=$MAGENTA
+  icon.color=$MAGENTA
+  icon.background.drawing=off
   display=active
   script="$PLUGIN_DIR/front_app.sh"
   click_script="open -a 'Mission Control'"

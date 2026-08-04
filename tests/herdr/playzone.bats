@@ -48,7 +48,8 @@ esac
 EOF
   chmod +x "$BATS_TEST_TMPDIR/herdr"
 
-  run env HERDR_ENV=1 HERDR_BIN="$BATS_TEST_TMPDIR/herdr" \
+  # hd_active now gives $TMUX precedence, so clear it to assert the herdr path.
+  run env -u TMUX HERDR_ENV=1 HERDR_BIN="$BATS_TEST_TMPDIR/herdr" \
       SESH_TOML="$REPO/terminals/sesh/sesh.toml" \
       bash -c "source '$REPO/terminals/playzones/lib.sh'; pz_ensure_session LX-REGASK"
   [ "$status" -eq 0 ]
@@ -81,6 +82,8 @@ case "\$1 \$2" in
 esac
 EOF
   chmod +x "$BATS_TEST_TMPDIR/herdr"
+  # hd_active now gives $TMUX precedence, so clear it to assert the herdr path.
+  unset TMUX
   export HERDR_BIN="$BATS_TEST_TMPDIR/herdr" HERDR_ENV=1
   source "$REPO/terminals/playzones/lib.sh"
 }
@@ -132,6 +135,8 @@ echo "\$*" >> "$calls"
 exit 1
 EOF
   chmod +x "$BATS_TEST_TMPDIR/herdr-fail"
+  # hd_active now gives $TMUX precedence, so clear it to assert the herdr path.
+  unset TMUX
   export HERDR_BIN="$BATS_TEST_TMPDIR/herdr-fail" HERDR_ENV=1
   source "$REPO/terminals/playzones/lib.sh"
 
@@ -154,6 +159,8 @@ case "\$1 \$2" in
 esac
 EOF
   chmod +x "$BATS_TEST_TMPDIR/herdr-focusfail"
+  # hd_active now gives $TMUX precedence, so clear it to assert the herdr path.
+  unset TMUX
   export HERDR_BIN="$BATS_TEST_TMPDIR/herdr-focusfail" HERDR_ENV=1
   source "$REPO/terminals/playzones/lib.sh"
 

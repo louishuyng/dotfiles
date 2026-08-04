@@ -22,4 +22,4 @@ case "$FOCUSED_WORKSPACE" in
   *)        label="$FOCUSED_WORKSPACE" ;;
 esac
 
-sketchybar --set "$NAME" label="$label" label.color=$WORKSPACE_ACTIVE_COLOR
+sketchybar --set "$NAME" label="$label /" label.color=$WORKSPACE_ACTIVE_COLOR

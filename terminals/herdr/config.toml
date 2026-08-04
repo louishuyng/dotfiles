@@ -234,3 +234,7 @@ command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh prev"
 key = "prefix+}"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
+
+[theme]
+name = "tokyo-night"
+auto_switch = false

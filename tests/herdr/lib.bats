@@ -30,7 +30,10 @@ EOF
   source "$REPO/terminals/herdr/lib.sh"
 }
 
-@test "hd_active is true only inside a herdr pane" {
+@test "hd_active requires HERDR_ENV=1 and no TMUX" {
+  # hd_active gives $TMUX precedence: tmux started inside a herdr pane inherits
+  # HERDR_ENV=1, and in that session the tmux backend is the correct one.
+  unset TMUX
   export HERDR_ENV=1
   run hd_active
   [ "$status" -eq 0 ]
@@ -41,6 +44,13 @@ EOF
 
   # A value other than 1 must not count as being inside herdr.
   export HERDR_ENV=0
+  run hd_active
+  [ "$status" -ne 0 ]
+
+  # The regression this guards: both set means tmux-inside-herdr, and the picker
+  # must use the tmux backend or the user's tmux sessions vanish from the list.
+  export HERDR_ENV=1
+  export TMUX=/tmp/fake-tmux,1,0
   run hd_active
   [ "$status" -ne 0 ]
 }

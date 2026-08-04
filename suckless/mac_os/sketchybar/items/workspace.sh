@@ -10,11 +10,9 @@ sketchybar --add event aerospace_workspace_change
 
 workspace=(
   label.font="$FONT:SemiBold:14.0"
-  label.padding_left=6
   label.padding_right=6
   icon.drawing=off
-  padding_left=4
-  padding_right=2
+  padding_right=5
   background.drawing=off
   updates=on
   script="$PLUGIN_DIR/workspace.sh"

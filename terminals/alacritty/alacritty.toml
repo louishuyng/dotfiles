@@ -3,7 +3,7 @@ TERM = "xterm-256color"
 
 # Font Configuration
 [font]
-size = 13
+size = 14
 
 [font.normal]
 family = "IoskeleyMono Nerd Font"
@@ -24,6 +24,7 @@ multiplier = 3
 # Selection
 [selection]
 save_to_clipboard = true
+
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 # Window

@@ -13,7 +13,7 @@ local opts = {
   transparent_background = false,
   background = {
     light = 'latte',
-    dark = 'macchiato',
+    dark = 'mocha',
   },
   color_overrides = {
     macchiato = {

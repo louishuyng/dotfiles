@@ -32,7 +32,7 @@ conform.setup({
     json = { 'prettier' },
     vue = { 'prettier', 'eslint' },
     lua = { 'stylua' },
-    markdown = { 'markdownlint' },
+    markdown = { 'prettier' },
     fish = { 'fish_indent' },
     sh = { 'shfmt' },
     go = { 'gofmt' },
