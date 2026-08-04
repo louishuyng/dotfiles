@@ -413,10 +413,7 @@ popup_next:subscribe("mouse.clicked", function()
 	poll_after("nowplaying-cli next")
 end)
 
--- Clicking the popup artwork jumps to whatever is playing. The bundle id comes
--- from MediaRemote's ClientBundleIdentifier — note the "Client" prefix, plain
--- "bundleIdentifier" returns null.
-popup_artwork:subscribe("mouse.clicked", function()
+local function focus_playing_app()
 	sbar.exec("nowplaying-cli get ClientBundleIdentifier", function(out)
 		local bundle = out:gsub("%s+", "")
 		if bundle ~= "" and bundle ~= "null" then
@@ -424,7 +421,14 @@ popup_artwork:subscribe("mouse.clicked", function()
 		end
 	end)
 	media:set({ popup = { drawing = false } })
-end)
+end
+
+-- The whole non-control area of the popup jumps to whatever is playing. The
+-- bundle id comes from MediaRemote's ClientBundleIdentifier — note the "Client"
+-- prefix, plain "bundleIdentifier" returns null.
+popup_artwork:subscribe("mouse.clicked", focus_playing_app)
+popup_title:subscribe("mouse.clicked", focus_playing_app)
+popup_artist:subscribe("mouse.clicked", focus_playing_app)
 
 media:subscribe("mouse.exited.global", function()
 	media:set({ popup = { drawing = false } })
