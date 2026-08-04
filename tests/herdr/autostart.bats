@@ -7,9 +7,18 @@ setup() {
   COND='status is-interactive; and not set -q HERDR_ENV; and not set -q TMUX; and not set -q SSH_TTY'
 }
 
-@test "config.fish contains the guarded autostart" {
-  grep -qF 'not set -q HERDR_ENV' "$REPO/terminals/fish/config.fish"
-  grep -qF 'exec herdr' "$REPO/terminals/fish/config.fish"
+@test "config.fish contains the full guarded autostart, conditions intact and in order" {
+  # Whole-line match, not fragments: dropping the TMUX or SSH_TTY clause,
+  # losing `status is-interactive`, or reordering must all fail here. COND is
+  # the same string tests 2-5 evaluate, so the two cannot drift apart.
+  grep -qxF "if $COND" "$REPO/terminals/fish/config.fish"
+
+  # exec, and indented inside the if — a bare `herdr` at top level would run
+  # for non-interactive shells too, and without exec every window keeps a
+  # stray parent shell.
+  grep -qxF '    exec herdr' "$REPO/terminals/fish/config.fish"
+
+  grep -qxF 'end' "$REPO/terminals/fish/config.fish"
 }
 
 @test "guard blocks inside a herdr pane" {
