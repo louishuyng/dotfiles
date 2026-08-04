@@ -383,7 +383,7 @@ wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/s
 sketchybar --reload
 sleep 3
 sketchybar --query bar | python3 -c "import sys,json; d=json.load(sys.stdin); print('margin:', d['margin'], 'corner_radius:', d['corner_radius'], 'y_offset:', d['y_offset'])"
-sketchybar --query center.notch | python3 -c "import sys,json; print('notch width:', json.load(sys.stdin)['geometry']['width'])"
+sketchybar --query center.notch | python3 -c "import sys,json; print('notch width:', json.load(sys.stdin)['width'])"
 tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
 ```
 
