@@ -45,3 +45,114 @@ goto = "prefix+ctrl+g"            # prefix+g -> gh dash
 reload_config = "prefix+ctrl+shift+r"  # prefix+shift+r -> serpl
 
 switch_workspace = "prefix+shift+1..9"
+
+# ── Launchers ────────────────────────────────────────────────────────────────
+# Keys match the tmux bindings they replace. gh dash and the note script were
+# full tmux windows because nested TUIs needed room; herdr popups are
+# session-modal, so 90% is enough and no tab is consumed.
+
+[[keys.command]]
+key = "prefix+/"
+type = "popup"
+command = "yazi"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+i"
+type = "popup"
+command = "lazydocker"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "tuxedo"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+shift+r"
+type = "popup"
+command = "serpl"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+a"
+type = "popup"
+command = "posting"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+ctrl+r"
+type = "popup"
+command = "tuicr"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "gh dash"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+n"
+type = "popup"
+command = "~/.dotfiles/terminals/notes/note.sh"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+p"
+type = "popup"
+command = "~/.dotfiles/terminals/playzones/playzone-picker.sh"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+s"
+type = "popup"
+command = "~/.dotfiles/terminals/sesh/sesh-picker.sh"
+width = "80%"
+height = "80%"
+
+# ── Directional pane swap ────────────────────────────────────────────────────
+# Mirrors the tmux arrow bindings. At an edge herdr returns
+# reason:"no_neighbor" and exits 0, so this no-ops instead of erroring — unlike
+# the tmux version, which fell back to swapping with the prev/next pane.
+
+[[keys.command]]
+key = "prefix+left"
+type = "shell"
+command = "herdr pane swap --current --direction left"
+
+[[keys.command]]
+key = "prefix+down"
+type = "shell"
+command = "herdr pane swap --current --direction down"
+
+[[keys.command]]
+key = "prefix+up"
+type = "shell"
+command = "herdr pane swap --current --direction up"
+
+[[keys.command]]
+key = "prefix+right"
+type = "shell"
+command = "herdr pane swap --current --direction right"
+
+# ── Theme ────────────────────────────────────────────────────────────────────
+# tmux bound T to a tmux-only theme swap. This flips macOS appearance instead,
+# which herdr follows via theme.auto_switch — no config rewrite, so the
+# dotfiles repo stays clean. prefix+shift+t is free because rename_tab moved
+# to prefix+, (stock tmux rename-window).
+
+[[keys.command]]
+key = "prefix+shift+t"
+type = "shell"
+command = "~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh"
