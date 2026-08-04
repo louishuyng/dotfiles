@@ -23,7 +23,10 @@ prefix = "ctrl+a"
 # tmux parity. Anything absent here already matches tmux at herdr's default:
 # h/j/k/l pane focus, prefix+- split below, z zoom, x close pane, c new tab,
 # 1..9 switch tab, ? help, b sidebar, w workspace picker, shift+x close tab.
-split_vertical = "prefix+|"
+#
+# split_vertical is cleared: the native action can't focus the new pane and
+# herdr has no focus-after-split setting, so a shell command below owns the key.
+split_vertical = ""
 previous_tab = "prefix+ctrl+h"
 next_tab = "prefix+ctrl+l"
 detach = "prefix+d"
@@ -171,7 +174,72 @@ command = "~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh"
 # the new pane at 70%. So 0.70 is what gives the new pane 30% height.
 # No --cwd needed: herdr's new_cwd defaults to "follow", so the split inherits
 # the current directory like tmux's -c "#{pane_current_path}" did.
+# --focus: tmux's split always lands you in the new pane; herdr's split does
+# not focus by default.
 [[keys.command]]
 key = "prefix+minus"
 type = "shell"
-command = "herdr pane split --current --direction down --ratio 0.70"
+command = "herdr pane split --current --direction down --ratio 0.70 --focus"
+
+# tmux bound `|` to `split-window -h -l 50%`. 50/50 is symmetric so the
+# --ratio inversion noted above doesn't matter here. --focus for the same
+# reason as prefix+minus above.
+[[keys.command]]
+key = "prefix+|"
+type = "shell"
+command = "herdr pane split --current --direction right --ratio 0.50 --focus"
+
+# ── One-shot pane resize ─────────────────────────────────────────────────────
+# Restores tmux's H/J/K/L (resize-pane -L/-D/-U/-R 3). herdr's modal
+# resize_mode stays available on prefix+r as an alternative.
+#
+# --amount is a fraction of the container, not cells: --amount 3 was read as
+# 300% and slammed a 26-row pane to 46, pinning its neighbour at the 5-row
+# minimum. 0.05 nudges 2-3 rows per press and reverses cleanly with the
+# opposite direction — the closest analogue to tmux's 3 cells.
+
+[[keys.command]]
+key = "prefix+shift+h"
+type = "shell"
+command = "herdr pane resize --current --direction left --amount 0.05"
+
+[[keys.command]]
+key = "prefix+shift+j"
+type = "shell"
+command = "herdr pane resize --current --direction down --amount 0.05"
+
+[[keys.command]]
+key = "prefix+shift+k"
+type = "shell"
+command = "herdr pane resize --current --direction up --amount 0.05"
+
+[[keys.command]]
+key = "prefix+shift+l"
+type = "shell"
+command = "herdr pane resize --current --direction right --amount 0.05"
+
+# ── Move tab left/right ──────────────────────────────────────────────────────
+# Replaces the tmux `,`/`.` (swap-window -t -1/+1) that this migration
+# dropped. herdr's CLI has no `tab move`; see scripts/tab-move.sh for why this
+# needs a script instead of a plain herdr invocation.
+
+[[keys.command]]
+key = "prefix+{"
+type = "shell"
+command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh left"
+
+[[keys.command]]
+key = "prefix+}"
+type = "shell"
+command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh right"
+
+# herdr's own background, deliberately lighter than Ghostty's #11111B so the
+# multiplexer chrome reads as distinct from terminal content. tokyo-night's
+# bg_highlight, so it stays in-family with the base theme.
+#
+# NOTE: [theme.custom] has no light/dark variants — verified that
+# [theme.custom.dark] and friends are rejected as unknown config keys. So this
+# applies in light mode too, where it will look wrong. The user accepted that
+# trade-off deliberately; do not "fix" it by dropping the override.
+[theme.custom]
+panel_bg = "#24283b"

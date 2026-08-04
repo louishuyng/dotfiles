@@ -42,6 +42,7 @@ setup() {
   grep -q '^previous_workspace = "prefix+ctrl+k"$' "$XDG/herdr/config.toml"
   grep -q '^next_workspace = "prefix+ctrl+j"$' "$XDG/herdr/config.toml"
   grep -q '^split_horizontal = ""$' "$XDG/herdr/config.toml"
+  grep -q '^split_vertical = ""$' "$XDG/herdr/config.toml"
 }
 
 # One "key|type|command|width|height" record per [[keys.command]] block, so a
@@ -86,11 +87,24 @@ prefix+down|shell|herdr pane swap --current --direction down||
 prefix+up|shell|herdr pane swap --current --direction up||
 prefix+right|shell|herdr pane swap --current --direction right||
 prefix+shift+t|shell|~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh||
-prefix+minus|shell|herdr pane split --current --direction down --ratio 0.70||
+prefix+minus|shell|herdr pane split --current --direction down --ratio 0.70 --focus||
+prefix+||shell|herdr pane split --current --direction right --ratio 0.50 --focus||
+prefix+shift+h|shell|herdr pane resize --current --direction left --amount 0.05||
+prefix+shift+j|shell|herdr pane resize --current --direction down --amount 0.05||
+prefix+shift+k|shell|herdr pane resize --current --direction up --amount 0.05||
+prefix+shift+l|shell|herdr pane resize --current --direction right --amount 0.05||
+prefix+{|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh left||
+prefix+}|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh right||
 WANT
 
   # Exact count: catches a stray or duplicated block the table alone would miss.
-  [ "$(wc -l < "$BATS_TEST_TMPDIR/cmds")" -eq 16 ]
+  [ "$(wc -l < "$BATS_TEST_TMPDIR/cmds")" -eq 23 ]
+}
+
+@test "herdr's panel background is pinned distinct from Ghostty's" {
+  # Ghostty's dark background is #11111B; this must not drift back to matching
+  # it, and `reset` would make herdr inherit the terminal background again.
+  grep -q '^panel_bg = "#24283b"$' "$XDG/herdr/config.toml"
 }
 
 @test "the appearance toggle flips macOS appearance without writing config" {
