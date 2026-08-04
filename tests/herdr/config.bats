@@ -20,13 +20,28 @@ setup() {
   grep -q '^prefix = "ctrl+a"$' "$XDG/herdr/config.toml"
 }
 
-@test "theme follows host appearance" {
+@test "theme follows host appearance with the chosen variants" {
   grep -q '^auto_switch = true$' "$XDG/herdr/config.toml"
+  # herdr's settings UI writes this file, so pin the variants too — a UI-driven
+  # theme change should surface here deliberately, not as a mystery red.
+  grep -q '^dark_name = "tokyo-night"$' "$XDG/herdr/config.toml"
+  grep -q '^light_name = "catppuccin-latte"$' "$XDG/herdr/config.toml"
+  # `name` must stay absent: with auto_switch on it is redundant, and its
+  # presence means the UI overwrote our config again.
+  ! grep -q '^name = ' "$XDG/herdr/config.toml"
 }
 
 @test "cycle_pane_next is cleared so last_pane can own prefix+tab" {
   grep -q '^cycle_pane_next = ""$' "$XDG/herdr/config.toml"
   grep -q '^last_pane = "prefix+tab"$' "$XDG/herdr/config.toml"
+}
+
+@test "keys scalars that the command-records test cannot see are pinned" {
+  # The table-driven test below only parses [[keys.command]] blocks, so plain
+  # [keys] scalars need their own assertions or they can vanish silently.
+  grep -q '^previous_workspace = "prefix+ctrl+k"$' "$XDG/herdr/config.toml"
+  grep -q '^next_workspace = "prefix+ctrl+j"$' "$XDG/herdr/config.toml"
+  grep -q '^split_horizontal = ""$' "$XDG/herdr/config.toml"
 }
 
 # One "key|type|command|width|height" record per [[keys.command]] block, so a
@@ -71,10 +86,11 @@ prefix+down|shell|herdr pane swap --current --direction down||
 prefix+up|shell|herdr pane swap --current --direction up||
 prefix+right|shell|herdr pane swap --current --direction right||
 prefix+shift+t|shell|~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh||
+prefix+minus|shell|herdr pane split --current --direction down --ratio 0.70||
 WANT
 
   # Exact count: catches a stray or duplicated block the table alone would miss.
-  [ "$(wc -l < "$BATS_TEST_TMPDIR/cmds")" -eq 15 ]
+  [ "$(wc -l < "$BATS_TEST_TMPDIR/cmds")" -eq 16 ]
 }
 
 @test "the appearance toggle flips macOS appearance without writing config" {

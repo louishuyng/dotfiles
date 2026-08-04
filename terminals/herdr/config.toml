@@ -14,7 +14,7 @@ agent_panel_sort = "priority"
 # Tracks host light/dark so the com.user.theme-watcher launchd daemon stays the
 # single source of truth for appearance.
 auto_switch = true
-dark_name = "catppuccin"
+dark_name = "tokyo-night"
 light_name = "catppuccin-latte"
 
 [keys]
@@ -45,6 +45,15 @@ goto = "prefix+ctrl+g"            # prefix+g -> gh dash
 reload_config = "prefix+ctrl+shift+r"  # prefix+shift+r -> serpl
 
 switch_workspace = "prefix+shift+1..9"
+
+# ctrl+hjkl = move between containers: h/l across tabs, j/k across workspaces
+# (a vertical sidebar list, so k=up=previous).
+previous_workspace = "prefix+ctrl+k"
+next_workspace = "prefix+ctrl+j"
+
+# Freed for the 30%-height shell split below; herdr's native split action takes
+# no size parameter.
+split_horizontal = ""
 
 # ── Launchers ────────────────────────────────────────────────────────────────
 # Keys match the tmux bindings they replace. gh dash and the note script were
@@ -156,3 +165,13 @@ command = "herdr pane swap --current --direction right"
 key = "prefix+shift+t"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh"
+
+# tmux bound `-` to `split-window -v -l 30%`. NOTE --ratio sizes the EXISTING
+# pane, not the new one — verified against herdr 0.8.0, where --ratio 0.30 left
+# the new pane at 70%. So 0.70 is what gives the new pane 30% height.
+# No --cwd needed: herdr's new_cwd defaults to "follow", so the split inherits
+# the current directory like tmux's -c "#{pane_current_path}" did.
+[[keys.command]]
+key = "prefix+minus"
+type = "shell"
+command = "herdr pane split --current --direction down --ratio 0.70"
