@@ -1,0 +1,1 @@
+{"id":"cli:workspace:list","result":{"type":"workspace_list","workspaces":[{"active_tab_id":"w8:t1","agent_status":"working","focused":true,"label":".dotfiles","number":1,"pane_count":1,"tab_count":1,"workspace_id":"w8"}]}}
