@@ -4,7 +4,7 @@
 
 **Goal:** Replace the bash sketchybar config at `suckless/mac_os/sketchybar/` with flameberry/Dotfiles' Lua (SbarLua) config, restyled to the existing retro-phosphor palette.
 
-**Architecture:** Vendor upstream's Lua tree in place, then make four localized edits — prune the two upstream pieces this machine doesn't use, add a `phosphor` theme to the theme table, adjust two geometry constants, and impose an explicit workspace display order. No items are written by hand.
+**Architecture:** Vendor upstream's Lua tree in place, then make five localized edits — prune the two upstream pieces this machine doesn't use, add a `phosphor` theme to the theme table, adjust two geometry constants, impose an explicit workspace display order, and hue-rotate the Apple diamond asset onto the palette. No items are written by hand.
 
 **Tech Stack:** Lua 5.5, SbarLua (`~/.local/share/sketchybar_lua`), sketchybar v2.23.0, Aerospace 0.20.3-Beta, clang via CommandLineTools (for the `menus` helper).
 
@@ -45,7 +45,7 @@ The prior `.so` is backed up at `/tmp/sketchybar.so.bak-a6efebf8`. **`bootstrap/
 | `icons.lua` | SF Symbols / NerdFont glyph tables. |
 | `utils.lua` | `menubar_section` bracket helper. |
 | `items/init.lua` | Composition root — item order and brackets. **Modified:** notch width. |
-| `items/apple.lua` | Apple logo + `menus` click handler. **Modified:** themed glyph replaces the red PNG. |
+| `items/apple.lua` | Apple diamond + `menus` click handler. **Modified:** repointed at the green asset. |
 | `items/spaces.lua` | Workspace pill rendering, WM-agnostic. **Modified:** applies the backend's display order. |
 | `items/spaces_aerospace.lua` | Aerospace backend. **Modified:** declares `display_order`. |
 | `items/media.lua`, `weather.lua`, `calendar.lua` | Center items. `media.lua` **modified:** two hardcoded whites routed through the palette. |
@@ -55,7 +55,7 @@ The prior `.so` is backed up at `/tmp/sketchybar.so.bak-a6efebf8`. **`bootstrap/
 | `helpers/app_icons.lua` | App-name → sketchybar-app-font glyph map. |
 | `helpers/makefile` | **Modified:** builds `menus` only. |
 | `helpers/menus/` | C helper for the Apple-logo menu bar. |
-| `assets/` | PNGs, including `diamondRed.png` used by the Apple item. |
+| `assets/` | PNGs. **Added:** `diamondGreen.png`, a hue-rotated `diamondRed.png` for the Apple item. |
 
 **Deleted:** every `*.sh` in the current config (`sketchybarrc`, `colors.sh`, `icons.sh`, `items/`, `plugins/`, `helper/`).
 **Not vendored:** `items/spaces_omniwm.lua`, `helpers/event_providers/`, `sketchybar_backup_best/`.
@@ -190,7 +190,6 @@ Translates the bash `colors.sh` retro-phosphor palette into upstream's theme-tab
 
 **Files:**
 - Modify: `suckless/mac_os/sketchybar/colors.lua`
-- Modify: `suckless/mac_os/sketchybar/items/apple.lua`
 - Modify: `suckless/mac_os/sketchybar/items/media.lua`
 
 **Interfaces:**
@@ -274,31 +273,7 @@ print("colors.lua OK")
 
 Expected: `colors.lua OK`. Anything else — add the reported keys and re-run.
 
-- [ ] **Step 4: Replace the red diamond with a themed Apple glyph**
-
-`items/apple.lua` uses `assets/diamondRed.png` as a background image. It is a **red raster asset** — sketchybar cannot recolor an image, so it would stay red on an otherwise green bar, defeating the theme. Upstream already ships the alternative, commented out.
-
-In `items/apple.lua`, replace the `background`/`icon` portion of the `apple.logo` item so the image is gone and the glyph is live, colored from the palette:
-
-```lua
-sbar.add("item", "apple.logo", {
-	position = "left",
-	icon = {
-		y_offset = 1,
-		font = { size = 18.0 },
-		color = colors.accent,
-		string = icons.apple,
-	},
-	label = { drawing = false },
-	padding_left = 10,
-	padding_right = 5,
-	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
-})
-```
-
-Note the `background` table is removed entirely and `color` is `colors.accent`, not `colors.white` as the commented-out original had it — the logo should follow the theme accent. Leave `assets/` on disk; nothing references it after this, but the PNGs are upstream's and harmless.
-
-- [ ] **Step 5: Route media.lua's hardcoded whites through the palette**
+- [ ] **Step 4: Route media.lua's hardcoded whites through the palette**
 
 Two spots bypass the palette with a literal white. Both must read from `colors` so a theme switch actually reaches them.
 
@@ -328,7 +303,7 @@ to:
 
 Confirm `local colors = require("colors")` is already at the top of `media.lua` (it is — line 339 already uses `colors.with_alpha`).
 
-- [ ] **Step 6: Verify no non-palette color literals remain outside colors.lua**
+- [ ] **Step 5: Verify no non-palette color literals remain outside colors.lua**
 
 ```bash
 cd /Users/louishuyng/.dotfiles/suckless/mac_os/sketchybar
@@ -337,42 +312,34 @@ grep -rn "0x[0-9a-fA-F]\{8\}" --include="*.lua" . | grep -v "^./colors.lua"
 
 Expected: exactly one line — `bar.lua:6`, which uses `0xff000000`/`0x00000000` for the bar background. That one is left alone: it is geometry-adjacent, black matches the phosphor base, and `bar.lua` is Task 3's file. Any other hit means a literal was missed.
 
-```bash
-grep -rn "assets/" --include="*.lua" .
-```
+Do **not** touch `items/apple.lua`. Its `assets/diamondRed.png` reference is expected here and is handled by Task 5, which recolors the asset rather than replacing the icon.
 
-Expected: no output. If `diamondRed.png` still appears, Step 4 was not applied.
-
-- [ ] **Step 7: Verify the table is complete, then reload**
+- [ ] **Step 6: Reload and verify**
 
 ```bash
 wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 sketchybar --reload
 sleep 4
 sketchybar --query bar | python3 -c "import sys,json; print('bar color:', json.load(sys.stdin)['color'])"
-sketchybar --query apple.logo | python3 -c "import sys,json; d=json.load(sys.stdin); print('apple icon color:', d['icon']['color'], 'image drawing:', d.get('background',{}).get('image',{}).get('drawing'))"
 tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
 ```
 
-Expected: `bar color: 0xff000000`, and the apple icon color is `0xff00e65c` (phosphor green) with the background image off. Log delta clean.
+Expected: `bar color: 0xff000000`. Log delta clean.
 
-Then look at the bar: the focused workspace pill is phosphor green with black text, the Apple logo is green, and **nothing on the bar is red or crimson**.
+Then look at the bar: the focused workspace pill is phosphor green (`#00e65c`) with black text on it, and no crimson remains anywhere except the Apple diamond, which Task 5 handles.
 
-- [ ] **Step 8: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
 cd /Users/louishuyng/.dotfiles
-git add suckless/mac_os/sketchybar/colors.lua suckless/mac_os/sketchybar/items/apple.lua suckless/mac_os/sketchybar/items/media.lua
-git commit -m "feat(sketchybar): add phosphor theme, make every color follow it
+git add suckless/mac_os/sketchybar/colors.lua suckless/mac_os/sketchybar/items/media.lua
+git commit -m "feat(sketchybar): add phosphor theme, route stray literals through it
 
 Carries the retro-phosphor palette over from the bash config's colors.sh.
 Semantic color names are remapped to matching hues — colors.sh had GREEN
 bound to an orange, which the Lua widgets would render on a full battery.
 
-Also removes the two things that ignored the palette entirely: the red
-diamondRed.png used for the Apple logo (an image sketchybar cannot recolor,
-swapped for the SF Symbols glyph in accent green) and two hardcoded white
-literals in media.lua."
+Also routes media.lua's two hardcoded white literals through the palette."
 ```
 
 ---
@@ -578,7 +545,82 @@ new workspace never silently disappears."
 
 ---
 
-### Task 5: Full verification sweep
+### Task 5: Recolor the Apple diamond to phosphor green
+
+The Apple logo is `assets/diamondRed.png`, a red raster asset. sketchybar cannot recolor an image, so it survives the phosphor theme as the one red element on an otherwise green bar.
+
+**The icon stays a diamond** — the user explicitly wants the same icon the upstream config uses, not a substituted glyph. So the asset itself is recolored, preserving its exact shape and two-tone shading, and `apple.lua` is repointed at the new file.
+
+**Files:**
+- Create: `suckless/mac_os/sketchybar/assets/diamondGreen.png`
+- Modify: `suckless/mac_os/sketchybar/items/apple.lua`
+
+**Interfaces:**
+- Consumes: the `phosphor` theme from Task 2 (for the accent hue this matches).
+- Produces: nothing other tasks read.
+
+- [ ] **Step 1: Generate the green asset**
+
+A hue rotation is used rather than a flat fill so the original's lighter face and darker right-hand edge are both preserved. The values below were derived by sampling until the face landed on the phosphor accent family; use them exactly.
+
+```bash
+cd /Users/louishuyng/.dotfiles/suckless/mac_os/sketchybar/assets
+magick diamondRed.png -modulate 80,175,184 diamondGreen.png
+magick diamondGreen.png -format "face: %[pixel:p{200,250}]\n" info:
+magick diamondGreen.png -format "edge: %[pixel:p{440,300}]\n" info:
+```
+
+Expected exactly:
+
+```
+face: srgba(0,255,92,1)
+edge: srgba(0,202,62,1)
+```
+
+`#00FF5C` face against the theme's `#00e65c` accent — same hue family, marginally brighter so it still reads at the ~20px the bar renders it at.
+
+`diamondRed.png` is left in place. It is upstream's asset and costs nothing to keep.
+
+- [ ] **Step 2: Repoint the Apple item**
+
+In `items/apple.lua`, change only the image filename on line 9:
+
+```lua
+			string = os.getenv("HOME") .. "/.config/sketchybar/assets/diamondGreen.png",
+```
+
+Change nothing else in the file. In particular, leave the commented-out `icon` block commented out — the diamond image is the intended icon.
+
+- [ ] **Step 3: Reload and verify**
+
+```bash
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
+sketchybar --reload
+sleep 4
+sketchybar --query apple.logo | python3 -c "import sys,json; print('image:', json.load(sys.stdin)['background']['image']['string'])"
+tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
+```
+
+Expected: the image path ends in `diamondGreen.png`. Log delta clean.
+
+Then look at the far left of the bar: a green diamond, no red anywhere on the bar. If the diamond renders as a blank gap, the path is wrong — the item resolves it through the `~/.config/sketchybar` symlink, not a repo-relative path.
+
+- [ ] **Step 4: Commit**
+
+```bash
+cd /Users/louishuyng/.dotfiles
+git add suckless/mac_os/sketchybar/assets/diamondGreen.png suckless/mac_os/sketchybar/items/apple.lua
+git commit -m "feat(sketchybar): recolor the Apple diamond to phosphor green
+
+sketchybar cannot recolor an image, so the red diamond survived the
+phosphor theme as the only red element on the bar. Hue-rotated from
+upstream's own diamondRed.png (magick -modulate 80,175,184) so the shape
+and two-tone shading are unchanged and only the hue moves onto the palette."
+```
+
+---
+
+### Task 6: Full verification sweep
 
 Spec section 7. Nothing here is automatable — it is the manual pass that decides whether the migration is actually done.
 
@@ -586,7 +628,7 @@ Spec section 7. Nothing here is automatable — it is the manual pass that decid
 - Modify: `/Users/louishuyng/.claude/projects/-Users-louishuyng--dotfiles/memory/project_sketchybar.md`
 
 **Interfaces:**
-- Consumes: everything from Tasks 1–4.
+- Consumes: everything from Tasks 1–5.
 - Produces: a screenshot and a corrected memory file.
 
 - [ ] **Step 1: Clean reload from a known state**

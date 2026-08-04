@@ -114,11 +114,14 @@ dropped rather than carried as dead config.
 | `bg2` (inactive space pill) | `#183818` | `linkarzu_color13` |
 | `bg3` (center pill) | `#102210` | `linkarzu_color25` |
 
-**Everything follows the palette.** Upstream has three places that bypass it, all corrected:
-`items/apple.lua` used `assets/diamondRed.png` — a red raster image sketchybar cannot recolor,
-replaced with the SF Symbols apple glyph in `colors.accent`; and `items/media.lua` had two
-hardcoded `0xffffffff` literals, routed through `colors.white`. The only remaining literal is
-`bar.lua`'s black bar background, which matches the phosphor base.
+**Everything follows the palette.** Upstream has three places that bypass it, all corrected.
+`items/media.lua` had two hardcoded `0xffffffff` literals, routed through `colors.white`. The
+Apple logo is `assets/diamondRed.png`, a red raster image sketchybar cannot recolor — the icon
+stays a diamond (the same one upstream uses), but the asset itself is hue-rotated to phosphor
+green as `diamondGreen.png` via `magick -modulate 80,175,184`, which preserves the original's
+shape and two-tone shading and moves only the hue. Face lands at `#00FF5C` against the `#00e65c`
+accent. The only remaining literal is `bar.lua`'s black bar background, which matches the
+phosphor base.
 
 **Semantic remap, deliberate:** the bash `colors.sh` assigns `GREEN=#ff9d00` (an orange) and
 similar scrambled pairings. flameberry's widgets use these names semantically — a full battery
