@@ -622,6 +622,114 @@ and two-tone shading are unchanged and only the hue moves onto the palette."
 
 ---
 
+### Task 7: Fix the double-firing media controls
+
+Found during Task 6's sweep, reported by the user as "pause doesn't work well with Apple Music".
+
+**Root cause.** Four items in `media.lua` carry *both* a `click_script` and a `mouse.clicked` subscription that runs the same `nowplaying-cli` command. In sketchybar these are independent mechanisms and both fire on a single click, so every click sends the command twice.
+
+Evidence gathered:
+
+- Live query shows all four with `scripting.update_mask = 64` (the `mouse.clicked` subscription) *and* a non-null `scripting.click_script`. Items that subscribe without a click_script (`center.time`, `widgets.battery`) show different masks and `click_script: (null)`, confirming the mask meaning.
+- Running `nowplaying-cli togglePlayPause` twice in quick succession leaves Apple Music in its original state (`playing` → `playing`). The two commands cancel.
+- `optimistic_toggle` flips the icon immediately on click, so the bar displays "paused" while playback continues — the reported symptom.
+- `next`/`prev` have the same defect and skip **two** tracks per click.
+
+This is an upstream defect in flameberry's config, not something the migration introduced.
+
+**Fix:** delete the four redundant `click_script` attributes. The Lua `mouse.clicked` handlers are the ones to keep — they also do the optimistic icon update and the follow-up `poll_after`, which `click_script` alone does not.
+
+**Files:**
+- Modify: `suckless/mac_os/sketchybar/items/media.lua`
+
+**Interfaces:**
+- Consumes: nothing from other tasks.
+- Produces: nothing other tasks read.
+
+- [ ] **Step 1: Record the pre-fix state as the failing case**
+
+```bash
+osascript -e 'tell application "Music" to get player state as string'
+nowplaying-cli togglePlayPause; sleep 0.15; nowplaying-cli togglePlayPause; sleep 1
+osascript -e 'tell application "Music" to get player state as string'
+```
+
+Both readings will be identical. That is the bug: two toggles cancel, and one click produces exactly this pair.
+
+Apple Music must be running with a track loaded. If it is not, say so and stop — do not fabricate the reading.
+
+- [ ] **Step 2: Delete the four redundant `click_script` attributes**
+
+In `items/media.lua`, remove these four lines entirely (each is a whole line inside its item's table):
+
+```lua
+	click_script = "nowplaying-cli togglePlayPause",
+```
+on the `center.media.playpause` item (~line 22),
+
+```lua
+	click_script = "nowplaying-cli previous",
+```
+on the `popup.center.media.prev` item (~line 138),
+
+```lua
+	click_script = "nowplaying-cli togglePlayPause",
+```
+on the `popup.center.media.playpause` item (~line 155),
+
+```lua
+	click_script = "nowplaying-cli next",
+```
+on the `popup.center.media.next` item (~line 172).
+
+Leave a comment above the `playpause` item recording why there is no click_script, so it does not get "helpfully" restored later:
+
+```lua
+-- No click_script here: the mouse.clicked subscription below already issues the
+-- nowplaying-cli command, and sketchybar fires both mechanisms on one click —
+-- which sent togglePlayPause twice and cancelled itself out.
+```
+
+**Change nothing else.** Do not touch the `subscribe` calls, `optimistic_toggle`, `poll_after`, or any other item.
+
+- [ ] **Step 3: Verify the click_scripts are gone but the subscriptions remain**
+
+```bash
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
+sketchybar --reload
+sleep 4
+for i in center.media.playpause popup.center.media.playpause popup.center.media.next popup.center.media.prev; do
+  echo -n "$i: "
+  sketchybar --query "$i" | python3 -c "import sys,json; s=json.load(sys.stdin)['scripting']; print('mask=%s click_script=%r' % (s['update_mask'], s['click_script']))"
+done
+tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
+```
+
+Expected for all four: `mask=64` (subscription still active) and `click_script='(null)'` (redundant path gone). If a mask stops being 64, the subscription was damaged — that is a regression, stop and report.
+
+Log delta clean apart from the known root-daemon noise.
+
+- [ ] **Step 4: Commit**
+
+```bash
+cd /Users/louishuyng/.dotfiles
+git add suckless/mac_os/sketchybar/items/media.lua
+git commit -m "fix(sketchybar): stop media controls firing their command twice
+
+The playpause, next and prev items each carried both a click_script and a
+mouse.clicked subscription running the same nowplaying-cli command, and
+sketchybar fires both on one click. togglePlayPause therefore cancelled
+itself out and next/prev skipped two tracks.
+
+Keeps the Lua handlers, which also do the optimistic icon update and the
+follow-up poll; drops the redundant click_scripts. Upstream defect in
+flameberry/Dotfiles, not introduced by this migration."
+```
+
+Note: the final click-through confirmation belongs to the user — this cannot be verified without a real mouse click on the bar.
+
+---
+
 ### Task 6: Full verification sweep
 
 Spec section 7. Nothing here is automatable — it is the manual pass that decides whether the migration is actually done.
