@@ -39,6 +39,9 @@ set fish_greeting ""
 # Doom Emacs configuration
 set -gx DOOMDIR "$HOME/.doom.d"
 
+# Obsidian vault root, shared by the tmux note bindings (C-a n / C-a N)
+set -gx NOTES_DIR "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Louis"
+
 zoxide init fish | source
 complete -c z -f -a "(zoxide query -l 2>/dev/null)" -d "zoxide dir"
 complete -c zi -f -a "(zoxide query -l 2>/dev/null)" -d "zoxide dir"
