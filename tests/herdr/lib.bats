@@ -109,6 +109,67 @@ EOF
   grep -q -- "--label my-folder" "$CALLS"
 }
 
+@test "hd_open_project creates a workspace at the target and renames its root tab, leaving no leftover tab" {
+  run hd_open_project "brand-new" "/tmp/brand-new-proj/my-app"
+  [ "$output" = "wNEW:t1" ]
+  grep -q "workspace create --label brand-new --cwd /tmp/brand-new-proj/my-app --focus" "$CALLS"
+  # The auto-created "1" root tab is renamed in place; nothing else is created.
+  grep -q "tab rename wNEW:t1 my-app" "$CALLS"
+  ! grep -q "tab create" "$CALLS"
+}
+
+@test "hd_open_project focuses an existing tab in an existing workspace" {
+  run hd_open_project "LX-REGASK" "/synthetic/regask/api"
+  [ "$output" = "w1:t1" ]
+  grep -q "tab focus w1:t1" "$CALLS"
+  ! grep -q "workspace create" "$CALLS"
+  ! grep -q "tab create" "$CALLS"
+}
+
+@test "hd_open_project opens a new tab in an existing workspace when no tab matches the cwd" {
+  run hd_open_project "LX-REGASK" "/tmp/regask-new-service"
+  [ "$output" = "wNEW:t9" ]
+  grep -q "tab create --workspace w1 --cwd /tmp/regask-new-service --label regask-new-service --focus" "$CALLS"
+  ! grep -q "workspace create" "$CALLS"
+}
+
+@test "hd_open_project propagates a failed workspace create" {
+  local calls="$BATS_TEST_TMPDIR/calls-openproj-wsfail"; : > "$calls"
+  cat > "$BATS_TEST_TMPDIR/herdr-openproj-wsfail" <<EOF
+#!/opt/homebrew/bin/bash
+echo "\$*" >> "$calls"
+case "\$1 \$2" in
+  "workspace list")   echo '{"result":{"workspaces":[]}}' ;;
+  "workspace create") exit 1 ;;
+  *)                  echo '{"result":{}}' ;;
+esac
+EOF
+  chmod +x "$BATS_TEST_TMPDIR/herdr-openproj-wsfail"
+  export HERDR_BIN="$BATS_TEST_TMPDIR/herdr-openproj-wsfail"
+
+  run hd_open_project "nope" "/tmp/open-project-wsfail"
+  [ "$status" -eq 2 ]
+}
+
+@test "hd_open_project propagates a failed tab rename" {
+  local calls="$BATS_TEST_TMPDIR/calls-openproj-renamefail"; : > "$calls"
+  cat > "$BATS_TEST_TMPDIR/herdr-openproj-renamefail" <<EOF
+#!/opt/homebrew/bin/bash
+echo "\$*" >> "$calls"
+case "\$1 \$2" in
+  "workspace list")   echo '{"result":{"workspaces":[]}}' ;;
+  "workspace create") echo '{"result":{"workspace":{"workspace_id":"wNEW"},"tab":{"tab_id":"wNEW:t1"}}}' ;;
+  "tab rename")       exit 1 ;;
+  *)                  echo '{"result":{}}' ;;
+esac
+EOF
+  chmod +x "$BATS_TEST_TMPDIR/herdr-openproj-renamefail"
+  export HERDR_BIN="$BATS_TEST_TMPDIR/herdr-openproj-renamefail"
+
+  run hd_open_project "brand-new" "/tmp/open-project-renamefail"
+  [ "$status" -eq 2 ]
+}
+
 @test "hd_split_run splits then runs the command in the new pane" {
   run hd_split_run "w1:p1" down 0.30 /tmp/x "ku"
   [ "$output" = "wNEW:p10" ]

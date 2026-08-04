@@ -122,6 +122,51 @@ hd_open_tab() {
   return 0
 }
 
+# hd_open_project <workspace_label> <target_cwd>
+#   Focus a tab rooted at <target_cwd> inside the workspace labelled
+#   <workspace_label>, creating whatever is missing. Prints the tab_id.
+#
+#   When the workspace must be created, it is rooted directly at <target_cwd>
+#   and its auto-created root tab is REUSED and renamed, rather than leaving
+#   herdr's numerically-labelled "1" tab behind as an empty extra. Trade-off:
+#   the workspace ends up rooted at <target_cwd> instead of the sesh root —
+#   that's what buys the single tab. The workspace label is still the sesh
+#   name, so the sidebar entry is unaffected.
+#
+#   Exit: 0 ok, 2 a herdr call failed.
+hd_open_project() {
+  local label="$1" cwd="$2"
+  if [[ -z "$label" || -z "$cwd" ]]; then
+    echo "hd_open_project: missing argument(s)" >&2
+    return 2
+  fi
+  local expanded="${cwd/#\~/$HOME}"
+
+  local ws
+  ws=$(hd_workspace_id_by_label "$label") || return 2
+
+  if [[ -z "$ws" ]]; then
+    mkdir -p "$expanded" || return 2
+    local out tab_id
+    out=$("$HERDR_BIN" workspace create --label "$label" --cwd "$expanded" --focus 2>/dev/null) || return 2
+    tab_id=$(printf '%s' "$out" | jq -r '.result.tab.tab_id // empty' 2>/dev/null) || return 2
+    [[ -z "$tab_id" ]] && return 2
+    "$HERDR_BIN" tab rename "$tab_id" "$(basename -- "$expanded")" >/dev/null 2>&1 || return 2
+    printf '%s\n' "$tab_id"
+    return 0
+  fi
+
+  local tab
+  tab=$(hd_tab_id_by_cwd "$ws" "$expanded") || return 2
+  if [[ -n "$tab" ]]; then
+    "$HERDR_BIN" tab focus "$tab" >/dev/null 2>&1 || return 2
+    printf '%s\n' "$tab"
+    return 0
+  fi
+
+  hd_open_tab "$ws" "$expanded"
+}
+
 # hd_split_run <pane_id> <direction> <ratio> <cwd> <cmd>
 #   <direction> is "down" or "right"; <ratio> is a float such as 0.30.
 hd_split_run() {

@@ -69,7 +69,7 @@ pz_open_or_split() {
   [[ -d "$expanded_cwd" ]] || mkdir -p "$expanded_cwd"
 
   if hd_active; then
-    local ws tab direction ratio pane
+    local ws tab existed direction ratio pane
     # `|| return 2` distinguishes a failed herdr call from a genuinely absent
     # workspace; without it a transient failure looks like "not created yet".
     ws=$(hd_workspace_id_by_label "$session") || return 2
@@ -88,19 +88,24 @@ pz_open_or_split() {
     # ratio = (100 - size) / 100. size=30% -> 0.70, leaving the new pane at 30%.
     ratio=$(awk -v s="${split_size%\%}" 'BEGIN { printf "%.2f", (100 - s) / 100 }')
 
+    # hd_open_project does the find-or-create-tab dance itself (the same one
+    # this function used to duplicate), but doesn't say which branch it took —
+    # and split-vs-run depends on that — so check first.
     tab=$(hd_tab_id_by_cwd "$ws" "$expanded_cwd") || return 2
-    if [[ -n "$tab" ]]; then
-      "${HERDR_BIN:-herdr}" tab focus "$tab" >/dev/null 2>&1 || return 2
-      pane=$(hd_first_pane_id "$tab") || return 2
+    existed=0
+    [[ -n "$tab" ]] && existed=1
+
+    tab=$(hd_open_project "$session" "$expanded_cwd") || return 2
+    [[ -z "$tab" ]] && return 2
+    pane=$(hd_first_pane_id "$tab") || return 2
+
+    if (( existed )); then
       hd_split_run "$pane" "$direction" "$ratio" "$expanded_cwd" "$cmd" >/dev/null
       return $?
-    else
-      tab=$(hd_open_tab "$ws" "$expanded_cwd") || return 2
-      pane=$(hd_first_pane_id "$tab") || return 2
-      # Same status-3 meaning as hd_split_run: the tab/pane now exists, but a
-      # non-zero exit here means <cmd> never launched in it — don't swallow that.
-      "${HERDR_BIN:-herdr}" pane run "$pane" "$cmd" >/dev/null 2>&1 || return 3
     fi
+    # Same status-3 meaning as hd_split_run: the tab/pane now exists, but a
+    # non-zero exit here means <cmd> never launched in it — don't swallow that.
+    "${HERDR_BIN:-herdr}" pane run "$pane" "$cmd" >/dev/null 2>&1 || return 3
     return 0
   fi
 

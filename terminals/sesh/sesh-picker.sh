@@ -2,6 +2,7 @@
 
 SCRIPT="$(realpath "$0")"
 source "$(dirname "$SCRIPT")/roots.sh"
+source "$(dirname "$SCRIPT")/../herdr/lib.sh"
 
 # Use ANSI named colors so the terminal palette drives light/dark theming.
 ICON_TMUX_FG=$'\033[36m'  # terminal cyan
@@ -50,6 +51,43 @@ build_list() {
 }
 
 #--------------------------------------------------------------------
+# hd_build_list <out>
+#   herdr equivalent of build_list. Open tabs first (cyan terminal glyph,
+#   routed by tab id), then zoxide paths not already open (yellow bolt,
+#   routed by path). Dedup is by pane cwd, so a project appears once.
+#--------------------------------------------------------------------
+hd_build_list() {
+  local out="$1"
+  : > "$out"
+
+  local ws_json panes_json open_cwds
+  ws_json=$("$HERDR_BIN" workspace list 2>/dev/null)
+  open_cwds="$(mktemp)"
+
+  local ws label
+  while IFS=$'\t' read -r ws label; do
+    [[ -z "$ws" ]] && continue
+    panes_json=$("$HERDR_BIN" pane list --workspace "$ws" 2>/dev/null)
+    printf '%s\n' "$panes_json" | jq -r '.result.panes[]?.cwd' >> "$open_cwds"
+
+    "$HERDR_BIN" tab list --workspace "$ws" 2>/dev/null \
+      | jq -r --arg ws "$label" --arg ic "$ICON_TMUX_FG$ICON_TMUX$RESET" \
+          '.result.tabs[]? | "\($ic) \($ws):\(.number) \(.label)\t\(.tab_id)"' >> "$out"
+  done < <(printf '%s\n' "$ws_json" \
+             | jq -r '.result.workspaces[]? | "\(.workspace_id)\t\(.label)"')
+
+  local path short
+  while IFS= read -r path; do
+    [[ -z "$path" ]] && continue
+    grep -qxF "$path" "$open_cwds" && continue
+    short=$(shorten_path "$path")
+    printf '%s%s%s %s\t%s\n' "$ICON_ZOX_FG" "$ICON_ZOX" "$RESET" "$short" "$path" >> "$out"
+  done < <(zoxide query -l 2>/dev/null)
+
+  rm -f "$open_cwds"
+}
+
+#--------------------------------------------------------------------
 # cmd_preview <target>
 #--------------------------------------------------------------------
 cmd_preview() {
@@ -67,8 +105,16 @@ cmd_preview() {
       fi
       ;;
     *)
-      tmux capture-pane -t "$target" -p -E - 2>/dev/null | tail -20 \
-        || printf '(no window)\n'
+      if hd_active; then
+        local pane
+        pane=$(hd_first_pane_id "$target")
+        [[ -z "$pane" ]] && { printf '(no pane)\n'; return 0; }
+        "$HERDR_BIN" pane read "$pane" --source recent-unwrapped --lines 20 \
+          || printf '(no output)\n'
+      else
+        tmux capture-pane -t "$target" -p -E - 2>/dev/null | tail -20 \
+          || printf '(no window)\n'
+      fi
       ;;
   esac
 }
@@ -102,7 +148,11 @@ route_selection() {
   case "$target" in
     /*|~*) ;;
     *)
-      tmux switch-client -t "$target"
+      if hd_active; then
+        "$HERDR_BIN" tab focus "$target" >/dev/null 2>&1
+      else
+        tmux switch-client -t "$target"
+      fi
       return 0
       ;;
   esac
@@ -112,6 +162,15 @@ route_selection() {
   local name root
   while IFS=$'\t' read -r name root; do
     [[ -z "$name" || -z "$root" ]] && continue
+
+    if hd_active; then
+      if [[ "$expanded" == "$root" || "$expanded" == "$root/"* ]]; then
+        hd_open_project "$name" "$expanded" >/dev/null
+        return 0
+      fi
+      continue
+    fi
+
     if [[ "$expanded" == "$root" ]]; then
       sesh connect "$name"
       return 0
@@ -122,7 +181,47 @@ route_selection() {
     fi
   done < "$roots_tsv"
 
+  # Under no known root: a standalone workspace of its own. Labelled by
+  # folder name, or herdr would default the sidebar entry to a bare number.
+  if hd_active; then
+    "$HERDR_BIN" workspace create --label "$(basename -- "$expanded")" --cwd "$expanded" --focus >/dev/null 2>&1
+    return 0
+  fi
   sesh connect "$target"
+}
+
+# cmd_close <target> — close a tab (herdr) or window (tmux).
+cmd_close() {
+  local target="${1:-}"
+  [[ -z "$target" ]] && return 0
+  case "$target" in
+    /*|~*) return 0 ;;  # not open; nothing to close
+  esac
+  if hd_active; then
+    "$HERDR_BIN" tab close "$target" >/dev/null 2>&1
+  else
+    tmux kill-window -t "$target" 2>/dev/null
+  fi
+  return 0
+}
+
+cmd_rebuild() {
+  if hd_active; then
+    hd_build_list "${1:-/dev/null}"
+  else
+    build_list "${1:-/dev/null}"
+  fi
+}
+
+# cmd_route <target> — route_selection's herdr/tmux dispatch, callable
+# without fzf so tests can exercise it directly.
+cmd_route() {
+  local target="${1:-}"
+  local tmp
+  tmp=$(mktemp) || return 1
+  parse_roots "$tmp"
+  route_selection $'\t'"$target" "$tmp"
+  rm -f "$tmp"
 }
 
 cmd_main() {
@@ -131,7 +230,11 @@ cmd_main() {
   trap 'rm -rf "$tmp"' EXIT
 
   parse_roots "$tmp/roots.tsv"
-  build_list "$tmp/all.list"
+  if hd_active; then
+    hd_build_list "$tmp/all.list"
+  else
+    build_list "$tmp/all.list"
+  fi
 
   local selected
   selected=$(FZF_DEFAULT_OPTS= fzf \
@@ -140,7 +243,7 @@ cmd_main() {
     --prompt '❯ ' \
     --delimiter=$'\t' --with-nth=1 --nth=1 \
     --bind 'tab:down,btab:up' \
-    --bind "ctrl-d:execute-silent(tmux kill-window -t {2} 2>/dev/null; bash $SCRIPT --rebuild $tmp/all.list)+reload(cat $tmp/all.list)" \
+    --bind "ctrl-d:execute-silent(bash $SCRIPT --close {2}; bash $SCRIPT --rebuild $tmp/all.list)+reload(cat $tmp/all.list)" \
     --preview "bash $SCRIPT --preview {2}" \
     --preview-window 'right:45%:wrap:border-left' \
     < "$tmp/all.list")
@@ -151,6 +254,9 @@ cmd_main() {
 
 case "${1:-}" in
   --preview) shift; cmd_preview "${1:-}" ;;
-  --rebuild) shift; build_list "${1:-/dev/null}" ;;
+  --rebuild) shift; cmd_rebuild "${1:-/dev/null}" ;;
+  --close)   shift; cmd_close "${1:-}" ;;
+  --route)   shift; cmd_route "${1:-}" ;;
+  --list)    shift; tmp=$(mktemp); cmd_rebuild "$tmp"; cat "$tmp"; rm -f "$tmp" ;;
   *)         cmd_main ;;
 esac
