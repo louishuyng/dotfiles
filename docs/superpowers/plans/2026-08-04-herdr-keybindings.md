@@ -745,12 +745,32 @@ setup() {
   source "$REPO/terminals/sesh/roots.sh"
 }
 
-@test "parse_roots extracts every named root from sesh.toml" {
+@test "parse_roots extracts named roots from sesh.toml" {
   SESH_TOML="$REPO/terminals/sesh/sesh.toml"
   parse_roots "$BATS_TEST_TMPDIR/roots.tsv"
+  # Lower bound, not an exact count: this tests the parser, not the project
+  # list, so adding a sesh entry must not fail the suite.
   run wc -l < "$BATS_TEST_TMPDIR/roots.tsv"
-  [ "$output" -eq 5 ]
-  grep -qP "^LX-REGASK\t$HOME/LX14/repository/github.com/regask$" "$BATS_TEST_TMPDIR/roots.tsv"
+  [ "$output" -ge 4 ]
+  # Tilde expansion and the name->path pairing are what actually matter.
+  grep -qF "LX-REGASK	$HOME/LX14/repository/github.com/regask" "$BATS_TEST_TMPDIR/roots.tsv"
+}
+
+@test "parse_roots handles a synthetic toml exactly" {
+  cat > "$BATS_TEST_TMPDIR/sesh.toml" <<'EOF'
+[[session]]
+name = "alpha"
+path = "~/alpha"
+
+[[session]]
+name = "beta"
+path = "/abs/beta"
+EOF
+  SESH_TOML="$BATS_TEST_TMPDIR/sesh.toml" parse_roots "$BATS_TEST_TMPDIR/s.tsv"
+  run cat "$BATS_TEST_TMPDIR/s.tsv"
+  [ "${lines[0]}" = "alpha	$HOME/alpha" ]
+  [ "${lines[1]}" = "beta	/abs/beta" ]
+  [ "${#lines[@]}" -eq 2 ]
 }
 
 @test "playzone lib routes to herdr when HERDR_ENV=1" {
@@ -789,7 +809,7 @@ EOF
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `bats tests/herdr/playzone.bats`
-Expected: all 3 FAIL — `terminals/sesh/roots.sh` does not exist.
+Expected: all 4 FAIL — `terminals/sesh/roots.sh` does not exist.
 
 - [ ] **Step 3: Extract the roots parser**
 
@@ -952,7 +972,7 @@ pz_open_or_split() {
 - [ ] **Step 5: Run tests to verify they pass**
 
 Run: `bats tests/herdr/playzone.bats tests/herdr/lib.bats`
-Expected: 13 PASS. The sesh-picker edit is covered by Task 6's tests; confirm it still parses now with `bash -n terminals/sesh/sesh-picker.sh`.
+Expected: 14 PASS. The sesh-picker edit is covered by Task 6's tests; confirm it still parses now with `bash -n terminals/sesh/sesh-picker.sh`.
 
 - [ ] **Step 6: Verify live**
 
@@ -1268,7 +1288,7 @@ Expected: `tab close` exits 0 and `$TAB` is gone from the list. If it instead ne
 - [ ] **Step 6: Run the whole suite**
 
 Run: `bats tests/herdr/`
-Expected: 30 PASS, 0 failures.
+Expected: 31 PASS, 0 failures.
 
 - [ ] **Step 7: Verify live**
 
@@ -1305,7 +1325,14 @@ Its comment explains the `NOTES_DIR` fallback in terms of tmux. Replace lines 9-
 
 - [ ] **Step 2: Document the keymap**
 
-Create `terminals/herdr/README.md` with a table of every binding in `config.toml`, grouped as: inherited-from-herdr-default, remapped-for-tmux-parity, launchers, dropped. Copy the three tables and the "Dropped bindings" list from `docs/superpowers/specs/2026-08-04-herdr-keybindings-design.md` verbatim, and open with a line pointing at the spec for rationale.
+Create `terminals/herdr/README.md` holding **one** table: every key actually bound in `config.toml`, one row per binding, columns `key | action | tmux equivalent`. Derive the rows from `config.toml` itself, so there is a single place to update when a key changes.
+
+Do **not** restate the spec's rationale, displaced-defaults table, or dropped-bindings list. Open with one line instead:
+
+```markdown
+Keymap for herdr. Rationale, displaced defaults, and deliberately-dropped tmux
+bindings: `docs/superpowers/specs/2026-08-04-herdr-keybindings-design.md`.
+```
 
 - [ ] **Step 3: Confirm the tmux path still works**
 
