@@ -228,19 +228,14 @@ command = "herdr pane resize --current --direction right --amount 0.05"
 # previous/next pane in its tab. herdr's own `pane swap --direction` is
 # spatial (left/right/up/down), not ordinal, so this needs a script; see
 # scripts/pane-swap.sh.
-#
-# Uppercase rather than shift+lowercase, and unshifted brackets rather than
-# braces: the shift/punctuation-modifier forms validated but were never
-# delivered by the terminal. See herdr's own note that
-# "punctuation-with-modifiers may depend on your terminal/tmux setup".
 
 [[keys.command]]
-key = "prefix+["
+key = "prefix+{"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh prev"
 
 [[keys.command]]
-key = "prefix+]"
+key = "prefix+}"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
 
