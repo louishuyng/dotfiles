@@ -7,11 +7,8 @@ onboarding = false
 delivery = "herdr"
 
 [ui]
-show_agent_labels_on_pane_borders = true
-agent_panel_sort = "spaces"
-
-[ui.sound]
-enabled = true
+show_agent_labels_on_pane_borders = false
+agent_panel_sort = "priority"
 
 [theme]
 # Tracks host light/dark so the com.user.theme-watcher launchd daemon stays the
