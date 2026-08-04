@@ -4,7 +4,7 @@
 
 **Goal:** Replace the bash sketchybar config at `suckless/mac_os/sketchybar/` with flameberry/Dotfiles' Lua (SbarLua) config, restyled to the existing retro-phosphor palette.
 
-**Architecture:** Vendor upstream's Lua tree in place, then make four localized edits — prune the two upstream pieces this machine doesn't use, point the font at an installed family, add a `phosphor` theme to the theme table, and adjust two geometry constants. No items are written by hand.
+**Architecture:** Vendor upstream's Lua tree in place, then make three localized edits — prune the two upstream pieces this machine doesn't use, add a `phosphor` theme to the theme table, and adjust two geometry constants. No items are written by hand.
 
 **Tech Stack:** Lua 5.5, SbarLua (`~/.local/share/sketchybar_lua`), sketchybar v2.23.0, Aerospace 0.20.3-Beta, clang via CommandLineTools (for the `menus` helper).
 
@@ -39,7 +39,7 @@
 | `items/media.lua`, `weather.lua`, `calendar.lua` | Center items. |
 | `items/widgets/*.lua` | battery, volume, wifi, bluetooth, cpu. |
 | `helpers/init.lua` | Sets `package.cpath`, runs the helper makefile. |
-| `helpers/default_font.lua` | Font family + style map. **Modified:** family and style map. |
+| `helpers/default_font.lua` | Font family + style map. Used verbatim — Satoshi Variable is installed. |
 | `helpers/app_icons.lua` | App-name → sketchybar-app-font glyph map. |
 | `helpers/makefile` | **Modified:** builds `menus` only. |
 | `helpers/menus/` | C helper for the Apple-logo menu bar. |
@@ -52,7 +52,7 @@
 
 ### Task 1: Vendor the Lua config in place
 
-Replaces the bash tree wholesale. At the end of this task the bar runs upstream's config verbatim minus the two pruned pieces — wrong colors and a fallback font, but functional. Later tasks fix appearance.
+Replaces the bash tree wholesale. At the end of this task the bar runs upstream's config verbatim minus the two pruned pieces — wrong colors and geometry, but functional. Later tasks fix appearance.
 
 **Files:**
 - Delete: all of `suckless/mac_os/sketchybar/` (58 files)
@@ -61,7 +61,7 @@ Replaces the bash tree wholesale. At the end of this task the bar runs upstream'
 
 **Interfaces:**
 - Consumes: nothing (first task)
-- Produces: a loadable Lua config. Later tasks edit `helpers/default_font.lua`, `colors.lua`, `bar.lua`, and `items/init.lua`, all of which must exist after this task.
+- Produces: a loadable Lua config. Later tasks edit `colors.lua`, `bar.lua`, and `items/init.lua`, all of which must exist after this task.
 
 - [ ] **Step 1: Record the baseline so the verification in Step 9 has something to compare against**
 
@@ -154,7 +154,7 @@ Expected: item count is non-zero and different from 19 (upstream adds roughly 15
 
 If the item count is 0, the Lua config threw during load — read the log delta, fix, and re-run from Step 8.
 
-The bar will look wrong at this point: crimson `gojo` colors, a fallback font, and a deep 128px inset. That is expected and handled by Tasks 2–4.
+The bar will look wrong at this point: crimson `gojo` colors and a deep 128px inset. That is expected and handled by Tasks 2–3. Text should already render in Satoshi Variable, since that font is installed and upstream's `default_font.lua` is used as-is.
 
 - [ ] **Step 10: Commit**
 
@@ -172,73 +172,7 @@ Colors, font, and bar geometry are adjusted in follow-up commits."
 
 ---
 
-### Task 2: Point the font at an installed family
-
-Upstream's `default_font.lua` names **Satoshi Variable**, which is not installed on this machine — every label silently falls back to a system default. JetBrainsMono Nerd Font is installed (48 faces) and is what the bash bar used.
-
-**Files:**
-- Modify: `suckless/mac_os/sketchybar/helpers/default_font.lua`
-
-**Interfaces:**
-- Consumes: the vendored tree from Task 1.
-- Produces: `settings.font.text`, `settings.font.numbers`, and `settings.font.style_map[k]` for keys `Regular`, `Semibold`, `Bold`, `Heavy`, `Black`. Every item file reads these; all five keys must remain present or items referencing a missing key will index nil.
-
-- [ ] **Step 1: Confirm which faces actually exist**
-
-```bash
-system_profiler SPFontsDataType | grep -A2 -i "jetbrainsmono nerd font" | grep -i "style" | sed 's/.*: //' | sort -u
-```
-
-Expected to include: `Regular`, `Medium`, `SemiBold`, `Bold`, `ExtraBold`. Note there is **no** `Black` face — that is why the map below sends both `Heavy` and `Black` to `ExtraBold`.
-
-- [ ] **Step 2: Replace the file**
-
-Write `suckless/mac_os/sketchybar/helpers/default_font.lua`:
-
-```lua
--- JetBrainsMono Nerd Font, not upstream's Satoshi Variable, which is not
--- installed here. Style names must match real faces or sketchybar falls
--- back silently; JetBrainsMono ships no Black face, hence Heavy/Black →
--- ExtraBold.
-return {
-	text = "JetBrainsMono Nerd Font",
-	numbers = "JetBrainsMono Nerd Font",
-
-	style_map = {
-		["Regular"] = "Regular",
-		["Semibold"] = "SemiBold",
-		["Bold"] = "Bold",
-		["Heavy"] = "ExtraBold",
-		["Black"] = "ExtraBold",
-	},
-}
-```
-
-- [ ] **Step 3: Reload and verify**
-
-```bash
-wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log > /tmp/sb-log-offset
-sketchybar --reload
-sleep 3
-sketchybar --query center.date | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['label']['font'])"
-tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
-```
-
-Expected: the font string names `JetBrainsMono Nerd Font` with a real style. Log delta clean.
-
-Then look at the bar: text should be visibly monospaced. If it still looks like a proportional system font, the family name is wrong — recheck Step 1's output for the exact spelling.
-
-- [ ] **Step 4: Commit**
-
-```bash
-cd /Users/louishuyng/.dotfiles
-git add suckless/mac_os/sketchybar/helpers/default_font.lua
-git commit -m "fix(sketchybar): use JetBrainsMono Nerd Font instead of uninstalled Satoshi"
-```
-
----
-
-### Task 3: Add the phosphor theme
+### Task 2: Add the phosphor theme
 
 Translates the bash `colors.sh` retro-phosphor palette into upstream's theme-table format, and trims the table from six themes to two.
 
@@ -354,7 +288,7 @@ bound to an orange, which the Lua widgets would render on a full battery."
 
 ---
 
-### Task 4: Adjust bar geometry
+### Task 3: Adjust bar geometry
 
 Upstream floats the bar with a 128px inset on each side, which surrenders roughly a quarter of the screen width. The notch spacer also needs sizing for this 16" panel.
 
@@ -409,7 +343,7 @@ git commit -m "style(sketchybar): narrow bar inset to 12px, size notch for 16in 
 
 ---
 
-### Task 5: Full verification sweep
+### Task 4: Full verification sweep
 
 Spec section 7. Nothing here is automatable — it is the manual pass that decides whether the migration is actually done.
 
@@ -485,7 +419,7 @@ Show the result to the user. Adjust `margin` in `bar.lua` or the notch width in 
 
 - [ ] **Step 9: Correct the stale memory file**
 
-`project_sketchybar.md` currently describes a Tokyo Night bash config with guidance about editing `plugins/*.sh` — all of it wrong after this migration. Rewrite the body to describe the Lua config: SbarLua at `suckless/mac_os/sketchybar/`, `phosphor` active in `colors.lua`'s theme table, JetBrainsMono Nerd Font, floating bar at `margin = 12`, notch spacer 230, flameberry's item set with `cpu` commented out, and the fact that mic/brew/dnd/network/front_app were deliberately dropped rather than ported.
+`project_sketchybar.md` currently describes a Tokyo Night bash config with guidance about editing `plugins/*.sh` — all of it wrong after this migration. Rewrite the body to describe the Lua config: SbarLua at `suckless/mac_os/sketchybar/`, `phosphor` active in `colors.lua`'s theme table, Satoshi Variable, floating bar at `margin = 12`, notch spacer 230, flameberry's item set with `cpu` commented out, and the fact that mic/brew/dnd/network/front_app were deliberately dropped rather than ported.
 
 - [ ] **Step 10: Commit any final tweaks**
 

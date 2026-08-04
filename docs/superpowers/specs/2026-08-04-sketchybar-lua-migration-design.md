@@ -53,11 +53,10 @@ Already present, so the Lua path adds no new install steps:
 `nowplaying-cli` and `SwitchAudioSource` are both on PATH, so media and volume-source-switching
 work as-is.
 
-**Font, not covered above:** upstream's `helpers/default_font.lua` names *Satoshi Variable*,
-which is not installed here — every label would fall back silently to a system default. The
-config is pointed at **JetBrainsMono Nerd Font** instead (48 faces installed; the family the bash
-bar already used). Its style map is remapped to faces that exist: `Semibold` → `SemiBold`, and
-both `Heavy` and `Black` → `ExtraBold`, since JetBrainsMono ships no Black face.
+**Font:** upstream's `helpers/default_font.lua` names *Satoshi Variable*, which is installed
+(family `Satoshi Variable`, styles Light/Regular/Medium/Bold). The file is used verbatim.
+Upstream's style map contains a `Black` entry with no matching face in the variable family, but
+no item reads it — only `Bold` and `Semibold` are ever looked up.
 
 ## Design
 
