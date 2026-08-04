@@ -148,6 +148,12 @@ Web`), and `display_label` prints the id verbatim, so the focused pill will be w
 flameberry's numeric workspaces produce. Only one pill is focused at a time, so this is
 accepted as-is.
 
+**Pill order:** Aerospace reports workspaces alphabetically, which puts `Any` and `Chat` ahead of
+`Dev` and `Terminal`. The pills are ordered explicitly instead — **Dev, Terminal, Web, Chat,
+Reading, Planing, Any, Inbox, Virtual** — via a `display_order` array on the spaces backend, so
+`spaces.lua` stays window-manager agnostic. Workspaces absent from that array sort alphabetically
+after the listed ones, so adding one in `aerospace.toml` never makes it invisible.
+
 ### 5. Item disposition
 
 The bar ships exactly flameberry's item set. Nothing is hand-ported.

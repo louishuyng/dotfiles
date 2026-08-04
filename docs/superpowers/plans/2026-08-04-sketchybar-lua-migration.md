@@ -4,7 +4,7 @@
 
 **Goal:** Replace the bash sketchybar config at `suckless/mac_os/sketchybar/` with flameberry/Dotfiles' Lua (SbarLua) config, restyled to the existing retro-phosphor palette.
 
-**Architecture:** Vendor upstream's Lua tree in place, then make three localized edits — prune the two upstream pieces this machine doesn't use, add a `phosphor` theme to the theme table, and adjust two geometry constants. No items are written by hand.
+**Architecture:** Vendor upstream's Lua tree in place, then make four localized edits — prune the two upstream pieces this machine doesn't use, add a `phosphor` theme to the theme table, adjust two geometry constants, and impose an explicit workspace display order. No items are written by hand.
 
 **Tech Stack:** Lua 5.5, SbarLua (`~/.local/share/sketchybar_lua`), sketchybar v2.23.0, Aerospace 0.20.3-Beta, clang via CommandLineTools (for the `menus` helper).
 
@@ -46,8 +46,8 @@ The prior `.so` is backed up at `/tmp/sketchybar.so.bak-a6efebf8`. **`bootstrap/
 | `utils.lua` | `menubar_section` bracket helper. |
 | `items/init.lua` | Composition root — item order and brackets. **Modified:** notch width. |
 | `items/apple.lua` | Apple diamond + `menus` click handler. |
-| `items/spaces.lua` | Workspace pill rendering, WM-agnostic. |
-| `items/spaces_aerospace.lua` | Aerospace backend. |
+| `items/spaces.lua` | Workspace pill rendering, WM-agnostic. **Modified:** applies the backend's display order. |
+| `items/spaces_aerospace.lua` | Aerospace backend. **Modified:** declares `display_order`. |
 | `items/media.lua`, `weather.lua`, `calendar.lua` | Center items. |
 | `items/widgets/*.lua` | battery, volume, wifi, bluetooth, cpu. |
 | `helpers/init.lua` | Sets `package.cpath`, runs the helper makefile. |
@@ -355,7 +355,153 @@ git commit -m "style(sketchybar): narrow bar inset to 12px, size notch for 16in 
 
 ---
 
-### Task 4: Full verification sweep
+### Task 4: Order the workspace pills
+
+Aerospace's `list-workspaces --all` returns alphabetical order (`Any Chat Dev Inbox Planing Reading Terminal Virtual Web`), which buries the most-used workspaces behind `Any` and `Chat`. Impose an explicit display order instead.
+
+**Requested order:** Dev, Terminal, Web, Chat, Reading, Planing, Any, Inbox, Virtual.
+
+**Files:**
+- Modify: `suckless/mac_os/sketchybar/items/spaces_aerospace.lua`
+- Modify: `suckless/mac_os/sketchybar/items/spaces.lua`
+
+**Interfaces:**
+- Consumes: the vendored tree from Task 1.
+- Produces: a new optional key on the spaces backend contract, `M.display_order` — an array of workspace-id strings. `spaces.lua` must treat it as optional (a backend without it keeps the order the WM reported), because the contract is shared with any future backend.
+
+- [ ] **Step 1: Declare the order in the Aerospace backend**
+
+The order belongs to the backend, not the renderer — `spaces.lua` stays window-manager agnostic. Append to `items/spaces_aerospace.lua`, before the final `return M`:
+
+```lua
+-- Pill display order, most-used first. Aerospace's list-workspaces returns
+-- alphabetical order, which buries the workspaces used most. Workspaces absent
+-- from this list still get a pill — they sort alphabetically after the listed
+-- ones — so adding a workspace in aerospace.toml never makes it invisible here.
+M.display_order = {
+	"Dev",
+	"Terminal",
+	"Web",
+	"Chat",
+	"Reading",
+	"Planing",
+	"Any",
+	"Inbox",
+	"Virtual",
+}
+```
+
+- [ ] **Step 2: Apply the order in the renderer**
+
+In `items/spaces.lua`, find this line:
+
+```lua
+local workspaces = exec_to_table(backend.list_workspaces_cmd())
+```
+
+Replace it with the helper plus the reordered call. Items are added to sketchybar in loop order and rendered left-to-right, so sorting the list is all that is needed:
+
+```lua
+-- Sort by the backend's declared display order. Unlisted workspaces sort
+-- alphabetically after the listed ones. table.sort is not stable in Lua, hence
+-- the explicit alphabetical tiebreaker rather than relying on input order.
+local function apply_display_order(list, order)
+	if not order then
+		return list
+	end
+	local rank = {}
+	for i, name in ipairs(order) do
+		rank[name] = i
+	end
+	local ordered = {}
+	for _, name in ipairs(list) do
+		ordered[#ordered + 1] = name
+	end
+	table.sort(ordered, function(a, b)
+		local ra, rb = rank[a], rank[b]
+		if ra and rb then
+			return ra < rb
+		elseif ra then
+			return true
+		elseif rb then
+			return false
+		end
+		return a < b
+	end)
+	return ordered
+end
+
+local workspaces = apply_display_order(exec_to_table(backend.list_workspaces_cmd()), backend.display_order)
+```
+
+- [ ] **Step 3: Confirm the "only show when occupied" behavior — do not change it**
+
+The requirement that pills appear only for workspaces with applications is already upstream's behavior, in `build_space_set`:
+
+```lua
+local should_draw = selected or has_icons
+```
+
+Empty, unfocused workspaces are not drawn. **Leave this line alone.** The focused workspace stays visible even when empty, deliberately — hiding it would leave no indication of which workspace you are on. If that turns out to be unwanted, the one-line change is `local should_draw = has_icons`, but it is not part of this task.
+
+Verify by reading the file that the line is unmodified, and confirm it visually in Step 5.
+
+- [ ] **Step 4: Check the order logic in isolation before reloading**
+
+```bash
+cd /Users/louishuyng/.dotfiles/suckless/mac_os/sketchybar
+lua -e '
+local order = {"Dev","Terminal","Web","Chat","Reading","Planing","Any","Inbox","Virtual"}
+local rank = {}
+for i, n in ipairs(order) do rank[n] = i end
+local got = {"Any","Chat","Dev","Inbox","Planing","Reading","Terminal","Virtual","Web","Zebra"}
+table.sort(got, function(a,b)
+  local ra, rb = rank[a], rank[b]
+  if ra and rb then return ra < rb elseif ra then return true elseif rb then return false end
+  return a < b
+end)
+print(table.concat(got, " "))
+'
+```
+
+Expected exactly: `Dev Terminal Web Chat Reading Planing Any Inbox Virtual Zebra`
+
+The unlisted `Zebra` landing last confirms new workspaces still appear rather than vanishing.
+
+- [ ] **Step 5: Reload and verify**
+
+```bash
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
+sketchybar --reload
+sleep 4
+sketchybar --query bar | python3 -c "
+import sys,json
+d = json.load(sys.stdin)
+print(' '.join(i.replace('space.','') for i in d['items'] if i.startswith('space.')))
+"
+tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
+```
+
+Expected: `Dev Terminal Web Chat Reading Planing Any Inbox Virtual`. Log delta clean.
+
+Then confirm by eye: pills read left-to-right in that order, and only workspaces with windows show one (plus the focused workspace).
+
+- [ ] **Step 6: Commit**
+
+```bash
+cd /Users/louishuyng/.dotfiles
+git add suckless/mac_os/sketchybar/items/spaces.lua suckless/mac_os/sketchybar/items/spaces_aerospace.lua
+git commit -m "feat(sketchybar): order workspace pills by use, not alphabetically
+
+Aerospace reports workspaces alphabetically, which buries the most-used
+ones. display_order lives on the backend so spaces.lua stays window-manager
+agnostic; unlisted workspaces sort alphabetically after the listed ones so a
+new workspace never silently disappears."
+```
+
+---
+
+### Task 5: Full verification sweep
 
 Spec section 7. Nothing here is automatable — it is the manual pass that decides whether the migration is actually done.
 
