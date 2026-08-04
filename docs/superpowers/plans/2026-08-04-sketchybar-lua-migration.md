@@ -307,8 +307,10 @@ Confirm `local colors = require("colors")` is already at the top of `media.lua` 
 
 ```bash
 cd /Users/louishuyng/.dotfiles/suckless/mac_os/sketchybar
-grep -rn "0x[0-9a-fA-F]\{8\}" --include="*.lua" . | grep -v "^./colors.lua"
+grep -rn "0x[0-9a-fA-F]\{8\}" --include="*.lua" . | grep -v "^\./colors.lua\|^colors.lua"
 ```
+
+The filter matches both with and without a `./` prefix on purpose: BSD grep (and ugrep, which is what `grep` resolves to on this machine) does not prefix recursive-search filenames the way GNU grep does, so an anchored `^./colors.lua` alone silently matches nothing and the whole palette floods the output.
 
 Expected: exactly one line — `bar.lua:6`, which uses `0xff000000`/`0x00000000` for the bar background. That one is left alone: it is geometry-adjacent, black matches the phosphor base, and `bar.lua` is Task 3's file. Any other hit means a literal was missed.
 
