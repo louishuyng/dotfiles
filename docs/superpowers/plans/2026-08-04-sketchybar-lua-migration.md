@@ -45,10 +45,10 @@ The prior `.so` is backed up at `/tmp/sketchybar.so.bak-a6efebf8`. **`bootstrap/
 | `icons.lua` | SF Symbols / NerdFont glyph tables. |
 | `utils.lua` | `menubar_section` bracket helper. |
 | `items/init.lua` | Composition root — item order and brackets. **Modified:** notch width. |
-| `items/apple.lua` | Apple diamond + `menus` click handler. |
+| `items/apple.lua` | Apple logo + `menus` click handler. **Modified:** themed glyph replaces the red PNG. |
 | `items/spaces.lua` | Workspace pill rendering, WM-agnostic. **Modified:** applies the backend's display order. |
 | `items/spaces_aerospace.lua` | Aerospace backend. **Modified:** declares `display_order`. |
-| `items/media.lua`, `weather.lua`, `calendar.lua` | Center items. |
+| `items/media.lua`, `weather.lua`, `calendar.lua` | Center items. `media.lua` **modified:** two hardcoded whites routed through the palette. |
 | `items/widgets/*.lua` | battery, volume, wifi, bluetooth, cpu. |
 | `helpers/init.lua` | Sets `package.cpath`, runs the helper makefile. |
 | `helpers/default_font.lua` | Font family + style map. Used verbatim — Satoshi Variable is installed. |
@@ -190,6 +190,8 @@ Translates the bash `colors.sh` retro-phosphor palette into upstream's theme-tab
 
 **Files:**
 - Modify: `suckless/mac_os/sketchybar/colors.lua`
+- Modify: `suckless/mac_os/sketchybar/items/apple.lua`
+- Modify: `suckless/mac_os/sketchybar/items/media.lua`
 
 **Interfaces:**
 - Consumes: the vendored tree from Task 1.
@@ -272,30 +274,105 @@ print("colors.lua OK")
 
 Expected: `colors.lua OK`. Anything else — add the reported keys and re-run.
 
-- [ ] **Step 4: Reload and verify**
+- [ ] **Step 4: Replace the red diamond with a themed Apple glyph**
+
+`items/apple.lua` uses `assets/diamondRed.png` as a background image. It is a **red raster asset** — sketchybar cannot recolor an image, so it would stay red on an otherwise green bar, defeating the theme. Upstream already ships the alternative, commented out.
+
+In `items/apple.lua`, replace the `background`/`icon` portion of the `apple.logo` item so the image is gone and the glyph is live, colored from the palette:
+
+```lua
+sbar.add("item", "apple.logo", {
+	position = "left",
+	icon = {
+		y_offset = 1,
+		font = { size = 18.0 },
+		color = colors.accent,
+		string = icons.apple,
+	},
+	label = { drawing = false },
+	padding_left = 10,
+	padding_right = 5,
+	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
+})
+```
+
+Note the `background` table is removed entirely and `color` is `colors.accent`, not `colors.white` as the commented-out original had it — the logo should follow the theme accent. Leave `assets/` on disk; nothing references it after this, but the PNGs are upstream's and harmless.
+
+- [ ] **Step 5: Route media.lua's hardcoded whites through the palette**
+
+Two spots bypass the palette with a literal white. Both must read from `colors` so a theme switch actually reaches them.
+
+`items/media.lua:102` — inside the popup title item, change:
+
+```lua
+		color = 0xffffffff,
+```
+
+to:
+
+```lua
+		color = colors.white,
+```
+
+`items/media.lua:339` — change:
+
+```lua
+	local color = faded and colors.with_alpha(colors.white, faded) or 0xffffffff
+```
+
+to:
+
+```lua
+	local color = faded and colors.with_alpha(colors.white, faded) or colors.white
+```
+
+Confirm `local colors = require("colors")` is already at the top of `media.lua` (it is — line 339 already uses `colors.with_alpha`).
+
+- [ ] **Step 6: Verify no non-palette color literals remain outside colors.lua**
+
+```bash
+cd /Users/louishuyng/.dotfiles/suckless/mac_os/sketchybar
+grep -rn "0x[0-9a-fA-F]\{8\}" --include="*.lua" . | grep -v "^./colors.lua"
+```
+
+Expected: exactly one line — `bar.lua:6`, which uses `0xff000000`/`0x00000000` for the bar background. That one is left alone: it is geometry-adjacent, black matches the phosphor base, and `bar.lua` is Task 3's file. Any other hit means a literal was missed.
+
+```bash
+grep -rn "assets/" --include="*.lua" .
+```
+
+Expected: no output. If `diamondRed.png` still appears, Step 4 was not applied.
+
+- [ ] **Step 7: Verify the table is complete, then reload**
 
 ```bash
 wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 sketchybar --reload
-sleep 3
+sleep 4
 sketchybar --query bar | python3 -c "import sys,json; print('bar color:', json.load(sys.stdin)['color'])"
+sketchybar --query apple.logo | python3 -c "import sys,json; d=json.load(sys.stdin); print('apple icon color:', d['icon']['color'], 'image drawing:', d.get('background',{}).get('image',{}).get('drawing'))"
 tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
 ```
 
-Expected: `bar color: 0xff000000`. Log delta clean.
+Expected: `bar color: 0xff000000`, and the apple icon color is `0xff00e65c` (phosphor green) with the background image off. Log delta clean.
 
-Then look at the bar: the focused workspace pill should be phosphor green (`#00e65c`) with black text on it. No crimson anywhere.
+Then look at the bar: the focused workspace pill is phosphor green with black text, the Apple logo is green, and **nothing on the bar is red or crimson**.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 8: Commit**
 
 ```bash
 cd /Users/louishuyng/.dotfiles
-git add suckless/mac_os/sketchybar/colors.lua
-git commit -m "feat(sketchybar): add phosphor theme, trim theme table to two
+git add suckless/mac_os/sketchybar/colors.lua suckless/mac_os/sketchybar/items/apple.lua suckless/mac_os/sketchybar/items/media.lua
+git commit -m "feat(sketchybar): add phosphor theme, make every color follow it
 
 Carries the retro-phosphor palette over from the bash config's colors.sh.
 Semantic color names are remapped to matching hues — colors.sh had GREEN
-bound to an orange, which the Lua widgets would render on a full battery."
+bound to an orange, which the Lua widgets would render on a full battery.
+
+Also removes the two things that ignored the palette entirely: the red
+diamondRed.png used for the Apple logo (an image sketchybar cannot recolor,
+swapped for the SF Symbols glyph in accent green) and two hardcoded white
+literals in media.lua."
 ```
 
 ---

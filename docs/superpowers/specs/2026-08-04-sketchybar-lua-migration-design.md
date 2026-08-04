@@ -114,6 +114,12 @@ dropped rather than carried as dead config.
 | `bg2` (inactive space pill) | `#183818` | `linkarzu_color13` |
 | `bg3` (center pill) | `#102210` | `linkarzu_color25` |
 
+**Everything follows the palette.** Upstream has three places that bypass it, all corrected:
+`items/apple.lua` used `assets/diamondRed.png` — a red raster image sketchybar cannot recolor,
+replaced with the SF Symbols apple glyph in `colors.accent`; and `items/media.lua` had two
+hardcoded `0xffffffff` literals, routed through `colors.white`. The only remaining literal is
+`bar.lua`'s black bar background, which matches the phosphor base.
+
 **Semantic remap, deliberate:** the bash `colors.sh` assigns `GREEN=#ff9d00` (an orange) and
 similar scrambled pairings. flameberry's widgets use these names semantically — a full battery
 asks for `colors.green`. Carrying the scramble over would render a full battery orange, so the
