@@ -79,7 +79,7 @@ suckless/mac_os/sketchybar/
   items/                  apple, spaces, spaces_aerospace, media, weather, calendar
   items/widgets/          battery, volume, wifi, bluetooth, cpu
   helpers/                app_icons.lua, default_font.lua, init.lua, menus/
-  assets/                 diamondRed.png and friends
+  assets/                 diamondRed.png, diamondGreen.png, and friends
 ```
 
 Two pieces of upstream are dropped: `items/spaces_omniwm.lua` (Aerospace is the only window
@@ -89,7 +89,7 @@ leaving it in means the helper makefile compiles C nothing calls).
 ### 2. Theme
 
 Keep flameberry's theme-table mechanism, trimmed from six themes to two: `phosphor` (active)
-and `catppuccin`. The other four (`rose_pine`, `rose_pine_moon`, `neon`, `aurora`, `gojo`) are
+and `catppuccin`. The other five (`rose_pine`, `rose_pine_moon`, `neon`, `aurora`, `gojo`) are
 dropped rather than carried as dead config.
 
 `phosphor` is the current `colors.sh` palette translated into flameberry's key names:
@@ -186,6 +186,14 @@ Enabling it later is a two-line uncomment.
 **Gained:** `weather` (wttr.in), `bluetooth`, `media` (nowplaying-cli, replacing the disabled
 `spotify` item), and the `menus` helper on the Apple logo.
 
+**Media item fixes.** Upstream's `playpause`, `next` and `prev` items each carried both a
+`click_script` and a `mouse.clicked` subscription running the same `nowplaying-cli` command —
+sketchybar fires both on one click, so `togglePlayPause` cancelled itself out and next/prev
+skipped two tracks. The redundant `click_script`s are dropped; the Lua handlers (which also do
+the optimistic icon update and follow-up poll) are kept. Clicking the popup artwork now focuses
+the playing app: it resolves the bundle id via MediaRemote's `ClientBundleIdentifier` and
+activates it with `open -b`, then closes the popup.
+
 The net trade is losing mic level, brew count, DND state, and network throughput from the bar,
 in exchange for a much smaller config with no bespoke code to maintain.
 
@@ -197,13 +205,17 @@ flameberry's structure is already well-factored and is kept as-is:
 - `settings.lua` — paddings, fonts, icon set. No colors.
 - `items/spaces.lua` — rendering and event coalescing, window-manager agnostic.
 - `items/spaces_aerospace.lua` — the backend contract: `events`, `list_workspaces_cmd()`,
-  `fetch_state_cmd()`, `click_cmd(id)`, `display_label(id)`.
+  `fetch_state_cmd()`, `click_cmd(id)`, `display_label(id)`, and optionally `display_order`.
 - `items/widgets/*.lua` — one file per widget, each self-contained.
 - `items/init.lua` — composition root: what is added, in what order, and the brackets.
 
-Since no items are being written, the only file materially diverging from upstream is
-`colors.lua` (trimmed theme table plus the new `phosphor` entry), with one-constant edits in
-`bar.lua` (`margin`) and `items/init.lua` (notch width).
+Nine paths diverge from upstream: `colors.lua` (trimmed theme table plus the new `phosphor`
+entry), `bar.lua` (`margin`), `items/init.lua` (notch `width`), `items/media.lua` (two literals
+routed through `colors.white`, plus the click-to-focus and double-fire fixes in §5),
+`items/apple.lua` (asset filename), `items/spaces.lua` and `items/spaces_aerospace.lua`
+(`display_order`), `helpers/makefile` (the `event_providers` target dropped), and the new
+`assets/diamondGreen.png`. Two paths are pruned outright: `items/spaces_omniwm.lua` and
+`helpers/event_providers/`.
 
 ### 7. Verification
 

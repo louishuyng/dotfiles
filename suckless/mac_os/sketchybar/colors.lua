@@ -32,6 +32,7 @@ local themes = {
 		popup = { bg = 0xf0181926, border = 0xff45475a },
 		bg1 = 0x60000000,
 		bg2 = 0x90000000,
+		bg3 = 0xb0000000,
 	},
 	-- Retro-phosphor green, carried over from the previous bash config's
 	-- colors.sh. Semantic names are mapped to matching hues rather than

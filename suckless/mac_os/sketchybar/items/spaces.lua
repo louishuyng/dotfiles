@@ -2,11 +2,11 @@ local colors = require("colors")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
--- Window manager backend. Swap to spaces_aerospace / spaces_omniwm and restart
+-- Window manager backend. Swap to another backend module and restart
 -- sketchybar to switch. All modules expose: events, list_workspaces_cmd(),
--- fetch_state_cmd(), click_cmd(id), display_label(id).
+-- fetch_state_cmd(), click_cmd(id), display_label(id), and optionally
+-- display_order (apply_display_order treats a nil order as WM order).
 local backend = require("items.spaces_aerospace")
--- local backend = require("items.spaces_omniwm")
 
 -- Horizontal padding (in px) on each side of a space pill. Tweak to change pill widths.
 local pill_padding = {

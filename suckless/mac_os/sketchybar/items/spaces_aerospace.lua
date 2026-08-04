@@ -1,5 +1,4 @@
--- Aerospace backend for spaces.lua. Paired with spaces_omniwm.lua — both expose
--- the same module surface so spaces.lua can swap between them with one line.
+-- Aerospace backend for spaces.lua.
 --
 -- IDs are aerospace workspace names (e.g. "1", "2", "code").
 -- fetch_state_cmd emits two sections separated by "---":
