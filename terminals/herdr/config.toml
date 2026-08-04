@@ -223,10 +223,11 @@ key = "prefix+L"
 type = "shell"
 command = "herdr pane resize --current --direction right --amount 0.05"
 
-# ── Move tab left/right ──────────────────────────────────────────────────────
-# Replaces the tmux `,`/`.` (swap-window -t -1/+1) that this migration
-# dropped. herdr's CLI has no `tab move`; see scripts/tab-move.sh for why this
-# needs a script instead of a plain herdr invocation.
+# ── Ordinal pane swap ────────────────────────────────────────────────────────
+# Mirrors tmux `{`/`}` (swap-pane -U/-D): swap the focused pane with the
+# previous/next pane in its tab. herdr's own `pane swap --direction` is
+# spatial (left/right/up/down), not ordinal, so this needs a script; see
+# scripts/pane-swap.sh.
 #
 # Uppercase rather than shift+lowercase, and unshifted brackets rather than
 # braces: the shift/punctuation-modifier forms validated but were never
@@ -236,12 +237,12 @@ command = "herdr pane resize --current --direction right --amount 0.05"
 [[keys.command]]
 key = "prefix+["
 type = "shell"
-command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh left"
+command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh prev"
 
 [[keys.command]]
 key = "prefix+]"
 type = "shell"
-command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh right"
+command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
 
 # herdr's own background, deliberately lighter than Ghostty's #11111B so the
 # multiplexer chrome reads as distinct from terminal content. rose-pine's

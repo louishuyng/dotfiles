@@ -93,8 +93,8 @@ prefix+H|shell|herdr pane resize --current --direction left --amount 0.05||
 prefix+J|shell|herdr pane resize --current --direction down --amount 0.05||
 prefix+K|shell|herdr pane resize --current --direction up --amount 0.05||
 prefix+L|shell|herdr pane resize --current --direction right --amount 0.05||
-prefix+[|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh left||
-prefix+]|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh right||
+prefix+[|shell|~/.dotfiles/terminals/herdr/scripts/pane-swap.sh prev||
+prefix+]|shell|~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next||
 WANT
 
   # Exact count: catches a stray or duplicated block the table alone would miss.
