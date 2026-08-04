@@ -15,12 +15,12 @@ default-root-container-layout = 'accordion'
 default-root-container-orientation = 'auto'
 
 [gaps]
-inner.horizontal = 14
-inner.vertical =   14
-outer.top = [{ monitor."Built-in" = 0 }, 32]
-outer.bottom = [{ monitor."Built-in" = 0 }, 0]
-outer.left =       0
-outer.right =      0
+inner.horizontal = 16
+inner.vertical =   16
+outer.top = [{ monitor."Built-in" = 0 }, 0]
+outer.bottom = [{ monitor."Built-in" = 60 }, 60]
+outer.left =       16
+outer.right =      16
 
 [mode.main.binding]
 alt-d = 'workspace Dev' # Dev (IDE, Coding Tools, DevOps, etc)

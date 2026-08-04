@@ -4,7 +4,7 @@
 
 **Goal:** Replace the bash sketchybar config at `suckless/mac_os/sketchybar/` with flameberry/Dotfiles' Lua (SbarLua) config, restyled to the existing retro-phosphor palette.
 
-**Architecture:** Vendor upstream's Lua tree in place, then make three localized edits — prune the two upstream pieces this machine doesn't use, add a `phosphor` theme to the theme table, and adjust two geometry constants. No items are written by hand.
+**Architecture:** Vendor upstream's Lua tree in place, then make five localized edits — prune the two upstream pieces this machine doesn't use, add a `phosphor` theme to the theme table, adjust two geometry constants, impose an explicit workspace display order, and hue-rotate the Apple diamond asset onto the palette. No items are written by hand.
 
 **Tech Stack:** Lua 5.5, SbarLua (`~/.local/share/sketchybar_lua`), sketchybar v2.23.0, Aerospace 0.20.3-Beta, clang via CommandLineTools (for the `menus` helper).
 
@@ -18,7 +18,19 @@
 - `cpu` stays commented out in `items/init.lua`, as upstream has it.
 - Dark-only. Do not add a light theme or appearance detection.
 - Every task ends with a working bar. Verification for each is `sketchybar --reload` followed by an item-count query and an error-log delta — there is no test suite for a status bar.
-- The sketchybar error log is `/opt/homebrew/var/log/sketchybar/sketchybar.err.log`. It is already ~147MB from the bash config, so always diff by byte offset rather than reading the whole file.
+- The sketchybar error log is `/opt/homebrew/var/log/sketchybar/sketchybar.err.log`. It is already ~147MB from the bash config, so always diff by byte offset rather than reading the whole file. Pipe `wc -c` through `tr -d " "` — macOS pads the count with a leading space, which makes `tail -c +N` fail with "illegal offset".
+
+## Prerequisite resolved during Task 1
+
+The installed `~/.local/share/sketchybar_lua/sketchybar.so` was built 2025-08-03 against Lua 5.4. Homebrew's `lua` was later upgraded to 5.5.0, and since Lua C modules resolve symbols against the host interpreter, `require("sketchybar")` segfaulted (exit 139, uncatchable by `pcall`) — the config loaded zero items with no Lua traceback in the log.
+
+Fixed by rebuilding SbarLua, whose upstream now vendors and statically links lua-5.5.0:
+
+```bash
+git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua && make install
+```
+
+The prior `.so` is backed up at `/tmp/sketchybar.so.bak-a6efebf8`. **`bootstrap/mac.sh` installs sketchybar but never installs SbarLua** — a fresh machine would hit this same wall. Adding it there is deliberately out of scope for this plan; see Follow-ups.
 
 ## File Structure
 
@@ -33,17 +45,17 @@
 | `icons.lua` | SF Symbols / NerdFont glyph tables. |
 | `utils.lua` | `menubar_section` bracket helper. |
 | `items/init.lua` | Composition root — item order and brackets. **Modified:** notch width. |
-| `items/apple.lua` | Apple diamond + `menus` click handler. |
-| `items/spaces.lua` | Workspace pill rendering, WM-agnostic. |
-| `items/spaces_aerospace.lua` | Aerospace backend. |
-| `items/media.lua`, `weather.lua`, `calendar.lua` | Center items. |
+| `items/apple.lua` | Apple diamond + `menus` click handler. **Modified:** repointed at the green asset. |
+| `items/spaces.lua` | Workspace pill rendering, WM-agnostic. **Modified:** applies the backend's display order. |
+| `items/spaces_aerospace.lua` | Aerospace backend. **Modified:** declares `display_order`. |
+| `items/media.lua`, `weather.lua`, `calendar.lua` | Center items. `media.lua` **modified:** two hardcoded whites routed through the palette. |
 | `items/widgets/*.lua` | battery, volume, wifi, bluetooth, cpu. |
 | `helpers/init.lua` | Sets `package.cpath`, runs the helper makefile. |
 | `helpers/default_font.lua` | Font family + style map. Used verbatim — Satoshi Variable is installed. |
 | `helpers/app_icons.lua` | App-name → sketchybar-app-font glyph map. |
 | `helpers/makefile` | **Modified:** builds `menus` only. |
 | `helpers/menus/` | C helper for the Apple-logo menu bar. |
-| `assets/` | PNGs, including `diamondRed.png` used by the Apple item. |
+| `assets/` | PNGs. **Added:** `diamondGreen.png`, a hue-rotated `diamondRed.png` for the Apple item. |
 
 **Deleted:** every `*.sh` in the current config (`sketchybarrc`, `colors.sh`, `icons.sh`, `items/`, `plugins/`, `helper/`).
 **Not vendored:** `items/spaces_omniwm.lua`, `helpers/event_providers/`, `sketchybar_backup_best/`.
@@ -68,7 +80,7 @@ Replaces the bash tree wholesale. At the end of this task the bar runs upstream'
 ```bash
 cd /Users/louishuyng/.dotfiles
 sketchybar --query bar | python3 -c "import sys,json; print('items:', len(json.load(sys.stdin)['items']))"
-wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log > /tmp/sb-log-offset
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 cat /tmp/sb-log-offset
 ```
 
@@ -178,6 +190,7 @@ Translates the bash `colors.sh` retro-phosphor palette into upstream's theme-tab
 
 **Files:**
 - Modify: `suckless/mac_os/sketchybar/colors.lua`
+- Modify: `suckless/mac_os/sketchybar/items/media.lua`
 
 **Interfaces:**
 - Consumes: the vendored tree from Task 1.
@@ -260,30 +273,75 @@ print("colors.lua OK")
 
 Expected: `colors.lua OK`. Anything else — add the reported keys and re-run.
 
-- [ ] **Step 4: Reload and verify**
+- [ ] **Step 4: Route media.lua's hardcoded whites through the palette**
+
+Two spots bypass the palette with a literal white. Both must read from `colors` so a theme switch actually reaches them.
+
+`items/media.lua:102` — inside the popup title item, change:
+
+```lua
+		color = 0xffffffff,
+```
+
+to:
+
+```lua
+		color = colors.white,
+```
+
+`items/media.lua:339` — change:
+
+```lua
+	local color = faded and colors.with_alpha(colors.white, faded) or 0xffffffff
+```
+
+to:
+
+```lua
+	local color = faded and colors.with_alpha(colors.white, faded) or colors.white
+```
+
+Confirm `local colors = require("colors")` is already at the top of `media.lua` (it is — line 339 already uses `colors.with_alpha`).
+
+- [ ] **Step 5: Verify no non-palette color literals remain outside colors.lua**
 
 ```bash
-wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log > /tmp/sb-log-offset
+cd /Users/louishuyng/.dotfiles/suckless/mac_os/sketchybar
+grep -rn "0x[0-9a-fA-F]\{8\}" --include="*.lua" . | grep -v "^\./colors.lua\|^colors.lua"
+```
+
+The filter matches both with and without a `./` prefix on purpose: BSD grep (and ugrep, which is what `grep` resolves to on this machine) does not prefix recursive-search filenames the way GNU grep does, so an anchored `^./colors.lua` alone silently matches nothing and the whole palette floods the output.
+
+Expected: exactly one line — `bar.lua:6`, which uses `0xff000000`/`0x00000000` for the bar background. That one is left alone: it is geometry-adjacent, black matches the phosphor base, and `bar.lua` is Task 3's file. Any other hit means a literal was missed.
+
+Do **not** touch `items/apple.lua`. Its `assets/diamondRed.png` reference is expected here and is handled by Task 5, which recolors the asset rather than replacing the icon.
+
+- [ ] **Step 6: Reload and verify**
+
+```bash
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 sketchybar --reload
-sleep 3
+sleep 4
 sketchybar --query bar | python3 -c "import sys,json; print('bar color:', json.load(sys.stdin)['color'])"
 tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
 ```
 
 Expected: `bar color: 0xff000000`. Log delta clean.
 
-Then look at the bar: the focused workspace pill should be phosphor green (`#00e65c`) with black text on it. No crimson anywhere.
+Then look at the bar: the focused workspace pill is phosphor green (`#00e65c`) with black text on it, and no crimson remains anywhere except the Apple diamond, which Task 5 handles.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
 cd /Users/louishuyng/.dotfiles
-git add suckless/mac_os/sketchybar/colors.lua
-git commit -m "feat(sketchybar): add phosphor theme, trim theme table to two
+git add suckless/mac_os/sketchybar/colors.lua suckless/mac_os/sketchybar/items/media.lua
+git commit -m "feat(sketchybar): add phosphor theme, route stray literals through it
 
 Carries the retro-phosphor palette over from the bash config's colors.sh.
 Semantic color names are remapped to matching hues — colors.sh had GREEN
-bound to an orange, which the Lua widgets would render on a full battery."
+bound to an orange, which the Lua widgets would render on a full battery.
+
+Also routes media.lua's two hardcoded white literals through the palette."
 ```
 
 ---
@@ -321,11 +379,11 @@ In `items/init.lua`, the `center.notch` item has `width = 200` with a comment su
 - [ ] **Step 3: Reload and verify**
 
 ```bash
-wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log > /tmp/sb-log-offset
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 sketchybar --reload
 sleep 3
 sketchybar --query bar | python3 -c "import sys,json; d=json.load(sys.stdin); print('margin:', d['margin'], 'corner_radius:', d['corner_radius'], 'y_offset:', d['y_offset'])"
-sketchybar --query center.notch | python3 -c "import sys,json; print('notch width:', json.load(sys.stdin)['geometry']['width'])"
+sketchybar --query center.notch | python3 -c "import sys,json; print('notch width:', json.load(sys.stdin)['width'])"
 tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
 ```
 
@@ -343,7 +401,423 @@ git commit -m "style(sketchybar): narrow bar inset to 12px, size notch for 16in 
 
 ---
 
-### Task 4: Full verification sweep
+### Task 4: Order the workspace pills
+
+Aerospace's `list-workspaces --all` returns alphabetical order (`Any Chat Dev Inbox Planing Reading Terminal Virtual Web`), which buries the most-used workspaces behind `Any` and `Chat`. Impose an explicit display order instead.
+
+**Requested order:** Dev, Terminal, Web, Chat, Reading, Planing, Any, Inbox, Virtual.
+
+**Files:**
+- Modify: `suckless/mac_os/sketchybar/items/spaces_aerospace.lua`
+- Modify: `suckless/mac_os/sketchybar/items/spaces.lua`
+
+**Interfaces:**
+- Consumes: the vendored tree from Task 1.
+- Produces: a new optional key on the spaces backend contract, `M.display_order` — an array of workspace-id strings. `spaces.lua` must treat it as optional (a backend without it keeps the order the WM reported), because the contract is shared with any future backend.
+
+- [ ] **Step 1: Declare the order in the Aerospace backend**
+
+The order belongs to the backend, not the renderer — `spaces.lua` stays window-manager agnostic. Append to `items/spaces_aerospace.lua`, before the final `return M`:
+
+```lua
+-- Pill display order, most-used first. Aerospace's list-workspaces returns
+-- alphabetical order, which buries the workspaces used most. Workspaces absent
+-- from this list still get a pill — they sort alphabetically after the listed
+-- ones — so adding a workspace in aerospace.toml never makes it invisible here.
+M.display_order = {
+	"Dev",
+	"Terminal",
+	"Web",
+	"Chat",
+	"Reading",
+	"Planing",
+	"Any",
+	"Inbox",
+	"Virtual",
+}
+```
+
+- [ ] **Step 2: Apply the order in the renderer**
+
+In `items/spaces.lua`, find this line:
+
+```lua
+local workspaces = exec_to_table(backend.list_workspaces_cmd())
+```
+
+Replace it with the helper plus the reordered call. Items are added to sketchybar in loop order and rendered left-to-right, so sorting the list is all that is needed:
+
+```lua
+-- Sort by the backend's declared display order. Unlisted workspaces sort
+-- alphabetically after the listed ones. table.sort is not stable in Lua, hence
+-- the explicit alphabetical tiebreaker rather than relying on input order.
+local function apply_display_order(list, order)
+	if not order then
+		return list
+	end
+	local rank = {}
+	for i, name in ipairs(order) do
+		rank[name] = i
+	end
+	local ordered = {}
+	for _, name in ipairs(list) do
+		ordered[#ordered + 1] = name
+	end
+	table.sort(ordered, function(a, b)
+		local ra, rb = rank[a], rank[b]
+		if ra and rb then
+			return ra < rb
+		elseif ra then
+			return true
+		elseif rb then
+			return false
+		end
+		return a < b
+	end)
+	return ordered
+end
+
+local workspaces = apply_display_order(exec_to_table(backend.list_workspaces_cmd()), backend.display_order)
+```
+
+- [ ] **Step 3: Confirm the "only show when occupied" behavior — do not change it**
+
+The requirement that pills appear only for workspaces with applications is already upstream's behavior, in `build_space_set`:
+
+```lua
+local should_draw = selected or has_icons
+```
+
+Empty, unfocused workspaces are not drawn. **Leave this line alone.** The focused workspace stays visible even when empty, deliberately — hiding it would leave no indication of which workspace you are on. If that turns out to be unwanted, the one-line change is `local should_draw = has_icons`, but it is not part of this task.
+
+Verify by reading the file that the line is unmodified, and confirm it visually in Step 5.
+
+- [ ] **Step 4: Check the order logic in isolation before reloading**
+
+```bash
+cd /Users/louishuyng/.dotfiles/suckless/mac_os/sketchybar
+lua -e '
+local order = {"Dev","Terminal","Web","Chat","Reading","Planing","Any","Inbox","Virtual"}
+local rank = {}
+for i, n in ipairs(order) do rank[n] = i end
+local got = {"Any","Chat","Dev","Inbox","Planing","Reading","Terminal","Virtual","Web","Zebra"}
+table.sort(got, function(a,b)
+  local ra, rb = rank[a], rank[b]
+  if ra and rb then return ra < rb elseif ra then return true elseif rb then return false end
+  return a < b
+end)
+print(table.concat(got, " "))
+'
+```
+
+Expected exactly: `Dev Terminal Web Chat Reading Planing Any Inbox Virtual Zebra`
+
+The unlisted `Zebra` landing last confirms new workspaces still appear rather than vanishing.
+
+- [ ] **Step 5: Reload and verify**
+
+```bash
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
+sketchybar --reload
+sleep 4
+sketchybar --query bar | python3 -c "
+import sys,json
+d = json.load(sys.stdin)
+print(' '.join(i.replace('space.','') for i in d['items'] if i.startswith('space.')))
+"
+tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
+```
+
+Expected: `Dev Terminal Web Chat Reading Planing Any Inbox Virtual`. Log delta clean.
+
+Then confirm by eye: pills read left-to-right in that order, and only workspaces with windows show one (plus the focused workspace).
+
+- [ ] **Step 6: Commit**
+
+```bash
+cd /Users/louishuyng/.dotfiles
+git add suckless/mac_os/sketchybar/items/spaces.lua suckless/mac_os/sketchybar/items/spaces_aerospace.lua
+git commit -m "feat(sketchybar): order workspace pills by use, not alphabetically
+
+Aerospace reports workspaces alphabetically, which buries the most-used
+ones. display_order lives on the backend so spaces.lua stays window-manager
+agnostic; unlisted workspaces sort alphabetically after the listed ones so a
+new workspace never silently disappears."
+```
+
+---
+
+### Task 5: Recolor the Apple diamond to phosphor green
+
+The Apple logo is `assets/diamondRed.png`, a red raster asset. sketchybar cannot recolor an image, so it survives the phosphor theme as the one red element on an otherwise green bar.
+
+**The icon stays a diamond** — the user explicitly wants the same icon the upstream config uses, not a substituted glyph. So the asset itself is recolored, preserving its exact shape and two-tone shading, and `apple.lua` is repointed at the new file.
+
+**Files:**
+- Create: `suckless/mac_os/sketchybar/assets/diamondGreen.png`
+- Modify: `suckless/mac_os/sketchybar/items/apple.lua`
+
+**Interfaces:**
+- Consumes: the `phosphor` theme from Task 2 (for the accent hue this matches).
+- Produces: nothing other tasks read.
+
+- [ ] **Step 1: Generate the green asset**
+
+A hue rotation is used rather than a flat fill so the original's lighter face and darker right-hand edge are both preserved. The values below were derived by sampling until the face landed on the phosphor accent family; use them exactly.
+
+```bash
+cd /Users/louishuyng/.dotfiles/suckless/mac_os/sketchybar/assets
+magick diamondRed.png -modulate 80,175,184 diamondGreen.png
+magick diamondGreen.png -format "face: %[pixel:p{200,250}]\n" info:
+magick diamondGreen.png -format "edge: %[pixel:p{440,300}]\n" info:
+```
+
+Expected exactly:
+
+```
+face: srgba(0,255,92,1)
+edge: srgba(0,202,62,1)
+```
+
+`#00FF5C` face against the theme's `#00e65c` accent — same hue family, marginally brighter so it still reads at the ~20px the bar renders it at.
+
+`diamondRed.png` is left in place. It is upstream's asset and costs nothing to keep.
+
+- [ ] **Step 2: Repoint the Apple item**
+
+In `items/apple.lua`, change only the image filename on line 9:
+
+```lua
+			string = os.getenv("HOME") .. "/.config/sketchybar/assets/diamondGreen.png",
+```
+
+Change nothing else in the file. In particular, leave the commented-out `icon` block commented out — the diamond image is the intended icon.
+
+- [ ] **Step 3: Reload and verify**
+
+```bash
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
+sketchybar --reload
+sleep 4
+sketchybar --query apple.logo | python3 -c "import sys,json; print('image:', json.load(sys.stdin)['geometry']['background']['image']['value'])"
+tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
+```
+
+Expected: the image path ends in `diamondGreen.png`. Log delta clean.
+
+Then look at the far left of the bar: a green diamond, no red anywhere on the bar. If the diamond renders as a blank gap, the path is wrong — the item resolves it through the `~/.config/sketchybar` symlink, not a repo-relative path.
+
+- [ ] **Step 4: Commit**
+
+```bash
+cd /Users/louishuyng/.dotfiles
+git add suckless/mac_os/sketchybar/assets/diamondGreen.png suckless/mac_os/sketchybar/items/apple.lua
+git commit -m "feat(sketchybar): recolor the Apple diamond to phosphor green
+
+sketchybar cannot recolor an image, so the red diamond survived the
+phosphor theme as the only red element on the bar. Hue-rotated from
+upstream's own diamondRed.png (magick -modulate 80,175,184) so the shape
+and two-tone shading are unchanged and only the hue moves onto the palette."
+```
+
+---
+
+### Task 7: Fix the double-firing media controls
+
+Found during Task 6's sweep, reported by the user as "pause doesn't work well with Apple Music".
+
+**Root cause.** Four items in `media.lua` carry *both* a `click_script` and a `mouse.clicked` subscription that runs the same `nowplaying-cli` command. In sketchybar these are independent mechanisms and both fire on a single click, so every click sends the command twice.
+
+Evidence gathered:
+
+- Live query shows all four with `scripting.update_mask = 64` (the `mouse.clicked` subscription) *and* a non-null `scripting.click_script`. Items that subscribe without a click_script (`center.time`, `widgets.battery`) show different masks and `click_script: (null)`, confirming the mask meaning.
+- Running `nowplaying-cli togglePlayPause` twice in quick succession leaves Apple Music in its original state (`playing` → `playing`). The two commands cancel.
+- `optimistic_toggle` flips the icon immediately on click, so the bar displays "paused" while playback continues — the reported symptom.
+- `next`/`prev` have the same defect and skip **two** tracks per click.
+
+This is an upstream defect in flameberry's config, not something the migration introduced.
+
+**Fix:** delete the four redundant `click_script` attributes. The Lua `mouse.clicked` handlers are the ones to keep — they also do the optimistic icon update and the follow-up `poll_after`, which `click_script` alone does not.
+
+**Files:**
+- Modify: `suckless/mac_os/sketchybar/items/media.lua`
+
+**Interfaces:**
+- Consumes: nothing from other tasks.
+- Produces: nothing other tasks read.
+
+- [ ] **Step 1: Record the pre-fix state as the failing case**
+
+```bash
+osascript -e 'tell application "Music" to get player state as string'
+nowplaying-cli togglePlayPause; sleep 0.15; nowplaying-cli togglePlayPause; sleep 1
+osascript -e 'tell application "Music" to get player state as string'
+```
+
+Both readings will be identical. That is the bug: two toggles cancel, and one click produces exactly this pair.
+
+Apple Music must be running with a track loaded. If it is not, say so and stop — do not fabricate the reading.
+
+- [ ] **Step 2: Delete the four redundant `click_script` attributes**
+
+In `items/media.lua`, remove these four lines entirely (each is a whole line inside its item's table):
+
+```lua
+	click_script = "nowplaying-cli togglePlayPause",
+```
+on the `center.media.playpause` item (~line 22),
+
+```lua
+	click_script = "nowplaying-cli previous",
+```
+on the `popup.center.media.prev` item (~line 138),
+
+```lua
+	click_script = "nowplaying-cli togglePlayPause",
+```
+on the `popup.center.media.playpause` item (~line 155),
+
+```lua
+	click_script = "nowplaying-cli next",
+```
+on the `popup.center.media.next` item (~line 172).
+
+Leave a comment above the `playpause` item recording why there is no click_script, so it does not get "helpfully" restored later:
+
+```lua
+-- No click_script here: the mouse.clicked subscription below already issues the
+-- nowplaying-cli command, and sketchybar fires both mechanisms on one click —
+-- which sent togglePlayPause twice and cancelled itself out.
+```
+
+**Change nothing else.** Do not touch the `subscribe` calls, `optimistic_toggle`, `poll_after`, or any other item.
+
+- [ ] **Step 3: Verify the click_scripts are gone but the subscriptions remain**
+
+```bash
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
+sketchybar --reload
+sleep 4
+for i in center.media.playpause popup.center.media.playpause popup.center.media.next popup.center.media.prev; do
+  echo -n "$i: "
+  sketchybar --query "$i" | python3 -c "import sys,json; s=json.load(sys.stdin)['scripting']; print('mask=%s click_script=%r' % (s['update_mask'], s['click_script']))"
+done
+tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
+```
+
+Expected for all four: `mask=64` (subscription still active) and `click_script='(null)'` (redundant path gone). If a mask stops being 64, the subscription was damaged — that is a regression, stop and report.
+
+Log delta clean apart from the known root-daemon noise.
+
+- [ ] **Step 4: Commit**
+
+```bash
+cd /Users/louishuyng/.dotfiles
+git add suckless/mac_os/sketchybar/items/media.lua
+git commit -m "fix(sketchybar): stop media controls firing their command twice
+
+The playpause, next and prev items each carried both a click_script and a
+mouse.clicked subscription running the same nowplaying-cli command, and
+sketchybar fires both on one click. togglePlayPause therefore cancelled
+itself out and next/prev skipped two tracks.
+
+Keeps the Lua handlers, which also do the optimistic icon update and the
+follow-up poll; drops the redundant click_scripts. Upstream defect in
+flameberry/Dotfiles, not introduced by this migration."
+```
+
+Note: the final click-through confirmation belongs to the user — this cannot be verified without a real mouse click on the bar.
+
+---
+
+### Task 8: Clicking the popup artwork focuses the playing app
+
+User request: with the media popup open, clicking the album artwork should switch to whichever app is playing.
+
+**Feasibility already established.** MediaRemote exposes the playing app's bundle id, and `nowplaying-cli`'s short-key form reaches it:
+
+```
+$ nowplaying-cli get ClientBundleIdentifier
+com.apple.Music
+```
+
+(The raw key is `kMRMediaRemoteNowPlayingInfoClientBundleIdentifier`. Note `nowplaying-cli get bundleIdentifier` returns `null` — the `Client` prefix is required.)
+
+`open -b <bundle-id>` activates the app, and works under Aerospace.
+
+**Files:**
+- Modify: `suckless/mac_os/sketchybar/items/media.lua`
+
+**Interfaces:**
+- Consumes: nothing from other tasks.
+- Produces: nothing other tasks read.
+
+- [ ] **Step 1: Add the click handler**
+
+`popup_artwork` (`popup.center.media.art`) currently has no click handling. Add a subscription near the other popup subscriptions at the bottom of the file, after the `popup_next` handler:
+
+```lua
+-- Clicking the popup artwork jumps to whatever is playing. The bundle id comes
+-- from MediaRemote's ClientBundleIdentifier — note the "Client" prefix, plain
+-- "bundleIdentifier" returns null.
+popup_artwork:subscribe("mouse.clicked", function()
+	sbar.exec("nowplaying-cli get ClientBundleIdentifier", function(out)
+		local bundle = out:gsub("%s+", "")
+		if bundle ~= "" and bundle ~= "null" then
+			sbar.exec(string.format("open -b %q", bundle))
+		end
+	end)
+	media:set({ popup = { drawing = false } })
+end)
+```
+
+Two things this deliberately does:
+
+- **Guards on empty/`null`.** With nothing playing, `open -b ""` would otherwise throw a shell error into the log every click.
+- **Closes the popup.** You asked to go to the app; leaving the popup floating over it would be wrong.
+
+**Do NOT add a `click_script` to this item.** Task 3fc43277 removed four of them for exactly this reason: sketchybar fires `click_script` *and* the `mouse.clicked` subscription on one click, which would launch the app twice.
+
+- [ ] **Step 2: Verify the handler is registered**
+
+```bash
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
+sketchybar --reload
+sleep 4
+sketchybar --query popup.center.media.art | python3 -c "import sys,json; s=json.load(sys.stdin)['scripting']; print('mask=%s click_script=%r' % (s['update_mask'], s['click_script']))"
+tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
+```
+
+Expected: `mask=64 click_script='(null)'` — subscription registered, no redundant script path. Log delta clean apart from the known root-daemon noise.
+
+- [ ] **Step 3: Verify the bundle id resolves**
+
+```bash
+nowplaying-cli get ClientBundleIdentifier
+```
+
+Expected: a bundle id such as `com.apple.Music` when something is playing. If nothing is playing it returns `null`, which the guard handles — record whichever you observe.
+
+Do **not** run `open -b` as part of verification: it would yank the user's focus to another app mid-session. The click-through is theirs to confirm.
+
+- [ ] **Step 4: Commit**
+
+```bash
+cd /Users/louishuyng/.dotfiles
+git add suckless/mac_os/sketchybar/items/media.lua
+git commit -m "feat(sketchybar): click popup artwork to focus the playing app
+
+Resolves the app via MediaRemote's ClientBundleIdentifier and activates it
+with open -b, then closes the popup. Guards against the null bundle id
+returned when nothing is playing.
+
+Uses only a mouse.clicked subscription, no click_script — sketchybar fires
+both on one click, which is what made the media controls double-fire."
+```
+
+---
+
+### Task 6: Full verification sweep
 
 Spec section 7. Nothing here is automatable — it is the manual pass that decides whether the migration is actually done.
 
@@ -351,13 +825,13 @@ Spec section 7. Nothing here is automatable — it is the manual pass that decid
 - Modify: `/Users/louishuyng/.claude/projects/-Users-louishuyng--dotfiles/memory/project_sketchybar.md`
 
 **Interfaces:**
-- Consumes: everything from Tasks 1–4.
+- Consumes: everything from Tasks 1–5.
 - Produces: a screenshot and a corrected memory file.
 
 - [ ] **Step 1: Clean reload from a known state**
 
 ```bash
-wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log > /tmp/sb-log-offset
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 sketchybar --reload
 sleep 5
 tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log
@@ -436,6 +910,12 @@ git commit -m "style(sketchybar): tune bar geometry after visual check"
 ```
 
 ---
+
+## Follow-ups (not this plan)
+
+- `bootstrap/mac.sh` installs sketchybar but not SbarLua, and the config is now useless without it. A fresh machine needs the `git clone … && make install` step added, plus `brew install nowplaying-cli switchaudio-osx` and the Satoshi Variable font.
+- `sketchybar.err.log` reached 147MB under the bash config. Worth investigating what was erroring in a loop, and whether log rotation is configured.
+- `suckless/mac_os/sketchybar-old/` is still present and now two generations stale.
 
 ## Rollback
 
