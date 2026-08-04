@@ -57,12 +57,12 @@ EOF
 }
 
 @test "a zoxide path already open as a tab is not listed as a duplicate path entry" {
-  # The open tab is represented by its tab-id target ("w1:t1"), which never
-  # carries the cwd, so a correctly-deduped list has zero occurrences of the
-  # raw path — not one. Asserting the path target is absent (while the tab
-  # entry is present) is the check that actually distinguishes dedup working
-  # from dedup being broken.
   run "$PICKER" --list
+
+  # Direction matters: tab rows carry the tab_id as their target and never the
+  # cwd, so a correctly-deduped project appears ONLY as a tab row. Asserting the
+  # path target is ABSENT is the dedup check; asserting the tab row is PRESENT is
+  # what stops this passing vacuously on empty output.
   [[ "$output" != *$'\t/Users/x/regask/api'* ]]
   [[ "$output" == *$'\tw1:t1'* ]]
 }
