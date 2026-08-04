@@ -157,9 +157,11 @@ command = "herdr pane swap --current --direction right"
 
 # ── Theme ────────────────────────────────────────────────────────────────────
 # tmux bound T to a tmux-only theme swap. This flips macOS appearance instead,
-# which herdr follows via theme.auto_switch — no config rewrite, so the
-# dotfiles repo stays clean. prefix+shift+t is free because rename_tab moved
-# to prefix+, (stock tmux rename-window).
+# which moves tmux/nvim/ghostty via the com.user.theme-watcher daemon. herdr
+# itself follows only if "follow system" is enabled in herdr's own settings UI
+# — off by default, and deliberately not tracked here (see the header note).
+# prefix+shift+t is free because rename_tab moved to prefix+, (stock tmux
+# rename-window).
 
 [[keys.command]]
 key = "prefix+shift+t"
