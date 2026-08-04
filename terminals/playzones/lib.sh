@@ -90,7 +90,7 @@ pz_open_or_split() {
 
     tab=$(hd_tab_id_by_cwd "$ws" "$expanded_cwd") || return 2
     if [[ -n "$tab" ]]; then
-      "${HERDR_BIN:-herdr}" tab focus "$tab" >/dev/null 2>&1
+      "${HERDR_BIN:-herdr}" tab focus "$tab" >/dev/null 2>&1 || return 2
       pane=$(hd_first_pane_id "$tab") || return 2
       hd_split_run "$pane" "$direction" "$ratio" "$expanded_cwd" "$cmd" >/dev/null
       return $?
