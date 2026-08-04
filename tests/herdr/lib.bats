@@ -48,6 +48,9 @@ EOF
 @test "hd_workspace_id_by_label finds an existing workspace" {
   run hd_workspace_id_by_label "LX-REGASK"
   [ "$output" = "w1" ]
+}
+
+@test "hd_workspace_id_by_label finds a second, distinct workspace" {
   run hd_workspace_id_by_label "dotfiles"
   [ "$output" = "w2" ]
 }
