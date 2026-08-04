@@ -112,7 +112,11 @@ hd_open_tab() {
   fi
   local expanded="${cwd/#\~/$HOME}" out result
   mkdir -p "$expanded" || return 2
-  out=$("$HERDR_BIN" tab create --workspace "$ws" --cwd "$expanded" --focus 2>/dev/null) || return 2
+  # herdr labels unlabelled tabs by number ("1", "2", ...). Name them after the
+  # folder instead, matching tmux's automatic-rename-format "#{b:pane_current_path}".
+  local label
+  label=$(basename -- "$expanded")
+  out=$("$HERDR_BIN" tab create --workspace "$ws" --cwd "$expanded" --label "$label" --focus 2>/dev/null) || return 2
   result=$(printf '%s' "$out" | jq -r '.result.tab.tab_id // empty' 2>/dev/null) || return 2
   [[ -n "$result" ]] && printf '%s\n' "$result"
   return 0

@@ -98,7 +98,15 @@ EOF
 @test "hd_open_tab creates a focused tab" {
   run hd_open_tab "w1" "/tmp/x"
   [ "$output" = "wNEW:t9" ]
-  grep -q "tab create --workspace w1 --cwd /tmp/x --focus" "$CALLS"
+  grep -q "tab create --workspace w1 --cwd /tmp/x --label x --focus" "$CALLS"
+}
+
+@test "hd_open_tab labels the tab with the folder name" {
+  run hd_open_tab w1 /tmp/some/deeply/nested/my-folder
+  [ "$output" = "wNEW:t9" ]
+  # herdr would otherwise label it by number; the user expects the folder name,
+  # matching tmux's automatic-rename-format "#{b:pane_current_path}".
+  grep -q -- "--label my-folder" "$CALLS"
 }
 
 @test "hd_split_run splits then runs the command in the new pane" {

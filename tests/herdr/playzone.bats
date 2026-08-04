@@ -107,7 +107,8 @@ EOF
 
   run pz_open_or_split LX-REGASK "ku" "$cwd" "-v" "30%"
   [ "$status" -eq 0 ]
-  grep -q -- "tab create --workspace w1 --cwd $cwd --focus" "$CALLS"
+  # Tab is labelled with the folder name, not herdr's default tab number.
+  grep -q -- "tab create --workspace w1 --cwd $cwd --label absent --focus" "$CALLS"
   grep -q "pane run w1:pNEW ku" "$CALLS"
   # This arm must not split — the new tab's root pane runs the command directly.
   ! grep -q "pane split" "$CALLS"
