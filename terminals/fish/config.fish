@@ -76,3 +76,10 @@ fish_add_path /Users/louishuyng/.opencode/bin
 # >>> coursier install directory >>>
 set -gx PATH "$PATH:/Users/louishuyng/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
+
+# herdr is the outer multiplexer for interactive terminals. Guards: already
+# inside a herdr pane, inside tmux, or remote (herdr --remote handles that).
+# exec, so quitting herdr closes the window instead of leaving a parent shell.
+if status is-interactive; and not set -q HERDR_ENV; and not set -q TMUX; and not set -q SSH_TTY
+    exec herdr
+end
