@@ -1,7 +1,7 @@
 #!/opt/homebrew/bin/bash
 
 SCRIPT="$(realpath "$0")"
-SESH_TOML="${SESH_TOML:-$HOME/.config/sesh/sesh.toml}"
+source "$(dirname "$SCRIPT")/roots.sh"
 
 # Use ANSI named colors so the terminal palette drives light/dark theming.
 ICON_TMUX_FG=$'\033[36m'  # terminal cyan
@@ -9,24 +9,6 @@ ICON_ZOX_FG=$'\033[33m'   # terminal yellow
 RESET=$'\033[0m'
 ICON_TMUX=$''  # nerd-font terminal
 ICON_ZOX=$''   # nerd-font lightning bolt
-
-#--------------------------------------------------------------------
-parse_roots() {
-  local out="$1"
-  : > "$out"
-  [[ -r "$SESH_TOML" ]] || return 0
-
-  local current_name="" line
-  while IFS= read -r line; do
-    if [[ "$line" =~ ^[[:space:]]*name[[:space:]]*=[[:space:]]*\"(.+)\"[[:space:]]*$ ]]; then
-      current_name="${BASH_REMATCH[1]}"
-    elif [[ "$line" =~ ^[[:space:]]*path[[:space:]]*=[[:space:]]*\"(.+)\"[[:space:]]*$ ]] && [[ -n "$current_name" ]]; then
-      local p="${BASH_REMATCH[1]/#\~/$HOME}"
-      printf '%s\t%s\n' "$current_name" "$p" >> "$out"
-      current_name=""
-    fi
-  done < "$SESH_TOML"
-}
 
 #--------------------------------------------------------------------
 # shorten_path /a/b/c/d/e  →  d/e   (last 2 segments)
