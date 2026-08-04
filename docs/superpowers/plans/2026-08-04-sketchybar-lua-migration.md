@@ -18,7 +18,19 @@
 - `cpu` stays commented out in `items/init.lua`, as upstream has it.
 - Dark-only. Do not add a light theme or appearance detection.
 - Every task ends with a working bar. Verification for each is `sketchybar --reload` followed by an item-count query and an error-log delta — there is no test suite for a status bar.
-- The sketchybar error log is `/opt/homebrew/var/log/sketchybar/sketchybar.err.log`. It is already ~147MB from the bash config, so always diff by byte offset rather than reading the whole file.
+- The sketchybar error log is `/opt/homebrew/var/log/sketchybar/sketchybar.err.log`. It is already ~147MB from the bash config, so always diff by byte offset rather than reading the whole file. Pipe `wc -c` through `tr -d " "` — macOS pads the count with a leading space, which makes `tail -c +N` fail with "illegal offset".
+
+## Prerequisite resolved during Task 1
+
+The installed `~/.local/share/sketchybar_lua/sketchybar.so` was built 2025-08-03 against Lua 5.4. Homebrew's `lua` was later upgraded to 5.5.0, and since Lua C modules resolve symbols against the host interpreter, `require("sketchybar")` segfaulted (exit 139, uncatchable by `pcall`) — the config loaded zero items with no Lua traceback in the log.
+
+Fixed by rebuilding SbarLua, whose upstream now vendors and statically links lua-5.5.0:
+
+```bash
+git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua && make install
+```
+
+The prior `.so` is backed up at `/tmp/sketchybar.so.bak-a6efebf8`. **`bootstrap/mac.sh` installs sketchybar but never installs SbarLua** — a fresh machine would hit this same wall. Adding it there is deliberately out of scope for this plan; see Follow-ups.
 
 ## File Structure
 
@@ -68,7 +80,7 @@ Replaces the bash tree wholesale. At the end of this task the bar runs upstream'
 ```bash
 cd /Users/louishuyng/.dotfiles
 sketchybar --query bar | python3 -c "import sys,json; print('items:', len(json.load(sys.stdin)['items']))"
-wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log > /tmp/sb-log-offset
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 cat /tmp/sb-log-offset
 ```
 
@@ -263,7 +275,7 @@ Expected: `colors.lua OK`. Anything else — add the reported keys and re-run.
 - [ ] **Step 4: Reload and verify**
 
 ```bash
-wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log > /tmp/sb-log-offset
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 sketchybar --reload
 sleep 3
 sketchybar --query bar | python3 -c "import sys,json; print('bar color:', json.load(sys.stdin)['color'])"
@@ -321,7 +333,7 @@ In `items/init.lua`, the `center.notch` item has `width = 200` with a comment su
 - [ ] **Step 3: Reload and verify**
 
 ```bash
-wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log > /tmp/sb-log-offset
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 sketchybar --reload
 sleep 3
 sketchybar --query bar | python3 -c "import sys,json; d=json.load(sys.stdin); print('margin:', d['margin'], 'corner_radius:', d['corner_radius'], 'y_offset:', d['y_offset'])"
@@ -357,7 +369,7 @@ Spec section 7. Nothing here is automatable — it is the manual pass that decid
 - [ ] **Step 1: Clean reload from a known state**
 
 ```bash
-wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log > /tmp/sb-log-offset
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 sketchybar --reload
 sleep 5
 tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log
@@ -436,6 +448,12 @@ git commit -m "style(sketchybar): tune bar geometry after visual check"
 ```
 
 ---
+
+## Follow-ups (not this plan)
+
+- `bootstrap/mac.sh` installs sketchybar but not SbarLua, and the config is now useless without it. A fresh machine needs the `git clone … && make install` step added, plus `brew install nowplaying-cli switchaudio-osx` and the Satoshi Variable font.
+- `sketchybar.err.log` reached 147MB under the bash config. Worth investigating what was erroring in a loop, and whether log rotation is configured.
+- `suckless/mac_os/sketchybar-old/` is still present and now two generations stale.
 
 ## Rollback
 
