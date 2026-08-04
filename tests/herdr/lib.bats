@@ -107,3 +107,61 @@ EOF
   grep -q "pane split --pane w1:p1 --direction down --ratio 0.30 --cwd /tmp/x" "$CALLS"
   grep -q "pane run wNEW:p10 ku" "$CALLS"
 }
+
+@test "a failed herdr call is distinguishable from a legitimate no-match" {
+  cat > "$BATS_TEST_TMPDIR/herdr-fail" <<'FAIL'
+#!/opt/homebrew/bin/bash
+exit 1
+FAIL
+  chmod +x "$BATS_TEST_TMPDIR/herdr-fail"
+  export HERDR_BIN="$BATS_TEST_TMPDIR/herdr-fail"
+
+  run hd_workspace_id_by_label "LX-REGASK"
+  [ "$status" -eq 2 ]
+  run hd_tab_id_by_cwd w1 /synthetic/regask/api
+  [ "$status" -eq 2 ]
+  run hd_first_pane_id w1:t1
+  [ "$status" -eq 2 ]
+}
+
+@test "hd_ensure_workspace does not create a duplicate when the lookup fails" {
+  local calls="$BATS_TEST_TMPDIR/calls-dup"
+  : > "$calls"
+  cat > "$BATS_TEST_TMPDIR/herdr-listfail" <<EOF
+#!/opt/homebrew/bin/bash
+echo "\$*" >> "$calls"
+case "\$1 \$2" in
+  "workspace list")   exit 1 ;;
+  "workspace create") echo '{"result":{"workspace":{"workspace_id":"wDUP"}}}' ;;
+  *)                  echo '{"result":{}}' ;;
+esac
+EOF
+  chmod +x "$BATS_TEST_TMPDIR/herdr-listfail"
+  export HERDR_BIN="$BATS_TEST_TMPDIR/herdr-listfail"
+
+  run hd_ensure_workspace "LX-REGASK" /tmp/dup-guard
+  [ "$status" -eq 2 ]
+  # The regression this guards: a failed lookup must never reach `workspace create`.
+  ! grep -q "workspace create" "$calls"
+}
+
+@test "hd_split_run returns 3 when the split succeeds but the command fails" {
+  local calls="$BATS_TEST_TMPDIR/calls-runfail"
+  : > "$calls"
+  cat > "$BATS_TEST_TMPDIR/herdr-runfail" <<EOF
+#!/opt/homebrew/bin/bash
+echo "\$*" >> "$calls"
+case "\$1 \$2" in
+  "pane split") echo '{"result":{"pane":{"pane_id":"wNEW:p10"}}}' ;;
+  "pane run")   exit 1 ;;
+  *)            echo '{"result":{}}' ;;
+esac
+EOF
+  chmod +x "$BATS_TEST_TMPDIR/herdr-runfail"
+  export HERDR_BIN="$BATS_TEST_TMPDIR/herdr-runfail"
+
+  run hd_split_run w1:p1 down 0.30 /tmp/split-runfail "ku"
+  [ "$status" -eq 3 ]
+  grep -q "pane split" "$calls"
+  grep -q "pane run wNEW:p10 ku" "$calls"
+}
