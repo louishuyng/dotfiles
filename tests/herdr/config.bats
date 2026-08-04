@@ -20,17 +20,6 @@ setup() {
   grep -q '^prefix = "ctrl+a"$' "$XDG/herdr/config.toml"
 }
 
-@test "theme follows host appearance with the chosen variants" {
-  grep -q '^auto_switch = true$' "$XDG/herdr/config.toml"
-  # herdr's settings UI writes this file, so pin the variants too — a UI-driven
-  # theme change should surface here deliberately, not as a mystery red.
-  grep -q '^dark_name = "rose-pine"$' "$XDG/herdr/config.toml"
-  grep -q '^light_name = "rose-pine-dawn"$' "$XDG/herdr/config.toml"
-  # `name` must stay absent: with auto_switch on it is redundant, and its
-  # presence means the UI overwrote our config again.
-  ! grep -q '^name = ' "$XDG/herdr/config.toml"
-}
-
 @test "cycle_pane_next is cleared so last_pane can own prefix+tab" {
   grep -q '^cycle_pane_next = ""$' "$XDG/herdr/config.toml"
   grep -q '^last_pane = "prefix+tab"$' "$XDG/herdr/config.toml"
@@ -99,12 +88,6 @@ WANT
 
   # Exact count: catches a stray or duplicated block the table alone would miss.
   [ "$(wc -l < "$BATS_TEST_TMPDIR/cmds")" -eq 23 ]
-}
-
-@test "herdr's panel background is pinned distinct from Ghostty's" {
-  # Ghostty's dark background is #11111B; this must not drift back to matching
-  # it, and `reset` would make herdr inherit the terminal background again.
-  grep -q '^panel_bg = "#26233a"$' "$XDG/herdr/config.toml"
 }
 
 @test "the appearance toggle flips macOS appearance without writing config" {

@@ -6,8 +6,9 @@ set -uo pipefail
 
 DIR="$(dirname "$(realpath "$0")")"
 
-# tmux doesn't source fish config, so a server started outside a login shell
-# won't have NOTES_DIR — this fallback is what keeps the binding working there.
+# Neither the tmux server nor the herdr server sources fish config, so a server
+# started outside a login shell won't have NOTES_DIR — this fallback is what
+# keeps the binding working there.
 NOTES_DIR="${NOTES_DIR:-$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Louis}"
 NOTE="$NOTES_DIR/Notes/Inbox/Quick Note.md"
 

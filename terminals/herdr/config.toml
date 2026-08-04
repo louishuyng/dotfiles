@@ -1,5 +1,9 @@
 # Keybindings mirror terminals/tmux/.tmux.conf so muscle memory carries over.
 # Design + rationale: docs/superpowers/specs/2026-08-04-herdr-keybindings-design.md
+#
+# [theme] and [theme.custom] are deliberately absent: herdr's settings UI owns
+# and rewrites those sections from scratch on every change, deleting whatever
+# is written here (comments included). Don't re-add them — they won't survive.
 
 onboarding = false
 
@@ -9,13 +13,6 @@ delivery = "herdr"
 [ui]
 show_agent_labels_on_pane_borders = false
 agent_panel_sort = "priority"
-
-[theme]
-# Tracks host light/dark so the com.user.theme-watcher launchd daemon stays the
-# single source of truth for appearance.
-auto_switch = true
-dark_name = "rose-pine"
-light_name = "rose-pine-dawn"
 
 [keys]
 prefix = "ctrl+a"
@@ -198,10 +195,7 @@ command = "herdr pane split --current --direction right --ratio 0.50 --focus"
 # minimum. 0.05 nudges 2-3 rows per press and reverses cleanly with the
 # opposite direction — the closest analogue to tmux's 3 cells.
 #
-# Uppercase rather than shift+lowercase, and unshifted brackets rather than
-# braces: the shift/punctuation-modifier forms validated but were never
-# delivered by the terminal. See herdr's own note that
-# "punctuation-with-modifiers may depend on your terminal/tmux setup".
+# Resize is on uppercase H/J/K/L, mirroring tmux's H/J/K/L.
 
 [[keys.command]]
 key = "prefix+H"
@@ -238,14 +232,3 @@ command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh prev"
 key = "prefix+}"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
-
-# herdr's own background, deliberately lighter than Ghostty's #11111B so the
-# multiplexer chrome reads as distinct from terminal content. rose-pine's
-# overlay colour, so it stays in-family with the base theme.
-#
-# NOTE: [theme.custom] has no light/dark variants — verified that
-# [theme.custom.dark] and friends are rejected as unknown config keys. So this
-# applies in light mode too, where it will look wrong. The user accepted that
-# trade-off deliberately; do not "fix" it by dropping the override.
-[theme.custom]
-panel_bg = "#26233a"
