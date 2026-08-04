@@ -599,7 +599,7 @@ Change nothing else in the file. In particular, leave the commented-out `icon` b
 wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
 sketchybar --reload
 sleep 4
-sketchybar --query apple.logo | python3 -c "import sys,json; print('image:', json.load(sys.stdin)['background']['image']['string'])"
+sketchybar --query apple.logo | python3 -c "import sys,json; print('image:', json.load(sys.stdin)['geometry']['background']['image']['value'])"
 tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
 ```
 
@@ -727,6 +727,93 @@ flameberry/Dotfiles, not introduced by this migration."
 ```
 
 Note: the final click-through confirmation belongs to the user — this cannot be verified without a real mouse click on the bar.
+
+---
+
+### Task 8: Clicking the popup artwork focuses the playing app
+
+User request: with the media popup open, clicking the album artwork should switch to whichever app is playing.
+
+**Feasibility already established.** MediaRemote exposes the playing app's bundle id, and `nowplaying-cli`'s short-key form reaches it:
+
+```
+$ nowplaying-cli get ClientBundleIdentifier
+com.apple.Music
+```
+
+(The raw key is `kMRMediaRemoteNowPlayingInfoClientBundleIdentifier`. Note `nowplaying-cli get bundleIdentifier` returns `null` — the `Client` prefix is required.)
+
+`open -b <bundle-id>` activates the app, and works under Aerospace.
+
+**Files:**
+- Modify: `suckless/mac_os/sketchybar/items/media.lua`
+
+**Interfaces:**
+- Consumes: nothing from other tasks.
+- Produces: nothing other tasks read.
+
+- [ ] **Step 1: Add the click handler**
+
+`popup_artwork` (`popup.center.media.art`) currently has no click handling. Add a subscription near the other popup subscriptions at the bottom of the file, after the `popup_next` handler:
+
+```lua
+-- Clicking the popup artwork jumps to whatever is playing. The bundle id comes
+-- from MediaRemote's ClientBundleIdentifier — note the "Client" prefix, plain
+-- "bundleIdentifier" returns null.
+popup_artwork:subscribe("mouse.clicked", function()
+	sbar.exec("nowplaying-cli get ClientBundleIdentifier", function(out)
+		local bundle = out:gsub("%s+", "")
+		if bundle ~= "" and bundle ~= "null" then
+			sbar.exec(string.format("open -b %q", bundle))
+		end
+	end)
+	media:set({ popup = { drawing = false } })
+end)
+```
+
+Two things this deliberately does:
+
+- **Guards on empty/`null`.** With nothing playing, `open -b ""` would otherwise throw a shell error into the log every click.
+- **Closes the popup.** You asked to go to the app; leaving the popup floating over it would be wrong.
+
+**Do NOT add a `click_script` to this item.** Task 3fc43277 removed four of them for exactly this reason: sketchybar fires `click_script` *and* the `mouse.clicked` subscription on one click, which would launch the app twice.
+
+- [ ] **Step 2: Verify the handler is registered**
+
+```bash
+wc -c < /opt/homebrew/var/log/sketchybar/sketchybar.err.log | tr -d " " > /tmp/sb-log-offset
+sketchybar --reload
+sleep 4
+sketchybar --query popup.center.media.art | python3 -c "import sys,json; s=json.load(sys.stdin)['scripting']; print('mask=%s click_script=%r' % (s['update_mask'], s['click_script']))"
+tail -c +$(cat /tmp/sb-log-offset) /opt/homebrew/var/log/sketchybar/sketchybar.err.log | head -20
+```
+
+Expected: `mask=64 click_script='(null)'` — subscription registered, no redundant script path. Log delta clean apart from the known root-daemon noise.
+
+- [ ] **Step 3: Verify the bundle id resolves**
+
+```bash
+nowplaying-cli get ClientBundleIdentifier
+```
+
+Expected: a bundle id such as `com.apple.Music` when something is playing. If nothing is playing it returns `null`, which the guard handles — record whichever you observe.
+
+Do **not** run `open -b` as part of verification: it would yank the user's focus to another app mid-session. The click-through is theirs to confirm.
+
+- [ ] **Step 4: Commit**
+
+```bash
+cd /Users/louishuyng/.dotfiles
+git add suckless/mac_os/sketchybar/items/media.lua
+git commit -m "feat(sketchybar): click popup artwork to focus the playing app
+
+Resolves the app via MediaRemote's ClientBundleIdentifier and activates it
+with open -b, then closes the popup. Guards against the null bundle id
+returned when nothing is playing.
+
+Uses only a mouse.clicked subscription, no click_script — sketchybar fires
+both on one click, which is what made the media controls double-fire."
+```
 
 ---
 
