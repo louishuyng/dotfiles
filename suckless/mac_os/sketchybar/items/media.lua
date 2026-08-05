@@ -255,10 +255,13 @@ local function update_track_info(title, artist)
 
 	artwork_counter = artwork_counter + 1
 	local path = string.format("/tmp/sketchybar_art_%d.jpg", artwork_counter)
+	-- Gate on sips' exit status rather than file size. Sources without artwork
+	-- (browsers, most notably) make nowplaying-cli return the literal "null",
+	-- which base64 -D turns into 3 junk bytes — non-empty, so `[ -s ]` passed
+	-- and handed sketchybar a file it could not draw.
 	local cmd = string.format(
 		"nowplaying-cli get artworkData 2>/dev/null | base64 -D > %q 2>/dev/null; "
-			.. "if [ -s %q ]; then sips -Z 96 %q >/dev/null 2>&1; echo ok; else rm -f %q; fi",
-		path,
+			.. "if sips -Z 96 %q >/dev/null 2>&1; then echo ok; else rm -f %q; fi",
 		path,
 		path,
 		path
