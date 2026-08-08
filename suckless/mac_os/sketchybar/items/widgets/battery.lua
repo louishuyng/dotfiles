@@ -24,21 +24,21 @@ local battery = sbar.add("item", "widgets.battery", {
 	update_freq = 30,
 })
 
-local remaining_time = sbar.add("item", {
-	position = "popup." .. battery.name,
-	icon = {
-		string = "Time remaining:",
-		width = 110,
-		align = "left",
-		padding_left = 15,
-	},
-	label = {
-		string = "??:??h",
-		width = 110,
-		align = "right",
-		padding_right = 15,
-	},
-})
+-- local remaining_time = sbar.add("item", {
+-- 	position = "popup." .. battery.name,
+-- 	icon = {
+-- 		string = "Time remaining:",
+-- 		width = 110,
+-- 		align = "left",
+-- 		padding_left = 15,
+-- 	},
+-- 	label = {
+-- 		string = "??:??h",
+-- 		width = 110,
+-- 		align = "right",
+-- 		padding_right = 15,
+-- 	},
+-- })
 
 battery:subscribe({ "routine", "power_source_change", "system_woke", "brightness_change" }, function()
 	sbar.exec("pmset -g batt", function(batt_info)
@@ -87,15 +87,15 @@ battery:subscribe({ "routine", "power_source_change", "system_woke", "brightness
 	end)
 end)
 
-battery:subscribe("mouse.clicked", function(env)
-	local drawing = battery:query().popup.drawing
-	battery:set({ popup = { drawing = "toggle" } })
-
-	if drawing == "off" then
-		sbar.exec("pmset -g batt", function(batt_info)
-			local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
-			local label = found and remaining .. "h" or "No estimate"
-			remaining_time:set({ label = label })
-		end)
-	end
-end)
+-- battery:subscribe("mouse.clicked", function(env)
+-- 	local drawing = battery:query().popup.drawing
+-- 	battery:set({ popup = { drawing = "toggle" } })
+--
+-- 	if drawing == "off" then
+-- 		sbar.exec("pmset -g batt", function(batt_info)
+-- 			local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
+-- 			local label = found and remaining .. "h" or "No estimate"
+-- 			remaining_time:set({ label = label })
+-- 		end)
+-- 	end
+-- end)

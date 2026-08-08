@@ -3,23 +3,9 @@ local colors = require("colors")
 -- ──────────────────────────── LEFT ────────────────────────────
 require("items.apple")
 require("items.spaces")
-
--- ──────────────── CENTER — LEFT of notch ──────────────────────
 require("items.media")
 
--- Invisible spacer that covers the MacBook Pro notch.
--- Adjust 'width' if items bleed under the notch:
---   14" MBP default res  → try 200–220
---   16" MBP default res  → try 220–250
-sbar.add("item", "center.notch", {
-	position = "center",
-	width = 230,
-	icon = { drawing = false },
-	label = { drawing = false },
-	background = { color = colors.transparent },
-})
-
--- ──────────────── CENTER — RIGHT of notch ─────────────────────
+-- ─────────────────────────── CENTER ───────────────────────────
 require("items.weather")
 require("items.calendar")
 
@@ -39,24 +25,31 @@ CORNER_RADIUS = 16
 -- Left pill: Apple logo + Aerospace workspaces
 sbar.add("bracket", "bracket.left", { "apple.logo", "/space\\..*/", "spaces.right_pad" }, {
 	background = {
-		color = colors.bg1,
+		color = colors.transparent,
 		corner_radius = CORNER_RADIUS,
 		height = 28,
 		border_width = 0,
 	},
 })
 
--- Center notch pill: media — [notch] — time + date
--- The pill background spans both halves; the notch hardware creates the visual gap.
-sbar.add("bracket", "bracket.media", {
-	"/^center\\.media.*/",
-	"center.notch",
+-- Media pill: playpause + artwork + title, right of the workspaces
+sbar.add("bracket", "bracket.media", { "/^left\\.media.*/" }, {
+	background = {
+		color = colors.transparent,
+		corner_radius = CORNER_RADIUS,
+		height = 28,
+		border_width = 0,
+	},
+})
+
+-- Center pill: weather + time + date
+sbar.add("bracket", "bracket.center", {
 	"center.weather",
 	"center.time",
 	"center.date",
 }, {
 	background = {
-		color = colors.bg3,
+		color = colors.transparent,
 		corner_radius = 4,
 		height = 24,
 		border_width = 0,
@@ -74,7 +67,7 @@ sbar.add("bracket", "bracket.right", {
 	"widgets.battery",
 }, {
 	background = {
-		color = colors.bg1,
+		color = colors.transparent,
 		corner_radius = CORNER_RADIUS,
 		height = 28,
 		border_width = 0,

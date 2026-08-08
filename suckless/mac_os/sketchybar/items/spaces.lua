@@ -8,9 +8,10 @@ local app_icons = require("helpers.app_icons")
 -- display_order (apply_display_order treats a nil order as WM order).
 local backend = require("items.spaces_aerospace")
 
--- Horizontal padding (in px) on each side of a space pill. Tweak to change pill widths.
+-- Horizontal padding (in px) on each side of the focused space pill. Tweak to
+-- change pill width. Only the focused workspace is drawn, so there is no
+-- inactive variant.
 local pill_padding = {
-	inactive = 14, -- small dark ovals (no apps + not focused)
 	active_empty = 24, -- focused workspace with no apps
 	active_icons = 18, -- focused workspace with apps (padding around the app icons)
 }
@@ -48,17 +49,10 @@ local LOCK_TIMEOUT_S = 3
 
 local function build_space_set(icons, selected, ws_label)
 	local has_icons = icons ~= ""
-	local should_draw = selected or has_icons
+	local should_draw = selected
 	local show_number = selected and ws_label ~= nil and ws_label ~= ""
 
-	local pad
-	if not selected then
-		pad = pill_padding.inactive
-	elseif has_icons then
-		pad = pill_padding.active_icons
-	else
-		pad = pill_padding.active_empty
-	end
+	local pad = has_icons and pill_padding.active_icons or pill_padding.active_empty
 
 	-- The space character between glyphs has different vertical metrics
 	-- than the app icons themselves, which shifts multi-icon labels visually.
@@ -142,12 +136,14 @@ local function update_all_spaces()
 
 		local changed = {}
 		for ws, space in pairs(space_items) do
-			local icons = workspace_icons[ws] or ""
 			local selected = ws == focused
+			-- Icons only matter for the focused pill; ignoring them elsewhere
+			-- keeps app churn on hidden workspaces from causing pointless sets.
+			local icons = selected and (workspace_icons[ws] or "") or ""
 			local key = (selected and "1|" or "0|") .. icons
 			if space_state[ws] ~= key then
 				local was_drawn = space_drawn[ws] or false
-				local now_drawn = selected or icons ~= ""
+				local now_drawn = selected
 				space_state[ws] = key
 				space_drawn[ws] = now_drawn
 				changed[#changed + 1] = {

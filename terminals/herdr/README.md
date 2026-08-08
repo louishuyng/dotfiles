@@ -6,10 +6,13 @@ Prefix is `ctrl+a`, same as tmux. Every row below is a key actually bound in
 (`h/j/k/l`, `prefix+-`, `z`, `x`, `c`, `1..9`, `?`, `b`, `w`, `shift+x`, …) are
 not written there and so are not listed here.
 
-Theme (`[theme]` / `[theme.custom]`) is deliberately **not** tracked in this
-repo — herdr's settings UI owns and rewrites those sections wholesale. Do not
-add theme rows to this file; they will describe a config this repo doesn't
-control.
+Theme (`[theme]` / `[theme.custom]`) is `nord` with `panel_bg = "#2e3440"`, which
+is what separates herdr's chrome from the host terminal's background — pane
+interiors are ghostty's `background`, which herdr reads via OSC 11. herdr's
+settings UI rewrites both sections wholesale, so a theme change made there wins
+until the file is restored and `herdr server reload-config` is run. Editing
+`config.toml` alone is not enough: the running server keeps its in-memory theme
+and will write it back over the file.
 
 | key | action | tmux equivalent |
 |---|---|---|

@@ -1,9 +1,9 @@
 # Keybindings mirror terminals/tmux/.tmux.conf so muscle memory carries over.
 # Design + rationale: docs/superpowers/specs/2026-08-04-herdr-keybindings-design.md
 #
-# [theme] and [theme.custom] are deliberately absent: herdr's settings UI owns
-# and rewrites those sections from scratch on every change, deleting whatever
-# is written here (comments included). Don't re-add them — they won't survive.
+# [theme] / [theme.custom] at the bottom are also owned by herdr's settings UI,
+# which rewrites both sections from scratch on every change made there, comments
+# included. What's tracked here survives only until the next tweak in that UI.
 
 onboarding = false
 
@@ -238,3 +238,10 @@ command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
 [theme]
 name = "tokyo-night"
 auto_switch = false
+
+# Pane interiors are the host terminal's default background — herdr reads
+# ghostty's via OSC 11 — so with no explicit panel_bg the sidebar, tab bar and
+# popups sit flat on ghostty's #11111B. Nord polar night lifts them off it;
+# "reset" restores the pass-through.
+[theme.custom]
+panel_bg = "#000000"

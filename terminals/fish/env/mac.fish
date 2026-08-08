@@ -1,15 +1,9 @@
 # Environment variables
 # Note: mise is activated in config.fish
 
-# Auto-detect macOS appearance and apply matching theme
-set -l _appearance (defaults read -g AppleInterfaceStyle 2>/dev/null)
-if test "$_appearance" = Dark
-    source ~/.dotfiles/terminals/fish/themes/catppuccin-mocha.fish
-    set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/config.toml
-else
-    source ~/.dotfiles/terminals/fish/themes/catppuccin-latte.fish
-    set -gx STARSHIP_CONFIG ~/.dotfiles/terminals/starship/catppuccin-latte.toml
-end
+# Appearance detection and theme sourcing live in the fish_prompt wrapper in
+# config.fish, which re-checks on every prompt; doing it here too just paid for
+# a second `defaults read` per shell.
 
 # You may need to manually set your language environment
 set -gx LANG en_US.UTF-8
@@ -54,17 +48,22 @@ fish_add_path /opt/homebrew/opt/openjdk/bin
 set -gx CPPFLAGS -I/opt/homebrew/opt/openjdk/include
 #
 # #Golang
-set -gx GOROOT (go env GOROOT 2>/dev/null)
-set -gx GOBIN (go env GOBIN 2>/dev/null)
 set -gx GOPATH $HOME/development/golib
 set -gx GO111MODULE on
-# Set GOV only if mise and golang are available
-if command -q mise; and mise where go &>/dev/null
-    set -gx GOV $(mise where go)
-end
 fish_add_path $GOPATH/bin
-fish_add_path $GOROOT/bin
-fish_add_path $GOBIN
+
+# go is a mise shim, so `go env GOROOT/GOBIN` pays the shim cost twice (~120ms) to
+# report the mise install dir. Ask mise once instead.
+if command -q mise
+    set -l _go_prefix (mise where go 2>/dev/null)
+    if test -n "$_go_prefix"
+        set -gx GOV $_go_prefix
+        set -gx GOROOT $_go_prefix
+        set -gx GOBIN $_go_prefix/bin
+        fish_add_path $GOROOT/bin
+        fish_add_path $GOBIN
+    end
+end
 
 #
 # # OPEN SSL
@@ -140,9 +139,17 @@ fish_add_path ~/.duckdb/cli/latest
 # K8s etcd
 fish_add_path ~/LX14/repository/github.com/louishuyng/kubernetes/third_party/etcd
 
-set -gx GITHUB_TOKEN (cat ~/.github_token)
-set -gx NODE_AUTH_TOKEN (cat ~/.github_token)
-set -gx KNOCK_SERVICE_TOKEN (cat ~/.knock_service_token)
+# `read` is a builtin: `(cat file)` here forked three times, and alias/general.fish
+# has already shadowed cat with bat by the time this file is sourced.
+if test -r ~/.github_token
+    read -l _gh_token <~/.github_token
+    set -gx GITHUB_TOKEN $_gh_token
+    set -gx NODE_AUTH_TOKEN $_gh_token
+end
+if test -r ~/.knock_service_token
+    read -l _knock_token <~/.knock_service_token
+    set -gx KNOCK_SERVICE_TOKEN $_knock_token
+end
 
 # Lua Binaries
 fish_add_path ~/.luarocks/bin/

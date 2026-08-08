@@ -2,11 +2,10 @@ local colors = require("colors")
 local settings = require("settings")
 local icons = require("icons")
 
--- For position="center", earlier-added items render to the LEFT.
--- Bar layout: playpause → artwork → title
+-- Items render left-to-right in add order: playpause → artwork → title.
 
-local playpause = sbar.add("item", "center.media.playpause", {
-	position = "center",
+local playpause = sbar.add("item", "left.media.playpause", {
+	position = "left",
 	icon = {
 		string = icons.media.play,
 		font = {
@@ -19,13 +18,15 @@ local playpause = sbar.add("item", "center.media.playpause", {
 		padding_right = 4,
 	},
 	label = { drawing = false },
+	-- Gap between the workspace pill and the media group.
+	padding_left = 12,
 	-- No click_script here: the mouse.clicked subscription below already issues the
 	-- nowplaying-cli command, and sketchybar fires both mechanisms on one click —
 	-- which sent togglePlayPause twice and cancelled itself out.
 })
 
-local artwork = sbar.add("item", "center.media.artwork", {
-	position = "center",
+local artwork = sbar.add("item", "left.media.artwork", {
+	position = "left",
 	background = {
 		image = {
 			string = "",
@@ -44,8 +45,8 @@ local artwork = sbar.add("item", "center.media.artwork", {
 	padding_right = 2,
 })
 
-local media = sbar.add("item", "center.media", {
-	position = "center",
+local media = sbar.add("item", "left.media", {
+	position = "left",
 	icon = { drawing = false },
 	scroll_texts = false,
 	label = {
@@ -75,8 +76,8 @@ local media = sbar.add("item", "center.media", {
 	updates = true,
 })
 
-local popup_artwork = sbar.add("item", "popup.center.media.art", {
-	position = "popup.center.media",
+local popup_artwork = sbar.add("item", "popup.left.media.art", {
+	position = "popup.left.media",
 	background = {
 		image = { string = "", scale = 0.5, corner_radius = 6 },
 		color = colors.transparent,
@@ -91,8 +92,8 @@ local popup_artwork = sbar.add("item", "popup.center.media.art", {
 	padding_right = 6,
 })
 
-local popup_title = sbar.add("item", "popup.center.media.title", {
-	position = "popup.center.media",
+local popup_title = sbar.add("item", "popup.left.media.title", {
+	position = "popup.left.media",
 	icon = { drawing = false },
 	label = {
 		string = "",
@@ -107,8 +108,8 @@ local popup_title = sbar.add("item", "popup.center.media.title", {
 	},
 })
 
-local popup_artist = sbar.add("item", "popup.center.media.artist", {
-	position = "popup.center.media",
+local popup_artist = sbar.add("item", "popup.left.media.artist", {
+	position = "popup.left.media",
 	icon = { drawing = false },
 	label = {
 		string = "",
@@ -123,8 +124,8 @@ local popup_artist = sbar.add("item", "popup.center.media.artist", {
 	},
 })
 
-local popup_prev = sbar.add("item", "popup.center.media.prev", {
-	position = "popup.center.media",
+local popup_prev = sbar.add("item", "popup.left.media.prev", {
+	position = "popup.left.media",
 	icon = {
 		string = icons.media.back,
 		font = {
@@ -139,8 +140,8 @@ local popup_prev = sbar.add("item", "popup.center.media.prev", {
 	label = { drawing = false },
 })
 
-local popup_playpause = sbar.add("item", "popup.center.media.playpause", {
-	position = "popup.center.media",
+local popup_playpause = sbar.add("item", "popup.left.media.playpause", {
+	position = "popup.left.media",
 	icon = {
 		string = icons.media.play,
 		font = {
@@ -155,8 +156,8 @@ local popup_playpause = sbar.add("item", "popup.center.media.playpause", {
 	label = { drawing = false },
 })
 
-local popup_next = sbar.add("item", "popup.center.media.next", {
-	position = "popup.center.media",
+local popup_next = sbar.add("item", "popup.left.media.next", {
+	position = "popup.left.media",
 	icon = {
 		string = icons.media.forward,
 		font = {
@@ -176,14 +177,14 @@ local artwork_counter = 0
 local last_label_state = nil
 local last_play_state = nil
 
-local SHOW_ARTWORK = true
+local SHOW_ARTWORK = false
 local MAX_LABEL_CHARS = SHOW_ARTWORK and 20 or 24
 
 -- East-Asian "wide" codepoints (CJK, Hiragana/Katakana, Hangul, full-width
 -- forms, …) render at roughly double the advance of a Latin glyph, so budget
 -- the label by display columns rather than raw character count — otherwise a
--- Japanese title with the same character count is ~2x wider and overflows the
--- notch / grows the center pill.
+-- Japanese title with the same character count is ~2x wider and would push the
+-- media pill far past its budgeted width.
 local function char_width(cp)
 	if
 		(cp >= 0x1100 and cp <= 0x115F) -- Hangul Jamo
@@ -229,18 +230,6 @@ local function truncate(s, n)
 		out[#out + 1] = utf8.char(cp)
 	end
 	return table.concat(out) .. "…"
-end
-
--- U+2003 EM SPACE — invisible, ~"M"-width, so short titles still hold
--- close to the full pill width and the center pill stops shifting.
-local PAD_CHAR = "\xe2\x80\x83"
-
-local function pad_to(s, n)
-	local w = display_width(s)
-	if w < n then
-		return s .. string.rep(PAD_CHAR, n - w)
-	end
-	return s
 end
 
 local function update_track_info(title, artist)
@@ -332,7 +321,6 @@ local function set_play_icon(playing)
 end
 
 local function set_label(text, faded, animate)
-	text = pad_to(text, MAX_LABEL_CHARS)
 	local key = (faded and "f|" or "n|") .. text
 	if key == last_label_state then
 		return

@@ -18,9 +18,9 @@ default-root-container-orientation = 'auto'
 inner.horizontal = 16
 inner.vertical =   16
 outer.top = [{ monitor."Built-in" = 0 }, 0]
-outer.bottom = [{ monitor."Built-in" = 60 }, 60]
-outer.left =       16
-outer.right =      16
+outer.bottom = [{ monitor."Built-in" = 47 }, 47]
+outer.left =       0
+outer.right =      0
 
 [mode.main.binding]
 alt-d = 'workspace Dev' # Dev (IDE, Coding Tools, DevOps, etc)
@@ -70,6 +70,10 @@ alt-ctrl-shift-y = 'reload-config'
 # Workspace Dev
 [[on-window-detected]]
 if.app-id = 'com.mongodb.compass'
+run = ['move-node-to-workspace Dev']
+
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus'
 run = ['move-node-to-workspace Dev']
 
 [[on-window-detected]]

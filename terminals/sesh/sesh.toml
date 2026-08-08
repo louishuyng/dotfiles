@@ -7,7 +7,7 @@ name = "LX-RESEARCH"
 path = "~/LX14/projects/research"
 
 [[session]]
-name = "LX-REGASK"
+name = "RegAsk"
 path = "~/LX14/repository/github.com/regask"
 
 [[session]]
@@ -15,5 +15,9 @@ name = "LX-PERSONAL"
 path = "~/LX14/repository/github.com/louishuyng"
 
 [[session]]
-name = "Go-VTrip"
-path = "~/LX14/repository/github.com/Go-VTrip"
+name = "gojem"
+path = "~/LX14/repository/github.com/gojem"
+
+[[session]]
+name = "omniyat"
+path = "~/LX14/repository/github.com/omniyat"

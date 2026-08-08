@@ -1,5 +1,5 @@
-mise activate fish | source
-tv init fish | source
+__init_cached mise activate fish
+__init_cached tv init fish
 
 # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
 set -U fish_key_bindings fish_default_key_bindings
@@ -9,7 +9,9 @@ set -U fisher_path ~/.dotfiles/terminals/fish/fisherman
 source ~/.dotfiles/terminals/fish/alias/init.fish
 source ~/.dotfiles/terminals/fish/env/init.fish
 
-starship init fish | source
+# --print-full-init: plain `starship init fish` only emits a stub that shells out to
+# this again, so caching the stub would still pay for the second call.
+__init_cached starship init fish --print-full-init
 
 # Wrap starship's fish_prompt to auto-detect macOS appearance on each prompt
 functions -c fish_prompt __starship_fish_prompt
@@ -42,14 +44,14 @@ set -gx DOOMDIR "$HOME/.doom.d"
 # Obsidian vault root, shared by the tmux note bindings (C-a n / C-a N)
 set -gx NOTES_DIR "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Louis"
 
-zoxide init fish | source
+__init_cached zoxide init fish
 complete -c z -f -a "(zoxide query -l 2>/dev/null)" -d "zoxide dir"
 complete -c zi -f -a "(zoxide query -l 2>/dev/null)" -d "zoxide dir"
 
 set -gx ATUIN_NOBIND true
-atuin init fish | source
+__init_cached atuin init fish
 
-switcher init fish | source
+__init_cached switcher init fish
 
 # optionally use alias `s` instead of `kubeswitch` (add to config.fish)
 function s --wraps switcher
