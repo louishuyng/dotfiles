@@ -12,7 +12,10 @@ ICON_TMUX=$''  # nerd-font terminal
 ICON_ZOX=$''   # nerd-font lightning bolt
 
 #--------------------------------------------------------------------
-# shorten_path /a/b/c/d/e  →  d/e   (last 2 segments)
+# shorten_path /a/b/c/d/e  →  d/e   (last 2 segments), into $REPLY
+#
+# Assigns rather than prints: the callers run it once per zoxide entry, and
+# `$(shorten_path ...)` forked a subshell for each of ~250 paths.
 #--------------------------------------------------------------------
 shorten_path() {
   local p="$1"
@@ -20,9 +23,9 @@ shorten_path() {
   local rest="${p%/*}"
   local parent="${rest##*/}"
   if [[ -z "$parent" || "$parent" == "$rest" ]]; then
-    printf '%s' "$base"
+    REPLY="$base"
   else
-    printf '%s/%s' "$parent" "$base"
+    REPLY="$parent/$base"
   fi
 }
 
@@ -41,11 +44,11 @@ build_list() {
       printf '%s%s%s %s\t%s\n' "$ICON_TMUX_FG" "$ICON_TMUX" "$RESET" "$line" "$target"
     done < <(tmux list-windows -a -F '#S:#I #W' 2>/dev/null)
 
-    local path short
+    local path
     while IFS= read -r path; do
       [[ -z "$path" ]] && continue
-      short=$(shorten_path "$path")
-      printf '%s%s%s %s\t%s\n' "$ICON_ZOX_FG" "$ICON_ZOX" "$RESET" "$short" "$path"
+      shorten_path "$path"
+      printf '%s%s%s %s\t%s\n' "$ICON_ZOX_FG" "$ICON_ZOX" "$RESET" "$REPLY" "$path"
     done < <(zoxide query -l 2>/dev/null)
   } > "$out"
 }
@@ -60,15 +63,21 @@ hd_build_list() {
   local out="$1"
   : > "$out"
 
-  local ws_json panes_json open_cwds
+  local ws_json panes_json
   ws_json=$("$HERDR_BIN" workspace list 2>/dev/null)
-  open_cwds="$(mktemp)"
 
-  local ws label
+  # An in-process set, not a temp file. The dedup below runs once per zoxide
+  # entry — ~250 of them — and `grep -qxF` forked for every one to search a
+  # handful of open cwds. That single line was 1.7s of a 1.8s popup.
+  local -A open_cwds=()
+
+  local ws label cwd
   while IFS=$'\t' read -r ws label; do
     [[ -z "$ws" ]] && continue
     panes_json=$("$HERDR_BIN" pane list --workspace "$ws" 2>/dev/null)
-    printf '%s\n' "$panes_json" | jq -r '.result.panes[]?.cwd' >> "$open_cwds"
+    while IFS= read -r cwd; do
+      [[ -n "$cwd" ]] && open_cwds["$cwd"]=1
+    done < <(printf '%s\n' "$panes_json" | jq -r '.result.panes[]?.cwd')
 
     "$HERDR_BIN" tab list --workspace "$ws" 2>/dev/null \
       | jq -r --arg ws "$label" --arg ic "$ICON_TMUX_FG$ICON_TMUX$RESET" \
@@ -76,15 +85,15 @@ hd_build_list() {
   done < <(printf '%s\n' "$ws_json" \
              | jq -r '.result.workspaces[]? | "\(.workspace_id)\t\(.label)"')
 
-  local path short
-  while IFS= read -r path; do
-    [[ -z "$path" ]] && continue
-    grep -qxF "$path" "$open_cwds" && continue
-    short=$(shorten_path "$path")
-    printf '%s%s%s %s\t%s\n' "$ICON_ZOX_FG" "$ICON_ZOX" "$RESET" "$short" "$path" >> "$out"
-  done < <(zoxide query -l 2>/dev/null)
-
-  rm -f "$open_cwds"
+  local path
+  {
+    while IFS= read -r path; do
+      [[ -z "$path" ]] && continue
+      [[ -n "${open_cwds[$path]-}" ]] && continue
+      shorten_path "$path"
+      printf '%s%s%s %s\t%s\n' "$ICON_ZOX_FG" "$ICON_ZOX" "$RESET" "$REPLY" "$path"
+    done < <(zoxide query -l 2>/dev/null)
+  } >> "$out"
 }
 
 #--------------------------------------------------------------------
