@@ -30,7 +30,10 @@ function __init_cached --description 'source a tool init script, regenerating on
         set -l tmp $file.$fish_pid.tmp
         command mkdir -p $cache
         if $exe $sub >$tmp 2>/dev/null; and test -s $tmp
-            command rm -f $cache/$bin-*.fish
+            # via `set`, which is exempt from fish's no-matches-for-wildcard error —
+            # the glob misses on a cold cache, which is exactly the path taken here
+            set -l stale $cache/$bin-*.fish
+            test (count $stale) -gt 0; and command rm -f $stale
             command mv -f $tmp $file
         else
             command rm -f $tmp

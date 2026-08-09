@@ -53,9 +53,28 @@ set -gx GO111MODULE on
 fish_add_path $GOPATH/bin
 
 # go is a mise shim, so `go env GOROOT/GOBIN` pays the shim cost twice (~120ms) to
-# report the mise install dir. Ask mise once instead.
+# report the mise install dir. Ask mise once instead — and cache that too, because
+# `mise where go` is still a ~26ms subprocess on every shell.
+#
+# Keyed on the mise binary and the global config, the two things that change which
+# path comes back. A per-directory .tool-versions is deliberately not a key: this
+# runs once at startup, so GOROOT was already the global answer regardless of where
+# the shell later cds to.
 if command -q mise
-    set -l _go_prefix (mise where go 2>/dev/null)
+    set -l _stamp (builtin path mtime (command -v mise) ~/.config/mise/config.toml 2>/dev/null | string join -)
+    set -l _cache $__fish_cache_dir/mise-where-go-$_stamp
+
+    if not test -s $_cache
+        command mkdir -p $__fish_cache_dir
+        # via `set`, which is exempt from fish's no-matches-for-wildcard error
+        set -l _stale $__fish_cache_dir/mise-where-go-*
+        test (count $_stale) -gt 0; and command rm -f $_stale
+        mise where go >$_cache 2>/dev/null; or command rm -f $_cache
+    end
+
+    set -l _go_prefix
+    test -s $_cache; and read -l _go_prefix <$_cache
+
     if test -n "$_go_prefix"
         set -gx GOV $_go_prefix
         set -gx GOROOT $_go_prefix
@@ -100,7 +119,7 @@ fish_add_path /usr/local/go/bin
 
 # # ROR
 set -gx BUNDLE_EDITOR nvim
-unset GEM_HOME
+set -e GEM_HOME
 
 # #Scripts
 fish_add_path $HOME/.config/scripts
@@ -139,8 +158,7 @@ fish_add_path ~/.duckdb/cli/latest
 # K8s etcd
 fish_add_path ~/LX14/repository/github.com/louishuyng/kubernetes/third_party/etcd
 
-# `read` is a builtin: `(cat file)` here forked three times, and alias/general.fish
-# has already shadowed cat with bat by the time this file is sourced.
+# `read` is a builtin; `(cat file)` here forked three times.
 if test -r ~/.github_token
     read -l _gh_token <~/.github_token
     set -gx GITHUB_TOKEN $_gh_token

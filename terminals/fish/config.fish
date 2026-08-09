@@ -2,7 +2,11 @@ __init_cached mise activate fish
 __init_cached tv init fish
 
 # FIX: set default key bindings fixing https://stackoverflow.com/a/41905020
-set -U fish_key_bindings fish_default_key_bindings
+# Global, not universal: fish 4.3 moved this variable's default scope, and a `set -U`
+# here fought the `set --erase --universal` in fish's own migration conf.d — every
+# shell rewrote fish_variables and re-fired the fish_key_bindings VARIABLE SET
+# handlers. That migration file is deleted; this is the scope fish now recommends.
+set -g fish_key_bindings fish_default_key_bindings
 
 set -U fisher_path ~/.dotfiles/terminals/fish/fisherman
 
@@ -67,7 +71,6 @@ fish_add_path /Users/louishuyng/.spicetify
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/louishuyng/.lmstudio/bin
 # End of LM Studio CLI section
-export PATH="$HOME/.local/bin:$PATH"
 
 # opencode
 fish_add_path /Users/louishuyng/.opencode/bin
@@ -78,15 +81,14 @@ fish_add_path /Users/louishuyng/.opencode/bin
 # >>> coursier install directory >>>
 set -gx PATH "$PATH:/Users/louishuyng/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
+
+# herdr is the outer multiplexer for interactive terminals. Guards: already inside
+# a herdr pane, inside tmux, or remote (herdr --remote handles that). exec, so
+# quitting herdr closes the window instead of leaving a parent shell.
 #
-# herdr is launched manually, by choice, not autostarted here — do not
-# re-enable the block below as a "fix". A running herdr client keeps its
-# keymap from launch, so config edits only take effect in a client started
-# after the edit anyway; autostart bought nothing but earlier launch.
-#
-# # herdr is the outer multiplexer for interactive terminals. Guards: already
-# # inside a herdr pane, inside tmux, or remote (herdr --remote handles that).
-# # exec, so quitting herdr closes the window instead of leaving a parent shell.
-# if status is-interactive; and not set -q HERDR_ENV; and not set -q TMUX; and not set -q SSH_TTY
-#     exec herdr
-# end
+# This stays at the bottom. Hoisting it above the prompt/plugin init to skip that
+# work measured 5.7ms of a 122ms startup — the cost is front-loaded in conf.d and
+# mise activation, both of which run before any line of this file.
+if status is-interactive; and not set -q HERDR_ENV; and not set -q TMUX; and not set -q SSH_TTY
+    exec herdr
+end

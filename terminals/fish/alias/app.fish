@@ -26,7 +26,7 @@ alias ai="aichat"
 # MARKDOWN
 # Both k1low/tap/mo and mole ship a `mo` binary; mole wins the brew link, so
 # reach the markdown viewer through its keg path instead.
-alias md="/opt/homebrew/opt/mo/bin/mo"
+alias md="writer"
 
 # GIT
 alias gko='open -na "GitKraken" --args -p $(pwd)'
