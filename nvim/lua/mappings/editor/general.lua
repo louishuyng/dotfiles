@@ -74,12 +74,14 @@ vim.keymap.set('v', '<S-k>', ':m-2<CR>gv=gv', opt)
 vim.keymap.set('v', '<leader>so', ':sort<CR>', { silent = true, noremap = true, desc = 'Sorting' })
 
 -- Open URL
-vim.keymap.set(
-  'n',
-  '<leader>ou',
-  ':call OpenUrlUnderCursor()<CR>',
-  { silent = true, noremap = true, desc = 'Open url under cursor' }
-)
+vim.keymap.set('n', '<leader>ou', function()
+  local uri = vim.fn.matchstr(vim.api.nvim_get_current_line(), '[a-z]*:\\/\\/[^ >,;()]*')
+  if uri == '' then
+    vim.notify('No URI found in line.', vim.log.levels.INFO)
+    return
+  end
+  vim.ui.open(uri)
+end, { silent = true, noremap = true, desc = 'Open url under cursor' })
 
 -- Yank
 -- " replace currently selected text with default register
@@ -91,7 +93,12 @@ vim.keymap.set('n', ';r', 'yiw:%s/<C-R>"/', opt)
 vim.keymap.set('v', ';r', '"_y:%s/<C-R>"/', opt)
 
 -- Pack (vim.pack)
-vim.keymap.set('n', '<leader>lu', '<cmd>lua vim.pack.update()<CR>', { silent = true, noremap = true, desc = 'Pack update' })
+vim.keymap.set(
+  'n',
+  '<leader>lu',
+  '<cmd>lua vim.pack.update()<CR>',
+  { silent = true, noremap = true, desc = 'Pack update' }
+)
 vim.keymap.set('n', '<leader>lc', '<cmd>PackClean<CR>', { silent = true, noremap = true, desc = 'Pack clean' })
 
 -- Register

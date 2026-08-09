@@ -42,7 +42,12 @@ local function get_adapter(name)
   if not adapters[name] then
     local loader = adapter_loaders[name]
     if not loader then
-      error(('config.theme: unknown theme %q'):format(name), 2)
+      vim.notify(('config.theme: unknown theme %q, falling back to "catppuccin"'):format(name), vim.log.levels.WARN)
+      loader = adapter_loaders['catppuccin']
+      if not loader then
+        error(('config.theme: unknown theme %q'):format(name), 2)
+      end
+      name = 'catppuccin'
     end
     adapters[name] = loader()
   end
@@ -62,7 +67,7 @@ end
 -- choices are persisted to a state file (see load_state / save_state below)
 -- and override these defaults at startup.
 M.config = {
-  dark = 'tokyonight',
+  dark = 'catppuccin',
   light = 'catppuccin',
 }
 

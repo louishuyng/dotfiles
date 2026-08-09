@@ -10,8 +10,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
       return
     end
 
-    -- If file has . characters at beginning, don't format
-    if vim.fn.match(vim.fn.expand('%:t'), '^[.]') ~= -1 then
+    -- Skip keymap registration for dotfiles (.env, .gitignore, etc). Original comment said
+    -- "don't format", but the code has always skipped keymaps, not formatting; intent unclear.
+    local bufname = vim.fs.basename(vim.api.nvim_buf_get_name(bufnr))
+    if vim.fn.match(bufname, '^[.]') ~= -1 then
       return
     end
 
