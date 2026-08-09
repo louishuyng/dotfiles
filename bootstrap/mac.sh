@@ -411,6 +411,10 @@ link_all_dotfiles() {
 
   ln -s ~/.dotfiles/opencode/agent ~/.config/opencode
   success "Linked opencode"
+
+  mkdir -p ~/.claude
+  ln -sfn ~/.dotfiles/ai/skills ~/.claude/skills
+  success "Linked claude skills"
 }
 
 install_cli_tools() {
