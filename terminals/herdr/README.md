@@ -23,6 +23,9 @@ and will write it back over the file.
 | `prefix+,` | rename tab | `prefix+,` (stock tmux `rename-window`; this repo's tmux.conf rebinds `,`/`.` to swap-window instead) |
 | `prefix+$` | rename workspace | `prefix+$` (`rename-session`) |
 | `prefix+v` | edit scrollback in nvim | `prefix+v` then `y` (copy-mode, then yank) |
+| `prefix+[` | copy mode | `prefix+[` (stock tmux `copy-mode`; herdr ships this action unbound) |
+| `prefix+<` | move tab left | `prefix+,` (`swap-window -t -1`) |
+| `prefix+>` | move tab right | `prefix+.` (`swap-window -t +1`) |
 | `prefix+tab` | focus last pane | `prefix+Tab` (`last-window` — herdr has no last-tab action) |
 | `prefix+shift+s` | herdr settings | none — displaced by the project picker on `prefix+s` |
 | `prefix+ctrl+g` | herdr goto | none — displaced by gh dash on `prefix+g` |

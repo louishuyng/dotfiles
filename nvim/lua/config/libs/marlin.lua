@@ -1,5 +1,11 @@
 local marlin = require('marlin')
-marlin.setup({})
+-- Two nvim instances writing marlin.json race (datafile.lua opens "w" then writes
+-- from offset 0), leaving the longer write's tail behind and corrupting the JSON.
+-- Don't let that take down the whole config.
+local ok, err = pcall(marlin.setup, {})
+if not ok then
+  vim.notify('marlin.setup failed, index list empty: ' .. err, vim.log.levels.WARN)
+end
 
 local mindex = 0
 local generate_finder = function()

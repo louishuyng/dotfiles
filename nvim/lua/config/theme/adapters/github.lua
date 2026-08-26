@@ -56,12 +56,12 @@ function M.setup()
   if ok then
     gh.setup({
       options = {
-        transparent = false,
+        transparent = true,
         hide_end_of_buffer = true,
-        styles = {
-          comments = 'italic',
-          keywords = 'NONE',
-        },
+        -- styles = {
+        --   comments = 'italic',
+        --   keywords = 'NONE',
+        -- },
       },
       specs = vim.tbl_extend('force', specs_for(DARK_STYLE), specs_for(LIGHT_STYLE)),
       groups = vim.tbl_extend('force', groups_for(DARK_STYLE), groups_for(LIGHT_STYLE)),

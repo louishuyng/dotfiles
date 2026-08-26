@@ -279,7 +279,7 @@ local function mode_bar()
 end
 
 local MODE_LETTERS = {
-  n = '❑ ',
+  n = 'NOR',
   i = 'INS',
   v = 'VISL',
   V = 'V-LINE',
@@ -295,8 +295,7 @@ local MODE_LETTERS = {
 local function mode_letter()
   local mode = vim.api.nvim_get_mode().mode
   local color_group = MODE_COLORS[mode] or 'StlInfo'
-  -- local letter = MODE_LETTERS[mode] or mode:upper()
-  local letter = 'C@d3 [NIX]'
+  local letter = MODE_LETTERS[mode] or mode:upper()
   return color(color_group, letter)
 end
 

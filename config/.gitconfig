@@ -66,6 +66,9 @@
 [includeIf "gitdir:~/LX14/repository/github.com/regask/"]
   path = ~/.dotfiles/config/gitconfig/.regask
 
+[includeIf "gitdir:~/LX14/repository/github.com/omniyat/"]
+  path = ~/.dotfiles/config/gitconfig/.omniyat
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

@@ -5,16 +5,20 @@ require("items.apple")
 require("items.spaces")
 require("items.media")
 
--- ─────────────────────────── CENTER ───────────────────────────
-require("items.weather")
-require("items.calendar")
-
 -- ─────────────────────────── RIGHT ────────────────────────────
+-- Center is intentionally empty. On the right, earlier-added items render
+-- further RIGHT: the clock is required first to sit at the bar's edge, and the
+-- saturation graphs last so they lead the cluster from the left.
+require("items.calendar")
+require("items.weather")
 require("items.widgets.battery")
 require("items.widgets.volume")
--- require("items.widgets.cpu")
 require("items.widgets.wifi")
 require("items.widgets.bluetooth")
+require("items.widgets.network")
+require("items.widgets.disk")
+require("items.widgets.memory")
+require("items.widgets.cpu")
 
 -- ══════════════════════════════════════════════════════════════
 -- BRACKETS — drawn after all items are created
@@ -42,11 +46,11 @@ sbar.add("bracket", "bracket.media", { "/^left\\.media.*/" }, {
 	},
 })
 
--- Center pill: weather + time + date
-sbar.add("bracket", "bracket.center", {
-	"center.weather",
-	"center.time",
-	"center.date",
+-- Clock pill: weather + date + time
+sbar.add("bracket", "bracket.clock", {
+	"right.weather",
+	"right.date",
+	"right.time",
 }, {
 	background = {
 		color = colors.transparent,
@@ -56,13 +60,38 @@ sbar.add("bracket", "bracket.center", {
 	},
 })
 
+-- Metrics pill: CPU + memory + disk saturation, network throughput. Its own bracket,
+-- tinted with the accent hue rather than a neutral bgN — the bgN shades are too
+-- close to each other to tell the two pills apart at bar size.
+-- Members are listed out rather than matched: sketchybar's bracket matcher does
+-- not handle regex alternation, and a bracket that matches nothing is silently
+-- never created.
+sbar.add("bracket", "bracket.metrics", {
+	"widgets.cpu",
+	"widgets.cpu.top",
+	"widgets.cpu.bottom",
+	"widgets.memory",
+	"widgets.memory.top",
+	"widgets.memory.bottom",
+	"widgets.disk.top",
+	"widgets.disk.bottom",
+	"widgets.network",
+	"widgets.network.top",
+	"widgets.network.bottom",
+}, {
+	background = {
+		color = colors.transparent,
+		corner_radius = 0,
+		height = 37,
+		border_width = 1,
+		border_color = "0xffCA9EE6",
+	},
+})
+
 -- Right pill: WiFi + Bluetooth + Volume + Battery
 sbar.add("bracket", "bracket.right", {
 	"widgets.wifi",
 	"widgets.bluetooth",
-	-- "widgets.cpu",
-	-- "widgets.cpu.percent",
-	-- "widgets.cpu.caption",
 	"widgets.volume",
 	"widgets.battery",
 }, {

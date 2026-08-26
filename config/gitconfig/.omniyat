@@ -1,0 +1,10 @@
+[user]
+  email = louis.consult@omniyat.com
+  name = Louis Nguyen
+  signingkey = 14271F068E9B6D4D
+
+[commit]
+  gpgsign = true
+
+[tag]
+  gpgsign = true

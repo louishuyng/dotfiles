@@ -1,0 +1,106 @@
+{
+  // Cursor settings — vim keymap ported from suckless/mac_os/{zed,gram}.
+  //
+  // Leader sequences can't live in keybindings.json (VS Code only does modifier
+  // chords), so they're VSCodeVim bindings here. Requires the `vscodevim.vim`
+  // extension; modifier keys stay in keybindings.json.
+
+  "window.autoDetectColorScheme": true,
+  "editor.minimap.enabled": false,
+  // VSCodeVim is unusable with screen-reader mode on — it disables the cursor
+  // rendering vim depends on. https://github.com/VSCodeVim/Vim/issues/2078
+  "editor.accessibilitySupport": "off",
+
+  "vim.leader": ",",
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  // Hand these back to VS Code so the keybindings.json entries above fire.
+  "vim.handleKeys": {
+    "<C-p>": false,
+    "<C-n>": false,
+    "<C-h>": false,
+    "<C-j>": false,
+    "<C-k>": false,
+    "<C-l>": false,
+    "<C-t>": false,
+    "<C-a>": false,
+    "<C-w>": false
+  },
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // General
+    { "before": ["<space>", "w"], "commands": ["workbench.action.files.save"] },
+    { "before": ["<space>", "q"], "commands": ["workbench.action.closeActiveEditor"] },
+
+    // File explore
+    { "before": ["<space>", "f", "r"], "commands": ["workbench.action.openRecent"] },
+    { "before": ["<space>", "/"], "commands": ["workbench.action.findInFiles"] },
+
+    // Split
+    { "before": [",", "v"], "commands": ["workbench.action.splitEditorRight"] },
+    { "before": [",", "s"], "commands": ["workbench.action.splitEditorUp"] },
+
+    // Buffer
+    { "before": [",", "q"], "commands": ["workbench.action.previousEditor"] },
+    { "before": [",", "w"], "commands": ["workbench.action.nextEditor"] },
+    { "before": [",", "b", "d"], "commands": ["workbench.action.closeActiveEditor"] },
+    { "before": [",", "b", "d", "a"], "commands": ["workbench.action.closeAllEditors"] },
+
+    // LSP
+    { "before": ["g", "f"], "commands": ["editor.action.revealDefinition"] },
+    { "before": ["g", "t"], "commands": ["editor.action.goToTypeDefinition"] },
+    {
+      "before": ["g", "v"],
+      "commands": ["workbench.action.splitEditorRight", "editor.action.revealDefinition"]
+    },
+    { "before": ["<space>", "c", "a"], "commands": ["editor.action.quickFix"] },
+
+    // Git — blame needs the `eamodio.gitlens` extension; Cursor ships no blame.
+    { "before": [",", "g", "b"], "commands": ["gitlens.toggleFileBlame"] },
+    { "before": ["<space>", "g", "b"], "commands": ["gitlens.toggleLineBlame"] },
+    { "before": [",", "g", "s"], "commands": ["workbench.view.scm"] },
+    { "before": ["]", "h"], "commands": ["workbench.action.editor.nextChange"] },
+    { "before": ["[", "h"], "commands": ["workbench.action.editor.previousChange"] },
+    { "before": ["<space>", "h", "p"], "commands": ["git.openChange"] },
+    { "before": ["<space>", "h", "s"], "commands": ["git.stageSelectedRanges"] },
+    { "before": ["<space>", "h", "u"], "commands": ["git.unstageSelectedRanges"] },
+    { "before": ["<space>", "h", "r"], "commands": ["git.revertSelectedRanges"] },
+
+    // Outline
+    { "before": ["<space>", "s", "s"], "commands": ["outline.focus"] },
+
+    // Diagnostics
+    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
+    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"] },
+
+    // Cursor AI (zed assistant::InlineAssist / agent::ToggleFocus)
+    { "before": ["<space>", "k"], "commands": ["aipopup.action.modal.generate"] },
+    { "before": ["<space>", "i"], "commands": ["composer.startComposerPrompt"] },
+
+    // Debug (DAP)
+    { "before": ["<space>", "d", "b"], "commands": ["editor.debug.action.toggleBreakpoint"] },
+    { "before": ["<space>", "d", "d"], "commands": ["workbench.action.debug.start"] },
+    { "before": ["<space>", "d", "c"], "commands": ["workbench.action.debug.continue"] },
+    { "before": ["<space>", "d", "C"], "commands": ["editor.debug.action.runToCursor"] },
+    { "before": ["<space>", "d", "i"], "commands": ["workbench.action.debug.stepInto"] },
+    { "before": ["<space>", "d", "o"], "commands": ["workbench.action.debug.stepOut"] },
+    { "before": ["<space>", "d", "O"], "commands": ["workbench.action.debug.stepOver"] },
+    { "before": ["<space>", "d", "t"], "commands": ["workbench.action.debug.stop"] },
+    { "before": ["<space>", "d", "r"], "commands": ["workbench.action.debug.restart"] },
+    { "before": ["<space>", "d", "u"], "commands": ["workbench.view.debug"] },
+
+    // Test
+    { "before": ["<space>", "t", "s"], "commands": ["testing.runAtCursor"] },
+    { "before": ["<space>", "t", "f"], "commands": ["testing.runCurrentFile"] },
+    { "before": ["<space>", "t", "l"], "commands": ["testing.reRunLastRun"] },
+
+    // vim-visual-multi parity: <Leader>A grabs every match at once
+    { "before": ["<space>", "A"], "commands": ["editor.action.selectHighlights"] }
+  ],
+
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // nvim parity for `vim.keymap.set('v', '/', '*')` — search the selection so
+    // n / N walk its occurrences.
+    { "before": ["/"], "commands": ["actions.findWithSelection"] }
+  ]
+}

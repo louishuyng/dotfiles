@@ -1,0 +1,213 @@
+// Gram keymap — ported from ~/.config/zed/keymap.json
+// Gram is a Zed fork with the AI features stripped, so actions map 1:1
+// except the `zed::` namespace (renamed `gram::`) and the agent/assistant
+// actions, which don't exist here.
+[
+  {
+    "bindings": {
+      "cmd-s": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // General
+      "space w": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      // File Explore
+      "ctrl-p": "file_finder::Toggle",
+      // <leader>fr — recent files. Gram has no oldfiles picker; separate_history
+      // splits previously-opened files above the fuzzy results.
+      "space f r": ["file_finder::Toggle", { "separate_history": true }],
+      "space /": "workspace::NewSearch",
+      // Split
+      ", v": "pane::SplitRight",
+      ", s": "pane::SplitUp",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      // Buffer
+      ", q": "pane::ActivatePreviousItem",
+      ", w": "pane::ActivateNextItem",
+      ", b d": "pane::CloseActiveItem",
+      ", b d a": "pane::CloseAllItems",
+      // Terminal
+      "ctrl-t": "workspace::NewTerminal",
+      // LSP
+      "g f": "editor::GoToDefinition",
+      "g t": "editor::GoToTypeDefinition",
+      "g v": "editor::GoToDefinitionSplit",
+      // Git
+      ", g b": "git::Blame",
+      "space g b": "editor::ToggleGitBlameInline",
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      // Collapse sidebar workspace
+      "ctrl-\\": "project_panel::ToggleFocus",
+      "space s s": "outline_panel::ToggleFocus",
+      ", g s": "git_panel::ToggleFocus",
+      // Code Action
+      "space c a": "editor::ToggleCodeActions",
+      // Diagnostic
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+    },
+  },
+  {
+    // Folder Sidebar
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "ctrl-\\": "workspace::ToggleLeftDock",
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "D": "project_panel::Delete",
+      "r": "project_panel::Rename",
+      "l": "project_panel::OpenPermanent",
+      "s": "project_panel::OpenSplitHorizontal",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious",
+      "ctrl-n": "menu::SelectNext",
+      "ctrl-p": "menu::SelectPrevious",
+    },
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious",
+      "ctrl-n": "editor::ContextMenuNext",
+      "ctrl-p": "editor::ContextMenuPrevious",
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "GitPanel > Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "OutlinePanel > Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-t": "pane::CloseActiveItem",
+      "ctrl-l": "terminal::Clear",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-t": "terminal_panel::Toggle",
+      "ctrl-\\": "project_panel::ToggleFocus",
+      "ctrl-a s": ["projects::OpenRecent", { "create_new_window": false }],
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space h p": "editor::ToggleSelectedDiffHunks",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space h u": "git::UnstageAndNext",
+      "space h s": "git::ToggleStaged",
+      "space h r": "git::Restore",
+    },
+  },
+  {
+    "context": "(GitPanel && ChangesList)",
+    "bindings": {
+      "s": "git::StageFile",
+    },
+  },
+  {
+    "context": "GitDiff > Editor",
+    "bindings": {
+      "shift-s": "git::StageAll",
+    },
+  },
+  {
+    // Debug (DAP)
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space d b": "editor::ToggleBreakpoint",
+      "space d d": "debugger::Start",
+      "space d c": "debugger::Continue",
+      "space d C": "debugger::RunToCursor",
+      "space d i": "debugger::StepInto",
+      "space d o": "debugger::StepOut",
+      "space d O": "debugger::StepOver",
+      "space d t": "debugger::Stop",
+      "space d r": "debugger::Restart",
+      "space d u": "debug_panel::ToggleFocus",
+    },
+  },
+  {
+    // Test
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space t s": "editor::SpawnNearestTask",
+      "space t f": "task::Spawn",
+      "space t l": "task::Rerun",
+      ", a": ["task::Spawn", { "task_name": "Toggle Test File" }],
+    },
+  },
+  {
+    // nvim parity for `vim.keymap.set('v', '/', '*')` — search the visual
+    // selection so n / shift-n walk its occurrences. Gram's visual `*` is
+    // this action; partial_word skips the \b word boundaries.
+    "context": "vim_mode == visual",
+    "bindings": {
+      "/": ["vim::MoveToNext", { "partial_word": true }],
+    },
+  },
+  {
+    // vim-visual-multi parity: <C-n> adds a cursor at the next occurrence,
+    // <Leader>A ("Select All"/"Visual All") grabs every match at once.
+    "context": "VimControl && !menu",
+    "bindings": {
+      // Open the file for the excerpt under the cursor in a multibuffer
+      // (references, project search, diagnostics). `g space` is Gram's default
+      // for the same action.
+      "g o": "editor::OpenExcerpts",
+      "ctrl-n": "vim::SelectNext",
+      "ctrl-shift-n": "vim::SelectPrevious",
+      "space shift-a": "editor::SelectAllMatches",
+    },
+  },
+]

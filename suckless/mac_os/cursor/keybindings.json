@@ -1,0 +1,151 @@
+// Cursor keybindings — ported from suckless/mac_os/{zed,gram} keymaps.
+//
+// Split rationale: VS Code's keybindings.json can only express single keys and
+// modifier chords, so everything leader-based (`space w`, `, v`, `] h`) lives in
+// settings.json under vim.*ModeKeyBindingsNonRecursive instead. This file holds
+// only what needs to work outside vim's normal mode: docks, panes, pickers,
+// menus, terminal.
+//
+// Later entries win on equal specificity, so the narrow `when` clauses
+// (quick-open, suggest widget) are ordered after the global ones.
+[
+  // ── Docks & panels ───────────────────────────────────────────────────
+  { "key": "cmd+s", "command": "workbench.action.toggleAuxiliaryBar" },
+  { "key": "cmd+s", "command": "-workbench.action.files.save" },
+
+  { "key": "ctrl+\\", "command": "workbench.view.explorer" },
+  {
+    "key": "ctrl+\\",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "explorerViewletVisible && filesExplorerFocus"
+  },
+
+  // ── Panes ────────────────────────────────────────────────────────────
+  { "key": "ctrl+h", "command": "workbench.action.navigateLeft" },
+  { "key": "ctrl+l", "command": "workbench.action.navigateRight" },
+  { "key": "ctrl+k", "command": "workbench.action.navigateUp" },
+  { "key": "ctrl+j", "command": "workbench.action.navigateDown" },
+
+  // ── Pickers ──────────────────────────────────────────────────────────
+  { "key": "ctrl+p", "command": "workbench.action.quickOpen" },
+  { "key": "ctrl+a s", "command": "workbench.action.openRecent" },
+
+  // ── Terminal ─────────────────────────────────────────────────────────
+  { "key": "ctrl+t", "command": "workbench.action.terminal.toggleTerminal" },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus"
+  },
+
+  // ── Multi-cursor (vim-visual-multi parity) ───────────────────────────
+  {
+    "key": "ctrl+n",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "editor.action.addSelectionToPreviousFindMatch",
+    "when": "editorFocus"
+  },
+
+  // ── Cursor AI panels (zed assistant::InlineAssist / agent::ToggleFocus) ──
+  { "key": "cmd+/", "command": "aichat.newchataction" },
+
+  // ── File tree, oil.nvim-style ────────────────────────────────────────
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "l",
+    "command": "explorer.openAndPassFocus",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "s",
+    "command": "explorer.openToSide",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+
+  // ── Source control list: `s` stages, `S` stages everything ───────────
+  {
+    "key": "s",
+    "command": "git.stage",
+    "when": "listFocus && !inputFocus && activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "shift+s",
+    "command": "git.stageAll",
+    "when": "listFocus && !inputFocus && activeViewlet == 'workbench.view.scm'"
+  },
+
+  // ── Menu / list navigation (must out-specify the pane bindings above) ──
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevCodeAction",
+    "when": "codeActionMenuVisible"
+  }
+]

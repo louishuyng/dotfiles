@@ -19,9 +19,7 @@ function M.setup()
   if ok then
     cendre.setup({
       background = 'hard',
-      transparent = false,
-      italic = false,
-      italic_comments = true,
+      transparent = true,
     })
   end
 end

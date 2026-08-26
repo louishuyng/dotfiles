@@ -16,6 +16,8 @@ local bluetooth = sbar.add("item", "widgets.bluetooth", {
 		padding_right = 4,
 	},
 	label = { drawing = false },
+	-- Leftmost item of the right pill — separates it from the metrics pill.
+	padding_left = 10,
 	update_freq = 3,
 	updates = true,
 })

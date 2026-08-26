@@ -9,16 +9,24 @@ local M = {}
 
 M.events = { "aerospace_workspace_change", "front_app_switched" }
 
+-- The aerospace CLI can block forever on its server socket. Sketchybar never
+-- reaps the stuck child, so an unguarded call leaks an sh+aerospace pair on
+-- every poll — ~2/day until the machine is rebooted.
+local ae = "timeout 3 aerospace"
+
 function M.list_workspaces_cmd()
-	return "aerospace list-workspaces --all"
+	return ae .. " list-workspaces --all"
 end
 
 function M.fetch_state_cmd()
-	return "aerospace list-windows --all --format '%{workspace}|%{app-name}' && echo '---' && aerospace list-workspaces --focused"
+	return ae
+		.. " list-windows --all --format '%{workspace}|%{app-name}' && echo '---' && "
+		.. ae
+		.. " list-workspaces --focused"
 end
 
 function M.click_cmd(workspace_id)
-	return 'aerospace workspace "' .. workspace_id .. '"'
+	return ae .. ' workspace "' .. workspace_id .. '"'
 end
 
 -- Pill label for the focused workspace. Aerospace workspace IDs are already
@@ -32,8 +40,8 @@ end
 -- from this list still get a pill — they sort alphabetically after the listed
 -- ones — so adding a workspace in aerospace.toml never makes it invisible here.
 M.display_order = {
-	"Dev",
-	"Terminal",
+	"Tool",
+	"Code",
 	"Web",
 	"Chat",
 	"Reading",

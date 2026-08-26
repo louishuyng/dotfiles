@@ -1,3 +1,5 @@
+# Personal
+
 [[session]]
 name = "LX-CONFIG"
 path = "~/.dotfiles"
@@ -7,17 +9,19 @@ name = "LX-RESEARCH"
 path = "~/LX14/projects/research"
 
 [[session]]
+name = "LX-PERSONAL"
+path = "~/LX14/repository/github.com/louishuyng"
+
+# Projects
+
+[[session]]
 name = "RegAsk"
 path = "~/LX14/repository/github.com/regask"
 
 [[session]]
-name = "LX-PERSONAL"
-path = "~/LX14/repository/github.com/louishuyng"
-
-[[session]]
-name = "gojem"
+name = "Gojem"
 path = "~/LX14/repository/github.com/gojem"
 
 [[session]]
-name = "omniyat"
+name = "Omniyat"
 path = "~/LX14/repository/github.com/omniyat"

@@ -164,6 +164,18 @@ if test -r ~/.github_token
     set -gx GITHUB_TOKEN $_gh_token
     set -gx NODE_AUTH_TOKEN $_gh_token
 end
+
+# gh and git-credential prefer $GITHUB_TOKEN over the keyring, and the personal
+# token has no access to the omniyat org — drop it while inside that tree.
+function _github_token_by_dir --on-variable PWD
+    if string match -q "$HOME/LX14/repository/github.com/omniyat*" -- $PWD
+        set -eg GITHUB_TOKEN
+    else if test -r ~/.github_token
+        read -l token <~/.github_token
+        set -gx GITHUB_TOKEN $token
+    end
+end
+_github_token_by_dir
 if test -r ~/.knock_service_token
     read -l _knock_token <~/.knock_service_token
     set -gx KNOCK_SERVICE_TOKEN $_knock_token

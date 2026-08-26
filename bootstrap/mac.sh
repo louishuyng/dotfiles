@@ -389,6 +389,15 @@ link_all_dotfiles() {
 
   success "Linked qutebrowser"
 
+  cursor_user="$HOME/Library/Application Support/Cursor/User"
+  mkdir -p "$cursor_user"
+  ln -sfn ~/.dotfiles/suckless/mac_os/cursor/settings.json "$cursor_user/settings.json"
+  ln -sfn ~/.dotfiles/suckless/mac_os/cursor/keybindings.json "$cursor_user/keybindings.json"
+  # Leader sequences in settings.json are VSCodeVim bindings; without it half
+  # the keymap is dead keys.
+  /Applications/Cursor.app/Contents/Resources/app/bin/cursor --install-extension vscodevim.vim
+  success "Linked cursor"
+
   ln -s ~/.dotfiles/config/.gitconfig ~/.gitconfig
   success "Linked git config"
 
@@ -414,6 +423,7 @@ link_all_dotfiles() {
 
   mkdir -p ~/.claude
   ln -sfn ~/.dotfiles/ai/skills ~/.claude/skills
+  ln -sfn ~/.dotfiles/ai/CLAUDE.md ~/.claude/CLAUDE.md
   success "Linked claude skills"
 }
 

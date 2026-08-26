@@ -13,9 +13,12 @@ local opts = {
   transparent_background = false,
   background = {
     light = 'latte',
-    dark = 'mocha',
+    dark = 'macchiato',
   },
   color_overrides = {
+    mocha = {
+      base = '#11111B',
+    },
     macchiato = {
       -- base = '#000000',
     },
@@ -49,7 +52,7 @@ local opts = {
     all = function(colors)
       return {
         TelescopeSelection = { fg = 'None', bg = colors.surface0 },
-        -- WinSeparator = { bg = 'None', fg = colors.base },
+        WinSeparator = { bg = 'None', fg = colors.overlay0 },
         -- Normal = { bg = 'None' },
         -- NormalNC = { bg = 'None' },
         -- NvimTreeWinSeparator = { bg = colors.mantle, fg = colors.mantle },

@@ -105,6 +105,6 @@ set -gx PATH "$PATH:/Users/louishuyng/Library/Application Support/Coursier/bin"
 # This stays at the bottom. Hoisting it above the prompt/plugin init to skip that
 # work measured 5.7ms of a 122ms startup — the cost is front-loaded in conf.d and
 # mise activation, both of which run before any line of this file.
-if status is-interactive; and not set -q HERDR_ENV; and not set -q TMUX; and not set -q SSH_TTY
-    exec herdr
-end
+# if status is-interactive; and not set -q HERDR_ENV; and not set -q TMUX; and not set -q SSH_TTY
+#     exec herdr
+# end

@@ -21,6 +21,9 @@ local adapter_loaders = {
   cendre = function()
     return require('config.theme.adapters.cendre')
   end,
+  dracula_solid = function()
+    return require('config.theme.adapters.dracula_solid')
+  end,
   gruvbox_material = function()
     return require('config.theme.adapters.gruvbox_material')
   end,

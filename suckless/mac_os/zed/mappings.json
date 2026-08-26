@@ -1,8 +1,8 @@
 [
   {
     "bindings": {
-      "cmd-s": "workspace::ToggleRightDock"
-    }
+      "cmd-s": "workspace::ToggleRightDock",
+    },
   },
   {
     "context": "Editor && vim_mode == normal",
@@ -12,6 +12,7 @@
       "space q": "pane::CloseActiveItem",
       // File Explore
       "ctrl-p": "file_finder::Toggle",
+      "space f r": ["file_finder::Toggle", { "separate_history": true }],
       "space /": "workspace::NewSearch",
       // Split
       ", v": "pane::SplitRight",
@@ -38,22 +39,20 @@
       "[ h": "editor::GoToPreviousHunk",
       // Collapse sidebar workspace
       "ctrl-\\": "project_panel::ToggleFocus",
-      "space s": "outline_panel::ToggleFocus",
+      "space s s": "outline_panel::ToggleFocus",
       ", g s": "git_panel::ToggleFocus",
       // Code Action
       "space c a": "editor::ToggleCodeActions",
-      // Find all word matc hbelow cursor
-      "ctrl-n": "editor::SelectAllMatches",
 
       // Diagnostic
       "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPreviousDiagnostic"
+      "[ d": "editor::GoToPreviousDiagnostic",
 
       // TODO:
       // Run Test
       // Run Test in current cursor
       // Run Test in current file
-    }
+    },
   },
   {
     // Folder Sidebar
@@ -67,16 +66,16 @@
       "D": "project_panel::Delete",
       // Rename file
       "r": "project_panel::Rename",
-      "l": "project_panel::OpenPermanent"
-    }
+      "l": "project_panel::OpenPermanent",
+    },
   },
   {
     "bindings": {
       "ctrl-j": "menu::SelectNext",
       "ctrl-k": "menu::SelectPrevious",
       "ctrl-n": "menu::SelectNext",
-      "ctrl-p": "menu::SelectPrevious"
-    }
+      "ctrl-p": "menu::SelectPrevious",
+    },
   },
   {
     "context": "Editor && (showing_code_actions || showing_completions)",
@@ -84,8 +83,8 @@
       "ctrl-j": "editor::ContextMenuNext",
       "ctrl-k": "editor::ContextMenuPrevious",
       "ctrl-n": "editor::ContextMenuNext",
-      "ctrl-p": "editor::ContextMenuPrevious"
-    }
+      "ctrl-p": "editor::ContextMenuPrevious",
+    },
   },
   {
     "context": "Pane",
@@ -93,16 +92,16 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
-    }
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
   },
   {
     // Editor
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "space k": "assistant::InlineAssist",
-      "space i": "agent::ToggleFocus"
-    }
+      "space i": "agent::ToggleFocus",
+    },
   },
   {
     "context": "Dock",
@@ -110,8 +109,8 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
-    }
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
   },
   {
     "context": "GitPanel > Editor",
@@ -119,8 +118,8 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
-    }
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
   },
   {
     "context": "OutlinePanel > Editor",
@@ -128,27 +127,27 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
-    }
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
   },
   {
     "context": "Terminal",
     "bindings": {
       // Close terminal
       "ctrl-t": "pane::CloseActiveItem",
-      "ctrl-l": "terminal::Clear"
-    }
+      "ctrl-l": "terminal::Clear",
+    },
   },
   {
     "bindings": {
-      "cmd-/": "agent::ToggleFocus"
-    }
+      "cmd-/": "agent::ToggleFocus",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-t": "terminal_panel::Toggle"
-    }
+      "ctrl-t": "terminal_panel::Toggle",
+    },
   },
   {
     "context": "Workspace",
@@ -156,53 +155,53 @@
       "ctrl-a s": [
         "projects::OpenRecent",
         {
-          "create_new_window": false
-        }
-      ]
-    }
+          "create_new_window": false,
+        },
+      ],
+    },
   },
   {
     "context": "(ProjectPanel && not_editing)",
     "bindings": {
-      "s": "project_panel::OpenSplitHorizontal"
-    }
+      "s": "project_panel::OpenSplitHorizontal",
+    },
   },
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "space h p": "editor::ToggleSelectedDiffHunks"
-    }
+      "space h p": "editor::ToggleSelectedDiffHunks",
+    },
   },
   {
     "context": "((Editor && !agent_diff) && !AgentPanel) && vim_mode == normal",
     "bindings": {
-      "space h u": "git::UnstageAndNext"
-    }
+      "space h u": "git::UnstageAndNext",
+    },
   },
   {
     "context": "(GitPanel && ChangesList)",
     "bindings": {
-      "s": "git::StageFile"
-    }
+      "s": "git::StageFile",
+    },
   },
   {
     "context": "GitDiff > Editor",
     "bindings": {
-      "shift-s": "git::StageAll"
-    }
+      "shift-s": "git::StageAll",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-\\": "project_panel::ToggleFocus"
-    }
+      "ctrl-\\": "project_panel::ToggleFocus",
+    },
   },
   {
     "context": "((Editor && !agent_diff) && !AgentPanel) && vim_mode == normal",
     "bindings": {
       "space h s": "git::ToggleStaged",
-      "space h r": "git::Restore"
-    }
+      "space h r": "git::Restore",
+    },
   },
   {
     // Debug (DAP)
@@ -217,8 +216,8 @@
       "space d O": "debugger::StepOver",
       "space d t": "debugger::Stop",
       "space d r": "debugger::Restart",
-      "space d u": "debug_panel::ToggleFocus"
-    }
+      "space d u": "debug_panel::ToggleFocus",
+    },
   },
   {
     // Test
@@ -227,7 +226,25 @@
       "space t s": "editor::SpawnNearestTask",
       "space t f": "task::Spawn",
       "space t l": "task::Rerun",
-      ", a": ["task::Spawn", { "task_name": "Toggle Test File" }]
-    }
-  }
+      ", a": ["task::Spawn", { "task_name": "Toggle Test File" }],
+    },
+  },
+  {
+    // nvim parity for `vim.keymap.set('v', '/', '*')` — search the visual
+    // selection so n / shift-n walk its occurrences.
+    "context": "vim_mode == visual",
+    "bindings": {
+      "/": ["vim::MoveToNext", { "partial_word": true }],
+    },
+  },
+  {
+    // vim-visual-multi parity: <C-n> adds a cursor at the next occurrence,
+    // <Leader>A ("Select All"/"Visual All") grabs every match at once.
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-n": "vim::SelectNext",
+      "ctrl-shift-n": "vim::SelectPrevious",
+      "space shift-a": "editor::SelectAllMatches",
+    },
+  },
 ]

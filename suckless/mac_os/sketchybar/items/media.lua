@@ -72,7 +72,10 @@ local media = sbar.add("item", "left.media", {
 			height = 56,
 		},
 	},
-	update_freq = 1,
+	-- Backstop only: media_change drives the real updates and clicks re-poll
+	-- explicitly, so this just catches players that miss the event. Every tick
+	-- spawns a nowplaying-cli subprocess, so keep it slow.
+	update_freq = 5,
 	updates = true,
 })
 
@@ -177,7 +180,7 @@ local artwork_counter = 0
 local last_label_state = nil
 local last_play_state = nil
 
-local SHOW_ARTWORK = false
+local SHOW_ARTWORK = true
 local MAX_LABEL_CHARS = SHOW_ARTWORK and 20 or 24
 
 -- East-Asian "wide" codepoints (CJK, Hiragana/Katakana, Hangul, full-width

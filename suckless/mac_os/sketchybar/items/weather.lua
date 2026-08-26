@@ -3,8 +3,8 @@ local colors = require("colors")
 
 local WTTR_URL = "https://wttr.in/?format=%t&m"
 
-local weather = sbar.add("item", "center.weather", {
-	position = "center",
+local weather = sbar.add("item", "right.weather", {
+	position = "right",
 	icon = {
 		string = "􀆭",
 		color = colors.accent,

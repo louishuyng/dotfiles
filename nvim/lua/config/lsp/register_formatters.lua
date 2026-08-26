@@ -16,6 +16,25 @@ local function find_upwards(start, rel)
   end
 end
 
+-- fmtkit (brew cask, https://github.com/oullin/fmtkit) owns TS/Vue/Markdown
+-- formatting in repos whose Makefile drives it. It has no config file, so the
+-- only way to match it is to call it; unconfigured prettier rewrites those
+-- files wholesale (tabs -> 2 spaces, single -> double quotes).
+local fmtkit_extensions = { ts = true, tsx = true, mts = true, cts = true, js = true, jsx = true, vue = true, html = true, md = true }
+
+local function is_fmtkit_project(dir)
+  if vim.fn.executable('fmtkit') ~= 1 then
+    return false
+  end
+  -- Package Makefiles shadow the root one, so check every Makefile up to /.
+  for _, makefile in ipairs(vim.fs.find('Makefile', { upward = true, path = dir, limit = math.huge })) do
+    if table.concat(vim.fn.readfile(makefile), '\n'):find('fmtkit', 1, true) then
+      return true
+    end
+  end
+  return false
+end
+
 conform.setup({
   notify_on_error = true,
   format_on_save = function(bufnr)
@@ -25,21 +44,44 @@ conform.setup({
     }
   end,
   formatters_by_ft = {
-    javascript = { 'oxfmt', 'prettier', stop_after_first = true },
-    typescript = { 'oxfmt', 'prettier', stop_after_first = true },
-    javascriptreact = { 'oxfmt', 'prettier', stop_after_first = true },
-    typescriptreact = { 'oxfmt', 'prettier', stop_after_first = true },
+    javascript = { 'oxfmt', 'fmtkit', 'prettier', stop_after_first = true },
+    typescript = { 'oxfmt', 'fmtkit', 'prettier', stop_after_first = true },
+    javascriptreact = { 'oxfmt', 'fmtkit', 'prettier', stop_after_first = true },
+    typescriptreact = { 'oxfmt', 'fmtkit', 'prettier', stop_after_first = true },
     json = { 'prettier' },
-    vue = { 'prettier', 'eslint' },
+    vue = { 'fmtkit', 'prettier', 'eslint' },
     lua = { 'stylua' },
-    markdown = { 'prettier' },
+    markdown = { 'fmtkit', 'prettier' },
     fish = { 'fish_indent' },
     sh = { 'shfmt' },
-    go = { 'gofmt' },
+    go = { 'fmtkit_go', 'gofmt', stop_after_first = true },
     python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format', 'autopep8' },
     zig = { 'zigfmt' },
   },
   formatters = {
+    fmtkit = {
+      command = 'fmtkit',
+      args = { 'ts', '$FILENAME' },
+      stdin = false,
+      condition = function(_, ctx)
+        return is_fmtkit_project(ctx.dirname)
+      end,
+    },
+    fmtkit_go = {
+      command = 'fmtkit',
+      args = { 'go', 'format', '$FILENAME' },
+      stdin = false,
+      condition = function(_, ctx)
+        return is_fmtkit_project(ctx.dirname)
+      end,
+    },
+    prettier = {
+      -- Stay out of the way where fmtkit owns the file.
+      condition = function(_, ctx)
+        local ext = vim.fn.fnamemodify(ctx.filename, ':e')
+        return not (fmtkit_extensions[ext] and is_fmtkit_project(ctx.dirname))
+      end,
+    },
     oxfmt = {
       -- oxfmt ships as a project-local binary; fall back to a global one if present.
       command = function(_, ctx)
