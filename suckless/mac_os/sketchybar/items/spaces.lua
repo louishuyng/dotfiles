@@ -118,8 +118,7 @@ local function update_all_spaces()
 						workspace_icons[ws] = ""
 						seen[ws] = {}
 					end
-					local lookup = app_icons[app]
-					local icon = ((lookup == nil) and app_icons["default"] or lookup)
+					local icon = app_icons[app] or ":default:"
 					if not seen[ws][icon] then
 						if workspace_icons[ws] == "" then
 							workspace_icons[ws] = icon
