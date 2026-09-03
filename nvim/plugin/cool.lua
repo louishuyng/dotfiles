@@ -15,6 +15,7 @@ vim.api.nvim_create_autocmd('InsertEnter', {
 
 -- Clear search highlight when pressing Escape in normal mode
 vim.keymap.set('n', '<Esc>', function()
+  vim.api.nvim_buf_clear_namespace(0, vim.api.nvim_create_namespace('nvim.multicursor'), 0, -1)
   if vim.v.hlsearch == 1 then
     vim.cmd('nohlsearch')
   end
