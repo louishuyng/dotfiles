@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Packages
 brew install lua
 brew install switchaudio-osx
@@ -11,7 +14,9 @@ brew install --cask sf-symbols
 brew install --cask homebrew/cask-fonts/font-sf-mono
 brew install --cask homebrew/cask-fonts/font-sf-pro
 
-curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.5/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
+script_dir=$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+repo_root=$(cd "$script_dir/../../../.." && pwd)
+"$repo_root/scripts/update_sketchybar_icon.sh"
 
 # SbarLua
 (git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
