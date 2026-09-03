@@ -17,14 +17,18 @@ local function find_upwards(start, rel)
 end
 
 -- fmtkit (brew cask, https://github.com/oullin/fmtkit) owns TS/Vue/Markdown
--- formatting in repos whose Makefile drives it. It has no config file, so the
--- only way to match it is to call it; unconfigured prettier rewrites those
--- files wholesale (tabs -> 2 spaces, single -> double quotes).
-local fmtkit_extensions = { ts = true, tsx = true, mts = true, cts = true, js = true, jsx = true, vue = true, html = true, md = true }
+-- formatting in repos that carry its launcher or invoke it from a Makefile.
+-- Unconfigured prettier rewrites those files wholesale (tabs -> 2 spaces,
+-- single -> double quotes).
+local fmtkit_extensions =
+  { ts = true, tsx = true, mts = true, cts = true, js = true, jsx = true, vue = true, html = true, md = true }
 
 local function is_fmtkit_project(dir)
   if vim.fn.executable('fmtkit') ~= 1 then
     return false
+  end
+  if find_upwards(dir, 'infra/fmtkit/run.sh') then
+    return true
   end
   -- Package Makefiles shadow the root one, so check every Makefile up to /.
   for _, makefile in ipairs(vim.fs.find('Makefile', { upward = true, path = dir, limit = math.huge })) do

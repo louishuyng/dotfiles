@@ -5,7 +5,8 @@ source ~/.dotfiles/terminals/fish/alias/general.fish
 source ~/.dotfiles/terminals/fish/alias/git.fish
 source ~/.dotfiles/terminals/fish/alias/k8s.fish
 source ~/.dotfiles/terminals/fish/alias/languages.fish
+source ~/.dotfiles/terminals/fish/alias/learning.fish
 source ~/.dotfiles/terminals/fish/alias/network.fish
 source ~/.dotfiles/terminals/fish/alias/os.fish
+source ~/.dotfiles/terminals/fish/alias/work.fish
 source ~/.dotfiles/terminals/fish/alias/workflow.fish
-source ~/.dotfiles/terminals/fish/alias/learning.fish

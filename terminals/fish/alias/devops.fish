@@ -67,3 +67,6 @@ alias disk="dysk"
 
 # Backstage
 alias bsr="backstage-regask"
+
+# omniyat oc umbrella CLI (build-and-exec wrapper, not a dir — cannot go in PATH)
+alias oc="$HOME/LX14/repository/github.com/omniyat/collections/infra/cli/oc.sh"

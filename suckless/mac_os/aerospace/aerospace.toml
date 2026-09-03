@@ -73,6 +73,14 @@ if.app-id = 'com.mongodb.compass'
 run = ['move-node-to-workspace Tool']
 
 [[on-window-detected]]
+if.app-id = 'io.beekeeperstudio.desktop'
+run = ['move-node-to-workspace Tool']
+
+[[on-window-detected]]
+if.app-id = 'com.proxyman.NSProxy'
+run = ['move-node-to-workspace Tool']
+
+[[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus'
 run = ['move-node-to-workspace Tool']
 
@@ -200,6 +208,10 @@ run = ['move-node-to-workspace Dev']
 # Workspace Web
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
+run = ['move-node-to-workspace Web']
+
+[[on-window-detected]]
+if.app-id = 'com.brave.Browser'
 run = ['move-node-to-workspace Web']
 
 [[on-window-detected]]

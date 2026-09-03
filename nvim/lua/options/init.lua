@@ -197,3 +197,21 @@ vim.g.copilot_enabled = true
 vim.opt.clipboard:append('unnamedplus')
 
 opt.cmdheight = 0 -- Height of the command bar
+
+local cmdheight_group = vim.api.nvim_create_augroup('KeepCmdheightZero', { clear = true })
+-- Defer the reset so UI2 receives its own OptionSet event and hides the command bar.
+local reset_cmdheight = vim.schedule_wrap(function()
+  if vim.o.cmdheight ~= 0 then
+    vim.o.cmdheight = 0
+  end
+end)
+
+vim.api.nvim_create_autocmd('OptionSet', {
+  group = cmdheight_group,
+  pattern = 'cmdheight',
+  callback = reset_cmdheight,
+})
+vim.api.nvim_create_autocmd({ 'VimEnter', 'TabEnter', 'VimResized' }, {
+  group = cmdheight_group,
+  callback = reset_cmdheight,
+})
