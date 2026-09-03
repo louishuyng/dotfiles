@@ -40,12 +40,31 @@ local icons = require("icons")
 -- 	padding_right = 7,
 -- })
 
-sbar.add("item", "hack.logo", {
+-- sbar.add("item", "hack.logo", {
+-- 	position = "left",
+-- 	background = {
+-- 		image = {
+-- 			string = os.getenv("HOME") .. "/.config/sketchybar/assets/hack.png",
+-- 			scale = 0.07,
+-- 		},
+-- 	},
+-- 	-- icon = {
+-- 	-- 	y_offset = 1,
+-- 	-- 	font = { size = 18.0 },
+-- 	-- 	color = colors.white,
+-- 	-- 	string = icons.apple,
+-- 	-- },
+-- 	label = { drawing = false },
+-- 	padding_left = 10,
+-- 	padding_right = 0,
+-- })
+
+sbar.add("item", "usb.logo", {
 	position = "left",
 	background = {
 		image = {
-			string = os.getenv("HOME") .. "/.config/sketchybar/assets/hack.png",
-			scale = 0.07,
+			string = os.getenv("HOME") .. "/.config/sketchybar/assets/usb.png",
+			scale = 0.1,
 		},
 	},
 	-- icon = {
@@ -55,47 +74,47 @@ sbar.add("item", "hack.logo", {
 	-- 	string = icons.apple,
 	-- },
 	label = { drawing = false },
-	padding_left = 10,
+	padding_left = 7,
 	padding_right = 0,
 })
 
-sbar.add("item", "ctfxmas.logo", {
-	position = "left",
-	background = {
-		image = {
-			string = os.getenv("HOME") .. "/.config/sketchybar/assets/ctfxmas.png",
-			scale = 0.04,
-		},
-	},
-	-- icon = {
-	-- 	y_offset = 1,
-	-- 	font = { size = 18.0 },
-	-- 	color = colors.white,
-	-- 	string = icons.apple,
-	-- },
-	label = { drawing = false },
-	padding_left = 10,
-	padding_right = 0,
-})
+-- sbar.add("item", "ctfxmas.logo", {
+-- 	position = "left",
+-- 	background = {
+-- 		image = {
+-- 			string = os.getenv("HOME") .. "/.config/sketchybar/assets/ctfxmas.png",
+-- 			scale = 0.04,
+-- 		},
+-- 	},
+-- 	-- icon = {
+-- 	-- 	y_offset = 1,
+-- 	-- 	font = { size = 18.0 },
+-- 	-- 	color = colors.white,
+-- 	-- 	string = icons.apple,
+-- 	-- },
+-- 	label = { drawing = false },
+-- 	padding_left = 10,
+-- 	padding_right = 0,
+-- })
 
-sbar.add("item", "ctf.logo", {
-	position = "left",
-	background = {
-		image = {
-			string = os.getenv("HOME") .. "/.config/sketchybar/assets/ctfzone.png",
-			scale = 0.047,
-		},
-	},
-	-- icon = {
-	-- 	y_offset = 1,
-	-- 	font = { size = 18.0 },
-	-- 	color = colors.white,
-	-- 	string = icons.apple,
-	-- },
-	label = { drawing = false },
-	padding_left = 10,
-	padding_right = 0,
-})
+-- sbar.add("item", "ctf.logo", {
+-- 	position = "left",
+-- 	background = {
+-- 		image = {
+-- 			string = os.getenv("HOME") .. "/.config/sketchybar/assets/ctfzone.png",
+-- 			scale = 0.047,
+-- 		},
+-- 	},
+-- 	-- icon = {
+-- 	-- 	y_offset = 1,
+-- 	-- 	font = { size = 18.0 },
+-- 	-- 	color = colors.white,
+-- 	-- 	string = icons.apple,
+-- 	-- },
+-- 	label = { drawing = false },
+-- 	padding_left = 10,
+-- 	padding_right = 0,
+-- })
 
 -- sbar.add("item", "claude.logo", {
 -- 	position = "left",
@@ -137,7 +156,7 @@ sbar.add("item", "ctf.logo", {
 
 sbar.add("item", {
 	position = "left",
-	width = 10,
+	width = 5,
 	icon = {
 		string = "",
 		font = { size = 16.0 },

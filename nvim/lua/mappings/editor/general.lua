@@ -12,6 +12,9 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', opt)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opt)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opt)
 vim.keymap.set('n', '<C-h>', '<C-w>h', opt)
+vim.keymap.set('n', '<leader>mc', function()
+  vim.api.nvim_buf_clear_namespace(0, vim.api.nvim_create_namespace('nvim.multicursor'), 0, -1)
+end, { desc = 'Clear multicursors' })
 
 -- Custom resize mode: press <leader>rs then use hjkl to resize continuously
 vim.keymap.set('n', '<leader>rs', function()

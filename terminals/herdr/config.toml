@@ -205,7 +205,7 @@ command = "~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh"
 [[keys.command]]
 key = "prefix+minus"
 type = "shell"
-command = "herdr pane split --current --direction down --ratio 0.70 --focus"
+command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction down --ratio 0.70 --focus"
 
 # tmux bound `|` to `split-window -h -l 50%`. 50/50 is symmetric so the
 # --ratio inversion noted above doesn't matter here. --focus for the same
@@ -213,7 +213,7 @@ command = "herdr pane split --current --direction down --ratio 0.70 --focus"
 [[keys.command]]
 key = "prefix+|"
 type = "shell"
-command = "herdr pane split --current --direction right --ratio 0.50 --focus"
+command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction right --ratio 0.50 --focus"
 
 # ── One-shot pane resize ─────────────────────────────────────────────────────
 # Restores tmux's H/J/K/L (resize-pane -L/-D/-U/-R 3). herdr's modal
@@ -263,7 +263,7 @@ type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
 
 [theme]
-name = "tokyo-night"
+name = "gruvbox"
 auto_switch = false
 
 # Pane interiors are the host terminal's default background — herdr reads

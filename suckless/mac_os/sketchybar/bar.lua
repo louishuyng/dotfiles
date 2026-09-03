@@ -1,4 +1,4 @@
-LAYOUT_FULL = true
+LAYOUT_FULL = false
 
 sbar.bar({
 	topmost = "window",
@@ -6,7 +6,7 @@ sbar.bar({
 	color = LAYOUT_FULL and 0xff1d1d1d or 0x00000000,
 	border_width = 0,
 	shadow = false,
-	position = "bottom",
+	position = "top",
 	sticky = true,
 	padding_right = 0,
 	padding_left = 0,

@@ -10,7 +10,7 @@ family = "IoskeleyMono Nerd Font"
 
 [font.offset]
 x = 0
-y = 5
+y = 9
 
 [font.glyph_offset]
 x = 0

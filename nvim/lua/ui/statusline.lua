@@ -443,7 +443,7 @@ function M.statusline()
     macro_recording(),
     position(),
     search_count(),
-    -- pulse_icons(),
+    pulse_icons(),
     -- Separator
     '%=',
     -- Right cluster

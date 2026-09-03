@@ -9,6 +9,7 @@ vim.pack.add({
   'https://github.com/nvim-tree/nvim-web-devicons',
 
   -- Theme
+  'https://github.com/scottmckendry/cyberdream.nvim',
   'https://github.com/catppuccin/nvim',
   'https://github.com/sainnhe/gruvbox-material',
   'https://github.com/savq/melange-nvim',
@@ -28,7 +29,7 @@ vim.pack.add({
   'https://github.com/rcarriga/nvim-notify',
 
   -- Editor
-  'https://github.com/mg979/vim-visual-multi',
+  -- 'https://github.com/mg979/vim-visual-multi', -- nvim 0.13 has built-in multicursors
   'https://github.com/folke/todo-comments.nvim',
   'https://github.com/folke/which-key.nvim',
   'https://github.com/dyng/ctrlsf.vim',

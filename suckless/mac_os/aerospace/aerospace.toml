@@ -17,8 +17,8 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 16
 inner.vertical =   16
-outer.top = [{ monitor."Built-in" = 0 }, 0]
-outer.bottom = [{ monitor."Built-in" = 42 }, 42]
+outer.top = [{ monitor."Built-in" = 15 }, 47]
+outer.bottom = [{ monitor."Built-in" = 0 }, 0]
 outer.left =       0
 outer.right =      0
 
@@ -133,10 +133,6 @@ if.app-id = 'com.jgraph.drawio.desktop'
 run = ['move-node-to-workspace Tool']
 
 [[on-window-detected]]
-if.app-id = 'com.conductor.app'
-run = ['move-node-to-workspace Tool']
-
-[[on-window-detected]]
 if.app-id = 'com.install4j.9806-1938-4586-6531.70'
 run = ['move-node-to-workspace Tool']
 
@@ -180,10 +176,15 @@ run = ['move-node-to-workspace Tool']
 if.app-id = 'dev.zed.Zed'
 run = ['move-node-to-workspace Tool']
 
+
 # Workspace Dev
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 run = ['move-node-to-workspace Dev']
+
+[[on-window-detected]]
+if.app-id = 'com.conductor.app'
+run = ['move-node-to-workspace Dev', 'layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'

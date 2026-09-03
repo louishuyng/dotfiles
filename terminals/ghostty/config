@@ -17,7 +17,7 @@ font-size = 12.7
 font-thicken = true
 font-thicken-strength = 150
 adjust-cell-width = 0%
-adjust-cell-height = 30%
+adjust-cell-height = 20%
 
 window-width = 200
 window-height = 55

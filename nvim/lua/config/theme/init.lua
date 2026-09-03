@@ -18,6 +18,9 @@ local adapter_loaders = {
   catppuccin = function()
     return require('config.theme.adapters.catppuccin')
   end,
+  cyberdream = function()
+    return require('config.theme.adapters.cyberdream')
+  end,
   cendre = function()
     return require('config.theme.adapters.cendre')
   end,
