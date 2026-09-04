@@ -15,14 +15,15 @@ do
 	end
 end
 
-local CMD = ([[vm_stat | awk '/page size of/{s=$8} /Pages wired/{w=$4} /Pages purgeable/{p=$3} ]]
-	.. [[/Anonymous pages/{a=$3} /occupied by compressor/{c=$5} END{printf "%%d", (a-p+w+c)*s/%d*100+0.5}']]):format(
-	memsize
-)
+local CMD = (
+	[[vm_stat | awk '/page size of/{s=$8} /Pages wired/{w=$4} /Pages purgeable/{p=$3} ]]
+	.. [[/Anonymous pages/{a=$3} /occupied by compressor/{c=$5} END{printf "%%d", (a-p+w+c)*s/%d*100+0.5}']]
+):format(memsize)
 
 local w = saturation_graph.build({
 	name = "widgets.memory",
 	color = colors.accent,
+	click_script = "killall 'Activity Monitor' >/dev/null 2>&1; defaults write com.apple.ActivityMonitor SelectedTab -int 1; open -a 'Activity Monitor'",
 	top = {
 		string = "MEM",
 		style = "Semibold",
@@ -37,6 +38,11 @@ local w = saturation_graph.build({
 		color = colors.white,
 	},
 })
+
+saturation_graph.process_popup(
+	w,
+	[[top -l 1 -o mem -n 5 -stats pid,command,mem | awk '/^PID / {seen=1; next} seen && NF {pid=$1; mem=$NF; $1=$NF=""; sub(/^  */, ""); sub(/[ \t]+$/, ""); printf "%s\t%s\t#%s\n", substr($0,1,22), mem, pid}']]
+)
 
 w.graph:subscribe({ "routine", "system_woke", "forced" }, function()
 	sbar.exec(CMD, function(out)

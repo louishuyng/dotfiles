@@ -8,6 +8,7 @@ local saturation_graph = require("items.widgets.saturation_graph")
 local w = saturation_graph.build({
 	name = "widgets.cpu",
 	color = colors.accent,
+	click_script = "killall 'Activity Monitor' >/dev/null 2>&1; defaults write com.apple.ActivityMonitor SelectedTab -int 0; open -a 'Activity Monitor'",
 	top = {
 		string = "CPU",
 		style = "Semibold",
@@ -22,6 +23,11 @@ local w = saturation_graph.build({
 		color = colors.white,
 	},
 })
+
+saturation_graph.process_popup(
+	w,
+	[[ps -Ao pid=,pcpu=,comm= -r | awk 'NR<=5 {$1=$1; pid=$1; pct=$2; $1=$2=""; sub(/^  */, ""); sub(/^.*\//, ""); printf "%s\t%.1f%%\t#%s\n", substr($0,1,22), pct, pid}']]
+)
 
 w.graph:subscribe({ "routine", "system_woke", "forced" }, function()
 	-- iostat's second sample averages over one second. Its leading disk columns
