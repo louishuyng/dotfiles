@@ -31,6 +31,18 @@ local CLICK_SCRIPT = "open -a 'Activity Monitor'"
 local PROCESS_ROWS = 5
 local active_process_popup
 
+local function process_click_script(pid, fallback)
+	local id = pid:match("^#(%d+)$")
+	if not id then
+		return fallback
+	end
+	return "path=$(ps -p "
+		.. id
+		.. ' -o comm=); case "$path" in *.app/*) open "${path%%.app/*}.app" ;; *) '
+		.. fallback
+		.. " ;; esac"
+end
+
 local function text_item(name, spec, y_offset, width, click_script)
 	return sbar.add("item", name, {
 		position = POSITION,
@@ -88,6 +100,7 @@ end
 
 function M.process_popup(w, command)
 	local rows = {}
+	local hover_version = 0
 	for i = 1, PROCESS_ROWS do
 		rows[i] = sbar.add("item", "popup." .. w.graph.name .. ".process." .. i, {
 			position = "popup." .. w.graph.name,
@@ -111,6 +124,7 @@ function M.process_popup(w, command)
 	end
 
 	local function show()
+		hover_version = hover_version + 1
 		if active_process_popup and active_process_popup ~= w.graph then
 			active_process_popup:set({ popup = { drawing = false } })
 		end
@@ -127,7 +141,12 @@ function M.process_popup(w, command)
 				end
 				local name, usage, pid = line:match("^(.-)\t(.-)\t(.+)$")
 				if name then
-					rows[i]:set({ drawing = true, icon = { string = name }, label = { string = usage .. "  " .. pid } })
+					rows[i]:set({
+						drawing = true,
+						click_script = process_click_script(pid, w.click_script),
+						icon = { string = name },
+						label = { string = usage .. "  " .. pid },
+					})
 					i = i + 1
 				end
 			end
@@ -142,16 +161,34 @@ function M.process_popup(w, command)
 	w.top:subscribe("mouse.entered", show)
 	w.bottom:subscribe("mouse.entered", show)
 
-	local function hide()
+	local function close()
 		if active_process_popup == w.graph then
 			w.graph:set({ popup = { drawing = false } })
 			active_process_popup = nil
 		end
 	end
 
-	w.graph:subscribe({ "mouse.exited", "mouse.exited.global" }, hide)
-	w.top:subscribe({ "mouse.exited", "mouse.exited.global" }, hide)
-	w.bottom:subscribe({ "mouse.exited", "mouse.exited.global" }, hide)
+	local function schedule_close()
+		hover_version = hover_version + 1
+		local version = hover_version
+		sbar.exec("sleep 0.15", function()
+			if hover_version == version then
+				close()
+			end
+		end)
+	end
+
+	for _, item in ipairs(rows) do
+		item:subscribe("mouse.entered", function()
+			hover_version = hover_version + 1
+		end)
+		item:subscribe("mouse.exited", schedule_close)
+	end
+
+	w.graph:subscribe("mouse.exited", schedule_close)
+	w.top:subscribe("mouse.exited", schedule_close)
+	w.bottom:subscribe("mouse.exited", schedule_close)
+	w.graph:subscribe("mouse.exited.global", close)
 end
 
 function M.recolor(w, color)
