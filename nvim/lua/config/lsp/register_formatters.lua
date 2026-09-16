@@ -60,6 +60,7 @@ conform.setup({
     sh = { 'shfmt' },
     go = { 'fmtkit_go', 'gofmt', stop_after_first = true },
     python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format', 'autopep8' },
+    proto = { 'buf' },
     zig = { 'zigfmt' },
   },
   formatters = {

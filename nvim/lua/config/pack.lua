@@ -29,7 +29,7 @@ vim.pack.add({
   'https://github.com/rcarriga/nvim-notify',
 
   -- Editor
-  -- 'https://github.com/mg979/vim-visual-multi', -- nvim 0.13 has built-in multicursors
+  'https://github.com/mg979/vim-visual-multi',
   'https://github.com/folke/todo-comments.nvim',
   'https://github.com/folke/which-key.nvim',
   'https://github.com/dyng/ctrlsf.vim',
@@ -98,7 +98,7 @@ vim.pack.add({
   'https://github.com/jay-babu/mason-nvim-dap.nvim',
 
   -- AI
-  -- 'https://github.com/github/copilot.vim',
+  'https://github.com/github/copilot.vim',
   -- 'https://github.com/NickvanDyke/opencode.nvim',
   'https://github.com/louishuyng/snipai',
 })

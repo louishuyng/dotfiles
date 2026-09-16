@@ -20,7 +20,9 @@ local opts = {
       base = '#11111B',
     },
     macchiato = {
-      -- base = '#000000',
+      base = '#191B21',
+      mantle = '#1E1F29',
+      crust = '#21222B',
     },
     latte = {
       rosewater = '#fdf7e8',

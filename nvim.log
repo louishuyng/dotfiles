@@ -1,0 +1,7 @@
+WRN 2026-09-05T18:32:30.355 ?.16598    server_start:197: Failed to start server: operation not permitted: /var/folders/5l/bxbmd4sx20d8v6f1ss6psscr0000gn/T/nvim.louishuyng/pBxQp2/nvim.16598.0
+WRN 2026-09-05T18:32:30.593 ?.16761    server_start:197: Failed to start server: operation not permitted: /var/folders/5l/bxbmd4sx20d8v6f1ss6psscr0000gn/T/nvim.louishuyng/v3rw3x/nvim.16761.0
+WRN 2026-09-05T18:33:16.261 ?.22322    server_start:197: Failed to start server: operation not permitted: /var/folders/5l/bxbmd4sx20d8v6f1ss6psscr0000gn/T/nvim.louishuyng/h9J7K5/nvim.22322.0
+WRN 2026-09-07T21:46:26.248 ?.37704    server_start:197: Failed to start server: operation not permitted: /var/folders/5l/bxbmd4sx20d8v6f1ss6psscr0000gn/T/nvim.louishuyng/SmNZJI/nvim.37704.0
+WRN 2026-09-07T21:47:34.726 ?.48466    server_start:197: Failed to start server: operation not permitted: /var/folders/5l/bxbmd4sx20d8v6f1ss6psscr0000gn/T/nvim.louishuyng/XVSaoo/nvim.48466.0
+WRN 2026-09-10T00:07:48.283 ?.44314    server_start:197: Failed to start server: operation not permitted: /var/folders/5l/bxbmd4sx20d8v6f1ss6psscr0000gn/T/nvim.louishuyng/qbXVlx/nvim.44314.0
+WRN 2026-09-10T00:08:11.418 ?.47520    server_start:197: Failed to start server: operation not permitted: /var/folders/5l/bxbmd4sx20d8v6f1ss6psscr0000gn/T/nvim.louishuyng/UEEogP/nvim.47520.0

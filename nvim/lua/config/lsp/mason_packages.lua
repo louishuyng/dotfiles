@@ -20,6 +20,10 @@ return {
   'ruff',
   'pyright',
 
+  -- Protobuf
+  'buf',
+  'protols',
+
   -- Elixir
   'elixir-ls',
 

@@ -9,6 +9,6 @@
 
 
 [[playzone]]
-name = "ku-regask"
-description = "ku TUI in k9s-play folder"
-script = "scripts/ku-regask.sh"
+name = "sofka-regask"
+description = "sofka TUI in k9s-play folder"
+script = "scripts/sofka-regask.sh"

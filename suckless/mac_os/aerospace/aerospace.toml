@@ -1,3 +1,6 @@
+config-version = 2
+persistent-workspaces = ['Tool', 'Dev', 'Web', 'Chat', 'Reading', 'Planing', 'Any', 'Inbox', 'Virtual']
+
 after-startup-command = [
   'exec-and-forget sketchybar',
 ]
@@ -67,10 +70,15 @@ alt-shift-f = 'layout floating tiling'
 alt-shift-m = 'macos-native-fullscreen'
 alt-ctrl-shift-y = 'reload-config'
 
+# Float by default; full-size work apps opt back into tiling below.
+[[on-window-detected]]
+check-further-callbacks = true
+run = ['layout floating']
+
 # Workspace Tool
 [[on-window-detected]]
 if.app-id = 'com.mongodb.compass'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'io.beekeeperstudio.desktop'
@@ -80,33 +88,33 @@ run = ['move-node-to-workspace Tool']
 if.app-id = 'com.proxyman.NSProxy'
 run = ['move-node-to-workspace Tool']
 
-[[on-window-detected]]
-if.app-id = 'com.tinyapp.TablePlus'
-run = ['move-node-to-workspace Tool']
+# [[on-window-detected]]
+# if.app-id = 'com.tinyapp.TablePlus'
+# run = ['move-node-to-workspace Tool', 'layout tiling']
+#
+# [[on-window-detected]]
+# if.app-id = 'com.dbeaver.product.lite'
+# run = ['move-node-to-workspace Tool', 'layout tiling']
 
-[[on-window-detected]]
-if.app-id = 'com.dbeaver.product.lite'
-run = ['move-node-to-workspace Tool']
-
-[[on-window-detected]]
-if.app-id = 'com.jetbrains.datagrip'
-run = ['move-node-to-workspace Tool']
+# [[on-window-detected]]
+# if.app-id = 'com.jetbrains.datagrip'
+# run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.electron.kontena-lens'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.rustrover'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'li.zihua.medis2'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.wails.loca-dashboard'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
@@ -114,39 +122,39 @@ run = ['move-node-to-workspace Tool']
 
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.neovide.neovide'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.superset.desktop'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'app.yaak.desktop'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.jgraph.drawio.desktop'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.install4j.9806-1938-4586-6531.70'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.usebruno.app'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'dev.kdrag0n.MacVirt'
-run = ['move-node-to-workspace Tool']
-
-[[on-window-detected]]
-if.app-id = 'ai.elementlabs.lmstudio'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
+#
+# [[on-window-detected]]
+# if.app-id = 'ai.elementlabs.lmstudio'
+# run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'org.wireshark.Wireshark'
@@ -158,15 +166,15 @@ run = ['move-node-to-workspace Tool']
 
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.exafunction.windsurf'
-run = ['move-node-to-workspace Tool']
+run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'tonyapp.devutils'
@@ -180,7 +188,7 @@ run = ['move-node-to-workspace Tool']
 # Workspace Dev
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ['move-node-to-workspace Dev']
+run = ['move-node-to-workspace Dev', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.conductor.app'
@@ -188,19 +196,19 @@ run = ['move-node-to-workspace Dev', 'layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
-run = [ 'move-node-to-workspace Dev']
+run = ['move-node-to-workspace Dev', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
-run = ['move-node-to-workspace Dev']
+run = ['move-node-to-workspace Dev', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'app.liten.Gram'
-run = ['move-node-to-workspace Dev']
+run = ['move-node-to-workspace Dev', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.openai.codex'
-run = ['move-node-to-workspace Dev', 'layout floating']
+run = ['move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
@@ -209,31 +217,31 @@ run = ['move-node-to-workspace Dev']
 # Workspace Web
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace Web', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace Web', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace Web', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'net.imput.helium'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace Web', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.dia'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace Web', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'at.studio.AsideBrowser'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace Web', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace Web', 'layout tiling']
 
 # Workspace Reading
 [[on-window-detected]]
@@ -297,7 +305,7 @@ run = ['move-node-to-workspace Any']
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
-run = ['move-node-to-workspace Any']
+run = ['move-node-to-workspace Any', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.deezer.deezer-desktop'
@@ -310,11 +318,11 @@ run = ['move-node-to-workspace Any']
 # Workspace Virutal
 [[on-window-detected]]
 if.app-id = 'org.virtualbox.app.VirtualBox'
-run = ['move-node-to-workspace Virtual']
+run = ['move-node-to-workspace Virtual', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.utmapp.UTM'
-run = ['move-node-to-workspace Virtual']
+run = ['move-node-to-workspace Virtual', 'layout tiling']
 
 # Workspace Inbox
 

@@ -14,7 +14,9 @@ vim.keymap.set('n', '<leader>fb', function()
   return builtin.buffers(telescope_theme('Buffers'))
 end, { silent = true, noremap = true, desc = 'List buffers' })
 vim.keymap.set('n', '<leader>/', function()
-  return require('telescope').extensions.live_grep_args.live_grep_args(telescope_theme('LiveGrep', true))
+  local opts = telescope_theme('LiveGrep', true)
+  opts.debounce = 100
+  return telescope.extensions.live_grep_args.live_grep_args(opts)
 end, { silent = true, noremap = true, desc = 'Grep words' })
 
 vim.keymap.set('n', '<leader>fm', function()

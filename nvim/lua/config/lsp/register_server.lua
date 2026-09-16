@@ -5,6 +5,7 @@ require 'config/lsp/servers/json'
 -- require 'config/lsp/servers/ltex' -- Disabled: typos_lsp is lighter for spell checking
 require 'config/lsp/servers/lua'
 require 'config/lsp/servers/python'
+require 'config/lsp/servers/proto'
 require 'config/lsp/servers/ruby'
 require 'config/lsp/servers/rust'
 require 'config/lsp/servers/spell'
