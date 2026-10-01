@@ -418,7 +418,12 @@ link_all_dotfiles() {
 
   ln -s ~/.dotfiles/.irbrc ~/.irbrc
 
-  ln -s ~/.dotfiles/opencode/agent ~/.config/opencode
+  mkdir -p ~/.config/opencode
+  ln -sfn ~/.dotfiles/opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
+  ln -sfn ~/.dotfiles/opencode/agents ~/.config/opencode/agents
+  ln -sfn ~/.dotfiles/ai/skills ~/.config/opencode/skills
+  ln -sfn ~/.dotfiles/opencode/AGENTS.md ~/.config/opencode/AGENTS.md
+  ln -sfn ~/.dotfiles/opencode/.i-have-adhd-always ~/.config/opencode/.i-have-adhd-always
   success "Linked opencode"
 
   mkdir -p ~/.claude

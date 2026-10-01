@@ -1,0 +1,74 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "servers": {
+      "linear": {
+        "type": "remote",
+        "url": "https://mcp.linear.app/mcp"
+      },
+      "computer-use": {
+        "type": "local",
+        "command": [
+          "/Users/louishuyng/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
+          "mcp"
+        ],
+        "cwd": "/Users/louishuyng/.codex/computer-use",
+        "disabled": false
+      },
+      "whiteboard": {
+        "type": "local",
+        "command": [
+          "/Users/louishuyng/.codex/plugins/cache/devfast/whiteboard/0.1.1/bin/whiteboard-mcp"
+        ],
+        "cwd": "/Users/louishuyng/.codex/plugins/cache/devfast/whiteboard/0.1.1"
+      }
+    }
+  },
+  "skills": [
+    "/Users/louishuyng/.config/opencode/vendor/ponytail/skills",
+    "/Users/louishuyng/.config/opencode/vendor/i-have-adhd/skills"
+  ],
+  "commands": {
+    "ponytail-audit": {
+      "description": "Audit the whole repo for over-engineering, what can be deleted",
+      "template": "Audit the entire repository for over-engineering only, not correctness. Scan the whole tree, not a diff. One line per finding, ranked biggest cut first: <tag> <what to cut>. <replacement>. [path]. Tags: delete (dead code/speculative feature), stdlib (reinvented standard library), native (dependency doing what the platform does), yagni (abstraction with one implementation), shrink (same logic, fewer lines). End with the net lines and dependencies removable. If nothing to cut: 'Lean already. Ship.'"
+    },
+    "ponytail-gain": {
+      "description": "Show ponytail's measured impact scoreboard (less code, cost, time)",
+      "template": "Show the ponytail gain scoreboard. One shot, change nothing: do not switch mode, write flag files, or persist anything. Render the published benchmark medians (5 everyday tasks; models Haiku, Sonnet, Opus; source benchmarks/ and the README) as plain ASCII bars: Lines of code, no-skill 100% vs ponytail 6-20% (down 80-94%); Cost, no-skill 100% vs ponytail 23-53% (down 47-77%); Speed, ponytail 3-6x faster. The bar length shows the measured range, the label carries the exact figure. These are benchmark medians, not this repo. NEVER print a per-repo savings number: the unbuilt version was never written, so there is no real baseline to subtract from in a live repo. For real per-repo figures, point to /ponytail-debt (the counted shortcut ledger) and /ponytail-audit (what is still cuttable). Report only."
+    },
+    "ponytail-debt": {
+      "description": "Harvest ponytail: comments into a tracked debt ledger",
+      "template": "Harvest every `ponytail:` comment in this repository into a debt ledger so deferrals do not rot into 'later means never'. Grep the whole tree for comment markers (grep -rnE '(#|//) ?ponytail:' ., skipping node_modules/.git/build output). One row per marker, grouped by file: <file>:<line>, <what was simplified>. ceiling: <the limit named in the comment>. upgrade: <the trigger to revisit>. Tag any marker that names no upgrade path or trigger as no-trigger, those rot silently. End with the count of markers and how many lack a trigger. If none: 'No ponytail: debt. Clean ledger.' Report only, change nothing."
+    },
+    "ponytail-help": {
+      "description": "Quick reference for ponytail levels, skills, and commands",
+      "template": "Show the ponytail quick reference. One shot, change nothing: do not switch mode, write flag files, or persist anything. Levels: /ponytail lite (build what's asked, name the lazier alternative in one line), /ponytail (full, the default ladder: YAGNI then stdlib then native then one line then minimum), /ponytail ultra (deletion before addition, challenges the requirement before building). Commands: /ponytail-review (over-engineering review of the current changes), /ponytail-audit (whole-repo over-engineering audit), /ponytail-debt (harvest ponytail: comments into a tracked ledger), /ponytail-gain (measured-impact scoreboard from the benchmark), /ponytail-help (this card). Deactivate with 'stop ponytail', 'normal mode', or /ponytail off; resume anytime with /ponytail. Default mode is full; change it with the PONYTAIL_DEFAULT_MODE environment variable (off|lite|full|ultra) or a config file at ~/.config/ponytail/config.json (Windows: %APPDATA%\\ponytail\\config.json) with {\"defaultMode\": \"lite\"}. Resolution order: env var, then config file, then full."
+    },
+    "ponytail-review": {
+      "description": "Review changes for over-engineering, what can be deleted",
+      "template": "Review the current code changes for over-engineering only, not correctness. One line per finding: L<line>: <tag> <what to cut>. <replacement>. Tags: delete (dead code/speculative feature), stdlib (reinvented standard library), native (dependency doing what the platform does), yagni (abstraction with one implementation), shrink (same logic, fewer lines). End with the net lines removable. If nothing to cut: 'Lean already. Ship.'"
+    },
+    "caveman": {
+      "description": "Set concise response mode (lite/full/ultra/off)",
+      "template": "Requested Caveman mode: $ARGUMENTS. If the mode is off, stop Caveman mode and resume normal prose. Otherwise load the caveman skill and apply the requested mode for this session; use full when no mode is specified."
+    }
+  },
+  "plugins": [
+    {
+      "package": "/Users/louishuyng/.dotfiles/opencode/plugins/codex-modes",
+      "options": {
+        "ponytailRoot": "/Users/louishuyng/.config/opencode/vendor/ponytail",
+        "adhdRoot": "/Users/louishuyng/.config/opencode/vendor/i-have-adhd"
+      }
+    },
+    {
+      "package": "/Users/louishuyng/.dotfiles/opencode/plugins/rtk",
+      "options": {
+        "executable": "/opt/homebrew/bin/rtk",
+        "instructionsPath": "/Users/louishuyng/.codex/RTK.md"
+      }
+    }
+  ],
+  "default_agent": "build"
+}
