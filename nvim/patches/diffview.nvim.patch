@@ -1,0 +1,73 @@
+--- a/lua/diffview/path.lua
++++ b/lua/diffview/path.lua
+@@ -225,7 +225,7 @@
+ 
+   opt = opt or {}
+   local cwd = opt.cwd and self:_clean(opt.cwd) or self:_cwd()
+-  local absolute = vim.F.if_nil(opt.absolute, false)
++  local absolute = vim.nonnil(opt.absolute, false)
+ 
+   local root = self:root(path)
+   if root and self:is_root(path) then
+--- a/lua/diffview/ui/panel.lua
++++ b/lua/diffview/ui/panel.lua
+@@ -1,3 +1,11 @@
++local function validate(spec)
++  for name, item in pairs(spec) do
++    local validator = item[2] == "n" and "number" or item[2]
++    local message = type(item[3]) == "string" and item[3] or nil
++    vim.validate(name, item[1], validator, message == nil and item[3] or nil, message)
++  end
++end
++
+ local EventEmitter = require("diffview.events").EventEmitter
+ local File = require("diffview.vcs.file").File
+ local PerfTimer = require("diffview.perf").PerfTimer
+@@ -162,13 +170,13 @@
+     }
+   end
+ 
+-  vim.validate({ type = valid_enum(config.type, { "split", "float" }) })
++  validate({ type = valid_enum(config.type, { "split", "float" }) })
+ 
+   if config.type == "split" then
+     ---@cast config PanelSplitSpec
+     self.state.form = vim.tbl_contains({ "top", "bottom" }, config.position) and "row" or "column"
+ 
+-    vim.validate({
++    validate({
+       position = valid_enum(config.position, { "left", "top", "right", "bottom" }),
+       relative = valid_enum(config.relative, { "editor", "win" }),
+       width = { config.width, "number", true },
+@@ -179,7 +187,7 @@
+     ---@cast config PanelFloatSpec
+     local border = { "none", "single", "double", "rounded", "solid", "shadow" }
+ 
+-    vim.validate({
++    validate({
+       relative = valid_enum(config.relative, { "editor", "win", "cursor" }),
+       win = { config.win, "n", true },
+       anchor = valid_enum(config.anchor, { "NW", "NE", "SW", "SE" }, true),
+--- a/lua/diffview/vcs/adapters/git/init.lua
++++ b/lua/diffview/vcs/adapters/git/init.lua
+@@ -1,3 +1,11 @@
++local function validate(spec)
++  for name, item in pairs(spec) do
++    local validator = item[2] == "n" and "number" or item[2]
++    local message = type(item[3]) == "string" and item[3] or nil
++    vim.validate(name, item[1], validator, message == nil and item[3] or nil, message)
++  end
++end
++
+ local AsyncListStream = require("diffview.stream").AsyncListStream
+ local Commit = require("diffview.vcs.adapters.git.commit").GitCommit
+ local Diff2Hor = require("diffview.scene.layouts.diff_2_hor").Diff2Hor
+@@ -492,7 +500,7 @@
+ 
+   -- Soft validate the data
+   ret.valid = #namestat == #numstat and pcall(
+-    vim.validate,
++    validate,
+     {
+       left_hash = { ret.left_hash, "string", true },
+       right_hash = { ret.right_hash, "string" },

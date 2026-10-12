@@ -1,12 +1,14 @@
 -- Plugin management using Neovim 0.12's built-in vim.pack
 -- Replaces lazy.nvim
 
+local patches = require('config.plugin_patches')
+
 vim.pack.add({
   -- Core dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',
   'https://github.com/nvim-neotest/nvim-nio',
-  'https://github.com/nvim-tree/nvim-web-devicons',
+  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- nvim-material-icon supplies the same module.
 
   -- Theme
   'https://github.com/scottmckendry/cyberdream.nvim',
@@ -76,8 +78,8 @@ vim.pack.add({
   -- Binary is built automatically via the PackChanged autocmd below.
   'https://github.com/desdic/marlin.nvim',
   'https://github.com/nvim-tree/nvim-tree.lua',
-  'https://github.com/s1n7ax/nvim-window-picker',
-  'https://github.com/folke/edgy.nvim',
+  -- 'https://github.com/s1n7ax/nvim-window-picker', -- Tree window picking is disabled.
+  -- 'https://github.com/folke/edgy.nvim', -- No layout is configured.
   'https://github.com/folke/flash.nvim',
 
   -- LSP
@@ -101,6 +103,11 @@ vim.pack.add({
   'https://github.com/github/copilot.vim',
   -- 'https://github.com/NickvanDyke/opencode.nvim',
   'https://github.com/louishuyng/snipai',
+}, {
+  load = function(plugin)
+    patches.apply(plugin)
+    vim.cmd.packadd({ plugin.spec.name, bang = vim.v.vim_did_init ~= 1 })
+  end,
 })
 
 vim.api.nvim_create_user_command('PackClean', function()

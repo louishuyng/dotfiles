@@ -211,6 +211,10 @@ if.app-id = 'com.openai.codex'
 run = ['move-node-to-workspace Dev']
 
 [[on-window-detected]]
+if.app-id = 'ai.opencode.desktop'
+run = ['move-node-to-workspace Dev']
+
+[[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
 run = ['move-node-to-workspace Dev']
 
@@ -237,7 +241,7 @@ run = ['move-node-to-workspace Web', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'at.studio.AsideBrowser'
-run = ['move-node-to-workspace Web', 'layout tiling']
+run = ['move-node-to-workspace Web']
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'

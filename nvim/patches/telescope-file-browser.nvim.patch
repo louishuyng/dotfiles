@@ -1,0 +1,221 @@
+--- a/lua/telescope/_extensions/file_browser/actions.lua
++++ b/lua/telescope/_extensions/file_browser/actions.lua
+@@ -626,7 +626,7 @@
+ ---@param prompt_bufnr number: The prompt bufnr
+ ---@param bypass boolean: Allow passing beyond the globally set current working directory
+ fb_actions.goto_parent_dir = function(prompt_bufnr, bypass)
+-  bypass = vim.F.if_nil(bypass, true)
++  bypass = vim.nonnil(bypass, true)
+   local current_picker = action_state.get_current_picker(prompt_bufnr)
+   local finder = current_picker.finder
+   local parent_dir = Path:new(finder.path):parent():absolute()
+@@ -704,7 +704,7 @@
+ ---@param prompt_bufnr number: The prompt bufnr
+ fb_actions.toggle_browser = function(prompt_bufnr, opts)
+   opts = opts or {}
+-  opts.reset_prompt = vim.F.if_nil(opts.reset_prompt, true)
++  opts.reset_prompt = vim.nonnil(opts.reset_prompt, true)
+   local current_picker = action_state.get_current_picker(prompt_bufnr)
+   local finder = current_picker.finder
+   finder.files = not finder.files
+--- a/lua/telescope/_extensions/file_browser/finders.lua
++++ b/lua/telescope/_extensions/file_browser/finders.lua
+@@ -177,7 +177,7 @@
+   opts._entry_cache = {}
+ 
+   local hidden_default = { file_browser = false, folder_browser = false }
+-  local hidden = vim.F.if_nil(opts.hidden, hidden_default)
++  local hidden = vim.nonnil(opts.hidden, hidden_default)
+   if type(hidden) == "table" then
+     hidden = vim.tbl_extend("keep", hidden, hidden_default)
+   end
+@@ -187,36 +187,36 @@
+   return setmetatable({
+     cwd_to_path = opts.cwd_to_path,
+     cwd = cwd,
+-    path = vim.F.if_nil(opts.path, opts.cwd), -- current path for file browser
+-    add_dirs = vim.F.if_nil(opts.add_dirs, true),
++    path = vim.nonnil(opts.path, opts.cwd), -- current path for file browser
++    add_dirs = vim.nonnil(opts.add_dirs, true),
+     hidden = hidden,
+-    depth = vim.F.if_nil(opts.depth, 1), -- depth for file browser
+-    auto_depth = vim.F.if_nil(opts.auto_depth, false), -- depth for file browser
+-    respect_gitignore = vim.F.if_nil(opts.respect_gitignore, has_fd()),
+-    no_ignore = vim.F.if_nil(opts.no_ignore, false),
+-    follow_symlinks = vim.F.if_nil(opts.follow_symlinks, false),
+-    files = vim.F.if_nil(opts.files, true), -- file or folders mode
+-    grouped = vim.F.if_nil(opts.grouped, false),
+-    quiet = vim.F.if_nil(opts.quiet, false),
+-    select_buffer = vim.F.if_nil(opts.select_buffer, false),
+-    hide_parent_dir = vim.F.if_nil(opts.hide_parent_dir, false),
+-    collapse_dirs = vim.F.if_nil(opts.collapse_dirs, false),
+-    git_status = vim.F.if_nil(opts.git_status, fb_git.find_root(cwd) ~= nil),
+-    create_from_prompt = vim.F.if_nil(opts.create_from_prompt, true),
++    depth = vim.nonnil(opts.depth, 1), -- depth for file browser
++    auto_depth = vim.nonnil(opts.auto_depth, false), -- depth for file browser
++    respect_gitignore = vim.nonnil(opts.respect_gitignore, has_fd()),
++    no_ignore = vim.nonnil(opts.no_ignore, false),
++    follow_symlinks = vim.nonnil(opts.follow_symlinks, false),
++    files = vim.nonnil(opts.files, true), -- file or folders mode
++    grouped = vim.nonnil(opts.grouped, false),
++    quiet = vim.nonnil(opts.quiet, false),
++    select_buffer = vim.nonnil(opts.select_buffer, false),
++    hide_parent_dir = vim.nonnil(opts.hide_parent_dir, false),
++    collapse_dirs = vim.nonnil(opts.collapse_dirs, false),
++    git_status = vim.nonnil(opts.git_status, fb_git.find_root(cwd) ~= nil),
++    create_from_prompt = vim.nonnil(opts.create_from_prompt, true),
+ 
+     -- ensure we forward make_entry opts adequately
+-    entry_maker = vim.F.if_nil(opts.entry_maker, function(local_opts)
++    entry_maker = vim.nonnil(opts.entry_maker, function(local_opts)
+       return fb_make_entry(vim.tbl_extend("force", opts, local_opts))
+     end),
+-    _browse_files = vim.F.if_nil(opts.browse_files, fb_finders.browse_files),
+-    _browse_folders = vim.F.if_nil(opts.browse_folders, fb_finders.browse_folders),
++    _browse_files = vim.nonnil(opts.browse_files, fb_finders.browse_files),
++    _browse_folders = vim.nonnil(opts.browse_folders, fb_finders.browse_folders),
+     close = function(self)
+       self._finder = nil
+     end,
+     prompt_title = opts._custom_prompt_title,
+     results_title = opts._custom_results_title,
+     prompt_path = opts.prompt_path,
+-    use_fd = vim.F.if_nil(opts.use_fd, true),
++    use_fd = vim.nonnil(opts.use_fd, true),
+   }, {
+     __call = function(self, ...)
+       if self.files and self.auto_depth then
+--- a/lua/telescope/_extensions/file_browser/fs_stat.lua
++++ b/lua/telescope/_extensions/file_browser/fs_stat.lua
+@@ -80,7 +80,7 @@
+     if vim.fn.has "nvim-0.10" == 1 then
+       stat = vim.iter(stat):flatten():totable()
+     else
+-      stat = vim.tbl_flatten(stat)
++      stat = vim.iter(stat):flatten(math.huge):totable()
+     end
+ 
+     local highlights = {}
+--- a/lua/telescope/_extensions/file_browser/lsp.lua
++++ b/lua/telescope/_extensions/file_browser/lsp.lua
+@@ -117,9 +117,9 @@
+   local match_fns = {} ---@type (fun(file: string): boolean)[]
+   for _, filter in ipairs(filters) do
+     if filter.scheme == nil or filter.scheme == "file" then
+-      local ignore_case = vim.F.if_nil(vim.tbl_get(filter, "pattern", "ignoreCase"), false)
++      local ignore_case = vim.nonnil(vim.tbl_get(filter, "pattern", "ignoreCase"), false)
+       local lpeg_pattern = glob_to_pattern(filter.pattern.glob, ignore_case)
+-      local pattern_kind = vim.F.if_nil(vim.tbl_get(filter, "pattern", "matches"), "all")
++      local pattern_kind = vim.nonnil(vim.tbl_get(filter, "pattern", "matches"), "all")
+ 
+       table.insert(match_fns, function(file)
+         local is_dir = vim.fn.isdirectory(file) == 1
+--- a/lua/telescope/_extensions/file_browser/make_entry.lua
++++ b/lua/telescope/_extensions/file_browser/make_entry.lua
+@@ -157,7 +157,7 @@
+       end
+     end
+ 
+-    local file_width = vim.F.if_nil(opts.file_width, math.max(15, total_file_width))
++    local file_width = vim.nonnil(opts.file_width, math.max(15, total_file_width))
+     -- TODO maybe this can be dealt with more cleanly
+     if #path_display > file_width then
+       path_display = strings.truncate(path_display, file_width, nil, -1)
+@@ -207,13 +207,13 @@
+           end
+         end
+       else
+-        git_status = vim.F.if_nil(opts.git_file_status[t.value], "  ")
++        git_status = vim.nonnil(opts.git_file_status[t.value], "  ")
+       end
+       return fb_git.make_display(opts, git_status)
+     end
+ 
+     if k == "stat" then
+-      t.stat = vim.F.if_nil(vim.loop.fs_stat(t.value), false)
++      t.stat = vim.nonnil(vim.loop.fs_stat(t.value), false)
+       if not t.stat then
+         return t.lstat
+       end
+@@ -221,7 +221,7 @@
+     end
+ 
+     if k == "lstat" then
+-      local lstat = vim.F.if_nil(vim.loop.fs_lstat(t.value), false)
++      local lstat = vim.nonnil(vim.loop.fs_lstat(t.value), false)
+       if not lstat then
+         log.warn("Unable to get stat for " .. t.value)
+         t.lstat = false
+--- a/lua/telescope/_extensions/file_browser/picker.lua
++++ b/lua/telescope/_extensions/file_browser/picker.lua
+@@ -145,21 +145,21 @@
+   opts = opts or {}
+ 
+   local cwd = vim.loop.cwd() ---@cast cwd string
+-  opts.depth = vim.F.if_nil(opts.depth, 1)
+-  opts.cwd_to_path = vim.F.if_nil(opts.cwd_to_path, false)
++  opts.depth = vim.nonnil(opts.depth, 1)
++  opts.cwd_to_path = vim.nonnil(opts.cwd_to_path, false)
+   opts.cwd = opts.cwd and fb_utils.to_absolute_path(opts.cwd) or cwd
+   opts.path = opts.path and fb_utils.to_absolute_path(opts.path) or opts.cwd
+-  opts.files = vim.F.if_nil(opts.files, true)
+-  opts.quiet = vim.F.if_nil(opts.quiet, false)
+-  opts.hide_parent_dir = vim.F.if_nil(opts.hide_parent_dir, false)
+-  opts.select_buffer = vim.F.if_nil(opts.select_buffer, false)
+-  opts.display_stat = vim.F.if_nil(opts.display_stat, { mode = true, date = true, size = true })
++  opts.files = vim.nonnil(opts.files, true)
++  opts.quiet = vim.nonnil(opts.quiet, false)
++  opts.hide_parent_dir = vim.nonnil(opts.hide_parent_dir, false)
++  opts.select_buffer = vim.nonnil(opts.select_buffer, false)
++  opts.display_stat = vim.nonnil(opts.display_stat, { mode = true, date = true, size = true })
+   opts._custom_prompt_title = opts.prompt_title ~= nil
+   opts._custom_results_title = opts.results_title ~= nil
+-  opts.use_fd = vim.F.if_nil(opts.use_fd, true)
+-  opts.git_status = vim.F.if_nil(opts.git_status, vim.fn.executable "git" == 1)
+-  opts.prompt_path = vim.F.if_nil(opts.prompt_path, false)
+-  opts.create_from_prompt = vim.F.if_nil(opts.create_from_prompt, true)
++  opts.use_fd = vim.nonnil(opts.use_fd, true)
++  opts.git_status = vim.nonnil(opts.git_status, vim.fn.executable "git" == 1)
++  opts.prompt_path = vim.nonnil(opts.prompt_path, false)
++  opts.create_from_prompt = vim.nonnil(opts.create_from_prompt, true)
+ 
+   local select_buffer = opts.select_buffer and opts.files
+   -- handle case that current buffer is a hidden file
+@@ -171,7 +171,7 @@
+   if select_buffer then
+     local buf_name = vim.api.nvim_buf_get_name(0)
+     fb_utils.selection_callback(opts, buf_name)
+-    -- opts._completion_callbacks = vim.F.if_nil(opts._completion_callbacks, {})
++    -- opts._completion_callbacks = vim.nonnil(opts._completion_callbacks, {})
+     -- table.insert(opts._completion_callbacks, function(current_picker)
+     --   local finder = current_picker.finder
+     --   local selection_index = fb_utils._get_selection_index(buf_name, finder.path, finder.results)
+--- a/lua/telescope/_extensions/file_browser/utils.lua
++++ b/lua/telescope/_extensions/file_browser/utils.lua
+@@ -21,7 +21,7 @@
+ 
+ -- TODO(fdschmidt93): support multi-selections better usptream
+ fb_utils.get_selected_files = function(prompt_bufnr, smart)
+-  smart = vim.F.if_nil(smart, true)
++  smart = vim.nonnil(smart, true)
+   local selected = {}
+   local current_picker = action_state.get_current_picker(prompt_bufnr)
+   local selections = current_picker:get_multi_selection()
+@@ -170,7 +170,7 @@
+ fb_utils.notify = function(funname, opts)
+   -- avoid circular require
+   local fb_config = require "telescope._extensions.file_browser.config"
+-  local quiet = vim.F.if_nil(opts.quiet, fb_config.values.quiet)
++  local quiet = vim.nonnil(opts.quiet, fb_config.values.quiet)
+   if not quiet then
+     local level = vim.log.levels[opts.level]
+     if not level then
+@@ -213,7 +213,7 @@
+ 
+ -- Sets the selection to absolute path if found in the currently opened folder in the file browser
+ fb_utils.selection_callback = function(current_picker, absolute_path)
+-  current_picker._completion_callbacks = vim.F.if_nil(current_picker._completion_callbacks, {})
++  current_picker._completion_callbacks = vim.nonnil(current_picker._completion_callbacks, {})
+   table.insert(current_picker._completion_callbacks, function(picker)
+     local finder = picker.finder
+     local dir = finder.files and finder.path or finder.cwd

@@ -2,6 +2,8 @@
         pager = delta
 	excludesfile = /Users/louishuyng/.gitignore_global
 [interactive] diffFilter = delta --color-only
+ diffFilter = delta --color-only
+ diffFilter = delta --color-only
 
 [delta]
     navigate = true
@@ -76,3 +78,12 @@
 	required = true
 [url "git@github.com-regask:regask/"]
 	insteadOf = https://github.com/regask/
+[user]
+	name = Louis Huy Nguyen
+	email = huynguyennbk@gmail.com
+[credential "https://omniyatgroup.ghe.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.omniyatgroup.ghe.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

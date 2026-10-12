@@ -30,5 +30,12 @@ if command -v stylua >/dev/null; then
 fi
 
 if command -v sketchybar >/dev/null; then
-	sketchybar --reload
+	service="gui/$(id -u)/homebrew.mxcl.sketchybar"
+	# A config reload keeps the process alive with its cached app font.
+	if launchctl print "$service" >/dev/null 2>&1; then
+		launchctl kickstart -k "$service"
+	else
+		sketchybar --reload
+		echo "Restart your SketchyBar process if updated icons are still missing."
+	fi
 fi

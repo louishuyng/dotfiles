@@ -73,18 +73,7 @@ require('code_runner').setup({
 })
 
 -- Smart splits
-require('smart-splits').setup({
-  resize_mode = {
-    hooks = {
-      on_enter = function()
-        vim.notify('Entering resize mode...', vim.log.levels.INFO)
-      end,
-      on_leave = function()
-        vim.notify('Exiting resize mode', vim.log.levels.INFO)
-      end,
-    },
-  },
-})
+require('smart-splits').setup({})
 
 -- Colorizer
 require('colorizer').setup({
@@ -136,34 +125,10 @@ vim.keymap.set('n', '<leader>un', function()
   require('notify').dismiss({ silent = true, pending = true })
 end, { desc = 'Dismiss all Notifications' })
 
--- Material icons + web-devicons
-local web_devicons_ok, web_devicons = pcall(require, 'nvim-web-devicons')
-if web_devicons_ok then
-  local material_icon_ok, material_icon = pcall(require, 'nvim-material-icon')
-  if material_icon_ok then
-    material_icon.setup({
-      override = {},
-      color_icons = true,
-      default = true,
-      strict = true,
-      override_by_filename = {},
-      override_by_extension = {},
-    })
-    web_devicons.setup({
-      override = material_icon.get_icons(),
-      color_icons = true,
-      default = true,
-    })
-  end
-end
-
 -- LuaSnip
 require('luasnip.loaders.from_vscode').lazy_load()
 require('luasnip.loaders.from_vscode').lazy_load({ paths = '~/.dotfiles/nvim/snippets' })
 require('luasnip').filetype_extend('ruby', { 'rails' })
-
--- Git conflict
-require('git-conflict').setup()
 
 -- Tiny inline diagnostic
 require('tiny-inline-diagnostic').setup()

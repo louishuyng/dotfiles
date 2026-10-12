@@ -53,7 +53,7 @@ conform.setup({
     javascriptreact = { 'oxfmt', 'fmtkit', 'prettier', stop_after_first = true },
     typescriptreact = { 'oxfmt', 'fmtkit', 'prettier', stop_after_first = true },
     json = { 'prettier' },
-    vue = { 'fmtkit', 'prettier', 'eslint' },
+    vue = { 'fmtkit', 'prettier' },
     lua = { 'stylua' },
     markdown = { 'fmtkit', 'prettier' },
     fish = { 'fish_indent' },
@@ -62,6 +62,7 @@ conform.setup({
     python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format', 'autopep8' },
     proto = { 'buf' },
     zig = { 'zigfmt' },
+    swift = { 'swift' },
   },
   formatters = {
     fmtkit = {
@@ -110,11 +111,6 @@ conform.setup({
     zigfmt = {
       command = 'zig',
       args = { 'fmt', '--stdin' },
-      stdin = true,
-    },
-    ruff_fix = {
-      command = 'ruff',
-      args = { 'fix', '--stdin-filename', '$FILENAME', '-' },
       stdin = true,
     },
     ruff_format = {

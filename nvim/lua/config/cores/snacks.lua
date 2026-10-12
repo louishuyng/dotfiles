@@ -1,5 +1,10 @@
 local snacks = require('snacks')
 
+local chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+if not vim.env.PUPPETEER_EXECUTABLE_PATH and vim.fn.executable(chrome) == 1 then
+  vim.env.PUPPETEER_EXECUTABLE_PATH = chrome
+end
+
 snacks.setup {
   bigfile = { enabled = true },
   gitbrowse = { enabled = true },
@@ -23,7 +28,7 @@ snacks.setup {
     },
   },
   notifier = {
-    enabled = true,
+    enabled = false,
     timeout = 3000,
     style = 'compact',
     top_down = false,
@@ -317,16 +322,11 @@ vim.keymap.set('n', '<leader>tV', function()
   Snacks.terminal.toggle(nil, { win = { position = 'right', width = 0.4 } })
 end, { desc = 'Terminal Vertical' })
 
-vim.keymap.set(
-  'n',
-  '<leader>fn',
-  ":lua require('snacks').notifier.show_history()<CR>",
-  { desc = 'Find Notification History' }
-)
+vim.keymap.set('n', '<leader>fn', '<cmd>Notifications<CR>', { desc = 'Find Notification History' })
 
 -- Notifier dismiss
 vim.keymap.set('n', '<leader>un', function()
-  Snacks.notifier.hide()
+  require('notify').dismiss({ silent = true, pending = true })
 end, { desc = 'Dismiss All Notifications' })
 
 -- UI toggles

@@ -1,0 +1,13 @@
+{
+  "icon_theme": "Material Icon Theme",
+  "theme": "One Dark Pro",
+  "buffer_font_size": 14.0,
+  "agent_ui_font_size": 14.0,
+  "ui_font_size": 15.0,
+  "ui_font_family": "Berkeley Mono",
+  "terminal": {
+    "font_size": 14.0,
+    "font_family": "JetBrainsMono Nerd Font"
+  },
+  "vim_mode": true
+}

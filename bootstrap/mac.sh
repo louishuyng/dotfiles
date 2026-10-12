@@ -398,6 +398,11 @@ link_all_dotfiles() {
   /Applications/Cursor.app/Contents/Resources/app/bin/cursor --install-extension vscodevim.vim
   success "Linked cursor"
 
+  mkdir -p ~/.config/zed
+  ln -sfn ~/.dotfiles/suckless/mac_os/zed/mappings.json ~/.config/zed/keymap.json
+  ln -sfn ~/.dotfiles/suckless/mac_os/zed/settings.json ~/.config/zed/settings.json
+  success "Linked zed config"
+
   ln -s ~/.dotfiles/config/.gitconfig ~/.gitconfig
   success "Linked git config"
 

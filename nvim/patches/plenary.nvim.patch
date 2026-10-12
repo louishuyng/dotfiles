@@ -1,0 +1,94 @@
+--- a/lua/plenary/async/control.lua
++++ b/lua/plenary/async/control.lua
+@@ -59,15 +59,9 @@
+ ---@param initial_permits number: the number of permits that it can give out
+ ---@return Semaphore
+ function Semaphore.new(initial_permits)
+-  vim.validate {
+-    initial_permits = {
+-      initial_permits,
+-      function(n)
+-        return n > 0
+-      end,
+-      "number greater than 0",
+-    },
+-  }
++  vim.validate("initial_permits", initial_permits, function(n)
++    return n > 0
++  end, nil, "number greater than 0")
+ 
+   return setmetatable({ permits = initial_permits, handles = {} }, Semaphore)
+ end
+--- a/lua/plenary/async_lib/util.lua
++++ b/lua/plenary/async_lib/util.lua
+@@ -112,15 +112,9 @@
+ ---@param initial_permits number: the number of permits that it can give out
+ ---@return Semaphore
+ function Semaphore.new(initial_permits)
+-  vim.validate {
+-    initial_permits = {
+-      initial_permits,
+-      function(n)
+-        return n > 0
+-      end,
+-      "number greater than 0",
+-    },
+-  }
++  vim.validate("initial_permits", initial_permits, function(n)
++    return n > 0
++  end, nil, "number greater than 0")
+ 
+   return setmetatable({ permits = initial_permits, handles = {} }, Semaphore)
+ end
+--- a/lua/plenary/benchmark/init.lua
++++ b/lua/plenary/benchmark/init.lua
+@@ -93,12 +93,10 @@
+ ---@param name string @benchmark name
+ ---@param opts benchmark_run_opts
+ local bench = function(name, opts)
+-  vim.validate {
+-    opts = { opts, "table" },
+-    fun = { opts.fun, "table" },
+-  }
+-  opts.warmup = vim.F.if_nil(opts.warmup, 3)
+-  opts.runs = vim.F.if_nil(opts.runs, 5)
++  vim.validate("opts", opts, "table")
++  vim.validate("fun", opts.fun, "table")
++  opts.warmup = vim.nonnil(opts.warmup, 3)
++  opts.runs = vim.nonnil(opts.runs, 5)
+ 
+   opts.fun = type(opts.fun) == "function" and { opts.fun } or opts.fun
+   local output = { string.format("Benchmark Group: '%s' -----------------------\n", name) }
+--- a/lua/plenary/log.lua
++++ b/lua/plenary/log.lua
+@@ -79,7 +79,7 @@
+ log.new = function(config, standalone)
+   config = vim.tbl_deep_extend("force", default_config, config)
+ 
+-  local outfile = vim.F.if_nil(
++  local outfile = vim.nonnil(
+     config.outfile,
+     Path:new(vim.api.nvim_call_function("stdpath", { "log" }), config.plugin .. ".log").filename
+   )
+--- a/lua/plenary/popup/init.lua
++++ b/lua/plenary/popup/init.lua
+@@ -9,7 +9,7 @@
+ local Window = require "plenary.window"
+ local utils = require "plenary.popup.utils"
+ 
+-local if_nil = vim.F.if_nil
++local if_nil = vim.nonnil
+ 
+ local popup = {}
+ 
+--- a/lua/plenary/window/border.lua
++++ b/lua/plenary/window/border.lua
+@@ -230,7 +230,7 @@
+     height = content_win_options.height + thickness.top + thickness.bot,
+     zindex = content_win_options.zindex or 50,
+     noautocmd = content_win_options.noautocmd,
+-    focusable = vim.F.if_nil(border_win_options.focusable, false),
++    focusable = vim.nonnil(border_win_options.focusable, false),
+     border = "none",
+   }
+ 

@@ -1,0 +1,22 @@
+--- a/lua/git-conflict/colors.lua
++++ b/lua/git-conflict/colors.lua
+@@ -9,7 +9,7 @@
+ --@param rgb_24bit (number) 24-bit RGB value
+ --@returns (table) with keys 'r', 'g', 'b' in [0,255]
+ local function decode_24bit_rgb(rgb_24bit)
+-  vim.validate({ rgb_24bit = { rgb_24bit, 'n', true } })
++  vim.validate('rgb_24bit', rgb_24bit, 'number', true)
+   local r = band(rshift(rgb_24bit, 16), 255)
+   local g = band(rshift(rgb_24bit, 8), 255)
+   local b = band(rgb_24bit, 255)
+--- a/lua/git-conflict.lua
++++ b/lua/git-conflict.lua
+@@ -108,7 +108,7 @@
+ local CURRENT_LABEL_HL = 'GitConflictCurrentLabel'
+ local INCOMING_LABEL_HL = 'GitConflictIncomingLabel'
+ local ANCESTOR_LABEL_HL = 'GitConflictAncestorLabel'
+-local PRIORITY = vim.highlight.priorities.user
++local PRIORITY = vim.hl.priorities.user
+ local NAMESPACE = api.nvim_create_namespace('git-conflict')
+ local AUGROUP_NAME = 'GitConflictCommands'
+ 

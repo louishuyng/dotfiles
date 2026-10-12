@@ -74,3 +74,5 @@ pi/agent/*
 !pi/agent/skills/
 !pi/agent/prompts/
 !pi/agent/settings.json
+
+*log

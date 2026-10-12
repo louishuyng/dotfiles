@@ -3,7 +3,7 @@ LAYOUT_FULL = false
 sbar.bar({
 	topmost = "window",
 	height = 42,
-	color = LAYOUT_FULL and 0xff1d1d1d or 0x00000000,
+	color = LAYOUT_FULL and 0xff1d1d1d or 0xff000000,
 	border_width = 0,
 	shadow = false,
 	position = "top",

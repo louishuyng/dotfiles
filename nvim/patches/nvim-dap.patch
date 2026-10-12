@@ -1,0 +1,11 @@
+--- a/lua/dap/log.lua
++++ b/lua/dap/log.lua
+@@ -157,7 +157,7 @@
+   local path_sep = vim.loop.os_uname().sysname == "Windows" and "\\" or "/"
+   local joinpath = (vim.fs or {}).joinpath or function(...)
+     ---@diagnostic disable-next-line: deprecated
+-    return table.concat(vim.tbl_flatten{...}, path_sep)
++    return table.concat(vim.iter({...}):flatten(math.huge):totable(), path_sep)
+   end
+   local log_dir = vim.fn.stdpath('log')
+   assert(type(log_dir) == "string")

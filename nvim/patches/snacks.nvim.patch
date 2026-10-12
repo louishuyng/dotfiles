@@ -1,0 +1,11 @@
+--- a/lua/snacks/health.lua
++++ b/lua/snacks/health.lua
+@@ -63,7 +63,7 @@
+           M.warn("setup {disabled}")
+         end
+       end
+-      if plugin.health then
++      if plugin.health and (not plugin.meta.needs_setup or opts.enabled) then
+         plugin.health()
+       end
+     end

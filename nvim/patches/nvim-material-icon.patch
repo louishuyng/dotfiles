@@ -1,0 +1,11 @@
+--- a/lua/nvim-web-devicons.lua
++++ b/lua/nvim-web-devicons.lua
+@@ -203,7 +203,7 @@
+     return loaded
+ end
+ 
+-local if_nil = vim.F.if_nil
++local if_nil = vim.nonnil
+ function M.setup(opts)
+     if loaded then
+         return

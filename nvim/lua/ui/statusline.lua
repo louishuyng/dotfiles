@@ -85,9 +85,10 @@ local DIAGNOSTIC_SEVERITIES = {
 
 local function lsp_status()
   local bufnr = get_current_bufnr()
+  local counts = vim.diagnostic.count(bufnr)
   local messages = {}
   for _, sev in ipairs(DIAGNOSTIC_SEVERITIES) do
-    local count = #vim.diagnostic.get(bufnr, { severity = sev.severity })
+    local count = counts[sev.severity] or 0
     if sev.always or count > 0 then
       table.insert(messages, color(sev.hl, sev.icon .. tostring(count)))
     end
@@ -95,16 +96,42 @@ local function lsp_status()
   return table.concat(messages, ' ')
 end
 
+local search_cache = {}
+
 local function search_count()
   if vim.v.hlsearch == 0 then
     return nil
   end
-  local ok, result = pcall(vim.fn.searchcount, { maxcount = 999, timeout = 100 })
-  if not ok or type(result) ~= 'table' or (result.total or 0) == 0 then
+  local pattern = vim.fn.getreg('/')
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local key = {
+    vim.api.nvim_get_current_buf(),
+    vim.api.nvim_get_current_win(),
+    vim.api.nvim_buf_get_changedtick(0),
+    pattern,
+    cursor[1],
+    cursor[2],
+    vim.o.ignorecase,
+    vim.o.smartcase,
+    vim.o.magic,
+    vim.bo.iskeyword,
+    vim.o.regexpengine,
+  }
+  -- Position/mark atoms can change without a text edit or cursor movement.
+  local cached = not pattern:find('\\%%') and vim.deep_equal(key, search_cache.key)
+  local ok, result = true, search_cache.result
+  if not cached then
+    ok, result = pcall(vim.fn.searchcount, { maxcount = 999, timeout = 5 })
+    search_cache = { key = key, result = ok and result or nil }
+  end
+  if not ok or type(result) ~= 'table' then
     return nil
   end
   if result.incomplete == 1 then
     return color('StlSearch', '󰍉 ?/?')
+  end
+  if (result.total or 0) == 0 then
+    return nil
   end
   return color('StlSearch', string.format('󰍉 %d/%d', result.current, result.total))
 end
@@ -408,7 +435,6 @@ local function filetype()
   if ft == '' then
     return nil
   end
-  local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(ft)
   local name = FT_DISPLAY[ft] or (ft:sub(1, 1):upper() .. ft:sub(2))
 
   return color('StlFiletype', name)

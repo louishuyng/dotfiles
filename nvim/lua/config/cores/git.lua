@@ -41,6 +41,7 @@ local neogit = require('neogit')
 
 neogit.setup {
   kind = 'split_above',
+  commit_editor = { show_staged_diff = false },
   mappings = {
     status = {
       ['o'] = 'Toggle',

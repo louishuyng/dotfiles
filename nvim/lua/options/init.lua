@@ -1,5 +1,11 @@
 vim.g.loaded_perl_provider = 0
 
+-- Keep the pynvim host independent of the current project's mise Python.
+local python_host = vim.fn.expand('~/.local/share/mise/installs/python/3.11.0/bin/python3')
+if vim.fn.executable(python_host) == 1 then
+  vim.g.python3_host_prog = python_host
+end
+
 local opt = vim.opt
 
 vim.g.transparent_enabled = false

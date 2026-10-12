@@ -10,7 +10,6 @@
 local M = {}
 
 local opts = {
-  transparent_background = false,
   background = {
     light = 'latte',
     dark = 'macchiato',

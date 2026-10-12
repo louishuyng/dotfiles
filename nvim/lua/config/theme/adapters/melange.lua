@@ -30,7 +30,7 @@ function M.resolve(variant)
   local a, b, c, e = p.a, p.b, p.c, p.e
   return {
     bg = a.bg,
-    bg_alt = a.overbg,
+    bg_alt = '#000000',
     bg_dim = a.overbg,
     surface = a.sel,
     surface_alt = a.overbg,
