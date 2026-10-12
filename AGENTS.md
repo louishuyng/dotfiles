@@ -184,7 +184,7 @@ Configs are symlinked from this repo to their expected system locations:
 - `terminals/ghostty/` -> `~/.config/ghostty/`
 - `suckless/mac_os/sketchybar/` -> `~/.config/sketchybar/`
 - `home-manager/` -> `~/.config/home-manager/`
-- GNU Stow is used for some symlinks (see `link_all_dotfiles()` in bootstrap/mac.sh)
+- Bootstrap tasks create symlinks with conflict backups (see `link_file()` in bootstrap/setup.sh)
 
 ## Key Tools and Versions
 

@@ -4,7 +4,7 @@ Where to put a change in `nvim/`. Read the "Where do I add…" table first; the 
 
 Neovim 0.12+, no plugin manager — plugins install through the built-in `vim.pack`. Keybindings live in [key-bindings-nvim.md](key-bindings-nvim.md); this doc covers layout only.
 
-`~/.config/nvim` is a stow symlink to `nvim/` (`bootstrap/mac.sh:370`), so edits take effect on the next launch.
+The `nvim` task in [the bootstrap installer](../bootstrap/setup.sh) links `~/.config/nvim` to `nvim/`, so edits take effect on the next launch.
 
 ## Where do I add…
 

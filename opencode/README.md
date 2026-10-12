@@ -79,7 +79,8 @@ The hook plugins also require RTK at `/opt/homebrew/bin/rtk` and the upstream
 Ponytail and ADHD checkouts under `~/.config/opencode/vendor/`. Update those
 checkouts with `rtk git -C <checkout> pull --ff-only`, review compatibility, then
 reload. Existing command templates may need refreshing after an upstream update.
-`bootstrap/mac.sh` links configuration, agents, skills, shared rules, and the ADHD
+The `ai` task in `bootstrap/mac.sh`, `bootstrap/arch.sh`, or `bootstrap/debian.sh`
+links configuration, agents, skills, shared rules, and the ADHD
 flag; it does not install these dependencies.
 
 The migration backup is

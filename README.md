@@ -21,23 +21,32 @@ I love tmux when working with multiple projects [Tmux](./terminals/tmux)
 ## Installation
 
 ```bash
-# For MacOS
-./bootstrap/mac.sh
+# For macOS: select tasks, review commands, then confirm
+bash bootstrap/mac.sh
 
 # For Arch Linux
-./bootstrap/arch.sh
+bash bootstrap/arch.sh
+
+# For Debian / Ubuntu
+bash bootstrap/debian.sh
+```
+
+See the [bootstrap guide](bootstrap/README.md) for task options, previews,
+configuration backups, and manual application steps. Preview a macOS setup:
+
+```bash
+bash bootstrap/mac.sh --tasks core,git,fish,nvim,tmux,ghostty,fonts --dry-run
 ```
 
 ## Nix Setup
 Installing nix package manager following the documentation [here](https://nixos.org/download.html)
 
 ```bash
-ln -s ~/.dotfiles/nix ~/.config/nix # Create Symlink with nix config
-ln -s ~/.dotfiles/home-manager ~/.config/home-manager # Create Symlink with home-manager config
+bash bootstrap/mac.sh --tasks nix --links-only # Review and link Nix configs
 
 nix-shell -p home-manager # Run new shell with home-manager package
 
-home-manager switch # Apply the configuration
+home-manager switch --flake ~/.dotfiles/home-manager # Apply the Apple Silicon Mac configuration
 ```
 
 ## Examples
