@@ -1,0 +1,15 @@
+{
+  "name": "LX14-AI-Skills",
+  "enabled": [
+    "archify",
+    "aside-browser",
+    "better-write",
+    "caveman",
+    "crit",
+    "crit-cli",
+    "crit-story",
+    "ponytail",
+    "tech-doc-writer",
+    "ui-ux-pro-max"
+  ]
+}

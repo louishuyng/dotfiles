@@ -102,6 +102,7 @@ if [[ "$platform" != debian ]]; then
   add_task devops 'Docker + Kubernetes + Terraform tools'
 fi
 if [[ "$platform" == mac ]]; then
+  add_task agent_hub 'Agent Hub web dashboard + background login service (requires Node 24 and Portless)'
   add_task zsh 'Alternative Zsh config + shell tools'
   add_task rio 'Rio terminal + config'
   add_task desktop 'Aerospace + SketchyBar/Lua + Borders + fonts'
@@ -327,11 +328,27 @@ apply_task() {
     ai)
       config opencode/opencode.jsonc opencode/opencode.jsonc
       config opencode/agents opencode/agents
-      config ai/skills opencode/skills
+      if [[ ! -L "$config_dir/opencode/skills" || "$(readlink "$config_dir/opencode/skills")" != "$HOME/.local/share/agent-hub/skills/opencode" ]]; then
+        config ai/skills opencode/skills
+      fi
       config opencode/AGENTS.md opencode/AGENTS.md
       config opencode/.i-have-adhd-always opencode/.i-have-adhd-always
-      link_file "$repo_root/ai/skills" "$HOME/.claude/skills"
+      if [[ ! -L "$HOME/.claude/skills" || "$(readlink "$HOME/.claude/skills")" != "$HOME/.local/share/agent-hub/skills/claude" ]]; then
+        link_file "$repo_root/ai/skills" "$HOME/.claude/skills"
+      fi
       link_file "$repo_root/ai/CLAUDE.md" "$HOME/.claude/CLAUDE.md" ;;
+    agent_hub)
+      if ! $dry_run; then
+        command -v node >/dev/null || fail 'Install Node 24+ before setting up Agent Hub.'
+        command -v portless >/dev/null || fail 'Install Portless before setting up Agent Hub.'
+        node -e 'if (Number(process.versions.node.split(".")[0]) < 24) process.exit(1)' || fail 'Agent Hub requires Node 24+.'
+      fi
+      if ! $links_only; then
+        run npm --prefix "$repo_root/ai/agent-hub" ci --no-audit --no-fund
+        run npm --prefix "$repo_root/ai/agent-hub" run build
+        run node "$repo_root/ai/agent-hub/scripts/setup.mjs"
+        run node "$repo_root/ai/agent-hub/scripts/service.mjs" install
+      fi ;;
     nix) config nix nix; config home-manager home-manager ;;
     cli)
       packages gum television starship atuin eza bottom procs dust sd xh chafa tokei \

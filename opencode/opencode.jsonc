@@ -24,10 +24,7 @@
       }
     }
   },
-  "skills": [
-    "/Users/louishuyng/.config/opencode/vendor/ponytail/skills",
-    "/Users/louishuyng/.config/opencode/vendor/i-have-adhd/skills"
-  ],
+  "skills": [],
   "commands": {
     "ponytail-audit": {
       "description": "Audit the whole repo for over-engineering, what can be deleted",
@@ -56,14 +53,14 @@
   },
   "plugins": [
     {
-      "package": "/Users/louishuyng/.dotfiles/opencode/plugins/codex-modes",
+      "package": "/Users/louishuyng/.dotfiles/ai/plugins/opencode/codex-modes",
       "options": {
         "ponytailRoot": "/Users/louishuyng/.config/opencode/vendor/ponytail",
         "adhdRoot": "/Users/louishuyng/.config/opencode/vendor/i-have-adhd"
       }
     },
     {
-      "package": "/Users/louishuyng/.dotfiles/opencode/plugins/rtk",
+      "package": "/Users/louishuyng/.dotfiles/ai/plugins/opencode/rtk",
       "options": {
         "executable": "/opt/homebrew/bin/rtk",
         "instructionsPath": "/Users/louishuyng/.codex/RTK.md"

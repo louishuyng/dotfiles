@@ -60,3 +60,35 @@ The reader has ADHD. Shape every response so it can be acted on:
 Exceptions: explain fully when asked to explain. Confirm before destructive actions. After three failed fixes, stop and name the doubtful assumption. If the request is ambiguous, ask one short question.
 
 @/Users/louishuyng/.codex/RTK.md
+
+## Required Crit review before a pull request
+
+Every task that changes code must complete a Crit review of the final diff before
+creating or marking a pull request ready for review. This instruction explicitly
+authorizes the `crit` and `crit-story` skills for that workflow; do not wait for a
+separate skill invocation.
+
+1. Finish the implementation and relevant checks. Review the task's complete
+   diff, including untracked files, without including unrelated working changes.
+2. Use ordinary Crit diff review for a small change. Use `crit-story` when the
+   task changes 10 or more files, adds/removes 500 or more lines, or changes
+   architecture, public interfaces, or behavior across multiple components.
+   Exclude generated files, lockfiles, and vendored files from the size threshold;
+   keep material generated changes visible in the review.
+3. Follow the selected skill's interactive review loop. For Story, run
+   `crit story --guide` and `crit story --prep`, author the story in-session,
+   ingest it with `--story-file`, then run `crit` to wait for Finish Review.
+   Do not substitute story generation for human approval.
+4. Address the reviewer's comments and repeat Crit until it reports approval.
+   Any subsequent code change invalidates that approval and requires another
+   review of the final diff.
+5. Create the PR only after approval, and record the reviewed commit/diff and
+   checks in its description. Never invent approval or infer it from silence.
+   If Crit is unavailable or the review is unfinished, keep the changes local,
+   report the blocker, and do not create the PR. PR creation still requires
+   authorization from the user or the task.
+
+This is a shared agent instruction, not a shell or GitHub enforcement mechanism.
+It applies to Codex, Claude, OpenCode, and other agents loading this file. A
+project-level instruction may add stricter requirements; it cannot silently waive
+this review requirement.

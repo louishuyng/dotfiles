@@ -1,0 +1,53 @@
+{
+  "codex-app-tools@openai-bundled": {
+    "enabled": true
+  },
+  "visualize@openai-bundled": {
+    "enabled": true
+  },
+  "security-guidance@claude-plugins-official": {
+    "enabled": true
+  },
+  "ponytail@ponytail": {
+    "enabled": true
+  },
+  "browser@openai-bundled": {
+    "enabled": true
+  },
+  "unified-computer-use@openai-bundled": {
+    "enabled": true
+  },
+  "chrome@openai-bundled": {
+    "enabled": true
+  },
+  "computer-use@openai-bundled": {
+    "enabled": true
+  },
+  "documents@openai-primary-runtime": {
+    "enabled": true
+  },
+  "pdf@openai-primary-runtime": {
+    "enabled": false
+  },
+  "spreadsheets@openai-primary-runtime": {
+    "enabled": false
+  },
+  "presentations@openai-primary-runtime": {
+    "enabled": false
+  },
+  "template-creator@openai-primary-runtime": {
+    "enabled": false
+  },
+  "i-have-adhd@i-have-adhd": {
+    "enabled": true
+  },
+  "whiteboard@devfast": {
+    "enabled": true
+  },
+  "code-review@openai-bundled": {
+    "enabled": true
+  },
+  "slack@slack": {
+    "enabled": true
+  }
+}

@@ -76,3 +76,9 @@ pi/agent/*
 !pi/agent/settings.json
 
 *log
+
+.playwright-mcp/
+
+/pi/agent/skills/codex-shared
+
+/pi/agent/skills/LX14-AI-Skills

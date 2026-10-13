@@ -146,7 +146,7 @@ run = ['move-node-to-workspace Tool', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.usebruno.app'
-run = ['move-node-to-workspace Tool', 'layout tiling']
+run = ['move-node-to-workspace Tool']
 
 [[on-window-detected]]
 if.app-id = 'dev.kdrag0n.MacVirt'
