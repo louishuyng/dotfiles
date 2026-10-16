@@ -6,13 +6,47 @@ Prefix is `ctrl+a`, same as tmux. Every row below is a key actually bound in
 (`h/j/k/l`, `prefix+-`, `z`, `x`, `c`, `1..9`, `?`, `b`, `w`, `shift+x`, …) are
 not written there and so are not listed here.
 
-Theme (`[theme]` / `[theme.custom]`) is `nord` with `panel_bg = "#2e3440"`, which
-is what separates herdr's chrome from the host terminal's background — pane
-interiors are ghostty's `background`, which herdr reads via OSC 11. herdr's
-settings UI rewrites both sections wholesale, so a theme change made there wins
-until the file is restored and `herdr server reload-config` is run. Editing
-`config.toml` alone is not enough: the running server keeps its in-memory theme
-and will write it back over the file.
+## Quick start
+
+1. Help: `Ctrl+A`, then `?`; custom commands have action labels.
+2. Settings: `Ctrl+A`, then `Shift+S`.
+3. Projects: `Ctrl+A`, then `s`; Enter opens or focuses, Tab moves,
+   Ctrl+D asks before closing the named tab, and Esc cancels.
+4. Copy mode: `Ctrl+A`, then `[`; `Ctrl+A`, then `v` edits scrollback.
+5. Appearance: `Ctrl+A`, then `Shift+T` toggles macOS light/dark appearance.
+
+## Appearance and sidebar policy
+
+Herdr follows macOS with `gruvbox` in dark mode and `gruvbox-light` in light
+mode. Built-in surfaces supply the panel colors; there is no shared black
+override. Ghostty uses its own light/dark palettes. Selecting a theme manually
+in Herdr Settings disables automatic switching. Re-enable Follow system there
+to restore this policy. Settings rewrites theme sections, including comments.
+Use the client's reload-config action (`prefix+ctrl+shift+r`) when applying
+client presentation changes; a server-only reload does not establish that the
+client refreshed.
+
+The sidebar baseline preserves the installed 32-column width, symbol indicators,
+space ordering, machine identity, and optional summary/progress rows. Reporters
+supply that metadata; this config adds no reporter. `prefix+b` collapses the
+sidebar when pane space is tight. Pane-border agent labels stay disabled.
+
+Bootstrap ownership is unchanged: the tmux component links this config. An
+existing regular installed file can differ; compare and preserve its preferences
+before installing. Editing this worktree does not apply these settings live.
+
+## Project picker
+
+Open tabs/windows appear before zoxide paths. Errors remain in the picker header;
+Ctrl+R retries the list and Esc cancels. A failed lookup prevents creation.
+Ctrl+D opens a confirmation with Cancel selected; only choosing Close sends a
+close request. Herdr and tmux use the same controls, with tmux taking precedence
+when nested inside Herdr.
+
+Below 100 popup columns the preview starts hidden; on wider popups it occupies
+45% on the right. Ctrl+P toggles it. Launcher dimensions and the separate playzone
+picker stay unchanged. Verify actual Help, sidebar states, light/dark contrast,
+and hosted-tool input in a disposable session before applying visual refinements.
 
 | key | action | tmux equivalent |
 |---|---|---|

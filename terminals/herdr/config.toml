@@ -12,7 +12,9 @@ delivery = "herdr"
 
 [ui]
 show_agent_labels_on_pane_borders = false
-agent_panel_sort = "priority"
+agent_panel_sort = "spaces"
+sidebar_width = 32
+status_indicators = "symbols"
 
 [keys]
 prefix = "ctrl+a"
@@ -66,6 +68,7 @@ split_horizontal = ""
 # session-modal, so 90% is enough and no tab is consumed.
 
 [[keys.command]]
+description = "Open files (Yazi)"
 key = "prefix+/"
 type = "popup"
 command = "yazi"
@@ -73,6 +76,7 @@ width = "80%"
 height = "80%"
 
 [[keys.command]]
+description = "Manage containers (Lazydocker)"
 key = "prefix+i"
 type = "popup"
 command = "lazydocker"
@@ -80,6 +84,7 @@ width = "80%"
 height = "80%"
 
 [[keys.command]]
+description = "Open Tuxedo"
 key = "prefix+t"
 type = "popup"
 command = "tuxedo"
@@ -87,6 +92,7 @@ width = "80%"
 height = "80%"
 
 [[keys.command]]
+description = "Search and replace (Serpl)"
 key = "prefix+shift+r"
 type = "popup"
 command = "serpl"
@@ -94,6 +100,7 @@ width = "80%"
 height = "80%"
 
 [[keys.command]]
+description = "Open API client (Posting)"
 key = "prefix+a"
 type = "popup"
 command = "posting"
@@ -101,6 +108,7 @@ width = "90%"
 height = "90%"
 
 [[keys.command]]
+description = "Review code (Tuicr)"
 key = "prefix+ctrl+r"
 type = "popup"
 command = "tuicr"
@@ -108,6 +116,7 @@ width = "90%"
 height = "90%"
 
 [[keys.command]]
+description = "Open GitHub dashboard"
 key = "prefix+g"
 type = "popup"
 command = "gh dash"
@@ -115,6 +124,7 @@ width = "90%"
 height = "90%"
 
 [[keys.command]]
+description = "Open notes"
 key = "prefix+n"
 type = "popup"
 command = "~/.dotfiles/terminals/notes/note.sh"
@@ -122,6 +132,7 @@ width = "90%"
 height = "90%"
 
 [[keys.command]]
+description = "Open playzones"
 key = "prefix+p"
 type = "popup"
 command = "~/.dotfiles/terminals/playzones/playzone-picker.sh"
@@ -129,6 +140,7 @@ width = "80%"
 height = "80%"
 
 [[keys.command]]
+description = "Open projects"
 key = "prefix+s"
 type = "popup"
 command = "~/.dotfiles/terminals/sesh/sesh-picker.sh"
@@ -148,11 +160,13 @@ height = "80%"
 # same path as prefix+{ / prefix+| below.
 
 [[keys.command]]
+description = "Move tab left"
 key = "prefix+<"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh left"
 
 [[keys.command]]
+description = "Move tab right"
 key = "prefix+>"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh right"
@@ -163,21 +177,25 @@ command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh right"
 # the tmux version, which fell back to swapping with the prev/next pane.
 
 [[keys.command]]
+description = "Swap pane left"
 key = "prefix+left"
 type = "shell"
 command = "herdr pane swap --current --direction left"
 
 [[keys.command]]
+description = "Swap pane down"
 key = "prefix+down"
 type = "shell"
 command = "herdr pane swap --current --direction down"
 
 [[keys.command]]
+description = "Swap pane up"
 key = "prefix+up"
 type = "shell"
 command = "herdr pane swap --current --direction up"
 
 [[keys.command]]
+description = "Swap pane right"
 key = "prefix+right"
 type = "shell"
 command = "herdr pane swap --current --direction right"
@@ -185,12 +203,12 @@ command = "herdr pane swap --current --direction right"
 # ── Theme ────────────────────────────────────────────────────────────────────
 # tmux bound T to a tmux-only theme swap. This flips macOS appearance instead,
 # which moves tmux/nvim/ghostty via the com.user.theme-watcher daemon. herdr
-# itself follows only if "follow system" is enabled in herdr's own settings UI
-# — off by default, and deliberately not tracked here (see the header note).
+# follows the system through the Gruvbox dark/light policy below.
 # prefix+shift+t is free because rename_tab moved to prefix+, (stock tmux
 # rename-window).
 
 [[keys.command]]
+description = "Toggle macOS appearance"
 key = "prefix+shift+t"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh"
@@ -203,6 +221,7 @@ command = "~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh"
 # --focus: tmux's split always lands you in the new pane; herdr's split does
 # not focus by default.
 [[keys.command]]
+description = "Split below (30%, focus new pane)"
 key = "prefix+minus"
 type = "shell"
 command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction down --ratio 0.70 --focus"
@@ -211,6 +230,7 @@ command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction down --ratio 0
 # --ratio inversion noted above doesn't matter here. --focus for the same
 # reason as prefix+minus above.
 [[keys.command]]
+description = "Split right (50%, focus new pane)"
 key = "prefix+|"
 type = "shell"
 command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction right --ratio 0.50 --focus"
@@ -227,21 +247,25 @@ command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction right --ratio 
 # Resize is on uppercase H/J/K/L, mirroring tmux's H/J/K/L.
 
 [[keys.command]]
+description = "Resize pane left"
 key = "prefix+H"
 type = "shell"
 command = "herdr pane resize --current --direction left --amount 0.05"
 
 [[keys.command]]
+description = "Resize pane down"
 key = "prefix+J"
 type = "shell"
 command = "herdr pane resize --current --direction down --amount 0.05"
 
 [[keys.command]]
+description = "Resize pane up"
 key = "prefix+K"
 type = "shell"
 command = "herdr pane resize --current --direction up --amount 0.05"
 
 [[keys.command]]
+description = "Resize pane right"
 key = "prefix+L"
 type = "shell"
 command = "herdr pane resize --current --direction right --amount 0.05"
@@ -253,22 +277,26 @@ command = "herdr pane resize --current --direction right --amount 0.05"
 # scripts/pane-swap.sh.
 
 [[keys.command]]
+description = "Swap with previous pane"
 key = "prefix+{"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh prev"
 
 [[keys.command]]
+description = "Swap with next pane"
 key = "prefix+}"
 type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
 
 [theme]
 name = "gruvbox"
-auto_switch = false
+auto_switch = true
+dark_name = "gruvbox"
+light_name = "gruvbox-light"
 
-# Pane interiors are the host terminal's default background — herdr reads
-# ghostty's via OSC 11 — so with no explicit panel_bg the sidebar, tab bar and
-# popups sit flat on ghostty's #11111B. Nord polar night lifts them off it;
-# "reset" restores the pass-through.
-[theme.custom]
-panel_bg = "#000000"
+# Preserve the installed sidebar presentation, including optional reporter metadata.
+[ui.sidebar.agents]
+rows = [["state_icon", "machine", "workspace", { token = "tab", rules = [{ equals = "Agent", hide = true }, { starts_with = "Reviewer #", hide = true }] }], ["agent"], [{ token = "$summary", dim = true }, "$progress"]]
+
+[ui.sidebar.spaces]
+rows = [["state_icon", "workspace"], ["branch", "git_status"], [{ token = "$summary", dim = true }, "$progress"]]
