@@ -202,7 +202,7 @@ EOF
 
 @test "failed lookups prevent creation and propagate status through route cleanup" {
   echo '' > "$FIX/sesh.toml"
-  for response in '{"error":"unreachable"}' 'not json'; do
+  for response in '{"error":"unreachable"}' 'not json' '' $' \t\n'; do
     echo "$response" > "$FIX/ws.json"
     run env SESH_TOML="$FIX/sesh.toml" "$PICKER" --route "$FIX/new"
     [ "$status" -eq 2 ]
@@ -358,10 +358,12 @@ EOF
 
 @test "failed pane lookup prevents a new tab" {
   printf '[[session]]\nname = "LX-REGASK"\npath = "%s/widgets"\n' "$FIX" > "$FIX/sesh.toml"
-  echo '{"error":"unreachable"}' > "$FIX/panes.json"
-  run env SESH_TOML="$FIX/sesh.toml" "$PICKER" --route "$FIX/widgets/api"
-  [ "$status" -eq 2 ]
-  ! grep -q create "$FIX/calls"
+  for response in '{"error":"unreachable"}' '' $' \t\n'; do
+    printf '%s' "$response" > "$FIX/panes.json"
+    run env SESH_TOML="$FIX/sesh.toml" "$PICKER" --route "$FIX/widgets/api"
+    [ "$status" -eq 2 ]
+    ! grep -q create "$FIX/calls"
+  done
 }
 
 @test "confirmation tool failure preserves an error without closing" {

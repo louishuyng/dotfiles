@@ -37,8 +37,9 @@ hd_workspace_id_by_label() {
   # jq's status is normalized to 2: malformed herdr output is a failed call, not
   # a no-match. Its stderr is suppressed because Task 6 runs these inside an fzf
   # popup, where a stray parse error garbles the UI.
-  out=$(printf '%s' "$json" | jq -r --arg l "$label" \
-    'if (.result.workspaces | type) != "array" then error("missing workspaces")
+  out=$(printf '%s' "$json" | jq -sr --arg l "$label" \
+    'if length != 1 then error("expected one response") else .[0] end |
+     if (.result.workspaces | type) != "array" then error("missing workspaces")
      else first(.result.workspaces[] | select(.label == $l) | .workspace_id) // empty end' 2>/dev/null) || return 2
 
   # Print only when non-empty, so "no match" stays truly empty output rather
@@ -85,8 +86,9 @@ hd_tab_id_by_cwd() {
 
   local json out
   json=$("$HERDR_BIN" pane list --workspace "$ws" 2>/dev/null) || return 2
-  out=$(printf '%s' "$json" | jq -r --arg c "$expanded" \
-    'if (.result.panes | type) != "array" then error("missing panes")
+  out=$(printf '%s' "$json" | jq -sr --arg c "$expanded" \
+    'if length != 1 then error("expected one response") else .[0] end |
+     if (.result.panes | type) != "array" then error("missing panes")
      else first(.result.panes[] | select(.cwd == $c) | .tab_id) // empty end' 2>/dev/null) || return 2
 
   [[ -n "$out" ]] && printf '%s\n' "$out"
