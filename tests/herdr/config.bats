@@ -38,7 +38,7 @@ setup() {
 # wrong size, command or type fails instead of slipping past a key-only grep.
 cmd_records() {
   awk '
-    function val(s) { if (match(s, /"[^"]*"/)) return substr(s, RSTART+1, RLENGTH-2); return "" }
+    function val(s) { sub(/^[^=]*= *"/, "", s); sub(/" *$/, "", s); gsub(/\\"/, sprintf("%c", 34), s); return s }
     /^\[\[keys\.command\]\]/ { if (k != "") print k "|" t "|" c "|" w "|" h; k=t=c=w=h=""; next }
     /^key *=/     { k = val($0); next }
     /^type *=/    { t = val($0); next }
@@ -71,13 +71,15 @@ prefix+g|popup|gh dash|90%|90%
 prefix+n|popup|~/.dotfiles/terminals/notes/note.sh|90%|90%
 prefix+p|popup|~/.dotfiles/terminals/playzones/playzone-picker.sh|80%|80%
 prefix+s|popup|~/.dotfiles/terminals/sesh/sesh-picker.sh|80%|80%
+prefix+<|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh left||
+prefix+>|shell|~/.dotfiles/terminals/herdr/scripts/tab-move.sh right||
 prefix+left|shell|herdr pane swap --current --direction left||
 prefix+down|shell|herdr pane swap --current --direction down||
 prefix+up|shell|herdr pane swap --current --direction up||
 prefix+right|shell|herdr pane swap --current --direction right||
 prefix+shift+t|shell|~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh||
-prefix+minus|shell|herdr pane split --current --direction down --ratio 0.70 --focus||
-prefix+||shell|herdr pane split --current --direction right --ratio 0.50 --focus||
+prefix+minus|shell|herdr pane split "$HERDR_ACTIVE_PANE_ID" --direction down --ratio 0.70 --focus||
+prefix+||shell|herdr pane split "$HERDR_ACTIVE_PANE_ID" --direction right --ratio 0.50 --focus||
 prefix+H|shell|herdr pane resize --current --direction left --amount 0.05||
 prefix+J|shell|herdr pane resize --current --direction down --amount 0.05||
 prefix+K|shell|herdr pane resize --current --direction up --amount 0.05||
@@ -87,7 +89,7 @@ prefix+}|shell|~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next||
 WANT
 
   # Exact count: catches a stray or duplicated block the table alone would miss.
-  [ "$(wc -l < "$BATS_TEST_TMPDIR/cmds")" -eq 23 ]
+  [ "$(wc -l < "$BATS_TEST_TMPDIR/cmds")" -eq 25 ]
 }
 
 @test "the appearance toggle flips macOS appearance without writing config" {
@@ -101,4 +103,20 @@ WANT
   # every single toggle — that is why the toggle flips host appearance instead.
   ! grep -q 'config\.toml' "$s"
   ! grep -qE '>>|[^0-9<>]>[^&]|sed -i|tee ' "$s"
+}
+
+@test "custom shortcuts have useful descriptions" {
+  [ "$(grep -c '^description = ".\+"$' "$XDG/herdr/config.toml")" -eq 25 ]
+}
+
+@test "appearance follows system and sidebar preserves presentation" {
+  grep -q '^auto_switch = true$' "$XDG/herdr/config.toml"
+  grep -q '^dark_name = "gruvbox"$' "$XDG/herdr/config.toml"
+  grep -q '^light_name = "gruvbox-light"$' "$XDG/herdr/config.toml"
+  ! grep -q '^panel_bg' "$XDG/herdr/config.toml"
+  grep -q '^agent_panel_sort = "spaces"$' "$XDG/herdr/config.toml"
+  grep -q '^sidebar_width = 32$' "$XDG/herdr/config.toml"
+  grep -q '^status_indicators = "symbols"$' "$XDG/herdr/config.toml"
+  grep -q '"machine"' "$XDG/herdr/config.toml"
+  [ "$(grep -c '\$summary.*\$progress' "$XDG/herdr/config.toml")" -eq 2 ]
 }
