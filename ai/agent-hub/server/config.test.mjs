@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, writeFile, readFile, symlink, rm, readlink } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, readFile, symlink, rm, readlink, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { Configuration, hash, jsonc } from './config.mjs';
@@ -69,12 +69,30 @@ test('plugin toggles preserve configuration symlinks and TOML errors conceal sou
 test('sync validates all exports before changes and reverses swaps after commit failure',async()=>{
   const f=await fixture();try {
     const live=path.join(f.home,'.claude/skills');await mkdir(live);await writeFile(path.join(live,'keep.txt'),'keep');
-    const bad=path.join(f.data,'skills/opencode');await mkdir(bad,{recursive:true});await writeFile(path.join(bad,'unexpected'),'keep');
-    let plan=await f.config.syncPreview();await assert.rejects(f.config.syncApply({revision:plan.revision}),/Unexpected regular/);assert.equal(await readFile(path.join(live,'keep.txt'),'utf8'),'keep');assert.equal((await f.config.readState()).sync,undefined);
-    await rm(path.join(bad,'unexpected'));
+    const bad=path.join(f.data,'skills/opencode');await mkdir(path.dirname(bad),{recursive:true});await symlink(live,bad);
+    let plan=await f.config.syncPreview();await assert.rejects(f.config.syncApply({revision:plan.revision}),/Managed export must be a directory/);assert.equal(await readFile(path.join(live,'keep.txt'),'utf8'),'keep');assert.equal((await f.config.readState()).sync,undefined);
+    await rm(bad);await mkdir(bad);await writeFile(path.join(bad,'unexpected'),'keep');
     const nativeFile=path.join(f.home,'.claude/settings.json');const original=' {"hooks":{},"private":"keep-private"}';await writeFile(nativeFile,original);plan=await f.config.syncPreview();
     const save=f.config.saveState.bind(f.config);f.config.saveState=async(value)=>{if(value.sync&&!value.syncPending)throw new Error('fixture commit failure');return save(value);};
-    await assert.rejects(f.config.syncApply({revision:plan.revision}),/fixture commit failure/);assert.equal(await readFile(path.join(live,'keep.txt'),'utf8'),'keep');assert.equal((await f.config.readState()).syncPending,undefined);assert.deepEqual(await import('node:fs/promises').then((fs)=>fs.readdir(bad)),[]);assert.equal(await readFile(nativeFile,'utf8'),original);assert.equal((await f.config.readState()).nativePending,undefined);
+    await assert.rejects(f.config.syncApply({revision:plan.revision}),/fixture commit failure/);assert.equal(await readFile(path.join(live,'keep.txt'),'utf8'),'keep');assert.equal((await f.config.readState()).syncPending,undefined);assert.equal(await readFile(path.join(bad,'unexpected'),'utf8'),'keep');assert.equal(await readFile(nativeFile,'utf8'),original);assert.equal((await f.config.readState()).nativePending,undefined);
+  }finally{await rm(f.home,{recursive:true,force:true});}
+});
+
+test('sync preserves real files and skill directories added to a managed export',async()=>{
+  const f=await fixture();try {
+    let plan=await f.config.syncPreview();await f.config.syncApply({revision:plan.revision});
+    const source=path.join(f.data,'skills/claude');
+    await writeFile(path.join(source,'notes.txt'),'keep notes');
+    await mkdir(path.join(source,'herdr-projects'));await writeFile(path.join(source,'herdr-projects/SKILL.md'),'keep skill');
+    plan=await f.config.syncPreview();await f.config.syncApply({revision:plan.revision});
+    assert.deepEqual(await readdir(source),['example']);
+    assert.equal(await readlink(path.join(source,'example')),path.join(f.root,'ai/skills/example'));
+    const backups=(await readdir(path.dirname(source))).filter(name=>name.startsWith('claude.before-'));
+    assert.equal(backups.length,1);const backup=path.join(path.dirname(source),backups[0]);
+    assert.equal(await readFile(path.join(backup,'notes.txt'),'utf8'),'keep notes');
+    assert.equal(await readFile(path.join(backup,'herdr-projects/SKILL.md'),'utf8'),'keep skill');
+    plan=await f.config.syncPreview();await f.config.syncApply({revision:plan.revision});
+    assert.deepEqual((await readdir(path.dirname(source))).filter(name=>name.startsWith('claude.before-')),backups);
   }finally{await rm(f.home,{recursive:true,force:true});}
 });
 

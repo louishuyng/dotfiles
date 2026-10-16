@@ -40,8 +40,8 @@ end
 -- from this list still get a pill — they sort alphabetically after the listed
 -- ones — so adding a workspace in aerospace.toml never makes it invisible here.
 M.display_order = {
-	"Tool",
-	"Code",
+	"Dev",
+	"Terminal",
 	"Web",
 	"Chat",
 	"Reading",

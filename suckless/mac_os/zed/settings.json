@@ -1,4 +1,9 @@
 {
+  "cli_default_open_behavior": "existing_window",
+  "auto_install_extensions": {
+    "one-dark-pro": true,
+    "material-icon-theme": true
+  },
   "icon_theme": "Material Icon Theme",
   "theme": "One Dark Pro",
   "buffer_font_size": 14.0,

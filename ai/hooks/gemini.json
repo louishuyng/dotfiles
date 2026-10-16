@@ -1,30 +1,26 @@
 {
-  "BeforeAgent": [
+  "SessionStart": [
     {
       "hooks": [
         {
           "type": "command",
-          "command": "/Users/louishuyng/.superset/hooks/gemini-hook.sh"
+          "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'gemini' 'adhd' 'SessionStart'"
         }
       ]
-    }
-  ],
-  "AfterAgent": [
+    },
     {
       "hooks": [
         {
           "type": "command",
-          "command": "/Users/louishuyng/.superset/hooks/gemini-hook.sh"
+          "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'gemini' 'ponytail' 'SessionStart'"
         }
       ]
-    }
-  ],
-  "AfterTool": [
+    },
     {
       "hooks": [
         {
           "type": "command",
-          "command": "/Users/louishuyng/.superset/hooks/gemini-hook.sh"
+          "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'gemini' 'crit' 'SessionStart'"
         }
       ]
     }

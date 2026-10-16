@@ -1,0 +1,103 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w4S",
+      "custom_name": "LX-CONFIG",
+      "identity_cwd": "/Users/louishuyng/.dotfiles",
+      "worktree_space": {
+        "key": "/Users/louishuyng/.dotfiles/.git",
+        "label": ".dotfiles",
+        "repo_root": "/Users/louishuyng/.dotfiles",
+        "checkout_path": "/Users/louishuyng/.dotfiles",
+        "is_linked_worktree": false
+      },
+      "public_pane_numbers": {
+        "44": 27,
+        "7": 20,
+        "45": 28
+      },
+      "next_public_pane_number": 29,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 15,
+      "tabs": [
+        {
+          "custom_name": ".dotfiles",
+          "layout": {
+            "Split": {
+              "direction": "Vertical",
+              "ratio": 0.7,
+              "first": {
+                "Pane": 7
+              },
+              "second": {
+                "Split": {
+                  "direction": "Horizontal",
+                  "ratio": 0.5,
+                  "first": {
+                    "Pane": 44
+                  },
+                  "second": {
+                    "Pane": 45
+                  }
+                }
+              }
+            }
+          },
+          "panes": {
+            "45": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            },
+            "7": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            },
+            "44": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            }
+          },
+          "zoomed": false,
+          "focused": 7,
+          "root_pane": 7
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w5J",
+      "custom_name": "Omniyat",
+      "identity_cwd": "/Users/louishuyng/LX14/repository/github.com/omniyat/mobile",
+      "public_pane_numbers": {
+        "34": 2
+      },
+      "next_public_pane_number": 3,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": "mobile",
+          "layout": {
+            "Pane": 34
+          },
+          "panes": {
+            "34": {
+              "cwd": "/Users/louishuyng/LX14/repository/github.com/omniyat/mobile"
+            }
+          },
+          "zoomed": false,
+          "focused": 34,
+          "root_pane": 34
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

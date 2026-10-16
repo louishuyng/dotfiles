@@ -4,29 +4,24 @@
       {
         "hooks": [
           {
-            "command": "printf '%s\\n' '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"Before creating a PR for code changes, complete an approved Crit review of the final diff. Use crit-story for 10+ files, 500+ changed lines, or cross-cutting architecture changes. Follow ai/AGENTS.md. Any later code edit requires re-review. Do not create the PR before human approval.\"}}' # crit-review-reminder",
-            "timeout": 5,
-            "type": "command"
+            "type": "command",
+            "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'codex' 'adhd' 'SessionStart'"
           }
         ]
       },
       {
         "hooks": [
           {
-            "command": "bash '/Users/louishuyng/.codex/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
+            "type": "command",
+            "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'codex' 'ponytail' 'SessionStart'"
           }
         ]
-      }
-    ],
-    "UserPromptSubmit": [
+      },
       {
         "hooks": [
           {
-            "command": "printf '%s\\n' '{\"hookSpecificOutput\":{\"hookEventName\":\"UserPromptSubmit\",\"additionalContext\":\"Before creating a PR for code changes, complete an approved Crit review of the final diff. Use crit-story for 10+ files, 500+ changed lines, or cross-cutting architecture changes. Follow ai/AGENTS.md. Any later code edit requires re-review. Do not create the PR before human approval.\"}}' # crit-review-reminder",
-            "timeout": 5,
-            "type": "command"
+            "type": "command",
+            "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'codex' 'crit' 'SessionStart'"
           }
         ]
       }

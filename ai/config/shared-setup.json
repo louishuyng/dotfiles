@@ -1,0 +1,32 @@
+{
+  "servers": {
+    "linear": {
+      "type": "http",
+      "url": "https://mcp.linear.app/mcp",
+      "enabled": true
+    }
+  },
+  "hooks": [
+    {
+      "id": "adhd",
+      "context": "adhd",
+      "event": "sessionStart",
+      "enabled": true,
+      "disabledAgents": []
+    },
+    {
+      "id": "ponytail",
+      "context": "ponytail",
+      "event": "sessionStart",
+      "enabled": true,
+      "disabledAgents": []
+    },
+    {
+      "id": "crit",
+      "context": "crit",
+      "event": "sessionStart",
+      "enabled": true,
+      "disabledAgents": []
+    }
+  ]
+}

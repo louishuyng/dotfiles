@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.3",
+  "lastChangelogVersion": "1.3.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "packages": [
@@ -39,8 +39,16 @@
     "+skills/LX14-AI-Skills/crit",
     "+skills/LX14-AI-Skills/crit-cli",
     "+skills/LX14-AI-Skills/crit-story",
+    "+skills/LX14-AI-Skills/herdr-implement",
+    "+skills/LX14-AI-Skills/herdr-plan",
+    "+skills/LX14-AI-Skills/i-have-adhd",
     "+skills/LX14-AI-Skills/ponytail",
     "+skills/LX14-AI-Skills/tech-doc-writer",
     "+skills/LX14-AI-Skills/ui-ux-pro-max"
+  ],
+  "extensions": [
+    "!extensions/herdr-agent-state.ts",
+    "!extensions/muxy-notify.ts",
+    "/Users/louishuyng/.dotfiles/ai/hooks/pi-extension.ts"
   ]
 }

@@ -1,0 +1,7 @@
+{
+  "name": "agent-hub-shared-hooks",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.mjs"
+}

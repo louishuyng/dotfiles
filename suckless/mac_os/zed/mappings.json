@@ -1,7 +1,8 @@
 [
   {
     "bindings": {
-      "cmd-s": "workspace::ToggleRightDock",
+      "cmd-s": "agent::Toggle",
+      "ctrl-\\": "workspace::ToggleRightDock",
     },
   },
   {
@@ -38,7 +39,6 @@
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPreviousHunk",
       // Collapse sidebar workspace
-      "ctrl-\\": "project_panel::ToggleFocus",
       "space s s": "outline_panel::ToggleFocus",
       ", g s": "git_panel::ToggleFocus",
       // Code Action
@@ -58,7 +58,6 @@
     // Folder Sidebar
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      "ctrl-\\": "workspace::ToggleLeftDock",
       // Add new file
       "a": "project_panel::NewFile",
       "A": "project_panel::NewDirectory",
@@ -188,12 +187,6 @@
     "context": "GitDiff > Editor",
     "bindings": {
       "shift-s": "git::StageAll",
-    },
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      "ctrl-\\": "project_panel::ToggleFocus",
     },
   },
   {
