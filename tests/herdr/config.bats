@@ -65,7 +65,7 @@ prefix+/|popup|yazi|80%|80%
 prefix+i|popup|lazydocker|80%|80%
 prefix+t|popup|tuxedo|80%|80%
 prefix+shift+r|popup|serpl|80%|80%
-prefix+a|popup|posting|90%|90%
+prefix+a|shell|~/.dotfiles/terminals/herdr/scripts/projects.sh||
 prefix+ctrl+r|popup|tuicr|90%|90%
 prefix+g|popup|gh dash|90%|90%
 prefix+n|popup|~/.dotfiles/terminals/notes/note.sh|90%|90%

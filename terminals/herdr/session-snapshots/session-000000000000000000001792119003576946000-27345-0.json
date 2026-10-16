@@ -1,0 +1,151 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w4E",
+      "custom_name": "Omniyat",
+      "identity_cwd": "/Users/louishuyng/LX14/repository/github.com/omniyat/mobile",
+      "public_pane_numbers": {
+        "1": 1
+      },
+      "next_public_pane_number": 74,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 11,
+      "tabs": [
+        {
+          "custom_name": "mobile",
+          "layout": {
+            "Pane": 1
+          },
+          "panes": {
+            "1": {
+              "cwd": "/Users/louishuyng/LX14/repository/github.com/omniyat/mobile"
+            }
+          },
+          "zoomed": false,
+          "focused": 1,
+          "root_pane": 1
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w4S",
+      "custom_name": "LX-CONFIG",
+      "identity_cwd": "/Users/louishuyng/.dotfiles",
+      "worktree_space": {
+        "key": "/Users/louishuyng/.dotfiles/.git",
+        "label": ".dotfiles",
+        "repo_root": "/Users/louishuyng/.dotfiles",
+        "checkout_path": "/Users/louishuyng/.dotfiles",
+        "is_linked_worktree": false
+      },
+      "public_pane_numbers": {
+        "2": 1,
+        "33": 13,
+        "16": 9
+      },
+      "next_public_pane_number": 14,
+      "public_tab_numbers": [
+        1,
+        9
+      ],
+      "next_public_tab_number": 10,
+      "tabs": [
+        {
+          "custom_name": ".dotfiles",
+          "layout": {
+            "Split": {
+              "direction": "Vertical",
+              "ratio": 0.7,
+              "first": {
+                "Pane": 2
+              },
+              "second": {
+                "Pane": 16
+              }
+            }
+          },
+          "panes": {
+            "16": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            },
+            "2": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            }
+          },
+          "zoomed": true,
+          "focused": 16,
+          "root_pane": 2
+        },
+        {
+          "custom_name": "board",
+          "layout": {
+            "Pane": 33
+          },
+          "panes": {
+            "33": {
+              "cwd": "/Users/louishuyng/.dotfiles/terminals/herdr/plugins/github-installations/herdr-projects-b1278ffb803c/88524-0/checkout",
+              "label": "Work board",
+              "launch_argv": [
+                "sh",
+                "bin/run.sh",
+                "board"
+              ]
+            }
+          },
+          "zoomed": false,
+          "focused": 33,
+          "root_pane": 33
+        }
+      ],
+      "active_tab": 1
+    },
+    {
+      "id": "w52",
+      "custom_name": "FLS-1 Optimize herdr UI",
+      "identity_cwd": "/Users/louishuyng/.herdr/worktrees/.dotfiles/work-1-optimize-herdr-ui",
+      "worktree_space": {
+        "key": "/Users/louishuyng/.dotfiles/.git",
+        "label": ".dotfiles",
+        "repo_root": "/Users/louishuyng/.dotfiles",
+        "checkout_path": "/Users/louishuyng/.herdr/worktrees/.dotfiles/work-1-optimize-herdr-ui",
+        "is_linked_worktree": true
+      },
+      "public_pane_numbers": {
+        "36": 1
+      },
+      "next_public_pane_number": 2,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": "Agent",
+          "layout": {
+            "Pane": 36
+          },
+          "panes": {
+            "36": {
+              "cwd": "/Users/louishuyng/.herdr/worktrees/.dotfiles/work-1-optimize-herdr-ui",
+              "agent_name": "sw--dotfiles-1",
+              "managed_agent_kind": "codex"
+            }
+          },
+          "zoomed": false,
+          "focused": 36,
+          "root_pane": 36
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 1,
+  "selected": 1,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

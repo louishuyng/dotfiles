@@ -6,6 +6,7 @@ fish_add_path ~/.dotfiles/scripts
 fish_add_path ~/.bun/bin
 # herdr lives here, and config.fish resolves it before the rest of its init runs
 fish_add_path ~/.local/bin
+fish_add_path ~/.herdr-projects/data/bin
 
 # A stat, not the ~6ms fork `uname` costs on this path. The plist is the marker
 # Apple's own scripts use for "this is macOS".

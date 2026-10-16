@@ -1,0 +1,272 @@
+# Keybindings mirror terminals/tmux/.tmux.conf so muscle memory carries over.
+# Design + rationale: docs/superpowers/specs/2026-08-04-herdr-keybindings-design.md
+#
+# [theme] / [theme.custom] at the bottom are also owned by herdr's settings UI,
+# which rewrites both sections from scratch on every change made there, comments
+# included. What's tracked here survives only until the next tweak in that UI.
+
+onboarding = false
+
+[ui.toast]
+delivery = "herdr"
+
+[ui]
+show_agent_labels_on_pane_borders = false
+agent_panel_sort = "priority"
+
+[keys]
+prefix = "ctrl+a"
+
+# tmux parity. Anything absent here already matches tmux at herdr's default:
+# h/j/k/l pane focus, prefix+- split below, z zoom, x close pane, c new tab,
+# 1..9 switch tab, ? help, b sidebar, w workspace picker, shift+x close tab.
+#
+# split_vertical is cleared: the native action can't focus the new pane and
+# herdr has no focus-after-split setting, so a shell command below owns the key.
+split_vertical = ""
+previous_tab = "prefix+ctrl+h"
+next_tab = "prefix+ctrl+l"
+detach = "prefix+d"
+new_workspace = "prefix+ctrl+c"
+rename_tab = "prefix+,"
+rename_workspace = "prefix+$"
+
+# Opens scrollback in nvim — a superset of the tmux v/y copy-mode flow.
+edit_scrollback = "prefix+v"
+
+# herdr ships copy_mode unbound. Without it there is no keyboard path to the
+# clipboard: Alacritty eats cmd+c for its own (empty) selection because herdr
+# captures the mouse. prefix+[ is stock tmux copy-mode; prefix+v is taken above.
+copy_mode = "prefix+["
+
+# last-pane, not last-window: herdr has no last-tab action. cycle_pane_next is
+# cleared to free the key; h/j/k/l already covers directional movement.
+last_pane = "prefix+tab"
+cycle_pane_next = ""
+
+# Displaced by the bindings above and the launchers in [[keys.command]].
+settings = "prefix+shift+s"       # prefix+s -> project picker
+goto = "prefix+ctrl+g"            # prefix+g -> gh dash
+reload_config = "prefix+ctrl+shift+r"  # prefix+shift+r -> serpl
+
+switch_workspace = "prefix+shift+1..9"
+
+# ctrl+hjkl = move between containers: h/l across tabs, j/k across workspaces
+# (a vertical sidebar list, so k=up=previous).
+previous_workspace = "prefix+ctrl+k"
+next_workspace = "prefix+ctrl+j"
+
+# Freed for the 30%-height shell split below; herdr's native split action takes
+# no size parameter.
+split_horizontal = ""
+
+# ── Launchers ────────────────────────────────────────────────────────────────
+# Keys match the tmux bindings they replace. gh dash and the note script were
+# full tmux windows because nested TUIs needed room; herdr popups are
+# session-modal, so 90% is enough and no tab is consumed.
+
+[[keys.command]]
+key = "prefix+/"
+type = "popup"
+command = "yazi"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+i"
+type = "popup"
+command = "lazydocker"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "tuxedo"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+shift+r"
+type = "popup"
+command = "serpl"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+ctrl+r"
+type = "popup"
+command = "tuicr"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "gh dash"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+n"
+type = "popup"
+command = "~/.dotfiles/terminals/notes/note.sh"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+p"
+type = "popup"
+command = "~/.dotfiles/terminals/playzones/playzone-picker.sh"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+s"
+type = "popup"
+command = "~/.dotfiles/terminals/sesh/sesh-picker.sh"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+a"
+type = "plugin_action"
+command = "herdr-projects.open"
+
+# ── Tab reorder ──────────────────────────────────────────────────────────────
+# Restores tmux's `,`/`.` (swap-window -t -1/+1), which herdr dropped — `,` is
+# rename_tab here. tab.move is socket-API-only, hence the script; see
+# scripts/tab-move.sh.
+#
+# Prefix-scoped, not the direct ctrl+< / ctrl+> these replace. Direct
+# ctrl+shifted-punctuation only survives if the host reports kitty alternate
+# keys: crossterm rewrites the shifted key and drops SHIFT (parse.rs:604), so
+# the chord lands as `ctrl+<` on a terminal that does and `ctrl+shift+,` on one
+# that doesn't — neither fired here. After the prefix, `<` is a plain char, the
+# same path as prefix+{ / prefix+| below.
+
+[[keys.command]]
+key = "prefix+<"
+type = "shell"
+command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh left"
+
+[[keys.command]]
+key = "prefix+>"
+type = "shell"
+command = "~/.dotfiles/terminals/herdr/scripts/tab-move.sh right"
+
+# ── Directional pane swap ────────────────────────────────────────────────────
+# Mirrors the tmux arrow bindings. At an edge herdr returns
+# reason:"no_neighbor" and exits 0, so this no-ops instead of erroring — unlike
+# the tmux version, which fell back to swapping with the prev/next pane.
+
+[[keys.command]]
+key = "prefix+left"
+type = "shell"
+command = "herdr pane swap --current --direction left"
+
+[[keys.command]]
+key = "prefix+down"
+type = "shell"
+command = "herdr pane swap --current --direction down"
+
+[[keys.command]]
+key = "prefix+up"
+type = "shell"
+command = "herdr pane swap --current --direction up"
+
+[[keys.command]]
+key = "prefix+right"
+type = "shell"
+command = "herdr pane swap --current --direction right"
+
+# ── Theme ────────────────────────────────────────────────────────────────────
+# tmux bound T to a tmux-only theme swap. This flips macOS appearance instead,
+# which moves tmux/nvim/ghostty via the com.user.theme-watcher daemon. herdr
+# itself follows only if "follow system" is enabled in herdr's own settings UI
+# — off by default, and deliberately not tracked here (see the header note).
+# prefix+shift+t is free because rename_tab moved to prefix+, (stock tmux
+# rename-window).
+
+[[keys.command]]
+key = "prefix+shift+t"
+type = "shell"
+command = "~/.dotfiles/terminals/herdr/scripts/toggle-appearance.sh"
+
+# tmux bound `-` to `split-window -v -l 30%`. NOTE --ratio sizes the EXISTING
+# pane, not the new one — verified against herdr 0.8.0, where --ratio 0.30 left
+# the new pane at 70%. So 0.70 is what gives the new pane 30% height.
+# No --cwd needed: herdr's new_cwd defaults to "follow", so the split inherits
+# the current directory like tmux's -c "#{pane_current_path}" did.
+# --focus: tmux's split always lands you in the new pane; herdr's split does
+# not focus by default.
+[[keys.command]]
+key = "prefix+minus"
+type = "shell"
+command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction down --ratio 0.70 --focus"
+
+# tmux bound `|` to `split-window -h -l 50%`. 50/50 is symmetric so the
+# --ratio inversion noted above doesn't matter here. --focus for the same
+# reason as prefix+minus above.
+[[keys.command]]
+key = "prefix+|"
+type = "shell"
+command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction right --ratio 0.50 --focus"
+
+# ── One-shot pane resize ─────────────────────────────────────────────────────
+# Restores tmux's H/J/K/L (resize-pane -L/-D/-U/-R 3). herdr's modal
+# resize_mode stays available on prefix+r as an alternative.
+#
+# --amount is a fraction of the container, not cells: --amount 3 was read as
+# 300% and slammed a 26-row pane to 46, pinning its neighbour at the 5-row
+# minimum. 0.05 nudges 2-3 rows per press and reverses cleanly with the
+# opposite direction — the closest analogue to tmux's 3 cells.
+#
+# Resize is on uppercase H/J/K/L, mirroring tmux's H/J/K/L.
+
+[[keys.command]]
+key = "prefix+H"
+type = "shell"
+command = "herdr pane resize --current --direction left --amount 0.05"
+
+[[keys.command]]
+key = "prefix+J"
+type = "shell"
+command = "herdr pane resize --current --direction down --amount 0.05"
+
+[[keys.command]]
+key = "prefix+K"
+type = "shell"
+command = "herdr pane resize --current --direction up --amount 0.05"
+
+[[keys.command]]
+key = "prefix+L"
+type = "shell"
+command = "herdr pane resize --current --direction right --amount 0.05"
+
+# ── Ordinal pane swap ────────────────────────────────────────────────────────
+# Mirrors tmux `{`/`}` (swap-pane -U/-D): swap the focused pane with the
+# previous/next pane in its tab. herdr's own `pane swap --direction` is
+# spatial (left/right/up/down), not ordinal, so this needs a script; see
+# scripts/pane-swap.sh.
+
+[[keys.command]]
+key = "prefix+{"
+type = "shell"
+command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh prev"
+
+[[keys.command]]
+key = "prefix+}"
+type = "shell"
+command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
+
+[theme]
+name = "gruvbox"
+auto_switch = false
+
+# Pane interiors are the host terminal's default background — herdr reads
+# ghostty's via OSC 11 — so with no explicit panel_bg the sidebar, tab bar and
+# popups sit flat on ghostty's #11111B. Nord polar night lifts them off it;
+# "reset" restores the pass-through.
+[theme.custom]
+panel_bg = "#000000"

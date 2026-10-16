@@ -1,0 +1,112 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w4S",
+      "custom_name": "LX-CONFIG",
+      "identity_cwd": "/Users/louishuyng/.dotfiles",
+      "worktree_space": {
+        "key": "/Users/louishuyng/.dotfiles/.git",
+        "label": ".dotfiles",
+        "repo_root": "/Users/louishuyng/.dotfiles",
+        "checkout_path": "/Users/louishuyng/.dotfiles",
+        "is_linked_worktree": false
+      },
+      "public_pane_numbers": {
+        "2": 1,
+        "66": 19
+      },
+      "next_public_pane_number": 20,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 14,
+      "tabs": [
+        {
+          "custom_name": ".dotfiles",
+          "layout": {
+            "Split": {
+              "direction": "Vertical",
+              "ratio": 0.7,
+              "first": {
+                "Pane": 2
+              },
+              "second": {
+                "Pane": 66
+              }
+            }
+          },
+          "panes": {
+            "66": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            },
+            "2": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            }
+          },
+          "zoomed": false,
+          "focused": 66,
+          "root_pane": 2
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w59",
+      "custom_name": "Projects",
+      "identity_cwd": "/Users/louishuyng",
+      "public_pane_numbers": {
+        "68": 2,
+        "67": 1
+      },
+      "next_public_pane_number": 3,
+      "public_tab_numbers": [
+        1,
+        2
+      ],
+      "next_public_tab_number": 3,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 67
+          },
+          "panes": {
+            "67": {
+              "cwd": "/Users/louishuyng"
+            }
+          },
+          "zoomed": false,
+          "focused": 67,
+          "root_pane": 67
+        },
+        {
+          "custom_name": "board",
+          "layout": {
+            "Pane": 68
+          },
+          "panes": {
+            "68": {
+              "cwd": "/Users/louishuyng/.dotfiles/terminals/herdr/plugins/github-installations/herdr-projects-b1278ffb803c/88524-0/checkout",
+              "label": "Work board",
+              "launch_argv": [
+                "sh",
+                "bin/run.sh",
+                "board"
+              ]
+            }
+          },
+          "zoomed": false,
+          "focused": 68,
+          "root_pane": 68
+        }
+      ],
+      "active_tab": 1
+    }
+  ],
+  "active": 1,
+  "selected": 1,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

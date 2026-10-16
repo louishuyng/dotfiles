@@ -9,7 +9,12 @@ import { executable } from '../server/config.mjs';
 const home=homedir();const app=fileURLToPath(new URL('..',import.meta.url));
 const directory=path.join(home,'Library/LaunchAgents');const data=path.join(home,'.local/share/agent-hub');const logs=path.join(data,'logs');
 const domain=`gui/${process.getuid()}`;const labels=['dev.agent-hub.proxy','dev.agent-hub'];
+const nativeProxyLabel='sh.portless.proxy';const nativeProxyFile=`/Library/LaunchDaemons/${nativeProxyLabel}.plist`;
 const xml=(value)=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+export function nativeProxyOwned(content,stateDirectory) {
+  const value=content.match(/<key>PORTLESS_STATE_DIR<\/key>\s*<string>([^<]*)<\/string>/)?.[1];
+  return value===xml(stateDirectory);
+}
 export function plist(label,args,workingDirectory,env,logDirectory) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0"><dict>\n<key>Label</key><string>${xml(label)}</string>\n<key>ProgramArguments</key><array>${args.map((a)=>`<string>${xml(a)}</string>`).join('')}</array>\n<key>WorkingDirectory</key><string>${xml(workingDirectory)}</string>\n<key>EnvironmentVariables</key><dict>${Object.entries(env).map(([k,v])=>`<key>${xml(k)}</key><string>${xml(v)}</string>`).join('')}</dict>\n<key>RunAtLoad</key><true/><key>KeepAlive</key><true/><key>ThrottleInterval</key><integer>10</integer>\n<key>ProcessType</key><string>Background</string>\n<key>StandardOutPath</key><string>${xml(path.join(logDirectory,`${label}.log`))}</string>\n<key>StandardErrorPath</key><string>${xml(path.join(logDirectory,`${label}.error.log`))}</string>\n</dict></plist>\n`;
 }
@@ -81,22 +86,34 @@ export async function restoreSkills({home,app,data}) {
 }
 export async function main(command=process.argv[2]) {
   if(process.platform!=='darwin')throw new Error('The login-service installer currently supports macOS. Run npm start on other platforms.');
-  if(command==='status') {for(const label of labels) {const result=launch(['print',`${domain}/${label}`],true);console.log(`${label}: ${result?.match(/state = (\w+)/)?.[1] || 'not loaded'}`);}console.log('URL: http://agent-hub.localhost:1355');console.log(`Logs: ${logs}`);return;}
-  if(command==='restart') {for(const label of labels)launch(['kickstart','-k',`${domain}/${label}`]);console.log('Agent Hub restarted.');return;}
+  const stateFile=path.join(data,'state.json');const saved=existsSync(stateFile)?JSON.parse(await readFile(stateFile,'utf8')):{};
+  let cleanUrl=saved.serviceUrl==='http://agent-hub.localhost';
+  if(command==='status') {for(const label of cleanUrl?[nativeProxyLabel,labels[1]]:labels) {const result=launch(['print',`${label===nativeProxyLabel?'system':domain}/${label}`],true);console.log(`${label}: ${result?.match(/state = (\w+)/)?.[1] || 'not loaded'}`);}console.log(`URL: ${saved.serviceUrl || 'http://agent-hub.localhost:1355'}`);console.log(`Logs: ${logs}`);return;}
+  if(command==='restart') {for(const label of cleanUrl?[labels[1]]:labels)launch(['kickstart','-k',`${domain}/${label}`]);console.log('Agent Hub restarted.');return;}
   if(command==='uninstall') {
+    if(cleanUrl && existsSync(nativeProxyFile)) {
+      if(!nativeProxyOwned(await readFile(nativeProxyFile,'utf8'),path.join(data,'portless')))throw new Error('The system Portless service belongs to another setup; refusing to remove it.');
+      const portless=executable('portless');if(!portless)throw new Error('Portless is missing.');
+      execFileSync(process.execPath,[await realpath(portless),'service','uninstall'],{stdio:'inherit',env:{...process.env,PORTLESS_STATE_DIR:path.join(data,'portless')}});
+    }
     for(const label of [...labels].reverse()){launch(['bootout',`${domain}/${label}`],true);await rm(path.join(directory,`${label}.plist`),{force:true});}
     console.log('Login services removed. Configuration, skills, backups, and usage cache are preserved.');return;
   }
   if(command==='restore-skills') {await restoreSkills({home,app,data});console.log('Original skill roots restored.');return;}
-  if(command!=='install')throw new Error('Use: npm run service -- install|status|restart|uninstall|restore-skills');
+  if(command!=='install'&&command!=='clean-url')throw new Error('Use: npm run service -- install|clean-url|status|restart|uninstall|restore-skills');
   if(!existsSync(path.join(app,'dist/index.html')))throw new Error('Run npm run build before installing the service.');
   const portless=executable('portless');if(!portless)throw new Error('Portless is missing. Install Portless before continuing.');
-  // A user-level HTTP proxy avoids privileged ports and certificate changes.
   const node=await realpath(process.execPath);const cli=await realpath(portless);
-  const env={PATH:[path.dirname(node),path.join(home,'.local/bin'),'/opt/homebrew/bin','/usr/local/bin','/usr/bin','/bin','/usr/sbin','/sbin'].join(':'),PORTLESS_STATE_DIR:path.join(data,'portless'),PORTLESS_PORT:'1355',PORTLESS_HTTPS:'0',PORTLESS_SYNC_HOSTS:'0',NODE_ENV:'production'};
+  if(command==='clean-url'||cleanUrl) {
+    if(existsSync(nativeProxyFile)&&!nativeProxyOwned(await readFile(nativeProxyFile,'utf8'),path.join(data,'portless')))throw new Error('An existing system Portless service belongs to another setup; refusing to replace it.');
+    if(command==='clean-url'||!existsSync(nativeProxyFile)||launch(['print',`system/${nativeProxyLabel}`],true)===null)execFileSync(node,[cli,'service','install','--no-tls','--port','80','--state-dir',path.join(data,'portless')],{stdio:'inherit',env:{...process.env,PORTLESS_SYNC_HOSTS:'0',PORTLESS_LAN:'0'}});
+    cleanUrl=true;
+  }
+  const env={PATH:[path.dirname(node),path.join(home,'.local/bin'),'/opt/homebrew/bin','/usr/local/bin','/usr/bin','/bin','/usr/sbin','/sbin'].join(':'),PORTLESS_STATE_DIR:path.join(data,'portless'),PORTLESS_PORT:cleanUrl?'80':'1355',PORTLESS_HTTPS:'0',PORTLESS_SYNC_HOSTS:'0',NODE_ENV:'production'};
   await mkdir(directory,{recursive:true});await mkdir(logs,{recursive:true,mode:0o700});
+  if(cleanUrl) {await unload(labels[0]);await rm(path.join(directory,`${labels[0]}.plist`),{force:true});}
   const definitions=[
-    ['dev.agent-hub.proxy',[node,cli,'proxy','start','--foreground','--no-tls','--port','1355']],
+    ...(cleanUrl?[]:[['dev.agent-hub.proxy',[node,cli,'proxy','start','--foreground','--no-tls','--port','1355']]]),
     ['dev.agent-hub',[node,cli,'agent-hub',node,path.join(app,'server/index.mjs')]],
   ];
   for(const [label,args] of definitions) {
@@ -105,7 +122,7 @@ export async function main(command=process.argv[2]) {
     await writeFile(file,content,{mode:0o600});execFileSync('/usr/bin/plutil',['-lint',file],{stdio:'pipe'});
     await unload(label);launch(['enable',`${domain}/${label}`]);launch(['bootstrap',domain,file]);
   }
-  const stateFile=path.join(data,'state.json');const saved=existsSync(stateFile)?JSON.parse(await readFile(stateFile,'utf8')):{};saved.serviceUrl='http://agent-hub.localhost:1355';await writeFile(stateFile,JSON.stringify(saved,null,2),{mode:0o600});
-  console.log('Agent Hub starts at login and restarts after failures.');console.log('URL: http://agent-hub.localhost:1355');console.log(`Logs: ${logs}`);
+  const latest=existsSync(stateFile)?JSON.parse(await readFile(stateFile,'utf8')):{};latest.serviceUrl=cleanUrl?'http://agent-hub.localhost':'http://agent-hub.localhost:1355';await writeFile(stateFile,JSON.stringify(latest,null,2),{mode:0o600});
+  console.log('Agent Hub starts at login and restarts after failures.');console.log(`URL: ${latest.serviceUrl}`);console.log(`Logs: ${logs}`);
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)) main().catch((error)=>{console.error(error.message);process.exitCode=1;});

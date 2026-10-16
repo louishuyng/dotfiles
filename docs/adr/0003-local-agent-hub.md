@@ -90,6 +90,8 @@ prompts, responses, or secrets in the dashboard cache.
 Use the installed Node 24 and Portless executables.
 Install two user LaunchAgents with `RunAtLoad` and restart-on-failure: one for a dedicated loopback HTTP proxy on port 1355, one for the compiled application through Portless under the name `agent-hub`. Use absolute executable paths and a controlled PATH. Isolate the proxy with `PORTLESS_STATE_DIR` so existing Portless apps are unaffected. This avoids administrator privileges and certificate changes. The resulting URL is `http://agent-hub.localhost:1355`.
 
+The owner's 2026-10-13 request for `http://agent-hub.localhost` adds an explicit `service clean-url` migration. Use Portless's native macOS system startup service on port 80 with the same isolated state directory, retaining the user application LaunchAgent. Prefer the existing Portless installer over a second forwarding proxy or packet-filter rules. The trade-off is one administrator-authorized installation (and authorization for removal); the existing port-1355 setup remains available until migration runs. Refuse to replace another system Portless installation. Continue to use plain HTTP on loopback to avoid certificate changes.
+
 The `agent_hub` bootstrap task runs dependency installation with `npm ci`, builds the UI, runs `node scripts/setup.mjs`, and installs the login services. Setup reads the repository manifest and reconciles the global enabled set before service installation. It does not derive authority from Codex's catalogue.
 
 Verify both service layers now and inspect their persisted launchd configuration

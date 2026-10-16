@@ -312,6 +312,7 @@ apply_task() {
       link_file "$repo_root/terminals/tmux/.tmux.conf" "$HOME/.tmux.conf"
       config terminals/sesh sesh
       config terminals/herdr/config.toml herdr/config.toml
+      link_file "$repo_root/terminals/herdr-projects" "$HOME/.herdr-projects/settings"
       if ! $links_only; then clone_repo https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"; fi ;;
     kitty)
       if [[ "$platform" == mac ]]; then casks kitty; else packages kitty; fi

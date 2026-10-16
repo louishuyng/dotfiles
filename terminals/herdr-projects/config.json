@@ -1,0 +1,35 @@
+{
+  "repos": {
+    ".dotfiles": {
+      "repo": {
+        "key": "FLS"
+      }
+    },
+    "mobile": {
+      "repo": {
+        "key": "MBL"
+      }
+    },
+    "louishuyng": {
+      "repo": {
+        "key": "HOME"
+      }
+    }
+  },
+  "coordinator": {
+    "agent": "codex"
+  },
+  "worker": {
+    "agent": "codex"
+  },
+  "watcher": {
+    "agent": "codex"
+  },
+  "plan": {
+    "approve": "none"
+  },
+  "merge": {
+    "pr": false,
+    "by": "you"
+  }
+}

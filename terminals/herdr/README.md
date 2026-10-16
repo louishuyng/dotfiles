@@ -71,7 +71,7 @@ and hosted-tool input in a disposable session before applying visual refinements
 | `prefix+i` | popup: lazydocker | `prefix+i` |
 | `prefix+t` | popup: tuxedo | `prefix+t` |
 | `prefix+shift+r` | popup: serpl | `prefix+R` (`display-popup` serpl) |
-| `prefix+a` | popup: posting | `prefix+a` |
+| `prefix+a` | Herdr Projects: open the work board | none |
 | `prefix+ctrl+r` | popup: tuicr | `prefix+C-r` |
 | `prefix+g` | popup: gh dash | `prefix+g` (full tmux window; popup in herdr) |
 | `prefix+n` | popup: note.sh | `prefix+n` (full tmux window; popup in herdr) |

@@ -14,7 +14,7 @@ delivery = "herdr"
 show_agent_labels_on_pane_borders = false
 agent_panel_sort = "spaces"
 sidebar_width = 32
-status_indicators = "symbols"
+status_indicators = "dots"
 
 [keys]
 prefix = "ctrl+a"
@@ -100,15 +100,6 @@ width = "80%"
 height = "80%"
 
 [[keys.command]]
-description = "Open API client (Posting)"
-key = "prefix+a"
-type = "popup"
-command = "posting"
-width = "90%"
-height = "90%"
-
-[[keys.command]]
-description = "Review code (Tuicr)"
 key = "prefix+ctrl+r"
 type = "popup"
 command = "tuicr"
@@ -146,6 +137,12 @@ type = "popup"
 command = "~/.dotfiles/terminals/sesh/sesh-picker.sh"
 width = "80%"
 height = "80%"
+
+[[keys.command]]
+description = "Open Projects workspace"
+key = "prefix+a"
+type = "shell"
+command = "~/.dotfiles/terminals/herdr/scripts/projects.sh"
 
 # ── Tab reorder ──────────────────────────────────────────────────────────────
 # Restores tmux's `,`/`.` (swap-window -t -1/+1), which herdr dropped — `,` is
@@ -289,14 +286,15 @@ type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
 
 [theme]
-name = "gruvbox"
+name = "solarized"
 auto_switch = true
-dark_name = "gruvbox"
-light_name = "gruvbox-light"
+dark_name = "solarized"
+light_name = "solarized-light"
 
-# Preserve the installed sidebar presentation, including optional reporter metadata.
+# >>> herdr-projects sidebar (added by the herdr-projects plugin; `herdr-projects remove-extras` removes it)
 [ui.sidebar.agents]
 rows = [["state_icon", "machine", "workspace", { token = "tab", rules = [{ equals = "Agent", hide = true }, { starts_with = "Reviewer #", hide = true }] }], ["agent"], [{ token = "$summary", dim = true }, "$progress"]]
 
 [ui.sidebar.spaces]
 rows = [["state_icon", "workspace"], ["branch", "git_status"], [{ token = "$summary", dim = true }, "$progress"]]
+# <<< herdr-projects sidebar

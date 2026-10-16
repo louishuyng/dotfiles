@@ -21,6 +21,8 @@ npm run service -- status
 
 Two user LaunchAgents start the isolated Portless proxy and compiled application at login. Both restart after failures. The proxy binds loopback on port 1355 and uses its own state directory; other Portless apps retain their settings. Rebuild after source changes, then run `npm run service -- restart`.
 
+To use **http://agent-hub.localhost** without a port, run `npm run service -- clean-url` in Terminal and enter your macOS administrator password when Portless requests it. This installs Portless's system startup service on loopback HTTP port 80, replaces the user proxy, and keeps the application running under your user at login. It requires an available port 80 and refuses to replace a system Portless service using another state directory. Subsequent installs preserve the clean URL. Uninstalling this system proxy also requires administrator authorization. No TLS certificate is installed.
+
 Setup reads the repository manifest and applies its global enabled set before installing the service. The dotfiles bootstrap runs the same dependency/build/setup/service sequence with `bash bootstrap/mac.sh --tasks agent_hub` (use the wrapper's `--help` for platform/preview flags).
 
 For development, run `npm start` and `npm run dev` in separate terminals. The Vite development UI proxies `/api` to the local service on port 4310.

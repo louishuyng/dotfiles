@@ -1,0 +1,120 @@
+[
+  {
+    "plugin_id": "herdr-projects",
+    "name": "Projects",
+    "version": "1.0.1",
+    "min_herdr_version": "0.9.3",
+    "description": "A work board: one list of tasks, each delegated one an ordinary herdr agent in its own space",
+    "manifest_path": "/Users/louishuyng/.dotfiles/terminals/herdr/plugins/github-installations/herdr-projects-b1278ffb803c/88524-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/louishuyng/.dotfiles/terminals/herdr/plugins/github-installations/herdr-projects-b1278ffb803c/88524-0/checkout",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "--fetch"
+        ]
+      }
+    ],
+    "startup": [
+      {
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "hook"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "approve-current",
+        "title": "Approve the task in the focused pane (the board asks first)",
+        "contexts": [
+          "pane"
+        ],
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "approve-current"
+        ]
+      },
+      {
+        "id": "coordinator",
+        "title": "Go into the Coordinator's chat",
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "open-coordinator"
+        ]
+      },
+      {
+        "id": "open",
+        "title": "Open the work board",
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "open"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_detected",
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "hook"
+        ]
+      },
+      {
+        "on": "pane.agent_status_changed",
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "hook"
+        ]
+      },
+      {
+        "on": "pane.closed",
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "hook"
+        ]
+      },
+      {
+        "on": "worktree.removed",
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "hook"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "board",
+        "title": "Work board",
+        "placement": "tab",
+        "command": [
+          "sh",
+          "bin/run.sh",
+          "board"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "eliasstravik",
+      "repo": "herdr-projects",
+      "resolved_commit": "c019063b65b3ff6a68688345b9f304533c8fb83c",
+      "managed_path": "/Users/louishuyng/.config/herdr/plugins/github-installations/herdr-projects-b1278ffb803c/88524-0/checkout",
+      "installed_unix_ms": 1792115184915
+    }
+  }
+]
