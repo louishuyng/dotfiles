@@ -37,29 +37,35 @@ export function SharedSetup({ refreshKey, hooksOnly = false, onEditContext }: { 
   const [hookSkill, setHookSkill] = useState('');
   const [hookCommand, setHookCommand] = useState('');
   const [hookEvent, setHookEvent] = useState<HookConfig['event']>('afterTool');
+  const [initialForm, setInitialForm] = useState('');
+  const currentForm = JSON.stringify(editor === 'server' ? [name, draft] : [name, hookType, hookType === 'text' ? hookText : hookType === 'skill' ? hookSkill : hookType === 'command' ? hookCommand : undefined, hookType === 'command' ? hookEvent : undefined]);
+  const dirty = editor ? currentForm !== initialForm : !!preview && !!state && format(preview) !== format(state.value);
 
   async function load() { const next = await api<SharedState>('shared'); setState(next); }
   useEffect(() => { let active = true; void api<SharedState>('shared').then(next => { if (active) setState(next); }).catch(cause => { if (active) setError(cause.message); }); return () => { active = false; }; }, [refreshKey]);
   useEffect(() => {
-    if (!editor && !preview) return;
+    if (!dirty) return;
     const guard = (event: BeforeUnloadEvent) => event.preventDefault();
     window.addEventListener('beforeunload', guard); return () => window.removeEventListener('beforeunload', guard);
-  }, [editor, preview]);
+  }, [dirty]);
   async function action(work: () => Promise<void>) {
     setBusy(true); setError(''); setMessage('');
     try { await work(); } catch (cause) { setError(cause instanceof Error ? cause.message : 'Shared setup failed. Refresh and retry.'); }
     finally { setBusy(false); }
   }
   function close() {
-    if (busy || !window.confirm('Discard this configuration draft?')) return;
+    if (busy || dirty && !window.confirm('Discard this configuration draft?')) return;
     setEditor(undefined); setPreview(undefined);
   }
   function openServer(id?: string) {
-    setError(''); setOriginal(id); setName(id || ''); setDraft(format(id ? state?.value.servers[id] : { type: 'stdio', command: 'npx', args: ['-y', '@modelcontextprotocol/server-everything'], env: {}, enabled: true })); setEditor('server');
+    const content = format(id ? state?.value.servers[id] : { type: 'stdio', command: 'npx', args: ['-y', '@modelcontextprotocol/server-everything'], env: {}, enabled: true });
+    setError(''); setOriginal(id); setName(id || ''); setDraft(content); setInitialForm(JSON.stringify([id || '', content])); setEditor('server');
   }
   function openHook(hook?: HookConfig) {
     setError(''); setOriginal(hook?.id); setName(hook?.id || '');
-    setHookType(hook?.context ? 'preset' : hook?.skill !== undefined ? 'skill' : hook?.command !== undefined ? 'command' : 'text');
+    const type = hook?.context ? 'preset' : hook?.skill !== undefined ? 'skill' : hook?.command !== undefined ? 'command' : 'text';
+    setHookType(type);
+    setInitialForm(JSON.stringify([hook?.id || '', type, type === 'text' ? hook?.text || '' : type === 'skill' ? hook?.skill || '' : type === 'command' ? hook?.command || '' : undefined, type === 'command' ? hook?.event || 'afterTool' : undefined]));
     setHookText(hook?.text || ''); setHookSkill(hook?.skill || ''); setHookCommand(hook?.command || ''); setHookEvent(hook?.event || 'afterTool'); setEditor('hook');
   }
   function review() {

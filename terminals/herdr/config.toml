@@ -286,10 +286,10 @@ type = "shell"
 command = "~/.dotfiles/terminals/herdr/scripts/pane-swap.sh next"
 
 [theme]
-name = "solarized"
+name = "tokyo-night"
 auto_switch = true
-dark_name = "solarized"
-light_name = "solarized-light"
+dark_name = "tokyo-night"
+light_name = "tokyo-night-day"
 
 # >>> herdr-projects sidebar (added by the herdr-projects plugin; `herdr-projects remove-extras` removes it)
 [ui.sidebar.agents]

@@ -191,7 +191,7 @@ run = ['move-node-to-workspace Dev']
 # Workspace Terminal
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ['move-node-to-workspace Terminal', 'layout tiling']
+run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
 if.app-id = 'com.conductor.app'

@@ -2,7 +2,8 @@
   {
     "bindings": {
       "cmd-s": "agent::Toggle",
-      "ctrl-\\": "workspace::ToggleRightDock",
+      "ctrl-\\": "project_panel::Toggle",
+      "ctrl-a z": "workspace::ToggleZoom",
     },
   },
   {
@@ -13,6 +14,7 @@
       "space q": "pane::CloseActiveItem",
       // File Explore
       "ctrl-p": "file_finder::Toggle",
+      "space f l": ["file_finder::Toggle", { "separate_history": true }],
       "space f r": ["file_finder::Toggle", { "separate_history": true }],
       "space /": "workspace::NewSearch",
       // Split
@@ -27,10 +29,11 @@
       ", w": "pane::ActivateNextItem",
       ", b d": "pane::CloseActiveItem",
       ", b d a": "pane::CloseAllItems",
-      // Temrinal
-      "ctrl-t": "workspace::NewTerminal",
+      // Terminal
+      "ctrl-t": "terminal_panel::Toggle",
       // LSP
       "g f": "editor::GoToDefinition",
+      "g r": "editor::FindAllReferences",
       "g t": "editor::GoToTypeDefinition",
       "g v": "editor::GoToDefinitionSplit",
       // Git
@@ -39,8 +42,7 @@
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPreviousHunk",
       // Collapse sidebar workspace
-      "space s s": "outline_panel::ToggleFocus",
-      ", g s": "git_panel::ToggleFocus",
+      "space s s": "outline_panel::Toggle",
       // Code Action
       "space c a": "editor::ToggleCodeActions",
 
@@ -52,6 +54,26 @@
       // Run Test
       // Run Test in current cursor
       // Run Test in current file
+    },
+  },
+  {
+    "context": "EmptyPane",
+    "bindings": {
+      "ctrl-p": "file_finder::Toggle",
+      "space f l": ["file_finder::Toggle", { "separate_history": true }],
+    },
+  },
+  {
+    "context": "BufferSearchBar || ProjectSearchBar || ProjectSearchView",
+    "bindings": {
+      "cmd-shift-r": "search::ToggleReplace",
+    },
+  },
+  {
+    "context": "(Editor && vim_mode == normal) || (GitPanel && !Editor)",
+    "bindings": {
+      ", g g": "git_graph::Open",
+      ", g s": "git_panel::Toggle",
     },
   },
   {
@@ -99,16 +121,26 @@
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "space k": "assistant::InlineAssist",
-      "space i": "agent::ToggleFocus",
+      "space i": "agent::Toggle",
     },
   },
   {
     "context": "Dock",
     "bindings": {
+      "space s s": "outline_panel::Toggle",
+      "space i": "agent::Toggle",
+      "space d u": "debug_panel::Toggle",
+      "space q": "workspace::CloseActiveDock",
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "Dock > (Editor && vim_mode == normal)",
+    "bindings": {
+      "space q": "workspace::CloseActiveDock",
     },
   },
   {
@@ -132,14 +164,13 @@
   {
     "context": "Terminal",
     "bindings": {
-      // Close terminal
-      "ctrl-t": "pane::CloseActiveItem",
+      "ctrl-t": "terminal_panel::Toggle",
       "ctrl-l": "terminal::Clear",
     },
   },
   {
     "bindings": {
-      "cmd-/": "agent::ToggleFocus",
+      "cmd-/": "agent::Toggle",
     },
   },
   {
@@ -209,7 +240,7 @@
       "space d O": "debugger::StepOver",
       "space d t": "debugger::Stop",
       "space d r": "debugger::Restart",
-      "space d u": "debug_panel::ToggleFocus",
+      "space d u": "debug_panel::Toggle",
     },
   },
   {
@@ -235,6 +266,7 @@
     // <Leader>A ("Select All"/"Visual All") grabs every match at once.
     "context": "VimControl && !menu",
     "bindings": {
+      "g o": "editor::OpenExcerpts",
       "ctrl-n": "vim::SelectNext",
       "ctrl-shift-n": "vim::SelectPrevious",
       "space shift-a": "editor::SelectAllMatches",
