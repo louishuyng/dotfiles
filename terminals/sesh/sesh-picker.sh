@@ -36,13 +36,15 @@ shorten_path() {
 #--------------------------------------------------------------------
 build_list() {
   local out="$1"
+  local windows
+  windows=$(tmux list-windows -a -F '#S:#I #W' 2>/dev/null) || return 2
   {
     local line target
     while IFS= read -r line; do
       [[ -z "$line" ]] && continue
       target="${line%% *}"
       printf '%s%s%s %s\t%s\n' "$ICON_TMUX_FG" "$ICON_TMUX" "$RESET" "$line" "$target"
-    done < <(tmux list-windows -a -F '#S:#I #W' 2>/dev/null)
+    done <<< "$windows"
 
     local path
     while IFS= read -r path; do
@@ -63,8 +65,10 @@ hd_build_list() {
   local out="$1"
   : > "$out"
 
-  local ws_json panes_json
-  ws_json=$("$HERDR_BIN" workspace list 2>/dev/null)
+  local ws_json panes_json tabs_json workspaces cwds tabs
+  ws_json=$("$HERDR_BIN" workspace list 2>/dev/null) || return 2
+  workspaces=$(printf '%s' "$ws_json" | jq -er '
+    .result.workspaces | arrays | map([.workspace_id, .label] | @tsv) | join("\n")' 2>/dev/null) || return 2
 
   # An in-process set, not a temp file. The dedup below runs once per zoxide
   # entry — ~250 of them — and `grep -qxF` forked for every one to search a
@@ -74,16 +78,17 @@ hd_build_list() {
   local ws label cwd
   while IFS=$'\t' read -r ws label; do
     [[ -z "$ws" ]] && continue
-    panes_json=$("$HERDR_BIN" pane list --workspace "$ws" 2>/dev/null)
+    panes_json=$("$HERDR_BIN" pane list --workspace "$ws" 2>/dev/null) || return 2
+    cwds=$(printf '%s' "$panes_json" | jq -er '.result.panes | arrays | map(.cwd // empty) | join("\n")' 2>/dev/null) || return 2
     while IFS= read -r cwd; do
       [[ -n "$cwd" ]] && open_cwds["$cwd"]=1
-    done < <(printf '%s\n' "$panes_json" | jq -r '.result.panes[]?.cwd')
+    done <<< "$cwds"
 
-    "$HERDR_BIN" tab list --workspace "$ws" 2>/dev/null \
-      | jq -r --arg ws "$label" --arg ic "$ICON_TMUX_FG$ICON_TMUX$RESET" \
-          '.result.tabs[]? | "\($ic) \($ws):\(.number) \(.label)\t\(.tab_id)"' >> "$out"
-  done < <(printf '%s\n' "$ws_json" \
-             | jq -r '.result.workspaces[]? | "\(.workspace_id)\t\(.label)"')
+    tabs_json=$("$HERDR_BIN" tab list --workspace "$ws" 2>/dev/null) || return 2
+    tabs=$(printf '%s' "$tabs_json" | jq -er --arg ws "$label" --arg ic "$ICON_TMUX_FG$ICON_TMUX$RESET" '
+      .result.tabs | arrays | map("\($ic) \($ws):\(.number) \(.label)\t\(.tab_id)") | join("\n")' 2>/dev/null) || return 2
+    [[ -z "$tabs" ]] || printf '%s\n' "$tabs" >> "$out"
+  done <<< "$workspaces"
 
   local path
   {
@@ -131,17 +136,20 @@ cmd_preview() {
 #--------------------------------------------------------------------
 open_in_session() {
   local session="$1" path="$2"
-  local existing
-  existing=$(tmux list-windows -t "$session" -F '#{window_index} #{pane_current_path}' 2>/dev/null \
-    | awk -v p="$path" '$2 == p {print $1; exit}')
-
-  if [[ -n "$existing" ]]; then
-    tmux switch-client -t "$session:$existing"
+  local existing windows sessions
+  sessions=$(tmux list-sessions -F '#S' 2>/dev/null) || return 2
+  if ! grep -qxF -- "$session" <<< "$sessions"; then
+    tmux new-session -d -s "$session" -c "$path" || return 2
   else
-    tmux new-window -t "$session" -c "$path" 2>/dev/null \
-      || tmux new-session -d -s "$session" -c "$path"
-    tmux switch-client -t "$session"
+    windows=$(tmux list-windows -t "$session" -F '#{window_index} #{pane_current_path}' 2>/dev/null) || return 2
+    existing=$(awk -v p="$path" 'substr($0, index($0, " ")+1) == p {print $1; exit}' <<< "$windows")
+    if [[ -n "$existing" ]]; then
+      tmux switch-client -t "$session:$existing"
+      return $?
+    fi
+    tmux new-window -t "$session" -c "$path" || return 2
   fi
+  tmux switch-client -t "$session"
 }
 
 #--------------------------------------------------------------------
@@ -162,7 +170,7 @@ route_selection() {
       else
         tmux switch-client -t "$target"
       fi
-      return 0
+      return $?
       ;;
   esac
 
@@ -175,26 +183,26 @@ route_selection() {
     if hd_active; then
       if [[ "$expanded" == "$root" || "$expanded" == "$root/"* ]]; then
         hd_open_project "$name" "$expanded" >/dev/null
-        return 0
+        return $?
       fi
       continue
     fi
 
     if [[ "$expanded" == "$root" ]]; then
       sesh connect "$name"
-      return 0
+      return $?
     fi
     if [[ "$expanded" == "$root/"* ]]; then
       open_in_session "$name" "$expanded"
-      return 0
+      return $?
     fi
   done < "$roots_tsv"
 
   # Under no known root: a standalone workspace of its own. Labelled by
   # folder name, or herdr would default the sidebar entry to a bare number.
   if hd_active; then
-    "$HERDR_BIN" workspace create --label "$(basename -- "$expanded")" --cwd "$expanded" --focus >/dev/null 2>&1
-    return 0
+    hd_open_project "$(basename -- "$expanded")" "$expanded" >/dev/null
+    return $?
   fi
   sesh connect "$target"
 }
@@ -206,12 +214,23 @@ cmd_close() {
   case "$target" in
     /*|~*) return 0 ;;  # not open; nothing to close
   esac
+  local label="${2:-$target}" answer status
+  if answer=$(printf 'Cancel\nClose\n' | FZF_DEFAULT_OPTS= fzf \
+    --no-sort --layout=reverse --prompt 'Confirm > ' \
+    --header "Close tab: $label? Running work may stop." \
+    --bind 'esc:abort' --no-multi); then
+    [[ "$answer" == "Close" ]] || return 0
+  else
+    status=$?
+    (( status == 1 || status == 130 )) && return 0
+    return "$status"
+  fi
   if hd_active; then
     "$HERDR_BIN" tab close "$target" >/dev/null 2>&1
   else
     tmux kill-window -t "$target" 2>/dev/null
   fi
-  return 0
+  return $?
 }
 
 cmd_rebuild() {
@@ -229,43 +248,79 @@ cmd_route() {
   local tmp
   tmp=$(mktemp) || return 1
   parse_roots "$tmp"
-  route_selection $'\t'"$target" "$tmp"
+  local status=0
+  route_selection $'\t'"$target" "$tmp" || status=$?
   rm -f "$tmp"
+  return "$status"
 }
 
 cmd_main() {
   local tmp
   tmp=$(mktemp -d "${TMPDIR:-/tmp}/sesh-picker.XXXXXX") || return 1
-  trap 'rm -rf "$tmp"' EXIT
+  local cleanup
+  printf -v cleanup 'rm -rf -- %q' "$tmp"
+  trap "$cleanup" EXIT
 
   parse_roots "$tmp/roots.tsv"
-  if hd_active; then
-    hd_build_list "$tmp/all.list"
-  else
-    build_list "$tmp/all.list"
-  fi
-
-  local selected
-  selected=$(FZF_DEFAULT_OPTS= fzf \
-    --ansi --no-sort --border none --padding 0 --margin 0 --info=hidden \
-    --pointer '▌' --marker '▍' \
-    --prompt '❯ ' \
-    --delimiter=$'\t' --with-nth=1 --nth=1 \
-    --bind 'tab:down,btab:up' \
-    --bind "ctrl-d:execute-silent(bash $SCRIPT --close {2}; bash $SCRIPT --rebuild $tmp/all.list)+reload(cat $tmp/all.list)" \
-    --preview "bash $SCRIPT --preview {2}" \
-    --preview-window 'right:45%:wrap:border-left' \
-    < "$tmp/all.list")
-
-  [[ -z "$selected" ]] && exit 0
-  route_selection "$selected" "$tmp/roots.tsv"
+  local selected key row target label error="" status=0 fzf_status
+  local header=$'Enter open/focus · Tab move · Ctrl+D close tab · Esc cancel\nCtrl+R retry list · Ctrl+P preview'
+  local preview_cmd
+  printf -v preview_cmd 'bash %q --preview {2}' "$SCRIPT"
+  while :; do
+    if ! cmd_rebuild "$tmp/all.list"; then
+      : > "$tmp/all.list"
+      error="Could not list projects. Ctrl+R retry · Esc cancel"
+      status=2
+    fi
+    selected=$(FZF_DEFAULT_OPTS= fzf \
+      --ansi --no-sort --border none --padding 0 --margin 0 --info=hidden \
+      --pointer '▌' --marker '▍' --prompt 'Projects > ' \
+      --header "${error:+$error$'\n'}$header" \
+      --delimiter=$'\t' --with-nth=1 --nth=1 \
+      --expect enter,ctrl-d,ctrl-r \
+      --bind 'tab:down,btab:up,ctrl-p:toggle-preview,esc:abort' \
+      --with-shell 'bash -c' --preview "$preview_cmd" \
+      --preview-window 'right:45%:wrap:border-left' \
+      --bind 'start,resize:transform:if [ "$FZF_COLUMNS" -lt 100 ]; then echo "change-preview-window(right:45%:wrap:border-left:hidden)"; else echo "change-preview-window(right:45%:wrap:border-left)"; fi' \
+      < "$tmp/all.list")
+    fzf_status=$?
+    if (( fzf_status != 0 )); then
+      (( fzf_status == 1 || fzf_status == 130 )) && return "$status"
+      printf 'Could not run project picker.\n' >&2
+      return "$fzf_status"
+    fi
+    key="${selected%%$'\n'*}"
+    row="${selected#*$'\n'}"
+    [[ "$key" == ctrl-r ]] && { error=""; continue; }
+    [[ "$row" == *$'\t'* ]] || continue
+    target="${row#*$'\t'}"
+    label="${row%%$'\t'*}"
+    if [[ "$key" == ctrl-d ]]; then
+      if cmd_close "$target" "$label"; then
+        error=""
+      else
+        status=$?
+        error="Could not close tab. Ctrl+D retry · Esc cancel"
+      fi
+    elif route_selection "$row" "$tmp/roots.tsv" >/dev/null 2>&1; then
+      return 0
+    else
+      status=$?
+      error="Could not open/focus project. Enter retry · Esc cancel"
+    fi
+  done
 }
 
 case "${1:-}" in
   --preview) shift; cmd_preview "${1:-}" ;;
   --rebuild) shift; cmd_rebuild "${1:-/dev/null}" ;;
-  --close)   shift; cmd_close "${1:-}" ;;
+  --close)   shift; cmd_close "${1:-}" "${2:-${1:-}}" ;;
   --route)   shift; cmd_route "${1:-}" ;;
-  --list)    shift; tmp=$(mktemp); cmd_rebuild "$tmp"; cat "$tmp"; rm -f "$tmp" ;;
+  --list)    shift; tmp=$(mktemp) || exit 2
+    status=0
+    cmd_rebuild "$tmp" || status=$?
+    if (( status == 0 )); then cat "$tmp"; else printf 'Could not list projects.\n' >&2; fi
+    rm -f "$tmp"
+    exit "$status" ;;
   *)         cmd_main ;;
 esac

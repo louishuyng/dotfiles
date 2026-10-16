@@ -38,7 +38,8 @@ hd_workspace_id_by_label() {
   # a no-match. Its stderr is suppressed because Task 6 runs these inside an fzf
   # popup, where a stray parse error garbles the UI.
   out=$(printf '%s' "$json" | jq -r --arg l "$label" \
-    'first(.result.workspaces[]? | select(.label == $l) | .workspace_id) // empty' 2>/dev/null) || return 2
+    'if (.result.workspaces | type) != "array" then error("missing workspaces")
+     else first(.result.workspaces[] | select(.label == $l) | .workspace_id) // empty end' 2>/dev/null) || return 2
 
   # Print only when non-empty, so "no match" stays truly empty output rather
   # than a bare newline.
@@ -85,7 +86,8 @@ hd_tab_id_by_cwd() {
   local json out
   json=$("$HERDR_BIN" pane list --workspace "$ws" 2>/dev/null) || return 2
   out=$(printf '%s' "$json" | jq -r --arg c "$expanded" \
-    'first(.result.panes[]? | select(.cwd == $c) | .tab_id) // empty' 2>/dev/null) || return 2
+    'if (.result.panes | type) != "array" then error("missing panes")
+     else first(.result.panes[] | select(.cwd == $c) | .tab_id) // empty end' 2>/dev/null) || return 2
 
   [[ -n "$out" ]] && printf '%s\n' "$out"
   return 0
