@@ -72,9 +72,13 @@ $env.STARSHIP_CONFIG = $"($env.HOME)/.dotfiles/terminals/starship/config.toml"
 
 # Editor
 $env.EDITOR = "nvim"
+if ($env.TERM_PROGRAM? | default "") == "tern" {
+    $env.EDITOR = "zed --wait"
+    $env.VISUAL = $env.EDITOR
+}
 # Note: fzf_directory_opts would need to be handled differently in Nu
-$env.GIT_EDITOR = "nvim"
-$env.REACT_EDITOR = "nvim"
+$env.GIT_EDITOR = $env.EDITOR
+$env.REACT_EDITOR = $env.EDITOR
 
 # Fzf
 $env.FZF_COMPLETION_TRIGGER = "**"

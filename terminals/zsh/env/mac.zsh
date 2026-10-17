@@ -63,8 +63,12 @@ export STARSHIP_CONFIG=~/.dotfiles/terminals/starship/config.toml
 
 # Editor
 export EDITOR=nvim
-export GIT_EDITOR=nvim
-export REACT_EDITOR=nvim
+if [[ "$TERM_PROGRAM" == tern ]]; then
+  export EDITOR='zed --wait'
+  export VISUAL="$EDITOR"
+fi
+export GIT_EDITOR="$EDITOR"
+export REACT_EDITOR="$EDITOR"
 
 # Fzf
 export FZF_COMPLETION_TRIGGER='**'
@@ -89,7 +93,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 
 # ROR
-export BUNDLE_EDITOR=nvim
+export BUNDLE_EDITOR="$EDITOR"
 unset GEM_HOME
 
 # Scripts

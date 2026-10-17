@@ -269,8 +269,8 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^E' edit-command-line
 
-# Clear screen and open nvim (Ctrl+N)
-_clear_and_nvim() { clear; nvim; zle reset-prompt }
+# Open or focus Neovim in this Tern tab (Ctrl+N)
+_clear_and_nvim() { bash ~/.dotfiles/scripts/nvim-tab.sh; zle reset-prompt }
 zle -N _clear_and_nvim
 bindkey '^N' _clear_and_nvim
 

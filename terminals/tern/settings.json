@@ -1,0 +1,9 @@
+{
+  "keybinds": {
+    "ctrl+\\": [],
+    "ctrl+a>g": "new_git_block"
+  },
+  "git": {
+    "external_editor": "/Users/louishuyng/.dotfiles/terminals/tern/zed-project.sh"
+  }
+}

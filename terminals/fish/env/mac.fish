@@ -91,9 +91,13 @@ fish_add_path /usr/local/opt/openssl/bin
 
 # # Editor
 set -gx EDITOR nvim
+if test "$TERM_PROGRAM" = tern
+    set -gx EDITOR "zed --wait"
+    set -gx VISUAL "$EDITOR"
+end
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
-set -gx GIT_EDITOR nvim
-set -gx REACT_EDITOR nvim
+set -gx GIT_EDITOR "$EDITOR"
+set -gx REACT_EDITOR "$EDITOR"
 
 # # Fzf
 set -gx FZF_COMPLETION_TRIGGER '**'
@@ -118,7 +122,7 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path /usr/local/go/bin
 
 # # ROR
-set -gx BUNDLE_EDITOR nvim
+set -gx BUNDLE_EDITOR "$EDITOR"
 set -e GEM_HOME
 
 # #Scripts
