@@ -154,6 +154,11 @@ block and selects the Zed project opener. Installed theme and other preferences
 are separate; linking the plugin does not replace them. Custom settings and
 presets take precedence over plugin bindings.
 
+Plain `Ctrl+\` toggles Tern's Files panel. In a terminal running Neovim, it
+passes through to Neovim instead, preserving the existing nvim-tree toggle.
+The handler checks `tern process` for the foreground editor, including
+daemon-backed shells, using `/Applications/Tern.app/Contents/MacOS/tern`.
+
 Inside omp, plain `Ctrl+N` (without `Ctrl+A`) opens Neovim in a right split
 using omp's current project directory. If this tab already has a running
 Neovim, it focuses that pane instead. The shared `ai/hooks/omp-extension.ts`

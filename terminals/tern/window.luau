@@ -1,6 +1,6 @@
 local tern = require("tern")
 
--- Keep Tern's native shortcuts; only add Herdr's Ctrl+A table.
+-- Keep Tern's native shortcuts alongside Herdr's Ctrl+A table.
 local bindings = {
   h = "focus_pane:left", j = "focus_pane:down", k = "focus_pane:up", l = "focus_pane:right",
   ["ctrl+h"] = "previous_tab", ["ctrl+l"] = "next_tab",
@@ -20,6 +20,38 @@ end
 for n = 1, 9 do
   tern.bind("ctrl+a>" .. n, "goto_tab:" .. n)
 end
+
+local function is_neovim(process)
+  return process and (process.name == "nvim"
+    or string.match(process.argv[1] or "", "[^/]+$") == "nvim")
+end
+
+tern.command({
+  id = "toggle_files",
+  title = "Toggle Files (preserve Neovim shortcut)",
+  run = function(cx)
+    local pane = cx.session:focused()
+    local row = pane and cx.session:pane(pane)
+    if not row or (row.kind ~= "terminal" and row.kind ~= "agent") then
+      cx:command("files")
+      return
+    end
+    -- Daemon pane metadata names the shell, not its foreground editor.
+    tern.process.run({ "/Applications/Tern.app/Contents/MacOS/tern", "process", tostring(pane), "--json" }, function(result, fresh)
+      if fresh.session:focused() ~= pane then return end
+      if result.status ~= 0 then
+        fresh:toast("error", "Could not inspect pane", result.stderr)
+        return
+      end
+      local process = tern.json.decode(result.stdout)
+      if is_neovim(process.child) or is_neovim(process.foreground) then
+        fresh:action("text:\28")
+      else
+        fresh:command("files")
+      end
+    end)
+  end,
+})
 
 local function command(id, title, key, run)
   tern.command({ id = id, title = title, keys = { "ctrl+a>" .. key }, run = run })

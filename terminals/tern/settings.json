@@ -1,6 +1,6 @@
 {
   "keybinds": {
-    "ctrl+\\": [],
+    "ctrl+\\": "plugin.herdr-keys.toggle_files",
     "ctrl+a>g": "new_git_block"
   },
   "git": {
