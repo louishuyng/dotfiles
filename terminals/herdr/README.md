@@ -90,3 +90,70 @@ and hosted-tool input in a disposable session before applying visual refinements
 | `prefix+L` | resize right | `prefix+L` (`resize-pane -R 2`) |
 | `prefix+{` | swap pane with previous | `prefix+{` (`swap-pane -U`) |
 | `prefix+}` | swap pane with next | `prefix+}` (`swap-pane -D`) |
+
+## Tern
+
+The [Tern plugin](../tern/window.luau) adds Herdr-style `Ctrl+A` shortcuts while
+keeping Tern's native shortcuts and installed preferences. Link or restore it:
+
+```bash
+tern plugin link ~/.dotfiles/terminals/tern
+tern plugin list --json
+```
+
+The plugin needs `plugin.toml`, `window.luau`, and `projects.sh` in
+`terminals/tern`. Keep these files in version control alongside `settings.json`
+and `zed-project.sh`; the installed `.path` link alone cannot restore missing
+files. After edits, use `tern plugin reload`. A healthy plugin list reports
+`herdr-keys` as ready with no problems.
+
+### Project spaces
+
+`Ctrl+A`, then `s` opens the project picker. Named roots come from
+`~/.config/sesh/sesh.toml` (`SESH_TOML` overrides it); other directories come
+from zoxide. The first matching root supplies the session name, just as in
+Herdr. `regask/alert` opens an `alert` tab inside **RegAsk**, and
+`regask/company` opens a sibling tab in the same session. Selecting a project
+again focuses its existing pane. Outside configured roots, the directory's
+basename supplies the session name.
+
+The `dotfiles` choice always opens `~/.dotfiles` under its configured root
+session (`LX-CONFIG`). History entries named `dotfiles` or `.dotfiles` collapse
+into that canonical choice instead of opening a worktree. Existing sessions
+with those names do not override it; use `Ctrl+A w` to select such a session
+explicitly.
+
+For histories longer than Tern 0.9.2's 200-item picker limit, choose **Search
+all projects…**, enter words from the name or path, then select the result.
+Remote hosts list their existing spaces only; local paths are not sent there.
+
+### Keys
+
+Press `Ctrl+A`, then the key below.
+
+| Key | Action |
+| --- | --- |
+| `\` / `-` | Split right / below, both 50/50 |
+| `s` / `w` | Project picker / session switcher |
+| `Ctrl+C` / `$` | New / rename session |
+| `Ctrl+K` / `Ctrl+J` / `Shift+1` … `Shift+9` | Previous / next / numbered session |
+| `c` / `,` / `Shift+X` | New / rename / close tab |
+| `Ctrl+H` / `Ctrl+L` / `1` … `9` | Previous / next / numbered tab |
+| `<` / `>` | Move tab left / right |
+| `h j k l` / `Tab` / `Shift+Tab` | Directional focus / last pane / previous pane |
+| `H J K L` / arrows / `{` / `}` | Resize / directional swap / previous swap / next swap |
+| `z` / `x` / `b` | Zoom / close pane / toggle sidebar |
+| `?` / `o` / `v` | Command palette / inbox / scrollback in editor |
+| `Shift+S` / `Ctrl+G` / `Ctrl+Shift+R` | Settings / directory picker / reload settings |
+| `/` / `i` / `t` | Yazi / Lazydocker / Tuxedo |
+| `Shift+R` / `Ctrl+R` / `n` / `p` | Serpl / Tuicr / notes / playzones |
+| `Shift+T` / `Ctrl+A` | Toggle macOS appearance / send Ctrl+A to the program |
+
+`terminals/tern/settings.json` overrides `Ctrl+A g` with Tern's native Git
+block and selects the Zed project opener. Installed theme and other preferences
+are separate; linking the plugin does not replace them. Custom settings and
+presets take precedence over plugin bindings.
+
+Unlike Herdr, Tern launchers use tabs instead of popups. `|` is not the right
+split key. Herdr-only copy mode (`[`), detach (`d`), modal resize (`r`), and
+Herdr Projects (`a`) remain unbound rather than running unrelated actions.

@@ -152,7 +152,12 @@ a mandatory Crit PR rule.
 
 The shared context runner generates each native output shape. OpenCode uses the
 repository `shared-hooks` plugin; Pi uses `ai/hooks/pi-extension.ts`, registered
-through `ai/config/native-pi-extensions.json`. Legacy Superset, Herdr, RTK,
+through `ai/config/native-pi-extensions.json`. omp uses `ai/hooks/omp-extension.ts`,
+registered through `ai/config/native-omp-extensions.json` in
+`~/.omp/agent/config.yml`. Restart omp after restoring a missing extension;
+modules absent at startup cannot be loaded into an existing session.
+
+Legacy Superset, Herdr, RTK,
 Caveman, and duplicate Crit registrations were removed from the managed native
 hook sources. Duplicate Ponytail/ADHD plugin providers are disabled so their
 hooks cannot bypass the workspace switches. Pi's old Herdr and notification

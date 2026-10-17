@@ -1,0 +1,6 @@
+schema = 1
+id = "herdr-keys"
+name = "Herdr keys"
+version = "1.0.0"
+description = "Ctrl+A shortcuts matching this repository's Herdr configuration."
+window = "window.luau"
