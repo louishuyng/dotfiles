@@ -82,3 +82,5 @@ pi/agent/*
 /pi/agent/skills/codex-shared
 
 /pi/agent/skills/LX14-AI-Skills
+
+raycast/node-compile-cache

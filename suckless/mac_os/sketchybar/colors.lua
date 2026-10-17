@@ -65,7 +65,7 @@ local themes = {
 		magenta = 0xff66ff99,
 		grey = 0xff4e6f4e,
 		transparent = 0x00000000,
-		accent = 0xff00e65c,
+		accent = 0xff00CB15,
 
 		bar = { bg = 0xff000000, border = 0xff0b180b },
 		popup = { bg = 0xff000000, border = 0xff00e65c },
