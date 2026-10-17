@@ -23,6 +23,14 @@
           "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'claude' 'crit' 'SessionStart'"
         }
       ]
+    },
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'claude' 'ui-frontend' 'SessionStart'"
+        }
+      ]
     }
   ]
 }

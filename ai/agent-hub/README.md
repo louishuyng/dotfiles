@@ -44,9 +44,10 @@ verified shared set; import compatible entries explicitly from the page.
 Shared servers support stdio commands and Streamable HTTP endpoints. Native-only
 options and environment interpolation require manual setup and appear as
 incomplete parity. Shared command hooks map supported tool-use and completion
-events. ADHD, Ponytail, and Crit default on. The Hooks workspace stores global
-defaults and per-agent opt-outs while keeping one shared body for each hook.
-Context hooks run in Codex, Claude, Gemini, Cursor, OpenCode, and Pi. Commands receive native JSON; they
+events. ADHD, Ponytail, Crit, and the conditional `ui-frontend` workflow default
+on. The Hooks workspace stores global defaults and per-agent opt-outs while
+keeping one shared body for each hook.
+Context hooks run in Codex, Claude, Gemini, Cursor, OpenCode, Pi, and omp. Commands receive native JSON; they
 must handle each runtime's payload and output contract. Unsupported agents and
 events remain visible. Restart agents after configuration changes and use their
 native tools to check connections, OAuth, and project overrides.
@@ -149,6 +150,31 @@ ADHD reads `ai/skills/i-have-adhd/SKILL.md`; Ponytail reads
 state and `disabledAgents` lists live in `ai/config/shared-setup.json`. The shared
 instructions in `ai/AGENTS.md` contain neither an always-on ADHD output policy nor
 a mandatory Crit PR rule.
+
+`ui-frontend` is a context-text hook in `ai/config/shared-setup.json`. Its workflow
+activates only for tasks that design, build, change, or review UI/frontend work.
+It requires the installed `ui-ux-pro-max` skill and relevant design/stack skills,
+then applies the relevant [Front-End Checklist](https://github.com/thedaviddias/front-end-checklist)
+rules to frontend changes. Existing checklist skills/MCP tools can supply rules;
+otherwise agents read the checklist directly. It does not install integrations,
+upload private code, or start a site-wide audit automatically.
+
+Backend-only, database, infrastructure, and unrelated documentation/script tasks
+skip design-skill loading and checklist retrieval. Mixed tasks apply the workflow
+only to their UI/frontend portion. The short conditional requirement also lives
+in `ai/AGENTS.md` for instruction consumers without hook support. Disabling the
+hook removes its detailed workflow, not that shared instruction. Context text is
+delivered at session start; task scoping is an agent instruction, not runtime
+task detection or an enforcement gate.
+
+Copilot CLI and Droid receive the conditional requirement through personal
+instructions instead of a shared context hook:
+[`~/.copilot/copilot-instructions.md`](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions)
+and [`~/.factory/AGENTS.md`](https://docs.factory.com/harness/agents-md).
+Agent Hub links both to `ai/AGENTS.md` when their configuration directories
+exist, using the existing global-file backup and reconciliation flow.
+Their unsupported hook status does not mean those instruction links are absent.
+SuperGrok web still has no local instruction-sync bridge.
 
 The shared context runner generates each native output shape. OpenCode uses the
 repository `shared-hooks` plugin; Pi uses `ai/hooks/pi-extension.ts`, registered

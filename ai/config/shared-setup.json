@@ -27,6 +27,13 @@
       "event": "sessionStart",
       "enabled": true,
       "disabledAgents": []
+    },
+    {
+      "id": "ui-frontend",
+      "text": "# UI and frontend quality — conditional\n\nActivate this workflow only when the current task designs, builds, changes, or reviews a UI or frontend: layout, styling, components, interaction, accessibility, or browser-facing behavior. For backend-only, database, infrastructure, or unrelated documentation/script tasks, skip this workflow: do not load design skills, fetch the checklist, or run UI audits. In mixed tasks, apply it only to the UI/frontend portion.\n\n1. Before UI work, read and follow the installed ui-ux-pro-max skill and other relevant design or stack skills. Reuse the project's components, tokens, and design system. Follow the skill's focused domain/stack searches for local concerns; generate a design system only for a new page/project or system-wide visual direction. If a required skill is unavailable, report that limitation instead of claiming it ran.\n2. For frontend work, consult https://github.com/thedaviddias/front-end-checklist and its linked rules for the changed surface. Use an existing Front-End Checklist skill or MCP integration if available; otherwise read the repository checklist directly. Check applicable accessibility, responsive layout, performance, HTML/CSS/JavaScript, images, SEO, security, privacy, internationalization, and testing guidance. Prioritize critical/high findings. Do not install packages or add MCP servers automatically, send private code to a public audit service, or expand a local fix into a site-wide audit. For native UI, use platform guidance and skip web-only rules.\n3. Exercise the actual rendered surface and changed interactions. Check relevant viewport sizes, keyboard/focus behavior, labels/contrast, overflow, loading/error/empty states, and reduced motion when affected. Run the project's relevant checks; distinguish observed behavior from code inspection.\n4. Before delivery, fix in-scope findings and briefly report verification evidence plus any blocked or unverified checks. If the checklist cannot be fetched, state that limitation and use the skill's local guidance without claiming full checklist compliance.\n\nThis is a conditional instruction, not an automatic audit or enforcement gate. Re-evaluate its scope when the task changes.",
+      "event": "sessionStart",
+      "enabled": true,
+      "disabledAgents": []
     }
   ]
 }

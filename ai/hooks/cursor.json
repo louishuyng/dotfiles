@@ -10,6 +10,9 @@
       },
       {
         "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'crit' 'sessionStart'"
+      },
+      {
+        "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'ui-frontend' 'sessionStart'"
       }
     ]
   }

@@ -32,6 +32,14 @@ Clear beats clever. Code is read far more often than it is written, and it gets 
 - Name things for what they are. Good names remove the need for most explanation.
 - Never simplify away input validation at trust boundaries, error handling that prevents data loss, security, or accessibility.
 
+## UI and frontend tasks
+
+These requirements apply only when the task designs, builds, changes, or reviews a UI or frontend: layout, styling, components, interaction, accessibility, or browser-facing behavior. Skip them for backend-only, database, infrastructure, and unrelated documentation or script work.
+
+- Before UI work, read and follow the `ui-ux-pro-max` skill and any relevant installed design or stack skills. Reuse the project's design system; use focused searches for local changes, not a new design system.
+- For frontend work, consult the [Front-End Checklist](https://github.com/thedaviddias/front-end-checklist) and apply the rules relevant to the changed surface. Check accessibility, responsive behavior, performance, and applicable HTML, CSS, JavaScript, images, SEO, security, privacy, internationalization, and testing rules. Do not turn a local fix into an unrelated site-wide audit.
+- Verify the rendered UI and changed interactions before delivery. Report what was checked and any blocked checks; never claim checklist compliance from code inspection alone. Apply web-only rules to web interfaces, not native apps.
+
 ## Comments
 
 Write comments like a thoughtful engineer, not an AI narrating its own edits.

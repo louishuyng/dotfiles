@@ -33,7 +33,7 @@ export const TOOL_DEFINITIONS = [
   ['grok', 'Grok', 'grok', '#222222', 'grok', '.grok', 'https://grok.com', [], 'SuperGrok web account. Web conversation usage is not exposed in local logs.'],
   ['grok-build', 'Grok Build', 'grok', '#222222', 'grok', '.grok', 'https://docs.x.ai/build', ['skills','instructions'], 'Local coding CLI; separate from the SuperGrok web account.'],
   ['gemini', 'Gemini CLI', 'gemini', '#4285F4', 'gemini', '.gemini', 'https://geminicli.com/docs', ['skills','hooks','instructions'], 'Shares Agent Skills; Gemini settings hooks remain native.'],
-  ['copilot', 'GitHub Copilot', 'githubcopilot', '#6F42C1', 'copilot', '.copilot', 'https://docs.github.com/en/copilot', ['skills','instructions'], 'Personal skills and explicitly selected project instructions.'],
+  ['copilot', 'GitHub Copilot', 'githubcopilot', '#6F42C1', 'copilot', '.copilot', 'https://docs.github.com/en/copilot', ['skills','instructions'], 'Personal skills, global instructions, and explicitly selected project instructions.'],
   ['cursor', 'Cursor', 'cursor', '#222222', 'cursor-agent', '.cursor', 'https://cursor.com/docs', ['skills','hooks','instructions'], 'Skill and hook files; IDE billing/usage requires a supported export.'],
   ['pi', 'Pi', 'pi', '#E8A338', 'pi', '.pi/agent', 'https://github.com/earendil-works/pi', ['skills','instructions','usage'], 'Native Agent Skills and JSONL session usage.'],
   ['goose', 'Goose', 'goose', '#D8A128', 'goose', '.config/goose', 'https://block.github.io/goose/docs', [], 'Detected local tool; native configuration adapter is not available yet.'],
@@ -45,7 +45,7 @@ export const TOOL_DEFINITIONS = [
   ['kilo', 'Kilo Code', 'kilocode', '#F7D046', 'kilo', '.kilocode', 'https://kilo.ai/docs', [], 'Catalogue entry; configuration and usage integration unavailable.'],
   ['qwen', 'Qwen Code', 'qwen', '#615CED', 'qwen', '.qwen', 'https://qwenlm.github.io/qwen-code-docs', [], 'Catalogue entry; configuration and usage integration unavailable.'],
   ['kiro', 'Kiro', 'kiro', '#8C5CFF', 'kiro-cli', '.kiro', 'https://kiro.dev/docs', [], 'Catalogue entry; configuration and usage integration unavailable.'],
-  ['droid', 'Factory Droid', 'factory', '#E96B35', 'droid', '.factory', 'https://docs.factory.ai', [], 'Local configuration detected; native adapter unavailable.'],
+  ['droid', 'Factory Droid', 'factory', '#E96B35', 'droid', '.factory', 'https://docs.factory.ai', ['instructions'], 'Shared global instructions; native hooks and usage integration remain unavailable.'],
   ['aider', 'Aider', 'aider', '#00A67E', 'aider', '.aider.conf.yml', 'https://aider.chat/docs', [], 'Catalogue entry; configuration and usage integration unavailable.'],
   ['continue', 'Continue', 'continue', '#383838', 'cn', '.continue', 'https://docs.continue.dev', [], 'IDE/CLI catalogue entry; native adapter unavailable.'],
 ];
@@ -105,7 +105,7 @@ export class Configuration {
     docs.push(this.document('native:pi','Pi skill discovery','pi',path.join(this.home,'.pi/agent/settings.json'),'config',{projection:['skills'],format:'json'}));
     docs.push(this.document('native:pi-extensions','Pi shared hook extension','pi',path.join(this.home,'.pi/agent/settings.json'),'config',{projection:['extensions'],format:'json'}));
     docs.push(this.document('native:claude', 'Claude plugin settings', 'claude', path.join(this.home,'.claude/settings.json'), 'config', {projection:['enabledPlugins'],format:'json'}));
-    for (const [tool, file, hookfile] of [['gemini','.gemini/GEMINI.md','.gemini/settings.json'],['cursor','.cursor/AGENTS.md','.cursor/hooks.json'],['pi','.pi/agent/AGENTS.md',null],['grok-build','.grok/AGENTS.md',null]]) {
+    for (const [tool, file, hookfile] of [['gemini','.gemini/GEMINI.md','.gemini/settings.json'],['cursor','.cursor/AGENTS.md','.cursor/hooks.json'],['pi','.pi/agent/AGENTS.md',null],['grok-build','.grok/AGENTS.md',null],['copilot','.copilot/copilot-instructions.md',null],['droid','.factory/AGENTS.md',null]]) {
       if (!tools.find((t) => t.id === tool)?.configured) continue;
       // Cursor global AGENTS.md is not a verified native root; use selected-project instructions instead.
       if (tool !== 'cursor') docs.push(this.document(`instructions:${tool}`, 'Global instructions', tool, path.join(this.home, file), 'instruction'));
@@ -166,7 +166,7 @@ export class Configuration {
       const project = await realpath(doc.project);
       if (!target.startsWith(`${project}${path.sep}`)) throw new Error('This project file links outside the selected project. Edit its source directly.');
     } else {
-      const allowed = [this.root, path.join(this.home, '.codex'), path.join(this.home,'.claude'), path.join(this.home,'.config/opencode'), path.join(this.home,'.gemini'), path.join(this.home,'.cursor'), path.join(this.home,'.pi/agent'), path.join(this.home,'.grok')];
+      const allowed = [this.root, path.join(this.home, '.codex'), path.join(this.home,'.claude'), path.join(this.home,'.config/opencode'), path.join(this.home,'.gemini'), path.join(this.home,'.cursor'), path.join(this.home,'.pi/agent'), path.join(this.home,'.grok'), path.join(this.home,'.copilot'), path.join(this.home,'.factory')];
       if (!allowed.some((root) => target.startsWith(`${root}${path.sep}`))) throw new Error('The symlink target is outside managed configuration roots.');
     }
     return { doc, target };
