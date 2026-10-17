@@ -81,6 +81,10 @@ if.app-id = 'com.mongodb.compass'
 run = ['move-node-to-workspace Dev', 'layout tiling']
 
 [[on-window-detected]]
+if.app-id = 'com.openai.codex'
+run = ['move-node-to-workspace Dev']
+
+[[on-window-detected]]
 if.app-id = 'io.beekeeperstudio.desktop'
 run = ['move-node-to-workspace Dev']
 
@@ -208,10 +212,6 @@ run = ['move-node-to-workspace Terminal', 'layout tiling']
 [[on-window-detected]]
 if.app-id = 'app.liten.Gram'
 run = ['move-node-to-workspace Terminal', 'layout tiling']
-
-[[on-window-detected]]
-if.app-id = 'com.openai.codex'
-run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
 if.app-id = 'ai.opencode.desktop'

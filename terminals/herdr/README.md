@@ -154,6 +154,31 @@ block and selects the Zed project opener. Installed theme and other preferences
 are separate; linking the plugin does not replace them. Custom settings and
 presets take precedence over plugin bindings.
 
+Inside omp, plain `Ctrl+N` (without `Ctrl+A`) opens Neovim in a right split
+using omp's current project directory. If this tab already has a running
+Neovim, it focuses that pane instead. The shared `ai/hooks/omp-extension.ts`
+uses the same `scripts/nvim-tab.sh` launcher as Fish and Zsh. Restart existing
+omp processes after changing the extension. Other terminals keep their normal
+`Ctrl+N` behavior.
+
+Plain `Ctrl+G` in omp opens the active session's repository root in Zed, or its
+current directory when it is not inside a repository. Zed maps that root to its
+own saved project and restores that project's layout and tabs, even if another
+project is focused. No `--new`, `--reuse`, temporary draft path, or stdin buffer
+is sent; the unsent omp draft stays in omp. For this repository, the mapping is
+`~/.dotfiles` → Zed's `.dotfiles` project.
+
+The extension needs the native temporary-file shortcut disabled. When
+`~/.omp/agent/keybindings.yml` does not exist, link its repository-owned source:
+
+```bash
+ln -s ~/.dotfiles/ai/config/native-omp-keybindings.yml ~/.omp/agent/keybindings.yml
+```
+
+If that file already contains custom bindings, preserve them and merge
+`app.editor.external: []` instead. Restart omp after changing the extension or
+keybindings. This changes omp's `Ctrl+G`, not the editor used by Git or Tern.
+
 Unlike Herdr, Tern launchers use tabs instead of popups. `|` is not the right
 split key. Herdr-only copy mode (`[`), detach (`d`), modal resize (`r`), and
 Herdr Projects (`a`) remain unbound rather than running unrelated actions.

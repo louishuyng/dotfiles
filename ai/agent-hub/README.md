@@ -157,6 +157,11 @@ registered through `ai/config/native-omp-extensions.json` in
 `~/.omp/agent/config.yml`. Restart omp after restoring a missing extension;
 modules absent at startup cannot be loaded into an existing session.
 
+omp's project-focused `Ctrl+G` also requires
+`ai/config/native-omp-keybindings.yml` at `~/.omp/agent/keybindings.yml`; it
+disables the built-in temporary draft editor so the shared extension can open
+the matching Zed project. See [the Tern shortcut setup](../../terminals/herdr/README.md#tern).
+
 Legacy Superset, Herdr, RTK,
 Caveman, and duplicate Crit registrations were removed from the managed native
 hook sources. Duplicate Ponytail/ADHD plugin providers are disabled so their
