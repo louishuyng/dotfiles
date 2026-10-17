@@ -157,8 +157,9 @@ presets take precedence over plugin bindings.
 Inside omp, plain `Ctrl+N` (without `Ctrl+A`) opens Neovim in a right split
 using omp's current project directory. If this tab already has a running
 Neovim, it focuses that pane instead. The shared `ai/hooks/omp-extension.ts`
-uses the same `scripts/nvim-tab.sh` launcher as Fish and Zsh. Restart existing
-omp processes after changing the extension. Other terminals keep their normal
+uses `scripts/nvim-tab.sh`. Restart existing omp processes after changing the
+extension. Outside omp, Fish keeps its `Ctrl+N` mapping: clear the screen and
+open Neovim in the current pane. Other terminals keep their normal omp
 `Ctrl+N` behavior.
 
 Plain `Ctrl+G` in omp opens the active session's repository root in Zed, or its
