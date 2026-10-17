@@ -40,7 +40,7 @@ local colors = {
 function M.setup()
   require('cyberdream').setup({
     variant = 'auto',
-    transparent = false,
+    transparent = true,
     colors = colors,
     overrides = function(c)
       return {

@@ -158,6 +158,9 @@ Plain `Ctrl+\` toggles Tern's Files panel. In a terminal running Neovim, it
 passes through to Neovim instead, preserving the existing nvim-tree toggle.
 The handler checks `tern process` for the foreground editor, including
 daemon-backed shells, using `/Applications/Tern.app/Contents/MacOS/tern`.
+It dispatches Files as a window action: synchronous command dispatch can
+exceed the process callback's 50 ms limit and disable the shortcut. If a
+previous failure disabled the handler, run `tern plugin reload`.
 
 Inside omp, plain `Ctrl+N` (without `Ctrl+A`) opens Neovim in a right split
 using omp's current project directory. If this tab already has a running

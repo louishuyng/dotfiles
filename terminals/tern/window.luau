@@ -33,7 +33,7 @@ tern.command({
     local pane = cx.session:focused()
     local row = pane and cx.session:pane(pane)
     if not row or (row.kind ~= "terminal" and row.kind ~= "agent") then
-      cx:command("files")
+      cx:action("files")
       return
     end
     -- Daemon pane metadata names the shell, not its foreground editor.
@@ -47,7 +47,7 @@ tern.command({
       if is_neovim(process.child) or is_neovim(process.foreground) then
         fresh:action("text:\28")
       else
-        fresh:command("files")
+        fresh:action("files")
       end
     end)
   end,

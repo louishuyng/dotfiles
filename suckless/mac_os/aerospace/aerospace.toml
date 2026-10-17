@@ -198,6 +198,11 @@ if.app-id = 'com.mitchellh.ghostty'
 run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
+if.app-id = 'so.stencil.tern'
+run = ['move-node-to-workspace Terminal']
+
+
+[[on-window-detected]]
 if.app-id = 'com.conductor.app'
 run = ['move-node-to-workspace Terminal', 'layout floating']
 
