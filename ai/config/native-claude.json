@@ -17,8 +17,8 @@
   "gojem-platform@gojem": false,
   "gojem-contract@gojem": false,
   "gojem-infra@gojem": false,
-  "ponytail@ponytail": true,
+  "ponytail@ponytail": false,
   "coderabbit@claude-plugins-official": true,
   "eli5@claude-community": true,
-  "caveman@caveman": true
+  "caveman@caveman": false
 }

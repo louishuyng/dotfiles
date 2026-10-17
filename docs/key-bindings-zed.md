@@ -16,6 +16,7 @@ Leader key: `space` | Prefix: `,`
 | `, b d` | Close buffer |
 | `, b d a` | Close all items |
 | `cmd-s` | Toggle right dock |
+| `ctrl-\` | Toggle right dock |
 
 ## File Finding
 
@@ -29,7 +30,6 @@ Leader key: `space` | Prefix: `,`
 
 | Key | Action |
 |-----|--------|
-| `ctrl-\` | Toggle project panel (closes when re-pressed inside panel) |
 | `space s` | Toggle outline panel |
 | `, g s` | Toggle git panel |
 | `a` | New file (in panel) |

@@ -9,6 +9,7 @@ import path from 'node:path';
 import { CodexClient } from './codex.mjs';
 import { Configuration, executable } from './config.mjs';
 import { UsageIndex } from './usage.mjs';
+import { SharedSetup } from './shared.mjs';
 
 const run = promisify(execFile);
 export function allowedHost(value) { try { return ['agent-hub.localhost','127.0.0.1','localhost','[::1]'].includes(new URL(`http://${value}`).hostname); } catch { return false; } }
@@ -30,7 +31,9 @@ function reply(res,status,value) { res.writeHead(status,{'Content-Type':'applica
 export async function makeApp({home=homedir(),root=fileURLToPath(new URL('../../..',import.meta.url)),data=path.join(home,'.local/share/agent-hub'),codex}={}) {
   const token = randomBytes(32).toString('hex');
   const client = codex || new CodexClient({home,cwd:home,executable:executable('codex') || 'codex'});
-  const config = new Configuration({home,root,data,codex:client}); await config.init();let globalWarning='';try {await config.configureGlobals();}catch(error){globalWarning=error.message;}
+  const config = new Configuration({home,root,data,codex:client}); await config.init();
+  const shared = new SharedSetup(config); let globalWarning='';
+  try { await config.inventory(); await shared.recover(); await config.configureGlobals(); await shared.reconcile(); await config.maintainSync(); } catch(error){globalWarning=error.message;}
   const usage = new UsageIndex(home,path.join(data,'cache'));
   const dist = fileURLToPath(new URL('../dist',import.meta.url)); let mutation=Promise.resolve();
   const service = async () => {
@@ -41,15 +44,18 @@ export async function makeApp({home=homedir(),root=fileURLToPath(new URL('../../
   const handlers = {
     'document/save': (value)=>config.saveDocument(value),
     'document/restore': (value)=>config.restore(value),
-    'skills/create': async(value)=>{await config.createSkill(value);await config.maintainSync();return {ok:true};},
-    'skills/toggle': async(value)=>{await config.toggleSkill(value); if((await config.readState()).sync) {const p=await config.syncPreview();await config.syncApply({revision:p.revision});}return {ok:true};},
+    'skills/create': async(value)=>{await config.createSkill(value);await config.maintainSync({activate:true});return {ok:true};},
+    'skills/toggle': async(value)=>{await config.toggleSkill(value);await config.maintainSync({activate:true});return {ok:true};},
     'plugins/toggle': async(value)=>{await config.togglePlugin(value); if((await config.readState()).sync) {const p=await config.syncPreview();await config.syncApply({revision:p.revision});}return {ok:true};},
     'project/select': (value)=>config.selectProject(value),
     'sync/preview': ()=>config.syncPreview(),
     'sync/apply': (value)=>config.syncApply(value),
+    'shared/save': (value)=>shared.save(value),
+    'shared/import': (value)=>shared.import(value),
+    'shared/sync': ()=>shared.reconcile(),
   };
   let syncWarning='';
-  const maintenance=setInterval(()=>{mutation=mutation.then(async()=>{await config.configureGlobals();await config.maintainSync();}).then(()=>{syncWarning='';globalWarning='';}).catch((error)=>{syncWarning=error.message;});},60000);maintenance.unref();
+  const maintenance=setInterval(()=>{mutation=mutation.then(async()=>{await shared.recover();await config.configureGlobals();await shared.reconcile();await config.maintainSync();}).then(()=>{syncWarning='';globalWarning='';}).catch((error)=>{syncWarning=error.message;});},60000);maintenance.unref();
   const server = createServer(async(req,res)=>{
     try {
       if(!allowedHost(req.headers.host)) {reply(res,403,{error:'Agent Hub accepts only local requests.'});return;}
@@ -61,6 +67,7 @@ export async function makeApp({home=homedir(),root=fileURLToPath(new URL('../../
           if(url.pathname==='/api/state') {const state=await config.inventory();if(syncWarning)state.warnings.push(syncWarning);if(globalWarning)state.warnings.push(`Global configuration: ${globalWarning}`);reply(res,200,{...state,token,service:await service()});return;}
           if(url.pathname==='/api/usage') {reply(res,200,await usage.report(url.searchParams));return;}
           if(url.pathname==='/api/document') {reply(res,200,await config.readDocument(url.searchParams.get('id')));return;}
+          if(url.pathname==='/api/shared') {reply(res,200,await shared.snapshot());return;}
           if(url.pathname==='/api/health') {reply(res,200,{ok:true,service:await service()});return;}
         }
         if(req.method==='POST') {

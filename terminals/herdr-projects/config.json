@@ -27,9 +27,5 @@
   },
   "plan": {
     "approve": "none"
-  },
-  "merge": {
-    "pr": false,
-    "by": "you"
   }
 }

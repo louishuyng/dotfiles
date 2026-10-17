@@ -29,6 +29,37 @@ For development, run `npm start` and `npm run dev` in separate terminals. The Vi
 
 ## Shared skills and configuration
 
+Use **Shared setup** to add, edit, enable, disable, or remove shared MCP servers
+and shared hooks. The source of truth is
+[`ai/config/shared-setup.json`](../config/shared-setup.json). The page links to
+the existing shared skill library and shows per-agent MCP/hook sync results.
+Cursor joins through `~/.cursor` detection; installing its CLI is unnecessary.
+
+Saves sync immediately. Startup and the 60-second maintenance loop apply source
+edits and include newly detected supported agents. New skills and enablement
+changes also activate skill sharing automatically. Native conflicts remain
+untouched and appear as blocked targets. Additional native servers prevent a
+verified shared set; import compatible entries explicitly from the page.
+
+Shared servers support stdio commands and Streamable HTTP endpoints. Native-only
+options and environment interpolation require manual setup and appear as
+incomplete parity. Shared command hooks map supported tool-use and completion
+events. ADHD, Ponytail, and Crit default on. The Hooks workspace stores global
+defaults and per-agent opt-outs while keeping one shared body for each hook.
+Context hooks run in Codex, Claude, Gemini, Cursor, OpenCode, and Pi. Commands receive native JSON; they
+must handle each runtime's payload and output contract. Unsupported agents and
+events remain visible. Restart agents after configuration changes and use their
+native tools to check connections, OAuth, and project overrides.
+
+Do not put secrets in repository-owned MCP definitions or hook commands.
+Private backups and interrupted-write journals live under
+`~/.local/share/agent-hub/shared-backups/` and `shared-pending.json`.
+Restart Agent Hub to recover interrupted writes. If recovery reports an external
+change, preserve the journal and affected files before repairing the conflict.
+Backups contain `changes` entries with each file's `before` and `after` content;
+restore only the intended managed section after comparing the current file.
+See [the shared setup decision](../../docs/adr/0006-shared-agent-setup.md).
+
 Native Codex plugins remain managed through the app server. Skill creation, edits, and enablement use the repository library and manifest.
 
 The current manifest enables ten skills: archify, aside-browser, better-write, caveman, crit, crit-cli, crit-story, ponytail, tech-doc-writer, and ui-ux-pro-max. The three Crit skills and the Ponytail 5.1.0 base skill are repository copies with their licenses. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays ten.
@@ -93,10 +124,36 @@ Native plugin packages and vendor-owned hook executables remain in their native
 installations. Displaced global files are preserved in the private
 `original-global-files/` backup directory.
 
-The shared instructions require approved Crit review before creating a PR.
+The optional Crit hook requires approved review before creating a PR.
 Use Crit Story for 10+ changed files, 500+ added/deleted lines, or cross-cutting
 architecture/interface changes. Generated, vendored, and lockfile changes do
 not inflate the size threshold. Story preparation does not grant approval:
 finish the interactive Crit loop, address comments, and review again after code
-changes. This is an agent instruction, not an unbypassable GitHub or shell gate.
+changes. This is a hook-injected instruction, not an unbypassable GitHub or shell gate.
+Disable Crit for an agent in Hooks to opt out. Start a new session after changing
+context hooks; existing conversations can retain previously injected text.
 No PR is created automatically by Agent Hub.
+
+## Shared hook sources and cleanup
+
+In **Hooks → Add hook**, choose **Context text**, **Skill reference**, or
+**Command**. Text hooks store instructions in shared configuration. Skill hooks
+reference a name from the shared library and load its current `SKILL.md` body,
+without running its scripts. Both inject context at session start. Command hooks
+run at the selected native event. Review the diff before saving; supported
+agents receive the hook and can opt out individually. **View context** shows
+the exact injected text and source, and **Edit context** edits that source.
+
+ADHD reads `ai/skills/i-have-adhd/SKILL.md`; Ponytail reads
+`ai/skills/ponytail/SKILL.md`; Crit reads `ai/hooks/crit.md`. Their global enabled
+state and `disabledAgents` lists live in `ai/config/shared-setup.json`. The shared
+instructions in `ai/AGENTS.md` contain neither an always-on ADHD output policy nor
+a mandatory Crit PR rule.
+
+The shared context runner generates each native output shape. OpenCode uses the
+repository `shared-hooks` plugin; Pi uses `ai/hooks/pi-extension.ts`, registered
+through `ai/config/native-pi-extensions.json`. Legacy Superset, Herdr, RTK,
+Caveman, and duplicate Crit registrations were removed from the managed native
+hook sources. Duplicate Ponytail/ADHD plugin providers are disabled so their
+hooks cannot bypass the workspace switches. Pi's old Herdr and notification
+extensions are excluded; their files remain available for recovery.

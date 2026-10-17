@@ -15,6 +15,21 @@
   --color-background: var(--background); --color-foreground: var(--foreground); --color-card: var(--card); --color-card-foreground: var(--card-foreground); --color-popover: var(--popover); --color-popover-foreground: var(--popover-foreground); --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground); --color-secondary: var(--secondary); --color-secondary-foreground: var(--secondary-foreground); --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground); --color-accent: var(--accent); --color-accent-foreground: var(--accent-foreground); --color-destructive: var(--destructive); --color-destructive-foreground: var(--destructive-foreground); --color-border: var(--border); --color-input: var(--input); --color-ring: var(--ring); --radius-lg: var(--radius); --radius-md: calc(var(--radius) - 2px); --radius-sm: calc(var(--radius) - 4px);
 }
 * { box-sizing: border-box; }
+.shared-setup .integration-row { flex-wrap: wrap; }
+.shared-setup .integration-copy { min-width: 140px; overflow-wrap: anywhere; }
+.shared-setup .parity-targets { padding: 0 20px 20px; }
+.shared-note { padding: 0 20px 20px; color: var(--muted-foreground); }
+.shared-imports { padding: 16px 20px; overflow-wrap: anywhere; }
+.shared-imports summary { display: flex; gap: 8px; align-items: center; font-weight: 600; }
+.shared-imports p { margin-top: 12px; color: var(--muted-foreground); }
+.shared-setup .code-editor { width: 100%; min-height: 240px; }
+.shared-hook + .shared-hook { border-top: 1px solid var(--border); }
+.hook-agent-preferences { padding-top: 0; }
+.hook-agent-switches { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 16px; }
+.hook-agent-switch { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; }
+.hook-agent-switch small { display: block; color: var(--muted-foreground); }
+.hook-context-text { max-height: 360px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; padding: 16px; margin: 16px 0; background: var(--muted); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; }
+.skill-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--background); color: var(--foreground); }
 body { margin: 0; background: var(--background); color: var(--foreground); font-size: 14px; line-height: 1.5; }
 button, input, textarea, select { font: inherit; }
 button, a, summary, select { touch-action: manipulation; }

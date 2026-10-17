@@ -103,6 +103,7 @@ export class Configuration {
     docs.push(this.document('native:opencode-skills', 'OpenCode additional skill roots', 'opencode', path.join(this.home,'.config/opencode/opencode.jsonc'), 'config', {projection:['skills'],format:'json'}));
     docs.push(this.document('native:codex', 'Codex plugin settings', 'codex', path.join(this.home,'.codex/config.toml'), 'config', {projection:['plugins'],parser:'toml',format:'json',nativeToggleOnly:true}));
     docs.push(this.document('native:pi','Pi skill discovery','pi',path.join(this.home,'.pi/agent/settings.json'),'config',{projection:['skills'],format:'json'}));
+    docs.push(this.document('native:pi-extensions','Pi shared hook extension','pi',path.join(this.home,'.pi/agent/settings.json'),'config',{projection:['extensions'],format:'json'}));
     docs.push(this.document('native:claude', 'Claude plugin settings', 'claude', path.join(this.home,'.claude/settings.json'), 'config', {projection:['enabledPlugins'],format:'json'}));
     for (const [tool, file, hookfile] of [['gemini','.gemini/GEMINI.md','.gemini/settings.json'],['cursor','.cursor/AGENTS.md','.cursor/hooks.json'],['pi','.pi/agent/AGENTS.md',null],['grok-build','.grok/AGENTS.md',null]]) {
       if (!tools.find((t) => t.id === tool)?.configured) continue;
@@ -178,7 +179,7 @@ export class Configuration {
       try { parsed=doc.parser==='toml'?TOML.parse(raw):jsonc(raw || '{}'); }
       catch { throw new Error('Configuration syntax is invalid. Repair it in the native tool before editing.'); }
     }
-    const projected = doc.projection ? JSON.stringify(parsed[doc.projection[0]] ?? (['plugins','skills'].includes(doc.projection[0]) && doc.parser!=='toml' ? [] : {}), null, 2) : raw;
+    const projected = doc.projection ? JSON.stringify(parsed[doc.projection[0]] ?? (['plugins','skills','extensions'].includes(doc.projection[0]) && doc.parser!=='toml' ? [] : {}), null, 2) : raw || (doc.kind==='hook'?JSON.stringify({...doc.tool==='cursor'?{version:1}:{},hooks:{}},null,2)+'\n':'');
     if(doc.sourcePath&&!existsSync(doc.sourcePath))await this.atomic(doc.sourcePath,projected);
     const content=doc.sourcePath?await readFile(doc.sourcePath,'utf8'):projected;
     return { id, content, revision: hash(raw+(doc.sourcePath?content:'')), path: doc.sourcePath||target, editable: doc.editable && !doc.nativeToggleOnly };
@@ -189,7 +190,7 @@ export class Configuration {
       let value; try { value = JSON.parse(content); } catch { throw new Error('Fix the JSON syntax before saving.'); }
       if (!value || typeof value !== 'object') throw new Error('Expected JSON configuration.');
       if (doc.projection?.[0] === 'plugins' && (!Array.isArray(value) || value.some((p) => typeof p !== 'string' && (typeof p !== 'object' || typeof p.package !== 'string')))) throw new Error('Each plugin needs a package string or an object with a package field.');
-      if(doc.projection?.[0]==='skills' && (!Array.isArray(value)||value.some((s)=>typeof s!=='string')))throw new Error('Skill sources must be an array of paths or catalog URLs.');
+      if(['skills','extensions'].includes(doc.projection?.[0]) && (!Array.isArray(value)||value.some((s)=>typeof s!=='string')))throw new Error('Resource sources must be an array of paths or catalog URLs.');
       if(doc.projection?.[0]==='enabledPlugins' && (Array.isArray(value)||Object.values(value).some((v)=>typeof v!=='boolean')))throw new Error('Plugin enablement must map plugin IDs to booleans.');
       if (doc.kind === 'hook' && (Array.isArray(value) || Object.values(value.hooks || value).some((v) => !Array.isArray(v)))) throw new Error('Hook events must map to arrays of native hook registrations.');
     }
@@ -238,7 +239,7 @@ export class Configuration {
     const {doc,target}=await this.resolveDocument(id);if(!doc.sourcePath||doc.sourcePath===target)return;
     const raw=await optional(target,doc.parser==='toml'?'':doc.projection?'{}':'');
     let content=raw;
-    if(doc.projection) {let value;try {value=doc.parser==='toml'?TOML.parse(raw):jsonc(raw);}catch {throw new Error('Native configuration syntax is invalid. Repair it before exporting settings.');}content=JSON.stringify(value[doc.projection[0]]??(['plugins','skills'].includes(doc.projection[0])&&doc.parser!=='toml'?[]:{}),null,2);}
+    if(doc.projection) {let value;try {value=doc.parser==='toml'?TOML.parse(raw):jsonc(raw);}catch {throw new Error('Native configuration syntax is invalid. Repair it before exporting settings.');}content=JSON.stringify(value[doc.projection[0]]??(['plugins','skills','extensions'].includes(doc.projection[0])&&doc.parser!=='toml'?[]:{}),null,2);}
     await this.atomic(doc.sourcePath,content);
   }
   async configureGlobals() {
@@ -420,13 +421,14 @@ export class Configuration {
     // Validate every destination before replacing any live root or export.
     for(const change of plan.changes) {
       const sourceInfo=await lstat(change.source).catch((e)=>{if(e.code!=='ENOENT')throw e;return null;});
+      let preserveExport=false;
       if(sourceInfo) {
         if(!sourceInfo.isDirectory() || sourceInfo.isSymbolicLink()) throw new Error('Managed export must be a directory.');
-        for(const name of await readdir(change.source)) if(!(await lstat(path.join(change.source,name))).isSymbolicLink()) throw new Error('Unexpected regular file in managed export.');
+        for(const name of await readdir(change.source)) if(!(await lstat(path.join(change.source,name))).isSymbolicLink()) preserveExport=true;
       }
       const rootInfo=await lstat(change.path).catch((e)=>{if(e.code!=='ENOENT')throw e;return null;});
       const linked=rootInfo?.isSymbolicLink() && path.resolve(path.dirname(change.path),await readlink(change.path))===change.source;
-      transaction.push({...change,stage:`${change.source}.stage-${suffix}`,exportPrevious:sourceInfo?`${change.source}.before-${suffix}`:null,previous:rootInfo&&!linked?`${change.path}.before-agent-hub-${suffix}`:null,replaceRoot:!linked});
+      transaction.push({...change,preserveExport,stage:`${change.source}.stage-${suffix}`,exportPrevious:sourceInfo?`${change.source}.before-${suffix}`:null,previous:rootInfo&&!linked?`${change.path}.before-agent-hub-${suffix}`:null,replaceRoot:!linked});
     }
     const snapshots=[];
     const nativeFiles=[['native:codex','.codex/config.toml'],['native:claude','.claude/settings.json'],['native:opencode-skills','.config/opencode/opencode.jsonc'],['native:pi','.pi/agent/settings.json']];
@@ -459,16 +461,17 @@ export class Configuration {
       catch {throw new Error('Sync recovery could not finish. Backups are preserved; run npm run service -- restore-skills.');}
       throw error;
     } finally {for(const c of transaction)await rm(c.stage,{recursive:true,force:true});}
-    for(const c of transaction)if(c.exportPrevious)await rm(c.exportPrevious,{recursive:true,force:true});
+    for(const c of transaction)if(c.exportPrevious&&!c.preserveExport)await rm(c.exportPrevious,{recursive:true,force:true});
     return {ok:true,count:plan.entries.length};
   }
 
-  async maintainSync() {
-    const saved=await this.readState();if(!saved.sync)return;
+  async maintainSync({activate=false}={}) {
+    const saved=await this.readState();if(!saved.sync&&!activate)return;
     const library=await this.library();const fingerprint=hash(JSON.stringify(library.skills.filter((s)=>s.enabled).map((s)=>({name:s.name,path:s.path}))));
-    if(fingerprint===saved.sync.fingerprint)return;
+    const targets=await this.syncTargets();
+    if(fingerprint===saved.sync?.fingerprint&&targets.every(target=>saved.sync.targets.includes(target.target)))return;
     const plan=await this.syncPreview();
-    if(plan.changes.some((c)=>c.action!=='Refresh shared catalogue'))throw new Error('A shared skill root changed outside Agent Hub. Review sync before replacing it.');
+    if(plan.changes.some((c)=>saved.sync?.targets.includes(c.target)&&c.action!=='Refresh shared catalogue'))throw new Error('A shared skill root changed outside Agent Hub. Review sync before replacing it.');
     await this.syncApply({revision:plan.revision});
   }
 }

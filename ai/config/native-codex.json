@@ -9,7 +9,7 @@
     "enabled": true
   },
   "ponytail@ponytail": {
-    "enabled": true
+    "enabled": false
   },
   "browser@openai-bundled": {
     "enabled": true
@@ -39,7 +39,7 @@
     "enabled": false
   },
   "i-have-adhd@i-have-adhd": {
-    "enabled": true
+    "enabled": false
   },
   "whiteboard@devfast": {
     "enabled": true

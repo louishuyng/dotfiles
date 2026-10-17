@@ -4,7 +4,8 @@
     "servers": {
       "linear": {
         "type": "remote",
-        "url": "https://mcp.linear.app/mcp"
+        "url": "https://mcp.linear.app/mcp",
+        "headers": {}
       },
       "computer-use": {
         "type": "local",
@@ -53,18 +54,7 @@
   },
   "plugins": [
     {
-      "package": "/Users/louishuyng/.dotfiles/ai/plugins/opencode/codex-modes",
-      "options": {
-        "ponytailRoot": "/Users/louishuyng/.config/opencode/vendor/ponytail",
-        "adhdRoot": "/Users/louishuyng/.config/opencode/vendor/i-have-adhd"
-      }
-    },
-    {
-      "package": "/Users/louishuyng/.dotfiles/ai/plugins/opencode/rtk",
-      "options": {
-        "executable": "/opt/homebrew/bin/rtk",
-        "instructionsPath": "/Users/louishuyng/.codex/RTK.md"
-      }
+      "package": "/Users/louishuyng/.dotfiles/ai/plugins/opencode/shared-hooks"
     }
   ],
   "default_agent": "build"

@@ -1,12 +1,31 @@
 {
+  "diff_view_style": "split",
+  "show_edit_predictions": true,
+  "edit_predictions": {
+    "provider": "copilot",
+    "mode": "eager"
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "cli_default_open_behavior": "existing_window",
+  "auto_install_extensions": {
+    "one-dark-pro": true,
+    "material-icon-theme": true
+  },
   "icon_theme": "Material Icon Theme",
   "theme": "One Dark Pro",
-  "buffer_font_size": 14.0,
+  "buffer_font_size": 13.0,
   "agent_ui_font_size": 14.0,
-  "ui_font_size": 15.0,
+  "ui_font_size": 14.0,
   "ui_font_family": "Berkeley Mono",
   "terminal": {
-    "font_size": 14.0,
+    "font_size": 13.0,
     "font_family": "JetBrainsMono Nerd Font"
   },
   "vim_mode": true

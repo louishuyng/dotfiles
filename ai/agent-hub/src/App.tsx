@@ -8,9 +8,11 @@ import { Badge } from './components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './components/ui/dialog';
 import { api, type Document, type FileData, type State, type Tool, type Usage } from './api';
 import './styles.css';
+import { SharedSetup } from './components/SharedSetup';
 
 const destinations = [
   { id: 'dashboard', name: 'Dashboard', icon: LayoutDashboard },
+  { id: 'setup', name: 'Shared setup', icon: RefreshCw },
   { id: 'skills', name: 'Skills', icon: Sparkles },
   { id: 'plugins', name: 'Plugins', icon: Blocks },
   { id: 'hooks', name: 'Hooks', icon: Workflow },
@@ -18,9 +20,10 @@ const destinations = [
 ];
 const descriptions: Record<string, string> = {
   dashboard: 'A clear view of your agents, activity, and context.',
+  setup: 'Manage shared MCP servers, skills, and hooks across your agents.',
   skills: 'One enabled skill set. Verify every activated agent against it.',
   plugins: 'Manage the integrations that extend your agents.',
-  hooks: 'Inspect the events and automations behind your workflow.',
+  hooks: 'Share ADHD, Ponytail, and Crit. Choose which agents use each hook.',
   instructions: 'Shape how your agents work, globally and per project.',
 };
 type SyncPlan = { revision: string; changes: { target: string; action: string; path: string; source: string }[]; warnings: string[] };
@@ -140,6 +143,7 @@ export default function App() {
         <div aria-live="polite" aria-atomic="true">{message && <div className="notice success"><Check size={17} aria-hidden="true" />{message}</div>}</div>
         {error && <div className="notice danger" role="alert"><CircleHelp size={17} aria-hidden="true" /><span>{error}</span><button onClick={() => setError('')} aria-label="Dismiss error">Dismiss</button></div>}
         {!state ? <div className="initial-loading">{busy ? <><LoaderCircle className="spin" size={26} /><p>Connecting to your workspace…</p></> : <><CircleHelp size={26} /><p>Unable to connect. Refresh to retry.</p></>}</div> : <>
+          {page === 'setup' && <SharedSetup refreshKey={state.refreshedAt} onEditContext={id => void edit(id)} />}
           {page === 'dashboard' && <>
             <div className="view-tabs" role="group" aria-label="Dashboard view"><button className={dashboardTab === 'activity' ? 'selected' : ''} onClick={() => setDashboardTab('activity')}><Activity size={16} /> Activity overview</button><button className={dashboardTab === 'tools' ? 'selected' : ''} onClick={() => setDashboardTab('tools')}><Terminal size={16} /> Agent tools <span>{state.tools.length}</span></button></div>
             {dashboardTab === 'activity' ? <>
@@ -164,10 +168,9 @@ export default function App() {
             <div className="content-toolbar"><div className="search-field"><Search size={16} aria-hidden="true" /><Input aria-label="Search plugins" placeholder="Find plugins and integrations…" value={search} onChange={event => setSearch(event.target.value)} /></div><Select label="Agent" value={toolFilter} onChange={setToolFilter}><option value="all">All agents</option>{state.tools.filter(tool => tool.capabilities.includes('plugins')).map(tool => <option value={tool.id} key={tool.id}>{tool.name}</option>)}</Select></div>
             <section className="panel"><div className="panel-heading"><div><h2>Native integrations</h2><p>Plugins stay in their agent’s native configuration.</p></div><Badge variant="secondary">{filteredPlugins.length} plugins</Badge></div><div className="integration-list">{filteredPlugins.map(plugin => <div className="integration-row" key={`${plugin.tool}:${plugin.id}`}><span className="tool-tile"><ToolIcon tool={state.tools.find(tool => tool.id === plugin.tool)} size={25} /></span><div className="integration-copy"><h3>{plugin.name}</h3><p>{state.tools.find(tool => tool.id === plugin.tool)?.name || plugin.tool}{plugin.version && ` · ${plugin.version}`}{plugin.note && ` · ${plugin.note}`}</p></div><Badge variant="secondary">{plugin.enabled ? 'Enabled' : 'Disabled'}</Badge>{plugin.manageable ? <button className={`toggle ${plugin.enabled ? 'on' : ''}`} role="switch" aria-checked={plugin.enabled} aria-label={`Enable ${plugin.name}`} disabled={busy} onClick={() => void action(async () => { await api('plugins/toggle', { tool: plugin.tool, id: plugin.id, enabled: !plugin.enabled }); await refresh(); }, 'Plugin configuration saved. Restart the agent to load it.')}><span /></button> : <a className="text-button" href={state.tools.find(tool => tool.id === plugin.tool)?.url} target="_blank" rel="noreferrer">Manage externally <ExternalLink size={14} /></a>}</div>)}</div>{!filteredPlugins.length && <Empty>No plugins found for this filter. Manage marketplace installation in the agent’s own app.</Empty>}</section><section className="panel"><div className="panel-heading"><div><h2>Native marketplaces</h2><p>Install and discover integrations through each agent’s supported tools.</p></div></div><div className="marketplace-links">{state.tools.filter(tool => tool.capabilities.includes('plugins')).map(tool => <a key={tool.id} href={tool.url} target="_blank" rel="noreferrer"><ToolIcon tool={tool} size={22} /><span>{tool.name}</span><ExternalLink size={14} /></a>)}</div></section>
           </>}
-          {page === 'hooks' && <>
-            <div className="info-strip"><Workflow size={20} /><span>Global hook sources live in ai/hooks. Each tool keeps its native event format.</span></div><div className="hook-grid">{state.tools.filter(tool => tool.capabilities.includes('hooks')).map(tool => { const hooks = state.hooks.filter(hook => hook.tool === tool.id); const document = state.documents.find(item => item.tool === tool.id && (item.kind === 'hook' || item.kind === 'plugin')); return <section className="panel" key={tool.id}><div className="panel-heading"><div className="tool-heading"><ToolIcon tool={tool} size={28} /><h2>{tool.name}</h2></div>{document && <Button variant="outline" size="sm" disabled={busy} onClick={() => void edit(document.id)}>Edit configuration</Button>}</div>{hooks.length ? <div className="hook-list">{hooks.map((hook, index) => <button key={`${hook.event}:${index}`} className="hook-row" disabled={busy} onClick={() => void edit(hook.documentId)}><span className="hook-symbol"><Workflow size={17} /></span><span><strong>{hook.event}</strong><small>{hook.description}</small></span><Badge variant="secondary">{hook.count} {hook.count === 1 ? 'hook' : 'hooks'}</Badge><ChevronRight size={16} /></button>)}</div> : <Empty>No hooks configured. Open the native configuration to add an event.</Empty>}</section>; })}</div>{!state.tools.some(tool => tool.capabilities.includes('hooks')) && <Empty>No hook-capable tools found.</Empty>}</>}
+          {page === 'hooks' && <SharedSetup refreshKey={state.refreshedAt} hooksOnly onEditContext={id => void edit(id)} />}
           {page === 'instructions' && <>
-            <section className="panel"><div className="panel-heading"><div><h2>Global instructions</h2><p>All global agents share ai/AGENTS.md, including the required Crit review before PR creation.</p></div><FileText size={20} className="muted" /></div>{state.documents.filter(document => document.kind === 'instruction' && !document.id.startsWith('project:')).map(documentRow)}</section>
+            <section className="panel"><div className="panel-heading"><div><h2>Global instructions</h2><p>Global agents share ai/AGENTS.md. Optional policies are controlled in Hooks.</p></div><FileText size={20} className="muted" /></div>{state.documents.filter(document => document.kind === 'instruction' && !document.id.startsWith('project:')).map(documentRow)}</section>
             <section className="panel project-panel"><div className="panel-heading"><div><h2>Project instructions</h2><p>Choose a local project to manage its agent guidance.</p></div><Code2 size={20} className="muted" /></div><form className="project-form" onSubmit={event => { event.preventDefault(); void action(async () => { await api('project/select', { path: projectPath }); await refresh(); }, 'Project selected.'); }}><label htmlFor="project-path">Project directory</label><div><Input id="project-path" placeholder="/Users/you/projects/my-app" value={projectPath} onChange={event => setProjectPath(event.target.value)} required /><Button disabled={busy || !projectPath.trim()} type="submit">Open project <ArrowUpRight size={15} /></Button></div></form>{state.documents.filter(document => document.kind === 'instruction' && document.id.startsWith('project:')).map(documentRow)}</section>
             <section className="panel"><div className="panel-heading"><div><h2>Configuration files</h2><p>Global settings live in ai/config; hooks and plugin source code stay under ai too.</p></div></div>{state.documents.filter(document => ['hook', 'plugin', 'hook-source', 'config'].includes(document.kind)).map(documentRow)}</section>
           </>}
