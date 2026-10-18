@@ -12,8 +12,11 @@ path = "~/LX14/projects/research"
 name = "LX-PERSONAL"
 path = "~/LX14/repository/github.com/louishuyng"
 
-# Projects
+[[session]]
+name = "LX-PROJECT"
+path = "~/LX14/projects"
 
+# Projects
 [[session]]
 name = "RegAsk"
 path = "~/LX14/repository/github.com/regask"
