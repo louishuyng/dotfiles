@@ -148,10 +148,11 @@ Press `Ctrl+A`, then the key below.
 | `s` / `w` | Project picker / session switcher |
 | `Ctrl+C` / `$` | New / rename session |
 | `Ctrl+K` / `Ctrl+J` / `Shift+1` … `Shift+9` | Previous / next / numbered session |
+| `Tab` | Toggle the two most recently used workspaces on the current host |
 | `c` / `,` / `Shift+X` | New / rename / close tab |
 | `Ctrl+H` / `Ctrl+L` / `1` … `9` | Previous / next / numbered tab |
 | `<` / `>` | Move tab left / right |
-| `h j k l` / `Tab` / `Shift+Tab` | Directional focus / last pane / previous pane |
+| `h j k l` / `Shift+Tab` | Directional focus / previous pane |
 | `H J K L` / arrows / `{` / `}` | Resize / directional swap / previous swap / next swap |
 | `z` / `x` / `b` | Zoom / close pane / toggle sidebar |
 | `?` / `o` / `v` | Command palette / inbox / scrollback in editor |
@@ -159,6 +160,9 @@ Press `Ctrl+A`, then the key below.
 | `/` / `i` / `t` | Yazi / Lazydocker / Tuxedo |
 | `Shift+R` / `Ctrl+R` / `n` / `p` | Serpl / Tuicr / notes / playzones |
 | `Shift+T` / `Ctrl+A` | Toggle macOS appearance / send Ctrl+A to the program |
+
+Workspace history is local to each window and resets when the plugin reloads.
+With no previous workspace, or after it closes, `Ctrl+A Tab` stays put.
 
 `terminals/tern/settings.json` overrides `Ctrl+A g` with Tern's native Git
 block and selects the Zed project opener. Installed theme and other preferences

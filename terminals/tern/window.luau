@@ -5,7 +5,7 @@ local bindings = {
   h = "focus_pane:left", j = "focus_pane:down", k = "focus_pane:up", l = "focus_pane:right",
   ["ctrl+h"] = "previous_tab", ["ctrl+l"] = "next_tab",
   ["ctrl+c"] = "new_session", [","] = "rename_tab", ["shift+4"] = "rename_session",
-  v = "open_scrollback", tab = "plugin.tool-keys.last_pane",
+  v = "open_scrollback",
   ["shift+s"] = "preferences", ["ctrl+g"] = "goto_directory",
   ["ctrl+shift+r"] = "reload_config",
   ["shift+,"] = "move_tab_left", ["shift+."] = "move_tab_right",
@@ -101,24 +101,39 @@ for key, step in { ["shift+["] = -1, ["shift+]"] = 1 } do
 end
 
 local current, previous = {}, {}
-tern.on("window_start", function(cx)
-  local pane = cx.session:focused()
-  local tab = pane and cx.session:tab_of(pane)
-  if tab then current[tab] = pane end
-end)
-tern.on("focus", function(ev)
-  if current[ev.tab] ~= ev.pane then
-    previous[ev.tab], current[ev.tab] = current[ev.tab], ev.pane
+local function remember_session(row)
+  if current[row.host] ~= row.id then
+    previous[row.host], current[row.host] = current[row.host], row.id
+  end
+end
+local function switch_session(cx, id)
+  remember_session(cx.sessions:current())
+  cx.sessions:switch(id)
+end
+for _, action in { "switch_session", "new_session", "show_commands" } do
+  tern.override(action, function(cx) remember_session(cx.sessions:current()) end)
+end
+tern.on("window_start", function(cx) remember_session(cx.sessions:current()) end)
+tern.on("focus", function(ev, cx)
+  -- Focus events may arrive after another session is already current.
+  for _, tab in cx.session:tabs() do
+    if tab.id == ev.tab then
+      for _, row in cx.sessions:list() do
+        if row.id == tab.session then remember_session(row); return end
+      end
+    end
   end
 end)
-tern.on("tab_closed", function(ev)
-  current[ev.tab], previous[ev.tab] = nil, nil
-end)
-command("last_pane", "Focus last pane", "tab", function(cx)
-  local pane = cx.session:focused()
-  local tab = pane and cx.session:tab_of(pane)
-  local last = tab and previous[tab]
-  if last and cx.session:tab_of(last) == tab then cx.layout:focus(last) end
+command("last_session", "Focus last workspace", "tab", function(cx)
+  local row = cx.sessions:current()
+  remember_session(row)
+  local last = previous[row.host]
+  for _, target in cx.sessions:list() do
+    if target.host == row.host and target.id == last then
+      switch_session(cx, last)
+      return
+    end
+  end
 end)
 
 -- Herdr workspaces correspond to Tern sessions on the current host.
@@ -135,7 +150,7 @@ for key, step in { ["ctrl+k"] = -1, ["ctrl+j"] = 1 } do
     local rows = sessions(cx)
     for i, row in rows do
       if row.current then
-        cx.sessions:switch(rows[(i - 1 + step) % #rows + 1].id)
+        switch_session(cx, rows[(i - 1 + step) % #rows + 1].id)
         return
       end
     end
@@ -144,7 +159,7 @@ end
 for n = 1, 9 do
   command("session_" .. n, "Switch workspace " .. n, "shift+" .. n, function(cx)
     local row = sessions(cx)[n]
-    if row then cx.sessions:switch(row.id) end
+    if row then switch_session(cx, row.id) end
   end)
 end
 
@@ -162,7 +177,7 @@ local function open_project(cx, path, label)
     if row.name == label then target = row.id; break end
   end
   if target then
-    cx.sessions:switch(target)
+    switch_session(cx, target)
     local tabs = {}
     for _, session in cx.session:sessions() do
       if session.id == target then
@@ -180,6 +195,7 @@ local function open_project(cx, path, label)
     local tab = pane and cx.session:tab_of(pane)
     if tab then cx.layout:name_tab(tab, string.match(path, "([^/]+)$") or path) end
   else
+    remember_session(cx.sessions:current())
     cx.sessions:create({ name = label, cwd = path })
     local pane = cx.session:focused()
     local tab = pane and cx.session:tab_of(pane)
@@ -259,7 +275,7 @@ command("projects", "Open project space", "s", function(cx)
         end)
       elseif item.session then
         for _, row in sessions(picked) do
-          if row.id == item.session then picked.sessions:switch(row.id); return end
+          if row.id == item.session then switch_session(picked, row.id); return end
         end
         picked:toast("error", "That space has closed; reopen Projects")
       else
