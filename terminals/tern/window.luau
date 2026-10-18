@@ -5,7 +5,7 @@ local bindings = {
   h = "focus_pane:left", j = "focus_pane:down", k = "focus_pane:up", l = "focus_pane:right",
   ["ctrl+h"] = "previous_tab", ["ctrl+l"] = "next_tab",
   ["ctrl+c"] = "new_session", [","] = "rename_tab", ["shift+4"] = "rename_session",
-  v = "open_scrollback", tab = "plugin.herdr-keys.last_pane",
+  v = "open_scrollback", tab = "plugin.tool-keys.last_pane",
   ["shift+s"] = "preferences", ["ctrl+g"] = "goto_directory",
   ["ctrl+shift+r"] = "reload_config",
   ["shift+,"] = "move_tab_left", ["shift+."] = "move_tab_right",

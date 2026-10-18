@@ -83,6 +83,69 @@ lifecycles; restoring a config backup does not uninstall packages or revert
 preferences. The opt-in `macos` task prints every preference write in the plan.
 Changes to Finder, Spaces, and keyboard preferences may require a new login.
 
+### OMP configuration
+
+The `ai` task links OMP configuration on all three platforms without installing
+OMP. Install the binary separately, then apply the links:
+
+```bash
+bash bootstrap/mac.sh --tasks ai --links-only --dry-run
+bash bootstrap/mac.sh --tasks ai --links-only --backup --yes
+```
+
+Use `arch.sh` or `debian.sh` on Linux. Existing files are backed up, not merged;
+review local preferences before applying.
+
+| Dotfiles source | Installed path |
+| --- | --- |
+| `ai/config/native-omp.yml` | `~/.omp/agent/config.yml` |
+| `ai/config/native-omp-keybindings.yml` | `~/.omp/agent/keybindings.yml` |
+| `ai/config/native-omp-mcp.json` | `~/.omp/agent/mcp.json` |
+| `ai/AGENTS.md` | `~/.omp/agent/AGENTS.md` |
+| `ai/skills` | `~/.omp/agent/skills` |
+
+An existing `~/.local/share/agent-hub/skills/omp` skills link stays managed by
+Agent Hub. Session auto-naming lives under `title` in `native-omp.yml`; terminal
+project names remain in `terminals/sesh/sesh.toml`.
+
+Only configuration files are linked. Sessions, databases, caches, credentials,
+and other runtime state remain under OMP's local directories. Do not put tokens
+or private MCP headers in tracked configuration. The extension path retains this
+owner's absolute home path; change it when installing for another user.
+
+### Tern configuration
+
+The macOS `tern` task restores the full `terminals/tern/settings.json` snapshot,
+links `terminals/tern` at Tern's `plugins/tool-keys`, and links the shared
+`terminals/sesh` project-root configuration. Install Tern separately.
+
+```bash
+bash bootstrap/mac.sh --tasks tern --links-only --dry-run
+bash bootstrap/mac.sh --tasks tern --links-only --backup --yes
+tern plugin reload
+```
+
+The default destination is `~/Library/Application Support/Tern`;
+`TERN_CONFIG_DIR` overrides it. Existing settings and conflicting plugin paths
+require backup permission. Unrelated plugins remain installed.
+
+Tern atomically replaces `settings.json` on UI saves, which breaks a file
+symlink. Bootstrap therefore installs a regular copy. Before restoring over
+new UI changes, capture them back into dotfiles:
+
+```bash
+bash ~/.dotfiles/terminals/tern/capture-settings.sh
+```
+
+Capture requires `jq` from the `core` task. It validates a single JSON object
+before replacing the tracked snapshot. Review the full settings file for tokens
+or private environment values before committing. Identical installed snapshots
+are skipped on bootstrap reruns; differing preferences require a backup.
+
+Session state, file-browser history, notes, downloaded agents, account state,
+private host keys, caches, and managed OMP downloads remain local. OMP's own
+configuration uses the separate `ai` task above.
+
 ## Finish selected applications
 
 1. Open a new terminal and run `fish`. The installer leaves your login shell
@@ -131,9 +194,16 @@ retired from automatic bootstrap. Install ZAP from its
 
 ```bash
 bash bootstrap/tests/setup.sh
+bats tests/tern
 ```
 
 The checks isolate config and backup paths and mock package managers, downloads,
 and desktop effects. They cover every platform's task previews, invalid input,
 host guards, conflicts, backups, reruns, failed links, failed packages, and the
-Neovim version gate. A live fresh-machine install is a separate check.
+Neovim version gate. OMP coverage checks backup permission, preservation of local
+settings and runtime state, Agent Hub skills links, fresh skills links, and
+idempotent reruns on all three platforms. Tern coverage checks settings backups,
+custom config directories, failed-copy recovery, preservation of unrelated
+plugins and private state, and idempotent snapshot restores. The Tern shell suite
+also checks that capture rejects invalid settings without replacing the snapshot.
+A live fresh-machine install is a separate check.

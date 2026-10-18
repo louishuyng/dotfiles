@@ -1,9 +1,43 @@
 {
-  "keybinds": {
-    "ctrl+\\": "plugin.herdr-keys.toggle_files",
-    "ctrl+a>g": "new_git_block"
+  "theme": "System",
+  "theme_dark": "dark-terminal",
+  "theme_light": "light",
+  "cursor": {
+    "programs": true,
+    "smooth_blink": true,
+    "trail": "warp",
+    "pulse": "ripple"
   },
+  "layout": "Studio",
+  "font_size": 12,
+  "ui_font_size": 13,
+  "font_family": "Jetbrains Mono Nerd Font",
+  "font_family_bold": "Jetbrains Mono Nerd Font",
+  "font_family_italic": "Jetbrains Mono Nerd Font",
+  "font_family_bold_italic": "Jetbrains Mono Nerd Font",
+  "adjust_cell_height": 7,
+  "ui_font": "Jetbrains Mono Nerd Font",
+  "code_font": "Jetbrains Mono Nerd Font",
+  "opacity": 50,
   "git": {
-    "external_editor": "/Users/louishuyng/.dotfiles/terminals/tern/zed-project.sh"
+    "external_editor": "/Users/louishuyng/.dotfiles/terminals/tern/zed-project.sh",
+    "sidebar_folded": [
+      "stashes"
+    ],
+    "path_tree": true
+  },
+  "sqlite": {
+    "recent": [
+      {
+        "path": "/Users/louishuyng/LX14/repository/github.com/omniyat/collections/.pnpm-store/v11/index.db",
+        "read_only": false
+      }
+    ],
+    "browse_font": "Jetbrains Mono Nerd Font",
+    "editor_font": "Jetbrains Mono Nerd Font"
+  },
+  "keybinds": {
+    "ctrl+\\": "plugin.tool-keys.toggle_files",
+    "ctrl+a>g": "new_git_block"
   }
 }

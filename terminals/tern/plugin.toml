@@ -1,6 +1,6 @@
 schema = 1
-id = "herdr-keys"
-name = "Herdr keys"
+id = "tool-keys"
+name = "Tool keys"
 version = "1.0.0"
-description = "Ctrl+A shortcuts matching this repository's Herdr configuration."
+description = "Ctrl+A shortcuts to quick access tools"
 window = "window.luau"

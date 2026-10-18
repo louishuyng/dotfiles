@@ -90,7 +90,7 @@ add_task emacs 'Emacs + Doom config (Doom install is manual)'
 add_task nnn 'nnn file manager + plugins'
 add_task qutebrowser 'Qutebrowser + config'
 add_task runtimes 'mise version manager (choose language versions later)'
-add_task ai 'OpenCode + Claude config/skills links only'
+add_task ai 'OMP + OpenCode + Claude config/skills links only'
 add_task nix 'Nix/Home Manager config links only'
 if [[ "$platform" != debian ]]; then
   add_task cli 'Extra CLI tools + Gum + Television + lint/format tools'
@@ -103,6 +103,7 @@ if [[ "$platform" != debian ]]; then
 fi
 if [[ "$platform" == mac ]]; then
   add_task agent_hub 'Agent Hub web dashboard + background login service (requires Node 24 and Portless)'
+  add_task tern 'Tern settings snapshot + tool-keys plugin (install Tern separately)'
   add_task zsh 'Alternative Zsh config + shell tools'
   add_task rio 'Rio terminal + config'
   add_task desktop 'Aerospace + SketchyBar/Lua + Borders + fonts'
@@ -244,6 +245,32 @@ link_file() {
     fail "Could not link $target; its previous config was restored."
   fi
 }
+copy_file() {
+  local source=$1 target=$2 saved= temporary="$2.bootstrap-$$"
+  [[ -f "$source" ]] || fail "Missing config source: $source"
+  if [[ ! -L "$target" ]] && cmp -s "$source" "$target"; then
+    info "Already copied: $target"
+    return
+  fi
+  if [[ -e "$target" || -L "$target" ]]; then
+    conflicts=$((conflicts+1))
+    saved="$backup_dir/${target#"$HOME"/}"
+    if $dry_run; then
+      info "Conflict: $target (requires --backup)"
+      if $backup; then run mkdir -p "$(dirname "$saved")"; run mv "$target" "$saved"; fi
+    else
+      $backup || fail "Config exists: $target. Review with --dry-run; use --backup to preserve it."
+      run mkdir -p "$(dirname "$saved")"
+      run mv "$target" "$saved"
+    fi
+  fi
+  run mkdir -p "$(dirname "$target")"
+  if ! run cp "$source" "$temporary" || ! run mv "$temporary" "$target"; then
+    rm -f -- "$temporary"
+    [[ -z "$saved" ]] || mv "$saved" "$target"
+    fail "Could not copy $target; its previous config was restored."
+  fi
+}
 config() { link_file "$repo_root/$1" "$config_dir/$2"; }
 clone_repo() {
   local url=$1 target=$2
@@ -327,6 +354,13 @@ apply_task() {
       config suckless/qutebrowser qutebrowser ;;
     runtimes) install_mise ;;
     ai)
+      link_file "$repo_root/ai/config/native-omp.yml" "$HOME/.omp/agent/config.yml"
+      link_file "$repo_root/ai/config/native-omp-keybindings.yml" "$HOME/.omp/agent/keybindings.yml"
+      link_file "$repo_root/ai/config/native-omp-mcp.json" "$HOME/.omp/agent/mcp.json"
+      link_file "$repo_root/ai/AGENTS.md" "$HOME/.omp/agent/AGENTS.md"
+      if [[ ! -L "$HOME/.omp/agent/skills" || "$(readlink "$HOME/.omp/agent/skills")" != "$HOME/.local/share/agent-hub/skills/omp" ]]; then
+        link_file "$repo_root/ai/skills" "$HOME/.omp/agent/skills"
+      fi
       config opencode/opencode.jsonc opencode/opencode.jsonc
       config opencode/agents opencode/agents
       if [[ ! -L "$config_dir/opencode/skills" || "$(readlink "$config_dir/opencode/skills")" != "$HOME/.local/share/agent-hub/skills/opencode" ]]; then
@@ -338,6 +372,11 @@ apply_task() {
         link_file "$repo_root/ai/skills" "$HOME/.claude/skills"
       fi
       link_file "$repo_root/ai/CLAUDE.md" "$HOME/.claude/CLAUDE.md" ;;
+    tern)
+      local tern_dir=${TERN_CONFIG_DIR:-"$HOME/Library/Application Support/Tern"}
+      copy_file "$repo_root/terminals/tern/settings.json" "$tern_dir/settings.json"
+      link_file "$repo_root/terminals/tern" "$tern_dir/plugins/tool-keys"
+      config terminals/sesh sesh ;;
     agent_hub)
       if ! $dry_run; then
         command -v node >/dev/null || fail 'Install Node 24+ before setting up Agent Hub.'

@@ -94,18 +94,29 @@ and hosted-tool input in a disposable session before applying visual refinements
 ## Tern
 
 The [Tern plugin](../tern/window.luau) adds Herdr-style `Ctrl+A` shortcuts while
-keeping Tern's native shortcuts and installed preferences. Link or restore it:
+keeping Tern's native shortcuts. The full preference snapshot lives in
+`terminals/tern/settings.json`; plugin commands, metadata, and launchers live
+beside it. Restore them with the macOS bootstrap task:
 
 ```bash
-tern plugin link ~/.dotfiles/terminals/tern
-tern plugin list --json
+bash bootstrap/mac.sh --tasks tern --links-only --dry-run
+bash bootstrap/mac.sh --tasks tern --links-only --backup --yes
+tern plugin reload
 ```
 
-The plugin needs `plugin.toml`, `window.luau`, and `projects.sh` in
-`terminals/tern`. Keep these files in version control alongside `settings.json`
-and `zed-project.sh`; the installed `.path` link alone cannot restore missing
-files. After edits, use `tern plugin reload`. A healthy plugin list reports
-`herdr-keys` as ready with no problems.
+Tern replaces its settings file on UI saves, so bootstrap copies the snapshot
+rather than installing a file symlink. After changing preferences, capture them:
+
+```bash
+bash ~/.dotfiles/terminals/tern/capture-settings.sh
+```
+
+Capture requires `jq` and validates JSON before replacing the snapshot. It copies
+the entire settings file; review it for private values before committing.
+Bootstrap links the plugin directory and project-root configuration separately.
+`tern plugin list --json` should report `tool-keys` as ready with no problems.
+See [bootstrap configuration and recovery](../../bootstrap/README.md#tern-configuration)
+for installed paths, backups, and the runtime files deliberately kept local.
 
 ### Project spaces
 

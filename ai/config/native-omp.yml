@@ -1,0 +1,25 @@
+modelRoles:
+  default: openai-codex/gpt-6.1-sol
+symbolPreset: nerd
+composer:
+  shape: borderless
+theme:
+  dark: titanium
+  light: light
+setupVersion: 2
+extensions:
+  - /Users/louishuyng/.dotfiles/ai/hooks/omp-extension.ts
+title:
+  generator: fork
+  icons: nf+emoji
+  refreshOnReplan: true
+dev:
+  autoqaConsent: granted
+astGrep:
+  enabled: true
+vault:
+  enabled: false
+security:
+  enabled: true
+computer:
+  enabled: true

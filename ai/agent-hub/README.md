@@ -179,8 +179,10 @@ SuperGrok web still has no local instruction-sync bridge.
 The shared context runner generates each native output shape. OpenCode uses the
 repository `shared-hooks` plugin; Pi uses `ai/hooks/pi-extension.ts`, registered
 through `ai/config/native-pi-extensions.json`. omp uses `ai/hooks/omp-extension.ts`,
-registered through `ai/config/native-omp-extensions.json` in
-`~/.omp/agent/config.yml`. Restart omp after restoring a missing extension;
+registered in `ai/config/native-omp.yml`, linked to
+`~/.omp/agent/config.yml` by the bootstrap `ai` task. The same task links OMP's
+keybindings, MCP config, shared instructions, and skills; it preserves an
+existing Agent Hub skills link. Restart omp after restoring a missing extension;
 modules absent at startup cannot be loaded into an existing session.
 
 omp's project-focused `Ctrl+G` also requires
