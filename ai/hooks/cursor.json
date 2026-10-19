@@ -3,16 +3,16 @@
   "hooks": {
     "sessionStart": [
       {
-        "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'adhd' 'sessionStart'"
+        "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'adhd' 'sessionStart'"
       },
       {
-        "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'ponytail' 'sessionStart'"
+        "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'ponytail' 'sessionStart'"
       },
       {
-        "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'crit' 'sessionStart'"
+        "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'difit' 'sessionStart'"
       },
       {
-        "command": "'/opt/homebrew/Cellar/node/26.11.1/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'ui-frontend' 'sessionStart'"
+        "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'ui-frontend' 'sessionStart'"
       }
     ]
   }

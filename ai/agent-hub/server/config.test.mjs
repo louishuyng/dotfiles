@@ -192,7 +192,7 @@ test('global UI configuration lives in ai and mirrors hooks without exporting pr
   const f=await fixture();try {
     const settings=path.join(f.home,'.claude/settings.json');await writeFile(settings,'{ // retain comment\n"private":"FAKE-PRIVATE", "hooks":{"Stop":[]}}');
     await rm(path.join(f.root,'ai/hooks/claude.json'),{force:true});
-    await writeFile(path.join(f.root,'ai/AGENTS.md'),'Shared instructions. Crit review before PR.');
+    await writeFile(path.join(f.root,'ai/AGENTS.md'),'Shared instructions.');
     await f.config.configureGlobals();
     const inv=await f.config.inventory();assert.ok(inv.documents.filter(d=>!d.id.startsWith('project:')).every(d=>d.path.startsWith(path.join(f.root,'ai')+path.sep)));
     for(const file of ['.codex/AGENTS.md','.claude/CLAUDE.md','.config/opencode/AGENTS.md'])assert.equal(await readlink(path.join(f.home,file)),path.join(f.root,'ai/AGENTS.md'));

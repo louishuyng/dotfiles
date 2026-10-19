@@ -3,6 +3,9 @@
 Accepted on 2026-10-16. The owner chose the `herdr-plan` → `herdr-implement`
 workflow over investigating a new native macOS sandbox.
 
+The Crit-specific review steps below are superseded by
+[Difit review with explicit human approval](0006-shared-agent-setup.md#accepted-update-difit-review-with-explicit-human-approval).
+
 ## Context
 
 Herdr Projects 1.0.1 requires bubblewrap for native planning in repo worktrees.

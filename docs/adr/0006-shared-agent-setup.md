@@ -122,3 +122,41 @@ existence and reject symlinks outside `ai/skills` before saving. Load the curren
 skill body when the hook runs; do not copy it into configuration or execute its
 scripts. The workspace and native runners use the same context reader so the
 visible preview matches the injected text.
+
+## Accepted update: Difit review with explicit human approval
+
+Accepted on 2026-10-19. The owner reported Crit review as slow, selected
+**Difit + human approval**, and requested the new workflow for this migration's
+commit to `main`. This supersedes the Crit-specific review requirements in
+[the original Hub decision](0003-local-agent-hub.md) and
+[the Herdr workflow decision](0005-herdr-plan-and-implement.md).
+
+Replace the `crit` context preset with `difit`, loading
+`ai/skills/difit/SKILL.md` as both the shared hook source and exported skill.
+Enable it globally with no agent opt-outs initially. Keep the existing context
+adapters and per-agent controls; report unsupported tools rather than claiming
+universal runtime support. Migrate Herdr's final-review instructions too.
+Remove the three Crit skills from the manifest and let existing setup move
+their source folders into private recovery storage. Leave the installed Crit
+binary alone; it is no longer part of the managed workflow.
+
+Install Difit 5.0.12 once, bind its server to loopback, and reuse one viewer per
+repository and review target. Include the entire task diff and new files while
+excluding unrelated changes. Use the existing comment CLI to read human feedback
+when requested; do not poll or generate a Story. Require explicit human approval
+of the final diff in the agent conversation. Browser closure, no comments, AI
+review, and successful command exit are not approval. Further code changes
+invalidate approval. PR creation still needs authorization; keep work local when
+review is unfinished.
+
+Alternatives considered: native agent review removes the browser but does not
+replace human inspection; Critique offers a terminal viewer, but its documented
+`--web` flow uploads the diff. Difit preserves local browser comments without
+mandatory Story preparation. The trade-off is an explicit chat approval rather
+than Crit's Finish Review signal. No performance improvement is claimed without
+measurement. This remains an instruction-based workflow, not a hosting gate.
+
+References: [Difit commands and comment integration](https://github.com/yoshiko-pg/difit),
+[upstream agent skill](https://github.com/yoshiko-pg/difit/blob/main/skills/difit/SKILL.md),
+[Codex review](https://learn.chatgpt.com/docs/code-review?surface=cli), and
+[Critique](https://github.com/remorses/critique).

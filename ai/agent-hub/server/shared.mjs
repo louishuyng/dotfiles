@@ -175,7 +175,7 @@ export class SharedSetup {
       try {
         const context = await readContext(path.join(this.config.root, 'ai'), hook);
         const documentId = hook.text === undefined ? `hook-context:${hook.id}` : undefined;
-        if (documentId) this.config.document(documentId, `${hook.id} hook context`, 'shared', context.path, 'hook-source', hook.context === 'crit' ? {} : {format:'skill'});
+        if (documentId) this.config.document(documentId, `${hook.id} hook context`, 'shared', context.path, 'hook-source', {format:'skill'});
         contexts[hook.id] = { ...context, documentId };
       } catch { contexts[hook.id] = { error: 'Context source could not be read. Check the selected skill or source file.' }; }
     }

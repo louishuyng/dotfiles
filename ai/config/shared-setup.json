@@ -22,8 +22,8 @@
       "disabledAgents": []
     },
     {
-      "id": "crit",
-      "context": "crit",
+      "id": "difit",
+      "context": "difit",
       "event": "sessionStart",
       "enabled": true,
       "disabledAgents": []

@@ -44,7 +44,7 @@ verified shared set; import compatible entries explicitly from the page.
 Shared servers support stdio commands and Streamable HTTP endpoints. Native-only
 options and environment interpolation require manual setup and appear as
 incomplete parity. Shared command hooks map supported tool-use and completion
-events. ADHD, Ponytail, Crit, and the conditional `ui-frontend` workflow default
+events. ADHD, Ponytail, Difit, and the conditional `ui-frontend` workflow default
 on. The Hooks workspace stores global defaults and per-agent opt-outs while
 keeping one shared body for each hook.
 Context hooks run in Codex, Claude, Gemini, Cursor, OpenCode, Pi, and omp. Commands receive native JSON; they
@@ -63,7 +63,7 @@ See [the shared setup decision](../../docs/adr/0006-shared-agent-setup.md).
 
 Native Codex plugins remain managed through the app server. Skill creation, edits, and enablement use the repository library and manifest.
 
-The current manifest enables ten skills: archify, aside-browser, better-write, caveman, crit, crit-cli, crit-story, ponytail, tech-doc-writer, and ui-ux-pro-max. The three Crit skills and the Ponytail 5.1.0 base skill are repository copies with their licenses. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays ten.
+The current manifest enables eleven skills: archify, aside-browser, better-write, caveman, difit, herdr-implement, herdr-plan, i-have-adhd, ponytail, tech-doc-writer, and ui-ux-pro-max. Difit replaces the three Crit skills; the repository-owned Difit skill defines the shared review policy. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays eleven.
 
 Use **Skills → Review sync** to preview and apply shared links. Codex's `~/.agents/skills`, Claude's `~/.claude/skills`, OpenCode's `~/.config/opencode/skills`, and configured compatible targets receive exports of the same enabled repository folders. Scripts and relative references stay with each skill. Source edits happen in `ai/skills`, not a tool's plugin cache. Exports use skill names; ambiguous names fail before writing. Sync stages targets, reverses failed swaps, journals interrupted changes, and refreshes managed exports after library changes. Displaced roots are backed up. Bootstrap preserves active Agent Hub links.
 
@@ -125,15 +125,21 @@ Native plugin packages and vendor-owned hook executables remain in their native
 installations. Displaced global files are preserved in the private
 `original-global-files/` backup directory.
 
-The optional Crit hook requires approved review before creating a PR.
-Use Crit Story for 10+ changed files, 500+ added/deleted lines, or cross-cutting
-architecture/interface changes. Generated, vendored, and lockfile changes do
-not inflate the size threshold. Story preparation does not grant approval:
-finish the interactive Crit loop, address comments, and review again after code
-changes. This is a hook-injected instruction, not an unbypassable GitHub or shell gate.
-Disable Crit for an agent in Hooks to opt out. Start a new session after changing
-context hooks; existing conversations can retain previously injected text.
-No PR is created automatically by Agent Hub.
+The optional Difit hook requests local browser review and requires explicit human
+approval of the final diff in the agent conversation before creating a PR or
+marking it ready. Install the viewer once with `npm install --global difit@5.0.12`.
+Use `difit . --include-untracked --host 127.0.0.1 --background` for a task-only
+working tree, or `difit staged --host 127.0.0.1 --background` for an isolated index.
+The command returns the actual URL, port, and PID. Reuse one server per repository
+and target; read feedback with `difit comment get --port <port> --format json`.
+After fixes, rerun relevant checks and ask the human to reload the viewer.
+No Story preparation or hosted diff upload is required. Closing the viewer,
+receiving no comments, or completing AI review never grants approval. Later code
+changes invalidate approval. Disable Difit for an agent in Hooks to opt out.
+Start a new session after changing context hooks; existing conversations can
+retain previously injected text. This is an instruction, not an enforced GitHub
+gate. No PR is created automatically by Agent Hub. See the
+[accepted review decision](../../docs/adr/0006-shared-agent-setup.md#accepted-update-difit-review-with-explicit-human-approval).
 
 ## Shared hook sources and cleanup
 
@@ -146,10 +152,10 @@ agents receive the hook and can opt out individually. **View context** shows
 the exact injected text and source, and **Edit context** edits that source.
 
 ADHD reads `ai/skills/i-have-adhd/SKILL.md`; Ponytail reads
-`ai/skills/ponytail/SKILL.md`; Crit reads `ai/hooks/crit.md`. Their global enabled
-state and `disabledAgents` lists live in `ai/config/shared-setup.json`. The shared
-instructions in `ai/AGENTS.md` contain neither an always-on ADHD output policy nor
-a mandatory Crit PR rule.
+`ai/skills/ponytail/SKILL.md`; Difit reads `ai/skills/difit/SKILL.md`. Their global
+enabled state and `disabledAgents` lists live in `ai/config/shared-setup.json`.
+The shared instructions in `ai/AGENTS.md` contain neither an always-on ADHD output
+policy nor a mandatory review rule.
 
 `ui-frontend` is a context-text hook in `ai/config/shared-setup.json`. Its workflow
 activates only for tasks that design, build, change, or review UI/frontend work.
