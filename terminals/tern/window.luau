@@ -2,10 +2,11 @@ local tern = require("tern")
 
 -- Keep Tern's native shortcuts alongside Herdr's Ctrl+A table.
 local bindings = {
-  h = "focus_pane:left", j = "focus_pane:down", k = "focus_pane:up", l = "focus_pane:right",
+  h = "focus_pane:left", j = "focus_pane:down", l = "focus_pane:right",
   ["ctrl+h"] = "previous_tab", ["ctrl+l"] = "next_tab",
   ["ctrl+c"] = "new_session", [","] = "rename_tab", ["shift+4"] = "rename_session",
   v = "open_scrollback",
+  k = "new_board_block", e = "new_canvas_block",
   ["shift+s"] = "preferences", ["ctrl+g"] = "goto_directory",
   ["ctrl+shift+r"] = "reload_config",
   ["shift+,"] = "move_tab_left", ["shift+."] = "move_tab_right",

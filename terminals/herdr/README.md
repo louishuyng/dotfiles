@@ -152,9 +152,10 @@ Press `Ctrl+A`, then the key below.
 | `c` / `,` / `Shift+X` | New / rename / close tab |
 | `Ctrl+H` / `Ctrl+L` / `1` … `9` | Previous / next / numbered tab |
 | `<` / `>` | Move tab left / right |
-| `h j k l` / `Shift+Tab` | Directional focus / previous pane |
+| `h j l` / `Shift+Tab` | Focus left / down / right / previous pane |
 | `H J K L` / arrows / `{` / `}` | Resize / directional swap / previous swap / next swap |
 | `z` / `x` / `b` | Zoom / close pane / toggle sidebar |
+| `k` / `e` | Open Kanban board / Canvas block (`k` replaces focus up) |
 | `?` / `o` / `v` | Command palette / inbox / scrollback in editor |
 | `Shift+S` / `Ctrl+G` / `Ctrl+Shift+R` | Settings / directory picker / reload settings |
 | `/` / `i` / `t` | Yazi / Lazydocker / Tuxedo |
