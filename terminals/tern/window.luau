@@ -294,6 +294,18 @@ command("projects", "Open project space", "s", function(cx)
   end)
 end)
 
+command("github", "Open repository in external browser", "shift+g", function(cx)
+  local focused = cx.session:focused()
+  local info = focused and cx.session:pane(focused)
+  if cx.hosts:current().kind ~= "local" or not info or not info.cwd then
+    cx:toast("error", "Could not open repository", "Focus a pane with a local working directory")
+    return
+  end
+  tern.process.run({ "gh", "browse" }, { cwd = info.cwd }, function(result, fresh)
+    if result.status ~= 0 then fresh:toast("error", "Could not open repository", result.stderr) end
+  end)
+end)
+
 -- Tern has no session-modal terminal popups; launch in a disposable tab instead.
 local launchers = {
   { "files", "Open files (Yazi)", "/", "yazi" },
@@ -301,7 +313,6 @@ local launchers = {
   { "tuxedo", "Open Tuxedo", "t", "tuxedo" },
   { "replace", "Search and replace (Serpl)", "shift+r", "serpl" },
   { "review", "Open Tuicr", "ctrl+r", "tuicr" },
-  { "github", "Open GitHub dashboard", "g", "gh dash" },
   { "notes", "Open notes", "n", "~/.dotfiles/terminals/notes/note.sh" },
   { "playzones", "Open playzones", "p", "~/.dotfiles/terminals/playzones/playzone-picker.sh" },
 }

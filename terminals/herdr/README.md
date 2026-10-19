@@ -156,6 +156,7 @@ Press `Ctrl+A`, then the key below.
 | `H J K L` / arrows / `{` / `}` | Resize / directional swap / previous swap / next swap |
 | `z` / `x` / `b` | Zoom / close pane / toggle sidebar |
 | `k` / `e` | Open Kanban board / Canvas block (`k` replaces focus up) |
+| `g` / `Shift+G` | Tern Git graph / open the focused local pane's GitHub repository in the external browser (`gh browse`) |
 | `?` / `o` / `v` | Command palette / inbox / scrollback in editor |
 | `Shift+S` / `Ctrl+G` / `Ctrl+Shift+R` | Settings / directory picker / reload settings |
 | `/` / `i` / `t` | Yazi / Lazydocker / Tuxedo |
