@@ -171,6 +171,9 @@ block and selects the Zed project opener. Installed theme and other preferences
 are separate; linking the plugin does not replace them. Custom settings and
 presets take precedence over plugin bindings.
 
+The external repository shortcut uses `/opt/homebrew/bin/gh` so it works when
+Tern's GUI environment does not include Homebrew in `PATH`.
+
 Plain `Ctrl+\` toggles Tern's Files panel. In a terminal running Neovim, it
 passes through to Neovim instead, preserving the existing nvim-tree toggle.
 The handler checks `tern process` for the foreground editor, including

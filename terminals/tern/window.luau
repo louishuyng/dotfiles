@@ -301,7 +301,7 @@ command("github", "Open repository in external browser", "shift+g", function(cx)
     cx:toast("error", "Could not open repository", "Focus a pane with a local working directory")
     return
   end
-  tern.process.run({ "gh", "browse" }, { cwd = info.cwd }, function(result, fresh)
+  tern.process.run({ "/opt/homebrew/bin/gh", "browse" }, { cwd = info.cwd }, function(result, fresh)
     if result.status ~= 0 then fresh:toast("error", "Could not open repository", result.stderr) end
   end)
 end)
