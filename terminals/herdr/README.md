@@ -182,13 +182,15 @@ It dispatches Files as a window action: synchronous command dispatch can
 exceed the process callback's 50 ms limit and disable the shortcut. If a
 previous failure disabled the handler, run `tern plugin reload`.
 
-Inside omp, plain `Ctrl+N` (without `Ctrl+A`) opens Neovim in a right split
-using omp's current project directory. If this tab already has a running
-Neovim, it focuses that pane instead. The shared `ai/hooks/omp-extension.ts`
-uses `scripts/nvim-tab.sh`. Restart existing omp processes after changing the
-extension. Outside omp, Fish keeps its `Ctrl+N` mapping: clear the screen and
-open Neovim in the current pane. Other terminals keep their normal omp
-`Ctrl+N` behavior.
+Inside omp, suggestion lists and pickers use `Ctrl+J` / `Ctrl+N` to move down
+and `Ctrl+K` / `Ctrl+P` to move up; arrow keys still work. These bindings live
+in `ai/config/native-omp-keybindings.yml`. `Ctrl+P` no longer cycles models;
+use `Alt+P` for the temporary model picker or `Alt+M` for model roles.
+`Ctrl+J` requires a distinct key event (as with Kitty keyboard encoding);
+legacy terminals that send only LF treat it as Enter.
+Restart existing omp processes to load the bindings and remove the old Neovim
+shortcut. Fish keeps `Ctrl+N`: clear the screen and open Neovim in the current
+pane. These omp bindings do not remap Tern's own app-owned menus or pickers.
 
 Plain `Ctrl+G` in omp opens the active session's repository root in Zed, or its
 current directory when it is not inside a repository. Zed maps that root to its

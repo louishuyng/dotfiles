@@ -1,4 +1,3 @@
-import path from 'node:path';
 import type { ExtensionAPI } from '@oh-my-pi/pi-coding-agent';
 import { matchesKey } from '@oh-my-pi/pi-tui';
 import { aiRoot, hookContexts } from './context.mjs';
@@ -26,18 +25,4 @@ export default function (omp: ExtensionAPI) {
       return { consume: true };
     });
   });
-
-  if (process.env.TERM_PROGRAM === 'tern' && process.env.TERN_PANE) {
-    omp.registerShortcut('ctrl+n', {
-      description: 'Open or focus Neovim in this Tern tab',
-      handler: async ctx => {
-        try {
-          const result = await omp.exec('bash', [path.join(aiRoot, '..', 'scripts/nvim-tab.sh')], { cwd: ctx.cwd });
-          if (result.code !== 0) ctx.ui.notify(result.stderr.trim() || `Neovim launcher exited with code ${result.code}`, 'error');
-        } catch (error) {
-          ctx.ui.notify(error instanceof Error ? error.message : String(error), 'error');
-        }
-      },
-    });
-  }
 }
