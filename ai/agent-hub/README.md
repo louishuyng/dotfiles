@@ -44,7 +44,7 @@ verified shared set; import compatible entries explicitly from the page.
 Shared servers support stdio commands and Streamable HTTP endpoints. Native-only
 options and environment interpolation require manual setup and appear as
 incomplete parity. Shared command hooks map supported tool-use and completion
-events. ADHD, Ponytail, Difit, and the conditional `ui-frontend` workflow default
+events. ADHD, Ponytail, Plannotator, and the conditional `ui-frontend` workflow default
 on. The Hooks workspace stores global defaults and per-agent opt-outs while
 keeping one shared body for each hook.
 Context hooks run in Codex, Claude, Gemini, Cursor, OpenCode, Pi, and omp. Commands receive native JSON; they
@@ -63,7 +63,7 @@ See [the shared setup decision](../../docs/adr/0006-shared-agent-setup.md).
 
 Native Codex plugins remain managed through the app server. Skill creation, edits, and enablement use the repository library and manifest.
 
-The current manifest enables eleven skills: archify, aside-browser, better-write, caveman, difit, herdr-implement, herdr-plan, i-have-adhd, ponytail, tech-doc-writer, and ui-ux-pro-max. Difit replaces the three Crit skills; the repository-owned Difit skill defines the shared review policy. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays eleven.
+The current manifest enables eleven skills: archify, aside-browser, better-write, caveman, herdr-implement, herdr-plan, i-have-adhd, plannotator, ponytail, tech-doc-writer, and ui-ux-pro-max. The repository-owned [Plannotator skill](../skills/plannotator/SKILL.md) defines the shared review policy and supplies its hook body. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays eleven.
 
 Use **Skills → Review sync** to preview and apply shared links. Codex's `~/.agents/skills`, Claude's `~/.claude/skills`, OpenCode's `~/.config/opencode/skills`, and configured compatible targets receive exports of the same enabled repository folders. Scripts and relative references stay with each skill. Source edits happen in `ai/skills`, not a tool's plugin cache. Exports use skill names; ambiguous names fail before writing. Sync stages targets, reverses failed swaps, journals interrupted changes, and refreshes managed exports after library changes. Displaced roots are backed up. Bootstrap preserves active Agent Hub links.
 
@@ -125,21 +125,38 @@ Native plugin packages and vendor-owned hook executables remain in their native
 installations. Displaced global files are preserved in the private
 `original-global-files/` backup directory.
 
-The optional Difit hook requests local browser review and requires explicit human
-approval of the final diff in the agent conversation before creating a PR or
-marking it ready. Install the viewer once with `npm install --global difit@5.0.12`.
-Use `difit . --include-untracked --host 127.0.0.1 --background` for a task-only
-working tree, or `difit staged --host 127.0.0.1 --background` for an isolated index.
-The command returns the actual URL, port, and PID. Reuse one server per repository
-and target; read feedback with `difit comment get --port <port> --format json`.
-After fixes, rerun relevant checks and ask the human to reload the viewer.
-No Story preparation or hosted diff upload is required. Closing the viewer,
-receiving no comments, or completing AI review never grants approval. Later code
-changes invalidate approval. Disable Difit for an agent in Hooks to opt out.
-Start a new session after changing context hooks; existing conversations can
-retain previously injected text. This is an instruction, not an enforced GitHub
-gate. No PR is created automatically by Agent Hub. See the
-[accepted review decision](../../docs/adr/0006-shared-agent-setup.md#accepted-update-difit-review-with-explicit-human-approval).
+The optional Plannotator hook requests local browser review before creating or
+marking a PR ready. Follow the [shared review skill](../skills/plannotator/SKILL.md)
+for exact task-only scope selection, launch commands, feedback handling, and the
+explicit human conversation-approval requirement. PR creation needs separate
+authorization; Agent Hub creates no PR automatically.
+
+Install the standalone binary pinned to **v0.28.23**, using the upstream
+installer's `--minimal --version 0.28.23` options. Do not install automatic plan
+hooks or extra skills. Reviews bind loopback, disable sharing and surprise
+browser/Glimpse launches, and open the actual printed URL. The CLI returns its
+decision/message JSON via stdout and exits; after fixes, rerun relevant checks
+and reopen the final diff. No guided review or automatic AI reviewer is required.
+Standalone Ask AI uses the selected provider; Codex runs in a separate read-only
+session. The optional native omp/Pi integration uses
+`@plannotator/pi-extension@0.28.23` through each host's
+official package manager: `omp plugin install @plannotator/pi-extension@0.28.23`
+or `pi install npm:@plannotator/pi-extension@0.28.23`. Its
+`/plannotator-review`, `/plannotator-annotate`, and `/plannotator-last` commands
+provide the native same-session bridge; the standalone CLI does not. Native Q&A
+runs a real agent turn with tools and transcript access, not a read-only fallback.
+Restart affected agents after native package installation. Agent Hub source
+upgrades follow the existing build/restart runbook; do not restart Portless.
+Fresh omp command discovery, same-session Q&A, and inline-feedback delivery were
+verified. Pi command discovery was verified; its Q&A was not exercised separately.
+The human must handle provider permission prompts; agents must not autoapprove.
+Do not enable `--plan` or add automatic plan hooks. Provider-backed AI can disclose
+relevant code; the app's release check means local review is not fully offline.
+
+Disable Plannotator for an agent in Hooks to opt out. Start a new session after
+changing context hooks; existing conversations can retain earlier text. This is
+an instruction, not an enforced GitHub gate. See the
+[accepted review decision](../../docs/adr/0006-shared-agent-setup.md#accepted-update-plannotator-replaces-difit-globally).
 
 ## Shared hook sources and cleanup
 
@@ -152,7 +169,7 @@ agents receive the hook and can opt out individually. **View context** shows
 the exact injected text and source, and **Edit context** edits that source.
 
 ADHD reads `ai/skills/i-have-adhd/SKILL.md`; Ponytail reads
-`ai/skills/ponytail/SKILL.md`; Difit reads `ai/skills/difit/SKILL.md`. Their global
+`ai/skills/ponytail/SKILL.md`; Plannotator reads `ai/skills/plannotator/SKILL.md`. Their global
 enabled state and `disabledAgents` lists live in `ai/config/shared-setup.json`.
 The shared instructions in `ai/AGENTS.md` contain neither an always-on ADHD output
 policy nor a mandatory review rule.

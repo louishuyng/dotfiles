@@ -9,7 +9,7 @@
         "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'ponytail' 'sessionStart'"
       },
       {
-        "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'difit' 'sessionStart'"
+        "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'plannotator' 'sessionStart'"
       },
       {
         "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'ui-frontend' 'sessionStart'"

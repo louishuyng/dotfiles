@@ -1,0 +1,31 @@
+[
+  {
+    "source": "npm:@a5c-ai/babysitter-pi",
+    "extensions": [],
+    "skills": []
+  },
+  {
+    "source": "npm:@ifi/pi-extension-subagents",
+    "skills": []
+  },
+  {
+    "source": "npm:pi-markdown-preview",
+    "skills": []
+  },
+  {
+    "source": "npm:pi-mermaid",
+    "skills": []
+  },
+  {
+    "source": "npm:@ifi/oh-pi-themes",
+    "skills": []
+  },
+  {
+    "source": "npm:pi-powerline-footer",
+    "skills": []
+  },
+  {
+    "source": "npm:@plannotator/pi-extension@0.28.23",
+    "skills": []
+  }
+]

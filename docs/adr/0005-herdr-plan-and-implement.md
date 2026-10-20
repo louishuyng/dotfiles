@@ -4,7 +4,7 @@ Accepted on 2026-10-16. The owner chose the `herdr-plan` → `herdr-implement`
 workflow over investigating a new native macOS sandbox.
 
 The Crit-specific review steps below are superseded by
-[Difit review with explicit human approval](0006-shared-agent-setup.md#accepted-update-difit-review-with-explicit-human-approval).
+[Plannotator replaces Difit globally](0006-shared-agent-setup.md#accepted-update-plannotator-replaces-difit-globally).
 
 ## Context
 

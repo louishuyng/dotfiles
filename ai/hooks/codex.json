@@ -21,7 +21,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'codex' 'difit' 'SessionStart'"
+            "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'codex' 'plannotator' 'SessionStart'"
           }
         ]
       },

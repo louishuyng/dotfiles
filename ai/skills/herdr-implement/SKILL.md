@@ -1,13 +1,13 @@
 ---
 name: herdr-implement
-description: Implement a human-approved plan through Herdr Projects using Codex, run checks and AI review, then request Difit review and explicit human approval of the final diff before any PR. Use when the user invokes herdr-implement or asks to implement an approved Herdr plan. Never create a PR before human approval.
+description: Implement a human-approved plan through Herdr Projects using Codex, run checks and AI review, then request Plannotator review and explicit human approval of the final diff before any PR. Use when the user invokes herdr-implement or asks to implement an approved Herdr plan. Never create a PR before human approval.
 ---
 
-# Implement, review, then Difit
+# Implement, review, then Plannotator
 
 Use `herdr-projects` for board operations and `ponytail` for implementation.
 Follow repository instructions. Projects' AI review and its merge approval are
-separate from the human's Difit review and explicit approval.
+separate from the human's Plannotator review and explicit approval.
 
 ## Start from an approved plan
 
@@ -35,7 +35,7 @@ separate from the human's Difit review and explicit approval.
 For a new task, use this shape, substituting the actual repo and approved plan:
 
 ```sh
-herdr-projects add "Task title" --repo /absolute/repo --desc "Approved plan and acceptance criteria; no PR before final human approval through the Difit workflow." --plan.approve none --merge.pr false --merge.by you --review.when always --worker.agent codex --reviewer.agent codex
+herdr-projects add "Task title" --repo /absolute/repo --desc "Approved plan and acceptance criteria; no PR before final human approval through the Plannotator workflow." --plan.approve none --merge.pr false --merge.by you --review.when always --worker.agent codex --reviewer.agent codex
 herdr-projects show <returned-id>
 herdr-projects delegate <returned-id>
 ```
@@ -45,19 +45,17 @@ herdr-projects delegate <returned-id>
 1. **Finish the AI review first.** Inspect `details <id>` for checks, findings,
    and the task worktree. Address failed checks and review findings. Do not use
    `approve` or `Ctrl+L` to acknowledge review: those can approve a merge.
-2. **Review the final diff with Difit.** Load `difit` in the task worktree.
-   Compare against the actual PR base and include the complete task diff,
-   including untracked files, excluding unrelated changes. Recheck after
-   Projects' commits or rebases. No Story preparation is required.
-3. **Complete the human review loop.** Read the viewer's comments, address
-   feedback, and request explicit human approval in the agent conversation.
-   AI review, closing the viewer, no comments, and silence never count as
-   approval. Any code change afterward invalidates approval: rerun relevant
-   checks and review the new final diff.
+2. **Review the final diff with Plannotator.** Load the shared `plannotator`
+   skill in the task worktree and follow its scope, privacy, feedback, and
+   explicit conversation-approval policy. Recheck the scope after Projects'
+   commits or rebases; reopen the final diff after code changes.
+3. **Obtain final human approval.** The Plannotator decision is review data,
+   not authorization to create a PR. Require the human's explicit approval of
+   the final reviewed diff in the agent conversation.
 4. **Create a PR only with authorization and valid human approval.** Keep
    `merge.pr false`; create the PR explicitly from the reviewed worktree after
    confirming the diff still matches. Record the reviewed commit/diff, checks,
-   and human approval in the PR description. If Difit is missing or review is
+   and human approval in the PR description. If Plannotator is missing or review is
    unfinished, keep work local and report the blocker.
 5. **Leave merging to the human.** Do not enable automatic merging, approve the
    board task, or remove task worktrees as part of PR creation. Report the PR
@@ -67,6 +65,6 @@ herdr-projects delegate <returned-id>
 
 ```text
 Use herdr-implement for the approved Fish startup plan. Implement with Codex,
-run checks and a separate AI review, then open Difit for me. Do not create a PR
+run checks and a separate AI review, then open Plannotator for me. Do not create a PR
 until I explicitly approve the final diff. After approval, create a draft PR; do not merge.
 ```

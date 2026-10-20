@@ -171,6 +171,38 @@ test('Pi settings projection conceals unrelated fields and native edits invalida
   }finally{await rm(f.home,{recursive:true,force:true});}
 });
 
+test('native package projections reconcile pinned registrations without replacing other settings',async()=>{
+  const f=await fixture();try {
+    const pi=path.join(f.home,'.pi/agent/settings.json');const omp=path.join(f.home,'.omp/plugins/package.json');
+    await mkdir(path.dirname(pi),{recursive:true});await mkdir(path.dirname(omp),{recursive:true});
+    const existing={source:'npm:existing-extension',extensions:['./index.ts'],skills:[]};
+    const packages=[existing,{source:'npm:@plannotator/pi-extension@0.28.23',skills:[]}];
+    const dependencies={'existing-plugin':'1.2.3','@plannotator/pi-extension':'0.28.23'};
+    await writeFile(pi,JSON.stringify({packages:[existing],extensions:['shared.ts'],skills:['shared-skills'],theme:'keep',private:'FAKE-PRIVATE'}));
+    await writeFile(omp,JSON.stringify({name:'omp-plugins',private:true,dependencies:{'existing-plugin':'1.2.3'}}));
+    const piDoc=await f.config.readDocument('native:pi-packages');const ompDoc=await f.config.readDocument('native:omp-plugins');
+    assert.deepEqual(JSON.parse(piDoc.content),[existing]);assert.ok(!piDoc.content.includes('FAKE-PRIVATE'));
+    assert.deepEqual(JSON.parse(ompDoc.content),{'existing-plugin':'1.2.3'});
+    await writeFile(piDoc.path,JSON.stringify(packages));await writeFile(ompDoc.path,JSON.stringify(dependencies));
+    await f.config.configureGlobals();
+    let runtime=jsonc(await readFile(pi,'utf8'));assert.deepEqual(runtime.packages,packages);assert.deepEqual(runtime.extensions,['shared.ts']);assert.deepEqual(runtime.skills,['shared-skills']);assert.equal(runtime.theme,'keep');assert.equal(runtime.private,'FAKE-PRIVATE');
+    assert.deepEqual(jsonc(await readFile(omp,'utf8')),{name:'omp-plugins',private:true,dependencies});
+    runtime.packages=[existing];await writeFile(pi,JSON.stringify(runtime));await f.config.configureGlobals();
+    assert.deepEqual(jsonc(await readFile(pi,'utf8')).packages,packages);
+    await assert.rejects(f.config.saveDocument({...await f.config.readDocument(piDoc.id),content:'{}'}),/Each package/);
+    await assert.rejects(f.config.saveDocument({...await f.config.readDocument(piDoc.id),content:'[null]'}),/Each package/);
+    await assert.rejects(f.config.saveDocument({...await f.config.readDocument(ompDoc.id),content:'{"plugin":true}'}),/version strings/);
+  }finally{await rm(f.home,{recursive:true,force:true});}
+});
+
+test('missing Pi packages project as an empty array',async()=>{
+  const f=await fixture();try {
+    assert.deepEqual(JSON.parse((await f.config.readDocument('native:pi-packages')).content),[]);
+    await f.config.captureSource('native:pi-packages');
+    assert.deepEqual(JSON.parse((await f.config.readDocument('native:pi-packages')).content),[]);
+  }finally{await rm(f.home,{recursive:true,force:true});}
+});
+
 test('skill recovery preflights roots and resumes a crash after restoring a root',async()=>{
   const f=await fixture();try {
     const {restoreSkills}=await import('../scripts/service.mjs');const fs=await import('node:fs/promises');

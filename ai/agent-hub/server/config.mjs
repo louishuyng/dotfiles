@@ -104,6 +104,8 @@ export class Configuration {
     docs.push(this.document('native:codex', 'Codex plugin settings', 'codex', path.join(this.home,'.codex/config.toml'), 'config', {projection:['plugins'],parser:'toml',format:'json',nativeToggleOnly:true}));
     docs.push(this.document('native:pi','Pi skill discovery','pi',path.join(this.home,'.pi/agent/settings.json'),'config',{projection:['skills'],format:'json'}));
     docs.push(this.document('native:pi-extensions','Pi shared hook extension','pi',path.join(this.home,'.pi/agent/settings.json'),'config',{projection:['extensions'],format:'json'}));
+    docs.push(this.document('native:pi-packages','Pi package registrations','pi',path.join(this.home,'.pi/agent/settings.json'),'config',{projection:['packages'],format:'json'}));
+    docs.push(this.document('native:omp-plugins','OMP plugin dependencies','omp',path.join(this.home,'.omp/plugins/package.json'),'config',{projection:['dependencies'],format:'json'}));
     docs.push(this.document('native:claude', 'Claude plugin settings', 'claude', path.join(this.home,'.claude/settings.json'), 'config', {projection:['enabledPlugins'],format:'json'}));
     for (const [tool, file, hookfile] of [['gemini','.gemini/GEMINI.md','.gemini/settings.json'],['cursor','.cursor/AGENTS.md','.cursor/hooks.json'],['pi','.pi/agent/AGENTS.md',null],['grok-build','.grok/AGENTS.md',null],['copilot','.copilot/copilot-instructions.md',null],['droid','.factory/AGENTS.md',null]]) {
       if (!tools.find((t) => t.id === tool)?.configured) continue;
@@ -166,7 +168,7 @@ export class Configuration {
       const project = await realpath(doc.project);
       if (!target.startsWith(`${project}${path.sep}`)) throw new Error('This project file links outside the selected project. Edit its source directly.');
     } else {
-      const allowed = [this.root, path.join(this.home, '.codex'), path.join(this.home,'.claude'), path.join(this.home,'.config/opencode'), path.join(this.home,'.gemini'), path.join(this.home,'.cursor'), path.join(this.home,'.pi/agent'), path.join(this.home,'.grok'), path.join(this.home,'.copilot'), path.join(this.home,'.factory')];
+      const allowed = [this.root, path.join(this.home, '.codex'), path.join(this.home,'.claude'), path.join(this.home,'.config/opencode'), path.join(this.home,'.gemini'), path.join(this.home,'.cursor'), path.join(this.home,'.pi/agent'), path.join(this.home,'.omp/plugins'), path.join(this.home,'.grok'), path.join(this.home,'.copilot'), path.join(this.home,'.factory')];
       if (!allowed.some((root) => target.startsWith(`${root}${path.sep}`))) throw new Error('The symlink target is outside managed configuration roots.');
     }
     return { doc, target };
@@ -179,7 +181,7 @@ export class Configuration {
       try { parsed=doc.parser==='toml'?TOML.parse(raw):jsonc(raw || '{}'); }
       catch { throw new Error('Configuration syntax is invalid. Repair it in the native tool before editing.'); }
     }
-    const projected = doc.projection ? JSON.stringify(parsed[doc.projection[0]] ?? (['plugins','skills','extensions'].includes(doc.projection[0]) && doc.parser!=='toml' ? [] : {}), null, 2) : raw || (doc.kind==='hook'?JSON.stringify({...doc.tool==='cursor'?{version:1}:{},hooks:{}},null,2)+'\n':'');
+    const projected = doc.projection ? JSON.stringify(parsed[doc.projection[0]] ?? (['plugins','skills','extensions','packages'].includes(doc.projection[0]) && doc.parser!=='toml' ? [] : {}), null, 2) : raw || (doc.kind==='hook'?JSON.stringify({...doc.tool==='cursor'?{version:1}:{},hooks:{}},null,2)+'\n':'');
     if(doc.sourcePath&&!existsSync(doc.sourcePath))await this.atomic(doc.sourcePath,projected);
     const content=doc.sourcePath?await readFile(doc.sourcePath,'utf8'):projected;
     return { id, content, revision: hash(raw+(doc.sourcePath?content:'')), path: doc.sourcePath||target, editable: doc.editable && !doc.nativeToggleOnly };
@@ -191,6 +193,8 @@ export class Configuration {
       if (!value || typeof value !== 'object') throw new Error('Expected JSON configuration.');
       if (doc.projection?.[0] === 'plugins' && (!Array.isArray(value) || value.some((p) => typeof p !== 'string' && (typeof p !== 'object' || typeof p.package !== 'string')))) throw new Error('Each plugin needs a package string or an object with a package field.');
       if(['skills','extensions'].includes(doc.projection?.[0]) && (!Array.isArray(value)||value.some((s)=>typeof s!=='string')))throw new Error('Resource sources must be an array of paths or catalog URLs.');
+      if(doc.projection?.[0]==='packages' && (!Array.isArray(value)||value.some((p)=>typeof p!=='string'&&(!p||Array.isArray(p)||typeof p.source!=='string'))))throw new Error('Each package needs a source string or an object with a source field.');
+      if(doc.projection?.[0]==='dependencies' && (Array.isArray(value)||Object.values(value).some((v)=>typeof v!=='string')))throw new Error('Plugin dependencies must map package names to version strings.');
       if(doc.projection?.[0]==='enabledPlugins' && (Array.isArray(value)||Object.values(value).some((v)=>typeof v!=='boolean')))throw new Error('Plugin enablement must map plugin IDs to booleans.');
       if (doc.kind === 'hook' && (Array.isArray(value) || Object.values(value.hooks || value).some((v) => !Array.isArray(v)))) throw new Error('Hook events must map to arrays of native hook registrations.');
     }
@@ -239,7 +243,7 @@ export class Configuration {
     const {doc,target}=await this.resolveDocument(id);if(!doc.sourcePath||doc.sourcePath===target)return;
     const raw=await optional(target,doc.parser==='toml'?'':doc.projection?'{}':'');
     let content=raw;
-    if(doc.projection) {let value;try {value=doc.parser==='toml'?TOML.parse(raw):jsonc(raw);}catch {throw new Error('Native configuration syntax is invalid. Repair it before exporting settings.');}content=JSON.stringify(value[doc.projection[0]]??(['plugins','skills','extensions'].includes(doc.projection[0])&&doc.parser!=='toml'?[]:{}),null,2);}
+    if(doc.projection) {let value;try {value=doc.parser==='toml'?TOML.parse(raw):jsonc(raw);}catch {throw new Error('Native configuration syntax is invalid. Repair it before exporting settings.');}content=JSON.stringify(value[doc.projection[0]]??(['plugins','skills','extensions','packages'].includes(doc.projection[0])&&doc.parser!=='toml'?[]:{}),null,2);}
     await this.atomic(doc.sourcePath,content);
   }
   async configureGlobals() {

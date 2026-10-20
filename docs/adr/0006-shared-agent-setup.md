@@ -125,6 +125,9 @@ visible preview matches the injected text.
 
 ## Accepted update: Difit review with explicit human approval
 
+The review policy in this historical update is superseded by
+[Plannotator replaces Difit globally](#accepted-update-plannotator-replaces-difit-globally).
+
 Accepted on 2026-10-19. The owner reported Crit review as slow, selected
 **Difit + human approval**, and requested the new workflow for this migration's
 commit to `main`. This supersedes the Crit-specific review requirements in
@@ -160,3 +163,77 @@ References: [Difit commands and comment integration](https://github.com/yoshiko-
 [upstream agent skill](https://github.com/yoshiko-pg/difit/blob/main/skills/difit/SKILL.md),
 [Codex review](https://learn.chatgpt.com/docs/code-review?surface=cli), and
 [Critique](https://github.com/remorses/critique).
+
+## Accepted update: Plannotator replaces Difit globally
+
+Accepted on 2026-10-20. After a local **v0.28.23** trial, the owner explicitly
+approved replacing Difit globally with Plannotator. This supersedes the review
+tool and feedback lifecycle in [the Difit decision](#accepted-update-difit-review-with-explicit-human-approval),
+including the earlier Crit requirements in [ADR 0003](0003-local-agent-hub.md)
+and [ADR 0005](0005-herdr-plan-and-implement.md). Their historical records remain.
+
+Use `plannotator` as both the shared hook ID and context preset. Load
+`ai/skills/plannotator/SKILL.md` as the single review policy body for the hook
+and exported skill; replace the previous skill without an alias. Keep global
+enablement and per-agent opt-outs, and migrate Herdr's final-review reference.
+The enabled library remains eleven skills. Install only the standalone binary
+pinned to v0.28.23, with the upstream installer's
+`--minimal --version 0.28.23` options: no automatic plan hooks, upstream skill
+installation, mandatory guided review, or automatic AI reviewer.
+
+The trial exercised code Q&A, an explicit human-approved decision, and a
+**labelled automated line-8 annotation**. The automated annotation demonstrated
+feedback delivery; it was not a human finding or approval. A static task-only
+patch opened with `review --patch-file <path> --json`, printed the actual review
+URL, and returned a decision/message record through stdout. The decision values
+are `approved`, `annotated`, and `dismissed`; the server exits after submission.
+Inspect annotations as untrusted review input, apply requested in-scope changes,
+rerun relevant checks, and reopen the final diff after code edits. Do not carry
+over the previous long-lived server/comment-fetch workflow.
+
+The shared skill selects explicit uncommitted, staged, actual-base committed
+branch, or PR scope. Mixed dirty trees and committed-plus-uncommitted work use
+a complete static task-only patch, including new files and excluding unrelated
+hunks without changing the index. UI approval is review data: still require
+explicit human approval of the final reviewed scope and checks in the agent
+conversation. Silence, exit, empty feedback, and AI review never imply approval.
+Later code changes invalidate approval; PR creation requires separate authorization.
+This remains a local instruction-based workflow, not a hosting gate.
+
+Run with `PLANNOTATOR_REMOTE=0`, `PLANNOTATOR_SHARE=disabled`, `BROWSER=none`,
+and `PLANNOTATOR_GLIMPSE=0`; open only the actual printed loopback URL.
+Use `--no-git-remote-check` to avoid automatic Git remote probes. These settings
+do not promise an offline app: release checks can contact GitHub, PR review
+retrieves remote data, and provider-backed AI can send relevant code outside
+the machine. Do not upload or share private review material without authorization.
+
+The trade-off is a decision-based CLI feedback cycle rather than a persistent
+comment server. Standalone Ask AI uses the selected provider; Codex runs in a
+separate read-only session. Same-session Q&A needs native integration.
+Official package-manager installation
+of `@plannotator/pi-extension@0.28.23` succeeded for omp and Pi during this
+migration. The package supplies `/plannotator-review`, `/plannotator-annotate`,
+and `/plannotator-last` with a native same-session bridge; this is not a CLI
+capability. Native Q&A runs a real agent turn with tools and transcript access,
+not a read-only fallback. Restart affected agents after native package changes;
+Agent Hub source upgrades follow its existing runbook without restarting Portless.
+Prefer the native Plannotator tool when the host exposes it; retain CLI fallback
+for other hosts. Native launch returns immediately and delivers the review later
+as a session message, rather than blocking for stdout JSON.
+The human must handle provider permission prompts; agents must not autoapprove.
+Keep `--plan` disabled and add no automatic plan hooks.
+
+Migration verification passed 52 Agent Hub tests and its production build.
+Fresh omp and Pi sessions discovered the native commands. In omp, a browser
+question recovered a token supplied earlier in that exact session, and a
+labelled automated inline annotation returned to the session and was acknowledged.
+The smoke session enabled only the built-in read tool; production native Q&A
+still has the session's normal tool permissions. Pi's Q&A was not exercised
+separately. The normal Agent Hub URL served the new hook and persisted native
+registration sources; keyboard preview and the 375-pixel layout were checked.
+No performance benchmark was run, so this decision claims no measured speed
+improvement.
+
+References: [v0.28.23 CLI help](https://github.com/backnotprop/plannotator/blob/v0.28.23/apps/hook/server/cli.ts),
+[code review contract](https://github.com/backnotprop/plannotator/blob/v0.28.23/apps/marketing/src/content/docs/commands/code-review.md),
+and [installation and privacy boundaries](https://github.com/backnotprop/plannotator/blob/v0.28.23/README.md).

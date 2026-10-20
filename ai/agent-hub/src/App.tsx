@@ -23,7 +23,7 @@ const descriptions: Record<string, string> = {
   setup: 'Manage shared MCP servers, skills, and hooks across your agents.',
   skills: 'One enabled skill set. Verify every activated agent against it.',
   plugins: 'Manage the integrations that extend your agents.',
-  hooks: 'Share ADHD, Ponytail, and Difit. Choose which agents use each hook.',
+  hooks: 'Share ADHD, Ponytail, and Plannotator. Choose which agents use each hook.',
   instructions: 'Shape how your agents work, globally and per project.',
 };
 type SyncPlan = { revision: string; changes: { target: string; action: string; path: string; source: string }[]; warnings: string[] };

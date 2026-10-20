@@ -3,7 +3,7 @@
 Accepted on 2026-10-13. The owner approved building Agent Hub and subsequently chose the repository library, **LX14-AI-Skills**, as the shared source. This decision replaces the earlier proposal to export Codex's discovered catalogue.
 
 The Crit-specific review policy and skill set below are superseded by
-[Difit review with explicit human approval](0006-shared-agent-setup.md#accepted-update-difit-review-with-explicit-human-approval).
+[Plannotator replaces Difit globally](0006-shared-agent-setup.md#accepted-update-plannotator-replaces-difit-globally).
 
 This proposal is for the dotfiles owner. It defines the first complete version of
 a web application for managing Codex Desktop, Claude Code, and OpenCode on this Mac.

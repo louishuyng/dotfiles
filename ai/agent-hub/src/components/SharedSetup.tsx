@@ -8,7 +8,7 @@ import { Badge } from './ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
 
 type ServerConfig = { type: 'stdio' | 'http'; command?: string; args?: string[]; env?: Record<string, string>; url?: string; headers?: Record<string, string>; enabled: boolean };
-type HookConfig = { id: string; event: 'sessionStart' | 'beforeTool' | 'afterTool' | 'stop'; command?: string; text?: string; skill?: string; context?: 'adhd' | 'ponytail' | 'difit'; enabled: boolean; disabledAgents?: string[] };
+type HookConfig = { id: string; event: 'sessionStart' | 'beforeTool' | 'afterTool' | 'stop'; command?: string; text?: string; skill?: string; context?: 'adhd' | 'ponytail' | 'plannotator'; enabled: boolean; disabledAgents?: string[] };
 type Setup = { servers: Record<string, ServerConfig>; hooks: HookConfig[] };
 type SharedState = {
   value: Setup; revision: string; path: string; pending: boolean;
@@ -18,7 +18,7 @@ type SharedState = {
   skills: { name: string; description: string }[];
 };
 const eventNames = { sessionStart: 'Session context', beforeTool: 'Before tool use', afterTool: 'After tool use', stop: 'Response complete' };
-const contextNames = { adhd: 'ADHD', ponytail: 'Ponytail', difit: 'Difit' };
+const contextNames = { adhd: 'ADHD', ponytail: 'Ponytail', plannotator: 'Plannotator' };
 const hasContext = (hook: HookConfig) => hook.context !== undefined || hook.text !== undefined || hook.skill !== undefined;
 const format = (value: unknown) => JSON.stringify(value, null, 2);
 
@@ -138,7 +138,7 @@ export function SharedSetup({ refreshKey, hooksOnly = false, onEditContext }: { 
       {!!state.imports.length && <details className="shared-imports"><summary>Import existing servers ({state.imports.length})</summary><p>Imports copy MCP settings into .dotfiles/ai. Do not import inline credentials. Native-only options need manual setup. Conflicting names remain unchanged and appear in sync status.</p>{state.imports.map(item => <div className="integration-row" key={`${item.tool}:${item.name}`}><div className="integration-copy"><strong>{item.name}</strong><p>{state.targets.find(target => target.id === item.tool)?.name}</p></div><Button variant="outline" size="sm" disabled={busy} onClick={() => { if (!window.confirm(`Share ${item.name} from native settings into .dotfiles/ai and share it with all supported agents?`)) return; void action(async () => { setState(await api<SharedState>('shared/import', { ...item, sourceRevision: state.revision })); setMessage('Server imported. Inspect sync status for conflicts or unsupported settings.'); }); }}>Import & sync</Button></div>)}</details>}
     </section>
     </>}
-    <section className="panel"><div className="panel-heading"><div><h2>Shared hooks</h2><p>ADHD, Ponytail, and Difit share one source. Set defaults here, then choose agents below.</p></div><Button variant="outline" disabled={busy} onClick={() => openHook()}><Plus size={16} aria-hidden="true" />Add hook</Button></div>
+    <section className="panel"><div className="panel-heading"><div><h2>Shared hooks</h2><p>ADHD, Ponytail, and Plannotator share one source. Set defaults here, then choose agents below.</p></div><Button variant="outline" disabled={busy} onClick={() => openHook()}><Plus size={16} aria-hidden="true" />Add hook</Button></div>
       <p className="shared-note">Context hooks load repository instructions into new sessions. Per-agent switches never change the shared content. Custom command hooks receive native event JSON.</p>
       {state.value.hooks.map(hook => <div className="shared-hook" key={hook.id}><div className="integration-row"><Workflow size={22} aria-hidden="true" /><div className="integration-copy"><h3>{hook.context ? contextNames[hook.context] : hook.id}</h3><p>{eventNames[hook.event]} · Shared default {hook.enabled ? 'on' : 'off'}</p></div><Button variant="outline" size="sm" disabled={busy} onClick={() => openHook(hook)}>Edit</Button><button className={`toggle ${hook.enabled ? 'on' : ''}`} role="switch" aria-checked={hook.enabled} aria-label={`Enable ${hook.id} shared default`} disabled={busy} onClick={() => setPreview({ ...state.value, hooks: state.value.hooks.map(item => item.id === hook.id ? { ...item, enabled: !item.enabled } : item) })}><span /></button><Button variant="ghost" size="sm" disabled={busy} onClick={() => setPreview({ ...state.value, hooks: state.value.hooks.filter(item => item.id !== hook.id) })}>Remove</Button></div>{hookContext(hook)}{hookAgents(hook)}</div>)}
       {!state.value.hooks.length && <div className="empty"><Workflow size={26} aria-hidden="true" /><p>Add an action for before tool use, after tool use, or response completion.</p></div>}

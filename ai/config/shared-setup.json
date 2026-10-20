@@ -22,8 +22,8 @@
       "disabledAgents": []
     },
     {
-      "id": "difit",
-      "context": "difit",
+      "id": "plannotator",
+      "context": "plannotator",
       "event": "sessionStart",
       "enabled": true,
       "disabledAgents": []
