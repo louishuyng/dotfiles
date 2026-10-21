@@ -108,6 +108,13 @@ An existing `~/.local/share/agent-hub/skills/omp` skills link stays managed by
 Agent Hub. Session auto-naming lives under `title` in `native-omp.yml`; terminal
 project names remain in `terminals/sesh/sesh.toml`.
 
+Global reasoning and timing defaults live in `ai/config/native-omp.yml`, not
+`terminals/tern/settings.json`. The config selects medium reasoning and enables
+turn duration, token usage, and generation speed. Both standalone OMP and Tern's
+bundled OMP read `~/.omp/agent/config.yml`. Start a fresh agent session to use the
+defaults; resumed sessions can retain their earlier reasoning level. Use
+`omp --thinking high` for a standalone task that needs deeper reasoning.
+
 Only configuration files are linked. Sessions, databases, caches, credentials,
 and other runtime state remain under OMP's local directories. Do not put tokens
 or private MCP headers in tracked configuration. The extension path retains this

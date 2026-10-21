@@ -1,8 +1,13 @@
 modelRoles:
   default: openai-codex/gpt-6.1-sol
+defaultThinkingLevel: medium
 symbolPreset: nerd
 composer:
   shape: borderless
+  tokenRate: true
+display:
+  showTurnTime: true
+  showTokenUsage: true
 theme:
   dark: titanium
   light: light
