@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const schemasDir = path.join(root, 'schemas');
 const output = path.join(root, 'renderers/shared/generated-validators.mjs');
-const diagramTypes = ['workflow', 'sequence', 'dataflow', 'lifecycle', 'architecture'];
+const diagramTypes = ['workflow', 'sequence', 'dataflow', 'lifecycle', 'architecture', 'erd', 'tree', 'class', 'timeline', 'waterfall', 'explainer'];
 
 const ajv = new Ajv2020({
   allErrors: true,
@@ -48,7 +48,46 @@ validatorCode = validatorCode.replaceAll(ajvUcs2Import, inlineUcs2Length);
 if (validatorCode.includes('require(')) {
   throw new Error('AJV standalone output contains an unexpected runtime dependency');
 }
-const generated = `${banner}${validatorCode}\n`;
+for (const type of diagramTypes) {
+  const exportPattern = new RegExp(`export const ${type} = (validate\\d+);`);
+  const match = validatorCode.match(exportPattern);
+  if (!match) throw new Error(`AJV standalone output no longer exports the ${type} validator as expected`);
+  validatorCode = validatorCode.replace(exportPattern, `const ${type}Schema = ${match[1]};`);
+}
+
+// A diagram type that is a reserved word (`class`) cannot name a function, so
+// it is defined under a safe local name and exported under the type itself.
+const RESERVED_TYPE_NAMES = new Set(['class']);
+const portableOutputWrappers = diagramTypes.map((type) => {
+  const name = RESERVED_TYPE_NAMES.has(type) ? `${type}Diagram` : type;
+  const exported = name === type ? '' : `\nexport { ${name} as ${type} };`;
+  return `${name === type ? 'export ' : ''}function ${name}(data, context = undefined) {
+  if (!${type}Schema(data, context)) {
+    ${name}.errors = ${type}Schema.errors;
+    return false;
+  }
+  const output = data?.meta?.output;
+  if (typeof output === 'string') {
+    try {
+      validatePortablePath(output, { profile: 'output' });
+    } catch (error) {
+      ${name}.errors = [{
+        instancePath: \`${'${context?.instancePath || \'\'}'}/meta/output\`,
+        schemaPath: 'common.schema.json#/$defs/portableOutputPath',
+        keyword: 'portablePath',
+        params: { reason: error?.reason || 'invalid' },
+        message: 'must satisfy the portable output path contract',
+      }];
+      return false;
+    }
+  }
+  ${name}.errors = null;
+  return true;
+}
+${name}.evaluated = ${type}Schema.evaluated;${exported}`;
+}).join('\n');
+
+const generated = `${banner}import { validatePortablePath } from './portable-path.mjs';\n${validatorCode}\n${portableOutputWrappers}\n`;
 
 if (process.argv.includes('--check')) {
   const current = fs.existsSync(output)
