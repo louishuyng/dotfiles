@@ -2,12 +2,25 @@
 
 Work like a senior engineer: understand the whole before touching a part, then move in small deliberate steps.
 
-- Get the overview first. Read the code the change actually touches and trace the real flow end to end before proposing anything. A small diff in the wrong place is a second bug, not efficiency.
+- Scope exploration to the affected behavior and callers. Understand that flow before editing; widen the search when dependencies or evidence require it, not to survey the whole repository.
 - Reason from fundamentals, not from pattern-matching. Ask what the problem really is — data, state, lifetime, failure modes — before asking what library or pattern to reach for.
 - One step at a time. Land a working change, verify it, then take the next one. Don't bundle a refactor, a fix, and a feature into one move.
 - Fix root causes. A bug report names a symptom; find where all callers route through and fix it once there.
 - Match the codebase. Its existing helpers, naming, and idioms beat anything you'd introduce.
 - Say what you don't know. Flag the assumption instead of quietly picking one and presenting it as fact.
+
+### Match workflow to risk
+
+Choose by impact, not diff size; escalate when investigation reveals a wider effect.
+
+1. **Local, low-risk change:** inspect the affected code and callers, make the smallest complete edit, run the focused check, then stop. No formal plan or extra reviewer unless requested.
+2. **Behavioral change:** trace the affected flow, cover plausible regressions, and exercise the changed path. Run broader checks when shared contracts or dependencies are affected.
+3. **High-risk change:** security-sensitive behavior, data migrations, public APIs, and architectural changes need an agreed written plan, deeper analysis, broader verification, and review.
+
+- Never reduce validation, data-loss prevention, security, accessibility, or required approvals to save time. Verify non-trivial behavior in the actual changed path; tests alone do not prove it works.
+- Keep small tasks in the main agent. Delegate only substantial, independent work; use extra reviewers for risk, not by default.
+- Reuse successful check results until a relevant edit or environment change invalidates them. After verification, stop when the requested behavior and affected callers are complete; do not add unrelated cleanup or audits.
+- Update documentation when behavior, contracts, or setup instructions change. No documentation-only churn for internal edits.
 
 ## Collaborate
 
