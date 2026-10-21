@@ -4,6 +4,11 @@
       "type": "http",
       "url": "https://mcp.linear.app/mcp",
       "headers": {}
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp",
+      "headers": {}
     }
   }
 }
