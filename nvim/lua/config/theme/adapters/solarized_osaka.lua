@@ -11,7 +11,7 @@ function M.setup()
   local ok, so = pcall(require, 'solarized-osaka')
   if ok then
     so.setup({
-      transparent = false,
+      transparent = true,
     })
   end
 end
@@ -34,7 +34,7 @@ function M.resolve(variant)
   return {
     -- Backgrounds (deep → shallow, semantics flip with variant)
     bg = p.bg or p.base04,
-    bg_alt = p.base03 or p.base04,
+    bg_alt = p.bg or p.base04,
     bg_dim = p.bg_highlight or p.base03,
     surface = p.base02,
     surface_alt = p.base01,

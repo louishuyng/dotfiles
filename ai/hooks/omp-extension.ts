@@ -12,6 +12,7 @@ export default function (omp: ExtensionAPI) {
   omp.on('session_start', (_event, ctx) => {
     removeZedShortcut?.();
     if (!ctx.hasUI) return;
+    process.env.VISUAL = 'vim';
     // The native keymap frees Ctrl+G; registerShortcut still reserves that chord.
     removeZedShortcut = ctx.ui.onTerminalInput(data => {
       if (!matchesKey(data, 'ctrl+g')) return;

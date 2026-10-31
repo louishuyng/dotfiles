@@ -22,6 +22,11 @@
           "/Users/louishuyng/.codex/plugins/cache/devfast/whiteboard/0.1.1/bin/whiteboard-mcp"
         ],
         "cwd": "/Users/louishuyng/.codex/plugins/cache/devfast/whiteboard/0.1.1"
+      },
+      "figma": {
+        "type": "remote",
+        "url": "https://mcp.figma.com/mcp",
+        "headers": {}
       }
     }
   },

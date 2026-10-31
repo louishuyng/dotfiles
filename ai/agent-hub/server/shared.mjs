@@ -19,8 +19,8 @@ const ADAPTERS = {
   pi: ['.pi/agent/mcp.json', ['mcpServers']],
 };
 const EVENTS = {
-  codex: { sessionStart: 'SessionStart', beforeTool: 'PreToolUse', afterTool: 'PostToolUse', stop: 'Stop' },
-  claude: { sessionStart: 'SessionStart', beforeTool: 'PreToolUse', afterTool: 'PostToolUse', stop: 'Stop' },
+  codex: { sessionStart: 'SessionStart', promptSubmit: 'UserPromptSubmit', beforeTool: 'PreToolUse', permissionRequest: 'PermissionRequest', afterTool: 'PostToolUse', stop: 'Stop' },
+  claude: { sessionStart: 'SessionStart', promptSubmit: 'UserPromptSubmit', beforeTool: 'PreToolUse', permissionRequest: 'PermissionRequest', afterTool: 'PostToolUse', stop: 'Stop' },
   gemini: { sessionStart: 'SessionStart', beforeTool: 'BeforeTool', afterTool: 'AfterTool' },
   cursor: { sessionStart: 'sessionStart', beforeTool: 'preToolUse', afterTool: 'postToolUse', stop: 'stop' },
 };
@@ -66,7 +66,7 @@ export function validateSetup(value) {
       if (hook.context !== undefined && !Object.hasOwn(CONTEXT_FILES, hook.context)) throw new Error('Choose a known shared context.');
       if (hook.text !== undefined && !text(hook.text)) throw new Error('Context text must not be empty.');
       if (hook.skill !== undefined && (typeof hook.skill !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(hook.skill) || hook.skill.length > 80)) throw new Error('Choose a shared skill name.');
-    } else if (!['sessionStart', 'beforeTool', 'afterTool', 'stop'].includes(hook.event) || !text(hook.command)) throw new Error('Commands require a supported event and nonempty command.');
+    } else if (!['sessionStart', 'promptSubmit', 'beforeTool', 'permissionRequest', 'afterTool', 'stop'].includes(hook.event) || !text(hook.command)) throw new Error('Commands require a supported event and nonempty command.');
     if (hook.disabledAgents !== undefined && (!Array.isArray(hook.disabledAgents) || hook.disabledAgents.some(tool => !TOOL_DEFINITIONS.some(definition => definition[0] === tool)) || new Set(hook.disabledAgents).size !== hook.disabledAgents.length)) throw new Error('Disabled agents must be unique known agent IDs.');
     names.add(hook.id);
   }
@@ -108,7 +108,7 @@ function hookEntry(tool, hook, root) {
   const quote = value => "'" + value.replaceAll("'", "'\\''") + "'";
   const text = isContextHook(hook) ? [process.execPath, path.join(root, 'ai/hooks/context.mjs'), tool, hook.id, EVENTS[tool][hook.event]].map(quote).join(' ') : hook.command;
   const command = { type: 'command', command: text };
-  return tool === 'cursor' ? { command: text } : { ...(['stop', 'sessionStart'].includes(hook.event) ? {} : { matcher: tool === 'gemini' ? '.*' : '*' }), hooks: [command] };
+  return tool === 'cursor' ? { command: text } : { ...(['stop', 'sessionStart', 'promptSubmit'].includes(hook.event) ? {} : { matcher: tool === 'gemini' ? '.*' : '*' }), hooks: [command] };
 }
 function at(value, parts) { for (const part of parts) { if (!object(value)) throw new Error('Native configuration section must be an object.'); value = value[part] ?? {}; } if (!object(value)) throw new Error('Native configuration section must be an object.'); return value; }
 function edit(raw, parts, value) { return applyEdits(raw || '{}', modify(raw || '{}', parts, value, { formattingOptions: { insertSpaces: true, tabSize: 2 } })); }

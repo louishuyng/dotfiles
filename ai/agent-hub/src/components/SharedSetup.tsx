@@ -8,7 +8,7 @@ import { Badge } from './ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
 
 type ServerConfig = { type: 'stdio' | 'http'; command?: string; args?: string[]; env?: Record<string, string>; url?: string; headers?: Record<string, string>; enabled: boolean };
-type HookConfig = { id: string; event: 'sessionStart' | 'beforeTool' | 'afterTool' | 'stop'; command?: string; text?: string; skill?: string; context?: 'adhd' | 'ponytail' | 'plannotator'; enabled: boolean; disabledAgents?: string[] };
+type HookConfig = { id: string; event: 'sessionStart' | 'promptSubmit' | 'beforeTool' | 'permissionRequest' | 'afterTool' | 'stop'; command?: string; text?: string; skill?: string; context?: 'adhd' | 'ponytail' | 'plannotator'; enabled: boolean; disabledAgents?: string[] };
 type Setup = { servers: Record<string, ServerConfig>; hooks: HookConfig[] };
 type SharedState = {
   value: Setup; revision: string; path: string; pending: boolean;
@@ -17,7 +17,7 @@ type SharedState = {
   contexts: Record<string, { content?: string; path?: string; documentId?: string; error?: string }>;
   skills: { name: string; description: string }[];
 };
-const eventNames = { sessionStart: 'Session context', beforeTool: 'Before tool use', afterTool: 'After tool use', stop: 'Response complete' };
+const eventNames = { sessionStart: 'Session context', promptSubmit: 'Prompt submitted', beforeTool: 'Before tool use', permissionRequest: 'Approval requested', afterTool: 'After tool use', stop: 'Response complete' };
 const contextNames = { adhd: 'ADHD', ponytail: 'Ponytail', plannotator: 'Plannotator' };
 const hasContext = (hook: HookConfig) => hook.context !== undefined || hook.text !== undefined || hook.skill !== undefined;
 const format = (value: unknown) => JSON.stringify(value, null, 2);

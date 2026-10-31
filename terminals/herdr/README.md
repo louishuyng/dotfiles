@@ -83,7 +83,7 @@ and hosted-tool input in a disposable session before applying visual refinements
 | `prefix+right` | swap pane right | `prefix+Right` |
 | `prefix+shift+t` | toggle macOS appearance | `prefix+T` (tmux-local theme script) |
 | `prefix+minus` | split below, new pane at 30% | `prefix+-` (`split-window -v -l 30%`) |
-| `` prefix+\| `` | split right, 50/50 | `` prefix+\| `` (`split-window -h -l 50%`) |
+| `prefix+\` | split right, 50/50 | `` prefix+\| `` (`split-window -h -l 50%`) |
 | `prefix+H` | resize left | `prefix+H` (`resize-pane -L 3`) |
 | `prefix+J` | resize down | `prefix+J` (`resize-pane -D 3`) |
 | `prefix+K` | resize up | `prefix+K` (`resize-pane -U 3`) |
@@ -152,10 +152,10 @@ Press `Ctrl+A`, then the key below.
 | `c` / `,` / `Shift+X` | New / rename / close tab |
 | `Ctrl+H` / `Ctrl+L` / `1` … `9` | Previous / next / numbered tab |
 | `<` / `>` | Move tab left / right |
-| `h j l` / `Shift+Tab` | Focus left / down / right / previous pane |
+| `h j k l` / `Shift+Tab` | Focus left / down / up / right / previous pane |
 | `H J K L` / arrows / `{` / `}` | Resize / directional swap / previous swap / next swap |
 | `z` / `x` / `b` | Zoom / close pane / toggle sidebar |
-| `k` / `e` | Open Kanban board / Canvas block (`k` replaces focus up) |
+| `e` | Open Canvas block |
 | `g` / `Shift+G` | Tern Git graph / open the focused local pane's GitHub repository in the external browser (`gh browse`) |
 | `?` / `o` / `v` | Command palette / inbox / scrollback in editor |
 | `Shift+S` / `Ctrl+G` / `Ctrl+Shift+R` | Settings / directory picker / reload settings |
@@ -199,7 +199,13 @@ project is focused. No `--new`, `--reuse`, temporary draft path, or stdin buffer
 is sent; the unsent omp draft stays in omp. For this repository, the mapping is
 `~/.dotfiles` → Zed's `.dotfiles` project.
 
-The extension needs the native temporary-file shortcut disabled. When
+`Ctrl+E` edits the unsent composer draft in Vim. Save and return with `Esc`,
+`:wq`, then Enter; use `:q!` to discard Vim edits. The extension sets `VISUAL=vim`
+inside OMP so this ignores Tern's Zed editor setting without changing the parent
+shell, Git's `GIT_EDITOR`, or Tern settings. `Ctrl+E` replaces the composer's
+usual end-of-line shortcut; use End instead.
+
+The native draft editor is rebound to `Ctrl+E`, leaving `Ctrl+G` for Zed. When
 `~/.omp/agent/keybindings.yml` does not exist, link its repository-owned source:
 
 ```bash
@@ -207,8 +213,8 @@ ln -s ~/.dotfiles/ai/config/native-omp-keybindings.yml ~/.omp/agent/keybindings.
 ```
 
 If that file already contains custom bindings, preserve them and merge
-`app.editor.external: []` instead. Restart omp after changing the extension or
-keybindings. This changes omp's `Ctrl+G`, not the editor used by Git or Tern.
+`app.editor.external: ctrl+e` instead. Restart OMP after changing the extension
+or keybindings.
 
 Unlike Herdr, Tern launchers use tabs instead of popups. `|` is not the right
 split key. Herdr-only copy mode (`[`), detach (`d`), modal resize (`r`), and

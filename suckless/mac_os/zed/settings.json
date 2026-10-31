@@ -1,4 +1,8 @@
 {
+  "active_pane_modifiers": {
+    "inactive_opacity": 1.0
+  },
+  "buffer_line_height": "standard",
   "diff_view_style": "split",
   "show_edit_predictions": true,
   "edit_predictions": {
@@ -18,11 +22,19 @@
     "one-dark-pro": true,
     "material-icon-theme": true
   },
-  "icon_theme": "Material Icon Theme",
-  "theme": "One Dark Pro",
-  "buffer_font_size": 13.0,
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme"
+  },
+  "theme": {
+    "mode": "system",
+    "light": "JetBrains Islands Light",
+    "dark": "JetBrains Islands Dark"
+  },
+  "buffer_font_size": 14.0,
   "agent_ui_font_size": 14.0,
-  "ui_font_size": 14.0,
+  "ui_font_size": 15.0,
   "ui_font_family": "Berkeley Mono",
   "terminal": {
     "font_size": 13.0,

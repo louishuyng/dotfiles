@@ -16,7 +16,6 @@ else
 end
 
 #Homebrew's sbin
-fish_add_path /opt/homebrew/bin
 fish_add_path /usr/local/sbin
 fish_add_path /opt/homebrew/sbin
 set -gx PANDOC_PATH /opt/homebrew/bin/pandoc

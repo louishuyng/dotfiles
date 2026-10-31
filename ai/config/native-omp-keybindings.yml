@@ -1,4 +1,4 @@
-app.editor.external: []
+app.editor.external: ctrl+e
 app.model.cycleForward: []
 tui.select.up: [up, ctrl+k, ctrl+p]
 tui.select.down: [down, ctrl+j, ctrl+n]

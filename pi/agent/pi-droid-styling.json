@@ -1,0 +1,23 @@
+{
+  "alwaysExpanded": false,
+  "maxExpandedLines": 50,
+  "dimToolOutput": false,
+  "customWorkingMessage": {
+    "working": "Working",
+    "thinking": "Thinking",
+    "answering": "Answering",
+    "running": "Cooking"
+  },
+  "presentationStyle": "reasonix",
+  "userZoneStyle": "gemini",
+  "inputBox": {
+    "style": "halfblock"
+  },
+  "tasksWidgetStyle": "compact",
+  "collapsedThinking": "tail",
+  "diffMode": "auto",
+  "forceOSC11": false,
+  "transparentBackground": true,
+  "visibleChatTail": 30,
+  "imageAttachments": true
+}

@@ -14,6 +14,7 @@ local opts = {
     light = 'latte',
     dark = 'macchiato',
   },
+  transparent_background = true, -- disables setting the background color.
   color_overrides = {
     mocha = {
       base = '#11111B',
@@ -72,7 +73,7 @@ function M.apply(variant)
 end
 
 function M.resolve(variant)
-  local flavor = variant == 'light' and 'latte' or 'macchiato'
+  local flavor = variant == 'light' and 'latte' or 'frappe'
   local ok, palettes = pcall(require, 'catppuccin.palettes')
   if not ok then
     return nil

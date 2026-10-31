@@ -68,6 +68,7 @@ local light = {
 function M.setup()
   vim.g.gruvbox_material_background = 'hard'
   vim.g.gruvbox_material_foreground = 'material'
+  vim.g.gruvbox_material_transparent_background = 1
   -- Leave better_performance off: it defers plugin highlights into
   -- after/syntax/<ft>/, which run *after* our ColorScheme hook and stomp
   -- ui/tree.lua's NvimTreeNormal back to bg_dim.

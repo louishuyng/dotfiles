@@ -23,7 +23,7 @@
       "id": "ponytail",
       "context": "ponytail",
       "event": "sessionStart",
-      "enabled": true,
+      "enabled": false,
       "disabledAgents": []
     },
     {
@@ -39,6 +39,66 @@
       "event": "sessionStart",
       "enabled": true,
       "disabledAgents": []
+    },
+    {
+      "id": "agent-status-sessionstart",
+      "event": "sessionStart",
+      "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' idle",
+      "enabled": true,
+      "disabledAgents": [
+        "gemini",
+        "cursor"
+      ]
+    },
+    {
+      "id": "agent-status-beforetool",
+      "event": "beforeTool",
+      "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' working",
+      "enabled": true,
+      "disabledAgents": [
+        "gemini",
+        "cursor"
+      ]
+    },
+    {
+      "id": "agent-status-aftertool",
+      "event": "afterTool",
+      "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' working",
+      "enabled": true,
+      "disabledAgents": [
+        "gemini",
+        "cursor"
+      ]
+    },
+    {
+      "id": "agent-status-stop",
+      "event": "stop",
+      "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' idle",
+      "enabled": true,
+      "disabledAgents": [
+        "gemini",
+        "cursor"
+      ]
+    },
+    {
+      "id": "agent-status-promptsubmit",
+      "event": "promptSubmit",
+      "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' working",
+      "enabled": true,
+      "disabledAgents": [
+        "gemini",
+        "cursor"
+      ]
+    },
+    {
+      "id": "agent-status-permissionrequest",
+      "event": "permissionRequest",
+      "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' waiting",
+      "enabled": true,
+      "disabledAgents": [
+        "gemini",
+        "cursor"
+      ]
     }
   ]
 }

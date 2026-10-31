@@ -19,6 +19,10 @@ end
 function M.apply(variant)
   vim.o.background = variant == 'light' and 'light' or 'dark'
   vim.cmd.colorscheme('melange')
+  local normal = vim.api.nvim_get_hl(0, { name = 'Normal', link = false })
+  normal.bg = nil
+  normal.ctermbg = nil
+  vim.api.nvim_set_hl(0, 'Normal', normal)
 end
 
 function M.resolve(variant)

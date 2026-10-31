@@ -22,10 +22,19 @@
   },
   {
     "source": "npm:pi-powerline-footer",
+    "extensions": [],
     "skills": []
   },
   {
     "source": "npm:@plannotator/pi-extension@0.28.23",
+    "skills": []
+  },
+  {
+    "source": "npm:pi-btw@0.8.0",
+    "skills": []
+  },
+  {
+    "source": "npm:@sting8k/pi-droid-styling@3.0.0",
     "skills": []
   }
 ]

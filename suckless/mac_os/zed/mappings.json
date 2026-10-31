@@ -41,8 +41,6 @@
       "space g b": "editor::ToggleGitBlameInline",
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPreviousHunk",
-      // Collapse sidebar workspace
-      "space s s": "outline_panel::Toggle",
       // Code Action
       "space c a": "editor::ToggleCodeActions",
 
@@ -125,9 +123,14 @@
     }
   },
   {
+    "context": "(Editor && mode == full && vim_mode == normal && !ProjectSearchView) || (Dock && !Editor)",
+    "bindings": {
+      "space s s": "outline_panel::Toggle"
+    }
+  },
+  {
     "context": "Dock",
     "bindings": {
-      "space s s": "outline_panel::Toggle",
       "space i": "agent::Toggle",
       "space d u": "debug_panel::Toggle",
       "space q": "workspace::CloseActiveDock",
@@ -251,6 +254,95 @@
       "space t f": "task::Spawn",
       "space t l": "task::Rerun",
       ", a": ["task::Spawn", { "task_name": "Toggle Test File" }]
+    }
+  },
+  {
+    // Panel Toggle actions focus visible panels; toggle their dock to hide them from the editor.
+    "context": "(Workspace && left_dock == OutlinePanel) > (Editor && mode == full && vim_mode == normal && !ProjectSearchView)",
+    "bindings": {
+      "space s s": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "(Workspace && right_dock == OutlinePanel) > (Editor && mode == full && vim_mode == normal && !ProjectSearchView)",
+    "bindings": {
+      "space s s": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "(Workspace && left_dock == ProjectPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "ctrl-\\": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "(Workspace && right_dock == ProjectPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "ctrl-\\": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "(Workspace && left_dock == GitPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      ", g s": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "(Workspace && right_dock == GitPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      ", g s": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "(Workspace && left_dock == TerminalPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "ctrl-t": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "(Workspace && right_dock == TerminalPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "ctrl-t": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "(Workspace && bottom_dock == TerminalPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "ctrl-t": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "(Workspace && left_dock == DebugPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "space d u": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "(Workspace && right_dock == DebugPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "space d u": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "(Workspace && bottom_dock == DebugPanel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "space d u": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "(Workspace && left_dock == agent_panel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "space i": "workspace::ToggleLeftDock",
+      "cmd-s": "workspace::ToggleLeftDock",
+      "cmd-/": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "(Workspace && right_dock == agent_panel) > (Editor && vim_mode == normal)",
+    "bindings": {
+      "space i": "workspace::ToggleRightDock",
+      "cmd-s": "workspace::ToggleRightDock",
+      "cmd-/": "workspace::ToggleRightDock"
     }
   },
   {

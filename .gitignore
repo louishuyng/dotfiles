@@ -68,12 +68,15 @@ raycast/config.json
 .superpowers/
 
 pi/*
+!pi/README.md
 !pi/agent/
 pi/agent/*
 !pi/agent/extensions/
+!pi/agent/themes/
 !pi/agent/skills/
 !pi/agent/prompts/
 !pi/agent/settings.json
+!pi/agent/pi-droid-styling.json
 
 *log
 

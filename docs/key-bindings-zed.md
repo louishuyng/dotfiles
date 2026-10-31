@@ -2,6 +2,11 @@
 
 Leader key: `space` | Prefix: `,`
 
+From the editor in Vim normal mode, panel shortcuts hide the target panel when it
+is visible, even when the editor has focus. When hidden, they open the target panel.
+If another panel occupies the same dock, they switch to the target panel.
+`space s s` is inactive in search forms and search-results views.
+
 ## Editor Flow
 
 | Key | Action |
@@ -15,8 +20,8 @@ Leader key: `space` | Prefix: `,`
 | `, w` | Next buffer |
 | `, b d` | Close buffer |
 | `, b d a` | Close all items |
-| `cmd-s` | Toggle right dock |
-| `ctrl-\` | Toggle right dock |
+| `cmd-s` | Toggle agent panel |
+| `ctrl-\` | Toggle project panel |
 
 ## File Finding
 
@@ -30,7 +35,7 @@ Leader key: `space` | Prefix: `,`
 
 | Key | Action |
 |-----|--------|
-| `space s` | Toggle outline panel |
+| `space s s` | Toggle outline panel |
 | `, g s` | Toggle git panel |
 | `a` | New file (in panel) |
 | `A` | New directory (in panel) |
@@ -62,7 +67,7 @@ Leader key: `space` | Prefix: `,`
 | `space h p` | Toggle selected diff hunks |
 | `space g b` | Toggle git blame inline |
 | `, g b` | Git blame panel |
-| `, g s` | Git panel focus |
+| `, g s` | Toggle git panel |
 | `s` | Stage file (in git panel) |
 | `shift-s` | Stage all (in git diff) |
 
@@ -95,8 +100,8 @@ Leader key: `space` | Prefix: `,`
 | Key | Action |
 |-----|--------|
 | `ctrl-t` | Toggle terminal panel (workspace) |
-| `ctrl-t` | New terminal (editor) |
-| `ctrl-t` | Close terminal (in terminal) |
+| `ctrl-t` | Toggle terminal panel (editor normal mode) |
+| `ctrl-t` | Toggle terminal panel (in terminal; preserves the session) |
 
 ## AI Assistant
 

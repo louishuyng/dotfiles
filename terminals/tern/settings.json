@@ -1,4 +1,6 @@
 {
+  "shell": "/opt/homebrew/bin/fish",
+  "native_prompt": false,
   "theme": "System",
   "theme_dark": "dark-terminal",
   "theme_light": "light",

@@ -11,6 +11,7 @@ vim.pack.add({
   -- 'https://github.com/nvim-tree/nvim-web-devicons', -- nvim-material-icon supplies the same module.
 
   -- Theme
+  'https://github.com/folke/tokyonight.nvim',
   'https://github.com/scottmckendry/cyberdream.nvim',
   'https://github.com/catppuccin/nvim',
   'https://github.com/sainnhe/gruvbox-material',

@@ -228,7 +228,7 @@ command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction down --ratio 0
 # reason as prefix+minus above.
 [[keys.command]]
 description = "Split right (50%, focus new pane)"
-key = "prefix+|"
+key = "prefix+\\"
 type = "shell"
 command = "herdr pane split \"$HERDR_ACTIVE_PANE_ID\" --direction right --ratio 0.50 --focus"
 

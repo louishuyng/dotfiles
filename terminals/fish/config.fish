@@ -1,3 +1,6 @@
+# GUI terminals may start without Homebrew on PATH; resolve tools before init.
+fish_add_path /opt/homebrew/bin
+
 __init_cached mise activate fish
 __init_cached tv init fish
 

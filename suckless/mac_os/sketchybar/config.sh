@@ -1,0 +1,32 @@
+#!/bin/bash
+# This is the only file you need to edit.
+THEME=auto                                    # dark | light | auto (follows the macOS appearance). Run sketchybar --reload after changing
+NOTCH_H=33                                    # island (bar) height — one value with or without a notch. Top 5 + 33 = bottom edge 38 (notch bottom edge)
+BAR_H=$NOTCH_H                                # same bar height on displays without a notch (formerly 24 = the pre-island menu bar height; unified 10-06)
+BAR_DISPLAY=main                              # display to show the bar on: main (the menu bar display) or a SketchyBar display number (arrangement-id from sketchybar --query displays)
+BAR_OPACITY=85   # bar opacity % (100 = opaque, 0 = transparent). Run sketchybar --reload after changing
+BAR_BLUR=0       # blur behind the bar (0 = off). macOS 27: with blur on, the bar turns opaque after wake or a monitor change — keep off
+POPUP_OPACITY=$BAR_OPACITY   # popup opacity %. Set a number to make it differ
+POPUP_BLUR=20   # popups are redrawn on every open, so no blur problem
+TERMINAL_APP="Ghostty"                        # terminal opened from popups
+NOTIF_APPS=("Slack" "Mail" "Messages")        # apps whose Dock badges are summed
+CAL_NEXT=0                                    # next-event text on the left island ("10:00 standup +8m"). 0 = off, 1 = on. Separate from the calendar popup
+CAL_WINDOW_MIN=60                             # only events within this many minutes are shown on the bar
+CWD_FILE="$HOME/.cache/sketchybar/cwd"
+WORK_DIR="$HOME"                    # ports popup: shows only servers started under this folder — change it (your projects folder)
+HOLIDAY_CAL=""                                # name of a subscribed holiday calendar in Calendar.app, e.g. "US Holidays" or "대한민국 공휴일"; empty = no holidays
+
+# pilo circle: live Claude/Codex sessions as a small pixel character (fed by ai/hooks/agent-status.sh). 0 = off
+PILO_ISLAND=1
+PILO_ANIM=1                                   # pilo circle motion. 0 = still image (macOS Reduce Motion also stops it)
+
+# auto-maximize new windows (Rectangle, keeping the window gap). 0 = off. Excluded apps are a regex (app names)
+AUTOMAX=0
+# to maximize only listed apps, put an app-name regex in AUTOMAX_INCLUDE — e.g. AUTOMAX_INCLUDE=""   # e.g. "^(Google Chrome|Safari|Ghostty|Code)$"
+# if empty, everything except the excluded apps below
+AUTOMAX_INCLUDE=""   # e.g. "^(Google Chrome|Safari|Ghostty|Code)$"
+AUTOMAX_EXCLUDE="^(System Settings|시스템 설정|Calculator|계산기|Finder|iPhone Mirroring|iPhone 미러링|Rectangle)$"
+
+# settings circle glyph. The font is a Nerd Font
+SETTINGS_GLYPH=$'\xf3\xb0\x98\xae'   # U+F062E vertical sliders (nf-md-tune) — by request
+SETTINGS_FONT="JetBrainsMono Nerd Font Mono:Regular:14.0"

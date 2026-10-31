@@ -1,0 +1,162 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w4S",
+      "custom_name": "LX-CONFIG",
+      "identity_cwd": "/Users/louishuyng/.dotfiles",
+      "worktree_space": {
+        "key": "/Users/louishuyng/.dotfiles/.git",
+        "label": ".dotfiles",
+        "repo_root": "/Users/louishuyng/.dotfiles",
+        "checkout_path": "/Users/louishuyng/.dotfiles",
+        "is_linked_worktree": false
+      },
+      "public_pane_numbers": {
+        "15": 49,
+        "17": 50,
+        "1": 20
+      },
+      "next_public_pane_number": 51,
+      "public_tab_numbers": [
+        1,
+        15
+      ],
+      "next_public_tab_number": 16,
+      "tabs": [
+        {
+          "custom_name": "pilo",
+          "layout": {
+            "Pane": 1
+          },
+          "panes": {
+            "1": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            }
+          },
+          "zoomed": false,
+          "focused": 1,
+          "root_pane": 1
+        },
+        {
+          "custom_name": "dotfiles",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 15
+              },
+              "second": {
+                "Pane": 17
+              }
+            }
+          },
+          "panes": {
+            "17": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            },
+            "15": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            }
+          },
+          "zoomed": true,
+          "focused": 17,
+          "root_pane": 15
+        }
+      ],
+      "active_tab": 1
+    },
+    {
+      "id": "w4T",
+      "custom_name": "RegAsk",
+      "identity_cwd": "/Users/louishuyng/LX14/repository/github.com/regask",
+      "public_pane_numbers": {
+        "4": 1,
+        "16": 3
+      },
+      "next_public_pane_number": 4,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": "regask",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 4
+              },
+              "second": {
+                "Pane": 16
+              }
+            }
+          },
+          "panes": {
+            "16": {
+              "cwd": "/Users/louishuyng/LX14/repository/github.com/regask"
+            },
+            "4": {
+              "cwd": "/Users/louishuyng/LX14/repository/github.com/regask"
+            }
+          },
+          "zoomed": false,
+          "focused": 16,
+          "root_pane": 4
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w4V",
+      "custom_name": "Omniyat",
+      "identity_cwd": "/Users/louishuyng/LX14/repository/github.com/omniyat/mobile",
+      "public_pane_numbers": {
+        "9": 2,
+        "10": 3
+      },
+      "next_public_pane_number": 6,
+      "public_tab_numbers": [
+        2
+      ],
+      "next_public_tab_number": 3,
+      "tabs": [
+        {
+          "custom_name": "mobile",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 9
+              },
+              "second": {
+                "Pane": 10
+              }
+            }
+          },
+          "panes": {
+            "9": {
+              "cwd": "/Users/louishuyng/LX14/repository/github.com/omniyat/mobile"
+            },
+            "10": {
+              "cwd": "/Users/louishuyng/LX14/repository/github.com/omniyat/mobile"
+            }
+          },
+          "zoomed": false,
+          "focused": 9,
+          "root_pane": 9
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

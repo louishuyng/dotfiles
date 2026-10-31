@@ -94,7 +94,7 @@ opt.listchars = {
   precedes = '⟨',
 }
 opt.laststatus = 3 -- Always display the status line
-opt.showtabline = 1 -- Show tabline only when 2+ tabs exist
+opt.showtabline = 1 -- Tabs only when 2+ exist; buffers live in the winbar (ui/bufferline.lua)
 opt.relativenumber = true -- Relative line numbers
 
 -- Tabs

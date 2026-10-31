@@ -42,6 +42,18 @@ test('exports shared MCP and hook formats to all supported targets, including Cu
   await mkdir(path.join(f.home, '.cursor'), { recursive: true }); assert.equal(production.tools().find(tool => tool.id === 'cursor').available, true);
 });
 
+test('prompt and approval hooks map to Claude and Codex and stay visible as unsupported elsewhere', async t => {
+  const f = await fixture(t);
+  const value = { servers: {}, hooks: [{ id: 'prompt', event: 'promptSubmit', command: '/usr/bin/true', enabled: true }, { id: 'approval', event: 'permissionRequest', command: '/usr/bin/true', enabled: true }] };
+  const result = await save(f.shared, value);
+  const claude = jsonc(await readFile(path.join(f.home, '.claude/settings.json'), 'utf8')).hooks;
+  assert.deepEqual(claude.UserPromptSubmit, [{ hooks: [{ type: 'command', command: '/usr/bin/true' }] }]);
+  assert.deepEqual(claude.PermissionRequest, [{ matcher: '*', hooks: [{ type: 'command', command: '/usr/bin/true' }] }]);
+  const codex = jsonc(await readFile(path.join(f.home, '.codex/hooks.json'), 'utf8')).hooks;
+  assert.ok(codex.UserPromptSubmit && codex.PermissionRequest);
+  for (const tool of ['gemini', 'cursor']) assert.ok(result.targets.find(target => target.id === tool).issues.some(issue => /approval: permissionRequest has no equivalent/.test(issue)));
+});
+
 test('updates, disables, and removes only owned entries; native JSON comments and unrelated fields survive', async t => {
   const f = await fixture(t); const file = path.join(f.home, '.gemini/settings.json'); await mkdir(path.dirname(file), { recursive: true });
   await writeFile(file, '{ // keep comment\n"private":"PRIVATE", "mcpServers":{"unrelated":{"command":"native"}},"hooks":{"AfterTool":[{"hooks":[{"type":"command","command":"native hook"}]}]}}');

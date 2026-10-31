@@ -4,9 +4,9 @@ local M = {}
 
 local colors = {
   dark = {
-    bg = '#0b0f0d',
-    bg_alt = '#111713',
-    bg_highlight = '#263229',
+    bg = '#000000',
+    bg_alt = '#1D1D1D',
+    bg_highlight = '#343344',
     fg = '#e6edf3',
     grey = '#7f8f88',
     blue = '#82aaff',
@@ -40,7 +40,7 @@ local colors = {
 function M.setup()
   require('cyberdream').setup({
     variant = 'auto',
-    transparent = true,
+    transparent = false,
     colors = colors,
     overrides = function(c)
       return {

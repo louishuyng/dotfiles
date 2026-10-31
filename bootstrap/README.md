@@ -126,6 +126,11 @@ The macOS `tern` task restores the full `terminals/tern/settings.json` snapshot,
 links `terminals/tern` at Tern's `plugins/tool-keys`, and links the shared
 `terminals/sesh` project-root configuration. Install Tern separately.
 
+The snapshot selects `/opt/homebrew/bin/fish` and disables Tern's native prompt
+so Fish renders its configured prompt. Install Fish with the `fish` task first.
+Fish adds Homebrew to `PATH` before activating Mise, so GUI-launched shells can
+resolve Mise-managed tools such as Node without starting a second Fish shell.
+
 ```bash
 bash bootstrap/mac.sh --tasks tern --links-only --dry-run
 bash bootstrap/mac.sh --tasks tern --links-only --backup --yes

@@ -44,7 +44,7 @@ verified shared set; import compatible entries explicitly from the page.
 Shared servers support stdio commands and Streamable HTTP endpoints. Native-only
 options and environment interpolation require manual setup and appear as
 incomplete parity. Shared command hooks map supported tool-use and completion
-events. ADHD, Ponytail, Plannotator, and the conditional `ui-frontend` workflow default
+events; prompt-submit and approval-request events exist for Claude and Codex only. ADHD, Ponytail, Plannotator, and the conditional `ui-frontend` workflow default
 on. The Hooks workspace stores global defaults and per-agent opt-outs while
 keeping one shared body for each hook.
 Context hooks run in Codex, Claude, Gemini, Cursor, OpenCode, Pi, and omp. Commands receive native JSON; they
@@ -76,6 +76,34 @@ After the owner accepts the coupled Claude hook removal, `node scripts/setup.mjs
 Native plugins and hook formats remain separate from the library. Sharing instructions does not provide an unavailable connector or lifecycle runtime. SuperGrok web has no local skill or subscription-usage bridge. Catalogue-only tools use their native application until an adapter exists.
 
 All editor saves show a diff, validate syntax, reject stale revisions, and preserve symlink targets. Native enablement toggles use supported Codex RPCs or the existing tool's configuration. Restart Claude/OpenCode after plugin changes. Configuration projections expose hooks/registrations instead of whole credential-bearing settings.
+
+## Side questions: Pi and Pitago
+
+After `/reload` or restarting Pi/Pitago, use `/btw:ask <question>` for a
+read-only side conversation. [`pi-btw` v0.8.0](https://github.com/dbachelder/pi-btw)
+is pinned in [`native-pi-packages.json`](../config/native-pi-packages.json).
+Restore the package with `pi install npm:pi-btw@0.8.0`; keep its registration in
+object form with `"skills": []` so its bundled skill does not bypass the shared
+library. The extension still loads.
+
+Native Pi supports `/btw` with an interactive overlay. Pitago uses the same Pi
+backend but requires an inline question, such as `/btw:ask explain this error`;
+completed answers appear as transcript notes, not a native Pi overlay. BTW
+answers are excluded from future main-agent context unless explicitly injected
+with `/btw:inject`. `/btw:clear` resets the side thread.
+
+**`/btw` permits shell commands and file edits.** Use `/btw:ask` for the
+structurally restricted read-only tool set. Side questions use the selected
+model and credentials and can incur usage charges.
+
+This is a Pi extension, not an Agent Hub-wide command adapter. OMP already
+includes a native `/btw` command; do not install a second implementation there.
+Other agents need their own native side-question support. Shared skills and
+hooks alone cannot provide an isolated parallel conversation.
+
+Verified locally: Pi RPC command discovery and a real model answer as a visible
+note; native Pi overlay open/dismiss; Pitago inline answer rendering, 80-column
+redraw, and exit 0. Parallel execution during an active main run was not tested.
 
 ## Metrics and privacy
 
@@ -208,10 +236,10 @@ keybindings, MCP config, shared instructions, and skills; it preserves an
 existing Agent Hub skills link. Restart omp after restoring a missing extension;
 modules absent at startup cannot be loaded into an existing session.
 
-omp's project-focused `Ctrl+G` also requires
-`ai/config/native-omp-keybindings.yml` at `~/.omp/agent/keybindings.yml`; it
-disables the built-in temporary draft editor so the shared extension can open
-the matching Zed project. See [the Tern shortcut setup](../../terminals/herdr/README.md#tern).
+OMP's project-focused `Ctrl+G` and Vim draft editor on `Ctrl+E` also require
+`ai/config/native-omp-keybindings.yml` at `~/.omp/agent/keybindings.yml`. It
+rebinds the built-in draft editor to `Ctrl+E`, leaving `Ctrl+G` for the shared
+extension's Zed project action. See [the Tern shortcut setup](../../terminals/herdr/README.md#tern).
 
 Legacy Superset, Herdr, RTK,
 Caveman, and duplicate Crit registrations were removed from the managed native

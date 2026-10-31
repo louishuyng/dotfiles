@@ -15,6 +15,9 @@ local M = {}
 -- Adapters are loaded lazily so installing a new theme doesn't pay for it
 -- until the user actually swaps to it.
 local adapter_loaders = {
+  tokyonight = function()
+    return require('config.theme.adapters.tokyonight')
+  end,
   catppuccin = function()
     return require('config.theme.adapters.catppuccin')
   end,
@@ -38,6 +41,9 @@ local adapter_loaders = {
   end,
   solarized_osaka = function()
     return require('config.theme.adapters.solarized_osaka')
+  end,
+  jetbrains = function()
+    return require('config.theme.adapters.jetbrains')
   end,
 }
 
