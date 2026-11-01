@@ -45,31 +45,6 @@ class ClaudeUsageTests(unittest.TestCase):
         }}})
         self.assertEqual(result['claude']['windows'][0]['percent'], 37)
 
-    def test_newest_pilo_report_wins_and_bad_reports_are_skipped(self):
-        result = self.read_usage({
-            '.claude.json': {'cachedUsageUtilization': {
-                'fetchedAtMs': (NOW - 100) * 1000,
-                'utilization': {'five_hour': {'utilization': 10, 'resets_at': RESET}},
-            }},
-            '.pilo/usage/old.json': {'at': (NOW - 200) * 1000, 'rateLimits': [
-                {'kind': 'five_hour', 'percentUsed': 5, 'resetsAt': RESET},
-            ]},
-            '.pilo/usage/current.json': {'at': NOW * 1000, 'rateLimits': [
-                {'kind': 'five_hour', 'percentUsed': 48, 'resetsAt': RESET},
-                {'kind': 'seven_day', 'percentUsed': 63, 'resetsAt': RESET},
-            ]},
-            '.pilo/usage/bad.json': {'at': 'invalid'},
-        })
-        windows = {window['key']: window['percent'] for window in result['claude']['windows']}
-        self.assertEqual(windows, {'session': 48, 'weekly_all': 63})
-
-    def test_expired_pilo_report_does_not_invent_zero_usage(self):
-        result = self.read_usage({'.pilo/usage/session.json': {
-            'at': NOW * 1000,
-            'rateLimits': [{'kind': 'five_hour', 'percentUsed': 99, 'resetsAt': '2020-01-01T00:00:00Z'}],
-        }})
-        self.assertNotIn('claude', result)
-
 
 if __name__ == '__main__':
     unittest.main()

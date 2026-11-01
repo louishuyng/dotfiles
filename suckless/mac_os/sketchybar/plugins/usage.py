@@ -11,7 +11,6 @@ def live(iso):
     try: return D.datetime.fromisoformat(iso.replace("Z", "+00:00")).timestamp() > now
     except Exception: return False
 out = {}
-claude_at = 0
 try:
     raw = json.loads(Path(f"{H}/.claude.json").read_text())
     u = raw.get("cachedUsageUtilization", {}).get("utilization", {})
@@ -30,7 +29,6 @@ try:
     # If the Claude desktop app's history (15-minute samples) is newer than ~/.claude.json, use that — Claude Code refreshes its cache only when /usage is opened, so it can be days stale
     #   Samples carry no reset time, so the 5-hour value only uses samples within 5 hours and the weekly value within 7 days
     fetched = raw.get("cachedUsageUtilization", {}).get("fetchedAtMs", 0) / 1000
-    claude_at = fetched if w else 0
     smp = (json.loads(Path(f"{H}/Library/Application Support/Claude/plan-usage-history.json").read_text()).get("samples") or [])[-1:]
     if smp and smp[0]["t"] / 1000 > fetched:
         t, u = smp[0]["t"] / 1000, smp[0].get("u", {})
@@ -39,34 +37,8 @@ try:
         if now - t < 7 * 86400 and isinstance(u.get("sd"), (int, float)): nw.append({"key": "weekly_all", "percent": round(u["sd"]), "resetsAt": ""})
         if nw:
             out["claude"] = {"windows": nw}
-            claude_at = t
 except Exception: pass
 
-# Pilo's local session.measure plugin reports after each Claude turn; it does
-# not require the older /usage cache or access to account credentials.
-for file in glob.glob(f"{H}/.pilo/usage/*.json"):
-    try:
-        row = json.loads(Path(file).read_text())
-        at = row.get("at", 0) / 1000
-        if at <= claude_at or now - at > 2 * 86400:
-            continue
-        limits = {r.get("kind"): r for r in row.get("rateLimits", [])}
-        if not isinstance(limits.get("five_hour", {}).get("percentUsed"), (int, float)):
-            continue
-        windows = []
-        for kind, key in (("five_hour", "session"), ("seven_day", "weekly_all")):
-            limit = limits.get(kind, {})
-            if not isinstance(limit.get("percentUsed"), (int, float)):
-                continue
-            reset = limit.get("resetsAt") or ""
-            valid = live(reset) if reset else now - at < 1800
-            # A past reset means a new window with no record yet → 0% (same as the sources above); dropping it would blank the cell
-            windows.append({"key": key, "percent": round(limit["percentUsed"]) if valid else 0, "resetsAt": reset if valid else ""})
-        if windows:
-            out["claude"] = {"windows": windows}
-            claude_at = at
-    except (OSError, ValueError, TypeError, AttributeError):
-        continue
 try:
     fs = [f for d in ("sessions", "archived_sessions") for f in glob.glob(f"{H}/.codex/{d}/**/rollout-*.jsonl", recursive=True)]
     best = None
