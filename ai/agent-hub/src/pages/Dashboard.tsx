@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Activity, ChevronDown, CircleHelp, Layers, LoaderCircle, Terminal, Workflow } from 'lucide-react';
+import { Activity, ChevronDown, CircleHelp, Layers, Terminal, Workflow } from 'lucide-react';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -90,7 +90,7 @@ export function Dashboard({ workspace }: { workspace: Workspace }) {
         {metrics.map(metric => (
           <section className="metric-card" key={metric.label}>
             <div className="metric-top"><span>{metric.label}</span><span className={`metric-icon ${metric.tone}`}><metric.icon size={16} aria-hidden="true" /></span></div>
-            <strong>{metric.value}</strong>
+            {loading && !usage ? <span className="skeleton metric-skeleton" aria-hidden="true" /> : <strong>{metric.value}</strong>}
             <small>{metric.detail}</small>
           </section>
         ))}
@@ -107,7 +107,7 @@ export function Dashboard({ workspace }: { workspace: Workspace }) {
             </div>
           )}
           <div className="chart" role="img" aria-label="Token usage over time. Exact values are in the sessions table below.">
-            {loading ? <div className="chart-loading"><LoaderCircle className="spin" aria-hidden="true" /> Loading activity</div>
+            {loading ? <div className="skeleton chart-skeleton" aria-label="Loading activity" />
               : !sessions.length ? <Empty>No recorded sessions in this date range.</Empty>
               : (
                 <ResponsiveContainer width="100%" height="100%">
@@ -162,7 +162,7 @@ export function Dashboard({ workspace }: { workspace: Workspace }) {
               </tbody>
             </table>
           </div>
-        ) : <Empty>{loading ? 'Loading recorded sessions…' : 'No sessions found. Use an agent, then refresh.'}</Empty>}
+        ) : loading ? <div className="skeleton-rows" aria-label="Loading sessions">{Array.from({ length: 6 }, (_, index) => <span key={index} className="skeleton" />)}</div> : <Empty>No sessions found. Use an agent, then refresh.</Empty>}
         <div className="panel-footer split">
           <span>{sessions.length ? `${pageIndex * PAGE_SIZE + 1}–${Math.min((pageIndex + 1) * PAGE_SIZE, sessions.length)} of ${sessions.length}` : '0 sessions'} · times in {usage?.timezone || 'local time'}</span>
           <div className="button-row">

@@ -22,7 +22,6 @@ export function Agents({ workspace }: { workspace: Workspace }) {
       <div className="tool-card-top">
         <span className="tool-tile"><ToolIcon tool={tool} size={26} /></span>
         <span><h3>{tool.name}</h3><small>{tool.kind}</small></span>
-        <Badge variant={tool.installed ? 'default' : 'secondary'}>{tool.installed ? 'Installed' : 'Not detected'}</Badge>
       </div>
       <p>{tool.note}</p>
       <div className="tool-capabilities">

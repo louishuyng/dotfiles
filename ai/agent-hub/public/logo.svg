@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b6cf9"/><stop offset=".55" stop-color="#9b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+    <radialGradient id="blue" cx=".15" cy=".1" r=".75"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="peach" cx=".95" cy="1" r=".7"><stop offset="0" stop-color="#fb923c"/><stop offset="1" stop-color="#fb923c" stop-opacity="0"/></radialGradient>
+    <radialGradient id="pink" cx=".05" cy="1" r=".6"><stop offset="0" stop-color="#f472b6" stop-opacity=".9"/><stop offset="1" stop-color="#f472b6" stop-opacity="0"/></radialGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".32"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#3b0764" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="48" height="48" rx="13" fill="url(#base)"/>
+  <rect width="48" height="48" rx="13" fill="url(#blue)"/>
+  <rect width="48" height="48" rx="13" fill="url(#peach)"/>
+  <rect width="48" height="48" rx="13" fill="url(#pink)"/>
+  <rect width="48" height="48" rx="13" fill="url(#gloss)"/>
+  <rect x=".5" y=".5" width="47" height="47" rx="12.5" fill="none" stroke="#fff" stroke-opacity=".28"/>
+  <g fill="#fff" filter="url(#shadow)">
+    <path d="M23 11.5c1.1 7.6 4.4 10.9 12 12-7.6 1.1-10.9 4.4-12 12-1.1-7.6-4.4-10.9-12-12 7.6-1.1 10.9-4.4 12-12Z"/>
+    <path opacity=".92" d="M35.5 8.5c.4 2.7 1.3 3.6 4 4-2.7.4-3.6 1.3-4 4-.4-2.7-1.3-3.6-4-4 2.7-.4 3.6-1.3 4-4Z"/>
+    <circle cx="36" cy="35" r="2.2" opacity=".85"/>
+  </g>
+</svg>

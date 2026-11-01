@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Blocks, Bot, Check, CircleHelp, FileText, LayoutDashboard, LoaderCircle, Moon, RefreshCw, Server, Sparkles, Sun, Workflow, X } from 'lucide-react';
+import { Blocks, Bot, Check, CircleHelp, FileText, LayoutDashboard, Moon, RefreshCw, Server, Sparkles, Sun, Workflow, X } from 'lucide-react';
 import { Logo } from './components/common';
 import { Button } from './components/ui/button';
 import { api, type FileData, type State, type Tool } from './api';
@@ -45,7 +45,7 @@ function systemTheme() {
 export default function App() {
   const [page, setPage] = useState<PageId>(route);
   const [state, setState] = useState<State>();
-  const [busy, setBusy] = useState(false);
+  const [busy, setBusy] = useState(true);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [theme, setTheme] = useState(() => localStorage.getItem('agent-hub-theme') || systemTheme());
@@ -64,6 +64,14 @@ export default function App() {
   }, [action]);
 
   useEffect(() => { void action(refresh); }, [action, refresh]);
+  useEffect(() => {
+    if (!state && busy) return;
+    const splash = document.getElementById('splash');
+    if (!splash) return;
+    splash.classList.add('hide');
+    const timer = setTimeout(() => splash.remove(), 400);
+    return () => clearTimeout(timer);
+  }, [state, busy]);
   useEffect(() => {
     const change = () => { setPage(route()); window.scrollTo({ top: 0 }); main.current?.focus({ preventScroll: true }); };
     window.addEventListener('hashchange', change);
@@ -133,7 +141,7 @@ export default function App() {
 
         {!workspace ? (
           <div className="initial-loading">
-            {busy ? <><LoaderCircle className="spin" size={24} aria-hidden="true" /><p>Connecting to the local service…</p></> : <><CircleHelp size={24} aria-hidden="true" /><p>Unable to reach the local service. Refresh to retry.</p></>}
+            {!busy && <><CircleHelp size={24} aria-hidden="true" /><p>Unable to reach the local service.</p><Button variant="outline" size="sm" onClick={() => void action(refresh)}>Retry</Button></>}
           </div>
         ) : (
           <>

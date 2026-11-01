@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ChevronRight, ExternalLink, Search } from 'lucide-react';
 import { Input } from '../components/ui/input';
-import { Badge } from '../components/ui/badge';
 import { Empty, PanelHeading, Toggle, ToolIcon } from '../components/common';
 import { api } from '../api';
 import type { Workspace } from '../App';
@@ -36,7 +35,6 @@ export function Plugins({ workspace }: { workspace: Workspace }) {
                   <h3>{plugin.name}</h3>
                   {(plugin.version || plugin.path) && <small className="path">{plugin.version || plugin.path}</small>}
                 </div>
-                <Badge variant={plugin.enabled ? 'default' : 'secondary'}>{plugin.enabled ? 'Enabled' : 'Disabled'}</Badge>
                 {plugin.manageable
                   ? <Toggle on={plugin.enabled} label={`Enable ${plugin.name}`} disabled={busy} onChange={() => void action(async () => { await api('plugins/toggle', { tool: plugin.tool, id: plugin.id, enabled: !plugin.enabled }); await refresh(); }, `${plugin.name} ${plugin.enabled ? 'disabled' : 'enabled'}. Restart ${tool.name} to apply.`)} />
                   : <a className="text-button" href={tool.url} target="_blank" rel="noreferrer">Manage in {tool.name}<ExternalLink size={13} aria-hidden="true" /></a>}

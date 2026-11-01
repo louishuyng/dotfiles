@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
-import { Empty, PanelHeading, Select, Toggle } from '../components/common';
+import { Avatar, Empty, PanelHeading, Select, Toggle } from '../components/common';
 import { api } from '../api';
 import { date } from '../lib/format';
 import type { Workspace } from '../App';
@@ -99,7 +99,7 @@ export function Skills({ workspace }: { workspace: Workspace }) {
         <div className="row-list">
           {skills.map(skill => (
             <div className="row" key={skill.id}>
-              <span className="row-symbol"><Sparkles size={17} aria-hidden="true" /></span>
+              <Avatar name={skill.name}><Sparkles size={16} aria-hidden="true" /></Avatar>
               <div className="row-copy">
                 <h3>{skill.name}{!skill.enabled && <Badge variant="secondary">Disabled</Badge>}</h3>
                 <p className="clamp" title={skill.description}>{skill.description || 'No description provided.'}</p>

@@ -1,2 +1,49 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="color-scheme" content="light dark"/><meta name="description" content="Your private, local control room for agent skills, integrations, instructions, and recorded usage."/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/><title>Agent Hub</title></head><body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body></html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<meta name="description" content="Your private, local control room for agent skills, integrations, instructions, and recorded usage."/>
+<link rel="icon" type="image/svg+xml" href="/logo.svg"/>
+<title>Agent Hub</title>
+<style>
+  .splash { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #fafafa; color: #0a0a0a; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; transition: opacity 320ms ease, visibility 320ms ease; }
+  .splash.hide { opacity: 0; visibility: hidden; }
+  .splash-aurora { position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(80px); opacity: .55; animation: splash-drift 9s ease-in-out infinite alternate; }
+  .splash-aurora.a { background: #93c5fd; top: -25vmax; left: -15vmax; }
+  .splash-aurora.b { background: #f9a8d4; bottom: -30vmax; right: -15vmax; animation-delay: -3s; }
+  .splash-aurora.c { background: #fdba74; bottom: -35vmax; left: 10vmax; opacity: .35; animation-delay: -6s; }
+  .splash-body { position: relative; display: grid; justify-items: center; gap: 14px; text-align: center; }
+  .splash-logo { width: 60px; height: 60px; border-radius: 17px; box-shadow: 0 10px 30px rgb(0 0 0 / 18%); animation: splash-breathe 2.4s ease-in-out infinite; }
+  .splash-title { font-size: 20px; font-weight: 650; letter-spacing: -.3px; margin: 4px 0 0; }
+  .splash-sub { font-size: 13px; color: #71717a; margin: 0; }
+  .splash-bar { width: 160px; height: 3px; border-radius: 3px; background: rgb(0 0 0 / 8%); overflow: hidden; margin-top: 6px; }
+  .splash-bar span { display: block; width: 40%; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6, #fb923c); animation: splash-load 1.3s ease-in-out infinite; }
+  @keyframes splash-load { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+  @keyframes splash-drift { to { transform: translate(6vmax, 4vmax) scale(1.08); } }
+  @keyframes splash-breathe { 50% { transform: scale(1.04); } }
+  @media (prefers-color-scheme: dark) {
+    .splash { background: #0a0a0a; color: #fafafa; }
+    .splash-aurora { opacity: .2; }
+    .splash-sub { color: #a1a1aa; }
+    .splash-bar { background: rgb(255 255 255 / 10%); }
+    .splash-logo { box-shadow: 0 0 0 1px rgb(255 255 255 / 12%), 0 10px 40px rgb(167 139 250 / 25%); }
+  }
+  @media (prefers-reduced-motion: reduce) { .splash * { animation: none !important; } .splash-bar span { width: 100%; } }
+</style>
+</head>
+<body>
+<div id="splash" class="splash" role="status" aria-live="polite">
+  <div class="splash-aurora a"></div><div class="splash-aurora b"></div><div class="splash-aurora c"></div>
+  <div class="splash-body">
+    <img class="splash-logo" src="/logo.svg" alt="" width="60" height="60"/>
+    <p class="splash-title">Agent Hub</p>
+    <p class="splash-sub">Connecting to your local agents…</p>
+    <div class="splash-bar" aria-hidden="true"><span></span></div>
+  </div>
+</div>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
