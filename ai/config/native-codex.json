@@ -44,10 +44,10 @@
   "whiteboard@devfast": {
     "enabled": true
   },
-  "code-review@openai-bundled": {
+  "slack@slack": {
     "enabled": true
   },
-  "slack@slack": {
+  "code-review@openai-bundled": {
     "enabled": true
   }
 }
