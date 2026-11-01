@@ -60,8 +60,8 @@ for file in glob.glob(f"{H}/.pilo/usage/*.json"):
                 continue
             reset = limit.get("resetsAt") or ""
             valid = live(reset) if reset else now - at < 1800
-            if valid:
-                windows.append({"key": key, "percent": round(limit["percentUsed"]), "resetsAt": reset})
+            # A past reset means a new window with no record yet → 0% (same as the sources above); dropping it would blank the cell
+            windows.append({"key": key, "percent": round(limit["percentUsed"]) if valid else 0, "resetsAt": reset if valid else ""})
         if windows:
             out["claude"] = {"windows": windows}
             claude_at = at
