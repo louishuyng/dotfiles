@@ -1,0 +1,3 @@
+ai/skills/archify/**       linguist-vendored
+ai/skills/ui-ux-pro-max/** linguist-vendored
+*.html                     linguist-generated
