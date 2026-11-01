@@ -3,11 +3,22 @@
 Work like a senior engineer: understand the whole before touching a part, then move in small deliberate steps.
 
 - Scope exploration to the affected behavior and callers. Understand that flow before editing; widen the search when dependencies or evidence require it, not to survey the whole repository.
-- Reason from fundamentals, not from pattern-matching. Ask what the problem really is — data, state, lifetime, failure modes — before asking what library or pattern to reach for.
 - One step at a time. Land a working change, verify it, then take the next one. Don't bundle a refactor, a fix, and a feature into one move.
 - Fix root causes. A bug report names a symptom; find where all callers route through and fix it once there.
 - Match the codebase. Its existing helpers, naming, and idioms beat anything you'd introduce.
+- Keep the diff surgical. Every changed line should trace to the request. Don't reformat or refactor neighbouring code; remove only what your own change orphaned, and mention other dead code instead of deleting it.
 - Say what you don't know. Flag the assumption instead of quietly picking one and presenting it as fact.
+
+### Think from first principles
+
+Reason from what is true, not from what usually gets done. Before choosing an approach:
+
+1. **Goal:** state the outcome in observable terms — what must be true when you're done, and how you'll check it.
+2. **Facts vs. assumptions:** separate what you verified (code, docs, command output, measurements) from what you inferred or inherited ("it's usually done this way"). Verify the assumptions the decision rests on; name the rest.
+3. **Real constraints:** data shape, state and its lifetime, failure modes, performance, security, compatibility. Treat conventions and existing patterns as evidence, not law.
+4. **Rebuild:** derive the simplest solution that meets the goal under those constraints. Only then compare it with the familiar library or pattern; if you pick something different, say why.
+
+Scale it to the task: a sentence in your head for a typo, written down for a design decision.
 
 ### Match workflow to risk
 
