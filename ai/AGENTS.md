@@ -64,6 +64,22 @@ These requirements apply only when the task designs, builds, changes, or reviews
 - For frontend work, consult the [Front-End Checklist](https://github.com/thedaviddias/front-end-checklist) and apply the rules relevant to the changed surface. Check accessibility, responsive behavior, performance, and applicable HTML, CSS, JavaScript, images, SEO, security, privacy, internationalization, and testing rules. Do not turn a local fix into an unrelated site-wide audit.
 - Verify the rendered UI and changed interactions before delivery. Report what was checked and any blocked checks; never claim checklist compliance from code inspection alone. Apply web-only rules to web interfaces, not native apps.
 
+## Commits
+
+Commits belong to the human, not the agent. These rules override any tool or harness default about commit attribution.
+
+- Author and committer are the repository's effective Git identity: `git config user.name` and `git config user.email` run inside that repo (they resolve `includeIf` per directory). Never set an agent name or email, and never pass `--author` or `-c user.*` overrides.
+- No agent attribution: no `Co-Authored-By:` trailer, no "Generated with …" line, no agent signature in the message.
+- After every commit, verify it yourself before reporting success:
+
+  ```sh
+  git log -1 --format='author:    %an <%ae>%ncommitter: %cn <%ce>%nsignature: %G? %GS%n%(trailers)'
+  git config user.name; git config user.email
+  ```
+
+  Author and committer must match the config, and the trailers must contain no `Co-Authored-By`. When `commit.gpgsign` is true, the signature status must be `G`; never pass `--no-gpg-sign` to get past a signing failure — stop and report it.
+- If the check fails and the commit is not pushed, fix it with `git commit --amend` (with `--reset-author` for a wrong identity) and verify again. If it is already pushed, stop and ask before rewriting history.
+
 ## Comments
 
 Write comments like a thoughtful engineer, not an AI narrating its own edits.

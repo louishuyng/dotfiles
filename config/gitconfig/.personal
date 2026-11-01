@@ -1,3 +1,16 @@
 [user]
   email = huynguyennbk@gmail.com
   name = Louis Huy Nguyen
+  signingkey = ~/.ssh/open_source.pub
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  allowedSignersFile = ~/.dotfiles/config/gitconfig/allowed_signers
+
+[commit]
+  gpgsign = true
+
+[tag]
+  gpgsign = true
