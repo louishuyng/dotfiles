@@ -12,6 +12,14 @@
       "hooks": [
         {
           "type": "command",
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'gemini' 'ponytail' 'SessionStart'"
+        }
+      ]
+    },
+    {
+      "hooks": [
+        {
+          "type": "command",
           "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'gemini' 'plannotator' 'SessionStart'"
         }
       ]
@@ -21,6 +29,14 @@
         {
           "type": "command",
           "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'gemini' 'ui-frontend' 'SessionStart'"
+        }
+      ]
+    },
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'gemini' 'caveman' 'SessionStart'"
         }
       ]
     }

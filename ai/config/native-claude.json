@@ -1,10 +1,10 @@
 {
-  "backstage-regask@regask": true,
+  "backstage-regask@regask": false,
   "clangd-lsp@claude-plugins-official": true,
-  "claude-md-management@claude-plugins-official": true,
+  "claude-md-management@claude-plugins-official": false,
   "code-simplifier@claude-plugins-official": true,
   "context7@claude-plugins-official": true,
-  "frontend-design@claude-plugins-official": true,
+  "frontend-design@claude-plugins-official": false,
   "gopls-lsp@claude-plugins-official": true,
   "lua-lsp@claude-plugins-official": true,
   "playwright@claude-plugins-official": true,
@@ -18,7 +18,7 @@
   "gojem-contract@gojem": false,
   "gojem-infra@gojem": false,
   "ponytail@ponytail": false,
-  "coderabbit@claude-plugins-official": true,
-  "eli5@claude-community": true,
+  "coderabbit@claude-plugins-official": false,
+  "eli5@claude-community": false,
   "caveman@caveman": false
 }
