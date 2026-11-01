@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-# agent cell usage — reads local files only (no network, no tokens):
-#   Claude: cachedUsageUtilization in ~/.claude.json (where Claude Code stores the /usage values) — only this block is read
+# agent cell usage:
+#   Claude: GET api.anthropic.com/api/oauth/usage (the call behind /usage) with the Claude Code OAuth token from the keychain,
+#           at most every 5 min, cached in ~/.cache/claude-usage.json; ~/.claude.json's cachedUsageUtilization is used when newer
 #   Codex : the last rate_limits in the final 200KB of the newest rollout-*.jsonl under ~/.codex/sessions
 # Output is only the fields agent.sh uses. A value whose reset time has passed is unused in the new window → 0% (no reset time)
 #   (Codex writes a new record on every use, so no record after the reset means 0 is right.)
-import json, os, glob, time, datetime as D
+import json, os, glob, time, subprocess, urllib.request, datetime as D
 from pathlib import Path
 H = os.path.expanduser("~"); now = time.time()
 def live(iso):
@@ -12,7 +13,20 @@ def live(iso):
     except Exception: return False
 out = {}
 try:
+    cache = Path(f"{H}/.cache/claude-usage.json")
+    try: fresh = json.loads(cache.read_text())
+    except Exception: fresh = {}
+    if now - fresh.get("fetchedAtMs", 0) / 1000 > 300:
+        try:
+            cred = subprocess.run(["/usr/bin/security", "find-generic-password", "-s", "Claude Code-credentials", "-w"], capture_output=True, text=True, timeout=5).stdout
+            tok = json.loads(cred)["claudeAiOauth"]["accessToken"]
+            req = urllib.request.Request("https://api.anthropic.com/api/oauth/usage", headers={"Authorization": f"Bearer {tok}", "anthropic-beta": "oauth-2025-04-20"})
+            fresh = {"fetchedAtMs": int(now * 1000), "utilization": json.load(urllib.request.urlopen(req, timeout=5))}
+            cache.parent.mkdir(parents=True, exist_ok=True); cache.write_text(json.dumps(fresh))
+        except Exception: pass
     raw = json.loads(Path(f"{H}/.claude.json").read_text())
+    if fresh.get("fetchedAtMs", 0) > raw.get("cachedUsageUtilization", {}).get("fetchedAtMs", 0):
+        raw["cachedUsageUtilization"] = fresh
     u = raw.get("cachedUsageUtilization", {}).get("utilization", {})
     # Newer Claude Code versions describe the same windows in a limits array.
     for limit in u.get("limits", []):

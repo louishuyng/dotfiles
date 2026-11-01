@@ -1,6 +1,6 @@
 #!/bin/bash
 # agent cell (rev 5): [agent  ✳ 40%  ◎ 12%] — claude·codex 5-hour usage. Popup AGENTS: 5h·week % · bar · reset
-# Values come straight from local files (~/.claude.json · ~/.codex/sessions) via plugins/usage.py — no network, no tokens. Every 15 s (0.03 s). Missing or past-reset values show —
+# Values come from plugins/usage.py (Claude: usage API every 5 min via the keychain OAuth token; Codex: ~/.codex/sessions). Every 15 s (0.03 s). Missing or past-reset values show —
 source "$CONFIG_DIR/colors.sh"; source "$CONFIG_DIR/config.sh"; source "$CONFIG_DIR/plugins/popup.sh"
 CL=0xffd97757   # claude color (design doc)
 [ -f "$HOME/.claude.json" ] || [ -d "$HOME/.codex" ] || { sketchybar --set agent drawing=off --set agent.claude drawing=off --set agent.codex drawing=off; exit 0; }   # hidden when neither Claude Code nor Codex is present

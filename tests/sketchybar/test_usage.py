@@ -22,7 +22,7 @@ class ClaudeUsageTests(unittest.TestCase):
                 file.parent.mkdir(parents=True, exist_ok=True)
                 file.write_text(json.dumps(value))
             output = io.StringIO()
-            with patch('os.path.expanduser', return_value=directory), patch('time.time', return_value=NOW):
+            with patch('os.path.expanduser', return_value=directory), patch('time.time', return_value=NOW), patch('subprocess.run', side_effect=OSError):
                 with contextlib.redirect_stdout(output):
                     runpy.run_path(str(SCRIPT))
             return json.loads(output.getvalue())
