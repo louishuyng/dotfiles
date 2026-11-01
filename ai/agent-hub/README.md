@@ -4,7 +4,7 @@ Open **http://agent-hub.localhost:1355** to manage this Mac's agent setup. This 
 
 **LX14-AI-Skills** is the repository library at [`ai/skills`](../skills). Its [`manifest.json`](../skills/manifest.json) defines the enabled set. Codex Desktop consumes this library; its discovered catalogue does not define the shared source.
 
-The local React/TypeScript dashboard manages skills, plugins, hooks, and instructions. Daily and Monday-based weekly metrics come from Codex, Claude Code, OpenCode v2, and Pi history. The 21-tool catalogue uses bundled brand icons and shows each tool's actual capabilities.
+The local React/TypeScript app has seven pages: **Dashboard** (recorded activity), **Agents** (detected tools and their capabilities), **Skills**, **Hooks**, **MCP servers**, **Plugins**, and **Instructions**. Daily and Monday-based weekly metrics come from Codex, Claude Code, OpenCode v2, and Pi history. The Agents page lists installed tools first; the rest of the 21-tool catalogue is collapsed below it.
 
 ## Run and update
 
@@ -29,8 +29,8 @@ For development, run `npm start` and `npm run dev` in separate terminals. The Vi
 
 ## Shared skills and configuration
 
-Use **Shared setup** to add, edit, enable, disable, or remove shared MCP servers
-and shared hooks. The source of truth is
+Use **MCP servers** and **Hooks** to add, edit, enable, disable, or remove shared
+MCP servers and shared hooks. The source of truth is
 [`ai/config/shared-setup.json`](../config/shared-setup.json). The page links to
 the existing shared skill library and shows per-agent MCP/hook sync results.
 Cursor joins through `~/.cursor` detection; installing its CLI is unnecessary.
@@ -67,7 +67,7 @@ The current manifest enables eleven skills: archify, aside-browser, better-write
 
 Use **Skills → Review sync** to preview and apply shared links. Codex's `~/.agents/skills`, Claude's `~/.claude/skills`, OpenCode's `~/.config/opencode/skills`, and configured compatible targets receive exports of the same enabled repository folders. Scripts and relative references stay with each skill. Source edits happen in `ai/skills`, not a tool's plugin cache. Exports use skill names; ambiguous names fail before writing. Sync stages targets, reverses failed swaps, journals interrupted changes, and refreshes managed exports after library changes. Displaced roots are backed up. Bootstrap preserves active Agent Hub links.
 
-An equal export count does not prove an equal runtime skill set. Inspect each enabled-set check and its issues after refreshing. Missing, extra, unreadable, or differently resolved folders cause drift. Unsupported native skill sources prevent a verified total. Selected projects can introduce additional skills and require a separate project audit. Restart affected agents after changes, then inspect their native catalogues before claiming exact parity.
+A check is **synced** when every enabled skill resolves to the shared library folder and nothing extra is exported there. Native caveats (plugin-bundled skills, missing inventory adapters, native-only MCP options, events an agent cannot run) are listed as notes under the check and do not count as drift; plugin notes offer a one-click disable. An equal export count does not prove an equal runtime skill set. Inspect each enabled-set check, its issues, and its notes after refreshing. Missing, extra, unreadable, or differently resolved folders cause drift. Unsupported native skill sources prevent a verified total. Selected projects can introduce additional skills and require a separate project audit. Restart affected agents after changes, then inspect their native catalogues before claiming exact parity.
 
 Setup suppresses competing global skill sources where supported. OpenCode's explicit vendor roots can override shared files; their configuration is backed up before removal. Pi package registrations use `skills: []`, and old global skill roots are excluded while extensions remain enabled. Claude plugins can bundle skills and hooks: disabling those plugins to remove extra skills also removes their hooks. Obtain owner agreement for that trade-off; keep exact Claude parity unverified while approval or audit remains incomplete.
 
@@ -193,8 +193,9 @@ In **Hooks → Add hook**, choose **Context text**, **Skill reference**, or
 reference a name from the shared library and load its current `SKILL.md` body,
 without running its scripts. Both inject context at session start. Command hooks
 run at the selected native event. Review the diff before saving; supported
-agents receive the hook and can opt out individually. **View context** shows
-the exact injected text and source, and **Edit context** edits that source.
+agents receive the hook and can opt out individually. Expanding a hook shows
+its per-agent switches and the exact injected text; **Edit context** edits that
+source.
 
 ADHD reads `ai/skills/i-have-adhd/SKILL.md`; Ponytail reads
 `ai/skills/ponytail/SKILL.md`; Plannotator reads `ai/skills/plannotator/SKILL.md`. Their global

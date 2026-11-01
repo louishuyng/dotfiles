@@ -146,7 +146,8 @@ export class Configuration {
     if(saved.sync)for(const tool of saved.sync.targets) {
       const change=(await this.syncTargets()).find((c)=>c.target===tool);if(!change)continue;
       const enabled=activeSkills;
-      const issues=[...(audit?.issues[tool]||[])];let matched=0;
+      // Native caveats (plugin-bundled skills, missing inventory adapters) are notes; only a broken shared set is drift.
+      const issues=[],notes=[];for(const issue of audit?.issues[tool]||[])(/not enabled in Codex discovery|disabled by Claude visibility override/.test(issue)?issues:notes).push(issue);let matched=0;
       const names=await readdir(change.path).catch(()=>[]);
       for(const s of enabled) {
         const name=s.name.replace(/[^a-zA-Z0-9-]/g,'-');
@@ -156,7 +157,7 @@ export class Configuration {
       const expectedNames=new Set(enabled.map((s)=>s.name.replace(/[^a-zA-Z0-9-]/g,'-')));
       for(const name of names)if(!expectedNames.has(name))issues.push(`${name}: extra exported skill`);
       try {if(!(await lstat(change.path)).isSymbolicLink()||path.resolve(path.dirname(change.path),await readlink(change.path))!==change.source)issues.push('Shared root was replaced outside Agent Hub');}catch {issues.push('Shared root is missing');}
-      checks.push({target:tool,matched,expected:enabled.length,status:issues.length?'drift':'synced',issues});
+      checks.push({target:tool,matched,expected:enabled.length,status:issues.length?'drift':'synced',issues,notes});
     }
     return { library:{name:library.name,path:library.path}, tools, skills, plugins, documents: docs.map(({ projection, format, project, sourcePath, ...d }) => ({...d,path:sourcePath||d.path,editable:d.editable&&!d.nativeToggleOnly})), hooks, warnings, refreshedAt: new Date().toISOString(), sync: { managed: saved.sync?.count || 0, targets: saved.sync?.targets || [],checks,warnings:['Verification covers global skills. Existing sessions must restart; project-level skill sources can add skills.'],verifiedAt:new Date().toISOString() }, backups: saved.backups || [] };
   }

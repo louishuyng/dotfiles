@@ -30,7 +30,7 @@ test('exports shared MCP and hook formats to all supported targets, including Cu
     const native = await f.shared.native(tool);
     assert.deepEqual(native.servers.local, exportServer(tool, value.servers.local));
     assert.deepEqual(native.servers.remote, exportServer(tool, value.servers.remote));
-    assert.equal(result.targets.find(target => target.id === tool).status, ['copilot', 'opencode', 'pi'].includes(tool) ? 'drift' : 'synced', JSON.stringify(result.targets.find(target => target.id === tool)));
+    assert.equal(result.targets.find(target => target.id === tool).status, 'synced', JSON.stringify(result.targets.find(target => target.id === tool)));
   }
   const cursor = jsonc(await readFile(path.join(f.home, '.cursor/hooks.json'), 'utf8'));
   assert.equal(cursor.version, 1); assert.deepEqual(cursor.hooks.postToolUse, [{ command: '/usr/bin/true' }]);
@@ -51,7 +51,7 @@ test('prompt and approval hooks map to Claude and Codex and stay visible as unsu
   assert.deepEqual(claude.PermissionRequest, [{ matcher: '*', hooks: [{ type: 'command', command: '/usr/bin/true' }] }]);
   const codex = jsonc(await readFile(path.join(f.home, '.codex/hooks.json'), 'utf8')).hooks;
   assert.ok(codex.UserPromptSubmit && codex.PermissionRequest);
-  for (const tool of ['gemini', 'cursor']) assert.ok(result.targets.find(target => target.id === tool).issues.some(issue => /approval: permissionRequest has no equivalent/.test(issue)));
+  for (const tool of ['gemini', 'cursor']) assert.ok(result.targets.find(target => target.id === tool).notes.some(note => /approval: permissionRequest has no equivalent/.test(note)));
 });
 
 test('updates, disables, and removes only owned entries; native JSON comments and unrelated fields survive', async t => {
@@ -120,7 +120,7 @@ test('source edits reconcile automatically, symlink escapes fail, unsupported ho
   const value = setup(); value.servers.local.command = 'next'; value.hooks.push({ id: 'finish', event: 'stop', command: '/usr/bin/true', enabled: true });
   await writeFile(f.shared.file, JSON.stringify(value)); const result = await f.shared.reconcile();
   assert.equal((await f.shared.native('cursor')).servers.local.command, 'next');
-  assert.ok(result.targets.find(target => target.id === 'gemini').issues.some(issue => issue.includes('no equivalent')));
+  assert.ok(result.targets.find(target => target.id === 'gemini').notes.some(note => note.includes('no equivalent')));
   const escape = path.join(f.home, 'outside.json'); await writeFile(escape, '{}'); const cursor = path.join(f.home, '.cursor/mcp.json'); await rm(cursor); await symlink(escape, cursor);
   await assert.rejects(f.shared.native('cursor'), /leaves its managed root/);
 });

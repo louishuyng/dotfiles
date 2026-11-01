@@ -146,23 +146,23 @@ export class SharedSetup {
   async snapshot() {
     const source = await this.source(); const receipt = jsonc(await optional(this.receipt) || '{}'); const targets = []; const imports = [];
     for (const tool of this.tools()) {
-      const status = { ...tool, status: !tool.available ? 'not-installed' : !tool.mcp ? 'unsupported' : 'synced', issues: [], extra: [], matched: 0 };
+      const status = { ...tool, status: !tool.available ? 'not-installed' : !tool.mcp ? 'unsupported' : 'synced', issues: [], notes: [], extra: [], matched: 0 };
       if (tool.available && tool.mcp) try {
         const native = await this.native(tool.id);
         for (const [name, value] of Object.entries(native.servers)) {
           if (!Object.hasOwn(source.value.servers, name)) {
             status.extra.push(name);
             try { importServer(tool.id, value); imports.push({ tool: tool.id, name, revision: hash(JSON.stringify(value)) }); }
-            catch { status.issues.push(`${name}: native-only options require manual setup`); }
+            catch { status.notes.push(`${name}: native-only options require manual setup`); }
           }
         }
         const planned = await this.plan(tool.id, source.value, receipt[tool.id] || {});
         status.matched = planned.matched;
         status.issues.push(...planned.issues);
-        if (planned.changes.length || status.extra.length || status.issues.length) status.status = 'drift';
+        if (planned.changes.length || status.issues.length) status.status = 'drift';
       } catch (error) { status.status = 'error'; status.issues.push(error.message); }
       for (const hook of source.value.hooks.filter(hook => tool.available && enabledFor(hook, tool.id))) {
-        if (isContextHook(hook) ? !POLICY_AGENTS.includes(tool.id) : !EVENTS[tool.id]?.[hook.event]) status.issues.push(`${hook.id}: ${hook.event} has no equivalent native event`);
+        if (isContextHook(hook) ? !POLICY_AGENTS.includes(tool.id) : !EVENTS[tool.id]?.[hook.event]) status.notes.push(`${hook.id}: ${hook.event} has no equivalent native event`);
       }
       if (tool.available && POLICY_AGENTS.includes(tool.id) && !EVENTS[tool.id] && source.value.hooks.some(hook => isContextHook(hook) && enabledFor(hook, tool.id))) {
         const issue = await this.policyAdapterIssue(tool.id); if (issue) status.issues.push(issue);

@@ -111,7 +111,7 @@ test('repository manifest owns the exact set and Codex extras are independently 
     inv=await f.config.inventory();assert.equal(inv.sync.checks.find(c=>c.target==='codex').status,'synced');
     const fs=await import('node:fs/promises');for(const target of await f.config.syncTargets())assert.deepEqual(await fs.readdir(target.path),['example']);
     native.push({name:'updated-plugin:extra',path:extra,enabled:true});f.config.skillAuditTime=0;
-    assert.equal((await f.config.inventory()).sync.checks.find(c=>c.target==='codex').status,'drift');
+    const codex=(await f.config.inventory()).sync.checks.find(c=>c.target==='codex');assert.equal(codex.status,'synced');assert.ok(codex.notes.some(note=>note.includes('extra native skill')));
   }finally{await rm(f.home,{recursive:true,force:true});}
 });
 
@@ -146,7 +146,7 @@ test('Claude coupled plugin suppression requires explicit strict consent',async(
     assert.ok((await f.config.nativeSkillAudit(await f.config.library(),true)).issues.claude.some(issue=>issue.includes('example: disabled')));
     let plan=await f.config.syncPreview();await f.config.syncApply({revision:plan.revision});
     let value=jsonc(await readFile(path.join(f.home,'.claude/settings.json'),'utf8'));assert.equal(value.enabledPlugins['vendor@market'],true);assert.equal(value.skillOverrides.implement,'off');assert.equal(value.skillOverrides.example,'on');assert.deepEqual(value.hooks,{Stop:[]});
-    assert.equal((await f.config.inventory()).sync.checks.find(c=>c.target==='claude').status,'drift');
+    const claude=(await f.config.inventory()).sync.checks.find(c=>c.target==='claude');assert.equal(claude.status,'synced');assert.ok(claude.notes.some(note=>note.includes('vendor@market')));
     await f.config.saveState({...await f.config.readState(),strictPluginConsent:true});plan=await f.config.syncPreview();await f.config.syncApply({revision:plan.revision});
     value=jsonc(await readFile(path.join(f.home,'.claude/settings.json'),'utf8'));assert.equal(value.enabledPlugins['vendor@market'],false);assert.deepEqual(value.hooks,{Stop:[]});
     assert.equal((await f.config.inventory()).sync.checks.find(c=>c.target==='claude').status,'synced');
@@ -167,7 +167,7 @@ test('Pi settings projection conceals unrelated fields and native edits invalida
     await f.config.inventory();assert.ok(!(await f.config.readDocument('native:pi')).content.includes('FAKE-PRIVATE'));
     const plan=await f.config.syncPreview();await f.config.syncApply({revision:plan.revision});await f.config.inventory();assert.ok(f.config.skillAuditTime>0);
     const doc=await f.config.readDocument('native:opencode-skills');await f.config.saveDocument({...doc,content:'["additional-root"]'});assert.equal(f.config.skillAuditTime,0);
-    const check=(await f.config.inventory()).sync.checks.find(c=>c.target==='opencode');assert.equal(check.status,'drift');
+    const check=(await f.config.inventory()).sync.checks.find(c=>c.target==='opencode');assert.equal(check.status,'synced');assert.ok(check.notes.some(note=>note.includes('Additional OpenCode')));
   }finally{await rm(f.home,{recursive:true,force:true});}
 });
 
