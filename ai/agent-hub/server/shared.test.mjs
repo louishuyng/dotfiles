@@ -21,6 +21,26 @@ async function fixture(t) {
 const setup = () => ({ servers: { local: { type: 'stdio', command: 'node', args: ['server.mjs'], enabled: true }, remote: { type: 'http', url: 'https://mcp.example.com/mcp', enabled: true } }, hooks: [{ id: 'audit', event: 'afterTool', command: '/usr/bin/true', enabled: true }] });
 const save = async (shared, value) => shared.save({ value, revision: (await shared.source()).revision });
 
+test('grok-build receives MCP, hooks, and context rules', async t => {
+  const f = await fixture(t);
+  await mkdir(path.join(f.home, '.grok'), { recursive: true });
+  await mkdir(path.join(f.root, 'ai/skills/i-have-adhd'), { recursive: true });
+  await writeFile(path.join(f.root, 'ai/skills/i-have-adhd/SKILL.md'), '---\nname: i-have-adhd\ndescription: test\n---\n\nStay short.\n');
+  const shared = new SharedSetup(f.config);
+  const value = setup();
+  value.hooks.push({ id: 'adhd', context: 'adhd', event: 'sessionStart', enabled: true, disabledAgents: [] });
+  const result = await save(shared, value);
+  const toml = TOML.parse(await readFile(path.join(f.home, '.grok/config.toml'), 'utf8'));
+  assert.equal(toml.mcp_servers.local.command, 'node');
+  assert.equal(toml.mcp_servers.remote.url, 'https://mcp.example.com/mcp');
+  const hooks = jsonc(await readFile(path.join(f.home, '.grok/hooks/agent-hub.json'), 'utf8')).hooks;
+  assert.equal(hooks.PostToolUse[0].matcher, undefined);
+  assert.match(hooks.PostToolUse[0].hooks[0].command, /\/usr\/bin\/true/);
+  assert.match(hooks.SessionStart[0].hooks[0].command, /grok-build/);
+  assert.match(await readFile(path.join(f.home, '.grok/rules/agent-hub.md'), 'utf8'), /Stay short/);
+  assert.equal(result.targets.find(target => target.id === 'grok-build').status, 'synced');
+});
+
 test('exports shared MCP and hook formats to all supported targets, including Cursor without its CLI', async t => {
   const f = await fixture(t); const value = setup();
   const result = await save(f.shared, value);

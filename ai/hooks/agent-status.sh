@@ -1,5 +1,5 @@
 #!/bin/bash
-# Shared command hook: records whether a Claude/Codex session is working or idle, for the SketchyBar agent circle.
+# Shared command hook: records whether a Claude/Codex/Grok session is working or idle, for the SketchyBar agent circle.
 # Usage: agent-status.sh <working|waiting|idle>   (native hook JSON on stdin; waiting = an approval prompt is open)
 # One file per session in ~/.cache/agent-status: agent · state · cwd · pid · epoch · tmux socket · tmux pane (tab separated).
 # Never fails the agent: every path exits 0 and prints nothing (Stop hooks parse stdout).
@@ -12,15 +12,15 @@ SID=$(field session_id | tr -cd 'A-Za-z0-9_-')
 [ -n "$SID" ] || exit 0
 CWD=$(field cwd)
 
-# The agent process is the nearest claude/codex ancestor; its pid lets the bar drop sessions that ended without a hook.
+# The agent process is the nearest claude/codex/grok ancestor; its pid lets the bar drop sessions that ended without a hook.
 p=$PPID AGENT="" PID=""
 for _ in 1 2 3 4 5 6; do
   read -r pp comm <<<"$(ps -o ppid=,comm= -p "$p" 2>/dev/null)"
-  case "${comm##*/}" in claude) AGENT=claude PID=$p; break ;; codex) AGENT=codex PID=$p; break ;; esac
+  case "${comm##*/}" in claude) AGENT=claude PID=$p; break ;; codex) AGENT=codex PID=$p; break ;; grok) AGENT=grok PID=$p; break ;; esac
   [ -n "$pp" ] && [ "$pp" -gt 1 ] || break
   p=$pp
 done
-[ -n "$AGENT" ] || AGENT=$([ -n "$CLAUDECODE" ] && echo claude || echo codex)
+[ -n "$AGENT" ] || AGENT=$([ -n "$CLAUDECODE" ] && echo claude || { [ -n "$GROK_SESSION_ID" ] && echo grok || echo codex; })
 
 mkdir -p "$DIR"
 F="$DIR/$SID"

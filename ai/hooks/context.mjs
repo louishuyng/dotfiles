@@ -53,7 +53,7 @@ export async function hookOutput(root, tool, id, event) {
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const [tool, id, event] = process.argv.slice(2);
-  if (!['codex', 'claude', 'gemini', 'cursor'].includes(tool) || !id || !event) {
+  if (!['codex', 'claude', 'gemini', 'cursor', 'grok-build'].includes(tool) || !id || !event) {
     process.stderr.write('Use context.mjs <agent> <hook-id> <event>.\n'); process.exitCode = 1;
   } else {
     hookOutput(aiRoot, tool, id, event).then(output => process.stdout.write(JSON.stringify(output) + '\n'))

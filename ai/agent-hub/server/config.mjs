@@ -31,7 +31,7 @@ export const TOOL_DEFINITIONS = [
   ['claude', 'Claude Code', 'claude', '#D97757', 'claude', '.claude', 'https://code.claude.com/docs', ['skills','plugins','hooks','instructions','usage'], 'Native configuration and local session history.'],
   ['opencode', 'OpenCode', 'opencode', '#595959', 'opencode', '.config/opencode', 'https://opencode.ai/v2/docs', ['skills','plugins','hooks','instructions','usage'], 'OpenCode v2 plugins and recorded session usage.'],
   ['grok', 'Grok', 'grok', '#222222', 'grok', '.grok', 'https://grok.com', [], 'SuperGrok web account. Web conversation usage is not exposed in local logs.'],
-  ['grok-build', 'Grok Build', 'grok', '#222222', 'grok', '.grok', 'https://docs.x.ai/build', ['skills','instructions'], 'Local coding CLI; separate from the SuperGrok web account.'],
+  ['grok-build', 'Grok Build', 'grok', '#222222', 'grok', '.grok', 'https://docs.x.ai/build', ['skills','hooks','instructions'], 'Local coding CLI. Agent Hub syncs skills, instructions, MCP, and hooks. Context policies also go to ~/.grok/rules because Grok ignores hook stdout.'],
   ['gemini', 'Gemini CLI', 'gemini', '#4285F4', 'gemini', '.gemini', 'https://geminicli.com/docs', ['skills','hooks','instructions'], 'Shares Agent Skills; Gemini settings hooks remain native.'],
   ['copilot', 'GitHub Copilot', 'githubcopilot', '#6F42C1', 'copilot', '.copilot', 'https://docs.github.com/en/copilot', ['skills','instructions'], 'Personal skills, global instructions, and explicitly selected project instructions.'],
   ['cursor', 'Cursor', 'cursor', '#222222', 'cursor-agent', '.cursor', 'https://cursor.com/docs', ['skills','hooks','instructions'], 'Skill and hook files; IDE billing/usage requires a supported export.'],
@@ -91,7 +91,7 @@ export class Configuration {
   }
   async inventory() {
     const saved = await this.readState(); const library=await this.library(); const native = await this.discover(); const warnings = [...(native.warnings || [])];
-    const tools = TOOL_DEFINITIONS.map(([id, name, icon, color, command, config, url, capabilities, note]) => ({ id, name, icon: `/icons/${icon}.svg`, color, installed: !!command && !!executable(command), configured: existsSync(path.join(this.home, config)) || id === 'grok', kind: id === 'grok' ? 'Web account' : ['cursor','windsurf','antigravity','cline','roo','continue'].includes(id) ? 'Editor' : 'Agent', url, capabilities, note, ...(id === 'grok' ? { subscription: 'SuperGrok' } : {}) }));
+    const tools = TOOL_DEFINITIONS.map(([id, name, icon, color, command, config, url, capabilities, note]) => ({ id, name, icon: `/icons/${icon}.svg`, color, installed: !!command && !!executable(command), configured: existsSync(path.join(this.home, config)) || id === 'grok' || id === 'grok-build', kind: id === 'grok' ? 'Web account' : ['cursor','windsurf','antigravity','cline','roo','continue'].includes(id) ? 'Editor' : 'Agent', url, capabilities, note, ...(id === 'grok' ? { subscription: 'SuperGrok' } : {}) }));
     const docs = [
       this.document('instructions:codex', 'Global instructions', 'codex', path.join(this.home, '.codex/AGENTS.md'), 'instruction'),
       this.document('instructions:claude', 'Global instructions', 'claude', path.join(this.home, '.claude/CLAUDE.md'), 'instruction'),
@@ -107,11 +107,11 @@ export class Configuration {
     docs.push(this.document('native:pi-packages','Pi package registrations','pi',path.join(this.home,'.pi/agent/settings.json'),'config',{projection:['packages'],format:'json'}));
     docs.push(this.document('native:omp-plugins','OMP plugin dependencies','omp',path.join(this.home,'.omp/plugins/package.json'),'config',{projection:['dependencies'],format:'json'}));
     docs.push(this.document('native:claude', 'Claude plugin settings', 'claude', path.join(this.home,'.claude/settings.json'), 'config', {projection:['enabledPlugins'],format:'json'}));
-    for (const [tool, file, hookfile] of [['gemini','.gemini/GEMINI.md','.gemini/settings.json'],['cursor','.cursor/AGENTS.md','.cursor/hooks.json'],['pi','.pi/agent/AGENTS.md',null],['grok-build','.grok/AGENTS.md',null],['copilot','.copilot/copilot-instructions.md',null],['droid','.factory/AGENTS.md',null]]) {
+    for (const [tool, file, hookfile] of [['gemini','.gemini/GEMINI.md','.gemini/settings.json'],['cursor','.cursor/AGENTS.md','.cursor/hooks.json'],['pi','.pi/agent/AGENTS.md',null],['grok-build','.grok/AGENTS.md','.grok/hooks/agent-hub.json'],['copilot','.copilot/copilot-instructions.md',null],['droid','.factory/AGENTS.md',null]]) {
       if (!tools.find((t) => t.id === tool)?.configured) continue;
       // Cursor global AGENTS.md is not a verified native root; use selected-project instructions instead.
       if (tool !== 'cursor') docs.push(this.document(`instructions:${tool}`, 'Global instructions', tool, path.join(this.home, file), 'instruction'));
-      if (hookfile) docs.push(this.document(`hooks:${tool}`, 'Lifecycle hooks', tool, path.join(this.home, hookfile), 'hook', { format: 'json', ...(tool === 'gemini' ? { projection: ['hooks'] } : {}) }));
+      if (hookfile) docs.push(this.document(`hooks:${tool}`, 'Lifecycle hooks', tool, path.join(this.home, hookfile), 'hook', { format: 'json', ...(tool === 'gemini' || tool === 'grok-build' ? { projection: ['hooks'] } : {}) }));
     }
     for (const project of saved.projects || []) {
       for (const [name, relative, tool] of [['AGENTS.md','AGENTS.md','shared'],['CLAUDE.md','CLAUDE.md','claude'],['GEMINI.md','GEMINI.md','gemini'],['Copilot instructions','.github/copilot-instructions.md','copilot']]) docs.push(this.document(`project:${hash(project).slice(0,12)}:${tool}`, `${path.basename(project)} · ${name}`, tool, path.join(project, relative), 'instruction', { project }));

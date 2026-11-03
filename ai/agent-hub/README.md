@@ -44,10 +44,10 @@ verified shared set; import compatible entries explicitly from the page.
 Shared servers support stdio commands and Streamable HTTP endpoints. Native-only
 options and environment interpolation require manual setup and appear as
 incomplete parity. Shared command hooks map supported tool-use and completion
-events; prompt-submit and approval-request events exist for Claude and Codex only. ADHD, Ponytail, Plannotator, and the conditional `ui-frontend` workflow default
+events; prompt-submit exists for Claude, Codex, and Grok Build. Approval-request events exist for Claude and Codex only. Grok ignores hook stdout, so context policies are also written to `~/.grok/rules/agent-hub.md`. ADHD, Ponytail, Plannotator, and the conditional `ui-frontend` workflow default
 on. The Hooks workspace stores global defaults and per-agent opt-outs while
 keeping one shared body for each hook.
-Context hooks run in Codex, Claude, Gemini, Cursor, OpenCode, Pi, and omp. Commands receive native JSON; they
+Context hooks run in Codex, Claude, Gemini, Cursor, OpenCode, Pi, omp, and Grok Build. Commands receive native JSON; they
 must handle each runtime's payload and output contract. Unsupported agents and
 events remain visible. Restart agents after configuration changes and use their
 native tools to check connections, OAuth, and project overrides.
@@ -63,7 +63,7 @@ See [the shared setup decision](../../docs/adr/0006-shared-agent-setup.md).
 
 Native Codex plugins remain managed through the app server. Skill creation, edits, and enablement use the repository library and manifest.
 
-The current manifest enables eleven skills: archify, aside-browser, better-write, caveman, herdr-implement, herdr-plan, i-have-adhd, plannotator, ponytail, tech-doc-writer, and ui-ux-pro-max. The repository-owned [Plannotator skill](../skills/plannotator/SKILL.md) defines the shared review policy and supplies its hook body. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays eleven.
+The current manifest enables fourteen skills: archify, aside-browser, better-write, caveman, domain-modeling, grill-with-docs, grilling, herdr-implement, herdr-plan, i-have-adhd, plannotator, ponytail, tech-doc-writer, and ui-ux-pro-max. The repository-owned [Plannotator skill](../skills/plannotator/SKILL.md) defines the shared review policy and supplies its hook body. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays fourteen.
 
 Use **Skills → Review sync** to preview and apply shared links. Codex's `~/.agents/skills`, Claude's `~/.claude/skills`, OpenCode's `~/.config/opencode/skills`, and configured compatible targets receive exports of the same enabled repository folders. Scripts and relative references stay with each skill. Source edits happen in `ai/skills`, not a tool's plugin cache. Exports use skill names; ambiguous names fail before writing. Sync stages targets, reverses failed swaps, journals interrupted changes, and refreshes managed exports after library changes. Displaced roots are backed up. Bootstrap preserves active Agent Hub links.
 

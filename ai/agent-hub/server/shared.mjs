@@ -17,14 +17,16 @@ const ADAPTERS = {
   cursor: ['.cursor/mcp.json', ['mcpServers']],
   copilot: ['.copilot/mcp-config.json', ['mcpServers']],
   pi: ['.pi/agent/mcp.json', ['mcpServers']],
+  'grok-build': ['.grok/config.toml', ['mcp_servers']],
 };
 const EVENTS = {
   codex: { sessionStart: 'SessionStart', promptSubmit: 'UserPromptSubmit', beforeTool: 'PreToolUse', permissionRequest: 'PermissionRequest', afterTool: 'PostToolUse', stop: 'Stop' },
   claude: { sessionStart: 'SessionStart', promptSubmit: 'UserPromptSubmit', beforeTool: 'PreToolUse', permissionRequest: 'PermissionRequest', afterTool: 'PostToolUse', stop: 'Stop' },
   gemini: { sessionStart: 'SessionStart', beforeTool: 'BeforeTool', afterTool: 'AfterTool' },
   cursor: { sessionStart: 'sessionStart', beforeTool: 'preToolUse', afterTool: 'postToolUse', stop: 'stop' },
+  'grok-build': { sessionStart: 'SessionStart', promptSubmit: 'UserPromptSubmit', beforeTool: 'PreToolUse', afterTool: 'PostToolUse', stop: 'Stop' },
 };
-const POLICY_AGENTS = ['codex', 'claude', 'gemini', 'cursor', 'opencode', 'pi'];
+const POLICY_AGENTS = ['codex', 'claude', 'gemini', 'cursor', 'opencode', 'pi', 'grok-build'];
 const object = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 const text = (value) => typeof value === 'string' && value.trim().length > 0 && !value.includes('\0');
 const identifier = (value) => typeof value === 'string' && /^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$/.test(value);
@@ -77,10 +79,12 @@ export function exportServer(tool, server) {
   if (server.type === 'stdio') {
     const { command, args = [], env = {} } = server;
     if (tool === 'opencode') return { type: 'local', command: [command, ...args], environment: env };
+    if (tool === 'grok-build') return { command, args, env };
     return { ...(tool === 'claude' ? { type: 'stdio' } : tool === 'copilot' ? { type: 'local', tools: ['*'] } : {}), command, args, env };
   }
   const { url, headers = {} } = server;
   if (tool === 'codex') return { url, http_headers: headers };
+  if (tool === 'grok-build') return { url, headers };
   if (tool === 'opencode') return { type: 'remote', url, headers, ...(Object.keys(headers).length ? { oauth: false } : {}) };
   if (tool === 'gemini') return { httpUrl: url, headers };
   return { ...(tool === 'claude' || tool === 'copilot' ? { type: 'http' } : {}), url, headers, ...(tool === 'copilot' ? { tools: ['*'] } : {}) };
@@ -108,7 +112,10 @@ function hookEntry(tool, hook, root) {
   const quote = value => "'" + value.replaceAll("'", "'\\''") + "'";
   const text = isContextHook(hook) ? [process.execPath, path.join(root, 'ai/hooks/context.mjs'), tool, hook.id, EVENTS[tool][hook.event]].map(quote).join(' ') : hook.command;
   const command = { type: 'command', command: text };
-  return tool === 'cursor' ? { command: text } : { ...(['stop', 'sessionStart', 'promptSubmit'].includes(hook.event) ? {} : { matcher: tool === 'gemini' ? '.*' : '*' }), hooks: [command] };
+  if (tool === 'cursor') return { command: text };
+  // Grok's matcher is a regex; omitting it matches every tool. '*' is not that.
+  if (tool === 'grok-build') return { hooks: [command] };
+  return { ...(['stop', 'sessionStart', 'promptSubmit'].includes(hook.event) ? {} : { matcher: tool === 'gemini' ? '.*' : '*' }), hooks: [command] };
 }
 function at(value, parts) { for (const part of parts) { if (!object(value)) throw new Error('Native configuration section must be an object.'); value = value[part] ?? {}; } if (!object(value)) throw new Error('Native configuration section must be an object.'); return value; }
 function edit(raw, parts, value) { return applyEdits(raw || '{}', modify(raw || '{}', parts, value, { formattingOptions: { insertSpaces: true, tabSize: 2 } })); }
@@ -122,8 +129,8 @@ export class SharedSetup {
   }
   tools() { return TOOL_DEFINITIONS.map(([id, name, , , command, directory]) => ({ id, name, available: !!command && !!executable(command) || existsSync(path.join(this.config.home, directory)), mcp: !!ADAPTERS[id], hooks: POLICY_AGENTS.includes(id), commandHooks: !!EVENTS[id] })); }
   async hookDocument(tool) {
-    const relative = { codex: '.codex/hooks.json', claude: '.claude/settings.json', gemini: '.gemini/settings.json', cursor: '.cursor/hooks.json' }[tool];
-    this.config.document(`hooks:${tool}`, 'Lifecycle hooks', tool, path.join(this.config.home, relative), 'hook', { format: 'json', ...(['claude', 'gemini'].includes(tool) ? { projection: ['hooks'] } : {}) });
+    const relative = { codex: '.codex/hooks.json', claude: '.claude/settings.json', gemini: '.gemini/settings.json', cursor: '.cursor/hooks.json', 'grok-build': '.grok/hooks/agent-hub.json' }[tool];
+    this.config.document(`hooks:${tool}`, 'Lifecycle hooks', tool, path.join(this.config.home, relative), 'hook', { format: 'json', ...(['claude', 'gemini', 'grok-build'].includes(tool) ? { projection: ['hooks'] } : {}) });
     return this.config.resolveDocument(`hooks:${tool}`);
   }
   async target(relative) {
@@ -140,7 +147,7 @@ export class SharedSetup {
   }
   async native(tool) {
     const [relative, section] = ADAPTERS[tool]; const file = await this.target(relative); const raw = await optional(file);
-    let value; try { value = tool === 'codex' ? TOML.parse(raw || '') : jsonc(raw || '{}'); } catch { throw new Error('Native configuration has invalid syntax. Repair it before syncing.'); }
+    let value; try { value = tool === 'codex' || tool === 'grok-build' ? TOML.parse(raw || '') : jsonc(raw || '{}'); } catch { throw new Error('Native configuration has invalid syntax. Repair it before syncing.'); }
     return { file, raw, value, section, servers: at(value, section) };
   }
   async snapshot() {
@@ -204,7 +211,7 @@ export class SharedSetup {
     }
     if (!equal(native.servers, servers)) {
       let next;
-      if (tool === 'codex') {
+      if (tool === 'codex' || tool === 'grok-build') {
         // Preserve unrelated TOML and comments, including tables after the MCP section.
         next = replaceTomlServers(native.raw || '', servers);
       } else next = edit(native.raw, native.section, servers);
@@ -278,7 +285,20 @@ export class SharedSetup {
     if (!equal(jsonc(receiptRaw || '{}'), receipt)) changes.push({ file: this.receipt, before: receiptRaw, after: stringify(receipt) });
     if (changes.length) await this.transaction(changes);
     if (changes.length) this.config.catalogueTime = 0;
+    await this.materializeGrokRules(value);
     return this.snapshot();
+  }
+  async materializeGrokRules(value) {
+    // shortcut: Grok ignores SessionStart stdout, so context policies are copied here. Drop this file if Grok applies hook additionalContext.
+    if (!this.tools().find(tool => tool.id === 'grok-build' && tool.available)) return;
+    const file = path.join(this.config.home, '.grok/rules/agent-hub.md');
+    const parts = [];
+    for (const hook of value.hooks.filter(hook => isContextHook(hook) && enabledFor(hook, 'grok-build'))) {
+      parts.push((await readContext(path.join(this.config.root, 'ai'), hook)).content);
+    }
+    if (!parts.length) { await rm(file, { force: true }); return; }
+    const body = parts.join('\n\n') + '\n';
+    if (await optional(file) !== body) await this.config.atomic(file, body);
   }
   async transaction(changes) {
     if (await optional(this.journal)) throw new Error('An interrupted shared sync needs recovery before saving.');
