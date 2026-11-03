@@ -1,5 +1,10 @@
 {
   "servers": {
+    "atlassian": {
+      "type": "http",
+      "url": "https://mcp.atlassian.com/v1/mcp",
+      "enabled": true
+    },
     "linear": {
       "type": "http",
       "url": "https://mcp.linear.app/mcp",

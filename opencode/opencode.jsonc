@@ -27,6 +27,11 @@
         "type": "remote",
         "url": "https://mcp.figma.com/mcp",
         "headers": {}
+      },
+      "atlassian": {
+        "type": "remote",
+        "url": "https://mcp.atlassian.com/v1/mcp",
+        "headers": {}
       }
     }
   },
