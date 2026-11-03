@@ -40,68 +40,12 @@
             "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'codex' 'caveman' 'SessionStart'"
           }
         ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' idle"
-          }
-        ]
       }
     ],
-    "PreToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' working"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' working"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' idle"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' working"
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Users/louishuyng/.dotfiles/ai/hooks/agent-status.sh' waiting"
-          }
-        ]
-      }
-    ]
+    "PreToolUse": [],
+    "PostToolUse": [],
+    "Stop": [],
+    "UserPromptSubmit": [],
+    "PermissionRequest": []
   }
 }

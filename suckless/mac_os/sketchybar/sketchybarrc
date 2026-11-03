@@ -219,12 +219,13 @@ sketchybar --add item cpu right --set cpu icon="" icon.width=33 icon.padding_lef
   --add item cpu.ul right --set cpu.ul icon.drawing=off label="" label.width=12 padding_left=10 padding_right=-22 popup.align=left y_offset=0 \
         click_script="$P/popup_click.sh cpu.ul"
 flush; (nohup "$P/cat.sh" >/dev/null 2>&1 &)
-# pilo circle: 5 left of the cat circle. Live Claude/Codex sessions as a round face with two arms; pilo_anim.sh swaps the frames (started by pilo.sh). Same structure as the cat circle (circle 33 · pilo.ul = underline and PILO popup parent, overlapped under the circle's centre).
+# pilo circle: 5 left of the cat circle. Live agents in herdr as a round face with two arms; pilo_anim.sh swaps the frames (started by pilo.sh). Same structure as the cat circle (circle 33 · pilo.ul = underline and PILO popup parent, overlapped under the circle's centre).
 #   Popup left edge = left end of the underline; pilo.sh switches to right alignment only when there is no room on the right.
 #   Hidden at first - pilo.sh turns it on after its first read. PILO_ISLAND=0 hides it
 #   updates=on: a hidden item gets no periodic updates by default (when_shown)
-#   agent_status_change: fired by ai/hooks/agent-status.sh when a session changes state → pilo.sh runs at once. The 30s poll prunes ended sessions
+#   agent_status_change: fired by agent_watch.sh (hc events) when a herdr terminal starts, ends, or changes status → pilo.sh runs at once. The 30s poll is the backstop
 sketchybar --add event agent_status_change
+(nohup "$P/agent_watch.sh" >/dev/null 2>&1 &)
 sketchybar --add item pilo right --set pilo icon="" icon.width=33 icon.padding_left=0 icon.padding_right=0 label.drawing=off padding_left=0 padding_right=5 y_offset=0 drawing=off \
         background.drawing=on background.color=$BG background.height=33 background.corner_radius=16 background.border_width=1 background.border_color=$LINE \
         background.image="$HOME/.cache/sketchybar/px/pilo_idle_1.png" background.image.scale=0.5 background.image.drawing=on \

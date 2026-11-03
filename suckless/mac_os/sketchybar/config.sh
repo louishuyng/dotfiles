@@ -15,7 +15,7 @@ CWD_FILE="$HOME/.cache/sketchybar/cwd"
 WORK_DIR="$HOME"                    # ports popup: shows only servers started under this folder — change it (your projects folder)
 HOLIDAY_CAL="Ngày lễ ở Việt Nam"                              # name of a subscribed holiday calendar in Calendar.app, e.g. "US Holidays" or "대한민국 공휴일"; empty = no holidays
 
-# pilo circle: live Claude/Codex sessions as a small pixel character (fed by ai/hooks/agent-status.sh). 0 = off
+# pilo circle: live agents in herdr as a small pixel character (fed by hc, see plugins/agent_watch.sh). 0 = off
 PILO_ISLAND=1
 PILO_ANIM=1                                   # pilo circle motion. 0 = still image (macOS Reduce Motion also stops it)
 
