@@ -201,6 +201,9 @@ run = ['move-node-to-workspace Terminal', 'layout tiling']
 if.app-id = 'so.stencil.tern'
 run = ['move-node-to-workspace Terminal', 'layout tiling']
 
+[[on-window-detected]]
+if.app-id = 'dev.herdr.app'
+run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
 if.app-id = 'com.conductor.app'
@@ -252,6 +255,10 @@ if.app-id = 'at.studio.AsideBrowser'
 run = ['move-node-to-workspace Web']
 
 [[on-window-detected]]
+if.app-id = 'com.anysphere.sand'
+run = ['move-node-to-workspace Web']
+
+[[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
 run = ['move-node-to-workspace Web', 'layout tiling']
 
@@ -280,6 +287,10 @@ run = ['move-node-to-workspace Chat']
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
+run = ['move-node-to-workspace Chat']
+
+[[on-window-detected]]
+if.app-id = 'sh.dev-null.mac'
 run = ['move-node-to-workspace Chat']
 
 [[on-window-detected]]
