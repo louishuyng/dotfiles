@@ -80,7 +80,7 @@ const KEYS = {
   t: popup("tuxedo"),
   R: popup("serpl"),
   "ctrl-r": popup("tuicr"),
-  g: popup("gh dash"),
+  g: popup("lazygit"),
   n: popup("~/.dotfiles/terminals/notes/note.sh"),
   // Scrollback in nvim (the CLI's edit_scrollback); `[` too, as the copy-mode key.
   v: () => scrollback(),
