@@ -4,9 +4,26 @@
 
 import { View, div } from "gpui-kit";
 import { h_flex } from "gpui-base";
-import { run, hc, exec, home, props, closeOverlay, openOverlay, theme, focused, spaces, notify } from "herdr";
+import { run, hc, exec, home, props, closeOverlay, openOverlay, theme, focused, spaces, notify, layout, window, shared, setShared } from "herdr";
 
 const go = (name, args = {}) => () => run(name, args);
+
+// The sidebar's rail toggle, as lx-agents and pixel-spaces do it: the rail goes by width.
+function find(node, id) {
+  if (node?.id === id) return node;
+  for (const child of node?.children ?? []) {
+    const found = find(child, id);
+    if (found) return found;
+  }
+  return null;
+}
+function toggleRail() {
+  const width = find(layout(), "sidebar")?.size?.px ?? Infinity;
+  const narrow = width < 160;
+  if (!narrow) setShared("sidebar.width", width);
+  setShared("sidebar.collapsed", !narrow);
+  run("layout.resize", { id: "sidebar", px: narrow ? (shared("sidebar.width") ?? 268) : window()?.platform === "macos" ? 76 : 44 });
+}
 
 // The CLI's popups: the app has no popup terminal (terminal.peek only takes terminals it
 // already shows), so run the tool in a split and zoom it. Its pane closes when it exits.
@@ -70,7 +87,7 @@ const KEYS = {
   "ctrl-j": go("space.next"),
   "ctrl-k": go("space.prev"),
   $: go("space.rename"),
-  b: go("layout.toggle", { id: "sidebar" }),
+  b: () => toggleRail(),
   s: go("mod.open", { name: "sessions" }),
   w: () => openOverlay({ mod: "sessions", kind: "popup", at: "top", offset: 40, width: 680, height: 540, props: { mode: "spaces" } }),
   "?": go("app.help"),
