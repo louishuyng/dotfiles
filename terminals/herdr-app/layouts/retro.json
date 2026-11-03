@@ -25,10 +25,10 @@
               "id": "spaces",
               "type": "block",
               "content": {
-                "mod": "retro-spaces"
+                "mod": "pixel-spaces"
               },
               "size": {
-                "px": 200
+                "px": 301
               },
               "min": 90
             },
@@ -36,7 +36,7 @@
               "id": "agents",
               "type": "block",
               "content": {
-                "mod": "retro-agents"
+                "mod": "lx-agents"
               },
               "size": {
                 "weight": 2

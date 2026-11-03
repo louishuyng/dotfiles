@@ -341,11 +341,12 @@ apply_task() {
       config terminals/herdr/config.toml herdr/config.toml
       link_file "$repo_root/terminals/herdr-projects" "$HOME/.herdr-projects/settings"
       link_file "$repo_root/terminals/herdr-app/keys.json" "$HOME/.config/herdr-app/keys.json"
-      for mod in prefix sessions issues retro-spaces retro-agents; do
+      for mod in prefix sessions issues retro-spaces retro-agents pixel-spaces pixel-picker pixel-chrome lx-agents; do
         link_file "$repo_root/terminals/herdr-app/mods/$mod" "$HOME/.config/herdr-app/mods/$mod"
       done
       link_file "$repo_root/terminals/herdr-app/themes/phosphor.json" "$HOME/.config/herdr-app/themes/phosphor.json"
       link_file "$repo_root/terminals/herdr-app/layouts/retro.json" "$HOME/.config/herdr-app/layouts/retro.json"
+      link_file "$repo_root/terminals/herdr-app/layouts/main-pixel.json" "$HOME/.config/herdr-app/layouts/main-pixel.json"
       if ! $links_only; then clone_repo https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"; fi ;;
     kitty)
       if [[ "$platform" == mac ]]; then casks kitty; else packages kitty; fi
