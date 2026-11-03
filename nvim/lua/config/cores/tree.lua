@@ -249,6 +249,10 @@ nvim_tree.setup({
       modified_placement = 'after',
       padding = ' ',
       symlink_arrow = ' ➜ ',
+      -- The default nerd-font chevrons render wider than a cell and look oversized.
+      glyphs = {
+        folder = { arrow_closed = '▸', arrow_open = '▾' },
+      },
       show = {
         file = true,
         folder = true,
