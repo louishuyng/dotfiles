@@ -58,7 +58,7 @@ export default class Tabs extends View {
     const item = (c, i) => {
       const program = panes().find(p => p.tab === c.id && p.program?.agent)?.program ?? panes().find(p => p.tab === c.id)?.program;
       const name = c.named ? c.name : program?.name?.toLowerCase() ?? "fish";
-      const color = c.status === "blocked" ? t.blocked : c.status === "done" ? t.done : c.active ? t.ansi5 : t.muted;
+      const color = c.status === "blocked" ? t.blocked : c.status === "done" ? t.done : c.active ? t.foreground : t.muted;
       return h_flex().id(`tab-${c.id}`).h_full().px(7).gap(6).items_center().flex_none().text_size(12).font_family(mono)
         .text_color(color).when(c.active, el => el.font_bold())
         .hover(s => s.text_color(t.foreground))
