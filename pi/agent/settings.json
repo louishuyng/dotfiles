@@ -1,7 +1,7 @@
 {
-  "lastChangelogVersion": "1.4.0",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-6.1-sol",
+  "lastChangelogVersion": "1.5.0",
+  "defaultProvider": "xai",
+  "defaultModel": "grok-4.7",
   "packages": [
     {
       "source": "npm:@a5c-ai/babysitter-pi",
@@ -51,11 +51,22 @@
     "welcome": false,
     "secondaryOverflow": "wrap",
     "layout": {
-      "left": ["shell_mode", "path", "git"],
-      "right": ["queue", "context_pct"],
-      "secondary": ["extension_statuses"]
+      "left": [
+        "shell_mode",
+        "path",
+        "git"
+      ],
+      "right": [
+        "queue",
+        "context_pct"
+      ],
+      "secondary": [
+        "extension_statuses"
+      ]
     },
-    "context": { "format": "percent" },
+    "context": {
+      "format": "percent"
+    },
     "git": {
       "showStaged": true,
       "showUnstaged": true,
@@ -68,6 +79,9 @@
     "+skills/LX14-AI-Skills/aside-browser",
     "+skills/LX14-AI-Skills/better-write",
     "+skills/LX14-AI-Skills/caveman",
+    "+skills/LX14-AI-Skills/domain-modeling",
+    "+skills/LX14-AI-Skills/grill-with-docs",
+    "+skills/LX14-AI-Skills/grilling",
     "+skills/LX14-AI-Skills/herdr-implement",
     "+skills/LX14-AI-Skills/herdr-plan",
     "+skills/LX14-AI-Skills/i-have-adhd",
@@ -82,5 +96,8 @@
     "!extensions/muxy-notify.ts",
     "/Users/louishuyng/.dotfiles/ai/hooks/pi-extension.ts"
   ],
-  "deviceId": "261cb968-c855-404e-a730-559c707eeb2c"
+  "deviceId": "261cb968-c855-404e-a730-559c707eeb2c",
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:@sting8k/pi-droid-styling@3.0.0\",\"scope\":\"user\"}": "3.0.0"
+  }
 }
