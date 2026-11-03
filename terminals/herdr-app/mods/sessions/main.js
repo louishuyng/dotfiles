@@ -2,10 +2,12 @@
 // open tabs first, then zoxide folders not already open. A folder opens in the
 // space named after its sesh.toml root (first match in file order), else after
 // its own folder name; an existing tab already in that folder is reused.
+// With props `{ mode: "spaces" }` it lists the spaces instead (ctrl-a w).
 
 import { View, div } from "gpui-kit";
 import { v_flex, h_flex, InputState, Input } from "gpui-base";
-import { spaces, panes, run, exec, home, readTextFile, props, closeOverlay, openOverlay, theme, notify } from "herdr";
+import { spaces, panes, run, exec, home, readTextFile, props, closeOverlay, openOverlay, theme, notify, shared } from "herdr";
+import { sprite } from "./sprites.js";
 
 const VISIBLE = 12;
 const PIXEL = "PxPlus IBM VGA 8x16";
@@ -33,6 +35,19 @@ async function readRoots() {
   return roots;
 }
 
+// A space's sprite and color as pixel-spaces keeps them (shared "space.sprites" / "space.colors").
+const MARK = { ansi6: "#22a99a", ansi3: "#e3814f", ansi4: "#5b8def", ansi5: "#8b7cf6", ansi2: "#3fae6a", ansi1: "#d9649a" };
+function spaceSprite(t, id) {
+  const c = (shared("space.colors") ?? {})[id] ?? "ansi6";
+  const fill = c.startsWith("#") ? c : (MARK[c] ?? t[c]);
+  return sprite((shared("space.sprites") ?? {})[id], fill, { div, v_flex, h_flex });
+}
+
+const ICONS = {
+  tab: { glyph: "\uf120", color: (t) => t.ansi6 },
+  dir: { glyph: "\uf0e7", color: (t) => t.ansi3 },
+};
+
 const basename = (p) => p.replace(/\/+$/, "").split("/").pop();
 const shortPath = (p) => p.split("/").filter(Boolean).slice(-2).join("/");
 // fzf-like: every typed character appears in order.
@@ -48,7 +63,8 @@ export default class Sessions extends View {
     this.at = 0;
     this.roots = [];
     this.paths = [];
-    this.input = InputState.new({ placeholder: "Projects…" });
+    this.spacesOnly = props()?.mode === "spaces";
+    this.input = InputState.new({ placeholder: this.spacesOnly ? "Spaces…" : "Projects…" });
     this.input.on("change", (_e, cx) => {
       this.filter = this.input.value().toLowerCase();
       this.at = 0;
@@ -57,6 +73,7 @@ export default class Sessions extends View {
     this.input.on("submit", () => this.go(this.rows()[this.at]));
     this.input.focus();
     cx.timer.after(600, () => this.input.focus());
+    if (this.spacesOnly) return;
     cx.spawn(async (cx) => {
       this.roots = await readRoots();
       try {
@@ -72,6 +89,10 @@ export default class Sessions extends View {
   }
 
   rows() {
+    if (this.spacesOnly) {
+      const all = spaces().map((s) => ({ kind: "space", id: s.id, label: s.name, active: s.active, tabs: s.tabs.length }));
+      return this.filter ? all.filter((r) => matches(r.label, this.filter)) : all;
+    }
     const open = new Set(panes().map((p) => p.cwd).filter(Boolean));
     const tabs = spaces().flatMap((s) =>
       s.tabs.map((t) => ({ kind: "tab", id: t.id, label: t.named ? `${s.name}:${t.index} ${t.name}` : `${s.name}:${t.index}`, active: s.active && t.active })),
@@ -84,6 +105,7 @@ export default class Sessions extends View {
   go(r) {
     if (!r) return;
     this.close();
+    if (r.kind === "space") return run("space.select", { id: r.id });
     if (r.kind === "tab") return run("tab.select", { id: r.id });
     const root = this.roots.find((x) => r.path === x.path || r.path.startsWith(`${x.path}/`));
     const name = root?.name ?? basename(r.path);
@@ -95,12 +117,13 @@ export default class Sessions extends View {
   }
 
   closeTab(r) {
-    if (r?.kind !== "tab") return;
+    if (r?.kind !== "tab" && r?.kind !== "space") return;
     this.close();
+    const what = r.kind === "space" ? "space" : "tab";
     openOverlay({
       mod: "confirm",
       kind: "dialog",
-      props: { title: `Close tab ${r.label}?`, detail: "Running work may stop.", command: { name: "tab.close", args: { id: r.id, confirmed: true } } },
+      props: { title: `Close ${what} ${r.label}?`, detail: "Running work may stop.", command: { name: `${what}.close`, args: { id: r.id, confirmed: true } } },
     });
   }
 
@@ -145,9 +168,12 @@ export default class Sessions extends View {
         .hover((s) => s.bg(on ? t.selected : t.hover))
         .on_click(() => this.go(r))
         .child(div().w(10).flex_none().text_color(t.accent).font_family(PIXEL).child(on ? "\u25b8" : ""))
-        .child(div().w(16).flex_none().font_family("JetBrainsMono Nerd Font").text_color(r.kind === "tab" ? t.ansi6 : t.ansi3).child(r.kind === "tab" ? "\uf120" : "\uf0e7"))
+        .child(r.kind === "space"
+          ? h_flex().w(16).flex_none().justify_center().child(spaceSprite(t, r.id))
+          : div().w(16).flex_none().font_family("JetBrainsMono Nerd Font").text_color(ICONS[r.kind].color(t)).child(ICONS[r.kind].glyph))
         .child(div().flex_1().min_w(0).text_color(on || r.active ? t.foreground : t.muted).when(r.active, (d) => d.font_bold()).child(highlight(r.label)))
         .when(r.kind === "dir", (el) => el.child(div().max_w(260).truncate().text_size(11).text_color(t.dim).child(r.path.replace(home(), "~"))))
+        .when(r.kind === "space", (el) => el.child(div().text_size(11).text_color(t.dim).child(r.active ? "current" : `${r.tabs} tabs`)))
         .when(r.kind === "tab" && r.active, (el) => el.child(div().text_size(11).text_color(t.dim).child("current")));
     };
     const key = (k, what) =>
@@ -178,7 +204,7 @@ export default class Sessions extends View {
       .child(
         h_flex().items_center().font_family(PIXEL).text_size(15)
           .child(div().mr(8).child(pixelIcon(FOLDER_ICON, t.muted)))
-          .child(div().flex_1().text_color(t.muted).child("PROJECTS"))
+          .child(div().flex_1().text_color(t.muted).child(this.spacesOnly ? "SPACES" : "PROJECTS"))
           .child(div().text_size(13).text_color(t.dim).child(`${rows.length}`)),
       )
       .child(
@@ -192,7 +218,7 @@ export default class Sessions extends View {
         h_flex().gap(14).pt(4).border_t(1).border_color(t.border).text_size(11)
           .child(key("\u21b5", "open"))
           .child(key("ctrl-j/k", "move"))
-          .child(key("ctrl-d", "close tab"))
+          .child(key("ctrl-d", this.spacesOnly ? "close space" : "close tab"))
           .child(key("esc", "cancel")),
       );
   }

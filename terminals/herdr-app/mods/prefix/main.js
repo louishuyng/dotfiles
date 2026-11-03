@@ -4,7 +4,7 @@
 
 import { View, div } from "gpui-kit";
 import { h_flex } from "gpui-base";
-import { run, hc, exec, home, props, closeOverlay, theme, focused, spaces, notify } from "herdr";
+import { run, hc, exec, home, props, closeOverlay, openOverlay, theme, focused, spaces, notify } from "herdr";
 
 const go = (name, args = {}) => () => run(name, args);
 
@@ -72,7 +72,7 @@ const KEYS = {
   $: go("space.rename"),
   b: go("layout.toggle", { id: "sidebar" }),
   s: go("mod.open", { name: "sessions" }),
-  w: go("mod.open", { name: "sessions" }),
+  w: () => openOverlay({ mod: "sessions", kind: "popup", at: "top", offset: 40, width: 680, height: 540, props: { mode: "spaces" } }),
   "?": go("app.help"),
   S: go("app.settings"),
   "/": popup("yazi"),
