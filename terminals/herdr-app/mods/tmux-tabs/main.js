@@ -98,7 +98,7 @@ export default class Tabs extends View {
       run("layout.set", { layout: next });
     }
     const session = h_flex().flex_none().h_full().pr(6).gap(6).items_center().text_size(12).font_family(mono)
-      .child(div().text_color(t.ansi2).font_bold().child(space?.name ?? ""))
+      .child(div().text_color(t.cursor).font_bold().child(space?.name ?? ""))
       .when(paneCount > 1, el => el.child(div().text_color(t.dim).child(`\u{f0f58} ${paneCount}`)))
       .child(div().text_color(t.border).child("│"));
     const root = layout(), sidebar = find(root, "sidebar"), w = window();
