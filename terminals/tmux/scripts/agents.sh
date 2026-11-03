@@ -124,7 +124,7 @@ status() {
     esac
   done < <(scan)
   ((busy > 0)) && out="#[fg=blue]$ICON_BUSY $busy $out"
-  [[ -n $out ]] && printf '%s#[default]' "$out"
+  [[ -n $out ]] && printf '%s#[fg=brightblack]│#[default]' "$out"
 }
 
 # preview <pane> — a live view of the pane, redrawn every second.
