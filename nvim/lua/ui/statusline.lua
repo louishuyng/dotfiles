@@ -10,8 +10,8 @@ local function setup_highlights(c)
 
   local hl = vim.api.nvim_set_hl
 
-  hl(0, 'StatusLine', { bg = c.bg_alt, fg = c.text })
-  hl(0, 'StatusLineNC', { bg = c.bg_alt, fg = c.muted })
+  hl(0, 'StatusLine', { bg = c.bg, fg = c.text })
+  hl(0, 'StatusLineNC', { bg = c.bg, fg = c.muted })
 
   -- Tabline (visible when 2+ tabs exist; see options/init.lua showtabline).
   -- Inactive tabs sit on the bg_alt chrome layer (same as the tree, since
@@ -197,7 +197,7 @@ local function apply_pulse_hl()
     local brightness = PULSE_MIN + (PULSE_MAX - PULSE_MIN) * (0.5 - 0.5 * math.cos(phase * 2 * math.pi))
     local hidx = (pulse.hue - 1 + (i - 1)) % #PULSE_HUES + 1
     local hue = c[PULSE_HUES[hidx]] or c.primary
-    vim.api.nvim_set_hl(0, 'StlPulse' .. i, { fg = blend(c.bg_alt, hue, brightness), bold = true })
+    vim.api.nvim_set_hl(0, 'StlPulse' .. i, { fg = blend('#000000', hue, brightness), bold = true })
   end
 end
 
@@ -306,12 +306,12 @@ local function mode_bar()
 end
 
 local MODE_LETTERS = {
-  n = 'NOR',
-  i = 'INS',
-  v = 'VISL',
+  n = 'N',
+  i = 'I',
+  v = 'V',
   V = 'V-LINE',
-  c = 'COMMAND',
-  s = 'SEL',
+  c = 'C',
+  s = 'S',
   S = 'S-LINE',
   [''] = 'V-BLOCK',
   R = 'REP',
@@ -319,15 +319,16 @@ local MODE_LETTERS = {
   t = 'TERM',
 }
 
-local function mode_letter()
-  local mode = vim.api.nvim_get_mode().mode
-  local color_group = MODE_COLORS[mode] or 'StlInfo'
-  local letter = MODE_LETTERS[mode] or mode:upper()
-  return color(color_group, letter)
-end
+-- local function mode_letter()
+--   local mode = vim.api.nvim_get_mode().mode
+--   local color_group = MODE_COLORS[mode] or 'StlInfo'
+--   local letter = MODE_LETTERS[mode] or mode:upper()
+--   return color(color_group, letter)
+-- end
 
 local function mode_indicator()
-  return mode_bar() .. '' .. mode_letter()
+  return mode_bar()
+  -- return mode_bar() .. '' .. mode_letter()
 end
 
 local function git_changes()

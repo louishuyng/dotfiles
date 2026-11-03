@@ -53,7 +53,7 @@
       "src": "https://github.com/dyng/ctrlsf.vim"
     },
     "cyberdream.nvim": {
-      "rev": "c75105a726e105f41e8af5e29cd6baed11f4018e",
+      "rev": "8ed987565d081a8ebeda0bac939c22a0f451d074",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "diffview.nvim": {
@@ -85,7 +85,7 @@
       "src": "https://github.com/projekt0n/github-nvim-theme"
     },
     "gitsigns.nvim": {
-      "rev": "1e9d0fbfe7ff848bc402d2c2e2854fb4eff2dce7",
+      "rev": "4bcd99167c265f135886b282baad77afe06206b2",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox-material": {
@@ -93,7 +93,7 @@
       "src": "https://github.com/sainnhe/gruvbox-material"
     },
     "markview.nvim": {
-      "rev": "ecc5a8867daa1856f8bcc5fdbceca8f5a5ce5f5d",
+      "rev": "aadb6d817577d553bbef61e8b9073f1bf4b87e08",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "marlin.nvim": {
@@ -117,7 +117,7 @@
       "src": "https://github.com/savq/melange-nvim"
     },
     "mini.bracketed": {
-      "rev": "104fa9166c34f8d51c0c39eff919844702241904",
+      "rev": "2757ab8b893f08a5f2a6f0fb8a56acd581a19d00",
       "src": "https://github.com/echasnovski/mini.bracketed"
     },
     "mini.pairs": {
@@ -169,7 +169,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "4b2b045b8ceb035f5c8bc9cab19b95706bfa6a19",
+      "rev": "adfbb74472f6c231b651b650a89f414c2680fb31",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-material-icon": {
@@ -193,11 +193,11 @@
       "src": "https://github.com/nvim-pack/nvim-spectre"
     },
     "nvim-tree.lua": {
-      "rev": "96b6d0ea594a1e519abd58fd8b60a39a9dec1869",
+      "rev": "f632f208c52e942af1db6d3793ccdd4752dd28ac",
       "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
-      "rev": "a2f694478be07f89c2d03cc17858a8745a400c4b",
+      "rev": "0195cd62fa89950f34c0e0d648ea7897ab85d4d3",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
@@ -225,7 +225,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "smart-splits.nvim": {
-      "rev": "dd40c3a03ef71bcdf77fb4b14668cc1320293f48",
+      "rev": "6a03b298635205802ee1d390826f02414a13290d",
       "src": "https://github.com/mrjones2014/smart-splits.nvim"
     },
     "snacks.nvim": {
@@ -273,7 +273,7 @@
       "src": "https://github.com/folke/trouble.nvim"
     },
     "vim-test": {
-      "rev": "f7cab8f327c838b129476792619aa6180847469f",
+      "rev": "7a5f7e1848b573de556adffe718097933d827d32",
       "src": "https://github.com/vim-test/vim-test"
     },
     "vim-visual-multi": {

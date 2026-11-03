@@ -48,3 +48,9 @@ neogit.setup {
     },
   },
 }
+
+-- Neogit keeps each hash/ref/author/date segment's own fg on the active line,
+-- so themes that give this a bright bg (cyberdream, jetbrains) make it unreadable.
+require('config.theme.palette').on_change(function(c)
+  vim.api.nvim_set_hl(0, 'NeogitActiveItem', { bg = c.surface, bold = true })
+end)

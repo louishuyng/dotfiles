@@ -47,7 +47,7 @@ function M.render()
     local mod = vim.bo[b].modified and '%#BufLineMod#●' or ' '
     -- %N@fn@ makes the label clickable; fn receives the buffer number.
     parts[#parts + 1] = string.format(
-      '%%%d@v:lua.require\'ui.bufferline\'.click@%%#%s# %s %s%%X',
+      "%%%d@v:lua.require'ui.bufferline'.click@%%#%s# %s %s%%X",
       b,
       group,
       names[b]:gsub('%%', '%%%%'),
