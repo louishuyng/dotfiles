@@ -94,11 +94,11 @@
                 "pane": {
                   "background": "background",
                   "border": {
-                    "width": 0,
+                    "width": 1,
                     "color": "border"
                   },
                   "focus": {
-                    "width": 0,
+                    "width": 1,
                     "color": "accent"
                   },
                   "radius": 6,
@@ -140,7 +140,7 @@
               "hidden": true
             }
           ],
-          "padding": 0,
+          "padding": 6,
           "gap": 8
         },
         {
@@ -163,7 +163,7 @@
     "dark": "phosphor"
   },
   "terminal_padding": [
-    0,
+    8,
     0
   ],
   "divider": {
