@@ -44,6 +44,12 @@ const JIRA_STATUSES = BOARDS.jira.columns.flatMap((c) => c.statuses);
 const jiraColumn = (i) => Math.max(0, BOARDS.jira.columns.findIndex((c) => c.statuses.includes(i.status)));
 BOARDS.jira.columns.forEach((c, n) => (c.test = (i) => jiraColumn(i) === n));
 
+// 7×7 pixel icon for the header, drawn as divs like the sessions picker's.
+const BOARD_ICON = ["#######", "#.#.#.#", "#.#.#.#", "#.#...#", "#...#.#", "#.....#", "#######"];
+function pixelIcon(rows, color) {
+  return v_flex().flex_none().children(rows.map((row) => h_flex().children([...row].map((ch) => div().w(2).h(2).when(ch === "#", (el) => el.bg(color))))));
+}
+
 const age = (iso) => {
   if (!iso) return "";
   const m = Math.max(0, (Date.now() - Date.parse(iso)) / 60000);
@@ -348,11 +354,11 @@ export default class Issues extends View {
     const sprint = this.items.find((i) => i.sprint)?.sprint;
 
     const chip = (id, label, n, on, onClick) =>
-      h_flex().id(id).h(26).px(10).gap(6).items_center().rounded(13).border_1().cursor_pointer()
-        .border_color(on ? t.accent : t.border).when(on, (el) => el.bg(t.selected)).hover((s) => s.bg(on ? t.selected : t.hover))
+      h_flex().id(id).h(24).px(8).gap(6).items_center().rounded(6).cursor_pointer()
+        .when(on, (el) => el.bg(t.selected)).hover((s) => s.bg(on ? t.selected : t.hover))
         .on_click((_e, cx) => { onClick(); cx.notify(); })
         .role("button").aria_selected(on)
-        .child(div().text_color(on ? t.foreground : t.muted).child(label))
+        .child(div().text_color(on ? t.ansi2 : t.muted).when(on, (d) => d.font_bold()).child(label))
         .child(div().text_color(t.dim).child(String(n)));
 
     const chips = () => {
@@ -363,8 +369,8 @@ export default class Issues extends View {
           ...repos.map((g) => chip(`repo-${g}`, g, sourced.filter((i) => i.group === g).length, this.repo === g, pick(g)))];
       }
       const current = this.people().find((o) => o.id === this.person) ?? { label: this.person, n: 0 };
-      return [h_flex().id("who").h(26).px(10).gap(6).items_center().rounded(6).border_1().cursor_pointer()
-        .border_color(this.who ? t.accent : t.input).hover((s) => s.bg(t.hover)).role("button")
+      return [h_flex().id("who").h(24).px(8).gap(6).items_center().rounded(6).cursor_pointer()
+        .when(Boolean(this.who), (el) => el.bg(t.selected)).hover((s) => s.bg(t.hover)).role("button")
         .on_click((_e, cx) => { if (this.who) this.pickPerson(null); else this.openWho(); cx.notify(); })
         .child(div().text_color(t.dim).child("Assignee"))
         .child(div().text_color(t.foreground).child(this.person === "@me" ? "Me" : this.person === "@none" ? "Unassigned" : this.person ?? "Everyone"))
@@ -375,8 +381,8 @@ export default class Issues extends View {
       const on = c === this.col && r === this.row[c];
       const held = this.drag?.item === i;
       return v_flex()
-        .id(`card-${i.source}-${i.id}`).w_full().flex_none().mb(8).p(10).gap(4).rounded(6).border_1().cursor_pointer()
-        .border_color(on ? t.accent : t.border).bg(on ? t.selected : t.background).hover((s) => s.bg(on ? t.selected : t.hover))
+        .id(`card-${i.source}-${i.id}`).w_full().flex_none().mb(6).py(8).px(10).gap(4).rounded(6).border_1().cursor_pointer()
+        .border_color(on ? t.ansi2 : "#00000000").bg(on ? t.selected : t.background).hover((s) => s.bg(on ? t.selected : t.hover))
         .when(held, (el) => el.opacity(0.5))
         .role("list_item").aria_selected(on)
         .on_mouse_down("left", (_e, cx) => {
@@ -386,10 +392,10 @@ export default class Issues extends View {
           cx.notify();
         })
         .child(h_flex().gap(6).items_center().text_size(11)
-          .child(div().text_color(t.muted).child(i.key))
+          .child(div().text_color(t.ansi2).font_bold().child(i.key))
           .child(div().flex_1().min_w(0).truncate().text_color(t.dim).child(jira ? i.kind : i.group))
           .when(i.status === "draft", (el) => el.child(div().text_color(t.dim).child("draft"))))
-        .child(div().text_color(t.foreground).child(i.title))
+        .child(div().text_color(on ? t.foreground : t.muted).child(i.title))
         .when(jira || i.labels.length > 0, (el) => el.child(h_flex().gap(4).overflow_hidden().text_size(11)
           .when(jira, (el) => el.child(div().flex_none().px(6).rounded(9).bg(t.raised).text_color(t.foreground).child(i.status)))
           .children(i.labels.slice(0, 3).map((l) => div().flex_none().px(6).rounded(9).border_1().border_color(t.border).text_color(t.muted).child(l)))))
@@ -403,7 +409,7 @@ export default class Issues extends View {
       const on = c === this.col;
       const target = this.drag && this.drag.over === c && this.drag.from !== c;
       return v_flex().id(`col-${c}`).flex_1().min_w(0).h_full().min_h(0).p(8).gap(8).rounded(8).border_1()
-        .border_color(target ? t.accent : on ? t.input : t.border).bg(target ? t.selected : t.surface)
+        .border_color(target ? t.accent : "#00000000").bg(target ? t.selected : t.chrome)
         .on_mouse_move((_e, cx) => {
           if (this.drag && this.drag.over !== c) {
             this.drag.over = c;
@@ -416,9 +422,9 @@ export default class Issues extends View {
           if (d && d.from !== c) this.setStatus(cx, d.item, col.to);
           cx.notify();
         })
-        .child(h_flex().gap(8).items_center()
-          .child(div().font_semibold().text_color(t.foreground).truncate().child(col.label))
-          .child(div().text_color(t.dim).child(String(items.length))))
+        .child(h_flex().px(4).gap(8).items_center().font_family(PIXEL).text_size(14)
+          .child(div().flex_1().min_w(0).truncate().text_color(on ? t.foreground : t.muted).child(col.label.toUpperCase()))
+          .child(div().text_color(items.length ? t.ansi2 : t.dim).child(String(items.length))))
         .child(items.length
           ? v_flex().id(`issues-col-${c}`).flex_1().min_h(0).overflow_y_scrollbar()
               .children(items.slice(this.top[c]).map((i, k) => card(i, c, this.top[c] + k)))
@@ -457,14 +463,16 @@ export default class Issues extends View {
       .on_key_down((e, cx) => this.onKey(e, cx))
       .on_mouse_up("left", (_e, cx) => { if (this.drag) { this.drag = null; cx.notify(); } })
       .child(h_flex().gap(10).items_center()
-        .child(div().font_family(PIXEL).text_size(15).text_color(t.muted).child("ISSUES"))
+        .child(h_flex().gap(8).items_center().font_family(PIXEL).text_size(15)
+          .child(pixelIcon(BOARD_ICON, t.muted)).child(div().text_color(t.muted).child("ISSUES")))
+        .child(div().w(1).h(16).bg(t.border))
         .children(SOURCES.map((s, k) => chip(`src-${s}`, `${k + 1} ${BOARDS[s].label}`, this.items.filter((i) => i.source === s).length, this.source === s, () => this.setSource(s))))
         .when(jira && Boolean(sprint), (el) => el.child(div().text_size(11).text_color(t.dim).child(sprint)))
-        .child(h_flex().flex_1().h(30).px(10).gap(8).items_center().border_1().border_color(t.input).rounded(6).bg(t.background)
-          .child(div().text_color(t.accent).child("/"))
+        .child(h_flex().flex_1().h(30).px(10).gap(8).items_center().border_1().border_color(t.accent).bg(t.background)
+          .child(div().text_color(t.accent).font_bold().child(">"))
           .child(Input.new(this.input).flex_1().h_full().text_size(13).text_color(t.foreground)))
         .child(div().text_size(11).text_color(t.dim).child(this.loading ? "Updating…" : this.updated ? `Updated ${age(new Date(this.updated).toISOString())} ago` : ""))
-        .child(h_flex().id("refresh").px(8).h(26).items_center().rounded(4).border_1().border_color(t.border).cursor_pointer()
+        .child(h_flex().id("refresh").px(8).h(24).items_center().rounded(6).cursor_pointer()
           .hover((s) => s.bg(t.hover)).role("button").on_click((_e, cx) => this.refresh(cx)).text_color(t.muted).child("r refresh")))
       .child(h_flex().gap(6).flex_wrap().children(chips()))
       .children(this.errors.map((e) => div().text_size(11).text_color(t.blocked).child(`${e.source}: ${e.message.split("\n")[0]}`)))
