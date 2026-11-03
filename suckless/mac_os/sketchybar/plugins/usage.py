@@ -3,6 +3,7 @@
 #   Claude: GET api.anthropic.com/api/oauth/usage (the call behind /usage) with the Claude Code OAuth token from the keychain,
 #           at most every 5 min, cached in ~/.cache/claude-usage.json; ~/.claude.json's cachedUsageUtilization is used when newer
 #   Codex : the last rate_limits in the final 200KB of the newest rollout-*.jsonl under ~/.codex/sessions
+#   Grok  : newest Grok Bot sand-client-persistence blob with usage.percentUsed (weekly pool; no 5-hour window)
 # Output is only the fields agent.sh uses. A value whose reset time has passed is unused in the new window → 0% (no reset time)
 #   (Codex writes a new record on every use, so no record after the reset means 0 is right.)
 import json, os, glob, time, subprocess, urllib.request, datetime as D
@@ -78,5 +79,23 @@ try:
         if isinstance(s.get("used_percent"), (int, float)):
             ok = live(iso(s.get("resets_at"))); c.update(week=round(s["used_percent"]) if ok else 0, weekResetsAt=iso(s.get("resets_at")) if ok else "")
         out["codex"] = c
+except Exception: pass
+try:
+    root = Path(f"{H}/Library/Application Support/Grok Bot/sand-client-persistence")
+    best = None
+    for f in root.glob("*.blob"):
+        try: raw = json.loads(f.read_text())
+        except Exception: continue
+        value = raw.get("value")
+        reading = (value.get("reading") if isinstance(value, dict) else {}) or {}
+        usage = reading.get("usage") or {}
+        if not isinstance(usage.get("percentUsed"), (int, float)): continue
+        at = reading.get("readAtMs") or 0
+        if not best or at > best[0]: best = (at, usage)
+    if best:
+        usage = best[1]
+        iso = D.datetime.fromtimestamp((usage.get("nextResetMs") or 0) / 1000, D.timezone.utc).isoformat()
+        ok = live(iso)
+        out["grok"] = {"week": round(usage["percentUsed"]) if ok else 0, "weekResetsAt": iso if ok else ""}
 except Exception: pass
 print(json.dumps(out))

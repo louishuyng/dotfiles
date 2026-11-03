@@ -38,6 +38,17 @@ class ClaudeUsageTests(unittest.TestCase):
         }}})
         self.assertEqual(result['claude']['windows'][0]['percent'], 42)
 
+    def test_grok_weekly_pool(self):
+        reset_ms = int(__import__('datetime').datetime.fromisoformat(RESET.replace('Z', '+00:00')).timestamp() * 1000)
+        result = self.read_usage({
+            'Library/Application Support/Grok Bot/sand-client-persistence/usage.blob': {
+                'value': {'reading': {'readAtMs': NOW * 1000, 'usage': {'percentUsed': 17, 'nextResetMs': reset_ms}}},
+            },
+            'Library/Application Support/Grok Bot/sand-client-persistence/other.blob': {'value': 'not-json-object'},
+        })
+        self.assertEqual(result['grok']['week'], 17)
+        self.assertTrue(result['grok']['weekResetsAt'])
+
     def test_new_limits_array(self):
         result = self.read_usage({'.claude.json': {'cachedUsageUtilization': {
             'fetchedAtMs': NOW * 1000,

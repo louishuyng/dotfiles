@@ -13,6 +13,7 @@ fill() {  # <app name> <title> — size the title cell to the title, at most MED
   # Label updates already hold this lock while resizing both islands together.
   if [ -z "$LE_GROW" ]; then
     local LK="$HOME/.cache/sketchybar/front_app.lock" acquired=0
+    [ -d "$LK" ] && [ $(( $(date +%s) - $(stat -f %m "$LK") )) -gt 10 ] && rmdir "$LK" 2>/dev/null   # stale lock from a killed holder (see left_label.sh)
     for _ in $(seq 40); do
       if mkdir "$LK" 2>/dev/null; then acquired=1; break; fi
       sleep 0.05

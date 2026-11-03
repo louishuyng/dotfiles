@@ -4,6 +4,8 @@ resize_left_label() {
   local item="$1" text="$2" cache="$HOME/.cache/sketchybar/$3"
   local lock="$HOME/.cache/sketchybar/front_app.lock" acquired=0
   local old_width padding width query props
+  # A holder killed mid-update (reload, sleep) never removes the lock; holders finish in ~2s.
+  [ -d "$lock" ] && [ $(( $(date +%s) - $(stat -f %m "$lock") )) -gt 10 ] && rmdir "$lock" 2>/dev/null || true
   for _ in $(seq 40); do
     if mkdir "$lock" 2>/dev/null; then acquired=1; break; fi
     sleep 0.05

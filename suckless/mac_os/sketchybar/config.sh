@@ -9,12 +9,11 @@ BAR_BLUR=0       # blur behind the bar (0 = off). macOS 27: with blur on, the ba
 POPUP_OPACITY=$BAR_OPACITY   # popup opacity %. Set a number to make it differ
 POPUP_BLUR=20   # popups are redrawn on every open, so no blur problem
 TERMINAL_APP="Ghostty"                        # terminal opened from popups
-NOTIF_APPS=("Slack" "Mail" "Messages")        # apps whose Dock badges are summed
 CAL_NEXT=0                                    # next-event text on the left island ("10:00 standup +8m"). 0 = off, 1 = on. Separate from the calendar popup
 CAL_WINDOW_MIN=60                             # only events within this many minutes are shown on the bar
 CWD_FILE="$HOME/.cache/sketchybar/cwd"
 WORK_DIR="$HOME"                    # ports popup: shows only servers started under this folder — change it (your projects folder)
-HOLIDAY_CAL=""                                # name of a subscribed holiday calendar in Calendar.app, e.g. "US Holidays" or "대한민국 공휴일"; empty = no holidays
+HOLIDAY_CAL="Ngày lễ ở Việt Nam"                              # name of a subscribed holiday calendar in Calendar.app, e.g. "US Holidays" or "대한민국 공휴일"; empty = no holidays
 
 # pilo circle: live Claude/Codex sessions as a small pixel character (fed by ai/hooks/agent-status.sh). 0 = off
 PILO_ISLAND=1

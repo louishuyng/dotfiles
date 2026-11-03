@@ -39,7 +39,7 @@ def one(x, n=40):
 def ago(s): s = int(s); return f"{s}s" if s < 60 else f"{s // 60}m" if s < 3600 else f"{s // 3600}h"
 RANK = ["blocked", "stalled", "running", "idle"]
 if not A:
-    print("unbound\t0\t0"); print("none\tno claude or codex session running\tunbound\t\t"); sys.exit(0)
+    print("unbound\t0\t0"); print("none\tno claude, codex, or grok session running\tunbound\t\t"); sys.exit(0)
 print(min((a[1] for a in A), key=RANK.index), sum(a[1] == "running" for a in A), sum(a[1] == "blocked" for a in A), sep="\t")
 W = {"blocked": "needs approval", "running": "working", "stalled": "no signal", "idle": "idle"}
 for agent, st, cwd, age, sock, pane in sorted(A, key=lambda a: (RANK.index(a[1]), a[3])):
@@ -77,7 +77,7 @@ running|working
 blocked|waiting on you - approve in the pane
 stalled|looks stuck - no signal for 10+ min
 idle|idle - waiting for your prompt
-unbound|no session - no claude or codex open
+unbound|no session - no claude, codex, or grok open
 LEGEND
 # Divider width = text width of the longest row (name column 137 + columns × 6.9; the 12 on each side comes from the background padding). An item with no text has zero width, so it is set here
 LW=$(printf '%s' "$rows" | perl -CS -Mutf8 -F'\t' -lane '$_ = $F[1]; $w = length($_) + (() = /[\p{EastAsianWidth=W}\p{EastAsianWidth=F}]/g); $m = $w if $w > $m; END { printf "%d", 137 + $m * 6.9 }')
