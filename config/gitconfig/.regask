@@ -1,6 +1,6 @@
 [user]
   email = louis.nguyen@regask.com
-  name = Louis Nguyen
+  name = louishuyng-regask
   signingkey = ~/.ssh/regask.pub
 
 [gpg]

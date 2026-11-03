@@ -59,6 +59,10 @@
     cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
     trustExitCode = true
 
+[user]
+	name = Louis Huy Nguyen
+	email = huynguyennbk@gmail.com
+
 [includeIf "gitdir:~/.dotfiles/"]
   path = ~/.dotfiles/config/gitconfig/.personal
 
@@ -78,9 +82,6 @@
 	required = true
 [url "git@github.com-regask:regask/"]
 	insteadOf = https://github.com/regask/
-[user]
-	name = Louis Huy Nguyen
-	email = huynguyennbk@gmail.com
 [credential "https://omniyatgroup.ghe.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
