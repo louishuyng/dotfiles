@@ -9,10 +9,7 @@ TS=""; for t in "$(command -v tailscale)" /usr/local/bin/tailscale /opt/homebrew
   [ -n "$t" ] && [ -x "$t" ] && { TS=$t; break; }; done
 [ -n "$TS" ] || { sketchybar --set ts drawing=off; exit 0; }
 J=$(perl -e 'alarm 5; exec @ARGV' "$TS" status --json 2>/dev/null)
-IFS=$'\t' read -r STATE NET <<<"$(python3 -c 'import json,sys
-try: d=json.load(sys.stdin)
-except Exception: d={}
-print(d.get("BackendState","") + "\t" + ((d.get("CurrentTailnet") or {}).get("Name") or ""))' <<<"$J")"
+IFS=$'\t' read -r STATE NET <<<"$("$HOME/.local/bin/dotbin" sb ts-state <<<"$J")"
 ON=0; [ "$STATE" = Running ] && ON=1
 sketchybar --set ts drawing=on icon.background.image="$PX/ts_$([ $ON = 1 ] && echo on || echo off).png"
 
@@ -24,20 +21,7 @@ R=()   # right-hand image per row number
 { if [ $ON = 1 ]; then printf 'status\tconnected\t%s\t\n' "$TEXT"; else printf 'status\toff\t%s\t\n' "$TEXT3"; fi
   k=1
   if [ $ON = 1 ]; then
-    python3 -c 'import json,sys
-d=json.load(sys.stdin); rows=[]
-def full(p): return (p.get("DNSName") or "").split(".")[0] or p.get("HostName","?")
-import os.path
-allp=[d.get("Self") or {}]+list((d.get("Peer") or {}).values())
-pre=os.path.commonprefix([full(p) for p in allp]); pre=pre[:pre.rfind("-")+1] if len(allp)>1 and "-" in pre else ""   # drop the common prefix (e.g. myname-) — like the design: macbookpro·iphone
-def name(p): return full(p)[len(pre):] or full(p)
-s=d.get("Self") or {}
-rows.append((0,name(s),(s.get("TailscaleIPs") or [""])[0],1,1,""))
-peers=sorted((d.get("Peer") or {}).values(), key=lambda p:(not p.get("Online"), name(p)))
-for p in peers: rows.append((1,name(p),(p.get("TailscaleIPs") or [""])[0],1 if p.get("Online") else 0,0,(p.get("DNSName") or "").rstrip(".") if p.get("OS")=="macOS" else ""))
-for _,n,ip,on,me,vnc in rows[:8]:
-  if len(n) > 16: n = n[:15] + "…"   # keep clear of the IP on the right (max 15 chars): 312 − 64 − IP 108 − padding → name cell about 16 chars (+ this device)
-  print("%s\t%s\t%s\t%d\t%s" % (n, ip, "me" if me else "peer", on, vnc))' <<<"$J" |
+    "$HOME/.local/bin/dotbin" sb ts-rows <<<"$J" |
     while IFS=$'\t' read -r n ip who on vnc; do
       # Mac devices (online): clicking the row opens screen sharing (vnc://<MagicDNS name>, no address used); other online devices copy the IP. This device has no click
       if [ "$on" = 1 ]; then cl=""; [ "$who" = peer ] && cl="printf %s '$ip' | pbcopy"; [ -n "$vnc" ] && cl="open 'vnc://$vnc'"
@@ -46,14 +30,7 @@ for _,n,ip,on,me,vnc in rows[:8]:
     done
   fi
 } > "$C/ts.rows"
-DEV=$(python3 -c 'import json,sys
-try: d=json.load(sys.stdin)
-except Exception: d={}
-def name(p): return (p.get("DNSName") or "").split(".")[0] or p.get("HostName","?")
-if d.get("BackendState")=="Running":
-  s=d.get("Self") or {}; print((s.get("TailscaleIPs") or [""])[0] + "\t1")
-  for p in sorted((d.get("Peer") or {}).values(), key=lambda p:(not p.get("Online"), name(p)))[:7]:
-    print(((p.get("TailscaleIPs") or [""])[0] if p.get("Online") else "offline") + "\t" + ("1" if p.get("Online") else "0"))' <<<"$J")
+DEV=$("$HOME/.local/bin/dotbin" sb ts-dev <<<"$J")
 N=$(grep -c . "$C/ts.rows")
 { cat "$C/ts.rows"
   for ((i = N; i < 9; i++)); do printf '~\t.\t\t\n'; done
@@ -73,19 +50,11 @@ for i in 2 3 4 5 6 7 8; do a+=(--set ts.p.$i label.font="$FONT:Regular:12.0" ico
 # Macs with screen sharing (online) get ↗ right after the name — same --text-2 as other popup links (admin ↗ etc.) · one space apart. Two colors on one row, so only the ↗ is a text image
 #   position = value cell 64 + name width + space 7.2 − margin inside the image 1
 AR=$(img "↗" "$TEXT2")
-VN=$(python3 -c 'import json,sys
-d=json.load(sys.stdin)
-def full(p): return (p.get("DNSName") or "").split(".")[0] or p.get("HostName","?")
-import os.path
-allp=[d.get("Self") or {}]+list((d.get("Peer") or {}).values())
-pre=os.path.commonprefix([full(p) for p in allp]); pre=pre[:pre.rfind("-")+1] if len(allp)>1 and "-" in pre else ""
-peers=sorted((d.get("Peer") or {}).values(), key=lambda p:(not p.get("Online"), full(p)[len(pre):] or full(p)))
-for i,p in enumerate(peers[:7]):
-  if p.get("Online") and p.get("OS")=="macOS": print(i+2, (full(p)[len(pre):] or full(p))[:16])' <<<"$J" 2>/dev/null)
+VN=$("$HOME/.local/bin/dotbin" sb ts-vnc <<<"$J" 2>/dev/null)
 while read -r row nm; do [ -z "$row" ] && continue
   # the row background image is used by the IP on the right, so ↗ goes in as the icon (●) background image — position is relative to the left end of the row (measured); name end ↔ ↗ 8.5 = same as admin ↗
   a+=(--set ts.p.$row icon.background.drawing=on icon.background.color=0x00000000 icon.background.image="$AR" icon.background.image.scale=0.5 \
-      icon.background.image.drawing=on icon.background.image.y_offset=-1 icon.background.image.padding_left=$(( 64 + $(perl "$P/width.pl" "$nm") + 7 )))
+      icon.background.image.drawing=on icon.background.image.y_offset=-1 icon.background.image.padding_left=$(( 64 + $("$HOME/.local/bin/dotbin" sb width "$nm") + 7 )))
 done <<<"$VN"
 i=1; while IFS=$'\t' read -r ip on; do [ -z "$ip" ] && continue
   if [ "$on" = 1 ]; then a+=(--set ts.p.$i icon.color=$ACCENT); right ts.p.$i "$ip" "$TEXT2"; else right ts.p.$i offline "$TEXT3"; fi

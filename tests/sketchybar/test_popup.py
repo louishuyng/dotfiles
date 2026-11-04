@@ -42,6 +42,12 @@ printf '_\tSong\twhite\t' | popup_rows media MEDIA
         ])
         self.assertEqual(commands, [])
 
+    def test_extra_caller_item_does_not_force_a_rebuild(self):
+        commands = self.render_with_cached_rows([
+            'media.p.a', 'media.p.t', 'media.p.g', 'media.slider', 'media.p.0', 'media.p.z',
+        ])
+        self.assertEqual(commands, [])
+
 
 if __name__ == '__main__':
     unittest.main()

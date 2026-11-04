@@ -45,6 +45,6 @@ SHOW="$CONFIG_DIR/plugins/show_list.sh ports"
     [ -n "$port" ] && printf ':%s\t%s  ↗\t%s\topen http://localhost:%s\n' "$port" "$what" "$TEXT" "$port"
   done
   [ "$N" -gt $MAX ] && printf '…\t+%s more · show all ↗\t%s\t%s\n' $((N - MAX)) "$TEXT2" "$SHOW"
-} | perl "$CONFIG_DIR/plugins/fit.pl" 260 | popup_rows ports PORTS
+} | "$HOME/.local/bin/dotbin" sb fit 260 | popup_rows ports PORTS
 
 # The cell is a pixel icon only (rev 7) — the port count shows only in the popup

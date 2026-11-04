@@ -54,11 +54,9 @@ popup_rows() {
   mkdir -p "$POPUP_CACHE"
   n=$(grep -c . <<<"$data")
   # A script from before a reload can leave cached rows that no longer exist.
-  items=$(sketchybar --query "$p" 2>/dev/null | python3 -c '
-import json, sys
-print("\n".join(json.load(sys.stdin).get("popup", {}).get("items", [])))
-') || return 0
-  old=$(printf '%s\n' "$items" | grep -c .)
+  items=$(sketchybar --query "$p" 2>/dev/null | "$HOME/.local/bin/dotbin" sb popup-items) || return 0
+  # count only our own rows: a caller's extra popup item (vol.sh's vol.slider) must not force a rebuild that deletes it
+  old=$(printf '%s\n' "$items" | grep -c "^${p//./\\.}\\.p\\.")
   [ "$old" = "$((n + 4))" ] && [ "$title"$'\n'"$data" = "$(cat "$POPUP_CACHE/popup.$p" 2>/dev/null)" ] && return 0
 
   if [ "$((n + 4))" != "$old" ]; then   # row count changed → rebuild (regex --remove does not work, so remove by name)
@@ -104,7 +102,7 @@ print("\n".join(json.load(sys.stdin).get("popup", {}).get("items", [])))
 
 anim_label() {  # <item> <text> [more --set etc.] — change the text and animate the width over 0.2s (so the island width does not jump)
   local it="$1" t="$2" w; shift 2
-  w=$(perl "${POPUP_LIB%/*}/width.pl" "$t")   # text width only — gaps between cells go in item padding (kept out of label.width)
+  w=$("$HOME/.local/bin/dotbin" sb width "$t")   # text width only — gaps between cells go in item padding (kept out of label.width)
   [ -n "$SB_BOOT" ] && { sketchybar --set "$it" label="$t" "$@" label.width=$w; return; }   # at startup apply at once (the bar is still off screen)
   sketchybar --set "$it" label="$t" "$@" --animate tanh 12 --set "$it" label.width=$w
 }

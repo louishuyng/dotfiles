@@ -211,6 +211,12 @@ packages() {
   esac
 }
 casks() { $links_only || { ensure_manager; run brew install --cask "$@"; }; }
+# Rust status-bar helpers (tmux, sketchybar) → ~/.local/bin/dotbin
+install_dotbin() {
+  $links_only && return 0
+  command -v cargo >/dev/null || fail 'Install Rust (mise use -g rust) to build rust/dotbin.'
+  run cargo install --quiet --locked --path "$repo_root/rust/dotbin" --root "$HOME/.local"
+}
 install_mise() {
   $links_only && return 0
   if [[ "$platform" == debian ]]; then
@@ -337,6 +343,8 @@ apply_task() {
       packages tmux git
       if [[ "$platform" == mac ]]; then packages sesh; fi
       link_file "$repo_root/terminals/tmux/.tmux.conf" "$HOME/.tmux.conf"
+      # tmux falls back to terminals/tmux/scripts/*.sh when dotbin is missing.
+      command -v cargo >/dev/null && install_dotbin
       config terminals/sesh sesh
       config terminals/herdr/config.toml herdr/config.toml
       link_file "$repo_root/terminals/herdr-projects" "$HOME/.herdr-projects/settings"
@@ -433,6 +441,7 @@ apply_task() {
         clone_repo https://github.com/FelixKratz/SbarLua.git "$cache_dir/SbarLua"
         run make -C "$cache_dir/SbarLua" install
         run make -C "$repo_root/suckless/mac_os/sketchybar/helpers"
+        install_dotbin   # sketchybar plugins need it for text widths and popup queries
       fi
       config suckless/mac_os/aerospace aerospace
       config suckless/mac_os/sketchybar sketchybar

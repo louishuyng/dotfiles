@@ -15,7 +15,7 @@ bar() { # glyph (built-in and others = 3-level speaker / Bluetooth = headphones,
   for i in 1 2 3 4 5; do a+=(--set vol.$i background.color=$([ $i -le $n ] && echo $TEXT || echo $LINE)); done
   # the slider % ends at the right padding 12 (a slider item ignores label.width, so pad the front by the text width)
   local lt="$V%" lc=$TEXT hc=$TEXT lw; [ "$M" = true ] && { lt=off; lc=$TEXT3; hc=$TEXT3; }   # when muted show off (--text-3) instead of %
-  lw=$(perl "$P/width.pl" "$lt")
+  lw=$("$HOME/.local/bin/dotbin" sb width "$lt")
   [ -n "$(sketchybar --query vol.slider 2>/dev/null)" ] && a+=(--set vol.slider slider.percentage=$V slider.highlight_color=$hc label="$lt" label.color=$lc label.padding_left=$(( 53 - lw )))
   sketchybar "${a[@]}"
 }
@@ -30,7 +30,7 @@ KIND=$(awk -F'\t' '$4==1{print $3}' <<<"$DEV"); printf '%s\t%s\n' "$M" "$KIND" >
 # The popup items are created here once, in order: padding · title · padding · slider (vol) · 9 rows · padding. --move does not work on popup items, so
 # creation order is what puts the slider under the title. The row count (9) is written to the popup.sh cache so popup_rows does not rebuild them
 if [ -z "$(sketchybar --query vol.slider 2>/dev/null)" ]; then
-  r=(); for it in $(sketchybar --query vol.ul 2>/dev/null | python3 -c "import json,sys;print(' '.join(json.load(sys.stdin)['popup']['items']))" 2>/dev/null); do r+=(--remove "$it"); done
+  r=(); for it in $(sketchybar --query vol.ul 2>/dev/null | "$HOME/.local/bin/dotbin" sb popup-items 2>/dev/null); do r+=(--remove "$it"); done
   [ ${#r[@]} -gt 0 ] && sketchybar "${r[@]}" >/dev/null 2>&1
   a=(--add item vol.ul.p.a popup.vol.ul --add item vol.ul.p.t popup.vol.ul --add item vol.ul.p.g popup.vol.ul
      --add slider vol.slider popup.vol.ul 132
@@ -50,7 +50,8 @@ bar
 # device row: the selected device has glyph and name --text + ✓, the others glyph --text-3 · name --text-2
 # trailing space on 'Mute ' / 'Unmute ' (→ NBSP): a row with no space is drawn about 1pt higher, so both variants carry one and sit at the same height
 W=261; VW=$(( W - 64 - 12 ))   # value cell: from after the left cell 64 (padding 12 included) to the right padding 12
-right() { local s=$(( ((VW - $(perl "$P/width.pl" "$1") - 7) * 10 + 36) / 72 )); [ $s -lt 1 ] && s=1; printf '%s%*s✓' "$1" $s ''; }   # rounded
+right() { local n s; n=$(printf '.\t%s\n' "$1" | "$HOME/.local/bin/dotbin" sb fit $((VW - 14)) | cut -f2)   # keep room for " ✓"
+  s=$(( ((VW - $("$HOME/.local/bin/dotbin" sb width "$n") - 7) * 10 + 36) / 72 )); [ $s -lt 1 ] && s=1; printf '%s%*s✓' "$n" $s ''; }   # rounded
 SAY="@$P/vol_out.sh"; MUTE_CMD="@osascript -e \"set volume output muted (not output muted of (get volume settings))\"; SENDER=routine CONFIG_DIR=\"$CONFIG_DIR\" bash \"$P/vol.sh\""
 { printf '%s\t%s\t%s\t%s\n' "$G_MUTE" "$([ "$M" = true ] && echo 'Unmute ' || echo 'Mute ')" "$TEXT" "$MUTE_CMD"
   printf '_\tOUTPUT\t%s\t\n' "$TEXT3"
@@ -58,10 +59,10 @@ SAY="@$P/vol_out.sh"; MUTE_CMD="@osascript -e \"set volume output muted (not out
     case "$kind" in builtin) g=$G_LAPTOP ;; bluetooth) g=$G_BT ;; *) g=$G_HI ;; esac
     if [ "$cur" = 1 ]; then printf '%s\t%s\t%s\t\n' "$g" "$(right "$name")" "$TEXT"
     else printf '%s\t%s\t%s\t%s set %s %s\n' "$g" "$name" "$TEXT2" "$SAY" "$id" "$k"; fi
-  done <<<"$DEV"
+  done <<<"$("$HOME/.local/bin/dotbin" sb fit $VW <<<"$DEV")"   # long names spill past the fixed width
   while IFS=$'\t' read -r addr name; do [ -z "$addr" ] && continue; k=$((k + 1)); [ $k -gt 6 ] && break   # Bluetooth that is only paired — click connects, then switches
     printf '%s\t%s\t%s\t%s connect %s %s\n' "$G_BT" "$name" "$TEXT2" "$SAY" "$addr" "$k"
-  done <<<"$BT"
+  done <<<"$("$HOME/.local/bin/dotbin" sb fit $VW <<<"$BT")"
   for ((; k < 6; k++)); do printf '~\t.\t\t\n'; done
   printf 'open\tSound Settings ↗\t%s\topen "x-apple.systempreferences:com.apple.Sound-Settings.extension"\n' "$TEXT2"
 } | awk -F'\t' -v OFS='\t' '{ gsub(/ /, "\302\240", $2) } 1' | POPUP_W=$W popup_rows vol.ul VOLUME

@@ -27,27 +27,8 @@ HC="$HOME/.cache/sketchybar/holiday.cal"; [ -s "$HC" ] || { [ -n "${HOLIDAY_CAL-
 HID=$([ -n "${HOLIDAY_CAL-}" ] && cat "$HC" 2>/dev/null)
 HRAW=""; [ -n "$HID" ] && HRAW=$("${CONFIG_DIR}/helper/events" "$base" "$HID" 2>/dev/null)
 EV=$("${CONFIG_DIR}/helper/events" "$base" 2>/dev/null | grep -vxF -f <(printf '%s\n' "$HRAW"))   # everything, minus the holiday rows
-HOL=""; [ -n "$HRAW" ] && HOL=$(python3 -c 'import sys,datetime as D
-y=int(sys.argv[1][:4]); rows=[]
-for l in sys.stdin:
-  if "\t" not in l: continue
-  k,n=l.rstrip("\n").split("\t",1); a,_,b=k.partition("-"); b=b or a
-  rows.append([a,b,n,n.replace(" 연휴","").strip()])
-nd=lambda s:(D.date(y,int(s[:2]),int(s[3:]))+D.timedelta(days=1)).strftime("%m.%d")
-out=[]
-for r in rows:
-  if out and out[-1][3]==r[3] and nd(out[-1][1])==r[0]: out[-1][1]=r[1]
-  else: out.append(r[:])
-for a,b,n,base in out: print(("%s-%s" % (a,b) if a!=b else a)+"\t"+(base if any(x[3]==base and x[2]!=base for x in rows) and a!=b else n))' "$base" <<<"$HRAW")
-HDAYS=$(python3 -c 'import sys,datetime as D
-y,m=int(sys.argv[1][:4]),int(sys.argv[1][5:7])
-for l in sys.stdin:
-  if "\t" not in l: continue
-  k=l.split("\t")[0]; a,_,b=k.partition("-"); b=b or a
-  d=D.date(y,int(a[:2]),int(a[3:])); e=D.date(y,int(b[:2]),int(b[3:]))
-  while d<=e:
-    if d.month==m: print(d.day)
-    d+=D.timedelta(days=1)' "$base" <<<"$HOL")
+HOL=""; [ -n "$HRAW" ] && HOL=$("$HOME/.local/bin/dotbin" sb clock-holidays "$base" <<<"$HRAW")
+HDAYS=$("$HOME/.local/bin/dotbin" sb clock-hdays "$base" <<<"$HOL")
 MAXEV=16   # popup height cap: over 16 events (24pt×16) → '+N more' — so it fits on a MacBook screen
 
 STEP="@CONFIG_DIR='$CONFIG_DIR' SENDER=cal_step bash '$CONFIG_DIR/plugins/clock.sh'"
@@ -68,7 +49,7 @@ CR=$(mktemp -d "${TMPDIR:-/tmp}/calrows.XXXXXX"); trap 'rm -rf "$CR"' EXIT   # p
   n=0; while IFS=$'\t' read -r key what col; do     # "09.23–26<TAB>title<TAB>color" — events + holidays (names --err), by date
     [ -z "$key" ] && continue; n=$((n + 1)); [ $n -gt $MAXEV ] && continue
     printf '%s\t%s\t%s\topen -a Calendar\n' "$key" "$what" "${col:-$TEXT}"
-  done < <({ [ -n "$EV" ] && awk -F'\t' -v c="$TEXT" '{print $1"\t"$2"\t"c}' <<<"$EV"; [ -n "$HOL" ] && awk -F'\t' -v c="$ERR" '{print $1"\t"$2"\t"c}' <<<"$HOL"; } | sort -s -t$'\t' -k1,1) | perl "$CONFIG_DIR/plugins/fit.pl" 145   # long titles are cut with … to the width (255 - 98 - 12) / left cell 98 = padding 12 + "09.01-10.01" 11 chars (79) + 7
+  done < <({ [ -n "$EV" ] && awk -F'\t' -v c="$TEXT" '{print $1"\t"$2"\t"c}' <<<"$EV"; [ -n "$HOL" ] && awk -F'\t' -v c="$ERR" '{print $1"\t"$2"\t"c}' <<<"$HOL"; } | sort -s -t$'\t' -k1,1) | "$HOME/.local/bin/dotbin" sb fit 145   # long titles are cut with … to the width (255 - 98 - 12) / left cell 98 = padding 12 + "09.01-10.01" 11 chars (79) + 7
   n=$(( $(grep -c . <<<"$EV") + $(grep -c . <<<"$HOL") ))
   [ $n -gt $MAXEV ] && printf '_\t+%s more\t%s\topen -a Calendar\n' $((n - MAXEV)) "$TEXT3"
   printf '_\tCalendar ↗\t%s\topen -a Calendar\n' "$TEXT2"

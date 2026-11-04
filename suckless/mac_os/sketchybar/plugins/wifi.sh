@@ -24,20 +24,13 @@ fi
 # popup WI-FI (width 261, same frame as the volume popup): ssid · ip · router · NETWORKS (saved networks in range now, max 4 · ✓ right of the current one) · settings
 #   clicking a saved network makes wifi_out.sh switch to it (uses the keychain password). No browsing of nearby networks and no password entry for new ones — names are hidden from apps without location permission (confirmed 10-02)
 W=261; VW=$(( W - 64 - 12 )); NF="JetBrainsMono Nerd Font Propo"; G_WIFI=$'\xf3\xb0\x96\xa9'
-right() { local s=$(( ((VW - $(perl "$CONFIG_DIR/plugins/width.pl" "$1") - 7) * 10 + 36) / 72 )); [ $s -lt 1 ] && s=1; printf '%s%*s✓' "$1" $s ''; }
+right() { local s=$(( ((VW - $("$HOME/.local/bin/dotbin" sb width "$1") - 7) * 10 + 36) / 72 )); [ $s -lt 1 ] && s=1; printf '%s%*s✓' "$1" $s ''; }
 # only saved networks that are in range now (strongest first, current one on top). Nearby names are scanned by a location-permitted app (helper/WifiScan.app) only when the popup opens
 #   wifi_scan.sh leaves a scanning marker file (wifiscan.busy), runs the app, then calls this again. No constant polling — while closed, the last result stays
 SC="$HOME/.cache/sketchybar/wifiscan.txt"; BUSY="$HOME/.cache/sketchybar/wifiscan.busy"
 SAVED=$(networksetup -listpreferredwirelessnetworks $IF 2>/dev/null | tail -n +2 | sed 's/^[[:space:]]*//')
 SCST=$(head -1 "$SC" 2>/dev/null)
-NETS=$(python3 -c 'import sys
-saved=[l for l in sys.argv[1].split("\n") if l]; cur=sys.argv[2]
-scan={}
-for l in open(sys.argv[3]).read().split("\n")[1:]:
-  if "\t" in l: n,r=l.rsplit("\t",1); scan[n]=int(r)
-vis=[n for n in saved if n in scan]
-vis.sort(key=lambda n:(n!=cur, -scan[n]))
-for n in vis[:4]: print("%s\t%d" % (n, scan[n]))' "$SAVED" "$SSID" "$SC" 2>/dev/null)
+NETS=$("$HOME/.local/bin/dotbin" sb wifi-nets "$SAVED" "$SSID" "$SC" 2>/dev/null)
 glyph() { # RSSI → Wi-Fi strength glyph, 4 levels
   if [ "$1" -ge -55 ]; then printf '\xf3\xb0\xa4\xa8'; elif [ "$1" -ge -65 ]; then printf '\xf3\xb0\xa4\xa5'; elif [ "$1" -ge -75 ]; then printf '\xf3\xb0\xa4\xa2'; else printf '\xf3\xb0\xa4\x9f'; fi; }
 { printf 'ssid\t%s\t%s\t\nip\t%s\t%s\t\nrouter\t%s\t%s\t\n' "${SSID:-—}" "$TEXT" "${IP:-—}" "$TEXT" "$(ipconfig getoption $IF router 2>/dev/null || echo —)" "$TEXT"   # router also in the value color (--text) — a value like ip

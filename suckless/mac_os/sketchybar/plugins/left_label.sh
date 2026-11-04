@@ -35,18 +35,9 @@ resize_left_label() {
     [ -n "$query" ] && break
     sleep 0.05
   done
-  props=$(printf '%s' "$query" | python3 -c '
-import json, sys
-d = json.load(sys.stdin)
-label, geometry = d["label"], d["geometry"]
-width = label["width"]
-if width <= 0:
-    bounds = next(iter(d["bounding_rects"].values()))
-    width = bounds["size"][0] - geometry["padding_left"] - geometry["padding_right"]
-print(round(width), label["padding_left"] + label["padding_right"])
-') || return 0
+  props=$(printf '%s' "$query" | "$HOME/.local/bin/dotbin" sb label-props) || return 0
   read -r old_width padding <<< "$props"
-  width=$(( $(perl "$CONFIG_DIR/plugins/width.pl" "$text") + padding ))
+  width=$(( $("$HOME/.local/bin/dotbin" sb width "$text") + padding ))
 
   if [ -n "$SB_BOOT" ]; then
     sketchybar --set "$item" label="$text" label.width="$width"

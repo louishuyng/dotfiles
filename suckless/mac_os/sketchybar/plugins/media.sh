@@ -21,18 +21,7 @@ fill() {  # <app name> <title> — size the title cell to the title, at most MED
     [ "$acquired" = 1 ] || return 0
   fi
   # right end of the left island = drawn end + (target app-name width − drawn width): gives the final value even when read mid-animation (10-06)
-  le=$(python3 -c "
-import json,sys,subprocess as sp
-import time
-def q(n):   # sometimes an empty reply when events pile up → retry up to 3 times
-    for _ in range(3):
-        o=sp.run(['sketchybar','--query',n],capture_output=True,text=True).stdout
-        if o.strip(): return json.loads(o)
-        time.sleep(0.05)
-    raise SystemExit(1)
-r=list(q('island.left')['bounding_rects'].values())[0]; f=q('front_app'); fr=list(f['bounding_rects'].values())[0]
-i=f['icon']; iw=i['width']+i['padding_left']+i['padding_right'] if i['drawing']=='on' else 0   # app icon cell (fixed icon.width)
-print(int(r['origin'][0]+r['size'][0]+iw+f['label']['width']-fr['size'][0])-int(sys.argv[1]))" "$(cat "$HOME/.cache/sketchybar/bar_x0" 2>/dev/null || echo 0)" 2>/dev/null)
+  le=$("$HOME/.local/bin/dotbin" sb left-edge "$(cat "$HOME/.cache/sketchybar/bar_x0" 2>/dev/null || echo 0)" 2>/dev/null)
   [ -z "$le" ] && le=$(cat "$HOME/.cache/sketchybar/media_le" 2>/dev/null)   # if the query came back empty, use the previous value (when events pile up)
   [ -n "$le" ] && [ -n "$LE_GROW" ] && le=$(( le + LE_GROW ))   # final left-island edge after the label animation
   [ -n "$le" ] && echo "$le" > "$HOME/.cache/sketchybar/media_le"   # cache the final edge: a fallback to the pre-animation edge would push the media island over the new app name
@@ -42,13 +31,13 @@ print(int(r['origin'][0]+r['size'][0]+iw+f['label']['width']-fr['size'][0])-int(
   tw=$(( NOTCH_L - (le + 5) - iw ))
   local room=$tw   # title width that would reach the notch
   # cap the title cell: the island fits a short title and cuts a long one with …
-  local want; want=$(perl "$P/width.pl" "$2"); [ $want -gt $MEDIA_TITLE_MAX ] && want=$MEDIA_TITLE_MAX
+  local want; want=$("$HOME/.local/bin/dotbin" sb width "$2"); [ $want -gt $MEDIA_TITLE_MAX ] && want=$MEDIA_TITLE_MAX
   [ $tw -gt $want ] && tw=$want
   [ $tw -lt 20 ] && tw=20
   iw=$(( iw + tw ))
   # the island sits 5 after the left island; whatever the cap leaves over goes between it and the notch (notch.gap)
   local ng=$(( 5 + room - tw )); [ $ng -lt 5 ] && ng=5
-  text=$(printf 'k\t%s\n' "$2" | perl "$P/fit.pl" "$tw" | cut -f2)
+  text=$(printf 'k\t%s\n' "$2" | "$HOME/.local/bin/dotbin" sb fit "$tw" | cut -f2)
   # animate (0.2 s) only when the island width changes. Otherwise apply at once (the 2 s refresh), and at startup (SB_BOOT)
   local A=(--animate tanh 12)
   { [ -n "$SB_BOOT" ] || { [ -z "$LEFT_ITEM" ] && [ "$(cat "$HOME/.cache/sketchybar/media_iw" 2>/dev/null)" = "$iw" ]; }; } && A=()
@@ -81,7 +70,7 @@ if [ "$S" = none ]; then
   # with no last-played record (first run, or record cleared) last·app show — and the 'Resume' row is left out — so the wrong app (Apple Music) is not opened
   { printf 'last\t%s\t%s\t\napp\t%s\t%s\t\n' "${LTITLE:-—}" "$TEXT2" "${LAPP:-—}" "$TEXT2"
     [ -n "$LAPP" ] && printf '▶\tResume\t%s\t%s\n' "$TEXT" "$CTL toggle"
-    for k in 1 2 3 4 5 6 7 8 9; do printf '~\t.\t\t\n'; done; } | head -n 9 | perl "$P/fit.pl" 170 | POPUP_W=262 popup_rows media MEDIA   # row count fixed at 9 (so rows do not vanish if it changes while open)
+    for k in 1 2 3 4 5 6 7 8 9; do printf '~\t.\t\t\n'; done; } | head -n 9 | "$HOME/.local/bin/dotbin" sb fit 170 | POPUP_W=262 popup_rows media MEDIA   # row count fixed at 9 (so rows do not vanish if it changes while open)
   sketchybar --set media.p.2 icon.y_offset=-1 icon.padding_left=13 2>/dev/null   # ▶ Resume row: same correction as the control row above
   for k in 0 1 2; do sketchybar --set media.p.$k background.height=24 background.image.drawing=off background.color=0x00000000 label.drawing=on label.font="$FONT:Regular:12.0" 2>/dev/null; done
   exit 0
@@ -109,7 +98,7 @@ LIVE=0; [ "${DUR:-0}" -gt 0 ] 2>/dev/null || LIVE=1
 { printf '_\t.\t\t\n_\t%s\t%s\t\n_\t%s\t%s\t\n' "$TITLE" "$TEXT" "${ARTIST:-—}" "$TEXT2"
   if [ $LIVE = 1 ]; then printf '_\tlive\t%s\t\n~\t.\t\t\n' "$ERR"; else printf '_\t.\t\t\n_\t.\t\t\n'; fi
   printf '«\tPrevious\t%s\t@%s\n%s\t%s\t%s\t@%s\n»\tNext\t%s\t@%s\nopen\t%s ↗\t%s\t%s\n' "$TEXT" "$CTL prev" "$PL" "$PW" "$TEXT" "$CTL toggle" "$TEXT" "$CTL next" "$APP" "$TEXT2" "$OPEN"
-} | perl "$P/fit.pl" 230 | POPUP_W=262 popup_rows media MEDIA
+} | "$HOME/.local/bin/dotbin" sb fit 230 | POPUP_W=262 popup_rows media MEDIA
 # alignment of the control and open rows (left-cell glyph ↔ text). The popup draws left-cell text 1pt above the value text (measured on the volume popup's key cell).
 #   vertical: « » ❚❚ glyphs sit 1pt lower than Hangul on their own (center 3.2~3.4 vs 4.4, 12pt) so they line up as is · ▶ and the 'open' key are lowered 1pt (values measured with the original Hangul labels)
 #   horizontal: glyph left bearing ▶ 0 · ❚❚ 2.0 · « » 0.4 · Hangul key 0.6 → ▶ 13 · ❚❚ 11 line up the start
@@ -119,7 +108,7 @@ sketchybar --set media.p.5 icon.y_offset=0 icon.padding_left=12 label.y_offset=-
   --set media.p.7 icon.y_offset=0 icon.padding_left=12 label.y_offset=-1 --set media.p.8 icon.y_offset=-1 icon.padding_left=12 2>/dev/null
 ART=$(cat "$HOME/.cache/sketchybar/art.path" 2>/dev/null)   # media_src.sh saves it under a different name per track
 if [ -s "$ART" ]; then   # art: scaled down to the 238 cell
-  PH=$(sips -g pixelHeight "$ART" 2>/dev/null | awk '/pixelHeight/{print $2}'); SC=$(python3 -c "print(round(238/${PH:-238},4))")
+  PH=$(sips -g pixelHeight "$ART" 2>/dev/null | awk '/pixelHeight/{print $2}'); SC=$(awk -v h="${PH:-238}" 'BEGIN { printf "%.4f", 238 / h }')
   sketchybar --set media.p.0 background.drawing=on background.color=0x00000000 background.height=238 background.image="$ART" \
     background.image.drawing=on background.image.scale=$SC label.drawing=off icon.drawing=off width=238 padding_left=12 padding_right=12 2>/dev/null
 else
@@ -136,7 +125,7 @@ if [ $LIVE = 0 ]; then
   TP=$(t "${EL:-0}"); TD=$(t "$DUR")
   sketchybar --set media.p.3 icon.drawing=on icon="$TP" icon.color=$TEXT2 icon.width=dynamic icon.padding_left=12 icon.padding_right=0 \
     label="$TD" label.color=$TEXT3 label.width=dynamic label.align=left \
-    label.padding_left=$(( 235 + bp - $(perl "$P/width.pl" "$TP") - $(perl "$P/width.pl" "$TD") )) 2>/dev/null
+    label.padding_left=$(( 235 + bp - $("$HOME/.local/bin/dotbin" sb width "$TP") - $("$HOME/.local/bin/dotbin" sb width "$TD") )) 2>/dev/null
   sketchybar --set media.p.4 icon.drawing=on icon="$f" icon.color=$TEXT icon.width=dynamic icon.padding_left=12 icon.padding_right=0 \
     icon.font="Menlo:Regular:9.8" label="$e" label.color=$LINE label.font="Menlo:Regular:9.8" label.padding_left=$bp background.height=16 2>/dev/null
 fi

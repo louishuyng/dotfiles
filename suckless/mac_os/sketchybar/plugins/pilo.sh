@@ -9,37 +9,7 @@ PX="$HOME/.cache/sketchybar/px"
 # A burst of agent_status_change events runs once: only the last one continues, 0.15s after it arrived (earlier ones stop here)
 if [ "$SENDER" = agent_status_change ]; then E="$HOME/.cache/sketchybar/pilo_evt"; echo $$ > "$E"; sleep 0.15; [ "$(cat "$E" 2>/dev/null)" = $$ ] || exit 0; fi
 [ "${PILO_ISLAND:-1}" = 1 ] || { echo off > "$HOME/.cache/sketchybar/pilo"; sketchybar --set pilo drawing=off --set pilo.ul drawing=off; exit 0; }   # writing "off" also ends pilo_anim.sh
-OUT=$(/usr/bin/python3 -c '
-import os, sys, time, unicodedata as U
-import json, subprocess
-def hc(*a):
-    try: return json.loads(subprocess.run(["hc", *a, "--json"], capture_output=True, text=True, timeout=3).stdout)
-    except Exception: return {}
-now = time.time(); A = []
-for t in hc("ls").get("terminals", []):
-    if not t.get("status"): continue   # shells have no status; agents do
-    g = hc("get", t["address"]); st = (g.get("status") or {}).get("state", t["status"])
-    app = (g.get("status") or {}).get("app") or t.get("agent") or "agent"
-    age = now - g.get("status_ms", now * 1000) / 1000
-    if st == "working" and age > 600: st = "stalled"
-    A.append(({"claude-code": "claude"}.get(app, app), {"working": "running"}.get(st, st), t.get("cwd", ""), age, t["address"]))
-def one(x, n=40):
-    o, w = "", 0
-    for ch in " ".join(str(x or "").split()):
-        w += 2 if U.east_asian_width(ch) in "WF" else 1
-        if w > n: return o + "…"
-        o += ch
-    return o
-def ago(s): s = int(s); return f"{s}s" if s < 60 else f"{s // 60}m" if s < 3600 else f"{s // 3600}h"
-RANK = ["blocked", "stalled", "running", "idle"]
-A = [a for a in A if a[1] in RANK]
-if not A:
-    print("unbound\t0\t0"); print("none\tno agent running in herdr\tunbound\t"); sys.exit(0)
-print(min((a[1] for a in A), key=RANK.index), sum(a[1] == "running" for a in A), sum(a[1] == "blocked" for a in A), sep="\t")
-W = {"blocked": "needs approval", "running": "working", "stalled": "no signal", "idle": "idle"}
-for agent, st, cwd, age, addr in sorted(A, key=lambda a: (RANK.index(a[1]), a[3])):
-    print(agent, one((os.path.basename(cwd.rstrip("/")) or "~") + " · " + W[st] + " " + ago(age)), st, addr, sep="\t")
-')
+OUT=$("$HOME/.local/bin/dotbin" sb pilo-agents)
 IFS=$'\t' read -r TOP NW NB <<<"$(head -1 <<<"$OUT")"
 ST="$HOME/.cache/sketchybar/pilo"   # current state - pilo_anim.sh reads it and swaps frames. On a state change the first frame is drawn here right away
 [ "$(cat "$ST" 2>/dev/null)" = "$TOP" ] || { echo "$TOP" > "$ST"; sketchybar --set pilo background.image="$PX/pilo_${TOP}_1.png"; }
@@ -81,12 +51,6 @@ printf '%s' "$sts" > "$HOME/.cache/sketchybar/pilo_rows"   # state per row - whi
 # Popup placement: left edge = left end of the underline (like the other circles). If there is no room on the right, the right edge goes to the underline's right end and the popup grows leftwards:
 #   underline left x + max popup width (PW) > display right edge − 5 → right, else left.  PW 500 = 12 padding each side + 137 name column + 48 text columns (7.2 each), rounded up
 for _ in 1 2 3; do Q=$(sketchybar --query pilo.ul 2>/dev/null); [ -n "$Q" ] && break; sleep 0.1; done   # the query sometimes comes back empty - ask again
-AL=$(printf '%s' "$Q" | PW="${PILO_POPUP_W:-500}" DISP="$(sketchybar --query displays 2>/dev/null)" /usr/bin/python3 -c '
-import json, os, sys
-try:
-    k, r = next(iter(json.load(sys.stdin)["bounding_rects"].items())); x = r["origin"][0]
-    f = next(d["frame"] for d in json.loads(os.environ["DISP"]) if d["arrangement-id"] == int(k.split("-")[1]))
-    print("right" if x + int(os.environ["PW"]) > f["w"] - 5 else "left")   # item x is relative to the left edge of that display
-except Exception: pass')
+AL=$(printf '%s' "$Q" | DISP="$(sketchybar --query displays 2>/dev/null)" "$HOME/.local/bin/dotbin" sb pilo-align "${PILO_POPUP_W:-500}" 2>/dev/null)
 [ -n "$AL" ] && a+=(--set pilo.ul popup.align=$AL)   # unknown → keep the current alignment
 POPUP_XA=("${a[@]}"); printf '%s' "$rows" | awk -F'\t' -v OFS='\t' '{ gsub(/ /, "\302\240", $2) } 1' | POPUP_KW=137 popup_rows pilo.ul "AGENTS$([ "$NB" -gt 0 ] && echo " · $NB waiting")$([ "$NW" -gt 0 ] && echo " · $NW working")"

@@ -1,36 +1,12 @@
 #!/bin/bash
 # agent cell (rev 6): [agent  ✳ 40%  ◎ 12%  grok 8%] — claude·codex 5-hour usage, grok weekly pool. Popup AGENTS: 5h·week % · bar · reset
-# Values come from plugins/usage.py (Claude: usage API every 5 min via the keychain OAuth token; Codex: ~/.codex/sessions; Grok: Grok Bot weekly reading). Every 15 s (0.03 s). Missing or past-reset values show —
+# Values come from `dotbin sb agent-usage`, rust/dotbin/src/sb_plugins.rs (Claude: usage API every 5 min via the keychain OAuth token; Codex: ~/.codex/sessions; Grok: Grok Bot weekly reading). Every 15 s (0.03 s). Missing or past-reset values show —
 source "$CONFIG_DIR/colors.sh"; source "$CONFIG_DIR/config.sh"; source "$CONFIG_DIR/plugins/popup.sh"
 CL=0xffd97757   # claude color (design doc)
 [ -f "$HOME/.claude.json" ] || [ -d "$HOME/.codex" ] || [ -d "$HOME/Library/Application Support/Grok Bot" ] || [ -d "$HOME/.grok" ] || { sketchybar --set agent drawing=off --set agent.claude drawing=off --set agent.codex drawing=off --set agent.grok drawing=off; exit 0; }
 [ -d "$HOME/Library/Application Support/Grok Bot" ] || [ -d "$HOME/.grok" ] || command -v grok >/dev/null || sketchybar --set agent.grok drawing=off
 # One line: claude·codex 5h %·reset·week %·reset, then elapsed time % (5h·week)
-IFS=$'\t' read -r C5 C5R CW CWR X5 X5R XW XWR C5E CWE X5E XWE GW GWR GWE <<<"$(/usr/bin/python3 "$CONFIG_DIR/plugins/usage.py" 2>/dev/null | /usr/bin/python3 -c '
-import json,sys,datetime as D
-W="MoTuWeThFrSaSu"
-def loc(s):
-    try: return D.datetime.fromisoformat(s.replace("Z","+00:00")).astimezone()
-    except Exception: return None
-def left(s):
-    t=loc(s); return (t-D.datetime.now().astimezone()).total_seconds() if t else None
-def r5(s):
-    t=loc(s); return t.strftime("%H:%M reset") if t else "—"
-def rw(s):
-    t=loc(s); return t.strftime("%m.%d reset") if t else "—"   # no weekday: same suffix length as the 5h row so the reset text ends on the same line in every row
-def el(s,span):   # elapsed time %
-    l=left(s); return "—" if l is None else str(int(max(0,min(100,(span-l)/span*100))))
-try: d=json.load(sys.stdin)
-except Exception: d={}
-c={w.get("key"):w for w in d.get("claude",{}).get("windows",[])}
-s,w=c.get("session",{}),c.get("weekly_all",{}); x=d.get("codex",{}); g=d.get("grok",{})
-v=lambda a: "—" if a is None else str(a)
-H5,WK=5*3600,7*86400
-print("\t".join([v(s.get("percent")),r5(s.get("resetsAt","")),v(w.get("percent")),rw(w.get("resetsAt","")),
-                 v(x.get("five")),r5(x.get("fiveResetsAt","")),v(x.get("week")),rw(x.get("weekResetsAt","")),
-                 el(s.get("resetsAt",""),H5),el(w.get("resetsAt",""),WK),el(x.get("fiveResetsAt",""),H5),el(x.get("weekResetsAt",""),WK),
-                 v(g.get("week")),rw(g.get("weekResetsAt","")),el(g.get("weekResetsAt",""),WK)]))
-' 2>/dev/null)"
+IFS=$'\t' read -r C5 C5R CW CWR X5 X5R XW XWR C5E CWE X5E XWE GW GWR GWE <<<"$("$HOME/.local/bin/dotbin" sb agent-usage 2>/dev/null)"
 col() { case "$1" in (—|"") echo $TEXT3 ;; (*) [ "$1" -ge 95 ] && echo $ERR || { [ "$1" -ge 80 ] && echo $WARN || echo $TEXT; } ;; esac; }
 pct() { [ "$1" = — ] || [ -z "$1" ] && echo "—" || echo "$1%"; }
 anim_label agent.claude "$(pct "$C5")" label.color=$(col "$C5")
@@ -45,7 +21,7 @@ pace() { # <%> <elapsed %> → value color: ≥95 err · ≥80 warn · used more
   [ "$1" -ge 95 ] && { echo $ERR; return; }; [ "$1" -ge 80 ] && { echo $WARN; return; }
   [ "$2" != — ] && [ "$1" -gt "$2" ] && { echo $WARN; return; }; echo $TEXT; }
 lineA() { # <name> <%> <reset> → value and reset share one text cell (a row can't hold two colors) — reset right-aligned to the gauge end
-  local v; v=$(pct "$2"); local n=$(( ( (GAUGE - $(perl "$CONFIG_DIR/plugins/width.pl" "$v") - $(perl "$CONFIG_DIR/plugins/width.pl" "$3")) * 10 + 36 ) / 72 ))   # rounded
+  local v; v=$(pct "$2"); local n=$(( ( (GAUGE - $("$HOME/.local/bin/dotbin" sb width "$v") - $("$HOME/.local/bin/dotbin" sb width "$3")) * 10 + 36 ) / 72 ))   # rounded
   [ $n -lt 2 ] && n=2; printf '%s\t%s%*s%s\t' "$1" "$v" "$n" "" "$3"; }
 { claude_hint=""; [ "$C5" = — ] && claude_hint=" · run /usage"
   printf '_\tclaude%s\t%s\t\n' "$claude_hint" "$TEXT"

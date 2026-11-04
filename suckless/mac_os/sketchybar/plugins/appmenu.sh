@@ -27,7 +27,7 @@ render() {
   done < <(cat "$KEY" 2>/dev/null)
   [ -s "$KEY" ] || { rows+=("_"$'\t'"Reading menus …"$'\t'"$TEXT3"$'\t'); rights+=(""); bgs+=(""); }
   { for r in "${rows[@]:0:$ROWS}"; do printf '%s\n' "$r"; done; for ((j=${#rows[@]}; j<ROWS; j++)); do printf '~\t.\t\t\n'; done; } \
-    | perl "$P/fit.pl" 170 | awk -F'\t' -v OFS='\t' '{ gsub(/ /, "\302\240", $2) } 1' | POPUP_W=$W popup_rows front_app "$(tr '[:lower:]' '[:upper:]' <<<"$NAME")"
+    | "$HOME/.local/bin/dotbin" sb fit 170 | awk -F'\t' -v OFS='\t' '{ gsub(/ /, "\302\240", $2) } 1' | POPUP_W=$W popup_rows front_app "$(tr '[:lower:]' '[:upper:]' <<<"$NAME")"
   # right-side symbols and shortcuts (--text-3) are text images (ink width) with right edge = popup right − 12 (two colors on one row). Expanded menu row background --bg-2. 6 gap below Settings…
   local a=() f w
   for ((i=0; i<ROWS; i++)); do
