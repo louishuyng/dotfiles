@@ -7,17 +7,52 @@ local rex_cli = '/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Cont
 
 -- tmux display-popup: a floating layer running the tool, gone when the tool exits.
 -- A string goes through fish (for ~ and fish syntax); a list runs as is, skipping fish's startup.
-local function popup(ctx, command)
+-- It starts in the focused pane's directory, as tmux's popup -d "#{pane_current_path}".
+local function popup(ctx, command, bounds)
+  local cwd
+  if ctx.block_id then
+    local pwd = rex.block.call('com.superlogical.terminal', 'pwd', { block_id = ctx.block_id })
+    cwd = pwd and pwd.pwd and pwd.pwd:gsub('^file://[^/]*', '')
+  end
   local _, err = rex.session.new_layer {
-    bounds = { 0.05, 0.05, 0.9, 0.9 },
+    bounds = bounds or { 0.05, 0.05, 0.9, 0.9 },
     focus = true,
     layout = rex.layout.block {
       flavor = 'com.superlogical.terminal.shell',
-      options = { command = type(command) == 'table' and command or { 'fish', '-c', command } },
+      options = {
+        command = type(command) == 'table' and command or { 'fish', '-c', command },
+        cwd = cwd ~= '' and cwd or nil,
+      },
     },
   }
   if err ~= nil then error(err, 0) end
+  rex.client.queue('client.mode.enter', { name = 'popup' })
 end
+
+-- Esc in a popup closes it, as tmux's display-popup -E. The popup mode only holds escape,
+-- so every other key still reaches the program. When the popup's program quit on its own,
+-- the next Esc goes to the pane as usual and leaves the mode.
+rex.action {
+  name = 'popup_escape',
+  title = 'Close Popup',
+  run = function(ctx)
+    rex.client.queue 'client.mode.exit'
+    local att = ctx.session_id and rex.call('session.attach', { session_id = ctx.session_id })
+    for _, w in ipairs(att and att.view.windows or {}) do
+      for _, layer in ipairs(w.layers or {}) do
+        for _, b in ipairs(layer.blocks or {}) do
+          if b.block_id == ctx.block_id and layer.kind ~= 'tiled' then
+            local _, err = rex.call('session.close_layer', { session_id = ctx.session_id, layer_id = layer.layer_id })
+            if err ~= nil then error(err, 0) end
+            return
+          end
+        end
+      end
+    end
+    rex.client.queue('pane.send_key', { key = 'escape' })
+  end,
+}
+rex.bind('popup/escape', 'popup_escape')
 
 rex.action {
   name = 'popup',
@@ -33,7 +68,10 @@ rex.action {
   name = 'project_picker',
   title = 'Projects',
   run = function(ctx)
-    if ctx.session_id then return popup(ctx, { home .. '/.dotfiles/terminals/rex/scripts/project-picker.sh' }) end
+    -- A narrow box near the top, like the Herdr app's 680×540 projects popup.
+    if ctx.session_id then
+      return popup(ctx, { home .. '/.dotfiles/terminals/rex/scripts/project-picker.sh' }, { 0.25, 0.08, 0.5, 0.55 })
+    end
     -- No session yet, so no window to float a popup over: start one in ~ running the picker.
     local s, err = rex.call('session.create', {
       label = 'home',
@@ -66,9 +104,10 @@ rex.action {
   name = 'session_nth',
   title = 'Go to Session N',
   args = { index = 'integer' },
-  run = function(_, args)
+  run = function(ctx, args)
     local list, err = rex.call 'session.list'
     if err ~= nil then error(err, 0) end
+    remember(ctx)
     local s = list.sessions[args.index]
     if s then rex.client.queue('session.select', { session_id = s.session_id }) end
   end,
@@ -84,6 +123,28 @@ rex.action {
   end,
 }
 
+-- prefix tab: back to the tab Rex key navigation last left (tmux last-window). The app
+-- doesn't tell the server which session it shows, so sidebar clicks aren't seen; the
+-- keys that switch tabs record where they left from.
+local last_tab
+local function current_tab(ctx)
+  local att = ctx.session_id and rex.call('session.attach', { session_id = ctx.session_id })
+  if att then return { session_id = ctx.session_id, window_id = att.view.active_window_id } end
+end
+local function remember(ctx) last_tab = current_tab(ctx) or last_tab end
+
+rex.action {
+  name = 'last_tab',
+  title = 'Last Tab',
+  run = function(ctx)
+    local here = current_tab(ctx)
+    local to = last_tab
+    if not to or (here and here.window_id == to.window_id) then return end
+    last_tab = here
+    rex.client.queue('session.select', { session_id = to.session_id, window_id = to.window_id })
+  end,
+}
+
 -- prefix j/k: walk the sidebar top to bottom. Next/previous tab in this session; past its
 -- last (first) tab, the next (previous) session at its first (last) tab. The app reopens a
 -- session on the tab it remembers, so the switch names the tab.
@@ -93,6 +154,7 @@ rex.action {
   args = { step = 'integer' },
   run = function(ctx, args)
     if not ctx.session_id then return end
+    remember(ctx)
     local att, err = rex.call('session.attach', { session_id = ctx.session_id })
     if err ~= nil then error(err, 0) end
     local windows = att.view.windows or {}
@@ -245,6 +307,7 @@ rex.bind(P .. 'shift+]', 'session_move', { step = 1 })
 rex.bind(P .. 'b', 'client.sidebar.toggle')
 rex.bind(P .. 's', 'project_picker')
 rex.bind(P .. 'w', 'session.switch')
+rex.bind(P .. 'tab', 'last_tab')
 rex.bind(P .. 'shift+/', 'client.palette.toggle')
 rex.bind(P .. 'shift+s', 'client.settings')
 rex.bind(P .. 'shift+t', 'toggle_appearance')
@@ -266,6 +329,8 @@ local popups = {
   ['shift+r'] = 'serpl',
   ['ctrl+r'] = 'tuicr',
   g = 'lazygit',
+  -- serie can't detect Rex (TERM_PROGRAM=rex); Rex answers the kitty graphics query.
+  ['shift+g'] = "serie -p kitty; or read -P 'serie: not a git repository · enter to close' _",
   n = '~/.dotfiles/terminals/notes/note.sh',
   p = '~/.dotfiles/terminals/playzones/playzone-picker.sh',
 }

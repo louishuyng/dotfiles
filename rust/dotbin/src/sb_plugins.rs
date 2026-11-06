@@ -268,12 +268,15 @@ fn pilo_agents(hc: &mut dyn FnMut(&[&str]) -> Value, rex: &Value, now: f64) -> S
         };
         let age = now - r.get("updated_at").and_then(Value::as_str).and_then(parse_iso).unwrap_or(now);
         let st = if st == "working" && age > 600.0 { "stalled" } else if st == "working" { "running" } else { st };
-        let app = r.get("app").and_then(Value::as_str).unwrap_or("agent");
-        let app = if app == "claude-code" { "claude" } else { app }.to_string();
+        // Programs name themselves through the status protocol; keep that out of the row format.
+        let app = one_line(r.get("app").and_then(Value::as_str).unwrap_or("agent"), 20);
+        let app = if app == "claude-code" { "claude".to_string() } else { app };
         let Some(rank) = RANK.iter().position(|x| *x == st) else { continue };
         let cwd = r.get("cwd").and_then(Value::as_str).unwrap_or("").to_string();
-        let id = |k: &str| r.get(k).and_then(Value::as_str).unwrap_or("").to_string();
-        agents.push((app, rank, cwd, age, format!("rex:{}:{}", id("session_id"), id("block_id"))));
+        // Rex IDs look like "block:01a1…"; anything else never reaches pilo's click command.
+        let id = |k: &str| r.get(k).and_then(Value::as_str).filter(|v| v.chars().all(|c| c.is_ascii_alphanumeric() || c == ':' || c == '-')).map(String::from);
+        let (Some(session), Some(block)) = (id("session_id"), id("block_id")) else { continue };
+        agents.push((app, rank, cwd, age, format!("rex:{session}:{block}")));
     }
     if agents.is_empty() {
         return "unbound\t0\t0\nnone\tno agent running in herdr or rex\tunbound\t\n".into();
@@ -959,7 +962,8 @@ mod tests {
         assert_eq!(pilo_agents(&mut fake, &json!([]), NOW), "stalled\t0\t0\nclaude\tproj · no signal 11m\tstalled\tt1\nagent\t~ · idle 0s\tidle\tt2\n");
         assert_eq!(pilo_agents(&mut |_: &[&str]| json!({}), &json!([]), NOW), "unbound\t0\t0\nnone\tno agent running in herdr or rex\tunbound\t\n");
         let rex = json!([{"app": "codex", "state": "blocked", "cwd": "/x/api", "session_id": "s1", "block_id": "b1", "updated_at": "2027-01-15T08:00:00+00:00"},
-                         {"app": "claude-code", "state": "done", "cwd": "/x/web", "session_id": "s2", "block_id": "b2"}]);
+                         {"app": "claude-code", "state": "done", "cwd": "/x/web", "session_id": "s2", "block_id": "b2"},
+                         {"app": "x\tfake\nrow", "state": "idle", "session_id": "s3; rm -rf ~", "block_id": "b3"}]);
         assert_eq!(pilo_agents(&mut |_: &[&str]| json!({}), &rex, NOW), "blocked\t0\t1\ncodex\tapi · needs approval 0s\tblocked\trex:s1:b1\nclaude\tweb · idle 0s\tidle\trex:s2:b2\n");
         assert_eq!(one_line("a  b\tc", 40), "a b c");
         assert_eq!(one_line("한국어", 4), "한국…");

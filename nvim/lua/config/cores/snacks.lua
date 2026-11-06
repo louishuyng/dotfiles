@@ -5,6 +5,12 @@ if not vim.env.PUPPETEER_EXECUTABLE_PATH and vim.fn.executable(chrome) == 1 then
   vim.env.PUPPETEER_EXECUTABLE_PATH = chrome
 end
 
+-- Rex Beta renders with Ghostty and answers the kitty graphics query, but snacks.image
+-- only knows terminals by name (TERM_PROGRAM=rex), so it would refuse to draw.
+if vim.env.TERM_PROGRAM == 'rex' and not vim.env.SNACKS_GHOSTTY then
+  vim.env.SNACKS_GHOSTTY = 'true'
+end
+
 snacks.setup {
   bigfile = { enabled = true },
   gitbrowse = { enabled = true },
