@@ -277,11 +277,11 @@ rex.bind('cmd+backspace', 'pane.send_key', { key = 'ctrl+u' })
 
 -- ctrl+a prefix (prefix mod KEYS).
 local P = 'ctrl+a>'
-rex.bind(P .. 'h', 'pane.focus', { direction = 'left' })
-rex.bind(P .. 'l', 'pane.focus', { direction = 'right' })
--- Same with ctrl still held after the prefix, so a slow release can't change what a key does.
+for key, dir in pairs { h = 'left', j = 'down', k = 'up', l = 'right' } do
+  rex.bind(P .. key, 'pane.focus', { direction = dir })
+end
+-- As herdr: ctrl+j/k step through the sidebar; ctrl+h/l stay pane focus for a slow ctrl release.
 for key, step in pairs { j = 1, k = -1 } do
-  rex.bind(P .. key, 'sidebar_step', { step = step })
   rex.bind(P .. 'ctrl+' .. key, 'sidebar_step', { step = step })
 end
 for key, dir in pairs { h = 'left', l = 'right' } do
