@@ -1,0 +1,22 @@
+# Phosphor: generated from terminals/herdr-app/themes/phosphor.json (Ghostty theme format, for Rex)
+background = #000000
+foreground = #c6d0f5
+cursor-color = #00ff41
+selection-background = #414559
+selection-foreground = #c6d0f5
+palette = 0=#51576d
+palette = 1=#e78284
+palette = 2=#a6d189
+palette = 3=#e5c890
+palette = 4=#8caaee
+palette = 5=#ca9ee6
+palette = 6=#99d1db
+palette = 7=#c6d0f5
+palette = 8=#626880
+palette = 9=#e78284
+palette = 10=#a6d189
+palette = 11=#e5c890
+palette = 12=#8caaee
+palette = 13=#ca9ee6
+palette = 14=#99d1db
+palette = 15=#c6d0f5

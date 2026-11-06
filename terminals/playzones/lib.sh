@@ -4,14 +4,49 @@
 #   DIR="$(cd "$(dirname "$0")/.." && pwd)"
 #   source "$DIR/lib.sh"
 #
-# Three backends: herdr inside a herdr pane (HERDR_ENV=1), the Herdr app inside
-# one of its terminals (pa_active), tmux otherwise.
+# Four backends: Rex Beta inside one of its terminals (rx_active), herdr inside a
+# herdr pane (HERDR_ENV=1), the Herdr app inside one of its terminals (pa_active),
+# tmux otherwise.
 
 _PZ_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$_PZ_DIR/../herdr/lib.sh"
 source "$_PZ_DIR/../sesh/roots.sh"
 
 HERDR_APP_BIN="${HERDR_APP_BIN:-herdr-app}"
+REX_BIN="${REX_BIN:-/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex}"
+
+# rx_active
+#   True inside a Rex terminal (Rex sets REX_SESSION). tmux and the herdr TUI win.
+rx_active() {
+  [[ -z "${TMUX:-}" && "${HERDR_ENV:-}" != "1" && -n "${REX_SESSION:-}" && -x "$REX_BIN" ]]
+}
+
+# rx_session_id <label>
+rx_session_id() {
+  "$REX_BIN" ls --json | jq -er --arg n "$1" '[.sessions[] | select(.label == $n) | .session_id][0] // empty'
+}
+
+# rx_block_in <session-id> <cwd>
+#   "<window-id> <block-id>" of the first terminal in the session whose cwd is <cwd>.
+rx_block_in() {
+  local session="$1" cwd="$2" block window
+  while read -r block window; do
+    [[ "$("$REX_BIN" block call -s "$session" -b "$block" pwd 2>/dev/null | jq -r '.pwd // empty' | sed -E 's|^file://[^/]*||')" == "$cwd" ]] \
+      && { echo "$window $block"; return 0; }
+  done < <("$REX_BIN" block ls -s "$session" --json | jq -r '.blocks[] | select(.creator_name == "com.superlogical.terminal" and .window_id) | "\(.block_id) \(.window_id)"')
+  return 0
+}
+
+# rx_show <session-id>
+#   Switch the app to the session. The app takes session.select from the CLI only
+#   with Remote Control on (Settings > Rex Server); without it the work still opens.
+rx_show() {
+  [[ "$1" == "$REX_SESSION" ]] && return 0
+  local client
+  client=$("$REX_BIN" client ls --json | jq -r '[.clients[] | select(.info.kind == "app")][0].client_id // empty')
+  [[ -n "$client" ]] && "$REX_BIN" -C "$client" do session.select session_id="$1" >/dev/null 2>&1
+  return 0
+}
 
 # pa_active
 #   True inside a Herdr app terminal: herdr-core gives each one its socket.
@@ -47,6 +82,18 @@ pz_ensure_session() {
   if [[ -z "$name" ]]; then
     echo "pz_ensure_session: missing session name" >&2
     return 2
+  fi
+
+  if rx_active; then
+    [[ -n "$(rx_session_id "$name")" ]] && return 0
+    local root
+    root=$(sesh_root_for "$name")
+    if [[ -z "$root" ]]; then
+      echo "pz_ensure_session: no sesh.toml root for '$name'" >&2
+      return 2
+    fi
+    "$REX_BIN" new "$name" -c "$root" --window "$(basename "$root")" >/dev/null || return 2
+    return 0
   fi
 
   if pa_active; then
@@ -106,6 +153,30 @@ pz_open_or_split() {
 
   local expanded_cwd="${cwd/#\~/$HOME}"
   [[ -d "$expanded_cwd" ]] || mkdir -p "$expanded_cwd"
+
+  if rx_active; then
+    local s found window block split
+    s=$(rx_session_id "$session") || return 2
+    if [[ -z "$s" ]]; then
+      echo "pz_open_or_split: no session '$session' — call pz_ensure_session first" >&2
+      return 1
+    fi
+    case "$split_flag" in
+      -v) split="below" ;;
+      -h) split="right" ;;
+      *)  echo "pz_open_or_split: bad split flag '$split_flag'" >&2; return 2 ;;
+    esac
+    found=$(rx_block_in "$s" "$expanded_cwd") || return 2
+    if [[ -z "$found" ]]; then
+      "$REX_BIN" window new -s "$s" "$(basename "$expanded_cwd")" -c "$expanded_cwd" -- fish -lc "$cmd" >/dev/null || return 3
+    else
+      read -r window block <<< "$found"
+      "$REX_BIN" focus -s "$s" "$window" >/dev/null || return 2
+      "$REX_BIN" split -s "$s" -b "$block" --split="$split" --ratio "${split_size%\%}" -c "$expanded_cwd" -- fish -lc "$cmd" >/dev/null || return 3
+    fi
+    rx_show "$s"
+    return 0
+  fi
 
   if pa_active; then
     local space found tab pane direction weight argv

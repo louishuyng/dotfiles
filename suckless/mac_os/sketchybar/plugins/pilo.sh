@@ -1,6 +1,6 @@
 #!/bin/bash
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:/opt/homebrew/bin:$PATH"
-# pilo circle - live agents in herdr as a round face with two arms: pose, expression and color. Popup AGENTS: character · agent · project · state per session
+# pilo circle - live agents in herdr and rex as a round face with two arms: pose, expression and color. Popup AGENTS: character · agent · project · state per session
 # Data: herdr-core terminals with an agent status (hc ls / hc get), at once on agent_status_change (sent by agent_watch.sh) + every 30s
 # States: blocked (approval prompt open) · running (working, changed in the last 10 min) · stalled (still "working" but unchanged for 10+ min) · idle (turn ended) · unbound (no agent)
 # The circle shows the most urgent state among all sessions: blocked > stalled > running > idle
@@ -17,11 +17,14 @@ sketchybar --set pilo drawing=on --set pilo.ul drawing=on
 pgrep -qf '^/bin/bash .*/plugins/pilo_anim.sh$' || (CONFIG_DIR="$CONFIG_DIR" nohup /bin/bash "$CONFIG_DIR/plugins/pilo_anim.sh" >/dev/null 2>&1 &)
 
 # Popup: title carries the number of working sessions. Row = character (row background image, 16×12pt) · agent · project · state · time since last signal. Text color = state color
-# Row click: Herdr to the front, showing that agent's terminal
+# Row click: Herdr or Rex to the front, showing that agent's terminal
 scol() { case "$1" in blocked) echo $ERR ;; stalled) echo $WARN ;; running) echo $TEXT ;; *) echo $TEXT3 ;; esac; }
 i=0; a=(); rows=""; sts=""
 while IFS=$'\t' read -r name text st addr; do
-  click=""; [ "$st" = unbound ] || click="open -b dev.herdr.app; $HOME/.local/bin/herdr-app do agent.focus --terminal $addr"
+  case "$addr" in
+    rex:*) click="$HOME/.dotfiles/terminals/rex/scripts/focus-block.sh ${addr#rex:}" ;;
+    *) click=""; [ "$st" = unbound ] || click="open -b dev.herdr.app; $HOME/.local/bin/herdr-app do agent.focus --terminal $addr" ;;
+  esac
   rows+="$name"$'\t'"$text"$'\t'"$(scol "$st")"$'\t'"$click"$'\n'
   a+=(--set pilo.ul.p.$i background.image="$PX/pilo_s_${st}_1.png" background.image.scale=0.5 background.image.drawing=on
       background.image.padding_left=12 icon.padding_left=36 icon.color=$TEXT2)
@@ -42,7 +45,7 @@ running|working
 blocked|waiting on you - approve in the pane
 stalled|looks stuck - no signal for 10+ min
 idle|idle - waiting for your prompt
-unbound|no session - no agent open in herdr
+unbound|no session - no agent open in herdr or rex
 LEGEND
 # Divider width = text width of the longest row (name column 137 + columns × 6.9; the 12 on each side comes from the background padding). An item with no text has zero width, so it is set here
 LW=$(printf '%s' "$rows" | perl -CS -Mutf8 -F'\t' -lane '$_ = $F[1]; $w = length($_) + (() = /[\p{EastAsianWidth=W}\p{EastAsianWidth=F}]/g); $m = $w if $w > $m; END { printf "%d", 137 + $m * 6.9 }')

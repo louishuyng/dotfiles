@@ -16,7 +16,7 @@ pub fn main(args: &[&str]) -> Option<i32> {
         ["ts-rows"] => ts_rows(&stdin_json()?)?,
         ["ts-dev"] => ts_dev(&stdin_json().unwrap_or(json!({}))),
         ["ts-vnc"] => ts_vnc(&stdin_json()?)?,
-        ["pilo-agents"] => pilo_agents(&mut hc, now()),
+        ["pilo-agents"] => pilo_agents(&mut hc, &rex_agents(), now()),
         ["pilo-align", pw] => pilo_align(&stdin_json()?, &serde_json::from_str(&std::env::var("DISP").ok()?).ok()?, pw.parse().ok()?)?,
         ["clock-holidays", base] => clock_holidays(&stdin_text(), base)?,
         ["clock-hdays", base] => clock_hdays(&stdin_text(), base),
@@ -196,6 +196,15 @@ fn hc(args: &[&str]) -> Value {
         .unwrap_or(json!({}))
 }
 
+/// Agents in Rex terminals, from terminals/rex/scripts/agents.lua; `[]` when Rex is not running.
+fn rex_agents() -> Value {
+    const REX: &str = "/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex";
+    let script = format!("{}/.dotfiles/terminals/rex/scripts/agents.lua", std::env::var("HOME").unwrap_or_default());
+    run_timeout(REX, &["--autostart=false", "do", &script], None, Duration::from_secs(3))
+        .and_then(|o| serde_json::from_str(&o).ok())
+        .unwrap_or(json!([]))
+}
+
 const RANK: [&str; 4] = ["blocked", "stalled", "running", "idle"];
 
 fn one_line(x: &str, n: usize) -> String {
@@ -222,7 +231,7 @@ fn ago(s: f64) -> String {
     }
 }
 
-fn pilo_agents(hc: &mut dyn FnMut(&[&str]) -> Value, now: f64) -> String {
+fn pilo_agents(hc: &mut dyn FnMut(&[&str]) -> Value, rex: &Value, now: f64) -> String {
     let ls = hc(&["ls"]);
     let mut agents = Vec::new();
     for t in ls.get("terminals").and_then(Value::as_array).cloned().unwrap_or_default() {
@@ -249,8 +258,25 @@ fn pilo_agents(hc: &mut dyn FnMut(&[&str]) -> Value, now: f64) -> String {
         let cwd = t.get("cwd").and_then(Value::as_str).unwrap_or("").to_string();
         agents.push((app, rank, cwd, age, addr));
     }
+    // Rex states: idle · working · done · blocked · error. done and error mean the turn ended.
+    for r in rex.as_array().into_iter().flatten() {
+        let st = match r.get("state").and_then(Value::as_str) {
+            Some("working") => "working",
+            Some("blocked") => "blocked",
+            Some(_) => "idle",
+            None => continue,
+        };
+        let age = now - r.get("updated_at").and_then(Value::as_str).and_then(parse_iso).unwrap_or(now);
+        let st = if st == "working" && age > 600.0 { "stalled" } else if st == "working" { "running" } else { st };
+        let app = r.get("app").and_then(Value::as_str).unwrap_or("agent");
+        let app = if app == "claude-code" { "claude" } else { app }.to_string();
+        let Some(rank) = RANK.iter().position(|x| *x == st) else { continue };
+        let cwd = r.get("cwd").and_then(Value::as_str).unwrap_or("").to_string();
+        let id = |k: &str| r.get(k).and_then(Value::as_str).unwrap_or("").to_string();
+        agents.push((app, rank, cwd, age, format!("rex:{}:{}", id("session_id"), id("block_id"))));
+    }
     if agents.is_empty() {
-        return "unbound\t0\t0\nnone\tno agent running in herdr\tunbound\t\n".into();
+        return "unbound\t0\t0\nnone\tno agent running in herdr or rex\tunbound\t\n".into();
     }
     let top = agents.iter().map(|a| a.1).min().unwrap_or(3);
     let count = |r: usize| agents.iter().filter(|a| a.1 == r).count();
@@ -930,8 +956,11 @@ mod tests {
             ["get", "t1"] => json!({"status": {"state": "working", "app": "claude-code"}, "status_ms": (NOW - 700.0) * 1000.0}),
             _ => json!({}),
         };
-        assert_eq!(pilo_agents(&mut fake, NOW), "stalled\t0\t0\nclaude\tproj · no signal 11m\tstalled\tt1\nagent\t~ · idle 0s\tidle\tt2\n");
-        assert_eq!(pilo_agents(&mut |_: &[&str]| json!({}), NOW), "unbound\t0\t0\nnone\tno agent running in herdr\tunbound\t\n");
+        assert_eq!(pilo_agents(&mut fake, &json!([]), NOW), "stalled\t0\t0\nclaude\tproj · no signal 11m\tstalled\tt1\nagent\t~ · idle 0s\tidle\tt2\n");
+        assert_eq!(pilo_agents(&mut |_: &[&str]| json!({}), &json!([]), NOW), "unbound\t0\t0\nnone\tno agent running in herdr or rex\tunbound\t\n");
+        let rex = json!([{"app": "codex", "state": "blocked", "cwd": "/x/api", "session_id": "s1", "block_id": "b1", "updated_at": "2027-01-15T08:00:00+00:00"},
+                         {"app": "claude-code", "state": "done", "cwd": "/x/web", "session_id": "s2", "block_id": "b2"}]);
+        assert_eq!(pilo_agents(&mut |_: &[&str]| json!({}), &rex, NOW), "blocked\t0\t1\ncodex\tapi · needs approval 0s\tblocked\trex:s1:b1\nclaude\tweb · idle 0s\tidle\trex:s2:b2\n");
         assert_eq!(one_line("a  b\tc", 40), "a b c");
         assert_eq!(one_line("한국어", 4), "한국…");
     }

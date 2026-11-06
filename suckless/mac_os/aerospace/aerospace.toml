@@ -206,6 +206,10 @@ if.app-id = 'dev.herdr.app'
 run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
+if.app-id = 'com.superlogical.rex'
+run = ['move-node-to-workspace Terminal']
+
+[[on-window-detected]]
 if.app-id = 'com.conductor.app'
 run = ['move-node-to-workspace Terminal', 'layout floating']
 

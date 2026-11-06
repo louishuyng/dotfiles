@@ -16,6 +16,9 @@
       },
       {
         "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'cursor' 'caveman' 'sessionStart'"
+      },
+      {
+        "command": "'/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex' --autostart=false __internal session-start 2>/dev/null || true"
       }
     ]
   }

@@ -349,6 +349,7 @@ apply_task() {
       config terminals/herdr/config.toml herdr/config.toml
       link_file "$repo_root/terminals/herdr-projects" "$HOME/.herdr-projects/settings"
       link_file "$repo_root/terminals/herdr-app/keys.json" "$HOME/.config/herdr-app/keys.json"
+      config terminals/rex rex
       for mod in prefix sessions issues retro-spaces retro-agents pixel-spaces pixel-picker pixel-chrome lx-agents; do
         link_file "$repo_root/terminals/herdr-app/mods/$mod" "$HOME/.config/herdr-app/mods/$mod"
       done

@@ -22,6 +22,7 @@ set -gx PANDOC_PATH /opt/homebrew/bin/pandoc
 #
 # #Qutebrowser
 fish_add_path /Applications/qutebrowser.app/Contents/MacOS
+fish_add_path "/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS"
 #
 # #Fluter
 fish_add_path $HOME/development/flutter/bin
