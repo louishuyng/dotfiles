@@ -235,11 +235,14 @@ sketchybar --add item pilo right --set pilo icon="" icon.width=33 icon.padding_l
         click_script="$P/popup_click.sh pilo.ul"
 
 # ci ✗ · docker — only when present
+#   each gets its own capsule (docker.cap · ci.cap below); the 5 gap spacer on its right is shown and hidden with the item by its script
+spacer docker.gap right; sketchybar --set docker.gap width=5 drawing=off
 sketchybar --add item docker right \
-  --set docker icon=docker padding_left=10 padding_right=10 drawing=off \
+  --set docker icon=docker padding_left=11 padding_right=11 drawing=off \
         update_freq=30 popup.align=left script="$P/docker.sh" click_script="$P/popup_click.sh docker" \
+  --add item ci.gap right --set ci.gap width=5 icon.drawing=off label.drawing=off drawing=off \
   --add item ci right \
-  --set ci icon.drawing=off label.color=$ERR padding_left=10 padding_right=10 drawing=off \
+  --set ci icon.drawing=off label.color=$ERR padding_left=11 padding_right=11 drawing=off \
         update_freq=120 popup.align=left script="$P/ci.sh" click_script="$P/popup_click.sh ci"
 
 # settings circle (rev 4) — 5 left of the right island, circle 33, click opens config.sh. Glyph: SETTINGS_GLYPH (config.sh)
@@ -268,6 +271,8 @@ for i in clock wifi ports ts cpu.ul pilo.ul docker ci media vol.ul cal front_app
 sketchybar --set ports background.y_offset=-13 --set ts background.y_offset=-13 --set cpu.ul background.y_offset=-12 --set pilo.ul background.y_offset=-12   # circle/capsule underlines: 3 above the cell's bottom edge (rev 8). The cat circle has item y_offset 0, hence −12
 sketchybar --add bracket apps.cap apps.pad ports ts --set apps.cap background.drawing=on background.color=$BG background.height=33 \
   background.corner_radius=17 background.border_width=1 background.border_color=$LINE   # app capsule border (end radius 17)
+CAP="background.drawing=on background.color=$BG background.height=33 background.corner_radius=17 background.border_width=1 background.border_color=$LINE"
+sketchybar --add bracket docker.cap docker --set docker.cap $CAP --add bracket ci.cap ci --set ci.cap $CAP   # same capsule as apps.cap; hidden while its item is hidden
 sketchybar --add bracket agent.u agent agent.claude agent.codex agent.grok --set agent.u $UL background.y_offset=$(( 2 - NOTCH_H / 2 ))
 sketchybar --add bracket bat.u bat bat.1 bat.2 bat.3 bat.4 bat.5 --set bat.u $UL background.y_offset=$(( 2 - NOTCH_H / 2 ))
 
