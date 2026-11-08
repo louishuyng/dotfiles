@@ -17,5 +17,5 @@ else
   export LINE=0xff1e2422
   export ERR=0xffe0685f WARN=0xffe0b64a INFO=0xff7fb8d9   # INFO: calendar Saturday (rev 9) — --info
 fi
-export ACCENT=0xff3ed49c   # shared by both themes. Used only for the wordmark cursor
+export ACCENT=0xff7ee787   # shared by both themes. Used only for the wordmark cursor
 export FONT="JetBrains Mono"

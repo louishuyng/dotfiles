@@ -28,7 +28,10 @@ resize_left_label() {
     fi
   fi
   [ -n "$text" ] || return 0
-  [ "$text" != "$(cat "$cache" 2>/dev/null)" ] || return 0
+  if [ "$text" = "$(cat "$cache" 2>/dev/null)" ]; then
+    [ -n "$LEFT_ICON" ] && sketchybar --set "$item" icon="$LEFT_ICON"
+    return 0
+  fi
 
   for _ in 1 2 3; do
     query=$(sketchybar --query "$item")
@@ -40,12 +43,11 @@ resize_left_label() {
   width=$(( $("$HOME/.local/bin/dotbin" sb width "$text") + padding ))
 
   if [ -n "$SB_BOOT" ]; then
-    sketchybar --set "$item" label="$text" label.width="$width"
+    sketchybar --set "$item" ${LEFT_ICON:+icon="$LEFT_ICON"} label="$text" label.width="$width"
   else
-    # One SketchyBar command animates the title and the media width.
-    LEFT_ITEM="$item" LEFT_TEXT="$text" LEFT_OLD_WIDTH="$old_width" LEFT_WIDTH="$width" \
+    # One SketchyBar command swaps icon, title and the media width together, so no frame shows them out of step.
+    LEFT_ITEM="$item" LEFT_ICON="$LEFT_ICON" LEFT_TEXT="$text" LEFT_OLD_WIDTH="$old_width" LEFT_WIDTH="$width" \
       LE_GROW="$((width - old_width))" SENDER=media_layout bash "$CONFIG_DIR/plugins/media.sh"
-    sleep 0.22
   fi
   printf '%s\n' "$text" > "$cache"
 }

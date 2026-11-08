@@ -10,7 +10,7 @@ CONFIG_DIR="${CONFIG_DIR:-$HOME/.config/sketchybar}"
 app=$(lsappinfo info -only name "$(lsappinfo front)" 2>/dev/null | perl -ne 'print /^"LSDisplayName"="(.*)"$/ ? $1 : /^"([^\"]+)"/ ? $1 : "" if $. == 1')
 # glyph names come from sketchybar-app-font's map (helpers/app_icons.lua)
 glyph=$(APP="${app:-$INFO}" perl -ne 'print $1 if /\[\s*\[\[\Q$ENV{APP}\E\]\]\s*\]\s*=\s*"(:[^"]+:)"/' "$CONFIG_DIR/helpers/app_icons.lua" | head -n1)
-sketchybar --set "$NAME" icon="${glyph:-:default:}"
+LEFT_ICON="${glyph:-:default:}"   # applied by resize_left_label in the same command as the name
 case "$INFO" in
   "Visual Studio Code"|"Code") n=code ;;
   "Google Chrome") n=chrome ;;

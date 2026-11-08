@@ -1,5 +1,6 @@
 #!/bin/bash
 # This is the only file you need to edit.
+BAR_STYLE=omarchy                             # island (rounded islands) | omarchy (one flat full-width strip). Same items, popups and clicks either way. Run sketchybar --reload after changing
 THEME=auto                                    # dark | light | auto (follows the macOS appearance). Run sketchybar --reload after changing
 NOTCH_H=33                                    # island (bar) height — one value with or without a notch. Top 5 + 33 = bottom edge 38 (notch bottom edge)
 BAR_H=$NOTCH_H                                # same bar height on displays without a notch (formerly 24 = the pre-island menu bar height; unified 10-06)

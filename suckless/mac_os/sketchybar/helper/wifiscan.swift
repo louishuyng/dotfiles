@@ -1,6 +1,7 @@
 // SketchyBar Wi-Fi Scan.app — writes nearby Wi-Fi names (SSID) and signal to ~/.cache/sketchybar/wifiscan.txt as "name<TAB>RSSI" and exits
 // macOS gives SSIDs only to apps with Location permission → this tiny app holds that permission (allow once on first run). The location itself is never used
 // First line is the status: ok | denied | undetermined. Run: open -g -W -a <this app> (only when the popup opens)
+// With the argument `ssid` it prints the connected network name instead (wifi.sh, on network change)
 import AppKit
 import CoreLocation
 import CoreWLAN
@@ -11,12 +12,15 @@ final class D: NSObject, CLLocationManagerDelegate {
   func start() { m.delegate = self; check() }
   func check() {
     switch m.authorizationStatus {
-    case .authorizedAlways, .authorized: scan()
+    case .authorizedAlways, .authorized: CommandLine.arguments.dropFirst().first == "ssid" ? current() : scan()
     case .notDetermined: m.requestWhenInUseAuthorization()
     default: write("denied\n"); exit(0)
     }
   }
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) { if m.authorizationStatus != .notDetermined { check() } }
+  func current() {   // `WifiScan ssid`: print the connected network name only (no scan, instant)
+    print(CWWiFiClient.shared().interface()?.ssid() ?? ""); exit(0)
+  }
   func scan() {
     var lines = ["ok"]
     if let i = CWWiFiClient.shared().interface(), let ns = try? i.scanForNetworks(withSSID: nil) {

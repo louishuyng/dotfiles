@@ -3,6 +3,10 @@ export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:/opt/homebrew/bin:/u
 CONFIG_DIR="${CONFIG_DIR:-$HOME/.config/sketchybar}"
 source "$CONFIG_DIR/colors.sh"
 source "$CONFIG_DIR/config.sh"
+# BAR_STYLE=omarchy: same items, popups and clicks, drawn as one flat edge-to-edge strip — the bar paints the background, islands/circles/capsules lose their frames
+#   height 33+4 = 37: still odd, so the 1pt text raise below keeps text centred; bottom edge 1 above the notch's
+BAR_Y=5; BAR_MARGIN=5; FLAT=0
+[ "$BAR_STYLE" = omarchy ] && { NOTCH_H=$(( NOTCH_H + 4 )); BAR_H=$NOTCH_H; BAR_Y=0; BAR_MARGIN=0; FLAT=1; }
 P="$CONFIG_DIR/plugins"
 mkdir -p "$HOME/.cache/sketchybar"; rm -f "$HOME/.cache/sketchybar/popup."* "$HOME/.cache/sketchybar/popup_open" "$HOME/.cache/sketchybar/"{front_app.last,media_le}   # also the previous-app-name and fill-position caches (front_app.sh, media.sh) · popups are rebuilt · and the open-popup record (if left behind, the first click is eaten as a close)
 (defaults read -g AppleInterfaceStyle 2>/dev/null || echo Light) > "$HOME/.cache/sketchybar/theme"
@@ -17,14 +21,14 @@ a() { printf '0x%02x%s' $((BAR_OPACITY * 255 / 100)) "${1:4}"; }   # apply BAR_O
 source "$CONFIG_DIR/plugins/display.sh"   # bar display and notch calculation (popup_guard.sh runs it again when the display setup changes)
 # Appear at once: while the bar is being built it sits far below the screen (y 4000); when the items, their first values and the island widths are all in place, the last lines move it to its spot (y 5)
 #   hidden=on would put every item at -9999 so the media island width (media.sh) cannot be computed; moving it up would show it on a display above, so it goes down. If this script dies midway the trap still brings it back
-BAR_AWAY=4000; trap 'command sketchybar --bar y_offset=5' EXIT
+BAR_AWAY=4000; trap 'command sketchybar --bar y_offset=$BAR_Y' EXIT
 # Batching: the sketchybar calls below are collected and sent in one go at each flush (110+ calls become a few). Only --query goes out at once. One bad command in a batch does not stop the rest (measured)
 #   flush before an outside script (spaces.sh, cat.sh) looks for items. Batching is switched off before the first values
 Q=(); sketchybar() { case "$1" in --query) command sketchybar "$@" ;; *) Q+=("$@") ;; esac; }
 flush() { [ ${#Q[@]} -gt 0 ] && command sketchybar "${Q[@]}"; Q=(); }
 # notch_width = the real notch width (only used on a notch display — on a display without a notch SketchyBar ignores it and splits at the center). The 5 on the notch side is handled by the notch.gap item at the front of q, so both cases are '− 5'
-sketchybar --bar position=top height=$BAR_H notch_display_height=$NOTCH_H color=0x00000000 blur_radius=0 border_width=0 corner_radius=0 \
-  shadow=off margin=5 y_offset=$BAR_AWAY padding_left=0 padding_right=0 notch_width=$NOTCH_W display=$BAR_DISPLAY topmost=window
+sketchybar --bar position=top height=$BAR_H notch_display_height=$NOTCH_H color=$([ $FLAT = 1 ] && a $BG || echo 0x00000000) blur_radius=0 border_width=0 corner_radius=0 \
+  shadow=off margin=$BAR_MARGIN y_offset=$BAR_AWAY padding_left=0 padding_right=0 notch_width=$NOTCH_W display=$BAR_DISPLAY topmost=window
 flush   # move the bar off screen first
 
 sketchybar --default updates=when_shown \
@@ -57,6 +61,8 @@ WM_CURSOR_Y=1   # cursor vertical position (up is +). Value that aligns its bott
 # [wordmark▌] — values taken as-is from the design system's components/wordmark.css. For 12px text:
 #   JetBrains Mono 400 · cursor width 0.52em=6 · height 0.92em=11 · gap 0.16em=2 · cursor bottom edge = text baseline · accent
 #   letter-spacing −0.02em is omitted because SketchyBar has no setting for it
+# omarchy style: Omarchy logo (\ue900 in assets/omarchy.ttf, family "omarchy") before the wordmark
+[ $FLAT = 1 ] && sketchybar --add item logo left --set logo icon=$'\xee\xa4\x80' icon.font="omarchy:Regular:17.0" icon.color=$ACCENT icon.padding_right=0 label.drawing=off padding_left=11
 sketchybar --add item wordmark left \
   --set wordmark icon.drawing=off label="workspace" label.font="$FONT:Regular:12.0" \
         label.padding_left=11 label.padding_right=2 \
@@ -107,11 +113,11 @@ CTLF="label.width=14 label.align=center label.color=$TEXT3 icon.drawing=off labe
 # vol.ul: underline from the glyph to the gauge end, and parent of the volume popup — popup right edge = underline right edge. Own footprint 0 (fixed padding,
 # fixed value). A bracket underline sat behind the progress-fill cover plate (an item window), so its top 1px was covered and it looked thin → use an item background (same 2pt as the other cells' underlines)
 sketchybar --add item notch.gap q --set notch.gap width=5 icon.drawing=off label.drawing=off   # media island ↔ notch (or screen center if none) 5 — front of q = closest to the notch
-sketchybar --add item vol.ul q --set vol.ul padding_left=-52 padding_right=11 icon.drawing=off label="" label.width=41 popup.align=right \
+sketchybar --add item vol.ul q --set vol.ul padding_left=0 padding_right=11 icon.drawing=off label="" label.width=41 popup.align=right \
   click_script="$P/popup_click.sh vol.ul"
-# vol.pad: transparent click cell covering the island's inner right 11 + the gauge 18. Own footprint is 11 (label width 29 + padding −18).
+# vol.pad: transparent click cell covering the island's inner right 11 + the gauge 18. Its padding_right −52 slides vol.ul back over the glyph and gauge — on vol.pad rather than vol.ul's padding_left, because a popup anchors where its parent would sit without that padding (a left-aligned volume popup would start 52 too far right)
 # created before the bars so it is below the bar windows and above the cover-plate window — it takes clicks even on the 2pt between bars
-sketchybar --add item vol.pad q --set vol.pad padding_left=-18 padding_right=0 icon.drawing=off label="" label.width=29 \
+sketchybar --add item vol.pad q --set vol.pad padding_left=-18 padding_right=-52 icon.drawing=off label="" label.width=29 \
   background.drawing=on background.color=0x00000000 background.height=$NOTCH_H click_script="$P/popup_click.sh vol.ul"
 for c in 5 4 3 2 1; do gap=2; [ $c = 5 ] && gap=0
   sketchybar --add item vol.$c q --set vol.$c icon.drawing=off label="" label.width=2 background.height=10 \
@@ -138,7 +144,7 @@ sketchybar --add item media.next q --set media.next label="»" $CTLF label.width
   --add item media.prev q --set media.prev label="«" $CTLF label.width=38 label.padding_left=12 label.padding_right=12 padding_right=0 script="$P/media.sh" \
   --subscribe media.prev mouse.entered mouse.exited \
   --add item media q --set media icon=media icon.padding_right=8 icon.color=$TEXT3 icon.drawing=off label="—" label.color=$TEXT3 label.align=left \
-        padding_right=0 update_freq=2 popup.align=left script="$P/media.sh" click_script="$P/popup_click.sh media" \
+        padding_right=0 update_freq=2 updates=on popup.align=left script="$P/media.sh" click_script="$P/popup_click.sh media" \
   --subscribe media media_layout media_update \
   --add item media.disc q --set media.disc icon.drawing=off label="" label.width=18 padding_left=9 padding_right=8 \
         background.drawing=on background.color=0x00000000 background.height=18 background.image.scale=0.5 background.image="$DISC/idle.png" \
@@ -257,6 +263,7 @@ sketchybar --add item settings right \
 sketchybar --default y_offset=0   # from here on brackets (islands, underlines) and popups stay in place
 # the two islands — opaque --bg, 1pt --line border, corner 13 (this bar is the only exception to the design system's radius-0 rule). Width follows content
 ISL="background.color=$BG background.height=$NOTCH_H background.corner_radius=13 background.border_width=1 background.border_color=$LINE background.drawing=on"
+[ $FLAT = 1 ] && ISL="background.drawing=on background.color=0x00000000 background.border_width=0 background.height=$NOTCH_H"   # transparent, not off: media.sh measures the left edge from island.left, and a bracket with no background stops tracking its size
 sketchybar --add bracket island.left wordmark wordmark.cursor app.padl front_app cwd git cal \
   --set island.left $ISL \
   --add bracket island.right agent.gap agent agent.claude agent.codex agent.grok bat bat.1 bat.2 bat.3 bat.4 bat.5 wifi clock \
@@ -272,6 +279,13 @@ sketchybar --set ports background.y_offset=-13 --set ts background.y_offset=-13 
 sketchybar --add bracket apps.cap apps.pad ports ts --set apps.cap background.drawing=on background.color=$BG background.height=33 \
   background.corner_radius=17 background.border_width=1 background.border_color=$LINE   # app capsule border (end radius 17)
 CAP="background.drawing=on background.color=$BG background.height=33 background.corner_radius=17 background.border_width=1 background.border_color=$LINE"
+[ $FLAT = 1 ] && { CAP="background.drawing=off"; sketchybar --set apps.cap $CAP \
+  --set cpu background.color=0x00000000 background.border_width=0 y_offset=3 --set pilo background.color=0x00000000 background.border_width=0 y_offset=1 \
+  --set settings drawing=off \
+  --set agent icon.drawing=off --set bat icon.drawing=off --set docker icon=":orbstack:" icon.font="$GF" \
+  --set wifi icon=$'\xf3\xb0\x96\xa9' icon.font="${AG%:*}:16.0" --set vol icon.font="${AG%:*}:16.0" --set agent.grok icon.font="${GF%:*}:16.0" \
+  --set front_app icon.font="${GF%:*}:16.0" icon.width=20 icon.padding_right=0 --set app.padl width=10 --set wordmark label.padding_left=7; }   # cat and pilo keep their background image, raised onto the text line without their circles · text tags become icons as on Omarchy, or are dropped where the values already speak for themselves
+# icon scale (flat): text 12pt · every glyph drawn 12–17pt tall. Material glyphs (wifi, speaker) and grok draw small for their size, hence 16 against 14 for the rest (ink measured 2026-11-08). The app icon is 16 too, in a 20 cell: icon.padding_right is ignored once icon.width is fixed, so the ~4 gap to the name lives inside the cell; app.padl 10 keeps it near the workspace name, still a separate group · logo↔workspace 7
 sketchybar --add bracket docker.cap docker --set docker.cap $CAP --add bracket ci.cap ci --set ci.cap $CAP   # same capsule as apps.cap; hidden while its item is hidden
 sketchybar --add bracket agent.u agent agent.claude agent.codex agent.grok --set agent.u $UL background.y_offset=$(( 2 - NOTCH_H / 2 ))
 sketchybar --add bracket bat.u bat bat.1 bat.2 bat.3 bat.4 bat.5 --set bat.u $UL background.y_offset=$(( 2 - NOTCH_H / 2 ))
@@ -285,7 +299,7 @@ done
 
 # click shield — on macOS 27, clicking an empty part of the bar raises the bar background window above the item windows and hides all the text
 # (SketchyBar #850). A transparent bracket wrapping every item makes that window rise instead. Draws nothing
-sketchybar --add bracket shield wordmark clock --set shield background.drawing=on background.color=0x00000000 background.height=$NOTCH_H   # only the two end items — putting items that get removed and re-created (space dots, popup rows) into the bracket crashes SketchyBar
+sketchybar --add bracket shield $([ $FLAT = 1 ] && echo logo || echo wordmark) clock --set shield background.drawing=on background.color=0x00000000 background.height=$NOTCH_H   # only the two end items — putting items that get removed and re-created (space dots, popup rows) into the bracket crashes SketchyBar
 flush; unset -f sketchybar   # from here on, send at once
 # First values: before showing, run each item script once, together. With SB_BOOT=1 they set only what the bar shows - no popup rows (popup.sh), no width animation (front_app.sh, media.sh).
 #   Popups are built after the bar shows, by the --update at the end (with popups 1.5s, values only about 0.5s). Wi-Fi uses the saved name (routine); the slow Shortcut lookup happens afterwards
@@ -296,7 +310,7 @@ fill pilo pilo.sh; fill ts ts.sh; fill ports ports.sh; fill vol vol.sh; fill doc
 [ -n "$FRONT" ] && fill front_app front_app.sh front_app_switched "$FRONT"
 for _ in $(seq 40); do [ -z "$(jobs -r)" ] && break; sleep 0.05; done   # continue as soon as all are done, wait 2s at most (late values fill in place after the bar shows)
 SB_BOOT=1 CONFIG_DIR="$CONFIG_DIR" NAME=media SENDER=media_layout bash "$P/media.sh" >/dev/null 2>&1   # fit the media island here, after the left island width is final (as an event it would land after the bar shows). No animation
-sketchybar --bar y_offset=5; trap - EXIT
+sketchybar --bar y_offset=$BAR_Y; trap - EXIT
 sketchybar --update
 sketchybar --query displays | md5 > "$HOME/.cache/sketchybar/displays"   # for the popup_guard comparison
 (nohup "$P/blink.sh" >/dev/null 2>&1 &)   # cursor blink

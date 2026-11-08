@@ -13,7 +13,8 @@ if [ -z "$SSID" ] || [ "$SSID" = "<redacted>" ]; then
   SSID=""
   case "$SENDER" in
     wifi_change|system_woke|forced)   # run hangs when the shortcut does not exist, so check the list first + 5 s limit
-      shortcuts list 2>/dev/null | grep -qx "SketchyBar Wi-Fi" \
+      SSID=$(perl -e 'alarm 3; exec @ARGV' "$CONFIG_DIR/helper/WifiScan.app/Contents/MacOS/WifiScan" ssid 2>/dev/null | head -1)   # the scan helper holds Location permission, so it can read the name
+      [ -z "$SSID" ] && shortcuts list 2>/dev/null | grep -qx "SketchyBar Wi-Fi" \
         && SSID=$(perl -e 'alarm 5; exec @ARGV' shortcuts run "SketchyBar Wi-Fi" 2>/dev/null | head -1)
       echo "$SSID" > "$NAMEF" ;;
     *) SSID=$(cat "$NAMEF" 2>/dev/null) ;;

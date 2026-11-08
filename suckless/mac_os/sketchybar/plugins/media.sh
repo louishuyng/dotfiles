@@ -28,7 +28,9 @@ fill() {  # <app name> <title> — size the title cell to the title, at most MED
   [ -z "$le" ] && le=216   # right end of the left island (relative to the bar's left edge on screen — does not rely on the first display being named display-1)
   # fixed widths inside the island: 9 + disc 18 + 8 + [title] + 12 + 14 + 12 + 14 + 12 + 14 + 10 + divider 1 + volume(glyph cell 34 + gauge 2×5+2×4) + 11
   iw=$(( 9 + 18 + 8 + 12 + 14 + 12 + 14 + 12 + 14 + 10 + 1 + 34 + 18 + 11 ))
-  tw=$(( NOTCH_L - (le + 5) - iw ))
+  # gap between the left island and the media island: 5 between islands; with no frames (omarchy) the app name's padding 11 + disc padding 9 already space them (about 20 in total)
+  local gap=5; [ "$BAR_STYLE" = omarchy ] && gap=0
+  tw=$(( NOTCH_L - (le + gap) - iw ))
   local room=$tw   # title width that would reach the notch
   # cap the title cell: the island fits a short title and cuts a long one with …
   local want; want=$("$HOME/.local/bin/dotbin" sb width "$2"); [ $want -gt $MEDIA_TITLE_MAX ] && want=$MEDIA_TITLE_MAX
@@ -37,19 +39,26 @@ fill() {  # <app name> <title> — size the title cell to the title, at most MED
   iw=$(( iw + tw ))
   # the island sits 5 after the left island; whatever the cap leaves over goes between it and the notch (notch.gap)
   local ng=$(( 5 + room - tw )); [ $ng -lt 5 ] && ng=5
+  # nothing playing: hide everything but the volume, which keeps the island's left edge (le + gap) — the freed width goes to notch.gap. 63 = glyph cell 34 + gauge 18 + 11
+  #   media keeps updates=on (sketchybarrc): hidden items get no updates by default, so playback starting would never show it again
+  local show=on vis=() i
+  [ "$(cat "$HOME/.cache/sketchybar/media_state" 2>/dev/null)" = none ] && { show=off; ng=$(( 5 + room + iw - tw - 63 )); }
+  for i in media media.disc media.hit media.prev media.play media.next vol.sep; do vis+=(--set $i drawing=$show); done
+  vis+=(--set vol.ul popup.align=$([ $show = on ] && echo right || echo left))   # volume alone sits far from the notch: right-aligned, the popup would run off the left screen edge
   text=$(printf 'k\t%s\n' "$2" | "$HOME/.local/bin/dotbin" sb fit "$tw" | cut -f2)
   # animate (0.2 s) only when the island width changes. Otherwise apply at once (the 2 s refresh), and at startup (SB_BOOT)
   local A=(--animate tanh 12)
   { [ -n "$SB_BOOT" ] || { [ -z "$LEFT_ITEM" ] && [ "$(cat "$HOME/.cache/sketchybar/media_iw" 2>/dev/null)" = "$iw" ]; }; } && A=()
-  if [ -n "$LEFT_ITEM" ] && [ "$(defaults read com.apple.universalaccess reduceMotion 2>/dev/null)" = 1 ]; then A=(); fi
+  [ -n "$LEFT_ITEM" ] && A=()   # a label swap inside --animate draws one blank frame of that item (measured 2026-11-08), so name changes apply at once
   echo "$iw" > "$HOME/.cache/sketchybar/media_iw"
   local before=() after=()
   if [ -n "$LEFT_ITEM" ]; then
     before=(--set "$LEFT_ITEM" label="$LEFT_TEXT" label.width="$LEFT_OLD_WIDTH")
+    [ -n "$LEFT_ICON" ] && before+=(icon="$LEFT_ICON")
     after=(--set "$LEFT_ITEM" label.width="$LEFT_WIDTH")
   fi
   # the app-name cell width is also fixed to the computed value (icon.width includes icon.padding_right 8) — rounding of the glyph width (7.2pt×n) differs from SketchyBar's, which left the island 1pt off (±1 per app name, 2026-10-01)
-  sketchybar "${before[@]}" --set media label="$text" "${A[@]}" --set media label.width=$tw --set notch.gap width=$ng "${after[@]}"
+  sketchybar "${before[@]}" "${vis[@]}" --set media label="$text" "${A[@]}" --set media label.width=$tw --set notch.gap width=$ng "${after[@]}"
   [ -z "$LE_GROW" ] && rmdir "$HOME/.cache/sketchybar/front_app.lock" 2>/dev/null   # hold the lock only while computing and applying the fill (not through the popup and album-art work below)
   return 0
 }
