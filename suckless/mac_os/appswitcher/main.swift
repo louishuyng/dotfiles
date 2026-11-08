@@ -272,6 +272,25 @@ final class Cell: NSTableCellView {
   required init?(coder: NSCoder) { fatalError() }
 }
 
+final class HeaderCell: NSTableCellView {
+  let label = NSTextField(labelWithString: "")
+
+  init() {
+    super.init(frame: .zero)
+    label.translatesAutoresizingMaskIntoConstraints = false
+    addSubview(label)
+    NSLayoutConstraint.activate([
+      label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
+      label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
+    ])
+  }
+  required init?(coder: NSCoder) { fatalError() }
+}
+
+final class ActionRow: NSView {
+  var index = 0
+}
+
 // MARK: - Controller
 
 final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate,
@@ -279,10 +298,16 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
 {
   enum Mode { case apps, themes }
   struct Row {
+    var title: String
+    var hits: [Int] = []
+    var app: AppEntry? = nil
+    var family: Family? = nil
+    var header = false
+  }
+  struct Action {
     let title: String
-    let hits: [Int]
-    let app: AppEntry?
-    let family: Family?
+    let symbol: String
+    let run: () -> Void
   }
 
   let panel = Panel(
@@ -297,6 +322,14 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
   let table = NSTableView()
   let noMatch = NSTextField(labelWithString: "No matches")
   let appearanceHint = NSTextField(labelWithString: "")
+  let actionsBox = NSView()
+  let actionsStack = NSStackView()
+  var actions: [Action] = []
+  var actionsTitle = ""
+  var actionIndex = 0
+  var trashArmed = false
+  var actionsOpen: Bool { !actionsBox.isHidden }
+  var keyMonitor: Any?
 
   var mode = Mode.apps
   var apps: [AppEntry] = []
@@ -311,6 +344,10 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
   var appearance: Appearance {
     get { Appearance(rawValue: UserDefaults.standard.string(forKey: "appearance") ?? "") ?? .auto }
     set { UserDefaults.standard.set(newValue.rawValue, forKey: "appearance") }
+  }
+  var pins: [String] {
+    get { UserDefaults.standard.stringArray(forKey: "pins") ?? [] }
+    set { UserDefaults.standard.set(newValue, forKey: "pins") }
   }
   var theme = Family.all[0].dark
   var appearanceObservation: NSKeyValueObservation?
@@ -335,6 +372,21 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
       self.mru.removeAll { $0 == p }
       self.mru.insert(p, at: 0)
     }
+    // ⌃j/⌃k and ⌘k never reach the field editor as commands, so catch them before dispatch.
+    keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] e in
+      guard let self, self.panel.isKeyWindow else { return e }
+      let flags = e.modifierFlags.intersection(.deviceIndependentFlagsMask)
+      let c = e.charactersIgnoringModifiers ?? ""
+      if flags == .control, c == "j" || c == "k" {
+        self.move(c == "j" ? 1 : -1)
+        return nil
+      }
+      if flags == .command, c == "k" {
+        self.actionsOpen ? self.closeActions() : self.openActions()
+        return nil
+      }
+      return e
+    }
     show()
   }
 
@@ -355,7 +407,8 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     panel.onKey = { [weak self] key in
       guard let self else { return }
       if key == "," { self.setMode(self.mode == .themes ? .apps : .themes); return }
-      if let i = Int(key), self.mode == .apps, i - 1 < self.rows.count { self.activate(self.rows[i - 1]) }
+      let items = self.rows.filter { !$0.header }
+      if let i = Int(key), self.mode == .apps, i - 1 < items.count { self.activate(items[i - 1]) }
     }
 
     root.wantsLayer = true
@@ -419,7 +472,22 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
 
     noMatch.font = font(14)
     appearanceHint.font = font(12)
-    for v in [search, scroll, noMatch, appearanceHint] as [NSView] {
+    actionsBox.wantsLayer = true
+    actionsBox.layer?.cornerRadius = 12
+    actionsBox.layer?.borderWidth = 1
+    actionsBox.shadow = NSShadow()
+    actionsBox.layer?.shadowOpacity = 0.35
+    actionsBox.layer?.shadowRadius = 16
+    actionsBox.layer?.shadowOffset = CGSize(width: 0, height: -4)
+    actionsBox.isHidden = true
+    actionsStack.orientation = .vertical
+    actionsStack.alignment = .leading
+    actionsStack.spacing = 2
+    actionsStack.edgeInsets = NSEdgeInsets(top: 10, left: 6, bottom: 6, right: 6)
+    actionsStack.translatesAutoresizingMaskIntoConstraints = false
+    actionsBox.addSubview(actionsStack)
+
+    for v in [search, scroll, noMatch, appearanceHint, actionsBox] as [NSView] {
       v.translatesAutoresizingMaskIntoConstraints = false
       root.addSubview(v)
     }
@@ -435,6 +503,13 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
       noMatch.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 14),
       appearanceHint.trailingAnchor.constraint(equalTo: root.trailingAnchor, constant: -36),
       appearanceHint.centerYAnchor.constraint(equalTo: search.centerYAnchor),
+      actionsBox.trailingAnchor.constraint(equalTo: root.trailingAnchor, constant: -20),
+      actionsBox.bottomAnchor.constraint(equalTo: root.bottomAnchor, constant: -20),
+      actionsBox.widthAnchor.constraint(equalToConstant: 300),
+      actionsStack.topAnchor.constraint(equalTo: actionsBox.topAnchor),
+      actionsStack.bottomAnchor.constraint(equalTo: actionsBox.bottomAnchor),
+      actionsStack.leadingAnchor.constraint(equalTo: actionsBox.leadingAnchor),
+      actionsStack.trailingAnchor.constraint(equalTo: actionsBox.trailingAnchor),
     ])
   }
 
@@ -458,6 +533,9 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     let placeholder = mode == .apps ? "Apps…" : "Themes…"
     search.placeholderAttributedString = NSAttributedString(
       string: placeholder, attributes: [.foregroundColor: t.muted, .font: font(17)])
+    actionsBox.layer?.backgroundColor = t.bg.withAlphaComponent(0.97).cgColor
+    actionsBox.layer?.borderColor = t.muted.withAlphaComponent(0.35).cgColor
+    if actionsOpen { renderActions() }
     table.reloadData()
   }
 
@@ -479,6 +557,9 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     NSApp.activate(ignoringOtherApps: true)
     panel.makeKeyAndOrderFront(nil)
     panel.makeFirstResponder(search)
+    // Selecting before the first layout scrolls against a zero-height clip view; start from the top instead.
+    root.layoutSubtreeIfNeeded()
+    table.scroll(.zero)
     (search.currentEditor() as? NSTextView)?.insertionPointColor = theme.accent
     guard !reduceMotion else { return }
     NSAnimationContext.runAnimationGroup { ctx in
@@ -490,6 +571,7 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
   }
 
   func hide() {
+    closeActions()
     guides.orderOut(nil)
     panel.orderOut(nil)
     // Hand focus back to whatever was frontmost; a launch activates its own target anyway.
@@ -554,6 +636,7 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
   }
 
   func setMode(_ m: Mode) {
+    closeActions()
     mode = m
     search.stringValue = ""
     applyTheme(savedTheme)
@@ -579,22 +662,48 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     let rank = Dictionary(mru.enumerated().map { ($1, $0) }, uniquingKeysWith: { a, _ in a })
     func mruRank(_ a: AppEntry) -> Int { rank[a.url.path] ?? Int.max }
 
+    let pins = self.pins
     if empty {
-      rows = apps.sorted {
+      let pinned = apps.filter { pins.contains($0.url.path) }
+        .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+        .map { Row(title: $0.name, app: $0) }
+      let rest = apps.filter { !pins.contains($0.url.path) }.sorted {
         let (ra, rb) = (mruRank($0), mruRank($1))
         return ra != rb ? ra < rb : $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending
-      }.map { Row(title: $0.name, hits: [], app: $0, family: nil) }
+      }.map { Row(title: $0.name, app: $0) }
+      rows =
+        pinned.isEmpty
+        ? rest
+        : [Row(title: "Top Shelf", header: true)] + pinned + [Row(title: "Apps", header: true)] + rest
     } else {
       rows = apps.compactMap { app -> (Row, Int)? in
         guard let m = fuzzyMatch(q, app.name) else { return nil }
-        return (Row(title: app.name, hits: m.hits, app: app, family: nil), m.score + (rank[app.url.path] != nil ? 15 : 0))
+        let bonus = (rank[app.url.path] != nil ? 15 : 0) + (pins.contains(app.url.path) ? 20 : 0)
+        return (Row(title: app.name, hits: m.hits, app: app), m.score + bonus)
       }.sorted { $0.1 > $1.1 }.map(\.0)
     }
 
     table.reloadData()
-    // Empty query starts on the previous app, so ⌘⌘ ↵ flips back like alt-tab.
+    // Empty query skips the frontmost app, so ⌘⌘ ↵ flips back like alt-tab.
     let front = NSWorkspace.shared.frontmostApplication?.bundleURL?.path
-    select(empty && rows.count > 1 && rows[0].app?.url.path == front ? 1 : 0)
+    let selectable = rows.indices.filter { !rows[$0].header }
+    select(selectable.first { !empty || rows[$0].app?.url.path != front } ?? selectable.first ?? 0)
+  }
+
+  func step(_ d: Int) {
+    var i = table.selectedRow + d
+    while rows.indices.contains(i) && rows[i].header { i += d }
+    if rows.indices.contains(i) { select(i) }
+  }
+
+  func move(_ d: Int) {
+    if actionsOpen {
+      actionIndex = max(0, min(actions.count - 1, actionIndex + d))
+      trashArmed = false
+      renderActions()
+    } else {
+      step(d)
+    }
   }
 
   func select(_ i: Int) {
@@ -604,16 +713,30 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     let old = table.selectedRow
     table.selectRowIndexes([i], byExtendingSelection: false)
     table.scrollRowToVisible(i)
+    if i > 0 && rows[i - 1].header { table.scrollRowToVisible(i - 1) }  // keep the section title in view
     table.reloadData(forRowIndexes: IndexSet([old, i].filter { $0 >= 0 && $0 < rows.count }), columnIndexes: [0])
     if mode == .themes, let f = rows[i].family { applyTheme(appearance.pick(f)) }  // live preview
   }
 
-  func controlTextDidChange(_ obj: Notification) { refilter() }
+  func controlTextDidChange(_ obj: Notification) {
+    closeActions()
+    refilter()
+  }
 
   func control(_ control: NSControl, textView: NSTextView, doCommandBy sel: Selector) -> Bool {
+    if actionsOpen {
+      switch sel {
+      case #selector(NSResponder.moveUp(_:)): move(-1)
+      case #selector(NSResponder.moveDown(_:)): move(1)
+      case #selector(NSResponder.insertNewline(_:)): runAction()
+      case #selector(NSResponder.cancelOperation(_:)): closeActions()
+      default: return false
+      }
+      return true
+    }
     switch sel {
-    case #selector(NSResponder.moveUp(_:)): select(table.selectedRow - 1)
-    case #selector(NSResponder.moveDown(_:)): select(table.selectedRow + 1)
+    case #selector(NSResponder.moveUp(_:)): step(-1)
+    case #selector(NSResponder.moveDown(_:)): step(1)
     case #selector(NSResponder.insertNewline(_:)):
       if table.selectedRow >= 0 { activate(rows[table.selectedRow]) }
     case #selector(NSResponder.insertTab(_:)) where mode == .themes:
@@ -627,7 +750,125 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
   }
 
   @objc func clicked() {
-    if table.clickedRow >= 0 { activate(rows[table.clickedRow]) }
+    closeActions()
+    if table.clickedRow >= 0, !rows[table.clickedRow].header { activate(rows[table.clickedRow]) }
+  }
+
+  // MARK: Actions (⌘K)
+
+  func openActions() {
+    guard mode == .apps, rows.indices.contains(table.selectedRow), let app = rows[table.selectedRow].app else { return }
+    let path = app.url.path
+    let pinned = pins.contains(path)
+    actions = [
+      Action(
+        title: pinned ? "Take Off the Top Shelf" : "Pin to Top Shelf", symbol: pinned ? "pin.slash" : "pin",
+        run: { [weak self] in self?.togglePin(path) })
+    ]
+    // /System apps are on the sealed system volume and can't be trashed.
+    if !path.hasPrefix("/System/") {
+      actions.append(Action(title: "Uninstall…", symbol: "trash", run: { [weak self] in self?.uninstall(app) }))
+    }
+    actionsTitle = app.name
+    actionIndex = 0
+    trashArmed = false
+    actionsBox.isHidden = false
+    renderActions()
+  }
+
+  func closeActions() {
+    actionsBox.isHidden = true
+    trashArmed = false
+  }
+
+  func renderActions() {
+    actionsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    let title = NSTextField(labelWithString: actionsTitle)
+    title.font = font(11)
+    title.textColor = theme.muted
+    actionsStack.addArrangedSubview(title)
+    actionsStack.setCustomSpacing(8, after: title)
+    title.leadingAnchor.constraint(equalTo: actionsStack.leadingAnchor, constant: 16).isActive = true
+
+    for (i, a) in actions.enumerated() {
+      let selected = i == actionIndex
+      let danger = a.symbol == "trash"
+      let color = danger ? NSColor.systemRed : selected ? theme.accent : theme.text
+      let label = trashArmed && danger ? "Press ↵ again to trash it" : a.title
+
+      let row = ActionRow()
+      row.index = i
+      row.wantsLayer = true
+      row.layer?.cornerRadius = 8
+      row.layer?.backgroundColor = selected ? theme.text.withAlphaComponent(0.08).cgColor : nil
+      row.addGestureRecognizer(NSClickGestureRecognizer(target: self, action: #selector(actionClicked(_:))))
+      row.setAccessibilityRole(.button)
+      row.setAccessibilityLabel(label)
+
+      let icon = NSImageView(image: NSImage(systemSymbolName: a.symbol, accessibilityDescription: nil) ?? NSImage())
+      icon.contentTintColor = color
+      let text = NSTextField(labelWithString: label)
+      text.font = font(13, bold: selected)
+      text.textColor = color
+      for v in [icon, text] as [NSView] {
+        v.translatesAutoresizingMaskIntoConstraints = false
+        row.addSubview(v)
+      }
+      actionsStack.addArrangedSubview(row)
+      NSLayoutConstraint.activate([
+        row.heightAnchor.constraint(equalToConstant: 34),
+        row.leadingAnchor.constraint(equalTo: actionsStack.leadingAnchor, constant: 6),
+        row.trailingAnchor.constraint(equalTo: actionsStack.trailingAnchor, constant: -6),
+        icon.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: 10),
+        icon.centerYAnchor.constraint(equalTo: row.centerYAnchor),
+        icon.widthAnchor.constraint(equalToConstant: 16),
+        text.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 10),
+        text.centerYAnchor.constraint(equalTo: row.centerYAnchor),
+      ])
+    }
+  }
+
+  @objc func actionClicked(_ g: NSClickGestureRecognizer) {
+    guard let row = g.view as? ActionRow else { return }
+    actionIndex = row.index
+    runAction()
+  }
+
+  func runAction() {
+    guard actions.indices.contains(actionIndex) else { return }
+    let a = actions[actionIndex]
+    // Trashing needs a second ↵ so a stray keypress can't remove an app.
+    if a.symbol == "trash" && !trashArmed {
+      trashArmed = true
+      renderActions()
+      return
+    }
+    closeActions()
+    a.run()
+  }
+
+  func togglePin(_ path: String) {
+    if pins.contains(path) { pins.removeAll { $0 == path } } else { pins.append(path) }
+    refilter()
+    if let i = rows.firstIndex(where: { $0.app?.url.path == path }) { select(i) }
+  }
+
+  func uninstall(_ app: AppEntry) {
+    let path = app.url.path
+    for r in NSWorkspace.shared.runningApplications where r.bundleURL?.path == path { r.terminate() }
+    NSWorkspace.shared.recycle([app.url]) { [weak self] _, err in
+      DispatchQueue.main.async {
+        guard let self else { return }
+        if let err {
+          NSLog("AppSwitcher: could not trash \(path): \(err)")
+          NSSound.beep()
+          return
+        }
+        self.pins.removeAll { $0 == path }
+        self.apps.removeAll { $0.url.path == path }
+        self.refilter()
+      }
+    }
   }
 
   func activate(_ row: Row) {
@@ -651,7 +892,18 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
 
   func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? { RowView() }
 
+  func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat { rows[row].header ? 40 : 50 }
+
+  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool { !rows[row].header }
+
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    if rows[row].header {
+      let h = tableView.makeView(withIdentifier: .init("header"), owner: nil) as? HeaderCell ?? HeaderCell()
+      h.identifier = .init("header")
+      h.label.attributedStringValue = NSAttributedString(
+        string: rows[row].title, attributes: [.font: font(12), .foregroundColor: theme.muted])
+      return h
+    }
     let cell = tableView.makeView(withIdentifier: .init("cell"), owner: nil) as? Cell ?? Cell()
     cell.identifier = .init("cell")
     let r = rows[row]
