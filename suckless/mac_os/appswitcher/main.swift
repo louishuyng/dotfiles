@@ -517,8 +517,9 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     theme = t
     panel.appearance = NSAppearance(named: t.dark ? .darkAqua : .aqua)
     // Theme tints the glass instead of painting over it, so the desktop still shows through.
+    // 0.7, not lighter: clear glass takes on what is behind it, and over a white page a weak tint left dark-theme labels unreadable.
     if #available(macOS 26, *), let glass = glassView as? NSGlassEffectView {
-      glass.tintColor = t.bg.withAlphaComponent(0.15)
+      glass.tintColor = t.bg.withAlphaComponent(0.7)
       root.layer?.backgroundColor = nil
     } else {
       root.layer?.backgroundColor = t.bg.withAlphaComponent(0.45).cgColor
@@ -901,7 +902,7 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
       let h = tableView.makeView(withIdentifier: .init("header"), owner: nil) as? HeaderCell ?? HeaderCell()
       h.identifier = .init("header")
       h.label.attributedStringValue = NSAttributedString(
-        string: rows[row].title, attributes: [.font: font(12), .foregroundColor: theme.muted])
+        string: rows[row].title, attributes: [.font: font(14, bold: true), .foregroundColor: theme.text.withAlphaComponent(0.7)])
       return h
     }
     let cell = tableView.makeView(withIdentifier: .init("cell"), owner: nil) as? Cell ?? Cell()
