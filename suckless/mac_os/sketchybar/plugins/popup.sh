@@ -3,6 +3,7 @@
 #
 # Popup contents are built ahead of time in the background (on periodic refresh). A click only opens and closes (popup_click.sh).
 #   popup_rows <parent> <title>   ← lines of "left<TAB>right<TAB>color<TAB>click command" on stdin
+#   optional 5th field: right-click command (closes the popup first)
 #   empty title = no title row. Left "_" = a single-line text row, "=" = a calendar cell row — tab-separated, so it cannot be left blank
 #   POPUP_KW=<width> left cell width (default 64)
 #   POPUP_MAXC=<chars> cuts the right text of named rows at that length (for fixed-width popups)
@@ -78,13 +79,15 @@ popup_rows() {
       icon.padding_left=12 icon.padding_right=12 label.drawing=off
       background.drawing=on background.color=0x00000000 background.height=24)
   i=0
-  while IFS=$'\t' read -r k v c click; do
+  while IFS=$'\t' read -r k v c click rclick; do
     [ -z "$k$v" ] && continue
     case "$click" in                   # only link rows act. Clicking other rows does nothing (popup stays)
       "") cs="" ;;
       @*) cs="${click#@}" ;;           # starting with @ keeps the popup open after the click (calendar month paging)
       *) cs="$click; source '$POPUP_LIB'; popup_close_all" ;;
     esac
+    # optional 5th field: right-click command (SketchyBar sets $BUTTON for click_script)
+    [ -n "$rclick" ] && cs="if [ \"\$BUTTON\" = right ]; then source '$POPUP_LIB'; popup_close_all; $rclick; else ${cs:-:}; fi"
     local lp=0 id=on dr=on mc=${POPUP_MAXC:-0}   # _ : single-line text · = : calendar cell row (pulled in by one leading space, 7) · ~ : empty row (hidden)
     case "$k" in (_) lp=12; id=off; mc=0 ;; (=) lp=5; id=off; mc=0 ;; ("~") dr=off ;; esac
     a+=(--set "$p.p.$i" drawing=$dr icon.drawing=$id label.padding_left=$lp label.max_chars=$mc

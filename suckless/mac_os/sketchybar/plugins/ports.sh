@@ -42,7 +42,7 @@ MAX=30   # max rows shown in the popup. Beyond that the last row is '+N more · 
 SHOW="$CONFIG_DIR/plugins/show_list.sh ports"
 {
   head -n $MAX <<<"$LIST" | while IFS=$'\t' read -r port what; do
-    [ -n "$port" ] && printf ':%s\t%s  ↗\t%s\topen http://localhost:%s\n' "$port" "$what" "$TEXT" "$port"
+    [ -n "$port" ] && printf ':%s\t%s  ↗\t%s\topen http://localhost:%s\t%s\n' "$port" "$what" "$TEXT" "$port" "bash '$CONFIG_DIR/plugins/port_kill.sh' $port"
   done
   [ "$N" -gt $MAX ] && printf '…\t+%s more · show all ↗\t%s\t%s\n' $((N - MAX)) "$TEXT2" "$SHOW"
 } | "$HOME/.local/bin/dotbin" sb fit 260 | popup_rows ports PORTS
