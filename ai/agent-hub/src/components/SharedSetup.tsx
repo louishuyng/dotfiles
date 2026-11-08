@@ -10,7 +10,7 @@ import { Avatar, Empty, PanelHeading, Toggle } from './common';
 
 type ServerConfig = { type: 'stdio' | 'http'; command?: string; args?: string[]; env?: Record<string, string>; url?: string; headers?: Record<string, string>; enabled: boolean };
 type HookEvent = 'sessionStart' | 'promptSubmit' | 'beforeTool' | 'permissionRequest' | 'afterTool' | 'stop';
-type HookConfig = { id: string; event: HookEvent; command?: string; text?: string; skill?: string; context?: 'adhd' | 'ponytail' | 'plannotator'; enabled: boolean; disabledAgents?: string[] };
+type HookConfig = { id: string; event: HookEvent; command?: string; text?: string; skill?: string; context?: 'adhd' | 'ponytail'; enabled: boolean; disabledAgents?: string[] };
 type Setup = { servers: Record<string, ServerConfig>; hooks: HookConfig[] };
 type Target = { id: string; name: string; available: boolean; mcp: boolean; hooks: boolean; commandHooks?: boolean; status: string; matched: number; issues: string[]; notes?: string[]; extra: string[] };
 type SharedState = {
@@ -23,7 +23,7 @@ type SharedState = {
 type HookType = 'text' | 'skill' | 'command' | 'preset';
 
 const eventNames: Record<HookEvent, string> = { sessionStart: 'Session start', promptSubmit: 'Prompt submitted', beforeTool: 'Before tool use', permissionRequest: 'Approval requested', afterTool: 'After tool use', stop: 'Response complete' };
-const contextNames = { adhd: 'ADHD', ponytail: 'Ponytail', plannotator: 'Plannotator' };
+const contextNames = { adhd: 'ADHD', ponytail: 'Ponytail' };
 const typeNames: Record<HookType, string> = { text: 'Context text', skill: 'Skill reference', command: 'Command', preset: 'Shared source' };
 const hasContext = (hook: HookConfig) => hook.context !== undefined || hook.text !== undefined || hook.skill !== undefined;
 const hookType = (hook?: HookConfig): HookType => hook?.context ? 'preset' : hook?.skill !== undefined ? 'skill' : hook?.command !== undefined ? 'command' : 'text';

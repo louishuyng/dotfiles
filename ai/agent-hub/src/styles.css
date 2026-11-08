@@ -265,6 +265,13 @@ th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .sync-changes code { display: block; margin: 3px 0; font-size: 12px; }
 .sync-changes small { color: var(--muted-foreground); overflow-wrap: anywhere; }
 
+.vendor-row { align-items: flex-start; flex-wrap: wrap; }
+.vendor-row .row-copy p code, .vendor-links code { font-size: 12px; }
+.vendor-links { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 8px; font-size: 12px; color: var(--muted-foreground); }
+.vendor-links li { display: inline-flex; align-items: center; gap: 5px; overflow-wrap: anywhere; }
+.vendor-links .text-button { min-height: 0; font-size: 12px; }
+.vendor-actions { justify-content: flex-end; }
+@media (max-width: 640px) { .vendor-actions { width: 100%; justify-content: flex-start; } }
 .issue-action { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; padding: 4px 0; }
 .issue-action strong { font-weight: 550; color: var(--foreground); }
 

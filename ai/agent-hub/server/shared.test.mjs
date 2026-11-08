@@ -159,10 +159,10 @@ test('first-time Cursor hook setup creates valid repository JSON', async t => {
 
 test('shared policy hooks preserve content while agent opt-outs remove only the selected registration', async t => {
   const f = await fixture(t); const root = path.join(f.root, 'ai');
-  for (const [relative, content] of [['skills/i-have-adhd/SKILL.md', '---\nname: i-have-adhd\ndescription: ADHD example\n---\nADHD instructions'], ['skills/ponytail/SKILL.md', '---\nname: ponytail\ndescription: Ponytail example\n---\nPonytail instructions'], ['skills/plannotator/SKILL.md', '---\nname: plannotator\ndescription: Human review\n---\nPlannotator instructions']]) {
+  for (const [relative, content] of [['skills/i-have-adhd/SKILL.md', '---\nname: i-have-adhd\ndescription: ADHD example\n---\nADHD instructions'], ['skills/ponytail/SKILL.md', '---\nname: ponytail\ndescription: Ponytail example\n---\nPonytail instructions'], ['skills/review/SKILL.md', '---\nname: review\ndescription: Human review\n---\nReview instructions']]) {
     await mkdir(path.dirname(path.join(root, relative)), { recursive: true }); await writeFile(path.join(root, relative), content);
   }
-  const value = { servers: {}, hooks: ['adhd', 'ponytail', 'plannotator'].map(id => ({ id, context: id, event: 'sessionStart', enabled: true, disabledAgents: [] })) };
+  const value = { servers: {}, hooks: [...['adhd', 'ponytail'].map(id => ({ id, context: id })), { id: 'review', skill: 'review' }].map(hook => ({ ...hook, event: 'sessionStart', enabled: true, disabledAgents: [] })) };
   await save(f.shared, value);
   let cursor = jsonc(await readFile(path.join(f.home, '.cursor/hooks.json'), 'utf8'));
   assert.equal(cursor.hooks.sessionStart.length, 3);
@@ -177,11 +177,11 @@ test('shared policy hooks preserve content while agent opt-outs remove only the 
   value.hooks[2].disabledAgents = ['cursor']; await save(f.shared, value);
   cursor = jsonc(await readFile(path.join(f.home, '.cursor/hooks.json'), 'utf8'));
   assert.equal(cursor.hooks.sessionStart.length, 2);
-  assert.deepEqual(await hookOutput(root, 'cursor', 'plannotator', 'sessionStart'), {});
-  const contextDocument = await f.config.readDocument('hook-context:plannotator');
-  await f.config.saveDocument({ ...contextDocument, content: '---\nname: plannotator\ndescription: Human review\n---\nUpdated Plannotator instructions' });
-  assert.ok((await hookOutput(root, 'claude', 'plannotator', 'SessionStart')).hookSpecificOutput.additionalContext.includes('Updated Plannotator instructions'));
-  assert.ok((await f.shared.snapshot()).contexts.plannotator.content.includes('Updated Plannotator instructions'));
+  assert.deepEqual(await hookOutput(root, 'cursor', 'review', 'sessionStart'), {});
+  const contextDocument = await f.config.readDocument('hook-context:review');
+  await f.config.saveDocument({ ...contextDocument, content: '---\nname: review\ndescription: Human review\n---\nUpdated Review instructions' });
+  assert.ok((await hookOutput(root, 'claude', 'review', 'SessionStart')).hookSpecificOutput.additionalContext.includes('Updated Review instructions'));
+  assert.ok((await f.shared.snapshot()).contexts.review.content.includes('Updated Review instructions'));
   assert.equal((await hookContexts(root, 'claude')).length, 3);
   value.hooks[1].enabled = false; await save(f.shared, value);
   assert.equal((await hookContexts(root, 'cursor')).length, 1);

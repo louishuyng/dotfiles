@@ -26,7 +26,7 @@ Choose by impact, not diff size; escalate when investigation reveals a wider eff
 
 1. **Local, low-risk change:** inspect the affected code and callers, make the smallest complete edit, run the focused check, then stop. No formal plan or extra reviewer unless requested.
 2. **Behavioral change:** trace the affected flow, cover plausible regressions, and exercise the changed path. Run broader checks when shared contracts or dependencies are affected.
-3. **High-risk change:** security-sensitive behavior, data migrations, public APIs, and architectural changes need an agreed written plan, deeper analysis, broader verification, and review.
+3. **High-risk change:** security-sensitive behavior, data migrations, public APIs, and architectural changes need an agreed written plan, deeper analysis, broader verification, and review. When the `egm-review` skill is available, run it on the agreed design doc before building so fresh-context reviewers can expose unstated assumptions. After changing behavior an ADR or README documents, run `egm-drift-report` on that doc.
 
 - Never reduce validation, data-loss prevention, security, accessibility, or required approvals to save time. Verify non-trivial behavior in the actual changed path; tests alone do not prove it works.
 - Keep small tasks in the main agent. Delegate only substantial, independent work; use extra reviewers for risk, not by default.

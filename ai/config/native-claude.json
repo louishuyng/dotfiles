@@ -20,5 +20,6 @@
   "ponytail@ponytail": false,
   "coderabbit@claude-plugins-official": false,
   "eli5@claude-community": false,
-  "caveman@caveman": false
+  "caveman@caveman": false,
+  "egm@egm": true
 }

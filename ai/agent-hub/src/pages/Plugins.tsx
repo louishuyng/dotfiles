@@ -3,6 +3,7 @@ import { ChevronRight, ExternalLink, Search } from 'lucide-react';
 import { Input } from '../components/ui/input';
 import { Empty, PanelHeading, Toggle, ToolIcon } from '../components/common';
 import { api } from '../api';
+import { Vendors } from '../components/Vendors';
 import type { Workspace } from '../App';
 
 export function Plugins({ workspace }: { workspace: Workspace }) {
@@ -15,6 +16,7 @@ export function Plugins({ workspace }: { workspace: Workspace }) {
 
   return (
     <>
+      <Vendors workspace={workspace} />
       <div className="toolbar">
         <div className="search-field"><Search size={16} aria-hidden="true" /><Input aria-label="Search plugins" placeholder="Search plugins…" value={search} onChange={event => setSearch(event.target.value)} /></div>
         <div className="toolbar-end marketplace-links">

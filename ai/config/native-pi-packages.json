@@ -26,10 +26,6 @@
     "skills": []
   },
   {
-    "source": "npm:@plannotator/pi-extension@0.28.23",
-    "skills": []
-  },
-  {
     "source": "npm:pi-btw@0.8.0",
     "skills": []
   },

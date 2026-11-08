@@ -44,7 +44,7 @@ verified shared set; import compatible entries explicitly from the page.
 Shared servers support stdio commands and Streamable HTTP endpoints. Native-only
 options and environment interpolation require manual setup and appear as
 incomplete parity. Shared command hooks map supported tool-use and completion
-events; prompt-submit exists for Claude, Codex, and Grok Build. Approval-request events exist for Claude and Codex only. Grok ignores hook stdout, so context policies are also written to `~/.grok/rules/agent-hub.md`. ADHD, Ponytail, Plannotator, and the conditional `ui-frontend` workflow default
+events; prompt-submit exists for Claude, Codex, and Grok Build. Approval-request events exist for Claude and Codex only. Grok ignores hook stdout, so context policies are also written to `~/.grok/rules/agent-hub.md`. ADHD, Ponytail, and the conditional `ui-frontend` workflow default
 on. The Hooks workspace stores global defaults and per-agent opt-outs while
 keeping one shared body for each hook.
 Context hooks run in Codex, Claude, Gemini, Cursor, OpenCode, Pi, omp, and Grok Build. Commands receive native JSON; they
@@ -63,7 +63,7 @@ See [the shared setup decision](../../docs/adr/0006-shared-agent-setup.md).
 
 Native Codex plugins remain managed through the app server. Skill creation, edits, and enablement use the repository library and manifest.
 
-The current manifest enables fifteen skills: archify, aside-browser, better-write, caveman, domain-modeling, grill-with-docs, grilling, herdr-implement, herdr-plan, i-have-adhd, plannotator, ponytail, rex, tech-doc-writer, and ui-ux-pro-max. The repository-owned [Plannotator skill](../skills/plannotator/SKILL.md) defines the shared review policy and supplies its hook body. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays fifteen.
+The current manifest enables thirteen skills: archify, aside-browser, better-write, caveman, domain-modeling, egm, herdr-implement, herdr-plan, i-have-adhd, ponytail, tech-doc-writer, typesafe-ai, and ui-ux-pro-max. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays thirteen.
 
 Use **Skills → Review sync** to preview and apply shared links. Codex's `~/.agents/skills`, Claude's `~/.claude/skills`, OpenCode's `~/.config/opencode/skills`, and configured compatible targets receive exports of the same enabled repository folders. Scripts and relative references stay with each skill. Source edits happen in `ai/skills`, not a tool's plugin cache. Exports use skill names; ambiguous names fail before writing. Sync stages targets, reverses failed swaps, journals interrupted changes, and refreshes managed exports after library changes. Displaced roots are backed up. Bootstrap preserves active Agent Hub links.
 
@@ -153,38 +153,30 @@ Native plugin packages and vendor-owned hook executables remain in their native
 installations. Displaced global files are preserved in the private
 `original-global-files/` backup directory.
 
-The optional Plannotator hook requests local browser review before creating or
-marking a PR ready. Follow the [shared review skill](../skills/plannotator/SKILL.md)
-for exact task-only scope selection, launch commands, feedback handling, and the
-explicit human conversation-approval requirement. PR creation needs separate
-authorization; Agent Hub creates no PR automatically.
+## Design review with EGM
 
-Install the standalone binary pinned to **v0.28.23**, using the upstream
-installer's `--minimal --version 0.28.23` options. Do not install automatic plan
-hooks or extra skills. Reviews bind loopback, disable sharing and surprise
-browser/Glimpse launches, and open the actual printed URL. The CLI returns its
-decision/message JSON via stdout and exits; after fixes, rerun relevant checks
-and reopen the final diff. No guided review or automatic AI reviewer is required.
-Standalone Ask AI uses the selected provider; Codex runs in a separate read-only
-session. The optional native omp/Pi integration uses
-`@plannotator/pi-extension@0.28.23` through each host's
-official package manager: `omp plugin install @plannotator/pi-extension@0.28.23`
-or `pi install npm:@plannotator/pi-extension@0.28.23`. Its
-`/plannotator-review`, `/plannotator-annotate`, and `/plannotator-last` commands
-provide the native same-session bridge; the standalone CLI does not. Native Q&A
-runs a real agent turn with tools and transcript access, not a read-only fallback.
-Restart affected agents after native package installation. Agent Hub source
-upgrades follow the existing build/restart runbook; do not restart Portless.
-Fresh omp command discovery, same-session Q&A, and inline-feedback delivery were
-verified. Pi command discovery was verified; its Q&A was not exercised separately.
-The human must handle provider permission prompts; agents must not autoapprove.
-Do not enable `--plan` or add automatic plan hooks. Provider-backed AI can disclose
-relevant code; the app's release check means local review is not fully offline.
+The `egm` library skill runs the [Elephant-Goldfish Model](https://github.com/google/elephant-goldfish-model)
+in every synced agent. The plugin's runtime files are vendored in
+[`ai/vendor/egm`](../vendor/egm) (pinned commit in `vendor.json`); the wrapper skill
+tells agents to resolve EGM's `agents/`, `resources/`, and `docs/` paths against
+that root and to use general-purpose subagents that read the persona files.
+Claude Code (`egm@egm`) and Grok Build (`grok plugin install … --trust`) also
+have the native plugin, which registers named reviewer subagents; the wrapper
+defers to it when present. Codex cannot use the native plugin: skill sync
+disables Codex skills outside the library.
 
-Disable Plannotator for an agent in Hooks to opt out. Start a new session after
-changing context hooks; existing conversations can retain earlier text. This is
-an instruction, not an enforced GitHub gate. See the
-[accepted review decision](../../docs/adr/0006-shared-agent-setup.md#accepted-update-plannotator-replaces-difit-globally).
+Manage vendored plugins in **Plugins → Vendored plugins**. Each folder under
+`ai/vendor` with a `vendor.json` (repo, tracked ref, pinned commit, copied
+folders, linked skill, native plugin IDs) appears there with its linked skill
+and native plugin versions. The maintenance loop checks upstream once a day and
+only updates the badge. **Update…** clones the chosen branch, tag, or commit
+into a temporary folder and lists added, changed, and removed files; nothing
+changes until **Apply update**, which swaps the folder and keeps the tracked
+ref. **Sync native** installs or updates the Claude and Grok plugins. Agent Hub
+never commits: review `git diff ai/vendor` first, because vendored prompts run
+in every agent. `scripts/update-egm.sh [ref]` runs the same steps from Terminal.
+Adding a new vendor still needs a hand-written `vendor.json` and wrapper skill. See
+[the decision](../../docs/adr/0006-shared-agent-setup.md#accepted-update-egm-replaces-plannotator-and-grilling).
 
 ## Shared hook sources and cleanup
 
@@ -198,7 +190,7 @@ its per-agent switches and the exact injected text; **Edit context** edits that
 source.
 
 ADHD reads `ai/skills/i-have-adhd/SKILL.md`; Ponytail reads
-`ai/skills/ponytail/SKILL.md`; Plannotator reads `ai/skills/plannotator/SKILL.md`. Their global
+`ai/skills/ponytail/SKILL.md`. Their global
 enabled state and `disabledAgents` lists live in `ai/config/shared-setup.json`.
 The shared instructions in `ai/AGENTS.md` contain neither an always-on ADHD output
 policy nor a mandatory review rule.

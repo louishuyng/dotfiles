@@ -10,6 +10,7 @@ import { CodexClient } from './codex.mjs';
 import { Configuration, executable } from './config.mjs';
 import { UsageIndex } from './usage.mjs';
 import { SharedSetup } from './shared.mjs';
+import { Vendors } from './vendor.mjs';
 
 const run = promisify(execFile);
 export function allowedHost(value) { try { return ['agent-hub.localhost','127.0.0.1','localhost','[::1]'].includes(new URL(`http://${value}`).hostname); } catch { return false; } }
@@ -33,6 +34,7 @@ export async function makeApp({home=homedir(),root=fileURLToPath(new URL('../../
   const client = codex || new CodexClient({home,cwd:home,executable:executable('codex') || 'codex'});
   const config = new Configuration({home,root,data,codex:client}); await config.init();
   const shared = new SharedSetup(config); let globalWarning='';
+  const vendors = new Vendors({home,root,data});
   try { await config.inventory(); await shared.recover(); await config.configureGlobals(); await shared.reconcile(); await config.maintainSync(); } catch(error){globalWarning=error.message;}
   const usage = new UsageIndex(home,path.join(data,'cache'));
   const dist = fileURLToPath(new URL('../dist',import.meta.url)); let mutation=Promise.resolve();
@@ -53,9 +55,14 @@ export async function makeApp({home=homedir(),root=fileURLToPath(new URL('../../
     'shared/save': (value)=>shared.save(value),
     'shared/import': (value)=>shared.import(value),
     'shared/sync': ()=>shared.reconcile(),
+    'vendors/check': (value)=>vendors.check(value.name),
+    'vendors/preview': (value)=>vendors.preview(value),
+    'vendors/apply': (value)=>vendors.apply(value),
+    'vendors/discard': (value)=>vendors.discard(value.name),
+    'vendors/native': (value)=>vendors.syncNative(value),
   };
   let syncWarning='';
-  const maintenance=setInterval(()=>{mutation=mutation.then(async()=>{await shared.recover();await config.configureGlobals();await shared.reconcile();await config.maintainSync();}).then(()=>{syncWarning='';globalWarning='';}).catch((error)=>{syncWarning=error.message;});},60000);maintenance.unref();
+  const maintenance=setInterval(()=>{mutation=mutation.then(async()=>{await shared.recover();await config.configureGlobals();await shared.reconcile();await config.maintainSync();await vendors.checkStale();}).then(()=>{syncWarning='';globalWarning='';}).catch((error)=>{syncWarning=error.message;});},60000);maintenance.unref();
   const server = createServer(async(req,res)=>{
     try {
       if(!allowedHost(req.headers.host)) {reply(res,403,{error:'Agent Hub accepts only local requests.'});return;}
@@ -68,6 +75,7 @@ export async function makeApp({home=homedir(),root=fileURLToPath(new URL('../../
           if(url.pathname==='/api/usage') {reply(res,200,await usage.report(url.searchParams));return;}
           if(url.pathname==='/api/document') {reply(res,200,await config.readDocument(url.searchParams.get('id')));return;}
           if(url.pathname==='/api/shared') {reply(res,200,await shared.snapshot());return;}
+          if(url.pathname==='/api/vendors') {reply(res,200,await vendors.list());return;}
           if(url.pathname==='/api/health') {reply(res,200,{ok:true,service:await service()});return;}
         }
         if(req.method==='POST') {

@@ -237,3 +237,41 @@ improvement.
 References: [v0.28.23 CLI help](https://github.com/backnotprop/plannotator/blob/v0.28.23/apps/hook/server/cli.ts),
 [code review contract](https://github.com/backnotprop/plannotator/blob/v0.28.23/apps/marketing/src/content/docs/commands/code-review.md),
 and [installation and privacy boundaries](https://github.com/backnotprop/plannotator/blob/v0.28.23/README.md).
+
+## Accepted update: EGM replaces Plannotator and grilling
+
+Accepted on 2026-11-08. The owner removed Plannotator completely and dropped
+the `grilling` and `grill-with-docs` skills in favour of the
+[Elephant-Goldfish Model](https://github.com/google/elephant-goldfish-model)
+(EGM). This supersedes [the Plannotator decision](#accepted-update-plannotator-replaces-difit-globally);
+its historical record remains.
+
+- **Removed:** the `plannotator` hook, context preset, skill, Pi/omp extension
+  registrations, and the Codex `Stop` hook that launched the binary.
+- **Added:** the `egm` library skill. It wraps a vendored copy of the plugin in
+  `ai/vendor/egm` because EGM's skills resolve `agents/`, `resources/`, and
+  `docs/` relative to the plugin root, so the skill folders cannot be shared on
+  their own. A native plugin alone cannot cover every agent: skill sync disables
+  Codex skills outside the library, and the other synced agents have no plugin
+  support. Claude Code and Grok Build also install the native plugin for named
+  reviewer subagents. `scripts/update-egm.sh` refreshes all three manually;
+  there is no scheduled update, because upstream prompt changes reach every
+  agent and need review first.
+- **Human gate kept:** `herdr-implement` still requires explicit human approval
+  of the final diff in the conversation before a PR; the reviewer presents the
+  diff directly instead of opening a browser review.
+- **Trade-off:** EGM reviews design documents before implementation; nothing
+  replaces Plannotator's annotated review of the code diff. If unreviewed diffs
+  start reaching PRs, restore a code-review step rather than extending EGM.
+
+### Vendored plugin management
+
+Accepted on 2026-11-08. Agent Hub manages vendored plugins from the Plugins
+page instead of a standalone script. `ai/vendor/<name>/vendor.json` is the
+source of truth; `server/vendor.mjs` checks upstream with `git ls-remote`,
+previews an update in a temporary clone, swaps the folder on apply, and syncs
+native plugins. The CLI (`scripts/vendor.mjs`) shares that module. Updates are
+always previewed and applied by the owner, and Agent Hub never commits; a daily
+check only refreshes the status badge. Adding a vendor from the UI was left out
+because each vendor needs its own wrapper skill; build it when a second vendor
+arrives.

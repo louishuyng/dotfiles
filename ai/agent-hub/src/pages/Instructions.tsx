@@ -29,7 +29,7 @@ export function Instructions({ workspace }: { workspace: Workspace }) {
   return (
     <>
       <section className="panel">
-        <PanelHeading title="Global instructions" badge={globalDocs.length} description={<>Every supported agent links to the shared <code className="path">ai/AGENTS.md</code>. Optional policies such as ADHD or Plannotator are managed in Hooks.</>} />
+        <PanelHeading title="Global instructions" badge={globalDocs.length} description={<>Every supported agent links to the shared <code className="path">ai/AGENTS.md</code>. Optional policies such as ADHD or Ponytail are managed in Hooks.</>} />
         <div className="row-list">{globalDocs.map(document => row(document, tool(document.tool)?.name || document.tool, document.path))}</div>
       </section>
 
