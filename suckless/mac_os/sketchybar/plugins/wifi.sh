@@ -20,6 +20,7 @@ if [ -z "$SSID" ] || [ "$SSID" = "<redacted>" ]; then
     *) SSID=$(cat "$NAMEF" 2>/dev/null) ;;
   esac
 fi
+SSID=$(printf '%s' "$SSID" | tr -d '\000-\037\177')   # network-chosen text: no tab or newline may reach the tab-separated popup rows below (their 4th column is a click command)
 [ -z "$IP" ] && SSID=""
 
 # popup WI-FI (width 261, same frame as the volume popup): ssid · ip · router · NETWORKS (saved networks in range now, max 4 · ✓ right of the current one) · settings
