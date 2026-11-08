@@ -8,55 +8,107 @@ func hex(_ v: UInt32, _ a: CGFloat = 1) -> NSColor {
     blue: CGFloat(v & 0xff) / 255, alpha: a)
 }
 
+/// A resolved palette for one appearance.
 struct Theme {
-  let name: String
   let dark: Bool
   let bg: NSColor
   let text: NSColor
   let muted: NSColor
   let accent: NSColor
 
-  init(_ name: String, dark: Bool, bg: UInt32, text: UInt32, muted: UInt32, accent: UInt32) {
-    self.init(name, dark: dark, bg: hex(bg), text: hex(text), muted: hex(muted), accent: hex(accent))
+  init(dark: Bool, bg: NSColor, text: NSColor, muted: NSColor, accent: NSColor) {
+    (self.dark, self.bg, self.text, self.muted, self.accent) = (dark, bg, text, muted, accent)
   }
-  init(_ name: String, dark: Bool, bg: NSColor, text: NSColor, muted: NSColor, accent: NSColor) {
-    (self.name, self.dark, self.bg, self.text, self.muted, self.accent) = (name, dark, bg, text, muted, accent)
+  init(dark: Bool, _ bg: UInt32, _ text: UInt32, _ muted: UInt32, _ accent: UInt32) {
+    self.init(dark: dark, bg: hex(bg), text: hex(text), muted: hex(muted), accent: hex(accent))
   }
+}
 
-  static let auto = "Auto (System)"
-  static let all: [Theme] = [
-    Theme("Catppuccin Mocha", dark: true, bg: 0x1e1e2e, text: 0xcdd6f4, muted: 0x6c7086, accent: 0xcba6f7),
-    Theme("Catppuccin Latte", dark: false, bg: 0xeff1f5, text: 0x4c4f69, muted: 0x9ca0b0, accent: 0x8839ef),
-    Theme("Tokyo Night", dark: true, bg: 0x1a1b26, text: 0xc0caf5, muted: 0x565f89, accent: 0x7aa2f7),
-    Theme("Gruvbox Dark", dark: true, bg: 0x282828, text: 0xebdbb2, muted: 0x928374, accent: 0xfabd2f),
-    Theme("Nord", dark: true, bg: 0x2e3440, text: 0xeceff4, muted: 0x616e88, accent: 0x88c0d0),
-    Theme("Dracula", dark: true, bg: 0x282a36, text: 0xf8f8f2, muted: 0x6272a4, accent: 0xbd93f9),
-    Theme("Rosé Pine", dark: true, bg: 0x191724, text: 0xe0def4, muted: 0x6e6a86, accent: 0xebbcba),
-    Theme("Solarized Light", dark: false, bg: 0xfdf6e3, text: 0x586e75, muted: 0x93a1a1, accent: 0xb58900),
-    Theme("Phosphor", dark: true, bg: 0x0b0e0d, text: 0xc6d0f5, muted: 0x696a6d, accent: 0x00ff41),
+/// A theme family ships both appearances; which one shows depends on `Appearance`.
+struct Family {
+  let name: String
+  let dark: Theme
+  let light: Theme
+
+  // Palettes: bg, text, muted, accent.
+  static let all: [Family] = [
+    Family(
+      name: "System",
+      dark: Theme(dark: true, bg: hex(0x1c1c1e), text: hex(0xf2f2f7), muted: hex(0x8e8e93), accent: .controlAccentColor),
+      light: Theme(dark: false, bg: hex(0xf6f6f8), text: hex(0x1d1d1f), muted: hex(0x8e8e93), accent: .controlAccentColor)),
+    Family(
+      name: "Catppuccin", dark: Theme(dark: true, 0x1e1e2e, 0xcdd6f4, 0x6c7086, 0xcba6f7),
+      light: Theme(dark: false, 0xeff1f5, 0x4c4f69, 0x9ca0b0, 0x8839ef)),
+    Family(
+      name: "Tokyo Night", dark: Theme(dark: true, 0x1a1b26, 0xc0caf5, 0x565f89, 0x7aa2f7),
+      light: Theme(dark: false, 0xe1e2e7, 0x3760bf, 0x8990b3, 0x2e7de9)),
+    Family(
+      name: "Gruvbox", dark: Theme(dark: true, 0x282828, 0xebdbb2, 0x928374, 0xfabd2f),
+      light: Theme(dark: false, 0xfbf1c7, 0x3c3836, 0x928374, 0xb57614)),
+    Family(
+      name: "Nord", dark: Theme(dark: true, 0x2e3440, 0xeceff4, 0x616e88, 0x88c0d0),
+      light: Theme(dark: false, 0xeceff4, 0x2e3440, 0x7b88a1, 0x5e81ac)),
+    Family(
+      name: "Dracula", dark: Theme(dark: true, 0x282a36, 0xf8f8f2, 0x6272a4, 0xbd93f9),
+      light: Theme(dark: false, 0xfffbeb, 0x1f1f1f, 0x6c664b, 0x644ac9)),
+    Family(
+      name: "Rosé Pine", dark: Theme(dark: true, 0x191724, 0xe0def4, 0x6e6a86, 0xebbcba),
+      light: Theme(dark: false, 0xfaf4ed, 0x575279, 0x9893a5, 0xd7827e)),
+    Family(
+      name: "Solarized", dark: Theme(dark: true, 0x002b36, 0x93a1a1, 0x586e75, 0xb58900),
+      light: Theme(dark: false, 0xfdf6e3, 0x586e75, 0x93a1a1, 0xb58900)),
+    Family(
+      name: "One", dark: Theme(dark: true, 0x282c34, 0xabb2bf, 0x5c6370, 0x61afef),
+      light: Theme(dark: false, 0xfafafa, 0x383a42, 0xa0a1a7, 0x4078f2)),
+    Family(
+      name: "Everforest", dark: Theme(dark: true, 0x2d353b, 0xd3c6aa, 0x859289, 0xa7c080),
+      light: Theme(dark: false, 0xfdf6e3, 0x5c6a72, 0x939f91, 0x8da101)),
+    Family(
+      name: "Kanagawa", dark: Theme(dark: true, 0x1f1f28, 0xdcd7ba, 0x727169, 0x7e9cd8),
+      light: Theme(dark: false, 0xf2ecbc, 0x545464, 0x8a8980, 0x4d699b)),
+    Family(
+      name: "GitHub", dark: Theme(dark: true, 0x0d1117, 0xe6edf3, 0x7d8590, 0x2f81f7),
+      light: Theme(dark: false, 0xffffff, 0x1f2328, 0x656d76, 0x0969da)),
+    Family(
+      name: "Ayu", dark: Theme(dark: true, 0x0b0e14, 0xbfbdb6, 0x565b66, 0xe6b450),
+      light: Theme(dark: false, 0xfcfcfc, 0x5c6166, 0x8a9199, 0xfa8d3e)),
+    Family(
+      name: "Phosphor", dark: Theme(dark: true, 0x0b0e0d, 0xc6d0f5, 0x696a6d, 0x00ff41),
+      light: Theme(dark: false, 0xf2f7f2, 0x1b2a1f, 0x6b7a6e, 0x008f2a)),
   ]
 
-  /// Resolves a saved theme name; "Auto" follows the current system appearance.
-  static func named(_ name: String) -> Theme {
-    if let t = all.first(where: { $0.name == name }) { return t }
-    let dark = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
-    return dark
-      ? Theme(auto, dark: true, bg: hex(0x1c1c1e), text: hex(0xf2f2f7), muted: hex(0x8e8e93), accent: .controlAccentColor)
-      : Theme(auto, dark: false, bg: hex(0xf6f6f8), text: hex(0x1d1d1f), muted: hex(0x8e8e93), accent: .controlAccentColor)
-  }
+  static func named(_ name: String) -> Family { all.first { $0.name == name } ?? all[0] }
 
+  /// Left half dark palette, right half light palette.
   var swatch: NSImage {
     NSImage(size: NSSize(width: 28, height: 28), flipped: false) { r in
-      self.bg.setFill()
       let box = NSBezierPath(roundedRect: r.insetBy(dx: 1, dy: 1), xRadius: 6, yRadius: 6)
-      box.fill()
-      self.muted.withAlphaComponent(0.6).setStroke()
+      NSGraphicsContext.saveGraphicsState()
+      box.addClip()
+      for (t, x) in [(self.dark, r.minX), (self.light, r.midX)] {
+        t.bg.setFill()
+        NSRect(x: x, y: r.minY, width: r.width / 2, height: r.height).fill()
+        t.accent.setFill()
+        NSBezierPath(ovalIn: NSRect(x: x + 3, y: r.midY - 4, width: 8, height: 8)).fill()
+      }
+      NSGraphicsContext.restoreGraphicsState()
+      self.dark.muted.withAlphaComponent(0.6).setStroke()
       box.stroke()
-      self.accent.setFill()
-      NSBezierPath(ovalIn: NSRect(x: 5, y: 9, width: 10, height: 10)).fill()
-      self.text.setFill()
-      NSBezierPath(ovalIn: NSRect(x: 14, y: 9, width: 10, height: 10)).fill()
       return true
+    }
+  }
+}
+
+enum Appearance: String, CaseIterable {
+  case auto, dark, light
+
+  var next: Appearance { Self.allCases[(Self.allCases.firstIndex(of: self)! + 1) % Self.allCases.count] }
+
+  func pick(_ f: Family) -> Theme {
+    switch self {
+    case .dark: return f.dark
+    case .light: return f.light
+    case .auto: return NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? f.dark : f.light
     }
   }
 }
@@ -146,6 +198,46 @@ final class Panel: NSPanel {
   }
 }
 
+/// Panel background that drags the panel itself, so the controller can snap and draw guides.
+final class DragView: NSView {
+  var onBegan: (() -> Void)?
+  var onMoved: ((NSPoint) -> Void)?
+  var onEnded: (() -> Void)?
+  private var start = NSPoint.zero
+
+  override var mouseDownCanMoveWindow: Bool { false }
+  override func mouseDown(with event: NSEvent) {
+    start = NSEvent.mouseLocation
+    onBegan?()
+  }
+  override func mouseDragged(with event: NSEvent) {
+    let m = NSEvent.mouseLocation
+    onMoved?(NSPoint(x: m.x - start.x, y: m.y - start.y))
+  }
+  override func mouseUp(with event: NSEvent) { onEnded?() }
+}
+
+/// Dotted lines through the screen centre, shown while dragging; solid accent when snapped.
+final class GuideView: NSView {
+  var snapX = false
+  var snapY = false
+  var color = NSColor.gray
+  var accent = NSColor.systemBlue
+
+  override func draw(_ dirtyRect: NSRect) {
+    for (vertical, snapped) in [(true, snapX), (false, snapY)] {
+      let p = NSBezierPath()
+      p.move(to: vertical ? NSPoint(x: bounds.midX, y: 0) : NSPoint(x: 0, y: bounds.midY))
+      p.line(to: vertical ? NSPoint(x: bounds.midX, y: bounds.maxY) : NSPoint(x: bounds.maxX, y: bounds.midY))
+      p.lineWidth = 2.5
+      p.lineCapStyle = .round
+      p.setLineDash([0, 9], count: 2, phase: 0)  // zero-length dashes + round caps = dots
+      (snapped ? accent : color.withAlphaComponent(0.6)).setStroke()
+      p.stroke()
+    }
+  }
+}
+
 final class RowView: NSTableRowView {
   override func drawSelection(in dirtyRect: NSRect) {}  // selection is shown by the accent text colour
 }
@@ -190,16 +282,21 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     let title: String
     let hits: [Int]
     let app: AppEntry?
-    let theme: Theme?
+    let family: Family?
   }
 
   let panel = Panel(
     contentRect: NSRect(x: 0, y: 0, width: 560, height: 520), styleMask: [.borderless, .nonactivatingPanel],
     backing: .buffered, defer: false)
-  let root = NSView()
+  let root = DragView()
+  var glassView: NSView?
+  let guideView = GuideView()
+  let guides = NSWindow(contentRect: .zero, styleMask: .borderless, backing: .buffered, defer: false)
+  var dragOrigin = NSPoint.zero
   let search = NSTextField()
   let table = NSTableView()
   let noMatch = NSTextField(labelWithString: "No matches")
+  let appearanceHint = NSTextField(labelWithString: "")
 
   var mode = Mode.apps
   var apps: [AppEntry] = []
@@ -207,14 +304,24 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
   var mru: [String] = []  // bundle paths, most recently activated first
   var icons: [String: NSImage] = [:]
 
-  var savedTheme: String {
-    get { UserDefaults.standard.string(forKey: "theme") ?? Theme.auto }
-    set { UserDefaults.standard.set(newValue, forKey: "theme") }
+  var savedFamily: String {
+    get { UserDefaults.standard.string(forKey: "family") ?? Family.all[0].name }
+    set { UserDefaults.standard.set(newValue, forKey: "family") }
   }
-  var theme = Theme.all[0]
+  var appearance: Appearance {
+    get { Appearance(rawValue: UserDefaults.standard.string(forKey: "appearance") ?? "") ?? .auto }
+    set { UserDefaults.standard.set(newValue.rawValue, forKey: "appearance") }
+  }
+  var theme = Family.all[0].dark
+  var appearanceObservation: NSKeyValueObservation?
+  var savedTheme: Theme { appearance.pick(Family.named(savedFamily)) }
 
   func applicationDidFinishLaunching(_ note: Notification) {
     buildUI()
+    // Follow macOS light/dark switches while the panel is open.
+    appearanceObservation = NSApp.observe(\.effectiveAppearance) { [weak self] _, _ in
+      DispatchQueue.main.async { self?.refreshTheme() }
+    }
     if let front = NSWorkspace.shared.frontmostApplication?.bundleURL?.path { mru.append(front) }
     for app in NSWorkspace.shared.runningApplications where app.activationPolicy == .regular {
       if let p = app.bundleURL?.path, !mru.contains(p) { mru.append(p) }
@@ -252,9 +359,37 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     }
 
     root.wantsLayer = true
-    root.layer?.cornerRadius = 4
-    root.layer?.borderWidth = 1.5
-    panel.contentView = root
+    root.layer?.cornerRadius = 18
+    root.frame = panel.contentLayoutRect
+    root.autoresizingMask = [.width, .height]
+    if #available(macOS 26, *) {
+      let glass = NSGlassEffectView()
+      glass.cornerRadius = 18
+      glass.style = .clear
+      glass.contentView = root
+      panel.contentView = glass
+      glassView = glass
+    } else {
+      let blur = NSVisualEffectView()
+      blur.material = .hudWindow
+      blur.blendingMode = .behindWindow
+      blur.state = .active
+      blur.wantsLayer = true
+      blur.layer?.cornerRadius = 18
+      blur.layer?.masksToBounds = true
+      blur.addSubview(root)
+      panel.contentView = blur
+    }
+    root.onBegan = { [weak self] in self?.dragBegan() }
+    root.onMoved = { [weak self] d in self?.dragMoved(d) }
+    root.onEnded = { [weak self] in self?.dragEnded() }
+
+    guides.isOpaque = false
+    guides.backgroundColor = .clear
+    guides.ignoresMouseEvents = true
+    guides.level = .statusBar
+    guides.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .transient]
+    guides.contentView = guideView
 
     search.isBordered = false
     search.drawsBackground = false
@@ -283,7 +418,8 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     scroll.scrollerStyle = .overlay
 
     noMatch.font = font(14)
-    for v in [search, scroll, noMatch] as [NSView] {
+    appearanceHint.font = font(12)
+    for v in [search, scroll, noMatch, appearanceHint] as [NSView] {
       v.translatesAutoresizingMaskIntoConstraints = false
       root.addSubview(v)
     }
@@ -297,16 +433,27 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
       scroll.bottomAnchor.constraint(equalTo: root.bottomAnchor, constant: -14),
       noMatch.leadingAnchor.constraint(equalTo: search.leadingAnchor),
       noMatch.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 14),
+      appearanceHint.trailingAnchor.constraint(equalTo: root.trailingAnchor, constant: -36),
+      appearanceHint.centerYAnchor.constraint(equalTo: search.centerYAnchor),
     ])
   }
 
   func applyTheme(_ t: Theme) {
     theme = t
     panel.appearance = NSAppearance(named: t.dark ? .darkAqua : .aqua)
-    root.layer?.backgroundColor = t.bg.withAlphaComponent(0.96).cgColor
-    root.layer?.borderColor = t.text.withAlphaComponent(0.55).cgColor
+    // Theme tints the glass instead of painting over it, so the desktop still shows through.
+    if #available(macOS 26, *), let glass = glassView as? NSGlassEffectView {
+      glass.tintColor = t.bg.withAlphaComponent(0.15)
+      root.layer?.backgroundColor = nil
+    } else {
+      root.layer?.backgroundColor = t.bg.withAlphaComponent(0.45).cgColor
+    }
     search.textColor = t.text
     noMatch.textColor = t.muted
+    appearanceHint.isHidden = mode != .themes
+    appearanceHint.attributedStringValue = NSAttributedString(
+      string: "\(appearance.rawValue)  ⇥",
+      attributes: [.font: font(12), .foregroundColor: t.muted])
     (search.currentEditor() as? NSTextView)?.insertionPointColor = t.accent
     let placeholder = mode == .apps ? "Apps…" : "Themes…"
     search.placeholderAttributedString = NSAttributedString(
@@ -320,13 +467,11 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     apps = scanApplications()
     mode = .apps
     search.stringValue = ""
-    applyTheme(Theme.named(savedTheme))
+    applyTheme(savedTheme)
     refilter()
 
     let screen = NSScreen.screens.first { NSMouseInRect(NSEvent.mouseLocation, $0.frame, false) } ?? NSScreen.main!
-    let f = screen.visibleFrame
-    let size = panel.frame.size
-    let origin = NSPoint(x: f.midX - size.width / 2, y: f.minY + f.height * 0.6 - size.height / 2)
+    let origin = savedOrigin(on: screen)
     let reduceMotion = NSWorkspace.shared.accessibilityDisplayShouldReduceMotion
 
     panel.setFrameOrigin(reduceMotion ? origin : NSPoint(x: origin.x, y: origin.y + 8))
@@ -345,6 +490,7 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
   }
 
   func hide() {
+    guides.orderOut(nil)
     panel.orderOut(nil)
     // Hand focus back to whatever was frontmost; a launch activates its own target anyway.
     if NSApp.isActive { NSApp.hide(nil) }
@@ -352,10 +498,65 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
 
   func windowDidResignKey(_ notification: Notification) { hide() }
 
+  // MARK: Position
+
+  /// Saved as the panel centre in fractions of the screen, so it carries across displays of any size.
+  func savedOrigin(on screen: NSScreen) -> NSPoint {
+    let d = UserDefaults.standard
+    let fx = d.object(forKey: "centerX") as? Double ?? 0.5
+    let fy = d.object(forKey: "centerY") as? Double ?? 0.58
+    let f = screen.frame
+    let v = screen.visibleFrame
+    let size = panel.frame.size
+    let x = f.minX + f.width * fx - size.width / 2
+    let y = f.minY + f.height * fy - size.height / 2
+    return NSPoint(
+      x: min(max(x, v.minX), v.maxX - size.width), y: min(max(y, v.minY), v.maxY - size.height))
+  }
+
+  func dragBegan() {
+    dragOrigin = panel.frame.origin
+    guideView.color = theme.muted
+    guideView.accent = theme.accent
+  }
+
+  func dragMoved(_ delta: NSPoint) {
+    guard let screen = NSScreen.screens.first(where: { NSMouseInRect(NSEvent.mouseLocation, $0.frame, false) })
+    else { return }
+    let f = screen.frame
+    let size = panel.frame.size
+    var o = NSPoint(x: dragOrigin.x + delta.x, y: dragOrigin.y + delta.y)
+    let dx = o.x + size.width / 2 - f.midX
+    let dy = o.y + size.height / 2 - f.midY
+    let snap: CGFloat = 14
+    guideView.snapX = abs(dx) < snap
+    guideView.snapY = abs(dy) < snap
+    if guideView.snapX { o.x -= dx }
+    if guideView.snapY { o.y -= dy }
+    panel.setFrameOrigin(o)
+
+    if guides.frame != f { guides.setFrame(f, display: false) }
+    guideView.needsDisplay = true
+    if !guides.isVisible { guides.orderFront(nil) }
+  }
+
+  func dragEnded() {
+    guides.orderOut(nil)
+    guard let screen = panel.screen else { return }
+    let f = screen.frame
+    UserDefaults.standard.set(Double((panel.frame.midX - f.minX) / f.width), forKey: "centerX")
+    UserDefaults.standard.set(Double((panel.frame.midY - f.minY) / f.height), forKey: "centerY")
+  }
+
+  func refreshTheme() {
+    guard panel.isVisible else { return }
+    if mode == .themes { select(table.selectedRow) } else { applyTheme(savedTheme) }
+  }
+
   func setMode(_ m: Mode) {
     mode = m
     search.stringValue = ""
-    applyTheme(Theme.named(savedTheme))
+    applyTheme(savedTheme)
     refilter()
   }
 
@@ -366,13 +567,12 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     let empty = q.trimmingCharacters(in: .whitespaces).isEmpty
 
     if mode == .themes {
-      let names = [Theme.auto] + Theme.all.map(\.name)
-      rows = names.compactMap { n in
-        guard let m = fuzzyMatch(q, n) else { return nil }
-        return Row(title: n, hits: m.hits, app: nil, theme: Theme.named(n))
+      rows = Family.all.compactMap { f in
+        guard let m = fuzzyMatch(q, f.name) else { return nil }
+        return Row(title: f.name, hits: m.hits, app: nil, family: f)
       }
       table.reloadData()
-      select(empty ? names.firstIndex(of: savedTheme) ?? 0 : 0)
+      select(empty ? Family.all.firstIndex { $0.name == savedFamily } ?? 0 : 0)
       return
     }
 
@@ -383,11 +583,11 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
       rows = apps.sorted {
         let (ra, rb) = (mruRank($0), mruRank($1))
         return ra != rb ? ra < rb : $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending
-      }.map { Row(title: $0.name, hits: [], app: $0, theme: nil) }
+      }.map { Row(title: $0.name, hits: [], app: $0, family: nil) }
     } else {
       rows = apps.compactMap { app -> (Row, Int)? in
         guard let m = fuzzyMatch(q, app.name) else { return nil }
-        return (Row(title: app.name, hits: m.hits, app: app, theme: nil), m.score + (rank[app.url.path] != nil ? 15 : 0))
+        return (Row(title: app.name, hits: m.hits, app: app, family: nil), m.score + (rank[app.url.path] != nil ? 15 : 0))
       }.sorted { $0.1 > $1.1 }.map(\.0)
     }
 
@@ -405,7 +605,7 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     table.selectRowIndexes([i], byExtendingSelection: false)
     table.scrollRowToVisible(i)
     table.reloadData(forRowIndexes: IndexSet([old, i].filter { $0 >= 0 && $0 < rows.count }), columnIndexes: [0])
-    if mode == .themes, let t = rows[i].theme { applyTheme(t) }  // live preview
+    if mode == .themes, let f = rows[i].family { applyTheme(appearance.pick(f)) }  // live preview
   }
 
   func controlTextDidChange(_ obj: Notification) { refilter() }
@@ -416,6 +616,9 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     case #selector(NSResponder.moveDown(_:)): select(table.selectedRow + 1)
     case #selector(NSResponder.insertNewline(_:)):
       if table.selectedRow >= 0 { activate(rows[table.selectedRow]) }
+    case #selector(NSResponder.insertTab(_:)) where mode == .themes:
+      appearance = appearance.next
+      select(table.selectedRow)
     case #selector(NSResponder.cancelOperation(_:)):
       mode == .themes ? setMode(.apps) : hide()
     default: return false
@@ -428,8 +631,8 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
   }
 
   func activate(_ row: Row) {
-    if row.theme != nil {
-      savedTheme = row.title
+    if row.family != nil {
+      savedFamily = row.title
       setMode(.apps)
       return
     }
@@ -463,7 +666,7 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
       }
       cell.icon.image = icons[path]
     } else {
-      cell.icon.image = r.theme?.swatch
+      cell.icon.image = r.family?.swatch
     }
 
     let hitSet = Set(r.hits)
@@ -479,7 +682,7 @@ final class Switcher: NSObject, NSApplicationDelegate, NSTableViewDataSource, NS
     cell.name.attributedStringValue = title
     cell.setAccessibilityLabel(r.title)
 
-    let isCurrentTheme = r.theme != nil && r.title == savedTheme
+    let isCurrentTheme = r.family != nil && r.title == savedFamily
     cell.mark.attributedStringValue = NSAttributedString(
       string: isCurrentTheme ? "✓" : "",
       attributes: [.font: font(15, bold: true), .foregroundColor: isCurrentTheme ? theme.accent : theme.muted])
@@ -495,7 +698,9 @@ if CommandLine.arguments.contains("--selftest") {
   assert(fuzzyMatch("xyz", "Safari") == nil)
   assert(fuzzyMatch("VS", "Visual Studio Code")?.hits == [0, 2])  // greedy, not optimal
   assert(fuzzyMatch("gh", "Ghostty")!.score > fuzzyMatch("gh", "Google Chrome")?.score ?? Int.min)
-  assert(Set(Theme.all.map(\.name)).count == Theme.all.count)
+  assert(Set(Family.all.map(\.name)).count == Family.all.count)
+  assert(Family.all.allSatisfy { $0.dark.dark && !$0.light.dark })
+  assert(Appearance.light.next == .auto)
   print("selftest ok")
   exit(0)
 }
