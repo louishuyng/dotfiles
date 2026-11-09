@@ -2,9 +2,9 @@
 // this popup takes the next key, runs its command and closes. Keys mirror
 // terminals/herdr/config.toml (the herdr CLI), which mirrors .tmux.conf.
 
-import { View, div } from "gpui-kit";
+import { View } from "gpui-kit";
 import { h_flex } from "gpui-base";
-import { run, hc, exec, home, props, closeOverlay, openOverlay, theme, focused, spaces, notify, layout, window, shared, setShared } from "herdr";
+import { run, hc, exec, home, props, closeOverlay, openOverlay, focused, spaces, notify, layout, window, shared, setShared } from "herdr";
 
 const go = (name, args = {}) => () => run(name, args);
 
@@ -79,8 +79,8 @@ const KEYS = {
   ",": go("tab.rename"),
   "<": () => moveTab(-1),
   ">": () => moveTab(1),
-  J: () => moveSpace(1),
-  K: () => moveSpace(-1),
+  "{": () => moveSpace(-1),
+  "}": () => moveSpace(1),
   "ctrl-h": go("tab.prev"),
   "ctrl-l": go("tab.next"),
   "ctrl-c": go("space.new"),
@@ -116,12 +116,20 @@ for (let n = 1; n <= 9; n++) KEYS[String(n)] = go("tab.select", { index: n });
   if (ch !== "$") KEYS[ch] = go("space.select", { index: i + 1 });
 });
 
-// H/L move the focused pane's border left/right, as tmux's resize-pane; J/K move spaces.
+// H/J/K/L move the focused pane's border, as tmux's resize-pane.
 const REPEAT_MS = 1000;
 const RESIZE = {
   H: script("pane-resize.sh", "left"),
+  J: script("pane-resize.sh", "down"),
+  K: script("pane-resize.sh", "up"),
   L: script("pane-resize.sh", "right"),
 };
+
+// ctrl-a tab: the tab shown before this one (tmux last-window), recorded by tmux-tabs.
+function lastTab() {
+  const id = shared("tab.last");
+  if (id) run("tab.select", { id });
+}
 
 function lookup(e) {
   const m = e.modifiers ?? {};
@@ -132,11 +140,26 @@ function lookup(e) {
 
 export default class Prefix extends View {
   init(_props, cx) {
+    // GPUI's keymap takes tab for focus moves before on_key_down sees it, so tab
+    // comes in as an action bound in this popup's own key context.
+    cx.bind_keys([{ keystroke: "tab", action: "prefix-last-tab", context: "Prefix" }]);
     this.handle = cx.focus_handle();
     this.handle.focus();
+    // The terminal can take the keyboard back just after the popup opens (sessions
+    // works around the same), which leaves the popup deaf, even to Escape.
+    for (const ms of [30, 120, 400]) cx.timer.after(ms, () => this.handle.focus());
   }
 
-  // Like tmux's `bind -r`: after a resize key the popup stays open, and more H/L
+  // tab can arrive as the bound action, as a key, or both; switching twice would land
+  // back on the same tab.
+  lastTabOnce() {
+    if (this.done) return;
+    this.done = true;
+    closeOverlay(props().overlay);
+    lastTab();
+  }
+
+  // Like tmux's `bind -r`: after a resize key the popup stays open, and more H/J/K/L
   // (shift optional) keep resizing until a pause of REPEAT_MS or any other key.
   keepRepeating(cx) {
     this.repeating = true;
@@ -148,10 +171,11 @@ export default class Prefix extends View {
   }
 
   render() {
-    const t = theme();
     return h_flex()
       .id("prefix")
+      .key_context("Prefix")
       .track_focus(this.handle)
+      .on_action("prefix-last-tab", () => this.lastTabOnce())
       .on_key_down((e, cx) => {
         if (["shift", "control", "alt", "platform", "function"].includes(e.key)) return;
         cx.stop_propagation();
@@ -162,17 +186,12 @@ export default class Prefix extends View {
         }
         closeOverlay(props().overlay);
         if (e.key === "escape" || this.repeating) return;
+        if (e.key === "tab") return this.lastTabOnce();
         const action = lookup(e);
         if (action) action();
         else notify({ title: `ctrl-a ${e.keystroke}: not bound`, level: "warning", timeout: 2000 });
       })
-      .size_full()
-      .items_center()
-      .justify_center()
-      .gap(6)
-      .bg(t.popover)
-      .text_size(12)
-      .child(div().px(6).rounded(4).bg(t.accent).text_color(t.accent_foreground).child(this.repeating ? "resize" : "ctrl-a"))
-      .child(div().text_color(t.muted).child(this.repeating ? "HL" : "…"));
+      // Draws nothing (frame "none" in mod.json): the popup only takes the next key.
+      .size_full();
   }
 }

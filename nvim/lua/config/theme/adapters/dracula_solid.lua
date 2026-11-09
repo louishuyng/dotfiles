@@ -105,7 +105,7 @@ function M.setup()
     return
   end
   dracula.setup({
-    transparent_bg = false,
+    transparent_bg = true,
     -- Only the grounds move; the accents already match Gram's.
     colors = {
       menu = gram.panel, -- Pmenu + NvimTreeNormal

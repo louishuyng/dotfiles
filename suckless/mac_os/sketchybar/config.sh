@@ -9,7 +9,7 @@ BAR_OPACITY=85   # bar opacity % (100 = opaque, 0 = transparent). Run sketchybar
 BAR_BLUR=0       # blur behind the bar (0 = off). macOS 27: with blur on, the bar turns opaque after wake or a monitor change — keep off
 POPUP_OPACITY=$BAR_OPACITY   # popup opacity %. Set a number to make it differ
 POPUP_BLUR=20   # popups are redrawn on every open, so no blur problem
-TERMINAL_APP="Ghostty"                        # terminal opened from popups
+TERMINAL_APP="Rex Beta"                      # terminal opened from popups
 CAL_NEXT=0                                    # next-event text on the left island ("10:00 standup +8m"). 0 = off, 1 = on. Separate from the calendar popup
 CAL_WINDOW_MIN=60                             # only events within this many minutes are shown on the bar
 CWD_FILE="$HOME/.cache/sketchybar/cwd"

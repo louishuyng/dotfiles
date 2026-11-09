@@ -49,7 +49,7 @@
       "id": "rex",
       "event": "sessionStart",
       "command": "'/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex' --autostart=false __internal session-start 2>/dev/null || true",
-      "enabled": true,
+      "enabled": false,
       "disabledAgents": []
     }
   ]

@@ -1,0 +1,107 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w4S",
+      "custom_name": "LX-CONFIG",
+      "identity_cwd": "/Users/louishuyng/.dotfiles",
+      "worktree_space": {
+        "key": "/Users/louishuyng/.dotfiles/.git",
+        "label": ".dotfiles",
+        "repo_root": "/Users/louishuyng/.dotfiles",
+        "checkout_path": "/Users/louishuyng/.dotfiles",
+        "is_linked_worktree": false
+      },
+      "public_pane_numbers": {
+        "1": 20
+      },
+      "next_public_pane_number": 56,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 16,
+      "tabs": [
+        {
+          "custom_name": "pilo",
+          "layout": {
+            "Pane": 1
+          },
+          "panes": {
+            "1": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            }
+          },
+          "zoomed": false,
+          "focused": 1,
+          "root_pane": 1
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w4W",
+      "custom_name": "RegAsk",
+      "identity_cwd": "/Users/louishuyng/LX14/repository/github.com/regask/alert",
+      "public_pane_numbers": {
+        "27": 1
+      },
+      "next_public_pane_number": 5,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 3,
+      "tabs": [
+        {
+          "custom_name": "alert",
+          "layout": {
+            "Pane": 27
+          },
+          "panes": {
+            "27": {
+              "cwd": "/Users/louishuyng/LX14/repository/github.com/regask/alert"
+            }
+          },
+          "zoomed": false,
+          "focused": 27,
+          "root_pane": 27
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w4X",
+      "custom_name": "Omniyat",
+      "identity_cwd": "/Users/louishuyng/LX14/repository/github.com/omniyat/mobile",
+      "public_pane_numbers": {
+        "30": 1
+      },
+      "next_public_pane_number": 2,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": "mobile",
+          "layout": {
+            "Pane": 30
+          },
+          "panes": {
+            "30": {
+              "cwd": "/Users/louishuyng/LX14/repository/github.com/omniyat/mobile"
+            }
+          },
+          "zoomed": false,
+          "focused": 30,
+          "root_pane": 30
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 2,
+  "selected": 2,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

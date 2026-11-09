@@ -1,5 +1,5 @@
 import { execFile } from 'node:child_process';
-import { cp, mkdtemp, readdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
+import { cp, lstat, mkdtemp, readdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { promisify } from 'node:util';
@@ -24,8 +24,11 @@ async function files(root, include, exclude) {
   async function walk(relative) {
     if (exclude.some(item => relative === item || relative.startsWith(`${item}/`))) return;
     const full = path.join(root, relative);
-    const entries = await readdir(full, { withFileTypes: true }).catch(error => (error.code === 'ENOTDIR' ? null : Promise.reject(error)));
-    if (!entries) { found.set(relative, await readFile(full)); return; }
+    const info = await lstat(full);
+    // A link could point outside the repo (e.g. ~/.ssh), and agents follow vendored paths.
+    if (info.isSymbolicLink()) throw new Error(`Upstream contains a symlink at ${relative}; refusing to vendor it.`);
+    if (!info.isDirectory()) { found.set(relative, await readFile(full)); return; }
+    const entries = await readdir(full, { withFileTypes: true });
     for (const entry of entries) await walk(path.posix.join(relative, entry.name));
   }
   for (const item of include) await walk(item).catch(error => { if (error.code !== 'ENOENT') throw error; });

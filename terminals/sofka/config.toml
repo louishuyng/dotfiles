@@ -1,0 +1,5 @@
+# sofka picks its skin once at startup and never follows a light/dark toggle, so it
+# paints its own dark background instead of inheriting the terminal's.
+[skin]
+name = "catppuccin-mocha"
+background = true

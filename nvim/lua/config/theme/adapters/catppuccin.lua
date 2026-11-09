@@ -14,15 +14,15 @@ local opts = {
     light = 'latte',
     dark = 'macchiato',
   },
-  transparent_background = true, -- disables setting the background color.
+  transparent_background = false, -- disables setting the background color.
   color_overrides = {
     mocha = {
       base = '#11111B',
     },
     macchiato = {
-      base = '#191B21',
-      mantle = '#1E1F29',
-      crust = '#21222B',
+      -- base = '#191B21',
+      -- mantle = '#1E1F29',
+      -- crust = '#21222B',
     },
     latte = {
       rosewater = '#fdf7e8',
@@ -73,7 +73,7 @@ function M.apply(variant)
 end
 
 function M.resolve(variant)
-  local flavor = variant == 'light' and 'latte' or 'frappe'
+  local flavor = variant == 'light' and 'latte' or 'macchiato'
   local ok, palettes = pcall(require, 'catppuccin.palettes')
   if not ok then
     return nil

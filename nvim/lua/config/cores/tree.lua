@@ -214,7 +214,7 @@ nvim_tree.setup({
       max = -1,
       padding = 1,
     },
-    side = 'left',
+    side = 'right',
     signcolumn = 'no',
     number = false,
     relativenumber = false,
@@ -245,7 +245,8 @@ nvim_tree.setup({
         file = { enable = true, color = true },
         folder = { enable = true, color = true },
       },
-      git_placement = 'signcolumn',
+      -- signcolumn is off above, and nvim-tree only draws this placement there.
+      git_placement = 'before',
       modified_placement = 'after',
       padding = ' ',
       symlink_arrow = ' ➜ ',

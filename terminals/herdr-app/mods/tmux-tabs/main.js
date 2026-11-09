@@ -1,6 +1,6 @@
 import { View, div, svg, image } from "gpui-kit";
 import { h_flex } from "gpui-base";
-import { spaces, panes, run, openOverlay, theme, window, shared, layout, settings } from "herdr";
+import { spaces, panes, run, openOverlay, theme, window, shared, setShared, layout, settings, focused } from "herdr";
 
 function find(node, id) {
   if (node?.id === id) return node;
@@ -45,7 +45,17 @@ export default class Tabs extends View {
     localStorage.setItem("panels", JSON.stringify(this.panels));
   }
 
+  // The tab shown before this one, for prefix's ctrl-a tab (tmux last-window). Kept here
+  // because this bar is always on screen; the prefix popup only lives for one key.
+  trackLastTab() {
+    const tab = focused()?.tab;
+    if (!tab || tab === this.tab) return;
+    if (this.tab) setShared("tab.last", this.tab);
+    this.tab = tab;
+  }
+
   render() {
+    this.trackLastTab();
     const t = theme();
     const space = spaces().find(p => p.active);
     const shown = space?.tabs ?? [];

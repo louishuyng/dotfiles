@@ -31,19 +31,45 @@
           "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'claude' 'caveman' 'SessionStart'"
         }
       ]
-    },
+    }
+  ],
+  "PreToolUse": [
     {
+      "matcher": "Bash|Write|Edit|MultiEdit",
       "hooks": [
         {
           "type": "command",
-          "command": "'/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex' --autostart=false __internal session-start 2>/dev/null || true"
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/jev-axi' hook pre-tool-use",
+          "timeout": 10
         }
       ]
     }
   ],
-  "PreToolUse": [],
   "PostToolUse": [],
-  "Stop": [],
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/factory-bridge/dispatch.mjs'",
+          "timeout": 5,
+          "async": true
+        }
+      ]
+    }
+  ],
   "UserPromptSubmit": [],
-  "PermissionRequest": []
+  "PermissionRequest": [],
+  "Notification": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/factory-bridge/dispatch.mjs'",
+          "timeout": 5,
+          "async": true
+        }
+      ]
+    }
+  ]
 }

@@ -19,6 +19,7 @@ vim.pack.add({
   'https://github.com/projekt0n/github-nvim-theme',
   'https://github.com/craftzdog/solarized-osaka.nvim',
   'https://github.com/Aejkatappaja/cendre',
+  'https://github.com/kepano/flexoki-neovim',
   -- Base for the dracula_solid adapter (tuned to Gram's Dracula Solid).
   'https://github.com/Mofiqul/dracula.nvim',
   'https://github.com/f-person/auto-dark-mode.nvim',

@@ -25,7 +25,7 @@
       "src": "https://github.com/hrsh7th/cmp-cmdline"
     },
     "cmp-nvim-lsp": {
-      "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
+      "rev": "cd4ee08a988deb47ac3726f418fb27fe1a95729d",
       "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
     },
     "cmp-path": {
@@ -72,6 +72,10 @@
       "rev": "5f0f270fdc7c5b0c21d903ee85b9cb06f2ac636a",
       "src": "https://github.com/folke/flash.nvim"
     },
+    "flexoki-neovim": {
+      "rev": "c3e2251e813d29d885a7cbbe9808a7af234d845d",
+      "src": "https://github.com/kepano/flexoki-neovim"
+    },
     "friendly-snippets": {
       "rev": "b2ea5c41a150ba72fb656eedb4ed0a86d138d945",
       "src": "https://github.com/rafamadriz/friendly-snippets"
@@ -85,7 +89,7 @@
       "src": "https://github.com/projekt0n/github-nvim-theme"
     },
     "gitsigns.nvim": {
-      "rev": "4bcd99167c265f135886b282baad77afe06206b2",
+      "rev": "ef707fb93301a9b856f36eae4c8f56f5b988a794",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox-material": {
@@ -129,7 +133,7 @@
       "src": "https://github.com/echasnovski/mini.surround"
     },
     "neogit": {
-      "rev": "697ad3ee86a73cf6b6758b838d7a7d76cf3b9f86",
+      "rev": "ba2f33b64b996ff5530c4c45a3c432fb63aaa95b",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nui.nvim": {
@@ -141,7 +145,7 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-cmp": {
-      "rev": "2ffe79f1f021def8dd1fcd81deb16f1bb0d989f3",
+      "rev": "fe29aba4117227a6df637bc41e4b4fb4e98864a0",
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-colorizer.lua": {
@@ -193,7 +197,7 @@
       "src": "https://github.com/nvim-pack/nvim-spectre"
     },
     "nvim-tree.lua": {
-      "rev": "f632f208c52e942af1db6d3793ccdd4752dd28ac",
+      "rev": "4cb123287efe9a7191cce287a005d4a9c8bed4a0",
       "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
@@ -201,7 +205,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
-      "rev": "ec309a0eaff6ea967e58c275996155ab5c16938d",
+      "rev": "0dc0cfb0c6858041174a53c7aa4adaf65e994b3c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "nvim-window-picker": {
@@ -273,7 +277,7 @@
       "src": "https://github.com/folke/trouble.nvim"
     },
     "vim-test": {
-      "rev": "7a5f7e1848b573de556adffe718097933d827d32",
+      "rev": "4c6ba11524388562f2ad3636dc02cd479204aaff",
       "src": "https://github.com/vim-test/vim-test"
     },
     "vim-visual-multi": {

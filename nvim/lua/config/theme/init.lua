@@ -45,6 +45,9 @@ local adapter_loaders = {
   jetbrains = function()
     return require('config.theme.adapters.jetbrains')
   end,
+  flexoki = function()
+    return require('config.theme.adapters.flexoki')
+  end,
 }
 
 local adapters = {}
@@ -214,5 +217,24 @@ end, {
   end,
   desc = 'Switch nvim colorscheme adapter',
 })
+
+-- Herdr sizes the terminal in whole cells and paints the sub-cell remainder
+-- with its own theme bg, leaving a seam around nvim's bg. Draw on the
+-- terminal bg instead. VimEnter re-runs it after palette consumers (ui/tree)
+-- re-pin their bg at load time.
+if vim.env.HERDR_ENV then
+  local transparent_groups =
+    { 'Normal', 'NormalNC', 'SignColumn', 'EndOfBuffer', 'NvimTreeNormal', 'NvimTreeNormalNC', 'NvimTreeEndOfBuffer' }
+  vim.api.nvim_create_autocmd({ 'ColorScheme', 'VimEnter' }, {
+    group = vim.api.nvim_create_augroup('ConfigThemeHerdrTransparent', { clear = true }),
+    callback = function()
+      for _, group in ipairs(transparent_groups) do
+        local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+        hl.bg, hl.ctermbg = nil, nil
+        vim.api.nvim_set_hl(0, group, hl)
+      end
+    end,
+  })
+end
 
 return M

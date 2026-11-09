@@ -65,3 +65,4 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 export PATH="$PATH:/Users/louishuyng/.lmstudio/bin"
 # End of LM Studio CLI section
 
+export TYPESAFE_API_KEY="$(cat ~/.config/jev/key)"

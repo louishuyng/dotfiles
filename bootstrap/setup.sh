@@ -347,6 +347,7 @@ apply_task() {
       command -v cargo >/dev/null && install_dotbin
       config terminals/sesh sesh
       config terminals/herdr/config.toml herdr/config.toml
+      config terminals/sofka/config.toml sofka/config.toml
       link_file "$repo_root/terminals/herdr-projects" "$HOME/.herdr-projects/settings"
       link_file "$repo_root/terminals/herdr-app/keys.json" "$HOME/.config/herdr-app/keys.json"
       config terminals/rex rex

@@ -234,7 +234,7 @@ rex.bind('resize/enter', 'client.mode.exit')
 
 -- Global keys (keys.json "global").
 rex.bind('cmd+t', 'client.tab.new')
-rex.bind('cmd+w', 'client.tab.close')
+rex.bind('cmd+w', 'client.close')
 rex.bind('ctrl+tab', 'client.tab.next')
 rex.bind('ctrl+shift+tab', 'client.tab.previous')
 rex.bind('shift+cmd+]', 'client.tab.next')
@@ -280,13 +280,12 @@ local P = 'ctrl+a>'
 for key, dir in pairs { h = 'left', j = 'down', k = 'up', l = 'right' } do
   rex.bind(P .. key, 'pane.focus', { direction = dir })
 end
--- As herdr: ctrl+j/k step through the sidebar; ctrl+h/l stay pane focus for a slow ctrl release.
+-- As herdr: ctrl+j/k step through the sidebar, ctrl+h/l switch tabs.
 for key, step in pairs { j = 1, k = -1 } do
   rex.bind(P .. 'ctrl+' .. key, 'sidebar_step', { step = step })
 end
-for key, dir in pairs { h = 'left', l = 'right' } do
-  rex.bind(P .. 'ctrl+' .. key, 'pane.focus', { direction = dir })
-end
+rex.bind(P .. 'ctrl+h', 'client.tab.previous')
+rex.bind(P .. 'ctrl+l', 'client.tab.next')
 for _, dir in ipairs { 'left', 'right', 'up', 'down' } do
   rex.bind(P .. dir, 'pane.move', { direction = dir })
 end

@@ -5,6 +5,15 @@
         "hooks": [
           {
             "type": "command",
+            "command": "/bin/sh -c 'rex __internal session-start --agent codex --feature-session-naming=false 2>/dev/null || true'",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
             "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'codex' 'adhd' 'SessionStart'"
           }
         ]
@@ -30,14 +39,6 @@
           {
             "type": "command",
             "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'codex' 'caveman' 'SessionStart'"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex' --autostart=false __internal session-start 2>/dev/null || true"
           }
         ]
       }

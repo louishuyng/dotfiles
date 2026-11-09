@@ -15,6 +15,7 @@ show_agent_labels_on_pane_borders = false
 agent_panel_sort = "spaces"
 sidebar_width = 32
 status_indicators = "dots"
+tab_bar_position = "top"
 
 [keys]
 prefix = "ctrl+a"
@@ -293,7 +294,7 @@ light_name = "tokyo-night-day"
 
 # >>> herdr-projects sidebar (added by the herdr-projects plugin; `herdr-projects remove-extras` removes it)
 [ui.sidebar.agents]
-rows = [["state_icon", "machine", "workspace", { token = "tab", rules = [{ equals = "Agent", hide = true }, { starts_with = "Reviewer #", hide = true }] }], ["agent"], [{ token = "$summary", dim = true }, "$progress"]]
+rows = [["state_icon", "machine", "workspace", { token = "tab", rules = [{ equals = "Agent", hide = true }, { starts_with = "Reviewer #", hide = true }] }], ["agent"], [{ token = "$summary", dim = true }, "$progress"], ["state_text"]]
 
 [ui.sidebar.spaces]
 rows = [["state_icon", "workspace"], ["branch", "git_status"], [{ token = "$summary", dim = true }, "$progress"]]

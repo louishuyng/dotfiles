@@ -172,9 +172,12 @@ and native plugin versions. The maintenance loop checks upstream once a day and
 only updates the badge. **Update…** clones the chosen branch, tag, or commit
 into a temporary folder and lists added, changed, and removed files; nothing
 changes until **Apply update**, which swaps the folder and keeps the tracked
-ref. **Sync native** installs or updates the Claude and Grok plugins. Agent Hub
+ref. **Sync native** installs or updates the Claude and Grok plugins from
+upstream's latest version, not the reviewed vendored commit, so it asks first. Preview
+rejects upstream symlinks, because agents follow vendored paths. Agent Hub
 never commits: review `git diff ai/vendor` first, because vendored prompts run
-in every agent. `scripts/update-egm.sh [ref]` runs the same steps from Terminal.
+in every agent. `scripts/update-egm.sh [ref]` runs the preview and apply steps
+from Terminal; it leaves native plugins alone.
 Adding a new vendor still needs a hand-written `vendor.json` and wrapper skill. See
 [the decision](../../docs/adr/0006-shared-agent-setup.md#accepted-update-egm-replaces-plannotator-and-grilling).
 

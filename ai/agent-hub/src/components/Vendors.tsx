@@ -73,12 +73,12 @@ export function Vendors({ workspace }: { workspace: Workspace }) {
               </div>
               <div className="button-row vendor-actions">
                 <Button variant="outline" size="sm" disabled={busy} onClick={() => void action(async () => { await api('vendors/check', { name: vendor.name }); await load(); })}><RefreshCw size={14} aria-hidden="true" /> Check</Button>
-                {!!Object.keys(vendor.native).length && <Button variant="outline" size="sm" disabled={busy} onClick={() => void action(async () => {
+                {!!Object.keys(vendor.native).length && <Button variant="outline" size="sm" disabled={busy} onClick={() => { if (!window.confirm(`Install or update the ${vendor.name} plugin in ${Object.keys(vendor.native).map(id => tool(id)?.name ?? id).join(' and ')} from upstream ${vendor.ref}? Native plugins take upstream's latest version, not the reviewed vendored commit.`)) return; void action(async () => {
                   const { results } = await api<{ results: { target: string; ok: boolean; action?: string; error?: string }[] }>('vendors/native', { name: vendor.name });
                   await load();
                   const failed = results.filter(result => !result.ok);
                   if (failed.length) throw new Error(failed.map(result => `${tool(result.target)?.name ?? result.target}: ${result.error}`).join(' '));
-                }, 'Native plugins synced. Restart those agents to load them.')}><Plug size={14} aria-hidden="true" /> Sync native</Button>}
+                }, 'Native plugins synced. Restart those agents to load them.'); }}><Plug size={14} aria-hidden="true" /> Sync native</Button>}
                 <Button variant={status.label === 'Update available' ? 'default' : 'outline'} size="sm" disabled={busy} onClick={() => openUpdate(vendor)}><Download size={14} aria-hidden="true" /> Update…</Button>
               </div>
             </div>

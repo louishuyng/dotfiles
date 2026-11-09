@@ -8,9 +8,11 @@ palette.on_change(function(c)
     return
   end
   local hl = vim.api.nvim_set_hl
+  -- Active name drops to editor bg, same as TabLineSel, so it owns the canvas.
   hl(0, 'BufLine', { bg = c.bg_alt, fg = c.muted })
-  hl(0, 'BufLineSel', { bg = c.bg_alt, fg = c.primary, bold = true })
+  hl(0, 'BufLineSel', { bg = c.bg, fg = c.primary, bold = true })
   hl(0, 'BufLineMod', { bg = c.bg_alt, fg = c.attention })
+  hl(0, 'BufLineSelMod', { bg = c.bg, fg = c.attention })
 end)
 
 local function listed_buffers()
@@ -44,7 +46,7 @@ function M.render()
   local parts = {}
   for _, b in ipairs(bufs) do
     local group = b == current and 'BufLineSel' or 'BufLine'
-    local mod = vim.bo[b].modified and '%#BufLineMod#●' or ' '
+    local mod = vim.bo[b].modified and ('%#' .. (b == current and 'BufLineSelMod' or 'BufLineMod') .. '#●') or ' '
     -- %N@fn@ makes the label clickable; fn receives the buffer number.
     parts[#parts + 1] = string.format(
       "%%%d@v:lua.require'ui.bufferline'.click@%%#%s# %s %s%%X",

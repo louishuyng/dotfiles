@@ -1,0 +1,38 @@
+# Herdr UI overrides. Saved changes reload automatically.
+# Unset keys inherit config-gpui.toml; tables merge key by key.
+
+# New installs start with the roomy rounded sidebar. Remove this line for
+# the managed default, or pick another layout listed in config-gpui.toml.
+layout = "comfortable-rounded"
+theme = "dark"
+contrast = "standard"
+show_gpu_load = false
+show_network_quality = true
+tab_layout = "pills"
+status_icons = "wave"
+edge_rail = false
+
+[remote]
+enabled = true
+
+[terminal]
+size = 12.0
+family = "Berkeley Mono"
+
+[sidebar]
+family = "Berkeley Mono"
+
+[tabs]
+family = "Berkeley Mono"
+
+[ui]
+family = "Berkeley Mono"
+
+[status_bar]
+theme = "label"
+
+[cloud]
+agents = ["claude", "codex", "gemini", "opencode"]
+
+[github]
+accounts = [{ id = "cfe52f0424ed0a0a7ec15a2b3c70db96" }, { id = "7d0798e0de9aa2e742e2b1a854ad26dc" }]

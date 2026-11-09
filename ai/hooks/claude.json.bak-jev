@@ -1,0 +1,49 @@
+{
+  "SessionStart": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'claude' 'adhd' 'SessionStart'"
+        }
+      ]
+    },
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'claude' 'ponytail' 'SessionStart'"
+        }
+      ]
+    },
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'claude' 'plannotator' 'SessionStart'"
+        }
+      ]
+    },
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'claude' 'ui-frontend' 'SessionStart'"
+        }
+      ]
+    },
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "'/Users/louishuyng/.local/share/mise/installs/node/24.14.0/bin/node' '/Users/louishuyng/.dotfiles/ai/hooks/context.mjs' 'claude' 'caveman' 'SessionStart'"
+        }
+      ]
+    }
+  ],
+  "PreToolUse": [],
+  "PostToolUse": [],
+  "Stop": [],
+  "UserPromptSubmit": [],
+  "PermissionRequest": []
+}

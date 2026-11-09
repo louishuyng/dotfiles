@@ -1,0 +1,47 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w4S",
+      "custom_name": "LX-CONFIG",
+      "identity_cwd": "/Users/louishuyng/.dotfiles",
+      "worktree_space": {
+        "key": "/Users/louishuyng/.dotfiles/.git",
+        "label": ".dotfiles",
+        "repo_root": "/Users/louishuyng/.dotfiles",
+        "checkout_path": "/Users/louishuyng/.dotfiles",
+        "is_linked_worktree": false
+      },
+      "public_pane_numbers": {
+        "1": 20
+      },
+      "next_public_pane_number": 52,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 16,
+      "tabs": [
+        {
+          "custom_name": "pilo",
+          "layout": {
+            "Pane": 1
+          },
+          "panes": {
+            "1": {
+              "cwd": "/Users/louishuyng/.dotfiles"
+            }
+          },
+          "zoomed": false,
+          "focused": 1,
+          "root_pane": 1
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

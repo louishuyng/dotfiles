@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
-import { mkdtemp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, readdir, readFile, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { promisify } from 'node:util';
@@ -71,6 +71,15 @@ test('preview refuses unknown refs and missing upstream folders without touching
   await git('-C', f.upstream, 'rm', '--quiet', '-r', 'agents');
   await git('-C', f.upstream, '-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '--quiet', '-m', 'drop agents');
   await assert.rejects(f.vendors.preview({ name: 'demo' }), /no longer has agents/);
+  assert.equal(await readFile(path.join(f.dir, 'skills/a/SKILL.md'), 'utf8'), 'old a');
+});
+
+test('preview refuses upstream symlinks', async t => {
+  const f = await fixture(t);
+  await symlink(path.join(f.home, 'secret'), path.join(f.upstream, 'skills/b/link.md'));
+  await git('-C', f.upstream, 'add', '.');
+  await git('-C', f.upstream, '-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '--quiet', '-m', 'link');
+  await assert.rejects(f.vendors.preview({ name: 'demo' }), /symlink at skills\/b\/link.md/);
   assert.equal(await readFile(path.join(f.dir, 'skills/a/SKILL.md'), 'utf8'), 'old a');
 });
 
