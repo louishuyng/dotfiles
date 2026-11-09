@@ -18,14 +18,14 @@ RESET=$'\033[0m'
 
 finish() {
   [[ -z "$1" ]] && return
-  # Same session: a server-side focus is enough, no app action needed.
-  if [[ "$1" == "${REX_SESSION:-}" ]]; then
-    [[ -n "${2:-}" ]] && "$REX" focus -s "$1" "$2" >/dev/null
-    return
-  fi
+  # The app keeps its own tab per session, so a server-side focus alone doesn't move its
+  # view, even within the current session. More than one app client can be connected
+  # (e.g. a stray `Rex --help`), so tell each one.
+  [[ -n "${2:-}" ]] && "$REX" focus -s "$1" "$2" >/dev/null
   local client
-  client=$("$REX" client ls --json | jq -r '[.clients[] | select(.info.kind == "app")][0].client_id // empty')
-  [[ -n "$client" ]] && "$REX" -C "$client" do session.select session_id="$1" ${2:+window_id="$2"} >/dev/null
+  for client in $("$REX" client ls --json | jq -r '.clients[] | select(.info.kind == "app") | .client_id'); do
+    "$REX" -C "$client" do session.select session_id="$1" ${2:+window_id="$2"} >/dev/null
+  done
 }
 
 # Sessions, tabs and pane cwds come from one `rex do picker-data.lua`; a CLI call per
