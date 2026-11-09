@@ -169,7 +169,7 @@ sketchybar --add item wifi right \
         update_freq=30 popup.align=right script="$P/wifi.sh" click_script="CONFIG_DIR='$CONFIG_DIR' bash '$P/wifi_scan.sh'" \
   --subscribe wifi wifi_change system_woke
 # bat ▮▮▮▮▯ — click opens the BATTERY popup (rev 8, bat.sh). cpu·mem are the cat circle outside the island (below). The 24 to the previous cell is agent.codex's right padding (so the underline and popup start at the text)
-python3 "$P/pixel.py" "$HOME/.cache/sketchybar/px" $TEXT $TEXT3 $WARN $ERR   # pixel icon PNGs (port · ts · cat) - regenerated every time in the theme colors
+python3 "$P/pixel.py" "$HOME/.cache/sketchybar/px" $TEXT $TEXT3 $WARN $ERR $INFO   # pixel icon PNGs (port · ts · cat) - regenerated every time in the theme colors
 PXI="icon.background.drawing=on icon.background.color=0x00000000 icon.background.image.scale=0.5 icon.background.image.drawing=on icon.padding_left=0 icon.padding_right=0 label.drawing=off"
 for m in bat; do
   for c in 5 4 3 2 1; do

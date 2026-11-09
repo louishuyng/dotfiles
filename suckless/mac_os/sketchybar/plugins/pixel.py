@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Builds the pixel icon PNGs (rev 7) — standard library only. 1pt = 2px (Retina). Theme colors are passed as arguments
-#   pixel.py <output dir> <--text> <--text-3> <--warn>
-# port (RJ45 11×11) · ts_on/ts_off (3×3 dots 11×11) · cat_<1-4>[_warn] (16×10, a cat newly drawn for this config)
+#   pixel.py <output dir> <--text> <--text-3> <--warn> [<--err>] [<--fast>]
+# port (RJ45 11×11) · ts_on/ts_off (3×3 dots 11×11) · cat_<1-4>[_warn|_fast] (16×10, a cat newly drawn for this config)
 import sys, zlib, struct, os
 out, TEXT, TEXT3, WARN = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 def rgba(h):  # 0xAARRGGBB
@@ -18,6 +18,7 @@ def bitmap(lines, col):
     return [[col if ch == '#' else None for ch in l] for l in lines]
 os.makedirs(out, exist_ok=True)
 T, T3, W = rgba(TEXT), rgba(TEXT3), rgba(WARN)
+F = rgba(sys.argv[6]) if len(sys.argv) > 6 else T
 png(f'{out}/port.png', bitmap(['...........', '###########', '#.........#', '#.#.#.#.#.#', '#.........#', '#.........#',
                                 '#.........#', '###.....###', '..#.....#..', '..#######..', '...........'], T))
 def dots(on):  # 3×3 dots (3pt) · 1pt apart. on = positions of lit dots (row, col)
@@ -38,6 +39,7 @@ legs[4] = legs[2]
 for k in range(1, 5):
     png(f'{out}/cat_{k}.png', bitmap(top + legs[k], T))
     png(f'{out}/cat_{k}_warn.png', bitmap(top + legs[k], W))
+    png(f'{out}/cat_{k}_fast.png', bitmap(top + legs[k], F))
 # cat circle (rev 8): one 33×33pt image = grass kept only inside the circle + cat (frames 1-4, normal/warn). The circle border and background are the SketchyBar circle (item background)
 #   grass: blade tips 21 · stems 22 · ground 23 to the bottom (filled with the blade color), blade = accent 55% + bg 45% = #26795A, 9-cell pattern 0 2 1 0 2 0 1 2 0
 GROUND, BLADE = (0x12, 0x28, 0x1F, 255), (0x26, 0x79, 0x5A, 255)
@@ -54,7 +56,7 @@ def inside_px(x, y): return (x + 0.5 - 33) ** 2 + (y + 0.5 - 33) ** 2 <= 31 ** 2
 def span(i): return int(i * 2.5), int((i + 1) * 2.5)   # px range covered by cell i
 UP = int(os.environ.get('CAT_UP', '1')) * 2   # raises grass and cat together (cell = 1pt = 2px). By request 10-02: 1 cell
 for k in range(1, 5):
-    for wname, col in (('', T), ('_warn', W)):
+    for wname, col in (('', T), ('_warn', W), ('_fast', F)):
         g = [[None] * 66 for _ in range(66)]
         for x in range(66):
             for y in range(54 - UP, 66): g[y][x] = BLADE

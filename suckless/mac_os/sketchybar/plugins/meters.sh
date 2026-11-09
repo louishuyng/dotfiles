@@ -25,14 +25,14 @@ PX="$HOME/.cache/sketchybar/px"
 rows=$(printf 'cpu\t%s%%\t%s\t\nmem\t%s%%  %s/%sG\t%s\t\nssd\t%s\t%s\t\nopen\tActivity Monitor ↗\t%s\topen -a "Activity Monitor"\n' \
   "$CPU" "$CC" "$MEM" "$USED" "$TOTAL" "$MC" "${SSD:--}" "$TEXT" "$TEXT2")
 rows+=$'\n_\t-\t\t\n_\t-\t\t\n_\t-\t\t\n_\tLEGEND\t\t\n'
-rows+="calm"$'\t'"cpu and mem under 80%"$'\t'"$TEXT"$'\t\n'
-rows+="fast"$'\t'"runs faster as cpu rises"$'\t'"$TEXT"$'\t\n'
+rows+="calm"$'\t'"cpu under 50%, mem under 80%"$'\t'"$TEXT"$'\t\n'
+rows+="fast"$'\t'"cpu 50~79%"$'\t'"$INFO"$'\t\n'
 rows+="busy"$'\t'"cpu or mem at 80% or more"$'\t'"$WARN"$'\t\n'
 pad="icon.drawing=off label.drawing=off background.height=6"
 LW=$(printf '%s' "$rows" | perl -CS -F'\t' -lane '$m = length($F[1]) if length($F[1]) > $m; END { printf "%d", 64 + $m * 6.9 }')
 POPUP_XA=(--set cpu.ul.p.4 $pad --set cpu.ul.p.5 $pad background.height=1 background.color=$LINE background.padding_left=12 background.padding_right=12 width=${LW:-300}
   --set cpu.ul.p.6 $pad --set cpu.ul.p.7 label.font="$FONT:Bold:11.0" label.color=$TEXT2)
-i=8; for img in cat_1 cat_3 cat_1_warn; do
+i=8; for img in cat_1 cat_3_fast cat_1_warn; do
   POPUP_XA+=(--set cpu.ul.p.$i background.image="$PX/$img.png" background.image.scale=0.5 background.image.drawing=on
     background.image.padding_left=12 icon.padding_left=36 icon.color=$TEXT2); i=$((i + 1))
 done
