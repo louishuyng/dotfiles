@@ -63,7 +63,7 @@ See [the shared setup decision](../../docs/adr/0006-shared-agent-setup.md).
 
 Native Codex plugins remain managed through the app server. Skill creation, edits, and enablement use the repository library and manifest.
 
-The current manifest enables fourteen skills: archify, aside-browser, better-write, caveman, domain-modeling, egm, figma-ui-build, herdr-implement, herdr-plan, i-have-adhd, ponytail, tech-doc-writer, typesafe-ai, and ui-ux-pro-max. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays fourteen.
+The current manifest enables sixteen skills: archify, aside-browser, baseline-ui, better-write, caveman, code-as-designer, domain-modeling, egm, fixing-accessibility, fixing-motion-performance, herdr-implement, herdr-plan, i-have-adhd, ponytail, tech-doc-writer, and typesafe-ai. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays sixteen.
 
 Use **Skills → Review sync** to preview and apply shared links. Codex's `~/.agents/skills`, Claude's `~/.claude/skills`, OpenCode's `~/.config/opencode/skills`, and configured compatible targets receive exports of the same enabled repository folders. Scripts and relative references stay with each skill. Source edits happen in `ai/skills`, not a tool's plugin cache. Exports use skill names; ambiguous names fail before writing. Sync stages targets, reverses failed swaps, journals interrupted changes, and refreshes managed exports after library changes. Displaced roots are backed up. Bootstrap preserves active Agent Hub links.
 
@@ -200,7 +200,8 @@ policy nor a mandatory review rule.
 
 `ui-frontend` is a context-text hook in `ai/config/shared-setup.json`. Its workflow
 activates only for tasks that design, build, change, or review UI/frontend work.
-It requires the installed `ui-ux-pro-max` skill and relevant design/stack skills,
+It requires the installed `baseline-ui` skill and relevant design/stack skills
+(`fixing-accessibility`, `fixing-motion-performance`),
 then applies the relevant [Front-End Checklist](https://github.com/thedaviddias/front-end-checklist)
 rules to frontend changes. Existing checklist skills/MCP tools can supply rules;
 otherwise agents read the checklist directly. It does not install integrations,

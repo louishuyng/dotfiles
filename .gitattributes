@@ -1,3 +1,5 @@
 ai/skills/archify/**       linguist-vendored
-ai/skills/ui-ux-pro-max/** linguist-vendored
+ai/skills/baseline-ui/** linguist-vendored
+ai/skills/fixing-accessibility/** linguist-vendored
+ai/skills/fixing-motion-performance/** linguist-vendored
 *.html                     linguist-generated

@@ -60,7 +60,7 @@ Clear beats clever. Code is read far more often than it is written, and it gets 
 
 These requirements apply only when the task designs, builds, changes, or reviews a UI or frontend: layout, styling, components, interaction, accessibility, or browser-facing behavior. Skip them for backend-only, database, infrastructure, and unrelated documentation or script work.
 
-- Before UI work, read and follow the `ui-ux-pro-max` skill and any relevant installed design or stack skills. Reuse the project's design system; use focused searches for local changes, not a new design system.
+- Before UI work, read and follow the `baseline-ui` skill and any relevant installed design or stack skills. Add `fixing-accessibility` for interactive controls, forms, and dialogs, and `fixing-motion-performance` for animation. Reuse the project's design system and stack; they take precedence over a skill's defaults.
 - For frontend work, consult the [Front-End Checklist](https://github.com/thedaviddias/front-end-checklist) and apply the rules relevant to the changed surface. Check accessibility, responsive behavior, performance, and applicable HTML, CSS, JavaScript, images, SEO, security, privacy, internationalization, and testing rules. Do not turn a local fix into an unrelated site-wide audit.
 - Verify the rendered UI and changed interactions before delivery. Report what was checked and any blocked checks; never claim checklist compliance from code inspection alone. Apply web-only rules to web interfaces, not native apps.
 

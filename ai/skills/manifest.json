@@ -3,17 +3,19 @@
   "enabled": [
     "archify",
     "aside-browser",
+    "baseline-ui",
     "better-write",
     "caveman",
+    "code-as-designer",
     "domain-modeling",
     "egm",
-    "figma-ui-build",
+    "fixing-accessibility",
+    "fixing-motion-performance",
     "herdr-implement",
     "herdr-plan",
     "i-have-adhd",
     "ponytail",
     "tech-doc-writer",
-    "typesafe-ai",
-    "ui-ux-pro-max"
+    "typesafe-ai"
   ]
 }
