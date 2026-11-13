@@ -73,7 +73,7 @@ function M.apply(variant)
 end
 
 function M.resolve(variant)
-  local flavor = variant == 'light' and 'latte' or 'macchiato'
+  local flavor = variant == 'light' and 'latte' or 'mocha'
   local ok, palettes = pcall(require, 'catppuccin.palettes')
   if not ok then
     return nil

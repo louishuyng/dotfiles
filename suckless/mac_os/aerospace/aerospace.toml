@@ -20,7 +20,7 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.horizontal = 16
 inner.vertical =   16
-outer.top = [{ monitor."Built-in" = 15 }, 47]
+outer.top = [{ monitor."Built-in" = 10 }, 47]
 outer.bottom = [{ monitor."Built-in" = 0 }, 0]
 outer.left =       0
 outer.right =      0
@@ -170,7 +170,7 @@ run = ['move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92'
-run = ['move-node-to-workspace Dev', 'layout tiling']
+run = ['move-node-to-workspace Dev']
 
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'

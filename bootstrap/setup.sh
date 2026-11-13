@@ -453,6 +453,7 @@ apply_task() {
       casks cursor zed
       link_file "$repo_root/suckless/mac_os/cursor/settings.json" "$HOME/Library/Application Support/Cursor/User/settings.json"
       link_file "$repo_root/suckless/mac_os/cursor/keybindings.json" "$HOME/Library/Application Support/Cursor/User/keybindings.json"
+      link_file "$repo_root/suckless/mac_os/cursor/tasks.json" "$HOME/Library/Application Support/Cursor/User/tasks.json"
       config suckless/mac_os/zed/mappings.json zed/keymap.json
       config suckless/mac_os/zed/settings.json zed/settings.json
       if ! $links_only; then run /Applications/Cursor.app/Contents/Resources/app/bin/cursor --install-extension vscodevim.vim; fi ;;

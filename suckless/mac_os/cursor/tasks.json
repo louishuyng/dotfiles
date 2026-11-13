@@ -1,0 +1,20 @@
+// User tasks for Cursor. "Pick project" backs ctrl+a s in keybindings.json.
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Pick project",
+      "type": "process",
+      "command": "${userHome}/.dotfiles/suckless/mac_os/cursor/project-picker.sh",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "close": true,
+        "showReuseMessage": false,
+        "echo": false
+      }
+    }
+  ]
+}

@@ -21,14 +21,30 @@
   },
 
   // ── Panes ────────────────────────────────────────────────────────────
-  { "key": "ctrl+h", "command": "workbench.action.navigateLeft" },
-  { "key": "ctrl+l", "command": "workbench.action.navigateRight" },
-  { "key": "ctrl+k", "command": "workbench.action.navigateUp" },
-  { "key": "ctrl+j", "command": "workbench.action.navigateDown" },
+  // Explicit focus moves instead of workbench.action.navigate*, which throws
+  // "Unknown part workbench.parts.activitybar" under Cursor's unified sidebar layout.
+  // Assumes explorer on the left, chat (auxiliary bar) on the right, terminal below.
+  { "key": "ctrl+h", "command": "workbench.action.focusLeftGroup" },
+  { "key": "ctrl+h", "command": "workbench.action.focusSideBar", "when": "editorFocus && activeEditorGroupIndex == 1" },
+  { "key": "ctrl+h", "command": "workbench.action.focusActiveEditorGroup", "when": "auxiliaryBarFocus" },
+
+  { "key": "ctrl+l", "command": "workbench.action.focusRightGroup" },
+  { "key": "ctrl+l", "command": "workbench.action.focusAuxiliaryBar", "when": "editorFocus && activeEditorGroupLast" },
+  { "key": "ctrl+l", "command": "workbench.action.focusActiveEditorGroup", "when": "sideBarFocus || filesExplorerFocus" },
+
+  { "key": "ctrl+k", "command": "workbench.action.focusAboveGroup" },
+  { "key": "ctrl+k", "command": "workbench.action.focusActiveEditorGroup", "when": "panelFocus" },
+
+  { "key": "ctrl+j", "command": "workbench.action.focusPanel" },
 
   // ── Pickers ──────────────────────────────────────────────────────────
   { "key": "ctrl+p", "command": "workbench.action.quickOpen" },
-  { "key": "ctrl+a s", "command": "workbench.action.openRecent" },
+  // zoxide + fzf, same rows as the herdr-app and Rex pickers (tasks.json).
+  {
+    "key": "ctrl+a s",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Pick project"
+  },
 
   // ── Terminal ─────────────────────────────────────────────────────────
   { "key": "ctrl+t", "command": "workbench.action.terminal.toggleTerminal" },
