@@ -1,0 +1,28 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "app",
+  "shape": "app screen",
+  "theme": "console",
+  "axes": "dark/grotesk-sans/chromatic-amber",
+  "hero": "none (app)",
+  "nav": "kept sidebar, 7 destinations",
+  "footer": "none (app)",
+  "imagery": "none",
+  "photos": [],
+  "entry": "src/styles.css",
+  "fingerprint": "app/console/sidebar/ledger-first/stat-row/seamed-panel",
+  "sections": [
+   "stat row",
+   "sessions ledger",
+   "usage chart and token breakdown"
+  ],
+  "signature": "the sessions ledger in the measured face",
+  "waived": [
+   "72"
+  ],
+  "prompt": "redesign agent hub",
+  "date": "2026-11-16"
+ }
+]

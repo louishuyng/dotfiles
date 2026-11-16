@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import { ExternalLink, Package, RefreshCw, Download, Plug } from 'lucide-react';
+import { ExternalLink, RefreshCw, Download, Plug } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Badge } from './ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
-import { Avatar, Empty, PanelHeading, ToolIcon } from './common';
+import { Empty, PanelHeading, ToolIcon } from './common';
 import { api, type Vendor, type VendorPlan } from '../api';
 import { date } from '../lib/format';
 import type { Workspace } from '../App';
@@ -15,7 +15,7 @@ function updateStatus(vendor: Vendor) {
   const latest = vendor.latest;
   if (!latest?.checkedAt) return { label: 'Not checked', text: 'Not checked against upstream yet.', variant: 'secondary' as const };
   if (latest.error) return { label: 'Check failed', text: `${latest.error} Last tried ${date(latest.checkedAt)}.`, variant: 'destructive' as const };
-  if (latest.commit && latest.commit !== vendor.commit) return { label: 'Update available', text: `Update available on ${vendor.ref}: ${short(vendor.commit)} → ${short(latest.commit)}. Checked ${date(latest.checkedAt)}.`, variant: 'default' as const };
+  if (latest.commit && latest.commit !== vendor.commit) return { label: 'Update available', text: `Update available on ${vendor.ref}: ${short(vendor.commit)} to ${short(latest.commit)}. Checked ${date(latest.checkedAt)}.`, variant: 'default' as const };
   return { label: 'Up to date', text: `Up to date with ${vendor.ref}. Checked ${date(latest.checkedAt)}.`, variant: 'secondary' as const };
 }
 
@@ -52,10 +52,9 @@ export function Vendors({ workspace }: { workspace: Workspace }) {
           const skill = state.skills.find(item => item.name === vendor.skill);
           return (
             <div className="row vendor-row" key={vendor.name}>
-              <Avatar name={vendor.name}><Package size={16} aria-hidden="true" /></Avatar>
               <div className="row-copy">
                 <h3>{vendor.title || vendor.name}<Badge variant={status.variant}>{status.label}</Badge></h3>
-                <p>v{vendor.version} · <code className="path">{short(vendor.commit)}</code> · {vendor.date} · tracks <code className="path">{vendor.ref}</code></p>
+                <p>v{vendor.version}, <code className="path">{short(vendor.commit)}</code>, {vendor.date}, tracks <code className="path">{vendor.ref}</code></p>
                 <small role="status" aria-atomic="true">{status.text}</small>
                 <ul className="vendor-links" aria-label={`${vendor.name} links`}>
                   <li>Skill <code className="path">{vendor.skill}</code>: {skill ? (skill.enabled ? 'enabled and shared' : 'disabled') : 'missing from the library'}</li>
@@ -102,7 +101,7 @@ export function Vendors({ workspace }: { workspace: Workspace }) {
           </form>
           {plan && (
             <>
-              <p role="status" aria-atomic="true"><strong>v{plan.from.version} ({short(plan.from.commit)}) → v{plan.version} ({short(plan.commit)})</strong>, committed {plan.date}. {plan.changes.length ? `${plan.changes.length} ${plan.changes.length === 1 ? 'file changes' : 'files change'}.` : 'No file changes.'}</p>
+              <p role="status" aria-atomic="true"><strong>v{plan.from.version} ({short(plan.from.commit)}) to v{plan.version} ({short(plan.commit)})</strong>, committed {plan.date}. {plan.changes.length ? `${plan.changes.length} ${plan.changes.length === 1 ? 'file changes' : 'files change'}.` : 'No file changes.'}</p>
               <div className="sync-changes">
                 {plan.changes.map(change => <div key={change.path}><Badge variant={change.status === 'removed' ? 'destructive' : 'secondary'}>{change.status}</Badge><code className="path">{change.path}</code></div>)}
                 {!plan.changes.length && <Empty>The vendored files already match this ref.</Empty>}

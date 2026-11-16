@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Badge } from './ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
-import { Avatar, Empty, PanelHeading, Toggle } from './common';
+import { Empty, PanelHeading, Toggle } from './common';
 
 type ServerConfig = { type: 'stdio' | 'http'; command?: string; args?: string[]; env?: Record<string, string>; url?: string; headers?: Record<string, string>; enabled: boolean };
 type HookEvent = 'sessionStart' | 'promptSubmit' | 'beforeTool' | 'permissionRequest' | 'afterTool' | 'stop';
@@ -209,7 +209,6 @@ export function SharedSetup({ section, refreshKey, onEditContext }: { section: '
           <div className="row-list">
             {Object.entries(state.value.servers).map(([id, server]) => (
               <div className="row" key={id}>
-                <Avatar name={id}><Server size={16} aria-hidden="true" /></Avatar>
                 <div className="row-copy"><h3>{id}</h3><small className="path">{server.type === 'stdio' ? [server.command, ...(server.args ?? [])].join(' ') : server.url}</small></div>
                 <Badge variant="secondary">{server.type === 'stdio' ? 'stdio' : 'HTTP'}</Badge>
                 <Button variant="ghost" size="sm" disabled={busy} onClick={() => openServer(id)}>Edit</Button>
@@ -246,10 +245,9 @@ export function SharedSetup({ section, refreshKey, onEditContext }: { section: '
               return (
                 <details className="hook-item" key={hook.id}>
                   <summary className="row">
-                    <Avatar name={hook.id}><Workflow size={16} aria-hidden="true" /></Avatar>
                     <div className="row-copy">
                       <h3>{hookName(hook)}<Badge variant="secondary">{typeNames[hookType(hook)]}</Badge></h3>
-                      <small>{eventNames[hook.event]}{hook.skill && ` · skill ${hook.skill}`}{optedOut ? ` · ${optedOut} ${optedOut === 1 ? 'agent' : 'agents'} opted out` : ''}</small>
+                      <small>{eventNames[hook.event]}{hook.skill && `, skill ${hook.skill}`}{optedOut ? `, ${optedOut} ${optedOut === 1 ? 'agent' : 'agents'} opted out` : ''}</small>
                     </div>
                     <Button variant="ghost" size="sm" disabled={busy} onClick={event => { event.preventDefault(); openHook(hook); }}>Edit</Button>
                     <Button variant="ghost" size="sm" disabled={busy} onClick={event => { event.preventDefault(); removeHook(hook); }}>Remove</Button>
@@ -273,7 +271,7 @@ export function SharedSetup({ section, refreshKey, onEditContext }: { section: '
 
       <section className="panel">
         <PanelHeading title="Agent sync status" badge={`${available.length} detected`} description="Configuration checks only. Connection health, OAuth, and project overrides need each agent’s own tools." />
-        <div className="parity-targets padded">
+        <div className="parity-targets">
           {available.map(target => {
             const synced = target.status === 'synced';
             const label = synced ? 'Synced' : target.status === 'unsupported' ? 'No adapter' : target.status === 'error' ? 'Blocked' : 'Needs attention';
@@ -282,7 +280,7 @@ export function SharedSetup({ section, refreshKey, onEditContext }: { section: '
                 <summary>
                   {synced ? <Check size={14} aria-hidden="true" /> : <CircleHelp size={14} aria-hidden="true" />}
                   <strong>{target.name}</strong>
-                  <span>{label}{section === 'servers' ? ` · ${target.matched}/${enabledServers} servers` : ` · ${target.hooks ? 'context hooks' : 'no context hooks'}${target.commandHooks ? ', commands' : ''}`}</span>
+                  <span>{label}{section === 'servers' ? `, ${target.matched}/${enabledServers} servers` : `, ${target.hooks ? 'context hooks' : 'no context hooks'}${target.commandHooks ? ', commands' : ''}`}</span>
                 </summary>
                 {section === 'servers' && !!target.extra.length && <p>Additional native servers: {target.extra.join(', ')}</p>}
                 {target.issues.length ? <ul>{target.issues.map((issue, index) => <li key={index}>{issue}</li>)}</ul> : <p>No issues reported.</p>}

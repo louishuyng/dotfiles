@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { ArrowUpRight, Check, CircleHelp, Plus, RefreshCw, Search, Sparkles } from 'lucide-react';
+import { Check, CircleHelp, Plus, RefreshCw, Search } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
-import { Avatar, Empty, PanelHeading, Select, Toggle } from '../components/common';
+import { Empty, PanelHeading, Select, Toggle } from '../components/common';
 import { api } from '../api';
 import { date } from '../lib/format';
 import type { Workspace } from '../App';
@@ -70,7 +70,8 @@ export function Skills({ workspace }: { workspace: Workspace }) {
                   <summary>
                     {check.status === 'synced' ? <Check size={14} aria-hidden="true" /> : <CircleHelp size={14} aria-hidden="true" />}
                     <strong>{tool(check.target)?.name || (check.target === 'codex-user' ? 'Shared discovery' : check.target)}</strong>
-                    <span>{check.matched}/{check.expected}{check.issues.length ? ` · ${check.issues.length} ${check.issues.length === 1 ? 'issue' : 'issues'}` : check.notes?.length ? ` · ${check.notes.length} ${check.notes.length === 1 ? 'note' : 'notes'}` : ''}</span>
+                    {check.issues.length ? <span>{check.issues.length} {check.issues.length === 1 ? 'issue' : 'issues'}</span> : !!check.notes?.length && <span>{check.notes.length} {check.notes.length === 1 ? 'note' : 'notes'}</span>}
+                    <span className="measured">{check.matched}/{check.expected}</span>
                   </summary>
                   {check.issues.length ? <ul>{check.issues.map((issue, index) => <li key={index}>{issueRow(check.target, issue)}</li>)}</ul> : <p>Synced: every enabled skill resolves to the shared library.</p>}
                   {!!check.notes?.length && <ul className="notes">{check.notes.map((note, index) => <li key={index}>{issueRow(check.target, note)}</li>)}</ul>}
@@ -99,13 +100,12 @@ export function Skills({ workspace }: { workspace: Workspace }) {
         <div className="row-list">
           {skills.map(skill => (
             <div className="row" key={skill.id}>
-              <Avatar name={skill.name}><Sparkles size={16} aria-hidden="true" /></Avatar>
               <div className="row-copy">
                 <h3>{skill.name}{!skill.enabled && <Badge variant="secondary">Disabled</Badge>}</h3>
-                <p className="clamp" title={skill.description}>{skill.description || 'No description provided.'}</p>
-                <small>{sources.length > 1 && `${skill.source} · `}{skill.compatibility}</small>
+                <p>{skill.description || 'No description provided.'}</p>
+                <small>{sources.length > 1 && `${skill.source}, `}{skill.compatibility}</small>
               </div>
-              {skill.documentId && <Button variant="ghost" size="sm" disabled={busy} onClick={() => edit(skill.documentId!)}>{skill.editable ? 'Edit' : 'Inspect'}<ArrowUpRight size={14} aria-hidden="true" /></Button>}
+              {skill.documentId && <Button variant="ghost" size="sm" disabled={busy} onClick={() => edit(skill.documentId!)}>{skill.editable ? 'Edit' : 'Inspect'}</Button>}
               <Toggle on={skill.enabled} label={`Enable ${skill.name}`} disabled={busy} onChange={() => void action(async () => { await api('skills/toggle', { id: skill.id, enabled: !skill.enabled }); await refresh(); }, `${skill.name} ${skill.enabled ? 'disabled' : 'enabled'}. Shared links are updated automatically.`)} />
             </div>
           ))}

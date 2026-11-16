@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, ChevronRight, FileText, Settings2 } from 'lucide-react';
+import { ChevronRight, FileText, Settings2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
@@ -17,13 +17,13 @@ export function Instructions({ workspace }: { workspace: Workspace }) {
   const configDocs = state.documents.filter(document => ['hook', 'plugin', 'hook-source', 'config'].includes(document.kind));
 
   const row = (document: Document, title: string, subtitle: string) => (
-    <button type="button" className="row clickable" key={document.id} onClick={() => edit(document.id)} disabled={busy}>
-      <span className="row-symbol">{document.kind === 'instruction' ? <ToolIcon tool={tool(document.tool)} size={18} /> : <Settings2 size={17} aria-hidden="true" />}</span>
-      <div className="row-copy"><h3>{title}</h3><small className="path">{subtitle}</small></div>
+    <div className="row" key={document.id}>
+      {document.kind === 'instruction' ? <ToolIcon tool={tool(document.tool)} size={20} /> : <Settings2 size={20} aria-hidden="true" />}
+      <div className="row-copy"><h3><button type="button" className="row-link" onClick={() => edit(document.id)} disabled={busy}>{title}</button></h3><small className="path">{subtitle}</small></div>
       {!document.exists && <Badge variant="secondary">Not created yet</Badge>}
       {!document.editable && <Badge variant="secondary">Read only</Badge>}
       <ChevronRight size={16} className="muted" aria-hidden="true" />
-    </button>
+    </div>
   );
 
   return (
@@ -38,16 +38,16 @@ export function Instructions({ workspace }: { workspace: Workspace }) {
         <form className="project-form" onSubmit={event => { event.preventDefault(); void action(async () => { await api('project/select', { path: projectPath }); setProjectPath(''); await refresh(); }, 'Project added.'); }}>
           <label htmlFor="project-path" className="sr-only">Project directory</label>
           <Input id="project-path" placeholder="/Users/you/projects/my-app" value={projectPath} onChange={event => setProjectPath(event.target.value)} required />
-          <Button disabled={busy || !projectPath.trim()} type="submit">Add project <ArrowUpRight size={15} aria-hidden="true" /></Button>
+          <Button disabled={busy || !projectPath.trim()} type="submit">Add project</Button>
         </form>
         {projectDocs.length
-          ? <div className="row-list">{projectDocs.map(document => row(document, `${document.name} · ${tool(document.tool)?.name || document.tool}`, document.path))}</div>
+          ? <div className="row-list">{projectDocs.map(document => row(document, `${document.name}, ${tool(document.tool)?.name || document.tool}`, document.path))}</div>
           : <Empty icon={<FileText size={22} aria-hidden="true" />}>No project selected yet.</Empty>}
       </section>
 
       <section className="panel">
         <PanelHeading title="Managed configuration" badge={configDocs.length} description={<>Hook definitions, plugin registrations, and native settings sections that Agent Hub owns under <code className="path">ai/</code>.</>} />
-        <div className="row-list">{configDocs.map(document => row(document, `${kindNames[document.kind] ?? document.kind} · ${tool(document.tool)?.name || document.name}`, document.path))}</div>
+        <div className="row-list">{configDocs.map(document => row(document, `${kindNames[document.kind] ?? document.kind}, ${tool(document.tool)?.name || document.name}`, document.path))}</div>
       </section>
     </>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Activity, ChevronDown, CircleHelp, Layers, Terminal, Workflow } from 'lucide-react';
+import { ChevronDown, CircleHelp } from 'lucide-react';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Empty, PanelHeading, Segmented, Select, ToolIcon } from '../components/common';
@@ -9,11 +10,11 @@ import { count, date, day, money } from '../lib/format';
 import type { Workspace } from '../App';
 
 const PAGE_SIZE = 20;
-const series: { key: 'codex' | 'claude' | 'opencode' | 'pi'; color: string }[] = [
-  { key: 'codex', color: 'var(--series-1)' },
-  { key: 'claude', color: 'var(--series-2)' },
-  { key: 'opencode', color: 'var(--series-3)' },
-  { key: 'pi', color: 'var(--series-4)' },
+const series: { key: 'codex' | 'claude' | 'opencode' | 'pi'; color: string; dash?: string }[] = [
+  { key: 'codex', color: 'var(--color-series-1)' },
+  { key: 'claude', color: 'var(--color-series-2)', dash: '6 3' },
+  { key: 'opencode', color: 'var(--color-series-3)', dash: '2 3' },
+  { key: 'pi', color: 'var(--color-series-4)', dash: '8 3 2 3' },
 ];
 
 export function Dashboard({ workspace }: { workspace: Workspace }) {
@@ -52,10 +53,10 @@ export function Dashboard({ workspace }: { workspace: Workspace }) {
   const sessions = usage?.sessions ?? [];
   const pageSessions = sessions.slice(pageIndex * PAGE_SIZE, (pageIndex + 1) * PAGE_SIZE);
   const metrics = [
-    { label: 'Total tokens', value: summary ? count(summary.tokens) : '—', icon: Layers, tone: 'violet', detail: summary ? `${count(uncached)} uncached · ${count(summary.cacheRead + summary.cacheWrite)} cached` : 'Input and output, including cached input' },
-    { label: 'Sessions', value: summary ? count(summary.sessions) : '—', icon: Terminal, tone: 'blue', detail: `${summary?.activeDays ?? 0} active days in range` },
-    { label: 'Tool calls', value: summary ? count(summary.toolCalls) : '—', icon: Workflow, tone: 'orange', detail: `${count(summary?.turns ?? 0)} turns · ${count(summary?.errors ?? 0)} errors` },
-    { label: 'Recorded cost', value: summary?.cost != null ? money(summary.cost) : 'Unavailable', icon: Activity, tone: 'green', detail: summary?.cost != null ? `${Math.round(summary.costCoverage / Math.max(1, summary.sessions) * 100)}% of sessions record cost` : 'Subscriptions do not expose spend' },
+    { label: 'Total tokens', value: summary ? count(summary.tokens) : 'Unavailable', detail: summary ? `${count(uncached)} uncached, ${count(summary.cacheRead + summary.cacheWrite)} cached` : 'Input and output, including cached input' },
+    { label: 'Sessions', value: summary ? count(summary.sessions) : 'Unavailable', detail: `${summary?.activeDays ?? 0} active days in range` },
+    { label: 'Tool calls', value: summary ? count(summary.toolCalls) : 'Unavailable', detail: `${count(summary?.turns ?? 0)} turns, ${count(summary?.errors ?? 0)} errors` },
+    { label: 'Recorded cost', value: summary?.cost != null ? money(summary.cost) : 'Unavailable', detail: summary?.cost != null ? `${Math.round(summary.costCoverage / Math.max(1, summary.sessions) * 100)}% of sessions record cost` : 'Subscriptions do not expose spend' },
   ];
 
   return (
@@ -86,18 +87,41 @@ export function Dashboard({ workspace }: { workspace: Workspace }) {
 
       {error && <div className="notice danger" role="alert"><CircleHelp size={16} aria-hidden="true" /><span>{error}</span></div>}
 
-      <div className="metric-grid" aria-busy={loading}>
+      <dl className="stat-row" aria-busy={loading}>
         {metrics.map(metric => (
-          <section className="metric-card" key={metric.label}>
-            <div className="metric-top"><span>{metric.label}</span><span className={`metric-icon ${metric.tone}`}><metric.icon size={16} aria-hidden="true" /></span></div>
-            {loading && !usage ? <span className="skeleton metric-skeleton" aria-hidden="true" /> : <strong>{metric.value}</strong>}
-            <small>{metric.detail}</small>
-          </section>
+          <div className="stat" key={metric.label}>
+            <dt>{metric.label}</dt>
+            <dd>{loading && !usage ? <span className="skeleton metric-skeleton" aria-hidden="true" /> : <strong className={metric.value === 'Unavailable' ? 'figure unavailable' : 'figure'}>{metric.value}</strong>}</dd>
+            <dd className="stat-detail">{metric.detail}</dd>
+          </div>
         ))}
-      </div>
+      </dl>
 
-      <div className="charts-grid">
-        <section className="panel">
+      <section className="panel">
+        <PanelHeading title="Sessions" badge={sessions.length} description="Latest request input is a context proxy, not a live context meter." />
+        {sessions.length ? (
+          <div className="table-scroll">
+            <table className="stack ledger">
+              <thead>
+                <tr><th>Agent / model</th><th>Project</th><th>Last active</th><th className="num">Tokens</th><th className="num">Tool calls</th><th className="num">Latest input</th><th><span className="sr-only">Details</span></th></tr>
+              </thead>
+              <tbody>
+                {pageSessions.map(session => <SessionRows key={session.id} session={session} tool={tool(session.agent)} expanded={expanded === session.id} onExpand={() => setExpanded(expanded === session.id ? undefined : session.id)} />)}
+              </tbody>
+            </table>
+          </div>
+        ) : loading ? <div className="skeleton-rows" aria-label="Loading sessions">{Array.from({ length: 6 }, (_, index) => <span key={index} className="skeleton" />)}</div> : <Empty>No sessions found. Use an agent, then refresh.</Empty>}
+        <div className="panel-footer split">
+          <span>{sessions.length ? `${pageIndex * PAGE_SIZE + 1}–${Math.min((pageIndex + 1) * PAGE_SIZE, sessions.length)} of ${sessions.length}` : '0 sessions'}, times in {usage?.timezone || 'local time'}</span>
+          <div className="button-row">
+            <Button variant="outline" size="sm" disabled={pageIndex === 0} onClick={() => setPageIndex(pageIndex - 1)}>Previous</Button>
+            <Button variant="outline" size="sm" disabled={(pageIndex + 1) * PAGE_SIZE >= sessions.length} onClick={() => setPageIndex(pageIndex + 1)}>Next</Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="panel seams">
+        <div>
           <PanelHeading title="Usage over time" description={interval === 'daily' ? 'Tokens per day by agent' : 'Tokens per week, all agents'}>
             <Segmented small label="Chart interval" value={interval} onChange={setInterval} options={[['daily', 'Daily'], ['weekly', 'Weekly']]} />
           </PanelHeading>
@@ -113,30 +137,30 @@ export function Dashboard({ workspace }: { workspace: Workspace }) {
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={interval === 'daily' ? usage!.daily : usage!.weekly} margin={{ top: 12, right: 12, left: -10, bottom: 0 }}>
                     <defs>
-                      <linearGradient id="usageFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--primary)" stopOpacity={0.25} /><stop offset="100%" stopColor="var(--primary)" stopOpacity={0.02} /></linearGradient>
+                      <linearGradient id="usageFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--color-cool)" stopOpacity={0.25} /><stop offset="100%" stopColor="var(--color-cool)" stopOpacity={0.02} /></linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 4" vertical={false} stroke="var(--border)" />
-                    <XAxis dataKey="date" tickFormatter={day} axisLine={false} tickLine={false} tick={{ fill: 'var(--muted-foreground)', fontSize: 11 }} minTickGap={28} />
-                    <YAxis tickFormatter={count} axisLine={false} tickLine={false} tick={{ fill: 'var(--muted-foreground)', fontSize: 11 }} width={56} />
-                    <Tooltip labelFormatter={value => day(String(value))} formatter={value => count(Number(value))} contentStyle={{ background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 10, color: 'var(--foreground)', fontSize: 12 }} />
+                    <CartesianGrid vertical={false} stroke="var(--color-rule)" />
+                    <XAxis dataKey="date" tickFormatter={day} axisLine={false} tickLine={false} tick={{ fill: 'var(--color-muted)', fontSize: 12, fontFamily: 'var(--font-outlier)' }} minTickGap={28} />
+                    <YAxis tickFormatter={count} axisLine={false} tickLine={false} tick={{ fill: 'var(--color-muted)', fontSize: 12, fontFamily: 'var(--font-outlier)' }} width={56} />
+                    <Tooltip labelFormatter={value => day(String(value))} formatter={value => count(Number(value))} contentStyle={{ background: 'var(--color-paper-3)', border: '1px solid var(--color-rule-2)', borderRadius: 6, color: 'var(--color-ink)', fontSize: 12, fontFamily: 'var(--font-outlier)' }} />
                     {interval === 'weekly'
-                      ? <Area type="monotone" dataKey="total" name="All agents" stroke="var(--primary)" fill="url(#usageFill)" strokeWidth={2} />
-                      : activeSeries.map(item => <Area key={item.key} type="monotone" dataKey={item.key} name={tool(item.key)?.name ?? item.key} stroke={item.color} fill="transparent" strokeWidth={2} />)}
+                      ? <Area type="monotone" dataKey="total" name="All agents" stroke="var(--color-cool)" fill="url(#usageFill)" strokeWidth={2} />
+                      : activeSeries.map(item => <Area key={item.key} type="monotone" dataKey={item.key} name={tool(item.key)?.name ?? item.key} stroke={item.color} strokeDasharray={item.dash} fill="transparent" strokeWidth={2} />)}
                   </AreaChart>
                 </ResponsiveContainer>
               )}
           </div>
-        </section>
+        </div>
 
-        <section className="panel">
+        <div>
           <PanelHeading title="Token breakdown" description="Cumulative for this range" />
           <div className="token-total"><strong>{count(summary?.tokens ?? 0)}</strong><span>tokens</span></div>
           {(() => {
             const parts = [
-              ['Uncached input', uncached, 'var(--series-1)'],
-              ['Output', summary?.output ?? 0, 'var(--series-3)'],
-              ['Cache read', summary?.cacheRead ?? 0, 'var(--series-2)'],
-              ['Cache write', summary?.cacheWrite ?? 0, 'var(--series-4)'],
+              ['Uncached input', uncached, 'var(--color-series-1)'],
+              ['Output', summary?.output ?? 0, 'var(--color-series-3)'],
+              ['Cache read', summary?.cacheRead ?? 0, 'var(--color-series-2)'],
+              ['Cache write', summary?.cacheWrite ?? 0, 'var(--color-series-4)'],
             ] as const;
             return (
               <>
@@ -145,30 +169,7 @@ export function Dashboard({ workspace }: { workspace: Workspace }) {
               </>
             );
           })()}
-          <div className="panel-footer">Reasoning: {count(summary?.reasoning ?? 0)} tokens · {summary?.compactions ?? 0} compactions</div>
-        </section>
-      </div>
-
-      <section className="panel">
-        <PanelHeading title="Sessions" badge={sessions.length} description="Latest request input is a context proxy, not a live context meter." />
-        {sessions.length ? (
-          <div className="table-scroll">
-            <table>
-              <thead>
-                <tr><th>Agent / model</th><th>Project</th><th>Last active</th><th className="num">Tokens</th><th className="num">Tool calls</th><th className="num">Latest input</th><th><span className="sr-only">Details</span></th></tr>
-              </thead>
-              <tbody>
-                {pageSessions.map(session => <SessionRows key={session.id} session={session} tool={tool(session.agent)} expanded={expanded === session.id} onExpand={() => setExpanded(expanded === session.id ? undefined : session.id)} />)}
-              </tbody>
-            </table>
-          </div>
-        ) : loading ? <div className="skeleton-rows" aria-label="Loading sessions">{Array.from({ length: 6 }, (_, index) => <span key={index} className="skeleton" />)}</div> : <Empty>No sessions found. Use an agent, then refresh.</Empty>}
-        <div className="panel-footer split">
-          <span>{sessions.length ? `${pageIndex * PAGE_SIZE + 1}–${Math.min((pageIndex + 1) * PAGE_SIZE, sessions.length)} of ${sessions.length}` : '0 sessions'} · times in {usage?.timezone || 'local time'}</span>
-          <div className="button-row">
-            <Button variant="outline" size="sm" disabled={pageIndex === 0} onClick={() => setPageIndex(pageIndex - 1)}>Previous</Button>
-            <Button variant="outline" size="sm" disabled={(pageIndex + 1) * PAGE_SIZE >= sessions.length} onClick={() => setPageIndex(pageIndex + 1)}>Next</Button>
-          </div>
+          <div className="panel-footer">Reasoning: {count(summary?.reasoning ?? 0)} tokens, {summary?.compactions ?? 0} compactions</div>
         </div>
       </section>
 
@@ -192,12 +193,12 @@ function SessionRows({ session, tool, expanded, onExpand }: { session: Session; 
   return (
     <>
       <tr className={expanded ? 'expanded' : ''}>
-        <td><div className="session-agent"><ToolIcon tool={tool} size={22} /><span><strong>{tool?.name || session.agent}</strong><small>{session.model || 'Model unavailable'}{session.subagent ? ' · subagent' : ''}</small></span></div></td>
-        <td><span className="project-name" title={session.project}>{session.project.split('/').filter(Boolean).pop() || 'Unavailable'}</span></td>
-        <td className="nowrap">{date(session.updatedAt)}</td>
-        <td className="num">{count(session.input + session.output)}</td>
-        <td className="num">{session.toolCalls}</td>
-        <td className="num">{session.context != null ? count(session.context) : <span className="muted">—</span>}</td>
+        <td><div className="session-agent"><ToolIcon tool={tool} size={20} /><strong>{tool?.name || session.agent}</strong><small>{session.model || 'Model unavailable'}</small>{session.subagent && <Badge variant="secondary">subagent</Badge>}</div></td>
+        <td data-label="Project"><span className="project-name" title={session.project}>{session.project.split('/').filter(Boolean).pop() || 'Unavailable'}</span></td>
+        <td className="time" data-label="Last active">{date(session.updatedAt)}</td>
+        <td className="num" data-label="Tokens">{count(session.input + session.output)}</td>
+        <td className="num" data-label="Tool calls">{session.toolCalls}</td>
+        <td className="num" data-label="Latest input">{session.context != null ? count(session.context) : <span className="muted">n/a</span>}</td>
         <td><button type="button" className="icon-button" onClick={onExpand} aria-expanded={expanded} aria-label={`${expanded ? 'Collapse' : 'Expand'} session details`}><ChevronDown size={16} className={expanded ? 'rotated' : ''} aria-hidden="true" /></button></td>
       </tr>
       {expanded && (

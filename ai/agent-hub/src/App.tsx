@@ -109,9 +109,8 @@ export default function App() {
         </nav>
         <div className="sidebar-bottom">
           <div className="service-status">
-            <span className={`status-dot ${state?.service.running ? 'ok' : 'neutral'}`} aria-hidden="true" />
             <span>
-              <strong>{state ? state.service.running ? 'Service running' : 'Service not installed' : 'Connecting…'}</strong>
+              <strong className={state?.service.running ? 'text-ok' : undefined}>{state ? state.service.running ? 'Service running' : 'Service not installed' : 'Connecting…'}</strong>
               {state && <small>{state.service.url.replace(/^https?:\/\//, '')}</small>}
             </span>
           </div>

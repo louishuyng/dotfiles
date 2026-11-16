@@ -1,4 +1,3 @@
-import type React from 'react';
 import type { ReactNode } from 'react';
 import { ChevronDown, CircleHelp, Terminal } from 'lucide-react';
 import type { Tool } from '../api';
@@ -50,7 +49,7 @@ export function PanelHeading({ title, description, badge, children }: { title: R
   return (
     <div className="panel-heading">
       <div>
-        <h2>{title}{badge !== undefined && <span className="count-badge">{badge}</span>}</h2>
+        <div className="panel-title"><h2>{title}</h2>{badge !== undefined && <span className="badge count-badge">{badge}</span>}</div>
         {description && <p>{description}</p>}
       </div>
       {children}
@@ -60,15 +59,4 @@ export function PanelHeading({ title, description, badge, children }: { title: R
 
 export function Logo({ size = 28 }: { size?: number }) {
   return <img className="logo" src="/logo.svg" alt="" width={size} height={size} />;
-}
-
-/** Stable pastel hue per name so rows read as distinct items, like avatar colors. */
-export function hue(name: string) {
-  let value = 0;
-  for (const char of name) value = (value * 31 + char.charCodeAt(0)) % 360;
-  return value;
-}
-
-export function Avatar({ name, children }: { name: string; children: ReactNode }) {
-  return <span className="row-symbol tinted" style={{ '--hue': hue(name) } as React.CSSProperties}>{children}</span>;
 }
