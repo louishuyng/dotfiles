@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#000000">
+  <title>Checkout payment flow: architecture report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" referrerpolicy="no-referrer">
+  <style data-architect-report>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Values follow Geist dark; see references/skin.md for each source. */
+    :root {
+      color-scheme: dark;
+      --bg:            #000000;
+      --surface:       #0a0a0a;
+      --gray-100:      #1a1a1a;
+      --gray-200:      #1f1f1f;
+      --border-subtle: rgba(255,255,255,0.13);
+      --border:        rgba(255,255,255,0.14);
+      --border-strong: rgba(255,255,255,0.54);
+      --text:          #ededed;
+      --text-2:        #a1a1a1;
+      --focus:         #52a8ff;
+      --green:         #62c073;
+      --red:           #ff6166;
+      --amber:         #f2a20d;
+      --blue:          #52a8ff;
+      --purple:        #bf7af0;
+      --teal:          #0ac7b4;
+      --pink:          #f75f8f;
+      --shadow-float:  0 0 0 1px rgba(255,255,255,0.145), 0 2px 2px rgba(0,0,0,0.32), 0 8px 16px -4px rgba(0,0,0,0.32);
+      --space-1: 4px;  --space-2: 8px;   --space-3: 12px;  --space-4: 16px; --space-5: 20px;
+      --space-6: 24px; --space-8: 32px;  --space-10: 40px; --space-12: 48px; --space-16: 64px;
+      --radius-small: 6px;
+      --radius: 8px;
+      --radius-float: 12px;
+      --weight-heading: 450;
+      --weight-medium: 500;
+      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
+      --content-width: 1200px;
+      --reading-width: 68ch;
+      --control-height: 36px;
+      --casebar-height: 60px;
+      --dim: 0.16;
+      --z-casebar: 10;
+    }
+    @media (pointer: coarse) { :root { --control-height: 44px; } }
+
+    html, body { overflow-x: clip; }
+    html { scroll-padding-top: calc(var(--casebar-height) + var(--space-6)); }
+    body {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .shell {
+      width: min(100% - 48px, var(--content-width));
+      margin-inline: auto;
+      padding-block: clamp(40px, 7vw, 80px);
+    }
+
+    /* ── Type roles ───────────────────────────────────────────── */
+    h1, h2, h3, h4 { font-weight: var(--weight-heading); text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+    h1 { max-width: 24ch; font-size: clamp(2rem, 3vw + 1rem, 2.5rem); line-height: 1.2; letter-spacing: -0.06em; }
+    h2 { font-size: 1.5rem; line-height: 2rem; letter-spacing: -0.04em; }
+    h3 { font-size: 1.25rem; line-height: 1.625rem; letter-spacing: -0.02em; }
+    h4 { font-size: 1rem; line-height: 1.5rem; letter-spacing: -0.02em; }
+    p, li, dd { text-wrap: pretty; overflow-wrap: anywhere; }
+    strong { color: var(--text); font-weight: var(--weight-medium); }
+    .lede { font-size: 1.125rem; line-height: 1.75rem; color: var(--text-2); }
+    .caption, figcaption, caption { font-size: 0.875rem; line-height: 1.25rem; color: var(--text-2); }
+    .meta { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+    .numeric { text-align: end; font-variant-numeric: tabular-nums; }
+    a { color: inherit; text-decoration-color: var(--border-strong); text-underline-offset: 0.2em; }
+    a:hover { text-decoration-color: currentColor; }
+    code, kbd { font-family: var(--font-mono); font-size: 0.8125rem; }
+    kbd { padding: 1px var(--space-1); background: var(--gray-100); border: 1px solid var(--border); border-radius: 4px; }
+
+    :where(a, button, input, select, summary):focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+    [hidden] { display: none !important; }
+    .skip-link { position: absolute; left: var(--space-4); top: var(--space-4); padding: var(--space-2) var(--space-3); color: var(--bg); background: var(--text); border-radius: var(--radius-small); transform: translateY(-200%); }
+    .skip-link:focus-visible { transform: none; }
+
+    /* ── Layout ───────────────────────────────────────────────── */
+    .masthead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-1) var(--space-6); padding-bottom: clamp(32px, 5vw, 56px); }
+    .masthead-identity { font-size: 0.875rem; font-weight: var(--weight-medium); }
+    .masthead-meta { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); }
+
+    main > * + * { margin-top: var(--space-16); }
+    main > .casebar { margin-top: var(--space-10); }
+    main > .casebar + * { margin-top: var(--space-8); }
+    .flow > * + * { margin-top: var(--space-4); }
+    .flow > h2 + *, .flow > h1 + * { margin-top: var(--space-4); }
+    .flow > * + :is(h3, h4), .flow > * + figure, .flow > * + .table-wrap, .flow > * + .grid { margin-top: var(--space-8); }
+    .reading { max-width: var(--reading-width); }
+    .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-8) var(--space-6); }
+    .grid > * { grid-column: span 12; min-width: 0; }
+    @media (min-width: 800px) { .span-6 { grid-column: span 6; } }
+
+    footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-6); padding-top: var(--space-16); }
+
+    /* ── Controls ─────────────────────────────────────────────── */
+    .casebar {
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-6);
+      padding-block: var(--space-3);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    @media (min-width: 800px) { .casebar { position: sticky; top: 0; z-index: var(--z-casebar); } }
+    .segmented { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+    /* The key that ties a case name to the colour of its paths in the diagrams. */
+    .dot { display: inline-block; width: 8px; height: 8px; margin-right: var(--space-2); border-radius: 50%; background: var(--tone, var(--text-2)); }
+    [data-tone="green"]  { --tone: var(--green); }
+    [data-tone="red"]    { --tone: var(--red); }
+    [data-tone="amber"]  { --tone: var(--amber); }
+    [data-tone="blue"]   { --tone: var(--blue); }
+    [data-tone="purple"] { --tone: var(--purple); }
+    [data-tone="teal"]   { --tone: var(--teal); }
+    [data-tone="pink"]   { --tone: var(--pink); }
+
+    .button, .input, .select select {
+      min-height: var(--control-height);
+      padding: 0 var(--space-3);
+      font: inherit; font-size: 0.875rem; line-height: 1.25rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-small);
+      touch-action: manipulation;
+      transition: background-color 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out;
+    }
+    .button { font-weight: var(--weight-medium); color: var(--text-2); cursor: pointer; }
+    .button:not([aria-pressed="true"]):hover { color: var(--text); background: var(--gray-100); border-color: var(--border-strong); }
+    .button:not([aria-pressed="true"]):active { background: var(--gray-200); }
+    .button[aria-pressed="true"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+
+    .field { display: grid; gap: var(--space-2); font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .field-inline { display: flex; align-items: center; gap: var(--space-2); }
+    /* A field has no label inside it, so its edge must be visible on its own: 3:1 on the page. */
+    .input, .select select { width: 100%; border-color: var(--border-strong); }
+    @media (pointer: coarse) { .input, .select select { font-size: 1rem; } }
+    .input::placeholder { color: var(--text-2); opacity: 1; }
+    .input:hover, .select select:hover { border-color: var(--text); }
+    .select { position: relative; display: inline-block; min-width: 11rem; }
+    .select select { appearance: none; padding-right: var(--space-8); cursor: pointer; }
+    .select::after {
+      content: ''; position: absolute; right: var(--space-3); top: 50%;
+      width: 7px; height: 7px; margin-top: -5px;
+      border-right: 1.5px solid var(--text-2); border-bottom: 1.5px solid var(--text-2);
+      transform: rotate(45deg); pointer-events: none;
+    }
+    .select select:disabled { color: var(--text-2); border-color: var(--border); cursor: not-allowed; }
+
+    /* ── Diagrams ─────────────────────────────────────────────── */
+    /* The SVG keeps its viewBox width so the type ramp never scales down;
+       this wrapper scrolls instead of the page. */
+    .diagram-scroll { width: 100%; overflow-x: auto; }
+    .diagram svg { width: 100%; min-width: 960px; display: block; }
+    figcaption { margin-top: var(--space-3); max-width: var(--reading-width); }
+    .diagram .meta { margin-bottom: var(--space-2); }
+    .pane-label { margin-block: var(--space-6) var(--space-2); font-size: 0.8125rem; line-height: 1.125rem; font-weight: var(--weight-medium); }
+    svg [data-detail] { cursor: pointer; }
+    svg [data-detail]:hover > rect:nth-of-type(2) { stroke: var(--text); }
+    svg .is-selected > rect:nth-of-type(2) { stroke: var(--text); stroke-width: 2; stroke-dasharray: none; }
+    @media screen { svg .is-off { opacity: var(--dim); } }
+
+    /* ── Case content ─────────────────────────────────────────── */
+    .case-note { color: var(--text-2); }
+    @media screen { :not(svg *).is-off { display: none; } }
+
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.875rem; line-height: 1.25rem; }
+    caption { padding-bottom: var(--space-3); text-align: start; caption-side: top; }
+    th, td { padding: var(--space-3) var(--space-6) var(--space-3) 0; text-align: start; vertical-align: baseline; border-bottom: 1px solid var(--border-subtle); }
+    thead th { font-size: 0.8125rem; font-weight: 400; color: var(--text-2); vertical-align: bottom; }
+    tbody th { font-weight: var(--weight-medium); white-space: nowrap; }
+
+    details { border-top: 1px solid var(--border-subtle); padding-block: var(--space-4); }
+    details:last-of-type { border-bottom: 1px solid var(--border-subtle); }
+    summary { font-weight: var(--weight-medium); cursor: pointer; }
+    summary::marker { color: var(--text-2); }
+    details > :not(summary) { margin-top: var(--space-2); color: var(--text-2); }
+    .tools { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--space-4); }
+    .tools .field { width: min(100%, 18rem); }
+
+    ul, ol { padding-left: 1.25em; }
+    li + li { margin-top: var(--space-2); }
+    li::marker { color: var(--text-2); }
+
+    /* ── Status and notes ─────────────────────────────────────── */
+    .note {
+      padding: var(--space-2) var(--space-3);
+      font-size: 0.875rem; line-height: 1.25rem;
+      color: var(--tone, var(--text-2));
+      background: color-mix(in srgb, var(--tone, var(--text)) 6%, transparent);
+      border: 1px solid color-mix(in srgb, var(--tone, var(--text)) 30%, transparent);
+      border-radius: var(--radius-small);
+    }
+    .note strong { color: inherit; }
+    .badge {
+      display: inline-flex; align-items: center; height: 20px; padding: 0 var(--space-2);
+      font-size: 0.75rem; font-weight: var(--weight-medium); white-space: nowrap;
+      color: var(--tone, var(--text));
+      background: color-mix(in srgb, var(--tone, var(--text-2)) 18%, transparent);
+      border-radius: 999px;
+    }
+    .legend { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); padding: 0; list-style: none; font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .legend li { margin: 0; }
+
+    /* ── Facts ────────────────────────────────────────────────── */
+    .description { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--space-6); }
+    .description dt { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .description dd { font-size: 0.875rem; line-height: 1.25rem; }
+    .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: var(--space-8); }
+    .stat-label { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .stat-value { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; font-weight: var(--weight-heading); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+    .stat-detail { font-size: 0.875rem; line-height: 1.25rem; color: var(--text-2); }
+    .entity-list { padding: 0; list-style: none; }
+    .entity-list > li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-6); margin: 0; padding-block: var(--space-3); border-top: 1px solid var(--border-subtle); }
+    .entity-list > li:last-child { border-bottom: 1px solid var(--border-subtle); }
+    .entity-name { font-size: 0.875rem; line-height: 1.25rem; font-weight: var(--weight-medium); }
+    .entity-meta { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .endpoint { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3); font-size: 0.875rem; line-height: 1.25rem; color: var(--text-2); }
+    .endpoint code { color: var(--text); }
+    .method { min-width: 3.25rem; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--tone, var(--text)); }
+
+    /* ── Quantities ───────────────────────────────────────────── */
+    /* One shared set of lanes for the whole list, so every bar starts and ends on the same lines. */
+    .bars, .trace { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: var(--space-3) var(--space-4); padding: 0; list-style: none; font-size: 0.875rem; line-height: 1.25rem; }
+    .bars > li, .trace > li { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; align-items: center; margin: 0; }
+    .bar-track { position: relative; height: 8px; background: var(--gray-100); border-radius: 2px; }
+    .bar-fill { display: block; width: calc(var(--value) * 1%); height: 100%; background: var(--tone, var(--text)); border-radius: 2px; }
+    .bar-limit { position: absolute; left: calc(var(--limit) * 1%); top: -4px; bottom: -4px; width: 1px; background: var(--text); }
+    .bar-value, .trace-time { text-align: end; font-variant-numeric: tabular-nums; color: var(--text-2); }
+    .trace-name { padding-left: calc(var(--depth, 0) * var(--space-4)); font-family: var(--font-mono); font-size: 0.8125rem; }
+    .trace-track { position: relative; height: 20px; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .trace-span { position: absolute; top: 5px; bottom: 5px; left: calc(var(--start) * 1%); width: max(2px, calc(var(--length) * 1%)); background: var(--tone, var(--text-2)); border-radius: 2px; }
+    .trace-axis { display: flex; justify-content: space-between; font-size: 0.75rem; line-height: 1rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+    .gauge {
+      --size: 64px;
+      display: inline-grid; place-items: center; width: var(--size); aspect-ratio: 1; border-radius: 50%;
+      font-size: 0.875rem; font-weight: var(--weight-medium); font-variant-numeric: tabular-nums;
+      background:
+        radial-gradient(closest-side, var(--bg) calc(100% - 7px), transparent calc(100% - 6px)),
+        conic-gradient(var(--tone, var(--text)) calc(var(--value) * 1%), var(--gray-200) 0);
+    }
+    progress { appearance: none; display: block; width: 100%; height: 8px; overflow: hidden; background: var(--gray-200); border: 0; border-radius: 999px; }
+    progress::-webkit-progress-bar { background: var(--gray-200); }
+    progress::-webkit-progress-value { background: var(--tone, var(--text)); border-radius: 999px; }
+    progress::-moz-progress-bar { background: var(--tone, var(--text)); border-radius: 999px; }
+    .matrix th, .matrix td { padding: var(--space-3); text-align: center; border: 1px solid var(--border-subtle); }
+    .matrix td[data-tone] { color: var(--tone); background: color-mix(in srgb, var(--tone) 14%, transparent); }
+
+    /* ── Sequence ─────────────────────────────────────────────── */
+    .steps { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--space-6); padding: 0; list-style: none; counter-reset: step; }
+    .steps > li { margin: 0; padding-top: var(--space-3); border-top: 2px solid var(--tone, var(--border-strong)); counter-increment: step; }
+    .steps > li::before { content: counter(step); display: block; font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+    .step-title { font-size: 0.875rem; line-height: 1.25rem; font-weight: var(--weight-medium); }
+    .step-detail { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    @media (max-width: 799px) { .steps { grid-auto-flow: row; } }
+    .timeline { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-6); padding: 0; list-style: none; }
+    .timeline > li { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; align-items: baseline; margin: 0; padding-block: var(--space-3); border-top: 1px solid var(--border-subtle); }
+    .timeline time { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-2); }
+
+    /* ── Code and structure ───────────────────────────────────── */
+    .code { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .code figcaption { max-width: none; margin: 0; padding: var(--space-2) var(--space-4); font-family: var(--font-mono); font-size: 0.8125rem; border-bottom: 1px solid var(--border); }
+    /* Grid drops the line breaks between the line spans, so the source can stay readable. */
+    .code pre { padding-block: var(--space-4); overflow-x: auto; line-height: 1.25rem; tab-size: 2; counter-reset: line; }
+    .code pre code { display: grid; }
+    .code .line { padding-right: var(--space-4); white-space: pre; }
+    .code .line::before { counter-increment: line; content: counter(line); display: inline-block; width: 3rem; padding-right: var(--space-4); text-align: end; color: var(--text-2); user-select: none; }
+    .code .line[data-tone] { background: color-mix(in srgb, var(--tone) 12%, transparent); box-shadow: inset 2px 0 var(--tone); }
+    .tok-key { color: var(--pink); } .tok-fn { color: var(--purple); } .tok-str { color: var(--green); } .tok-com { color: var(--text-2); }
+    .snippet { display: flex; align-items: center; gap: var(--space-3); min-height: 40px; padding: 0 var(--space-1) 0 var(--space-3); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-small); }
+    .snippet code { flex: 1; overflow-x: auto; white-space: nowrap; }
+    .snippet code::before { content: '$ '; color: var(--text-2); user-select: none; }
+    .snippet .button { min-height: 32px; }
+    .tree, .tree ul { padding: 0; list-style: none; font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.75rem; }
+    .tree ul { margin-left: 7px; padding-left: var(--space-4); border-left: 1px solid var(--border); }
+    .tree li { margin: 0; color: var(--text-2); }
+    .tree .dir, .tree [data-tone] { color: var(--tone, var(--text)); }
+
+    /* ── Inspector ────────────────────────────────────────────── */
+    .inspector {
+      inset: auto; top: calc(var(--casebar-height) + var(--space-4)); right: max(24px, calc((100vw - var(--content-width)) / 2));
+      width: min(22rem, calc(100vw - 2rem)); max-height: calc(100dvh - var(--casebar-height) - var(--space-8));
+      margin: 0; padding: var(--space-4); overflow-y: auto; overscroll-behavior: contain;
+      color: var(--text); background: var(--surface);
+      border: 0; border-radius: var(--radius-float); box-shadow: var(--shadow-float);
+    }
+    .inspector > * + * { margin-top: var(--space-3); }
+    .inspector-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+    .inspector [data-inspector-body] { color: var(--text-2); font-size: 0.875rem; line-height: 1.25rem; }
+    .inspector dl { padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); font-size: 0.875rem; line-height: 1.25rem; }
+    .inspector dt { font-size: 0.8125rem; color: var(--text-2); }
+    @media (max-width: 799px) {
+      .inspector { top: auto; left: 1rem; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); width: auto; max-height: 60dvh; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+
+    @media print {
+      /* Without this a browser drops the dark ground and prints light text on white. */
+      * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .casebar, .inspector, .tools .field, .skip-link { display: none; }
+      .diagram-scroll { overflow-x: visible; }
+      .diagram svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <p class="masthead-identity">Architecture report</p>
+      <p class="masthead-meta meta"><span>Checkout service</span><span>Example with placeholder names</span></p>
+    </header>
+
+    <main id="main">
+
+      <section class="flow" aria-labelledby="title">
+        <h1 id="title">A provider timeout is the only checkout case that leaves work behind</h1>
+        <p class="lede reading">A successful charge and a declined card both finish inside one request. A timeout stores a pending order and hands the charge to a background retry.</p>
+      </section>
+
+      <!-- Case bar: one button per case. data-case-pick is the case id used in data-case below. -->
+      <div class="casebar" data-casebar data-needs-script hidden>
+        <div class="segmented" role="group" aria-label="Case">
+          <button type="button" class="button" data-case-pick="" aria-pressed="true">All cases</button>
+          <button type="button" class="button" data-case-pick="happy" aria-pressed="false"><span class="dot" data-tone="green" aria-hidden="true"></span>Happy path</button>
+          <button type="button" class="button" data-case-pick="declined" aria-pressed="false"><span class="dot" data-tone="red" aria-hidden="true"></span>Card declined</button>
+          <button type="button" class="button" data-case-pick="timeout" aria-pressed="false"><span class="dot" data-tone="amber" aria-hidden="true"></span>Provider timeout</button>
+        </div>
+        <label class="field field-inline">Compare with
+          <span class="select"><select data-case-compare><option value="">None</option></select></span>
+        </label>
+      </div>
+
+      <section class="flow" aria-labelledby="context-heading">
+        <h2 id="context-heading">Every case diverges after the charge call</h2>
+        <p class="reading">Checkout API is the only service that talks to the payment provider. What it stores, sends and queues depends on the provider's answer.</p>
+
+        <figure class="diagram">
+          <p class="meta" data-needs-script hidden>Showing <strong data-case-status>All cases</strong></p>
+          <div class="diagram-scroll">
+          <svg viewBox="0 96 960 304" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ctx-title ctx-desc">
+              <title id="ctx-title">Checkout system context</title>
+              <desc id="ctx-desc">A shopper submits an order through the web app to Checkout API, which charges the payment provider, writes the order, sends a receipt, and queues a retry when the provider times out.</desc>
+              <defs>
+                <marker id="ctx-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1a1"/></marker>
+                <marker id="ctx-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1a1"/></marker>
+              
+              <marker id="ctx-arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#62c073"/></marker>
+              <marker id="ctx-arrow-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#ff6166"/></marker>
+              <marker id="ctx-arrow-amber" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#f2a20d"/></marker></defs>
+              <rect y="96" width="100%" height="100%" fill="#000000"/>
+  
+              <!-- Connectors first, so they paint behind nodes. -->
+              <line x1="152" y1="148" x2="216" y2="148" stroke="#a1a1a1" stroke-width="1.2" marker-end="url(#ctx-arrow)"/>
+  
+              <line x1="344" y1="140" x2="408" y2="140" stroke="#a1a1a1" stroke-width="1.2" marker-end="url(#ctx-arrow)"/>
+              <rect x="358" y="120" width="36" height="12" rx="2" fill="#000000"/>
+              <text x="376" y="129" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">SUBMIT</text>
+  
+              <g data-case="declined">
+                <line x1="408" y1="160" x2="344" y2="160" stroke="#ff6166" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#ctx-arrow-red)"/>
+                <rect x="358" y="166" width="36" height="12" rx="2" fill="#000000"/>
+                <text x="376" y="175" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">ERROR</text>
+              </g>
+  
+              <line x1="552" y1="140" x2="784" y2="140" stroke="#a1a1a1" stroke-width="1.2" marker-end="url(#ctx-arrow-link)"/>
+              <rect x="648" y="120" width="40" height="12" rx="2" fill="#000000"/>
+              <text x="668" y="129" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">CHARGE</text>
+  
+              <g data-case="declined">
+                <line x1="784" y1="160" x2="552" y2="160" stroke="#ff6166" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#ctx-arrow-red)"/>
+                <rect x="644" y="166" width="48" height="12" rx="2" fill="#000000"/>
+                <text x="668" y="175" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">DECLINED</text>
+              </g>
+  
+              <g data-case="happy timeout">
+                <path d="M 444 176 V 220 Q 444 228 436 228 H 304 Q 296 228 296 236 V 280" fill="none" stroke="#a1a1a1" stroke-width="1.2" marker-end="url(#ctx-arrow)"/>
+                <rect x="352" y="208" width="36" height="12" rx="2" fill="#000000"/>
+                <text x="370" y="217" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">WRITE</text>
+              </g>
+  
+              <g data-case="happy">
+                <line x1="480" y1="176" x2="480" y2="280" stroke="#62c073" stroke-width="1.2" marker-end="url(#ctx-arrow-green)"/>
+                <rect x="488" y="246" width="44" height="12" rx="2" fill="#000000"/>
+                <text x="510" y="255" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">RECEIPT</text>
+              </g>
+  
+              <g data-case="timeout">
+                <path d="M 516 176 V 220 Q 516 228 524 228 H 656 Q 664 228 664 236 V 280" fill="none" stroke="#f2a20d" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#ctx-arrow-amber)"/>
+                <rect x="568" y="208" width="44" height="12" rx="2" fill="#000000"/>
+                <text x="590" y="217" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">ENQUEUE</text>
+              </g>
+  
+              <g data-case="timeout">
+                <path d="M 728 308 H 848 Q 856 308 856 300 V 176" fill="none" stroke="#f2a20d" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#ctx-arrow-amber)"/>
+                <rect x="770" y="288" width="36" height="12" rx="2" fill="#000000"/>
+                <text x="788" y="297" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">RETRY</text>
+              </g>
+  
+              <!-- Nodes: opaque paper mask, styled box, type tag, name, sublabel. -->
+              <g>
+                <rect x="40" y="120" width="112" height="56" rx="6" fill="#000000"/>
+                <rect x="40" y="120" width="112" height="56" rx="6" fill="#000000" stroke="#666666" stroke-width="1"/>
+                <rect x="48" y="126" width="28" height="12" rx="2" fill="transparent" stroke="rgba(143,143,143,0.40)" stroke-width="0.8"/>
+                <text x="62" y="135" fill="#8f8f8f" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">USER</text>
+                <text x="96" y="152" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Shopper</text>
+                <text x="96" y="167" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">browser</text>
+              </g>
+  
+              <g>
+                <rect x="216" y="120" width="128" height="56" rx="6" fill="#000000"/>
+                <rect x="216" y="120" width="128" height="56" rx="6" fill="#1a1a1a" stroke="#878787" stroke-width="1"/>
+                <rect x="224" y="126" width="20" height="12" rx="2" fill="transparent" stroke="rgba(237,237,237,0.40)" stroke-width="0.8"/>
+                <text x="234" y="135" fill="#ededed" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">UI</text>
+                <text x="280" y="152" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Web App</text>
+                <text x="280" y="167" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">React SPA</text>
+              </g>
+  
+              <g data-detail="detail-api">
+                <rect x="408" y="120" width="144" height="56" rx="6" fill="#000000"/>
+                <rect x="408" y="120" width="144" height="56" rx="6" fill="rgba(82,168,255,0.12)" stroke="#52a8ff" stroke-width="1.5"/>
+                <rect x="416" y="126" width="28" height="12" rx="2" fill="transparent" stroke="rgba(82,168,255,0.50)" stroke-width="0.8"/>
+                <text x="430" y="135" fill="#52a8ff" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">API</text>
+                <text x="480" y="152" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Checkout API</text>
+                <text x="480" y="167" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">POST /checkout</text>
+              </g>
+  
+              <g data-detail="detail-provider">
+                <rect x="784" y="120" width="144" height="56" rx="6" fill="#000000"/>
+                <rect x="784" y="120" width="144" height="56" rx="6" fill="rgba(191,122,240,0.12)" stroke="#bf7af0" stroke-width="1"/>
+                <rect x="792" y="126" width="28" height="12" rx="2" fill="transparent" stroke="rgba(191,122,240,0.50)" stroke-width="0.8"/>
+                <text x="806" y="135" fill="#bf7af0" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">EXT</text>
+                <text x="856" y="152" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Payment Provider</text>
+                <text x="856" y="167" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">HTTPS :443</text>
+              </g>
+  
+              <g data-case="happy timeout" data-detail="detail-db">
+                <rect x="232" y="280" width="128" height="56" rx="6" fill="#000000"/>
+                <rect x="232" y="280" width="128" height="56" rx="6" fill="rgba(10,199,180,0.12)" stroke="#0ac7b4" stroke-width="1"/>
+                <rect x="240" y="286" width="24" height="12" rx="2" fill="transparent" stroke="rgba(10,199,180,0.50)" stroke-width="0.8"/>
+                <text x="252" y="295" fill="#0ac7b4" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">DB</text>
+                <text x="296" y="312" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Orders DB</text>
+                <text x="296" y="327" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">PostgreSQL</text>
+              </g>
+  
+              <g data-case="happy">
+                <rect x="416" y="280" width="128" height="56" rx="6" fill="#000000"/>
+                <rect x="416" y="280" width="128" height="56" rx="6" fill="#1a1a1a" stroke="#878787" stroke-width="1"/>
+                <rect x="424" y="286" width="28" height="12" rx="2" fill="transparent" stroke="rgba(237,237,237,0.40)" stroke-width="0.8"/>
+                <text x="438" y="295" fill="#ededed" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">SVC</text>
+                <text x="480" y="312" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Notifier</text>
+                <text x="480" y="327" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">email receipt</text>
+              </g>
+  
+              <g data-case="timeout" data-detail="detail-queue">
+                <rect x="600" y="280" width="128" height="56" rx="6" fill="#000000"/>
+                <rect x="600" y="280" width="128" height="56" rx="6" fill="rgba(247,95,143,0.12)" stroke="#f75f8f" stroke-width="1" stroke-dasharray="4,3"/>
+                <rect x="608" y="286" width="36" height="12" rx="2" fill="transparent" stroke="rgba(247,95,143,0.50)" stroke-width="0.8"/>
+                <text x="626" y="295" fill="#f75f8f" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">ASYNC</text>
+                <text x="664" y="312" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Retry Queue</text>
+                <text x="664" y="327" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">backoff, 3 tries</text>
+              </g>
+  
+              <!-- Legend strip -->
+              <line x1="32" y1="364" x2="928" y2="364" stroke="rgba(237,237,237,0.10)" stroke-width="0.8"/>
+              <text x="32" y="381" fill="#a1a1a1" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEGEND</text>
+              <rect x="120" y="372" width="14" height="10" rx="2" fill="rgba(82,168,255,0.12)" stroke="#52a8ff" stroke-width="1.5"/>
+              <text x="140" y="381" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Focal service</text>
+              <rect x="252" y="372" width="14" height="10" rx="2" fill="#1a1a1a" stroke="#878787" stroke-width="1"/>
+              <text x="272" y="381" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Service</text>
+              <rect x="352" y="372" width="14" height="10" rx="2" fill="rgba(10,199,180,0.12)" stroke="#0ac7b4" stroke-width="1"/>
+              <text x="372" y="381" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Store</text>
+              <rect x="444" y="372" width="14" height="10" rx="2" fill="rgba(191,122,240,0.12)" stroke="#bf7af0" stroke-width="1"/>
+              <text x="464" y="381" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">External</text>
+              <rect x="548" y="372" width="14" height="10" rx="2" fill="rgba(247,95,143,0.12)" stroke="#f75f8f" stroke-width="1" stroke-dasharray="4,3"/>
+              <text x="568" y="381" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Async</text>
+              <line x1="640" y1="377" x2="660" y2="377" stroke="#a1a1a1" stroke-width="1.2" marker-end="url(#ctx-arrow-link)"/>
+              <text x="668" y="381" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Call</text>
+              <line x1="768" y1="377" x2="788" y2="377" stroke="#a1a1a1" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#ctx-arrow)"/>
+              <text x="796" y="381" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Return or async</text>
+            </svg>
+          </div>
+          <figcaption>Checkout API owns the charge. Storage, the receipt and the retry each belong to one answer from the provider. <span data-needs-script hidden>Select a component in the diagram to inspect it.</span></figcaption>
+        </figure>
+
+        <div class="flow reading">
+          <p class="case-note" data-case="happy"><span class="dot" data-tone="green" aria-hidden="true"></span><strong>Happy path.</strong> The provider accepts the charge. Checkout API writes the order and asks Notifier for a receipt.</p>
+          <p class="case-note" data-case="declined"><span class="dot" data-tone="red" aria-hidden="true"></span><strong>Card declined.</strong> The provider refuses the charge. Nothing is written; the shopper sees the error and can change the card.</p>
+          <p class="case-note" data-case="timeout"><span class="dot" data-tone="amber" aria-hidden="true"></span><strong>Provider timeout.</strong> No answer arrives in time. Checkout API writes the order as pending and queues a retry.</p>
+        </div>
+
+        <div class="tools">
+          <h3>Components</h3>
+          <label class="field" data-needs-script hidden>Filter components
+            <input class="input" type="search" name="component-filter" placeholder="For example, retry…" autocomplete="off" data-filter="#components > details" data-filter-empty="#components-empty">
+          </label>
+        </div>
+        <div id="components">
+          <details id="detail-api">
+            <summary>Checkout API</summary>
+            <p class="reading">Validates the cart, calls the provider once per request, and decides what to store. The only caller of the payment provider.</p>
+            <p class="endpoint"><span class="method" data-tone="blue">POST</span><code>/checkout</code><span>Charges the card and creates the order.</span></p>
+          </details>
+          <details id="detail-provider">
+            <summary>Payment Provider</summary>
+            <p class="reading">External service. Answers accepted or declined, or does not answer within the timeout.</p>
+          </details>
+          <details id="detail-db">
+            <summary>Orders DB</summary>
+            <p class="reading">Holds one row per order. A declined charge creates no row.</p>
+          </details>
+          <details id="detail-queue">
+            <summary>Retry Queue</summary>
+            <p class="reading">Receives a job only after a timeout. Retries the charge with backoff, then gives up.</p>
+          </details>
+        </div>
+        <p class="caption" id="components-empty" role="status" hidden>No component matches. Clear the filter to see all four.</p>
+      </section>
+
+      <section class="flow" aria-labelledby="states-heading">
+        <h2 id="states-heading">Paid is the only goal state</h2>
+        <p class="reading">The same three cases, seen as the states one order passes through.</p>
+
+        <figure class="diagram">
+          <p class="meta" data-needs-script hidden>Showing <strong data-case-status>All cases</strong></p>
+          <div class="diagram-scroll">
+          <svg viewBox="0 96 960 296" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="st-title st-desc">
+              <title id="st-title">Order state machine</title>
+              <desc id="st-desc">An order starts pending, then becomes authorized and paid, or declined, or retries after a timeout and ends paid or failed.</desc>
+              <defs>
+                <marker id="st-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1a1"/></marker>
+              
+              <marker id="st-arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#62c073"/></marker>
+              <marker id="st-arrow-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#ff6166"/></marker>
+              <marker id="st-arrow-amber" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#f2a20d"/></marker></defs>
+              <rect y="96" width="100%" height="100%" fill="#000000"/>
+  
+              <line x1="54" y1="148" x2="96" y2="148" stroke="#a1a1a1" stroke-width="1.2" marker-end="url(#st-arrow)"/>
+  
+              <g data-case="happy">
+                <line x1="208" y1="148" x2="304" y2="148" stroke="#62c073" stroke-width="1.2" marker-end="url(#st-arrow-green)"/>
+                <rect x="228" y="128" width="56" height="12" rx="2" fill="#000000"/>
+                <text x="256" y="137" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">CHARGE OK</text>
+              </g>
+  
+              <g data-case="happy">
+                <line x1="432" y1="148" x2="528" y2="148" stroke="#62c073" stroke-width="1.2" marker-end="url(#st-arrow-green)"/>
+                <rect x="458" y="128" width="44" height="12" rx="2" fill="#000000"/>
+                <text x="480" y="137" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">CAPTURE</text>
+              </g>
+  
+              <g data-case="happy timeout">
+                <line x1="640" y1="148" x2="696" y2="148" stroke="#a1a1a1" stroke-width="1.2" marker-end="url(#st-arrow)"/>
+              </g>
+  
+              <g data-case="declined">
+                <path d="M 132 176 V 284 Q 132 292 140 292 H 304" fill="none" stroke="#ff6166" stroke-width="1.2" marker-end="url(#st-arrow-red)"/>
+                <rect x="196" y="272" width="44" height="12" rx="2" fill="#000000"/>
+                <text x="218" y="281" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">DECLINE</text>
+              </g>
+  
+              <g data-case="timeout">
+                <path d="M 172 176 V 220 Q 172 228 180 228 H 556 Q 564 228 564 236 V 264" fill="none" stroke="#f2a20d" stroke-width="1.2" marker-end="url(#st-arrow-amber)"/>
+                <rect x="252" y="208" width="44" height="12" rx="2" fill="#000000"/>
+                <text x="274" y="217" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">TIMEOUT</text>
+              </g>
+  
+              <g data-case="timeout">
+                <line x1="604" y1="264" x2="604" y2="176" stroke="#f2a20d" stroke-width="1.2" marker-end="url(#st-arrow-amber)"/>
+                <rect x="612" y="214" width="52" height="12" rx="2" fill="#000000"/>
+                <text x="638" y="223" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">RETRY OK</text>
+              </g>
+  
+              <g data-case="timeout">
+                <line x1="640" y1="292" x2="736" y2="292" stroke="#f2a20d" stroke-width="1.2" marker-end="url(#st-arrow-amber)"/>
+                <rect x="656" y="272" width="64" height="12" rx="2" fill="#000000"/>
+                <text x="688" y="281" fill="#8f8f8f" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">MAX RETRIES</text>
+              </g>
+  
+              <circle cx="48" cy="148" r="6" fill="#ededed"/>
+  
+              <g>
+                <rect x="96" y="120" width="112" height="56" rx="8" fill="#000000"/>
+                <rect x="96" y="120" width="112" height="56" rx="8" fill="#1a1a1a" stroke="#878787" stroke-width="1"/>
+                <text x="152" y="146" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Pending</text>
+                <text x="152" y="162" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">awaiting charge</text>
+              </g>
+  
+              <g data-case="happy">
+                <rect x="304" y="120" width="128" height="56" rx="8" fill="#000000"/>
+                <rect x="304" y="120" width="128" height="56" rx="8" fill="#1a1a1a" stroke="#878787" stroke-width="1"/>
+                <text x="368" y="146" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Authorized</text>
+                <text x="368" y="162" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">funds held</text>
+              </g>
+  
+              <g data-case="happy timeout">
+                <rect x="528" y="120" width="112" height="56" rx="8" fill="#000000"/>
+                <rect x="528" y="120" width="112" height="56" rx="8" fill="rgba(98,192,115,0.12)" stroke="#62c073" stroke-width="1.5"/>
+                <text x="584" y="146" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Paid</text>
+                <text x="584" y="162" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">order confirmed</text>
+                <circle cx="704" cy="148" r="8" fill="#000000" stroke="#ededed" stroke-width="1.2"/>
+                <circle cx="704" cy="148" r="5" fill="#ededed"/>
+              </g>
+  
+              <g data-case="declined">
+                <rect x="304" y="264" width="128" height="56" rx="8" fill="#000000"/>
+                <rect x="304" y="264" width="128" height="56" rx="8" fill="rgba(255,97,102,0.12)" stroke="#ff6166" stroke-width="1"/>
+                <text x="368" y="290" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Declined</text>
+                <text x="368" y="306" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">card refused</text>
+              </g>
+  
+              <g data-case="timeout">
+                <rect x="528" y="264" width="112" height="56" rx="8" fill="#000000"/>
+                <rect x="528" y="264" width="112" height="56" rx="8" fill="rgba(242,162,13,0.12)" stroke="#f2a20d" stroke-width="1"/>
+                <text x="584" y="290" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Retrying</text>
+                <text x="584" y="306" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">up to 3 tries</text>
+              </g>
+  
+              <g data-case="timeout">
+                <rect x="736" y="264" width="112" height="56" rx="8" fill="#000000"/>
+                <rect x="736" y="264" width="112" height="56" rx="8" fill="rgba(255,97,102,0.12)" stroke="#ff6166" stroke-width="1"/>
+                <text x="792" y="290" fill="#ededed" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Failed</text>
+                <text x="792" y="306" fill="#a1a1a1" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">needs support</text>
+              </g>
+  
+              <line x1="32" y1="356" x2="928" y2="356" stroke="rgba(237,237,237,0.10)" stroke-width="0.8"/>
+              <text x="32" y="373" fill="#a1a1a1" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEGEND</text>
+              <rect x="120" y="364" width="14" height="10" rx="3" fill="#1a1a1a" stroke="#878787" stroke-width="1"/>
+              <text x="140" y="373" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">State</text>
+              <rect x="216" y="364" width="14" height="10" rx="3" fill="rgba(98,192,115,0.12)" stroke="#62c073" stroke-width="1.5"/>
+              <text x="236" y="373" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Goal state</text>
+              <circle cx="344" cy="369" r="5" fill="#ededed"/>
+              <text x="356" y="373" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Start</text>
+              <circle cx="432" cy="369" r="6" fill="#000000" stroke="#ededed" stroke-width="1.2"/>
+              <circle cx="432" cy="369" r="3" fill="#ededed"/>
+              <text x="444" y="373" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">End</text>
+              <rect x="504" y="364" width="14" height="10" rx="3" fill="rgba(255,97,102,0.12)" stroke="#ff6166" stroke-width="1"/>
+              <text x="524" y="373" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Failure state</text>
+            <rect x="612" y="364" width="14" height="10" rx="3" fill="rgba(242,162,13,0.12)" stroke="#f2a20d" stroke-width="1"/>
+            <text x="632" y="373" fill="#a1a1a1" font-size="9" font-family="'Geist', sans-serif">Waiting state</text>
+            </svg>
+          </div>
+          <figcaption>A timeout reaches Paid late or ends in Failed. A declined card never reaches Authorized.</figcaption>
+        </figure>
+
+        <div class="flow reading">
+          <p class="case-note" data-case="happy"><span class="dot" data-tone="green" aria-hidden="true"></span><strong>Happy path.</strong> Pending, Authorized, Paid.</p>
+          <p class="case-note" data-case="declined"><span class="dot" data-tone="red" aria-hidden="true"></span><strong>Card declined.</strong> Pending, then Declined.</p>
+          <p class="case-note" data-case="timeout"><span class="dot" data-tone="amber" aria-hidden="true"></span><strong>Provider timeout.</strong> Pending, Retrying, then Paid if a retry succeeds or Failed after the last try.</p>
+        </div>
+      </section>
+
+      <section class="flow" aria-labelledby="trace-heading">
+        <h2 id="trace-heading">A timeout holds the request open until the limit</h2>
+        <p class="reading">The shopper waits for the whole charge timeout before seeing anything. The work after it is short.</p>
+        <figure>
+          <ol class="trace" aria-label="Spans of one timed-out checkout request">
+            <li><span class="trace-name">POST /checkout</span><span class="trace-track"><span class="trace-span" style="--start: 0; --length: 86"></span></span><span class="trace-time">10.3 s</span></li>
+            <li><span class="trace-name" style="--depth: 1">validate cart</span><span class="trace-track"><span class="trace-span" style="--start: 0; --length: 1"></span></span><span class="trace-time">0.1 s</span></li>
+            <li><span class="trace-name" style="--depth: 1">charge provider</span><span class="trace-track"><span class="trace-span" data-tone="amber" style="--start: 1; --length: 83"></span></span><span class="trace-time">10.0 s</span></li>
+            <li><span class="trace-name" style="--depth: 1">write pending order</span><span class="trace-track"><span class="trace-span" style="--start: 84; --length: 1"></span></span><span class="trace-time">0.1 s</span></li>
+            <li><span class="trace-name" style="--depth: 1">enqueue retry</span><span class="trace-track"><span class="trace-span" style="--start: 85; --length: 1"></span></span><span class="trace-time">0.1 s</span></li>
+            <li aria-hidden="true"><span></span><span class="trace-axis"><span>0 s</span><span>4 s</span><span>8 s</span><span>12 s</span></span><span></span></li>
+          </ol>
+          <figcaption><span class="dot" data-tone="amber" aria-hidden="true"></span>The amber span is the call that timed out. Timings are example values, not measurements.</figcaption>
+        </figure>
+      </section>
+
+      <section class="flow" aria-labelledby="cases-heading">
+        <h2 id="cases-heading">What each case writes, shows and leaves behind</h2>
+        <div class="table-wrap">
+          <table>
+            <caption>The three cases on the same three questions.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Question</th>
+                <th scope="col" data-case="happy"><span class="dot" data-tone="green" aria-hidden="true"></span>Happy path</th>
+                <th scope="col" data-case="declined"><span class="dot" data-tone="red" aria-hidden="true"></span>Card declined</th>
+                <th scope="col" data-case="timeout"><span class="dot" data-tone="amber" aria-hidden="true"></span>Provider timeout</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Order row written</th>
+                <td data-case="happy">Yes, as paid</td>
+                <td data-case="declined">No</td>
+                <td data-case="timeout">Yes, as pending</td>
+              </tr>
+              <tr>
+                <th scope="row">Shopper sees</th>
+                <td data-case="happy">Confirmation and a receipt</td>
+                <td data-case="declined">An error next to the card field</td>
+                <td data-case="timeout">A notice that payment is processing</td>
+              </tr>
+              <tr>
+                <th scope="row">Follow-up work</th>
+                <td data-case="happy">None</td>
+                <td data-case="declined">None</td>
+                <td data-case="timeout">Retry job, then support if it fails</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="flow" aria-labelledby="decisions-heading">
+        <h2 id="decisions-heading">Two questions are still open</h2>
+        <div class="grid">
+          <div class="span-6 flow">
+            <h4>Decided</h4>
+            <ul>
+              <li>Checkout API is the only caller of the payment provider.</li>
+              <li>A declined charge stores nothing.</li>
+              <li>A timeout stores a pending order and retries in the background.</li>
+            </ul>
+          </div>
+          <div class="span-6 flow">
+            <h4>Open</h4>
+            <ul>
+              <li>Who is told when an order reaches Failed?</li>
+              <li>Can a retry charge a card twice if the first call succeeded late?</li>
+            </ul>
+            <p class="note" data-tone="amber"><strong>Risk.</strong> Until the second question is answered, a late success plus a retry could charge twice.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="meta">
+      <span>Architecture report</span>
+      <span>Print shows every case at full strength.</span>
+    </footer>
+  </div>
+
+  <aside class="inspector" id="inspector" popover data-inspector aria-labelledby="inspector-title">
+    <div class="inspector-head">
+      <p class="meta">Component</p>
+      <button type="button" class="button" popovertarget="inspector" popovertargetaction="hide">Close</button>
+    </div>
+    <h4 id="inspector-title" data-inspector-title></h4>
+    <div data-inspector-body></div>
+    <dl><dt>Appears in</dt><dd data-inspector-cases></dd></dl>
+  </aside>
+
+  <script data-architect-report>
+    (() => {
+      for (const input of document.querySelectorAll('[data-filter]')) {
+        const items = [...document.querySelectorAll(input.dataset.filter)];
+        const empty = document.querySelector(input.dataset.filterEmpty);
+        input.addEventListener('input', () => {
+          const query = input.value.trim().toLowerCase();
+          for (const item of items) item.hidden = !item.textContent.toLowerCase().includes(query);
+          if (empty) empty.hidden = items.some(item => !item.hidden);
+        });
+      }
+
+      for (const button of document.querySelectorAll('[data-copy]')) {
+        button.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(document.querySelector(button.dataset.copy).textContent.trim());
+            button.textContent = 'Copied';
+            setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+          } catch {}
+        });
+      }
+
+      for (const element of document.querySelectorAll('[data-needs-script]')) element.hidden = false;
+
+      const bar = document.querySelector('[data-casebar]');
+      if (!bar) return;
+      const picks = [...bar.querySelectorAll('[data-case-pick]')];
+      const compare = bar.querySelector('[data-case-compare]');
+      const names = new Map(picks.map(pick => [pick.dataset.casePick, pick.textContent.trim()]));
+      for (const [id, name] of names) if (id) compare.add(new Option(name, id));
+      let first = '';
+      let second = '';
+
+      const paint = (elements, cases) => {
+        for (const element of elements) {
+          const tagged = element.dataset.case.split(/\s+/);
+          element.classList.toggle('is-off', cases.length > 0 && !tagged.some(id => cases.includes(id)));
+        }
+      };
+
+      const paneLabel = text => {
+        const label = document.createElement('p');
+        label.className = 'pane-label diagram-compare';
+        label.textContent = text;
+        return label;
+      };
+
+      const render = () => {
+        for (const pick of picks) pick.setAttribute('aria-pressed', String(pick.dataset.casePick === first));
+        compare.value = second;
+        compare.disabled = !first;
+        for (const status of document.querySelectorAll('[data-case-status]')) {
+          status.textContent = [first, second].filter(Boolean).map(id => names.get(id)).join(' and ') || names.get('');
+        }
+
+        for (const stale of document.querySelectorAll('.diagram-compare')) stale.remove();
+        const tagged = [...document.querySelectorAll('[data-case]')];
+        paint(tagged.filter(element => element.closest('svg')), first ? [first] : []);
+        paint(tagged.filter(element => !element.closest('svg')), [first, second].filter(Boolean));
+        if (!second) return;
+
+        for (const figure of document.querySelectorAll('figure.diagram')) {
+          const original = figure.querySelector('.diagram-scroll');
+          const copy = original.cloneNode(true);
+          copy.classList.add('diagram-compare');
+          // The copy keeps url(#…) references to the original's markers, so its own ids can go.
+          for (const node of copy.querySelectorAll('[id]')) node.removeAttribute('id');
+          const svg = copy.querySelector('svg');
+          svg.removeAttribute('aria-labelledby');
+          svg.setAttribute('aria-label', `${figure.querySelector('title').textContent}: ${names.get(second)}`);
+          paint(svg.querySelectorAll('[data-case]'), [second]);
+          original.before(paneLabel(names.get(first)));
+          original.after(paneLabel(names.get(second)), copy);
+        }
+      };
+
+      const read = () => {
+        const params = new URLSearchParams(location.search);
+        const known = id => (id && names.has(id) ? id : '');
+        first = known(params.get('case'));
+        second = first && known(params.get('vs')) !== first ? known(params.get('vs')) : '';
+        render();
+      };
+
+      const go = (nextFirst, nextSecond) => {
+        first = nextFirst;
+        second = nextFirst && nextSecond !== nextFirst ? nextSecond : '';
+        const url = new URL(location.href);
+        url.search = new URLSearchParams([['case', first], ['vs', second]].filter(([, id]) => id)).toString();
+        // A page opened from disk may refuse history changes; the view still updates.
+        try { history.pushState(null, '', url); } catch {}
+        render();
+      };
+
+      for (const pick of picks) pick.addEventListener('click', () => go(pick.dataset.casePick, second));
+      compare.addEventListener('change', () => go(first, compare.value));
+      addEventListener('popstate', read);
+
+      const inspector = document.querySelector('[data-inspector]');
+      const deselect = () => document.querySelector('svg .is-selected')?.classList.remove('is-selected');
+      document.addEventListener('click', event => {
+        const node = event.target.closest('svg [data-detail]');
+        const detail = node && document.getElementById(node.dataset.detail);
+        if (!detail) return;
+        if (!inspector?.showPopover) {
+          detail.open = true;
+          detail.querySelector('summary').focus();
+          return;
+        }
+        inspector.querySelector('[data-inspector-title]').textContent = detail.querySelector('summary').textContent;
+        inspector.querySelector('[data-inspector-body]').replaceChildren(
+          ...[...detail.children].filter(child => child.tagName !== 'SUMMARY').map(child => child.cloneNode(true)));
+        inspector.querySelector('[data-inspector-cases]').textContent = node.dataset.case
+          ? node.dataset.case.split(/\s+/).map(id => names.get(id)).join(', ')
+          : names.get('');
+        deselect();
+        node.classList.add('is-selected');
+        if (!inspector.matches(':popover-open')) inspector.showPopover();
+      });
+      // A click on another node closes the popover first; its late toggle event must not clear the new selection.
+      inspector?.addEventListener('toggle', () => { if (!inspector.matches(':popover-open')) deselect(); });
+
+      read();
+    })();
+  </script>
+</body>
+</html>

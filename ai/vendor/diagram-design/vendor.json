@@ -1,0 +1,22 @@
+{
+  "name": "diagram-design",
+  "title": "Diagram Design",
+  "repo": "https://github.com/cathrynlavery/diagram-design",
+  "ref": "main",
+  "commit": "f6db0decea96de66b901331a0f79a8d4b147ebae",
+  "version": "2.6",
+  "date": "2026-11-12",
+  "include": [
+    "skills/diagram-design/SKILL.md",
+    "skills/diagram-design/references",
+    "skills/diagram-design/scripts",
+    "skills/diagram-design/assets/template.html",
+    "skills/diagram-design/assets/template-dark.html",
+    "skills/diagram-design/assets/template-full.html",
+    "LICENSE",
+    "THIRD_PARTY_LICENSES.md"
+  ],
+  "skill": "architect-report",
+  "exclude": [],
+  "native": {}
+}

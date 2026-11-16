@@ -63,7 +63,7 @@ See [the shared setup decision](../../docs/adr/0006-shared-agent-setup.md).
 
 Native Codex plugins remain managed through the app server. Skill creation, edits, and enablement use the repository library and manifest.
 
-The current manifest enables nine skills: aside-browser, caveman, domain-modeling, frontend-killer, hallmark, i-have-adhd, ponytail, typesafe-ai, and write-doc. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays nine.
+The current manifest enables ten skills: architect-report, aside-browser, caveman, domain-modeling, frontend-killer, hallmark, i-have-adhd, ponytail, typesafe-ai, and write-doc. Setup moves inactive source folders out of the active library into `~/.local/share/agent-hub/disabled-skills/<timestamp>/` and prints that private recovery path. Future toggles change the manifest; consult it instead of assuming the count stays ten.
 
 Use **Skills → Review sync** to preview and apply shared links. Codex's `~/.agents/skills`, Claude's `~/.claude/skills`, OpenCode's `~/.config/opencode/skills`, and configured compatible targets receive exports of the same enabled repository folders. Scripts and relative references stay with each skill. Source edits happen in `ai/skills`, not a tool's plugin cache. Exports use skill names; ambiguous names fail before writing. Sync stages targets, reverses failed swaps, journals interrupted changes, and refreshes managed exports after library changes. Displaced roots are backed up. Bootstrap preserves active Agent Hub links.
 
@@ -180,6 +180,20 @@ in every agent. `scripts/update-egm.sh [ref]` runs the preview and apply steps
 from Terminal; it leaves native plugins alone.
 Adding a new vendor still needs a hand-written `vendor.json` and wrapper skill. See
 [the decision](../../docs/adr/0006-shared-agent-setup.md#accepted-update-egm-replaces-plannotator-and-grilling).
+
+## Architecture reports with Diagram Design
+
+The `architect-report` library skill builds one self-contained HTML report:
+diagrams, report prose, and a case switcher that dims the parts of each diagram
+a scenario does not touch. The diagram rules and check scripts come from
+[Diagram Design](https://github.com/cathrynlavery/diagram-design), vendored in
+[`ai/vendor/diagram-design`](../vendor/diagram-design) with the pinned commit in
+`vendor.json`. Only the skill's `SKILL.md`, `references/`, `scripts/`, three
+templates, and the licences are vendored; the example gallery is left out.
+Update it from **Plugins → Vendored plugins** or with
+`node scripts/vendor.mjs update diagram-design [ref]`, then run
+`python3 ai/skills/architect-report/scripts/check_report.py ai/skills/architect-report/assets/report.html`
+to confirm the shipped template still passes the updated gates.
 
 ## Shared hook sources and cleanup
 

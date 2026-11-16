@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#000000">
+  <title>Architect report components</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" referrerpolicy="no-referrer">
+  <style data-architect-report>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Values follow Geist dark; see references/skin.md for each source. */
+    :root {
+      color-scheme: dark;
+      --bg:            #000000;
+      --surface:       #0a0a0a;
+      --gray-100:      #1a1a1a;
+      --gray-200:      #1f1f1f;
+      --border-subtle: rgba(255,255,255,0.13);
+      --border:        rgba(255,255,255,0.14);
+      --border-strong: rgba(255,255,255,0.54);
+      --text:          #ededed;
+      --text-2:        #a1a1a1;
+      --focus:         #52a8ff;
+      --green:         #62c073;
+      --red:           #ff6166;
+      --amber:         #f2a20d;
+      --blue:          #52a8ff;
+      --purple:        #bf7af0;
+      --teal:          #0ac7b4;
+      --pink:          #f75f8f;
+      --shadow-float:  0 0 0 1px rgba(255,255,255,0.145), 0 2px 2px rgba(0,0,0,0.32), 0 8px 16px -4px rgba(0,0,0,0.32);
+      --space-1: 4px;  --space-2: 8px;   --space-3: 12px;  --space-4: 16px; --space-5: 20px;
+      --space-6: 24px; --space-8: 32px;  --space-10: 40px; --space-12: 48px; --space-16: 64px;
+      --radius-small: 6px;
+      --radius: 8px;
+      --radius-float: 12px;
+      --weight-heading: 450;
+      --weight-medium: 500;
+      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Geist Mono', 'SFMono-Regular', Consolas, monospace;
+      --content-width: 1200px;
+      --reading-width: 68ch;
+      --control-height: 36px;
+      --casebar-height: 60px;
+      --dim: 0.16;
+      --z-casebar: 10;
+    }
+    @media (pointer: coarse) { :root { --control-height: 44px; } }
+
+    html, body { overflow-x: clip; }
+    html { scroll-padding-top: calc(var(--casebar-height) + var(--space-6)); }
+    body {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .shell {
+      width: min(100% - 48px, var(--content-width));
+      margin-inline: auto;
+      padding-block: clamp(40px, 7vw, 80px);
+    }
+
+    /* ── Type roles ───────────────────────────────────────────── */
+    h1, h2, h3, h4 { font-weight: var(--weight-heading); text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+    h1 { max-width: 24ch; font-size: clamp(2rem, 3vw + 1rem, 2.5rem); line-height: 1.2; letter-spacing: -0.06em; }
+    h2 { font-size: 1.5rem; line-height: 2rem; letter-spacing: -0.04em; }
+    h3 { font-size: 1.25rem; line-height: 1.625rem; letter-spacing: -0.02em; }
+    h4 { font-size: 1rem; line-height: 1.5rem; letter-spacing: -0.02em; }
+    p, li, dd { text-wrap: pretty; overflow-wrap: anywhere; }
+    strong { color: var(--text); font-weight: var(--weight-medium); }
+    .lede { font-size: 1.125rem; line-height: 1.75rem; color: var(--text-2); }
+    .caption, figcaption, caption { font-size: 0.875rem; line-height: 1.25rem; color: var(--text-2); }
+    .meta { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+    .numeric { text-align: end; font-variant-numeric: tabular-nums; }
+    a { color: inherit; text-decoration-color: var(--border-strong); text-underline-offset: 0.2em; }
+    a:hover { text-decoration-color: currentColor; }
+    code, kbd { font-family: var(--font-mono); font-size: 0.8125rem; }
+    kbd { padding: 1px var(--space-1); background: var(--gray-100); border: 1px solid var(--border); border-radius: 4px; }
+
+    :where(a, button, input, select, summary):focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+    [hidden] { display: none !important; }
+    .skip-link { position: absolute; left: var(--space-4); top: var(--space-4); padding: var(--space-2) var(--space-3); color: var(--bg); background: var(--text); border-radius: var(--radius-small); transform: translateY(-200%); }
+    .skip-link:focus-visible { transform: none; }
+
+    /* ── Layout ───────────────────────────────────────────────── */
+    .masthead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-1) var(--space-6); padding-bottom: clamp(32px, 5vw, 56px); }
+    .masthead-identity { font-size: 0.875rem; font-weight: var(--weight-medium); }
+    .masthead-meta { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); }
+
+    main > * + * { margin-top: var(--space-16); }
+    main > .casebar { margin-top: var(--space-10); }
+    main > .casebar + * { margin-top: var(--space-8); }
+    .flow > * + * { margin-top: var(--space-4); }
+    .flow > h2 + *, .flow > h1 + * { margin-top: var(--space-4); }
+    .flow > * + :is(h3, h4), .flow > * + figure, .flow > * + .table-wrap, .flow > * + .grid { margin-top: var(--space-8); }
+    .reading { max-width: var(--reading-width); }
+    .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-8) var(--space-6); }
+    .grid > * { grid-column: span 12; min-width: 0; }
+    @media (min-width: 800px) { .span-6 { grid-column: span 6; } }
+
+    footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-6); padding-top: var(--space-16); }
+
+    /* ── Controls ─────────────────────────────────────────────── */
+    .casebar {
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-6);
+      padding-block: var(--space-3);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    @media (min-width: 800px) { .casebar { position: sticky; top: 0; z-index: var(--z-casebar); } }
+    .segmented { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+    /* The key that ties a case name to the colour of its paths in the diagrams. */
+    .dot { display: inline-block; width: 8px; height: 8px; margin-right: var(--space-2); border-radius: 50%; background: var(--tone, var(--text-2)); }
+    [data-tone="green"]  { --tone: var(--green); }
+    [data-tone="red"]    { --tone: var(--red); }
+    [data-tone="amber"]  { --tone: var(--amber); }
+    [data-tone="blue"]   { --tone: var(--blue); }
+    [data-tone="purple"] { --tone: var(--purple); }
+    [data-tone="teal"]   { --tone: var(--teal); }
+    [data-tone="pink"]   { --tone: var(--pink); }
+
+    .button, .input, .select select {
+      min-height: var(--control-height);
+      padding: 0 var(--space-3);
+      font: inherit; font-size: 0.875rem; line-height: 1.25rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-small);
+      touch-action: manipulation;
+      transition: background-color 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out;
+    }
+    .button { font-weight: var(--weight-medium); color: var(--text-2); cursor: pointer; }
+    .button:not([aria-pressed="true"]):hover { color: var(--text); background: var(--gray-100); border-color: var(--border-strong); }
+    .button:not([aria-pressed="true"]):active { background: var(--gray-200); }
+    .button[aria-pressed="true"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+
+    .field { display: grid; gap: var(--space-2); font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .field-inline { display: flex; align-items: center; gap: var(--space-2); }
+    /* A field has no label inside it, so its edge must be visible on its own: 3:1 on the page. */
+    .input, .select select { width: 100%; border-color: var(--border-strong); }
+    @media (pointer: coarse) { .input, .select select { font-size: 1rem; } }
+    .input::placeholder { color: var(--text-2); opacity: 1; }
+    .input:hover, .select select:hover { border-color: var(--text); }
+    .select { position: relative; display: inline-block; min-width: 11rem; }
+    .select select { appearance: none; padding-right: var(--space-8); cursor: pointer; }
+    .select::after {
+      content: ''; position: absolute; right: var(--space-3); top: 50%;
+      width: 7px; height: 7px; margin-top: -5px;
+      border-right: 1.5px solid var(--text-2); border-bottom: 1.5px solid var(--text-2);
+      transform: rotate(45deg); pointer-events: none;
+    }
+    .select select:disabled { color: var(--text-2); border-color: var(--border); cursor: not-allowed; }
+
+    /* ── Diagrams ─────────────────────────────────────────────── */
+    /* The SVG keeps its viewBox width so the type ramp never scales down;
+       this wrapper scrolls instead of the page. */
+    .diagram-scroll { width: 100%; overflow-x: auto; }
+    .diagram svg { width: 100%; min-width: 960px; display: block; }
+    figcaption { margin-top: var(--space-3); max-width: var(--reading-width); }
+    .diagram .meta { margin-bottom: var(--space-2); }
+    .pane-label { margin-block: var(--space-6) var(--space-2); font-size: 0.8125rem; line-height: 1.125rem; font-weight: var(--weight-medium); }
+    svg [data-detail] { cursor: pointer; }
+    svg [data-detail]:hover > rect:nth-of-type(2) { stroke: var(--text); }
+    svg .is-selected > rect:nth-of-type(2) { stroke: var(--text); stroke-width: 2; stroke-dasharray: none; }
+    @media screen { svg .is-off { opacity: var(--dim); } }
+
+    /* ── Case content ─────────────────────────────────────────── */
+    .case-note { color: var(--text-2); }
+    @media screen { :not(svg *).is-off { display: none; } }
+
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.875rem; line-height: 1.25rem; }
+    caption { padding-bottom: var(--space-3); text-align: start; caption-side: top; }
+    th, td { padding: var(--space-3) var(--space-6) var(--space-3) 0; text-align: start; vertical-align: baseline; border-bottom: 1px solid var(--border-subtle); }
+    thead th { font-size: 0.8125rem; font-weight: 400; color: var(--text-2); vertical-align: bottom; }
+    tbody th { font-weight: var(--weight-medium); white-space: nowrap; }
+
+    details { border-top: 1px solid var(--border-subtle); padding-block: var(--space-4); }
+    details:last-of-type { border-bottom: 1px solid var(--border-subtle); }
+    summary { font-weight: var(--weight-medium); cursor: pointer; }
+    summary::marker { color: var(--text-2); }
+    details > :not(summary) { margin-top: var(--space-2); color: var(--text-2); }
+    .tools { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--space-4); }
+    .tools .field { width: min(100%, 18rem); }
+
+    ul, ol { padding-left: 1.25em; }
+    li + li { margin-top: var(--space-2); }
+    li::marker { color: var(--text-2); }
+
+    /* ── Status and notes ─────────────────────────────────────── */
+    .note {
+      padding: var(--space-2) var(--space-3);
+      font-size: 0.875rem; line-height: 1.25rem;
+      color: var(--tone, var(--text-2));
+      background: color-mix(in srgb, var(--tone, var(--text)) 6%, transparent);
+      border: 1px solid color-mix(in srgb, var(--tone, var(--text)) 30%, transparent);
+      border-radius: var(--radius-small);
+    }
+    .note strong { color: inherit; }
+    .badge {
+      display: inline-flex; align-items: center; height: 20px; padding: 0 var(--space-2);
+      font-size: 0.75rem; font-weight: var(--weight-medium); white-space: nowrap;
+      color: var(--tone, var(--text));
+      background: color-mix(in srgb, var(--tone, var(--text-2)) 18%, transparent);
+      border-radius: 999px;
+    }
+    .legend { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); padding: 0; list-style: none; font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .legend li { margin: 0; }
+
+    /* ── Facts ────────────────────────────────────────────────── */
+    .description { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--space-6); }
+    .description dt { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .description dd { font-size: 0.875rem; line-height: 1.25rem; }
+    .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: var(--space-8); }
+    .stat-label { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .stat-value { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; font-weight: var(--weight-heading); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+    .stat-detail { font-size: 0.875rem; line-height: 1.25rem; color: var(--text-2); }
+    .entity-list { padding: 0; list-style: none; }
+    .entity-list > li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-6); margin: 0; padding-block: var(--space-3); border-top: 1px solid var(--border-subtle); }
+    .entity-list > li:last-child { border-bottom: 1px solid var(--border-subtle); }
+    .entity-name { font-size: 0.875rem; line-height: 1.25rem; font-weight: var(--weight-medium); }
+    .entity-meta { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    .endpoint { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3); font-size: 0.875rem; line-height: 1.25rem; color: var(--text-2); }
+    .endpoint code { color: var(--text); }
+    .method { min-width: 3.25rem; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--tone, var(--text)); }
+
+    /* ── Quantities ───────────────────────────────────────────── */
+    /* One shared set of lanes for the whole list, so every bar starts and ends on the same lines. */
+    .bars, .trace { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: var(--space-3) var(--space-4); padding: 0; list-style: none; font-size: 0.875rem; line-height: 1.25rem; }
+    .bars > li, .trace > li { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; align-items: center; margin: 0; }
+    .bar-track { position: relative; height: 8px; background: var(--gray-100); border-radius: 2px; }
+    .bar-fill { display: block; width: calc(var(--value) * 1%); height: 100%; background: var(--tone, var(--text)); border-radius: 2px; }
+    .bar-limit { position: absolute; left: calc(var(--limit) * 1%); top: -4px; bottom: -4px; width: 1px; background: var(--text); }
+    .bar-value, .trace-time { text-align: end; font-variant-numeric: tabular-nums; color: var(--text-2); }
+    .trace-name { padding-left: calc(var(--depth, 0) * var(--space-4)); font-family: var(--font-mono); font-size: 0.8125rem; }
+    .trace-track { position: relative; height: 20px; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .trace-span { position: absolute; top: 5px; bottom: 5px; left: calc(var(--start) * 1%); width: max(2px, calc(var(--length) * 1%)); background: var(--tone, var(--text-2)); border-radius: 2px; }
+    .trace-axis { display: flex; justify-content: space-between; font-size: 0.75rem; line-height: 1rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+    .gauge {
+      --size: 64px;
+      display: inline-grid; place-items: center; width: var(--size); aspect-ratio: 1; border-radius: 50%;
+      font-size: 0.875rem; font-weight: var(--weight-medium); font-variant-numeric: tabular-nums;
+      background:
+        radial-gradient(closest-side, var(--bg) calc(100% - 7px), transparent calc(100% - 6px)),
+        conic-gradient(var(--tone, var(--text)) calc(var(--value) * 1%), var(--gray-200) 0);
+    }
+    progress { appearance: none; display: block; width: 100%; height: 8px; overflow: hidden; background: var(--gray-200); border: 0; border-radius: 999px; }
+    progress::-webkit-progress-bar { background: var(--gray-200); }
+    progress::-webkit-progress-value { background: var(--tone, var(--text)); border-radius: 999px; }
+    progress::-moz-progress-bar { background: var(--tone, var(--text)); border-radius: 999px; }
+    .matrix th, .matrix td { padding: var(--space-3); text-align: center; border: 1px solid var(--border-subtle); }
+    .matrix td[data-tone] { color: var(--tone); background: color-mix(in srgb, var(--tone) 14%, transparent); }
+
+    /* ── Sequence ─────────────────────────────────────────────── */
+    .steps { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--space-6); padding: 0; list-style: none; counter-reset: step; }
+    .steps > li { margin: 0; padding-top: var(--space-3); border-top: 2px solid var(--tone, var(--border-strong)); counter-increment: step; }
+    .steps > li::before { content: counter(step); display: block; font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+    .step-title { font-size: 0.875rem; line-height: 1.25rem; font-weight: var(--weight-medium); }
+    .step-detail { font-size: 0.8125rem; line-height: 1.125rem; color: var(--text-2); }
+    @media (max-width: 799px) { .steps { grid-auto-flow: row; } }
+    .timeline { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--space-6); padding: 0; list-style: none; }
+    .timeline > li { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; align-items: baseline; margin: 0; padding-block: var(--space-3); border-top: 1px solid var(--border-subtle); }
+    .timeline time { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-2); }
+
+    /* ── Code and structure ───────────────────────────────────── */
+    .code { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .code figcaption { max-width: none; margin: 0; padding: var(--space-2) var(--space-4); font-family: var(--font-mono); font-size: 0.8125rem; border-bottom: 1px solid var(--border); }
+    /* Grid drops the line breaks between the line spans, so the source can stay readable. */
+    .code pre { padding-block: var(--space-4); overflow-x: auto; line-height: 1.25rem; tab-size: 2; counter-reset: line; }
+    .code pre code { display: grid; }
+    .code .line { padding-right: var(--space-4); white-space: pre; }
+    .code .line::before { counter-increment: line; content: counter(line); display: inline-block; width: 3rem; padding-right: var(--space-4); text-align: end; color: var(--text-2); user-select: none; }
+    .code .line[data-tone] { background: color-mix(in srgb, var(--tone) 12%, transparent); box-shadow: inset 2px 0 var(--tone); }
+    .tok-key { color: var(--pink); } .tok-fn { color: var(--purple); } .tok-str { color: var(--green); } .tok-com { color: var(--text-2); }
+    .snippet { display: flex; align-items: center; gap: var(--space-3); min-height: 40px; padding: 0 var(--space-1) 0 var(--space-3); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-small); }
+    .snippet code { flex: 1; overflow-x: auto; white-space: nowrap; }
+    .snippet code::before { content: '$ '; color: var(--text-2); user-select: none; }
+    .snippet .button { min-height: 32px; }
+    .tree, .tree ul { padding: 0; list-style: none; font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.75rem; }
+    .tree ul { margin-left: 7px; padding-left: var(--space-4); border-left: 1px solid var(--border); }
+    .tree li { margin: 0; color: var(--text-2); }
+    .tree .dir, .tree [data-tone] { color: var(--tone, var(--text)); }
+
+    /* ── Inspector ────────────────────────────────────────────── */
+    .inspector {
+      inset: auto; top: calc(var(--casebar-height) + var(--space-4)); right: max(24px, calc((100vw - var(--content-width)) / 2));
+      width: min(22rem, calc(100vw - 2rem)); max-height: calc(100dvh - var(--casebar-height) - var(--space-8));
+      margin: 0; padding: var(--space-4); overflow-y: auto; overscroll-behavior: contain;
+      color: var(--text); background: var(--surface);
+      border: 0; border-radius: var(--radius-float); box-shadow: var(--shadow-float);
+    }
+    .inspector > * + * { margin-top: var(--space-3); }
+    .inspector-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+    .inspector [data-inspector-body] { color: var(--text-2); font-size: 0.875rem; line-height: 1.25rem; }
+    .inspector dl { padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); font-size: 0.875rem; line-height: 1.25rem; }
+    .inspector dt { font-size: 0.8125rem; color: var(--text-2); }
+    @media (max-width: 799px) {
+      .inspector { top: auto; left: 1rem; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); width: auto; max-height: 60dvh; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+
+    @media print {
+      /* Without this a browser drops the dark ground and prints light text on white. */
+      * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .casebar, .inspector, .tools .field, .skip-link { display: none; }
+      .diagram-scroll { overflow-x: visible; }
+      .diagram svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <p class="masthead-identity">Architect report</p>
+      <p class="masthead-meta meta"><span>Component reference</span><span>Example values throughout</span></p>
+    </header>
+
+    <main id="main">
+
+      <section class="flow" aria-labelledby="title">
+        <h1 id="title">Every component a report may use</h1>
+        <p class="lede reading">Copy the markup of a block into a report. The stylesheet and the script are the same as in report.html. Each block names the question it answers; use it only for that question.</p>
+      </section>
+
+      <section class="flow" aria-labelledby="s-status">
+        <h2 id="s-status">State and attention</h2>
+
+        <h4>Note</h4>
+        <p class="caption reading">A remark tied to the block next to it. One tone per meaning: plain for context, amber for a risk, red for a fault, green for a confirmed result, blue for a pointer.</p>
+        <div class="flow reading">
+          <p class="note">Checkout API is the only caller of the payment provider.</p>
+          <p class="note" data-tone="amber"><strong>Risk.</strong> A late success plus a retry could charge twice.</p>
+          <p class="note" data-tone="red"><strong>Fault.</strong> Orders in Failed are never retried again.</p>
+          <p class="note" data-tone="green"><strong>Confirmed.</strong> A declined charge stores nothing.</p>
+          <p class="note" data-tone="blue"><strong>See also.</strong> The retry policy lives in the queue worker.</p>
+        </div>
+
+        <h4>Badge</h4>
+        <p class="caption reading">A state or a category next to the thing it describes. One per row. Never for ordinary metadata.</p>
+        <p><span class="badge">Draft</span> <span class="badge" data-tone="green">Healthy</span> <span class="badge" data-tone="amber">Degraded</span> <span class="badge" data-tone="red">Down</span> <span class="badge" data-tone="blue">Internal</span> <span class="badge" data-tone="purple">External</span> <span class="badge" data-tone="teal">Store</span> <span class="badge" data-tone="pink">Async</span></p>
+
+        <h4>Legend</h4>
+        <p class="caption reading">The key for colours used outside a diagram's own legend.</p>
+        <ul class="legend">
+          <li><span class="dot" data-tone="green" aria-hidden="true"></span>Happy path</li>
+          <li><span class="dot" data-tone="red" aria-hidden="true"></span>Card declined</li>
+          <li><span class="dot" data-tone="amber" aria-hidden="true"></span>Provider timeout</li>
+        </ul>
+      </section>
+
+      <section class="flow" aria-labelledby="s-facts">
+        <h2 id="s-facts">Facts about a thing</h2>
+
+        <h4>Description</h4>
+        <p class="caption reading">Key and value pairs for one component or decision.</p>
+        <dl class="description">
+          <div><dt>Owner</dt><dd>Payments team</dd></div>
+          <div><dt>Runtime</dt><dd>Node.js 22</dd></div>
+          <div><dt>Region</dt><dd><code>eu-west-1</code></dd></div>
+          <div><dt>Timeout</dt><dd>10 s</dd></div>
+        </dl>
+
+        <h4>Stat strip</h4>
+        <p class="caption reading">Two to four sourced numbers that are true peers. Never an invented metric, and never a row of boxes.</p>
+        <div class="stat-strip">
+          <div><p class="stat-label">Services</p><p class="stat-value">5</p><p class="stat-detail">3 ours, 1 external, 1 queue</p></div>
+          <div><p class="stat-label">Charge timeout</p><p class="stat-value">10 s</p><p class="stat-detail">Set in Checkout API</p></div>
+          <div><p class="stat-label">Retries</p><p class="stat-value">3</p><p class="stat-detail">With backoff</p></div>
+        </div>
+
+        <h4>Entity list</h4>
+        <p class="caption reading">Components or services as rows: name and one line on the left, state on the right.</p>
+        <ul class="entity-list">
+          <li><div><p class="entity-name">Checkout API</p><p class="entity-meta">Validates, charges, decides what to store</p></div><span class="badge" data-tone="blue">Internal</span></li>
+          <li><div><p class="entity-name">Payment Provider</p><p class="entity-meta">Accepts or declines a charge</p></div><span class="badge" data-tone="purple">External</span></li>
+          <li><div><p class="entity-name">Retry Queue</p><p class="entity-meta">Retries a timed-out charge</p></div><span class="badge" data-tone="pink">Async</span></li>
+        </ul>
+
+        <h4>Endpoint</h4>
+        <p class="caption reading">One API operation. Method colours: GET green, POST blue, PUT and PATCH amber, DELETE red.</p>
+        <div class="flow">
+          <p class="endpoint"><span class="method" data-tone="green">GET</span><code>/orders/{id}</code><span>Reads one order.</span></p>
+          <p class="endpoint"><span class="method" data-tone="blue">POST</span><code>/checkout</code><span>Charges the card and creates the order.</span></p>
+          <p class="endpoint"><span class="method" data-tone="amber">PATCH</span><code>/orders/{id}</code><span>Updates the delivery address.</span></p>
+          <p class="endpoint"><span class="method" data-tone="red">DELETE</span><code>/orders/{id}</code><span>Cancels a pending order.</span></p>
+        </div>
+      </section>
+
+      <section class="flow" aria-labelledby="s-quantities">
+        <h2 id="s-quantities">Quantities</h2>
+
+        <h4>Bars</h4>
+        <p class="caption reading">Rank or magnitude on one shared scale. Every track starts and ends on the same line. The marker is an optional limit.</p>
+        <ul class="bars" aria-label="Latency by service, in milliseconds, against a 400 ms budget">
+          <li><span>Checkout API</span><span class="bar-track"><span class="bar-fill" style="--value: 36"></span><span class="bar-limit" style="--limit: 80"></span></span><span class="bar-value">180 ms</span></li>
+          <li><span>Orders DB</span><span class="bar-track"><span class="bar-fill" style="--value: 8"></span><span class="bar-limit" style="--limit: 80"></span></span><span class="bar-value">40 ms</span></li>
+          <li><span>Payment Provider</span><span class="bar-track"><span class="bar-fill" data-tone="red" style="--value: 92"></span><span class="bar-limit" style="--limit: 80"></span></span><span class="bar-value">460 ms</span></li>
+        </ul>
+        <p class="caption">The scale ends at 500 ms. The line marks the 400 ms budget; the red bar is over it.</p>
+
+        <h4>Trace</h4>
+        <p class="caption reading">Where time goes inside one request. Start and length are percentages of the axis.</p>
+        <ol class="trace" aria-label="Spans of one checkout request">
+          <li><span class="trace-name">POST /checkout</span><span class="trace-track"><span class="trace-span" style="--start: 0; --length: 62"></span></span><span class="trace-time">310 ms</span></li>
+          <li><span class="trace-name" style="--depth: 1">validate cart</span><span class="trace-track"><span class="trace-span" style="--start: 0; --length: 6"></span></span><span class="trace-time">30 ms</span></li>
+          <li><span class="trace-name" style="--depth: 1">charge provider</span><span class="trace-track"><span class="trace-span" data-tone="purple" style="--start: 6; --length: 44"></span></span><span class="trace-time">220 ms</span></li>
+          <li><span class="trace-name" style="--depth: 1">write order</span><span class="trace-track"><span class="trace-span" data-tone="teal" style="--start: 50; --length: 8"></span></span><span class="trace-time">40 ms</span></li>
+          <li><span class="trace-name" style="--depth: 1">send receipt</span><span class="trace-track"><span class="trace-span" style="--start: 58; --length: 4"></span></span><span class="trace-time">20 ms</span></li>
+          <li aria-hidden="true"><span></span><span class="trace-axis"><span>0</span><span>125 ms</span><span>250 ms</span><span>375 ms</span><span>500 ms</span></span><span></span></li>
+        </ol>
+
+        <h4>Gauge and progress</h4>
+        <p class="caption reading">A gauge is a ratio against a fixed maximum, such as cache hit rate or quota used. A progress bar is work with a known total.</p>
+        <div class="grid">
+          <div class="span-6">
+            <p><span class="gauge" data-tone="green" style="--value: 92">92%</span> <span class="gauge" data-tone="amber" style="--value: 64">64%</span> <span class="gauge" data-tone="red" style="--value: 18">18%</span></p>
+            <p class="caption">Cache hit rate of three routes.</p>
+          </div>
+          <div class="span-6 flow">
+            <label class="field">Migration, 7 of 12 tables<progress value="7" max="12">7 of 12</progress></label>
+            <label class="field">Rollout, 25% of traffic<progress data-tone="blue" value="25" max="100">25%</progress></label>
+          </div>
+        </div>
+
+        <h4>Matrix</h4>
+        <p class="caption reading">Two axes with a level in each cell, such as likelihood against impact. Each cell carries its word, not only its colour.</p>
+        <div class="table-wrap">
+          <table class="matrix">
+            <caption>Risk of each failure, by likelihood and impact.</caption>
+            <thead><tr><th scope="col">Failure</th><th scope="col">Likelihood</th><th scope="col">Impact</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Provider timeout</th><td data-tone="amber">Medium</td><td data-tone="amber">Medium</td></tr>
+              <tr><th scope="row">Double charge</th><td data-tone="green">Low</td><td data-tone="red">High</td></tr>
+              <tr><th scope="row">Lost receipt</th><td data-tone="green">Low</td><td data-tone="green">Low</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="flow" aria-labelledby="s-sequence">
+        <h2 id="s-sequence">Order and time</h2>
+
+        <h4>Steps</h4>
+        <p class="caption reading">A short ordered pipeline of three to six stages. The top rule takes a tone when a stage has a state.</p>
+        <ol class="steps">
+          <li data-tone="green"><p class="step-title">Build</p><p class="step-detail">Image built and scanned</p></li>
+          <li data-tone="green"><p class="step-title">Migrate</p><p class="step-detail">Schema change applied</p></li>
+          <li data-tone="amber"><p class="step-title">Canary</p><p class="step-detail">5% of traffic, watching errors</p></li>
+          <li><p class="step-title">Roll out</p><p class="step-detail">All regions</p></li>
+        </ol>
+
+        <h4>Timeline</h4>
+        <p class="caption reading">Events at known times, such as an incident or a rollout.</p>
+        <ol class="timeline">
+          <li><time>14:02</time><span>Provider latency passes the 400 ms budget.</span></li>
+          <li><time>14:05</time><span>First checkout request times out.</span></li>
+          <li><time>14:11</time><span>Retry queue depth reaches its alert level.</span></li>
+          <li><time>14:26</time><span>Provider recovers and the queue drains.</span></li>
+        </ol>
+      </section>
+
+      <section class="flow" aria-labelledby="s-code">
+        <h2 id="s-code">Code and structure</h2>
+
+        <h4>Code block</h4>
+        <p class="caption reading">Source the reader will scan. A tone on a line marks it: green added, red removed, blue the line the text refers to.</p>
+        <figure class="code reading">
+          <figcaption>checkout.ts</figcaption>
+          <pre><code><span class="line"><span class="tok-key">async function</span> <span class="tok-fn">charge</span>(order) {</span>
+<span class="line" data-tone="red">  <span class="tok-key">return</span> provider.<span class="tok-fn">charge</span>(order);</span>
+<span class="line" data-tone="green">  <span class="tok-key">return</span> provider.<span class="tok-fn">charge</span>(order, { idempotencyKey: order.id });</span>
+<span class="line">}  <span class="tok-com">// the key makes a retry safe</span></span></code></pre>
+        </figure>
+
+        <h4>Snippet</h4>
+        <p class="caption reading">One command the reader will run.</p>
+        <div class="snippet reading"><code id="snippet-example">curl -X POST https://api.example.com/checkout</code><button type="button" class="button" data-copy="#snippet-example" data-needs-script hidden>Copy</button></div>
+
+        <h4>File tree</h4>
+        <p class="caption reading">Where things live. A tone marks the files the report is about.</p>
+        <ul class="tree">
+          <li><span class="dir">services/</span>
+            <ul>
+              <li><span class="dir">checkout/</span>
+                <ul>
+                  <li><span data-tone="blue">charge.ts</span></li>
+                  <li>routes.ts</li>
+                </ul>
+              </li>
+              <li><span class="dir">retry-worker/</span>
+                <ul>
+                  <li><span data-tone="pink">worker.ts</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4>Keys and inline code</h4>
+        <p class="reading">Press <kbd>Esc</kbd> to close the inspector. The limit is set by <code>CHARGE_TIMEOUT_MS</code>.</p>
+      </section>
+
+      <section class="flow" aria-labelledby="s-controls">
+        <h2 id="s-controls">Controls</h2>
+        <p class="caption reading">Shown in every state a reader can reach. The case bar, the table, the disclosure rows and the inspector are in report.html.</p>
+        <div class="segmented" role="group" aria-label="Example buttons">
+          <button type="button" class="button" aria-pressed="true">Pressed</button>
+          <button type="button" class="button" aria-pressed="false">Rest</button>
+          <button type="button" class="button" aria-pressed="false"><span class="dot" data-tone="green" aria-hidden="true"></span>With a key</button>
+        </div>
+        <div class="grid">
+          <label class="field span-6">Service name
+            <input class="input" type="text" name="service" placeholder="For example, checkout…" autocomplete="off">
+          </label>
+          <label class="field span-6">Environment
+            <span class="select"><select name="environment"><option>Production</option><option>Staging</option></select></span>
+          </label>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="meta">
+      <span>Architect report</span>
+      <span>Component reference</span>
+    </footer>
+  </div>
+
+  <script data-architect-report>
+    (() => {
+      for (const input of document.querySelectorAll('[data-filter]')) {
+        const items = [...document.querySelectorAll(input.dataset.filter)];
+        const empty = document.querySelector(input.dataset.filterEmpty);
+        input.addEventListener('input', () => {
+          const query = input.value.trim().toLowerCase();
+          for (const item of items) item.hidden = !item.textContent.toLowerCase().includes(query);
+          if (empty) empty.hidden = items.some(item => !item.hidden);
+        });
+      }
+
+      for (const button of document.querySelectorAll('[data-copy]')) {
+        button.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(document.querySelector(button.dataset.copy).textContent.trim());
+            button.textContent = 'Copied';
+            setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+          } catch {}
+        });
+      }
+
+      for (const element of document.querySelectorAll('[data-needs-script]')) element.hidden = false;
+
+      const bar = document.querySelector('[data-casebar]');
+      if (!bar) return;
+      const picks = [...bar.querySelectorAll('[data-case-pick]')];
+      const compare = bar.querySelector('[data-case-compare]');
+      const names = new Map(picks.map(pick => [pick.dataset.casePick, pick.textContent.trim()]));
+      for (const [id, name] of names) if (id) compare.add(new Option(name, id));
+      let first = '';
+      let second = '';
+
+      const paint = (elements, cases) => {
+        for (const element of elements) {
+          const tagged = element.dataset.case.split(/\s+/);
+          element.classList.toggle('is-off', cases.length > 0 && !tagged.some(id => cases.includes(id)));
+        }
+      };
+
+      const paneLabel = text => {
+        const label = document.createElement('p');
+        label.className = 'pane-label diagram-compare';
+        label.textContent = text;
+        return label;
+      };
+
+      const render = () => {
+        for (const pick of picks) pick.setAttribute('aria-pressed', String(pick.dataset.casePick === first));
+        compare.value = second;
+        compare.disabled = !first;
+        for (const status of document.querySelectorAll('[data-case-status]')) {
+          status.textContent = [first, second].filter(Boolean).map(id => names.get(id)).join(' and ') || names.get('');
+        }
+
+        for (const stale of document.querySelectorAll('.diagram-compare')) stale.remove();
+        const tagged = [...document.querySelectorAll('[data-case]')];
+        paint(tagged.filter(element => element.closest('svg')), first ? [first] : []);
+        paint(tagged.filter(element => !element.closest('svg')), [first, second].filter(Boolean));
+        if (!second) return;
+
+        for (const figure of document.querySelectorAll('figure.diagram')) {
+          const original = figure.querySelector('.diagram-scroll');
+          const copy = original.cloneNode(true);
+          copy.classList.add('diagram-compare');
+          // The copy keeps url(#…) references to the original's markers, so its own ids can go.
+          for (const node of copy.querySelectorAll('[id]')) node.removeAttribute('id');
+          const svg = copy.querySelector('svg');
+          svg.removeAttribute('aria-labelledby');
+          svg.setAttribute('aria-label', `${figure.querySelector('title').textContent}: ${names.get(second)}`);
+          paint(svg.querySelectorAll('[data-case]'), [second]);
+          original.before(paneLabel(names.get(first)));
+          original.after(paneLabel(names.get(second)), copy);
+        }
+      };
+
+      const read = () => {
+        const params = new URLSearchParams(location.search);
+        const known = id => (id && names.has(id) ? id : '');
+        first = known(params.get('case'));
+        second = first && known(params.get('vs')) !== first ? known(params.get('vs')) : '';
+        render();
+      };
+
+      const go = (nextFirst, nextSecond) => {
+        first = nextFirst;
+        second = nextFirst && nextSecond !== nextFirst ? nextSecond : '';
+        const url = new URL(location.href);
+        url.search = new URLSearchParams([['case', first], ['vs', second]].filter(([, id]) => id)).toString();
+        // A page opened from disk may refuse history changes; the view still updates.
+        try { history.pushState(null, '', url); } catch {}
+        render();
+      };
+
+      for (const pick of picks) pick.addEventListener('click', () => go(pick.dataset.casePick, second));
+      compare.addEventListener('change', () => go(first, compare.value));
+      addEventListener('popstate', read);
+
+      const inspector = document.querySelector('[data-inspector]');
+      const deselect = () => document.querySelector('svg .is-selected')?.classList.remove('is-selected');
+      document.addEventListener('click', event => {
+        const node = event.target.closest('svg [data-detail]');
+        const detail = node && document.getElementById(node.dataset.detail);
+        if (!detail) return;
+        if (!inspector?.showPopover) {
+          detail.open = true;
+          detail.querySelector('summary').focus();
+          return;
+        }
+        inspector.querySelector('[data-inspector-title]').textContent = detail.querySelector('summary').textContent;
+        inspector.querySelector('[data-inspector-body]').replaceChildren(
+          ...[...detail.children].filter(child => child.tagName !== 'SUMMARY').map(child => child.cloneNode(true)));
+        inspector.querySelector('[data-inspector-cases]').textContent = node.dataset.case
+          ? node.dataset.case.split(/\s+/).map(id => names.get(id)).join(', ')
+          : names.get('');
+        deselect();
+        node.classList.add('is-selected');
+        if (!inspector.matches(':popover-open')) inspector.showPopover();
+      });
+      // A click on another node closes the popover first; its late toggle event must not clear the new selection.
+      inspector?.addEventListener('toggle', () => { if (!inspector.matches(':popover-open')) deselect(); });
+
+      read();
+    })();
+  </script>
+</body>
+</html>

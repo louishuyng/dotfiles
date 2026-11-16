@@ -1,6 +1,7 @@
 {
   "name": "LX14-AI-Skills",
   "enabled": [
+    "architect-report",
     "aside-browser",
     "caveman",
     "domain-modeling",
