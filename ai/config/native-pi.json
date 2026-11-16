@@ -1,13 +1,12 @@
 [
   "!**",
   "+skills/LX14-AI-Skills/aside-browser",
-  "+skills/LX14-AI-Skills/better-write",
   "+skills/LX14-AI-Skills/caveman",
   "+skills/LX14-AI-Skills/domain-modeling",
   "+skills/LX14-AI-Skills/frontend-killer",
   "+skills/LX14-AI-Skills/hallmark",
   "+skills/LX14-AI-Skills/i-have-adhd",
   "+skills/LX14-AI-Skills/ponytail",
-  "+skills/LX14-AI-Skills/tech-doc-writer",
-  "+skills/LX14-AI-Skills/typesafe-ai"
+  "+skills/LX14-AI-Skills/typesafe-ai",
+  "+skills/LX14-AI-Skills/write-doc"
 ]

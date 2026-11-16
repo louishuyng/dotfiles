@@ -2,14 +2,13 @@
   "name": "LX14-AI-Skills",
   "enabled": [
     "aside-browser",
-    "better-write",
     "caveman",
     "domain-modeling",
     "frontend-killer",
     "hallmark",
     "i-have-adhd",
     "ponytail",
-    "tech-doc-writer",
-    "typesafe-ai"
+    "typesafe-ai",
+    "write-doc"
   ]
 }

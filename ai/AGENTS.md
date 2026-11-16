@@ -39,7 +39,7 @@ Design is a conversation, not a surprise. Nobody should first learn about a deci
 
 - Anything beyond a local fix — new dependency, schema or API change, a new pattern, anything hard to reverse — gets a short written proposal first: the problem, the options considered, the recommendation, the trade-off. Get agreement, then build.
 - Record architectural decisions as an ADR in the repo's convention, so the _why_ survives the people who made it.
-- Use the `tech-doc-writer` skill for any of that writing — proposals, RFCs, ADRs, research write-ups, READMEs, runbooks, postmortems — and for the diagrams that go with them.
+- Use the `write-doc` skill for any of that writing — proposals, RFCs, ADRs, research write-ups, READMEs, runbooks, postmortems — and for the diagrams that go with them.
 - Keep it proportional. A typo fix needs no RFC; a one-paragraph proposal is usually enough. The point is a shared decision, not paperwork.
 - State the trade-off you're making and what you'd do instead if the constraint changed. Give a recommendation, not a menu.
 - Disagreement is input, not conflict. Argue the technical merits, and once the call is made, commit to it.
