@@ -275,3 +275,29 @@ always previewed and applied by the owner, and Agent Hub never commits; a daily
 check only refreshes the status badge. Adding a vendor from the UI was left out
 because each vendor needs its own wrapper skill; build it when a second vendor
 arrives.
+
+## Accepted update: main-flow skills return, bundled
+
+Accepted on 2026-11-17. The owner restored `grill-with-docs` and added the rest
+of the [AI Hero main flow](https://www.aihero.dev/skills): `to-spec`,
+`to-tickets`, `implement`, `code-review`, and `retro`, copied from
+[mattpocock/skills](https://github.com/mattpocock/skills) at commit `5863806`.
+This reverses the removal of `grill-with-docs` in
+[the EGM update](#accepted-update-egm-replaces-plannotator-and-grilling). The
+library skill `domain-modeling` was removed in the same change.
+
+- **Six skills, not eleven.** Upstream splits the flow's helpers into separate
+  skills: `grilling`, `domain-modeling`, `tdd`, `writing-for-agents`, and
+  `setup-matt-pocock-skills`. The owner wants only the flow stages in the skill
+  list, so each helper's text lives as a reference file inside the stage that
+  calls it: `grill-with-docs/GRILLING.md` and `DOMAIN-MODELING.md`,
+  `implement/TDD.md`, `retro/WRITING-FOR-AGENTS.md`, and `flow/setup/`. The
+  stage's `SKILL.md` reads that file instead of calling the Skill tool.
+- **Added:** the `flow` library skill. It reads the feature's state from the
+  issue tracker, runs the next stage, and accepts an existing ticket as an
+  entry point.
+- **Dropped:** the optional `codebase-design` reference in `implement/TDD.md`.
+- **Trade-off:** the copies differ from upstream, so an upstream update is a
+  manual diff against the commit above, not a folder swap. If the helpers are
+  ever wanted on their own, restore them as library skills and revert the
+  stage files to upstream's Skill tool calls.

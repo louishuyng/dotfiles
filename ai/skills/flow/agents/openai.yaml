@@ -1,0 +1,5 @@
+interface:
+  display_name: "Flow"
+  short_description: "Run the next main-flow stage"
+policy:
+  allow_implicit_invocation: false

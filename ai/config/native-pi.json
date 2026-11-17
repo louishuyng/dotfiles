@@ -1,12 +1,19 @@
 [
   "!**",
+  "+skills/LX14-AI-Skills/architect-report",
   "+skills/LX14-AI-Skills/aside-browser",
   "+skills/LX14-AI-Skills/caveman",
-  "+skills/LX14-AI-Skills/domain-modeling",
+  "+skills/LX14-AI-Skills/code-review",
+  "+skills/LX14-AI-Skills/flow",
   "+skills/LX14-AI-Skills/frontend-killer",
+  "+skills/LX14-AI-Skills/grill-with-docs",
   "+skills/LX14-AI-Skills/hallmark",
   "+skills/LX14-AI-Skills/i-have-adhd",
+  "+skills/LX14-AI-Skills/implement",
   "+skills/LX14-AI-Skills/ponytail",
+  "+skills/LX14-AI-Skills/retro",
+  "+skills/LX14-AI-Skills/to-spec",
+  "+skills/LX14-AI-Skills/to-tickets",
   "+skills/LX14-AI-Skills/typesafe-ai",
   "+skills/LX14-AI-Skills/write-doc"
 ]
