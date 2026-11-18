@@ -388,7 +388,7 @@ apply_task() {
       if [[ ! -L "$HOME/.claude/skills" || "$(readlink "$HOME/.claude/skills")" != "$HOME/.local/share/agent-hub/skills/claude" ]]; then
         link_file "$repo_root/ai/skills" "$HOME/.claude/skills"
       fi
-      link_file "$repo_root/ai/CLAUDE.md" "$HOME/.claude/CLAUDE.md" ;;
+      link_file "$repo_root/ai/AGENTS.md" "$HOME/.claude/CLAUDE.md" ;;
     tern)
       local tern_dir=${TERN_CONFIG_DIR:-"$HOME/Library/Application Support/Tern"}
       copy_file "$repo_root/terminals/tern/settings.json" "$tern_dir/settings.json"
