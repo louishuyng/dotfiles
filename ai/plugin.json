@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.1.0/plugin.schema.json",
+  "name": "lx14-ai-skills",
+  "version": "1.0.0",
+  "description": "The enabled LX14-AI-Skills library, for agents that load skills from a plugin instead of a home folder."
+}
