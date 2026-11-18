@@ -195,6 +195,22 @@ Update it from **Plugins → Vendored plugins** or with
 `python3 ai/skills/architect-report/scripts/check_report.py ai/skills/architect-report/assets/report.html`
 to confirm the shipped template still passes the updated gates.
 
+## Capy: skills through a GitHub plugin
+
+Capy reads no skill folder in the home directory and skips symlinked skill
+folders, so skill sync cannot link the library into it. Capy loads the library
+as a plugin instead: [`ai/plugin.json`](../plugin.json) makes `ai/` a plugin
+whose `skills/` folder is the library. In Capy, open **Settings → MCP &
+plugins → Add from GitHub** and enter
+`https://github.com/louishuyng/dotfiles/tree/main/ai`, with owner **Only me**
+and **All projects**.
+
+Capy keeps its own copy. After a skill change, push `main`, then click
+**Sync** on the plugin page. Capy refuses a plugin that contains a symlink, so
+keep tracked symlinks out of `ai/`; `git ls-files -s ai | grep '^120000'` must
+print nothing. Capy ignores hooks, so the shared context hooks do not run
+there. See [Capy's plugin guide](https://docs.capy.ai/integrations/plugins.md).
+
 ## Shared hook sources and cleanup
 
 In **Hooks → Add hook**, choose **Context text**, **Skill reference**, or
