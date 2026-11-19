@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 export const CONTEXT_FILES = {
   adhd: 'skills/i-have-adhd/SKILL.md',
   ponytail: 'skills/ponytail/SKILL.md',
+  instructions: 'AGENTS.md',
 };
 export const aiRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const enabledFor = (hook, tool) => hook.enabled && !(hook.disabledAgents || []).includes(tool);

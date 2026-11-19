@@ -37,6 +37,34 @@
       "command": "'/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex' --autostart=false __internal session-start 2>/dev/null || true",
       "enabled": false,
       "disabledAgents": []
+    },
+    {
+      "id": "instructions",
+      "context": "instructions",
+      "event": "sessionStart",
+      "enabled": true,
+      "disabledAgents": [
+        "codex",
+        "claude",
+        "opencode",
+        "grok",
+        "grok-build",
+        "gemini",
+        "copilot",
+        "pi",
+        "goose",
+        "amp",
+        "windsurf",
+        "antigravity",
+        "cline",
+        "roo",
+        "kilo",
+        "qwen",
+        "kiro",
+        "droid",
+        "aider",
+        "continue"
+      ]
     }
   ]
 }

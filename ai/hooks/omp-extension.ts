@@ -4,7 +4,8 @@ import { aiRoot, hookContexts } from './context.mjs';
 
 export default function (omp: ExtensionAPI) {
   omp.on('before_agent_start', async event => {
-    const contexts = await hookContexts(aiRoot, 'omp');
+    // omp has no Agent Hub id of its own; it follows Pi's per-agent hook toggles.
+    const contexts = await hookContexts(aiRoot, 'pi');
     if (contexts.length) return { systemPrompt: event.systemPrompt + '\n\n' + contexts.join('\n\n') };
   });
 
