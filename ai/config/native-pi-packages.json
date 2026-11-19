@@ -29,8 +29,5 @@
     "source": "npm:pi-btw@0.8.0",
     "skills": []
   },
-  {
-    "source": "npm:@sting8k/pi-droid-styling@3.0.0",
-    "skills": []
-  }
+  "npm:pi-open-tui"
 ]

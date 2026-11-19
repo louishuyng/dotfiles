@@ -81,10 +81,16 @@
 	process = git-lfs filter-process
 	required = true
 [url "git@github.com-regask:regask/"]
-	insteadOf = https://github.com/regask/
+	insteadOf = git@github.com:regask/
 [credential "https://omniyatgroup.ghe.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.omniyatgroup.ghe.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential

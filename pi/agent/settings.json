@@ -56,8 +56,6 @@
     "+skills/LX14-AI-Skills/write-doc"
   ],
   "extensions": [
-    "!extensions/starship-editor.ts",
-    "!extensions/louis-header.ts",
     "!extensions/companion.ts",
     "!extensions/herdr-agent-state.ts",
     "!extensions/muxy-notify.ts",

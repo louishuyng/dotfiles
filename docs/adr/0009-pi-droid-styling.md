@@ -1,6 +1,6 @@
 # Use pi-droid-styling with native Pi
 
-Status: accepted by user approval. Supersedes [ADR 0008](0008-pitago-frontend.md).
+Status: superseded; Pi now uses `npm:pi-open-tui` (see [pi/README.md](../../pi/README.md)). Supersedes [ADR 0008](0008-pitago-frontend.md).
 
 ## Context
 

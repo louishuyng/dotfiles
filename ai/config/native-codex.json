@@ -6,7 +6,7 @@
     "enabled": true
   },
   "security-guidance@claude-plugins-official": {
-    "enabled": true
+    "enabled": false
   },
   "ponytail@ponytail": {
     "enabled": false

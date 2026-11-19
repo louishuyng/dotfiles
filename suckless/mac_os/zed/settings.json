@@ -32,12 +32,12 @@
     "light": "JetBrains Islands Light",
     "dark": "JetBrains Islands Dark"
   },
-  "buffer_font_size": 14.0,
+  "buffer_font_size": 12.0,
   "agent_ui_font_size": 14.0,
-  "ui_font_size": 15.0,
+  "ui_font_size": 13.0,
   "ui_font_family": "Berkeley Mono",
   "terminal": {
-    "font_size": 13.0,
+    "font_size": 12.0,
     "font_family": "JetBrainsMono Nerd Font"
   },
   "vim_mode": true

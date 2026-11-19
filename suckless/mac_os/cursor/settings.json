@@ -458,9 +458,10 @@
     }
   ],
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.preferredDarkColorTheme": "Cursor Dark Midnight",
+  "workbench.preferredDarkColorTheme": "dark-jetbrains-color-theme",
   "editor.fontFamily": "Jetbrains Mono Nerd Font",
   "editor.formatOnSave": true,
   "workbench.colorTheme": "Cursor Dark Midnight",
-  "remote.autoForwardPorts": true
+  "remote.autoForwardPorts": true,
+  "workbench.preferredLightColorTheme": "light-jetbrains-color-theme"
 }

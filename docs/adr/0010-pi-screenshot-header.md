@@ -1,6 +1,6 @@
 # Restore the upstream screenshot header on Pi 1.x
 
-Status: accepted by user approval. Amends the appearance chosen in [ADR 0009](0009-pi-droid-styling.md).
+Status: superseded; the Droid header was removed with `pi-droid-styling`. Amends the appearance chosen in [ADR 0009](0009-pi-droid-styling.md).
 
 ## Context
 

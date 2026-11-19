@@ -56,6 +56,14 @@ Clear beats clever. Code is read far more often than it is written, and it gets 
 - Name things for what they are. Good names remove the need for most explanation.
 - Never simplify away input validation at trust boundaries, error handling that prevents data loss, security, or accessibility.
 
+## Security
+
+- Never put secrets, tokens, or credentials in code, logs, commits, or fixtures. Read them from the environment or the project's secret store.
+- Treat all external input as untrusted. Use parameterized queries, pass command arguments as a list instead of building a shell string, and escape output for its context (HTML, SQL, shell, paths).
+- Do not deserialize or evaluate untrusted data (`pickle`, `yaml.load`, `eval`, raw `innerHTML`). Use the safe variant.
+- Check authorization on the server for every object a request names, not only that the caller is signed in.
+- Before a push that touches authentication, input handling, secrets, or data access, review the diff for the points above. Use the `code-review` skill when it is available.
+
 ## UI and frontend tasks
 
 These requirements apply only when the task designs, builds, changes, or reviews a UI or frontend: layout, styling, components, interaction, accessibility, or browser-facing behavior. Skip them for backend-only, database, infrastructure, and unrelated documentation or script work.

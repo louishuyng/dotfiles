@@ -195,21 +195,27 @@ Update it from **Plugins → Vendored plugins** or with
 `python3 ai/skills/architect-report/scripts/check_report.py ai/skills/architect-report/assets/report.html`
 to confirm the shipped template still passes the updated gates.
 
-## Capy: skills through a GitHub plugin
+## Capy: skills through Capy Drive
 
 Capy reads no skill folder in the home directory and skips symlinked skill
-folders, so skill sync cannot link the library into it. Capy loads the library
-as a plugin instead: [`ai/plugin.json`](../plugin.json) makes `ai/` a plugin
-whose `skills/` folder is the library. In Capy, open **Settings → MCP &
-plugins → Add from GitHub** and enter
-`https://github.com/louishuyng/dotfiles/tree/main/ai`, with owner **Only me**
-and **All projects**.
+folders, so skill sync cannot link the library into it. Threads on this Mac
+load skills from the project's `.agents/skills` or `.claude/skills`, and from
+Capy Drive. Plugin skills load only on Capy's cloud machines.
 
-Capy keeps its own copy. After a skill change, push `main`, then click
-**Sync** on the plugin page. Capy refuses a plugin that contains a symlink, so
-keep tracked symlinks out of `ai/`; `git ls-files -s ai | grep '^120000'` must
-print nothing. Capy ignores hooks, so the shared context hooks do not run
-there. See [Capy's plugin guide](https://docs.capy.ai/integrations/plugins.md).
+The library lives in the personal Drive scope **Your drive** at
+`skills/<name>/`. Capy holds a copy, so repeat this after a skill change: push
+`main`, start a thread with **Start without a repository** on this Mac, and
+send:
+
+> Only write to my Drive. Install every skill folder from
+> https://github.com/louishuyng/dotfiles/tree/main/ai/skills into my personal
+> Drive scope "Your drive" at skills/<name>/, keeping each folder's files and
+> subfolders exactly. Skip manifest.json. Then list the skills you installed.
+
+The `$` menu shows fifteen suggestions; type `$` and a name to reach the rest.
+Capy ignores hooks, so the shared context hooks do not run there. MCP servers
+are added by hand in **Settings → MCP & plugins**. See
+[Capy's skills guide](https://docs.capy.ai/skills.md).
 
 ## Shared hook sources and cleanup
 

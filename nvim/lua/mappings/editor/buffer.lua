@@ -19,7 +19,7 @@ vim.keymap.set('n', ',bd', function()
   Snacks.bufdelete()
 end, { desc = 'Delete Buffer (preserve layout)' })
 
-vim.keymap.set('n', ',bo', function()
+vim.keymap.set('n', ',bD', function()
   Snacks.bufdelete.other()
 end, { desc = 'Delete Other Buffers' })
 

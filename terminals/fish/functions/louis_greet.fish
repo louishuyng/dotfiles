@@ -39,7 +39,7 @@ function _louis_git_info
     set -l branch (git -C $PWD symbolic-ref --short HEAD 2>/dev/null)
     test -z "$branch"; and set branch (git -C $PWD rev-parse --short HEAD)
     echo $branch
-    set -l dirty (git -C $PWD status --porcelain | count)
+    set -l dirty (git -C $PWD status --porcelain --ignore-submodules=all | count)
     test $dirty -gt 0; and echo "$dirty dirty"
 end
 

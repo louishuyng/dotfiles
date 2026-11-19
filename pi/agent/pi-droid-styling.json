@@ -8,16 +8,16 @@
     "answering": "Answering",
     "running": "Cooking"
   },
-  "presentationStyle": "reasonix",
+  "presentationStyle": "droid",
   "userZoneStyle": "gemini",
   "inputBox": {
-    "style": "halfblock"
+    "style": "auto"
   },
   "tasksWidgetStyle": "compact",
   "collapsedThinking": "tail",
   "diffMode": "auto",
   "forceOSC11": false,
-  "transparentBackground": true,
+  "transparentBackground": false,
   "visibleChatTail": 30,
   "imageAttachments": true
 }
