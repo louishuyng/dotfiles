@@ -1,11 +1,11 @@
 # Pi interface
 
-Run **`pi`** for the native terminal interface with [`pi-droid-styling` 3.0.0](https://github.com/sting8k/pi-droid-styling): a boxed editor, compact model/context rows, styled conversations, and tool output. Pi 1.x is required. The bundled green `qoder-cli` theme, `reasonix` conversations, Gemini-style status rows, and balanced half-block input padding follow the upstream screenshot. Startup is visible (`quietStartup: false`). The local `agent/extensions/droid_header.ts` restores the original large gradient logo through Pi's native header API; it retains the upstream MIT license. The old **Pip / Wired Companion** panel is disabled in the user settings and shared extension manifest.
+Run **`pi`** for the native terminal interface with [`pi-open-tui`](https://pi.dev/packages/pi-open-tui): a framed editor, a Git/runtime/context footer, and turn telemetry. Pi 1.5 or later is required. Pi uses its default color theme. The startup header comes from `agent/extensions/louis-header.ts`, which mirrors the Fish `louis_greet` page: a `PI` banner, then repo state and loaded context files, skills, extensions, and commands. It replaces both the `pi-open-tui` header (`"header": false` in `agent/open-tui.json`) and Pi's resource listing (`quietStartup: true`). The old **Pip / Wired Companion** panel is disabled in the user settings and shared extension manifest.
 
-The display settings live in `agent/settings.json` and `agent/pi-droid-styling.json`. The Powerline package remains installed with its extensions disabled to avoid competing footers. The package declarations in `agent/settings.json` and [`native-pi-packages.json`](../ai/config/native-pi-packages.json) include the pinned styling extension. Install it on a new machine with:
+Run `/open-tui` to change its settings; they are stored in `agent/open-tui.json`. The Powerline package remains installed with its extensions disabled to avoid competing footers. The package declarations in `agent/settings.json` and [`native-pi-packages.json`](../ai/config/native-pi-packages.json) include `pi-open-tui`. Install it on a new machine with:
 
 ```sh
-pi install npm:@sting8k/pi-droid-styling@3.0.0
+pi install npm:pi-open-tui
 ```
 
 The Fish `pi="pitago"` alias is removed. Existing shells must run `functions -e pi` once, or start a new Fish shell. Pitago's binary and private config were moved to `~/.local/state/pi-ui-backups/20261026-145821/`; credentials and sessions were not deleted. Its repository configuration is retained as historical reference, not an active frontend. See [ADR 0009](../docs/adr/0009-pi-droid-styling.md).
@@ -40,9 +40,9 @@ Pip works independently of Tern, Herdr, and Muxy. It does not add terminal notif
 With Node.js and Pi installed on `PATH`, run from the repository root:
 
 ```sh
-node --test tests/pi/droid_header.test.mjs tests/pi/companion.test.mjs
+node --test tests/pi/companion.test.mjs
 ```
 
-The tests use the installed Pi loader and terminal-width helpers without calling a model. Header checks cover narrow/wide layouts, truecolor/256-color gradients, theme changes, shutdown, and non-TUI modes; archived companion tests advance deterministic timers. Check the actual interface in Pi after `/reload`: confirm the companion panel is absent, resize the terminal, type a multiline draft, and confirm settings navigation remains usable.
+The tests use the installed Pi loader and terminal-width helpers without calling a model. The archived companion tests advance deterministic timers. Check the actual interface in Pi after `/reload`: confirm the companion panel is absent, resize the terminal, type a multiline draft, and confirm settings navigation remains usable.
 
-See [the header decision](../docs/adr/0010-pi-screenshot-header.md) for the maintained screenshot adaptation. The [companion decision](../docs/adr/0007-pi-animated-companion.md) describes the disabled legacy panel.
+The [companion decision](../docs/adr/0007-pi-animated-companion.md) describes the disabled legacy panel.

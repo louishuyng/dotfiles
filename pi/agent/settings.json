@@ -1,7 +1,7 @@
 {
-  "lastChangelogVersion": "1.5.0",
-  "defaultProvider": "xai",
-  "defaultModel": "grok-4.7",
+  "lastChangelogVersion": "1.5.2",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-5-5",
   "packages": [
     {
       "source": "npm:@a5c-ai/babysitter-pi",
@@ -33,42 +33,9 @@
       "source": "npm:pi-btw@0.8.0",
       "skills": []
     },
-    {
-      "source": "npm:@sting8k/pi-droid-styling@3.0.0",
-      "skills": []
-    }
+    "npm:pi-open-tui"
   ],
-  "theme": "qoder-cli",
-  "quietStartup": false,
-  "powerline": {
-    "preset": "minimal",
-    "separator": "dot",
-    "placement": "below",
-    "welcome": false,
-    "secondaryOverflow": "wrap",
-    "layout": {
-      "left": [
-        "shell_mode",
-        "path",
-        "git"
-      ],
-      "right": [
-        "queue",
-        "context_pct"
-      ],
-      "secondary": [
-        "extension_statuses"
-      ]
-    },
-    "context": {
-      "format": "percent"
-    },
-    "git": {
-      "showStaged": true,
-      "showUnstaged": true,
-      "showUntracked": true
-    }
-  },
+  "quietStartup": true,
   "skills": [
     "!**",
     "+skills/LX14-AI-Skills/architect-report",
@@ -96,6 +63,9 @@
   ],
   "deviceId": "261cb968-c855-404e-a730-559c707eeb2c",
   "extensionChangelogVersions": {
-    "{\"source\":\"npm:@sting8k/pi-droid-styling@3.0.0\",\"scope\":\"user\"}": "3.0.0"
-  }
+    "{\"source\":\"npm:pi-open-tui\",\"scope\":\"user\"}": "0.4.6"
+  },
+  "defaultTools": [
+    "+codemode"
+  ]
 }
