@@ -35,7 +35,7 @@
     },
     "npm:pi-open-tui"
   ],
-  "quietStartup": true,
+  "quietStartup": false,
   "skills": [
     "!**",
     "+skills/LX14-AI-Skills/architect-report",
