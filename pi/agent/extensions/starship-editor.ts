@@ -1,41 +1,18 @@
 /**
- * Starship-style editor borders.
+ * Single-line starship-style prompt on the bottom editor border.
  *
- * Top border    ╭─ ❯ ~/.dotfiles ──────────────────── ⌥ main ✗21 ─╮
- * Bottom border ╰─ claude-opus · medium ──────── ctx 12%/200k ─────╯
+ * Top    ─────────────────────────────────────────────── (dim rule, no labels)
+ * Bottom  ❯ ~/.dotfiles  ⌥ main ✗23  ·  claude  ·  ctx 12%
  *
- * ❯ becomes a braille spinner while the agent is running.
- * Git state refreshes after each agent turn.
- *
- * Does NOT replace the pi-open-tui footer — it stays intact below.
+ * ❯ → braille spinner while the agent runs.
+ * Git refreshes after every turn.
  */
 import os from "node:os";
 import { CustomEditor, type ExtensionAPI, type ExtensionContext, type KeybindingsManager } from "@earendil-works/pi-coding-agent";
 import type { EditorTheme, TUI } from "@earendil-works/pi-tui";
-import { truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
+import { truncateToWidth } from "@earendil-works/pi-tui";
 
 const SPINNER = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
-
-// Identical to the border-status-editor example helper.
-function fitBorder(
-	left: string,
-	right: string,
-	width: number,
-	border: (s: string) => string,
-	fill: (s: string) => string = border,
-): string {
-	if (width <= 0) return "";
-	if (width === 1) return border("─");
-	let l = left;
-	let r = right;
-	const minGap = 3;
-	while (2 + visibleWidth(l) + visibleWidth(r) + minGap > width && visibleWidth(r) > 0)
-		r = truncateToWidth(r, Math.max(0, visibleWidth(r) - 1), "");
-	while (2 + visibleWidth(l) + visibleWidth(r) + minGap > width && visibleWidth(l) > 0)
-		l = truncateToWidth(l, Math.max(0, visibleWidth(l) - 1), "");
-	const gap = Math.max(0, width - 2 - visibleWidth(l) - visibleWidth(r));
-	return `${border("─")}${l}${fill("─".repeat(gap))}${r}${border("─")}`;
-}
 
 export default function starshipEditor(pi: ExtensionAPI) {
 	let isWorking = false;
@@ -57,16 +34,8 @@ export default function starshipEditor(pi: ExtensionAPI) {
 		activeTui?.requestRender();
 	});
 
-	pi.on("agent_settled", () => {
-		isWorking = false;
-		stopSpinner();
-		activeTui?.requestRender();
-	});
-
-	pi.on("session_shutdown", () => {
-		stopSpinner();
-		activeTui = undefined;
-	});
+	pi.on("agent_settled", () => { isWorking = false; stopSpinner(); activeTui?.requestRender(); });
+	pi.on("session_shutdown", () => { stopSpinner(); activeTui = undefined; });
 
 	pi.on("session_start", (_event, ctx: ExtensionContext) => {
 		if (ctx.mode !== "tui") return;
@@ -78,26 +47,19 @@ export default function starshipEditor(pi: ExtensionAPI) {
 		let dirty = 0;
 
 		const refreshGit = async () => {
-			const b = await pi
-				.exec("git", ["-C", ctx.cwd, "symbolic-ref", "--short", "HEAD"], { timeout: 2000 })
-				.catch(() => null);
+			const b = await pi.exec("git", ["-C", ctx.cwd, "symbolic-ref", "--short", "HEAD"], { timeout: 2000 }).catch(() => null);
 			branch = b?.code === 0 ? b.stdout.trim() : "";
 			if (branch) {
-				const s = await pi
-					.exec("git", ["-C", ctx.cwd, "status", "--porcelain", "--ignore-submodules=all"], { timeout: 2000 })
-					.catch(() => null);
+				const s = await pi.exec("git", ["-C", ctx.cwd, "status", "--porcelain", "--ignore-submodules=all"], { timeout: 2000 }).catch(() => null);
 				dirty = s?.stdout.split("\n").filter(Boolean).length ?? 0;
 			}
 			activeTui?.requestRender();
 		};
 		void refreshGit();
-
-		// Refresh git state after each turn so the dirty count stays current.
 		pi.on("agent_settled", () => void refreshGit());
 
 		class StarshipEditor extends CustomEditor {
 			constructor(tui: TUI, theme: EditorTheme, keybindings: KeybindingsManager) {
-				// embedWorkingStatus keeps the spinner row inside the border.
 				super(tui, theme, keybindings, { embedWorkingStatus: true });
 				activeTui = tui;
 			}
@@ -107,36 +69,34 @@ export default function starshipEditor(pi: ExtensionAPI) {
 				if (lines.length < 2) return lines;
 
 				const thm = ctx.ui.theme;
-				const bc = (s: string) => this.borderColor(s);
-				const fill = (s: string) => thm.fg("borderMuted", s);
-				const accent = (s: string) => thm.fg("accent", s);
-				const muted = (s: string) => thm.fg("muted", s);
-				const success = (s: string) => thm.fg("success", s);
-				const warn = (s: string) => thm.fg("warning", s);
-				const dim = (s: string) => thm.fg("dim", s);
+				const bc  = (s: string) => this.borderColor(s);
+				const acc = (s: string) => thm.fg("accent", s);
+				const mut = (s: string) => thm.fg("muted", s);
+				const ok  = (s: string) => thm.fg("success", s);
+				const wrn = (s: string) => thm.fg("warning", s);
+				const d   = (s: string) => thm.fg("dim", s);
+				const sep = d(" · ");
 
-				// ── Top: prompt + cwd (left)  |  branch + dirty (right) ──────────
-				const prompt = isWorking
-					? accent(` ${SPINNER[spinnerIdx]} `)
-					: accent(" ❯ ");
-				const cwdSeg = muted(cwd);
+				// Top: plain dim rule, no labels
+				lines[0] = bc("─".repeat(width));
+
+				// Bottom: single info line  ❯ cwd · branch · model · ctx
+				const prompt   = isWorking ? acc(` ${SPINNER[spinnerIdx]} `) : acc(" ❯ ");
+				const cwdSeg   = mut(cwd);
 				const branchSeg = branch
-					? `${success(" ⌥ ")}${success(branch)}${dirty > 0 ? warn(` ✗${dirty}`) : success(" ✓")} `
+					? sep + ok("⌥ ") + ok(branch) + (dirty > 0 ? wrn(` ✗${dirty}`) : ok(" ✓"))
+					: "";
+				const modelId  = ctx.model?.id ?? "";
+				const level    = pi.getThinkingLevel();
+				const modelSeg = modelId ? sep + mut(modelId) + d(` · ${level}`) : "";
+				const usage    = ctx.getContextUsage();
+				const ctxSeg   = usage?.percent != null && usage.contextWindow
+					? sep + d(`ctx ${Math.round(usage.percent)}%`)
 					: "";
 
-				// ── Bottom: model · level (left)  |  ctx usage (right) ──────────
-				const modelId = ctx.model?.id ?? "no model";
-				const level = pi.getThinkingLevel();
-				const usage = ctx.getContextUsage();
-				const ctxSeg = usage?.percent != null && usage.contextWindow
-					? muted(` ctx ${Math.round(usage.percent)}%/${(usage.contextWindow / 1000).toFixed(0)}k `)
-					: "";
-
-				lines[0] = fitBorder(prompt + cwdSeg, branchSeg, width, bc, fill);
-				lines[lines.length - 1] = fitBorder(
-					muted(` ${modelId} `) + dim(`· ${level} `),
-					ctxSeg,
-					width, bc, fill,
+				lines[lines.length - 1] = truncateToWidth(
+					prompt + cwdSeg + branchSeg + modelSeg + ctxSeg,
+					width, "",
 				);
 				return lines;
 			}
