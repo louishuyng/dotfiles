@@ -1,40 +1,19 @@
 /**
- * Animated startup header styled after the Fish louis_greet page.
- *
- * Boot sequence:
- *   phase 0 – RAIN    (frames 0–28)   : matrix katakana rain across full width
- *   phase 1 – ASSEMBLE (frames 29–55) : PI logo drops in line by line
- *   phase 2 – TYPE    (frames 56–90)  : info panel types in
- *   phase 3 – IDLE    (frames 91+)    : scanline sweep + glitch flicker
+ * Startup header: matrix rain runs continuously.
+ * After RAIN_END frames the info panel wipes in on top of the rain.
+ * Rain keeps animating behind and beside the info text.
  */
 import os from "node:os";
 import path from "node:path";
 import { VERSION, type ExtensionAPI, type ExtensionContext } from "@earendil-works/pi-coding-agent";
-import { truncateToWidth } from "@earendil-works/pi-tui";
+import { truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
 
-// ── Constants ──────────────────────────────────────────────────────────────
+const RAIN_END = 30;       // frames of pure rain before info appears
+const REVEAL_FRAMES = 22;  // frames for info wipe-in
+const FRAME_MS = 50;       // ~20 fps
+const TOTAL_ROWS = 10;     // header height in rows
 
-const RAIN_END = 29;
-const ASSEMBLE_END = 56;
-const TYPE_END = 92;
-const FRAME_MS = 55; // ~18 fps
-const SCAN_PERIOD = 90; // idle frames between scanline sweeps
-
-// Phosphor greens matching louis_greet (bright mint → deep forest)
-const GRAD = [48, 41, 35, 34, 28, 22];
-
-// Halfwidth katakana + block chars for rain
 const RAIN_POOL = "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ░▒▓01";
-
-const LOGO_LINES = [
-	"██████╗ ██╗",
-	"██╔══██╗██║",
-	"██████╔╝██║",
-	"██╔═══╝ ██║",
-	"██║     ██║",
-	"╚═╝     ╚═╝",
-];
-const LOGO_W = 11;
 
 const QUOTES = [
 	"The sky above the port was the color of television, tuned to a dead channel.  — Gibson",
@@ -46,32 +25,27 @@ const QUOTES = [
 	"All those moments will be lost in time, like tears in rain.  — Blade Runner",
 ];
 
-// ── Helpers ────────────────────────────────────────────────────────────────
+// ── ANSI helpers ───────────────────────────────────────────────────────────
 
 const R = "\x1b[0m";
-const cfgi = (n: number, s: string, bold = false) => `\x1b[${bold ? "1;" : ""}38;5;${n}m${s}${R}`;
+const c = (n: number, s: string, bold = false) => `\x1b[${bold ? "1;" : ""}38;5;${n}m${s}${R}`;
 const dimS = (s: string) => `\x1b[2m${s}${R}`;
-const italicS = (s: string) => `\x1b[3m${s}${R}`;
-const invertS = (s: string) => `\x1b[7m${s}\x1b[27m`;
+const italicDim = (s: string) => `\x1b[3;2m${s}${R}`;
 
-// Seedable LCG for deterministic "random" per-cell chars
+// ── LCG pseudo-random ──────────────────────────────────────────────────────
+
 function lcg(n: number): number {
 	return (((n * 1664525 + 1013904223) | 0) >>> 0);
 }
-function seededChar(seed: number): string {
+function rainChar(seed: number): string {
 	return RAIN_POOL[lcg(seed) % RAIN_POOL.length]!;
-}
-
-// Strip ANSI sequences to measure visible length
-function visLen(s: string): number {
-	return s.replace(/\x1b\[[^m]*m/g, "").length;
 }
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
 type Repo = { name: string; branch: string; dirty: number } | null;
 
-// ── Main extension ─────────────────────────────────────────────────────────
+// ── Extension entry ────────────────────────────────────────────────────────
 
 export default function louisHeader(pi: ExtensionAPI) {
 	let timer: ReturnType<typeof setInterval> | undefined;
@@ -79,34 +53,21 @@ export default function louisHeader(pi: ExtensionAPI) {
 
 	pi.on("session_start", (_event, ctx: ExtensionContext) => {
 		if (ctx.mode !== "tui") return;
-		installHeader(pi, ctx);
-	});
 
-	pi.on("session_shutdown", () => {
-		if (timer) clearInterval(timer);
-		timer = undefined;
-		requestRender = undefined;
-	});
-
-	function installHeader(pi: ExtensionAPI, ctx: ExtensionContext) {
 		const home = os.homedir();
-		const host = os.hostname().split(".")[0] ?? "Mac";
 		const cwd = ctx.cwd.startsWith(home) ? `~${ctx.cwd.slice(home.length)}` : ctx.cwd;
-		const model = ctx.model ? `${ctx.model.provider}/${ctx.model.id}` : "no model";
-		const effort = pi.getThinkingLevel();
-		// Pick a quote once per session (day-seeded so it feels fresh on restart)
 		const quote = QUOTES[Math.floor(Date.now() / 86_400_000) % QUOTES.length]!;
 
 		const skills = pi
 			.getCommands()
-			.filter((c) => c.source === "skill")
-			.map((c) => c.name.replace(/^skill:/, ""));
+			.filter((x) => x.source === "skill")
+			.map((x) => x.name.replace(/^skill:/, ""));
 
 		const extNames = [
 			...new Set(
 				[
-					...pi.getCommands().filter((c) => c.source === "extension").map((c) => c.sourceInfo),
-					...pi.getAllTools().map((t) => t.sourceInfo),
+					...pi.getCommands().filter((x) => x.source === "extension").map((x) => x.sourceInfo),
+					...pi.getAllTools().map((x) => x.sourceInfo),
 				]
 					.filter((s) => s.source !== "builtin" && s.source !== "sdk")
 					.map((s) =>
@@ -118,28 +79,18 @@ export default function louisHeader(pi: ExtensionAPI) {
 		];
 
 		let repo: Repo | "loading" = "loading";
-
-		// Load git state in the background; re-render when done.
 		const git = (...args: string[]) => pi.exec("git", ["-C", ctx.cwd, ...args], { timeout: 3000 });
 		git("rev-parse", "--show-toplevel")
 			.then(async (top) => {
-				if (top.code !== 0) {
-					repo = null;
-					requestRender?.();
-					return;
-				}
+				if (top.code !== 0) { repo = null; requestRender?.(); return; }
 				let branch = (await git("symbolic-ref", "--short", "HEAD")).stdout.trim();
 				if (!branch) branch = (await git("rev-parse", "--short", "HEAD")).stdout.trim();
-				const dirty = (await git("status", "--porcelain", "--ignore-submodules=all")).stdout
-					.split("\n")
-					.filter(Boolean).length;
+				const dirty = (await git("status", "--porcelain", "--ignore-submodules=all"))
+					.stdout.split("\n").filter(Boolean).length;
 				repo = { name: path.basename(top.stdout.trim()), branch, dirty };
 				requestRender?.();
 			})
-			.catch(() => {
-				repo = null;
-				requestRender?.();
-			});
+			.catch(() => { repo = null; requestRender?.(); });
 
 		let frame = 0;
 
@@ -148,236 +99,186 @@ export default function louisHeader(pi: ExtensionAPI) {
 
 			if (timer) clearInterval(timer);
 			timer = setInterval(() => {
-				// Stop advancing after the animation settles; keep going for idle effects.
-				frame = Math.min(frame + 1, TYPE_END + 400);
+				frame++;
 				tui.requestRender();
 			}, FRAME_MS);
 			timer.unref?.();
 
 			return {
 				render(width: number): string[] {
-					// ── RAIN PHASE ─────────────────────────────────────────────
-					if (frame < RAIN_END) {
-						return renderRain(frame, width);
-					}
-
-					// ── ASSEMBLE + TYPE + IDLE ──────────────────────────────────
-					return renderMain(frame, width, {
-						host,
-						cwd,
-						model,
-						effort,
-						quote,
-						skills,
-						extNames,
-						repo,
-					});
+					return renderFrame(frame, width, { cwd, quote, skills, extNames, repo });
 				},
 				invalidate() {},
 			};
 		});
-	}
+	});
+
+	pi.on("session_shutdown", () => {
+		if (timer) clearInterval(timer);
+		timer = undefined;
+		requestRender = undefined;
+	});
 }
 
-// ── Rain phase renderer ────────────────────────────────────────────────────
+// ── Frame renderer ─────────────────────────────────────────────────────────
 
-function renderRain(frame: number, width: number): string[] {
-	const ROWS = 11;
-	// Number of rain columns proportional to width, capped at 16.
-	const colCount = Math.min(16, Math.floor(width / 8));
-
-	// Build an empty cell grid.
-	const grid: string[][] = Array.from({ length: ROWS }, () => Array(width).fill(" "));
-
-	function set(r: number, c: number, s: string) {
-		if (r >= 0 && r < ROWS && c >= 0 && c < width) grid[r]![c] = s;
-	}
-
-	for (let col = 0; col < colCount; col++) {
-		const seed = lcg(col * 73);
-		const colX = Math.floor((width * (col + 0.5)) / colCount);
-		// Each column has a head that falls at slightly different speeds.
-		const speed = 1 + (seed % 3) * 0.4;
-		const offset = (seed % (ROWS + 6));
-		const head = Math.floor((frame * speed + offset) % (ROWS + 6)) - 3;
-
-		for (let row = 0; row < ROWS; row++) {
-			const dist = head - row;
-			if (dist < 0 || dist > 8) continue;
-			const ch = seededChar(col * 1000 + row * 31 + frame);
-			const x = colX + (lcg(col * 500 + row) % 3) - 1;
-			if (dist === 0) set(row, x, cfgi(255, ch));
-			else if (dist === 1) set(row, x, cfgi(48, ch));
-			else if (dist <= 3) set(row, x, cfgi(35, ch));
-			else if (dist <= 5) set(row, x, cfgi(28, ch));
-			else set(row, x, cfgi(238, ch));
-		}
-	}
-
-	// Mid-rain banner after ~40% through the phase.
-	if (frame > Math.floor(RAIN_END * 0.4)) {
-		const msg = "[ BOOT SEQUENCE INITIATED ]";
-		const mx = Math.max(0, Math.floor((width - msg.length) / 2));
-		const msgRow = Math.floor(ROWS / 2);
-		for (let i = 0; i < msg.length && mx + i < width; i++) {
-			grid[msgRow]![mx + i] = cfgi(48, msg[i]!, true);
-		}
-	}
-
-	const lines = [""];
-	for (const row of grid) lines.push(row.join(""));
-	lines.push("");
-	return lines.map((l) => truncateToWidth(l, width, ""));
-}
-
-// ── Main phase renderer ────────────────────────────────────────────────────
-
-interface MainCtx {
-	host: string;
+interface Ctx {
 	cwd: string;
-	model: string;
-	effort: string;
 	quote: string;
 	skills: string[];
 	extNames: string[];
 	repo: Repo | "loading";
 }
 
-function renderMain(frame: number, width: number, mc: MainCtx): string[] {
-	const { host, cwd, model, effort, quote, skills, extNames, repo } = mc;
-	const user = os.userInfo().username;
+// Pre-compute which ANSI-coloured rain char appears at (col, row) for a given frame.
+// Returns null when no raindrop occupies that cell.
+function getRainAt(col: number, row: number, frame: number, rows: number): string | null {
+	const seed = lcg(col * 73);
+	const speed = 1.0 + (seed % 3) * 0.5;
+	const offset = seed % (rows + 8);
+	const head = Math.floor(frame * speed + offset) % (rows + 8) - 3;
+	const dist = head - row;
+	if (dist < 0 || dist > 8) return null;
+	const ch = rainChar(col * 1000 + row * 31 + frame);
+	if (dist === 0) return c(255, ch);
+	if (dist === 1) return c(48, ch);
+	if (dist <= 3) return c(35, ch);
+	if (dist <= 5) return c(28, ch);
+	return c(238, ch);
+}
 
-	// How many logo lines to show (assemble phase: drops in one per 4 frames).
-	const logoRevealed =
-		frame < ASSEMBLE_END
-			? Math.min(LOGO_LINES.length, Math.floor((frame - RAIN_END) / 4))
-			: LOGO_LINES.length;
+// Build a full rain row (width cells) with no overlay.
+function rainRow(colPositions: number[], row: number, frame: number, width: number): string {
+	const cells = Array<string>(width).fill(" ");
+	for (let ci = 0; ci < colPositions.length; ci++) {
+		const ch = getRainAt(ci, row, frame, TOTAL_ROWS);
+		if (!ch) continue;
+		const x = colPositions[ci]!;
+		// Slight jitter (±1) using seeded value so it's stable per cell.
+		const jitter = (lcg(ci * 500 + row) % 3) - 1;
+		const px = Math.max(0, Math.min(width - 1, x + jitter));
+		cells[px] = ch;
+	}
+	return cells.join("");
+}
 
-	// Build info lines (right panel).
+// Build a row that has rain on the wings and an info string spliced in the middle.
+// revealFrac (0–1) controls how much of the info string is visible (left-to-right wipe).
+function infoRow(
+	colPositions: number[],
+	row: number,
+	frame: number,
+	width: number,
+	text: string,
+	revealFrac: number,
+	indent = 2,
+): string {
+	const fullText = text;
+	const fullVis = visibleWidth(fullText);
+
+	// How many visible characters of the text to show.
+	const showChars = Math.min(fullVis, Math.floor(fullVis * revealFrac));
+
+	// Truncate styled string to showChars visible characters.
+	const shownText = revealFrac >= 1 ? fullText : truncateToWidth(fullText, showChars, "");
+
+	const textVis = visibleWidth(shownText);
+	const clearFrom = indent;
+	const clearTo = Math.min(width, indent + fullVis + 2); // +2 for trailing space buffer
+
+	// Build rain cells for the full row first.
+	const cells = Array<string>(width).fill(" ");
+	for (let ci = 0; ci < colPositions.length; ci++) {
+		const ch = getRainAt(ci, row, frame, TOTAL_ROWS);
+		if (!ch) continue;
+		const x = colPositions[ci]!;
+		const jitter = (lcg(ci * 500 + row) % 3) - 1;
+		const px = Math.max(0, Math.min(width - 1, x + jitter));
+		cells[px] = ch;
+	}
+
+	// Clear the info region (replace with spaces so the text is readable).
+	for (let x = clearFrom; x < clearTo && x < width; x++) {
+		cells[x] = " ";
+	}
+
+	// Build final row: rain-left + info text + rain-right
+	// We can't splice ANSI strings into a cell array, so we build it as:
+	//   leftRain (plain cells 0..indent-1) + shownText + rightRain (cells clearTo..end)
+	const leftPart = cells.slice(0, indent).join("");
+	const rightPart = cells.slice(clearFrom + textVis + 1).join("");
+	const pad = " "; // one space between rain edge and text
+	return truncateToWidth(leftPart + pad + shownText + pad + rightPart, width, "");
+}
+
+function renderFrame(frame: number, width: number, ctx: Ctx): string[] {
+	const { cwd, quote, skills, extNames, repo } = ctx;
+
+	// Distribute rain columns evenly across width.
+	const colCount = Math.min(20, Math.floor(width / 6));
+	const colPositions: number[] = Array.from({ length: colCount }, (_, i) =>
+		Math.floor((width * (i + 0.5)) / colCount),
+	);
+
+	// Reveal progress (0 = pure rain, 1 = fully shown info).
+	const revealRaw = frame < RAIN_END ? 0 : (frame - RAIN_END) / REVEAL_FRAMES;
+	const reveal = Math.min(1, revealRaw * revealRaw); // ease-in
+
+	// Mid-rain banner (only during pure rain phase).
+	const showBanner = frame >= Math.floor(RAIN_END * 0.4) && reveal === 0;
+
+	// ── Info strings ───────────────────────────────────────────────────────
+
 	const repoStr =
-		repo === "loading"
-			? dimS("loading…")
-			: repo === null
-				? dimS("—")
-				: `${cfgi(41, repo.name)} ${dimS("·")} ${repo.branch} ${dimS("·")} ${repo.dirty > 0 ? cfgi(214, `${repo.dirty} dirty`) : cfgi(35, "clean")}`;
+		repo === "loading" ? dimS("loading…")
+		: repo === null    ? dimS("—")
+		: `${c(41, repo.name, true)}  ${dimS(repo.branch)}  ${repo.dirty > 0 ? c(214, `${repo.dirty} dirty`) : c(35, "clean")}`;
 
 	const skillStr =
-		skills.length > 0
-			? `${cfgi(41, String(skills.length))} ${dimS("·")} ${skills.slice(0, 4).join("  ")}${skills.length > 4 ? dimS(` +${skills.length - 4}`) : ""}`
-			: dimS("none");
+		skills.length === 0 ? dimS("none")
+		: `${c(41, String(skills.length))}  ${skills.slice(0, 5).join("  ")}${skills.length > 5 ? dimS(`  +${skills.length - 5}`) : ""}`;
 
 	const extStr =
-		extNames.length > 0
-			? `${cfgi(41, String(extNames.length))} ${dimS("·")} ${extNames.slice(0, 3).join("  ")}${extNames.length > 3 ? dimS(` +${extNames.length - 3}`) : ""}`
-			: dimS("none");
+		extNames.length === 0 ? dimS("none")
+		: `${c(41, String(extNames.length))}  ${extNames.slice(0, 4).join("  ")}${extNames.length > 4 ? dimS(`  +${extNames.length - 4}`) : ""}`;
 
-	const RIGHT: string[] = [
-		`${cfgi(29, user, true)} ${dimS("/")} ${cfgi(35, `@${host}`, true)}`,
-		`${cfgi(41, `v${VERSION}`, true)} ${dimS("·")} ${model} ${dimS("·")} ${effort}`,
-		dimS(cwd),
-		"",
-		`${dimS("repo  ")} ${repoStr}`,
-		`${dimS("skills")} ${skillStr}`,
-		`${dimS("exts  ")} ${extStr}`,
-		"",
-		italicS(dimS(`# ${quote}`)),
+	// Info rows and which grid row they occupy.
+	// Rows: 0=empty, 1=empty, 2=pi, 3=repo, 4=skills, 5=exts, 6=empty, 7=quote, 8=empty, 9=empty
+	const overlays: { row: number; text: string }[] = [
+		{ row: 2, text: `${c(35, "pi", true)}      v${VERSION}   ${dimS(cwd)}` },
+		{ row: 3, text: `${c(35, "repo", true)}    ${repoStr}` },
+		{ row: 4, text: `${c(35, "skills", true)}  ${skillStr}` },
+		{ row: 5, text: `${c(35, "exts", true)}    ${extStr}` },
+		{ row: 7, text: italicDim(`# ${quote}`) },
 	];
 
-	// Typing progress: map frame to total chars revealed in the right panel.
-	const totalChars = RIGHT.map((l) => visLen(l)).reduce((a, b) => a + b, 0);
-	const charsVisible =
-		frame < TYPE_END
-			? Math.floor(((frame - ASSEMBLE_END) / (TYPE_END - ASSEMBLE_END)) * totalChars * 1.1)
-			: 999999;
-
-	// Build typed right panel strings.
-	const typedRight: string[] = [];
-	let seen = 0;
-	const cursorChar = frame % 10 < 5 ? cfgi(48, "▍") : " ";
-	let cursorPlaced = false;
-	for (const raw of RIGHT) {
-		const visible = visLen(raw);
-		if (seen >= charsVisible) {
-			typedRight.push("");
-		} else if (seen + visible <= charsVisible) {
-			typedRight.push(raw);
-			seen += visible;
-		} else {
-			// Partial line — strip ANSI and slice to char count.
-			const take = charsVisible - seen;
-			const stripped = raw.replace(/\x1b\[[^m]*m/g, "");
-			const partial = stripped.slice(0, take);
-			typedRight.push(frame < TYPE_END && !cursorPlaced ? partial + cursorChar : partial);
-			cursorPlaced = true;
-			seen = charsVisible;
-		}
-	}
-	while (typedRight.length < RIGHT.length) typedRight.push("");
-
-	// Idle scanline: a bright inverted row that sweeps down every SCAN_PERIOD frames.
-	const idleFrame = Math.max(0, frame - TYPE_END);
-	const scanPos =
-		frame >= TYPE_END
-			? Math.floor((idleFrame % SCAN_PERIOD) / SCAN_PERIOD * (LOGO_LINES.length + RIGHT.length + 2))
-			: -1;
-
-	// Idle glitch: occasionally replace a char in the last logo line.
-	const glitchActive = frame >= TYPE_END && idleFrame % 23 < 2;
-	const glitchRow = LOGO_LINES.length - 1;
-
-	// ── Layout ──────────────────────────────────────────────────────────────
-	const logoColWidth = LOGO_W + 2; // 2 spaces indent
-	const sepWidth = 3; // "  │" separator
-	const minRightWidth = 20;
-	const twoCols = width >= logoColWidth + sepWidth + minRightWidth;
+	// ── Render rows ────────────────────────────────────────────────────────
 
 	const lines: string[] = [""];
 
-	const totalRows = Math.max(LOGO_LINES.length, typedRight.length);
-
-	for (let r = 0; r < totalRows; r++) {
-		const isScanned = r === scanPos;
-
-		// Logo column
-		let logoPart = "";
-		if (r < LOGO_LINES.length) {
-			if (r < logoRevealed) {
-				const logoStr = LOGO_LINES[r]!;
-				const gradColor = GRAD[r] ?? 35;
-				// Flash the newly revealed line white during assemble.
-				const isNewLine = frame < ASSEMBLE_END && r === logoRevealed - 1;
-				const isGlitch = glitchActive && r === glitchRow;
-				const colored = isGlitch
-					? cfgi(197, logoStr) // red glitch flash
-					: isNewLine
-						? cfgi(255, logoStr) // white flash on reveal
-						: cfgi(gradColor, logoStr.replace(/(█+)/g, `\x1b[39m$1\x1b[38;5;${gradColor}m`));
-				logoPart = `  ${colored}`;
-			} else {
-				// Not yet revealed: show scanline noise during assemble.
-				if (frame < ASSEMBLE_END && r === logoRevealed) {
-					const noise = Array.from({ length: LOGO_W }, (_, i) => cfgi(238, seededChar(frame * 7 + i))).join("");
-					logoPart = `  ${noise}`;
-				} else {
-					logoPart = "";
-				}
-			}
+	for (let row = 0; row < TOTAL_ROWS; row++) {
+		if (showBanner && row === Math.floor(TOTAL_ROWS / 2)) {
+			const msg = "[ BOOT SEQUENCE INITIATED ]";
+			const mx = Math.max(0, Math.floor((width - msg.length) / 2));
+			// Build rain row then overwrite the banner region.
+			const base = rainRow(colPositions, row, frame, width).split("");
+			const banner = c(48, msg, true);
+			// Splice: left rain + spaces + banner + spaces + right rain
+			const clear = " ".repeat(msg.length);
+			const left = base.slice(0, mx).join("");
+			const right = base.slice(mx + msg.length).join("");
+			lines.push(truncateToWidth(left + clear.slice(0, 1) + banner + clear.slice(0, 1) + right, width, ""));
+			continue;
 		}
 
-		const paddedLogo = logoPart + " ".repeat(Math.max(0, logoColWidth - visLen(logoPart)));
-
-		if (twoCols) {
-			const rightPart = typedRight[r] ?? "";
-			const sep = dimS("│");
-			const lineStr = `${paddedLogo} ${sep} ${rightPart}`;
-			lines.push(isScanned ? invertS(truncateToWidth(lineStr, width, "")) : lineStr);
+		const overlay = overlays.find((o) => o.row === row);
+		if (overlay && reveal > 0) {
+			lines.push(infoRow(colPositions, row, frame, width, overlay.text, reveal));
 		} else {
-			if (logoPart) lines.push(logoPart);
-			const rightPart = typedRight[r] ?? "";
-			if (rightPart) lines.push(`  ${rightPart}`);
+			lines.push(rainRow(colPositions, row, frame, width));
 		}
 	}
 
 	lines.push("");
-	return lines.map((l) => truncateToWidth(l, width, "…"));
+	return lines;
 }
