@@ -71,22 +71,6 @@ vim.keymap.set(
   { silent = true, noremap = true, desc = 'Find vim configurations' }
 )
 
--- File Browser with the path of the current path
-vim.keymap.set('n', ',e', function()
-  local function telescope_buffer_dir()
-    return vim.fn.expand('%:p:h')
-  end
-
-  telescope.extensions.file_browser.file_browser({
-    path = '%:p:h',
-    cwd = telescope_buffer_dir(),
-    respect_gitignore = false,
-    hidden = true,
-    grouped = true,
-    previewer = true,
-  })
-end, { silent = true, noremap = true, desc = 'File browser' })
-
 -- Resume Previous Telescope
 vim.keymap.set('n', '<leader>fl', function()
   local builtin = builtin

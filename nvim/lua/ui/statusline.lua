@@ -10,8 +10,8 @@ local function setup_highlights(c)
 
   local hl = vim.api.nvim_set_hl
 
-  hl(0, 'StatusLine', { bg = c.bg, fg = c.text })
-  hl(0, 'StatusLineNC', { bg = c.bg, fg = c.muted })
+  hl(0, 'StatusLine', { bg = c.bg_alt, fg = c.text })
+  hl(0, 'StatusLineNC', { bg = c.bg_alt, fg = c.muted })
 
   -- Tabline (visible when 2+ tabs exist; see options/init.lua showtabline).
   -- Inactive tabs sit on the bg_alt chrome layer (same as the tree, since
@@ -29,7 +29,6 @@ local function setup_highlights(c)
   hl(0, 'StlReadOnly', { fg = c.error, bold = true })
   hl(0, 'StlInfo', { fg = c.info })
   hl(0, 'StlAccent', { fg = c.secondary })
-  hl(0, 'StlSnipai', { fg = c.tertiary, bold = true })
   hl(0, 'StlFileSize', { fg = c.muted })
   hl(0, 'StlBranch', { fg = c.tertiary, bold = true })
   hl(0, 'StlFiletype', { fg = c.text })
@@ -383,18 +382,6 @@ local function position()
   )
 end
 
-local function snipai_status()
-  local ok, statusline = pcall(require, 'snipai.statusline')
-  if not ok then
-    return nil
-  end
-  local text = statusline.status(get_current_bufnr())
-  if text == nil or text == '' then
-    return nil
-  end
-  return color('StlSnipai', text)
-end
-
 local function file_size()
   local fname = vim.api.nvim_buf_get_name(get_current_bufnr())
   if fname == '' then
@@ -466,7 +453,6 @@ function M.statusline()
     file_name(),
     file_read_only(),
     marlin_index(),
-    snipai_status(),
     macro_recording(),
     position(),
     search_count(),

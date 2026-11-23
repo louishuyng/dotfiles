@@ -48,6 +48,25 @@ vim.keymap.set('n', '<leader>fd', '<cmd>Trouble diagnostics toggle<cr>', { desc 
 
 -- Oil
 require('oil').setup({
+  columns = {
+    'icon',
+    { 'permissions', highlight = 'Comment' },
+    { 'size', highlight = 'Number' },
+    { 'mtime', highlight = 'Comment', format = '%d %b %Y %H:%M' },
+  },
+  win_options = {
+    number = false,
+    relativenumber = false,
+  },
+  delete_to_trash = true,
+  watch_for_changes = true,
+  view_options = {
+    show_hidden = true,
+    case_insensitive = true,
+    is_always_hidden = function(name)
+      return name == '..' or name == '.git' or name == '.DS_Store'
+    end,
+  },
   keymaps = {
     ['<C-v>'] = { 'actions.select', opts = { vertical = true } },
     ['<C-s>'] = { 'actions.select', opts = { horizontal = true } },
@@ -56,6 +75,7 @@ require('oil').setup({
   },
 })
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+vim.keymap.set('n', ',e', '<CMD>Oil<CR>', { desc = 'File browser' })
 vim.api.nvim_create_autocmd('User', {
   pattern = 'OilActionsPost',
   callback = function(event)
@@ -91,39 +111,6 @@ require('colorizer').setup({
   css_fn = true,
   mode = 'background',
 })
-
--- Nvim notify
-local notify_opts = {
-  timeout = 3000,
-  max_height = function()
-    return math.floor(vim.o.lines * 0.75)
-  end,
-  max_width = function()
-    return math.floor(vim.o.columns * 0.75)
-  end,
-  stages = 'fade_in_slide_out',
-  render = 'compact',
-  background_colour = '#161616',
-  fps = 60,
-  icons = {
-    ERROR = '󰅚 ',
-    WARN = '󰀪 ',
-    INFO = '󰋽 ',
-    DEBUG = '󰃤 ',
-    TRACE = '󰏫 ',
-  },
-  level = 2,
-  minimum_width = 50,
-  top_down = false,
-  on_open = function(win)
-    vim.api.nvim_win_set_config(win, { zindex = 100 })
-  end,
-}
-require('notify').setup(notify_opts)
-vim.notify = require('notify')
-vim.keymap.set('n', '<leader>un', function()
-  require('notify').dismiss({ silent = true, pending = true })
-end, { desc = 'Dismiss all Notifications' })
 
 -- LuaSnip
 require('luasnip.loaders.from_vscode').lazy_load()

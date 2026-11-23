@@ -11,6 +11,16 @@
         "assign-type-mismatch",
         "redundant-parameter"
   ],
+  "workspace.ignoreDir": [
+    "node_modules",
+    ".delta",
+    "pi",
+    "ai",
+    "sketchybar-app-font",
+    "raycast",
+    "rust",
+    "target"
+  ],
   "diagnostics.globals": [
     "vim",
     "describe",

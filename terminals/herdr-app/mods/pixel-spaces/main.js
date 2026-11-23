@@ -343,7 +343,7 @@ export default class Spaces extends View {
           .gap(9)
           .items_center()
           .when(Boolean(tree), el => el.pl(22).child(svg("mods/workspace-chrome/branch.svg").size(13).text_color(t.dim)))
-          .when(!tree, el => el.child(h_flex().size(18).flex_none().items_center().justify_center()
+          .when(!tree, el => el.child(h_flex().size(22).flex_none().items_center().justify_center()
             .on_mouse_down("left", (e, cx) => {
               if (!e.modifiers.alt) return;
               cx.stop_propagation();
@@ -352,7 +352,7 @@ export default class Spaces extends View {
               setShared("space.sprites", { ...all, [w.id]: next });
               cx.notify();
             })
-            .child(sprite((shared("space.sprites") ?? {})[w.id], fill, { div, v_flex, h_flex }))))
+            .child(sprite((shared("space.sprites") ?? {})[w.id], fill, { div, v_flex, h_flex }, 2, on))))
           .child(div().flex_shrink(0).max_w(150).truncate().text_color(t.foreground).child(w.name))
           .child(g ? this.gitTail(g, tree, w.name, t) : div().flex_1()),
       );
@@ -373,7 +373,7 @@ export default class Spaces extends View {
       .hover((s) => s.bg(t.hover))
       .tooltip(w.name)
       .on_click(() => run("space.select", { id: w.id }))
-      .child(sprite((shared("space.sprites") ?? {})[w.id], fill, { div, v_flex, h_flex }))
+      .child(sprite((shared("space.sprites") ?? {})[w.id], fill, { div, v_flex, h_flex }, 2, w.active))
       .when(Boolean(glyph(w.status)), (el) => el.child(div().absolute().top(0).right(2).text_size(9).text_color(tone(t, w.status)).child(glyph(w.status)))));
   }
 

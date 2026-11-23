@@ -170,18 +170,56 @@ function runs(row) {
   return out;
 }
 
-// The sprite as GPUI rectangles, `px` pixels per sprite pixel.
-export function sprite(name, fill, { div, v_flex, h_flex }, px = 2) {
-  const rows = SPRITES[name] ?? SPRITES.slime;
-  const ink = { x: fill, o: "#ffffff", k: "#17181c" };
-  return v_flex().flex_none().w(px * 8).h(px * rows.length).children(
-    rows.map((row) => h_flex().flex_none().h(px).children(
-      runs(row).map(([c, n]) => {
-        const cell = div().flex_none().w(px * n).h(px);
-        return c === "." ? cell : cell.bg(ink[c]);
-      }),
-    )),
-  );
+// `hex` moved `by` of the way to white (by > 0) or black (by < 0).
+// Anything but #rrggbb comes back as it is.
+export function shade(hex, by) {
+  if (!/^#[0-9a-f]{6}$/i.test(hex)) return hex;
+  const to = by > 0 ? 255 : 0;
+  const k = Math.abs(by);
+  const part = (i) => Math.round(parseInt(hex.slice(i, i + 2), 16) * (1 - k) + to * k).toString(16).padStart(2, "0");
+  return `#${part(1)}${part(3)}${part(5)}`;
+}
+
+// The sprite with a one-pixel margin, every clear pixel that touches the sprite
+// turned into "w": the white edge of a die-cut sticker.
+function dieCut(rows) {
+  const wide = rows[0].length + 2;
+  const grid = [".".repeat(wide), ...rows.map((r) => `.${r}.`), ".".repeat(wide)];
+  const inked = (y, x) => (grid[y]?.[x] ?? ".") !== ".";
+  return grid.map((row, y) => [...row].map((c, x) => {
+    if (c !== ".") return c;
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (inked(y + dy, x + dx)) return "w";
+    return ".";
+  }).join(""));
+}
+
+const PAPER = "#f6f5ee";
+const GLINT = { from: -70, to: 90, period: 5200 }; // mostly off the sticker: a glint, then a rest
+
+// The sprite as a sticker of GPUI rectangles, `px` pixels per sprite pixel: white
+// die-cut edge, hard shadow, lit from above. `shine` sweeps a glint across it.
+export function sprite(name, fill, { div, v_flex, h_flex }, px = 2, shine = false) {
+  const rows = dieCut(SPRITES[name] ?? SPRITES.slime);
+  const last = rows.length - 1;
+  const layer = (paint) => v_flex().absolute().children(rows.map((row, y) => {
+    let x = 0;
+    return h_flex().flex_none().h(px).children(runs(row).map(([c, n]) => {
+      const cell = paint(div().flex_none().w(px * n).h(px), c, x * px, y);
+      x += n;
+      return cell;
+    }));
+  }));
+  const ink = (y) => ({ w: PAPER, x: shade(fill, 0.34 - (0.6 * y) / last), o: "#ffffff", k: "#17181c" });
+  return div().relative().flex_none().w(px * rows[0].length + 1).h(px * rows.length + 2)
+    .child(layer((cell, c) => (c === "." ? cell : cell.bg("#00000080"))).left(1).top(2))
+    .child(layer((cell, c, left, y) => {
+      if (c === ".") return cell;
+      const inked = cell.bg(ink(y)[c]);
+      if (!shine || c === "w") return inked;
+      // Each cell clips its own piece of one slanted band, so the glint stays on the sticker.
+      return inked.relative().overflow_hidden().child(div().absolute().top(0).h(px).w(px * 3).bg("#ffffffb0")
+        .loop("left", { ...GLINT, from: GLINT.from - left - y * px, to: GLINT.to - left - y * px }));
+    }).left(0).top(0));
 }
 
 // A sprite for each space: kept once picked, new spaces get the least used one.

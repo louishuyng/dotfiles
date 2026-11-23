@@ -78,7 +78,7 @@ vim.lsp.config('eslint', {
   },
 })
 
--- Oxlint LSP: pin root to the project; never attach to vendored deps.
+-- Oxlint LSP: only activate if an oxlint config exists; never attach to vendored deps.
 -- NOTE: lspconfig's default oxlint config ships a `root_dir` *function*, which
 -- takes precedence over `root_markers` (so a bare root_markers override is
 -- ignored). It also treats any package.json that mentions "oxlint" as a marker,
@@ -95,8 +95,6 @@ vim.lsp.config('oxlint', {
       '.oxlintrc.json',
       '.oxlintrc.jsonc',
       'oxlint.config.ts',
-      'package.json',
-      '.git',
     })
     if root then
       on_dir(root)

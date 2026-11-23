@@ -45,15 +45,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
       { desc = 'Go definition & vsplit file' }
     )
 
-    vim.keymap.set(
-      'n',
-      'gi',
-      vim.lsp.buf.implementation,
-      vim.tbl_extend('force', opts, { desc = 'Go to implementation' })
-    )
-
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, vim.tbl_extend('force', opts, { desc = 'Code action' }))
     vim.keymap.set('n', ',rr', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = 'Rename' }))
     vim.keymap.set('n', 'gl', vim.diagnostic.open_float, vim.tbl_extend('force', opts, { desc = 'Line diagnostics' }))
+    vim.keymap.set('n', '<leader>th', function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+    end, vim.tbl_extend('force', opts, { desc = 'Toggle inlay hints' }))
   end,
 })

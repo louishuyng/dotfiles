@@ -34,7 +34,7 @@ snacks.setup {
     },
   },
   notifier = {
-    enabled = false,
+    enabled = true,
     timeout = 3000,
     style = 'compact',
     top_down = false,
@@ -328,11 +328,13 @@ vim.keymap.set('n', '<leader>tV', function()
   Snacks.terminal.toggle(nil, { win = { position = 'right', width = 0.4 } })
 end, { desc = 'Terminal Vertical' })
 
-vim.keymap.set('n', '<leader>fn', '<cmd>Notifications<CR>', { desc = 'Find Notification History' })
+vim.keymap.set('n', '<leader>fn', function()
+  Snacks.notifier.show_history()
+end, { desc = 'Find Notification History' })
 
 -- Notifier dismiss
 vim.keymap.set('n', '<leader>un', function()
-  require('notify').dismiss({ silent = true, pending = true })
+  Snacks.notifier.hide()
 end, { desc = 'Dismiss All Notifications' })
 
 -- UI toggles

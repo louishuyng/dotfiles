@@ -27,8 +27,6 @@ require('config.lsp')
 
 -- Core plugin configs
 require('config.cores.treesitter')
--- snipai registers a cmp source; must load before cmp reads its sources list
-require('config.cores.snipai')
 require('config.cores.cmp')
 require('config.cores.git')
 require('config.cores.snacks')

@@ -6,22 +6,22 @@ local patches = require('config.plugin_patches')
 vim.pack.add({
   -- Core dependencies
   'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/MunifTanjim/nui.nvim',
+  -- 'https://github.com/MunifTanjim/nui.nvim', -- Only noice.nvim needed it.
   'https://github.com/nvim-neotest/nvim-nio',
   -- 'https://github.com/nvim-tree/nvim-web-devicons', -- nvim-material-icon supplies the same module.
 
   -- Theme
-  'https://github.com/folke/tokyonight.nvim',
-  'https://github.com/scottmckendry/cyberdream.nvim',
   'https://github.com/catppuccin/nvim',
-  'https://github.com/sainnhe/gruvbox-material',
-  'https://github.com/savq/melange-nvim',
   'https://github.com/projekt0n/github-nvim-theme',
-  'https://github.com/craftzdog/solarized-osaka.nvim',
-  'https://github.com/Aejkatappaja/cendre',
-  'https://github.com/kepano/flexoki-neovim',
-  -- Base for the dracula_solid adapter (tuned to Gram's Dracula Solid).
-  'https://github.com/Mofiqul/dracula.nvim',
+  -- Unused themes: only catppuccin (dark) and github (light) are in use.
+  -- 'https://github.com/folke/tokyonight.nvim',
+  -- 'https://github.com/scottmckendry/cyberdream.nvim',
+  -- 'https://github.com/sainnhe/gruvbox-material',
+  -- 'https://github.com/savq/melange-nvim',
+  -- 'https://github.com/craftzdog/solarized-osaka.nvim',
+  -- 'https://github.com/Aejkatappaja/cendre',
+  -- 'https://github.com/kepano/flexoki-neovim',
+  -- 'https://github.com/Mofiqul/dracula.nvim',
   'https://github.com/f-person/auto-dark-mode.nvim',
 
   -- UI
@@ -30,13 +30,13 @@ vim.pack.add({
   -- noice.nvim removed: vim._core.ui2 handles cmdline/messages in nvim 0.12
   'https://github.com/mrjones2014/smart-splits.nvim',
   'https://github.com/norcalli/nvim-colorizer.lua',
-  'https://github.com/rcarriga/nvim-notify',
+  -- 'https://github.com/rcarriga/nvim-notify', -- Replaced by the snacks notifier.
 
   -- Editor
   'https://github.com/mg979/vim-visual-multi',
   'https://github.com/folke/todo-comments.nvim',
   'https://github.com/folke/which-key.nvim',
-  'https://github.com/dyng/ctrlsf.vim',
+  -- 'https://github.com/dyng/ctrlsf.vim', -- nvim-spectre covers search and replace.
   'https://github.com/stevearc/oil.nvim',
   'https://github.com/echasnovski/mini.bracketed',
   'https://github.com/echasnovski/mini.surround',
@@ -54,14 +54,17 @@ vim.pack.add({
   'https://github.com/akinsho/git-conflict.nvim',
 
   -- Coding / Completion
-  'https://github.com/hrsh7th/nvim-cmp',
+  -- Pinned to release tags: blink only downloads its prebuilt fuzzy matcher on a tagged checkout.
+  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('1.*') },
   'https://github.com/L3MON4D3/LuaSnip',
   'https://github.com/rafamadriz/friendly-snippets',
-  'https://github.com/saadparwaiz1/cmp_luasnip',
-  'https://github.com/hrsh7th/cmp-nvim-lsp',
-  'https://github.com/hrsh7th/cmp-buffer',
-  'https://github.com/hrsh7th/cmp-cmdline',
-  'https://github.com/hrsh7th/cmp-path',
+  -- nvim-cmp and its sources: replaced by blink.cmp.
+  -- 'https://github.com/hrsh7th/nvim-cmp',
+  -- 'https://github.com/saadparwaiz1/cmp_luasnip',
+  -- 'https://github.com/hrsh7th/cmp-nvim-lsp',
+  -- 'https://github.com/hrsh7th/cmp-buffer',
+  -- 'https://github.com/hrsh7th/cmp-cmdline',
+  -- 'https://github.com/hrsh7th/cmp-path',
 
   -- Treesitter
   -- NOTE: After first install run: :lua require('nvim-treesitter').install({})
@@ -76,7 +79,7 @@ vim.pack.add({
   -- NOTE: After first install, cd into the pack dir for this plugin and run: make
   'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
   'https://github.com/nvim-telescope/telescope-live-grep-args.nvim',
-  'https://github.com/nvim-telescope/telescope-file-browser.nvim',
+  -- 'https://github.com/nvim-telescope/telescope-file-browser.nvim', -- nvim-tree and oil cover browsing.
   -- Binary is built automatically via the PackChanged autocmd below.
   'https://github.com/desdic/marlin.nvim',
   'https://github.com/nvim-tree/nvim-tree.lua',
@@ -86,6 +89,7 @@ vim.pack.add({
 
   -- LSP
   'https://github.com/neovim/nvim-lspconfig',
+  'https://github.com/folke/lazydev.nvim',
   'https://github.com/williamboman/mason.nvim',
   'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
   'https://github.com/stevearc/conform.nvim',
@@ -104,7 +108,7 @@ vim.pack.add({
   -- AI
   'https://github.com/github/copilot.vim',
   -- 'https://github.com/NickvanDyke/opencode.nvim',
-  'https://github.com/louishuyng/snipai',
+  -- 'https://github.com/louishuyng/snipai',
 }, {
   load = function(plugin)
     patches.apply(plugin)

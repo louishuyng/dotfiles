@@ -60,11 +60,6 @@ telescope.setup {
         override_file_sorter = true, -- override the file sorter
         case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
       },
-      file_browser = {
-        theme = 'dropdown',
-        -- disables netrw and use telescope-file-browser in its place
-        hijack_netrw = true,
-      },
     },
     preview = {
       mime_hook = function(filepath, bufnr, opts)
@@ -95,7 +90,6 @@ telescope.setup {
 }
 
 telescope.load_extension('fzf')
-telescope.load_extension('file_browser')
 telescope.load_extension('live_grep_args')
 
 -- fff.nvim powers the <c-p> file picker (see custom/fff_files.lua). fff.setup()
@@ -112,9 +106,8 @@ if ok_fff then
   end)
 end
 
--- Theme-agnostic Telescope highlights. Pulls from the semantic palette so
--- the picker stays visually distinct from the editor background regardless
--- of which theme is active (tokyonight, catppuccin, ...).
+-- Theme-agnostic Telescope highlights, pulled from the semantic palette so
+-- they follow whichever theme is active (tokyonight, catppuccin, ...).
 local palette = require('config.theme.palette')
 
 local function apply_telescope_hl(c)
@@ -127,19 +120,21 @@ local function apply_telescope_hl(c)
     vim.api.nvim_set_hl(0, group, opts)
   end
 
-  set('TelescopePromptNormal', { bg = c.bg_alt, fg = c.text })
-  set('TelescopePromptBorder', { bg = c.bg_alt, fg = c.bg_alt })
-  set('TelescopePromptTitle', { bg = c.bg_alt, fg = c.primary, bold = true })
-  set('TelescopePromptPrefix', { bg = c.bg_alt, fg = c.primary })
-  set('TelescopePromptCounter', { bg = c.bg_alt, fg = c.muted })
+  -- No bg: the picker inherits Normal, so it matches the editor (transparent
+  -- included) and only the border lines separate it.
+  set('TelescopePromptNormal', { fg = c.text })
+  set('TelescopePromptBorder', { fg = c.surface })
+  set('TelescopePromptTitle', { fg = c.primary, bold = true })
+  set('TelescopePromptPrefix', { fg = c.primary })
+  set('TelescopePromptCounter', { fg = c.muted })
 
-  set('TelescopeResultsNormal', { bg = c.bg_alt, fg = c.text })
-  set('TelescopeResultsBorder', { bg = c.bg_alt, fg = c.bg_alt })
-  set('TelescopeResultsTitle', { bg = c.bg_alt, fg = c.tertiary, bold = true })
+  set('TelescopeResultsNormal', { fg = c.text })
+  set('TelescopeResultsBorder', { fg = c.surface })
+  set('TelescopeResultsTitle', { fg = c.tertiary, bold = true })
 
-  set('TelescopePreviewNormal', { bg = c.bg_alt, fg = c.text })
-  set('TelescopePreviewBorder', { bg = c.bg_alt, fg = c.bg_alt })
-  set('TelescopePreviewTitle', { bg = c.bg_alt, fg = c.secondary, bold = true })
+  set('TelescopePreviewNormal', { fg = c.text })
+  set('TelescopePreviewBorder', { fg = c.surface })
+  set('TelescopePreviewTitle', { fg = c.secondary, bold = true })
 
   -- Selected entry: surface is one shade further than bg_alt.
   set('TelescopeSelection', { bg = c.surface, fg = 'NONE', bold = true })

@@ -1,6 +1,4 @@
 vim.lsp.config('ruff', {
-  cmd = { 'ruff', 'server' },
-  filetypes = { 'python' },
   settings = {
     organizeImports = true,
     fixAll = true,
@@ -8,8 +6,6 @@ vim.lsp.config('ruff', {
 })
 
 vim.lsp.config('pyright', {
-  cmd = { 'pyright-langserver', '--stdio' },
-  filetypes = { 'python' },
   settings = {
     pyright = {
       -- Using Ruff's import organizer

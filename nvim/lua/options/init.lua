@@ -198,6 +198,12 @@ vim.opt.synmaxcol = 500
 
 -- AI
 vim.g.copilot_enabled = true
+-- Run Mason's copilot server directly: copilot.vim's default npx launch takes
+-- ~30s and serializes every nvim session behind one npm lock.
+local copilot_server = vim.fn.stdpath('data') .. '/mason/bin/copilot-language-server'
+if vim.fn.executable(copilot_server) == 1 then
+  vim.g.copilot_command = copilot_server
+end
 
 -- Clipboard
 vim.opt.clipboard:append('unnamedplus')

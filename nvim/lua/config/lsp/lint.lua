@@ -3,7 +3,6 @@ local lint = require('lint')
 lint.linters_by_ft = {
   fish = { 'fish' },
   proto = { 'buf_lint' },
-  python = { 'ruff' },
   swift = { 'swift_format' },
 }
 

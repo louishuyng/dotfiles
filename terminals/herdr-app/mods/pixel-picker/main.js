@@ -160,7 +160,7 @@ export default class Picker extends View {
           .text_size(11)
           .font_semibold()
           .text_color(t.dim)
-          .child(h_flex().size(18).flex_none().items_center().justify_center()
+          .child(h_flex().size(22).flex_none().items_center().justify_center()
             .child(sprite((shared("space.sprites") ?? {})[r.w.id], spaceColor(t, r.w), { div, v_flex, h_flex })))
           .child(r.w.name);
       }

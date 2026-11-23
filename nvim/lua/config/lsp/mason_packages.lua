@@ -51,4 +51,7 @@ return {
 
   -- Spell Check
   'typos-lsp',
+
+  -- AI
+  'copilot-language-server',
 }

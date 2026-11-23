@@ -207,7 +207,7 @@ run = ['move-node-to-workspace Terminal']
 
 [[on-window-detected]]
 if.app-id = 'com.superlogical.rex'
-run = ['move-node-to-workspace Terminal']
+run = ['move-node-to-workspace Terminal', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.conductor.app'

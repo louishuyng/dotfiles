@@ -1,9 +1,9 @@
 vim.lsp.config('rust_analyzer', {
-  cmd = { 'rust-analyzer' },
-  filetypes = { 'rust' },
-  root_markers = { 'Cargo.toml', 'rust-project.json', '.git' },
   settings = {
     ['rust-analyzer'] = {
+      -- Own target dir, so checks on save do not hold the build lock against `cargo build`.
+      cargo = { targetDir = true },
+      check = { command = 'clippy' },
       inlayHints = {
         bindingModeHints = {
           enable = false,

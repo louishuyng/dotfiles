@@ -1,6 +1,7 @@
 vim.lsp.config('gopls', {
   settings = {
     gopls = {
+      directoryFilters = { '-**/node_modules', '-.git' },
       hints = {
         rangeVariableTypes = true,
         parameterNames = true,

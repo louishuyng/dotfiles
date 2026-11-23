@@ -52,7 +52,6 @@ Ordering that matters, and breaks if changed:
 - `config.pack` runs first — nothing can be `require`d before its plugin is on the runtimepath.
 - `config.theme` runs before other UI plugins so they derive highlights from live colors.
 - `mason` runs before `config.lsp`, since servers resolve to Mason-installed binaries.
-- `config.cores.snipai` runs before `config.cores.cmp`: snipai registers a cmp source, and cmp reads its source list once at setup.
 - Tool installation is deferred to a one-shot `VimEnter` autocmd, otherwise Mason blocks startup with a "press ENTER" prompt.
 
 ## Directory map
@@ -101,21 +100,11 @@ flowchart LR
 
 *Consumers subscribe to the palette, so they never learn which colorscheme is active.*
 
-- **`init.lua`** keeps two slots (dark, light) and applies one. Adapters load lazily; the chosen pair persists to `stdpath('state')/theme.json` and survives restarts. `:Theme` prints the state, `:Theme cendre` sets both, `:Theme dark=cendre light=github` sets each.
+- **`init.lua`** keeps two slots (dark, light) and applies one. Adapters load lazily; the chosen pair persists to `stdpath('state')/theme.json` and survives restarts. `:Theme` prints the state, `:Theme github` sets both, `:Theme dark=catppuccin light=github` sets each.
 - **`adapters/<name>.lua`** translates a colorscheme's native palette into semantic roles (`bg`, `bg_alt`, `text`, `muted`, …) and applies it.
 - **`palette.lua`** exposes `M.colors` plus `M.on_change(fn)`. A `ColorScheme` autocmd rebuilds the roles and notifies subscribers.
 
 `apply()` suppresses `ColorScheme` for the whole swap and fires exactly one event after the new theme is live. Without this, plugins that set highlights with `default = true` latch onto the outgoing theme's colors during the `background` flip and stay one toggle behind until restart — the comment at `lua/config/theme/init.lua:117` has the full story.
-
-## Dead files
-
-Four modules are on disk but nothing requires them; treat them as removable, not as reference:
-
-- `lua/config/libs/todo.lua` — todo-comments is configured in `lua/mappings/editor/todocomment.lua` instead
-- `lua/config/libs/git_utils.lua`
-- `lua/utils/merge.lua`
-- `lua/functions/git_blame_toggle.lua`
-- `plugin/gotowindow.vim` — calls `MaximizerToggle`, and vim-maximizer is not installed
 
 ## Manual steps after a fresh install
 

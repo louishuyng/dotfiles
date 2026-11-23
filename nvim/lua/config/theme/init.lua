@@ -15,38 +15,14 @@ local M = {}
 -- Adapters are loaded lazily so installing a new theme doesn't pay for it
 -- until the user actually swaps to it.
 local adapter_loaders = {
-  tokyonight = function()
-    return require('config.theme.adapters.tokyonight')
-  end,
   catppuccin = function()
     return require('config.theme.adapters.catppuccin')
-  end,
-  cyberdream = function()
-    return require('config.theme.adapters.cyberdream')
-  end,
-  cendre = function()
-    return require('config.theme.adapters.cendre')
-  end,
-  dracula_solid = function()
-    return require('config.theme.adapters.dracula_solid')
-  end,
-  gruvbox_material = function()
-    return require('config.theme.adapters.gruvbox_material')
-  end,
-  melange = function()
-    return require('config.theme.adapters.melange')
   end,
   github = function()
     return require('config.theme.adapters.github')
   end,
-  solarized_osaka = function()
-    return require('config.theme.adapters.solarized_osaka')
-  end,
   jetbrains = function()
     return require('config.theme.adapters.jetbrains')
-  end,
-  flexoki = function()
-    return require('config.theme.adapters.flexoki')
   end,
 }
 
@@ -182,8 +158,8 @@ require('auto-dark-mode').setup({
 })
 
 -- :Theme                          -> show current state
--- :Theme tokyonight               -> set both dark and light to tokyonight
--- :Theme dark=tokyonight light=catppuccin -> set per-variant
+-- :Theme github                   -> set both dark and light to github
+-- :Theme dark=catppuccin light=github -> set per-variant
 vim.api.nvim_create_user_command('Theme', function(opts)
   local args = opts.fargs
   if #args == 0 then

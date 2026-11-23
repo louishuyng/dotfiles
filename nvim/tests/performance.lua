@@ -6,11 +6,6 @@ package.loaded.marlin = {
     return {}
   end,
 }
-package.loaded['snipai.statusline'] = {
-  status = function()
-    return ''
-  end,
-}
 
 local statusline = require('ui.statusline')
 _G.__stl_pulse_timer:stop()
@@ -144,10 +139,10 @@ for _, large in ipairs({ false, true }) do
   vim.fn.delete(path)
 end
 
-vim.cmd.packadd('nvim-cmp')
+vim.cmd.packadd('blink.cmp')
 vim.cmd.packadd('LuaSnip')
 dofile('nvim/lua/config/cores/cmp.lua')
-local enabled = require('cmp').get_config().enabled
+local enabled = require('blink.cmp.config').enabled
 assert(enabled(), 'Normal completion disabled')
 vim.b.completion = false
 assert(not enabled(), 'Large-file completion guard ignored')

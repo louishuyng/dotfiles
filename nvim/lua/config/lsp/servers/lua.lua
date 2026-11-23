@@ -1,15 +1,10 @@
+-- Adds VIMRUNTIME and each plugin a file requires to the lua_ls library, on demand.
+local ok, lazydev = pcall(require, 'lazydev')
+if ok then
+  lazydev.setup({})
+end
+
 vim.lsp.config('lua_ls', {
-  cmd = { 'lua-language-server' },
-  filetypes = { 'lua' },
-  root_markers = {
-    '.luarc.json',
-    '.luarc.jsonc',
-    '.luacheckrc',
-    '.stylua.toml',
-    'stylua.toml',
-    'selene.toml',
-    'selene.yml',
-  },
   settings = {
     Lua = {
       runtime = {
@@ -17,9 +12,6 @@ vim.lsp.config('lua_ls', {
       },
       workspace = {
         checkThirdParty = false,
-        library = {
-          vim.env.VIMRUNTIME,
-        },
       },
       telemetry = {
         enable = false,
