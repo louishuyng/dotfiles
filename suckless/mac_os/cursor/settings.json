@@ -463,5 +463,6 @@
   "editor.formatOnSave": true,
   "workbench.colorTheme": "Cursor Dark Midnight",
   "remote.autoForwardPorts": true,
-  "workbench.preferredLightColorTheme": "light-jetbrains-color-theme"
+  "workbench.preferredLightColorTheme": "light-jetbrains-color-theme",
+  "update.releaseTrack": "dev"
 }

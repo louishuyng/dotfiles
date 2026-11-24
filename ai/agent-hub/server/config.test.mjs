@@ -244,3 +244,10 @@ test('invalid global source leaves the API available with a repair warning',asyn
     const doc=await fetch(`${base}/api/document?id=hooks:claude`).then(r=>r.json());assert.equal(doc.content,'broken JSON');
   }finally{if(app)await new Promise(resolve=>app.server.close(resolve));await rm(f.home,{recursive:true,force:true});}
 });
+test('omp joins skill sync only when its config directory exists',async()=>{
+  const f=await fixture();try{
+    assert.ok(!(await f.config.syncTargets()).some(t=>t.target==='omp'));
+    await mkdir(path.join(f.home,'.omp/agent'),{recursive:true});
+    assert.equal((await f.config.syncTargets()).find(t=>t.target==='omp').path,path.join(f.home,'.omp/agent/skills'));
+  }finally{await rm(f.home,{recursive:true,force:true});}
+});

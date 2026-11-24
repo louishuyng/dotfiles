@@ -308,6 +308,8 @@ export class Configuration {
   async syncTargets() {
     const targets = [['codex','.agents/skills'],['claude','.claude/skills'],['opencode','.config/opencode/skills']];
     for (const [id,dir] of [['pi','.pi/agent/skills/LX14-AI-Skills'],['gemini','.gemini/skills'],['copilot','.copilot/skills'],['cursor','.cursor/skills'],['grok-build','.grok/skills']]) if (TOOL_DEFINITIONS.find((t)=>t[0]===id) && (executable(TOOL_DEFINITIONS.find((t)=>t[0]===id)[4]) || existsSync(path.join(this.home,TOOL_DEFINITIONS.find((t)=>t[0]===id)[5])))) targets.push([id,dir]);
+    // omp has no catalogue entry, so its config directory alone marks it installed.
+    if (existsSync(path.join(this.home,'.omp/agent'))) targets.push(['omp','.omp/agent/skills']);
     return targets.map(([target,relative])=>({target,path:path.join(this.home,relative),source:path.join(this.data,'skills',target)}));
   }
 

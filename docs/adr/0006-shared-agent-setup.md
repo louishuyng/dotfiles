@@ -301,3 +301,23 @@ library skill `domain-modeling` was removed in the same change.
   manual diff against the commit above, not a folder swap. If the helpers are
   ever wanted on their own, restore them as library skills and revert the
   stage files to upstream's Skill tool calls.
+
+## Accepted update: bug diagnosis, research and wait-what skills
+
+Accepted on 2026-11-24. The owner added three more
+[AI Hero skills](https://www.aihero.dev/skills) to the library:
+`diagnosing-bugs`, `research` and `wait-what`, copied unchanged from
+[mattpocock/skills](https://github.com/mattpocock/skills) at commit `d653911`.
+
+- **Why the first two.** `diagnosing-bugs` is the only upstream skill that finds a
+  root cause: it builds a red-capable feedback loop before any hypothesis.
+  `research` delegates reading of primary sources to a background agent and
+  saves cited findings in the repo.
+- **Also added:** `wait-what`, a user-invoked skill that makes the agent
+  re-pitch its last message with context, in Simplified Technical English and
+  the glossary's terms. Same upstream commit, copied unchanged.
+- **Left out:** `tdd`, whose text already lives in `implement/TDD.md`, and
+  `triage`, which labels incoming issues and does not fix them.
+- **Trade-off:** `diagnosing-bugs` and `research` stay model-invoked, as upstream ships them, so they add
+  two descriptions to every agent's skill list. If that costs too much context,
+  set `disable-model-invocation: true` and call them by name.

@@ -30,8 +30,8 @@ alt-d = 'workspace Dev' # Dev (IDEs and development tools)
 alt-t = 'workspace Terminal' # Terminal (terminals and coding agents)
 alt-w = 'workspace Web' # Web (Browse or any web development related like figma, etc)
 alt-c = 'workspace Chat' # Chat (Chat related apps like Slack, Teams, Whatsapp etc)
-alt-r = 'workspace Reading' # Reading Including book, notes (Kindle, Inkdrop)
-alt-p = 'workspace Planing' # planing emails (Linear, Jira, Spark etc..)
+alt-r = 'workspace Reading' # Reading Including book, notes (Kindle)
+alt-p = 'workspace Planing' # planing emails (Linear, Jira, Spark, inkdrop etc..)
 alt-a = 'workspace Any' # Any (Social Media, Spotify, Music etc)
 alt-i = 'workspace Inbox' # Inbox (Email, Calendar, etc)
 alt-v = 'workspace Virtual' # Virtual Machine'
@@ -271,6 +271,7 @@ run = ['move-node-to-workspace Web', 'layout tiling']
 if.app-id = 'com.kingsoft.wpsoffice.mac.global'
 run = ['move-node-to-workspace Reading']
 
+
 [[on-window-detected]]
 if.app-id = 'com.amazon.Lassen'
 run = ['move-node-to-workspace Reading']
@@ -278,6 +279,10 @@ run = ['move-node-to-workspace Reading']
 # Workspace Planing
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
+run = ['move-node-to-workspace Planing']
+
+[[on-window-detected]]
+if.app-id = 'info.pkpk.inkdrop'
 run = ['move-node-to-workspace Planing']
 
 [[on-window-detected]]
