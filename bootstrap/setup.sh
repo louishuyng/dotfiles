@@ -109,7 +109,7 @@ if [[ "$platform" == mac ]]; then
   add_task desktop 'Aerospace + SketchyBar/Lua + Borders + fonts'
   add_task karabiner 'Karabiner Elements + config'
   add_task editors 'Cursor + Zed + config + VSCodeVim'
-  add_task extras 'Marta + Mailspring + Superfile + configs'
+  add_task extras 'Marta + Mailspring + GoTiengViet + Superfile + configs'
   add_task security 'Nmap + VPN tools (opt-in; ZAP install is manual)'
   add_task macos 'Preferences / keyboard + trackpad + Finder + screenshots'
 fi
@@ -458,7 +458,7 @@ apply_task() {
       config suckless/mac_os/zed/settings.json zed/settings.json
       if ! $links_only; then run /Applications/Cursor.app/Contents/Resources/app/bin/cursor --install-extension vscodevim.vim; fi ;;
     extras)
-      casks marta mailspring
+      casks marta mailspring gotiengviet
       packages superfile
       link_file "$repo_root/suckless/mac_os/marta/config" "$HOME/Library/Application Support/org.yanex.marta/conf.marco"
       link_file "$repo_root/suckless/superfile/config.toml" "$HOME/Library/Application Support/superfile/config.toml" ;;
