@@ -32,6 +32,14 @@
         "type": "remote",
         "url": "https://mcp.atlassian.com/v1/mcp",
         "headers": {}
+      },
+      "cua-driver": {
+        "type": "local",
+        "command": [
+          "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+          "mcp"
+        ],
+        "environment": {}
       }
     }
   },

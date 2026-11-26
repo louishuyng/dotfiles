@@ -41,6 +41,8 @@ changes also activate skill sharing automatically. Native conflicts remain
 untouched and appear as blocked targets. Additional native servers prevent a
 verified shared set; import compatible entries explicitly from the page.
 
+Computer control comes from the shared `cua-driver` stdio server ([Cua Driver](https://cua.ai/docs/cua-driver)). The **Agents** page shows **Computer control: On** for an agent when that server is enabled and the agent's MCP sync is verified. The bootstrap `agent_hub` task installs `/Applications/CuaDriver.app`; run `cua-driver permissions grant` once to switch on Accessibility and Screen Recording.
+
 Shared servers support stdio commands and Streamable HTTP endpoints. Native-only
 options and environment interpolation require manual setup and appear as
 incomplete parity. Shared command hooks map supported tool-use and completion

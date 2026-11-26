@@ -405,6 +405,11 @@ apply_task() {
         run npm --prefix "$repo_root/ai/agent-hub" run build
         run node "$repo_root/ai/agent-hub/scripts/setup.mjs"
         run node "$repo_root/ai/agent-hub/scripts/service.mjs" install
+        # Agent Hub owns the MCP entries (ai/config/shared-setup.json), so skip the installer's own agent wiring.
+        if [[ "$platform" == mac && ! -x /Applications/CuaDriver.app/Contents/MacOS/cua-driver ]]; then
+          run /bin/bash -c 'installer=$(mktemp); trap '\''rm -f "$installer"'\'' EXIT; curl -fsSL https://cua.ai/driver/install.sh -o "$installer" && CUA_TELEMETRY_ENABLED=0 /bin/bash "$installer" --no-connect --no-modify-path --no-test'
+          info 'Grant Cua Driver access: cua-driver permissions grant'
+        fi
       fi ;;
     nix) config nix nix; config home-manager home-manager ;;
     cli)
